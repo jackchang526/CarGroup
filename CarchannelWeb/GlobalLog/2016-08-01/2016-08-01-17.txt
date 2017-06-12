@@ -1,0 +1,16 @@
+[2016/8/1 17:18:39]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx
+Ref: 
+Error Message: 该字符串未被识别为有效的 DateTime。
+Stack Trace:    在 System.DateTime.Parse(String s, IFormatProvider provider)
+   在 System.Convert.ToDateTime(String value, IFormatProvider provider)
+   在 BitAuto.Utils.ConvertHelper.GetDateTime(Object obj) 位置 E:\Project\bitauto\P公用平台\Utils\Bitauto.Utils\ConvertHelper.cs:行号 120
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialListADData()
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name)
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.InitSelectCarAD() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 110
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 70
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

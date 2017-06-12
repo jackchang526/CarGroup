@@ -1,0 +1,38 @@
+[2013/4/9 10:47:04]  
+IP: 127.0.0.1
+Error in: http://api.car.bitauto.com/Exhibition/GetExhibitionLeftTreeJson.ashx?eid=94&objid=0
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.GetTagTypeUrlRule(String tagType) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 200
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.ProcessRequest(HttpContext context) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 43
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2013/4/9 10:47:29]  
+IP: 127.0.0.1
+Error in: http://api.car.bitauto.com/Exhibition/GetExhibitionLeftTreeJson.ashx?eid=94&objid=0
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.GetTagTypeUrlRule(String tagType) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 200
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.ProcessRequest(HttpContext context) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 43
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2013/4/9 10:47:30]  
+IP: 127.0.0.1
+Error in: http://api.car.bitauto.com/favicon.ico
+Error Message: 未能执行 URL。
+Stack Trace:    在 System.Web.Hosting.ISAPIWorkerRequestInProcForIIS6.BeginExecuteUrl(String url, String method, String childHeaders, Boolean sendHeaders, Boolean addUserIndo, IntPtr token, String name, String authType, Byte[] entity, AsyncCallback cb, Object state)
+   在 System.Web.HttpResponse.BeginExecuteUrlForEntireResponse(String pathOverride, NameValueCollection requestHeaders, AsyncCallback cb, Object state)
+   在 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2013/4/9 10:50:23]  
+IP: 127.0.0.1
+Error in: http://api.car.bitauto.com/favicon.ico
+Error Message: 未能执行 URL。
+Stack Trace:    在 System.Web.Hosting.ISAPIWorkerRequestInProcForIIS6.BeginExecuteUrl(String url, String method, String childHeaders, Boolean sendHeaders, Boolean addUserIndo, IntPtr token, String name, String authType, Byte[] entity, AsyncCallback cb, Object state)
+   在 System.Web.HttpResponse.BeginExecuteUrlForEntireResponse(String pathOverride, NameValueCollection requestHeaders, AsyncCallback cb, Object state)
+   在 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

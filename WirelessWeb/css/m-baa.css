@@ -1,0 +1,154 @@
+@charset "utf-8";
+/*图文混排*/
+/*.m-baa-pic-news{}
+.m-baa-pic-news li{border-top:1px solid #E6E6E6; padding-top:10px}
+.m-baa-pic-news li:first-child{border-top:none; padding-top:0;}*/
+
+.m-baa-filter{color:#999; margin:15px 0 15px 10px; line-height:1.5;}
+.m-baa-filter a{margin-right:10px;}
+
+/*tablet*/
+@media only screen and (min-device-width : 768px) {
+	/*.m-baa-pic-news li:first-child{border-top:1px solid #E6E6E6; padding-top:10px}*/
+	.m-baa-filter{display:none;}
+}
+
+/*论坛list*/
+.m-baa-clublist{
+	background:#f7f7f7;
+	padding:0 0 0 60px;
+}
+.m-baa-clublist li{
+	float:left;
+	border:1px solid #ddd;
+	width:45%;
+	margin:0 10px 10px 0;
+	background:#fff;
+	font-size:1.6rem;
+	white-space:nowrap;
+	overflow:hidden;
+}
+.m-baa-clublist li a{
+	display:block;
+	padding:7px 0 7px 7px;
+}
+.m-baa-clublist-full{
+	padding:10px 0 0 20px;
+}
+
+/*帖子list*/
+.m-baa-postlist{ padding:0 10px;}
+.m-baa-postlist li:first-child {border:none;}
+.m-baa-postlist li{ border-top:1px #e6e6e6 solid; padding:10px 0; line-height:1.4}
+
+.m-baa-postlist li h3{ font-size:1.6rem; display:inline; }
+
+
+
+/*发帖人*/
+p.m-post-author{ margin:5px 0 0 0; padding:0; color:#ccc; position:relative; line-height:1.5;}
+p.m-post-author span{ position:absolute; right:0; top:0;}
+
+
+/*右侧更多按钮*/
+.m-tabs-box .more-button{top:5px; }/*定位*/
+.more-button{width:60px; height:20px; display:block; padding:6px 0 0 0; line-height:1;}/*按钮样式*/
+
+/*帖子正文页头部*/
+.m-detail-top{ padding:10px; background:#f7f7f7; border-bottom:1px #e6e6e6 solid; line-height:1.4; color:#333;}
+
+.m-detail-top h1{ font-size:1.6rem; font-weight:bold; }
+.m-detail-top p{ padding:5px 0 0 0; color:#ccc;}
+.m-detail-top p.m-post-author{ padding:0}
+
+/*帖子正文页内容*/
+.m-detail-con{ padding:10px;line-height:1.5; color:#333; font-size:1.5rem; }
+.m-detail-con p{ text-indent:2em; }
+.m-detail-con p img{ margin:5px auto; display:block; }
+/*.m-detail-con .more{ float:right; }
+.m-detail-con .more-box{ height:30px; margin:10px 0 0 0 }*/
+
+.m-detail-con p.m-start-box{ margin:0 0 10px 0; text-indent:0;}
+
+
+/*帖子回复*/
+.m-detail-comment{background:#f7f7f7; color:#333;  }
+.m-detail-comment p.m-post-author{ margin:0;}
+.m-detail-comment ul li{border-top:1px #ddd solid; padding:10px;}
+.m-detail-comment ul li p{ line-height:1.5;}
+.m-detail-comment ul li blockquote{ background:#fff; padding:5px 10px; margin:5px 0; border:1px #ddd solid; }
+
+.m-detail-comment-reply{ text-align:right}
+
+.m-detail-comment-textarea{ padding:0 6px 20px 0;}
+.m-detail-comment-textarea textarea{ width:100%; border:1px #ddd solid; margin-bottom:5px; }
+.m-detail-comment-textarea span{float:right; margin:-25px 0 0 0}
+
+.m-detail-comment-textarea-last{ padding:0 16px 20px 10px;}
+
+
+
+/*text input style*/
+.m-form-box input[type="text"], .m-form-box input[type="password"],.m-form-box textarea, .m-form-box-yanzheng-box input[type="text"]{width:91%; height:28px; padding:0 5px; border:1px solid #DDD; -moz-box-shadow:2px 2px 2px #EEE inset; -webkit-box-shadow:2px 2px 2px #EEE inset; box-shadow:2px 2px 2px #EEE inset; font-size:1.4rem; margin: 5px auto; display:block}
+
+
+
+/*回复成功*/
+.reply-success{ margin:20px 50px; padding:20px; border-radius:5px;-moz-border-radius: 5px; 
+-webkit-border-radius: 5px;  background:#fff7c0; border:1px solid #fdce96; text-align:center; }
+
+
+
+/*form box 表单*/
+.m-form-box{ padding:10px;}
+.m-form-box textarea{ height:150px; padding:5px;}/*冲上面的样式*/
+.m-form-box li{font-size:1.6rem; margin:10px 0}
+
+.m-form-box .reg{ font-size:1.4rem; padding:0 10px;}
+.m-form-box .reg span{ float:right; margin-right:5px;}
+.m-form-box .reg span a{ margin-left:5px;}
+
+.m-form-box .alert{ padding:0 10px; font-size:1.4rem; color:#c00;}
+.m-form-box .text{ padding:0 10px;  }
+.m-form-box .text strong{ font-weight:bold; }
+.m-form-box .clearf{ clear:both}
+/*弹出层*/
+.m-pop-background{ background:#000; z-index:9; width:100%; height:100%; position:absolute; left:0; top:0;opacity:0.5;}
+.m-pop-box{ position:absolute; left:30px; right:30px; top:50px; z-index:10; background:#fff;  height:200px;border-radius: 10px; -moz-border-radius: 10px; 
+-webkit-border-radius: 10px; padding:40px 20px 30px; }
+/*弹出层关闭close*/
+.m-pop-box .m-btn-close{display:block; width:21px; height:21px; background:url(../images/micoclose.gif) no-repeat; background-size:50% 50%; position:absolute; top:10px; right:0;}
+
+/*结果页result page*/
+.m-result-page-box{ margin:20px auto; width:240px; height:45px; padding:20px 0 0 80px; font-size:2rem; font-weight:bold;}
+.m-result-page-sucess{ background:url(../images/icon_sucess.png) 10px 0 no-repeat;background-size:65px 65px}
+.m-result-page-fail{background:url(../images/icon_fail.png) 10px 0 no-repeat;background-size:65px 65px}
+.m-result-page-short{ margin-bottom:0;}
+
+/*完成提示*/
+/*.m-form-box-info{ padding:10px 15px 5px;}*/
+.m-form-box-info p{ background:#f7f7f7; border:1px #ddd solid; border-radius:5px;-moz-border-radius: 5px; 
+-webkit-border-radius: 5px; padding:10px; line-height:1.5; margin:0 10px;  }
+.m-form-box-info p em{ display:block; font-size:1.6rem}
+.m-form-box-info .m-btn-more-news{ margin:0 auto;}
+
+
+
+/*验证码*/
+.m-form-box-yanzheng-box{ 
+width: 91%;
+margin: 5px auto;
+display: block;
+
+}
+.m-form-box-yanzheng-box input[type="text"]{ width:35%; margin:5px 0; float:left; }
+.m-form-box-yanzheng-box .m-btn-more-news{ float:left; width:45%; height:20px; margin-left:5px;}
+.m-form-box-yanzheng-box img{ width:130px; height:30px; float:left; margin:5px 0 5px 10px;}
+
+
+
+
+
+
+
+

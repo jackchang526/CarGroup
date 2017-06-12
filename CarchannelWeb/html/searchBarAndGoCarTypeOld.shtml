@@ -1,0 +1,57 @@
+﻿<!--# include file="~/include/special/yc/00001/Car_DropDownList_PublicScriptsV2_Manual.shtml"-->
+<script language="javascript" type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnew/dropdownlist.js?v=3.0"></script>
+<!--smenu start-->
+<div class="bt_page">
+	<div class="bt_smenuNew">
+		<div class="bt_navigateNew"><a class="bt_logo bt_logo_channel" target="_blank" href="http://www.bitauto.com/">易车网</a> <a class="bt_channel" target="_blank" href="http://car.bitauto.com/">车型</a> </div>
+		<div class="bt_searchNew">
+			<!-- ushtml/block/so/sugFortree2012/sobar_chexing_tree.shtml -->
+			<form id="sug_form" name="sug_form" target="_blank" method="get" action="http://www.cheyisou.com/post.aspx">
+<div class="bor">
+	<input id="sug_txt_keyword" type="text" class="select_t" name="so_keywords" value="" autocomplete="off">
+	<span class="bor_b">
+		<input type="submit" id="sug_submit" value="搜索" class="select_b">
+	</span>
+	<div onselectstart="return false" id="sug" style="display: none;"></div>
+	<input id="sug_hidurl" value="" type="hidden">
+	<input id="sug_datatype" name="sug_datatype" value="chexing" type="hidden">
+	<input id="sug_encoding" name="sug_encoding" value="utf-8" type="hidden">
+</div>
+</form>
+<script type="text/javascript">
+	var sug_open_type = "open";
+	var sug_txt_css = "select_t";
+	var sug_flagID = "3";
+	var so = document.createElement('script');
+	so.src = 'http://image.bitautoimg.com/bsearch/jsforsug2012/sug_pindao_form.js';
+	document.getElementsByTagName('head')[0].appendChild(so);
+	var ti = setInterval(function () { if (!window.bitauto) { return } else { window.bitauto.init(); clearInterval(ti) } }, 200)
+	window.onunload = function () { }; 
+</script>
+		</div>
+		<div class="bt_searchNew bt_selectNew">
+			<div class="bor">
+				<select id="master3">
+				</select><select id="serial3"></select>
+				<span class="bor_b">
+					<input id="GotoCarButton" type="button" title="看车型" class="select_b" value="看车型" />
+				</span></div>
+			<script language="javascript" type="text/javascript">
+				BitA.DropDownList({
+					container: { master: "master3", serial: "serial3" },
+					include: { serial: "1" },
+					btn: {
+						car: {
+							id: "GotoCarButton",
+							url: {
+								master: { url: "http://car.bitauto.com/tree_chexing/mb_{param1}/", params: { "param1": "id"} }
+							}
+						}
+					},
+					bind: "click"
+				});
+			</script>
+		</div>
+	</div>
+</div>
+<!--smenu end-->

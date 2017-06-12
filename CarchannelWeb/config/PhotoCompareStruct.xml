@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<PhotoDataForCompare>
+    <Category ID="6" Name="外观">
+        <Item ID="47" Name="正45度（车头向左）" OtherParam=""/>
+        <Item ID="43" Name="正车头" OtherParam="车身宽度,593,mm|前轮距,585,mm"/>
+        <Item ID="48" Name="正45度（车头向右）" OtherParam=""/>
+        <Item ID="46" Name="正侧（车头向右）" OtherParam="车身长度,588,mm|轴距,592,mm"/>
+        <Item ID="50" Name="后45度（车头向右）" OtherParam=""/>
+        <Item ID="44" Name="正车尾" OtherParam="后轮距,582,mm"/>
+        <Item ID="49" Name="后45度（车头向左）" OtherParam=""/>
+        <Item ID="45" Name="正侧（车头向左）" OtherParam=""/>
+        <Item ID="53" Name="中网（中央隔栅）" OtherParam=""/>
+        <Item ID="54" Name="大灯" OtherParam="前照灯类型,614,"/>
+        <Item ID="55" Name="雾灯" OtherParam=""/>
+        <Item ID="72" Name="雨刷器（前）" OtherParam=""/>
+        <Item ID="59" Name="轮圈" OtherParam="轮毂材料,704,"/>
+        <Item ID="60" Name="轮胎规格" OtherParam="前轮胎规格,729,|后轮胎规格,721,"/>
+        <Item ID="61" Name="轮胎花纹" OtherParam=""/>
+        <Item ID="65" Name="后视镜（前）" OtherParam=""/>
+        <Item ID="66" Name="后视镜镜面（后）" OtherParam=""/>
+        <Item ID="64" Name="车门外拉手" OtherParam=""/>
+        <Item ID="75" Name="油箱盖" OtherParam=""/>
+        <Item ID="56" Name="尾灯" OtherParam=""/>
+        <Item ID="57" Name="尾标" OtherParam=""/>
+        <Item ID="74" Name="排气管（排气管装饰罩）" OtherParam=""/>
+    </Category>
+    <Category ID="7" Name="内饰">
+        <Item ID="94" Name="完整内饰" OtherParam=""/>
+        <Item ID="97" Name="方向盘" OtherParam="方向盘前后调节,799,|方向盘上下调节,798,"/>
+        <Item ID="96" Name="仪表" OtherParam=""/>
+        <Item ID="169" Name="发动机" OtherParam=""/>
+        <Item ID="110" Name="大灯开关" OtherParam=""/>
+        <Item ID="131" Name="雨刷器开关" OtherParam=""/>
+        <Item ID="177" Name="大灯远近光调节柄" OtherParam=""/>
+        <Item ID="95" Name="中控台" OtherParam=""/>
+        <Item ID="122" Name="空调控制键" OtherParam=""/>
+        <Item ID="127" Name="中控台音响控制键" OtherParam=""/>
+        <Item ID="132" Name="前出风口（中央）" OtherParam=""/>
+        <Item ID="145" Name="手套箱" OtherParam=""/>
+        <Item ID="271" Name="内后视镜" OtherParam=""/>
+        <Item ID="142" Name="挡把" OtherParam=""/>
+        <Item ID="141" Name="手刹" OtherParam=""/>
+        <Item ID="180" Name="驾驶员侧车门内门板" OtherParam=""/>
+        <Item ID="121" Name="后视镜控制键" OtherParam=""/>
+        <Item ID="155" Name="驾驶员门储物盒" OtherParam=""/>
+        <Item ID="117" Name="座椅调节键（前排）" OtherParam=""/>
+        <Item ID="179" Name="钥匙（正面、厂标）" OtherParam=""/>
+        <Item ID="194" Name="仪表盘背光显示" OtherParam=""/>
+    </Category>
+    <Category ID="8" Name="内部空间">
+        <Item ID="215" Name="前排空间" OtherParam=""/>
+        <Item ID="216" Name="后排空间" OtherParam=""/>
+        <Item ID="218" Name="驾驶员座椅" OtherParam=""/>
+        <Item ID="220" Name="驾驶员头枕" OtherParam=""/>
+        <Item ID="223" Name="行李厢空间（无第3排）" OtherParam="行李箱容积,465,L"/>
+        <Item ID="229" Name="备胎" OtherParam=""/>
+    </Category>
+</PhotoDataForCompare>

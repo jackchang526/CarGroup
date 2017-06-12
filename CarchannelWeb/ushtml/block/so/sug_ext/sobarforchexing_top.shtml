@@ -1,0 +1,38 @@
+﻿<style  type="text/css">
+/*search pop*/
+#sug { border:1px solid #817F82; position:absolute; z-index: 200; width: 350px; top: 21px; background:#fff; display:none; white-space:nowrap; text-align:left; }
+#sug ul { margin:0; padding:0; list-style:none; }
+#sug ul li { background:#fff; color:#000; line-height:10px; padding:5px; margin:0 0 1px 0; cursor:default; float:none; height:10px; overflow:hidden; border-right:none; font-size:14px; width:auto; }
+#sug ul li.mo { background:#014da2; color:#fff }
+#sug ul li.right { text-align:right; }
+#sug ul li.ml_l {background:#fff; color:#164A84}
+#sug a:link, #sug a:visited { color:#014da2; text-decoration:none; }
+#sug a:hover { color:#d01d19; text-decoration:none; }
+.sug_reset { background:#fff }
+.sug_onblur { background:#fff url(http://image.bitauto.com/bt/logo/so_search_bg.gif) no-repeat right center }
+</style>
+<div class="bt_search bt_model">
+    <fieldset>
+    <legend>车易搜</legend>
+        <div style="position: relative; float: left; text-align: left;">
+            <form id="sug_form" name="sug_form" target="_blank" method="get" action="http://www.cheyisou.com/post.aspx">
+                <input type="text" class="sug_onblur text" id="sug_txt_keyword" name="so_keywords" value="" />
+                <div onselectstart="return false" id="sug" style="top: 24px; float: left; overflow: hidden">
+                </div>
+                <input type="submit" value="车型搜索" class="bt_input" id="sug_submit"/>
+                <input id="sug_hidurl" value="" type="hidden" />
+                <input id="sug_datatype" name="sug_datatype" value="chexing" type="hidden" />
+                <input id="sug_encoding" name="sug_encoding" value="utf-8" type="hidden" />
+            </form>
+        </div>
+    </fieldset>
+</div>
+
+<script type="text/javascript">
+    var sug_txt_css = "text";
+    var so = document.createElement('SCRIPT');
+    so.src = 'http://image.bitautoimg.com/bsearch/js_bar/sug_form_one.js';
+    document.getElementsByTagName('HEAD')[0].appendChild(so);
+    var ti = setInterval(function() { if (!window.bitauto) { return } else { window.bitauto.init(); clearInterval(ti) } }, 200)
+    window.onunload = function() { }; 
+</script>

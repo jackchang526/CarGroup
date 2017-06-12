@@ -1,0 +1,264 @@
+﻿<!--nav-->
+<nav>
+    <!--logo-->
+    <div class="yiche-logo" style="display:none;">
+        <a href="/">易车网</a>
+    </div>
+    <script type="text/javascript">
+        var needlg = util.GetQueryStringByName("lg");
+        if(needlg!="0"){
+            $(".yiche-logo").show();
+        }
+    </script>
+    <!--logo-->
+    <!-- 搜索 start -->
+    <div class="mark mark1" style="display: none;"></div>
+    <div class="search-outer" id="topSearch" data-action="search-pop" data-back="mark1">
+        <div class="search-box">
+            <form id="searchForm" method="get" action="/xuanche/SearchResultListV1.aspx">
+                <div class="m-close-box">
+                    <div class="m-close-box-in">
+                        <input type="search" name="Keyword" />
+                        <a href="#" class="m-s-btn-close">取消</a>
+                        <!--<input type="hidden" name="WT.mc_id" id="WT_mc_id"/>-->
+                        <input type="hidden" name="ad"  id="ad"/>
+                        <input type="hidden" name="order" id="order" />
+                        <input type="hidden" name="lg" id="lg"/>
+                        <input type="hidden" name="ly" id="ly"/>
+                        <input type="hidden" name="tele" id="tele"/>
+                    </div>
+                </div>
+                <div class="m-btn-box">
+                    <div class="topSubmitPop"></div>
+                    <input type="submit" value="" id="topSubmit" />
+                </div>
+            </form>
+        </div>
+        <div class="search-pop" style="display: none;">
+            <ul id="search_res"></ul>
+            <div class="search-b-opt">
+                <a href="#" class="s-clear">清空历史</a>
+                <a href="#" class="s-close">关闭</a>
+            </div>
+        </div>
+    </div>
+    <!-- 搜索 end -->
+</nav>
+<!--nav-->
+
+<script src="http://image.bitautoimg.com/carchannel/h5/js/plugs/jquery/jquery.cookie.js"></script>
+<script type="text/javascript">  
+    var adval=util.GetQueryStringByName("ad");
+    if(adval==""||adval==null){
+        $("#ad").remove();
+    }else{
+        $("#ad").val(adval);
+    }
+
+    var orderval=util.GetQueryStringByName("order");
+    if(orderval==""||orderval==null){
+        $("#order").remove();
+    }else{
+        $("#order").val(orderval);
+    }
+
+    var lgval=util.GetQueryStringByName("lg");
+    if(lgval==""||lgval==null){
+        $("#lg").remove();
+    }else{
+        $("#lg").val(lgval);
+    }
+
+    var lyval=util.GetQueryStringByName("ly");
+    if(lyval==""||lyval==null){
+        $("#ly").remove();
+    }else{
+        $("#ly").val(lyval);
+    }
+
+    var televal=util.GetQueryStringByName("tele");
+    if(televal==""||televal==null){
+        $("#tele").remove();
+    }else{
+        $("#tele").val(televal);
+    }
+
+    (function ($) {
+        $.fn.search = function (options) {
+            var setting = {
+                searchBoxName: '.topSubmitPop',
+                clickEnd: null
+            }
+            options = Object.extend(options, setting);
+            var $this = this;
+            var $searchBox = $this.find(options.searchBoxName);
+            $searchBox.click(function (ev) {
+                ev.preventDefault();
+                options.clickEnd && options.clickEnd.call($this);
+            });
+
+            var $menu = $this.find('.' + $this.attr('data-action')),
+                $back = $this.parent().find('.' + $this.attr('data-back'));
+            $this.$menu = $menu;
+            $this.$back = $back;
+
+            $this.on('showMenu', function() {
+                $menu.show();
+                $back.show();
+            });
+
+            $this.on('closeMenu', function() {
+                $menu.hide();
+                $back.hide();
+            });
+        }
+    })(jQuery);
+</script>
+<script type="text/javascript">
+    //搜索层
+    $(function() {
+        $('#topSearch').search({
+            clickEnd: function() {
+                var $this = this;
+                $this.parent().find('.yiche-logo').addClass("yiche-logo-hide");
+                var $search = $this.find('[type=search]');
+                $search.addClass("topInputMove");
+
+                $search.on('close', function() {
+                    $this.trigger('closeMenu');
+                    $search.removeClass("topInputMove");
+                    $search.val("");
+                    $this.parent().find('.yiche-logo').removeClass("yiche-logo-hide");
+                });
+
+                $search.focus();
+                $search.transitionEnd({
+                    end: function () {
+
+                        //展开时初始化数据
+                        var keyword = $search.val();
+                        if (keyword !== "") {
+                            getSearchData(keyword);
+                        } else {
+                            getLocalStorageData();
+                        }
+
+                        //层全部打开事件
+                        $this.trigger('showMenu');
+                        $this.$menu.find('.s-close').click(function(ev) {
+                            ev.preventDefault();
+                            $search.val("");
+                            $("#search_res").html("");
+                            $search.trigger('close');
+                        });
+
+                        $this.$back.touches({
+                            touchstart: function(ev) {
+                                ev.preventDefault();
+                                $search.blur();
+                                $search.trigger('close');
+                            },
+                            touchmove: function(ev) {
+                                ev.preventDefault();
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    });
+
+    $(".s-clear").bind("click", function () {
+        $("#search_res").html("");
+        //$(this).hide();
+        $(".search-b-opt").hide();
+        $('#topSearch').find('[type=search]').focus();
+        //清空搜索历史记录
+        if (window.localStorage) {
+            localStorage.removeItem(viewedkey);
+        } else {
+            $.cookie(viewedkey, null);
+        }
+    });
+    $('#topSearch').find('[type=search]').bind({
+        "keyup": function () {
+            //点击backspace时执行
+            var keyword = $(this).val();
+            if (keyword !== "") {
+                getSearchData(keyword);
+            } else {
+                getLocalStorageData();
+            }
+        },
+        "keypress": function (event) {
+            var keyword = $(this).val();
+            if (keyword.length < 15) {
+                if (keyword !== "") {
+                    //$(".m-s-btn-close").show();
+                    getSearchData(keyword);
+                } else {
+                    //$(".m-s-btn-close").hide();
+                    getLocalStorageData();
+                }
+                return true;
+            } else {
+                return false;
+            }
+        }
+    });
+
+
+    var viewedkey = "search_key";
+    var drpitemfun = function (name) {
+        window.location.href = "/xuanche/SearchResultListV1.aspx?Keyword=" + encodeURIComponent(name)+"&"+par;
+    };    
+
+    var getSearchData = function (keyword) {
+        $.ajax({
+            type: "get",
+            url: "http://59.151.102.96/yicheappsug.php",
+            data: { k: keyword },
+            dataType: "jsonp",
+            jsonpCallback: "g",
+            success: function (data) {
+                var searchRes = "";
+                if (data["suglist"].length > 0) {
+                    $(".search-b-opt").show();
+                    $(".s-clear").hide();
+                    $.each(data["suglist"], function (index, item) {
+                        if (item.name !== "") {
+                            searchRes += "<li> <a href='#' onclick=\"drpitemfun('" + item.name + "')\"> <strong class='ico-s-history'>" + item.name + "</strong> </a> </li>";
+                        }
+                    });
+                    $("#search_res").html(searchRes);
+                } else {
+                    $("#search_res").html("");
+                }
+            }
+        });
+    };
+    var getLocalStorageData = function () {
+        var strStoreDate = window.localStorage ? localStorage.getItem(viewedkey) : $.cookie(viewedkey);
+        if (strStoreDate) {
+            var arrDisplay = strStoreDate.split(",");
+            if (arrDisplay.length > 0) {
+                var searchRes = "";
+                arrDisplay.reverse(); //反转元素（最前的排到最后、最后的排到最前）
+                $.each(arrDisplay, function (index, item) {
+                    if (item !== "") {
+                        searchRes += "<li> <a href='#' onclick=\"drpitemfun('" + item + "')\"> <strong class='ico-s-history'>" + item + "</strong> </a> </li>";
+                    }
+                });
+                $("#search_res").html(searchRes);
+                $(".search-b-opt").show();
+                //$(".s-clear").show();
+            } else {
+                //$(".s-clear").hide();
+                $(".search-b-opt").hide();
+            }
+        } else {
+            //$(".s-clear").hide();
+            $(".search-b-opt").hide();
+        }
+    };
+</script>

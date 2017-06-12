@@ -1,0 +1,22 @@
+﻿
+<h3><a href="">帖子标题</a></h3>
+                        <div class="list-txt list-txt-m list-txt-default list-txt-style2 type-1">
+                            <ul>
+                                <li>
+                                    <div class="txt"><strong><a href="">分类</a>|</strong><a href="">文字内容文字内容</a>
+                                    </div>
+                                    <span>05-20</span></li>
+  <li>
+                                    <div class="txt"><strong><a href="">分类</a>|</strong><a href="">文字内容文字内容</a>
+                                    </div>
+                                    <span>05-20</span></li>
+                                <li>
+                                    <div class="txt"><strong><a href="">分类</a>|</strong><a href="">文字内容文字内容</a>
+ </div>
+                                    <span>05-20</span></li>
+                                <li>
+                                    <div class="txt"><strong><a href="">分类</a>|</strong><a href="">长标题放最多十九个字长标题放十九个字字</a>
+                                    </div>
+                                    <span>05-20</span></li>
+                            </ul>
+                        </div>

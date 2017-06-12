@@ -1,0 +1,16 @@
+﻿<div class="clear"></div>
+<div class="line_box cheyimaibox cheyimai_bg1">
+	<dl class="cheyimai_text">
+		<dt>“车易卖”国内首家二手车估卖服务中心</dt>
+		<dd>
+			免费卖车－无手续费、过户费、无手续代理费</dd>
+		<dd>
+			预约到店－最快40分钟快速卖车</dd>
+		<dd>
+			现场交易－无需等待直接结算车款</dd>
+	</dl>
+	<div class="cheyimai_but clearfix">
+		<span class="butbox2">
+			<input name="" type="button" value="我要卖车&gt;&gt;" onclick="window.open('http://cheyimai.taoche.com/')"/></span>
+	</div>
+</div>

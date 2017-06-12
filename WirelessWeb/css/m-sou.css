@@ -1,0 +1,24 @@
+/*搜索结果*/
+.m-sou-list{padding:0 10px; font-size:1.6rem;}
+.m-sou-list li{border-bottom:1px solid #E6E6E6; padding:10px 0;}
+.m-sou-list li:last-child{border:none;}
+.m-sou-list li h2{line-height:1.2; padding:0 0 8px;}
+.m-sou-list li em{color:#C00;}
+.m-sou-list li p{font-size:1.4rem; line-height:1.5;}
+.m-sou-list li p span{color:#CCC;}
+
+/*图文混排*/
+.m-pic-news-sou li{border-bottom:1px solid #E6E6E6; padding:0 0 10px;}
+
+/*搜索弹层*/
+.m-search-sou{position:relative;}
+.m-sug{width:73%; height:auto; border:1px solid #DDD; background:#FFF; position:absolute; padding:0 5px; top:36px; left:10px;}
+.m-sug li{height:22px; padding-top:8px;}
+.m-sug li.current{background:#EFEFEF;}
+.m-sug li a{display:block; width:100%; height:22px; padding:8px 0 0 0; color:#333;}
+
+/*tablet*/
+@media only screen and (min-device-width : 768px) {
+	/*图文混排*/
+	.m-pic-news-sou li{width:98%;}
+}

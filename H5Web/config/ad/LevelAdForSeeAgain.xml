@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Root>
+  <!--广告车系SerialId-->
+  <!--<ad level="中大型车_中型车_跑车_豪华车">
+  </ad>-->
+  <!--<ad level="SUV">
+  </ad>-->
+  <!--<ad level="概念车_MPV_面包车_皮卡_其它">
+  </ad>-->
+  <ad level="微型车_小型车_紧凑型车">
+    <serial>
+      <!--广告投放位置-->
+      <Position>1</Position>
+      <!--广告车系名称-->
+      <Title>朗逸</Title>
+      <!--目标页面SerialId-->
+      <SerialID>2370</SerialID>
+      <!--广告车系全拼-->
+      <Url>/langyi/</Url>
+      <ImgUrl></ImgUrl>
+      <StartDate>2016-07-01</StartDate>
+      <EndData>2016-07-02</EndData>
+      <CreateDate>2016-05-30</CreateDate>
+    </serial>
+    <serial>
+      <!--广告投放位置-->
+      <Position>4</Position>
+      <!--广告车系名称-->
+      <Title>速腾</Title>
+      <!--目标页面SerialId-->
+      <SerialID>1765</SerialID>
+      <!--广告车系全拼-->
+      <Url>/suteng/</Url>
+      <ImgUrl></ImgUrl>
+      <StartDate>2016-07-01</StartDate>
+      <EndData>2016-07-02</EndData>
+      <CreateDate>2016-05-30</CreateDate>
+    </serial>
+  </ad>
+</Root>

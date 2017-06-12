@@ -1,0 +1,18 @@
+﻿<input type="text" id="txtkeyword" size="10" />
+<input type="submit" value="" onclick="redirect()" />
+<div class="m-sug" id="div_so_pop"></div>
+<script type="text/javascript">
+	var sug_div_id = "div_so_pop", sug_text_id = "txtkeyword", sugtypeid = "3";
+	var so = document.createElement('SCRIPT');
+	so.src = "http://image.bitautoimg.com/bsearch/mobileScript/MobileSug.min.js";
+	document.getElementsByTagName('HEAD')[0].appendChild(so);
+	var ti = setInterval(function () {
+		if (!window.bitauto) {
+			return;
+		}
+		else {
+			window.bitauto.init();
+			clearInterval(ti);
+		}
+	}, 100);
+</script>

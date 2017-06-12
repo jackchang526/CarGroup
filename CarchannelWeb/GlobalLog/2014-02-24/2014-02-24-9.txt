@@ -1,0 +1,198 @@
+[2014/2/24 9:22:02]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/?ID=3152&
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 156
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/24 9:22:28]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/?ID=3152&
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 156
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/24 9:22:29]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/?ID=3152&
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 156
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/24 9:22:30]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/?ID=3152&
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 156
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/24 9:22:30]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/?ID=3152&
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 156
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/24 9:22:30]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/?ID=3152&
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 156
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/24 9:22:30]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/?ID=3152&
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 156
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/24 9:22:31]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/?ID=3152&
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 156
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/24 9:23:08]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/?ID=3152&
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 156
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/24 9:23:09]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/?ID=3152&
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 156
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/24 9:23:09]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/?ID=3152&
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 156
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/24 9:23:10]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/?ID=3152&
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 156
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/24 9:23:10]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/?ID=3152&
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 156
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/24 9:23:10]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/?ID=3152&
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 156
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/24 9:23:10]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/?ID=3152&
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 156
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/24 9:23:10]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/?ID=3152&
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 156
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/24 9:23:10]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/?ID=3152&
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 156
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/24 9:24:21]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/?ID=3152&
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 156
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

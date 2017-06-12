@@ -1,0 +1,61 @@
+﻿<div class="footer">
+	<div class="left-part">
+		<a class="current">触屏版</a><em>|</em><a id="a_linkToPcPage" href="javascript:;">电脑版</a>
+	</div>
+<div class="m-footer-login-box" style="display: none;" id="Div1">
+    </div>
+	<div class="right-part">
+<a href="http://m.yiche.com/wap2.0/feedback/">提意见&gt;</a>
+<a href="http://m.yiche.com/wap2.0/versions.shtml">V5.9.0</a>
+	</div>
+</div>
+<!--app download-->
+<div id="app_download" style="display:none">
+ <ins id="div_bea0bd64-f25e-4e5b-be82-fa0a5f19908d" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="bea0bd64-f25e-4e5b-be82-fa0a5f19908d"> </ins>
+</div>
+<script src="http://image.bitautoimg.com/wap/js/DownloadPriceApp2015.6.19.2.js"></script>
+<script>
+    DownloadPriceApp.init('app_download', 'closedPriceApp');
+</script>
+
+<script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=Bitauto.Login.Base,ibt_newmessagelistener,Bitauto.Login.M.UI.V2,ibt_m_gobacker,ibt_m_RequestToPcPage&v=1"></script>
+<script type="text/javascript">
+    Bitauto.GoBacker.goBackByElementEvent('gobackElm', 'click');
+</script>
+<!--公共_js -->
+<!-- START OF SmartSource Data Collector TAG -->
+<SCRIPT SRC="http://image.bitautoimg.com/bt/webtrends/dcs_tag_wapnew.js?20131120" TYPE="text/javascript"></SCRIPT>
+<!-- bitauto stat begin -->
+<script>
+    var bit_stat_url = "url=" + escape(document.location);
+    if (document.referrer != null) bit_stat_url += "&refer=" + escape(document.referrer)
+    document.write("<img width=0 height=0 style='display:none;' src='http://log.bitauto.com/newsstat/log.aspx?" + bit_stat_url + "'/>");
+</script>
+<!-- bitauto stat end -->
+<!--airui-->
+<SCRIPT SRC="http://img1.bitautoimg.com/stat/iwtToMSite20140218.js" TYPE="text/javascript"></SCRIPT>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/senseNew.js"></script>
+<script type="text/javascript" src="http://g.yccdn.com"></script>
+<script type="text/javascript" src="http://bglog.bitauto.com"></script>
+
+<script type="text/javascript" >
+    (function () {
+        var dc = document.createElement('script'); dc.type = 'text/javascript'; dc.async = true;
+        dc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'js.ctags.cn/dc.js?10';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(dc, s);
+    })();
+</script>
+
+<script>
+    $(document).bind('touchmove click', function (event) {
+        var clickEle = event.target.id;
+        if (clickEle != 'nav') {
+            $('#popNav').hide();
+            $('#nav').removeClass('btn-nav-show');
+        }
+    });
+    $(document).ready(function () {
+        var documentHeight = $(document).height();
+        $('#pSearch').css('height', documentHeight);
+    });
+		</script>

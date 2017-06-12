@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<tags>
+		<tag Name="车型" type="chexing">
+			<main>
+				<sourceurl>http://car.bitauto.com/top_chexing/</sourceurl>
+				<borderurl>http://car.bitauto.com/</borderurl>
+			</main>
+			<search>
+				<sourceurl>http://car.bitauto.com/top_chexing/search/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_chexing/search/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</borderurl>
+			</search>
+			<MasterBrand>
+				<sourceurl>http://car.bitauto.com/top_chexing/mb_@CarID@/ </sourceurl>
+				<borderurl>http://car.bitauto.com/tree_chexing/mb_@CarID@/ </borderurl>
+			</MasterBrand>
+			<Brand>
+				<sourceurl>http://car.bitauto.com/top_chexing/b_@CarID@/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_chexing/b_@CarID@/</borderurl>
+			</Brand>
+			<Serial>
+				<sourceurl>http://car.bitauto.com/top_chexing/sb_@CarID@/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_chexing/sb_@CarID@/</borderurl>
+			</Serial>
+			<error>
+				<sourceurl>http://car.bitauto.com/top_chexing/error.html</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_chexing/error.html</borderurl>
+			</error>
+		</tag>
+		<tag Name="图片" type="photo">
+			<main>
+				<sourceurl>http://photo.bitauto.com/</sourceurl>
+				<borderurl>http://photo.bitauto.com/</borderurl>
+			</main>
+			<search>
+				<sourceurl>http://photo.bitauto.com/xuanche/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</sourceurl>
+				<borderurl>http://photo.bitauto.com/xuanche/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</borderurl>
+			</search>
+			<MasterBrand>
+				<sourceurl>http://photo.bitauto.com/master/@CarID@/</sourceurl>
+				<borderurl>http://photo.bitauto.com/master/@CarID@/</borderurl>
+			</MasterBrand>
+			<Brand>
+				<sourceurl>http://photo.bitauto.com/brand/@CarID@/</sourceurl>
+				<borderurl>http://photo.bitauto.com/brand/@CarID@/</borderurl>
+			</Brand>
+			<Serial>
+				<sourceurl>http://photo.bitauto.com/serial/@CarID@/</sourceurl>
+				<borderurl>http://photo.bitauto.com/serial/@CarID@/</borderurl>
+			</Serial>
+			<error>
+				<sourceurl>http://car.bitauto.com/top_chexing/error.html</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_chexing/error.html</borderurl>
+			</error>
+		</tag>
+		<tag Name="视频" type="video">
+			<main>
+				<sourceurl>http://v.bitauto.com/car/index.aspx</sourceurl>
+				<borderurl>http://v.bitauto.com/car/index.aspx</borderurl>
+			</main>
+			<search>
+				<sourceurl>http://v.bitauto.com/car/index.aspx</sourceurl>
+				<borderurl>http://v.bitauto.com/car/index.aspx</borderurl>
+			</search>
+			<MasterBrand>
+				<sourceurl>http://v.bitauto.com/car/master/@CarID@.html</sourceurl>
+				<borderurl>http://v.bitauto.com/car/master/@CarID@.html</borderurl>
+			</MasterBrand>
+			<Brand>
+				<sourceurl>http://v.bitauto.com/car/brand/@CarID@.html</sourceurl>
+				<borderurl>http://v.bitauto.com/car/brand/@CarID@.html</borderurl>
+			</Brand>
+			<Serial>
+				<sourceurl>http://v.bitauto.com/car/serial/@CarID@.html</sourceurl>
+				<borderurl>http://v.bitauto.com/car/serial/@CarID@.html</borderurl>
+			</Serial>
+			<error>
+				<sourceurl>http://car.bitauto.com/top_chexing/error.html</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_chexing/error.html</borderurl>
+			</error>
+		</tag>
+		<tag Name="行情" type="hangqing">
+			<main>
+				<sourceurl>http://car.bitauto.com/top_hangqing/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_hangqing/</borderurl>
+			</main>
+			<search>
+				<sourceurl>http://car.bitauto.com/top_hangqing/search/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_hangqing/search/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</borderurl>
+			</search>
+			<MasterBrand>
+				<sourceurl>http://car.bitauto.com/top_hangqing/mb_@CarID@/ </sourceurl>
+				<borderurl>http://car.bitauto.com/tree_hangqing/mb_@CarID@/ </borderurl>
+			</MasterBrand>
+			<Brand>
+				<sourceurl>http://car.bitauto.com/top_hangqing/b_@CarID@/ </sourceurl>
+				<borderurl>http://car.bitauto.com/tree_hangqing/b_@CarID@/</borderurl>
+			</Brand>
+			<Serial>
+				<sourceurl>http://car.bitauto.com/top_hangqing/sb_@CarID@/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_hangqing/sb_@CarID@/</borderurl>
+			</Serial>
+			<error>
+				<sourceurl>http://car.bitauto.com/top_hangqing/error.html</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_hangqing/error.html</borderurl>
+			</error>
+		</tag>
+		<tag Name="报价" type="price">
+			<main>
+				<sourceurl>http://price.bitauto.com/</sourceurl>
+				<borderurl>http://price.bitauto.com/</borderurl>
+			</main>
+			<search>
+				<sourceurl>http://price.bitauto.com/</sourceurl>
+				<borderurl>http://price.bitauto.com/</borderurl>
+			</search>
+			<MasterBrand>
+				<sourceurl>http://price.bitauto.com/frame.aspx?keyword=@CarName@&amp;mb_id=@CarID@&amp;citycode=@City@</sourceurl>
+				<borderurl>http://price.bitauto.com/frame.aspx?keyword=@CarName@&amp;mb_id=@CarID@&amp;citycode=@City@</borderurl>
+			</MasterBrand>
+			<Brand>
+				<sourceurl>http://price.bitauto.com/frame.aspx?keyword=@CarName@&amp;b_id=@CarID@&amp;citycode=@City@</sourceurl>
+				<borderurl>http://price.bitauto.com/frame.aspx?keyword=@CarName@&amp;b_id=@CarID@&amp;citycode=@City@</borderurl>
+			</Brand>
+			<Serial>
+				<sourceurl>http://price.bitauto.com/frame.aspx?newbrandid=@CarID@&amp;citycode=@City@</sourceurl>
+				<borderurl>http://price.bitauto.com/frame.aspx?newbrandid=@CarID@&amp;citycode=@City@</borderurl>
+			</Serial>
+			<error>
+				<sourceurl>http://car.bitauto.com/top_chexing/error.html</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_chexing/error.html</borderurl>
+			</error>
+		</tag>
+		<tag Name="经销商" type="delear">
+			<main>
+				<sourceurl>http://dealer.bitauto.com/</sourceurl>
+				<borderurl>http://dealer.bitauto.com/</borderurl>
+			</main>
+			<search>
+				<sourceurl>http://dealer.bitauto.com/</sourceurl>
+				<borderurl>http://dealer.bitauto.com/</borderurl>
+			</search>
+			<MasterBrand>
+				<sourceurl>http://dealer.bitauto.com/</sourceurl>
+				<borderurl>http://dealer.bitauto.com/</borderurl>
+			</MasterBrand>
+			<Brand>
+				<sourceurl>http://dealer.bitauto.com/@CityEncode@/@CarSpell@/</sourceurl>
+				<borderurl>http://dealer.bitauto.com/@CityEncode@/@CarSpell@/</borderurl>
+			</Brand>
+			<Serial>
+				<sourceurl>http://dealer.bitauto.com/@CityEncode@/@CarSpell@/</sourceurl>
+				<borderurl>http://dealer.bitauto.com/@CityEncode@/@CarSpell@/</borderurl>
+			</Serial>
+			<error>
+				<sourceurl>http://car.bitauto.com/top_chexing/error.html</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_chexing/error.html</borderurl>
+			</error>
+		</tag>
+		<tag Name="口碑" type="koubei">
+			<main>
+				<sourceurl>http://koubei.bitauto.com/top_tree/</sourceurl>
+				<borderurl>http://koubei.bitauto.com/tree/</borderurl>
+			</main>
+			<search>
+				<sourceurl>http://koubei.bitauto.com/top_tree/</sourceurl>
+				<borderurl>http://koubei.bitauto.com/tree/</borderurl>
+			</search>
+			<MasterBrand>
+				<sourceurl>http://koubei.bitauto.com/top_tree/mb_@CarID@/</sourceurl>
+				<borderurl>http://koubei.bitauto.com/tree/mb_@CarID@/</borderurl>
+			</MasterBrand>
+			<Brand>
+				<sourceurl>http://koubei.bitauto.com/top_tree/b_@CarID@/</sourceurl>
+				<borderurl>http://koubei.bitauto.com/tree/b_@CarID@/</borderurl>
+			</Brand>
+			<Serial>
+				<sourceurl>http://koubei.bitauto.com/top_tree/sb_@CarID@/</sourceurl>
+				<borderurl>http://koubei.bitauto.com/tree/sb_@CarID@/</borderurl>
+			</Serial>
+			<error>
+				<sourceurl>http://koubei.bitauto.com/top_tree/error.html</sourceurl>
+				<borderurl>http://koubei.bitauto.com/tree/error.html</borderurl>
+			</error>
+		</tag>
+		<tag Name="导购" type="daogou">
+			<main>
+				<sourceurl>http://car.bitauto.com/top_daogou/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_daogou/</borderurl>
+			</main>
+			<search>
+				<sourceurl>http://car.bitauto.com/top_daogou/search/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_daogou/search/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</borderurl>
+			</search>
+			<MasterBrand>
+				<sourceurl>http://car.bitauto.com/top_daogou/mb_@CarID@/ </sourceurl>
+				<borderurl>http://car.bitauto.com/tree_daogou/mb_@CarID@/ </borderurl>
+			</MasterBrand>
+			<Brand>
+				<sourceurl>http://car.bitauto.com/top_daogou/b_@CarID@/ </sourceurl>
+				<borderurl>http://car.bitauto.com/tree_daogou/b_@CarID@/</borderurl>
+			</Brand>
+			<Serial>
+				<sourceurl>http://car.bitauto.com/top_daogou/sb_@CarID@/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_daogou/sb_@CarID@/</borderurl>
+			</Serial>
+			<error>
+				<sourceurl>http://car.bitauto.com/top_daogou/error.html</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_daogou/error.html</borderurl>
+			</error>
+		</tag>
+		<tag Name="评测" type="pingce">
+			<main>
+				<sourceurl>http://car.bitauto.com/top_pingce/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_pingce/</borderurl>
+			</main>
+			<search>
+				<sourceurl>http://car.bitauto.com/top_pingce/search/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_pingce/search/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</borderurl>
+			</search>
+			<MasterBrand>
+				<sourceurl>http://car.bitauto.com/top_pingce/mb_@CarID@/ </sourceurl>
+				<borderurl>http://car.bitauto.com/tree_pingce/mb_@CarID@/ </borderurl>
+			</MasterBrand>
+			<Brand>
+				<sourceurl>http://car.bitauto.com/top_pingce/b_@CarID@/ </sourceurl>
+				<borderurl>http://car.bitauto.com/tree_pingce/b_@CarID@/</borderurl>
+			</Brand>
+			<Serial>
+				<sourceurl>http://car.bitauto.com/top_pingce/sb_@CarID@/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_pingce/sb_@CarID@/</borderurl>
+			</Serial>
+			<error>
+				<sourceurl>http://car.bitauto.com/top_pingce/error.html</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_pingce/error.html</borderurl>
+			</error>
+		</tag>
+		<tag Name="养护" type="baoyang">
+			<main>
+				<sourceurl>http://car.bitauto.com/tree_baoyang/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_baoyang/</borderurl>
+			</main>
+			<search>
+				<sourceurl>http://car.bitauto.com/tree_baoyang/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_baoyang/</borderurl>
+			</search>
+			<MasterBrand>
+				<sourceurl>http://car.bitauto.com/top_baoyang/mb_@CarID@/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_baoyang/mb_@CarID@/</borderurl>
+			</MasterBrand>
+			<Brand>
+				<sourceurl>http://car.bitauto.com/tree_baoyang/b_@CarID@/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_baoyang/b_@CarID@/</borderurl>
+			</Brand>
+			<Serial>
+				<sourceurl>http://car.bitauto.com/tree_baoyang/sb_@CarID@/?citycode=@City@</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_baoyang/sb_@CarID@/?citycode=@City@</borderurl>
+			</Serial>
+			<error>
+				<sourceurl>http://car.bitauto.com/tree_baoyang/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_baoyang/</borderurl>
+			</error>
+		</tag>
+		<tag Name="二手车" type="ucar">
+			<main>
+				<sourceurl>http://car.bitauto.com/top_ucar/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_ucar/</borderurl>
+			</main>
+			<search>
+				<sourceurl>http://car.bitauto.com/top_ucar/search/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_ucar/search/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</borderurl>
+			</search>
+			<MasterBrand>
+				<sourceurl>http://car.bitauto.com/top_ucar/mb_@CarID@/ </sourceurl>
+				<borderurl>http://car.bitauto.com/tree_ucar/mb_@CarID@/ </borderurl>
+			</MasterBrand>
+			<Brand>
+				<sourceurl>http://car.bitauto.com/top_ucar/b_@CarID@/ </sourceurl>
+				<borderurl>http://car.bitauto.com/tree_ucar/b_@CarID@/</borderurl>
+			</Brand>
+			<Serial>
+				<sourceurl>http://car.bitauto.com/top_ucar/sb_@CarID@/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_ucar/sb_@CarID@/</borderurl>
+			</Serial>
+			<error>
+				<sourceurl>http://car.bitauto.com/top_ucar/error.html</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_ucar/error.html</borderurl>
+			</error>
+		</tag>
+		<tag Name="答疑" type="ask">
+			<main>
+				<sourceurl>http://ask.bitauto.com/top_tree/</sourceurl>
+				<borderurl>http://ask.bitauto.com/tree/</borderurl>
+			</main>
+			<search>
+				<sourceurl>http://ask.bitauto.com/top_tree/</sourceurl>
+				<borderurl>http://ask.bitauto.com/tree/</borderurl>
+			</search>
+			<MasterBrand>
+				<sourceurl>http://ask.bitauto.com/tree/mb_@CarID@/</sourceurl>
+				<borderurl>http://ask.bitauto.com/tree/mb_@CarID@/</borderurl>
+			</MasterBrand>
+			<Brand>
+				<sourceurl>http://ask.bitauto.com/tree/b_@CarID@/</sourceurl>
+				<borderurl>http://ask.bitauto.com/tree/b_@CarID@/</borderurl>
+			</Brand>
+			<Serial>
+				<sourceurl>http://ask.bitauto.com/tree/sb_@CarID@/</sourceurl>
+				<borderurl>http://ask.bitauto.com/tree/sb_@CarID@/</borderurl>
+			</Serial>
+			<error>
+				<sourceurl>http://ask.bitauto.com/tree/error.html</sourceurl>
+				<borderurl>http://ask.bitauto.com/tree/error.html</borderurl>
+			</error>
+		</tag>
+		<tag Name="图解" type="tujie">
+			<main>
+				<sourceurl>http://photo.bitauto.com/tujie/</sourceurl>
+				<borderurl>http://photo.bitauto.com/tujie/</borderurl>
+			</main>
+			<search>
+				<sourceurl>http://photo.bitauto.com/tujie/xuanche/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</sourceurl>
+				<borderurl>http://photo.bitauto.com/tujie/xuanche/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</borderurl>
+			</search>
+			<MasterBrand>
+				<sourceurl>http://photo.bitauto.com/tujie/m_@CarID@/ </sourceurl>
+				<borderurl>http://photo.bitauto.com/tujie/m_@CarID@/ </borderurl>
+			</MasterBrand>
+			<Brand>
+				<sourceurl>http://photo.bitauto.com/tujie/b_@CarID@/ </sourceurl>
+				<borderurl>http://photo.bitauto.com/tujie/b_@CarID@/</borderurl>
+			</Brand>
+			<Serial>
+				<sourceurl>http://photo.bitauto.com/tujie/s_@CarID@/</sourceurl>
+				<borderurl>http://photo.bitauto.com/tujie/s_@CarID@/</borderurl>
+			</Serial>
+			<error>
+				<sourceurl>http://photo.bitauto.com/tujie/error.html</sourceurl>
+				<borderurl>http://photo.bitauto.com/tujie/error.html</borderurl>
+			</error>
+		</tag>
+		<tag Name="指数" type="index">
+			<main>
+				<sourceurl>http://car.bitauto.com/top_index/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_index/</borderurl>
+			</main>
+			<search>
+				<sourceurl>http://car.bitauto.com/top_index/search/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_index/search/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</borderurl>
+			</search>
+			<MasterBrand>
+				<sourceurl>http://car.bitauto.com/top_index/guanzhu/mb_@CarID@/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_index/guanzhu/mb_@CarID@/</borderurl>
+			</MasterBrand>
+			<Brand>
+				<sourceurl>http://car.bitauto.com/top_index/guanzhu/b_@CarID@/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_index/guanzhu/b_@CarID@/</borderurl>
+			</Brand>
+			<Serial>
+				<sourceurl>http://car.bitauto.com/top_index/guanzhu/sb_@CarID@/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_index/guanzhu/sb_@CarID@/</borderurl>
+			</Serial>
+			<error>
+				<sourceurl>http://car.bitauto.com/top_index/error.html</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_index/error.html</borderurl>
+			</error>
+		</tag>
+		<tag Name="销量" type="xiaoliang">
+			<main>
+				<sourceurl>http://car.bitauto.com/top_xiaoliang/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_xiaoliang/</borderurl>
+			</main>
+			<search>
+				<sourceurl>http://car.bitauto.com/top_xiaoliang/search/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_xiaoliang/search/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</borderurl>
+			</search>
+			<MasterBrand>
+				<sourceurl>http://car.bitauto.com/top_xiaoliang/mb_@CarID@/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_xiaoliang/mb_@CarID@/</borderurl>
+			</MasterBrand>
+			<Brand>
+				<sourceurl>http://car.bitauto.com/top_xiaoliang/b_@CarID@/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_xiaoliang/b_@CarID@/</borderurl>
+			</Brand>
+			<Serial>
+				<sourceurl>http://car.bitauto.com/top_xiaoliang/sb_@CarID@/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_xiaoliang/sb_@CarID@/</borderurl>
+			</Serial>
+			<error>
+				<sourceurl>http://car.bitauto.com/top_xiaoliang/error.html</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_xiaoliang/error.html</borderurl>
+			</error>
+		</tag>
+		<tag Name="技术" type="keji">
+			<main>
+				<sourceurl>http://car.bitauto.com/top_keji/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_keji/</borderurl>
+			</main>
+			<search>
+				<sourceurl>http://car.bitauto.com/top_keji/search/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_keji/search/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</borderurl>
+			</search>
+			<MasterBrand>
+				<sourceurl>http://car.bitauto.com/top_keji/mb_@CarID@/ </sourceurl>
+				<borderurl>http://car.bitauto.com/tree_keji/mb_@CarID@/ </borderurl>
+			</MasterBrand>
+			<Brand>
+				<sourceurl>http://car.bitauto.com/top_keji/b_@CarID@/ </sourceurl>
+				<borderurl>http://car.bitauto.com/tree_keji/b_@CarID@/</borderurl>
+			</Brand>
+			<Serial>
+				<sourceurl>http://car.bitauto.com/top_keji/sb_@CarID@/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_keji/sb_@CarID@/</borderurl>
+			</Serial>
+			<error>
+				<sourceurl>http://car.bitauto.com/top_keji/error.html</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_keji/error.html</borderurl>
+			</error>
+		</tag>
+		<tag Name="安全" type="anquan">
+			<main>
+				<sourceurl>http://car.bitauto.com/top_anquan/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_anquan/</borderurl>
+			</main>
+			<search>
+				<sourceurl>http://car.bitauto.com/top_anquan/search/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_anquan/search/?p=@p@&amp;l=@l@&amp;d=@d@&amp;t=@t@&amp;v=@v@&amp;s=@s@&amp;b=@b@&amp;e=@e@&amp;m=@m@&amp;page=@page@</borderurl>
+			</search>
+			<MasterBrand>
+				<sourceurl>http://car.bitauto.com/top_anquan/mb_@CarID@/ </sourceurl>
+				<borderurl>http://car.bitauto.com/tree_anquan/mb_@CarID@/ </borderurl>
+			</MasterBrand>
+			<Brand>
+				<sourceurl>http://car.bitauto.com/top_anquan/b_@CarID@/ </sourceurl>
+				<borderurl>http://car.bitauto.com/tree_anquan/b_@CarID@/</borderurl>
+			</Brand>
+			<Serial>
+				<sourceurl>http://car.bitauto.com/top_anquan/sb_@CarID@/</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_anquan/sb_@CarID@/</borderurl>
+			</Serial>
+			<error>
+				<sourceurl>http://car.bitauto.com/top_anquan/error.html</sourceurl>
+				<borderurl>http://car.bitauto.com/tree_anquan/error.html</borderurl>
+			</error>
+		</tag>
+	</tags>
+	<register>
+		<r value="@CarID@"></r>
+		<r value="@CarSpell@"></r>
+		<r value="@CarName@"></r>
+		<r value="@City@"></r>
+		<r value="@CityEncode@"></r>
+		<r value="@page@">
+			<requestType>search</requestType>
+			<requestType>serial</requestType>
+		</r>
+		<r value="@p@">
+			<requestType>search</requestType>
+		</r>
+		<r value="@l@">
+			<requestType>search</requestType>
+		</r>
+		<r value="@d@">
+			<requestType>search</requestType>
+		</r>
+		<r value="@t@">
+			<requestType>search</requestType>
+		</r>
+		<r value="@m@">
+			<requestType>search</requestType>
+		</r>
+		<r value="@v@">
+			<requestType>search</requestType>
+		</r>
+		<r value="@s@">
+			<requestType>search</requestType>
+		</r>
+		<r value="@b@">
+			<requestType>search</requestType>
+		</r>
+		<r value="@e@">
+			<requestType>search</requestType>
+		</r>
+		<r value="@quanping@">
+			<requestType>search</requestType>
+		</r>
+	</register>
+</root>

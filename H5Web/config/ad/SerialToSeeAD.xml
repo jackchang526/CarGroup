@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ADList>
+	<!--广告车系SerialId-->
+  <AD ad_serialid="1765">
+    <Serial>
+      <!--广告投放位置-->
+      <Position>4</Position>
+      <!--广告车系名称-->
+      <Title>速腾</Title>
+      <!--目标页面SerialId-->
+      <SerialID>2381</SerialID>
+      <!--广告车系全拼-->
+      <Url>/suteng/</Url>
+      <ImgUrl></ImgUrl>
+      <StartDate>2016-06-01</StartDate>
+      <EndData>2016-06-30</EndData>
+      <CreateDate>2016-05-30</CreateDate>
+    </Serial>
+  </AD> 
+	<AD ad_serialid="4053">
+		<Serial>
+			<!--广告投放位置-->
+			<Position>4</Position>
+			<!--广告车系名称-->
+			<Title>瑞虎5</Title>
+			<!--目标页面SerialId-->
+			<SerialID>3152</SerialID>
+			<!--广告车系全拼-->
+			<Url>/ruihu5/</Url>
+			<ImgUrl></ImgUrl>
+			<StartDate>2015-11-14</StartDate>
+			<EndData>2015-11-15</EndData>
+			<CreateDate>2015-10-26</CreateDate>
+		</Serial>
+	</AD>
+  <AD ad_serialid="3152">
+		<Serial>
+			<Position>3</Position>
+			<Title>哈弗H6</Title>
+			<SerialID>4418</SerialID>
+			<Url>/hafuh6/</Url>
+			<ImgUrl></ImgUrl>
+			<StartDate>2015-8-12</StartDate>
+			<EndData>2015-8-31</EndData>
+			<CreateDate>2015-8-12</CreateDate>
+		</Serial>
+  </AD>
+  <AD ad_serialid="3987">
+    <Serial>
+      <Position>4</Position>
+      <Title>长安CS75</Title>
+      <SerialID>4418</SerialID>
+      <Url>/changancs75/</Url>
+      <ImgUrl></ImgUrl>
+      <StartDate>2015-8-12</StartDate>
+      <EndData>2015-8-31</EndData>
+      <CreateDate>2015-8-12</CreateDate>
+    </Serial>
+  </AD>
+</ADList>

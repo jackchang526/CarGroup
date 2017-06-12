@@ -1,0 +1,19 @@
+﻿<script type="text/javascript">
+	function showNewsInsCode(dxc, xxc, mpv, suv) {
+		var adBlockCode = xxc;
+		if (carlevel == '中大型车' || carlevel == '中型车' || carlevel == '跑车' || carlevel == '豪华车') {
+			adBlockCode = dxc;
+		}
+		else if (carlevel == '微型车' || carlevel == '小型车' || carlevel == '紧凑型车') {
+			adBlockCode = xxc;
+		}
+		else if (carlevel == '概念车' || carlevel == 'MPV' || carlevel == '面包车' || carlevel == '皮卡' || carlevel == '其它') {
+			adBlockCode = mpv;
+		}
+		else if (carlevel == 'SUV') {
+			adBlockCode = suv;
+		}
+		document.write('<ins id="div_' + adBlockCode + '" type="ad_play" adplay_blockcode="' + adBlockCode + '"></ins>');
+	}
+	showNewsInsCode('f6eb3b34-dc27-4f7a-816c-f72a0680349e', '71e7362c-ae0d-4930-9277-1dc433fde88e', '6c86459a-3d20-476a-aa94-832fe2207c24', '18a84643-2b6d-460e-8682-c7e794a3039e');
+</script>

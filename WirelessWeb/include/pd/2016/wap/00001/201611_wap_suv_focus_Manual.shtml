@@ -1,0 +1,21 @@
+﻿
+<div class="m-focus">
+    <div class="m-focus-box">
+        <div class="swiper-container" id="m-focus-box">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide" data-channelid="27.149.1414">
+                    <a href="http://c.ctags.cn/sy6/cu10/pc10/mt10?http://shops.mai.m.yiche.com/yusheng/?rfpa_tracker=14_850">
+                        <img src="http://img1.bitautoimg.com/bitauto/2016/10/30/0f69ef57-4105-49ac-84b5-539733379c5a.jpg"><div class="mask"></div>
+                    </a>
+                </li>
+                <li class="swiper-slide" data-channelid="27.149.1415">
+                    <a href="http://c.ctags.cn/sy6/cu10/pc10/mt6?http://shops.mai.m.yiche.com/landwind/?rfpa_tracker=14_541">
+                        <img src="http://img1.bitautoimg.com/bitauto/2016/11/03/ba0ef7cb-0a8d-4732-aebd-5e4bd417a83f.jpg"><div class="mask"></div>
+                    </a>
+                </li>
+            </ul>
+            <div class="pagination-num"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+﻿<!-- header start utf8-->
+<div class="header">
+    <span id="logo"><a data-channelid="26.4.259" href="http://m.yiche.com/" class="logo" onclick="javascript:dcsMultiTrack('DCS.dcsuri', '/car/onclick/tubiao.onclick','WT.ti', '图标')">易车网</a></span>
+
+    <span id="btn-nav"><a data-channelid="26.4.6" href="javascript:toogleNav();" class="btn-nav" id="nav" onclick="javascript:dcsMultiTrack('DCS.dcsuri', '/car/onclick/daohang.onclick','WT.ti', '导航')">导航<i></i></a></span>
+    <span id="btn-search"><a data-channelid="26.4.5" href="javascript:RedirectShowSearch();" class="btn-search">搜索</a></span>
+    <span id="userInfo"><a data-channelid="26.4.4" id="userInfoContainer" class="user-out" href="http://m.qichetong.com/authenservice/login.aspx"></a></span>
+    <div class="pop-nav" id="popNav" style="display:none;" onclick="closeNav();">
+        <i></i>
+        <ul>
+            <li><a href="http://m.yiche.com/">首页</a></li>
+            <li><a href="http://car.m.yiche.com/brandlist.html">选车</a></li>
+            <li><a href="http://price.m.yiche.com/">报价</a></li>
+            <li><a href="http://jiangjia.m.yiche.com/">降价</a></li>
+            <li><a href="http://dealer.m.yiche.com/">经销商</a></li>
+            <li><a href="http://m.taoche.com/all/">二手车</a></li>
+            <li><a href="http://news.m.yiche.com/">文章</a></li>
+            <li><a href="http://v.m.yiche.com/">视频</a></li>
+            <li><a href="http://baa.m.yiche.com/">论坛</a></li>
+            <li><a href="http://ask.m.yiche.com/">问答</a></li>
+            <li><a href="http://yiqishuo.m.yiche.com/">易起说</a></li>
+            <li><a href="http://app.m.yiche.com/">APP</a></li>
+
+        </ul>
+    </div>
+</div>
+<!-- header end -->
+<script type="text/javascript" src="http://image.bitautoimg.com/bsearch/mobilesug201506/showsearchbox.js"></script>
+
+<script type="text/javascript">
+function toogleNav() {
+    var navE=document.getElementById("nav");
+    var popNavE=document.getElementById("popNav");
+    if (navE.className=="btn-nav") {
+        navE.className="btn-nav btn-nav-show";
+        popNavE.style.display="block";
+    } else {
+        navE.className="btn-nav";
+        popNavE.style.display="none";
+    }
+}
+function closeNav() {
+    var navE=document.getElementById("nav");
+    var popNavE=document.getElementById("popNav");
+    navE.className="btn-nav";
+    popNavE.style.display="none";
+}
+</script>
+<script type="text/javascript" src="http://image.bitautoimg.com/uimg/wap/js/jquery-1.8.0.min.js"></script>

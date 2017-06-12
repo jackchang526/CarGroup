@@ -1,0 +1,12 @@
+﻿
+
+<link rel="stylesheet" type="text/css" href="http://image.bitautoimg.com/uimg/css/00043/yiche_2014_backtop-20160518151126-686.css" media="all" />
+
+<div id="yiche-side" class="yiche-side">
+    <ul>
+        <!--调查问卷-->
+        <li id="feedbackDiv" class="w4 last"><a title="意见反馈" target="_blank" href="http://www.bitauto.com/feedback/index.aspx">意见反馈</a></li>
+        <li class="side-top w4"><a style="display: none" id="backtop" title="返回顶部" href="#yicheAnchor">返回顶部</a></li>
+    </ul>
+</div>
+<script type="text/javascript" src="http://image.bitautoimg.com/uimg/index2014/js/yicheside.js"></script>

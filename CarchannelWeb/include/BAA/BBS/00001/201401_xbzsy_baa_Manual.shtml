@@ -1,0 +1,38 @@
+﻿<!--左侧开始-->
+<div class="col-sub">
+	<!--第一条 开始（最多16个汉字）-->
+	<div class="news_outerbox news_innerbox_border news_tiche">
+		<h2>
+			<a href="http://baa.bitauto.com/liyanaliangxiang/thread-5023019.html">不定期保养影响汽车发动机整体寿命</a></h2>
+	</div>
+	<!--第一条 结束-->
+	<!--第二条 开始（最多16个汉字）-->
+	<div class="news_innerbox ">
+		<h2>
+			<a href="http://baa.bitauto.com/sd/thread-5025127.html">底盘脆弱需注意 底盘养护注意事项</a></h2>
+	</div>
+	<!--第二条 结束-->
+</div>
+<!--左侧结束-->
+<!--中间开始-->
+<div class="col-main">
+	<!--第3-5条 开始（最多21个汉字）-->
+	<div class="news_list1 news_list3">
+		<ul class="list_date">
+			<li>
+				<div>
+					<a href="http://baa.bitauto.com/rcyg/thread-5021247.html">汽车养护知识 开热风快速散发车内异味</a></div>
+				<small>07-26</small></li>
+			<li>
+				<div>
+					<a href="http://baa.bitauto.com/yuexiang/thread-5021110.html">做好轮胎日常养护 延长轮胎使用寿命</a></div>
+				<small>07-26</small></li>
+			<li>
+				<div>
+					<a href="http://baa.bitauto.com/cx20/thread-5016738.html">冬季低温不用怕 10招搞定汽车冬季养护</a></div>
+				<small>07-26</small></li>
+		</ul>
+	</div>
+	<!--第3-5条 结束-->
+</div>
+<!--中间结束-->

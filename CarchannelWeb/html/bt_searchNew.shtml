@@ -1,0 +1,23 @@
+﻿<!-- ushtml/block/so/sugFortree2012/sobar_chexing_tree.shtml -->
+<form id="sug_form" name="sug_form" target="_blank" method="get" action="http://www.cheyisou.com/post.aspx">
+<div class="bor">
+	<input id="sug_txt_keyword" type="text" class="select_t" name="so_keywords" value="" autocomplete="off">
+	<span class="bor_b">
+		<input type="submit" id="sug_submit" value="搜索" class="select_b">
+	</span>
+	<div onselectstart="return false" id="sug" style="display: none;"></div>
+	<input id="sug_hidurl" value="" type="hidden">
+	<input id="sug_datatype" name="sug_datatype" value="chexing" type="hidden">
+	<input id="sug_encoding" name="sug_encoding" value="utf-8" type="hidden">
+</div>
+</form>
+<script type="text/javascript">
+	var sug_open_type = "open";
+	var sug_txt_css = "select_t";
+	var sug_flagID = "3";
+	var so = document.createElement('script');
+	so.src = 'http://image.bitautoimg.com/bsearch/jsforsug2012/sug_pindao_form.js';
+	document.getElementsByTagName('head')[0].appendChild(so);
+	var ti = setInterval(function () { if (!window.bitauto) { return } else { window.bitauto.init(); clearInterval(ti) } }, 200)
+	window.onunload = function () { }; 
+</script>

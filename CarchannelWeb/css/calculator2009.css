@@ -1,0 +1,29 @@
+#cal input,#cal select{vertical-align:baseline; position: relative; top: 2px;margin:0 3px;}
+/* tab */
+.caltab{width:950px;float:left;background:url(../images/bg-tab2.gif);height:38px;overflow:hidden;}
+.caltab ul{padding:3px 0 0 10px;}
+.caltab li{float:left;padding:0 0 0 1px;margin:0 5px 0 0;display:inline;background:url(../images/bg-tab.gif) left bottom;font-size:14px;line-height:35px;height:35px;}
+.caltab li a{float:left;padding:0 35px;background:url(../images/bg-tab.gif) right bottom;color:#fff;height:35px;}
+.caltab li a:visited{color:#fff;}
+.caltab .on{background-position:left top;}
+.caltab .on a{background-position:right top;color:#000;font-weight:bold;}
+.caltab .on a:visited{color:#000;}
+/* 选车 */
+.choosecar{float:left;width:930px;padding:10px;background:#F6F6F6;}
+.choosecar select{ margin: 0 5px 0 0 }
+/* 表格 */
+.disablebox{background:#E5E5E5;}
+.t01{ width: 950px; float: left; display: inline; float: left; margin-left: 1px; width: 948px; }
+.t01 td{background:#fff;}
+.t01 th{border:1px solid #DFE4E8;background:#EFEFEF;font-size:14px;font-weight:bold;text-align:center;height:37px;}
+.t01 td{border:1px solid #DFE4E8;padding:5px 7px;height:23px;}
+.t01 .h2{color:#c00;background:#F1F6F9;font-size:14px;font-weight:bold;}
+.t01 .sp_h2{border-top:none;background:#F6F6F6;height:40px;}
+.t01 .tbg td{background:#F6F6F6;}
+.t01 dl{width:100%;padding:5px 0;}
+.t01 .total{padding:10px 0;font-size:14px;}
+.t01 .total span{color:#CC0000;font-weight:bold;padding:0 5px; line-height: 1.8em; font-size:24px;}
+.t01 .tips{color:#999;}
+.t01 .openclose img{padding:0 3px 0 5px;vertical-align:baseline;cursor:pointer;position:relative;top:3px;}
+.t01 .cbox{margin:0 0 0 20px;}
+.t01 .test li{ float: left; width: 60px; }

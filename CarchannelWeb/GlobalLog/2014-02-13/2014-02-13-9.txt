@@ -1,0 +1,183 @@
+[2014/2/13 9:53:47]  
+IP: 192.168.2.179
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?sn=7
+Ref: http://car01.bitauto.com/xuanchegongju/
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 316
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 69
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/13 9:53:54]  
+IP: 192.168.2.179
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?sn=7-9999
+Ref: http://car01.bitauto.com/xuanchegongju/
+Error Message: 将指定的计数添加到该信号量中会导致其超过最大计数。
+Stack Trace:    在 System.Threading.Semaphore.Release(Int32 releaseCount)
+   在 System.Data.ProviderBase.DbConnectionPool.PutNewObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.DeactivateObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.PutObject(DbConnectionInternal obj, Object owningObject)
+   在 System.Data.ProviderBase.DbConnectionInternal.CloseConnection(DbConnection owningObject, DbConnectionFactory connectionFactory)
+   在 System.Data.SqlClient.SqlConnection.Close()
+   在 System.Data.SqlClient.SqlConnection.Dispose(Boolean disposing)
+   在 System.ComponentModel.Component.Dispose()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 316
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 69
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/13 9:53:59]  
+IP: 192.168.2.179
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?b=1
+Ref: http://car01.bitauto.com/xuanchegongju/
+Error Message: 将指定的计数添加到该信号量中会导致其超过最大计数。
+Stack Trace:    在 System.Threading.Semaphore.Release(Int32 releaseCount)
+   在 System.Data.ProviderBase.DbConnectionPool.PutNewObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.DeactivateObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.PutObject(DbConnectionInternal obj, Object owningObject)
+   在 System.Data.ProviderBase.DbConnectionInternal.CloseConnection(DbConnection owningObject, DbConnectionFactory connectionFactory)
+   在 System.Data.SqlClient.SqlConnection.Close()
+   在 System.Data.SqlClient.SqlConnection.Dispose(Boolean disposing)
+   在 System.ComponentModel.Component.Dispose()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 316
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 69
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/13 9:54:07]  
+IP: 192.168.2.179
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?m=0000000000000010000000000000
+Ref: http://car01.bitauto.com/xuanchegongju/
+Error Message: 将指定的计数添加到该信号量中会导致其超过最大计数。
+Stack Trace:    在 System.Threading.Semaphore.Release(Int32 releaseCount)
+   在 System.Data.ProviderBase.DbConnectionPool.PutNewObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.DeactivateObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.PutObject(DbConnectionInternal obj, Object owningObject)
+   在 System.Data.ProviderBase.DbConnectionInternal.CloseConnection(DbConnection owningObject, DbConnectionFactory connectionFactory)
+   在 System.Data.SqlClient.SqlConnection.Close()
+   在 System.Data.SqlClient.SqlConnection.Dispose(Boolean disposing)
+   在 System.ComponentModel.Component.Dispose()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 316
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 69
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/13 9:54:19]  
+IP: 192.168.2.179
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?dt=2
+Ref: http://car01.bitauto.com/xuanchegongju/
+Error Message: 将指定的计数添加到该信号量中会导致其超过最大计数。
+Stack Trace:    在 System.Threading.Semaphore.Release(Int32 releaseCount)
+   在 System.Data.ProviderBase.DbConnectionPool.PutNewObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.DeactivateObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.PutObject(DbConnectionInternal obj, Object owningObject)
+   在 System.Data.ProviderBase.DbConnectionInternal.CloseConnection(DbConnection owningObject, DbConnectionFactory connectionFactory)
+   在 System.Data.SqlClient.SqlConnection.Close()
+   在 System.Data.SqlClient.SqlConnection.Dispose(Boolean disposing)
+   在 System.ComponentModel.Component.Dispose()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 316
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 69
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/13 9:55:42]  
+IP: 192.168.2.179
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?m=0000000000000110000000000000
+Ref: http://car01.bitauto.com/xuanchegongju/
+Error Message: 将指定的计数添加到该信号量中会导致其超过最大计数。
+Stack Trace:    在 System.Threading.Semaphore.Release(Int32 releaseCount)
+   在 System.Data.ProviderBase.DbConnectionPool.PutNewObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.DeactivateObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.PutObject(DbConnectionInternal obj, Object owningObject)
+   在 System.Data.ProviderBase.DbConnectionInternal.CloseConnection(DbConnection owningObject, DbConnectionFactory connectionFactory)
+   在 System.Data.SqlClient.SqlConnection.Close()
+   在 System.Data.SqlClient.SqlConnection.Dispose(Boolean disposing)
+   在 System.ComponentModel.Component.Dispose()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 316
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 69
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/13 9:55:55]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/cartree/SelectCar.aspx?dt=2
+Ref: 
+Error Message: 将指定的计数添加到该信号量中会导致其超过最大计数。
+Stack Trace:    在 System.Threading.Semaphore.Release(Int32 releaseCount)
+   在 System.Data.ProviderBase.DbConnectionPool.PutNewObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.DeactivateObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.PutObject(DbConnectionInternal obj, Object owningObject)
+   在 System.Data.ProviderBase.DbConnectionInternal.CloseConnection(DbConnection owningObject, DbConnectionFactory connectionFactory)
+   在 System.Data.SqlClient.SqlConnection.Close()
+   在 System.Data.SqlClient.SqlConnection.Dispose(Boolean disposing)
+   在 System.ComponentModel.Component.Dispose()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 316
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 69
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/13 9:55:58]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/cartree/SelectCar.aspx?dt=2
+Ref: 
+Error Message: 将指定的计数添加到该信号量中会导致其超过最大计数。
+Stack Trace:    在 System.Threading.Semaphore.Release(Int32 releaseCount)
+   在 System.Data.ProviderBase.DbConnectionPool.PutNewObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.DeactivateObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.PutObject(DbConnectionInternal obj, Object owningObject)
+   在 System.Data.ProviderBase.DbConnectionInternal.CloseConnection(DbConnection owningObject, DbConnectionFactory connectionFactory)
+   在 System.Data.SqlClient.SqlConnection.Close()
+   在 System.Data.SqlClient.SqlConnection.Dispose(Boolean disposing)
+   在 System.ComponentModel.Component.Dispose()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 316
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 69
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

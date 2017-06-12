@@ -1,0 +1,60 @@
+.m-btn-line{/*width:auto;*/}
+.m-btn-gray{background:-webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EFEFEF)); background:-moz-linear-gradient(top, #FFF, #EFEFEF); border:1px solid #DDD; text-align:center; border-radius:2px; color:#666666;}
+
+
+/*切换城市*/
+.m-btn-changecity-box{position:absolute; top:2px; right:0;}
+.m-btn-changecity{height:26px; line-height:26px; background:#FFFFFF; border:1px solid #BBBBBB; border-radius:5px; margin:4px 10px 0 0; color:#666666; font-size:1.4rem; font-weight:normal; padding-left:9px; padding:0 20px 0 10px; float:right; position:relative;}
+.m-btn-changecity em{display:block; overflow:hidden; position:absolute; top:11px; right:8px; width:9px; height:5px; background:url(http://image.bitautoimg.com/uimg/mbt/images/m_ico_arrow_down_gary.gif) no-repeat; background-size:9px 5px;}
+/*.m-btn-changecity em{display:block; overflow:hidden; border:6px solid #B2B2B2; border-color:#FFFFFF #B2B2B2; border-width:5px 0 5px 5px; width:0; position:absolute; top:8px; right:9px;}*/
+.m-btn-changecity-box select{margin:8px 10px 0 0; width:65px;}
+
+
+
+/*车贷页面*/
+.m-cd-jingxiaoshang{background:#E5F4FF; color:#626262; font-size:1.3rem; padding:9px 0;}
+.m-cd-jingxiaoshang span{padding:0 10px;}
+
+.m-cd-jxs-form{padding:0 10px;}
+.m-cd-jxs-form-tt{font-size:1.3rem; color:#999999; margin-bottom:12px;}
+.m-cd-jxs-form-img{padding-bottom:10px;}
+.m-cd-jxs-form-img img{width:30px; height:30px; vertical-align:middle;}
+
+.m-cd-jxs-pop-box{margin-bottom:10px; overflow:hidden;}
+.m-cd-jxs-pop-box ul{margin-top:0;}
+
+.m-cd-form-tt{padding:0 10px 10px 10px; text-align:center;}
+.m-cd-form-tt span{border-bottom:1px solid #D3D3D3; width:100%; display:block; padding:0 0 10px; font-size:1.6rem;}
+
+.m-cd-jxs-form .border-item{height:35px; border:1px solid #D3D3D3; margin-bottom:12px; position:relative;}
+/*.m-cd-jxs-form .border-item input{width:240px; height:14px; border:none; border-left:1px solid #E6E6E6; margin:9px 0 0 36px; font-size:1.3rem; padding-left:10px;}*/
+.m-cd-jxs-form .border-item input{width:240px; height:14px; border:none; margin:9px 0 0 0; font-size:1.3rem; padding-left:10px;}
+.m-cd-jxs-form .border-item-name{width:14px; height:14px; background:url(http://image.bitautoimg.com/uimg/mbt/images/m_ico_form_name.gif) no-repeat; background-size:14px 14px; position:absolute; left:10px; top:10px;}
+.m-cd-jxs-form .border-item-phone{width:10px; height:18px; background:url(http://image.bitautoimg.com/uimg/mbt/images/m_ico_form_phone.gif) no-repeat; background-size:10px 18px; position:absolute; left:12px; top:9px;}
+
+.m-cd-jxs-form .txt-prompt{color:#666666; text-align:center; font-size:1.2rem; margin-bottom:16px;}
+.m-cd-jxs-form .txt-prompt img{width:14px; height:10px;}
+.m-cd-jxs-form .m-changecity-box{font-size:1.3rem; color:#999999; position:relative; height:30px; line-height:32px; margin-bottom:10px;}
+.m-cd-jxs-form .m-changecity-box .m-btn-changecity{margin:0 0 0 10px;}
+
+.m-cd-jxs-item{overflow:hidden; margin:0 0 5px; background:#FFFFFF; border-radius:3px; display:table; width:100%; border:1px solid #E5E5E5;}
+.m-cd-jxs-item-selected{background:#D8EEFB; border-color:#FFFFFF;}
+.m-cd-jxs-item-selected .m-cd-jxs-item-check{background:#4490CE;}
+.m-cd-jxs-item-check{width:23px; background:#F3F3F3; display:table-cell; vertical-align:middle; text-align:center;}
+.m-cd-jxs-item-info{display:table-cell; padding:10px;}
+.m-cd-jxs-item-info em{background:#D12C2C; color:#FFFFFF; font-weight:bold; padding:0 2px; border-radius:2px;}
+.m-cd-jxs-item-info strong{color:#666666; font-size:1.2rem; background:url(http://image.bitautoimg.com/uimg/mbt/images/m_ico_xj_message.gif) no-repeat left center; background-size:14px 10px; padding-left:17px;}
+.m-cd-jxs-item-info p{font-size:1.2rem; color:#999999; padding:8px 0 0 0;}
+
+.m-form-chedai-new .m-more-dealer{font-size:1.6rem; color:#333333; padding:0 0 0 32px; font-weight:normal; margin:10px 0 20px; display:block;}
+.m-form-chedai-new .m-more-dealer s{float:left; display:block; width:0; height:0; border:6px solid #B2B2B2; border-color:#B2B2B2 #FFFFFF; border-width:6px 6px 0 6px; margin:6px 5px 0 3px;}
+.m-form-chedai-new .m-more-dealer-hide s{border-width:0 6px 6px 6px;}
+
+.m-cd-btn-box{border-top:1px solid #E6E6E6; overflow:hidden; padding:10px 0;}
+.m-cd-btn-box-fixed{position:fixed; bottom:0; left:0; width:100%; background:#FFFFFF;}
+.m-btn-line-pd10{width:auto; height:35px; line-height:35px; display:block;}
+
+/*.m-cd-jxs-form .alert{padding:0 0 10px 50px; font-size:1.2rem; color:#CC0000;}*/
+.m-cd-jxs-form .alert{padding:0 0 10px 10px; font-size:1.2rem; color:#CC0000;}
+
+.mgt25{margin-top:25px;}

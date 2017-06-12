@@ -1,0 +1,11 @@
+﻿<!-- include file="/ushtml/block/so/so_bar_js_index.shtml"-->
+
+<script type="text/javascript">
+var sug_open_type = "open";
+var sug_txt_css = "select_sea";
+var so = document.createElement('SCRIPT');
+so.src = 'http://image.bitautoimg.com/bsearch/js_bar/sug_pindao_form.js?v20100820';
+document.getElementsByTagName('HEAD')[0].appendChild(so);
+var ti = setInterval(function() { if (!window.bitauto) { return } else { window.bitauto.init(); clearInterval(ti) } }, 200)
+window.onunload = function() { }; 
+</script>

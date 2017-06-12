@@ -1,0 +1,22 @@
+[2014/11/12 18:17:38]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/carinfo/serialcompareforpk.ashx?action=carbaseinfo&csid=1876
+Error Message: 输入字符串的格式不正确。
+Stack Trace:    在 System.Text.StringBuilder.AppendFormat(IFormatProvider provider, String format, Object[] args)
+   在 System.String.Format(IFormatProvider provider, String format, Object[] args)
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.RenderBaseInfo() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 68
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 43
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2014/11/12 18:17:58]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/carinfo/serialcompareforpk.ashx?action=carbaseinfo&csid=2370
+Error Message: 输入字符串的格式不正确。
+Stack Trace:    在 System.Text.StringBuilder.AppendFormat(IFormatProvider provider, String format, Object[] args)
+   在 System.String.Format(IFormatProvider provider, String format, Object[] args)
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.RenderBaseInfo() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 68
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 43
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

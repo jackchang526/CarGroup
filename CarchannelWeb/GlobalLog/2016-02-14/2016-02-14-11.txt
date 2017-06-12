@@ -1,0 +1,25 @@
+[2016/2/14 11:36:35]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/volkswagen/wenzhang/?id=8&type=wenzhang&
+Ref: 
+Error Message: 列“Picture”不属于表 Table。
+Stack Trace:    在 System.Data.DataRow.get_Item(String columnName)
+   在 BitAuto.CarChannel.CarchannelWeb.PageMaster.CarMasterBrandPageNews.GetContentNew(DataSet ds, Int32 rowCount) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageMaster\CarMasterBrandPageNews.aspx.cs:行号 207
+   在 BitAuto.CarChannel.CarchannelWeb.PageMaster.CarMasterBrandPageNews.InitNewsListNew() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageMaster\CarMasterBrandPageNews.aspx.cs:行号 182
+   在 BitAuto.CarChannel.CarchannelWeb.PageMaster.CarMasterBrandPageNews.InitData() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageMaster\CarMasterBrandPageNews.aspx.cs:行号 73
+   在 BitAuto.CarChannel.CarchannelWeb.PageMaster.CarMasterBrandPageNews.Page_Load(Object sender, EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageMaster\CarMasterBrandPageNews.aspx.cs:行号 48
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 145
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2016/2/14 11:55:51]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/volkswagen/xinwen/?id=8&type=xinwen&
+Ref: http://car01.bitauto.com/volkswagen/wenzhang/
+Error Message: 列“Picture”不属于表 Table。
+Stack Trace:    在 System.Data.DataRow.get_Item(String columnName)
+   在 BitAuto.CarChannel.CarchannelWeb.PageMaster.CarMasterBrandPageNews.GetContentNew(DataSet ds, Int32 rowCount) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageMaster\CarMasterBrandPageNews.aspx.cs:行号 207
+   在 BitAuto.CarChannel.CarchannelWeb.PageMaster.CarMasterBrandPageNews.InitNewsListNew() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageMaster\CarMasterBrandPageNews.aspx.cs:行号 182
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

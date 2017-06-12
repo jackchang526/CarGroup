@@ -1,0 +1,156 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+body{background:#fff;font-size:12px;font-family:Arial,Helvetica,sans-serif;line-height:150%;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+legend{display:none;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+ol,ul{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before,q:after{content:'';}
+abbr,acronym{border:0;}
+a:link,a:visited{color:#164a84;text-decoration:none;}
+a:hover{color:#c00;text-decoration:underline;}
+a strong{color:#c00;}
+.bt_page{width:950px;margin:0 auto;text-align:left;}
+.clear{clear:both;height:0;overflow:hidden;}
+/* ½á¹¹ */
+.line_box{border:1px #dee3e7 solid;padding:0;margin:0 0 10px 0;clear:both;position:relative;zoom:1;}
+.line_box h3{padding:0;background:url(../images/car-jb-repeatx.png) repeat-x;color:#000;font-size:14px;font-weight:bold;line-height:28px;height:29px;overflow:hidden;}
+.line_box h3 span{float: left;}
+.line_box h3.car{width:100%;}
+.line_box h3.commu span .con, .line_box h3.news span .con, .line_box h3.car span .con, .line_box h3.commu span.line, .line_box h3.news span.line, .line_box h3.car span.line { padding:0; background:none; }
+
+.line_box h3.car span{background:url(../images/car-jb-norepeat.png) 7px 7px no-repeat; padding: 0 0 0 30px}
+.line_box h3 span.caption { background: url(../images/car-jb-norepeat.png) 100% -46px no-repeat; color: #FFFFFF; float: left; height: 28px; margin: 0 5px 0 0; padding: 0 12px; text-align: center; }
+.line_box h3 span.caption a:link, .line_box h3 span.caption a:visited { color: #FFFFFF; text-decoration: none; }
+.col-all { width:950px; float:left; }
+.col-main { float:left; width:400px; overflow:hidden; }
+.col-sub { float:left; margin-right:10px; width:310px; overflow:hidden; }
+.col-side { float:right; width:220px; overflow:hidden; }
+.col-side .line_box { background: none repeat scroll 0 0 #EEF2F5; border: 1px solid #D1DDEA; margin: 0 0 10px; padding: 0; position: relative; }
+.col-side .line_box h3 { background: none repeat scroll 0 0 #F5F7F9; border-bottom: 1px solid #D1DDEA; color: #000000; font-size: 14px; font-weight: bold; height: 28px; line-height: 28px; overflow: hidden; padding: 0 0 0 10px; text-align: left; width: 208px;}
+.line_box .more { color: #666666; font-family: SimSun; font-size: 12px; font-weight: normal; position: absolute; right: 10px; top: 6px; }
+/* con */
+.jbnewcar{float:left;width:292px;padding:0 8px;line-height:29px;height:29px;}
+.jbnewcar label{ font-weight: bold;color: #666 }
+.jbnewcar span{ color: #c00;font-size: 10px; }
+.jbnewcar a{ margin-right: 5px; }
+.mcjs{float:left;height:279px;overflow:hidden;}
+.mcjs p{padding:6px;}
+
+.videolist{float:left;width:948px;}
+.videolist ul{float:left;padding:12px 0 0 20px;}
+.videolist li{float:left;width:152px;margin:0 15px;display:inline;text-align:center;height:147px;overflow:hidden;}
+.videolist img{width:150px;border:1px solid #666;display:block;height:113px;}
+.videolist .name{float:left;width:158px;padding:5px 0 0 0;text-align:left;}
+.videolist .name a{padding:0 0 0 25px;background:url(../images/car-jb-norepeat.png) 0 -82px no-repeat;}
+/*  */
+.jbnav{float:left;width:950px;background:url(../images/car-jb-repeatx.png) 0 -32px;height:35px; margin-bottom: 10px}
+.jbnav ul li{float:left;margin:0;padding:0 0 0 1px;width:55px;background:url(../images/car-jb-norepeat.png) no-repeat  100% -87px ;color:#B1C9DC;font-size:14px;line-height:34px;text-align:center;height:32px;overflow:hidden;}
+.jbnav ul li a{ color: #fff }
+.jbnav ul{float:left;width:950px;}
+.jbnav .last{float:right;width:auto;background:url(../images/car-jb-repeatx.png) 100% -72px no-repeat!important;text-align:right;}
+.jbnav .last a{float:right;width:auto;padding:0 14px;background:url(../images/car-jb-norepeat.png) 0 -102px no-repeat;font-weight:normal!important;font-size:12px;}
+.jbnav ul .first{float:left;width:auto;padding:0 0 0 24px;background:url(../images/car-jb-norepeat.png) 0 -144px no-repeat;position:relative;height:35px;}
+.jbnav ul .first span{float:left;background:url(../images/car-jb-norepeat.png)  100% -135px no-repeat;}
+.jbnav ul .first .c_1 a{padding-left:35px;background-position:0 5px;}
+.jbnav ul .first .c_2 a{padding-left:45px;background-position:0 -30px;}
+.jbnav ul .first .c_3 a{padding-left:55px;background-position:0 -65px;}
+.jbnav ul .first .c_4 a{padding-left:55px;background-position:0 -100px;}
+.jbnav ul .first .c_5 a{padding-left:57px;background-position:0 -135px;}
+.jbnav ul .first .c_6 a{padding-left:58px;background-position:0 -170px;}
+.jbnav ul .first .c_7 a{padding-left:57px;background-position:0 -205px;}
+.jbnav ul .first .c_8 a{padding-left:52px;background-position:0 -236px;}
+.jbnav ul .first .c_9 a{padding-left:58px;background-position:0 -285px;}
+.jbnav ul .first .c_10 a{padding-left:58px;background-position:0 -322px;}
+.jbnav ul .first .c_11 a{padding-left:58px;background-position:0 -360px;}
+.jbnav ul .first .c_12 a{padding-left:58px;background-position:0 -395px;}
+.jbnav ul .first a{float:left;padding:0 10px 0 0;width:auto;display:inline;color:#000!important;background:url(../images/car_model7.png) no-repeat;font-size:16px;text-decoration:none;height:35px;font-weight: bold}
+
+.car_focus_big{float:left;width:308px;background:#E6EAED;height: 238px}
+.car_focus_big dl{float:left;width:306px;margin:0 1px 1px 1px;display:inline;background:#CED7DE;}
+.car_focus_big dt{float:left;}
+.car_focus_big dt img{width:300px;padding:5px 3px 3px 3px;display:block;background:#E6EAED;height:200px;}
+.car_focus_big dd{float:left;display:inline;line-height:29px;height:29px;}
+.car_focus_big .intro{font-size:14px;font-weight:bold; text-align: center; width: 306px;}
+.car_focus_big .picclass{margin:0 0 0 1px;}
+.car_focus_big .picclass a{padding:0 7px;}
+.car_focus_big .allhave{float:right;margin:0 4px 0 0; display: inline;}
+.car_focus_big span{color:#c00;}
+
+.h3_tab { float:left;  position:relative; font-family:simSun;margin-top: -29px;font-size: 12px;}
+.h3_tab ul { height:29px; *overflow:hidden;}
+.h3_tab ul li { float:left; border-left:1px solid #fff; border-right:1px solid #DCDDDD; text-align:center;line-height: 27px;padding: 0}
+.h3_tab ul li.current { height:27px; position:relative; background:#fff; border-top:2px #c00 solid;font-weight: bold;color: #000; }
+.h3_tab ul li.current a{ font-weight: bold;color: #000 }
+.h3_tab ul li.last { border-right:none; }
+.h3_tab ul li a {float:left;padding:0 10px; text-decoration: none;font-size: 12px!important}
+
+.topnews {height: 240px; overflow: hidden ;border-top: none}
+.topnews .topnews_list { margin:5px 1px 1px 1px;}
+.topnews .topnews_list h2 { display:block; text-align:center; padding:5px 0; line-height:27px;font-size:20px; font-family:Microsoft YaHei; font-weight:bold; }
+.topnews .topnews_list h2 a:link, .topnews .topnews_list h2 a:visited { color:#c00; text-decoration:none; }
+.topnews .topnews_list h2 a:hover { color:#c00; text-decoration:underline; }
+.topnews .topnews_list span { display:block; text-align:center; padding:2px 0 6px 0; margin:0 10px; color:#B5B5B6; }
+.topnews .topnews_list ul span { text-align:left; padding:0; margin:0; float:left; width:186px; display:block; }
+.topnews ul li { background:url(http://www.bitauto.com/themes/2009/common/images/icon_dot.png) 0 9px no-repeat; padding-left:13px; height:22px; line-height:22px; position:relative; }
+.topnews ul li a:link, .topnews ul li a:visited { font-size:14px; text-decoration:underline; }
+.topnews ul.list_date {margin:6px 13px; height: 220px; overflow: hidden; position: relative; background: none;}
+.topnews ul li small a { font-size:14px; font-style:normal; }
+.topnews ul li small { color: #666666; font-size: 12px; font-style: normal; position: absolute; right: 0; }
+.topnews .fl { color: #666666; padding: 0 5px 0 0; }
+.topnews #topa1 .span { background: url(../images/car-jb-norepeat.png) no-repeat  0 -362px ; padding-top: 15px; }
+
+.mainlist_box { height: 250px; overflow: hidden;}
+.mainlist_box ul li { background:url(http://www.bitauto.com/themes/2009/common/images/icon_dot.png) 0 9px no-repeat; padding-left:13px; height:22px; line-height:22px; position:relative; }
+.mainlist_box ul li a:link, .topnews ul li a:visited { font-size:14px; text-decoration:underline; }
+.mainlist_box ul.list_date {margin:12px 13px 0 13px; height: 226px; overflow: hidden; position: relative;}
+.mainlist_box ul li small a { font-size:14px; font-style:normal; }
+.mainlist_box ul li small { color: #666666; font-size: 12px; font-style: normal; position: absolute; right: 0; }
+.mainlist_box ul .topmore{ background: none; text-align: right;padding-top:12px; z-index: 11;line-height: 1.3em;}
+.mainlist_box ul .topmore a{ line-height: 1em; text-decoration: none!important }
+
+
+.publicTab2 { width:950px; background:url(../images/car-jb-repeatx.png) 0 -111px; height:38px; overflow:hidden; margin:0 auto; }
+.publicTab2 .tab { padding:3px 0 0 10px; }
+.publicTab2 .tab li { float:left; padding:0 0 0 1px; margin:0 5px 0 0; display:inline; background:url(../images/car-jb-norepeat.png) 0 -233px; font-size:14px; line-height:35px; height:35px; }
+.publicTab2 .tab li a { float:left; padding:0 15px; background:url(../images/car-jb-norepeat.png) 100% -233px; color:#fff; font-weight:bold; height:35px; }
+.publicTab2 .tab li a:visited { color:#fff; }
+.publicTab2 .tab .current { background-position:0 -198px; }
+.publicTab2 .tab .current a { background-position:100% -198px; color:#000; }
+.publicTab2 .tab .current a:visited { color:#000; }
+.publicTab2 .btn{float:right;padding:5px 7px 0 0;}
+.publicTab2 .btn li{margin:0 3px 0 0;width:68px;float:right;background:url(../images/car-jb-norepeat.png) 0 -275px;text-indent:14px;height:20px; padding: 3px 0 0 0; display: inline;}
+
+
+.jblist .l{float:left;margin:5px 0 0 15px;display:inline;background:url(../images/car-jb-allrepeat1.png) 0 150px; position: relative;width: 920px}
+.jblist .l li{float:left;width:146px;height:135px;overflow:hidden; margin: 0 3px; display: inline; overflow: hidden; padding: 15px 0 0 0}
+.jblist .l li img{width:120px;border:1px solid #666;margin:0 0 3px 0;display:block;height:80px;}
+.jblist .l li span{float:left;width:24px;color:#fff;background:#ACC5D9;font-weight:bold;text-align:center;line-height:13px;height:13px;overflow:hidden;}
+.jblist .l li .q3{background:#c00;}
+.jblist .l li div{float:left;}
+.jblist .l li div p a{text-decoration:underline;}
+.jblist .l li p{color:#666;}
+.jblist .l li p a{color:#666;}
+
+.jblist .l{overflow: hidden }
+.jblist .hideline{ height: 1px; background: #fff; overflow: hidden; float: left; width: 100%;top: -1px; position: relative; z-index: 11 }
+.car0518_01{ width: 135px;height: 25px;line-height: 25px; text-align: center; margin: -11px auto 10px auto; position: relative; border: 1px solid #DEE3E7;border-top: 1px solid #fff; z-index: 11; color: #c00; cursor: pointer }
+.car0518_01 span{ background: url(../images/car-jb-norepeat.png) 0 -310px no-repeat; padding:0 0 0 20px;}
+.car0518_01 span.h{ background-position: 0 -338px}
+.cost .last td{background:none;}
+.cost table{margin:0 0 0 5px;float:left;}
+.cost td,.cost th{background:transparent url(../images/car-jb-repeatx.png) repeat-x 0 -150px;height:24px;}
+.cost td{padding:0 0 0 5px;}
+.cost th{color:#666;}
+.cost{width:468px;float:left;clear:none;overflow:hidden; height: 180px}
+.cost .attention{color:#f00;}
+
+.car0519_01 label{ color: #666; padding: 0 5px 0 0 }
+.car0519_01 ul li{ background: none; padding: 0 }
+
+.viceh3{ display: inline-block;}
+.viceh3 li{  float: left; font-weight: normal; background: url(http://image.bitautoimg.com/uimg/car/images/bg-viceh3.gif) 24px 10px  no-repeat; padding: 0 0 0 32px; }
+.jb0525_01 .more a{ margin: 0 5px }
+

@@ -1,0 +1,144 @@
+
+<div class="layout-1 sales-agent-sidebar" id="divSummarySCInfoList" style="display:none;" data-channelid="2.21.1570">     
+</div>
+    <script>
+        var commonSCInfoOb = {
+            InitSCInfoList: function (csid,cityid) {
+                if (GlobalSummaryConfig && GlobalSummaryConfig.SerialId && GlobalSummaryConfig.CityId) {
+                    var interfaceurl = "http://cdn.partner.bitauto.com/SalesConsultantv2/getH5SalesConsultant.ashx?action=carsale&csid="
+                        + csid + "&cityid=" + cityid;
+                    var nodata = 0;
+                    var getCount = 0;
+                    var nodataArray = [];
+                    $.ajax({
+                        url: interfaceurl, type: "GET", dataType: "jsonp", jsonpCallback: "success_jsonpCallback", cache: true, success: function (data) {
+
+                            if (data && data.length > 0) {
+                                var moreurl = "http://price.bitauto.com/Sc" + GlobalSummaryConfig.SerialId + "_c" + GlobalSummaryConfig.CityId + "/";
+                                var contentListTitleHtml = "<h3 class='top-title'>买车找我 <a href='" + moreurl + "' class='pull-right more' target='_blank'>更多&gt;&gt;</a></h3>";
+                                var contentListHtml = "";
+                                var contentPopupHtml = "";
+                                for (var t = 0; getCount < 4 && nodata == 0; t++) {
+                                    
+                                    nodata = 1;
+                                    for (var i = 0; i < data.length && getCount < 4; i++) {
+                                        var contentHtml = commonSCInfoOb.SCListTemplate;
+                                        var vendorId = data[i].DealerID;
+                                        if ($.inArray(vendorId, nodataArray) > -1) {
+                                            continue;
+                                        }
+                                        var CityName = data[i].CityName;
+                                        var LocationName = data[i].LocationName;
+                                        var locName = CityName + " " + LocationName;
+                                        var vendorname = data[i].VendorName;
+                                        var VendorBizMode = data[i].VendorBizMode;
+                                        if (VendorBizMode == 2) {
+                                            vendorname = "<em>4s店-</em>" + vendorname;
+                                        }
+
+                                        var ScList = data[i].ScList;
+                                        if (ScList && ScList[t]) {
+                                            nodata = 0;
+                                            getCount += 1;
+
+                                            var scId = ScList[t].ID;
+                                            var scname = ScList[t].Name;
+                                            var scPic = ScList[t].ImgUrl;
+                                            var vendorurl = "http://dealer.bitauto.com/" + vendorId + "/";
+                                           
+                                            var scurl = "http://dealer.bitauto.com/" + vendorId + "/StaffSC/" + GlobalSummaryConfig.SerialId + "/" + scId + "/" + GlobalSummaryConfig.CityId + "/";
+                                            var mapurl = "http://dealer.bitauto.com/" + vendorId + "/contact.html#map";
+                                            if (getCount == 1) {
+                                                contentHtml = commonSCInfoOb.SCPopupTemplate;
+                                               
+                                            }
+
+if (scPic == undefined || scPic.length == 0) {
+                                               
+                                                scPic = "http://img1.bitauto.com/dealer/Membersite/Skins/DefaultV2/images/defaulthead.jpg";
+                                            }
+                                            contentHtml = contentHtml.replace("@@scpic", scPic);
+                                            contentHtml = contentHtml.replace("@@scimgurl", scurl);
+                                            contentHtml = contentHtml.replace("@@scurl", scurl);
+                                            contentHtml = contentHtml.replace("@@scname", scname);
+                                            contentHtml = contentHtml.replace("@@vendorurl", vendorurl);
+                                            contentHtml = contentHtml.replace("@@vendorname", vendorname);
+                                            contentHtml = contentHtml.replace("@@locationname", locName);
+                                            contentHtml = contentHtml.replace("@@mapurl", mapurl);
+                                            contentHtml = contentHtml.replace("@@askurl", scurl);
+                                            
+                                            
+
+                                            
+                                            contentListHtml  += (getCount > 1 ? contentHtml : "");;
+                                            contentPopupHtml += (getCount == 1 ? contentHtml : "");
+                                            
+                                        } else {
+                                            nodataArray[nodataArray.length] = vendorId;
+                                        }
+                                    }
+                                    
+                                   
+                                }
+                                $("#divSummarySCInfoPopup").html(contentPopupHtml);
+                                commonSCInfoOb.divSummarySCInfoList.html(contentListTitleHtml + contentListHtml);
+                                if (getCount > 0) {
+                                    //$("#divSummarySCInfoPopup").show();
+                                    $("#scPopupClose").click(function () {
+                                        $("#divSummarySCInfoPopup").hide();
+                                    });
+                                }
+                                if (getCount > 1) {
+                                    //commonSCInfoOb.divSummarySCInfoList.show();
+                                }
+                                
+                            }
+                        }
+                    });
+
+                    
+                }
+            }
+            
+            ,
+            SCListContent: ""
+            ,
+            SCPopupContent: ""
+            ,
+            SCListTemplate: "<div class='inner-box'>"
+                + "<a class='img' href='@@scimgurl'  target='_blank'>"
+                +"    <img src='@@scpic' alt=''>"
+                +"</a>"
+                +"<div class='txt'>"
+                + "    <h5 class='name'><a href='@@scurl'  target='_blank'>@@scname</a></h5>"
+                + "    <p class='title-4s'><a href='@@vendorurl'  target='_blank'>@@vendorname</a></p>"
+                + "    <p class='local'><span class='area'>@@locationname</span> <a href='@@mapurl' class='map'  target='_blank'>[地图]</a></p>"
+                +"</div>"
+                + "</div>"
+            ,
+            SCPopupTemplate:"<div class='inner-box'>"
+            + "<a class='img' href='@@scimgurl'  target='_blank'>"
+            + "    <img src='@@scpic' alt=''>"
+            + "</a>"
+            + "<div class='txt'>"
+            + "    <h6 class='name'><a href='@@scurl'  target='_blank'>@@scname</a></h6>"
+            + "    <p class='title-4s'><a href='@@vendorurl'  target='_blank'>@@vendorname</a></p>"
+            + "</div>"
+            + "<div class='action'>"
+            + "    <a class='btn btn-secondary btn-xs' href='@@askurl'  target='_blank'>咨询</a>"
+            + "</div>"
+            + "<span class='close' id='scPopupClose'></span>"
+            + "</div>"
+            ,
+            divSummarySCInfoList: $("#divSummarySCInfoList")
+            ,
+            divSummarySCInfoPopup: $("#divSummarySCInfoPopup")
+            ,
+            btnSCPopupClose: $("#scPopupClose")
+        }
+        $(function () {
+            if (typeof(GlobalSummaryConfig) != "undefined" && GlobalSummaryConfig && GlobalSummaryConfig.SerialId && GlobalSummaryConfig.CityId) {
+                commonSCInfoOb.InitSCInfoList(GlobalSummaryConfig.SerialId, GlobalSummaryConfig.CityId);
+            }
+        });
+    </script>

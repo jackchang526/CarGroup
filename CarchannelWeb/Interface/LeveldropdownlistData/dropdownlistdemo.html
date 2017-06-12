@@ -1,0 +1,441 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnew/dropdownlist.js?v=201310"></script>
+	<script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/common/photo/js/jquery.js"></script>
+</head>
+<body>
+	<div class="show">
+	</div>
+	主品牌to品牌to子品牌(默认ID调用):
+	<select id="bit_master1">
+	</select><select id="bit_brand1"></select>
+	<select id="bit_serial1">
+	</select>
+	<%--<select id="bit_brand1"></select><select id="bit_serial1"></select>--%>
+	<br />
+	<br />
+	<script>
+		BitA.DropDownList({
+		//include: { serial: "1" }
+	});
+	</script>
+	<!--主品牌to品牌to子品牌-->
+	主品牌to品牌to子品牌:<select id="master1"></select><select id="brand1"></select><select id="serial1"></select>
+	<%--<div>
+        <a>[+]</a>--%>
+	<script>
+		//主品牌to品牌to子品牌
+		BitA.DropDownList({
+			container: { master: "master1", brand: "brand1", serial: "serial1" }
+		});
+	</script>
+	<%--</div>--%>
+	<br />
+	<br />
+	<!--主品牌to品牌to子品牌to车型-->
+	主品牌to品牌to子品牌to车型:<select id="master2"></select><select id="brand2"></select><select
+		id="serial2"></select><select id="cartype2"></select>
+	<script>
+		//主品牌to品牌to子品牌to车型
+		BitA.DropDownList({
+			container: { master: "master2", brand: "brand2", serial: "serial2", cartype: "cartype2" },
+			include: { cartype: "1" }
+		});
+	</script>
+	<br />
+	<br />
+	<!--主品牌to子品牌to车型-->
+	主品牌to子品牌to车型:<select id="master4">
+	</select><select id="serial4"></select><select id="cartype4"></select>
+	<script>
+		//主品牌to子品牌to车型
+		BitA.DropDownList({
+			container: { master: "master4", serial: "serial4", cartype: "cartype4" },
+			include: { serial: "1", cartype: "1" }
+		});
+	</script>
+	<br />
+	<br />
+	<!--品牌to子品牌-->
+	品牌to子品牌:<select id="brand5"></select><select id="serial5"></select>
+	<script>
+		//品牌to子品牌
+		BitA.DropDownList({
+			container: { brand: "brand5", serial: "serial5" },
+			include: { brand: "1" }
+		});
+	</script>
+	<br />
+	<br />
+	<!--品牌to子品牌to车型-->
+	品牌to子品牌to车型:<select id="brand6"></select><select id="serial6"></select><select id="cartype6"></select>
+	<script>
+		//品牌to子品牌to车型
+		BitA.DropDownList({
+			container: { brand: "brand6", serial: "serial6", cartype: "cartype6" },
+			include: { brand: "1", cartype: "1" }
+		});
+	</script>
+	<br />
+	<br />
+	<!--厂商to品牌to子品牌-->
+	厂商to品牌to子品牌:<select id="produce7"></select><select id="brand7"></select><select id="serial7"></select>
+	<script>
+		//厂商to品牌to子品牌
+		BitA.DropDownList({
+			container: { producer: "produce7", brand: "brand7", serial: "serial7" },
+			url: "http://car.bitauto.com/Interface/LeveldropdownlistData/ProduceToSerial.aspx"
+		});
+	</script>
+	<br />
+	<br />
+	<!--厂商to品牌to子品牌to车型-->
+	厂商to品牌to子品牌to车型:<select id="produce8"></select><select id="brand8"></select><select
+		id="serial8"></select><select id="cartype8"></select>
+	<script>
+		//厂商to品牌to子品牌to车型
+		BitA.DropDownList({
+			container: { producer: "produce8", brand: "brand8", serial: "serial8", cartype: "cartype8" },
+			serias: "p",
+			include: { cartype: "1" },
+			url: "http://car.bitauto.com/Interface/LeveldropdownlistData/ProduceToSerial.aspx"
+		});
+	</script>
+	<br />
+	<br />
+	<!--厂商to品牌-->
+	厂商to子品牌:<select id="produce9"></select><select id="serial9"></select>
+	<script>
+		//厂商to品牌
+		BitA.DropDownList({
+			container: { producer: "produce9", serial: "serial9" },
+			serias: "p",
+			include: { serial: "1" },
+			url: "http://car.bitauto.com/Interface/LeveldropdownlistData/ProduceToSerial.aspx"
+		});
+	</script>
+	<br />
+	<br />
+	<!--厂商to子品牌to车型-->
+	厂商to子品牌to车型:<select id="produce10"></select><select id="serial10"></select><select
+		id="cartype10"></select>
+	<script>
+		//厂商to子品牌to车型
+		BitA.DropDownList({
+			container: { producer: "produce10", serial: "serial10", cartype: "cartype10" },
+			serias: "p",
+			include: { serial: "1", cartype: "1" },
+			url: "http://car.bitauto.com/Interface/LeveldropdownlistData/ProduceToSerial.aspx"
+		});
+	</script>
+	<br />
+	<br />
+	<!--车型-->
+	车型（奔驰E级）及回调函数:<select id="cartype14"></select>
+	<script>
+		//车型
+		BitA.DropDownList({
+			container: { cartype: "cartype14" },
+			include: { cartype: "1" },
+			parent: { cartype: 1987 }, //cartype值为其类别的父ID
+			callback: { cartype: function (data) { console.log("车型加载完成") } }
+		});
+	</script>
+	<br />
+	<br />
+	<!--主品牌to子品牌to车型默认值-->
+	主品牌to子品牌to车型（默认值）:<select id="master11">
+	</select><select id="serial11"></select><select id="cartype11"></select>
+	<script>
+		//主品牌to品牌to子品牌to车型(默认值)
+		BitA.DropDownList({
+			container: { master: "master11", serial: "serial11", cartype: "cartype11" },
+			include: { serial: "1", cartype: "1" },
+			dvalue: { master: "9", brand: "20004", serial: "1994", cartype: "12021" }
+		});
+	</script>
+	<br />
+	<br />
+	主品牌to子品牌:<select id="master3"></select><select id="serial3"></select>
+	<input id="goCar" type="button" value="去车型" />
+	<input id="goPrice" type="button" value="看报价" />
+	<script>
+		//主品牌to子品牌
+		BitA.DropDownList({
+			container: { master: "master3", serial: "serial3" },
+			include: { serial: "1" },
+			btn: {
+				car: {
+					id: "goCar",
+					url: {
+						serial: { "url": "http://car.bitauto.com/{param1}/", params: { "param1": "urlSpell"} },
+						master: { "url": "http://car.bitauto.com/tree_chexing/mb_{param1}/", params: { "param1": "id"} },
+						defurl: { "url": "http://car.bitauto.com/" }
+					}
+				},
+				price: {
+					id: "goPrice",
+					url: {
+						serial: { "url": "http://price.bitauto.com/frame.aspx?newbrandid={id}&citycode={city}", params: { "id": "id" }, defparams: { "city": "201"} },
+						master: { "url": "http://price.bitauto.com/keyword.aspx?keyword={name}&mb_id={id}&citycode={city}", params: { "id": "id", "name": "name" }, defparams: { "city": "201"} },
+						defurl: { "url": "http://price.bitauto.com/" }
+					}
+				}
+			},
+			bind: "click"
+		});
+	</script>
+	<br />
+	<br />
+	==========================买车网========================
+	<ul class="list">
+		<li>
+			<select id="master" class="style_s k230 select_current">
+			</select></li>
+		<li>
+			<select id="serial" class="style_s k230">
+			</select></li>
+		<li>
+			<select id="cartype" class="style_s k230">
+			</select></li>
+		<li><a id="maiche_car" class="button_blue">看新车</a><a id="maiche_price" class="button_blue">查报价</a></li>
+	</ul>
+	<script>
+		//买车网 新车
+		BitA.DropDownList({
+			container: { master: "master", serial: "serial", cartype: "cartype" },
+			include: { serial: "1", cartype: "1" },
+			deftext: {
+				master: { "value": "0", "text": "请选择新车品牌" },
+				serial: { "value": "0", "text": "请选择新车车型" },
+				cartype: { "value": "0", "text": "请选择新车车款" }
+			},
+			btn: {
+				car: {
+					id: "maiche_car",
+					url: {
+						cartype: { url: "http://car.maiche.cn/spell/m{param1}/", params: { "param1": "id"} },
+						serial: { url: "http://{city}.maiche.cn/xinche/{param1}/", params: { param1: "name" }, defparams: { "city": "beijing"} },
+						master: { url: "http://{city}.maiche.cn/xinche/{param1}/", params: { param1: "name" }, defparams: { "city": "beijing"} }
+					},
+					defurl: { url: "http://{city}.maiche.cn/xinche/", defparams: { "city": "beijing"} }
+				},
+				price: {
+					id: "maiche_price",
+					url: {
+						cartype: { url: "http://{city}.maiche.cn/m{id}/baojia/", params: { id: "id" }, defparams: { "city": "beijing"} },
+						serial: { url: "http://{city}.maiche.cn/xinche/{param1}/", params: { "param1": "name" }, defparams: { "city": "beijing"} },
+						master: { url: "http://{city}.maiche.cn/xinche/{param1}/", params: { "param1": "name" }, defparams: { "city": "beijing"} }
+					},
+					defurl: { url: "http://{city}.maiche.cn/xinche/", defparams: { "city": "beijing"} }
+				}
+			},
+			bind: "click"
+		});
+	</script>
+	<ul class="list">
+		<li>
+			<select id="ucarmaster" class="style_s k230 select_current">
+			</select></li>
+		<li>
+			<select id="ucarserial" class="style_s k230">
+			</select></li>
+		<li>
+			<select id="ucarcartype" class="style_s k230">
+			</select></li>
+		<li><a id="goucar" class="button_blue">买二手车</a></li>
+	</ul>
+	<script>
+		//买车网二手车
+		BitA.DropDownList({
+			container: { master: "ucarmaster", serial: "ucarserial", cartype: "ucarcartype" },
+			include: { serial: "1", cartype: "1" },
+			url: "http://www.maiche.cn/Interface/ucarmastertocartype/ucarmastertocartype_json.aspx",
+			deftext: {
+				master: { "value": "0", "text": "请选择二手车品牌" },
+				serial: { "value": "0", "text": "请选择二手车车型" },
+				cartype: { "value": "0", "text": "请选择二手车车款" }
+			},
+			btn: {
+				car: {
+					id: "goucar",
+					url: {
+						cartype: {
+							url: "{defurl}{mastername}{param1}/",
+							params: { param1: "name" },
+							parent: { "master": { "mastername": "name" }, "serial": { "serialname": "name"} },
+							defparams: { "city": "beijing" }
+						},
+						serial: {
+							url: "{defurl}{mastername}{param1}/",
+							params: { param1: "name" },
+							parent: { "master": { "mastername": "name"} },
+							defparams: { "city": "beijing" }
+						},
+						master: { url: "{defurl}{param1}/", params: { param1: "name" }, defparams: { "city": "beijing"} }
+					},
+					defurl: { url: "http://{city}.maiche.cn/ershouche/", defparams: { "city": "beijing"} }
+				}
+			},
+			bind: "click"
+		});
+	</script>
+	===========================易车网首页========================
+	<br />
+	<select id="MasterSelectList" class="select_m">
+	</select>
+	<select id="SerialSelectList" class="select_m" disabled="">
+	</select>
+	<input type="button" value="车型" class="select_b" id="GotoCarButton">
+	<input type="button" value="报价" class="select_b" id="GotoPriceButton">
+	<br />
+	<script>
+		//易车网首页
+		BitA.DropDownList({
+			container: { master: "MasterSelectList", serial: "SerialSelectList" },
+			include: { serial: "1" },
+			datatype: 2,
+			btn: {
+				car: { id: "GotoCarButton" },
+				price: { id: "GotoPriceButton" }
+			},
+			bind: "click"
+		});
+	</script>
+	==========================易车网口碑对比==================
+	<br />
+	<select id="koubei_master">
+	</select>
+	<select id="koubei_serial" onchange="AddCar(this.value)">
+	</select><br />
+	<br />
+	<script>
+		//口碑对比
+		BitA.DropDownList({
+			container: { master: "koubei_master", serial: "koubei_serial" },
+			include: { serial: "1" },
+			background: "#ECF3F9",
+			groupoprtionstyle: { "style": "normal", "color": "#CCCCCC", "align": "center" }
+		});
+		function AddCar(carSerial) {
+			alert(carSerial);
+		}
+	</script>
+	===================车易通==============================
+	<ul class="cgj_cent">
+		<li class="cgjCx">
+			<label>
+				<em>*</em>车型：</label>
+			<!--Start:主品牌to子品牌to车型-->
+			<select name="bit_master1" id="ibit_master1">
+			</select>
+		</li>
+		<li class="cgjCx">
+			<label>
+				<em>*</em>系列：</label>
+			<select name="bit_serial1" id="ibit_serial1">
+			</select>
+		</li>
+		<li class="cgjCx">
+			<label>
+				车款：</label>
+			<select name="bit_cartype1" id="ibit_cartype1">
+			</select>
+			<script type="text/javascript">
+				//主品牌to子品牌to车型
+				BitA.DropDownList({
+					container: { master: "ibit_master1", serial: "ibit_serial1", cartype: "ibit_cartype1" },
+					include: { serial: "1", cartype: "1" },
+					groupoprtionstyle: { "style": "normal", "color": "#CCCCCC", "align": "center" },
+					background: "#ECF3F9"
+				});
+			</script>
+			<!--End:主品牌to子品牌to车型-->
+		</li>
+	</ul>
+	<br />
+	==============================360调用=======================
+	<br />
+	<select id="master20" style="width: 120px">
+	</select><select id="serial20" style="width: 120px"></select>
+	<button id="goCarTree" type="button">
+		看车型</button>
+	<script type="text/javascript">
+		BitA.DropDownList({
+			container: { master: "master20", serial: "serial20" },
+			include: { serial: "1" },
+			deftext: {
+				master: { "value": "0", "text": "请选择品牌" },
+				serial: { "value": "0", "text": "请选择车型" },
+				cartype: { "value": "0", "text": "请选择车款" }
+			},
+			btn: {
+				car: {
+					id: "goCarTree",
+					url: {
+						serial: { url: "http://car.bitauto.com/{param1}/?WT.mc_id=360ss", params: { param1: "urlSpell"} },
+						master: { url: "http://car.bitauto.com/tree_chexing/mb_{param1}/?WT.mc_id=360ss", params: { "param1": "id"} }
+					},
+					defurl: { url: "http://car.bitauto.com/?WT.mc_id=360ss" }
+				}
+			},
+			bind: "click"
+		});
+	</script>
+	<br />
+	============================车族网 www.qichezu.com=========================
+	<br />
+	<select id="qichezu_master">
+	</select>
+	<select id="qichezu_serial">
+	</select>
+	<input type="button" value="看车型" class="" id="qichezu_gocar">
+	<input type="button" value="看图片" class="" id="qichezu_goprice">
+	<script>
+		BitA.DropDownList({
+			container: { master: "qichezu_master", serial: "qichezu_serial" },
+			include: { serial: "1" },
+			btn: {
+				car: {
+					id: "qichezu_gocar",
+					url: {
+						serial: { url: "http://car.qichezu.com/{param1}/", params: { param1: "urlSpell"} },
+						master: { url: "http://car.qichezu.com/tree_chexing/mb_{param1}/", params: { param1: "id"} }
+					},
+					defurl: { url: "http://car.qichezu.com/" }
+				},
+				price: {
+					id: "qichezu_goprice",
+					url: {
+						serial: { url: "http://qichezu.photo.bitauto.com/serial/{id}/", params: { "id": "id"} },
+						master: { url: "http://qichezu.photo.bitauto.com/master/{id}/", params: { "id": "id"} }
+					},
+					defurl: { url: "http://photo.qichezu.com/" }
+				}
+			},
+			bind: "click"
+		});
+	</script>
+	<%--<script type="text/javascript">
+        $("a").css({ cursor: "pointer" });
+        $(".show").css({ "display": "none" });
+        $("a").toggle(function () {
+            if ($(".show").attr("display") == "block") {
+                $(".show").stop()
+		.animate({ right: "0", opacity: 0 }, "fast")
+		.css({ display: "none" })
+            }
+            $(".show").html($(this).siblings("script").html());
+            $(".show").stop()
+		.animate({ right: '50px', opacity: 1 }, "fast")
+		.css("display", "block")
+
+        }, function () {
+            $(".show").stop()
+		.animate({ right: "0", opacity: 0 }, "fast")
+		.css({ display: "none" })
+        });
+    </script>--%>
+</body>
+</html>

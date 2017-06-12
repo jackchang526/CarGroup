@@ -1,0 +1,22 @@
+[2014/4/17 16:30:54]  
+IP: 127.0.0.1
+Error in: http://car01.m.yiche.com/Default.aspx
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHotSerial(Int32 num)
+   在 WirelessWeb._Default.MakeHotCarHtml()
+   在 WirelessWeb._Default.Page_Load(Object sender, EventArgs e)
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/4/17 16:30:54]  
+IP: 127.0.0.1
+Error in: http://car01.m.yiche.com/Default.aspx
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2756
+   在 WirelessWeb._Default.MakeHotCarHtml() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\Default.aspx.cs:行号 69
+   在 WirelessWeb._Default.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\Default.aspx.cs:行号 33
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 143
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

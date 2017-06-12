@@ -1,0 +1,36 @@
+﻿<!-- 今日特价 start -->
+<div class="tt-first">
+    <h3>今日特价</h3>
+</div>
+<div class="box b-shadow">
+    <div class="sale-car">
+        <div class="swiper-container swiper-container-salecar" id="saleCar">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide" data-channelid="27.149.1386">
+                    <a href="http://item.mai.m.yiche.com/51/">
+                        <img src="http://img4.bitautoimg.com/autoalbum/files/20160711/741/0446087415_1.jpg" />
+                        <dl>
+                            <dt>东风标致3008</dt>
+                            <dd class="sale-price">77元订金</dd>
+                            <dd>抵1000元车款送500元油卡</dd>
+                        </dl>
+                        <em><span>今日疯抢</span><i></i></em>
+                    </a>
+                </li>
+                <li class="swiper-slide" data-channelid="27.149.1387">
+                    <a href="http://mai.m.yiche.com/pb/372.html">
+                        <img src="http://img3.bitautoimg.com/autoalbum/files/20160503/774/0205577740_1.jpg" />
+                        <dl>
+                            <dt>马自达 CX-4</dt>
+                            <dd class="sale-price">定金449元</dd>
+                            <dd>赢CX-4一年使用权</dd>
+                        </dl>
+                        <em><span>主打爆款</span><i></i></em>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="pagination-salecar"></div>
+    </div>
+</div>
+<!-- 优惠购车 end -->

@@ -1,0 +1,33 @@
+[2013/5/29 17:29:25]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/handlers/GetCarBySerialIdHTML.ashx?id=3908
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 WirelessWeb.handlers.GetCarBySerialIdHTML.InitSerialInfo() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\handlers\GetCarBySerialIdHTML.ashx.cs:行号 62
+   在 WirelessWeb.handlers.GetCarBySerialIdHTML.ProcessRequest(HttpContext context) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\handlers\GetCarBySerialIdHTML.ashx.cs:行号 37
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2013/5/29 17:36:54]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/handlers/GetCarBySerialIdHTML.ashx?id=3908
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 WirelessWeb.handlers.GetCarBySerialIdHTML.InitSerialInfo() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\handlers\GetCarBySerialIdHTML.ashx.cs:行号 62
+   在 WirelessWeb.handlers.GetCarBySerialIdHTML.ProcessRequest(HttpContext context) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\handlers\GetCarBySerialIdHTML.ashx.cs:行号 37
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2013/5/29 17:56:31]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/CarSummary.aspx?carid=101721&
+Error Message: d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarSummary.aspx(73): error CS0103: 当前上下文中不存在名称“_colorHtml”
+Stack Trace:    在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)
+   在 System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.UI.PageHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

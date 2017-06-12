@@ -1,0 +1,158 @@
+﻿
+<link rel="stylesheet" type="text/css" href="http://image.bitautoimg.com/uimg/css/0016/car_detailed_list_style_v2-20140102141027.css"
+	media="all" />
+<link href="http://192.168.0.10:8888/工作/前端/D_车型/综述页/2013综述页其他页面扁平/new/头部筛选分类.css"
+	rel="stylesheet" type="text/css" />
+<link href="http://192.168.0.10:8888/工作/前端/D_车型/综述页/2013综述页其他页面扁平/new/车型公共调整.css"
+	rel="stylesheet" type="text/css" />
+<link href="http://192.168.0.10:8888/工作/前端/D_车型/综述页/2013综述页其他页面扁平/new/右侧公共.css" rel="stylesheet"
+	type="text/css" />
+<link href="http://192.168.0.10:8888/工作/前端/D_车型/综述页/2013综述页其他页面扁平/new/接下来与seo.css"
+	rel="stylesheet" type="text/css" />
+<link href="http://192.168.0.10:8888/工作/前端/D_车型/综述页/2013综述页其他页面扁平/new/翻页公共.css" rel="stylesheet"
+	type="text/css" />
+<link href="http://192.168.0.10:8888/工作/前端/D_车型/综述页/2013车型综述页/互联互通去掉更多样式.css" rel="stylesheet"
+	type="text/css" />
+<style type="text/css">
+
+/*用到了pic box的公共块 。用到了视频播放按钮。 用到了翻页公共块。*/ 
+
+
+/*============================文化频道片段============================*/
+.news_con { color: #333333; float: left; overflow: hidden; width: 730px; }
+#content_bit { border: 1px solid #E9E9E9; border-top: 0; margin: 0pt 0pt 10px; padding: 4px 0pt 0pt; width: 728px; }
+.news_side { float: right; overflow: hidden; width: 220px; }
+.news_side .line_box { border: 0; }
+.news_side .line_box h3 { background: #F7F7F7; border-bottom: 0; }
+.news_side .line_box h3 span { border: 0; height: 28px; color: #333; padding: 0 10px; font-family: microsoft yahei; background: none; }
+.news_side .line_box .hot_ranking { border: 1px solid #e9e9e9; background: url(http://image.bitauto.com/uimg/index120401/images2/icon_paixu.png) no-repeat scroll 10px 8px; height: 297px; }
+.news_side .line_box .hot_ranking li { height: 29px; line-height: 29px; }
+.news_side .line_box .hot_ranking a, .news_side .line_box .hot_ranking a:link { color: #333; }
+.news_side .line_box .hot_ranking a:hover { color: #c00; }
+.bt_smenuNew .bt_navigatev1New div { }
+.bt_smenuNew .bt_navigatev1New div em { color: #333; font-weight: bold; }
+.whpdbox { height: 47px; border: 1px solid #e9e9e9; border-top: 2px solid #577b95; position: relative; background: #f7f7f7; }
+.whpdbox h3 { height: 47px; line-height: 47px; padding: 0 0 0 20px; }
+.whpdbox h3 span { font-family: microsoft yahei; font-weight: bold; font-size: 18px; color: #333; }
+.whpdbox .more { color: #999; position: absolute; top: 17px; right: 20px; font-family: microsoft yahei; }
+.whpdbox .more em { color: #999; font-weight: normal; }
+.tuwenlistbox { padding: 10px 19px 0; }
+.tuwenlistbox ul li { border-bottom: 1px solid #e9e9e9; padding: 15px 0; overflow: hidden; zoom: 1; }
+.tuwenlistbox ul li.online { border-bottom: 0; }
+.tuwenlistbox ul li a.img { display: block; width: 210px; height: 140px; overflow: hidden; float: left; margin: 0 20px 0 0; display: inline; }
+.tuwenlistbox ul li img { border: 0; padding: 0; }
+.tuwenlistbox ul li img:hover { animation: changecolor 0.5s; -moz-animation: changecolor 0.5s; /* Firefox */ -webkit-animation: changecolor 0.5s; /* Safari and Chrome */ -o-animation: changecolor 0.5s; /* Opera */ -moz-box-shadow: 0px 0px 4px #b5b5b5; -webkit-box-shadow: 0px 0px 4px #b5b5b5; box-shadow: 0px 0px 4px #b5b5b5; border-color: #b5b5b5; }
+.textcont { float: left; width: 460px; }
+.textcont h3 { font-size: 22px; font-family: microsoft yahei; font-weight: bold; padding: 0 0 5px; line-height: 25px; height: 25px; border: none; background: none; }
+.textcont h3 a { color: #333; }
+.textcont h3 a:hover { color: #c00; }
+.textcont p.info { color: #ccc; padding: 5px 0 0 0; font-family: microsoft yahei; }
+.textcont p.info span { margin: 0 10px 0 0; color: #999; }
+.textcont p.info em { color: #999; }
+.textcont p.text { padding: 12px 0 0; line-height: 22px; }
+.textcont p.cont { padding: 8px 0 0; line-height: 23px; color: #333; }
+.tuwenlistbox_two .textcont { width: auto; }
+.textcontauto{ width: auto; }
+
+
+#content_bit .the_pages { background: none; border-top: 0; height: 48px; padding: 20px 0pt 35px; }
+.the_pages div a.linknow { background: none; border: 0; }
+.the_pages div span.num { border: 0; }
+.col-side .select_car_l { border-width: 0 1px; margin-bottom: 0; background: #fff }
+.select_tool { height: 262px; }
+.select_tool .carselect_icon ul li { margin: 10px 0px 10px 8px }
+.carselect_icon { padding: 0 3px 10px; border: 1px solid #e9e9e9; overflow: hidden; zoom: 1; }
+.carselect_icon ul li { float: left; width: 60px; height: 82px; overflow: hidden; background: url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg130502.png) -149px -665px no-repeat; text-align: center; margin: 12px 1px 0 10px; display: inline; position: relative }
+.carselect_icon ul li a { display: block; width: 60px; height: 18px; padding: 65px 0 0 0; cursor: pointer }
+.carselect_icon ul li a, .carselect_icon ul li a:link { color: #333; }
+.carselect_icon ul li a:hover { color: #c00; }
+.carselect_icon ul li a span { border: 1px #efefef solid; position: absolute; left: 0; top: 0; width: 58px; height: 58px; display: block; overflow: hidden }
+.carselect_icon ul li a:hover span { border: 1px #164a84 solid }
+.carselect_icon ul li.chedb { background-position: -148px -664px }
+.carselect_icon ul li.tudb { background-position: -218px -664px }
+.carselect_icon ul li.koubeidb { background-position: -288px -664px }
+.carselect_icon ul li.chyg { background-position: -356px -664px }
+.carselect_icon ul li.weizhang { background-position: -426px -664px }
+.carselect_icon ul li.chgj { background-position: -494px -664px }
+.carselect_icon ul li.qkjs { background-position: -148px -792px }
+.carselect_icon ul li.gcjs { background-position: -218px -792px }
+.carselect_icon ul li.gcbx { background-position: -288px -792px }
+ @keyframes changecolor { from {
+ border-color: #e9e9e9;;
+box-shadow:none;
+}
+to { border-color: #b5b5b5; box-shadow: 0px 0px 5px #b5b5b5; }
+}
+@-moz-keyframes changecolor { /* Firefox */ from {
+ border-color: #e9e9e9;;
+box-shadow:none;
+}
+to { border-color: #b5b5b5; box-shadow: 0px 0px 5px #b5b5b5; }
+}
+@-webkit-keyframes changecolor { /* Safari and Chrome */ from {
+ border-color: #e9e9e9;;
+box-shadow:none;
+}
+to { border-color: #b5b5b5; box-shadow: 0px 0px 5px #b5b5b5; }
+}
+@-o-keyframes changecolor { /* Opera */ from {
+ border-color: #e9e9e9;;
+box-shadow:none;
+}
+to { border-color: #b5b5b5; box-shadow: 0px 0px 5px #b5b5b5; }
+}
+
+
+
+/*================dl change=================*/
+
+@keyframes changedl { from {
+ background: #f7f7f7;
+border-top: 1px #e9e9e9 solid;
+}
+to { background: #cb0201; border-top: 1px #cb0201 solid; }
+}
+@-moz-keyframes changedl { /* Firefox */ from {
+ background: #f7f7f7;
+border-top: 1px #e9e9e9 solid;
+}
+to { background: #cb0201; border-top: 1px #cb0201 solid; }
+}
+@-webkit-keyframes changedl { /* Safari and Chrome */ from {
+ background: #f7f7f7;
+border-top: 1px #e9e9e9 solid;
+}
+to { background: #cb0201; border-top: 1px #cb0201 solid; }
+}
+@-o-keyframes changedl { /* Opera */ from {
+ background: #f7f7f7;
+border-top: 1px #e9e9e9 solid;
+}
+to { background: #cb0201; border-top: 1px #cb0201 solid; }
+}
+/* CSS Document */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.v_tablist .h3_tab { left: -1px; }
+</style>

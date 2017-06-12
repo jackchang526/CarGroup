@@ -1,0 +1,64 @@
+﻿<script language="javascript" type="text/javascript">
+
+    function optionCityUrl() {
+        if (parseInt(City.CityId) >= 0
+            || (parseInt(City.ProvinceId) >= 0 && City.ProvinceName != "")) return;
+			var cityCookieValue = CookieHelper.readCookie("bitauto_ipregion");
+            var cityId = 0;
+            //如果cookie不存在
+            if (cityCookieValue == null || cityCookieValue == "") {
+                cityId = 0;
+                goUrl(cityId);
+                return;
+            }
+            var cityEntity = cityCookieValue.split(";");
+            if (cityEntity == null || cityEntity.length < 1) {
+                cityId = 0;
+                goUrl(cityId);
+                return;
+            }
+            var cityEntityElement = cityEntity[1].split(",");
+            if (cityEntityElement == null || cityEntityElement.length < 3) {
+                cityId = 0;
+                goUrl(cityId);
+                return;
+            }
+            City.CityAllSpell = cityEntityElement[2];
+            cityId = cityEntityElement[0];
+            goUrl(cityId);
+
+    }
+    //到指定的city链接
+    function goUrl(cityId) {
+        if (cityId == parseInt(City.CityId)) return;
+        //如果城市ID在城市列中存在，并且新闻数量大于零
+        if (typeof _CityList[cityId] == 'undefined'
+                || _CityList[cityId] == null
+                || parseInt(_CityList[cityId]["num"]) < 1) {
+            cityId = 0;
+            //如果城市
+            if (cityId == parseInt(City.CityId)) return;
+        }
+        var url = "";
+        //如果当前城市为全国
+        if (cityId == 0) {
+            url = initUrl + "quanguo/";
+        }
+        else {
+            var url = initUrl + _CityList[cityId]["allspell"] + "/";
+           }
+        if (window.location.search) {
+			url += window.location.search;
+        }
+        window.location.replace(url);
+    }
+    optionCityUrl();
+    //处理页面请求
+    function getUrlSpell() {
+        if (City == null) return "";
+        var initUrlSpell = "";
+        if (City["CityId"] != -1 && City["CityAllSpell"] != "") initUrlSpell = City["CityAllSpell"];
+        else initUrlSpell = City["ProvinceAllSpell"];
+        return initUrlSpell;
+    }
+</script>

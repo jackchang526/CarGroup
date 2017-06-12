@@ -1,0 +1,11 @@
+[2014/11/18 19:24:37]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/Test/Perfmon.aspx?serialId1=2370&serialId2=1991
+Ref: 
+Error Message: 索引(从零开始)必须大于或等于零，且小于参数列表的大小。
+Stack Trace:    在 System.Text.StringBuilder.AppendFormat(IFormatProvider provider, String format, Object[] args)
+   在 BitAuto.CarChannel.CarchannelWeb.Test.Perfmon.RenderSeraialNewCompare() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\Test\Perfmon.aspx.cs:行号 42
+   在 BitAuto.CarChannel.CarchannelWeb.Test.Perfmon.Page_Load(Object sender, EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\Test\Perfmon.aspx.cs:行号 28
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

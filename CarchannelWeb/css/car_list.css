@@ -1,0 +1,200 @@
+﻿.sp_tab .btn{float:right;padding:5px 7px 0 0;}
+.sp_tab .btn li{margin:0 3px 0 0;width:68px;float:right;background:url(../images/bg-icons.gif) 0 -3033px;text-indent:14px;height:20px; padding: 4px 0 0 0; display: inline;}
+/* 按字母
+================= */
+.new{width:24px;display:inline-block;background:url(../images/bg-icons.gif) 3px -2198px no-repeat;text-indent:-9999px;height:13px;}
+.byletters{float:left;width:948px;border-top:none;}
+.car_top_tit{padding:19px 0 8px 0;float:left;width:948px;text-align:center;}
+.car_top_tit ul{width:660px;margin:auto;}
+.car_top_tit li{float:left;margin:0 5px 0 0;width:20px;display:inline;color:#868686;background:url(../images/bg-icons.gif) 0 -1506px;font-weight:bold;font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;height:30px;}
+.car_top_tit .nolink{background:url(../images/bg-icons.gif) 0 -1621px;}
+.car_top_tit a{width:16px;margin:auto;display:block;text-align:center;height:16px;}
+.byletters_list{float:left;width:948px; overflow: hidden;}
+.byletters_list .fir{ border: none;margin-top:-10px;  }
+.byletters_list dt{float:left;width:948px;background:#F1F6F9;line-height:36px;height:36px;position:relative;top:-1px;z-index:11;}
+.byletters_list dt label{float:left;padding:0 0 0 8px;color:#c00;font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:16px;text-transform:uppercase;}
+.byletters_list dt .gotop{float:right;padding:0 8px 0 0;font-family:宋体;}
+.byletters_list ul{float:left;width:930px;padding:0 0 0 22px;background:url(../images/bg-byletters-list.gif);}
+.byletters_list li{width:170px;padding:10px 0 0 8px;float:left;height:45px;overflow:hidden;}
+.byletters_list li a{font-weight:bold;}
+.line_box .byletters_list li div a{margin:0 10px 0 0;color:#666;font-weight:normal;text-decoration:underline;}
+.line_box .byletters_list .classify{padding:0 0 0 5px;color:#666;font-weight:normal;}
+.byletters_list .hideline{float:left;margin-top:-1px;width:100%;background:#fff;font-size:0;height:1px;position:relative;z-index:11;overflow:hidden;}
+/* 按车标 
+================= */
+.bybrand_list{float:left;width:948px;background:url(../images/bg-bybrand.gif) repeat-y;}
+.bybrand_list dt{float:left;width:948px;border-bottom:1px solid #E2E6EA;background:#F1F6F9;line-height:36px;height:36px;}
+.bybrand_list dt label{float:left;padding:0 0 0 8px;color:#c00;font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:16px;text-transform:uppercase;}
+.bybrand_list dt .gotop{float:right;padding:0 8px 0 0;}
+.bybrand_list dd{float:left;overflow:hidden;}
+.bybrand_list .have{padding:0 0 0 10px;width:779px;}
+.bybrand_list .line{width:100%;float:left;background:#E2E6EA;font-size:0;height:1px;overflow:hidden;}
+.bybrand_list h2{padding:12px 0 5px 0;float:left;width:100%;font-weight:bold;font-size:14px;}
+.bybrand_list ul{float:left;width:784px;padding:0 0 5px 0;}
+.bybrand_list .border{border-top:1px dashed #D1D7DD;}
+.bybrand_list li{width:195px;float:left;height:55px;}
+.bybrand_list li a{font-weight:bold;}
+.bybrand_list li .classify{padding:0 0 0 5px;color:#666!important;font-weight:normal;}
+.line_box .bybrand_list li div a{margin:0 10px 0 0;color:#666;font-weight:normal;text-decoration:underline;}
+/* 按价格 
+================= */
+.tit_byprice ul{width:670px;}
+.tit_byprice li{width:68px;background:url(../images/bg-icons.gif) 0 -2762px;font-weight:normal;height:40px;}
+.tit_byprice a{width:auto;padding:2px 0 0 0;display:block;line-height:22px;height:22px;}
+.byprice_list dt{margin-top:-1px;position:relative;z-index:11;}
+.byprice_list dt label{font-size:14px;}
+.byprice_list dd{ float: left }
+.byprice_list .py{padding:0 0 0 5px;font-size:12px;font-weight:normal;}
+.byprice_list h2{width:100%;border-top:1px solid #DFE4E8;float:left;color:#666;color:#000;font-size:18px;font-weight:bold;font-family:微软雅黑;font-size:18px;line-height:45px;text-indent:10px;position:relative;top:-1px;}
+.byprice_list ul{margin:0 0 0 0;}
+/* 按国别
+============ */
+.tit_bynation ul{width:660px;}
+.tit_bynation li a{padding:2px 0 0 35px;background:url(../images/icon-n.gif) no-repeat;text-align:left;height:20px;overflow:hidden;}
+.tit_bynation .n01 a{background-position:10px 5px;}
+.tit_bynation .n02 a{background-position:10px -40px;}
+.tit_bynation .n03 a{background-position:10px -86px;}
+.tit_bynation .n04 a{background-position:10px -126px;}
+.tit_bynation .n05 a{background-position:10px -174px;}
+.tit_bynation .n06 a{background-position:10px -224px;}
+.tit_bynation .n07 a{background-position:10px -278px;}
+.tit_bynation .n08 a{background-position:10px -330px;}
+.tit_bynation .n09 a{background-position:10px -380px;}
+.tit_bynation .n10 a{padding:2px 0 0 30px;background-position:8px -440px;}
+.tit_bynation .n10{width:81px;background:url(../images/bg-icons.gif) 0 -2896px;}
+.bynation_list dt label{padding:0 0 0 30px;background:url(../images/icon-n.gif) no-repeat;font-size:14px;}
+.bynation_list #zz{background-position:8px 10px;}
+.bynation_list #mx{background-position:8px -35px;}
+.bynation_list #rx{background-position:8px -82px;}
+.bynation_list #dx{background-position:8px -122px;}
+.bynation_list #fx{background-position:8px -168px;}
+.bynation_list #yx{background-position:8px -220px;}
+.bynation_list #yx2{background-position:8px -273px;}
+.bynation_list #hx{background-position:8px -327px;}
+.bynation_list #hx2{background-position:8px -375px;}
+.bynation_list #mlx{background-position:8px -435px;}
+/* 引用车标 */
+.bybrand_list .brand{width:54px;margin:12px 52px;padding:60px 0 0 0;display:inline;background:url(http://car.bitauto.com/images/logo_car.jpeg) no-repeat;color:#999;font-size:14px;font-weight:bold;text-align:center;}
+.bybrand_list .m_100_b{background-position:-9900px 0;}
+.bybrand_list .m_101_b{background-position:-10000px 0;}
+.bybrand_list .m_102_b{background-position:-10100px 0;}
+.bybrand_list .m_103_b{background-position:-10200px 0;}
+.bybrand_list .m_104_b{background-position:-10300px 0;}
+.bybrand_list .m_105_b{background-position:-10400px 0;}
+.bybrand_list .m_106_b{background-position:-10500px 0;}
+.bybrand_list .m_107_b{background-position:-10600px 0;}
+.bybrand_list .m_108_b{background-position:-10700px 0;}
+.bybrand_list .m_109_b{background-position:-10800px 0;}
+.bybrand_list .m_10_b{background-position:-900px 0;}
+.bybrand_list .m_110_b{background-position:-10900px 0;}
+.bybrand_list .m_111_b{background-position:-11000px 0;}
+.bybrand_list .m_112_b{background-position:-11100px 0;}
+.bybrand_list .m_113_b{background-position:-11200px 0;}
+.bybrand_list .m_114_b{background-position:-11300px 0;}
+.bybrand_list .m_115_b{background-position:-11400px 0;}
+.bybrand_list .m_119_b{background-position:-11800px 0;}
+.bybrand_list .m_123_b{background-position:-12200px 0;}
+.bybrand_list .m_124_b{background-position:-12300px 0;}
+.bybrand_list .m_126_b{background-position:-12500px 0;}
+.bybrand_list .m_127_b{background-position:-12600px 0;}
+.bybrand_list .m_128_b{background-position:-12700px 0;}
+.bybrand_list .m_129_b{background-position:-12800px 0;}
+.bybrand_list .m_12_b{background-position:-1100px 0;}
+.bybrand_list .m_133_b{background-position:-13200px 0;}
+.bybrand_list .m_134_b{background-position:-13300px 0;}
+.bybrand_list .m_135_b{background-position:-13400px 0;}
+.bybrand_list .m_136_b{background-position:-13500px 0;}
+.bybrand_list .m_137_b{background-position:-13600px 0;}
+.bybrand_list .m_13_b{background-position:-1200px 0;}
+.bybrand_list .m_14_b{background-position:-1300px 0;}
+.bybrand_list .m_15_b{background-position:-1400px 0;}
+.bybrand_list .m_16_b{background-position:-1500px 0;}
+.bybrand_list .m_17_b{background-position:-1600px 0;}
+.bybrand_list .m_18_b{background-position:-1700px 0;}
+.bybrand_list .m_19_b{background-position:-1800px 0;}
+.bybrand_list .m_20_b{background-position:-1900px 0;}
+.bybrand_list .m_21_b{background-position:-2000px 0;}
+.bybrand_list .m_23_b{background-position:-2200px 0;}
+.bybrand_list .m_24_b{background-position:-2300px 0;}
+.bybrand_list .m_25_b{background-position:-2400px 0;}
+.bybrand_list .m_26_b{background-position:-2500px 0;}
+.bybrand_list .m_27_b{background-position:-2600px 0;}
+.bybrand_list .m_28_b{background-position:-2700px 0;}
+.bybrand_list .m_29_b{background-position:-2800px 0;}
+.bybrand_list .m_2_b{background-position:-100px 0;}
+.bybrand_list .m_30_b{background-position:-2900px 0;}
+.bybrand_list .m_31_b{background-position:-3000px 0;}
+.bybrand_list .m_32_b{background-position:-3100px 0;}
+.bybrand_list .m_33_b{background-position:-3200px 0;}
+.bybrand_list .m_34_b{background-position:-3300px 0;}
+.bybrand_list .m_35_b{background-position:-3400px 0;}
+.bybrand_list .m_36_b{background-position:-3500px 0;}
+.bybrand_list .m_37_b{background-position:-3600px 0;}
+.bybrand_list .m_38_b{background-position:-3700px 0;}
+.bybrand_list .m_39_b{background-position:-3800px 0;}
+.bybrand_list .m_3_b{background-position:-200px 0;}
+.bybrand_list .m_40_b{background-position:-3900px 0;}
+.bybrand_list .m_41_b{background-position:-4000px 0;}
+.bybrand_list .m_42_b{background-position:-4100px 0;}
+.bybrand_list .m_43_b{background-position:-4200px 0;}
+.bybrand_list .m_44_b{background-position:-4300px 0;}
+.bybrand_list .m_45_b{background-position:-4400px 0;}
+.bybrand_list .m_47_b{background-position:-4600px 0;}
+.bybrand_list .m_48_b{background-position:-4700px 0;}
+.bybrand_list .m_49_b{background-position:-4800px 0;}
+.bybrand_list .m_4_b{background-position:-300px 0;}
+.bybrand_list .m_50_b{background-position:-4900px 0;}
+.bybrand_list .m_51_b{background-position:-5000px 0;}
+.bybrand_list .m_52_b{background-position:-5100px 0;}
+.bybrand_list .m_53_b{background-position:-5200px 0;}
+.bybrand_list .m_54_b{background-position:-5300px 0;}
+.bybrand_list .m_55_b{background-position:-5400px 0;}
+.bybrand_list .m_56_b{background-position:-5500px 0;}
+.bybrand_list .m_57_b{background-position:-5600px 0;}
+.bybrand_list .m_58_b{background-position:-5700px 0;}
+.bybrand_list .m_59_b{background-position:-5800px 0;}
+.bybrand_list .m_5_b{background-position:-400px 0;}
+.bybrand_list .m_60_b{background-position:-5900px 0;}
+.bybrand_list .m_61_b{background-position:-6000px 0;}
+.bybrand_list .m_62_b{background-position:-6100px 0;}
+.bybrand_list .m_63_b{background-position:-6200px 0;}
+.bybrand_list .m_64_b{background-position:-6300px 0;}
+.bybrand_list .m_65_b{background-position:-6400px 0;}
+.bybrand_list .m_66_b{background-position:-6500px 0;}
+.bybrand_list .m_67_b{background-position:-6600px 0;}
+.bybrand_list .m_68_b{background-position:-6700px 0;}
+.bybrand_list .m_69_b{background-position:-6800px 0;}
+.bybrand_list .m_6_b{background-position:-500px 0;}
+.bybrand_list .m_70_b{background-position:-6900px 0;}
+.bybrand_list .m_71_b{background-position:-7000px 0;}
+.bybrand_list .m_72_b{background-position:-7100px 0;}
+.bybrand_list .m_73_b{background-position:-7200px 0;}
+.bybrand_list .m_74_b{background-position:-7300px 0;}
+.bybrand_list .m_75_b{background-position:-7400px 0;}
+.bybrand_list .m_76_b{background-position:-7500px 0;}
+.bybrand_list .m_77_b{background-position:-7600px 0;}
+.bybrand_list .m_78_b{background-position:-7700px 0;}
+.bybrand_list .m_79_b{background-position:-7800px 0;}
+.bybrand_list .m_7_b{background-position:-600px 0;}
+.bybrand_list .m_80_b{background-position:-7900px 0;}
+.bybrand_list .m_81_b{background-position:-8000px 0;}
+.bybrand_list .m_82_b{background-position:-8100px 0;}
+.bybrand_list .m_83_b{background-position:-8200px 0;}
+.bybrand_list .m_84_b{background-position:-8300px 0;}
+.bybrand_list .m_85_b{background-position:-8400px 0;}
+.bybrand_list .m_86_b{background-position:-8500px 0;}
+.bybrand_list .m_87_b{background-position:-8600px 0;}
+.bybrand_list .m_88_b{background-position:-8700px 0;}
+.bybrand_list .m_89_b{background-position:-8800px 0;}
+.bybrand_list .m_8_b{background-position:-700px 0;}
+.bybrand_list .m_90_b{background-position:-8900px 0;}
+.bybrand_list .m_91_b{background-position:-9000px 0;}
+.bybrand_list .m_92_b{background-position:-9100px 0;}
+.bybrand_list .m_93_b{background-position:-9200px 0;}
+.bybrand_list .m_94_b{background-position:-9300px 0;}
+.bybrand_list .m_95_b{background-position:-9400px 0;}
+.bybrand_list .m_96_b{background-position:-9500px 0;}
+.bybrand_list .m_97_b{background-position:-9600px 0;}
+.bybrand_list .m_98_b{background-position:-9700px 0;}
+.bybrand_list .m_99_b{background-position:-9800px 0;}
+.bybrand_list .m_9_b{background-position:-800px 0;}

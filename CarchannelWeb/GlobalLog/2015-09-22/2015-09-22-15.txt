@@ -1,0 +1,125 @@
+[2015/9/22 15:47:41]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?l=4
+Ref: http://car01.bitauto.com/
+Error Message: 找不到网络名。
+
+Stack Trace:    在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   在 System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   在 System.Xml.XmlTextReaderImpl.FinishInitUriString()
+   在 System.Xml.XmlReaderSettings.CreateReader(String inputUri, XmlParserContext inputContext)
+   在 BitAuto.CarChannel.BLL.CarTreeData.TagData.GetTagDataDictionary()
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.InitSearchUrl(String tagType) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 78
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 73
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2015/9/22 15:48:41]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?l=4&p=&page=2&ddds
+Ref: 
+Error Message: 找不到网络名。
+
+Stack Trace:    在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   在 System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   在 System.Xml.XmlTextReaderImpl.FinishInitUriString()
+   在 System.Xml.XmlReaderSettings.CreateReader(String inputUri, XmlParserContext inputContext)
+   在 BitAuto.CarChannel.BLL.CarTreeData.TagData.GetTagDataDictionary() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\CarTreeData\TreeDataObjects.cs:行号 182
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.InitSearchUrl(String tagType) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 78
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 73
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 145
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2015/9/22 15:51:40]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?l=4&p=&page=2
+Ref: http://car01.bitauto.com/xuanchegongju/?l=4&p=
+Error Message: 找不到网络名。
+
+Stack Trace:    在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   在 System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   在 System.Xml.XmlTextReaderImpl.FinishInitUriString()
+   在 System.Xml.XmlReaderSettings.CreateReader(String inputUri, XmlParserContext inputContext)
+   在 BitAuto.CarChannel.BLL.CarTreeData.TagData.GetTagDataDictionary() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\CarTreeData\TreeDataObjects.cs:行号 182
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.InitSearchUrl(String tagType) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 78
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 73
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 145
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2015/9/22 15:51:46]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?l=4&dddds
+Ref: 
+Error Message: 找不到网络名。
+
+Stack Trace:    在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   在 System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   在 System.Xml.XmlTextReaderImpl.FinishInitUriString()
+   在 System.Xml.XmlReaderSettings.CreateReader(String inputUri, XmlParserContext inputContext)
+   在 BitAuto.CarChannel.BLL.CarTreeData.TagData.GetTagDataDictionary() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\CarTreeData\TreeDataObjects.cs:行号 182
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.InitSearchUrl(String tagType) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 78
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 73
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 145
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2015/9/22 15:52:53]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?ddssd
+Ref: 
+Error Message: 找不到网络名。
+
+Stack Trace:    在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   在 System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   在 System.Xml.XmlTextReaderImpl.FinishInitUriString()
+   在 System.Xml.XmlReaderSettings.CreateReader(String inputUri, XmlParserContext inputContext)
+   在 BitAuto.CarChannel.BLL.CarTreeData.TagData.GetTagDataDictionary() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\CarTreeData\TreeDataObjects.cs:行号 182
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.InitSearchUrl(String tagType) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 78
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 73
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 145
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2015/9/22 15:54:27]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?dessd
+Ref: 
+Error Message: 找不到网络名。
+
+Stack Trace:    在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   在 System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   在 System.Xml.XmlTextReaderImpl.FinishInitUriString()
+   在 System.Xml.XmlReaderSettings.CreateReader(String inputUri, XmlParserContext inputContext)
+   在 BitAuto.CarChannel.BLL.CarTreeData.TagData.GetTagDataDictionary() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\CarTreeData\TreeDataObjects.cs:行号 182
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.InitSearchUrl(String tagType) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 78
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 73
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 145
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

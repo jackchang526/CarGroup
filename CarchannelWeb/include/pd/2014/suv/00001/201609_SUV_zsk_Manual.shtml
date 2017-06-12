@@ -1,0 +1,36 @@
+﻿
+<div class="knowledge-box">
+    <div class="knowledge-tab-box">
+        <div class="knowledge-tab" id="knowledge-tab"><ul><li class="current">通过性能</li><li>离地间隙</li><li>涉水深度</li></ul></div>
+        <div class="knowledge-cont" id="knowledge-cont">
+            <div class="" style="display: block;">
+                <div class="suv-con-box-l"><img src="http://image.bitauto.com/uimg/car/images2013/suv_pic_1.png" alt="">                                                                                                             </div>
+                <div class="suv-con-box-r">
+                    <h5>通过性能：</h5>
+                    <p>在一定载质量下，汽车能以足够高的平均车速通过各种坏路及无路地带和克服各种障碍的能力，称为汽车的通过性。主要指标有：接近角、离去角、最小离地间隙...<a href="http://baike.bitauto.com/theory/20120718/1305769718.html " target="_blank">详细&gt;&gt;</a></p>
+                </div>
+            </div>
+            <div class="" style="display: none;">
+                <div class="suv-con-box-l"><img src="http://image.bitauto.com/uimg/car/images2013/suv_pic_2.png" alt="">                                     </div>
+                <div class="suv-con-box-r">
+                    <h5>离地间隙：</h5>
+                    <p>汽车在满载(允许最大荷载质量)的情况下，其底盘最突出部位与水平地面的距离。最小离地间隙反映的是汽车无碰撞通过有障碍物或凹凸不平的地面的能力...<a href="http://baike.bitauto.com/basictechparam/20120629/1405744838.html" target="_blank">详细&gt;&gt;</a></p>
+                </div>
+            </div>
+            <div class="" style="display: none;">
+                <div class="suv-con-box-l"><img src="http://image.bitauto.com/uimg/car/images2013/suv_pic_3.png" alt="">                                     </div>
+                <div class="suv-con-box-r">
+                    <h5>涉水深度：</h5>
+                    <p>最大涉水深度指的是汽车所能通过的最深水域，也是安全深度，通常单位为毫米（mm），这是评价汽车越野通过性的重要指标之一...<a href="http://baike.bitauto.com/other/20120629/1505747753.html" target="_blank">详细&gt;&gt;</a></p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="knowledge-list">
+        <p><strong><a href="http://baike.bitauto.com/other/20120629/1405744845.html" target="_blank">非独立悬架</a></strong><em>|</em><strong><a href="http://baike.bitauto.com/other/20120629/1405744928.html" target="_blank">四轮驱动</a></strong><em>|</em><strong><a href="http://baike.bitauto.com/other/20120629/1405744857.html" target="_blank">非承载式车身</a></strong><em>|</em><strong><a href="http://baike.bitauto.com/other/20120629/1505747667.html" target="_blank">最大爬坡度</a></strong><em>|</em><strong><a href="http://baike.bitauto.com/other/20120629/1505747753.html" target="_blank">最大涉水深度</a></strong><em>|</em><strong><a href="http://baike.bitauto.com/basictechparam/20120629/1405744838.html" target="_blank">最小离地间隙</a></strong></p>
+        <p><strong><a href="http://baike.bitauto.com/basictechparam/20120718/1105769511.html" target="_blank">通过角</a></strong><em>|</em><strong><a href="http://baike.bitauto.com/basictechparam/20120629/1405744818.html" target="_blank">离去角</a></strong><em>|</em><strong><a href="http://baike.bitauto.com/basictechparam/20120629/1405745047.html" target="_blank">接近角</a></strong><em>|</em><strong><a href="http://baike.bitauto.com/other/20120629/1405744779.html" target="_blank">全时四驱</a></strong><em>|</em><strong><a href="http://baike.bitauto.com/newtechnique/20120917/1305843046.html" target="_blank">适时四驱</a></strong><em>|</em><strong><a href="http://baike.bitauto.com/other/20120629/1505747927.html" target="_blank">分时四驱</a></strong></p>
+    </div>
+</div>

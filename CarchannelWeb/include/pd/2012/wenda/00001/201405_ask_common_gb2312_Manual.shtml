@@ -1,0 +1,38 @@
+﻿<div class="line-box">
+	<div class="title-con">
+		<div class="title-box title-box2" style="z-index: 5">
+			<ul class="title-tab">
+				<li class="current"><a href="http://ask.bitauto.com/recommendlist/" target="_blank">
+					易车问答精彩专题</a><em>|</em></li>
+				<li class="ask-part-tit"><span>百位汽车专家为您在线答疑！ </span></li>
+			</ul>
+			<div class="more ask-more">
+				<a href="http://ask.bitauto.com/tiwen/" target="_blank">提问</a>,5分钟收到靠谱答案！</div>
+		</div>
+	</div>
+	<!--内容 start-->
+	<div class="ask-part-con">
+		<div class="part-box-one">
+			<h4>
+				<a href="http://ask.bitauto.com/recommendlist/" target="_blank">第101期：如何选购保养雨刮器</a></h4>
+			<ul>
+				<li><a href="http://ask.bitauto.com/detail/3895312/" target="_blank">造成雨刮器老化的因素有哪些？</a></li>
+				<li><a href="http://ask.bitauto.com/detail/3895422/" target="_blank">玻璃水的选择会影响雨刮片的寿命吗？</a></li>
+				<li><a href="http://ask.bitauto.com/detail/3895500/" target="_blank">雨刮器的寿命到底有多长？何时需要更换？</a></li>
+				<li><a href="http://ask.bitauto.com/detail/3895645/" target="_blank">无骨雨刮和有骨雨刮哪个好？区别是什么？</a></li>
+			</ul>
+		</div>
+		<div class="part-box-two">
+			<h4>
+				<a href="http://ask.bitauto.com/recommendlist/" target="_blank">第102期：汽车灯光使用指南</a></h4>
+			<ul>
+				<li><a href="http://ask.bitauto.com/detail/3902160/" target="_blank">夜间驾车，如何判断该用近光还是远光？</a></li>
+				<li><a href="http://ask.bitauto.com/detail/3902268/" target="_blank">雨天、雾天能见度低，可以使用远光灯吗？
+				</a></li>
+				<li><a href="http://ask.bitauto.com/detail/3902442/" target="_blank">会车时开启远光灯会造成哪些安全隐患？</a></li>
+				<li><a href="http://ask.bitauto.com/detail/3902554/" target="_blank">示宽灯是什么？适合什么时候使用？</a></li>
+			</ul>
+		</div>
+	</div>
+	<!--内容 end-->
+</div>

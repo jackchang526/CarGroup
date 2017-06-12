@@ -1,0 +1,13 @@
+[2012/9/18 15:09:36]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/CarMasterBrandSelect.aspx
+Error Message: 未能找到路径“D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\include\pd\2012\wap\00001\201209_wap_cxapp_Manual.shtml”的一部分。
+Stack Trace:    在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   在 System.Web.Hosting.MapPathBasedVirtualFile.Open()
+   在 System.Web.Hosting.VirtualPathProvider.OpenFile(String virtualPath)
+   在 System.Web.UI.TemplateParser.ParseFile(String physicalPath, VirtualPath virtualPath)
+   在 System.Web.UI.TemplateParser.ProcessServerInclude(Match match)
+   在 System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+

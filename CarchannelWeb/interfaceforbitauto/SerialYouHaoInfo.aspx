@@ -1,0 +1,2 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SerialYouHaoInfo.aspx.cs" Inherits="BitAuto.CarChannel.CarchannelWeb.interfaceforbitauto.SerialYouHaoInfo" %>
+<%@ OutputCache Duration="600" VaryByParam="*" %>

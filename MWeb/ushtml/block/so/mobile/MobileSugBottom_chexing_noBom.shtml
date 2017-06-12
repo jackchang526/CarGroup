@@ -1,0 +1,10 @@
+<div class="m-s-box m-s-box-bottom">
+    <div class="m-close-box">
+        <div class="m-close-box-in">
+            <input type="search" onclick="RedirectShowSearch();" readonly="readonly" onfocus="this.blur()"/>
+        </div>
+    </div>
+    <div class="m-btn-box">
+        <input type="submit" value="" onclick="RedirectShowSearch();" />
+    </div>
+</div>

@@ -1,0 +1,104 @@
+﻿<div class="bit_top990">
+	<div class="bit990">
+		<ul class="bitweb">
+			<li class="bityiche"><a target="_blank" href="http://www.bitauto.com/">易车网</a></li>
+			<li><a target="_blank" href="http://www.huimaiche.com" rel="nofollow">惠买车</a></li>
+			<li><a target="_blank" href="http://www.taoche.com" rel="nofollow">淘车网</a></li>
+			<li><a target="_blank" href="http://app.yiche.com/" rel="nofollow">移动应用</a></li>
+			<li><a target="_blank" href="http://chezhan.bitauto.com/beijing/">北京车展</a></li>
+		</ul>
+		<!--网站导航 start-->
+		<div class="bt_login_box990">
+			<!--start-->
+			<ul>
+				<!--网站地图-->
+				<li class="last bit_link" id="login_navhover" onmouseover="document.getElementById('login_mapsite').style.display='';this.className='bit_link bit_hover';"
+					onmouseout="document.getElementById('login_mapsite').style.display='none';this.className='bit_link';">
+					<a target="_blank" href="http://www.bitauto.com/map/map.shtml" rel="nofollow">网站地图<em></em></a>
+					<dl class="login_mapsite" id="login_mapsite" style="display: none;">
+						<dt class="noborder">全部频道：</dt>
+						<dd>
+							<a target="_blank" href="http://car.bitauto.com/" rel="nofollow">车型</a></dd>
+						<dd>
+							<a target="_blank" href="http://photo.bitauto.com/" rel="nofollow">图片</a></dd>
+						<dd>
+							<a target="_blank" href="http://v.bitauto.com/" rel="nofollow">视频</a></dd>
+						<dd>
+							<a target="_blank" href="http://www.bitauto.com/huati/" rel="nofollow">话题</a></dd>
+						<dd>
+							<a target="_blank" href="http://dealer.bitauto.com/" rel="nofollow">经销商</a></dd>
+						<dd>
+							<a target="_blank" href="http://car.bitauto.com/tree_pingce/" rel="nofollow">评测</a></dd>
+						<dd>
+							<a target="_blank" href="http://car.bitauto.com/tree_daogou/" rel="nofollow">导购</a></dd>
+						<dd>
+							<a target="_blank" href="http://price.bitauto.com/" rel="nofollow">报价</a></dd>
+						<dd>
+							<a target="_blank" href="http://jiangjia.bitauto.com/" rel="nofollow">降价</a></dd>
+						<dd>
+							<a target="_blank" href="http://www.taoche.com/">二手车</a></dd>
+						<dd>
+							<a target="_blank" href="http://ask.bitauto.com/" rel="nofollow">问答</a></dd>
+						<dd>
+							<a target="_blank" href="http://koubei.bitauto.com/tree/" rel="nofollow">口碑</a></dd>
+						<dd>
+							<a target="_blank" href="http://car.bitauto.com/tree_baoyang/" rel="nofollow">养护</a></dd>
+						<dd>
+							<a target="_blank" href="http://baa.bitauto.com/" rel="nofollow">论坛</a></dd>
+						<dd>
+							<a target="_blank" href="http://zijia.bitauto.com/" rel="nofollow">自驾游</a></dd>
+						<dt>汽车论坛：</dt>
+						<dd>
+							<a target="_blank" href="http://baa.bitauto.com/foruminterrelated/brandforumlist.html"
+								rel="nofollow">车型论坛</a></dd>
+						<dd>
+							<a target="_blank" href="http://baa.bitauto.com/foruminterrelated/grouplist_3.html"
+								rel="nofollow">地区论坛</a></dd>
+						<dd class="noborder">
+							<a target="_blank" href="http://baa.bitauto.com/foruminterrelated/grouplist_2.html"
+								rel="nofollow">主题论坛</a></dd>
+						<dd>
+							<a target="_blank" href="http://baa.bitauto.com/special/huodong/" rel="nofollow">网友活动</a></dd>
+						<dd>
+							<a target="_blank" href="http://baa.bitauto.com/bao/" rel="nofollow">每周精选</a></dd>
+						<dt>实用工具：</dt>
+						<dd>
+							<a target="_blank" href="http://car.bitauto.com/chexingduibi/" rel="nofollow">车型对比</a></dd>
+						<dd>
+							<a target="_blank" href="http://car.bitauto.com/tupianduibi/" rel="nofollow">图片对比</a></dd>
+						<dd class="noborder">
+							<a target="_blank" href="http://car.bitauto.com/gouchejisuanqi/" rel="nofollow">购车计算器</a></dd>
+						<dd>
+							<a target="_blank" href="http://www.bitauto.com/zhuanti/daogou/gsqgl/" rel="nofollow">
+								购车流程</a></dd>
+						<dd>
+							<a target="_blank" href="http://car.bitauto.com/qichebaoxianjisuan/" rel="nofollow">
+								车险计算</a></dd>
+						<dd class="noborder">
+							<a target="_blank" href="http://car.bitauto.com/qichedaikuanjisuanqi/" rel="nofollow">
+								贷款计算器</a></dd>
+						<dd>
+							<a target="_blank" href="http://i.bitauto.com/apps/!jz/" rel="nofollow">用车记账</a></dd>
+						<dd>
+							<a target="_blank" href="http://www.bitauto.com/shouce/" rel="nofollow">驾驶手册</a></dd>
+						<dd class="noborder">
+							<a target="_blank" href="http://m.yiche.com/" rel="nofollow">手机易车网</a></dd>
+						<dt class="dtmore"><a target="_blank" href="http://www.bitauto.com/map/map.shtml"
+							rel="nofollow">更多&gt;&gt;</a></dt>
+					</dl>
+				</li>
+			</ul>
+			<!--end-->
+			<!--baa start-->
+			<ul id="divLoginDivID">
+			</ul>
+			<!--baa end-->
+		</div>
+		<!--网站导航 end-->
+	</div>
+</div>
+<script src="http://js.inc.baa.bitautotech.com/bitauto/bitauto.login.version4.js"
+	type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	Bitauto.Login.init("divLoginDivID");
+</script>

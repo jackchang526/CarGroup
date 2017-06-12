@@ -1,0 +1,16 @@
+﻿<dl class="cheyimai_text">
+	<dt>“车易卖”国内首家二手车估卖服务中心</dt>
+	<dd>
+		免费卖车－无手续费、过户费、无手续代理费</dd>
+	<dd>
+		预约到店－最快40分钟快速卖车</dd>
+	<dd>
+		现场交易－无需等待直接结算车款</dd>
+</dl>
+<div class="clear">
+</div>
+<div class=" fwbutbox2">
+	<span class="bor_b">
+		<input type="submit" class="select_b" value="我要卖车&gt;&gt;" id="sug_submit" onclick="location.href='http://www.cheyimai.com'">
+	</span>
+</div>

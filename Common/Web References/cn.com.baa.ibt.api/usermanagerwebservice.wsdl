@@ -1,0 +1,1857 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://i.bitauto.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://i.bitauto.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://i.bitauto.com/">
+      <s:element name="CreateUserCarInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Relation" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CarSerialId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CarBasicId" nillable="true" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUserCarInfoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DelUserCarInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Relation" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CarSerialId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CarBasicId" nillable="true" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelUserCarInfoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateUserCarInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="iUserId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="iRelation" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="iOldCarSerialId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="iOldCarBasicId" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="iNewCarSerialId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="iNewCarBasicId" nillable="true" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserCarInfoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CreateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="gender" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="provinceId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="cityId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="csId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="bsId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateUserResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RemoveUserStatusCache">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveUserStatusCacheResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateUserStatusCache">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="userStatus" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserStatusCacheResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserInfoById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserInfoByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserInfoByIdResult" type="tns:UserInfoDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserInfoDto">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserApp" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nickname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Truename" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Gender" type="tns:gender" />
+          <s:element minOccurs="0" maxOccurs="1" name="Birthday" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Credits" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Level" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FriendCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TraceCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProvinceId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProvinceName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CityId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CityName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SerialId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SerialName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsMobileBound" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEmailBound" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QQ" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MSN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DefaultAddress" type="tns:AddressZip" />
+          <s:element minOccurs="0" maxOccurs="1" name="Addresses" type="tns:ArrayOfAddressZip" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="gender">
+        <s:restriction base="s:string">
+          <s:enumeration value="Female" />
+          <s:enumeration value="Male" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="AddressZip">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Uid" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:enumAddressZipStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="enumAddressZipStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Deleted" />
+          <s:enumeration value="Normal" />
+          <s:enumeration value="Default" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfAddressZip">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AddressZip" nillable="true" type="tns:AddressZip" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserInfoByUsername">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserInfoByUsernameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserInfoByUsernameResult" type="tns:UserInfoDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserInfoByMobile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mobile" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserInfoByMobileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserInfoByMobileResult" type="tns:ArrayOfUserInfoDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUserInfoDto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserInfoDto" nillable="true" type="tns:UserInfoDto" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserInfoByTelephone">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="telephone" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserInfoByTelephoneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserInfoByTelephoneResult" type="tns:ArrayOfUserInfoDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserInfoByPhone">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserInfoByPhoneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserInfoByPhoneResult" type="tns:ArrayOfUserInfoDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserInfoById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dto" type="tns:UserInfoDto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserInfoByIdResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserByCarSerialId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="serialId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="relation" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="totalRows" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserByCarSerialIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserByCarSerialIdResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsersByCarAndCityRelation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="iCsid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="iCityid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="iRelation" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="iPageSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="iPageIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="iAvatarSize" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsersByCarAndCityRelationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUsersByCarAndCityRelationResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="iTotalRecordCount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserFavoriteForums">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserFavoriteForumsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserFavoriteForumsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserFieldsData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tblReturn">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserFieldsDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuildUserFieldsDataResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserAvatarData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dt">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserAvatarDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuildUserAvatarDataResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserIdentificationInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tblReturn">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserIdentificationInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuildUserIdentificationInfoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserIdentificationExpertsInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tblReturn">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserIdentificationExpertsInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuildUserIdentificationExpertsInfoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserBadgesCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tblReturn">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserBadgesCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuildUserBadgesCountResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserIdentificationCarDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tblReturn">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserIdentificationCarDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuildUserIdentificationCarDetailsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserBadgesDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tblReturn">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserBadgesDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuildUserBadgesDetailsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserIdentificationExpertsDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tblReturn">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserIdentificationExpertsDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuildUserIdentificationExpertsDetailsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserOwnCarData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tblReturn">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserOwnCarDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuildUserOwnCarDataResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserPlanCarData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tblReturn">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserPlanCarDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuildUserPlanCarDataResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserCollectCarData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tblReturn">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserCollectCarDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuildUserCollectCarDataResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserMicroBoCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tblReturn">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserMicroBoCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuildUserMicroBoCountResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserNewMicroBo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tblReturn">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserNewMicroBoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuildUserNewMicroBoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateMicrobo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Device" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateMicroboResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="BuildUserAddress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tblReturn">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserAddressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuildUserAddressResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserViewedCars">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tblReturn">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuildUserViewedCarsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuildUserViewedCarsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserInfoDto" nillable="true" type="tns:UserInfoDto" />
+      <s:element name="ArrayOfUserInfoDto" nillable="true" type="tns:ArrayOfUserInfoDto" />
+      <s:element name="DataTable" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateUserCarInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateUserCarInfo" />
+  </wsdl:message>
+  <wsdl:message name="CreateUserCarInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateUserCarInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DelUserCarInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:DelUserCarInfo" />
+  </wsdl:message>
+  <wsdl:message name="DelUserCarInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:DelUserCarInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserCarInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUserCarInfo" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserCarInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUserCarInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateUserSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateUser" />
+  </wsdl:message>
+  <wsdl:message name="CreateUserSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveUserStatusCacheSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveUserStatusCache" />
+  </wsdl:message>
+  <wsdl:message name="RemoveUserStatusCacheSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveUserStatusCacheResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserStatusCacheSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUserStatusCache" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserStatusCacheSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUserStatusCacheResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserInfoById" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserInfoByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByUsernameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserInfoByUsername" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByUsernameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserInfoByUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByMobileSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserInfoByMobile" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByMobileSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserInfoByMobileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByTelephoneSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserInfoByTelephone" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByTelephoneSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserInfoByTelephoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByPhoneSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserInfoByPhone" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByPhoneSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserInfoByPhoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserInfoByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUserInfoById" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserInfoByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUserInfoByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByCarSerialIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserByCarSerialId" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByCarSerialIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserByCarSerialIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersByCarAndCityRelationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsersByCarAndCityRelation" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersByCarAndCityRelationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsersByCarAndCityRelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserFavoriteForumsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserFavoriteForums" />
+  </wsdl:message>
+  <wsdl:message name="GetUserFavoriteForumsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserFavoriteForumsResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserFieldsDataSoapIn">
+    <wsdl:part name="parameters" element="tns:BuildUserFieldsData" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserFieldsDataSoapOut">
+    <wsdl:part name="parameters" element="tns:BuildUserFieldsDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserAvatarDataSoapIn">
+    <wsdl:part name="parameters" element="tns:BuildUserAvatarData" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserAvatarDataSoapOut">
+    <wsdl:part name="parameters" element="tns:BuildUserAvatarDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserIdentificationInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:BuildUserIdentificationInfo" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserIdentificationInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:BuildUserIdentificationInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserIdentificationExpertsInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:BuildUserIdentificationExpertsInfo" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserIdentificationExpertsInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:BuildUserIdentificationExpertsInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserBadgesCountSoapIn">
+    <wsdl:part name="parameters" element="tns:BuildUserBadgesCount" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserBadgesCountSoapOut">
+    <wsdl:part name="parameters" element="tns:BuildUserBadgesCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserIdentificationCarDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:BuildUserIdentificationCarDetails" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserIdentificationCarDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:BuildUserIdentificationCarDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserBadgesDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:BuildUserBadgesDetails" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserBadgesDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:BuildUserBadgesDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserIdentificationExpertsDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:BuildUserIdentificationExpertsDetails" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserIdentificationExpertsDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:BuildUserIdentificationExpertsDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserOwnCarDataSoapIn">
+    <wsdl:part name="parameters" element="tns:BuildUserOwnCarData" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserOwnCarDataSoapOut">
+    <wsdl:part name="parameters" element="tns:BuildUserOwnCarDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserPlanCarDataSoapIn">
+    <wsdl:part name="parameters" element="tns:BuildUserPlanCarData" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserPlanCarDataSoapOut">
+    <wsdl:part name="parameters" element="tns:BuildUserPlanCarDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserCollectCarDataSoapIn">
+    <wsdl:part name="parameters" element="tns:BuildUserCollectCarData" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserCollectCarDataSoapOut">
+    <wsdl:part name="parameters" element="tns:BuildUserCollectCarDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserMicroBoCountSoapIn">
+    <wsdl:part name="parameters" element="tns:BuildUserMicroBoCount" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserMicroBoCountSoapOut">
+    <wsdl:part name="parameters" element="tns:BuildUserMicroBoCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserNewMicroBoSoapIn">
+    <wsdl:part name="parameters" element="tns:BuildUserNewMicroBo" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserNewMicroBoSoapOut">
+    <wsdl:part name="parameters" element="tns:BuildUserNewMicroBoResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateMicroboSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateMicrobo" />
+  </wsdl:message>
+  <wsdl:message name="CreateMicroboSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateMicroboResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserAddressSoapIn">
+    <wsdl:part name="parameters" element="tns:BuildUserAddress" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserAddressSoapOut">
+    <wsdl:part name="parameters" element="tns:BuildUserAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserViewedCarsSoapIn">
+    <wsdl:part name="parameters" element="tns:BuildUserViewedCars" />
+  </wsdl:message>
+  <wsdl:message name="BuildUserViewedCarsSoapOut">
+    <wsdl:part name="parameters" element="tns:BuildUserViewedCarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateUserHttpPostIn">
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="gender" type="s:string" />
+    <wsdl:part name="provinceId" type="s:string" />
+    <wsdl:part name="cityId" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+    <wsdl:part name="csId" type="s:string" />
+    <wsdl:part name="bsId" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateUserHttpPostOut" />
+  <wsdl:message name="RemoveUserStatusCacheHttpPostIn">
+    <wsdl:part name="userId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RemoveUserStatusCacheHttpPostOut" />
+  <wsdl:message name="UpdateUserStatusCacheHttpPostIn">
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="userStatus" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserStatusCacheHttpPostOut" />
+  <wsdl:message name="GetUserInfoByIdHttpPostIn">
+    <wsdl:part name="userId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:UserInfoDto" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByUsernameHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByUsernameHttpPostOut">
+    <wsdl:part name="Body" element="tns:UserInfoDto" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByMobileHttpPostIn">
+    <wsdl:part name="mobile" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByMobileHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUserInfoDto" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByTelephoneHttpPostIn">
+    <wsdl:part name="telephone" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByTelephoneHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUserInfoDto" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByPhoneHttpPostIn">
+    <wsdl:part name="phone" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoByPhoneHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUserInfoDto" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByCarSerialIdHttpPostIn">
+    <wsdl:part name="serialId" type="s:string" />
+    <wsdl:part name="relation" type="s:string" />
+    <wsdl:part name="totalRows" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByCarSerialIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetUserFavoriteForumsHttpPostIn">
+    <wsdl:part name="userId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserFavoriteForumsHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="CreateMicroboHttpPostIn">
+    <wsdl:part name="userId" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="Device" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateMicroboHttpPostOut" />
+  <wsdl:portType name="UserManagerWebServiceSoap">
+    <wsdl:operation name="CreateUserCarInfo">
+      <wsdl:input message="tns:CreateUserCarInfoSoapIn" />
+      <wsdl:output message="tns:CreateUserCarInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DelUserCarInfo">
+      <wsdl:input message="tns:DelUserCarInfoSoapIn" />
+      <wsdl:output message="tns:DelUserCarInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserCarInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新人车关系</wsdl:documentation>
+      <wsdl:input message="tns:UpdateUserCarInfoSoapIn" />
+      <wsdl:output message="tns:UpdateUserCarInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUser">
+      <wsdl:input message="tns:CreateUserSoapIn" />
+      <wsdl:output message="tns:CreateUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserStatusCache">
+      <wsdl:input message="tns:RemoveUserStatusCacheSoapIn" />
+      <wsdl:output message="tns:RemoveUserStatusCacheSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserStatusCache">
+      <wsdl:input message="tns:UpdateUserStatusCacheSoapIn" />
+      <wsdl:output message="tns:UpdateUserStatusCacheSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoById">
+      <wsdl:input message="tns:GetUserInfoByIdSoapIn" />
+      <wsdl:output message="tns:GetUserInfoByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByUsername">
+      <wsdl:input message="tns:GetUserInfoByUsernameSoapIn" />
+      <wsdl:output message="tns:GetUserInfoByUsernameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByMobile">
+      <wsdl:input message="tns:GetUserInfoByMobileSoapIn" />
+      <wsdl:output message="tns:GetUserInfoByMobileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByTelephone">
+      <wsdl:input message="tns:GetUserInfoByTelephoneSoapIn" />
+      <wsdl:output message="tns:GetUserInfoByTelephoneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByPhone">
+      <wsdl:input message="tns:GetUserInfoByPhoneSoapIn" />
+      <wsdl:output message="tns:GetUserInfoByPhoneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserInfoById">
+      <wsdl:input message="tns:UpdateUserInfoByIdSoapIn" />
+      <wsdl:output message="tns:UpdateUserInfoByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByCarSerialId">
+      <wsdl:input message="tns:GetUserByCarSerialIdSoapIn" />
+      <wsdl:output message="tns:GetUserByCarSerialIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersByCarAndCityRelation">
+      <wsdl:input message="tns:GetUsersByCarAndCityRelationSoapIn" />
+      <wsdl:output message="tns:GetUsersByCarAndCityRelationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserFavoriteForums">
+      <wsdl:input message="tns:GetUserFavoriteForumsSoapIn" />
+      <wsdl:output message="tns:GetUserFavoriteForumsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserFieldsData">
+      <wsdl:input message="tns:BuildUserFieldsDataSoapIn" />
+      <wsdl:output message="tns:BuildUserFieldsDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserAvatarData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">数据中心:获取用户头像信息</wsdl:documentation>
+      <wsdl:input message="tns:BuildUserAvatarDataSoapIn" />
+      <wsdl:output message="tns:BuildUserAvatarDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserIdentificationInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">构造车主认证信息</wsdl:documentation>
+      <wsdl:input message="tns:BuildUserIdentificationInfoSoapIn" />
+      <wsdl:output message="tns:BuildUserIdentificationInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserIdentificationExpertsInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">构造专家认证信息</wsdl:documentation>
+      <wsdl:input message="tns:BuildUserIdentificationExpertsInfoSoapIn" />
+      <wsdl:output message="tns:BuildUserIdentificationExpertsInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserBadgesCount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取用户勋章数</wsdl:documentation>
+      <wsdl:input message="tns:BuildUserBadgesCountSoapIn" />
+      <wsdl:output message="tns:BuildUserBadgesCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserIdentificationCarDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">数据中心:获取验证车主的车型详细信息</wsdl:documentation>
+      <wsdl:input message="tns:BuildUserIdentificationCarDetailsSoapIn" />
+      <wsdl:output message="tns:BuildUserIdentificationCarDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserBadgesDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取用户勋章详细信息</wsdl:documentation>
+      <wsdl:input message="tns:BuildUserBadgesDetailsSoapIn" />
+      <wsdl:output message="tns:BuildUserBadgesDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserIdentificationExpertsDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取专家车主的详细信息</wsdl:documentation>
+      <wsdl:input message="tns:BuildUserIdentificationExpertsDetailsSoapIn" />
+      <wsdl:output message="tns:BuildUserIdentificationExpertsDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserOwnCarData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">数据中心:获取用户拥有车型信息</wsdl:documentation>
+      <wsdl:input message="tns:BuildUserOwnCarDataSoapIn" />
+      <wsdl:output message="tns:BuildUserOwnCarDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserPlanCarData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">数据中心:获取用户计划拥有车型信息</wsdl:documentation>
+      <wsdl:input message="tns:BuildUserPlanCarDataSoapIn" />
+      <wsdl:output message="tns:BuildUserPlanCarDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserCollectCarData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">数据中心:获取用户收藏车型信息</wsdl:documentation>
+      <wsdl:input message="tns:BuildUserCollectCarDataSoapIn" />
+      <wsdl:output message="tns:BuildUserCollectCarDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserMicroBoCount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">数据中心:获取用户语录数</wsdl:documentation>
+      <wsdl:input message="tns:BuildUserMicroBoCountSoapIn" />
+      <wsdl:output message="tns:BuildUserMicroBoCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserNewMicroBo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">数据中心:获取用户最新语录</wsdl:documentation>
+      <wsdl:input message="tns:BuildUserNewMicroBoSoapIn" />
+      <wsdl:output message="tns:BuildUserNewMicroBoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateMicrobo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">品牌车友之家:同步语录</wsdl:documentation>
+      <wsdl:input message="tns:CreateMicroboSoapIn" />
+      <wsdl:output message="tns:CreateMicroboSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserAddress">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取用户通讯地址</wsdl:documentation>
+      <wsdl:input message="tns:BuildUserAddressSoapIn" />
+      <wsdl:output message="tns:BuildUserAddressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserViewedCars">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取用户浏览车型</wsdl:documentation>
+      <wsdl:input message="tns:BuildUserViewedCarsSoapIn" />
+      <wsdl:output message="tns:BuildUserViewedCarsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="UserManagerWebServiceHttpPost">
+    <wsdl:operation name="CreateUser">
+      <wsdl:input message="tns:CreateUserHttpPostIn" />
+      <wsdl:output message="tns:CreateUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserStatusCache">
+      <wsdl:input message="tns:RemoveUserStatusCacheHttpPostIn" />
+      <wsdl:output message="tns:RemoveUserStatusCacheHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserStatusCache">
+      <wsdl:input message="tns:UpdateUserStatusCacheHttpPostIn" />
+      <wsdl:output message="tns:UpdateUserStatusCacheHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoById">
+      <wsdl:input message="tns:GetUserInfoByIdHttpPostIn" />
+      <wsdl:output message="tns:GetUserInfoByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByUsername">
+      <wsdl:input message="tns:GetUserInfoByUsernameHttpPostIn" />
+      <wsdl:output message="tns:GetUserInfoByUsernameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByMobile">
+      <wsdl:input message="tns:GetUserInfoByMobileHttpPostIn" />
+      <wsdl:output message="tns:GetUserInfoByMobileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByTelephone">
+      <wsdl:input message="tns:GetUserInfoByTelephoneHttpPostIn" />
+      <wsdl:output message="tns:GetUserInfoByTelephoneHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByPhone">
+      <wsdl:input message="tns:GetUserInfoByPhoneHttpPostIn" />
+      <wsdl:output message="tns:GetUserInfoByPhoneHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByCarSerialId">
+      <wsdl:input message="tns:GetUserByCarSerialIdHttpPostIn" />
+      <wsdl:output message="tns:GetUserByCarSerialIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserFavoriteForums">
+      <wsdl:input message="tns:GetUserFavoriteForumsHttpPostIn" />
+      <wsdl:output message="tns:GetUserFavoriteForumsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateMicrobo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">品牌车友之家:同步语录</wsdl:documentation>
+      <wsdl:input message="tns:CreateMicroboHttpPostIn" />
+      <wsdl:output message="tns:CreateMicroboHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserManagerWebServiceSoap" type="tns:UserManagerWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateUserCarInfo">
+      <soap:operation soapAction="http://i.bitauto.com/CreateUserCarInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelUserCarInfo">
+      <soap:operation soapAction="http://i.bitauto.com/DelUserCarInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserCarInfo">
+      <soap:operation soapAction="http://i.bitauto.com/UpdateUserCarInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUser">
+      <soap:operation soapAction="http://i.bitauto.com/CreateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserStatusCache">
+      <soap:operation soapAction="http://i.bitauto.com/RemoveUserStatusCache" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserStatusCache">
+      <soap:operation soapAction="http://i.bitauto.com/UpdateUserStatusCache" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoById">
+      <soap:operation soapAction="http://i.bitauto.com/GetUserInfoById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByUsername">
+      <soap:operation soapAction="http://i.bitauto.com/GetUserInfoByUsername" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByMobile">
+      <soap:operation soapAction="http://i.bitauto.com/GetUserInfoByMobile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByTelephone">
+      <soap:operation soapAction="http://i.bitauto.com/GetUserInfoByTelephone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByPhone">
+      <soap:operation soapAction="http://i.bitauto.com/GetUserInfoByPhone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserInfoById">
+      <soap:operation soapAction="http://i.bitauto.com/UpdateUserInfoById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByCarSerialId">
+      <soap:operation soapAction="http://i.bitauto.com/GetUserByCarSerialId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersByCarAndCityRelation">
+      <soap:operation soapAction="http://i.bitauto.com/GetUsersByCarAndCityRelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserFavoriteForums">
+      <soap:operation soapAction="http://i.bitauto.com/GetUserFavoriteForums" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserFieldsData">
+      <soap:operation soapAction="http://i.bitauto.com/BuildUserFieldsData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserAvatarData">
+      <soap:operation soapAction="http://i.bitauto.com/BuildUserAvatarData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserIdentificationInfo">
+      <soap:operation soapAction="http://i.bitauto.com/BuildUserIdentificationInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserIdentificationExpertsInfo">
+      <soap:operation soapAction="http://i.bitauto.com/BuildUserIdentificationExpertsInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserBadgesCount">
+      <soap:operation soapAction="http://i.bitauto.com/BuildUserBadgesCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserIdentificationCarDetails">
+      <soap:operation soapAction="http://i.bitauto.com/BuildUserIdentificationCarDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserBadgesDetails">
+      <soap:operation soapAction="http://i.bitauto.com/BuildUserBadgesDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserIdentificationExpertsDetails">
+      <soap:operation soapAction="http://i.bitauto.com/BuildUserIdentificationExpertsDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserOwnCarData">
+      <soap:operation soapAction="http://i.bitauto.com/BuildUserOwnCarData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserPlanCarData">
+      <soap:operation soapAction="http://i.bitauto.com/BuildUserPlanCarData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserCollectCarData">
+      <soap:operation soapAction="http://i.bitauto.com/BuildUserCollectCarData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserMicroBoCount">
+      <soap:operation soapAction="http://i.bitauto.com/BuildUserMicroBoCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserNewMicroBo">
+      <soap:operation soapAction="http://i.bitauto.com/BuildUserNewMicroBo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateMicrobo">
+      <soap:operation soapAction="http://i.bitauto.com/CreateMicrobo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserAddress">
+      <soap:operation soapAction="http://i.bitauto.com/BuildUserAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserViewedCars">
+      <soap:operation soapAction="http://i.bitauto.com/BuildUserViewedCars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UserManagerWebServiceSoap12" type="tns:UserManagerWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateUserCarInfo">
+      <soap12:operation soapAction="http://i.bitauto.com/CreateUserCarInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelUserCarInfo">
+      <soap12:operation soapAction="http://i.bitauto.com/DelUserCarInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserCarInfo">
+      <soap12:operation soapAction="http://i.bitauto.com/UpdateUserCarInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateUser">
+      <soap12:operation soapAction="http://i.bitauto.com/CreateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserStatusCache">
+      <soap12:operation soapAction="http://i.bitauto.com/RemoveUserStatusCache" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserStatusCache">
+      <soap12:operation soapAction="http://i.bitauto.com/UpdateUserStatusCache" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoById">
+      <soap12:operation soapAction="http://i.bitauto.com/GetUserInfoById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByUsername">
+      <soap12:operation soapAction="http://i.bitauto.com/GetUserInfoByUsername" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByMobile">
+      <soap12:operation soapAction="http://i.bitauto.com/GetUserInfoByMobile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByTelephone">
+      <soap12:operation soapAction="http://i.bitauto.com/GetUserInfoByTelephone" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByPhone">
+      <soap12:operation soapAction="http://i.bitauto.com/GetUserInfoByPhone" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserInfoById">
+      <soap12:operation soapAction="http://i.bitauto.com/UpdateUserInfoById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByCarSerialId">
+      <soap12:operation soapAction="http://i.bitauto.com/GetUserByCarSerialId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersByCarAndCityRelation">
+      <soap12:operation soapAction="http://i.bitauto.com/GetUsersByCarAndCityRelation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserFavoriteForums">
+      <soap12:operation soapAction="http://i.bitauto.com/GetUserFavoriteForums" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserFieldsData">
+      <soap12:operation soapAction="http://i.bitauto.com/BuildUserFieldsData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserAvatarData">
+      <soap12:operation soapAction="http://i.bitauto.com/BuildUserAvatarData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserIdentificationInfo">
+      <soap12:operation soapAction="http://i.bitauto.com/BuildUserIdentificationInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserIdentificationExpertsInfo">
+      <soap12:operation soapAction="http://i.bitauto.com/BuildUserIdentificationExpertsInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserBadgesCount">
+      <soap12:operation soapAction="http://i.bitauto.com/BuildUserBadgesCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserIdentificationCarDetails">
+      <soap12:operation soapAction="http://i.bitauto.com/BuildUserIdentificationCarDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserBadgesDetails">
+      <soap12:operation soapAction="http://i.bitauto.com/BuildUserBadgesDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserIdentificationExpertsDetails">
+      <soap12:operation soapAction="http://i.bitauto.com/BuildUserIdentificationExpertsDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserOwnCarData">
+      <soap12:operation soapAction="http://i.bitauto.com/BuildUserOwnCarData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserPlanCarData">
+      <soap12:operation soapAction="http://i.bitauto.com/BuildUserPlanCarData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserCollectCarData">
+      <soap12:operation soapAction="http://i.bitauto.com/BuildUserCollectCarData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserMicroBoCount">
+      <soap12:operation soapAction="http://i.bitauto.com/BuildUserMicroBoCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserNewMicroBo">
+      <soap12:operation soapAction="http://i.bitauto.com/BuildUserNewMicroBo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateMicrobo">
+      <soap12:operation soapAction="http://i.bitauto.com/CreateMicrobo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserAddress">
+      <soap12:operation soapAction="http://i.bitauto.com/BuildUserAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuildUserViewedCars">
+      <soap12:operation soapAction="http://i.bitauto.com/BuildUserViewedCars" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UserManagerWebServiceHttpPost" type="tns:UserManagerWebServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="CreateUser">
+      <http:operation location="/CreateUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserStatusCache">
+      <http:operation location="/RemoveUserStatusCache" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserStatusCache">
+      <http:operation location="/UpdateUserStatusCache" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoById">
+      <http:operation location="/GetUserInfoById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByUsername">
+      <http:operation location="/GetUserInfoByUsername" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByMobile">
+      <http:operation location="/GetUserInfoByMobile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByTelephone">
+      <http:operation location="/GetUserInfoByTelephone" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfoByPhone">
+      <http:operation location="/GetUserInfoByPhone" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByCarSerialId">
+      <http:operation location="/GetUserByCarSerialId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserFavoriteForums">
+      <http:operation location="/GetUserFavoriteForums" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateMicrobo">
+      <http:operation location="/CreateMicrobo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserManagerWebService">
+    <wsdl:port name="UserManagerWebServiceSoap" binding="tns:UserManagerWebServiceSoap">
+      <soap:address location="http://api.baa.bitauto.com/ibt/usermanagerwebservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UserManagerWebServiceSoap12" binding="tns:UserManagerWebServiceSoap12">
+      <soap12:address location="http://api.baa.bitauto.com/ibt/usermanagerwebservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UserManagerWebServiceHttpPost" binding="tns:UserManagerWebServiceHttpPost">
+      <http:address location="http://api.baa.bitauto.com/ibt/usermanagerwebservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

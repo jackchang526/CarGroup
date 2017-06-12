@@ -1,0 +1,11 @@
+[2013/11/26 14:21:22]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/pageserial/cssummary.aspx?id=2736
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.MakeFocusImages() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 270
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 90
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

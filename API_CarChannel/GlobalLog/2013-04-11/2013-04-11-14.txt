@@ -1,0 +1,80 @@
+[2013/4/11 14:20:41]  
+IP: 127.0.0.1
+Error in: http://api.car.bitauto.com/Exhibition/GetExhibitionLeftTreeJson.ashx?tagtype=chexing&eid=94&objid=0
+Error Message: 索引(从零开始)必须大于或等于零，且小于参数列表的大小。
+Stack Trace:    在 System.Text.StringBuilder.AppendFormat(IFormatProvider provider, String format, Object[] args)
+   在 System.String.Format(IFormatProvider provider, String format, Object[] args)
+   在 System.String.Format(String format, Object arg0)
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.GetUrl(String tagType, String argsA) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 206
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.GetMasterByPavilionId(Int32 pavilionId, Int32& isNode) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 135
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.GetPavilionElement() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 111
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.GenerateData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 51
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.ProcessRequest(HttpContext context) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 43
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2013/4/11 14:21:05]  
+IP: 127.0.0.1
+Error in: http://api.car.bitauto.com/Exhibition/GetExhibitionLeftTreeJson.ashx?tagtype=chexing&eid=94&objid=0
+Error Message: 索引(从零开始)必须大于或等于零，且小于参数列表的大小。
+Stack Trace:    在 System.Text.StringBuilder.AppendFormat(IFormatProvider provider, String format, Object[] args)
+   在 System.String.Format(IFormatProvider provider, String format, Object[] args)
+   在 System.String.Format(String format, Object arg0)
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.GetUrl(String tagType, String argsA) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 206
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.GetMasterByPavilionId(Int32 pavilionId, Int32& isNode) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 135
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.GetPavilionElement() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 111
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.GenerateData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 51
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.ProcessRequest(HttpContext context) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 43
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2013/4/11 14:21:16]  
+IP: 127.0.0.1
+Error in: http://api.car.bitauto.com/Exhibition/GetExhibitionLeftTreeJson.ashx?tagtype=chexing&eid=94&objid=0
+Error Message: 索引(从零开始)必须大于或等于零，且小于参数列表的大小。
+Stack Trace:    在 System.Text.StringBuilder.AppendFormat(IFormatProvider provider, String format, Object[] args)
+   在 System.String.Format(IFormatProvider provider, String format, Object[] args)
+   在 System.String.Format(String format, Object arg0)
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.GetUrl(String tagType, String argsA) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 206
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.GetMasterByPavilionId(Int32 pavilionId, Int32& isNode) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 135
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.GetPavilionElement() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 111
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.GenerateData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 51
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.ProcessRequest(HttpContext context) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 43
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2013/4/11 14:21:22]  
+IP: 127.0.0.1
+Error in: http://api.car.bitauto.com/Exhibition/GetExhibitionLeftTreeJson.ashx?tagtype=chexing&eid=94&objid=0
+Error Message: 索引(从零开始)必须大于或等于零，且小于参数列表的大小。
+Stack Trace:    在 System.Text.StringBuilder.AppendFormat(IFormatProvider provider, String format, Object[] args)
+   在 System.String.Format(IFormatProvider provider, String format, Object[] args)
+   在 System.String.Format(String format, Object arg0)
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.GetUrl(String tagType, String argsA) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 206
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.GetMasterByPavilionId(Int32 pavilionId, Int32& isNode) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 135
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.GetPavilionElement() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 111
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.GenerateData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 51
+   在 BitAuto.CarChannelAPI.Web.Exhibition.GetExhibitionLeftTreeJson.ProcessRequest(HttpContext context) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Exhibition\GetExhibitionLeftTreeJson.ashx.cs:行号 43
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2013/4/11 14:21:23]  
+IP: 127.0.0.1
+Error in: http://api.car.bitauto.com/favicon.ico
+Error Message: 未能执行 URL。
+Stack Trace:    在 System.Web.Hosting.ISAPIWorkerRequestInProcForIIS6.BeginExecuteUrl(String url, String method, String childHeaders, Boolean sendHeaders, Boolean addUserIndo, IntPtr token, String name, String authType, Byte[] entity, AsyncCallback cb, Object state)
+   在 System.Web.HttpResponse.BeginExecuteUrlForEntireResponse(String pathOverride, NameValueCollection requestHeaders, AsyncCallback cb, Object state)
+   在 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2013/4/11 14:23:14]  
+IP: 127.0.0.1
+Error in: http://api.car.bitauto.com/favicon.ico
+Error Message: 未能执行 URL。
+Stack Trace:    在 System.Web.Hosting.ISAPIWorkerRequestInProcForIIS6.BeginExecuteUrl(String url, String method, String childHeaders, Boolean sendHeaders, Boolean addUserIndo, IntPtr token, String name, String authType, Byte[] entity, AsyncCallback cb, Object state)
+   在 System.Web.HttpResponse.BeginExecuteUrlForEntireResponse(String pathOverride, NameValueCollection requestHeaders, AsyncCallback cb, Object state)
+   在 System.Web.DefaultHttpHandler.BeginProcessRequest(HttpContext context, AsyncCallback callback, Object state)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

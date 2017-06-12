@@ -1,0 +1,36 @@
+[2013/6/4 9:57:33]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/rs6/?ID=3824&&dfdf
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 WirelessWeb.CsSummary.InitSerialInfo() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CsSummary.aspx.cs:行号 250
+   在 WirelessWeb.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CsSummary.aspx.cs:行号 127
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 141
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2013/6/4 9:58:29]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/rs6/?ID=3824&&dddd
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 WirelessWeb.CsSummary.InitSerialInfo() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CsSummary.aspx.cs:行号 250
+   在 WirelessWeb.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CsSummary.aspx.cs:行号 127
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 141
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2013/6/4 9:59:48]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/rs6/?ID=3824&&ssssssssssssssss
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 WirelessWeb.CsSummary.InitSerialInfo() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CsSummary.aspx.cs:行号 250
+   在 WirelessWeb.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CsSummary.aspx.cs:行号 127
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 141
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

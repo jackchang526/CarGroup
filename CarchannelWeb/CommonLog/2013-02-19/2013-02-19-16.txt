@@ -1,0 +1,71 @@
+[2013/2/19 16:36:09]  无法排序，原因是 IComparer.Compare() 方法返回不一致的结果。一个值与本身比较不相等，或者一个值与另外一个值重复比较生成不同的结果。x:“”，x 的类型:“SerialListADEntity”，IComparer:“System.Array+FunctorComparer`1[BitAuto.CarChannel.Model.SerialListADEntity]”。   在 System.Collections.Generic.ArraySortHelper`1.Sort(T[] keys, Int32 index, Int32 length, IComparer`1 comparer)
+   在 System.Array.Sort[T](T[] array, Int32 index, Int32 length, IComparer`1 comparer)
+   在 System.Collections.Generic.List`1.Sort(Comparison`1 comparison)
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2571
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2523
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 16:36:37]  无法排序，原因是 IComparer.Compare() 方法返回不一致的结果。一个值与本身比较不相等，或者一个值与另外一个值重复比较生成不同的结果。x:“”，x 的类型:“SerialListADEntity”，IComparer:“System.Array+FunctorComparer`1[BitAuto.CarChannel.Model.SerialListADEntity]”。   在 System.Collections.Generic.ArraySortHelper`1.Sort(T[] keys, Int32 index, Int32 length, IComparer`1 comparer)
+   在 System.Array.Sort[T](T[] array, Int32 index, Int32 length, IComparer`1 comparer)
+   在 System.Collections.Generic.List`1.Sort(Comparison`1 comparison)
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2571
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2523
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 16:38:11]  无法排序，原因是 IComparer.Compare() 方法返回不一致的结果。一个值与本身比较不相等，或者一个值与另外一个值重复比较生成不同的结果。x:“”，x 的类型:“SerialListADEntity”，IComparer:“System.Array+FunctorComparer`1[BitAuto.CarChannel.Model.SerialListADEntity]”。   在 System.Collections.Generic.ArraySortHelper`1.Sort(T[] keys, Int32 index, Int32 length, IComparer`1 comparer)
+   在 System.Array.Sort[T](T[] array, Int32 index, Int32 length, IComparer`1 comparer)
+   在 System.Collections.Generic.List`1.Sort(Comparison`1 comparison)
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2571
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2523
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 16:52:24]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialListADData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2597
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2567
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2523
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 16:52:27]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialListADData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2597
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2567
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2523
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 16:52:29]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialListADData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2597
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2567
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2523
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 16:52:36]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialListADData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2597
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2567
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2523
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 16:53:45]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialListADData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2597
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2567
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2523
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 16:54:17]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialListADData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2597
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2567
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2523
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 16:54:33]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialListADData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2597
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2567
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2523
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 16:54:59]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialListADData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2597
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2567
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2523
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 16:55:35]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialListADData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2597
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2567
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2523
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 16:58:30]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialListADData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2597
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2567
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2523
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+

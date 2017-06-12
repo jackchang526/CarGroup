@@ -1,0 +1,121 @@
+﻿/* CSS Document */
+.line_box{ height:100%;}
+.col-average{ height:220px;}
+.infor_five{ height:155px;}
+.col-all .publicTab1{ margin-bottom:0;}
+.s_result_layer small{ font-size:12px;}
+.col-side .hot_height5{height:116px;overflow:hidden;}
+/*01、区域车型汇总-1级城市.html*/
+.new_cars{ height:172px;}
+.car_new{width:454px; float:left; height:120px;}
+.car_new_r{width:454px; float:left; height:120px;}
+
+.publicTab1 .cont{ float:right; width:237px; padding-top:8px;}
+.publicTab1 .cont dt{ display:inline; color:#fff; margin-right:3px;}
+.publicTab1 .cont dd{display:inline; margin-right:8px;}
+.publicTab1 .cont dd a{ color:#fff; font-family:"宋体";}
+
+/**/
+.mainlist_box ul.list_date{margin:6px 0 6px 15px;}
+
+.car_model_list{ width:724px; float:left; overflow:hidden; height:124px; border-right:1px solid #DCDDDD;}
+.car_model_list ul{ border-top:1px solid #fff;border-bottom:1px solid #DCDDDD; height:27px; background:#EEF2F5; width:728px; *overflow:hidden;}
+.car_model_list ul li{ float:left; border-left:1px solid #fff;border-right:1px solid #DCDDDD; text-align:center;}
+.car_model_list ul li.current{ background:#fff;height:28px;position:relative;}
+.car_model_list ul li a{ display:block; height:25px; font-weight:bold; line-height:25px; padding:0 12px;float:left;}
+.car_model_list ul li.current a{ color:#CC0000;}
+.car_model_list dl{ height:32px; background:url(http://car.bitauto.com/car/images/icon_s_dot.png) repeat-x scroll 0 100%; overflow:hidden;}
+.car_model_list dl.fist{ background:#F8F8F8 url(http://car.bitauto.com/car/images/icon_s_dot.png) repeat-x scroll 0 100%;}
+.car_model_list dl a{ line-height:32px;}
+.car_model_list dl dt{ float:left; background:url(http://img1.baa.com.cn/webpic/review/200907/menu_nav_dt.gif) no-repeat 100% 50%; width:80px; text-align:center; margin-right:10px;}
+.car_model_list dl dd{ float:left; padding-right:20px;}
+.car_model_list dl dd.more{ position:inherit; top:auto; right:auto;}
+.car_model_list dl dd.more a{ font-family:"宋体";}
+.best_car{ height:124px;width:223px; float:right;}
+.best_car h3{ margin:8px 0 0 10px; font-weight:bold;background:none;border:0;font-size:12px;padding:0; line-height:19px; height:19px; width:auto;}
+.best_car img{ float:left; display:inline; margin:7px 10px 0 10px;}
+.best_car ul{ float:left; margin:7px 0 0;}
+.best_car ul li{ width:73px; height:21px; border:1px solid #BCBDBD; margin:0 0 5px;}
+.best_car ul li a{ display:block; border:1px solid #fff;text-align:center; background:url(http://img2.baa.com.cn/webpic/review/200907/repeat_1px.gif) repeat-x 0 -49px; height:19px; line-height:19px;}
+.best_car ul li a:hover{ text-decoration:none;}
+
+
+.sp_tab .btn{float:right;padding:5px 7px 0 0;}
+.sp_tab .btn li{margin:0 3px 0 0;width:68px;float:right;background:url(http://car.bitauto.com/car/images/bg-icons.gif) 0 -3033px;text-indent:14px;height:20px; padding: 4px 0 0 0; display: inline;}
+.bt_page .end{border:none;background:none;}
+
+.allTab{width:950px;float:left;background:url(http://car.bitauto.com/car/images/bg-tab2.gif);height:38px;overflow:hidden;margin-top:10px;}
+.allTab .tab{padding:3px 0 0 10px;}
+.allTab .tab li{float:left;padding:0 0 0 1px;margin:0 5px 0 0;display:inline;background:url(http://car.bitauto.com/car/images/bg-tab.gif) left bottom;font-size:14px;line-height:35px;height:35px;}
+.allTab .tab li a{float:left;padding:0 15px;background:url(http://car.bitauto.com/car/images/bg-tab.gif) right bottom;color:#fff;height:35px;font-weight:bold;}
+.allTab .tab li a:visited{color:#fff;}
+.allTab .tab .on{background-position:left top;}
+.allTab .tab .on a{background-position:right top;color:#000;}
+.allTab .tab .on a:visited{color:#000;}
+
+.byletters{float:left;width:948px;border-top:none;}
+.car_top_tit{padding:19px 0 8px 0;float:left;width:948px;text-align:center;}
+.car_top_tit ul{width:660px;margin:auto;}
+.car_top_tit li{float:left;margin:0 5px 0 0;width:20px;display:inline;color:#868686;background:url(http://car.bitauto.com/car/images/bg-icons.gif) 0 -1506px;font-weight:bold;font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;height:30px;}
+.car_top_tit .nolink{background:url(http://car.bitauto.com/car/images/bg-icons.gif) 0 -1621px;}
+.car_top_tit a{width:16px;margin:auto;display:block;text-align:center;height:16px;}
+.byletters_list{float:left;width:948px; overflow: hidden;}
+.byletters_list .fir{ border: none;margin-top:-10px;  }
+.byletters_list dt{float:left;width:948px;background:#F1F6F9;line-height:36px;height:36px;position:relative;top:-1px;z-index:11;}
+.byletters_list dt label{float:left;padding:0 0 0 8px;color:#c00;font-family:Arial,Helvetica,sans-serif;font-weight:bold;font-size:16px;text-transform:uppercase;}
+.byletters_list dt .gotop{float:right;padding:0 8px 0 0;font-family:"宋体";}
+.byletters_list ul{float:left;width:930px;padding:0 0 0 22px;background:url(../images/bg-byletters-list.gif);}
+.byletters_list li{width:170px;padding:8px 0 5px 8px;float:left;height:20px;overflow:hidden; border-bottom:1px dashed #DEE3E7;}
+.byletters_list li a{font-weight:bold; float:left;}
+.byletters_list li a.new{ background:url(http://car.bitauto.com/car/images/new.gif) no-repeat 0 0; display:block; width:21px; height:13px; line-height:100px; overflow:hidden; margin-top:3px;}
+.line_box .byletters_list li div a{margin:0 10px 0 0;color:#666;font-weight:normal;text-decoration:underline;}
+.line_box .byletters_list .classify{padding:0 0 0 5px;color:#666;font-weight:normal;}
+.byletters_list .hideline{float:left;margin-top:-1px;width:100%;background:#fff;font-size:0;height:1px;position:relative;z-index:11;overflow:hidden;}
+.wither{background:#FFFFFF none repeat scroll 0 0;height:122px;left:461px;overflow:hidden;position:absolute;top:29px;width:8px;}
+/*02、区域车型汇总-2级城市.html*/
+.box_left{ float:left; width:468px; clear:none;}
+.box_right{ float:right; width:468px; clear:none;}
+.price_tab_table table thead th, .price_tab_table table tbody td{ background-position:0 25px;padding:4px; color:#666;}
+.price_tab_table table thead th{padding:5px 4px;}
+.price_tab_table table tbody td strong{ font-weight:bold;}
+.price_tab_table table tbody td.changshang{ color:#c00;}
+.price_tab_table table thead th.right,.price_tab_table table tbody td.right{ text-align:right;}
+.price_tab_table {height:131px;}
+.h3_tab{ left:385px;}
+.h3_tab ul li{ padding:0 25px;}
+.jxs_h{ height:294px;}
+.table_dealer .review a{ background:url(http://car.bitauto.com/car/images/review.gif) no-repeat 0px 3px; padding-left:12px; text-decoration:underline;}
+
+.table_dealer td strong{ font-weight:bold; }
+.table_dealer td.glo{ color:#666;}
+.table_dealer td.dealer_price a:link,.table_dealer td.dealer_price a:visited{ font-weight:700; color:#c00;}
+/*new_essay05、新闻作者页面.html*/
+.col-side .line_box h3{ width:auto;}
+.new_essay{ margin:10px 20px;}
+.new_essay li{ background:url(http://car.bitauto.com/car/images/icon_s_dot.png) repeat-x scroll 0 100%; padding:15px 0;}
+.new_essay li h4{ position:relative; width:678px;}
+.new_essay li h4 a{ font-size:14px; font-weight:bold;}
+.new_essay li h4 small{ font-size:12px; right:0px; top:0; position:absolute; color:#666;}
+.new_essay li p{ margin:7px 0 0;font-size:14px; text-indent:2em; line-height:22px;}
+.new_essay li p a{ font-family:"宋体"; font-size:12px;}
+
+.author{ margin:10px 0 10px 10px;height:133px; overflow:hidden;}
+.author img{ border:1px solid #BFBFBF; padding:1px; background:#fff; float:left; margin-right:10px;}
+.author ul{}
+.author ul li{ color:#666;}
+.author ul li label{ color:#000;}
+
+.questions_answers{ width:218px; overflow:hidden;}
+.questions_answers ul{ margin:0 5px; padding:10px 5px 13px;  *padding:10px 5px 3px;background:url(http://car.bitauto.com/car/images/icon_s_dot.png) repeat-x scroll 0 100%;}
+.questions_answers ul li{ clear:both; color:#666;overflow:hidden; height:100%;}
+.questions_answers ul li.q{ color:#164A84;}
+.questions_answers ul li label{ display:block; float:left;}
+.questions_answers ul li p{ width:174px; float:left;}
+.questions_answers .ask_more{ background:#fff; border-top:1px solid #DEE3E7; margin-top:-1px; padding:20px 0 20px 36px;}
+.questions_answers .ask_more input{ width:86px; height:26px; background:url(http://car.bitauto.com/car/images/question.gif) no-repeat 0 0; border:0; color:#fff; font-weight:bold; font-size:14px; margin-right:15px;}
+.questions_answers .ask_more a{ text-decoration:underline;}
+
+.table_dealer td.mid{ text-align:center;}
+.line_box .table_style{ width:948px;}
+/* 1228 */
+.table_dealer td .icon_cal{ background: url(http://image.bitautoimg.com/uimg/car/images/bg-calculator.png) no-repeat;width:12px;height: 14px; display: inline-block;margin:0 0 0 5px; float:none }

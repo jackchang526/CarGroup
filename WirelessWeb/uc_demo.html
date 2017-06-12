@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		function addEvent(elm, type, fn, useCapture) {
+			if (!elm) return;
+			if (elm.addEventListener) {
+				elm.addEventListener(type, fn, useCapture);
+				return true;
+			} else if (elm.attachEvent) {
+				var r = elm.attachEvent('on' + type, fn);
+				return r;
+			} else {
+				elm['on' + type] = fn;
+			}
+		}
+		var msgObj = { 'not android uc': '不是 Android 版 UC', 'not exist': '不存在', 'browser version error': '浏览器版本错误', 'already exist': '已经存在', 'cancle': '取消添加', 'close': '关闭iframe窗口', 'success': '成功添加', '': '' };
+		addEvent(window, "message", function (event) {
+			if (event.origin !== "http://app.uc.cn") {
+				return;
+			}
+			var data = event.data,
+			 msg = data.message,
+			 type = data.type;
+
+			var uc_iframe = document.getElementById("uc_iframe");
+			if (msg != 'already exist') {
+				uc_iframe.style.display = "block";
+			}
+			if (type == 1) {
+				uc_iframe.style.display = "none";
+			}
+			if (msg != '')
+				alert(msgObj[msg]);
+		}, false);
+		//var msg = 'hello！&nbsp;&nbsp; ' + (new Date().getTime());
+		//window.postMessage(msg, 'http://localhost:26369/iframe.html?v');
+	</script>
+	<iframe id="uc_iframe" src="http://app.uc.cn/appstore/AppCenter/frame?uc_param_str=nieidnutssvebipfcp&api_ver=2.0&id=198"
+		width="300" height="160" style="display: none;"></iframe>
+</body>
+</html>

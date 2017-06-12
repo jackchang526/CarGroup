@@ -1,0 +1,65 @@
+﻿<script type="text/javascript">
+    var ChannelLOGCollector = {
+        area: '201',
+        mainbrand: '',
+        brand: '',
+        serial: '',
+        car: '',
+        product: ''
+    };
+    if (typeof (bit_locationInfo) != "undefined" && typeof (bit_locationInfo.cityId) != "undefined") {
+        ChannelLOGCollector.area = bit_locationInfo.cityId;
+    }
+    if (typeof (CarCommonBSID) != "undefined") {
+        ChannelLOGCollector.mainbrand = CarCommonBSID;
+    }
+    if (typeof (CarCommonCBID) != "undefined") {
+        ChannelLOGCollector.brand = CarCommonCBID;
+    }
+    if (typeof (CarCommonCSID) != "undefined") {
+        ChannelLOGCollector.serial = CarCommonCSID;
+    }
+    if (typeof (CarCommonCarID) != "undefined") {
+        ChannelLOGCollector.car = CarCommonCarID;
+    }
+</script>
+<script type="text/javascript" language="javascript">
+    // 统计
+    var XCWebLogCollector = { area: '201' };
+    if (typeof (bit_locationInfo) != "undefined" && typeof (bit_locationInfo.cityId) != "undefined") {
+        XCWebLogCollector.area = bit_locationInfo.cityId;
+    }
+    if (typeof (CarCommonBSID) != "undefined") {
+        XCWebLogCollector.mainbrand = CarCommonBSID;
+    }
+    if (typeof (CarCommonCBID) != "undefined") {
+        XCWebLogCollector.brand = CarCommonCBID;
+    }
+    if (typeof (CarCommonCSID) != "undefined") {
+        XCWebLogCollector.serial = CarCommonCSID;
+    }
+    if (typeof (CarCommonCarID) != "undefined") {
+        XCWebLogCollector.car = CarCommonCarID;
+    }
+</script>
+<!-- cig start -->
+<script type="text/javascript">
+    (function () {
+        var dc = document.createElement('script'); dc.type = 'text/javascript'; dc.async = true;
+        dc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dcjs.cig.com.cn/dc.js?10';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(dc, s);
+    })();
+</script>
+<!-- cig end -->
+<!--#include file="~/include/special/2010/00001/2016_lanmuCommon_treefooter_Manual.shtml"-->
+<script type="text/javascript" charset="utf-8" src="http://img4.bitautoimg.com/uimg/car/js/tabs_20140512_4.js"></script>
+<!--Common JS-->
+<script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
+<!-- START OF SmartSource Data Collector TAG -->
+<script src="http://image.bitautoimg.com/bt/webtrends/dcs_tag_cars4.js" type="text/javascript"></script>
+<!-- END OF SmartSource Data Collector TAG -->
+<!-- bitauto ADstat begin -->
+<script type="text/javascript">
+    document.write('<scri' + 'pt type="text/javascript" src="http://gstat.bitauto.com/?r=' + Math.random() + '"></scr' + 'ipt>');
+</script>
+<!-- bitauto ADstat end -->

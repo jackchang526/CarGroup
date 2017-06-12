@@ -1,0 +1,31 @@
+﻿<!--footer start-->
+<div id="footer0904" class="footer0904_2">
+    <div class="footer_c">购车咨询：4008-898-198（工作日 9:00-17:30） 传真：010-68492726 </div>
+    <div class="footer_about">
+        <ul class="about">
+            <li class="first"><a href="http://corp.bitauto.com/" target="_blank">关于易车</a></li>
+            <li><a href="http://corp.bitauto.com/business/" target="_blank">业务介绍</a></li>
+            <li><a href="http://corp.bitauto.com/news/" target="_blank">易车动态</a></li>
+
+            <li><a href="http://corp.bitauto.com/job/" target="_blank">加入易车</a></li>
+            <li><a href="http://corp.bitauto.com/about/contact-us.shtml" target="_blank">联系我们</a></li>
+            <li><a href="http://corp.bitauto.com/about/legal-notices.shtml" target="_blank">法律声明</a></li>
+            <li><a href="http://ir.bitauto.com/" target="_blank">Investor Relations</a></li>
+            <li><a href="http://www.bitauto.com/feedback/" target="_blank">我要提意见</a></li>
+            <li class="last"><a href="http://ued.bitauto.com/" target="_blank">用户体验中心</a></li>
+
+        </ul>
+    </div>
+
+    <div class="footer_text">
+        <p>CopyRight &copy; 2000-2012 BitAuto,All Rights Reserved 版权所有 北京易车互联信息技术有限公司</p>
+    </div>
+</div>
+<!--footer end-->
+
+<script src="http://js.inc.baa.bitautotech.com/c/c.js?s=Bitauto.Login.Version2" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	Bitauto.Login.init("divLoginDivID");
+</script>
+<!--AD-->
+<script type="text/javascript" src="http://gimg.bitauto.com/js/senseNew.js"></script>

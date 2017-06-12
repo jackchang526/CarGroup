@@ -1,0 +1,26 @@
+﻿<div class="line_box">
+	<h3>
+		<span>热门安全技术</span></h3>
+	<div class="jishu_list">
+		<ul>
+			<li><a href="http://news.bitauto.com/anquan/20120221/1705601655.html" target="_blank">
+				安全带</a></li>
+			<li><a href="http://news.bitauto.com/anquan/20111129/1805529546.html" target="_blank">
+				儿童座椅强制认证</a></li>
+			<li><a href="http://news.bitauto.com/anquan/20110819/0905441859.html" target="_blank">
+				开锁解码器</a></li>
+			<li><a href="http://news.bitauto.com/anquan/20100907/0905210916.html" target="_blank">
+				安全气囊保质期</a></li>
+			<li><a href="http://news.bitauto.com/anquan/20091116/0705060835.html" target="_blank">
+				气囊式安全带</a></li>
+			<li><a href="http://news.bitauto.com/anquan/20091015/1705049389.html" target="_blank">
+				GPS技术预防交通事故</a></li>
+			<li><a href="http://news.bitauto.com/anquan/20091014/1505048800.html" target="_blank">
+				雷达预测撞击</a></li>
+		</ul>
+	</div>
+	<div class="more">
+		<a href="#" target="_blank">更多&gt;&gt;</a></div>
+	<div class="clear">
+	</div>
+</div>

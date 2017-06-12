@@ -1,0 +1,794 @@
+﻿<link rel="stylesheet" type="text/css" href="http://image.bitautoimg.com/uimg/css/0016/car_video_style-20131202132245.css"
+	media="all" />
+</head>
+<link href="http://192.168.0.10:8888/工作/前端/D_车型/综述页/2013综述页其他页面扁平/new/车型公共调整.css"
+	rel="stylesheet" type="text/css" />
+<link href="http://192.168.0.10:8888/工作/前端/D_车型/综述页/2013综述页其他页面扁平/new/头部筛选分类.css"
+	rel="stylesheet" type="text/css" />
+<link href="http://192.168.0.10:8888/工作/前端/D_车型/综述页/2013车型综述页/互联互通去掉更多样式.css" rel="stylesheet"
+	type="text/css" />
+<style type="text/css">
+
+
+<!-- 用到了文化频道公共块 。 用到了翻页公共块。新闻编辑区域块。-->
+
+
+
+/*============================文化频道片段============================*/
+.news_con {color:#333333;float:left;overflow:hidden;width:730px;}
+#content_bit {border:1px solid #E9E9E9;border-top:0;margin:0pt 0pt 10px;padding:4px 0pt 0pt;width:728px;}
+.news_side {float:right;overflow:hidden;width:220px;}
+.news_side .line_box{border:0;}
+.news_side .line_box h3{background:#F7F7F7; border-bottom:0;}
+.news_side .line_box h3 span{border:0;height:28px;color:#333; padding:0 10px; font-family:microsoft yahei; background:none; }
+.news_side .line_box .hot_ranking{ border:1px solid #e9e9e9;background: url(http://image.bitauto.com/uimg/index120401/images2/icon_paixu.png) no-repeat scroll 10px 8px; height:297px;}
+.news_side .line_box .hot_ranking li{ height:29px; line-height:29px;}
+.news_side .line_box .hot_ranking a,.news_side .line_box .hot_ranking a:link{color:#333;}
+.news_side .line_box .hot_ranking a:hover{color:#c00;}
+
+.bt_smenuNew .bt_navigatev1New div{}
+.bt_smenuNew .bt_navigatev1New div em{color:#333; font-weight:bold;}
+.whpdbox{ height:47px; border:1px solid #e9e9e9; border-top:2px solid #577b95; position:relative; background:#f7f7f7;}
+.whpdbox h3{ height:47px; line-height:47px; padding:0 0 0 20px;}
+.whpdbox h3 span{ font-family:microsoft yahei; font-weight:bold; font-size:18px;color:#333;}
+.whpdbox .more{ color:#999;position: absolute;top:17px;right:20px; font-family:microsoft yahei;}
+.whpdbox .more em{ color:#999; font-weight:normal;}
+
+.tuwenlistbox{ padding:10px 19px;}
+.tuwenlistbox ul li{border-bottom:1px solid #e9e9e9; padding:15px 0; overflow:hidden; zoom:1;}
+.tuwenlistbox ul li.online{border-bottom:0;}
+.tuwenlistbox ul li.last{border-bottom:0;}
+.tuwenlistbox ul li a.img{ display:block; width:210px; height:140px; overflow:hidden; float:left; margin:0 20px 0 0; display:inline; }
+.tuwenlistbox ul li img{ border:0; padding:0;}
+.tuwenlistbox ul li img:hover{
+	animation: changecolor 0.5s; 
+-moz-animation: changecolor 0.5s; /* Firefox */ 
+-webkit-animation: changecolor 0.5s; /* Safari and Chrome */ 
+-o-animation: changecolor 0.5s; /* Opera */
+-moz-box-shadow:0px 0px 4px #b5b5b5; 
+-webkit-box-shadow:0px 0px 4px #b5b5b5; 
+box-shadow:0px 0px 4px #b5b5b5;
+border-color: #b5b5b5;}
+
+.textcont{ float:left; width:460px;}
+.textcont h3{ font-size:22px; font-family:microsoft yahei; font-weight:bold; padding:0 0 5px; line-height:25px; height:25px; border:none; background:none;}
+.textcont h3 a{ color:#333;}
+.textcont h3 a:hover{ color:#c00;}
+.textcont p.info{ color:#ccc; padding:5px 0 0 0; font-family:microsoft yahei; }
+.textcont p.info span{ margin:0 10px 0 0;color:#999;}
+.textcont p.info em{ color:#999;}
+.textcont p.text{ padding:12px 0 0; line-height:22px;}
+.textcont p.cont{padding:8px 0 0; line-height:23px; color:#333;}
+.tuwenlistbox_two .textcont{ width:auto;}
+
+#content_bit .the_pages{ background:none;border-top:0;height:48px;padding:20px 0pt 35px;}
+.the_pages div a.linknow {background:none; border:0;}
+.the_pages div span.num { border:0;}
+
+
+.col-side .select_car_l{border-width:0 1px;margin-bottom:0;background:#fff}
+.select_tool{height:262px;}
+.select_tool .carselect_icon ul li{margin:10px 0px 10px 8px}
+.carselect_icon{padding:0 3px 10px;border:1px solid #e9e9e9; overflow:hidden; zoom:1;}
+.carselect_icon ul li{float:left;width:60px;height:82px;overflow:hidden;background:url(http://image.bitauto.com/uimg/index120401/images/bitauto_bg130502.png) -149px -665px no-repeat;text-align:center;margin:12px 1px 0 10px;display:inline;position:relative}
+.carselect_icon ul li a{display:block;width:60px;height:18px;padding:65px 0 0 0;cursor:pointer}
+.carselect_icon ul li a,.carselect_icon ul li a:link{ color:#333;}
+.carselect_icon ul li a:hover{ color:#c00;}
+.carselect_icon ul li a span{border:1px #efefef solid;position:absolute;left:0;top:0;width:58px;height:58px;display:block;overflow:hidden}
+.carselect_icon ul li a:hover span{border:1px #164a84 solid}
+.carselect_icon ul li.chedb{background-position:-148px -664px}
+.carselect_icon ul li.tudb{background-position:-218px -664px}
+.carselect_icon ul li.koubeidb{background-position:-288px -664px}
+.carselect_icon ul li.chyg{background-position:-356px -664px}
+.carselect_icon ul li.weizhang{background-position:-426px -664px}
+.carselect_icon ul li.chgj{background-position:-494px -664px}
+.carselect_icon ul li.qkjs{background-position:-148px -792px}
+.carselect_icon ul li.gcjs{background-position:-218px -792px}
+.carselect_icon ul li.gcbx{background-position:-288px -792px}
+
+
+
+@keyframes changecolor {  from {
+ border-color: #e9e9e9;;box-shadow:none;
+}
+to { border-color: #b5b5b5;box-shadow:0px 0px 5px #b5b5b5;}
+}
+@-moz-keyframes changecolor { /* Firefox */  from {
+ border-color: #e9e9e9;;box-shadow:none;
+}
+to { border-color: #b5b5b5;box-shadow:0px 0px 5px #b5b5b5 ;}
+}
+@-webkit-keyframes changecolor { /* Safari and Chrome */  from {
+ border-color: #e9e9e9;;box-shadow:none;
+}
+to { border-color: #b5b5b5;box-shadow:0px 0px 5px #b5b5b5;}
+}
+@-o-keyframes changecolor { /* Opera */  from {
+ border-color: #e9e9e9;;box-shadow:none;
+}
+to { border-color: #b5b5b5;box-shadow:0px 0px 5px #b5b5b5;}
+}
+
+
+
+/*================dl change=================*/
+
+@keyframes changedl {  from {
+ background: #f7f7f7;
+border-top: 1px #e9e9e9 solid;
+}
+to { background: #cb0201;
+border-top: 1px #cb0201 solid;
+}
+}
+@-moz-keyframes changedl { /* Firefox */  from {
+ background: #f7f7f7;
+border-top: 1px #e9e9e9 solid;
+}
+to { background: #cb0201;
+border-top: 1px #cb0201 solid;
+ }
+}
+@-webkit-keyframes changedl { /* Safari and Chrome */  from {
+ background: #f7f7f7;
+border-top: 1px #e9e9e9 solid;
+}
+to { background: #cb0201;
+border-top: 1px #cb0201 solid;
+}
+}
+@-o-keyframes changedl { /* Opera */  from {
+ background: #f7f7f7;
+border-top: 1px #e9e9e9 solid;
+}
+to { background: #cb0201;
+border-top: 1px #cb0201 solid;
+ }
+}
+/* CSS Document */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 引用了翻页片断*/
+.the_pages{clear:both;position:relative;height:63px;font-family:simSum;overflow:hidden; /*border-top:1px #e9e9e9 solid; margin-top:10px;*/}.the_pages div{float:left;position:relative;left:50%;padding:20px 0}.the_pages div a:link,.the_pages div a:link{color:#333}.the_pages div a:hover{color:#fefefe}.the_pages div a,.the_pages div span,.the_pages div em{position:relative;left:-50%;display:block;float:left;margin:0 0 0 5px;height:18px;*height:17px;width:auto;padding:2px 7px 2px 8px;*padding:3px 7px 2px 8px;white-space:nowrap;text-align:center;border:1px solid #ebebeb;font-size:12px;line-height:18px;text-decoration:none;overflow:hidden}.the_pages div em{border:1px solid #fff}.the_pages div input{position:relative;right:50%;float:left;margin:0 4px 0 0;height:16px;line-height:20px;overflow:hidden;font-size:12px;padding:2px}.the_pages div input.text{width:22px;margin:0 5px}.the_pages div span.num{border:1px #fff solid;border-width:1px 0;background:0;color:#000;padding:2px 0 2px 15px}.the_pages div span.numl{padding:2px 5px 2px 0;margin-left:0}.the_pages div span{border:1px solid #ccc;background:#fff;text-decoration:none;color:#333}.the_pages div a:link{background:#fafafa}.the_pages div a:visited{background:#fafafa}.the_pages div a:hover{border:1px solid #c00;background:#fff;text-decoration:none;color:#c00}.the_pages div a.linknow{border:1px #fff solid;background-color:#fff;color:#333;font-weight:bold}.the_pages div span.nolink{color:#ccc}.the_pages_keyboard{color:#999;text-align:center;margin:-9px 0 0 0;font-size:12px}
+
+
+/*接下来要看 公共块*/
+.next_keywords{ padding:0 15px; height:101px; overflow:hidden;}
+.next_keywords li{ height:33px; line-height:33px; float:left; width:220px;
+padding: 0 0 0 8px;
+background: url(http://image.bitautoimg.com/themes/2009/common/images/icon_dot.png) 0 16px no-repeat;
+border-bottom:1px #e9e9e9 solid;
+}
+
+
+/*seo块*/
+.car-seo-block{overflow:hidden;padding:5px 15px}.car-seo-block ul{overflow:hidden;height:107px}.car-seo-block ul li{float:left;width:76px;height:26px;border-bottom:1px solid #E9E9E9;margin-top:9px}
+
+
+
+
+/*右侧块*/
+/*========================右侧=======================*/
+
+/*看了还看*/
+.car_read{ padding:0 10px;}
+.car_read dl{ padding:5px 0; height:60px; border-bottom:1px #e9e9e9 solid;}
+.car_read dl dt{ margin:0 10px 0 0; float:left;}
+.car_read dl dd{ float:left; width:95px; line-height:22px; height:22px; color:#999;}
+.car_read dl dd.car_read_n{ margin:10px 0 0 0}
+.car_read dl.last{ border:none;}
+
+/*车型对比*/
+.carContrast { margin: 5px 10px; position: relative; height: auto; overflow: hidden; zoom: 1 }
+.carContrast li {  float: left; height: 29px; line-height: 31px; overflow: hidden; position: relative; width: 100% ; border-bottom:1px #e9e9e9 solid;}
+.carContrast em { float: left; overflow: hidden; width: 165px; color: #666 }
+.carContrast li a { margin: 0; display: inline; float: left; height: 29px; line-height: 29px }
+.carContrast li span { position: absolute; right: 0; top:1px; font-family: "宋体" }
+.carContrast li s { text-decoration: none; color: #c00; font-weight:bold; }
+.carContrast li.last { border:none;}
+
+/*其他车型*/
+.col-side .list {
+clear: both;
+margin: 5px 10px;
+}
+.col-side .list li {
+border-bottom:1px #e9e9e9 solid;
+padding: 0;
+height: 29px;
+line-height: 31px;
+overflow: hidden;
+position:relative;
+}
+.col-side .list li span {
+	position:absolute;
+	right:0;
+	top:0;
+line-height: 31px;
+color: #999;
+}
+.col-side .list li.last{ border:none;}
+/*二手车*/
+.ucar_box table { width: 91%; margin: 0 0 0 10px }
+.ucar_box table th { color: #999; text-align: center; padding: 6px 0 5px; border-bottom:1px #e9e9e9 solid;  }
+.ucar_box table td { text-align: center; padding: 6px 0 5px; border-bottom:1px #e9e9e9 solid; background:none;}
+.ucar_box table tr.last td{ border:none;}
+.w100 {width: 100px!important;}
+.ucar_box .cgray, .ucar_box .cgray a:link, .ucar_box .cgray a:visited, .ucar_box .cgray a:hover { color: #999 }
+.ucar_box .ucar_price { text-align: right; color: #999 }
+.ucar_box .lastline { background: 0 }
+.ucar_box .car_name { width: 65px; height: 16px; display: block; line-height: 1.4; overflow: hidden; text-overflow: ellipsis; -o-text-overflow: ellipsis; white-space: nowrap }
+
+
+
+
+
+
+
+/*=============================新闻的编辑区域===============================*/
+
+
+/*====================新闻正文标题部分=======================*/
+#content_bit h1.con { text-align: center; font-size: 28px; font-weight: bold; line-height: 1; border-bottom: 1px #e9e9e9 solid; padding: 25px 0 14px 0; margin: 0 0 6px 0; font-family: Microsoft YaHei; position: relative; width:630px; /*margin-left:-27px;*/ }
+/*#content_bit h1.con strong { background: url(http://image.bitautoimg.com/uimg/news/images/news_all.png) no-repeat 100% -303px; position: absolute; top: 32px; right: 60px; width: 40px; height: 20px; overflow: hidden; line-height: 100px; }*/
+#content_bit h1.con .yuanchuang { /*background: url(http://image.bitautoimg.com/uimg/news/images/news_all.png) no-repeat 100% -303px;*/ padding-right: 17px; background:url(http://image.bitautoimg.com/uimg/news/images/news_all121228.png) 100% 40% no-repeat; height:28px; line-height:28px;}
+/*#content_bit .con_time { float: left; left: 50%; padding: 0 0 10px 0; position: relative; font-size: 12px; height: 24px; }
+#content_bit .con_time li { float: left; right: 50%; position: relative; margin: 0 10px 0 0; }*/
+#content_bit .con_ad { margin: 0 auto 20px; text-align: center; clear: both; width: 570px; height: auto; overflow: hidden; }
+
+/*20121102 文章标题下面的信息区域*/
+#content_bit .con_main p.article-information{ color:#999; text-indent:0; text-align:center; font-size:12px; }
+#content_bit .con_main p.article-information span{  padding:0 5px;}
+
+#content_bit .con_main p.article-information a:link,#content_bit .con_main p.article-information a:visited{ color:#56616d;}
+#content_bit .con_main p.article-information a:hover{color:#c00;}
+
+#content_bit .con_main p.article-information .comment a{ font-weight:bold; background:url(http://image.bitautoimg.com/uimg/news/images/news_all121228.png) -359px -246px no-repeat;  padding:2px 0 2px 20px}
+
+
+/*20121102 文字标红*/
+#content_bit .point_text, #content_bit .table_news th.point_text, #content_bit .table_news  td.point_text{ color:#c00; /*font-weight:bold;*/}
+#content_bit .point_text a:link, #content_bit .point_text a:visited{ color:#c00; }
+#content_bit .point_text a:hover{ color:#c00;}
+
+#content_bit hr{ margin:20px 0; padding:0;
+	border:none;
+	border-bottom:1px solid #e9e9e9;
+	height:0;
+	overflow:hidden;
+	display:block;}
+
+/*==================左中内容区域 20121024整理================*/
+#content_bit .con_main { width: 630px; margin: 0 auto; font-size: 16px; line-height: 32px;color:#333; }
+#content_bit .con_main p { margin: 0 auto 20px; clear: both; width: 630px; text-indent: 2em; font-family:Tahoma, Geneva, sans-serif; /*word-break: break-all;*/}
+#content_bit b { font-weight:bold; }
+#content_bit strong { font-weight: bold; }
+/*左中标题*/
+#content_bit .con_main h4 { font-weight: bold; /*margin: 1em 0 0 0 ;*/display:block;font-size:16px;}
+#content_bit .con_main h5 { margin: -1em 0 1em 0 ;display:block; text-align:center;}
+
+/*左中布局*/
+#content_bit .con_main p.center { text-align: center; text-indent: 0; }
+#content_bit .con_main p.align_r { text-align: right; text-indent: 0; }
+#content_bit .con_main p.align_l { text-align: left; text-indent: 0; }
+/*左中关键字*/
+#content_bit .con_main p.keyword { text-indent: 0; }
+#content_bit .con_main p.keyword a { margin: 0 10px 0 0; }
+/*左中隐藏链接*/
+#content_bit .con_main p a.hidden:link, #content_bit .con_main p a.hidden:visited { color: #333; text-decoration:none;}
+#content_bit .con_main p a.hidden:hover { color: #333; text-decoration:none; }
+/*左中百科*/
+#content_bit .con_main p a.baikekeyl:link, #content_bit .con_main p a.baikekeyl:visited { border-bottom: 1px dotted #999; color: #333; }
+#content_bit .con_main p a.baikekeyl:hover { border: 0; color: #c00; }
+/*左中图片*/
+#content_bit .con_main a img,#content_bit .con_main img.imgborder { 
+
+/*border: 1px #e9e9e9 solid;*/
+display: block;
+margin: 0 auto 5px auto;
+/*padding: 9px;
+background: #fff;*/
+}
+
+
+
+
+
+
+
+/*左中表格*/
+#content_bit .con_main table { margin: 0 auto 15px; }
+#content_bit .con_main .table_news { /*border: 1px #e9e9e9 solid;*/ line-height: 22px; text-align: center; background: #fff; width: 630px; font-family: simSun, Arial, Helvetica, sans-serif; border-top:3px #e9e9e9 solid; }
+/*左中表格-段落*/
+#content_bit table p { width: auto; margin: 0; text-indent: 0; }
+#content_bit .table_news p { margin: 0; padding: 0; text-indent: 0; width: auto; }
+#content_bit .table_news p img.imgborder { border: 0; padding: 0; margin: 0 auto; }
+/*左中表格-单元格*/
+#content_bit .table_news thead { background: #f7f7f7; color: #000; }
+#content_bit .table_news th { font-weight: bold; text-align: center;color: #666; background:#f7f7f7 }
+#content_bit .table_news td, #content_bit .table_news th { /*padding: 4px 8px;*/ border: 1px #e9e9e9 solid; font-size: 12px; /*color: #999;*/ padding: 7px 8px;}
+#content_bit .table_news tr.change { background: #f7f7f7; }/*间隔色*/
+#content_bit .table_news td.made { text-align: center; padding: 0 10px 0 0; }
+#content_bit .table_news td.up { color: #D01D19; }
+#content_bit .table_news td.align_l, #content_bit .table_news th.align_l { text-align: left; }
+#content_bit .table_news td.align_r, #content_bit .table_news th.align_r { text-align: right; }
+#content_bit .table_news td.down { color: #018000; }
+
+
+
+
+/*左中 行情表格-参数*/
+#content_bit .mbox { width: 570px; margin: 0 auto; }
+
+#content_bit .con_main .data_table { margin: 0 auto; line-height: 22px; text-align: center; background: #fff; font-family: simSun, Arial, Helvetica, sans-serif; }
+
+#content_bit .con_main .data_table table { width: 100%; margin: 0 auto 15px; }
+#content_bit .con_main .data_table col { width: 100px; }
+#content_bit .con_main .data_table thead { background: #f7f7f7; color: #000; }
+#content_bit .con_main .data_table th { font-weight: bold; text-align: center;color: #666; background:#f7f7f7  }
+#content_bit .con_main .data_table td, #content_bit .con_main .data_table th {  border: 1px #e9e9e9 solid; font-size: 12px; /*color: #333;*/ padding: 5px;}
+ #content_bit .con_main .data_table th{ padding:0;}
+
+#content_bit .con_main .data_table tr.change { background: #F2F8FA; }/*间隔色*/
+#content_bit .con_main .data_table td.made { text-align: center; padding: 0 10px 0 0; }
+#content_bit .con_main .data_table td.up { color: #D01D19; }
+/*#content_bit .con_main .data_table td.left, #content_bit .table_news th.left { text-align: left; }*/
+#content_bit .con_main .data_table td.down { color: #018000; }
+
+#content_bit .con_main .data_table p { width: auto; margin: 0; padding: 0; text-indent: 0; }
+#content_bit .con_main .data_table td i { font-style: normal; }
+#content_bit .con_main .fckVendorCss { width: 570px; margin: 0 auto; }
+
+.data_table table th span {
+/*padding: 5px 0 0;*/
+display: block;
+/*background: #EDEFF1;
+color: #666;*/
+font-weight: normal;
+line-height: 15px;
+text-align: center;
+height: 34px;
+padding: 5px 0 0;
+}
+.data_table table .data_table_spth {
+width: 175px;
+background: url(http://image.bitautoimg.com/uimg/news/images/news_all121228.png) -167px -263px no-repeat;
+position: relative;
+}
+.data_table table td i.f14{ font-size:14px;}
+.data_table table .data_table_spth i {
+left: 8px;
+bottom: 5px;
+position:absolute;
+font-style:normal;
+}
+.data_table table .data_table_spth q {
+top: 5px;
+right: 2px;
+position:absolute;
+}
+
+
+
+
+
+/*左中多图表格*/
+#content_bit .con_main table.table_pics { 
+margin: 0 auto 1em auto;
+border-collapse: separate;
+border-spacing: 0;
+/*padding: 10px;
+border: 1px solid 
+#e9e9e9;
+background: 
+#fff;*/
+width: 570px;
+ }
+/*#content_bit .con_main table.table_pics td{ padding:5px;} */
+#content_bit .con_main table.table_pics p { width: auto; margin: 0; text-indent: 0; padding: 0; }
+#content_bit .con_main table.table_pics img.imgborder { width: auto; margin: 0 auto; padding: 0; border: 0; }
+
+/*左中摘要*/
+#content_bit .con_focus {
+ padding: 15px; margin: 0 auto 20px; border: 1px #e9e9e9 solid; color:#666;
+
+
+background: #f7f7f7;
+width: 598px;
+font-size:14px;
+line-height:26px;
+ }
+#content_bit .con_focus p { margin: 0; width: auto; text-indent:0;}
+
+/*左中 表格底部作者信息*/
+#content_bit .table_made { text-align: right; padding: 5px 0 0 0; margin: -15px auto 1em auto; font-size: 12px; color: #9fa0a0; }
+#content_bit .con_main table.table_made1 { color: #9FA0A0; font-size: 12px; margin: -15px auto 25px; padding: 5px 0 0; width: 564px; }
+#content_bit .con_main table.table_made1 td { text-align: right; }
+
+
+/*左中 图片下的名片*/
+.pic_car_info {
+border: 1px #e9e9e9 solid;
+background: #fff;
+border-top: 0;
+width: 628px;
+height: 47px;
+margin: -27px auto 25px;
+clear: both;
+color: #999;
+overflow: hidden;
+padding: 15px 0 7px 0;
+position: relative;
+ }
+.pic_car_info dt { width: 160px; padding: 0 0 0 10px; height: 38px; text-align: center; font-size: 14px; font-weight: bold; border-right:1px #e9e9e9 solid; /* background: url(http://image.bitautoimg.com/uimg/news/images/news_all.png) repeat-y 100% -359px;*/ }
+.pic_car_info dt a { line-height: 34px; }
+.pic_car_info dt strong { font-weight: 800; font-size: 14px; display: block; }
+.pic_car_info dt strong a { line-height: 18px; }
+.pic_car_info dt span { display: block; font-weight: 400; font-size: 12px; line-height: 18px;margin:5px 0 0 0 }
+.pic_car_info dt span a { line-height: 18px; }
+.pic_car_info dt span a:link, .pic_car_info dt span a:visited { color: #999; }
+.pic_car_info dt span a:hover { color: #c00; }
+.pic_car_info dl dt { height: 20px; width: auto; padding: 0 0 0 30px; border: none; font-weight: normal; background: none; font-size: 12px; }
+.pic_car_info dt, .pic_car_info dd { float: left; }
+.pic_car_info dd { font-size: 12px; height: 23px; line-height: 18px; }
+.pic_car_info .carprice { padding: 0 0 0 30px; margin: 0; }
+.pic_car_info .carbrand { margin: 5px 0 0; }
+.pic_car_info .carprice small { font-size: 12px; font-weight: 400; margin: 0 0 0 5px; }
+.pic_car_info .carprice small a:link, .pic_car_info .carprice small a:visited { color: #164a84; font-weight: 400; }
+.pic_car_info .carprice small a:hover { color: #c00; }
+.pic_car_info .carprice a { color: #c00; font-weight: bold; }
+.pic_car_info .carprice a.newest { color: #164A84; font-weight: normal; }
+.pic_car_info .carbrand { padding: 0 0 0 10px; }
+.pic_car_info .carinfo { width: 388px; height: 18px; padding: 3px 0 0 0; *padding:4px 0 0 0;
+padding: 4px 0 0 0\0; }
+.pic_car_info dl dd { padding: 0 8px; border-right: 1px #e9e9e9 solid; }
+.pic_car_info dl dd.f { padding: 0 8px 0 0; }
+.pic_car_info dl dd.l { border: none; }
+.pic_car_info .carinfo dt, .pic_car_info .carinfo dd { height: 14px; line-height: 14px; }
+
+
+/*左中 表格下灰色文字提示20110922*/
+.table_news_b { color: #999; font-size:12px;}
+.table_news_b a:link, .table_news_b a:visited { color: #999; }
+.table_news_b a:hover { color: c00; }
+.table_news_l { float: left; padding-left: 10px; width: 545px; text-align: left; }
+.table_news_r { float: right; padding-right: 10px; width: 545px; text-align: right; }
+
+.table_news_b_top{ margin:-15px 0 15px; height:32px;}
+.table_news_b_top .table_news_r{ padding:0; }
+
+/*左中 我要置换 按钮*/
+.select_b_x { font-size: 14px; cursor: pointer; background: #eb7e0e url(http://image.bitautoimg.com/uimg/news/images/news_all121228.png) 0 -80px repeat-x; border: 1px #d37205 solid; color: #fff; height: 26px; line-height: 24px; font-weight: bold; padding: 0 20px; overflow: visible; margin: 0 auto; _height: 21px; _line-height: 21px; _width: 0; }
+.select_b_div { margin: 0 auto; width: 105px; }
+/*左中 内容中插入flash*/
+#content_bit .con_main p.video embed { 
+/*border: 1px #e9e9e9 solid;*/
+display: block;
+margin: 0 auto 5px auto;/*
+padding: 9px;
+background: #fff;*/
+}
+#content_bit .con_main p embed { 
+text-indent:0;
+}
+#content_bit .con_main p object { 
+text-indent:0;
+}
+
+
+/*左中 专业点评*/
+.zhanye_box { margin: 0 0 30px; }
+.zhanye_box h3 { font-weight: 800; margin: 0 0 3px; }
+.zhanye_box .tablebox { border-left: 1px solid #e9e9e9; border-top: 1px solid #e9e9e9; font-size: 12px; width: 630px; }
+/*专业点评表格*/
+.tablebox .col1 { width: 162px; }
+.tablebox table { margin: 0 !important; }
+.tablebox table td { border-bottom: 1px solid #e9e9e9; border-right: 1px solid #e9e9e9; background: #FFFFFF; color: #333; padding: 6px; text-indent: 2em; word-break: break-all; word-wrap: break-word; }
+.tablebox table td.cGray { color: #999 }
+.tablebox table .td_tt { border-bottom: 1px solid #e9e9e9; border-right: 1px solid #e9e9e9; background: #f8f8f8; padding: 4px 0 4px 12px; color: #666; text-indent: 0; }
+.tablebox table .td_tt img { padding: 0 !important; margin: 0 10px 0 0; border: 0 !important; }
+.tablebox table li { float: left; width: 175px; color: #333 }
+.tablebox table li span { width: 80px; float: left; text-align: right; color: #999 }
+.tablebox table dt { float: left; width: 80px; /*height:120px; */ padding: 5px 0 }
+.tablebox table dt img { width: 80px; /*height:120px*/ }
+.tablebox table dd { margin: 13px 0 0 10px; line-height: 20px; float: left }
+.tablebox table dd a { font-weight: bold }
+#content_bit .con_main .tablebox table p { margin: 0; clear: both; width: auto; text-indent:0; }
+
+
+/*正文页内的投票*/
+#content_bit .con_main .vote_box table{border-top:none;font-size: 14px;}
+#content_bit .con_main .vote_box table td {padding-top:0;line-height: 2;}
+#content_bit .con_main .vote_box table tr.moduletitlerow{ background:#FAFAFA; font-weight:bold;}
+
+
+
+
+/*=========================================================================================================*/
+
+/*经销商，询价，入口*/
+        	        	.jxshxj_box{ width:630px; height:38px; clear:both; margin:35px auto;}
+			.jxshxj_box a{ display:block; overflow:hidden; height:38px; line-height:1000px; float:left; background:url(http://image.bitautoimg.com/uimg/news/images/pic_jxsxj2.png)}
+        	.jxshxj_box  a.jxsh{ width:316px; background-position:0 0 ;}
+        	.jxshxj_box  a.xj{ width:314px; background-position:-316px 0;}
+
+
+/*左下 分页导航*/
+#content_bit .con_main table.con_nav{ border-top:none;/*border-bottom: 1px #e9e9e9 solid;*/}
+#content_bit .con_nav { width: 100%; margin: 0 auto; border: 1px #164a84 solid; font-size: 12px; background: #fff; }
+#content_bit .con_nav td { border: 1px #164a84 solid; /*border-bottom: 1px #e9e9e9 solid;*/ border-top: none; border-bottom:none; background: url(http://image.bitautoimg.com/uimg/news/images/news_all121228.png) repeat-x 0 100%; color: #999; }
+#content_bit .con_nav td span { color: #333; }
+#content_bit .con_nav th { background: #164a84; color: #fff; font-weight: bold; font-size:14px; }
+#content_bit .con_nav td { padding: 5px 8px; }
+#content_bit .con_nav th { padding: 2px 8px; }
+
+/*左下 责任编辑*/
+.author_box {padding: 15px 20px 0; height: 30px; color: #666; overflow: hidden;text-align:right;}
+/*20130109*/
+/*.author_box .keyword{ float:left;}*/
+
+/*20130109*/
+.fenxiangdao .authorname{ float:right;}
+.fenxiangdao .authorname a:link, .fenxiangdao .authorname a:visited{ color:#56616D;}
+.fenxiangdao .authorname a:hover{color: #c00;}
+
+/*1228*/
+.author_box a:link, .author_box a:visited{ color:#56616d}
+.author_box a:hover{ color:#c00}
+
+/*20130109*/
+/*左下 分享到*/
+.fenxiangdao { font-size: 12px; height: 37px; padding: 0 18px; line-height:37px; /*background: url(http://image.bitautoimg.com/uimg/news/images/news_repeat.png) repeat-x 0 100%;*/ background:#f7f7f7; border-top:1px #e9e9e9 solid; position: relative; z-index: 2; color:#999;  }
+
+/*20130109*/
+.fenxiangdao #bdshare { color:#333; float: left; line-height:1.2; margin: 6px 0 0 0; }
+
+
+
+/*左下 翻页
+.the_pages { clear:both; position:relative; height:53px; font-family:simSum; overflow:hidden;}
+.the_pages div { float:left; position:relative; left:50%; padding:10px 0; }
+.the_pages div a:link, .the_pages div a:link { color:#333; }
+.the_pages div a:hover { color:#fefefe }
+.the_pages div a, .the_pages div span, .the_pages div em { position:relative; left:-50%; display:block; float:left; margin:0 0 0 5px; height:18px; *height:17px;
+width:auto; padding:2px 7px 2px 8px; *padding:3px 7px 2px 8px;
+white-space:nowrap; text-align:center; border:1px solid #ccc; font-size:12px; line-height:18px; text-decoration:none; overflow:hidden; }
+.the_pages div em { border:1px solid #fff; }
+.the_pages div input { position:relative; right:50%; float:left; margin:0 4px 0 0; height:16px; line-height:20px; overflow:hidden; font-size:12px; padding:2px; }
+.the_pages div input.text { width:22px; margin:0 5px; }
+.the_pages div span.num { border:1px #fff solid; border-width:1px 0; background:none; color:#000; padding:2px 0 2px 15px; }
+.the_pages div span.numl { padding:2px 5px 2px 0; margin-left:0; }
+.the_pages div span { border:1px solid #ccc; background:#fff; text-decoration:none; color:#333; }
+.the_pages div a:link { background:#fff; }
+.the_pages div a:visited { background:#fff; }
+.the_pages div a:hover { border:1px solid #557890; background:#80a0b7; text-decoration:none; color:#fefefe; }
+.the_pages div a.linknow { border:#fff; background-color:#fff; color:#333; font-weight:bold; }
+
+.the_pages div span.nolink { color:#ccc; } */
+/*左下 翻页*/
+.the_pages { clear:both; position:relative; height:53px; font-family:simSum; overflow:hidden;}
+.the_pages div { float:left; position:relative; left:50%; padding:10px 0; }
+.the_pages div a:link, .the_pages div a:link { color:#333; }
+.the_pages div a:hover { color:#fefefe }
+.the_pages div a, .the_pages div span, .the_pages div em { position:relative; left:-50%; display:block; float:left; margin:0 0 0 5px; height:18px; *height:17px;
+width:auto; padding:2px 7px 2px 8px; *padding:3px 7px 2px 8px;
+white-space:nowrap; text-align:center; border:1px solid #ebebeb; font-size:12px; line-height:18px; text-decoration:none; overflow:hidden; }
+.the_pages div em { border:1px solid #fff; }
+.the_pages div input { position:relative; right:50%; float:left; margin:0 4px 0 0; height:16px; line-height:20px; overflow:hidden; font-size:12px; padding:2px; }
+.the_pages div input.text { width:22px; margin:0 5px; }
+.the_pages div span.num { border:1px #fff solid; border-width:1px 0; background:none; color:#000; padding:2px 0 2px 15px; }
+.the_pages div span.numl { padding:2px 5px 2px 0; margin-left:0; }
+.the_pages div span { border:1px solid #ccc; background:#fff; text-decoration:none; color:#333; }
+.the_pages div a:link { background:#fafafa; }
+.the_pages div a:visited { background:#fafafa; }
+.the_pages div a:hover { border:1px solid #c00; background:#fff; text-decoration:none; color:#c00; }
+.the_pages div a.linknow { /*border:1px #333 solid;*/ border:1px #fff solid; background-color:#fff; color:#333; font-weight:bold; }
+.the_pages div span.nolink { color:#ccc; }
+
+/*翻页左右翻*/
+	.the_pages_keyboard{ color:#999; text-align:center; margin:-9px 0 0 0; font-size:12px;}
+
+
+/*20130109*/
+/*相关阅读*/
+.news_list ul { clear: both; /*margin: 5px 10px 5px 14px;*/ height:120px; padding:10px 0 0 0;  border-top:1px #e9e9e9 solid; width:700px; overflow:hidden;}
+.news_list ul li { background: url(http://image.bitautoimg.com/uimg/news/images/news_all121228.png) no-repeat -368px -176px; height: 28px; overflow: hidden; padding: 0 0 0 8px; font-size: 14px; line-height: 28px; width:317px; float:left;}
+
+/*20130109*/
+.news_list ul li a:link, .news_list ul li a:visited { color: #56616D; }
+.news_list ul li a:hover{ color: #c00; }
+.news_list h3{ font-size:16px; font-weight:bold; color:#333; padding-bottom:8px;background:none;}
+.listbox_con{ margin-top:35px; width:630px; overflow:hidden; position:relative;}
+.listbox_con .keyword{ position:absolute; left:90px; top:0; font-size:14px;}
+
+.listbox_con .more{ position:absolute; right:0; top:0; font-size:12px;}
+
+/*==============20130717 新增分页标题==================*/
+#content_bit .con_main h2 {
+	font-size:20px;
+	line-height:26px;
+	padding-bottom:18px;
+	border-bottom:1px #e9e9e9 solid;
+	margin-bottom:20px;
+	font-family:microsoft yahei;
+	font-weight:bold;
+}
+#content_bit .con_main h2 span{
+	height:26px;
+	padding:0 5px;
+	margin:0 8px 0 0;
+	line-height:26px;
+	font-size:20px;
+	color:#fff;
+	background:#333;
+	-moz-border-radius:1em; 
+	-webkit-border-radius:1em;
+	 border-radius:1em;
+}
+
+
+/*============20130717 新增分页导航================*/
+.con_nav2{
+	padding:5px 0 0 0;
+}
+.con_nav2 ul{
+	width:49%;
+	float:left;
+	border-top:1px #ebebeb solid;
+	margin-bottom:20px;
+}
+.con_nav2 ul.second{
+	border-left:1px #ebebeb solid;
+
+}
+.con_nav2 ul li{
+	border-bottom:1px #ebebeb solid;
+	height:31px;
+	line-height:31px;
+	padding:8px 0 0 0;
+
+}
+.con_nav2 ul.second li{
+	padding-left:8px;
+}
+.con_nav2 ul li a{ cursor:pointer; display:block; height:25px; width:95%;}
+
+/*.con_nav2 ul li a:link, .con_nav2 ul li a:visited{ text-decoration:none; }
+.con_nav2 ul li a:hover{ text-decoration:underline; }*/
+
+.con_nav2 ul li a em{
+	width:23px;
+	height:23px;
+	float:left;
+	border:1px #ccc solid;
+	color:#333;
+	text-align:center;
+	line-height:23px;
+	font-family:microsoft yahei;
+	font-size:12px;
+	font-weight:bold;
+}
+.con_nav2 ul li a:hover em{
+	width:21px;
+	height:21px;
+	line-height:21px;
+	border:2px #c00 solid;
+	color:#c00;
+	text-decoration:none;
+}
+
+.con_nav2 ul li a span{
+	float:left;
+	line-height:25px;
+	padding:0 0 0 10px;
+	font-size:12px;
+}
+.con_nav2 ul li a:hover span{
+	text-decoration:underline !important;
+	*text-decoration:none;
+	_text-decoration:none;
+}
+.con_nav2 ul li.current em{
+	width:23px;
+	height:23px;
+	float:left;
+	border:1px #333 solid;
+	color:#333;
+	text-align:center;
+	line-height:23px;
+	font-family:microsoft yahei;
+	font-size:12px;
+	font-weight:bold;
+}
+.con_nav2 ul li.current span{	
+	float:left;
+	line-height:25px;
+	padding:0 0 0 10px;
+	font-size:12px;
+	font-weight:bold;
+}
+
+
+
+
+/*============================浮动区域============================*/
+.float_bar { height: auto; width: 48px; position:absolute; top:50px; z-index:9999; }
+/*.float_bar .top_line { width: 82px; height: 50px;  overflow: hidden }*/
+/*.float_bar .bottom_line { width: 82px; height: 50px; background: url(http://image.bitautoimg.com/uimg/car/images/float_bar_pic.gif) no-repeat 0 -52px; overflow: hidden }*/
+.float_bar ul { width: 48px; overflow: hidden; border-right: 1px solid #e9e9e9;  border-bottom: 1px solid #e9e9e9; float:left; }
+.float_bar ul li { width: 48px; height: 30px; border-top: 1px solid #e9e9e9;  }
+.float_bar ul li.current { width: 48px; height: 30px; line-height:30px;  font-weight: bold; color: #FFF; padding: 0 0 0 8px;  border-left:2px #c00 solid; background:#577b95; }
+.float_bar ul a:link, .float_bar ul a:visited { width: 70px; height: 30px;  line-height:30px;display: block; padding: 0 0 0 10px }
+.float_bar ul a:hover { background-color: #EEF2F5; text-decoration: none }
+.float_bar ul span { width: 70px; height: 22px; display: block; padding: 5px 0 0 10px; color: #999 }
+
+
+
+
+
+/*=============================增加部分===========================*/
+
+
+/*测试表格部分*/
+.newcar_test { width: 564px; overflow: hidden; border-top: 1px solid #DEE3E7; margin: 20px 0 10px 0 }
+.newcar_test_tt { width: auto; height: 32px; border-top: 1px solid #FFF; border-left: 1px solid #DEE3E7; border-right: 1px solid #DEE3E7; background: #EEF2F5; font: bold 14px/2.2 "宋体"; padding: 0 0 0 10px }
+.newcar_test table { border-top: 1px solid #DEE3E7; border-left: 1px solid #DEE3E7; font-size: 12px }
+.newcar_test .w154 { width: 154px }
+.newcar_test .w445 { width: 445px }
+.newcar_test table td { border-bottom: 1px solid #DEE3E7; border-right: 1px solid #DEE3E7; background: #FFF; color: #666; padding: 10px 6px }
+.newcar_test table .td_tt { border-bottom: 1px solid #DEE3E7; border-right: 1px solid #DEE3E7; background: #F8F8F8; width: 138px; padding: 4px 0 4px 12px; color: #333 }
+.newcar_test table dt { float: left; height: 60px; padding: 5px 0; width: 60px; border: none!important; margin: 0!important }
+.newcar_test table dt img { height: 60px; width: 60px; margin: 0!important; padding: 0!important; border: none!important }
+.newcar_test table dd { float: left; line-height: 20px; margin: 13px 0 0 10px; width: 50px }
+.newcar_test table dd a { font-weight: bold }
+.newcar_test table dd p { text-indent: 0!important; margin: 0!important; padding: 0!important; width: auto!important }
+.newcar_test table li { float: left; width: 137px }
+.newcar_test table li span { width: 80px; float: left; text-align: right }
+
+
+
+
+
+/**/
+#content_bit {
+width: 630px;
+padding: 0 25px 0 75px;
+border:none;
+}
+
+
+#content_bit .the_pages{ padding: 0; height:63px;}
+#content_bit .the_pages div {padding: 20px 0;}
+
+.v_tablist .h3_tab{ left:-1px;}
+/*.tuwenlistbox {
+height: 331px;
+overflow: hidden;
+}*/
+#content_bit .con_main{ padding:20px 0 0 0;}
+
+
+
+</style>

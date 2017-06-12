@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+    <!--顶通广告-->
+    <adcode pos="top">
+        <!--级别广告-->
+        <code condition="1">
+            <![CDATA[<ins id="div_c3f892e0-eab8-4168-8986-ecb47576f2e8" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="c3f892e0-eab8-4168-8986-ecb47576f2e8"> </ins>]]>
+        </code>
+        <code condition="2">
+            <![CDATA[<ins id="div_13019dba-7072-4e36-b2b3-432aed8c5d61" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="13019dba-7072-4e36-b2b3-432aed8c5d61"> </ins>]]>
+        </code>
+        <code condition="3">
+            <![CDATA[<ins id="div_ece3c9ed-f30e-449c-a6ed-409dc60d11e7" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="ece3c9ed-f30e-449c-a6ed-409dc60d11e7"> </ins>]]>
+        </code>
+        <code condition="5">
+            <![CDATA[<ins id="div_8b5093da-c007-482d-9498-252d9f4cde65" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="8b5093da-c007-482d-9498-252d9f4cde65"> </ins>]]>
+        </code>
+        <code condition="4">
+            <![CDATA[<ins id="div_3af957e2-abf6-4125-8d5e-2aa8992d6fb9" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="3af957e2-abf6-4125-8d5e-2aa8992d6fb9"> </ins>]]>
+        </code>
+        <code condition="6">
+            <![CDATA[<ins id="div_b78439ba-e69a-418f-aabe-9875903fe8fb" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="b78439ba-e69a-418f-aabe-9875903fe8fb"> </ins>]]>
+        </code>
+        <code condition="7">
+            <![CDATA[<ins id="div_9dfa1c17-7f5a-47cc-ae5f-72458bc2bc84" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="9dfa1c17-7f5a-47cc-ae5f-72458bc2bc84"> </ins><ins id="div_56bd8c91-83d4-4e48-93af-347d7cc89883" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="56bd8c91-83d4-4e48-93af-347d7cc89883"> </ins>]]>
+        </code>
+        <code condition="8">
+            <![CDATA[<ins id="div_e317f10f-bc6a-4ced-845a-21d803806b66" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="e317f10f-bc6a-4ced-845a-21d803806b66"> </ins>]]>
+        </code>
+        <code condition="9">
+            <![CDATA[<ins id="div_e074fcf7-435a-4917-b314-335aff3d28be" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="e074fcf7-435a-4917-b314-335aff3d28be"> </ins>]]>
+        </code>
+        <code condition="11">
+            <![CDATA[<ins id="div_e75f5ed3-48f3-497f-aa0d-809c8fcbcabe" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="e75f5ed3-48f3-497f-aa0d-809c8fcbcabe"> </ins>]]>
+        </code>
+        <!--报价广告-->
+        <code condition="0-5">
+            <![CDATA[<ins id="div_3a0979d3-55fd-4e02-8b03-04261331d66e" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="3a0979d3-55fd-4e02-8b03-04261331d66e"> </ins>]]>
+        </code>
+        <code condition="5-8">
+            <![CDATA[<ins id="div_3c9428d5-4a66-4498-8495-9d5c31dcbd82" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="3c9428d5-4a66-4498-8495-9d5c31dcbd82"> </ins>]]>
+        </code>
+        <code condition="8-12">
+            <![CDATA[<ins id="div_3d0adf56-ee18-4e25-be4f-3bd9dd44e267" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="3d0adf56-ee18-4e25-be4f-3bd9dd44e267"> </ins>]]>
+        </code>
+        <code condition="12-18">
+            <![CDATA[<ins id="div_7ba70bf4-c64f-472c-a721-61917b6f5c9a" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="7ba70bf4-c64f-472c-a721-61917b6f5c9a"> </ins>]]>
+        </code>
+        <code condition="18-25">
+            <![CDATA[<ins id="div_d408c918-77c5-46f2-9a10-7ff223ebebd6" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="d408c918-77c5-46f2-9a10-7ff223ebebd6"> </ins>]]>
+        </code>
+        <code condition="25-40">
+            <![CDATA[<ins id="div_8325bd58-15b9-4f9f-8b40-6f995e1dec56" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="8325bd58-15b9-4f9f-8b40-6f995e1dec56"> </ins>]]>
+        </code>
+        <code condition="40-80">
+            <![CDATA[<ins id="div_b7092fe8-1ba1-4357-889e-c769c2e3690a" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="b7092fe8-1ba1-4357-889e-c769c2e3690a"> </ins>]]>
+        </code>
+        <code condition="80-9999">
+            <![CDATA[<ins id="div_5f002326-95a7-4a30-87ff-e7997123e140" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="5f002326-95a7-4a30-87ff-e7997123e140"> </ins>]]>
+        </code>
+    </adcode>
+    <!--全屏广告-->
+    <adcode pos="fullscreen">
+        <code condition="1">
+            <![CDATA[<ins style="position:relative;top:0; z-index:99999" id="div_d5e83df4-9b3a-4e59-a30b-01f2cc5f2934" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="d5e83df4-9b3a-4e59-a30b-01f2cc5f2934"> </ins>]]>
+        </code>
+        <code condition="2">
+            <![CDATA[<ins style="position:relative;top:0; z-index:99999" id="div_2245b560-3975-4f03-bf61-e3d18c467bf7" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="2245b560-3975-4f03-bf61-e3d18c467bf7"> </ins>]]>
+        </code>
+        <code condition="3">
+            <![CDATA[<ins style="position:relative;top:0; z-index:99999" id="div_79b39dea-4f86-4556-bb4a-6f8853e8116a" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="79b39dea-4f86-4556-bb4a-6f8853e8116a"> </ins>]]>
+        </code>
+        <code condition="5">
+            <![CDATA[<ins style="position:relative;top:0; z-index:99999" id="div_05624bf1-d5ed-4c48-9ada-3f0bab409e9a" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="05624bf1-d5ed-4c48-9ada-3f0bab409e9a"> </ins>]]>
+        </code>
+        <code condition="4">
+            <![CDATA[<ins style="position:relative;top:0; z-index:99999" id="div_972e5afb-9715-4464-8910-a8e63c35e4fd" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="972e5afb-9715-4464-8910-a8e63c35e4fd"> </ins>]]>
+        </code>
+        <code condition="6">
+            <![CDATA[<ins style="position:relative;top:0; z-index:99999" id="div_657a5b64-eb0d-4ce6-b036-841ac53b5638" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="657a5b64-eb0d-4ce6-b036-841ac53b5638"> </ins>]]>
+        </code>
+        <code condition="7">
+            <![CDATA[<ins style="position:relative;top:0; z-index:99999" id="div_d7265116-5f03-4964-a48f-ecd54ba0bc54" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="d7265116-5f03-4964-a48f-ecd54ba0bc54"> </ins>]]>
+        </code>
+        <code condition="8">
+            <![CDATA[<ins style="position:relative;top:0; z-index:99999" id="div_b0fa734c-f966-4a86-b814-d171cc25f613" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="b0fa734c-f966-4a86-b814-d171cc25f613"> </ins>]]>
+        </code>
+        <code condition="9">
+            <![CDATA[<ins style="position:relative;top:0; z-index:99999" id="div_c30a04ee-81f9-4dd5-8169-40bf541ec008" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="c30a04ee-81f9-4dd5-8169-40bf541ec008"> </ins>]]>
+        </code>
+        <code condition="11">
+            <![CDATA[<ins style="position:relative;top:0; z-index:99999" id="div_d15ca7b9-725f-4bbd-a384-9133a292fdce" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="d15ca7b9-725f-4bbd-a384-9133a292fdce"> </ins>]]>
+        </code>
+    </adcode>
+    <!--中栏广告-->
+    <adcode pos="middle"></adcode>
+    <!--低栏广告-->
+    <adcode pos="bottom"></adcode>
+    <!--左侧广告-->
+    <adcode pos="left"></adcode>
+    <!--右侧广告-->
+    <adcode pos="right"></adcode>
+    <!--视窗广告-->
+    <adcode pos="corner"></adcode>
+    <!-- 底部广告 add by chengl Jun.27.2012 -->
+    <adcode pos="bottom">
+        <code condition="1">
+            <![CDATA[<script type="text/javascript">
+var     adplay_CityName='';//城市
+var     adplay_AreaName='';//区域
+var   adplay_BrandID='';//品牌id 
+var     adplay_BrandType='';//品牌类型：（国产）或（进口）
+var     adplay_BrandName='';//品牌
+var     adplay_BlockCode='bff08468-5940-414a-8f72-bbedd397b4a5';//广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>]]>
+        </code>
+        <code condition="2">
+            <![CDATA[<script type="text/javascript">
+var     adplay_CityName='';//城市
+var     adplay_AreaName='';//区域
+var   adplay_BrandID='';//品牌id 
+var     adplay_BrandType='';//品牌类型：（国产）或（进口）
+var     adplay_BrandName='';//品牌
+var     adplay_BlockCode='d8dad733-5cc3-44a6-bcf2-e632984586c0';//广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>]]>
+        </code>
+        <code condition="3">
+            <![CDATA[<script type="text/javascript">
+var     adplay_CityName='';//城市
+var     adplay_AreaName='';//区域
+var   adplay_BrandID='';//品牌id 
+var     adplay_BrandType='';//品牌类型：（国产）或（进口）
+var     adplay_BrandName='';//品牌
+var     adplay_BlockCode='4be25be4-1b36-415b-9e9d-5ae49f6ecb9a';//广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>]]>
+        </code>
+        <code condition="5">
+            <![CDATA[<script type="text/javascript">
+var     adplay_CityName='';//城市
+var     adplay_AreaName='';//区域
+var   adplay_BrandID='';//品牌id 
+var     adplay_BrandType='';//品牌类型：（国产）或（进口）
+var     adplay_BrandName='';//品牌
+var     adplay_BlockCode='b4799f3e-bcfa-438d-a344-7b2b1fd5378c';//广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>]]>
+        </code>
+        <code condition="4">
+            <![CDATA[<script type="text/javascript">
+var     adplay_CityName='';//城市
+var     adplay_AreaName='';//区域
+var   adplay_BrandID='';//品牌id 
+var     adplay_BrandType='';//品牌类型：（国产）或（进口）
+var     adplay_BrandName='';//品牌
+var     adplay_BlockCode='61b9f3ea-ab75-4fcf-afc9-24cf99531bec';//广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>]]>
+        </code>
+        <code condition="6">
+            <![CDATA[<script type="text/javascript">
+var     adplay_CityName='';//城市
+var     adplay_AreaName='';//区域
+var   adplay_BrandID='';//品牌id 
+var     adplay_BrandType='';//品牌类型：（国产）或（进口）
+var     adplay_BrandName='';//品牌
+var     adplay_BlockCode='e1a2512d-969c-4347-93fe-3f89efa40a70';//广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>]]>
+        </code>
+        <code condition="7">
+            <![CDATA[<script type="text/javascript">
+var     adplay_CityName='';//城市
+var     adplay_AreaName='';//区域
+var   adplay_BrandID='';//品牌id 
+var     adplay_BrandType='';//品牌类型：（国产）或（进口）
+var     adplay_BrandName='';//品牌
+var     adplay_BlockCode='34aa1d5b-5f3e-4a91-9653-eed1c367b953';//广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>]]>
+        </code>
+        <code condition="8">
+            <![CDATA[<script type="text/javascript">
+var     adplay_CityName='';//城市
+var     adplay_AreaName='';//区域
+var   adplay_BrandID='';//品牌id 
+var     adplay_BrandType='';//品牌类型：（国产）或（进口）
+var     adplay_BrandName='';//品牌
+var     adplay_BlockCode='a132078e-fc49-4773-8fe4-07e0f59f6aab';//广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>]]>
+        </code>
+        <code condition="9">
+            <![CDATA[<script type="text/javascript">
+var     adplay_CityName='';//城市
+var     adplay_AreaName='';//区域
+var   adplay_BrandID='';//品牌id 
+var     adplay_BrandType='';//品牌类型：（国产）或（进口）
+var     adplay_BrandName='';//品牌
+var     adplay_BlockCode='628406e8-7f86-4ecb-ac21-3acb4a586df3';//广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>]]>
+        </code>
+        <code condition="11">
+            <![CDATA[<script type="text/javascript">
+var     adplay_CityName='';//城市
+var     adplay_AreaName='';//区域
+var   adplay_BrandID='';//品牌id 
+var     adplay_BrandType='';//品牌类型：（国产）或（进口）
+var     adplay_BrandName='';//品牌
+var     adplay_BlockCode='8cbf50c0-f567-4f65-be96-32fd1f33dad9';//广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>]]>
+        </code>
+
+        <code condition="0-5">
+            <![CDATA[
+         <script type="text/javascript">
+var     adplay_CityName='';//城市
+var     adplay_AreaName='';//区域
+var   adplay_BrandID='';//品牌id 
+var     adplay_BrandType='';//品牌类型：（国产）或（进口）
+var     adplay_BrandName='';//品牌
+var     adplay_BlockCode='98d9a909-46fa-4edd-9e6c-43a9021972cf';//广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>
+          ]]>
+        </code>
+        <code condition="5-8">
+            <![CDATA[<script type="text/javascript">
+var     adplay_CityName='';//城市
+var     adplay_AreaName='';//区域
+var   adplay_BrandID='';//品牌id 
+var     adplay_BrandType='';//品牌类型：（国产）或（进口）
+var     adplay_BrandName='';//品牌
+var     adplay_BlockCode='5dfd1dc7-2297-459c-92b9-4aa4c7cfadc4';//广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>]]>
+        </code>
+        <code condition="8-12">
+            <![CDATA[<script type="text/javascript">
+var     adplay_CityName='';//城市
+var     adplay_AreaName='';//区域
+var   adplay_BrandID='';//品牌id 
+var     adplay_BrandType='';//品牌类型：（国产）或（进口）
+var     adplay_BrandName='';//品牌
+var     adplay_BlockCode='8b0da8e5-fe4c-4160-afe8-e096e58cdd45';//广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>]]>
+        </code>
+        <code condition="12-18">
+            <![CDATA[<script type="text/javascript">
+var     adplay_CityName='';//城市
+var     adplay_AreaName='';//区域
+var   adplay_BrandID='';//品牌id 
+var     adplay_BrandType='';//品牌类型：（国产）或（进口）
+var     adplay_BrandName='';//品牌
+var     adplay_BlockCode='5fd26f5c-274f-4b1e-8e84-700376cf6823';//广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>]]>
+        </code>
+        <code condition="18-25">
+            <![CDATA[<script type="text/javascript">
+var     adplay_CityName='';//城市
+var     adplay_AreaName='';//区域
+var   adplay_BrandID='';//品牌id 
+var     adplay_BrandType='';//品牌类型：（国产）或（进口）
+var     adplay_BrandName='';//品牌
+var     adplay_BlockCode='8b71a6f4-9468-4c6f-b519-217d40ee9eca';//广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>]]>
+        </code>
+        <code condition="25-40">
+            <![CDATA[<script type="text/javascript">
+var     adplay_CityName='';//城市
+var     adplay_AreaName='';//区域
+var   adplay_BrandID='';//品牌id 
+var     adplay_BrandType='';//品牌类型：（国产）或（进口）
+var     adplay_BrandName='';//品牌
+var     adplay_BlockCode='ca04200b-fd17-418e-aaa0-85983aa21b45';//广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>]]>
+        </code>
+        <code condition="40-80">
+            <![CDATA[<script type="text/javascript">
+var     adplay_CityName='';//城市
+var     adplay_AreaName='';//区域
+var   adplay_BrandID='';//品牌id 
+var     adplay_BrandType='';//品牌类型：（国产）或（进口）
+var     adplay_BrandName='';//品牌
+var     adplay_BlockCode='da61f8fe-884d-428d-85ae-daa3872f0369';//广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>]]>
+        </code>
+        <code condition="80-9999">
+            <![CDATA[<script type="text/javascript">
+var     adplay_CityName='';//城市
+var     adplay_AreaName='';//区域
+var   adplay_BrandID='';//品牌id 
+var     adplay_BrandType='';//品牌类型：（国产）或（进口）
+var     adplay_BrandName='';//品牌
+var     adplay_BlockCode='e749f7b0-0281-4eb8-a9b8-c43e8689abeb';//广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>]]>
+        </code>
+    </adcode>
+</root>

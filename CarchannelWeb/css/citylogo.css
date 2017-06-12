@@ -1,0 +1,207 @@
+﻿@charset "utf-8";
+/* CSS Document */
+.bt_smenu .bt_navigate a.bt_logo_loca{
+	/*background:url(http://www.bitauto.com/themes/2009/logo/zhengzhou.png) no-repeat 0 0;*/
+	width:133px;
+	float:left;
+	height:27px;
+	line-height:1000px;
+	overflow:hidden;
+}
+
+.bt_smenu .bt_navigate a.bt_logo_loca3{
+	/*background:url(http://www.bitauto.com/themes/2009/logo/zhengzhou.png) no-repeat 0 0;*/
+	width:156px;
+	float:left;
+	height:27px;
+	line-height:1000px;
+	overflow:hidden;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_beijing{
+	background:url(http://www.bitauto.com/themes/2009/logo/beijing.png) no-repeat 0 0;
+}
+
+.bt_smenu .bt_navigate a.bt_logo_baoding{
+	background:url(http://www.bitauto.com/themes/2009/logo/baoding.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_changchun{
+	background:url(http://www.bitauto.com/themes/2009/logo/changchun.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_changsha{
+	background:url(http://www.bitauto.com/themes/2009/logo/changsha.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_chengdu{
+	background:url(http://www.bitauto.com/themes/2009/logo/chengdu.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_chongqing{
+	background:url(http://www.bitauto.com/themes/2009/logo/chongqing.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_dalian{
+	background:url(http://www.bitauto.com/themes/2009/logo/dalian.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_daqing{
+	background:url(http://www.bitauto.com/themes/2009/logo/daqing.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_dongguan{
+	background:url(http://www.bitauto.com/themes/2009/logo/dongguan.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_foshan{
+	background:url(http://www.bitauto.com/themes/2009/logo/foshan.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_fuzhou{
+	background:url(http://www.bitauto.com/themes/2009/logo/fuzhou.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_guangzhou{
+	background:url(http://www.bitauto.com/themes/2009/logo/guangzhou.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_haerbin{
+	background:url(http://www.bitauto.com/themes/2009/logo/haerbin.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_haikou{
+	background:url(http://www.bitauto.com/themes/2009/logo/haikou.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_hangzhou{
+	background:url(http://www.bitauto.com/themes/2009/logo/hangzhou.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_hefei{
+	background:url(http://www.bitauto.com/themes/2009/logo/hefei.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_jinan{
+	background:url(http://www.bitauto.com/themes/2009/logo/jinan.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_jinhua{
+	background:url(http://www.bitauto.com/themes/2009/logo/jinhua.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_kunming{
+	background:url(http://www.bitauto.com/themes/2009/logo/kunming.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_lanzhou{
+	background:url(http://www.bitauto.com/themes/2009/logo/lanzhou.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_luoyang{
+	background:url(http://www.bitauto.com/themes/2009/logo/luoyang.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_nanchang{
+	background:url(http://www.bitauto.com/themes/2009/logo/nanchang.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_nanjing{
+	background:url(http://www.bitauto.com/themes/2009/logo/nanjing.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_nanning{
+	background:url(http://www.bitauto.com/themes/2009/logo/nanning.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_ningbo{
+	background:url(http://www.bitauto.com/themes/2009/logo/ningbo.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_qingdao{
+	background:url(http://www.bitauto.com/themes/2009/logo/qingdao.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_quanzhou{
+	background:url(http://www.bitauto.com/themes/2009/logo/quanzhou.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_shanghai{
+	background:url(http://www.bitauto.com/themes/2009/logo/shanghai.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_shenyang{
+	background:url(http://www.bitauto.com/themes/2009/logo/shenyang.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_shenzhen{
+	background:url(http://www.bitauto.com/themes/2009/logo/shenzhen.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_shijiazhuang{
+	background:url(http://www.bitauto.com/themes/2009/logo/shijiazhuang.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_suzhou{
+	background:url(http://www.bitauto.com/themes/2009/logo/suzhou.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_taiyuan{
+	background:url(http://www.bitauto.com/themes/2009/logo/taiyuan.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_tangshan{
+	background:url(http://www.bitauto.com/themes/2009/logo/tangshan.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_tianjin{
+	background:url(http://www.bitauto.com/themes/2009/logo/tianjin.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_wenzhou{
+	background:url(http://www.bitauto.com/themes/2009/logo/wenzhou.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_wuhan{
+	background:url(http://www.bitauto.com/themes/2009/logo/wuhan.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_wuxi{
+	background:url(http://www.bitauto.com/themes/2009/logo/wuxi.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_xiamen{
+	background:url(http://www.bitauto.com/themes/2009/logo/xiamen.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_xian{
+	background:url(http://www.bitauto.com/themes/2009/logo/xian.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_xuzhou{
+	background:url(http://www.bitauto.com/themes/2009/logo/xuzhou.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_yantai{
+	background:url(http://www.bitauto.com/themes/2009/logo/yantai.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_yichang{
+	background:url(http://www.bitauto.com/themes/2009/logo/yichang.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_yinchuan{
+	background:url(http://www.bitauto.com/themes/2009/logo/yinchuan.png) no-repeat 0 0;	
+}
+
+
+.bt_smenu .bt_navigate a.bt_logo_zhengzhou{
+	background:url(http://www.bitauto.com/themes/2009/logo/zhengzhou.png) no-repeat 0 0;	
+}
+
+.bt_smenu .bt_navigate a.bt_logo_zibo{
+	background:url(http://www.bitauto.com/themes/2009/logo/zibo.png) no-repeat 0 0;	
+}
+
+
+

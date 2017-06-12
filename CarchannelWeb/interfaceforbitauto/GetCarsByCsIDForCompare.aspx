@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GetCarsByCsIDForCompare.aspx.cs" Inherits="BitAuto.CarChannel.CarchannelWeb.interfaceforbitauto.GetCarsByCsIDForCompare" %>

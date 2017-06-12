@@ -1,0 +1,77 @@
+[2014/11/17 9:19:00]  
+IP: 192.168.2.74
+Error in: http://api01.car.bitauto.com/carinfo/serialcompareforpk.ashx?action=carbaseinfo&csid=4231&callback=carbaseCallback
+Error Message: 序列不包含任何元素
+Stack Trace:    在 System.Linq.Enumerable.Min(IEnumerable`1 source)
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.RenderBaseInfo() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 271
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 50
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2014/11/17 9:41:52]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/carinfo/serialcompareforpk.ashx?action=carbaseinfo&csid=27312&callback=carbaseCallback
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.RenderBaseInfo() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 270
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 50
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2014/11/17 9:44:19]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/carinfo/serialcompareforpk.ashx?action=carbaseinfo&csid=27312&callback=carbaseCallback
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.RenderBaseInfo() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 272
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 50
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2014/11/17 9:44:28]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/carinfo/serialcompareforpk.ashx?action=carbaseinfo&csid=4231&callback=carbaseCallback
+Error Message: 序列不包含任何元素
+Stack Trace:    在 System.Linq.Enumerable.Min(IEnumerable`1 source)
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.RenderBaseInfo() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 273
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 50
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2014/11/17 9:44:30]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/carinfo/serialcompareforpk.ashx?action=carbaseinfo&csid=4231&callback=carbaseCallback
+Error Message: 序列不包含任何元素
+Stack Trace:    在 System.Linq.Enumerable.Min(IEnumerable`1 source)
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.RenderBaseInfo() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 273
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 50
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2014/11/17 9:44:41]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/carinfo/serialcompareforpk.ashx?action=carbaseinfo&csid=27312&callback=carbaseCallback
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.RenderBaseInfo() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 272
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 50
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2014/11/17 9:46:03]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/carinfo/serialcompareforpk.ashx?action=carbaseinfo&csid=4231&callback=carbaseCallback
+Error Message: 序列不包含任何元素
+Stack Trace:    在 System.Linq.Enumerable.Min(IEnumerable`1 source)
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.RenderBaseInfo() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 273
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 50
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2014/11/17 9:47:19]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/carinfo/serialcompareforpk.ashx?action=carbaseinfo&csid=4231&callback=carbaseCallback
+Error Message: 序列不包含任何元素
+Stack Trace:    在 System.Linq.Enumerable.Min(IEnumerable`1 source)
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.RenderBaseInfo() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 273
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 50
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

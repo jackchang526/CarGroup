@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+  BitAuto.Controls.Pager外部配置文件
+  
+  1.设置如下属性，启用外部配置文件
+    Pager1.ExternalConfigPattern = BitAuto.Controls.Pager.PagerExternalConfigPattern.Apply;
+    Pager1.ExternalConfigURL = Server.MapPath("PagerConfig.xml");
+  2.如配置了外部文件中的某个属性，请为该属性填上相应的值
+-->
+<PagerConfig>
+  <!--Pager.PageDivCSS-->
+  <PageDivCSS>the_pages pages_top</PageDivCSS>
+  <!--
+  页码省略号的Html标签
+  需要有针对相应标签的CSS支持
+  -->
+  <PageNoEllipsisTag>
+    <![CDATA[
+     <span class="nolink">...</span>
+    ]]>
+  </PageNoEllipsisTag>
+  <!--页面Goto跳转的配置-->
+  <SuffixGoto>
+    <!--前缀文字-->
+    <BeforeText>到</BeforeText>
+    <!--后缀文字-->
+    <AfterText>页</AfterText>
+    <!--
+    ‘确定’的Html标签,可以为A，Input，Img
+    需要有class="suffixButton"支持；例：.the_pages1 div input.suffixButton{width:50px;height:26px;margin:0 5px;}
+    -->
+    <SubmitTag>img</SubmitTag>
+    <!--‘确定’文字-->
+    <ActionText>确定</ActionText>
+    <!--SubmitTag为img时需填此项-->
+    <ImgSrc>PagerOne.bmp</ImgSrc>
+  </SuffixGoto>
+</PagerConfig>

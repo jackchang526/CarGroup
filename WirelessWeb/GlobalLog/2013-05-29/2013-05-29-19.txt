@@ -1,0 +1,15 @@
+[2013/5/29 19:02:53]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/xinjunwei/m102390/?carid=102390&
+Error Message: 给定关键字不在字典中。
+Stack Trace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 WirelessWeb.CarSummary.GetCarSize(Dictionary`2 dic) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarSummary.aspx.cs:行号 369
+   在 WirelessWeb.CarSummary.GetCarAllParam() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarSummary.aspx.cs:行号 168
+   在 WirelessWeb.CarSummary.GetCarData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarSummary.aspx.cs:行号 83
+   在 WirelessWeb.CarSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarSummary.aspx.cs:行号 54
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 141
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

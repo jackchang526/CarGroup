@@ -1,0 +1,86 @@
+@charset "utf-8";
+/*reset*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td { margin:0; padding:0; }
+body { font-size:12px; font-family:\5b8b\4f53,Arial, Helvetica, sans-serif; background:#fff; line-height:150%; }
+table { border-collapse:collapse; border-spacing:0; }
+fieldset, img { border:0; }
+legend { display:none; }
+address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; font-weight:normal; }
+ol, ul { list-style:none; }
+caption, th { text-align:left; }
+h1, h2, h3, h4, h5, h6 { font-size:100%; font-weight:normal; }
+q:before, q:after { content:''; }
+abbr, acronym { border:0; }
+a:link, a:visited { color:#4d4d4d; text-decoration:none; }
+a:hover { color:#c00; text-decoration:underline; }
+a strong { color:#c00; }
+.bt_page { width:990px; margin:0 auto; text-align:left; background:#fff; }
+.clear { clear:both; height:0; overflow:hidden; }
+
+
+
+
+
+.model_city { position:relative; z-index:9999; background:url(../images/bt_bg_jy_2.png) no-repeat 0 0; height:31px; padding:10px 0 0 0; width:990px; margin:0 auto; }
+.model_city .select_model { width:130px; float:left; margin-right:5px; color:#666; }
+.model_city .select_car { background:url(../images/bt_bg_jy_2.png) no-repeat -42px -88px; width:53px; border:0; color:#000; text-align:center; font-size:12px;   float:left; margin-right:5px; padding:3px 0 2px; *padding:4px 0 1px;
+padding:6px 0 3px 0\0; cursor:pointer; }
+.model_city ul { float:left; margin-top:2px; padding-left:5px; display:inline; }
+.model_city dl.search_arrow { position:absolute; right:5px; top:10px; }
+.model_city dl dt { float:left; color:#fff; font-weight:bold; }
+.model_city dl dd { float:left; background:url(../images/bt_bg_jy_2.png) no-repeat -3px -66px; padding-left:7px; white-space:nowrap; width:43px; overflow:hidden; }
+.model_city dl dd a:link, .model_city dl dd a:visited, .model_city dl dt a:link, .model_city dl dt a:visited { color:#fff; }
+.model_city .select_sea { width:130px; float:left; margin-right:5px; margin-top:1px; border:1px solid #3B566D; padding:2px 0 1px 5px; color:#666; }
+.model_city .select_more { background:url(../images/bt_bg_jy_2.png) no-repeat 0 -88px; width:42px; border:0; color:#000; text-align:center; font-size:12px;   float:left; padding:3px 0 2px; *padding:4px 0 1px;
+padding:5px 0 3px 0\0; cursor:pointer; }
+.model_city .search_text { position:relative; float:left; margin:0 20px 0 15px; display:inline; }
+.model_city .search_text a.search { float:left; display:block; height:22px; width:65px; background:url(../images/bt_bg_jy_2.png) no-repeat 0 -43px; line-height:90px; overflow:hidden; }
+
+.c0621_01{ height:127px; overflow:hidden; float:left; width:732px;}
+.c0621_01 dl{float:left;width:732px;margin:0 0 0 8px;padding:5px 0;display:inline;background:url(../images/bt_bg_dot_2.png) 0 100% repeat-x;}
+.c0621_01 dt{float:left;width:67px;padding:3px 0 0 0;color:#656565;}
+.c0621_01 dd{float:left;padding:2px 0 0 0;width:620px;}
+.c0621_01 li{float:left;margin-right:23px;display:inline;white-space:nowrap;line-height:20px;height:20px;}
+.c0621_01 .current a{padding:0 3px;display:block;background:#4d4d4d;color:#fff;}
+
+
+.car_model_list { width:255px; float:right; height:127px; border-left:1px solid #DCDDDD; position:relative; font-family:simSun; }
+.car_model_list ul { border-top:1px solid #fff; border-bottom:1px solid #DCDDDD; height:27px; background:#f1f1f1; *overflow:hidden; margin-bottom:2px;
+}
+.car_model_list ul li { float:left; border-left:1px solid #fff; border-right:1px solid #DCDDDD; text-align:center; width:78px; }
+.car_model_list ul li.current { height:26px; position:relative; background:#fff; border-top:2px #c00 solid; }
+.car_model_list ul li.last { border-right:none; }
+.car_model_list ul li a { display:block; height:27px; font-weight:bold; line-height:27px; float:left; width:78px; }
+.car_model_list ul li a:link, .car_model_list ul li a:visited { text-decoration:underline; }
+.car_model_list ul li.current a { color:#CC0000; line-height:23px; }
+/*010127*/
+.car_model_list dl { background:url(../images/bt_bg_dot_2.png) repeat-x scroll 0 0; }
+.car_model_list dl{
+display:inline;
+float:left;
+padding:5px 0;
+}
+.car_model_list dl dd{
+float:left;
+padding:2px 0 0;
+}
+
+
+.car_model_list dl.fist { background:#F8F8F8 url(../images/bt_bg_dot_2.png) repeat-x scroll 0 0; }
+.car_model_list dl.none{ background:none;}
+/*010127*/
+.car_model_list dl a { line-height:20px;  }
+.car_model_list dl a:link span, .car_model_list dl a:visited span { display:none; }
+.car_model_list dl a:hover { margin:0; }
+.car_model_list dl a:hover span { display:block; border:1px #164a84 solid; background:#fff; text-decoration:none; }
+.car_model_list dl a span { position:absolute; top:14px; left:0; width:173px; color:#000; text-align:left; padding:2px 0 0 5px; cursor:default; line-height:17px; }
+.car_model_list dl a span em { color:#c00; font-weight:bold; line-height:20px; }
+.car_model_list dl dt { float:left; width:80px; text-align:center; }
+.car_model_list dl dd { float:left; width:81px; text-align:center; height:20px; overflow:hidden;   }
+.car_model_list dl dd.more { position:inherit; top:auto; right:auto; padding-right:0; /*width:50px;*/ }
+.car_model_list dl dd.more a { font-family:simSun; }
+
+
+.contain{border:1px solid #DEE3E7;height:127px; }
+
+

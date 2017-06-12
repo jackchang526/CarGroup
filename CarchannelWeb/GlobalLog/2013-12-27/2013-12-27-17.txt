@@ -1,0 +1,19 @@
+[2013/12/27 17:21:30]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/CX_Default.aspx?tagtype=chexing
+Ref: 
+Error Message: 由于访问被拒绝，未能开始监视对“\\192.168.0.40\Data”的更改。
+Stack Trace:    在 System.Web.FileChangesMonitor.FindDirectoryMonitor(String dir, Boolean addIfNotFound, Boolean throwOnError)
+   在 System.Web.FileChangesMonitor.StartMonitoringPath(String alias, FileChangeEventHandler callback, FileAttributesData& fad)
+   在 System.Web.Caching.CacheDependency.Init(Boolean isPublic, String[] filenamesArg, String[] cachekeysArg, CacheDependency dependency, DateTime utcStart)
+   在 System.Web.Caching.CacheDependency..ctor(String filename, DateTime start)
+   在 BitAuto.CarChannel.Common.PageBase.GetSerialMultPriceRangeSplitByComma(Int32 csID) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 1236
+   在 BitAuto.CarChannel.Common.PageBase.GetAllSerialNewly30DayToList() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 1158
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.InitLevelAndPriceData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 84
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 36
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 29
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

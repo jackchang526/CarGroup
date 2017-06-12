@@ -1,0 +1,14 @@
+[2014/4/4 17:10:58]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?l=13
+Ref: http://car01.bitauto.com/
+Error Message: 给定关键字不在字典中。
+Stack Trace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.GetSelectCarParas() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 926
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.GetParameters() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 208
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 62
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

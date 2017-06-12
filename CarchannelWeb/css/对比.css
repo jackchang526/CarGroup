@@ -1,0 +1,138 @@
+/*标题表单位置调整*/
+input, select{font-family:"tahoma";}
+.title-box2{z-index:19}
+.title-box, .title-box2{position:static;z-index:0;}
+.title-box2 select{position:relative;top:8px;}
+select{*height:22px;_height:27px;}
+.fl{float:left}
+.fr{float:right}
+.title-con{position:relative;*z-index:29}
+.line-box-t20{margin:20px auto 0 auto}
+/*导航右侧moer*/
+.publicTabNew{position:relative}
+.publicTabNew .more_duibi{position:absolute;top:15px;right:10px;color:#6699cc;font-size:12px;}
+.publicTabNew .more_duibi a{color:#fff}
+/*综合对比()*/
+.top_input_box{width:414px;}
+.com_line_box{height:3px;font-size:0;clear:both;overflow:hidden;background:#e9e9e9}
+
+.vs_focus{width:896px;margin:15px auto 20px auto;/*height:330px;*/position:relative;overflow:hidden;padding-top:20px;}
+.vs_focus_t40{padding-top:40px;}
+.vs_moren_txt{height:66px;line-height:90px;text-align:center;font-size:30px;font-family:"microsoft yahei";color:#ccc;margin-top:10px;}
+.vs_focus .focus_left, .vs_focus .focus_right{display:block;width:34px;height:50px;position:absolute;overflow:hidden;line-height:999999;}
+.vs_focus .focus_left{left:0;top:130px;background:#ccc url(images/focus_btn.png) 0 0 no-repeat}
+.vs_focus .focus_right{right:0;top:130px;background:#ccc url(images/focus_btn.png) 0 bottom no-repeat}
+.vs_focus .focus_left:hover{background:#c00 url(images/focus_btn.png) 0 0 no-repeat}
+.vs_focus .focus_right:hover{background:#c00 url(images/focus_btn.png) 0 bottom no-repeat}
+.vs_focus .foucs_cont{width:768px;margin:0 auto;background:url(images/vs_img1.png) center 50% no-repeat;overflow:hidden}
+.vs_focus .foucs_cont .car_box{width:302px;height:px;}
+.vs_focus .foucs_cont .car_box h5{font-size:28px;overflow:hidden;height:60px;line-height:60px;text-align:center;font-family:"microsoft yahei";font-weight:bold}
+.vs_focus .foucs_cont .car_box .photo_box{width:300px;height:200px;border:1px solid #e9e9e9;background:url(images/yiwen_bg.png) no-repeat}
+.vs_focus .foucs_cont .car_box .photo_box img{width:300px;height:200px;}
+.vs_focus .foucs_cont .car_box .link_box{clear:both;height:40px;line-height:40px;font-size:14px;}
+.vs_focus .foucs_cont .fl{text-align:right}
+.vs_focus .foucs_cont .fr{text-align:left}
+
+h3{font-family:"microsoft yahei";font-size:40px;height:90px;line-height:90px;color:#666;text-align:center;}
+.com_tabs{width:990px;}
+.com_tabs ul{width:1000px;}
+.com_tabs ul li{width:490px;height:40px;line-height:40px;float:left;text-align:center;background:#f3f3f3;margin-right:10px;font-family:"microsoft yahei";color:#333;font-size:18px;cursor:pointer}
+.com_tabs ul li.current{background:#cc0000;position:relative;color:#fff;cursor:default}
+.com_tabs ul li.current em{display:block;width:0px;overflow:hidden;border:26px solid #c00;border-color:#c00 #fff;border-width:16px 16px 0 16px;position:absolute;left:50%;bottom:-16px;margin-left:-13px;}
+
+.com_vs{overflow:hidden;margin:40px 0;background:url(images/vs_img1.png) center 0px no-repeat;clear:both}
+.com_vs .cont_box{width:414px;}
+.com_vs .cont_box .head{height:100px;line-height:100px;}
+.com_vs .cont_box .head a{font-size:18px;font-weight:bold;font-family:"microsoft yahei"}
+.com_vs .cont_box .head .jiage{font-size:28px;font-family:"microsoft yahei";position:relative}
+.com_vs .fl .head{padding-right:20px;}
+.com_vs .fr .head{padding-left:20px;}
+
+.com_vs .win .head a{padding-left:46px;background:url(images/first_icon.png) 0 30px no-repeat}
+.com_vs .win .head .jiage{font-size:38px;font-weight:bold;color:#c00}
+.com_vs .com_icon_box{width:420px;height:200px;overflow:hidden;margin-top:40px;}
+.com_vs .com_icon_box span{display:block;width:32px;height:32px;float:left;margin:0 10px 10px 0;background:url(images/com_icons.png) no-repeat}
+.com_vs .fl .com_icon_box span{float:right}
+.com_vs .fr .com_icon_box span{float:left }
+.com_vs .fl p.link{text-align:right;height:20px;line-height:20px;font-size:14px;padding-top:13px;}
+.com_vs .fr p.link{text-align:left;height:20px;line-height:20px;font-size:14px;padding-top:13px;}
+
+/*口碑*/
+.com_vs .fl .head .jiage .mid_start_box{position:absolute;right:0;top:70px;}
+.com_vs .fr .head .jiage .mid_start_box{position:absolute;left:0;top:70px;}
+
+.com_vs .youque_box{background:#f7f7f7;position:relative;padding:5px 20px 20px 20px;margin-top:40px;}
+.com_vs .youque_box dl dt{height:32px;line-height:32px;clear:both;overflow:hidden;font-weight:bold;color:#c00}
+.com_vs .youque_box dl dd span{background:#cc0000;font-size:12px;color:#fff;padding:5px 15px;display:block;float:left;white-space:nowrap;margin:0 5px 5px 0}
+.com_vs .youque_box dl.gary dt{color:#666}
+.com_vs .youque_box dl.gary dd span{background:#999;}
+
+.com_vs .fl .youque_box{padding:5px 20px 20px 5px;}
+.com_vs .fr .youque_box{padding:5px 5px 20px 20px;}
+.com_vs .fl .youque_box dl dt{text-align:right}
+.com_vs .fl .youque_box dl dd span{float:right;margin:0 0 5px 5px;}
+.com_vs .fl .youque_box em{display:block;width:52px;height:32px;background:url(images/duibi_kb_jt.png) no-repeat;position:absolute;right:105px;bottom:-32px;}
+.com_vs .fr .youque_box em{display:block;width:47px;height:27px;background:url(images/duibi_kb_jt.png) 0 -33px no-repeat;position:absolute;left:105px;bottom:-27px;}
+.com_vs ul.bfb{width:982px;overflow:hidden;clear:both;margin:50px auto 0px auto;}
+.com_vs ul.bfb li{height:18px;line-height:18px;margin-bottom:14px;clear:both}
+.com_vs ul.bfb li .fl_baif_box{border-right:2px solid #999;height:18px;width:405px;float:left;}
+.com_vs ul.bfb li .fl_baif_box .baifenbi{height:12px;width:10px;float:right;margin-top:3px;max-width:320px;}
+.com_vs ul.bfb li .fl_baif_box .baifenbi em{display:block;width:10px;height:12px;background:#999;float:right}
+.com_vs ul.bfb li .fl_baif_box .fen{width:60px;padding-right:5px;font-size:14px;font-family:"microsoft yahei";float:right;text-align:right}
+.com_vs ul.bfb li .fr_baif_box{border-left:2px solid #999;height:18px;width:405px;float:right;}
+.com_vs ul.bfb li .fr_baif_box .baifenbi{height:12px;width:10px;margin-top:3px;float:left;max-width:320px;}
+.com_vs ul.bfb li .fr_baif_box .baifenbi em{display:block;width:10px;height:12px;background:#999;float:left}
+.com_vs ul.bfb li .fr_baif_box .fen{width:45px;font-size:14px;font-family:"microsoft yahei";text-align:left;padding-left:5px;float:left;}
+
+.com_vs ul.bfb li .win{border-color:#c00;}
+.com_vs ul.bfb li .win .baifenbi em{background:#c00}
+.com_vs ul.bfb li .win .fen{font-weight:bold}
+
+.com_vs ul.bfb li .leibie{width:150px;position:absolute;left:50%;margin-left:-75px;font-size:14px;font-family:"microsoft yahei";height:18px;line-height:18px;text-align:center;background:url(images/line_bg.gif) repeat-x 0 9px;}
+.com_vs ul.bfb li .leibie span{padding:0 10px;background:#fff;}
+.com_vs  .padd_t0{position:relative;top:-10px;}
+
+/*谁卖的更好开始*/
+.com_tabs ul.tabs_six{margin-top:20px;clear:both}
+.com_tabs ul.tabs_six li{width:156px;}
+
+/*网友更喜欢谁按钮*/
+.com_vs .cont_box .head a.btn{width:94px;display:block;height:43px;line-height:43px;background:url(images/duibi_btn.gif) 0 bottom no-repeat;font-size:14px;padding-left:57px;color:#fff;position:relative;top:30px;font-weight:normal;text-decoration:none}
+.com_vs .cont_box .head a.btn:hover{background:url(images/duibi_btn.gif) 0 top no-repeat;color:#305f9f;}
+.com_vs .xihuan_bfb{width:990px;height:40px;line-height:40px;background:#305f9f;color:#fff;font-size:22px;font-family:"tahoma";text-align:right;margin-top:40px;}
+.com_vs .xihuan_bfb .bft_left{height:40px;background:#cc0000;float:left;text-align:left;border-right:3px solid #fff}
+.com_vs .xihuan_bfb .bft_left span{padding-left:10px;}
+.com_vs .xihuan_bfb .bft_right{float:right;margin-right:10px;}
+.com_vs .xihuan_bfb_r{background:#cc0000}
+.com_vs .xihuan_bfb_r .bft_left{background:#305f9f;float:right;text-align:right;border-left:3px solid #fff}
+.com_vs .xihuan_bfb_r .bft_left span{padding-right:10px;}
+.com_vs .xihuan_bfb_r .bft_right{float:left;padding-left:10px;}
+
+/*编辑怎么说*/
+.textcont h3{text-align:left}
+/*相关文章*/
+.text-list-w1010{width:1010px;}
+.text-list-w1010 li{width:306px;}
+/*图片热门对比*/
+.vs_photo_box{width:1080px;margin-top:20px;}
+.vs_photo_box .vs_photo{width:270px;float:left;overflow:hidden;margin-right:88px;position:relative;cursor:pointer}
+.vs_photo_box .vs_photo .car_box{width:120px;text-align:center}
+.vs_photo_box .vs_photo .car_box img{width:120px;height:80px;}
+.vs_photo_box .vs_photo .car_box .title{height:30px;line-height:34px;font-weight:bold;font-size:14px;overflow:hidden}
+.vs_photo_box .vs_photo .car_box .txt{height:16px;line-height:16px;color:#c00;font-size:12px;overflow:hidden}
+.vs_photo_box .vs_photo .vs_img{width:56px;height:56px;background:url(images/vs_icon_small.png) no-repeat;position:absolute;left:107px;top:11px;}
+.vs_photo_box .vs_hover .vs_img{width:69px;height:69px;background:url(images/vs_icon_big.png) no-repeat;left:100px;top:4px;}
+
+/*公共icon样式*/
+.com_vs .dao, .com_vs .mai, .com_vs .xin, .com_vs .you{/*background:url(images/com_icons.png) no-repeat*/}
+.com_vs .dao span{background-position:-32px -99px;}
+.com_vs .win .dao span{background-position:0px -99px;}
+
+.com_vs .mai span{background-position:-32px -33px;}
+.com_vs .win .mai span{background-position:0px -33px;}
+
+.com_vs .xin span{background-position:-32px 0px;}
+.com_vs .win .xin span{background-position:0px 0px;}
+
+.com_vs .you span{background-position:-32px -66px;}
+.com_vs .win .you span{background-position:0px -66px;}

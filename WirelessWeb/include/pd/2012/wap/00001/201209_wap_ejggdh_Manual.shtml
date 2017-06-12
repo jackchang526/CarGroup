@@ -1,0 +1,35 @@
+﻿<header>
+        	<a href="http://m.yiche.com" class="m-mainlogo">易车网</a>
+              <div class="m-download" id="m_download_top">				
+            	<div class="m-download-apple"></div>
+                客户端下载
+            </div>
+        </header>
+<nav class="m-nav-v1">
+            <ul class="main">
+                <li id="m0"><a href="http://m.yiche.com"><span>首页</span></a><s></s></li>
+                <li id="m1"><a href="http://car.m.yiche.com"><span>车型</span></a><s></s></li>
+                <li id="m2"><a href="http://price.m.yiche.com"><span>报价</span></a><s></s></li>
+                <li id="m6"><a href="http://jiangjia.m.yiche.com/"><span>降价</span></a><s></s></li>
+                <li id="m5"><a href="http://baa.m.yiche.com">论坛</a><s></s></li>
+
+            </ul>
+             <a onclick="javascript:showNavSub();" class="m-more-nav-btn"></a>
+            <ul class="sub" id="subNavMoreList" style=" display: none;">
+                <li id="m3"><a href="http://news.m.yiche.com">资讯</a></li> 
+                <li id="m4"><a href="http://v.m.yiche.com">视频</a></li>
+            </ul>
+        </nav>
+<script>
+	function setMenuItemSelect(ids) {
+		document.getElementById('m' + ids).className += 'current';
+	}
+
+	function showNavSub() {
+		if (document.getElementById('subNavMoreList').style.display == 'block')
+			document.getElementById('subNavMoreList').style.display = 'none';
+		else
+			document.getElementById('subNavMoreList').style.display = 'block'
+	}
+
+</script>

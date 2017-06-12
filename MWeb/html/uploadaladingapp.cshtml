@@ -1,0 +1,80 @@
+﻿<!--<div id = "maskAladingApp" class="ad-app-pop-box" style="display: none;"></div>
+<div id = "popAladingApp" class="ad-app-pop" style="display: none;">
+    <div class="ad-app-pop-rel" id = "closedAladingApp">
+        <a href="http://app.yiche.com/d/53c72dd7021855c6580541e7" class="ad-app-pop-bg"></a>
+        <a class="ad-app-pop-close">关闭</a>
+    </div>
+</div>-->
+<script type="text/javascript">
+    var DownloadAladingApp = {
+        cookieName: 'AladingApp',
+        tipId: '',
+        appDownload: '',
+        getCookie: function (name) {
+            var ck = document.cookie;
+            var exp1 = new RegExp(name + "=.*?(?=;|$)");
+            var mch = ck.match(exp1);
+            return mch ? unescape(mch[0].substring(name.length + 1)) : null;
+        },
+
+        setCookie: function (name, value, expires) {
+            document.cookie = name + "=" + escape(value) +
+		((expires) ? "; expires=" + expires.toGMTString() : "") +
+		("; path=/;domain=car.m.yiche.com");
+        },
+        getCookieExpire: function () {
+            var exp = new Date();
+            exp.setTime(exp.getTime() + 24 * 60 * 60 * 1000); //24小时
+            return exp;
+        },
+        $: function (id) {
+            return document.getElementById(id);
+        },
+        showTip: function (tipId, appdownload) {
+            var times = this.getCookie(this.cookieName);
+            if (times == null) {
+                var tip = this.$(tipId);
+                var app = this.$(appdownload);
+                tip.style.display = "";
+                app.style.display = "";
+                var ua = navigator.userAgent;
+                var app = navigator.appVersion;
+                if (/(android)/i.test(ua) || /(android)/i.test(app)) {
+                    if (app.indexOf("360browser") > -1) {
+                        tip.style.display = "none";
+                        app.style.display = "none";
+                    }
+                }
+            }
+        },
+        close: function () {
+            DownloadAladingApp.$(DownloadAladingApp.tipId).style.display = "none";
+            DownloadAladingApp.$(DownloadAladingApp.appDownload).style.display = "none";
+            DownloadAladingApp.setCookie(DownloadAladingApp.cookieName, 1, DownloadAladingApp.getCookieExpire());
+        },
+        addEvent: function (obj, eventType, func) {
+            if (obj.addEventListener) {
+                obj.addEventListener(eventType, func, false);
+            } else if (obj.attachEvent) {
+                obj.attachEvent("on" + eventType, func);
+            }
+        },
+        init: function (tipId, appDownload, closeBtn) {
+            this.tipId = tipId;
+            this.appDownload = appDownload;
+            if (!this.$(tipId)) return;
+            this.addEvent(this.$(closeBtn), 'click', DownloadAladingApp.close);
+            this.showTip(tipId, appDownload);
+        }
+    };
+    var currentUrl = document.location;
+    //if (typeof currentUrl != 'undefined' && currentUrl != null && (currentUrl.href.indexOf("WT.srch2=1") != -1||currentUrl.href.indexOf("WT.mc_id=mbdkptest") != -1)) {
+    var ua = navigator.userAgent;
+    if (!(/(iPhone|iPad|iPod|iOS)/i.test(ua)) || !ua.toLowerCase().match(/version\/([\d.]+).*safari/)) {
+        DownloadAladingApp.init('ad-top-yicheapp', 'ad-top-yicheapp', 'ad-top-btnclose');
+        DownloadAladingApp.addEvent(DownloadAladingApp.$('ad-btn-download'), 'click', function () {
+            DownloadAladingApp.close();
+            location.href = 'http://app.yiche.com/d/5493fcadc333d8206c9c4094';
+        });
+    }
+</script>

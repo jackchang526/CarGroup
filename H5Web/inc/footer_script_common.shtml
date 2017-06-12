@@ -1,0 +1,15 @@
+﻿<script type="text/javascript" src="http://192.168.0.10:8888/m/2015插件/自由滚动/js/public/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="/Scripts/V2/iscroll.js"></script>
+<script type="text/javascript" src="/Scripts/V2/fullPage.extend.children.js"></script>
+
+<script type="text/javascript">
+		$(function () {
+			var $context_scroll = $('.context_scroll');
+			var extend = new fullPageChildrenExtend({ $context_scroll: $context_scroll });
+			extend.init({
+				touchstart: function (ev) {
+					parent.menuHide(ev);
+				}
+			});
+		})
+</script>

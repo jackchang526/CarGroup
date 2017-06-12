@@ -1,0 +1,12 @@
+[2015/11/19 14:22:35]  
+IP: 127.0.0.1
+Error in: http://car01.m.yiche.com/Default.aspx
+Error Message: 未能映射路径“/html/~ /include/pd/2014/wapCommon/00001/201512_wap_common_footer_Manual.shtml”。
+Stack Trace:    在 System.Web.Configuration.ProcessHostMapPath.MapPathCaching(String siteID, VirtualPath path)
+   在 System.Web.Configuration.ProcessHostMapPath.System.Web.Configuration.IConfigMapPath2.MapPath(String siteID, VirtualPath path)
+   在 System.Web.Hosting.HostingEnvironment.MapPathActual(VirtualPath virtualPath, Boolean permitNull)
+   在 System.Web.Hosting.HostingEnvironment.MapPath(VirtualPath virtualPath)
+   在 System.Web.HttpRuntime.CheckVirtualFilePermission(String virtualPath)
+   在 System.Web.UI.TemplateParser.ProcessServerInclude(Match match)
+   在 System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+

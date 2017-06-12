@@ -1,0 +1,2 @@
+﻿<%@ Page Language="C#" ContentType="text/xml" AutoEventWireup="true" CodeBehind="MasterToSerial.aspx.cs" Inherits="BitAuto.CarChannel.CarchannelWeb.interfaceforbitauto.Master.MasterToSerial" %>
+<%@ OutputCache Duration="600" VaryByParam="dept" %>

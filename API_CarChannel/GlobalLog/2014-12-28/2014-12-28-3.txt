@@ -1,0 +1,27 @@
+[2014/12/28 3:20:29]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/carinfo/carinfojson.ashx?action=baseinfo&carid=3232&callback=?
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.CarInfo.CarInfoJson.RenderCarInfo() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\CarInfoJson.ashx.cs:行号 58
+   在 BitAuto.CarChannelAPI.Web.CarInfo.CarInfoJson.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\CarInfoJson.ashx.cs:行号 39
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2014/12/28 3:24:07]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/carinfo/carinfojson.ashx?action=baseinfo&carid=3232&callback=?
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.CarInfo.CarInfoJson.RenderCarInfo() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\CarInfoJson.ashx.cs:行号 58
+   在 BitAuto.CarChannelAPI.Web.CarInfo.CarInfoJson.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\CarInfoJson.ashx.cs:行号 40
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2014/12/28 3:27:10]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/carinfo/carinfojson.ashx?action=baseinfo&carid=3232&callback=?s
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.CarInfo.CarInfoJson.RenderCarInfo() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\CarInfoJson.ashx.cs:行号 58
+   在 BitAuto.CarChannelAPI.Web.CarInfo.CarInfoJson.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\CarInfoJson.ashx.cs:行号 40
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

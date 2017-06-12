@@ -1,0 +1,91 @@
+﻿/* CSS Document */
+
+.pages_tool{ width:950px; margin:0 auto;}
+.line_box h3 small{ font-size:12px; font-weight:400;}
+.line_box h3 small em{color:#CC1100;}
+.topmargin{margin-top:10px;}
+
+.tool_l{ background:url(../images/tool_bg_li.gif) repeat-x 0 0; height:38px; margin-bottom:10px; position:relative;}
+.tool_l h1{ width:102px; height:34px; background:url(../images/tool_h2.gif) no-repeat 0 0; font-size:14px; font-weight:800; text-align:center; line-height:34px; position:absolute; top:4px; left:10px;}
+
+
+.tools_tab{ margin:1px auto; background:#FCFBFC; padding:0 10px 10px; width:926px; overflow:hidden;}
+.tools_tab dl{ /*border-bottom:1px solid #DEE3E7;*/ height:45px; position:relative; overflow:hidden; background:url(../images/table_line.gif) repeat-x 0 100%;}
+.tools_tab dl dt{ height:14px; line-height:15px;border-right:1px solid #909090; padding-left:13px; width:60px;color:#555; margin-top:19px; float:left; margin-right:15px; font-weight:700;}
+.tools_tab dl dd{float:left; margin-right:15px;}
+.tools_tab dl dd.s2 {background:url(../images/img_kedubiao.gif) no-repeat scroll 0 5px;height:37px;width:205px;position:relative; margin-top:6px;}
+.tools_tab dl dd.s2 strong{background:url(../images/img_kedubiao_on.gif) repeat-x 0 5px;height:15px;position:relative; display:block; top:20px;}
+.tools_tab dl dd.s2 img{ position:absolute; cursor:pointer;}
+.tools_tab dl dd.s22{background:url(../images/img_kedubiao2.gif) no-repeat scroll 0 5px;background-position:10px 4px;width:225px;}
+.tools_tab dl dd.s3 {margin-top:16px; width:145px;}
+.tools_tab dl dd.s3 input{ background:#F9F9F9; border:1px solid #CCC; width:30px; padding:1px; height:16px; line-height:16px;}
+.tools_tab dl dd.s3 input.long{ width:30px; margin-right:5px;}
+.tools_tab dl dd.s4 {margin-top:15px;}
+.tools_tab dl dd.s4 a{margin-right:15px; padding:0 1px;}
+.tools_tab dl dd.s4 a.current{ background:#164A84; color:#fff;}
+.tools_tab dl dd.s4 a:hover.current{ text-decoration:none;}
+.tools_tab dl.min{ height:38px;}
+.tools_tab dl.min dt{ margin-top:13px;}
+.tools_tab dl.min dd.s4{ margin-top:10px;}
+.tools_tab .s2 .scroll_area{position:absolute;top:24px; left:10px;width:211px;height:5px;font-size:1px;background:url(../images/img_kedubiao_on.gif) repeat-x 0 0;}
+.tools_tab .s2 .priceleft{width:11px;height:13px;background:url(../images/ico_slippage_left.gif) no-repeat;top:18px; left:0px;position:absolute;cursor:pointer;}
+.tools_tab .s2 .priceright{width:11px;height:13px;background:url(../images/ico_slippage_right.gif) no-repeat;top:18px; left:211px; position:absolute;cursor:pointer;}
+.tools_tab .s2 .disleft{width:11px;height:13px;background:url(../images/ico_slippage_left.gif) no-repeat;top:18px; left:0px;position:absolute;cursor:pointer;}
+.tools_tab .s2 .disright{width:11px;height:13px;background:url(../images/ico_slippage_right.gif) no-repeat;top:18px; left:218px;position:absolute;cursor:pointer;}
+
+/*显示更多条件*/
+.tools_tab .tohide{ border-bottom:1px solid #DEE3E7; padding-bottom:10px;}
+.tools_tab .tohide dl{ height:auto; _height:24px;padding:1px 0 3px;clear:both; border:0; overflow:hidden;_overflow:visible; background:none;}
+.tools_tab .tohide dl dt{ border:0; margin-top:7px; width:55px;}
+.tools_tab .tohide dl dd{ width:835px; float:right; margin:5px 0 0; color:#666;word-break:keep-all;}
+.tools_tab .tohide dl dd span{ margin-right:20px; word-break:keep-all;display:block; float:left;}
+.tools_tab .tohide dl dd span input{  vertical-align:middle; _vertical-align:baseline;margin-right:3px;}
+
+.tools_tab .begin_tools{ text-align:center; margin:10px auto 0;}
+.tools_tab .begin_tools input{ color:#fff; font-size:14px; text-align:center; line-height:26px; font-weight:700;vertical-align:middle; margin-right:3px; cursor:pointer;}
+.tools_tab .begin_tools a{ text-decoration:underline;}
+.begin_t{ background:url(../images/btn_style.gif) no-repeat 0 0; width:96px; height:26px; border:0;}
+
+/*选车结果*/
+.selets_so{ margin:10px 0 0;width:940px;overflow:hidden;}
+.selets_so .model_list{width:986px;}
+.selets_so .model_list .list{ float:left;width:157px;overflow:hidden;text-align:center;margin:0 0 16px 0; display:inline;}
+.selets_so .model_list .list img{ border:1px solid #999; display:block; margin:0 auto;}
+.view_model{ background:url(../images/selets_tool.gif) no-repeat 0 0; width:69px; height:19px; margin:5px auto 0; text-align:left; overflow:hidden;}
+.view_model a:link,.view_model a:visited,.view_model a:active{ display:block;color:#4C4C4C;width:69px; height:19px; text-indent:0.7em;}
+.view_model a:hover{ background:url(../images/selets_tool.gif) no-repeat 0 -48px; text-decoration:none;}
+.hide_model{ background:url(../images/selets_tool.gif) no-repeat 0 -24px; width:69px; height:19px; margin:5px auto 0; text-align:left;}
+.hide_model a:link,.hide_model a:visited,.hide_model a:active{ display:block;color:#4C4C4C;width:69px; height:19px; text-indent:1.5em;}
+.hide_model a:hover{text-decoration:none;}
+/*查看的车型*/
+.model_layer{clear:both; float:left;}
+.view_terms{border-bottom:1px solid #DEE3E7; margin-bottom:20px;}
+.view_terms table{ width:920px; text-align:center;margin-left:12px;}
+.view_terms table .col1{ width:280px;}
+.view_terms table .col2{ width:90px;}
+.view_terms table .col3{ width:70px;}
+.view_terms table .col4{ width:105px;}
+.view_terms table .col5{ width:100px;}
+.view_terms table .col6{ width:100px;}
+.view_terms table .col7{ width:160px;}
+.view_terms thead tr{ background:url(../images/view_tab_bg.gif) repeat-x 0 0;}
+.view_terms table td,.view_terms table th{ padding:4px 5px;}
+.view_terms table th{ text-align:center;}
+.view_terms tbody{ color:#666;}
+.view_terms tbody tr{ background:url(../images/table_line.gif) repeat-x 0 0;}
+.view_terms tbody tr.barry0{ background:#FBFBFB url(../images/table_line.gif) repeat-x 0 0;}
+.view_terms tbody tr.barry1{ background:#fff url(../images/table_line.gif) repeat-x 0 0;}
+.view_terms tbody tr.hover{ background:#f5f5f5 url(../images/table_line.gif) repeat-x 0 0;}
+.view_terms td .hot{ background:url(../images/view_tab_bg.gif) repeat-x 0 -31px; height:8px; overflow:hidden; float:left;}
+.view_terms td.name{ font-weight:800;text-align:left;}
+.view_terms td.mart{ color:#CC1100; font-weight:700;}
+.view_terms td.mart a{ color:#CC1100; font-weight:700;}
+.the_pages{ font-family:"SimSun"; position:relative;}
+
+
+/*error_page错误页面*/
+.error_page{ background:url(http://img1.baa.com.cn/webpic/review/200907/error_bg.png) no-repeat 0 0; margin:35px 55px 30px; padding-left:170px; padding-top:25px; font-size:14px; height:180px;}
+.error_page h1{ font-size:20px; font-weight:bold; border-bottom:1px solid #DEE3E7; padding:5px 0;}
+.error_page p{ margin:25px 0 0;}
+.error_page ul li{margin:15px 0 0;}
+.error_page ul li a{ text-decoration:underline;}

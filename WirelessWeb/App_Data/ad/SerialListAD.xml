@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+ 	<SerialAD name="selectcar#p=12-18#c=16">
+		<!--选车工具 索纳塔经典 -->
+		<item pos="1" serialId="1568" starttime="2015-11-1" endtime="2016-3-30" />
+ 	</SerialAD>
+  <SerialAD name="selectcar#p=12-18">
+    <!--选车工具 广汽传祺GA6 车型ID：4209-->
+    <item pos="1" serialId="4209" starttime="2016-4-1" endtime="2016-6-30" />
+  </SerialAD>
+  <SerialAD name="selectcar#p=18-25">
+    <!--选车工具 广汽传祺GA8 车型ID：3945-->
+    <item pos="1" serialId="4479" starttime="2016-4-1" endtime="2016-4-30" />
+  </SerialAD>
+ </root>

@@ -1,0 +1,120 @@
+﻿<!--<div id="bitautoSideBarContainer" class="navtool-fixed-right">
+    <div class="navtool-ul" id="navtool-ul">
+        <ul id="headerModulesContainer" class="upper-part"></ul>
+        <ul id="footerModulesContainer" class="lower-part"></ul>
+    </div>
+    <div id="contentContainer" class="navtool-div-list">
+    </div>
+</div>-->
+<script type="text/javascript">
+    (function(global) {
+        global.SidebarConfig={
+            headerModules: ['my', 'planCar', 'collectCar', 'viewedCar', 'coupon', 'toolkit', 'comparison']
+        };
+    })(window);
+</script>
+<!--<script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=quicklogin,Bitauto.Login.Base,Bitauto.iUtils,Bitauto.iMediator,Bitauto.Sidebar"></script>-->
+<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cooikehelper.min.js?v=20161215"></script>
+<script type="text/javascript">
+    function stopPropagation(e) {
+        if(e.stopPropagation) {
+            e.stopPropagation();
+        } else {
+            e.cancelBubble = true;
+        }
+    }
+    function addEvent(elm, type, fn, useCapture) {
+		if (elm.addEventListener) {
+			elm.addEventListener(type, fn, useCapture);
+			return true;
+		} else if (elm.attachEvent) {
+			var r = elm.attachEvent('on' + type, fn);
+			return r;
+		} else {
+			elm['on' + type] = fn;
+		}
+	}
+	function removeEvent(elem, type, fn) {
+		if (elem.removeEventListener) {
+			elem.removeEventListener(type, fn, false);
+		} else {
+			elem.detachEvent("on" + type, fn);
+			elem[type + fn] = null;
+			elem["e" + type + fn] = null;
+		}
+	}
+    function getClassNames(classStr,tagName){
+        if (document.getElementsByClassName) {
+            return document.getElementsByClassName(classStr)
+        }else {
+            var nodes = document.getElementsByTagName(tagName),ret = [];
+            for(i = 0; i < nodes.length; i++) {
+                if(hasClass(nodes[i],classStr)){
+                    ret.push(nodes[i])
+                }
+            }
+            return ret;
+        }
+    }
+    function hasClass(tagStr,classStr){
+        var arr=tagStr.className.split(/\s+/ ); //这个正则表达式是因为class可以有多个,判断是否包含
+        for (var i=0;i<arr.length;i++){
+            if (arr[i]==classStr){
+                return true ;
+            }
+        }
+        return false ;
+    }
+    function SetCompareCarStyle(){
+        var com_arr = null,
+            compare = CookieHelper.GetCookie("ActiveNewCompare");
+
+        if (compare) {
+            com_arr = compare.split("|");
+            for (var i = 0; i < com_arr.length; i++) { //兼容老格式
+                if (com_arr[i].indexOf("id") >= 0) {
+                    var id = com_arr[i].split(",")[0].substr(2, com_arr[i].split(",")[0].length);
+                    com_arr[i] = id;
+                }
+                var aLink = getClassNames("btn-xs","a");
+                for(var j=0;j<aLink.length;j++){
+                    if(aLink[j].getAttribute("data-use") =="compare" && aLink[j].getAttribute("data-id") == com_arr[i]){
+                        aLink[j].innerText = "已加入";
+                        aLink[j].setAttribute("class", aLink[j].getAttribute("class") + " disabled");
+                    }
+                }
+            }
+        }
+    }
+    function AddComapre(e){
+        stopPropagation(e);
+        var objEle = e.target || e.srcElement
+        var ele = objEle.tagName.toLowerCase()  == "span" ? objEle.parentNode : objEle;
+
+        var carId = ele.getAttribute("data-id");
+        var sideBar=window.rightSideBar;
+        sideBar.changeCurrentModule(sideBar.headerModules.comparison);
+        var pubInt = setInterval(function(){
+            if(window.Bitauto.iMediator.hadSub("comparecar")){
+                window.Bitauto.iMediator.publish('comparecar',{carid:carId});
+                clearInterval(pubInt);
+            }
+        },100);
+    }
+    function AddCompareEvent(){
+        var aLink = getClassNames("btn-xs","a");
+        for(var i=0;i<aLink.length;i++){
+            if(aLink[i].getAttribute("data-use") =="compare"){
+                removeEvent(aLink[i],"click",AddComapre);
+                addEvent(aLink[i],"click",AddComapre);
+            }
+        }
+    }
+    function InitCompareEvent(){
+        AddCompareEvent();
+        SetCompareCarStyle();
+    }
+    $(function(){
+        InitCompareEvent();
+    });
+</script>

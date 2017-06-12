@@ -1,0 +1,14 @@
+[2014/6/27 14:15:58]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/e6/2013/?ID=2907&year=2013&
+Ref: http://car01.bitauto.com/e6/2011/
+Error Message: 序列不包含任何元素
+Stack Trace:    在 System.Linq.Enumerable.Min(IEnumerable`1 source)
+   在 BitAuto.CarChannel.CarchannelWeb.PageYear.CsSummaryYear.GetSerialYearInfoByCarList(List`1 currentYearCarList) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageYear\CsSummaryYear.aspx.cs:行号 413
+   在 BitAuto.CarChannel.CarchannelWeb.PageYear.CsSummaryYear.MakeCarListHtmlNew() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageYear\CsSummaryYear.aspx.cs:行号 375
+   在 BitAuto.CarChannel.CarchannelWeb.PageYear.CsSummaryYear.RenderPage() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageYear\CsSummaryYear.aspx.cs:行号 182
+   在 BitAuto.CarChannel.CarchannelWeb.PageYear.CsSummaryYear.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageYear\CsSummaryYear.aspx.cs:行号 156
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 143
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

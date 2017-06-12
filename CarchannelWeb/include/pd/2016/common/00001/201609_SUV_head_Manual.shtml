@@ -1,0 +1,22 @@
+﻿<header class="header-main special-header2">
+    <div class="container section-layout top" id="topBox">
+        <div class="col-xs-4 left-box">
+            <div class="section-left">
+                <h1 class="logo"><a href="">易车yiche.com</a></h1>
+                <h2 class="title">SUV</h2>
+            </div>
+        </div>
+        <div class="col-xs-8 right-box">
+            <ul class="list keyword-list">
+                <li class="dt">热门搜索：</li>
+                <li><a href="http://v.bitauto.com/tags/list8180_new.html" target="_blank">易车体验</a></li>
+                <li><a href="http://v.bitauto.com/ycjm.shtml" target="_blank">原创节目</a></li>
+                <li><a href="http://jiangjia.bitauto.com/" target="_blank">降价</a></li>
+            </ul>
+            <!--#include file="~/htmlV2/bt_searchV3.shtml"-->
+        </div>
+    </div>
+    <div id="navBox">
+        <nav class="header-main-nav type-1"></nav>
+    </div>
+</header>

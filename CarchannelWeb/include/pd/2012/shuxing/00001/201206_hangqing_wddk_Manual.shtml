@@ -1,0 +1,43 @@
+﻿<div class="line_box">
+    	<div class="QA-q-area">
+        	<div class="q-input-area">
+                <strong>行情问答</strong>
+                <input type="text" class="q-text" value="请输入关键字" id="txtkey" onfocus="if(this.value!=''&&this.value=='请输入关键字'){this.value='';}"
+            onblur="if(this.value==''){this.value='请输入关键字';}" />
+                <span class="q-btn-search"><input type="submit" onclick="if(document.getElementById('txtkey').value=='请输入关键字'||document.getElementById('txtkey').value=='') {window.open('http://www.cheyisou.com/ask/');return false;}window.open('http://www.cheyisou.com/ask/'+encodeURI(document.getElementById('txtkey').value)+'/'); return false;"  value="搜索答案" /></span>
+                <span class="q-btn-tiwen"><a href="#" target="_blank" onclick="if(document.getElementById('txtkey').value=='请输入关键字')document.getElementById('txtkey').value='';window.open('http://ask.bitauto.com/tiwen/'+encodeURI(document.getElementById('txtkey').value)+''); return false;" />我要提问</a></span>
+            </div>
+            <div class="clear"></div>
+            <ul id="data_tab0">
+            	<li><a href="http://ask.bitauto.com/browse/all/" target="_blank">全部问题</a></li>
+                  <li class="current"><a href="http://ask.bitauto.com/browse/solved/" target="_blank">已解决</a></li>               
+                  <li><a href="http://ask.bitauto.com/browse/unsolved/" target="_blank">待解决</a></li>
+                  <li><a href="http://ask.bitauto.com/browse/reward/" target="_blank">悬赏</a></li>
+                <li><a href="http://ask.bitauto.com/browse/unanswered/" target="_blank">零回复</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="text_list qa-text-list">
+        <!--全部问答-->
+        <ul style="display:none" id="data_box0_0">
+        	<li><span><a href="http://ask.bitauto.com/detail/3397814" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397814" target="_blank">成都中华骏捷FSV报价大概多少呢？</a></li><li><span><a href="http://ask.bitauto.com/detail/3397803" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397803" target="_blank">谁知道烟台有雪佛兰汽车4S店啊</a></li><li><span><a href="http://ask.bitauto.com/detail/3397794" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397794" target="_blank">新买的车缺少零件怎么跟4S店交涉？</a></li><li><span><a href="http://ask.bitauto.com/detail/3397760" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397760" target="_blank">你好！我想买一辆1.0L（三厢）的夏利N3，济宁的报价是多少</a></li><li><span><a href="http://ask.bitauto.com/detail/3397756" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397756" target="_blank">雷克萨斯GS300现在多少钱？有没有优惠活动？</a></li><li><span><a href="http://ask.bitauto.com/detail/3397755" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397755" target="_blank">山东哪里有陆铃经销商</a></li>
+        </ul>
+        <!--已解决--> 
+         <ul style="display:block" id="data_box0_1">
+            <li><span><a href="http://ask.bitauto.com/detail/3397147" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397147" target="_blank">10万左右的车排行榜靠谱吗，想买车.求推荐.</a></li><li><span><a href="http://ask.bitauto.com/detail/3397004" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397004" target="_blank">家用车排行榜前三有哪些，买车终于提上日程，求大虾指点。</a></li><li><span><a href="http://ask.bitauto.com/detail/3396663" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3396663" target="_blank">后备箱手动打不开？有高手知道吗，需要花多少钱维修。</a></li><li><span><a href="http://ask.bitauto.com/detail/3396216" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3396216" target="_blank">别克有哪些车型,报价怎么样？</a></li><li><span><a href="http://ask.bitauto.com/detail/3396214" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3396214" target="_blank">东风本田艾力绅报价多少？艾力绅油耗高吗？</a></li><li><span><a href="http://ask.bitauto.com/detail/3395850" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3395850" target="_blank">速腾两万公里保养费需要多少钱？</a></li>
+          </ul>
+         <!--待解决-->
+         <ul style="display:none" id="data_box0_2">
+            <li><span><a href="http://ask.bitauto.com/detail/3397814" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397814" target="_blank">成都中华骏捷FSV报价大概多少呢？</a></li><li><span><a href="http://ask.bitauto.com/detail/3397803" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397803" target="_blank">谁知道烟台有雪佛兰汽车4S店啊</a></li><li><span><a href="http://ask.bitauto.com/detail/3397794" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397794" target="_blank">新买的车缺少零件怎么跟4S店交涉？</a></li><li><span><a href="http://ask.bitauto.com/detail/3397760" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397760" target="_blank">你好！我想买一辆1.0L（三厢）的夏利N3，济宁的报价是多少</a></li><li><span><a href="http://ask.bitauto.com/detail/3397756" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397756" target="_blank">雷克萨斯GS300现在多少钱？有没有优惠活动？</a></li><li><span><a href="http://ask.bitauto.com/detail/3397755" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397755" target="_blank">山东哪里有陆铃经销商</a></li>
+           </ul>
+        <!--悬赏--> 
+         <ul style="display:none" id="data_box0_3">
+            <li><span><a href="http://ask.bitauto.com/detail/3397814" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397814" target="_blank">成都中华骏捷FSV报价大概多少呢？</a></li><li><span><a href="http://ask.bitauto.com/detail/3397794" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397794" target="_blank">新买的车缺少零件怎么跟4S店交涉？</a></li><li><span><a href="http://ask.bitauto.com/detail/3397738" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397738" target="_blank">买车，投资，旅游，那者更好、、</a></li><li><span><a href="http://ask.bitauto.com/detail/3397274" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397274" target="_blank">现在合肥EC718手豪优惠后裸车价多少钱？</a></li><li><span><a href="http://ask.bitauto.com/detail/3397264" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397264" target="_blank">上海的4S 那里有小科1。8优惠情况</a></li><li><span><a href="http://ask.bitauto.com/detail/3397116" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397116" target="_blank">黑豹1027 多少钱买的到那？他的耗油一公里多少那</a></li>
+           </ul>
+        <!--零回复-->
+        <ul style="display:none" id="data_box0_4">
+            <li><span><a href="http://ask.bitauto.com/detail/3397825" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397825" target="_blank">福田风景快客的变速箱总成要多少钱?在哪可以买到？谢谢</a></li><li><span><a href="http://ask.bitauto.com/detail/3397814" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397814" target="_blank">成都中华骏捷FSV报价大概多少呢？</a></li><li><span><a href="http://ask.bitauto.com/detail/3397803" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397803" target="_blank">谁知道烟台有雪佛兰汽车4S店啊</a></li><li><span><a href="http://ask.bitauto.com/detail/3397760" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397760" target="_blank">你好！我想买一辆1.0L（三厢）的夏利N3，济宁的报价是多少</a></li><li><span><a href="http://ask.bitauto.com/detail/3397756" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397756" target="_blank">雷克萨斯GS300现在多少钱？有没有优惠活动？</a></li><li><span><a href="http://ask.bitauto.com/detail/3397755" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397755" target="_blank">山东哪里有陆铃经销商</a></li>
+        </ul>
+</div>
+		<div class="clear"></div>
+    </div>

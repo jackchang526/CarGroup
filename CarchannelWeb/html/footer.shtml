@@ -1,0 +1,10 @@
+﻿<!--#include file="~/html/commonfooter.shtml"-->
+<script src="http://image.bitautoimg.com/mergejs,s=themes/2009/js/search.js,themes/2009/js/headcommon.js,bt/webtrends/dcs_tag_cars4.js" type="text/javascript"></script>
+<script type="text/javascript">
+	document.write('<scri' + 'pt type="text/javascript" src="http://gstat.bitauto.com/?r=' + Math.random() + '"></scr' + 'ipt>');
+</script>
+<script src="http://js.inc.baa.bitautotech.com/c/c.js?s=Bitauto.Login.Version2" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	Bitauto.Login.init("divLoginDivID");
+</script>
+<!-- bitauto ADstat end -->

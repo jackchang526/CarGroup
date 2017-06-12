@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>【上海车展|2013上海车展时间_2013上海国际车展门票】-易车网</title>
+	<meta name="description" content="上海车展，2013上海车展易车网为您直播2013上海国际车展资讯，包括2013上海车展车模、2013上海国际车展时间、2013上海车展新车、上海车展美女图片、门票等" />
+	<meta name="keywords" content="上海车展，2013上海车展，上海国际车展，上海车展车模，上海车展新车，上海车展时间" />
+	<!--#include file="/include/z/shanghaichezhan/2013/gonggongwenjian/00001/2013_shanghaichezhan_ejy_css_Manual.shtml"-->
+	<script type="text/javascript" language="javascript" src="http://image.bitautoimg.com/autoalbum/common/photo/js/jquery.js"></script>
+</head>
+<body class="body2">
+	<a name="pageTop"></a>
+	<!--2013-04-22 11:37:49-->
+	<!--头 start-->
+	<!--#include file="/include/special/yc/00001/2010TopicCommonHead_utf8_Manual.shtml"-->
+	<!--头 end-->
+	<!--头图 start-->
+	<div class="bt_head bt_head2">
+		<div class="index_header_swd index_header_swd2"><h1>2013上海车展</h1>
+			<!--<ul>             <li class="zhq"><a href="#">展前</a></li>             <li class="zhz zhz_current"><a href="#">展中</a></li>             <li class="zhh zhh_none"><a href="#">展后</a></li>         </ul>-->
+		</div>
+	</div>
+	<!--头图 end-->
+	<!--导航 start-->
+	<!--#include file="/include/z/shanghaichezhan/2013/gonggongwenjian/00001/2013_shanghaichezhan_daohang_Manual.shtml"-->
+	<!--导航 end-->
+	<!--con start-->
+	<div class="tree_wrap_box">
+		<!--tree start-->
+		<div class="treeBoxv1" id="leftTreeBox"></div>
+		<script> 			var params = {};
+			params.tagtype = "newcar";
+			params.eid = 117;
+			params.objid = 109 		</script>
+		<script type="text/javascript" language="javascript" src="http://image.bitautoimg.com/carchannel/jsnew/lefttree_exhibition.js"></script>
+		<!--tree end-->
+		<!--con_tree start-->
+		<div class="con_tree">
+			<!--右侧 start-->
+			<div class="right_tree right_tree2"><div class="wshzht_back"><a href="http://chezhan.bitauto.com/shanghai/n2013/tupian/gmc-109/">返回新车图片</a></div><div class="wshzht_left">    <dl>        <dt><h2>GMC(进口)</h2></dt>        <dd>0张图片</dd>    </dl></div>
+				<div class="clear"></div>
+				<!--列表 start-->
+				
+				<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnew/jquery.lazyload.min.js"></script>
+				<script> 					$("#serialphoto img").lazyload({
+	placeholder: "http://image.bitautoimg.com/uimg/index120401/images/picholder.gif",
+	effect: "fadeIn",
+	effectspeed: 0,
+	threshold: 50
+});  				</script>
+				<!--列表 end-->
+			</div>
+			<div class="right_tree right_tree_b">
+				<!--footer start-->
+				<!--#include file="/include/special/yc/00001/2010TopicCommonFoot_utf8_Manual.shtml"-->
+				<!--footer end-->
+			</div>
+			<!--右侧 end-->
+		</div>
+		<!--con end-->
+	</div>
+	<!--con end-->
+	<!--#include file="/include/z/shanghaichezhan/2013/gonggongwenjian/00001/2013_shanghaichezhan_ejy_TOP_Manual.shtml"-->
+	<!--JS-->
+	<!--#include file="/include/z/shanghaichezhan/2013/gonggongwenjian/00001/2013_shanghaichezhan_js_Manual.shtml"-->
+	<!--监测代码-->
+	<!--#include file="/include/special/00001/bitauto_analytics_chezhan_utf8_Manual.shtml"-->
+</body>
+</html>
+<script type="text/javascript"> 	setMenuItemSelect("m2"); </script>

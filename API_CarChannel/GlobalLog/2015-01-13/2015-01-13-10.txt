@@ -1,0 +1,10 @@
+[2015/1/13 10:55:50]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/carinfo/iframeforucar.aspx
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.CarInfo._iframeForUCar.GetUsedCarData() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\iframeForUCar.aspx.cs:行号 67
+   在 BitAuto.CarChannelAPI.Web.CarInfo._iframeForUCar.Page_Load(Object sender, EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\iframeForUCar.aspx.cs:行号 33
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 145
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

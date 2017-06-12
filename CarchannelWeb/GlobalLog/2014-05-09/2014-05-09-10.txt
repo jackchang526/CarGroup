@@ -1,0 +1,13 @@
+[2014/5/9 10:22:56]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/rongweie1/m102434/?carid=102434&
+Ref: http://car01.bitauto.com/rongweie1/
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.GetCarConfigurationForCarSummaey(Int32 carID, String name, String allSpell) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 1323
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.GetCarAllParam() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 1153
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.GetCarData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 268
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 103
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 143
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

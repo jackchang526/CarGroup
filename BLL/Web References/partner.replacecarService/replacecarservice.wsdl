@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://bitauto.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://bitauto.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://bitauto.com/">
+      <s:element name="AddOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="authorizeCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dealerId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="locationId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="purchaseTime" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="orderTypeId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="userAddress" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sex" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="userIp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="postCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pageUrl" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="carId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="carPrice" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="carColor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="carFullName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="carPromotions" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="carCustomParamers" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="replacementCarId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="replacementCarBuyYear" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="replacementCarBuyMonth" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="replacementCarColor" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="replacementLocationId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="replacementCarUsedMiles" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="salePrice" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddOrderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:AddOrder" />
+  </wsdl:message>
+  <wsdl:message name="AddOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:AddOrderResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ReplaceCarServiceSoap">
+    <wsdl:operation name="AddOrder">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">保存外部收集到的订单信息</wsdl:documentation>
+      <wsdl:input message="tns:AddOrderSoapIn" />
+      <wsdl:output message="tns:AddOrderSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ReplaceCarServiceSoap" type="tns:ReplaceCarServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddOrder">
+      <soap:operation soapAction="http://bitauto.com/AddOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ReplaceCarServiceSoap12" type="tns:ReplaceCarServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddOrder">
+      <soap12:operation soapAction="http://bitauto.com/AddOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ReplaceCarService">
+    <wsdl:port name="ReplaceCarServiceSoap" binding="tns:ReplaceCarServiceSoap">
+      <soap:address location="http://partner.bitauto.com/api/order/replacecarService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ReplaceCarServiceSoap12" binding="tns:ReplaceCarServiceSoap12">
+      <soap12:address location="http://partner.bitauto.com/api/order/replacecarService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

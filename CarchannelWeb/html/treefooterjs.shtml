@@ -1,0 +1,18 @@
+﻿<script type="text/javascript" charset="utf-8"  src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
+<!-- START OF SmartSource Data Collector TAG -->
+<script src="http://image.bitautoimg.com/bt/webtrends/dcs_tag_cars4.js" type="text/javascript"></script>
+<!-- END OF SmartSource Data Collector TAG -->
+<!-- cig start -->
+<script type="text/javascript">
+	(function () {
+		var dc = document.createElement('script'); dc.type = 'text/javascript'; dc.async = true;
+		dc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dcjs.cig.com.cn/dc.js?10';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(dc, s);
+	})();
+</script>
+<!-- cig end -->
+<!-- bitauto ADstat begin -->
+<script type="text/javascript">
+	document.write('<scri' + 'pt type="text/javascript" src="http://gstat.bitauto.com/?r=' + Math.random() + '"></scr' + 'ipt>');
+</script>
+<!-- bitauto ADstat end -->

@@ -1,0 +1,2 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AllSerialSortInfo.aspx.cs" Inherits="BitAuto.CarChannel.CarchannelWeb.interfaceforbitauto.AllSerialSortInfo" %>
+<%@ OutputCache Duration="600" VaryByParam="none" %>

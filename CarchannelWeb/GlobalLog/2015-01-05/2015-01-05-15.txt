@@ -1,0 +1,5 @@
+[2015/1/5 15:44:27]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/suteng/?ID=1765&
+Stack Trace: 子品牌报价区间接口 缓存数据 不是 DataSet
+

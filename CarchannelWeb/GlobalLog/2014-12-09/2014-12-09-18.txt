@@ -1,0 +1,46 @@
+[2014/12/9 18:01:51]  
+IP: 192.168.2.119
+Error in: http://car01.bitauto.com/suteng/?ID=1765&
+Stack Trace: System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetCNCAPData() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 7029
+
+[2014/12/9 18:02:13]  
+IP: 192.168.2.119
+Error in: http://car01.bitauto.com/suteng/?ID=1765&
+Stack Trace: System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetCNCAPData() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 7029
+
+[2014/12/9 18:06:03]  
+IP: 192.168.2.119
+Error in: http://car01.bitauto.com/suteng/?ID=1765&
+Stack Trace: System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetCNCAPData() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 7029
+
+[2014/12/9 18:07:33]  
+IP: 192.168.2.119
+Error in: http://car01.bitauto.com/suteng/?ID=1765&
+Stack Trace: System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetCNCAPData() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 7038
+
+[2014/12/9 18:11:29]  
+IP: 192.168.2.119
+Error in: http://car01.bitauto.com/suteng/?ID=1765&
+Stack Trace: 1722|649
+
+[2014/12/9 18:11:29]  
+IP: 192.168.2.119
+Error in: http://car01.bitauto.com/suteng/?ID=1765&
+Stack Trace: System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetCNCAPData() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 7038
+
+[2014/12/9 18:13:27]  
+IP: 192.168.2.119
+Error in: http://car01.bitauto.com/suteng/?ID=1765&
+Stack Trace: 1722|649
+
+[2014/12/9 18:13:27]  
+IP: 192.168.2.119
+Error in: http://car01.bitauto.com/suteng/?ID=1765&
+Stack Trace: System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetCNCAPData() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 7038
+

@@ -1,0 +1,24 @@
+﻿<div class="m-s-box m-s-box-bottom">
+    <form method="get" action="http://so.m.yiche.com/search">
+    <div class="m-close-box">
+        <div class="m-close-box-in">
+            <input type="search" name="txtkeyword" size="10" />
+            <div class="m-btn-close">关闭</div>
+        </div>
+    </div>
+    <div class="m-btn-box">
+        <input type="hidden" name="csytype" id="hid_sugchannelbottom" value="qiche" />
+        <input type="submit" value="" />
+    </div>
+    </form>
+</div>
+<script type="text/javascript">
+    var channelJson = [{ "domain": "m.yiche.com", "type": "qiche" }, { "domain": "car.m.yiche.com", "type": "chexing" }, { "domain": "price.m.yiche.com", "type": "baojia" }, { "domain": "news.m.yiche.com", "type": "wenzhang" }, { "domain": "v.m.yiche.com", "type": "shipin" }, { "domain": "baa.m.yiche.com", "type": "luntan" }, { "domain": "ask.m.yiche.com", "type": "ask" }, { "domain": "photo.m.yiche.com", "type": "chexing"}];
+    for (var i = 0; i < channelJson.length; i++) {
+        if (channelJson[i].domain == location.host.toLowerCase()) {
+            document.getElementById("hid_sugchannelbottom").value = channelJson[i].type;
+        }
+    }
+   
+</script>
+

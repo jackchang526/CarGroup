@@ -1,0 +1,240 @@
+﻿ <!-- include file="/include/special/seo/00001/bitauto_news_hotpinpai_Manual.shtml"-->
+ <div class="col-all">
+            <div class="line_box c0613_01">
+                <ul class="hotcar_tab" id="hotcar_tab">
+                    <li class="current">
+                        <h4>
+                            <span>热门品牌</span></h4>
+                    </li>
+                    <li class="">
+                        <h4>
+                            <span>国内品牌</span></h4>
+                    </li>
+                    <li class="">
+                        <h4>
+                            <span>国外品牌</span></h4>
+                    </li>
+                </ul>
+                <div class="clear">
+                </div>
+                <div style="display: block;" class="c0613_02" id="hotcar_tab_0">
+                    <ul class="hot_brand">
+                        <li><a href="http://news.bitauto.com/pinpai/beijingbenchi/" target="_blank">北京奔驰</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/beijingxiandai/" target="_blank">北京现代</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/biyadi/" target="_blank">比亚迪</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/dongfengrichan/" target="_blank">东风日产</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/dongfengyuedaqiya/" target="_blank">东风悦达起亚</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/guangqibentian/" target="_blank">广汽本田</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/huachenbaoma/" target="_blank">华晨宝马</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/jili/" target="_blank">吉利</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/qirui/" target="_blank">奇瑞</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/shangqirongwei/" target="_blank">上汽荣威</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/shanghaidazhong/" target="_blank">上海大众</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/shanghaitongyongxuefolan/" target="_blank">
+                            上海通用雪佛兰</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/shanghaitongyongbieke/" target="_blank">
+                            上海通用别克</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/yiqidazhong/" target="_blank">一汽大众</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/dongfengbiaozhi/" target="_blank">东风标致</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/aodi/" target="_blank">奥迪</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/baoma/" target="_blank">进口宝马</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/baoshijie/" target="_blank">保时捷</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/lanbojini/" target="_blank">兰博基尼</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/mazida/" target="_blank">马自达</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/xuefolan/" target="_blank">雪佛兰</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/bieke/" target="_blank">别克</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/woerwo/" target="_blank">沃尔沃</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/dazhong/" target="_blank">大众</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/binli/" target="_blank">进口宾利</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/wuling/" target="_blank">五菱</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/yiqibenteng/" target="_blank">奔腾</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/bentian/" target="_blank">本田</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/dongfengxuetielong/" target="_blank">东风雪铁龙</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/guangqi/" target="_blank">广汽</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/dongfengbentian/" target="_blank">东风本田</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/changhelingmu/" target="_blank">昌河铃木</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/changanfute/" target="_blank">长安福特</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/yiqiaodi/" target="_blank">一汽奥迪</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/yiqimazida/" target="_blank">一汽马自达</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/feiyate/" target="_blank">菲亚特</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/fengtian/" target="_blank">丰田</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/lingmu/" target="_blank">进口铃木</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/gmc/" target="_blank">GMC</a></li>
+                    </ul>
+                </div>
+                <div class="c0613_02" id="hotcar_tab_1" style="display: none;">
+                    <ul class="hot_brand">
+                        <li><a href="http://news.bitauto.com/pinpai/beibenkelaisile/" target="_blank">北京克莱斯勒</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/beiqi/" target="_blank">北汽</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/changanmazida/" target="_blank">长安马自达</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/changanwoerwo/" target="_blank">长安沃尔沃</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/changanlingmu/" target="_blank">长安铃木</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/changanweiche/" target="_blank">长安威驰</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/changanjiaoche/" target="_blank">长安轿车</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/changcheng/" target="_blank">长城</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/changhe/" target="_blank">昌河</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/fengxing/" target="_blank">风行</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/fengshen/" target="_blank">风神</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/dongfengyuan/" target="_blank">东风渝安</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/dongnan/" target="_blank">东南</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/dongnansanling/" target="_blank">东南三菱</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/dongnandaoqi/" target="_blank">东南道奇</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/dongnankelaisile/" target="_blank">东南克莱斯勒</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/fujianbenchi/" target="_blank">福建奔驰</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/futianqiche/" target="_blank">福建汽车</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/changfengliebao/" target="_blank">长丰猎豹</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/changfengsanling/" target="_blank">长丰三菱</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/guangqifengtian/" target="_blank">广汽丰田</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/huachenjinbei/" target="_blank">华晨金杯</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/huachenzhonghua/" target="_blank">华晨中华</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/hafei/" target="_blank">哈飞</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/haima/" target="_blank">哈马</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/huatai/" target="_blank">华泰</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/jiao/" target="_blank">吉奥</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/jianghuai/" target="_blank">江淮</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/quanqiuying/" target="_blank">全球鹰</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/shanghaiyinglun/" target="_blank">上海英伦</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/dihao/" target="_blank">帝豪</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/jiangling/" target="_blank">江陵</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/jiulongshangwuche/" target="_blank">九龙</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/jiangnan/" target="_blank">江南</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/lufeng/" target="_blank">陆风</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/lifan/" target="_blank">力帆</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/qingnianlianhua/" target="_blank">青年莲花</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/ruiqi/" target="_blank">瑞麒</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/kairui/" target="_blank">开瑞</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/weilin/" target="_blank">威麟</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/sichuanyiqifengtian/" target="_blank">四川一汽丰田</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/shanghaidazhongsikeda/" target="_blank">
+                            上海大众斯柯达</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/huapu/" target="_blank">华普</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/shuanghuan/" target="_blank">双环</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/shangqimingjue/" target="_blank">MG</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/shanghaitongyongkaidilake/" target="_blank">
+                            上海通用凯迪拉克</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/shangqitongyongwulingxuefolan/" target="_blank">
+                            上汽通用雪佛兰</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/tianjinyiqi/" target="_blank">天津一汽</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/tianjinyiqifengtian/" target="_blank">天津一汽丰田
+                        </a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/tianma/" target="_blank">天马</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/yema/" target="_blank">野马</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/yiqifengyue/" target="_blank">一汽丰越</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/yiqihuali/" target="_blank">一汽华利</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/hongqi/" target="_blank">红旗</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/yiqijiqi/" target="_blank">一汽吉汽</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/yiqijilindafa/" target="_blank">一汽吉林大发</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/yongyuanqicheufo/" target="_blank">永源汽车UFO
+                        </a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/zhongxing/" target="_blank">中兴</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/zhongtai/" target="_blank">众泰</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/fushida/" target="_blank">郑州海马</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/zhengzhourichan/" target="_blank">郑州日产</a></li>
+                    </ul>
+                </div>
+                <div class="c0613_02" id="hotcar_tab_2" style="display: none;">
+                    <ul class="hot_brand">
+                        <li><a href="http://news.bitauto.com/pinpai/aerfaluomiou/" target="_blank">进口阿尔法·罗米欧
+                        </a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/aerte/" target="_blank">阿尔特</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/asidunmading/" target="_blank">阿斯顿.马丁</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/bujiadi/" target="_blank">布嘉迪</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/biaozhi/" target="_blank">进口标致 </a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/xuetielong/" target="_blank">进口雪铁龙 </a>
+                        </li>
+                        <li><a href="http://news.bitauto.com/pinpai/falali/" target="_blank">法拉利</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/sibalu/" target="_blank">斯巴鲁</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/leikesasi/" target="_blank">雷克萨斯</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/fute/" target="_blank">福特</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/linken/" target="_blank">林肯</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/lanqiya/" target="_blank">蓝旗亚</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/haiku/" target="_blank">海酷</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/hanma/" target="_blank">悍马</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/jiebao/" target="_blank">捷豹</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/daoqi/" target="_blank">道奇</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/jipu/" target="_blank">吉普</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/kelaisile/" target="_blank">克莱斯勒</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/kenisaige/" target="_blank">柯尼赛格</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/lianhua/" target="_blank">进口莲花</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/luhu/" target="_blank">进口路虎</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/leinuo/" target="_blank">进口雷诺</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/laosilaisi/" target="_blank">进口劳斯莱斯</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/maibahe/" target="_blank">进口迈巴赫</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/MINImini/" target="_blank">进口迷你(MINI)</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/benchi/" target="_blank">进口奔驰</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/mashaladi/" target="_blank">玛莎拉蒂汽</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/oubao/" target="_blank">欧宝</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/qiya/" target="_blank">进口起亚</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/guanggang/" target="_blank">进口光冈</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/richan/" target="_blank">进口日产</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/yingfeinidi/" target="_blank">进口英菲尼迪</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/sabo/" target="_blank">萨博</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/shijue/" target="_blank">世爵</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/sikeda/" target="_blank">进口斯柯达</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/sanling/" target="_blank">进口三菱</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/shuanglong/" target="_blank">进口双龙</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/simateSmart/" target="_blank">斯玛特</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/kaidilake/" target="_blank">进口凯迪拉克</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/pangdike/" target="_blank">进口旁蒂克</a></li>
+                        <li><a href="http://news.bitauto.com/pinpai/xiandai/" target="_blank">现代</a></li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript" language="javascript">
+                    function BtHide(id) {
+                        var Div = document.getElementById(id);
+                        if (Div) {
+                            Div.style.display = "none";
+                        }
+                    }
+                    function BtShow(id) {
+                        var Div = document.getElementById(id);
+                        if (Div) {
+                            Div.style.display = "block";
+                        }
+                    }
+                    function BtTabRemove(index, head, divs) {
+                        var tab_heads = document.getElementById(head);
+                        if (tab_heads) {
+                            var lis = tab_heads.getElementsByTagName("li");
+                            var as = tab_heads.getElementsByTagName("span");
+                            for (var i = 0; i < as.length; i++) {
+                                lis[i].className = "";
+                                BtHide(divs + "_" + i);
+                                if (i == index) {
+                                    lis[i].className = "current";
+                                }
+                            }
+                            BtShow(divs + "_" + index);
+                        }
+                    }
+                    function TabOn(head, divs) {
+                        var tab_heads = document.getElementById(head);
+                        if (tab_heads) {
+                            BtTabRemove(0, head, divs);
+                            var alis = tab_heads.getElementsByTagName("span");
+                            for (var i = 0; i < alis.length; i++) {
+                                alis[i].num = i;
+                                var innerText = alis[i].innerText;
+                                if (!innerText)
+                                    innerText = alis[i].innerHTML;
+                                if (innerText != "最新" && alis[i].className == "nolink")
+                                    alis[i].style.display = "none";
+                                alis[i].onmouseover = function() {
+                                    BtTabRemove(this.num, head, divs);
+                                    this.blur();
+                                    return false;
+                                }
+                                alis[i].onfocus = function() {
+                                    BtTabRemove(this.num, head, divs);
+                                }
+                            }
+                        }
+                    }
+                    TabOn("hotcar_tab", "hotcar_tab");
+                </script>
+
+                <div class="clear">
+                </div>
+            </div>
+        </div>

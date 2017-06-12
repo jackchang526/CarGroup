@@ -1,0 +1,23 @@
+﻿.car_model_list { width:718px; float:left; height:124px; border-right:1px solid #DCDDDD; position:relative; font-family:simSun; }
+.car_model_list ul { border-top:1px solid #fff; border-bottom:1px solid #DCDDDD; height:27px; background:#f1f1f1; *overflow:hidden;
+}
+.car_model_list ul li { float:left; border-left:1px solid #fff; border-right:1px solid #DCDDDD; text-align:center; width:57px; }
+.car_model_list ul li.current { height:28px; position:relative; background:#fff; /*border-top:2px #c00 solid;*/ }
+.car_model_list ul li.last { border-right:none; }
+.car_model_list ul li a { display:block; height:27px; line-height:27px; float:left; width:57px; }
+.car_model_list ul li a:link, .car_model_list ul li a:visited { /*text-decoration:underline;*/ }
+.car_model_list ul li.current a { /*color:#CC0000; line-height:23px;*/ }
+/*010127*/
+.car_model_list dl { height:32px; background:url(http://www.bitauto.com/themes/09gq/images/bit_icon091010.png) repeat-x scroll 0 -272px; position:static; z-index:1; }
+.car_model_list dl.fist { background:#F8F8F8 url(http://www.bitauto.com/themes/09gq/images/bit_icon091010.png) repeat-x scroll 0 -272px; }
+/*010127*/
+.car_model_list dl a { line-height:32px;  }
+.car_model_list dl a:link span, .car_model_list dl a:visited span { display:none; }
+.car_model_list dl a:hover { margin:0; }
+.car_model_list dl a:hover span { display:block; border:1px #164a84 solid; background:#fff; text-decoration:none; }
+.car_model_list dl a span { position:absolute; top:14px; left:0; width:173px; color:#000; text-align:left; padding:2px 0 0 5px; cursor:default; line-height:17px; }
+.car_model_list dl a span em { color:#c00; font-weight:bold; line-height:20px; }
+.car_model_list dl dt { float:left; width:80px; text-align:center; }
+.car_model_list dl dd { float:left; width:71px; height:23px;text-align:center; overflow:hidden; }
+.car_model_list dl dd.more { position:inherit; top:auto; right:auto; padding-right:0; /*width:50px;*/ }
+.car_model_list dl dd.more a { font-family:simSun; }

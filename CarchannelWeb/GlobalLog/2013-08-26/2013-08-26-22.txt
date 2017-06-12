@@ -1,0 +1,16 @@
+[2013/8/26 22:46:04]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/langyi/?ID=2370&
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.Common.NodeCompare.SerialColorCompare(SerialColorForSummaryEntity color1, SerialColorForSummaryEntity color2) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\NodeCompare.cs:行号 588
+   在 System.Collections.Generic.ArraySortHelper`1.QuickSort(T[] keys, Int32 left, Int32 right, IComparer`1 comparer)
+   在 System.Collections.Generic.ArraySortHelper`1.Sort(T[] keys, Int32 index, Int32 length, IComparer`1 comparer)
+
+[2013/8/26 22:46:41]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/kaimeirui/?ID=1991&
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.Common.NodeCompare.SerialColorCompare(SerialColorForSummaryEntity color1, SerialColorForSummaryEntity color2) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\NodeCompare.cs:行号 588
+   在 System.Collections.Generic.ArraySortHelper`1.QuickSort(T[] keys, Int32 left, Int32 right, IComparer`1 comparer)
+   在 System.Collections.Generic.ArraySortHelper`1.Sort(T[] keys, Int32 index, Int32 length, IComparer`1 comparer)
+

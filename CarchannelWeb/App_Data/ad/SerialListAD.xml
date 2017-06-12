@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<!-- add by chengl Jan.4.2015 -->
+	<SerialAD name="selectcar皮卡">
+		<!--选车工具 锐骐皮卡 -->
+		<item pos="8" serialId="2679" starttime="2016-8-2" endtime="2016-12-31" />
+	</SerialAD>
+</root>

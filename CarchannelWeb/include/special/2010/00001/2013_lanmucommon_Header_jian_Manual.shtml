@@ -1,0 +1,59 @@
+﻿<div class="nav_small">
+	<h3>
+		<a href="http://www.bitauto.com/" target="_blank">易车网</a></h3>
+	<div class="nav_small_arrow">
+	</div>
+	<dl>
+		<dt>价格：</dt>
+		<dd>
+			<a href="http://car.bitauto.com/xuanchegongju/?p=0-5" target="_blank">5万以下</a></dd>
+		<dd>
+			<a href="http://car.bitauto.com/xuanchegongju/?p=5-8" target="_blank">5-8万</a></dd>
+		<dd>
+			<a href="http://car.bitauto.com/xuanchegongju/?p=8-12" target="_blank">8-12万</a></dd>
+		<dd>
+			<a href="http://car.bitauto.com/xuanchegongju/?p=12-18" target="_blank">12-18万</a></dd>
+		<dd>
+			<a href="http://car.bitauto.com/xuanchegongju/?p=18-25" target="_blank">18-25万</a></dd>
+		<dd>
+			<a href="http://car.bitauto.com/xuanchegongju/?p=25-40" target="_blank">25-40万</a></dd>
+		<dd class="last">
+			<a href="http://car.bitauto.com/xuanchegongju/?p=40-9999" target="_blank">40万以上</a></dd>
+		<dt>级别：</dt>
+		<dd class="bit_link" onmouseover="document.getElementById('liangxiang_box').style.display='';this.className='bit_link bit_hover';"
+			onmouseout="document.getElementById('liangxiang_box').style.display='none';this.className='bit_link';">
+			<strong><a id="" href="http://car44.bitauto.com/xuanchegongju/?b=1" target="_blank">
+				两厢<em></em></a><sub></sub></strong>
+			<ul id="liangxiang_box" style="display: none;">
+				<li><a href="http://car.bitauto.com/xuanchegongju/?l=1&b=1" target="_blank">微型车</a></li>
+				<li><a href="http://car.bitauto.com/xuanchegongju/?l=2&b=1" target="_blank">小型车</a></li>
+				<li><a href="http://car.bitauto.com/xuanchegongju/?l=3&b=1" target="_blank">紧凑型车</a></li>
+				<li><a href="http://car.bitauto.com/xuanchegongju/?l=5&b=1" target="_blank">中型车</a></li>
+			</ul>
+		</dd>
+		<dd class="bit_link" onmouseover="document.getElementById('sanxiang_box').style.display='';this.className='bit_link bit_hover';"
+			onmouseout="document.getElementById('sanxiang_box').style.display='none';this.className='bit_link';">
+			<strong><a id="" href="http://car44.bitauto.com/xuanchegongju/?b=2" target="_blank">
+				三厢<em></em></a><sub></sub></strong>
+			<ul id="sanxiang_box" style="display: none;">
+				<li><a href="http://car.bitauto.com/xuanchegongju/?l=1&b=2" target="_blank">微型车</a></li>
+				<li><a href="http://car.bitauto.com/xuanchegongju/?l=2&b=2" target="_blank">小型车</a></li>
+				<li><a href="http://car.bitauto.com/xuanchegongju/?l=3&b=2" target="_blank">紧凑型车</a></li>
+				<li><a href="http://car.bitauto.com/xuanchegongju/?l=5&b=2" target="_blank">中型车</a></li>
+				<li><a href="http://car.bitauto.com/xuanchegongju/?l=4&b=2" target="_blank">中大型车</a></li>
+				<li><a href="http://car.bitauto.com/xuanchegongju/?l=6&b=2" target="_blank">豪华型车</a></li>
+			</ul>
+		</dd>
+		<dd>
+			<a href="http://car.bitauto.com/mpv/" target="_blank">MPV</a></dd>
+		<dd>
+			<a href="http://car.bitauto.com/suv/" target="_blank">SUV</a></dd>
+		<dd class="last">
+			<a href="http://car.bitauto.com/paoche/" target="_blank">跑车</a></dd>
+		<dt>工具：</dt>
+		<dd>
+			<a href="http://car.bitauto.com/chexingduibi/" target="_blank">车型对比</a></dd>
+		<dd class="last">
+			<a href="http://car.bitauto.com/gouchejisuanqi/" target="_blank">计算器</a></dd>
+	</dl>
+</div>

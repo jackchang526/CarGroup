@@ -1,0 +1,77 @@
+﻿
+<div class="suv-list-box" id="data_box1_2" style="display: none;">
+    <ul>
+        <li>
+            <div class="img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120">
+                <div class="img"> <a href="http://car.bitauto.com/pajieluojinchang/"><img src="http://img3.bitautoimg.com/autoalbum/files/20131029/976/0555399762_6.jpg" alt="帕杰罗·劲畅汽车报价_价格"></a> </div>
+                <ul class="p-list">
+                    <li class="name"><a href="http://car.bitauto.com/pajieluojinchang/">帕杰罗·劲畅</a></li>
+                    <li class="price"><a href="http://car.bitauto.com/pajieluojinchang/baojia/c201/">20.88-30.88万</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120">
+                <div class="img"> <a href="http://car.bitauto.com/changchengh5/"><img src="http://img3.bitautoimg.com/autoalbum/files/20141117/204/0537012041_6.jpg" alt="哈弗H5汽车报价_价格"></a> </div>
+                <ul class="p-list">
+                    <li class="name"><a href="http://car.bitauto.com/changchengh5/">哈弗H5</a></li>
+                    <li class="price"><a href="http://car.bitauto.com/changchengh5/baojia/c201/">9.28-17.08万</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120">
+                <div class="img"> <a href="http://car.bitauto.com/jipumumaren/"><img src="http://img2.bitautoimg.com/autoalbum/files/20150113/429/0416444298_6.jpg" alt="牧马人汽车报价_价格"></a> </div>
+                <ul class="p-list">
+                    <li class="name"><a href="http://car.bitauto.com/jipumumaren/">牧马人</a></li>
+                    <li class="price"><a href="http://car.bitauto.com/jipumumaren/baojia/c201/">42.99-59.99万</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120">
+                <div class="img"> <a href="http://car.bitauto.com/benchiglji/"><img src="http://img4.bitautoimg.com/autoalbum/files/20150202/318/0553293186_6.jpg" alt="GL级汽车报价_价格"></a> </div>
+                <ul class="p-list">
+                    <li class="name"><a href="http://car.bitauto.com/benchiglji/">GL级</a></li>
+                    <li class="price"><a href="http://car.bitauto.com/benchiglji/baojia/c201/">99.9-188万</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120">
+                <div class="img"> <a href="http://car.bitauto.com/benchigjiamg/"><img src="http://img1.bitautoimg.com/autoalbum/files/20130718/388/1138303883_6.jpg" alt="G级AMG汽车报价_价格"></a> </div>
+                <ul class="p-list">
+                    <li class="name"><a href="http://car.bitauto.com/benchigjiamg/">G级AMG</a></li>
+                    <li class="price"><a href="http://car.bitauto.com/benchigjiamg/baojia/c201/">229-378万</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120">
+                <div class="img"> <a href="http://car.bitauto.com/fjkuluze/"><img src="http://img4.bitautoimg.com/autoalbum/files/20120306/354/0607263543_6.jpg" alt="FJ酷路泽汽车报价_价格"></a> </div>
+                <ul class="p-list">
+                    <li class="name"><a href="http://car.bitauto.com/fjkuluze/">FJ酷路泽</a></li>
+                    <li class="price"><a href="http://car.bitauto.com/fjkuluze/baojia/c201/">54.68万</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120">
+                <div class="img"> <a href="http://car.bitauto.com/beiqib40/"><img src="http://img2.bitautoimg.com/autoalbum/files/20120305/604/0504496043_6.jpg" alt="北京40汽车报价_价格"></a> </div>
+                <ul class="p-list">
+                    <li class="name"><a href="http://car.bitauto.com/beiqib40/">北京40</a></li>
+                    <li class="price"><a href="http://car.bitauto.com/beiqib40/baojia/c201/">14.68-18.68万</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <div class="img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120">
+                <div class="img"> <a href="http://car.bitauto.com/jimuni/"><img src="http://img1.bitautoimg.com/autoalbum/files/20140312/819/0156268192_6.jpg" alt="吉姆尼汽车报价_价格"></a> </div>
+                <ul class="p-list">
+                    <li class="name"><a href="http://car.bitauto.com/jimuni/">吉姆尼</a></li>
+                    <li class="price"><a href="http://car.bitauto.com/jimuni/baojia/c201/">14.18-16.08万</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>

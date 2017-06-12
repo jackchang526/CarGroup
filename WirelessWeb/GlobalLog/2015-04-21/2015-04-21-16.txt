@@ -1,0 +1,50 @@
+[2015/4/21 16:26:14]  
+IP: 127.0.0.1
+Error in: http://car01.m.yiche.com/xts/?ID=3031&
+Error Message: 无法将类型为“System.DBNull”的对象强制转换为类型“System.String”。
+Stack Trace:    在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSaleCarExhaustBySerialId(Int32 serialId) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 7283
+   在 WirelessWeb.CsSummary.InitSerialInfo() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CsSummary.aspx.cs:行号 812
+   在 WirelessWeb.CsSummary.Page_Load(Object sender, EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CsSummary.aspx.cs:行号 164
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 145
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2015/4/21 16:31:21]  
+IP: 127.0.0.1
+Error in: http://car01.m.yiche.com/SelectCar.aspx?l=4
+Error Message: 已添加了具有相同键的项。
+Stack Trace:    在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialListADData() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2896
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2843
+   在 WirelessWeb.SelectCar.MakeSelectCar() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\SelectCar.aspx.cs:行号 160
+   在 WirelessWeb.SelectCar.Page_Load(Object sender, EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\SelectCar.aspx.cs:行号 64
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 145
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2015/4/21 16:32:03]  
+IP: 127.0.0.1
+Error in: http://car01.m.yiche.com/SelectCar.aspx?l=4
+Error Message: 已添加了具有相同键的项。
+Stack Trace:    在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialListADData() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2896
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2843
+   在 WirelessWeb.SelectCar.MakeSelectCar() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\SelectCar.aspx.cs:行号 160
+   在 WirelessWeb.SelectCar.Page_Load(Object sender, EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\SelectCar.aspx.cs:行号 64
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 145
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2015/4/21 16:32:13]  
+IP: 127.0.0.1
+Error in: http://car01.m.yiche.com/SelectCar.aspx?l=4&ss
+Error Message: 已添加了具有相同键的项。
+Stack Trace:    在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialListADData() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2896
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2843
+   在 WirelessWeb.SelectCar.MakeSelectCar() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\SelectCar.aspx.cs:行号 160
+   在 WirelessWeb.SelectCar.Page_Load(Object sender, EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\SelectCar.aspx.cs:行号 64
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 145
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

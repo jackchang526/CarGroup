@@ -1,0 +1,66 @@
+﻿<div class="m-hot-brands">
+                <ul>
+                    <li>
+                        <a href="http://car.m.yiche.com/volkswagen/">
+                            <img src="http://image.bitautoimg.com/car/mhot/8.jpg" />
+                            <p>大众</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://car.m.yiche.com/hyundai/">
+                            <img src="http://image.bitautoimg.com/car/mhot/13.jpg" />
+                            <p>现代</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://car.m.yiche.com/ford/">
+                            <img src="http://image.bitautoimg.com/car/mhot/17.jpg" />
+                            <p>福特</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://car.m.yiche.com/kia/">
+                            <img src="http://image.bitautoimg.com/car/mhot/28.jpg" />
+                            <p>起亚</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://car.m.yiche.com/buick/">
+                            <img src="http://image.bitautoimg.com/car/mhot/127.jpg" />
+                            <p>别克</p>
+                        </a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="http://car.m.yiche.com/greatwall/">
+                            <img src="http://image.bitautoimg.com/car/mhot/21.jpg" />
+                            <p>长城</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://car.m.yiche.com/audi/">
+                            <img src="http://image.bitautoimg.com/car/mhot/9.jpg" />
+                            <p>奥迪</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://car.m.yiche.com/chevrolet/">
+                            <img src="http://image.bitautoimg.com/car/mhot/49.jpg" />
+                            <p>雪佛兰</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://car.m.yiche.com/cajc/">
+                            <img src="http://image.bitautoimg.com/car/mhot/136.jpg" />
+                            <p>长安</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="http://car.m.yiche.com/brandlist.html">
+                            <span><em>全部品牌</em></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>

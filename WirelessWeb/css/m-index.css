@@ -1,0 +1,20 @@
+/*价格区间*/
+.m-car-model-list{}
+.m-car-model-list li{float:left; width:90px; margin:10px 0 10px 10px; font-size:1.6rem;}
+
+/*焦点图*/
+.m-focus{width:320px; margin:0 auto;}
+.m-focus-scroll-box{width:320px; height:213px; overflow:hidden; position:relative;}
+.m-focus-scroll-box ul{width:5000px;}
+.m-focus-scroll-box li{width:320px; height:213px; float:left;}
+
+.m-focus-num{width:320px; position:relative; padding:10px 0 0 0;}
+.m-focus-num ul{float:left; position:relative; left:50%;}
+.m-focus-num li{float:left; font-size:0; line-height:0; width:0px; height:0px; border-radius:40px; border:4px solid #CCC; position:relative; left:-50%; margin-right:10px}
+.m-focus-num li.current{border-color:#C00;}
+
+
+/*tablet*/
+@media only screen and (min-device-width : 768px) {
+	
+}

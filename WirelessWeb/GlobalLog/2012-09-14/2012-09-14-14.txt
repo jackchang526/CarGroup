@@ -1,0 +1,12 @@
+[2012/9/14 14:15:34]  
+IP: 127.0.0.1
+Error in: http://m.car.yiche.com/handlers/selectcartool.ashx?page=2
+Error Message: 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+Stack Trace:    在 System.Text.StringBuilder.Remove(Int32 startIndex, Int32 length)
+   在 WirelessWeb.SelectCarTool.MakeImageModeHtml(List`1 serilaList) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\handlers\SelectCarTool.ashx.cs:行号 86
+   在 WirelessWeb.SelectCarTool.MakeSelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\handlers\SelectCarTool.ashx.cs:行号 45
+   在 WirelessWeb.SelectCarTool.ProcessRequest(HttpContext context) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\handlers\SelectCarTool.ashx.cs:行号 33
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

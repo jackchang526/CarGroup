@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ADList>
+	<!--荣威550--><!--
+	<Serial>
+		<Position>10</Position>
+		<Title>荣威550</Title>
+		<SerialID>2371</SerialID>
+		<StartDate>2012-05-01</StartDate>
+		<EndDate>2012-05-31</EndDate>
+		<CityList>
+			<City id="0" name="全国"/>
+			<City id="201" name="北京"/>
+			<City id="2601" name="天津"/>
+			<City id="2401" name="上海"/>
+			<City id="3101" name="重庆"/>
+			<City id="501" name="广州"/>
+			<City id="502" name="深圳"/>
+		</CityList>
+	</Serial>-->
+	<!--名爵MG3 
+		2012-09-01~2012-09-30 
+		全国，上海，北京，天津，重庆，广州 ，深圳-->
+	<Serial>
+		<Position>10</Position>
+		<Title>MG3</Title>
+		<SerialID>3092</SerialID>
+		<StartDate>2012-09-01</StartDate>
+		<EndDate>2012-09-30</EndDate>
+		<CityList>
+			<City id="0" name="全国"/>
+			<City id="201" name="北京"/>
+			<City id="2601" name="天津"/>
+			<City id="2401" name="上海"/>
+			<City id="3101" name="重庆"/>
+			<City id="501" name="广州"/>
+			<City id="502" name="深圳"/>
+		</CityList>
+	</Serial>
+</ADList>

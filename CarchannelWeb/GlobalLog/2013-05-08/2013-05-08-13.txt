@@ -1,0 +1,16 @@
+[2013/5/8 13:45:01]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/interfaceforbitauto/GetTreeXmlData.ashx?tagType=xiaoliang
+Error Message: 缺少根元素。
+Stack Trace:    在 System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   在 System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   在 System.Xml.XmlTextReaderImpl.Read()
+   在 System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   在 System.Xml.XmlDocument.Load(XmlReader reader)
+   在 System.Xml.XmlDocument.LoadXml(String xml)
+   在 BitAuto.CarChannel.CarchannelWeb.interfaceforbitauto.GetTreeXmlData.ProcessXmlData(String xmlData) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\interfaceforbitauto\GetTreeXmlData.ashx.cs:行号 108
+   在 BitAuto.CarChannel.CarchannelWeb.interfaceforbitauto.GetTreeXmlData.GetXmlData(String tagType) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\interfaceforbitauto\GetTreeXmlData.ashx.cs:行号 97
+   在 BitAuto.CarChannel.CarchannelWeb.interfaceforbitauto.GetTreeXmlData.ProcessRequest(HttpContext context) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\interfaceforbitauto\GetTreeXmlData.ashx.cs:行号 23
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

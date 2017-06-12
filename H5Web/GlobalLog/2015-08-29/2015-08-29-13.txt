@@ -1,0 +1,9 @@
+[2015/8/29 13:43:33]  
+IP: 127.0.0.1
+Error in: http://car01.h5.yiche.com/V2/CsSummary.aspx?csID=1991&
+Ref: 
+Error Message: 未能加载类型“H5Web.V2.CsSummary”。
+Stack Trace:    在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+

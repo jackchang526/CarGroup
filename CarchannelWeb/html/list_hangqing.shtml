@@ -1,0 +1,75 @@
+﻿<script language="javascript" type="text/javascript">
+    var showAllBtn = document.getElementById("showAllBtn");
+    var areas = document.getElementById("all_provice");
+    if ((showAllBtn) && (areas)) {
+        controlCityShow();
+    }
+    function controlCityShow() {
+        var lis = areas.getElementsByTagName("li");
+        if (typeof lis == 'undefined' || lis == null || lis.length < 1) return;
+        var len = lis.length;
+
+        for (var i = 0; i < len; i++) {
+            if (lis[i].className == "current" && i > 14) {
+                showAllBtn.style.display = "none";
+                return;
+            }
+        }
+        if (len > 17) {
+            showAllBtn.style.display = "block";
+            for (var i = 15; i < len - 1; i++) {
+                lis[i].style.display = "none";
+            }
+        }
+        if (len < 17) {
+            showAllBtn.style.display = "none";
+        }
+        showAllBtn.onclick = function () {
+            for (var id = 11; id < len - 1; id++) { lis[id].style.display = "block"; }
+            showAllBtn.style.display = "none"
+        }
+    }
+    function tabs(a, b, c, f) {
+        if (!document.getElementById(a)) return false;
+        var d = document.getElementById(a);
+        if (d) {
+            d = d.getElementsByTagName("li");
+            for (var e = 0; e < d.length; e++) {
+                d[e].num = e;
+                if (f) {
+                    d[e].onmouseover = function () {
+                        var g = this;
+                        thetabstime = setTimeout(function () {
+                            h(g)
+                        },
+                    150)
+                    };
+                    d[e].onmouseout = function () {
+                        clearTimeout(thetabstime)
+                    }
+                } else d[e].onclick = function () {
+
+                    var ShowOrHideSelectCondition_a = document.getElementById("showhideCon");
+                    var ShowOrHideSelectCondition_btn = document.getElementById("showhide");
+                    if (ShowOrHideSelectCondition_a.style.display == "none") {
+                        ShowOrHideSelectCondition_a.style.display = "block";
+                        ShowOrHideSelectCondition_btn.className = "sq";
+                        ShowOrHideSelectCondition_btn.innerHTML = "\u6536\u8d77";
+                    }
+
+                    if (this.className == "current" || this.className == "last current") {
+                        h(this);
+                        return true
+                    } else {
+                        h(this);
+                        return false
+                    }
+                };
+                function h(g) {
+                    tabsRemove(g.num, a, b, c)
+                }
+            }
+        }
+    }
+
+</script>

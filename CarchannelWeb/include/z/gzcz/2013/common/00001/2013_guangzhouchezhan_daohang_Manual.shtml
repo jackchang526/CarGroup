@@ -1,0 +1,73 @@
+﻿<div class="nav_swd">
+	<div class="fl">
+		<ul>
+			<li id="m1" class="current"><a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/">
+				<span></span><em></em>车展首页</a></li>
+			<li id="m2"><a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/tupian/"><span>
+			</span><em></em>新车图片</a></li>
+			<li id="m3"><a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/zhuanguan/">
+				<span></span><em></em>网上展厅</a></li>
+			<li id="m4"><a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/newcar/"><span>
+			</span><em></em>上市新车</a></li>
+			<li id="m5"><a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/djjx/"><span>
+			</span><em></em>独家解析</a></li>
+			<li id="m6"><a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/mod/"><span>
+			</span><em></em>美女车模</a></li>
+			<li id="m7"><a href="http://baa.bitauto.com/special/huodong/"><span></span><em></em>
+				网友活动</a></li>
+			<li id="m8"><a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/gdft/"><span>
+			</span><em></em>高端访谈</a></li>
+			<li id="m9"><a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/video/"><span>
+			</span><em></em>车展视频</a></li>
+		</ul>
+		<div class="clear">
+		</div>
+		<dl class="mgl10">
+			<dt>车型系列：</dt>
+			<dd>
+				<a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/jibie/1/">微型</a></dd>
+			<dd>
+				<a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/jibie/2/">小型</a></dd>
+			<dd>
+				<a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/jibie/3/">紧凑型</a></dd>
+			<dd>
+				<a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/jibie/4/">中型</a></dd>
+			<dd>
+				<a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/jibie/5/">中大型</a></dd>
+			<dd>
+				<a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/jibie/6/">豪华车</a></dd>
+			<dd>
+				<a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/jibie/8/">SUV</a></dd>
+			<dd>
+				<a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/jibie/7/">MPV</a></dd>
+			<dd>
+				<a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/jibie/9/">跑车</a></dd>
+		</dl>
+		<dl>
+			<dt>价格范围：</dt>
+			<dd>
+				<a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/jiage/2/">5-8万</a></dd>
+			<dd>
+				<a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/jiage/3/">8-12万</a></dd>
+			<dd>
+				<a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/jiage/4/">12-18万</a></dd>
+			<dd>
+				<a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/jiage/5/">18-25万</a></dd>
+			<dd>
+				<a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/jiage/6/">25-40万</a></dd>
+			<dd>
+				<a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2013/jiage/7/">40万以上</a></dd>
+		</dl>
+	</div>
+</div>
+<script>
+	function setMenuItemSelect(ids) {
+		if (ids == "m9") {
+			document.getElementById(ids).className += ' last_current';
+			document.getElementById("m1").className = '';
+		}
+		else {
+			document.getElementById(ids).className += ' current';
+			document.getElementById("m1").className = '';
+		}
+	}</script>

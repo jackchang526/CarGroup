@@ -1,0 +1,53 @@
+﻿<script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
+<script type="text/javascript">
+    var ChannelLOGCollector = {
+        mainbrand: '',
+        brand: '',
+        serial: '',
+        car: '',
+        product: ''
+    };
+    if (typeof (CarCommonBSID) != "undefined") {
+        ChannelLOGCollector.mainbrand = CarCommonBSID;
+    }
+    if (typeof (CarCommonCBID) != "undefined") {
+        ChannelLOGCollector.brand = CarCommonCBID;
+    }
+    if (typeof (CarCommonCSID) != "undefined") {
+        ChannelLOGCollector.serial = CarCommonCSID;
+    }
+    if (typeof (CarCommonCarID) != "undefined") {
+        ChannelLOGCollector.car = CarCommonCarID;
+    }
+</script>
+<script type="text/javascript">
+	// 统计
+	var XCWebLogCollector = { area: '201' };
+	if (typeof (bit_locationInfo) != "undefined" && typeof (bit_locationInfo.cityId) != "undefined") {
+		XCWebLogCollector.area = bit_locationInfo.cityId;
+	}
+	if (typeof (CarCommonBSID) != "undefined") {
+		XCWebLogCollector.mainbrand = CarCommonBSID;
+	}
+	if (typeof (CarCommonCBID) != "undefined") {
+		XCWebLogCollector.brand = CarCommonCBID;
+	}
+	if (typeof (CarCommonCSID) != "undefined") {
+		XCWebLogCollector.serial = CarCommonCSID;
+	}
+	if (typeof (CarCommonCarID) != "undefined") {
+		XCWebLogCollector.car = CarCommonCarID;
+	}
+</script>
+<!-- 公用底 -->
+<!-- bottom search start -->
+<!--# include file="~/include/pd/2016/wap/00001/201604_wap_common_foot_Manual.shtml"-->
+<!--#include file="~/include/pd/2016/wap/00001/201607_wap_common_footer_Manual.shtml"-->
+<!-- body 结束前内容 所有页面通用 -->
+<script type="text/javascript">
+    var backurl = "http://m.yiche.com/";
+    if (typeof (backurl) != "undefined") {
+        Bitauto.GoBacker.setDefaultURL(backurl);
+    }
+</script>
+

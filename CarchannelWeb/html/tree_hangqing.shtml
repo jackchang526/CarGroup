@@ -1,0 +1,88 @@
+﻿<script language="javascript" type="text/javascript">
+	var showAllBtn = document.getElementById("showAllBtn");
+	var areas = document.getElementById("all_provice");
+	var cityToolKey = false;
+	if ((showAllBtn) && (areas)) {
+		controlCityShow();
+	}
+	function controlCityShow() {
+		var lis = areas.getElementsByTagName("li");
+		if (typeof lis == 'undefined' || lis == null || lis.length < 1) return;
+		var len = lis.length;
+		showAllBtn.onclick = function () {
+			if (cityToolKey) {
+				closeCityTool();
+			} else {
+				openCityTool();
+			}
+		}
+		openCityTool = function () {
+			for (var id = 21; id < len; id++) {
+				lis[id].style.display = "block";
+			}
+			var city = document.getElementById("city");
+			var cityList = city.getElementsByTagName("li");
+			if (typeof cityList != 'undefined' && cityList.length > 0) {
+				document.getElementById("city_line").style.display = "block";
+				city.style.display = "block";
+			}
+			showAllBtn.firstChild.innerHTML = "收起条件";
+			showAllBtn.className = "tool-btn-hide";
+			cityToolKey = true;
+		}
+		closeCityTool = function () {
+			for (var id = 21; id < len; id++) {
+				lis[id].style.display = "none";
+			}
+			showAllBtn.firstChild.innerHTML = "更多条件";
+			showAllBtn.className = "tool-btn-show";
+			cityToolKey = false;
+		}
+		if (lis[21].style.display == "block") {
+			openCityTool();
+		}
+	}
+	function tabs(a, b, c, f) {
+		if (!document.getElementById(a)) return false;
+		var d = document.getElementById(a);
+		if (d) {
+			d = d.getElementsByTagName("li");
+			for (var e = 0; e < d.length; e++) {
+				d[e].num = e;
+				if (f) {
+					d[e].onmouseover = function () {
+						var g = this;
+						thetabstime = setTimeout(function () {
+							h(g)
+						},
+                    150)
+					};
+					d[e].onmouseout = function () {
+						clearTimeout(thetabstime)
+					}
+				} else d[e].onclick = function () {
+
+					var ShowOrHideSelectCondition_a = document.getElementById("showhideCon");
+					var ShowOrHideSelectCondition_btn = document.getElementById("showhide");
+					if (ShowOrHideSelectCondition_a.style.display == "none") {
+						ShowOrHideSelectCondition_a.style.display = "block";
+						ShowOrHideSelectCondition_btn.className = "sq";
+						ShowOrHideSelectCondition_btn.innerHTML = "\u6536\u8d77";
+					}
+
+					if (this.className == "current" || this.className == "last current") {
+						h(this);
+						return true
+					} else {
+						h(this);
+						return false
+					}
+				};
+				function h(g) {
+					tabsRemove(g.num, a, b, c)
+				}
+			}
+		}
+	}
+
+</script>

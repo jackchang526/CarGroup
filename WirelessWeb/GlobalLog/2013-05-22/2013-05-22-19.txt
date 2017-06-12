@@ -1,0 +1,10 @@
+[2013/5/22 19:13:15]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/handlers/GetCarBySerialIdHTML.ashx?id=2370
+Error Message: 请求在此上下文中不可用
+Stack Trace:    在 System.Web.UI.Page.get_Request()
+   在 WirelessWeb.handlers.GetCarBySerialIdHTML.GetParamter() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\handlers\GetCarBySerialIdHTML.ashx.cs:行号 45
+   在 WirelessWeb.handlers.GetCarBySerialIdHTML.ProcessRequest(HttpContext context) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\handlers\GetCarBySerialIdHTML.ashx.cs:行号 36
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

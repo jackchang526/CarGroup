@@ -1,0 +1,503 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Xml;
+using System.Data;
+using System.IO;
+using System.Web;
+
+using BitAuto.CarChannel.Model;
+using BitAuto.CarChannel.Common;
+using BitAuto.CarChannel.Common.Cache;
+using BitAuto.CarChannel.Common.Interface;
+using BitAuto.CarChannel.Common.Enum;
+
+namespace BitAuto.CarChannel.BLL
+{
+    public interface TreeData
+    {
+        string TreeXmlData();
+        int GetMasterBrandId(int masterBrandId);
+        int GetBrandId(int brandId);
+        int GetSerialId(int serialId);
+        string GetForcusImageArea();
+        string GetForcusNewsAree();
+        DataSet GetNewsListBySerialId(int serialId, int year);
+        List<Car_MasterBrandEntity> GetHotMasterBrandEntityList(int entityCount);
+        List<Car_SerialBaseEntity> GetHotSerailEntityList(int entityCount);
+    }
+	public abstract class NewsTreeData : TreeData
+	{
+		#region TreeData 基类
+		public abstract string TreeXmlData();
+
+		public abstract int GetMasterBrandId(int masterBrandId);
+
+		public abstract int GetBrandId(int brandId);
+
+		public abstract int GetSerialId(int serialId);
+
+		public abstract string GetForcusImageArea();
+
+		public abstract string GetForcusNewsAree();
+
+		public abstract DataSet GetNewsListBySerialId(int serialId, int year);
+
+		public abstract List<Car_MasterBrandEntity> GetHotMasterBrandEntityList(int entityCount);
+
+		public abstract List<Car_SerialBaseEntity> GetHotSerailEntityList(int entityCount);
+		#endregion
+		protected CarNewsType carNewsType;
+		/// <summary>
+		/// 获取新闻数据，从数据库中读取
+		/// </summary>
+		public virtual DataSet GetNews(int serialId, int yearType, int pageSize, int pageIndex, ref int rowsCount)
+		{
+			if (yearType > 0)
+				return new CarNewsBll().GetSerialYearNewsAllData(serialId, yearType, carNewsType, pageSize, pageIndex, out rowsCount);
+			else
+				return new CarNewsBll().GetSerialNewsAllData(serialId, carNewsType, pageSize, pageIndex, ref rowsCount);
+		}
+	}
+    /// <summary>
+    /// 科技频道的树形类
+    /// </summary>
+    public class KeJiTree : NewsTreeData
+    {
+        private string _TagType = "keji";
+		public KeJiTree()
+		{
+			base.carNewsType = CarNewsType.keji;
+		}
+		public override string TreeXmlData()
+		{
+			XmlDocument xmlDoc = AutoStorageService.GetCacheTreeXml();
+
+            XmlNodeList xNodeList = xmlDoc.SelectNodes("data/master");
+            XmlElement xElem = (XmlElement)xmlDoc.SelectSingleNode("data");
+            if (xmlDoc == null) return "";
+            StringBuilder xmlString = new StringBuilder("");
+            StringBuilder masterInData = new StringBuilder("");
+            string masterElementString = "<master id=\"{0}\" name=\"{1}\" countnum=\"{2}\" firstchar=\"{3}\" extra=\"{4}\">";
+            string brandElementString = "<brand id=\"{0}\" name=\"{1}\" countnum=\"{2}\" extra=\"{3}\">";
+            string serialElementString = "<serial id=\"{0}\" name=\"{1}\" countnum=\"{2}\" extra=\"{3}\"/>";
+            int newsTotalCount = 0;
+
+            foreach (XmlElement masterElement in xNodeList)
+            {
+                int masterBrandNewsCount = 0;
+                StringBuilder brandInMasterBrand = new StringBuilder();
+                if (masterElement.ChildNodes.Count < 1) continue;
+
+                XmlElement xElemEntity = (XmlElement)masterElement.ChildNodes[0];
+                if (xElemEntity.Name.ToLower() == "brand")
+                {
+
+                    foreach (XmlElement brandElement in masterElement.ChildNodes)
+                    {
+                        int BrandNewsCount = 0;
+                        StringBuilder SerialInBrand = new StringBuilder();
+
+                        foreach (XmlElement serialElement in brandElement.ChildNodes)
+                        {
+                            int serialNewsCount = GetSerialId(Convert.ToInt32(serialElement.GetAttribute("id")));
+                            if (serialNewsCount == 0) continue;
+                            SerialInBrand.AppendFormat(serialElementString
+                                                , serialElement.GetAttribute("id")
+                                                , serialElement.GetAttribute("name")
+                                                , serialNewsCount.ToString()
+                                                , serialElement.GetAttribute("extra"));
+
+                            BrandNewsCount += serialNewsCount;
+                        }
+                        if (BrandNewsCount == 0) continue;
+                        brandInMasterBrand.AppendFormat(brandElementString
+                                                , brandElement.GetAttribute("id")
+                                                , brandElement.GetAttribute("name")
+                                                , BrandNewsCount.ToString()
+                                                , brandElement.GetAttribute("extra"));
+                        brandInMasterBrand.Append(SerialInBrand);
+                        brandInMasterBrand.Append("</brand>");
+
+                        masterBrandNewsCount += BrandNewsCount;
+                    }
+
+                }
+                else
+                {
+                    foreach (XmlElement serialElement in masterElement.ChildNodes)
+                    {
+                        int serialNewsCount = GetSerialId(Convert.ToInt32(serialElement.GetAttribute("id")));
+                        if (serialNewsCount == 0) continue;
+
+                        masterBrandNewsCount += serialNewsCount;
+                        brandInMasterBrand.AppendFormat(serialElementString
+                                                , serialElement.GetAttribute("id")
+                                                , serialElement.GetAttribute("name")
+                                                , serialNewsCount.ToString()
+                                                , serialElement.GetAttribute("extra"));
+                    }
+                }
+                //给主品牌赋值
+                newsTotalCount += masterBrandNewsCount;
+                if (masterBrandNewsCount == 0) continue;
+
+                masterInData.AppendFormat(masterElementString
+                                    , masterElement.GetAttribute("id")
+                                    , masterElement.GetAttribute("name")
+                                    , masterBrandNewsCount.ToString()
+                                    , masterElement.GetAttribute("firstchar")
+                                    , masterElement.GetAttribute("extra"));
+                masterInData.Append(brandInMasterBrand);
+                masterInData.Append("</master>");
+            }
+
+            xmlString.AppendFormat("<data id=\"0\" countnum=\"{0}\">", newsTotalCount.ToString());
+            xmlString.Append(masterInData);
+            xmlString.Append("</data>");
+
+            return xmlString.ToString();
+        }
+        /// <summary>
+        /// 得到主品牌的图解文章数量
+        /// </summary>
+        /// <param name="masterBrandId"></param>
+        /// <returns></returns>
+		public override int GetMasterBrandId(int masterBrandId) { return 0; }
+        /// <summary>
+        /// 得到品牌的图解文章数量
+        /// </summary>
+        /// <param name="brandId"></param>
+        /// <returns></returns>
+		public override int GetBrandId(int brandId) { return 0; }
+        /// <summary>
+        /// 得到子品牌的图解文章数量
+        /// </summary>
+        /// <param name="serialId"></param>
+        /// <returns></returns>
+		public override int GetSerialId(int serialId)
+        {
+            Dictionary<string, Dictionary<int, int>> daoGouNum = AutoStorageService.GetCacheTreeSerialNewsCount();
+            if (daoGouNum == null
+                || !daoGouNum.ContainsKey(_TagType)
+                || !daoGouNum[_TagType].ContainsKey(serialId))
+            {
+                return 0;
+            }
+
+            return daoGouNum[_TagType][serialId];
+        }
+        /// <summary>
+        /// 得到焦点图字符串
+        /// </summary>
+        /// <returns></returns>
+		public override string GetForcusImageArea()
+        {
+            string filePath = HttpContext.Current.Server.MapPath("/include/09gq/09gq_kan/09gq_tujie/00001/09gq_kc_tjxc_jdt_Manual.shtml");
+            if (!File.Exists(filePath))
+            {
+                return "";
+            }
+            return File.ReadAllText(filePath, Encoding.GetEncoding("gb2312"));
+        }
+        /// <summary>
+        /// 得到焦点新闻字符串
+        /// </summary>
+        /// <returns></returns>
+		public override string GetForcusNewsAree()
+        {
+            string filePath = HttpContext.Current.Server.MapPath("/include/09gq/09gq_kan/09gq_tujie/00001/09gq_kc_tjxc_jdxw_Auto.shtml");
+            if (!File.Exists(filePath))
+            {
+                return "";
+            }
+            return File.ReadAllText(filePath, Encoding.GetEncoding("gb2312"));
+        }
+        /// <summary>
+        /// 得到子品牌新闻的数据
+        /// </summary>
+        /// <param name="serialId"></param>
+        /// <returns></returns>
+		public override DataSet GetNewsListBySerialId(int serialId, int year)
+        {
+            DataSet newsDs = new DataSet();
+            try
+            {
+                string xmlFile = "";
+                if (year == 0)
+                    xmlFile = Path.Combine(WebConfig.DataBlockPath
+                            , string.Format("Data\\SerialNews\\{0}\\Serial_All_News_{1}.xml"
+                            , _TagType
+                            , serialId.ToString()));
+                else
+                    xmlFile = Path.Combine(WebConfig.DataBlockPath
+                            , string.Format("Data\\SerialNews\\{0}\\Serial_All_News_{1}_{2}.xml"
+                            , _TagType
+                            , serialId.ToString()
+                            , year.ToString()));
+                newsDs.ReadXml(xmlFile);
+            }
+            catch
+            { }
+            return newsDs;
+        }
+		public override List<Car_MasterBrandEntity> GetHotMasterBrandEntityList(int entityCount) { return null; }
+		public override List<Car_SerialBaseEntity> GetHotSerailEntityList(int entityCount) { return null; }
+	}
+    /// <summary>
+    /// 安全频道的树形类
+    /// </summary>
+    public class AnQuanTree : NewsTreeData
+    {
+        private string _TagType = "anquan";
+		public AnQuanTree()
+		{
+			base.carNewsType = CarNewsType.anquan;
+		}
+		public override string TreeXmlData()
+        {
+            XmlDocument xmlDoc = AutoStorageService.GetCacheTreeXml();
+
+            XmlNodeList xNodeList = xmlDoc.SelectNodes("data/master");
+            XmlElement xElem = (XmlElement)xmlDoc.SelectSingleNode("data");
+            if (xmlDoc == null) return "";
+            StringBuilder xmlString = new StringBuilder("");
+            StringBuilder masterInData = new StringBuilder("");
+            string masterElementString = "<master id=\"{0}\" name=\"{1}\" countnum=\"{2}\" firstchar=\"{3}\" extra=\"{4}\">";
+            string brandElementString = "<brand id=\"{0}\" name=\"{1}\" countnum=\"{2}\" extra=\"{3}\">";
+            string serialElementString = "<serial id=\"{0}\" name=\"{1}\" countnum=\"{2}\" extra=\"{3}\"/>";
+            int newsTotalCount = 0;
+
+            foreach (XmlElement masterElement in xNodeList)
+            {
+                int masterBrandNewsCount = 0;
+                StringBuilder brandInMasterBrand = new StringBuilder();
+                if (masterElement.ChildNodes.Count < 1) continue;
+
+                XmlElement xElemEntity = (XmlElement)masterElement.ChildNodes[0];
+                if (xElemEntity.Name.ToLower() == "brand")
+                {
+
+                    foreach (XmlElement brandElement in masterElement.ChildNodes)
+                    {
+                        int BrandNewsCount = 0;
+                        StringBuilder SerialInBrand = new StringBuilder();
+
+                        foreach (XmlElement serialElement in brandElement.ChildNodes)
+                        {
+                            int serialNewsCount = GetSerialId(Convert.ToInt32(serialElement.GetAttribute("id")));
+                            if (serialNewsCount == 0) continue;
+                            SerialInBrand.AppendFormat(serialElementString
+                                                , serialElement.GetAttribute("id")
+                                                , serialElement.GetAttribute("name")
+                                                , serialNewsCount.ToString()
+                                                , serialElement.GetAttribute("extra"));
+
+                            BrandNewsCount += serialNewsCount;
+                        }
+                        if (BrandNewsCount == 0) continue;
+                        brandInMasterBrand.AppendFormat(brandElementString
+                                                , brandElement.GetAttribute("id")
+                                                , brandElement.GetAttribute("name")
+                                                , BrandNewsCount.ToString()
+                                                , brandElement.GetAttribute("extra"));
+                        brandInMasterBrand.Append(SerialInBrand);
+                        brandInMasterBrand.Append("</brand>");
+
+                        masterBrandNewsCount += BrandNewsCount;
+                    }
+
+                }
+                else
+                {
+                    foreach (XmlElement serialElement in masterElement.ChildNodes)
+                    {
+                        int serialNewsCount = GetSerialId(Convert.ToInt32(serialElement.GetAttribute("id")));
+                        if (serialNewsCount == 0) continue;
+
+                        masterBrandNewsCount += serialNewsCount;
+                        brandInMasterBrand.AppendFormat(serialElementString
+                                                , serialElement.GetAttribute("id")
+                                                , serialElement.GetAttribute("name")
+                                                , serialNewsCount.ToString()
+                                                , serialElement.GetAttribute("extra"));
+                    }
+                }
+                //给主品牌赋值
+                newsTotalCount += masterBrandNewsCount;
+                if (masterBrandNewsCount == 0) continue;
+
+                masterInData.AppendFormat(masterElementString
+                                    , masterElement.GetAttribute("id")
+                                    , masterElement.GetAttribute("name")
+                                    , masterBrandNewsCount.ToString()
+                                    , masterElement.GetAttribute("firstchar")
+                                    , masterElement.GetAttribute("extra"));
+                masterInData.Append(brandInMasterBrand);
+                masterInData.Append("</master>");
+            }
+
+            xmlString.AppendFormat("<data id=\"0\" countnum=\"{0}\">", newsTotalCount.ToString());
+            xmlString.Append(masterInData);
+            xmlString.Append("</data>");
+
+            return xmlString.ToString();
+        }
+        /// <summary>
+        /// 得到主品牌的图解文章数量
+        /// </summary>
+        /// <param name="masterBrandId"></param>
+        /// <returns></returns>
+		public override int GetMasterBrandId(int masterBrandId) { return 0; }
+        /// <summary>
+        /// 得到品牌的图解文章数量
+        /// </summary>
+        /// <param name="brandId"></param>
+        /// <returns></returns>
+		public override int GetBrandId(int brandId) { return 0; }
+        /// <summary>
+        /// 得到子品牌的图解文章数量
+        /// </summary>
+        /// <param name="serialId"></param>
+        /// <returns></returns>
+		public override int GetSerialId(int serialId)
+        {
+            Dictionary<string, Dictionary<int, int>> daoGouNum = AutoStorageService.GetCacheTreeSerialNewsCount();
+            if (daoGouNum == null
+                || !daoGouNum.ContainsKey(_TagType)
+                || !daoGouNum[_TagType].ContainsKey(serialId))
+            {
+                return 0;
+            }
+
+            return daoGouNum[_TagType][serialId];
+        }
+        /// <summary>
+        /// 得到焦点图字符串
+        /// </summary>
+        /// <returns></returns>
+		public override string GetForcusImageArea()
+        {
+            string filePath = HttpContext.Current.Server.MapPath("/include/09gq/09gq_kan/09gq_tujie/00001/09gq_kc_tjxc_jdt_Manual.shtml");
+            if (!File.Exists(filePath))
+            {
+                return "";
+            }
+            return File.ReadAllText(filePath, Encoding.GetEncoding("gb2312"));
+        }
+        /// <summary>
+        /// 得到焦点新闻字符串
+        /// </summary>
+        /// <returns></returns>
+		public override string GetForcusNewsAree()
+        {
+            string filePath = HttpContext.Current.Server.MapPath("/include/09gq/09gq_kan/09gq_tujie/00001/09gq_kc_tjxc_jdxw_Auto.shtml");
+            if (!File.Exists(filePath))
+            {
+                return "";
+            }
+            return File.ReadAllText(filePath, Encoding.GetEncoding("gb2312"));
+        }
+        /// <summary>
+        /// 得到子品牌新闻的数据
+        /// </summary>
+        /// <param name="serialId"></param>
+        /// <returns></returns>
+		public override DataSet GetNewsListBySerialId(int serialId, int year)
+        {
+            DataSet newsDs = new DataSet();
+            try
+            {
+                string xmlFile = "";
+                if (year == 0)
+                    xmlFile = Path.Combine(WebConfig.DataBlockPath
+                            , string.Format("Data\\SerialNews\\{0}\\Serial_All_News_{1}.xml"
+                            , _TagType
+                            , serialId.ToString()));
+                else
+                    xmlFile = Path.Combine(WebConfig.DataBlockPath
+                            , string.Format("Data\\SerialNews\\{0}\\Serial_All_News_{1}_{2}.xml"
+                            , _TagType
+                            , serialId.ToString()
+                            , year.ToString()));
+                newsDs.ReadXml(xmlFile);
+            }
+            catch
+            { }
+            return newsDs;
+        }
+		public override List<Car_MasterBrandEntity> GetHotMasterBrandEntityList(int entityCount) { return null; }
+		public override List<Car_SerialBaseEntity> GetHotSerailEntityList(int entityCount) { return null; }
+    }
+    /// <summary>
+    /// 保养频道的树形类
+    /// </summary>
+    public class BaoYangTree : NewsTreeData
+    {
+        private string _TagType = "baoyang";
+		public BaoYangTree()
+		{
+			base.carNewsType = CarNewsType.baoyang;
+		}
+		public override string TreeXmlData()
+        {
+            return "";
+        }
+        /// <summary>
+        /// 得到主品牌的图解文章数量
+        /// </summary>
+        /// <param name="masterBrandId"></param>
+        /// <returns></returns>
+		public override int GetMasterBrandId(int masterBrandId) { return 0; }
+        /// <summary>
+        /// 得到品牌的图解文章数量
+        /// </summary>
+        /// <param name="brandId"></param>
+        /// <returns></returns>
+		public override int GetBrandId(int brandId) { return 0; }
+        /// <summary>
+        /// 得到子品牌的图解文章数量
+        /// </summary>
+        /// <param name="serialId"></param>
+        /// <returns></returns>
+		public override int GetSerialId(int serialId)
+        {
+            Dictionary<string, Dictionary<int, int>> daoGouNum = AutoStorageService.GetCacheTreeSerialNewsCount();
+            if (daoGouNum == null
+                || !daoGouNum.ContainsKey(_TagType)
+                || !daoGouNum[_TagType].ContainsKey(serialId))
+            {
+                return 0;
+            }
+
+            return daoGouNum[_TagType][serialId];
+        }
+        /// <summary>
+        /// 得到焦点图字符串
+        /// </summary>
+        /// <returns></returns>
+		public override string GetForcusImageArea()
+        {
+            return "";
+        }
+        /// <summary>
+        /// 得到焦点新闻字符串
+        /// </summary>
+        /// <returns></returns>
+		public override string GetForcusNewsAree()
+        {
+            return "";
+        }
+        /// <summary>
+        /// 得到子品牌新闻的数据
+        /// </summary>
+        /// <param name="serialId"></param>
+        /// <returns></returns>
+		public override DataSet GetNewsListBySerialId(int serialId, int year)
+        {
+            return null;
+        }
+		public override List<Car_MasterBrandEntity> GetHotMasterBrandEntityList(int entityCount) { return null; }
+		public override List<Car_SerialBaseEntity> GetHotSerailEntityList(int entityCount) { return null; }
+    }
+}

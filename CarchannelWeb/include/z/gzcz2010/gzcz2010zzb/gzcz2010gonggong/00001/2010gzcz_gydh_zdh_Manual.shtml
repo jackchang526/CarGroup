@@ -1,0 +1,16 @@
+﻿<!--include file="/include/z/gzcz2010/gzcz2010zzb/gzcz2010gonggong/00001/2010gzcz_gydh_zdh_Manual.shtml"-->
+<div class="menu_wd">
+      <ul>
+      	<li class="current"  id=menu1 ><a class="gzcz" title="广州车展" target="_blank" href="http://chezhan.bitauto.com/2010guangzhoutest/">广州车展</a></li>
+      	<li id=menu2 ><a class="xctp" title="新车图片" target="_blank" href="http://photo.bitauto.com/exhibit/class/39001/">新车图片</a></li>
+      	<li id=menu3 ><a class="mncm" title="美女车模" target="_blank" href="http://chezhan.bitauto.com/2010guangzhoutest/mod/">美女车模</a></li>
+      	<li id=menu4 ><a class="ssxc" title="上市新车" target="_blank" href="http://chezhan.bitauto.com/2010guangzhoutest/newcar/">上市新车</a></li>
+      	<li id=menu5 ><a class="djjx" title="独家解析" target="_blank" href="http://chezhan.bitauto.com/2010guangzhoutest/jiexi/">独家解析</a></li>
+
+      	<li id=menu6 ><a class="xcsp" title="新车视频" target="_blank" href="http://chezhan.bitauto.com/2010guangzhoutest/video/">新车视频</a></li>
+      	<li id=menu7 ><a class="mnsp" title="美女视频" target="_blank" href="http://v.bitauto.com/chezhan/guangzhou-chezhan/chemo/list1_new.html">美女视频</a></li>
+      	<li id=menu8 ><a class="gdft" title="高端访谈" target="_blank" href="http://chezhan.bitauto.com/2010guangzhoutest/news/gddh/">高端访谈</a></li>
+      	<li id=menu9 ><a class="gdxw" title="滚动新闻" target="_blank" href="http://chezhan.bitauto.com/guangzhou-chezhan/newslist/gundong/">滚动新闻</a></li>
+      </ul>
+  </div>
+<script>function setMenuItemSelect(ids){document.getElementById('menu1').className = '';document.getElementById(ids).className += 'current';}</script>

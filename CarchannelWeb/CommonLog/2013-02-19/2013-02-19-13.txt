@@ -1,0 +1,21 @@
+[2013/2/19 13:23:42]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2523
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 13:29:21]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2523
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 13:40:44]  将指定的计数添加到该信号量中会导致其超过最大计数。   在 System.Threading.Semaphore.Release(Int32 releaseCount)
+   在 System.Data.ProviderBase.DbConnectionPool.PutNewObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.DeactivateObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.PutObject(DbConnectionInternal obj, Object owningObject)
+   在 System.Data.ProviderBase.DbConnectionInternal.CloseConnection(DbConnection owningObject, DbConnectionFactory connectionFactory)
+   在 System.Data.SqlClient.SqlInternalConnection.CloseConnection(DbConnection owningObject, DbConnectionFactory connectionFactory)
+   在 System.Data.SqlClient.SqlConnection.Close()
+   在 System.Data.SqlClient.SqlConnection.Dispose(Boolean disposing)
+   在 System.ComponentModel.Component.Dispose()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText)
+   在 BitAuto.CarChannel.DAL.Car_SerialDal.GetAllSerialMarkData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\Car_SerialDal.cs:行号 939
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetAllSerialMarkDay() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 4823
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 190
+

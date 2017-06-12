@@ -1,0 +1,44 @@
+﻿<div class="nav_swd sub_nav_swd">
+<div class="bt_page">
+<div class="return_index"><a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2012/">车展首页</a></div>
+        <div class="fl">
+        	<ul>
+            	<li id="m1"><a href="http://photo.bitauto.com/exhibit/class/60159/" target="_blank">新车图片</a></li>
+                <li id="m2"><a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2012/zhanguan/1/">网上展厅</a></li>
+                <li id="m3"><a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2012/newcar/">上市新车</a></li>
+                <li id="m4"><a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2012/djjx/">独家解析</a></li>
+                <li id="m5"><a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2012/mod/">美女车模</a></li>
+                <li id="m6"><a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2012/video/">车展视频</a></li>
+                <li id="m7"><a href="http://chezhan.bitauto.com/guangzhou-chezhan/n2012/gdft/">高端访谈</a></li>  
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <dl>
+            <dt>车型系列：</dt>
+            <dd><a href="#" target="_blank">微型车</a></dd>
+            <dd><a href="#" target="_blank">小型车</a></dd>
+            <dd><a href="#" target="_blank">紧凑型车</a></dd>
+            <dd><a href="#" target="_blank">中型车</a></dd>
+            <dd><a href="#" target="_blank">中大型车</a></dd>
+            <dd><a href="#" target="_blank">豪华车</a></dd>
+            <dd><a href="#" target="_blank">SUV</a></dd>
+            <dd><a href="#" target="_blank">MPV</a></dd>
+            <dd><a href="#" target="_blank">跑车</a></dd>
+        </dl>
+        <dl>
+            <dt>价格范围：</dt>
+            <dd><a href="#" target="_blank">5万以内</a></dd>
+            <dd><a href="#" target="_blank">5-8万</a></dd>
+            <dd><a href="#" target="_blank">8-12万</a></dd>
+            <dd><a href="#" target="_blank">12-18万</a></dd>
+            <dd><a href="#" target="_blank">18-25万</a></dd>
+            <dd><a href="#" target="_blank">25-40万</a></dd>
+            <dd><a href="#" target="_blank">40万以上</a></dd>
+        </dl>
+
+</div>
+</div>
+<script>
+	function setMenuItemSelect(ids) {
+		document.getElementById(ids).className += 'current';
+	}</script>

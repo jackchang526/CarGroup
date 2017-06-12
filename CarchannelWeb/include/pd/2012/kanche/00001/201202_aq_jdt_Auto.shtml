@@ -1,0 +1,31 @@
+﻿<div class="focus-2">
+    <!--<div class="focusBox-2" id="focusBox-2">
+            <ul class="focusPic-2" id="focusPic-2">
+				<li><a href="#" target="_blank"><img src="http://img2.bitautoimg.com/bitauto/focuspic/2012-1-20/201212011452078.jpg" alt="迈锐宝参数曝光 2月15日上市" /></a><a href="#" target="_blank">迈锐宝参数曝光 2月15日上市</a></li>
+				<li><a href="#" target="_blank"><img src="http://img2.bitautoimg.com/bitauto/focuspic/2011-12-26/20111226112937784.jpg" alt="进口大众新Tiguan售35.23万元起" /></a><a href="#" target="_blank">进口大众新Tiguan售35.23万元起</a></li>
+            	<li><a href="#" target="_blank"><img src="http://img2.bitautoimg.com/bitauto/focuspic/2011-12-16/201112161425339.jpg" alt="宝马新1系售27.8万-30.6万元" /></a><a href="#" target="_blank">宝马新1系售27.8万-30.6万元</a></li>
+            </ul>
+            <ul class="focusTxt-2" id="focusTxt-2"></ul>
+            <ul class="focusNum-2" id="focusNum-2"></ul>
+            <div class="focusTxtBg-2"></div>
+        </div>-->
+    <div id="focusBox-2" class="focusBox-2">
+        <ul id="focusPic-2" class="focusPic-2">
+            <li><a target="_blank" href="#">
+                <img alt="迈锐宝参数曝光 2月15日上市" src="css/images/pic_320_213.jpg"></a><a target="_blank"
+                    href="#">迈锐宝参数曝光 2月15日上市</a></li>
+            <li><a target="_blank" href="#">
+                <img alt="进口大众新Tiguan售35.23万元起" src="css/images/pic_320_213.jpg"></a><a target="_blank"
+                    href="#">进口大众新Tiguan售35.23万元起</a></li>
+            <li><a target="_blank" href="#">
+                <img alt="宝马新1系售27.8万-30.6万元" src="css/images/pic_320_213.jpg"></a><a target="_blank"
+                    href="#">宝马新1系售27.8万-30.6万元</a></li>
+        </ul>
+        <ul id="focusTxt-2" class="focusTxt-2">
+        </ul>
+        <ul id="focusNum-2" class="focusNum-2">
+        </ul>
+        <div class="focusTxtBg-2">
+        </div>
+    </div>
+</div>

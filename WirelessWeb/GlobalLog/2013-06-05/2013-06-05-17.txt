@@ -1,0 +1,30 @@
+[2013/6/5 17:02:14]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/handlers/GetCarInfoForCalcTools.ashx?type=jsonwithname&carId=10000
+Error Message: 请求在此上下文中不可用
+Stack Trace:    在 System.Web.UI.Page.get_Request()
+   在 WirelessWeb.handlers.GetCarInfoForCalcTools.CheckParam() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\handlers\GetCarInfoForCalcTools.ashx.cs:行号 37
+   在 WirelessWeb.handlers.GetCarInfoForCalcTools.ProcessRequest(HttpContext context) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\handlers\GetCarInfoForCalcTools.ashx.cs:行号 28
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2013/6/5 17:03:57]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/handlers/GetCarInfoForCalcTools.ashx?type=jsonwithname&carId=102390
+Error Message: 请求在此上下文中不可用
+Stack Trace:    在 System.Web.UI.Page.get_Request()
+   在 WirelessWeb.handlers.GetCarInfoForCalcTools.CheckParam() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\handlers\GetCarInfoForCalcTools.ashx.cs:行号 37
+   在 WirelessWeb.handlers.GetCarInfoForCalcTools.ProcessRequest(HttpContext context) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\handlers\GetCarInfoForCalcTools.ashx.cs:行号 28
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2013/6/5 17:05:28]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/handlers/GetCarInfoForCalcTools.ashx?type=jsonwithname&carId=102390
+Error Message: 请求在此上下文中不可用
+Stack Trace:    在 System.Web.UI.Page.get_Request()
+   在 WirelessWeb.handlers.GetCarInfoForCalcTools.CheckParam() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\handlers\GetCarInfoForCalcTools.ashx.cs:行号 44
+   在 WirelessWeb.handlers.GetCarInfoForCalcTools.ProcessRequest(HttpContext context) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\handlers\GetCarInfoForCalcTools.ashx.cs:行号 28
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

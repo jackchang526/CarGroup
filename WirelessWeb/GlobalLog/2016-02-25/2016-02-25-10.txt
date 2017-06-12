@@ -1,0 +1,10 @@
+[2016/2/25 10:21:27]  
+IP: 127.0.0.1
+Error in: http://car01.m.yiche.com/axelaangkesaila/?ID=4123&
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 WirelessWeb.CsSummary.InitSerialInfo() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CsSummary.aspx.cs:行号 670
+   在 WirelessWeb.CsSummary.Page_Load(Object sender, EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CsSummary.aspx.cs:行号 218
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

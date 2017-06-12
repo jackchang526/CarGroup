@@ -1,0 +1,44 @@
+﻿
+<li class="three-item item-guwen" id="liSCInfo" style="display:none;" data-channelid="27.23.1572">
+    <a id="btnFindSC" href="javascipt:"><em></em>找销售</a>
+</li>
+    <script>
+    var commonSCInfoOb = {
+        InitSCInfo: function (csid, cityid) {
+            if (GlobalSummaryConfig && GlobalSummaryConfig.SerialId && GlobalSummaryConfig.CityId) {
+                var interfaceurl = "http://cdn.partner.bitauto.com/SalesConsultantv2/getH5SalesConsultant.ashx?action=carsale&csid="
+                    + csid + "&cityid=" + cityid;
+
+                $.ajax({
+                    url: interfaceurl, type: "GET", dataType: "jsonp", jsonpCallback: "success_jsonpCallback", cache: true, success: function (data) {
+
+                        if (data && data.length > 0) {
+                            var curcity = false;
+                            if (typeof (bit_locationInfo) != "undefined" && typeof (bit_locationInfo.cityName) != "undefined") {
+                                var curcityName = bit_locationInfo.cityName;
+                                var tempcityname = data[0].CityName;
+                                if (curcityName == tempcityname) {
+                                    curcity = true;
+                                }
+                            }
+                            if (curcity == true) {
+                                var scurl = "http://price.m.yiche.com/sch" + csid + "_c" + cityid + "/";
+                                $("#btnFindSC").attr('href', scurl);
+
+                                   $("#liSCInfo").show();
+
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+    }
+    $(function () {
+        if (typeof (GlobalSummaryConfig) != "undefined" && GlobalSummaryConfig && GlobalSummaryConfig.SerialId && GlobalSummaryConfig.CityId) {
+            commonSCInfoOb.InitSCInfo(GlobalSummaryConfig.SerialId, GlobalSummaryConfig.CityId);
+        }
+    });
+
+    </script>

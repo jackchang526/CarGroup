@@ -1,0 +1,15 @@
+﻿<div class="line_box">
+    <h3>
+        <span>热门导航标签</span></h3>
+    <div class="jishu_list">
+        <ul>
+        <li><a href="http://news.bitauto.com/engine/20090906/2005025998.html" target="_blank">解读BSG技术</a></li>
+        <li><a href="http://news.bitauto.com/engine/20090814/1905011619.html" target="_blank">TDI发动机</a></li>
+        <li><a href="http://news.bitauto.com/cardesign/20090813/0805010602.html" target="_blank">双显像技术</a></li>
+        <li><a href="http://news.bitauto.com/security/20090811/0805009427.html" target="_blank">全铝合金悬挂系统</a></li>
+
+    </ul>
+    </div>
+    <div class="more"><a href="#" target="_blank">更多&gt;&gt;</a></div>
+    <div class="clear"></div>
+</div>

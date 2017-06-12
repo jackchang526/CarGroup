@@ -1,0 +1,440 @@
+[2014/2/11 19:19:12]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/gaoerfu6dai/m15970/?carid=15970&
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&b=1
+Error Message: 将指定的计数添加到该信号量中会导致其超过最大计数。
+Stack Trace:    在 System.Threading.Semaphore.Release(Int32 releaseCount)
+   在 System.Data.ProviderBase.DbConnectionPool.PutNewObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.DeactivateObject(DbConnectionInternal obj)
+   在 System.Data.ProviderBase.DbConnectionPool.PutObject(DbConnectionInternal obj, Object owningObject)
+   在 System.Data.ProviderBase.DbConnectionInternal.CloseConnection(DbConnection owningObject, DbConnectionFactory connectionFactory)
+   在 System.Data.SqlClient.SqlConnection.Close()
+   在 System.Data.SqlClient.SqlConnection.Dispose(Boolean disposing)
+   在 System.ComponentModel.Component.Dispose()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.Common.PageBase.GetAllCarInfo() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 1444
+   在 BitAuto.CarChannel.Common.PageBase.GetCarCountryEngineAndSeatNumByCarID(Int32 carID, Boolean& isguoChan, Int32& Engine, Int32& SeatNum, Double& referPrice) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 2075
+   在 BitAuto.CarChannel.BLL.CarPriceComputer..ctor(Int32 carId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\CarPriceComputer.cs:行号 73
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.GetCarData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 115
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 88
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:19:21]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/gaoerfu6dai/m15970/?carid=15970&
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&b=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.Common.PageBase.GetAllCarInfo() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 1444
+   在 BitAuto.CarChannel.Common.PageBase.GetCarCountryEngineAndSeatNumByCarID(Int32 carID, Boolean& isguoChan, Int32& Engine, Int32& SeatNum, Double& referPrice) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 2075
+   在 BitAuto.CarChannel.BLL.CarPriceComputer..ctor(Int32 carId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\CarPriceComputer.cs:行号 73
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.GetCarData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 115
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 88
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:19:24]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/gaoerfu6dai/m15970/?carid=15970&
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&b=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.Common.PageBase.GetAllCarInfo() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 1444
+   在 BitAuto.CarChannel.Common.PageBase.GetCarCountryEngineAndSeatNumByCarID(Int32 carID, Boolean& isguoChan, Int32& Engine, Int32& SeatNum, Double& referPrice) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 2075
+   在 BitAuto.CarChannel.BLL.CarPriceComputer..ctor(Int32 carId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\CarPriceComputer.cs:行号 73
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.GetCarData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 115
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 88
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:19:25]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/gaoerfu6dai/m15970/?carid=15970&
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&b=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.Common.PageBase.GetAllCarInfo() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 1444
+   在 BitAuto.CarChannel.Common.PageBase.GetCarCountryEngineAndSeatNumByCarID(Int32 carID, Boolean& isguoChan, Int32& Engine, Int32& SeatNum, Double& referPrice) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 2075
+   在 BitAuto.CarChannel.BLL.CarPriceComputer..ctor(Int32 carId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\CarPriceComputer.cs:行号 73
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.GetCarData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 115
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 88
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:19:25]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/gaoerfu6dai/m15970/?carid=15970&
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&b=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.Common.PageBase.GetAllCarInfo() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 1444
+   在 BitAuto.CarChannel.Common.PageBase.GetCarCountryEngineAndSeatNumByCarID(Int32 carID, Boolean& isguoChan, Int32& Engine, Int32& SeatNum, Double& referPrice) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 2075
+   在 BitAuto.CarChannel.BLL.CarPriceComputer..ctor(Int32 carId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\CarPriceComputer.cs:行号 73
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.GetCarData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 115
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 88
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:19:25]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/gaoerfu6dai/m15970/?carid=15970&
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&b=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.Common.PageBase.GetAllCarInfo() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 1444
+   在 BitAuto.CarChannel.Common.PageBase.GetCarCountryEngineAndSeatNumByCarID(Int32 carID, Boolean& isguoChan, Int32& Engine, Int32& SeatNum, Double& referPrice) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 2075
+   在 BitAuto.CarChannel.BLL.CarPriceComputer..ctor(Int32 carId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\CarPriceComputer.cs:行号 73
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.GetCarData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 115
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 88
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:19:26]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/gaoerfu6dai/m15970/?carid=15970&
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&b=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.Common.PageBase.GetAllCarInfo() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 1444
+   在 BitAuto.CarChannel.Common.PageBase.GetCarCountryEngineAndSeatNumByCarID(Int32 carID, Boolean& isguoChan, Int32& Engine, Int32& SeatNum, Double& referPrice) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 2075
+   在 BitAuto.CarChannel.BLL.CarPriceComputer..ctor(Int32 carId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\CarPriceComputer.cs:行号 73
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.GetCarData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 115
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 88
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:19:26]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/gaoerfu6dai/m15970/?carid=15970&
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&b=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.Common.PageBase.GetAllCarInfo() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 1444
+   在 BitAuto.CarChannel.Common.PageBase.GetCarCountryEngineAndSeatNumByCarID(Int32 carID, Boolean& isguoChan, Int32& Engine, Int32& SeatNum, Double& referPrice) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 2075
+   在 BitAuto.CarChannel.BLL.CarPriceComputer..ctor(Int32 carId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\CarPriceComputer.cs:行号 73
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.GetCarData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 115
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 88
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:19:28]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/gaoerfu6dai/m15972/?carid=15972&
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&b=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.Common.PageBase.GetCarInfoByCarID(Int32 carID, Int32 catchMin) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 1479
+   在 BitAuto.CarChannel.Common.PageBase.GetCarInfoForCarSummaryByCarID(Int32 carID) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 1396
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.GetCarData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 114
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 88
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:21:16]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?g=0&t=0&dt=0&l=0&&b=2
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&lv=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 315
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 66
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:21:19]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?g=0&t=0&dt=0&l=0&&b=2
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&lv=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 315
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 66
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:21:20]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?g=0&t=0&dt=0&l=0&&b=2
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&lv=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 315
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 66
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:21:20]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?g=0&t=0&dt=0&l=0&&b=2
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&lv=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 315
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 66
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:21:21]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?g=0&t=0&dt=0&l=0&&b=2
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&lv=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 315
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 66
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:21:21]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?g=0&t=0&dt=0&l=0&&b=2
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&lv=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 315
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 66
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:21:21]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?g=0&t=0&dt=0&l=0&&b=2
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&lv=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 315
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 66
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:21:21]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?g=0&t=0&dt=0&l=0&&b=2
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&lv=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 315
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 66
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:21:21]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?g=0&t=0&dt=0&l=0&&b=2
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&lv=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 315
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 66
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:21:21]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?g=0&t=0&dt=0&l=0&&b=2
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&lv=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 315
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 66
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/2/11 19:21:26]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/cartree/SelectCar.aspx?g=0&t=0&dt=0&l=0&b=2
+Ref: http://car01.bitauto.com/xuanchegongju/?g=0&t=0&dt=0&l=0&&b=1
+Error Message: 句柄无效。 (异常来自 HRESULT:0x80070006 (E_HANDLE))
+Stack Trace:    在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.SelectCarToolDal.SelectCar(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\SelectCarToolDal.cs:行号 193
+   在 BitAuto.CarChannel.BLL.SelectCarToolBll.SelectCarByParameters(SelectCarParameters paras) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SelectCarToolBll.cs:行号 82
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.SelectCar() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 315
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.Cartree_SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\SelectCar.aspx.cs:行号 66
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 BitAuto.CarChannel.CarchannelWeb.App_Code.TreePageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Code\TreePageBase.cs:行号 46
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

@@ -1,0 +1,18 @@
+[2013/11/8 20:52:03]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/Mai/GetSerialGoodsNew.ashx?serialid=1729&cityid=201
+Error Message: 未能创建类型“BitAuto.CarChannelAPI.Web.Mai.GetSerialGoodsNew”。
+Stack Trace:    在 System.Web.UI.SimpleWebHandlerParser.GetType(String typeName)
+   在 System.Web.UI.SimpleWebHandlerParser.GetTypeToCache(Assembly builtAssembly)
+   在 System.Web.Compilation.SimpleHandlerBuildProvider.GetGeneratedType(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.CreateBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.GetBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   在 System.Web.UI.SimpleHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

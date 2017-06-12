@@ -1,0 +1,26 @@
+[2013/8/2 16:14:59]  
+IP: 127.0.0.1
+Error in: http://localhost:34910/default.aspx
+Error Message: 值不能为 null。
+参数名: s
+Stack Trace:    在 System.IO.StringReader..ctor(String s)
+   在 System.Xml.XmlDocument.LoadXml(String xml)
+   在 BitAuto.CarChannel.CarchannelWeb._Default.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\Default.aspx.cs:行号 17
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2013/8/2 16:15:39]  
+IP: 127.0.0.1
+Error in: http://localhost:34910/default.aspx
+Error Message: 值不能为 null。
+参数名: s
+Stack Trace:    在 System.IO.StringReader..ctor(String s)
+   在 System.Xml.XmlDocument.LoadXml(String xml)
+   在 BitAuto.CarChannel.CarchannelWeb._Default.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\Default.aspx.cs:行号 17
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

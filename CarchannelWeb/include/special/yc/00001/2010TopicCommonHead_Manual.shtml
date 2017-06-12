@@ -1,0 +1,32 @@
+﻿<!--include file="/include/special/yc/00001/2010TopicCommonHead_Manual.shtml"-->
+<link href="http://image.bitauto.com/uimg/topic/css/topicHead100419.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://image.bitauto.com/uimg/topic/js/TopicHeadJS100413.js"></script>
+<div class="bt_login_div">
+<div class="bt_login">
+  <ul>
+    <li class="bt_login_logo"><a href="http://www.bitauto.com/" target="_blank">易车网首页</a></li>
+    <li><a href="http://easy.bitauto.com/" target="_blank">车易通</a></li>
+    <li><a target="_blank" href="http://so.bitauto.com/">车易搜</a></li>
+    <li><a href="http://m.bitauto.com/help/" target="_blank">手机易车网</a></li>
+    <li><a href="http://chezhan.bitauto.com/beijing/" target="_blank">北京车展</a></li>
+    <li id="bt_login_bt" class="more"><span>易车旗下网站</span>
+      <dl id="bt_login_pop" class="pop">
+        <dt>易车旗下网站</dt>
+        <dd><a target="_blank" href="http://www.bitauto.com/">易车网</a></dd>
+        <dd><a target="_blank" href="http://www.ucar.cn/">优卡二手车网</a></dd>
+        <dd><a target="_blank" href="http://baa.bitauto.com/">易车会</a></dd>
+        <dd><a target="_blank" href="http://www.cheshijie.com/">车世界视频网</a></dd>
+        <dd><a target="_blank" href="http://www.autoreport.cn/">汽车产经网</a></dd>
+        <dd><a target="_blank" href="http://www.maxauto.tv/">极速汽车</a></dd>
+        <dd><a target="_blank" href="http://www.autotime.com.cn/">车时代</a></dd>
+        <dd><a target="_blank" href="http://www.autoradio.cn/">车语传媒</a></dd>
+      </dl>
+      <iframe id="popiframe" class="popiframe"></iframe>
+    </li>
+  </ul>
+  <div class="bt_login_member">
+<span id="divLoginDivID"></span>
+  <span id="divCheYiGo"></span> 
+ </div>
+</div>
+</div>

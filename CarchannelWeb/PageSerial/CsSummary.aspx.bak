@@ -1,0 +1,535 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CsSummary.aspx.cs" Inherits="BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary" %>
+
+<% Response.ContentType = "text/html"; %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>
+        <%="【"+serialSeoName+"】"
+	+ (serialName.IndexOf(serialEntity.Brand.MasterBrand.Name)>=0?"": serialEntity.Brand.MasterBrand.Name)
+	       			+serialName +"_"+serialSeoName+"报价_"+serialSeoName+"论坛-易车网_在线询价_低价购车！"%>
+    </title>
+    <meta name="Keywords" content="<%= serialSeoName%>,<%= serialSeoName%>报价,<%= serialSeoName%>价格,<%= serialSeoName%>参数,<%= serialSeoName%>论坛,<%= serialSeoName%>图片,<%= serialSeoName%>油耗,<%= serialSeoName%>口碑,<%= serialEntity.Brand.MasterBrand.Name%><%= serialSeoName%>" />
+    <meta name="Description" content="易车网提供<%= serialName.IndexOf(serialEntity.Brand.Name)>=0?"": serialEntity.Brand.Name%><%= serialName%>在线询价、底价买车！申请贷款、以旧换新等服务。时时获得多家4S店最新报价,对比选择最满意的一家,直接到店看车试驾底价买车。最新<%= serialSeoName%>报价,<%= serialSeoName%>图片,<%= serialSeoName%>二手车,<%= serialSeoName%>论坛尽在易车网。" />
+    <meta http-equiv="mobile-agent" content="format=html5; url=http://car.m.yiche.com/<%=serialSpell %>/" />
+    <meta http-equiv="mobile-agent" content="format=xhtml; url=http://m.bitauto.com/w/carserial.aspx?serialid=<%=serialId %>" />
+    <link rel="canonical" href="http://car.bitauto.com/<%=serialSpell %>/" />
+    <!--#include file="~/ushtml/0000/yiche_2014_cube_carsummary-724.shtml"-->
+</head>
+<body>
+    <span id="yicheAnchor" name="yicheAnchor" style="display: block; height: 0; width: 0; line-height: 0; font-size: 0"></span>
+    <div class="bt_pageBox">
+        <!--#include file="~/include/special/2010/00001/2014_lanmuCommon_header_gb2312_Manual.shtml"-->
+    </div>
+    <!--书角广告代码-->
+    <ins id="div_0db5acb8-dd8f-4b8d-97cb-cc7d50a71b8a" type="ad_play" adplay_ip="" adplay_areaname=""
+        adplay_cityname="" adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype=""
+        adplay_blockcode="0db5acb8-dd8f-4b8d-97cb-cc7d50a71b8a"></ins>
+    <!-- 顶通新增收起广告(2596锐界) -->
+    <ins id="div_2e7e5549-b9d7-4fb3-bec7-9f7b39efe715" type="ad_play" adplay_ip="" adplay_areaname=""
+        adplay_cityname="" adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype=""
+        adplay_blockcode="2e7e5549-b9d7-4fb3-bec7-9f7b39efe715"></ins>
+    <!-- 顶通新增收起广告(2596锐界)-->
+    <div class="bt_ad">
+        <ins id="div_2d0a1c4b-d4f6-42b4-92e3-3ab21fab8d02" type="ad_play" adplay_ip="" adplay_areaname=""
+            adplay_cityname="" adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype=""
+            adplay_blockcode="2d0a1c4b-d4f6-42b4-92e3-3ab21fab8d02"></ins>
+    </div>
+    <!--#include file="~/include/pd/2014/common/00001/201402_cxzsy_xdh_Manual.shtml"-->
+    <div class="bt_ad">
+        <%=serialTopAdCode%>
+    </div>
+    <!--header start-->
+    <%= serialHeaderHtml%>
+    <!--header end-->
+    <div class="bt_page">
+        <div class="col-all">
+            <!-- Dec.6.2011 new AD -->
+            <!-- baidu-tc begin {"action":"DELETE"} -->
+            <ins id="div_d8728661-13a7-4a8c-8287-71f7e6d605c2" type="ad_play" adplay_ip="" adplay_areaname=""
+                adplay_cityname="" adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype=""
+                adplay_blockcode="d8728661-13a7-4a8c-8287-71f7e6d605c2"></ins>
+            <!-- baidu-tc end -->
+            <!--首屏部分左侧 开始-->
+            <div class="col-con shouping_con">
+                <div class="line_box shouping_box line_box_top_b line-box_t0">
+                    <div class="card-head-box clearfix card-head-box_t0">
+                        <div class="l-box-sty">
+                            <!--焦点图开始-->
+                            <%=focusImagesHtml%>
+                            <!--焦点图结束-->
+                        </div>
+                        <div class="txt-box zs-m-card">
+                            <%if (serialPrice == "未上市" || serialPrice == "暂无报价" || serialPrice == "停售")
+                              {%>
+                            <p class="p-tit no-car">
+                                <%=serialPrice%>
+                                <%}
+                              else
+                              {%>
+                                <p class="p-tit">
+                                    参考最低价：<strong><a href="/<%=serialSpell %>/baojia/" target="_blank"><%=serialPrice%></a></strong>
+                                    <%} %>
+                                    <a id="btnDirectSell" style="display: none;" href="#" target="_blank" class="zxcar">直销</a> <a id="favstar" href="javascript:;" title="点击关注"><span class="no-sc"></span>
+                                    </a>
+                                </p>
+                                <ul>
+                                    <li><i>厂商指导价：</i><span><%=serialInfo.CsSaleState == "停销"?noSaleLastReferPrice:serialEntity.ReferPrice%></span> </li>
+                                    <li class="current"><i class="i-w">二手车：</i><span><%if (string.IsNullOrEmpty(serialUCarPrice))
+                                                                                       { %>
+										暂无报价
+										<%}
+                                                                                       else
+                                                                                       { %>
+                                        <a href="http://www.taoche.com/<%=serialSpell %>/" target="_blank">
+                                            <%=serialUCarPrice%></a>
+                                        <%} %></span> </li>
+                                    <% if (isElectrombile)
+                                       {%>
+                                    <li><i>充电时间：</i><span><%=chargeTimeRange%></span> </li>
+                                    <li class="current"><i>快充时间：</i><span><%=fastChargeTimeRange%></span> </li>
+                                    <li><i>续航里程：</i><span><%=mileageRange%></span> </li>
+                                    <%}
+                                       else
+                                       {%>
+                                    <li><i>排&nbsp;&nbsp;&nbsp;&nbsp;量：</i><% if (serialInfo.CsSaleState == "停销")
+                                                                             { %>
+                                        <span title="<%= serialNoSaleDisplacementalt %>"><%= serialNoSaleDisplacement %></span>
+                                        <% }
+                                                                             else
+                                                                             { %>
+                                        <span title="<%= serialSaleDisplacementalt %>"><%= serialSaleDisplacement %></span>
+                                        <% } %>
+                                    </li>
+                                    <li class="current"><i class="i-w">油&nbsp;&nbsp;&nbsp;&nbsp;耗：</i><span><a href="/<%=serialSpell %>/youhao/"
+                                        target="_blank"><%=serialInfo.CsSummaryFuelCost%></a></span> </li>
+                                    <li><i>变速箱：</i><span><%=serialTransmission%></span> </li>
+                                    <%} %>
+                                    <li class="current"><i class="i-w">保&nbsp;&nbsp;&nbsp;&nbsp;修：</i><span><%=serialInfo.SerialRepairPolicy%></span>
+                                    </li>
+                                </ul>
+                                <div class="sc-btn-box">
+                                    <span class="button_orange btn-xj-w"><a id="cardXunjia" href="http://dealer.bitauto.com/zuidijia/nb<%=serialId %>/?T=1&leads_source=20006<%=zampdaXunjiaSourceId %>"
+                                        target="_blank">询最低价</a> </span><span id="divDemandCsBut" class="button_gray btn-qt-w"
+                                            style="display: none;"><a class="" href="#">特卖</a></span>
+                                    <%=shijiaOrHuimaiche %><span class="button_gray btn-qt-w"><a id="cardCheDai" href="<%=chedaiADLink %>"
+                                        class="dk-l" target="_blank">贷款</a> </span>
+                                    <%if (serialId != 3843)
+                                      {%>
+                                    <span class="button_gray btn-qt-w"><a href="http://maiche.taoche.com/zhihuan/?serial=<%=serialId %>&leads_source=20007"
+                                        target="_blank">置换</a> </span>
+                                    <%} %>
+                                </div>
+                                <!--降价列表 start-->
+                                <div id="jiangjia_box" class="jiangjia_box">
+                                </div>
+                                <div class="wz-gg-box">
+                                    <!--广告开始-->
+                                    <ins id="Ins1" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname=""
+                                        adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype="" adplay_blockcode="ab5d1cc0-0115-4e6b-b8fb-e8f68ed85efd"></ins>
+                                    <!--广告结束-->
+                                </div>
+                                <!--降价列表 end-->
+                        </div>
+                    </div>
+                    <div class="clear">
+                    </div>
+                </div>
+                <div class="line_box news_box">
+                    <div class="title-con">
+                        <div class="title-box">
+                            <%=titleAndCNCAPHtml%>
+                            <%=newsTagsHtml%>
+                        </div>
+                    </div>
+                    <!--左侧开始-->
+                    <div class="col-sub">
+                        <!--车型详解、全系导购 开始-->
+                        <%=carPingceHtml%>
+                        <!--车型详解 结束-->
+                    </div>
+                    <!--左侧结束-->
+                    <!--中间开始-->
+                    <div class="col-main">
+                        <!--新闻列表1 开始-->
+                        <%=focusNewsHtml%>
+                        <!--新闻列表1 结束-->
+                    </div>
+                    <!--中间结束-->
+                    <div class="clear">
+                    </div>
+                </div>
+                <div class="line_box news_box">
+                    <div class="title-con">
+                        <div class="title-box">
+                            <h3>
+                                <a href="<%=baaUrl %>" target="_blank">
+                                    <%=serialSeoName %>论坛</a>
+                            </h3>
+                            <%=bbsMoreHtml%>
+                        </div>
+                    </div>
+                    <%=bbsNewsHtml%>
+                    <div class="clear">
+                    </div>
+                </div>
+            </div>
+            <!--首屏部分左侧 结束-->
+            <!--首屏部分右侧开始-->
+            <div class="col-side">
+                <!-- baidu-tc begin {"action":"DELETE"} -->
+                <!-- ad -->
+                <div class="col-side_ad">
+                    <ins id="ADCSSummaryRight1" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname=""
+                        adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype="" adplay_blockcode="9957c7cc-f9ae-431e-bfc6-270e006a285e"></ins>
+                </div>
+                <div class="col-side_ad">
+                    <ins id="ADCSSummaryRight2" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname=""
+                        adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype="" adplay_blockcode="040b5cb9-85ab-485f-a32b-5bfad0b9d891"></ins>
+                </div>
+                <div class="col-side_ad">
+                    <ins id="ADCSSummaryRight3" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname=""
+                        adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype="" adplay_blockcode="77558cb7-bd1f-4f3c-9c6b-bb0ac8ffdc26"></ins>
+                </div>
+                <!-- New AD Dec.20.2011 -->
+                <div class="col-side_ad">
+                    <ins id="div_4411299b-01d5-4ecc-be88-ee96caa343db" type="ad_play" adplay_ip="" adplay_areaname=""
+                        adplay_cityname="" adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype=""
+                        adplay_blockcode="4411299b-01d5-4ecc-be88-ee96caa343db"></ins>
+                </div>
+                <div class="col-side_ad">
+                    <ins id="div_2e763592-7039-452a-aa1c-a6db3a446853" type="ad_play" adplay_ip="" adplay_areaname=""
+                        adplay_cityname="" adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype=""
+                        adplay_blockcode="2e763592-7039-452a-aa1c-a6db3a446853"></ins>
+                </div>
+                <div class="col-side_ad">
+                    <ins id="div_ec334652-8e11-4911-9062-7bcada8435ea" type="ad_play" adplay_ip="" adplay_areaname=""
+                        adplay_cityname="" adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype=""
+                        adplay_blockcode="ec334652-8e11-4911-9062-7bcada8435ea"></ins>
+                </div>
+                <!-- -->
+                <!-- baidu-tc end -->
+                <%=koubeiImpressionHtml%>
+                <!--特价车 开始-->
+                <div class="tejiache_box2" style="display: none;" id="tejiache_box">
+                </div>
+                <!--特价车 结束-->
+                <!--看了还看 开始-->
+                <%=serialToSeeHtml%>
+                <!--看了还看 结束-->
+                <!--对比 开始-->
+                <%=hotSerialCompareHtml%>
+                <!--对比 结束-->
+            </div>
+            <!--右首屏部分侧结束-->
+            <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
+            <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery-1.9.1.min.js"></script>
+            <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnew/city348idmapname.js"></script>
+            <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnew/serialexternalcommon.js"></script>
+            <script type="text/javascript">
+                if (typeof (bitLoadScript) == "undefined"){
+                    bitLoadScript = function (url, callback, charset) {
+                        var s = document.createElement("script"); s.type = "text/javascript"; if (charset) s.charset = charset;
+                        if (s.readyState) { s.onreadystatechange = function () { if (s.readyState == "loaded" || s.readyState == "complete") { s.onreadystatechange = null; if (callback) callback(); } }; }
+                        else { s.onload = function () { if (callback) callback(); }; }
+                        s.src = url; document.getElementsByTagName("head")[0].appendChild(s);
+                    };
+                }
+                //bitLoadScript("http://image.bitautoimg.com/mergejs,s=carchannel/jsnew/city348idmapname.js,carchannel/jsnew/serialexternalcommon.js?v=2014111215", function () {
+                    getDemandAndJiangJia(<%=serialId %>,'<%=serialSpell %>',bit_locationInfo.cityId);
+                    getDirectSell(<%=serialId %>,'<%=serialSpell %>',bit_locationInfo.cityId);
+                //}, "utf-8");   
+             </script>
+             <!--2屏部分左侧 开始-->
+            <div class="col-con">
+                <!-- baidu-tc begin {"action":"DELETE"} -->
+                <div class="summaryMiddleAD ad_720">
+                    <ins id="middleADForCar" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname=""
+                        adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype="" adplay_blockcode="37940534-3acb-4358-8f99-ac9abc6624ca"></ins>
+                </div>
+                <!-- 单一车型页（城市）/中部通栏 -->
+                <div class="summaryMiddleAD ad_720">
+                    <ins id="div_fefd085a-31d6-44f3-9ba0-e75930818d3f" type="ad_play" adplay_ip="" adplay_areaname=""
+                        adplay_cityname="" adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype=""
+                        adplay_blockcode="fefd085a-31d6-44f3-9ba0-e75930818d3f"></ins>
+                </div>
+                <!-- baidu-tc end -->
+                <!--2屏部分左侧 结束-->
+                <%if (isExistCarList)
+                  { %>
+                <div class="line_box" id="car_list">
+                    <%=carListTableHtml%>
+                    <!-- 筛选层 start -->
+                    <div class="car-compare-filter" id="carCompareFilter" style="display: none;">
+                        <div id="carFilterBox">
+                            <div class="btn-filter" id="btnFilterShow">
+                                筛选<em></em>
+                            </div>
+                            <div class="filter-list" id="filter-list">
+                            </div>
+                        </div>
+                        <div class="btn-filter btn-filter-hide" style="display: none" id="btnFilterHide">
+                            筛选<em></em>
+                        </div>
+                    </div>
+                    <!-- 筛选层 end -->
+                </div>
+                <%} %>
+                <%=photoListHtml%>
+                <%=videosHtml%>
+                <%=hexinReportHtml%>
+                <%=editorCommentHtml%>
+                <%=koubeiDianpingHtml%>
+                <!-- 经销商 -->
+                <div class="line_box" id="vendorInfo">
+                    <div class="title-box">
+                        <h3>
+                            <a href="http://dealer.bitauto.com/<%= serialSpell %>/" target="_blank">
+                                <%=serialSeoName%>经销商推荐</a></h3>
+                        <div class="more">
+                            <a target="_blank" href="http://dealer.bitauto.com/<%= serialSpell %>/">更多&gt;&gt;</a>
+                        </div>
+                    </div>
+                    <ins id="ep_union_4" partner="1" version="" isupdate="1" type="1" city_type="-1"
+                        city_id="0" city_name="0" car_type="2" brandid="0" serialid="<%= serialId %>"
+                        carid="0"></ins>
+                    <div class="clear">
+                    </div>
+                </div>
+                <!--二手车-->
+                <div class="line-box" id="ucarlist">
+                </div>
+                <%=askHtml%>
+                <!-- baidu-tc begin {"action":"DELETE"} -->
+                <div class="summaryMiddleAD">
+                    <ins id="div_043ff6cd-b37a-4ca8-a25c-c81e8b05a94a" type="ad_play" adplay_ip="" adplay_areaname=""
+                        adplay_cityname="" adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype=""
+                        adplay_blockcode="043ff6cd-b37a-4ca8-a25c-c81e8b05a94a"></ins>
+                    <!--modified by sk 2013.04.10-->
+                    <ins id="div_9710ab96-a655-4fcc-b2a3-5fb823705f6e" type="ad_play" adplay_ip="" adplay_areaname=""
+                        adplay_cityname="" adplay_brandid="" adplay_brandname="" adplay_brandtype=""
+                        adplay_blockcode="9710ab96-a655-4fcc-b2a3-5fb823705f6e"></ins>
+                </div>
+                <!-- baidu-tc end -->
+                <!-- SEO导航 -->
+                <div class="line_box">
+                    <div class="title-box title-box2">
+                        <h4>
+                            <a href="javascript:;">接下来要看</a></h4>
+                    </div>
+                    <div class="text-list-box-b">
+                        <div class="text-list-box">
+                            <ul class="text-list text-list-float text-list-float3">
+                                <li><a rel="nofollow" href="/<%= serialSpell %>/peizhi/" target="_self">
+                                    <%= serialShowName%>参数配置</a></li>
+                                <li><a rel="nofollow" href="/<%= serialSpell %>/tupian/" target="_self">
+                                    <%= serialShowName%>图片</a></li>
+                                <%=nextSeePingceHtml%>
+                                <li><a rel="nofollow" href="/<%= serialSpell %>/baojia/" target="_self">
+                                    <%= serialShowName%>报价</a></li>
+                                <li><a rel="nofollow" href="http://www.taoche.com/<%= serialSpell %>/" target="_blank">
+                                    <%= serialShowName%>二手车</a></li>
+                                <li><a rel="nofollow" href="/<%= serialSpell %>/koubei/" target="_self">
+                                    <%= serialShowName%>怎么样</a></li>
+                                <li><a rel="nofollow" href="/<%= serialSpell %>/youhao/" target="_self">
+                                    <%= serialShowName%>油耗</a></li>
+                                <li><a rel="nofollow" href="<%= baaUrl %>">
+                                    <%= serialShowName%>论坛</a></li>
+                                <%=nextSeeDaogouHtml%>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clear">
+                    </div>
+                </div>
+                <!-- SEO导航 -->
+                <!-- SEO底部热门 -->
+                <!-- baidu-tc begin {"action":"DELETE"} -->
+                <!--#include file="~/include/pd/2014/common/00001/201402_cxzsy_tuijian_Manual.shtml"-->
+                <!-- baidu-tc end -->
+                <!-- SEO底部热门 -->
+            </div>
+            <div class="col-side">
+                <!-- AD -->
+                <!-- add by chengl Sep.13.2012 -->
+                <ins id="div_19b0a5f4-6cc0-409f-9973-70c94bb72c9c" type="ad_play" adplay_ip="" adplay_areaname=""
+                    adplay_cityname="" adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype=""
+                    adplay_blockcode="19b0a5f4-6cc0-409f-9973-70c94bb72c9c"></ins>
+                <!--其他车型 开始-->
+                <%=brandOtherSerial%>
+                <!--其他车型 结束-->
+                <!--二手车 开始-->
+                <%--<div class="line_box ucar_box">
+			</div>--%>
+                <!--二手车 结束-->
+                <div class="col-side_ad">
+                    <ins id="div_33883cb1-e98c-47d2-9dd3-e00d3034703e" type="ad_play" adplay_ip="" adplay_areaname=""
+                        adplay_cityname="" adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype=""
+                        adplay_blockcode="33883cb1-e98c-47d2-9dd3-e00d3034703e"></ins>
+                </div>
+                <!-- baidu-tc begin {"action":"DELETE"} -->
+                <div class="col-side_ad" style="margin-bottom: 10px; overflow: hidden">
+                    <%--<script type="text/javascript" id="zp_script_94" src="http://mcc.chinauma.net/static/scripts/p.js?id=94&w=220&h=220&sl=1&delay=5"
+						zp_type="1"></script>--%>
+                    <script type="text/javascript" id="zp_script_242" src="http://mcc.chinauma.net/static/scripts/p.js?id=242&w=240&h=220&sl=1&delay=5"
+                        zp_type="1"></script>
+                </div>
+                <!-- baidu-tc end -->
+                <!-- baidu-tc begin {"action":"DELETE"} -->
+                <div class="col-side_ad">
+                    <ins id="div_149e57b4-e495-40e1-ae1c-30f4b80d955e" type="ad_play" adplay_ip="" adplay_areaname=""
+                        adplay_cityname="" adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype=""
+                        adplay_blockcode="149e57b4-e495-40e1-ae1c-30f4b80d955e"></ins>
+                </div>
+                <div class="col-side_ad">
+                    <ins id="div_3a3bdb2a-ab81-415d-8d0a-a3395a4364d3" type="ad_play" adplay_ip="" adplay_areaname=""
+                        adplay_cityname="" adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype=""
+                        adplay_blockcode="3a3bdb2a-ab81-415d-8d0a-a3395a4364d3"></ins>
+                </div>
+                <!-- baidu-tc end -->
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <!-- 对比浮动框 -->
+    <!-- baidu-tc begin {"action":"DELETE"} -->
+    <div id="divWaitCompareLayer" class="comparebar comparebar-index" style="display: none;">
+    </div>
+    <!-- baidu-tc end -->
+    <!-- 导航脚本 -->
+    <%= serialHeaderJs%>
+    <script type="text/javascript" language="javascript">
+        var CarCommonCSID = '<%= serialId.ToString() %>';
+        var CarFilterData = <%=string.IsNullOrEmpty(carListFilterData)?"null":carListFilterData %>;
+    </script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnew/csSummaryNew.js?v=2014120418"></script>
+    <script type="text/javascript">
+        bitLoadScript("http://image.bitautoimg.com/mergejs,s=carchannel/jsnew/jquery.lazyload.min.js,carchannel/jsnew/ucarserialcity.js?v=2014120418", function () {
+            $(".car-pic20130802 img,#car-videobox img").lazyload({
+                placeholder: "http://image.bitautoimg.com/uimg/index120401/images/picholder.gif",
+                threshold: 50
+            });
+            var cityId = 201;
+            if(typeof (bit_locationInfo) != 'undefined'){
+                cityId = bit_locationInfo.cityId;
+            }
+            if (typeof (showUCar) != "undefined") {
+                showUCar(<%=serialId %>, cityId,'<%=serialSpell %>','<%=serialShowName%>',getUCarForBottom,8);
+            }
+            try {
+                if (document.getElementById('carYearList_all'))
+                { document.getElementById('carYearList_all').className = 'current'; }
+            }
+            catch (err) { }
+        }, "utf-8");
+        bitLoadScript("http://image.bitautoimg.com/carchannel/jsnew/carcompareformini.js?v=20141009",function(){
+            try { insertWaitCompareDiv(); } catch (e) { }
+        },'utf-8');
+    </script>
+    <!--本站统计代码-->
+    <script type="text/javascript" language="javascript">
+        bitLoadScript("http://image.bitautoimg.com/mergejs,s=carchannel/jsStat/StatisticJsOldPV.js,carchannel/jsStat/StatisticJs.js", function () {
+            OldPVStatistic.ID1 = "<%=serialId %>";
+            OldPVStatistic.ID2 = "0";
+            OldPVStatistic.Type = 0;
+            mainOldPVStatisticFunction();
+        });
+    </script>
+    <!--本站统计结束-->
+    <!-- 广告代码要求提前Jul.14.2011 -->
+    <script type="text/javascript">
+        var adplay_CityName = ''; //城市
+        var adplay_AreaName = ''; //区域
+        var adplay_BrandID = '<%= serialId %>'; //品牌id 
+        var adplay_BrandType = ''; //品牌类型：（国产）或（进口）
+        var adplay_BrandName = ''; //品牌
+        var adplay_BlockCode = '48de7532-95b6-4100-9662-593c4f8533a2'; //广告块编号
+    </script>
+    <script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>
+    <script type="text/javascript">
+        var adplay_CityName = ''; //城市
+        var adplay_AreaName = ''; //区域
+        var adplay_BrandID = '<%= serialId %>'; //品牌id 
+        var adplay_BrandType = ''; //品牌类型：（国产）或（进口）
+        var adplay_BrandName = ''; //品牌
+        var adplay_BlockCode = '0db5acb8-dd8f-4b8d-97cb-cc7d50a71b8a'; //广告块编号
+    </script>
+    <script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>
+    <!-- AD -->
+    <script type="text/javascript">
+        var adplay_CityName = ''; //城市
+        var adplay_AreaName = ''; //区域
+        var adplay_BrandID = '<%= serialId %>'; //品牌id 
+        var adplay_BrandType = ''; //品牌类型：（国产）或（进口）
+        var adplay_BrandName = ''; //品牌
+        var adplay_BlockCode = '820925db-53c1-4bf8-89d2-198f4c599f4e'; //广告块编号
+    </script>
+    <script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>
+    <!--footer start-->
+    <!--#include file="~/html/footer2014.shtml"-->
+    <!--footer end-->
+    <script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars"></script>
+    <%if (serialEntity.Level != null && serialEntity.Level.Name != "概念车")
+      {%>
+    <!-- baa 浏览过的车型-->
+    <script type="text/javascript">
+        try {
+            Bitauto.UserCars.addViewedCars('<%=serialId.ToString() %>');
+        }
+        catch (err)
+        { }
+    </script>
+    <%} %>
+    <!--footer end-->
+    <%if (serialId == 1765 || serialId == 2370 || serialId == 2608 || serialId == 3398 || serialId == 3023 || serialId == 2388 || serialId == 2122 || serialId == 2196 || serialId == 1611 || serialId == 3152 || serialId == 2871 || serialId == 3382)
+      { %>
+    <!--百度热力图-->
+    <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7b86db06beda666182190f07e1af98e3' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <%} %>
+    <!--提意见浮层-->
+    <!--#include file="~/include/pd/2014/common/00001/201402_cxzsy_ycfdc_Manual.shtml"-->
+    <!--#include file="~/html/CommonBodyBottom.shtml"-->
+    <script language="javascript" type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnew/zampdaforcarchannel.js"></script>
+    <script type="text/javascript">
+        var cityidForZPQ = 201;
+        if (typeof (bit_locationInfo) != 'undefined') {
+            cityidForZPQ = bit_locationInfo.cityId;
+        }	
+        var zpqParam = { "CsID": <%=serialId %>, "CityID": cityidForZPQ, "PageName": "zongshu" };
+        getDemandAndSentZampda(zpqParam);
+    </script>
+    <div id="FocusCarFull" style="display: none;" class="tc-popup-box">
+        <div class="tt">
+            <h6>管理关注的车</h6>
+            <a href="javascript:;" id="btn-focus-close" class="btn-close">关闭</a>
+        </div>
+        <div class="tc-popup-con">
+            <div class="no-txt-box no-txt-error-mline">
+                <p class="tit">
+                    不能再继续添加了...
+                </p>
+                <p>
+                    您最多可以添加 9辆关注车型，去车库删除一部分车型后就可以继续添加了。
+                </p>
+                <div class="tc_zf_box">
+                    <div class="button_orange button_113_35">
+                        <a href="javascript:;" id="a-focus-close">我知道了</a>
+                    </div>
+                    <div id="mangerCar_tc" class="button_gray button_113_35">
+                        <a target="_blank" href="#">管理关注的车</a>
+                    </div>
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<!-- 经销商块改INS -->
+<script type="text/javascript" src="http://js.bitauto.com/dealer/union/script/ads.js"></script>

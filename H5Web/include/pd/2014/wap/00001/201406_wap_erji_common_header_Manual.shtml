@@ -1,0 +1,102 @@
+﻿<!-- header start utf8-->
+<div class="header">
+	<a href="http://m.yiche.com/" class="logo" onclick="javascript:dcsMultiTrack('DCS.dcsuri', '/car/onclick/tubiao.onclick','WT.ti', '图标')">易车网</a>
+	<a href="javascript:toogleNav();" class="btn-nav" id="nav"  onclick="javascript:dcsMultiTrack('DCS.dcsuri', '/car/onclick/daohang.onclick','WT.ti', '导航')">导航<i></i></a>
+	<a href="javascript:showSearch();" class="btn-search">搜索</a>
+	<a id="userInfoContainer" class="user-out" href="http://m.qichetong.com/authenservice/login.aspx"></a>
+	<div class="pop-nav" id="popNav" style="display:none;" onclick="closeNav();">
+		<i></i>
+		<ul>
+			<li><a href="http://m.yiche.com/">首页</a></li>
+			<li><a href="http://car.m.yiche.com/">选车</a></li>
+			<li><a href="http://price.m.yiche.com/">报价</a></li>
+			<li><a href="http://jiangjia.m.yiche.com/">降价</a></li>
+			<li><a href="http://mai.m.yiche.com/?ref=msy1">易车惠</a></li>
+                        <li><a href="http://m.taoche.com/all/">二手车</a></li>
+			<li><a href="http://news.m.yiche.com/">资讯</a></li>
+			<li><a href="http://v.m.yiche.com/">视频</a></li>
+			<li><a href="http://baa.m.yiche.com/">论坛</a></li>
+			<li><a href="http://ask.m.yiche.com/">问答</a></li>
+			<li><a href="http://club.m.yiche.com/">车友会</a></li>
+			<li><a href="http://app.m.yiche.com/">APP</a></li>
+			
+		</ul>	</div>
+</div>
+<!-- header end -->
+
+<!-- search start -->
+﻿<div class="p-search" id="pSearch" style="display: none;">
+    <form id="sug_form" name="sug_form" method="get" action="http://so.m.yiche.com/search">
+    <div class="p-search-h">
+        <div class="p-search-sort-box">
+            <div class="p-search-sort-relative">
+                <div class="p-search-sort" id="dropdown" onclick="javascript:ChangeSoChannel.openChannel()">
+                    <strong id="soChannelName">综合</strong> <i id="downArrow"></i>
+                </div>
+                <ul class="p-search-sort-list" id="dropdownList" style="display: none;">
+                </ul>
+            </div>
+        </div>
+        <div class="p-search-input-box">
+            <div class="p-search-input-relative">
+                <input type="search" id="txtkeyword" name="txtkeyword" size="10" class="p-search-input"
+                    placeholder="输入关键词" />
+                <a href="#" class="p-search-input-cancel" id="txtclear" style="display: none">取消</a>
+            </div>
+        </div>
+        <a href="javascript:ChangeSoChannel.closeSearchBox();" class="btn-close" id="btnCloseSearch">
+            取消</a>
+    </div>
+    <input type="hidden" name="csytype" id="hid_sugchannel" value="qiche" />
+    <input type="hidden" name="serialUrl" id="serialUrl" value="" />
+    <input type="hidden" name="cysid" id="hid_cysid" value="1" />
+    </form>
+    <div class="p-search-list" id="div_so_pop" style="display: none">
+    </div>
+    <script type="text/javascript" src="http://image.bitautoimg.com/bsearch/BSearchJS2014/myiche20140620.js"></script>
+    <script type="text/javascript">
+        new myichecomplete(
+        {
+            input: document.getElementById("txtkeyword"),
+            sugdiv: document.getElementById("div_so_pop"),
+            csurl: document.getElementById("serialUrl"),
+            txtclear: document.getElementById("txtclear"),
+            channel: document.getElementById("hid_sugchannel"),
+            sugSize: 8
+        });
+        ChangeSoChannel.init();
+        ChangeSoChannel.addEventHandler(window.document, "click", function (event) {
+            var clickEle = event.target.id;
+            if (clickEle != "dropdown" && clickEle != "soChannelName" && clickEle != "downArrow")
+                document.getElementById("dropdownList").style.display = "none";
+        });
+    </script>
+</div>
+
+<!-- search end -->
+
+<script type="text/javascript">
+    function showSearch() {
+        var pSearchE = document.getElementById("pSearch");
+        pSearchE.style.display = "block";
+        document.getElementById("txtkeyword").focus();
+    }
+    function toogleNav() {
+        var navE = document.getElementById("nav");
+        var popNavE = document.getElementById("popNav");
+        if (navE.className == "btn-nav") {
+            navE.className = "btn-nav btn-nav-show";
+            popNavE.style.display = "block";
+        } else {
+            navE.className = "btn-nav";
+            popNavE.style.display = "none";
+        }
+    }
+    function closeNav() {
+        var navE = document.getElementById("nav");
+        var popNavE = document.getElementById("popNav");
+        navE.className = "btn-nav";
+        popNavE.style.display = "none";
+    }
+</script>
+<script type="text/javascript" src="http://image.bitautoimg.com/uimg/wap/js/jquery-1.8.0.min.js"></script>

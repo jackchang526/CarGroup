@@ -1,0 +1,78 @@
+﻿<!--内容-->
+<div class="footer15">
+	<!--搜索框-->
+	<div class="m-s-box m-s-box-bottom">
+		<div class="m-close-box">
+			<div class="m-close-box-in">
+				<input type="search" onclick="RedirectShowSearch();" readonly="readonly" />
+			</div>
+		</div>
+		<div class="m-btn-box">
+			<input type="submit" value="" onclick="RedirectShowSearch();" />
+		</div>
+	</div>
+	<div class="opt-change">
+		<a class="current">触屏版</a><em>|</em><a id="a_linkToPcPage" href="javascript:;">电脑版</a>
+		<em>|</em><a href="http://m.yiche.com/wap2.0/feedback/"><span>给易车提意见</span></a>
+	</div>
+	<div class="foot-contact">
+		<p>购车热线：<a href="tel:4000168168">4000-168-168</a>&nbsp;(9:00 - 21:00)</p>
+	</div>
+	<div class="foot-copyright">
+		易车 &copy; 2015 <a href="http://m.yiche.com/">m.yiche.com</a>
+	</div>
+</div>
+<!--返回顶部-->
+<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/WirelessJs/anchorv3.min.js?v=20151117"></script>
+
+<!--App Download -->
+<div id="app_download" style="display:none">
+	<ins id="div_8f7ffbeb-af1e-48d9-ba2c-1b49b73ebde3" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="" adplay_brandname="" adplay_brandtype="" adplay_blockcode="8f7ffbeb-af1e-48d9-ba2c-1b49b73ebde3"> </ins>
+</div>
+<script src="http://image.bitautoimg.com/wap/js/DownloadPriceApp2015.10.14.js"></script>
+<script>
+DownloadPriceApp.init('app_download', 'closedPriceApp');
+</script>
+<!--js-->
+<script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=Bitauto.Login.Base,ibt_newmessagelistener,Bitauto.Login.M.UI.V2,ibt_m_gobacker,ibt_m_RequestToPcPage&v=1"></script>
+<script type="text/javascript">
+    Bitauto.GoBacker.goBackByElementEvent('gobackElm', 'click');
+</script>
+<script>
+    $(document).bind('touchmove click', function (event) {
+        var clickEle = event.target.id;
+        if (clickEle != 'nav') {
+            $('#popNav').hide();
+            $('#nav').removeClass('btn-nav-show');
+        }
+    });
+    $(document).ready(function () {
+        var documentHeight = $(document).height();
+        $('#pSearch').css('height', documentHeight);
+    });
+</script>
+<!-- START OF SmartSource Data Collector TAG -->
+<script src="http://image.bitautoimg.com/bt/webtrends/dcs_tag_wapnew.js?20131120"
+		type="text/javascript"></script>
+<!-- bitauto stat begin -->
+<script>
+    var bit_stat_url = "url=" + escape(document.location);
+    if (document.referrer != null) bit_stat_url += "&refer=" + escape(document.referrer)
+    document.write("<img width=0 height=0 style='display:none;' src='http://log.bitauto.com/newsstat/log.aspx?" + bit_stat_url + "'/>");
+</script>
+<!-- bitauto stat end -->
+<!--airui-->
+<script src="http://img1.bitautoimg.com/stat/iwtToMSite20140218.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/senseNew.js"></script>
+<script type="text/javascript" src="http://g.yccdn.com"></script>
+<!--#include file="/include/special/stat/00001/stat_bglog_Manual.shtml"-->
+<!--#include file="/include/special/stat/00001/bglogpostlog_Manual.shtml"-->
+
+<script type="text/javascript">
+    (function () {
+        var dc = document.createElement('script'); dc.type = 'text/javascript'; dc.async = true;
+        dc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'js.ctags.cn/dc.js?10';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(dc, s);
+    })();
+</script>
+

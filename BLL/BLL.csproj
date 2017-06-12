@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1A787431-F289-4D25-A9C5-D9F6291F6C4D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BitAuto.CarChannel.BLL</RootNamespace>
+    <AssemblyName>BLL</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <PublishUrl>http://localhost/BLL/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BitAuto.CarUtils">
+      <HintPath>..\..\..\Dll\BitAuto.CarUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="BitAuto.Utils, Version=2.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\BitAuto.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\..\..\Dll\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\..\..\Dll\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\Dll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdConfig.cs" />
+    <Compile Include="BLL_Exhibition.cs" />
+    <Compile Include="BLL_ExhibitionAlbum.cs" />
+    <Compile Include="CarIndex.cs" />
+    <Compile Include="CarNewsBll.cs" />
+    <Compile Include="CarPriceComputer.cs" />
+    <Compile Include="CarTree.cs" />
+    <Compile Include="CarTreeData\TreeDataObjects.cs" />
+    <Compile Include="Car_BasicBll.cs" />
+    <Compile Include="Car_LevelBll.cs" />
+    <Compile Include="Car_MasterBrandBll.cs" />
+    <Compile Include="Car_ProducerBll.cs" />
+    <Compile Include="Car_SerialBll.cs" />
+    <Compile Include="Car_SerialItemBll.cs" />
+    <Compile Include="Car_BrandBll.cs" />
+    <Compile Include="CommonHtmlBll.cs" />
+    <Compile Include="CountryMasterBrands.cs" />
+    <Compile Include="DaogouTree.cs" />
+    <Compile Include="Data\BaseEntity.cs" />
+    <Compile Include="Data\BrandEntity.cs" />
+    <Compile Include="Data\CarEntity.cs" />
+    <Compile Include="Data\CarParameter.cs" />
+    <Compile Include="Data\DataManager.cs" />
+    <Compile Include="Data\Define.cs" />
+    <Compile Include="Data\EntityCompare.cs" />
+    <Compile Include="Data\LevelEntity.cs" />
+    <Compile Include="Data\MasterBrandEntity.cs" />
+    <Compile Include="Data\ProducerEntity.cs" />
+    <Compile Include="Data\SerialEntity.cs" />
+    <Compile Include="MVCRouteBll.cs" />
+    <Compile Include="SerialFourthStageBll.cs" />
+    <Compile Include="HangQingTree.cs" />
+    <Compile Include="IndexBll.cs" />
+    <Compile Include="IndexManager\AbstractIndex.cs" />
+    <Compile Include="IndexManager\DealerIndex.cs" />
+    <Compile Include="IndexManager\IAutoIndex.cs" />
+    <Compile Include="IndexManager\IndexFactory.cs" />
+    <Compile Include="IndexManager\SaleIndex.cs" />
+    <Compile Include="IndexManager\UVIndex.cs" />
+    <Compile Include="InsuranceLoanBll.cs" />
+    <Compile Include="NewsChannelBll.cs" />
+    <Compile Include="NewsEditerBll.cs" />
+    <Compile Include="PingCeTree.cs" />
+    <Compile Include="ProduceAndSellDataBll.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="RainbowListBll.cs" />
+    <Compile Include="SelectCarToolBll.cs" />
+    <Compile Include="SerialCompareListBll.cs" />
+    <Compile Include="SerialCompareVoteBll.cs" />
+    <Compile Include="SerialGoodsBll.cs" />
+    <Compile Include="Template\CarPage.cs" />
+    <Compile Include="Template\Define.cs" />
+    <Compile Include="Template\ModuleFunction\SerialFunction.cs" />
+    <Compile Include="Template\ModuleSegment.cs" />
+    <Compile Include="Template\ProgramModule.cs" />
+    <Compile Include="Template\PTRelation.cs" />
+    <Compile Include="Template\ScriptModule.cs" />
+    <Compile Include="Template\TemplateCommon.cs" />
+    <Compile Include="Template\TemplateException\TemplateException.cs" />
+    <Compile Include="Template\HtmlSegment.cs" />
+    <Compile Include="Template\IncludeModule.cs" />
+    <Compile Include="Template\ModuleBase.cs" />
+    <Compile Include="Template\PageTemplate.cs" />
+    <Compile Include="Template\ScriptOrCssElement.cs" />
+    <Compile Include="Template\StuffTemplate.cs" />
+    <Compile Include="Template\TemplateManager.cs" />
+    <Compile Include="Template\TemplateModule.cs" />
+    <Compile Include="Template\TemplateParameter.cs" />
+    <Compile Include="TopPVSerialSelector.cs" />
+    <Compile Include="TreeData.cs" />
+    <Compile Include="TreeFactory.cs" />
+    <Compile Include="SaleTree.cs" />
+    <Compile Include="TreeTagConfig.cs" />
+    <Compile Include="TuJieTree.cs" />
+    <Compile Include="UCarTree.cs" />
+    <Compile Include="VideoBll.cs" />
+    <Compile Include="Web References\partner.replacecarService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\com.bitauto.partner\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\com.bitauto.price\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ucar.api\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\Das\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{37C98BF2-CDB5-455B-B5E9-C7EDAD27E5FA}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{3539D67B-555B-4856-8736-765992C5D617}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{95AD515E-935F-49C8-8721-8F89D0B8614D}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://api.taoche.cn/CarSourceInterface/CarSourceForBitAuto.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ucar.api\</RelPath>
+      <UpdateFromURL>http://api.taoche.cn/CarSourceInterface/CarSourceForBitAuto.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>BLL_cn_ucar_api_CarSourceForBitAuto</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://das.bitauto.com/Group/Service/GroupService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Das\</RelPath>
+      <UpdateFromURL>http://das.bitauto.com/Group/Service/GroupService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>BLL_Das_GroupService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://partner.bitauto.com/api/order/replacecarService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\partner.replacecarService\</RelPath>
+      <UpdateFromURL>http://partner.bitauto.com/api/order/replacecarService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>BLL_com_bitauto_partner1_ReplaceCarService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://partner.bitauto.com/api/taoche/service.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\com.bitauto.partner\</RelPath>
+      <UpdateFromURL>http://partner.bitauto.com/api/taoche/service.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>BLL_com_bitauto_partner_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://price.bitauto.com/interfacemaiche/dealerprice.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\com.bitauto.price\</RelPath>
+      <UpdateFromURL>http://price.bitauto.com/interfacemaiche/dealerprice.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>BLL_com_bitauto_price_DealerPrice</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\partner.replacecarService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\partner.replacecarService\replacecarservice.wsdl" />
+    <None Include="Web References\com.bitauto.partner\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\com.bitauto.partner\service.wsdl" />
+    <None Include="Web References\com.bitauto.price\dealerprice.wsdl" />
+    <None Include="Web References\com.bitauto.price\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ucar.api\CarSourceForBitAuto.wsdl" />
+    <None Include="Web References\ucar.api\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\Das\GroupPurchaseEntity.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Das\GroupService.disco" />
+    <None Include="Web References\Das\GroupService.wsdl" />
+    <None Include="Web References\Das\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\ucar.api\CarSourceForBitAuto.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\com.bitauto.price\dealerprice.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\com.bitauto.partner\service.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\partner.replacecarService\replacecarservice.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

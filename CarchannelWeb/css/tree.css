@@ -1,0 +1,100 @@
+/* tab1 */
+.tree_tab{width:213px;float:left;margin:0;background:url(http://image.bitautoimg.com/autoalbum/V2.1/images/c0806_03.png) 0 -2px repeat-x;height:24px;overflow:hidden;padding:3px 0 0;clear:both;}
+.tree_tab .tab{float:left;display:inline;background:url(http://image.bitautoimg.com/autoalbum/V2.1/images/c0806_03.png) 0 -77px;margin:0 5px;padding:0 0 0 1px;width:212px;height:24px;}
+.tree_tab .tab li{float:left;width:67px;overflow:hidden;height:24px;}
+.tree_tab .tab li a{float:left;text-align:center;color:#164A84;background:url(http://image.bitautoimg.com/autoalbum/V2.1/images/c0806_03.png) 100% -29px;padding:0;width:67px;height:24px;line-height:24px;}
+.tree_tab .tab li a:hover{text-decoration:none}
+.tree_tab .tab li a:visited{color:#164A84}
+.tree_tab .tab .on{padding:0 0 0 1px;background:url(http://image.bitautoimg.com/autoalbum/V2.1/images/c0806_03.png) 0 -53px no-repeat;width:66px;position:relative;left:-1px}
+.tree_tab .tab .on a{background:url(http://image.bitautoimg.com/autoalbum/V2.1/images/c0806_03.png) 100% -53px no-repeat;color:#000;font-weight:bold;width:66px;display:block;left:0;overflow:hidden;line-height:24px;position:relative;}
+.tree_tab .tab .on a:visited{color:#000;}
+.tree_tab .tab .last a{background:none;}
+/*tree_letter*/
+.tree_letter{width:212px;padding:3px 0 0 2px;clear:both;height:35px;_height:30px;_padding:3px 0 2px 2px;margin:0 0 0 2px;}
+.tree_letter li{float:left;margin:0 -1px -1px 0;width:15px;border:1px solid #CCD7E4;background:#ebf0f6;color:#DCDCDC;font-family:Arial;line-height:120%;text-align:center;height:15px;overflow:hidden;}
+.tree_letter li.none{background:#f3f3f3;}
+.tree_letter li a:link,.tree_letter li a:visited{height:15px;width:15px;display:block;text-decoration:none;}
+.tree_letter li a:hover{background:#164A84;color:#fff;}
+.tree_side{width:220px;float:left}
+/*nav tree*/
+.nav_tree{padding:0;overflow-y:none;}
+.nav_tree a{display:block;width:185px;cursor:pointer;background:url(http://image.bitautoimg.com/themes/2009/common/images/icon_tree_jia.png) 8px 7px no-repeat;padding:0 0 0 16px;}
+.nav_tree ul li a.open{background:url(http://image.bitautoimg.com/themes/2009/common/images/icon_tree_jian.png) 8px 7px no-repeat;}
+.nav_tree ul li a.open:hover{background-color:#fffbc7;}
+.nav_tree ul li a.opened{background:url(http://image.bitautoimg.com/themes/2009/common/images/icon_tree_arrow.png) 14px 3px no-repeat;}
+.nav_tree ul li a.opened:hover{background-color:#fffbc7;}
+.nav_tree ul li a.current{background-color:#e8edf3;}
+/*width*/
+.nav_tree ul li.root li a{width:155px;}
+.nav_tree ul li.root li a.opened{width:170px;}
+.nav_tree ul li a.last{background:url(http://image.bitautoimg.com/themes/2009/common/images/icon_tree_last.png) 13px 3px no-repeat;}
+.nav_tree ul li a.last:hover{background-color:#fffbc7;}
+.nav_tree ul li a.current{background-color:#e8edf3;font-weight:bold;}
+/*nav tree*/
+.nav_tree ul.nav_tree_base li a{padding:0;}
+.nav_tree a{padding:0;background-image:none;}
+.nav_tree ul li a.open{background-image:none;}
+.nav_tree ul{margin:0 0 0 15px;}
+.nav_tree ul.none{display:none;}
+.nav_tree ul.nav_tree_base{margin:0;float:left;padding:0}
+.nav_tree ul.nav_tree_base_top{padding:40px 0 0 0;}
+.nav_tree ul li{white-space:nowrap;line-height:22px;}
+.nav_tree a span{color:#989898;font-weight:normal;}
+.nav_tree a span.green{color:#00980D;font-weight:normal;}
+.nav_tree li span.tc{float:left;margin:0 2px 0 0;padding:0 0 0 26px;display:inline;font-family:Arial,Helvetica,sans-serif;}
+.nav_tree a{float:left;cursor:pointer;}
+.nav_tree a em,.nav_tree a big,.nav_tree a span,.nav_tree a strong{float:left;margin:0 2px 0 0;display:inline;font-family:Arial,Helvetica,sans-serif;}
+.nav_tree a big{font-size:12px;}
+.nav_tree a big strong{*margin-top:-1px;}
+.nav_tree a em{width:26px;background:url(http://image.bitautoimg.com/themes/2009/common/images/icon_tree_jia.png) 14px 6px no-repeat;height:20px;}
+.nav_tree ul.nav_tree_base li a{margin:0;}
+.nav_tree ul.nav_tree_base li ul li a{padding:0 0 0 26px;}
+.nav_tree a:link,.nav_tree a:visited{text-decoration:none;}
+.nav_tree a:hover{background-color:#fffbc7;text-decoration:none;}
+.nav_tree .series a{background:#ECF3F9}
+.nav_tree .series a:hover{background-color:#fffbc7;text-decoration:none;}
+.nav_tree ul li a.open em{background:url(http://image.bitautoimg.com/themes/2009/common/images/icon_tree_jian.png) 14px 6px no-repeat;}
+.nav_tree ul li a.open:hover{background-color:#fffbc7;}
+.nav_tree ul li a.opened{background:url(http://image.bitautoimg.com/themes/2009/common/images/icon_tree_arrow.png) no-repeat scroll 14px 3px;}
+.nav_tree ul li a.opened em{background:url(http://image.bitautoimg.com/themes/2009/common/images/icon_tree_arrow.png) 14px 3px no-repeat;}
+.nav_tree ul li a.opened:hover{background-color:#fffbc7;}
+.nav_tree ul li a.current{background-color:#e8edf3;}
+/*width*/
+.nav_tree a{width:170px;}
+.nav_tree ul li a{width:193px;}/*改*/
+.nav_tree ul li ul li a{width:170px;}
+.nav_tree ul li ul li ul li a{width:133px;}/*改*/
+.nav_tree ul li.root a{display:block;}
+.nav_tree ul li.root li a.last{width:133px;}/*改*/
+.nav_tree ul li a.last{background:url(http://image.bitautoimg.com/themes/2009/common/images/icon_tree_last.png) no-repeat scroll 13px 3px;}
+.nav_tree ul li a.last em{background:url(http://image.bitautoimg.com/themes/2009/common/images/icon_tree_last.png) 13px 3px no-repeat;}
+.nav_tree ul li a.last:hover{background-color:#fffbc7}
+.nav_tree ul li a.current{background-color:#e8edf3;font-weight:bold;}
+/*======================================================================================*/
+.treerank{ width: 213px; }
+.treerank ul{ margin-top: 28px; }
+.line_ka{border-bottom:none;height:29px;}
+.line_ka h3 .date{float:left;font-size:12px;font-weight:normal;}
+.index_list{float:left;width:353px;display:inline; overflow: hidden; clear: none;}
+.index_mr{margin-right:10px;}
+.index_list h4{padding-left:11px;background-color:#F4F4F4;font-size:14px;font-weight:bold;line-height:29px;height:29px;}
+.index_list li{float:left;width:330px;background:url(http://image.bitautoimg.com/uimg/index/images/line_dashed_s1.gif) repeat-x scroll 0 23px transparent;height:24px;overflow:hidden;}
+.index_list li span{float:left;}
+.index_list li span.t1{padding:0 4px 0 2px;width:18px;margin-top:7px;background:url(http://image.bitautoimg.com/uimg/index/images/bg_tops.gif);color:White;font-family:Arial,Helvetica,sans-serif;font-size:10px;text-align:center;line-height:9px;height:9px;overflow:hidden;}
+.index_list li span.t2{padding:0 4px 0 2px;width:18px;margin-top:7px;background:url(http://image.bitautoimg.com/uimg/index/images/bg_tops.gif) 0 -19px;color:White;font-family:Arial,Helvetica,sans-serif;font-size:10px;text-align:center;line-height:9px;height:9px;overflow:hidden;}
+.index_list li span.cont{padding-left:6px;width:190px;line-height:24px;height:24px;}
+.index_list li span.cont span.green{color:#00980D;font-weight:normal; float:none !important}
+.index_list li span.count{margin-right:2px;width:56px;color:#333333;line-height:24px;text-align:right;height:24px;}
+.index_list li span.scale{width:50px;font-size:0;line-height:24px;height:24px;}
+.index_list li span.scale div{margin-top:9px;background-color:#BFBFBF;height:7px;}
+.index_list ul{float:left;margin:5px 0 0 10px;display:inline;overflow:hidden;}
+/*======================================================================================*/
+/*new css*/
+*html body{background-image:url(about:blank);background-attachment:fixed;}
+.summaryWrapNormal{width:950px; overflow:hidden; margin:0 auto}
+.summaryWrap{width:950px; height:100%; position:relative; left:218px}
+
+.summaryTree{width:213px;height:100%;position:fixed; left:0; top:0; overflow:hidden}
+*html .summaryTree{top:expression(documentElement.scrollTop);height:expression((documentElement.clientHeight)); position:absolute}
+.summaryTree .tree_box{width:213px; position:static !important; _position:static !important}
+.summaryTree .tree_content{width:213px; height:100%; position:fixed; overflow-x:hidden; overflow-y:scroll; left:0; top:65px}

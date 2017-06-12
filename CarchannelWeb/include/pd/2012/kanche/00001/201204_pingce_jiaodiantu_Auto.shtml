@@ -1,0 +1,23 @@
+<div class="focus-2">
+    <div class="focusBox-2" id="focusBox-2">
+        <ul class="focusPic-2" id="focusPic-2">
+            <li style="display: none;"><a href="http://news.bitauto.com/test/20120418/1605660255.html"
+                target="_blank">
+                <img src="http://img3.bitautoimg.com/bitauto/focuspic/2012-4-26/2012426154447976.jpg"
+                    alt="易车测试广汽理念S1 1.5L" /></a><a href="http://news.bitauto.com/test/20120418/1605660255.html"
+                        target="_blank">易车测试广汽理念S1 1.5L</a></li><li style="display: none;"><a href="http://news.bitauto.com/drive/20120416/2105658738.html"
+                            target="_blank">
+                            <img src="http://img1.bitautoimg.com/bitauto/focuspic/2012-4-26/2012426154139976.jpg"
+                                alt="试驾体验全新丰田普锐斯" /></a><a href="http://news.bitauto.com/drive/20120416/2105658738.html"
+                                    target="_blank">试驾体验全新丰田普锐斯</a></li><li style="display: block;"><a href="http://news.bitauto.com/drive/20120412/0505655669.html"
+                                        target="_blank">
+                                        <img src="http://img3.bitautoimg.com/bitauto/focuspic/2012-4-26/2012426154754210.jpg"
+                                            alt="易车体验CODA电动车" /></a><a href="http://news.bitauto.com/drive/20120412/0505655669.html"
+                                                target="_blank">易车体验CODA电动车</a></li>
+        </ul>
+        <ul class="focusTxt-2" id="focusTxt-2"><!--txt--></ul>
+        <ul class="focusNum-2" id="focusNum-2"><!--num--></ul>
+        <div class="focusTxtBg-2">
+        </div>
+    </div>
+</div>

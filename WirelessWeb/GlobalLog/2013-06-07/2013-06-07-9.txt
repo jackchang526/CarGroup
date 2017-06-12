@@ -1,0 +1,12 @@
+[2013/6/7 9:31:13]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/jieda/pingce/?csid=1905&csid=1905&&
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 WirelessWeb.CsPingCe.GetSerialDetailInfo() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CsPingCe.aspx.cs:行号 97
+   在 WirelessWeb.CsPingCe.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CsPingCe.aspx.cs:行号 49
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 141
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

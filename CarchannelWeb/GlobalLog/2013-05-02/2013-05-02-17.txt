@@ -1,0 +1,77 @@
+[2013/5/2 17:06:13]  
+IP: 127.0.0.1
+Error in: http://localhost:34910/default.aspx
+Error Message: 值不能为 null。
+参数名: s
+Stack Trace:    在 System.IO.StringReader..ctor(String s)
+   在 System.Xml.XmlDocument.LoadXml(String xml)
+   在 BitAuto.CarChannel.CarchannelWeb._Default.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\Default.aspx.cs:行号 16
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2013/5/2 17:06:52]  
+IP: 127.0.0.1
+Error in: http://localhost:34910/interfaceforbitauto/serial/serialinfo.aspx?dept=serialinfofornews&csid=2370
+Stack Trace: System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 BitAuto.CarChannel.Common.Config.FileToMemcacheConfig.GetConfigData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\Config\FileToMemcacheConfig.cs:行号 56
+
+[2013/5/2 17:08:37]  
+IP: 127.0.0.1
+Error in: http://localhost:34910/interfaceforbitauto/serial/serialinfo.aspx?dept=serialinfofornews&csid=2370
+Stack Trace: System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 BitAuto.CarChannel.Common.Config.FileToMemcacheConfig.GetConfigData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\Config\FileToMemcacheConfig.cs:行号 56
+
+[2013/5/2 17:08:37]  
+IP: 127.0.0.1
+Error in: http://localhost:34910/interfaceforbitauto/serial/serialinfo.aspx?dept=serialinfofornews&csid=2370
+Stack Trace: 读取文件失败2次且memcache数据源也为空(未将对象引用设置到对象的实例。)，路径：E:\Data\SerialNews\newsNum.xml
+
+[2013/5/2 17:08:39]  
+IP: 127.0.0.1
+Error in: http://localhost:34910/interfaceforbitauto/serial/serialinfo.aspx?dept=serialinfofornews&csid=2370
+Stack Trace: System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 BitAuto.CarChannel.Common.Config.FileToMemcacheConfig.GetConfigData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\Config\FileToMemcacheConfig.cs:行号 56
+
+[2013/5/2 17:08:39]  
+IP: 127.0.0.1
+Error in: http://localhost:34910/interfaceforbitauto/serial/serialinfo.aspx?dept=serialinfofornews&csid=2370
+Stack Trace: 读取文件失败2次且memcache数据源也为空(未将对象引用设置到对象的实例。)，路径：E:\Data\SerialNews\newsNum.xml
+
+[2013/5/2 17:09:31]  
+IP: 127.0.0.1
+Error in: http://localhost:34910/default.aspx
+Error Message: 值不能为 null。
+参数名: s
+Stack Trace:    在 System.IO.StringReader..ctor(String s)
+   在 System.Xml.XmlDocument.LoadXml(String xml)
+   在 BitAuto.CarChannel.CarchannelWeb._Default.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\Default.aspx.cs:行号 16
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2013/5/2 17:27:48]  
+IP: 127.0.0.1
+Error in: http://localhost:34910/interfaceforbitauto/serial/serialinfo.aspx?dept=serialinfofornews&csid=2370
+Stack Trace: 读取文件失败2次且memcache数据源也为空(未将对象引用设置到对象的实例。)，路径：E:\Data\SerialNews\newsNum.xml
+
+[2013/5/2 17:29:40]  
+IP: 127.0.0.1
+Error in: http://localhost:34910/interfaceforbitauto/serial/serialinfo.aspx?dept=serialinfofornews&csid=2370
+Stack Trace: 读取文件失败2次且memcache数据源也为空(未将对象引用设置到对象的实例。)，路径：E:\Data\SerialNews\newsNum.xml
+
+[2013/5/2 17:30:53]  
+IP: 127.0.0.1
+Error in: http://localhost:34910/default.aspx
+Error Message: 值不能为 null。
+参数名: s
+Stack Trace:    在 System.IO.StringReader..ctor(String s)
+   在 System.Xml.XmlDocument.LoadXml(String xml)
+   在 BitAuto.CarChannel.CarchannelWeb._Default.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\Default.aspx.cs:行号 16
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

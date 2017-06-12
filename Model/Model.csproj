@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{95AD515E-935F-49C8-8721-8F89D0B8614D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BitAuto.CarChannel.Model</RootNamespace>
+    <AssemblyName>Model</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <PublishUrl>http://localhost/Model/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\..\..\Dll\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\..\..\Dll\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CarDealerList.cs" />
+    <Compile Include="CarGoodsEntity.cs" />
+    <Compile Include="CarInfoForSerialSummaryEntity.cs" />
+    <Compile Include="CarInnerSpaceEntity.cs" />
+    <Compile Include="CarJiangJiaNewsSummary.cs" />
+    <Compile Include="CarSerialPhotoEntity.cs" />
+    <Compile Include="Car_BasicEntity.cs" />
+    <Compile Include="Car_BrandEntity.cs" />
+    <Compile Include="Car_ExtendItemEntity.cs" />
+    <Compile Include="Car_MasterBrandEntity.cs" />
+    <Compile Include="Car_ProducerEntity.cs" />
+    <Compile Include="Car_SerialAward.cs" />
+    <Compile Include="Car_SerialBaseEntity.cs" />
+    <Compile Include="Car_SerialEntity.cs" />
+    <Compile Include="Car_SerialItemEntity.cs" />
+    <Compile Include="City.cs" />
+    <Compile Include="CNCAPEntity.cs" />
+    <Compile Include="DaoGouEntity.cs" />
+    <Compile Include="LoanPackage.cs" />
+    <Compile Include="DealerInfo.cs" />
+    <Compile Include="Editer.cs" />
+    <Compile Include="ExhibitionRainbow.cs" />
+    <Compile Include="GoodsPromotionEntity.cs" />
+    <Compile Include="JiangJiaNews.cs" />
+    <Compile Include="Model_Attribute.cs" />
+    <Compile Include="Model_Exhibtion.cs" />
+    <Compile Include="Model_Pavilion.cs" />
+    <Compile Include="NameObject.cs" />
+    <Compile Include="News.cs" />
+    <Compile Include="NewsCategory.cs" />
+    <Compile Include="NewsForSerialSummaryEntity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuesionInfo.cs" />
+    <Compile Include="SelectCarParameters.cs" />
+    <Compile Include="SerialColorEntity.cs" />
+    <Compile Include="SerialColorForSummaryEntity.cs" />
+    <Compile Include="SerialCompareListEntity.cs" />
+    <Compile Include="SerialCompareVoteEntity.cs" />
+    <Compile Include="SerialFocusImage.cs" />
+    <Compile Include="SerialForum.cs" />
+    <Compile Include="SerialFourthStage.cs" />
+    <Compile Include="SerialGoodsCarEntity.cs" />
+    <Compile Include="SerialGoodsEntity.cs" />
+    <Compile Include="SerialJiangJiaNewsSummary.cs" />
+    <Compile Include="SerialListADEntity.cs" />
+    <Compile Include="SerialLoanInfo.cs" />
+    <Compile Include="SerialPingCeNews.cs" />
+    <Compile Include="SerialPostionImageEntity.cs" />
+    <Compile Include="SerialSparkle.cs" />
+    <Compile Include="TreeTagConfigEntity.cs" />
+    <Compile Include="UCarInfoEntity.cs" />
+    <Compile Include="VideoEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

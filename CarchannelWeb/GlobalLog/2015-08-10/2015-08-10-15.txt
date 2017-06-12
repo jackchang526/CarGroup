@@ -1,0 +1,46 @@
+[2015/8/10 15:19:40]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/qijun/2012/?ID=2583&year=2012&&odds
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialBaseEntity(Int32 serialId) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 1566
+   在 BitAuto.CarChannel.CarchannelWeb.PageYear.CsSummaryYear.Page_Load(Object sender, EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageYear\CsSummaryYear.aspx.cs:行号 139
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2015/8/10 15:31:55]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/qijun/m9592/?carid=9592&
+Ref: http://car01.bitauto.com/qijun/2010/
+Error Message: 在与 SQL Server 建立连接时出现与网络相关的或特定于实例的错误。未找到或无法访问服务器。请验证实例名称是否正确并且 SQL Server 已配置为允许远程连接。 (provider: SQL Network Interfaces, error: 26 - 定位指定的服务器/实例时出错)
+Stack Trace:    在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, Boolean encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean withFailover)
+   在 System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   在 System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   在 System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   在 System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData)
+   在 System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   在 System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters) 位置 E:\Project\bitauto\P公用平台\Utils\Bitauto.Utils\Data\SqlHelper.cs:行号 519
+   在 BitAuto.CarChannel.DAL.CarNewsDll.GetAllCarJiangJia() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\DAL\CarNewsDll.cs:行号 1085
+   在 BitAuto.CarChannel.BLL.CarNewsBll.GetAllCarJiangJia() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\CarNewsBll.cs:行号 1452
+   在 BitAuto.CarChannel.BLL.Car_BasicBll.GetCarInfoAndParamToDictionary(Int32 carID, Dictionary`2& dic) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_BasicBll.cs:行号 1094
+   在 BitAuto.CarChannel.BLL.Car_BasicBll.GetCarCompareDataByCarIDs(List`1 listCarID) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_BasicBll.cs:行号 1065
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.GetCarConfigurationForCarSummaey(Int32 carID, String name, String allSpell) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 1236
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.GetCarAllParam() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 1145
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.GetCarData() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 281
+   在 BitAuto.CarChannel.CarchannelWeb.PageCar.CarSummary.Page_Load(Object sender, EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageCar\CarSummary.aspx.cs:行号 112
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 145
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

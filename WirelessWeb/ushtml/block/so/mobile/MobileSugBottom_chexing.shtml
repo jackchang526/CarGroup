@@ -1,0 +1,13 @@
+﻿<div class="m-s-box m-s-box-bottom">
+    <div class="m-close-box">
+        <div class="m-close-box-in">
+            <input type="search" id="txtkeywordbottom" size="10" onkeydown="redirectBEnter(event,'txtkeywordbottom')"/>
+            <!--<div class="m-btn-close">关闭</div>-->
+        </div>
+    </div>
+    <div class="m-btn-box">
+        <input type="submit" value="" onclick="redirect('txtkeywordbottom')" />
+    </div>
+</div>
+<script type="text/javascript">    var sug_poptype = "qiche";</script>
+<script type="text/javascript" src="http://image.bitautoimg.com/bsearch/mobileScript/SearchRedirect.min.js?v3"></script>

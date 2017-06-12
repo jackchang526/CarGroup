@@ -1,0 +1,72 @@
+[2013/10/22 12:01:53]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/lifan620/?ID=2425&
+Stack Trace: System.Data.SyntaxErrorException: 语法错误:“3”运算符后缺少操作数。
+   在 System.Data.ExpressionParser.Parse()
+   在 System.Data.DataExpression..ctor(DataTable table, String expression, Type type)
+   在 System.Data.DataTable.Select(String filterExpression)
+   在 BitAuto.CarChannel.BLL.SerialGoodsBll.GetGoodsCarList(Int32 serialId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SerialGoodsBll.cs:行号 81
+
+[2013/10/22 12:02:00]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/lifan620/?ID=2425&
+Stack Trace: System.Data.SyntaxErrorException: 语法错误:“3”运算符后缺少操作数。
+   在 System.Data.ExpressionParser.Parse()
+   在 System.Data.DataExpression..ctor(DataTable table, String expression, Type type)
+   在 System.Data.DataTable.Select(String filterExpression)
+   在 BitAuto.CarChannel.BLL.SerialGoodsBll.GetGoodsCarList(Int32 serialId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SerialGoodsBll.cs:行号 81
+
+[2013/10/22 12:02:18]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/408sanxiang/?ID=2859&
+Stack Trace: System.Data.SyntaxErrorException: 语法错误:“3”运算符后缺少操作数。
+   在 System.Data.ExpressionParser.Parse()
+   在 System.Data.DataExpression..ctor(DataTable table, String expression, Type type)
+   在 System.Data.DataTable.Select(String filterExpression)
+   在 BitAuto.CarChannel.BLL.SerialGoodsBll.GetGoodsCarList(Int32 serialId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SerialGoodsBll.cs:行号 81
+
+[2013/10/22 12:02:48]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/shijiasanxiang/?ID=2710&
+Stack Trace: System.Data.SyntaxErrorException: 语法错误:“3”运算符后缺少操作数。
+   在 System.Data.ExpressionParser.Parse()
+   在 System.Data.DataExpression..ctor(DataTable table, String expression, Type type)
+   在 System.Data.DataTable.Select(String filterExpression)
+   在 BitAuto.CarChannel.BLL.SerialGoodsBll.GetGoodsCarList(Int32 serialId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SerialGoodsBll.cs:行号 81
+
+[2013/10/22 12:04:06]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/lanseyishen/?ID=2783&
+Stack Trace: System.Data.SyntaxErrorException: 语法错误:“3”运算符后缺少操作数。
+   在 System.Data.ExpressionParser.Parse()
+   在 System.Data.DataExpression..ctor(DataTable table, String expression, Type type)
+   在 System.Data.DataTable.Select(String filterExpression)
+   在 BitAuto.CarChannel.BLL.SerialGoodsBll.GetGoodsCarList(Int32 serialId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SerialGoodsBll.cs:行号 81
+
+[2013/10/22 12:04:24]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/xintianlai/?ID=2409&
+Stack Trace: System.Data.SyntaxErrorException: 语法错误:“3”运算符后缺少操作数。
+   在 System.Data.ExpressionParser.Parse()
+   在 System.Data.DataExpression..ctor(DataTable table, String expression, Type type)
+   在 System.Data.DataTable.Select(String filterExpression)
+   在 BitAuto.CarChannel.BLL.SerialGoodsBll.GetGoodsCarList(Int32 serialId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SerialGoodsBll.cs:行号 81
+
+[2013/10/22 12:04:50]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/308sanxiang/?ID=3495&
+Stack Trace: System.Data.SyntaxErrorException: 语法错误:“3”运算符后缺少操作数。
+   在 System.Data.ExpressionParser.Parse()
+   在 System.Data.DataExpression..ctor(DataTable table, String expression, Type type)
+   在 System.Data.DataTable.Select(String filterExpression)
+   在 BitAuto.CarChannel.BLL.SerialGoodsBll.GetGoodsCarList(Int32 serialId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SerialGoodsBll.cs:行号 81
+
+[2013/10/22 12:05:38]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/xinaodia6l/?ID=2573&
+Stack Trace: System.Data.SyntaxErrorException: 语法错误:“3”运算符后缺少操作数。
+   在 System.Data.ExpressionParser.Parse()
+   在 System.Data.DataExpression..ctor(DataTable table, String expression, Type type)
+   在 System.Data.DataTable.Select(String filterExpression)
+   在 BitAuto.CarChannel.BLL.SerialGoodsBll.GetGoodsCarList(Int32 serialId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\SerialGoodsBll.cs:行号 81
+

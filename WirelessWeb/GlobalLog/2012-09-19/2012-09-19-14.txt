@@ -1,0 +1,8 @@
+[2012/9/19 14:45:17]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/404error.aspx
+Error Message: 未能加载类型“WirelessWeb._404error”。
+Stack Trace:    在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+

@@ -1,0 +1,13 @@
+[2015/9/10 14:37:03]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/lanshengyundongban/?ID=2588&
+Ref: 
+Error Message: Unable to cast object of type '<>f__AnonymousType2`4[System.String,System.String,System.String,System.Int32]' to type '<>f__AnonymousType7`5[System.String,System.String,System.String,System.Int32,System.Int32]'.
+Stack Trace:    在 BitAuto.CarChannel.Common.CommonFunction.Cast[T](Object o, T type) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\CommonFunction.cs:行号 1512
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.GetCarListHtml(List`1 carList, Int32 maxPv) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 1208
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.MakeCarListHtmlNew() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 1115
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 123
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 145
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

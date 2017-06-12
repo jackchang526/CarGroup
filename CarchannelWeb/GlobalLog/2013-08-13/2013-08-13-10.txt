@@ -1,0 +1,14 @@
+[2013/8/13 10:39:44]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/pageserial/cssummary.aspx?id=2370
+Error Message: 索引(从零开始)必须大于或等于零，且小于参数列表的大小。
+Stack Trace:    在 System.Text.StringBuilder.AppendFormat(IFormatProvider provider, String format, Object[] args)
+   在 System.Text.StringBuilder.AppendFormat(String format, Object arg0)
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.KoubeiImpressionHtml() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 113
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummary.aspx.cs:行号 48
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

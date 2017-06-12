@@ -1,0 +1,111 @@
+﻿<!--内容-->
+<div class="foot_box">
+    <div class="copright_p">
+        <div class="w990">
+            <p>CopyRight &copy; 2000-2017 BitAuto,All Rights Reserved.&nbsp;&nbsp;版权所有&nbsp;&nbsp;北京易车信息科技有限公司</p>
+            <p class="r">购车咨询：4000-168-168 &nbsp;&nbsp;(9:00 &ndash; 17:30) 法定假日除外</p>
+        </div>
+    </div>
+    <div class="link_a">
+        <div class="w990">
+            <ul class="about">
+                <li class="first"><a rel="nofollow" href="http://corp.bitauto.com/about/" target="_blank">关于易车</a></li>
+                <li><a rel="nofollow" href="http://corp.bitauto.com/business/" target="_blank">业务体系</a></li>
+                <li><a rel="nofollow" href="http://corp.bitauto.com/news/" target="_blank">易车动态</a></li>
+                <li><a rel="nofollow" href="http://corp.bitauto.com/job/" target="_blank">加入易车</a></li>
+                <li><a rel="nofollow" href="http://corp.bitauto.com/contact/" target="_blank">联系我们</a></li>
+                <li><a rel="nofollow" href="http://corp.bitauto.com/about/legal-notices.shtml" target="_blank">法律声明</a></li>
+                <li><a rel="nofollow" href="http://i.bitauto.com/authenservice/register/Licence.aspx" target="_blank">服务协议</a></li>
+                <li><a rel="nofollow" href="http://ir.bitauto.com/" target="_blank">Investor Relations</a></li>
+                <li><a rel="nofollow" href="http://dealer.easypass.cn/" target="_blank">易湃会员</a></li>
+                <li><a rel="nofollow" href="http://www.bitauto.com/feedback/" target="_blank">意见反馈</a></li>
+
+                <li class="last"><a rel="nofollow" href="javascript:Bitauto_IM.ImForm_submit()">在线咨询</a></li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<!--侧边栏-->
+<div id="bitautoSideBarContainer" class="navtool-fixed-right" style="display:none">
+    <div class="navtool-mini" id="miniButton">工具栏</div>
+    <div class="navtool-ul" id="navtool-ul">
+        <ul id="headerModulesContainer" class="upper-part"></ul>
+        <ul id="footerModulesContainer" class="lower-part"></ul>
+    </div>
+    <div id="contentContainer" class="navtool-div-list">
+    </div>
+</div>
+<script type="text/javascript">
+
+
+        (function(global) {
+            var extend = function(target, extendObj) {
+                    for (var item in extendObj) {
+                        if (extendObj.hasOwnProperty(item)) {
+                            target[item] = extendObj[item];
+                        }
+                    }
+                    return target;
+                },
+                sidebarConfig = extend({
+                    activate: true
+                }, global.SidebarConfig),
+                scriptElm,
+                loadScript = function(url, callback) {
+                    var script = document.createElement("script");
+                    script.type = "text/javascript";
+                    if (script.readyState) { //IE
+                        script.onreadystatechange = function() {
+                            if (script.readyState == "loaded" ||
+                                script.readyState == "complete") {
+                                script.onreadystatechange = null;
+                                (callback && callback());
+                            }
+                        };
+                    } else { //Others
+                        script.onload = function() {
+                            (callback && callback());
+                        };
+                    }
+                    script.src = url;
+                    document.getElementsByTagName("head")[0].appendChild(script);
+                };
+            if(!global.SidebarConfig||!global.SidebarConfig.footerModules){
+                global.SidebarConfig=global.SidebarConfig||{};
+                global.SidebarConfig.footerModules=['promotion', 'location', 'feedback', 'top'];
+            }
+            if (sidebarConfig.activate) {
+                loadScript('http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_quicklogin,Bitauto.iUtils,Bitauto.iMediator,Bitauto.Sidebar&v=1703021129');
+            }
+        })(window);
+</script>
+<script type="text/javascript" src="http://image.bitautoimg.com/index/js/CitySelectModule.js?v=1"></script>
+<script type="text/javascript" src="http://ip.bitauto.com/service/locate.ashx"></script>
+<script type="text/javascript">
+    (function(){
+        var marketEle = document.getElementById("local-market");
+        var url = "http://{spell}.bitauto.com/cheshi/";
+        var location;
+        if (Bitauto.location.county!=null) {
+           location = Bitauto.location.county;
+        }
+        else if (Bitauto.location.city !=null) {
+            location = Bitauto.location.city;
+        }
+        if (location && marketEle) {
+            marketEle.setAttribute("href", url.replace("{spell}", location.spell));
+        }
+    })();
+
+</script>
+
+
+<script type="text/javascript" src="http://g.yccdn.com"></script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/senseNew.js"></script>
+<script>
+if(typeof( ChannelLOGCollector)=="undefined")
+var ChannelLOGCollector=typeof( XCWebLogCollector)=="undefined"?null:XCWebLogCollector;
+</script>
+<script type="text/javascript" src="//bglog.bitauto.com/getbglog.js?v=20170210"></script>
+<script type="text/javascript" src="http://image.bitautoimg.com/index/js/gotoIM.js?v=1.2"></script>

@@ -1,0 +1,10 @@
+[2015/11/4 17:09:37]  
+IP: 127.0.0.1
+Error in: http://car01.m.yiche.com/baoma3xi/m116661/?carid=116661&
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 ASP.carsummary_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarSummary.aspx:行号 12
+   在 System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   在 System.Web.UI.Page.Render(HtmlTextWriter writer)
+   在 System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

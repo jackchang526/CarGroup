@@ -1,0 +1,13 @@
+﻿<link rel="stylesheet" type="text/css" href="http://image.bitautoimg.com/uimg/css/00034/yiche_2014_backtop-20150906172315-686.css" media="all" />
+
+<div class="yiche-side" id="yiche-side">
+	<ul>
+		<!--调查问卷-->
+
+
+		<li id="feedbackDiv" class="w4 last"><a href="javascript:Bitauto_IM.ImForm_submit()">在线咨询</a></li>
+		<li class="side-top w4"><a href="#yicheAnchor" title="返回顶部" id="backtop" style="display:none">返回顶部</a></li>
+	</ul>
+</div>
+<script type="text/javascript" src="http://image.bitautoimg.com/uimg/index2014/js/yicheside.js"></script>
+

@@ -1,0 +1,11 @@
+[2016/11/24 11:30:52]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/PageSerialV2/Cscompare.aspx?id=1879
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 ASP.pageserialv2_cscompare_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) 位置 c:\work\bitauto\TFS\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerialV2\CsCompare.aspx:行号 10
+   在 System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   在 System.Web.UI.Page.Render(HtmlTextWriter writer)
+   在 System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

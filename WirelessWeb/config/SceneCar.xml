@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SceneList>
+  <Scene Id="1">
+    <Name>夏天雨水多</Name>
+    <Content>
+      夏日多雨的地区最重要的就行驶的安全性，首先车辆的通过性要尽量高，这一点主要看进气口的高低，位置越高过水性越好。雨天路滑，尽量多加些如esp、主动安全等系统，
+      再配上通风盘刹车片，一旦车辆出现侧滑，可以有效制动，保证安全。最后，选个感应雨刷和后视镜加热都会让雨天开车方便不少。
+    </Content>
+    <ParamsList>
+      <Param key="more=215_216" value="感应雨刷"/>
+      <Param key="more=211" value="后视镜加热"/>
+      <Param key="more=184" value="动态稳定系统"/>
+      <Param key="more=191" value="主动安全"/>
+      <Param key="more=143" value="通风盘刹车"/>
+    </ParamsList>
+  </Scene>
+  <Scene Id="2">
+    <Name>冬天雪很多</Name>
+    <Content>
+      在雪地开车，四轮驱动是比不可少的，这样可以保持足够的抓地力不侧滑，如果银子上允许尽量多加些如esp、abs等主动安全系统，一旦车辆出现失控可以尽力保证安全，雪
+      天后视镜容易积雪，选择加热功能可以便捷的看清路况。
+    </Content>
+    <ParamsList>
+      <Param key="dt=4,8,16" value="四轮驱动"/>
+      <Param key="more=182" value="刹车防抱死"/>
+      <Param key="more=183" value="刹车辅助"/>
+      <Param key="more=184" value="动态稳定系统"/>
+      <Param key="more=191" value="主动安全"/>
+      <Param key="more=211" value="后视镜加热"/>
+    </ParamsList>
+  </Scene>
+  <Scene Id="3">
+    <Name>昼夜温差大</Name>
+    <Content>昼夜温差大的地方可能就是空调中午吹冷风，早晚吹暖风了，这样的调节温度变得十分麻烦，所以自动空调就是必不可少的装备了，另外，昼夜温差很大容易造成轮胎的加速老化，所以为了安全，胎压监测系统也是必不可少的。当然，如果土豪，请使用零压续航的防爆轮胎。</Content>
+    <ParamsList>
+      <Param key="more=245" value="自动空调"/>
+      <Param key="more=233" value="座椅加热"/>
+      <Param key="more=177" value="胎压检测"/>
+      <Param key="more=211" value="后视镜加热"/>
+    </ParamsList>
+  </Scene>
+  <Scene Id="4">
+    <Name>我家山路多</Name>
+    <Content>
+      很多城市依山而建，各种坡停坡起就会非常多，所以小编建议大家选配上坡辅助和陡坡缓降功能，前者能够防止起步时候溜车，后者可以不踩刹车专注于方向盘。另外一旦雨雪天气上下坡都比较困难所以尽量选择四轮驱动的车增加动力。
+    </Content>
+    <ParamsList>
+      <Param key="more=201" value="陡坡缓降"/>
+      <Param key="more=188" value="上坡辅助"/>
+      <Param key="dt=4,8,16" value="四轮驱动"/>
+      <Param key="more=183" value="刹车辅助"/>
+      <Param key="more=190" value="自动驻车"/>
+    </ParamsList>
+  </Scene>
+  <Scene Id="5">
+    <Name>坑洼路况差</Name>
+    <Content>路不好尽量选择一些底盘较高的suv，独立悬挂，这样过坑路的时候会做到最大效果的减震，也会避免磕到底盘。而动态稳定系统，则可以增加起步和加速时的稳定性，识别转向不足或过度，保持正确的行驶方向。</Content>
+    <ParamsList>
+      <Param key="dt=4,8,16" value="四驱驱动"/>
+      <Param key="more=131" value="独立前悬挂"/>
+      <Param key="more=132" value="独立后悬挂"/>
+      <Param key="l=8" value="SUV"/>
+      <Param key="more=184" value="动态稳定系统"/>
+    </ParamsList>
+  </Scene>
+  <Scene Id="6">
+    <Name>总跑郊区</Name>
+    <Content>长跑郊区的车主选车主要考虑两点，一是省油，二是乘坐安全舒适。跑长途的时候可以加个定速巡航的配置，控制速度减少油耗。跑长途最容易出现的是疲劳驾驶问题，自适应巡航和主动安全会时刻监控前车情况，保证车距。最后跑郊区最怕是车胎有问题，所以增加个胎压监测功能也能省去不少的麻烦。</Content>
+    <ParamsList>
+      <Param key="more=231" value="多功能方向盘"/>
+      <Param key="more=177" value="胎压监测"/>
+      <Param key="more=191" value="主动安全"/>
+      <Param key="more=194" value="定速巡航"/>
+      <Param key="more=197" value="自适应巡航"/>
+      <Param key="more=204" value="天窗"/>
+    </ParamsList>
+  </Scene>
+  <Scene Id="7">
+    <Name>遇事儿就慌</Name>
+    <Content>遇事儿就慌不要怕，我们要保证两个原则，一、你知道危险来了；二、车辆帮你避掉危险。所以要多加些主动安全的系统，自适应巡航可以判断你与前车距离过近而主动保持车距，刹车辅助可以帮你快速的刹车，前大灯随车转向可以让你在转弯的时候第一时间看到弯道的情况，不至于被突然出现的障碍物吓到。</Content>
+    <ParamsList>
+      <Param key="more=197" value="自适应巡航"/>
+      <Param key="more=191" value="主动安全"/>
+      <Param key="more=183" value="刹车辅助"/>
+      <Param key="more=184" value="动态稳定系统"/>
+      <Param key="more=228" value="前大灯随车转向"/>
+    </ParamsList>
+  </Scene>
+  <Scene Id="8">
+    <Name>我有路怒症</Name>
+    <Content>一般敢有路怒症的都是老司机了，小编就不多嘴了，脾气减不下去，就多增加点安全配置吧。</Content>
+    <ParamsList>
+      <Param key="more=102" value="涡轮增压"/>
+      <Param key="more=187" value="电子制动力分配"/>
+      <Param key="more=148_143" value="刹车四轮通风盘"/>
+      <Param key="more=177" value="胎压监测"/>
+      <Param key="more=184" value="动态稳定系统"/>
+    </ParamsList>
+  </Scene>
+  <Scene Id="9">
+    <Name>绝对新手</Name>
+    <Content>除了担心你停不了车之外，小编给你配备的都是安全类的配置，不管是在高速还是城镇大马路，不管是并线还是与前车距离过近，都会有主动提示，并且在30公里以上的时速时如果离前车过近会主动帮你减速，至于自动大灯，真的是怕你忘了开灯。</Content>
+    <ParamsList>
+      <Param key="more=200" value="倒车影像"/>
+      <Param key="more=191" value="主动安全"/>
+      <Param key="more=197" value="自适应巡航"/>
+      <Param key="more=227" value="自动大灯"/>
+      <Param key="more=190" value="自动驻车"/>
+    </ParamsList>
+  </Scene>
+  <Scene Id="10">
+    <Id>10</Id>
+    <Name>开的就是猛</Name>
+    <Content>小编给你选择了涡轮增压发动机加换挡拨片，就是为了能够瞬间提升车动力，想超谁超谁。但是速度诚可贵，生命价更高，为了增加刹车灵敏度，前轮选择了通风盘刹车片，并且增加了四轮动力分配，防止危险情况下的轮胎抓地不足，最后，一定要记得带安全带。</Content>
+    <ParamsList>
+      <Param key="more=102" value="涡轮增压"/>
+      <Param key="more=143" value="通风盘刹车"/>
+      <Param key="more=163" value="换挡拨片"/>
+      <Param key="more=187" value="电子制动力分配"/>
+      <Param key="more=184" value="动态稳定系统"/>
+    </ParamsList>
+  </Scene>
+  <Scene Id="11">
+    <Name>女司机</Name>
+    <Content>不是小编针对谁，刹车辅助这个功能简直就是为女司机量身定制的，它在你紧急刹车的时候，会主动增加刹车力度，缩短刹车距离。自动驻车可以防止停车时挂错档位，只会让车更好开。而自动大灯的作用就是防止某些同志忘了开灯。</Content>
+    <ParamsList>
+      <Param key="more=183" value="刹车辅助"/>
+      <Param key="more=190" value="自动驻车"/>
+      <Param key="more=200" value="倒车影像"/>
+      <Param key="more=210" value="后视镜记忆"/>
+      <Param key="more=227" value="自动大灯"/>
+    </ParamsList>
+  </Scene>
+  <Scene Id="12">
+    <Name>家有大胖子</Name>
+    <Content>如果身材比较魁梧，选车的时候还是以舒适性为首要考虑条件，无级变速和前后轮独立悬挂都是为了使车在加速和过坑的时候更加平稳流畅，全景天窗会使空间看起来更大，而身材魁梧的车主对座椅的调节很麻烦，所以最好是电动调节。</Content>
+    <ParamsList>
+      <Param key="more=131" value="独立前悬挂"/>
+      <Param key="t=8" value="无极变速"/>
+      <Param key="more=132" value="独立后悬挂"/>
+      <Param key="more=204" value="天窗"/>
+      <Param key="more=236" value="电动座椅调节"/>
+    </ParamsList>
+  </Scene>
+  <Scene Id="13">
+    <Name>身高185</Name>
+    <Content>如果身材比较魁梧，选车的时候还是以舒适性为首要考虑条件，无级变速和前后轮独立悬挂都是为了使车在加速和过坑的时候更加平稳流畅，全景天窗会使空间看起来更大，而身材魁梧的车主对座椅的调节很麻烦，所以最好是电动调节。</Content>
+    <ParamsList>
+      <Param key="more=131" value="独立前悬挂"/>
+      <Param key="t=8" value="无极变速"/>
+      <Param key="more=132" value="独立后悬挂"/>
+      <Param key="more=204" value="天窗"/>
+      <Param key="more=236" value="电动座椅调节"/>
+    </ParamsList>
+  </Scene>
+  <Scene Id="14">
+    <Name>家里司机多</Name>
+    <Content>很多家庭有多人会开车，大家每次开车之前都需要对座椅和后视镜调节非常麻烦，而且一旦忘记了也会很危险，所以请选择后视镜和座椅带记忆调节的车辆，另外由于人多，可能会产生呼吸道不适，所以也应该选一个空气净化设备。</Content>
+    <ParamsList>
+      <Param key="more=210" value="后视镜电子记忆"/>
+      <Param key="more=236" value="座椅电动调节"/>
+      <Param key="more=235" value="电动座椅记忆"/>
+      <Param key="more=249" value="空气净化"/>
+    </ParamsList>
+  </Scene>
+  <Scene Id="15">
+    <Name>家里有孩子</Name>
+    <Content>孩子的呼吸系统更敏感，车内空气不好容易生病，所以要+D20有空气净化功能，儿童锁和车窗防夹都是防止孩子淘气的时候受伤，而儿童座椅也已经成为有孩家庭买车的必备设备了。</Content>
+    <ParamsList>
+      <Param key="more=180" value="儿童锁"/>
+      <Param key="more=181" value="儿童座椅接口"/>
+      <Param key="more=209" value="车窗防夹"/>
+      <Param key="more=249" value="空气净化"/>
+    </ParamsList>
+  </Scene>
+  <Scene Id="16">
+    <Name>家里人多</Name>
+    <Content>人多的家庭尽量选择大空间的7座suv或者mpv，而带天窗的车又会缓解车厢内人多的压迫感，此外温度分区可以有效的保护老人和孩子不被空调低温伤害。</Content>
+    <ParamsList>
+      <Param key="more=266" value="7座"/>
+      <Param key="l=8" value="SUV"/>
+      <Param key="l=7" value="MPV"/>
+      <Param key="more=246" value="温度分区"/>
+      <Param key="more=204_205_206" value="有天窗"/>
+    </ParamsList>
+  </Scene>
+</SceneList>

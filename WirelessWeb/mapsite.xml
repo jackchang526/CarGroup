@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<urlset>
+    <url>
+        <!-- url标记每条信息的开始和结束 -->
+        <loc>http://m.bitauto.com/</loc>
+        <!-- 此处提交站点首页 -->
+        <lastmod>2012-10-18</lastmod>
+        <!-- 指该条数据的最新一次更新时间 -->
+        <changefreq>daily</changefreq>
+        <!-- 指该条数据的更新频率 -->
+        <priority>1.0</priority>
+        <!-- 用来指定此链接相对于其他链接的优先权比值，此值定于0.0-1.0之间 -->
+        <data>
+            <display>
+                <!-- 新闻最终页 -->
+                <pc_url_pattern>http://news.bitauto.com/(\w+)/(\d+)/(\d+).html</pc_url_pattern>
+                <!-- 必填，表示该PC页的url pattern -->
+                <!-- 可选标签，表示PC页对应的wml版式的手机页的url pattern -->
+                <html5_url_pattern>http://news.m.bitauto.com/${1}/${2}/${3}.html</html5_url_pattern>
+                <!-- 可选标签，表示PC页对应的html5版式的手机页的url pattern -->
+            </display>
+        </data>
+    </url>
+</urlset>

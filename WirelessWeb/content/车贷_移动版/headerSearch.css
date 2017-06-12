@@ -1,0 +1,49 @@
+/*头部筛选*/
+/*弹出层按钮不定宽度*/
+.m-index-filter, .m-btn-filter{width:100%; height:auto; overflow:hidden;}
+.m-index-filter ul, .m-btn-filter ul{width:100%; height:auto; margin:7px 0 7px 10px; /*overflow:hidden;*/}
+.m-index-filter li{width:29%; height:28px; line-height:28px; float:left; font-weight:bold; padding:0; margin-right:8px; margin-bottom:7px;}
+.m-index-filter li a{display:block; width:100%; height:100%;}
+.m-btn-filter li{height:23px; float:left; font-weight:bold; padding:5px 0 0 0; text-align:left; margin-bottom:7px;}
+.m-btn-filter li span{padding:0 0 0 10px; float:left; /*width:85%;*/ overflow:hidden;}
+.m-btn-filter li s{float:right; display:block; width:0; height:0; border:6px solid #D2D2D2; border-color:#D2D2D2 #F7F7F7; border-width:8px 8px 0 8px; margin:5px 5px 0 0;}
+
+.m-btn-filter.m-popup-arrow b{margin-top:25px;}
+.m-btn-filter .m-popup-box{margin-top:0;}
+.m-btn-filter .m-popup-item{width:100%; margin-left:-10px; height:auto; overflow:hidden; font-size:1.8rem;}
+.m-btn-filter .m-popup-item h6{font-size:2.4rem; font-weight:bold; margin:0 0 20px 20px;}
+.m-btn-filter .m-popup-item input{vertical-align:middle;}
+.m-btn-filter .m-popup-item ul{margin-left:20px;}
+.m-btn-filter .m-popup-item li{width:140px;}
+.m-btn-filter .m-popup-item li.current{color:#999;}
+.m-btn-filter .m-btn-more-news{width:85%;}
+
+.m-one-btn li{width:94%;}
+.m-two-btn li{width:45%; margin-right:10px;} /*2个*/
+.m-three-btn li{width:29%; margin-right:8px} /*3个*/
+.m-six-btn{height:auto;} /*6个*/
+.m-six-btn li{width:29%; margin-right:9px;}
+
+.m-btn-filter .m-btn-text{clear:both; padding:5px 0;}
+.m-btn-filter .m-btn-text .m-item-name{float:left; margin:7px 0 0 10px;}
+.m-btn-filter .m-btn-text ul{float:left; margin-top:0; margin-bottom:0;}
+
+.m-btn-filter .m-popup-item-line li{/*width:100%;*/width:90%;}
+
+
+/*iPhone*/
+@media only screen and (max-device-width : 320px) {
+	/*筛选按钮文字溢出隐藏*/
+	.m-btn-filter li span{max-width:200px; height:16px; overflow:hidden;}
+	.per70 li span{max-width:200px; height:16px; overflow:hidden;}
+}
+
+/*tablet*/
+@media only screen and (min-device-width : 768px) {
+	/*首页头部筛选*/
+	.m-search{width:50%; float:left;}
+	.m-search-sub{width:100%;}
+	.m-index-filter{width:50%; height:auto; float:left; border-bottom:1px solid #DDD; background:-webkit-gradient(linear, left top, left bottom, from(#FFF), to(#F0F0F0)); background:-moz-linear-gradient(top, #FFF, #F0F0F0);}
+	.m-index-filter ul{margin-top:7px; margin-bottom:7px;}
+	.m-search-bottom{width:100%;}
+}

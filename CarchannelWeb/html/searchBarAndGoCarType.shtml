@@ -1,0 +1,127 @@
+﻿<style  type="text/css">
+/*search pop*/
+#sug { border:1px solid #817F82; position:absolute; z-index: 200; width: 350px; top: 21px; background:#fff; display:none; white-space:nowrap; text-align:left; }
+#sug ul { margin:0; padding:0; list-style:none; }
+#sug ul li { background:#fff; color:#000; line-height:10px; padding:5px; margin:0 0 1px 0; cursor:default; float:none; height:10px; overflow:hidden; border-right:none; font-size:14px; width:auto; }
+#sug ul li.mo { background:#014da2; color:#fff }
+#sug ul li.right { text-align:right; }
+#sug ul li.ml_l {background:#fff; color:#164A84}
+#sug a:link, #sug a:visited { color:#014da2; text-decoration:none; }
+#sug a:hover { color:#d01d19; text-decoration:none; }
+.sug_reset { background:#fff }
+.sug_onblur { background:#fff url(http://image.bitauto.com/bt/logo/so_search_bg.gif) no-repeat right center }
+</style>
+<!--smenu start-->
+<div class="bt_smenu">
+    <div class="bt_navigate">
+        <a href="http://www.bitauto.com/" target="_blank" class="bt_logo">易车网</a> <a href="http://car.bitauto.com/"
+            target="_blank" class="bt_car">
+            <h1>
+                车型</h1>
+        </a>
+    </div>
+    <div class="bt_search bt_model">
+        <fieldset>
+            <legend>车易搜</legend>
+            <div style="position: relative; float: left; text-align: left;">
+                <input type="text" class="text" id="keyword2" onkeydown="if(window.event.keyCode==13)GoSo()"
+                    name="wd" onfocus="this.value=''" value="" />
+                <input name="" type="button" onclick="GoSo()" class="bt_input" value="搜索" />
+                <input id="Hidden1" value="" type="hidden" />
+            </div>
+        </fieldset>
+
+        <script type="text/javascript" language="javascript">
+            function GoSo() {
+                var hurl = "http://www.cheyisou.com/qiche/";
+                var open_type = 'location'; //open,location
+                var key2 = document.getElementById('keyword2').value;
+                if (key2 != '') {
+                    hurl += encodeURIComponent(key2) + '/?para=en|utf8';
+                }
+                if (open_type == "open") window.open(hurl, (new Date()).getTime()); else window.location = hurl;
+            }
+        </script>
+
+    </div>
+</div>
+<div class="model_city">
+    <div class="search_text">
+<div style="position: relative; float: left; text-align: left;">
+    <form id="sug_form" name="sug_form" target="_blank" method="get" action="http://www.cheyisou.com/post.aspx">
+        <input type="text" class="sug_onblur text" id="sug_txt_keyword" name="so_keywords" value="" />
+        <div onselectstart="return false" id="sug" style="top: 24px; float: left; overflow: hidden">
+        </div>
+        <input type="submit" value="车型搜索" class="bt_input" id="sug_submit"/>
+        <input id="sug_hidurl" value="" type="hidden" />
+        <input id="sug_datatype" name="sug_datatype" value="chexing" type="hidden" />
+        <input id="sug_encoding" name="sug_encoding" value="utf-8" type="hidden" />
+    </form>
+</div>
+
+<script type="text/javascript">
+    var sug_txt_name = "sug_txt_keyword";
+    var sug_open_type = "open";
+    var sug_txt_css = "text";
+    var so = document.createElement('SCRIPT');
+    so.src = 'http://image.bitautoimg.com/bsearch/js_bar/sug_pindao_form.js?v20100820';
+    document.getElementsByTagName('HEAD')[0].appendChild(so);
+    var ti = setInterval(function() { if (!window.bitauto) { return } else { window.bitauto.init(); clearInterval(ti) } }, 200)
+    window.onunload = function() { }; 
+</script>
+    </div>
+    <select id="MasterSelectList" class="select_model">
+    </select>
+    <select id="SerialSelectList" class="select_model">
+    </select>
+    <input id="GotoCarButton" type="button" title="看车型" class="select_car" value="看车型" />
+    <input type="button" value="查报价" title="查报价" class="select_car" id="GotoPriceButton" />
+
+    <script type="text/javascript" language="javascript" charset="UTF-8" src="http://image.bitautoimg.com/carchannel/jsCommon/jsGoCarAndPriceJsonNew.js"></script>
+
+    <script type="text/javascript" language="javascript" charset="UTF-8" src="http://image.bitautoimg.com/carchannel/jsnew/GoCarTypeAndPrice.js"></script>
+
+    <script type="text/javascript" language="javascript">
+        if (JSonData) {
+            var PageSelectObject = StartInit("select", "select", "MasterSelectList", "SerialSelectList", "GotoCarButton", "GotoPriceButton", "0");
+            PageSelectObject.Init();
+        }
+    </script>
+
+    <ul>
+        <li><a target="_blank" href="http://www.bitauto.com/weizhang/">违章查询</a></li>
+        <li><a target="_blank" href="/xuanchegongju/">选车工具</a></li>
+        <li><a target="_blank" href="/chexingduibi/">车型对比</a></li>
+        <li><a target="_blank" href="/gouchejisuanqi/">费用计算</a></li>
+    </ul>
+</div>
+<div class="line_box">
+    <div class="model_cartabs">
+        <div class="cartabs">
+            <ul>
+                <li class="f1"><a target="_blank" href="/weixingche/">微型车</a></li>
+                <li class="f2"><a target="_blank" href="/xiaoxingche/">小型车</a></li>
+                <li class="f3"><a target="_blank" href="/jincouxingche/">紧凑型车</a></li>
+                <li class="f4"><a target="_blank" href="/zhongxingche/">中型车</a></li>
+                <li class="f5"><a target="_blank" href="/zhongdaxingche/">中大型车</a></li>
+                <li class="f6"><a target="_blank" href="/haohuaxingche/">豪华车</a></li>
+                <li class="f7"><a target="_blank" href="/mpv/">MPV多用途车</a></li>
+                <li class="f8"><a target="_blank" href="/suv/">SUV越野车</a></li>
+                <li class="f9"><a target="_blank" href="/paoche/">跑车</a></li>
+                <li class="f10"><a target="_blank" href="/mianbaoche/">面包车</a></li>
+            </ul>
+        </div>
+        <div class="carsearch">
+            <dl>
+                <dt>汽车大全:</dt>
+                <dd>
+                    <a href="/brandlist.html">按品牌</a>
+                    <a href="/charlist.html">按车型</a>
+                    <a href="/countrylist.html">
+                        按国别</a> <a href="/functionlist.html">
+                            按用途</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>

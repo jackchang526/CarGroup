@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BitAuto.CarChannel.Common.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Common_com_bitauto_dealer_VendorSearch" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.dealer.bitauto.com/api/Service/VendorSearch.asmx</Value>
+    </Setting>
+    <Setting Name="Common_com_bitauto_das_NumberFormat" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://autocall.bitauto.com/eil/das.asmx</Value>
+    </Setting>
+    <Setting Name="Common_cn_com_baa_api_ForumService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.baa.bitauto.com/forumservice.asmx</Value>
+    </Setting>
+    <Setting Name="Common_com_bitauto_news_NewsService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://news.bitauto.com/comment/newsservice.asmx</Value>
+    </Setting>
+    <Setting Name="Common_com_bitauto_dealer_VendorInfor_VendorInfor" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.dealer.bitauto.com/api/Service/VendorInfor.asmx</Value>
+    </Setting>
+    <Setting Name="Common_cn_com_baa_ibt_api_UserManagerWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.baa.bitauto.com/ibt/usermanagerwebservice.asmx</Value>
+    </Setting>
+    <Setting Name="Common_com_bitauto_carser_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://carser.bitauto.com/ForPicMasterToSerial/Service.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

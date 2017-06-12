@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetDealerPriceList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="carId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDealerPriceListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDealerPriceListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCityDealerCounts">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCityDealerCountsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCityDealerCountsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetDealerPriceListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDealerPriceList" />
+  </wsdl:message>
+  <wsdl:message name="GetDealerPriceListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDealerPriceListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCityDealerCountsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCityDealerCounts" />
+  </wsdl:message>
+  <wsdl:message name="GetCityDealerCountsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCityDealerCountsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DealerPriceSoap">
+    <wsdl:operation name="GetDealerPriceList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得某个车型的报价和经销商信息</wsdl:documentation>
+      <wsdl:input message="tns:GetDealerPriceListSoapIn" />
+      <wsdl:output message="tns:GetDealerPriceListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityDealerCounts">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">取得经销商分地区、品牌的数量</wsdl:documentation>
+      <wsdl:input message="tns:GetCityDealerCountsSoapIn" />
+      <wsdl:output message="tns:GetCityDealerCountsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DealerPriceSoap" type="tns:DealerPriceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDealerPriceList">
+      <soap:operation soapAction="http://tempuri.org/GetDealerPriceList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityDealerCounts">
+      <soap:operation soapAction="http://tempuri.org/GetCityDealerCounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DealerPriceSoap12" type="tns:DealerPriceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDealerPriceList">
+      <soap12:operation soapAction="http://tempuri.org/GetDealerPriceList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityDealerCounts">
+      <soap12:operation soapAction="http://tempuri.org/GetCityDealerCounts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DealerPrice">
+    <wsdl:port name="DealerPriceSoap" binding="tns:DealerPriceSoap">
+      <soap:address location="http://price.bitauto.com/interfacemaiche/dealerprice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DealerPriceSoap12" binding="tns:DealerPriceSoap12">
+      <soap12:address location="http://price.bitauto.com/interfacemaiche/dealerprice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

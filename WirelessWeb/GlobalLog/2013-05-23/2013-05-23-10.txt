@@ -1,0 +1,16 @@
+[2013/5/23 10:51:56]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/CalcAutoCashTool.aspx
+Error Message: 未能加载类型“WirelessWeb.CalcAutoCashTool”。
+Stack Trace:    在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+
+[2013/5/23 10:59:32]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/CalcAutoLoanTool.aspx
+Error Message: 未能加载类型“WirelessWeb.CalcAutoLoanTool”。
+Stack Trace:    在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+

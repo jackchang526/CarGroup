@@ -1,0 +1,605 @@
+﻿<div class="leftmask leftmask1" style="display:none;"></div>
+<div class="leftPopup popup-city" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="sub"><a data-action="popup-city1" onclick=" ShowCity(1);return false; ">安徽<em></em></a></li>
+			<li><a onclick=" javascript:changeCity(2, 201, '北京', 'beijing'); ">北京</a></li>
+			<li class="sub"><a data-action="popup-city3">福建<em></em></a></li>
+			<li class="sub"><a data-action="popup-city4">甘肃<em></em></a></li>
+			<li class="sub"><a data-action="popup-city5">广东<em></em></a></li>
+			<li class="sub"><a data-action="popup-city6">广西<em></em></a></li>
+			<li class="sub"><a data-action="popup-city7">贵州<em></em></a></li>
+			<li class="sub"><a data-action="popup-city8">海南<em></em></a></li>
+			<li class="sub"><a data-action="popup-city9">河北<em></em></a></li>
+			<li class="sub"><a data-action="popup-city10">河南<em></em></a></li>
+			<li class="sub"><a data-action="popup-city11">黑龙江<em></em></a></li>
+			<li class="sub"><a data-action="popup-city12">湖北<em></em></a></li>
+			<li class="sub"><a data-action="popup-city13">湖南<em></em></a></li>
+			<li class="sub"><a data-action="popup-city14">吉林<em></em></a></li>
+			<li class="sub"><a data-action="popup-city15">江苏<em></em></a></li>
+			<li class="sub"><a data-action="popup-city16">江西<em></em></a></li>
+			<li class="sub"><a data-action="popup-city17">辽宁<em></em></a></li>
+			<li class="sub"><a data-action="popup-city18">内蒙古<em></em></a></li>
+			<li class="sub"><a data-action="popup-city19">宁夏<em></em></a></li>
+			<li class="sub"><a data-action="popup-city20">青海<em></em></a></li>
+			<li class="sub"><a data-action="popup-city21">山东<em></em></a></li>
+			<li class="sub"><a data-action="popup-city22">山西<em></em></a></li>
+			<li class="sub"><a data-action="popup-city23">陕西<em></em></a></li>
+			<li><a onclick=" javascript:changeCity(24, 2401, '上海', 'shanghai'); ">上海</a></li>
+			<li class="sub"><a data-action="popup-city25">四川<em></em></a></li>
+			<li><a onclick=" javascript:changeCity(26, 2601, '天津', 'tianjin'); ">天津</a></li>
+			<li class="sub"><a data-action="popup-city27">西藏<em></em></a></li>
+			<li class="sub"><a data-action="popup-city28">新疆<em></em></a></li>
+			<li class="sub"><a data-action="popup-city29">云南<em></em></a></li>
+			<li class="sub"><a data-action="popup-city30">浙江<em></em></a></li>
+			<li><a onclick=" javascript:changeCity(31, 3101, '重庆', 'chongqing'); ">重庆</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="leftPopup popup-city1" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>安徽</a></li>
+			<li><a onclick=" javascript:changeCity(1, 101, '合肥', 'hefei');return false; ">合肥</a></li>
+			<li><a onclick=" javascript:changeCity(1, 102, '安庆', 'anqing');return false; ">安庆</a></li>
+			<li><a onclick=" javascript:changeCity(1, 103, '蚌埠', 'bengbu');return false; ">蚌埠</a></li>
+			<li><a onclick=" javascript:changeCity(1, 106, '阜阳', 'fy');return false; ">阜阳</a></li>
+			<li><a onclick=" javascript:changeCity(1, 107, '淮北', 'huaibei');return false; ">淮北</a></li>
+			<li><a onclick=" javascript:changeCity(1, 108, '淮南', 'huainan');return false; ">淮南</a></li>
+			<li><a onclick=" javascript:changeCity(1, 109, '六安', 'luan');return false; ">六安</a></li>
+			<li><a onclick=" javascript:changeCity(1, 114, '芜湖', 'wuhu');return false; ">芜湖</a></li>
+			<li><a onclick=" javascript:changeCity(1, 110, '马鞍山', 'maanshan');return false; ">马鞍山</a></li>
+			<li><a onclick=" javascript:changeCity(1, 104, '巢湖', 'chaohu');return false; ">巢湖</a></li>
+			<li><a onclick=" javascript:changeCity(1, 105, '池州', 'chizhou');return false; ">池州</a></li>
+			<li><a onclick=" javascript:changeCity(1, 116, '滁州', 'chuzhou');return false; ">滁州</a></li>
+			<li><a onclick=" javascript:changeCity(1, 118, '黄山', 'huangshan');return false; ">黄山</a></li>
+			<li><a onclick=" javascript:changeCity(1, 120, '宿州', 'sz');return false; ">宿州</a></li>
+			<li><a onclick=" javascript:changeCity(1, 125, '亳州', 'bozhou');return false; ">亳州</a></li>
+			<li><a onclick=" javascript:changeCity(1, 113, '铜陵', 'tongling');return false; ">铜陵</a></li>
+			<li><a onclick=" javascript:changeCity(1, 115, '宣城', 'xuancheng');return false; ">宣城</a></li>
+		</ul>
+	</div>
+</div>
+
+<!--<div class="leftPopup popup-city2" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root"><a onclick=" ChangeLayer('pvc2', 'popArea');return false; ">北京</a></li>
+			<li><a onclick=" javascript:changeCity(2, 201, '北京', 'beijing');return false; ">北京</a></li>
+		</ul>
+	</div>
+</div>-->
+
+<div class="leftPopup popup-city3" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>福建</a></li>
+			<li><a onclick=" javascript:changeCity(3, 301, '福州', 'fuzhou');return false; ">福州</a></li>
+			<li><a onclick=" javascript:changeCity(3, 302, '厦门', 'xiamen');return false; ">厦门</a></li>
+			<li><a onclick=" javascript:changeCity(3, 307, '泉州', 'quanzhou');return false; ">泉州</a></li>
+			<li><a onclick=" javascript:changeCity(3, 303, '龙岩', 'longyan');return false; ">龙岩</a></li>
+			<li><a onclick=" javascript:changeCity(3, 318, '三明', 'sanming');return false; ">三明</a></li>
+			<li><a onclick=" javascript:changeCity(3, 306, '莆田', 'putian');return false; ">莆田</a></li>
+			<li><a onclick=" javascript:changeCity(3, 315, '宁德', 'ningde');return false; ">宁德</a></li>
+			<li><a onclick=" javascript:changeCity(3, 314, '南平', 'nanping');return false; ">南平</a></li>
+			<li><a onclick=" javascript:changeCity(3, 305, '漳州', 'zhangzhou');return false; ">漳州</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city4" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>甘肃</a></li>
+			<li><a onclick=" javascript:changeCity(4, 401, '兰州', 'lanzhou');return false; ">兰州</a></li>
+			<li><a onclick=" javascript:changeCity(4, 405, '平凉', 'pingliang');return false; ">平凉</a></li>
+			<li><a onclick=" javascript:changeCity(4, 402, '定西', 'dingxi');return false; ">定西</a></li>
+			<li><a onclick=" javascript:changeCity(4, 407, '临夏', 'linxia');return false; ">临夏</a></li>
+			<li><a onclick=" javascript:changeCity(4, 415, '天水', 'tianshui');return false; ">天水</a></li>
+			<li><a onclick=" javascript:changeCity(4, 417, '金昌', 'jc');return false; ">金昌</a></li>
+			<li><a onclick=" javascript:changeCity(4, 416, '嘉峪关', 'jiayuguan');return false; ">嘉峪关</a></li>
+			<li><a onclick=" javascript:changeCity(4, 412, '武威', 'wuwei');return false; ">武威</a></li>
+			<li><a onclick=" javascript:changeCity(4, 410, '张掖', 'zhangye');return false; ">张掖</a></li>
+			<li><a onclick=" javascript:changeCity(4, 409, '酒泉', 'jiuquan');return false; ">酒泉</a></li>
+			<li><a onclick=" javascript:changeCity(4, 411, '庆阳', 'qingyang');return false; ">庆阳</a></li>
+			<li><a onclick=" javascript:changeCity(4, 418, '白银', 'baiyin');return false; ">白银</a></li>
+			<li><a onclick=" javascript:changeCity(4, 422, '甘南藏族自治州', 'gannanzangzuzizhizhou');return false; ">甘南藏族自治州</a></li>
+			<li><a onclick=" javascript:changeCity(4, 421, '陇南', 'longnan');return false; ">陇南</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city5" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>广东</a></li>
+			<li><a onclick=" javascript:changeCity(5, 502, '深圳', 'shenzhen');return false; ">深圳</a></li>
+			<li><a onclick=" javascript:changeCity(5, 501, '广州', 'guangzhou');return false; ">广州</a></li>
+			<li><a onclick=" javascript:changeCity(5, 518, '佛山', 'foshan');return false; ">佛山</a></li>
+			<li><a onclick=" javascript:changeCity(5, 504, '东莞', 'dongguan');return false; ">东莞</a></li>
+			<li><a onclick=" javascript:changeCity(5, 503, '珠海', 'zhuhai');return false; ">珠海</a></li>
+			<li><a onclick=" javascript:changeCity(5, 505, '中山', 'zhongshan');return false; ">中山</a></li>
+			<li><a onclick=" javascript:changeCity(5, 507, '汕头', 'shantou');return false; ">汕头</a></li>
+			<li><a onclick=" javascript:changeCity(5, 520, '惠州', 'huizhou');return false; ">惠州</a></li>
+			<li><a onclick=" javascript:changeCity(5, 521, '江门', 'jiangmen');return false; ">江门</a></li>
+			<li><a onclick=" javascript:changeCity(5, 524, '清远', 'qingyuan');return false; ">清远</a></li>
+			<li><a onclick=" javascript:changeCity(5, 514, '肇庆', 'zhaoqing');return false; ">肇庆</a></li>
+			<li><a onclick=" javascript:changeCity(5, 511, '韶关', 'shaoguan');return false; ">韶关</a></li>
+			<li><a onclick=" javascript:changeCity(5, 510, '潮州', 'chaozhou');return false; ">潮州</a></li>
+			<li><a onclick=" javascript:changeCity(5, 516, '梅州', 'meizhou');return false; ">梅州</a></li>
+			<li><a onclick=" javascript:changeCity(5, 515, '茂名', 'maoming');return false; ">茂名</a></li>
+			<li><a onclick=" javascript:changeCity(5, 513, '湛江', 'zhanjiang');return false; ">湛江</a></li>
+			<li><a onclick=" javascript:changeCity(5, 528, '云浮', 'yunfu');return false; ">云浮</a></li>
+			<li><a onclick=" javascript:changeCity(5, 552, '汕尾', 'shanwei');return false; ">汕尾</a></li>
+			<li><a onclick=" javascript:changeCity(5, 535, '河源', 'heyuan');return false; ">河源</a></li>
+			<li><a onclick=" javascript:changeCity(5, 532, '阳江', 'yangjiang');return false; ">阳江</a></li>
+			<li><a onclick=" javascript:changeCity(5, 522, '揭阳', 'jieyang');return false; ">揭阳</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city6" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>广西</a></li>
+			<li><a onclick=" javascript:changeCity(6, 601, '南宁', 'nanning');return false; ">南宁</a></li>
+			<li><a onclick=" javascript:changeCity(6, 602, '柳州', 'liuzhou');return false; ">柳州</a></li>
+			<li><a onclick=" javascript:changeCity(6, 603, '桂林', 'guilin');return false; ">桂林</a></li>
+			<li><a onclick=" javascript:changeCity(6, 604, '北海', 'beihai');return false; ">北海</a></li>
+			<li><a onclick=" javascript:changeCity(6, 607, '河池', 'hechi');return false; ">河池</a></li>
+			<li><a onclick=" javascript:changeCity(6, 610, '玉林', 'yulin');return false; ">玉林</a></li>
+			<li><a onclick=" javascript:changeCity(6, 615, '防城港', 'fangchenggang');return false; ">防城港</a></li>
+			<li><a onclick=" javascript:changeCity(6, 613, '梧州', 'wuzhou');return false; ">梧州</a></li>
+			<li><a onclick=" javascript:changeCity(6, 612, '钦州', 'qinzhou');return false; ">钦州</a></li>
+			<li><a onclick=" javascript:changeCity(6, 621, '崇左', 'chongzuo');return false; ">崇左</a></li>
+			<li><a onclick=" javascript:changeCity(6, 619, '来宾', 'laibin');return false; ">来宾</a></li>
+			<li><a onclick=" javascript:changeCity(6, 605, '百色', 'baise');return false; ">百色</a></li>
+			<li><a onclick=" javascript:changeCity(6, 608, '贵港', 'guigang');return false; ">贵港</a></li>
+			<li><a onclick=" javascript:changeCity(6, 606, '贺州', 'hezhou');return false; ">贺州</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city7" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>贵州</a></li>
+			<li><a onclick=" javascript:changeCity(7, 701, '贵阳', 'guiyang');return false; ">贵阳</a></li>
+			<li><a onclick=" javascript:changeCity(7, 702, '遵义', 'zunyi');return false; ">遵义</a></li>
+			<li><a onclick=" javascript:changeCity(7, 708, '六盘水', 'liupanshui');return false; ">六盘水</a></li>
+			<li><a onclick=" javascript:changeCity(7, 705, '安顺', 'anshun');return false; ">安顺</a></li>
+			<li><a onclick=" javascript:changeCity(7, 718, '黔西南布依族苗族自治州', 'qianxinanbuyizumiaozuzizhizhou');return false; ">黔西南布依族苗族自治州</a></li>
+			<li><a onclick=" javascript:changeCity(7, 715, '黔南布依族苗族自治州', 'qiannanbuyizumiaozuzizhizhou');return false; ">黔南布依族苗族自治州</a></li>
+			<li><a onclick=" javascript:changeCity(7, 714, '黔东南苗族侗族自治州', 'qiandongnanmiaozudongzuzizhizhou');return false; ">黔东南苗族侗族自治州</a></li>
+			<li><a onclick=" javascript:changeCity(7, 706, '毕节', 'bijie');return false; ">毕节</a></li>
+			<li><a onclick=" javascript:changeCity(7, 710, '铜仁', 'tongren');return false; ">铜仁</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city8" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>海南</a></li>
+			<li><a onclick=" javascript:changeCity(8, 801, '海口', 'haikou');return false; ">海口</a></li>
+			<li><a onclick=" javascript:changeCity(8, 803, '三亚', 'sanya');return false; ">三亚</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city9" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>河北</a></li>
+			<li><a onclick=" javascript:changeCity(9, 901, '石家庄', 'shijiazhuang');return false; ">石家庄</a></li>
+			<li><a onclick=" javascript:changeCity(9, 902, '唐山', 'tangshan');return false; ">唐山</a></li>
+			<li><a onclick=" javascript:changeCity(9, 910, '保定', 'baoding');return false; ">保定</a></li>
+			<li><a onclick=" javascript:changeCity(9, 907, '邯郸', 'handan');return false; ">邯郸</a></li>
+			<li><a onclick=" javascript:changeCity(9, 909, '沧州', 'cangzhou');return false; ">沧州</a></li>
+			<li><a onclick=" javascript:changeCity(9, 903, '邢台', 'xingtai');return false; ">邢台</a></li>
+			<li><a onclick=" javascript:changeCity(9, 905, '秦皇岛', 'qinhuangdao');return false; ">秦皇岛</a></li>
+			<li><a onclick=" javascript:changeCity(9, 906, '廊坊', 'langfang');return false; ">廊坊</a></li>
+			<li><a onclick=" javascript:changeCity(9, 908, '衡水', 'hengshui');return false; ">衡水</a></li>
+			<li><a onclick=" javascript:changeCity(9, 911, '张家口', 'zhangjiakou');return false; ">张家口</a></li>
+			<li><a onclick=" javascript:changeCity(9, 912, '承德', 'chengde');return false; ">承德</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city10" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>河南</a></li>
+			<li><a onclick=" javascript:changeCity(10, 1001, '郑州', 'zhengzhou');return false; ">郑州</a></li>
+			<li><a onclick=" javascript:changeCity(10, 1002, '洛阳', 'luoyang');return false; ">洛阳</a></li>
+			<li><a onclick=" javascript:changeCity(10, 1005, '新乡', 'xinxiang');return false; ">新乡</a></li>
+			<li><a onclick=" javascript:changeCity(10, 1009, '南阳', 'nanyang');return false; ">南阳</a></li>
+			<li><a onclick=" javascript:changeCity(10, 1014, '安阳', 'anyang');return false; ">安阳</a></li>
+			<li><a onclick=" javascript:changeCity(10, 1006, '商丘', 'shangqiu');return false; ">商丘</a></li>
+			<li><a onclick=" javascript:changeCity(10, 1008, '濮阳', 'puyang');return false; ">濮阳</a></li>
+			<li><a onclick=" javascript:changeCity(10, 1023, '许昌', 'xuchang');return false; ">许昌</a></li>
+			<li><a onclick=" javascript:changeCity(10, 1018, '平顶山', 'pingdingshan');return false; ">平顶山</a></li>
+			<li><a onclick=" javascript:changeCity(10, 1011, '焦作', 'jiaozuo');return false; ">焦作</a></li>
+			<li><a onclick=" javascript:changeCity(10, 1004, '信阳', 'xinyang');return false; ">信阳</a></li>
+			<li><a onclick=" javascript:changeCity(10, 1021, '驻马店', 'zhumadian');return false; ">驻马店</a></li>
+			<li><a onclick=" javascript:changeCity(10, 1007, '三门峡', 'sanmenxia');return false; ">三门峡</a></li>
+			<li><a onclick=" javascript:changeCity(10, 1019, '济源', 'jiyuan');return false; ">济源</a></li>
+			<li><a onclick=" javascript:changeCity(10, 1016, '鹤壁', 'hebi');return false; ">鹤壁</a></li>
+			<li><a onclick=" javascript:changeCity(10, 1010, '漯河', 'luohe');return false; ">漯河</a></li>
+			<li><a onclick=" javascript:changeCity(10, 1013, '开封', 'kaifeng');return false; ">开封</a></li>
+			<li><a onclick=" javascript:changeCity(10, 1003, '周口', 'zhoukou');return false; ">周口</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city11" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>黑龙江</a></li>
+			<li><a onclick=" javascript:changeCity(11, 1101, '哈尔滨', 'haerbin');return false; ">哈尔滨</a></li>
+			<li><a onclick=" javascript:changeCity(11, 1102, '大庆', 'daqing');return false; ">大庆</a></li>
+			<li><a onclick=" javascript:changeCity(11, 1108, '牡丹江', 'mudanjiang');return false; ">牡丹江</a></li>
+			<li><a onclick=" javascript:changeCity(11, 1104, '鹤岗', 'hegang');return false; ">鹤岗</a></li>
+			<li><a onclick=" javascript:changeCity(11, 1136, '大兴安岭地区', 'daxinganlingdiqu');return false; ">大兴安岭地区</a></li>
+			<li><a onclick=" javascript:changeCity(11, 1123, '双鸭山', 'shuangyashan');return false; ">双鸭山</a></li>
+			<li><a onclick=" javascript:changeCity(11, 1131, '绥化', 'suihua');return false; ">绥化</a></li>
+			<li><a onclick=" javascript:changeCity(11, 1112, '伊春', 'yc');return false; ">伊春</a></li>
+			<li><a onclick=" javascript:changeCity(11, 1113, '黑河', 'heihe');return false; ">黑河</a></li>
+			<li><a onclick=" javascript:changeCity(11, 1106, '佳木斯', 'jiamusi');return false; ">佳木斯</a></li>
+			<li><a onclick=" javascript:changeCity(11, 1103, '齐齐哈尔', 'qiqihaer');return false; ">齐齐哈尔</a></li>
+			<li><a onclick=" javascript:changeCity(11, 1109, '七台河', 'qitaihe');return false; ">七台河</a></li>
+			<li><a onclick=" javascript:changeCity(11, 1107, '鸡西', 'jixi');return false; ">鸡西</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city12" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>湖北</a></li>
+			<li><a onclick=" javascript:changeCity(12, 1201, '武汉', 'wuhan');return false; ">武汉</a></li>
+			<li><a onclick=" javascript:changeCity(12, 1207, '宜昌', 'yichang');return false; ">宜昌</a></li>
+			<li><a onclick=" javascript:changeCity(12, 1203, '襄阳', 'xiangyang');return false; ">襄阳</a></li>
+			<li><a onclick=" javascript:changeCity(12, 1210, '荆州', 'jingzhou');return false; ">荆州</a></li>
+			<li><a onclick=" javascript:changeCity(12, 1219, '潜江', 'qianjiang');return false; ">潜江</a></li>
+			<li><a onclick=" javascript:changeCity(12, 1204, '随州', 'suizhou');return false; ">随州</a></li>
+			<li><a onclick=" javascript:changeCity(12, 1208, '黄石', 'huangshi');return false; ">黄石</a></li>
+			<li><a onclick=" javascript:changeCity(12, 1202, '十堰', 'shiyan');return false; ">十堰</a></li>
+			<li><a onclick=" javascript:changeCity(12, 1209, '荆门', 'jingmen');return false; ">荆门</a></li>
+			<li><a onclick=" javascript:changeCity(12, 1215, '恩施', 'enshi');return false; ">恩施</a></li>
+			<li><a onclick=" javascript:changeCity(12, 1236, '黄冈', 'huanggang');return false; ">黄冈</a></li>
+			<li><a onclick=" javascript:changeCity(12, 1216, '鄂州', 'ezhou');return false; ">鄂州</a></li>
+			<li><a onclick=" javascript:changeCity(12, 1217, '咸宁', 'xianning');return false; ">咸宁</a></li>
+			<li><a onclick=" javascript:changeCity(12, 1229, '孝感', 'xiaogan');return false; ">孝感</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city13" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>湖南</a></li>
+			<li><a onclick=" javascript:changeCity(13, 1301, '长沙', 'changsha');return false; ">长沙</a></li>
+			<li><a onclick=" javascript:changeCity(13, 1302, '郴州', 'chenzhou');return false; ">郴州</a></li>
+			<li><a onclick=" javascript:changeCity(13, 1304, '衡阳', 'hengyang');return false; ">衡阳</a></li>
+			<li><a onclick=" javascript:changeCity(13, 1303, '常德', 'changde');return false; ">常德</a></li>
+			<li><a onclick=" javascript:changeCity(13, 1307, '株洲', 'zhuzhou');return false; ">株洲</a></li>
+			<li><a onclick=" javascript:changeCity(13, 1310, '邵阳', 'shaoyang');return false; ">邵阳</a></li>
+			<li><a onclick=" javascript:changeCity(13, 1308, '岳阳', 'yueyang');return false; ">岳阳</a></li>
+			<li><a onclick=" javascript:changeCity(13, 1306, '娄底', 'loudi');return false; ">娄底</a></li>
+			<li><a onclick=" javascript:changeCity(13, 1333, '湘西土家族苗族自治州', 'xiangxitujiazumiaozuzizhizhou');return false; ">湘西土家族苗族自治州</a></li>
+			<li><a onclick=" javascript:changeCity(13, 1309, '湘潭', 'xiangtan');return false; ">湘潭</a></li>
+			<li><a onclick=" javascript:changeCity(13, 1313, '益阳', 'yiyang');return false; ">益阳</a></li>
+			<li><a onclick=" javascript:changeCity(13, 1315, '张家界', 'zhangjiajie');return false; ">张家界</a></li>
+			<li><a onclick=" javascript:changeCity(13, 1312, '永州', 'yongzhou');return false; ">永州</a></li>
+			<li><a onclick=" javascript:changeCity(13, 1305, '怀化', 'huaihua');return false; ">怀化</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city14" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>吉林</a></li>
+			<li><a onclick=" javascript:changeCity(14, 1401, '长春', 'changchun');return false; ">长春</a></li>
+			<li><a onclick=" javascript:changeCity(14, 1402, '吉林', 'jilin');return false; ">吉林</a></li>
+			<li><a onclick=" javascript:changeCity(14, 1428, '延边', 'yanbianchaoxianzuzizhizhou');return false; ">延边</a></li>
+			<li><a onclick=" javascript:changeCity(14, 1405, '辽源', 'liaoyuan');return false; ">辽源</a></li>
+			<li><a onclick=" javascript:changeCity(14, 1403, '通化', 'tonghua');return false; ">通化</a></li>
+			<li><a onclick=" javascript:changeCity(14, 1425, '松原', 'songyuan');return false; ">松原</a></li>
+			<li><a onclick=" javascript:changeCity(14, 1406, '白山', 'baishan');return false; ">白山</a></li>
+			<li><a onclick=" javascript:changeCity(14, 1412, '白城', 'baicheng');return false; ">白城</a></li>
+			<li><a onclick=" javascript:changeCity(14, 1616, '四平', 'siping');return false; ">四平</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city15" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>江苏</a></li>
+			<li><a onclick=" javascript:changeCity(15, 1501, '南京', 'nanjing');return false; ">南京</a></li>
+			<li><a onclick=" javascript:changeCity(15, 1502, '苏州', 'suzhou');return false; ">苏州</a></li>
+			<li><a onclick=" javascript:changeCity(15, 1518, '徐州', 'xuzhou');return false; ">徐州</a></li>
+			<li><a onclick=" javascript:changeCity(15, 1503, '无锡', 'wuxi');return false; ">无锡</a></li>
+			<li><a onclick=" javascript:changeCity(15, 1505, '常州', 'changzhou');return false; ">常州</a></li>
+			<li><a onclick=" javascript:changeCity(15, 1511, '南通', 'nantong');return false; ">南通</a></li>
+			<li><a onclick=" javascript:changeCity(15, 1513, '扬州', 'yangzhou');return false; ">扬州</a></li>
+			<li><a onclick=" javascript:changeCity(15, 1515, '镇江', 'zhenjiang');return false; ">镇江</a></li>
+			<li><a onclick=" javascript:changeCity(15, 1504, '常熟', 'changshu');return false; ">常熟</a></li>
+			<li><a onclick=" javascript:changeCity(15, 1517, '泰州', 'taizhou');return false; ">泰州</a></li>
+			<li><a onclick=" javascript:changeCity(15, 1509, '昆山', 'kunshan');return false; ">昆山</a></li>
+			<li><a onclick=" javascript:changeCity(15, 1514, '张家港', 'zhangjiagang');return false; ">张家港</a></li>
+			<li><a onclick=" javascript:changeCity(15, 1512, '盐城', 'yancheng');return false; ">盐城</a></li>
+			<li><a onclick=" javascript:changeCity(15, 1521, '太仓', 'taicang');return false; ">太仓</a></li>
+			<li><a onclick=" javascript:changeCity(15, 1507, '淮安', 'huaian');return false; ">淮安</a></li>
+			<li><a onclick=" javascript:changeCity(15, 1510, '连云港', 'lianyungang');return false; ">连云港</a></li>
+			<li><a onclick=" javascript:changeCity(15, 1520, '宿迁', 'suqian');return false; ">宿迁</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city16" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>江西</a></li>
+			<li><a onclick=" javascript:changeCity(16, 1601, '南昌', 'nanchang');return false; ">南昌</a></li>
+			<li><a onclick=" javascript:changeCity(16, 1607, '赣州', 'ganzhou');return false; ">赣州</a></li>
+			<li><a onclick=" javascript:changeCity(16, 1602, '上饶', 'shangrao');return false; ">上饶</a></li>
+			<li><a onclick=" javascript:changeCity(16, 1605, '宜春', 'yichun');return false; ">宜春</a></li>
+			<li><a onclick=" javascript:changeCity(16, 1606, '九江', 'jiujiang');return false; ">九江</a></li>
+			<li><a onclick=" javascript:changeCity(16, 1603, '萍乡', 'pingxiang');return false; ">萍乡</a></li>
+			<li><a onclick=" javascript:changeCity(16, 1609, '吉安', 'jian');return false; ">吉安</a></li>
+			<li><a onclick=" javascript:changeCity(16, 1612, '景德镇', 'jingdezhen');return false; ">景德镇</a></li>
+			<li><a onclick=" javascript:changeCity(16, 1613, '抚州', 'jxfz');return false; ">抚州</a></li>
+			<li><a onclick=" javascript:changeCity(16, 1615, '鹰潭', 'yingtan');return false; ">鹰潭</a></li>
+			<li><a onclick=" javascript:changeCity(16, 1604, '新余', 'xinyu');return false; ">新余</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city17" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>辽宁</a></li>
+			<li><a onclick=" javascript:changeCity(17, 1701, '沈阳', 'shenyang');return false; ">沈阳</a></li>
+			<li><a onclick=" javascript:changeCity(17, 1708, '大连', 'dalian');return false; ">大连</a></li>
+			<li><a onclick=" javascript:changeCity(17, 1710, '鞍山', 'anshan');return false; ">鞍山</a></li>
+			<li><a onclick=" javascript:changeCity(17, 1704, '阜新', 'fuxin');return false; ">阜新</a></li>
+			<li><a onclick=" javascript:changeCity(17, 1707, '朝阳', 'chaoyang');return false; ">朝阳</a></li>
+			<li><a onclick=" javascript:changeCity(17, 1703, '抚顺', 'fushun');return false; ">抚顺</a></li>
+			<li><a onclick=" javascript:changeCity(17, 1702, '丹东', 'dandong');return false; ">丹东</a></li>
+			<li><a onclick=" javascript:changeCity(17, 1709, '本溪', 'benxi');return false; ">本溪</a></li>
+			<li><a onclick=" javascript:changeCity(17, 1705, '葫芦岛', 'huludao');return false; ">葫芦岛</a></li>
+			<li><a onclick=" javascript:changeCity(17, 1717, '铁岭', 'tieling');return false; ">铁岭</a></li>
+			<li><a onclick=" javascript:changeCity(17, 1716, '盘锦', 'panjin');return false; ">盘锦</a></li>
+			<li><a onclick=" javascript:changeCity(17, 1714, '营口', 'yingkou');return false; ">营口</a></li>
+			<li><a onclick=" javascript:changeCity(17, 1711, '锦州', 'jz');return false; ">锦州</a></li>
+			<li><a onclick=" javascript:changeCity(17, 1713, '辽阳', 'liaoyang');return false; ">辽阳</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city18" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>内蒙古</a></li>
+			<li><a onclick=" javascript:changeCity(18, 1801, '呼和浩特', 'huhehaote');return false; ">呼和浩特</a></li>
+			<li><a onclick=" javascript:changeCity(18, 1802, '包头', 'baotou');return false; ">包头</a></li>
+			<li><a onclick=" javascript:changeCity(18, 1808, '鄂尔多斯', 'eerduosi');return false; ">鄂尔多斯</a></li>
+			<li><a onclick=" javascript:changeCity(18, 1804, '通辽', 'tongliao');return false; ">通辽</a></li>
+			<li><a onclick=" javascript:changeCity(18, 1812, '呼伦贝尔', 'hulunbeier');return false; ">呼伦贝尔</a></li>
+			<li><a onclick=" javascript:changeCity(18, 1805, '乌海', 'wuhai');return false; ">乌海</a></li>
+			<li><a onclick=" javascript:changeCity(18, 1825, '乌兰察布', 'wulanchabu');return false; ">乌兰察布</a></li>
+			<li><a onclick=" javascript:changeCity(18, 1824, '巴彦淖尔', 'bayannaoer');return false; ">巴彦淖尔</a></li>
+			<li><a onclick=" javascript:changeCity(18, 1814, '兴安盟', 'xinganmeng');return false; ">兴安盟</a></li>
+			<li><a onclick=" javascript:changeCity(18, 1803, '赤峰', 'chifeng');return false; ">赤峰</a></li>
+			<li><a onclick=" javascript:changeCity(18, 1830, '阿拉善盟', 'alashanmeng');return false; ">阿拉善盟</a></li>
+			<li><a onclick=" javascript:changeCity(18, 1829, '锡林郭勒盟', 'xilinguolemeng');return false; ">锡林郭勒盟</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city19" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>宁夏</a></li>
+			<li><a onclick=" javascript:changeCity(19, 1901, '银川', 'yinchuan');return false; ">银川</a></li>
+			<li><a onclick=" javascript:changeCity(19, 1907, '中卫', 'zhongwei');return false; ">中卫</a></li>
+			<li><a onclick=" javascript:changeCity(19, 1905, '石嘴山', 'shizuishan');return false; ">石嘴山</a></li>
+			<li><a onclick=" javascript:changeCity(19, 1903, '固原', 'guyuan');return false; ">固原</a></li>
+			<li><a onclick=" javascript:changeCity(19, 1902, '吴忠', 'wuzhong');return false; ">吴忠</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city20" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>青海</a></li>
+			<li><a onclick=" javascript:changeCity(20, 2001, '西宁', 'xining');return false; ">西宁</a></li>
+			<li><a onclick=" javascript:changeCity(20, 2030, '海南藏族自治州', 'hainanzangzuzizhizhou');return false; ">海南藏族自治州</a></li>
+			<li><a onclick=" javascript:changeCity(20, 2029, '海东地区', 'haidongdiqu');return false; ">海东地区</a></li>
+			<li><a onclick=" javascript:changeCity(20, 2027, '海西蒙古族藏族自治州', 'haiximengguzucangzuzizhizhou');return false; ">海西蒙古族藏族自治州</a></li>
+			<li><a onclick=" javascript:changeCity(20, 2023, '海北藏族自治州', 'haibeizangzuzizhizhou');return false; ">海北藏族自治州</a></li>
+			<li><a onclick=" javascript:changeCity(20, 2026, '玉树藏族自治州', 'yushucangzuzizhizhou');return false; ">玉树藏族自治州</a></li>
+			<li><a onclick=" javascript:changeCity(20, 2025, '果洛藏族自治州', 'guoluocangzuzizhizhou');return false; ">果洛藏族自治州</a></li>
+			<li><a onclick=" javascript:changeCity(20, 2024, '黄南藏族自治州', 'huangnancangzuzizhizhou');return false; ">黄南藏族自治州</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="leftPopup popup-city21" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>山东</a></li>
+			<li><a onclick=" javascript:changeCity(21, 2101, '济南', 'jinan');return false; ">济南</a></li>
+			<li><a onclick=" javascript:changeCity(21, 2102, '青岛', 'qingdao');return false; ">青岛</a></li>
+			<li><a onclick=" javascript:changeCity(21, 2109, '淄博', 'zibo');return false; ">淄博</a></li>
+			<li><a onclick=" javascript:changeCity(21, 2103, '烟台', 'yantai');return false; ">烟台</a></li>
+			<li><a onclick=" javascript:changeCity(21, 2104, '威海', 'weihai');return false; ">威海</a></li>
+			<li><a onclick=" javascript:changeCity(21, 2105, '潍坊', 'weifang');return false; ">潍坊</a></li>
+			<li><a onclick=" javascript:changeCity(21, 2110, '东营', 'dongying');return false; ">东营</a></li>
+			<li><a onclick=" javascript:changeCity(21, 2113, '滨州', 'binzhou');return false; ">滨州</a></li>
+			<li><a onclick=" javascript:changeCity(21, 2117, '临沂', 'linyi');return false; ">临沂</a></li>
+			<li><a onclick=" javascript:changeCity(21, 2118, '济宁', 'jining');return false; ">济宁</a></li>
+			<li><a onclick=" javascript:changeCity(21, 2107, '枣庄', 'zaozhuang');return false; ">枣庄</a></li>
+			<li><a onclick=" javascript:changeCity(21, 2120, '日照', 'rizhao');return false; ">日照</a></li>
+			<li><a onclick=" javascript:changeCity(21, 1015, '德州', 'dezhou');return false; ">德州</a></li>
+			<li><a onclick=" javascript:changeCity(21, 2106, '泰安', 'taian');return false; ">泰安</a></li>
+			<li><a onclick=" javascript:changeCity(21, 2112, '菏泽', 'heze');return false; ">菏泽</a></li>
+			<li><a onclick=" javascript:changeCity(21, 2114, '聊城', 'liaocheng');return false; ">聊城</a></li>
+			<li><a onclick=" javascript:changeCity(21, 2132, '莱芜', 'laiwu');return false; ">莱芜</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city22" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>山西</a></li>
+			<li><a onclick=" javascript:changeCity(22, 2201, '太原', 'taiyuan');return false; ">太原</a></li>
+			<li><a onclick=" javascript:changeCity(22, 2205, '临汾', 'linfen');return false; ">临汾</a></li>
+			<li><a onclick=" javascript:changeCity(22, 2202, '大同', 'datong');return false; ">大同</a></li>
+			<li><a onclick=" javascript:changeCity(22, 2203, '晋城', 'jincheng');return false; ">晋城</a></li>
+			<li><a onclick=" javascript:changeCity(22, 2206, '长治', 'changzhi');return false; ">长治</a></li>
+			<li><a onclick=" javascript:changeCity(22, 2207, '运城', 'yuncheng');return false; ">运城</a></li>
+			<li><a onclick=" javascript:changeCity(22, 2227, '吕梁', 'lvliang');return false; ">吕梁</a></li>
+			<li><a onclick=" javascript:changeCity(22, 2219, '朔州', 'shuozhou');return false; ">朔州</a></li>
+			<li><a onclick=" javascript:changeCity(22, 2218, '阳泉', 'yangquan');return false; ">阳泉</a></li>
+			<li><a onclick=" javascript:changeCity(22, 2204, '晋中', 'jinzhong');return false; ">晋中</a></li>
+			<li><a onclick=" javascript:changeCity(22, 2210, '忻州', 'xinzhou');return false; ">忻州</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city23" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>陕西</a></li>
+			<li><a onclick=" javascript:changeCity(23, 2301, '西安', 'xian');return false; ">西安</a></li>
+			<li><a onclick=" javascript:changeCity(23, 2304, '榆林', 'yl');return false; ">榆林</a></li>
+			<li><a onclick=" javascript:changeCity(23, 2303, '渭南', 'weinan');return false; ">渭南</a></li>
+			<li><a onclick=" javascript:changeCity(23, 2313, '商洛', 'shangluo');return false; ">商洛</a></li>
+			<li><a onclick=" javascript:changeCity(23, 2310, '铜川', 'tongchuan');return false; ">铜川</a></li>
+			<li><a onclick=" javascript:changeCity(23, 2305, '宝鸡', 'baoji');return false; ">宝鸡</a></li>
+			<li><a onclick=" javascript:changeCity(23, 2308, '延安', 'yanan');return false; ">延安</a></li>
+			<li><a onclick=" javascript:changeCity(23, 2307, '汉中', 'hanzhong');return false; ">汉中</a></li>
+			<li><a onclick=" javascript:changeCity(23, 2306, '安康', 'ankang');return false; ">安康</a></li>
+			<li><a onclick=" javascript:changeCity(23, 2302, '咸阳', 'xianyang');return false; ">咸阳</a></li>
+		</ul>
+	</div>
+</div>
+<!--<div class="leftPopup popup-city24" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root"><a onclick=" ChangeLayer('pvc24', 'popArea');return false; ">上海</a></li>
+			<li><a onclick=" javascript:changeCity(24, 2401, '上海', 'shanghai');return false; ">上海</a></li>
+		</ul>
+	</div>
+</div>-->
+
+<div class="leftPopup popup-city25" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>四川</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2501, '成都', 'chengdu');return false; ">成都</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2502, '绵阳', 'mianyang');return false; ">绵阳</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2513, '南充', 'nanchong');return false; ">南充</a></li>
+			<li><a onclick=" javascript:changeCity(25, 500101, '万州', 'wanzhou');return false; ">万州</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2537, '凉山彝族自治州', 'liangshanyizuzizhizhou');return false; ">凉山彝族自治州</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2512, '乐山', 'leshan');return false; ">乐山</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2511, '德阳', 'deyang');return false; ">德阳</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2532, '达州', 'dazhou');return false; ">达州</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2536, '甘孜藏族自治州', 'ganzicangzuzizhizhou');return false; ">甘孜藏族自治州</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2535, '阿坝藏族羌族自治州', 'abacangzuqiangzuzizhizhou');return false; ">阿坝藏族羌族自治州</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2516, '巴中', 'bazhong');return false; ">巴中</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2514, '眉山', 'meishan');return false; ">眉山</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2510, '广元', 'guangyuan');return false; ">广元</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2530, '广安', 'guangan');return false; ">广安</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2519, '内江', 'neijiang');return false; ">内江</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2517, '泸州', 'luzhou');return false; ">泸州</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2506, '宜宾', 'yibin');return false; ">宜宾</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2504, '攀枝花', 'panzhihua');return false; ">攀枝花</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2503, '遂宁', 'suining');return false; ">遂宁</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2509, '资阳', 'ziyang');return false; ">资阳</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2508, '自贡', 'zigong');return false; ">自贡</a></li>
+			<li><a onclick=" javascript:changeCity(25, 2507, '雅安', 'yaan');return false; ">雅安</a></li>
+		</ul>
+	</div>
+</div>
+<!--<div class="leftPopup popup-city26" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root"><a onclick=" ChangeLayer('pvc26', 'popArea');return false; ">天津</a></li>
+			<li><a onclick=" javascript:changeCity(26, 2601, '天津', 'tianjin');return false; ">天津</a></li>
+		</ul>
+	</div>
+</div>-->
+<div class="leftPopup popup-city27" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>西藏</a></li>
+			<li><a onclick=" javascript:changeCity(27, 2701, '拉萨', 'lasa');return false; ">拉萨</a></li>
+			<li><a onclick=" javascript:changeCity(27, 2707, '阿里地区', 'alidiqu');return false; ">阿里地区</a></li>
+			<li><a onclick=" javascript:changeCity(27, 2705, '那曲地区', 'naqudiqu');return false; ">那曲地区</a></li>
+			<li><a onclick=" javascript:changeCity(27, 2704, '山南', 'shannan');return false; ">山南</a></li>
+			<li><a onclick=" javascript:changeCity(27, 2710, '林芝地区', 'linzhidiqu');return false; ">林芝地区</a></li>
+			<li><a onclick=" javascript:changeCity(27, 2709, '昌都地区', 'changdudiqu');return false; ">昌都地区</a></li>
+			<li><a onclick=" javascript:changeCity(27, 2703, '日喀则', 'rikaze');return false; ">日喀则</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="leftPopup popup-city28" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>新疆</a></li>
+			<li><a onclick=" javascript:changeCity(28, 2801, '乌鲁木齐', 'wulumuqi');return false; ">乌鲁木齐</a></li>
+			<li><a onclick=" javascript:changeCity(28, 2818, '和田', 'hetian');return false; ">和田</a></li>
+			<li><a onclick=" javascript:changeCity(28, 2812, '塔城', 'tacheng');return false; ">塔城</a></li>
+			<li><a onclick=" javascript:changeCity(28, 2807, '吐鲁番', 'tulufan');return false; ">吐鲁番</a></li>
+			<li><a onclick=" javascript:changeCity(28, 2806, '哈密', 'hami');return false; ">哈密</a></li>
+			<li><a onclick=" javascript:changeCity(28, 2817, '阿克苏', 'akesu');return false; ">阿克苏</a></li>
+			<li><a onclick=" javascript:changeCity(28, 2815, '阿勒泰', 'aletai');return false; ">阿勒泰</a></li>
+			<li><a onclick=" javascript:changeCity(28, 2821, '博尔塔拉蒙古自治州', 'boertalamengguzizhizhou');return false; ">博尔塔拉蒙古自治州</a></li>
+			<li><a onclick=" javascript:changeCity(28, 2802, '喀什', 'kashi');return false; ">喀什</a></li>
+			<li><a onclick=" javascript:changeCity(28, 2813, '昌吉', 'changji');return false; ">昌吉</a></li>
+			<li><a onclick=" javascript:changeCity(28, 2803, '克拉玛依', 'kelamayi');return false; ">克拉玛依</a></li>
+			<li><a onclick=" javascript:changeCity(28, 2835, '新疆克州', 'xinjiangkezhou');return false; ">新疆克州</a></li>
+			<li><a onclick=" javascript:changeCity(28, 2823, '伊犁哈萨克自治州', 'yilihasakezizhizhou');return false; ">伊犁哈萨克自治州</a></li>
+			<li><a onclick=" javascript:changeCity(28, 2822, '巴音郭楞', 'bayinguolengmengguzizhizhou');return false; ">巴音郭楞</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city29" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>云南</a></li>
+			<li><a onclick=" javascript:changeCity(29, 2901, '昆明', 'kunming');return false; ">昆明</a></li>
+			<li><a onclick=" javascript:changeCity(29, 2903, '曲靖', 'qujing');return false; ">曲靖</a></li>
+			<li><a onclick=" javascript:changeCity(29, 2914, '文山', 'wenshan');return false; ">文山</a></li>
+			<li><a onclick=" javascript:changeCity(29, 2911, '临沧', 'lincang');return false; ">临沧</a></li>
+			<li><a onclick=" javascript:changeCity(29, 2907, '保山', 'baoshan');return false; ">保山</a></li>
+			<li><a onclick=" javascript:changeCity(29, 2908, '楚雄', 'chuxiong');return false; ">楚雄</a></li>
+			<li><a onclick=" javascript:changeCity(29, 2904, '大理', 'dali');return false; ">大理</a></li>
+			<li><a onclick=" javascript:changeCity(29, 2925, '德宏傣族景颇族自治州', 'dehongdaizujingpozuzizhizhou');return false; ">德宏傣族景颇族自治州</a></li>
+			<li><a onclick=" javascript:changeCity(29, 2902, '玉溪', 'yuxi');return false; ">玉溪</a></li>
+			<li><a onclick=" javascript:changeCity(29, 2927, '怒江傈僳族自治州', 'nujianglisuzuzizhizhou');return false; ">怒江傈僳族自治州</a></li>
+			<li><a onclick=" javascript:changeCity(29, 2929, '普洱', 'puer');return false; ">普洱</a></li>
+			<li><a onclick=" javascript:changeCity(29, 2928, '迪庆藏族自治州', 'diqingcangzuzizhizhou');return false; ">迪庆藏族自治州</a></li>
+			<li><a onclick=" javascript:changeCity(29, 2923, '红河', 'honghehanizuyizuzizhizhou');return false; ">红河</a></li>
+			<li><a onclick=" javascript:changeCity(29, 2915, '西双版纳', 'xishuangbanna');return false; ">西双版纳</a></li>
+			<li><a onclick=" javascript:changeCity(29, 2918, '昭通', 'zhaotong');return false; ">昭通</a></li>
+			<li><a onclick=" javascript:changeCity(29, 2922, '丽江', 'lijiang');return false; ">丽江</a></li>
+		</ul>
+	</div>
+</div>
+<div class="leftPopup popup-city30" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root sub-return"><a>浙江</a></li>
+			<li><a onclick=" javascript:changeCity(30, 3001, '杭州', 'hangzhou');return false; ">杭州</a></li>
+			<li><a onclick=" javascript:changeCity(30, 3002, '宁波', 'ningbo');return false; ">宁波</a></li>
+			<li><a onclick=" javascript:changeCity(30, 3003, '温州', 'wenzhou');return false; ">温州</a></li>
+			<li><a onclick=" javascript:changeCity(30, 3006, '金华', 'jinhua');return false; ">金华</a></li>
+			<li><a onclick=" javascript:changeCity(30, 3005, '嘉兴', 'jiaxing');return false; ">嘉兴</a></li>
+			<li><a onclick=" javascript:changeCity(30, 3015, '台州', 'tz');return false; ">台州</a></li>
+			<li><a onclick=" javascript:changeCity(30, 3016, '绍兴', 'shaoxing');return false; ">绍兴</a></li>
+			<li><a onclick=" javascript:changeCity(30, 3011, '湖州', 'huzhou');return false; ">湖州</a></li>
+			<li><a onclick=" javascript:changeCity(30, 3012, '衢州', 'quzhou');return false; ">衢州</a></li>
+			<li><a onclick=" javascript:changeCity(30, 3009, '丽水', 'lishui');return false; ">丽水</a></li>
+			<li><a onclick=" javascript:changeCity(30, 3020, '舟山', 'zhoushan');return false; ">舟山</a></li>
+		</ul>
+	</div>
+</div>
+<!--<div class="leftPopup popup-city31" data-back="leftmask1" style="display:none;">
+	<div class="swipeLeft">
+		<ul class="first-list">
+			<li class="root"><a onclick=" ChangeLayer('pvc31', 'popArea');return false; ">重庆</a></li>
+			<li><a onclick=" javascript:changeCity(31, 3101, '重庆', 'chongqing');return false; ">重庆</a></li>
+		</ul>
+	</div>
+</div>-->

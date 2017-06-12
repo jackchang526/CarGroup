@@ -1,0 +1,79 @@
+﻿
+<header class="header-main treehead-box">
+    <!--公共_logo搜索-->
+    <div class="container section-layout top" id="topBox">
+        <div class="col-xs-6 left-box">
+            <div class="section-left">
+                <h1 class="logo"><a href="http://www.yiche.com">汽车</a></h1>
+            </div>
+        </div>
+        <div class="col-xs-6 right-box">
+            <!--LOGO热搜通栏-->
+            <ins id="div_ba10f730-0c13-4dcf-aa81-8b5ccafc9e21" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="ba10f730-0c13-4dcf-aa81-8b5ccafc9e21"> </ins>
+
+            <!--搜索框-->
+            <form id="sug_form" name="sug_form" method="get" target="_blank" action="http://www.cheyisou.com/search">
+                <div class="btn-form select-box">
+                    <input id="sug_txtkeyword" class="btn-from-control" type="text" class="select_t" name="wd" value="" placeholder="输入“@”试一试" autocomplete="off" maxlength="20" />
+                    <input type="button" id="sug_submit" value="搜索" class="btn btn-primary" />
+                    <div class="sele-box sele-2016">
+                        <div class="brand_bg" id="master-index" style="display: none;">
+                        </div>
+                        <div class="brand_bg  models_bg " id="serial-index" style="display: none;">
+                        </div>
+                        <div id="sug_container" style="display: none;">
+                        </div>
+                    </div>
+                    <input type="hidden" name="t" value="qiche" />
+                    <input type="hidden" name="h" value="0" id="sug_handler" />
+                    <input type="hidden" id="sugcsurl" name="sugcsurl" value="" />
+                </div>
+            </form>
+            <script src="http://image.bitautoimg.com/carchannel/jsnew/yicheSug.min.js?v=20161118" type="text/javascript" charset="utf-8"></script>
+            <script type="text/javascript">
+BitautoAutoComplete();
+            </script>
+
+        </div>
+    </div>
+    <!--公共导航-->
+    <div id="navBox">
+        <nav class="header-main-nav">
+            <div class="container">
+                <div class="col-auto left secondary">
+                    <ul class="list list-justified" id="BitCommonNav_List">
+                        <li><a href="http://car.bitauto.com/">车型</a></li>
+                        <li><a href="http://photo.bitauto.com/">图片</a></li>
+                        <li id="BitCommonNav_video"><a href="http://v.bitauto.com/">视频</a></li>
+                        <li><a href="http://news.bitauto.com/">文章</a></li>
+                        <li><a href="http://www.bitauto.com/huati/">话题</a></li>
+                        <li><a href="http://www.bitauto.com/pingce/">评测</a></li>
+                        <li><a href="http://www.bitauto.com/daogou/">导购</a></li>
+                        <li><a href="http://price.bitauto.com/">报价</a></li>
+                        <li><a href="http://jiangjia.bitauto.com/">降价</a></li>
+                        <li><a href="http://dealer.bitauto.com/beijing/">经销商</a></li>
+                        <li><a href="http://ask.bitauto.com/">问答</a></li>
+                        <li><a href="http://koubei.bitauto.com/">口碑</a></li>
+                        <li><a href="http://yanghu.bitauto.com/?source=1">养护</a></li>
+
+                        <li><a href="http://baa.bitauto.com/">论坛</a></li>
+                        <li><a target="_blank" href="http://www.taoche.com/?ref=pc_yc_sy_dh_esc">二手车</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <script type="text/javascript">
+    var BitNav_current_url = window.location.href;
+    var BitNav_List_len = document.getElementById("BitCommonNav_List").getElementsByTagName("li").length;
+    for (var i = 0; i < BitNav_List_len; i++) {
+        var BitNav_current_li = document.getElementById("BitCommonNav_List").getElementsByTagName("li")[i];
+        var BitNav_url = BitNav_current_li.getElementsByTagName("a")[0].getAttribute("href");
+		var reg = new RegExp(BitNav_url);
+		if (reg.test(BitNav_current_url)) {
+            BitNav_current_li.className = "active";
+        }
+    }
+    </script>
+
+</header>

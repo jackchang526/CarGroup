@@ -1,0 +1,46 @@
+﻿<!--底部 begin-->
+<footer>
+    <span class="footer-left">
+    <a href="http://m.bitauto.com/x/">简版</a> |
+    <span>触屏版</span> |
+    <a id="a_linkToPcPage" href="javascript:;"><span>电脑版</span></a> </span>
+    <div class="m-footer-login-box" style="display: none;" id="Div1">
+    </div>
+    <a class="m-footer-opinion" href="http://m.yiche.com/wap2.0/feedback/">提意见&gt;&gt;</a>
+<a class="m-footer-opinion" href="http://cnrdn.com/7jEE" target=_blank>有奖调查</a>
+</footer>
+<script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=Bitauto.Login.Base,ibt_newmessagelistener,Bitauto.Login.M.UI.V2,ibt_m_gobacker,ibt_m_RequestToPcPage"></script>
+<script type="text/javascript">
+    Bitauto.GoBacker.goBackByElementEvent('gobackElm', 'click');   
+</script>
+<!--底部 end-->
+
+    <div class="m-fixed-app-mask"  id="app-mask" style="display:none"></div>
+    <div class="m-fixed-app-download" id="app-download" style="display:none">
+        <div class="m-fixed-btn-close"  id="closedPriceApp">关闭</div>
+        <a href="http://app.yiche.com/d/535082b7021855a958e5d57b" id="app_link1" class="style2">
+            <img src="http://image.bitautoimg.com/uimg/mbt/images/m_fixed_logo_yicheapp.png" />
+            <dl>
+                <dt>易车App</dt>
+                <dd>下载即送500元！</dd>
+            </dl>
+        </a>
+        <a href="http://app.yiche.com/d/535082b7021855a958e5d57b" id="app_link2" class="style2-btn"><span>免费下载</span></a>
+    </div>
+<script src="http://image.bitautoimg.com/wap/js/DownloadPriceApp20140526.js"></script>
+
+
+<!--公共_js -->
+<!-- START OF SmartSource Data Collector TAG -->
+<SCRIPT SRC="http://image.bitautoimg.com/bt/webtrends/dcs_tag_wapnew.js?20131120" TYPE="text/javascript"></SCRIPT>
+<!-- bitauto stat begin -->
+<script>
+    var bit_stat_url = "url=" + escape(document.location);
+    if (document.referrer != null) bit_stat_url += "&refer=" + escape(document.referrer)
+    document.write("<img width=0 height=0 style='display:none;' src='http://log.bitauto.com/newsstat/log.aspx?" + bit_stat_url + "'/>");
+</script>
+<!-- bitauto stat end -->
+<!--airui-->
+<SCRIPT SRC="http://img1.bitautoimg.com/stat/iwtToMSite20140218.js" TYPE="text/javascript"></SCRIPT>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/senseNew.js"></script>
+<script type="text/javascript" src="http://g.yccdn.com"></script>

@@ -1,0 +1,11 @@
+[2014/11/14 10:25:32]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/carinfo/serialcompareforpk.ashx?action=carnews&csid=2614&callback=?
+Error Message: 列“PublishTime”不属于表 Table。
+Stack Trace:    在 System.Data.DataRow.get_Item(String columnName)
+   在 BitAuto.CarChannel.BLL.CarNewsBll.GetSerialNewsByCategoryId(Int32 serialId, Int32 categoryId, Int32 top) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\CarNewsBll.cs:行号 1567
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.RenderNews() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 162
+   在 BitAuto.CarChannelAPI.Web.CarInfo.SerialCompareForPK.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\SerialCompareForPK.ashx.cs:行号 51
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

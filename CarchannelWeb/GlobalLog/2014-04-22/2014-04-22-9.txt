@@ -1,0 +1,25 @@
+[2014/4/22 9:53:48]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/pageserial/cssummaryforwaitsale.aspx?id=2004
+Ref: 
+Error Message: “object”未包含“sign”的定义
+Stack Trace:    在 CallSite.Target(Closure , CallSite , Object )
+   在 System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummaryForWaitSale.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummaryForWaitSale.aspx.cs:行号 183
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummaryForWaitSale.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummaryForWaitSale.aspx.cs:行号 97
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 143
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/4/22 9:57:32]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/pageserial/cssummaryforwaitsale.aspx?id=2004
+Ref: 
+Error Message: “object”未包含“sign”的定义
+Stack Trace:    在 CallSite.Target(Closure , CallSite , Object )
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummaryForWaitSale.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummaryForWaitSale.aspx.cs:行号 183
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummaryForWaitSale.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummaryForWaitSale.aspx.cs:行号 97
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 143
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

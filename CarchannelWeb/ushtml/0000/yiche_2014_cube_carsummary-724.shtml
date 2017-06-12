@@ -1,0 +1,165 @@
+﻿<!--<link rel="stylesheet" type="text/css" href="http://image.bitautoimg.com/uimg/css/00042/yiche_2014_cube_car_summary_style-20160506165908-755.css" media="all" />-->
+<link rel="stylesheet" type="text/css" href="http://image.bitautoimg.com/uimg/css/00045/yiche_2014_cube_car_summary_style-20161102141530-755.css" media="all" />
+
+<!--<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/工作/前端/Y_2014改版/A-模块规范/common.css">
+<link rel="stylesheet" href="http://192.168.0.10:8888/工作/前端/Y_2014改版/A-模块规范/标题.css">
+
+<link rel="stylesheet" href="http://192.168.0.10:8888/工作/前端/Y_2014改版/A-模块规范/互联互通.css">
+
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/工作/前端/Y_2014改版/A-模块规范/车款列表.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/工作/前端/Y_2014改版/A-模块规范/按钮扁平.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/工作/前端/Y_2014改版/A-模块规范/图片瀑布流.css" />
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/工作/前端/Y_2014改版/A-模块规范/经销商列表.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/工作/前端/Y_2014改版/A-模块规范/文字列表.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/工作/前端/Y_2014改版/A-模块规范/车型区块.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/工作/前端/Y_2014改版/A-模块规范/经销商卡片头.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/工作/前端/Y_2014改版/A-模块规范/车型图片墙.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/工作/前端/Y_2014改版/A-模块规范/筛选.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/工作/前端/Y_2014改版/A-模块规范/右侧240.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/工作/前端/Y_2014改版/A-模块规范/星.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/工作/前端/Y_2014改版/A-模块规范/口碑区块.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/工作/前端/Y_2014改版/A-模块规范/综述页首页.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/工作/前端/Y_2014改版/A-模块规范/2014登录头.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/工作/前端/Y_2014改版/A-模块规范/2014二级简底.css">-->
+
+
+<!--<style type="text/css">
+                            .tit-msg {
+        height: 40px;
+        background: #f7f7f7;
+        border-bottom: 1px solid #e9e9e9;
+        line-height: 40px;
+        padding: 0 10px;
+        font-size: 12px;
+        color: #666;
+    }
+    .tit-msg a {
+        color: #0082cb;
+        margin: 0 25px 0 0;
+    }
+</style>
+<style type="text/css">
+
+    .gouche-wrap{
+        padding: 0 10px;
+        border-bottom: 1px #e9e9e9 solid;
+        padding: 30px 0;
+        overflow: hidden;
+        font-family: "microsoft yahei";
+    }
+    .gouche-wrap:last-child{
+        border: none;
+    }
+    .gouche-wrap .gouche-wrap-tips{
+        width: 45px;
+        height: 69px;
+        background: #FF4F53;
+        color: #fff;
+        font-size: 16px;
+        line-height: 20px;
+        margin: 0 30px 0 0;
+        padding: 8px 0 0 8px;
+        box-sizing: border-box;
+        float: left;
+        position: relative;
+    }
+    .gouche-wrap .gouche-wrap-tips:after {
+        content: "";
+        display: block;
+        overflow: hidden;
+        border: 1px solid #06a;
+        border-color: #fff #FF4F53;
+        border-width: 0 23px 15px 22px;
+        width: 0;
+        position: absolute;
+        top: 54px;
+        right: 0px;
+    }
+    .gouche-wrap h5{
+        font-size: 18px;
+        height: 24px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .gouche-wrap .gouche-go{
+        border: 1px #FF4F53 solid;
+        width: 96px;
+        height: 30px;
+        color: #FF4F53;
+        font-size: 14px;
+        line-height: 30px;
+        box-sizing: border-box;
+        display: inline-block;
+        text-align: center;
+        border-radius: 4px;
+        text-decoration: none;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+    .gouche-wrap .gouche-wrap-t{
+        font-size: 14px;
+        line-height: 20px;
+        color: #999;
+        float: left;
+        width: 390px;
+    }
+    .gouche-wrap .gouche-wrap-img{
+        width: 250px;
+        float: right;
+        overflow: hidden;
+    }
+    .gouche-wrap .gouche-wrap-img h6{
+        font-size: 16px;
+        line-height: 22px;
+        white-space: nowrap;
+    }
+    .gouche-wrap .gouche-wrap-img span{
+        font-size: 14px;
+        line-height: 20px;
+        color: #999;
+        display: block;
+        margin-top: 5px;
+    }
+    .gouche-wrap .gouche-wrap-face img{
+        border-radius: 60px;
+        margin: 0 20px 0 30px;
+        float: left;
+    }
+    .gouche-wrap .gouche-wrap-car img{
+        margin: 0 20px 0 0;
+        float: left;
+    }
+    .gouche-wrap .gouche-wrap-face img.people{
+        width: 60px;
+        height: 60px;
+    }
+
+    .gouche-wrap .gouche-wrap-txt{
+        float: left;
+        padding: 5px 0 0 0;
+        width: 140px;
+        overflow: hidden;
+    }
+    .gouche-wrap .gouche-wrap-time{
+        float: left;
+        width: 140px;
+        overflow: hidden;
+        background: url(images/iconfont-daojishi.png) 0 0 no-repeat;
+        padding: 0 0 0 30px;
+        margin-top: 24px;
+        margin-left: 80px;
+    }
+    .gouche-wrap .gouche-wrap-time span{
+        color: #FF4F53;
+        padding: 0 5px;
+        display: inline-block;
+        font-weight: bold;
+        margin: 0;
+    }
+</style>-->
+
+
+

@@ -1,0 +1,38 @@
+[2013/2/19 11:38:40]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2550
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2524
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 11:41:11]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2550
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2524
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 11:41:50]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2550
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2524
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 11:43:28]  无法将类型为“System.Xml.XmlAttribute”的对象强制转换为类型“System.IConvertible”。   在 System.Convert.ToDateTime(Object value)
+   在 BitAuto.Utils.ConvertHelper.GetDateTime(Object obj)
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialListADData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2577
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2549
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2524
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 11:46:24]  无法将类型为“System.Xml.XmlAttribute”的对象强制转换为类型“System.IConvertible”。   在 System.Convert.ToDateTime(Object value)
+   在 BitAuto.Utils.ConvertHelper.GetDateTime(Object obj)
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialListADData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2577
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialAD(String name) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2549
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2524
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 11:47:56]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2523
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 11:48:19]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2523
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 11:48:50]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 2523
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+
+[2013/2/19 11:51:09]  未将对象引用设置到对象的实例。   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetHomepageHotSerial(Int32 num)
+   在 BitAuto.CarChannel.CarchannelWeb.CarTree.CX_default.GetHotCarType() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\CarTree\CX_default.aspx.cs:行号 188
+

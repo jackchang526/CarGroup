@@ -1,0 +1,81 @@
+﻿<div class="leftmask mark mark2" style="display: none;">
+</div>
+<div class="leftPopup share-bottom popup-share" data-back="mark2" style="display: none;">
+    <div class="swipeLeft bdsharebuttonbox" data-tag="share_2">
+        <!--去掉swipeLeft-block 样式就会隐藏-->
+        <div class="share-box">
+            <ul id="shareul">
+                <li><a href="###" class="icon-sina" data-cmd="tsina">新浪微博 </a></li>
+                <li><a href="javascript:;" class="icon-qq" data-cmd="qzone">QQ空间 </a></li>
+                <div class="clear">
+                </div>
+            </ul>
+        </div>
+        <a href="javascript:;" class="close">取消</a>
+    </div>
+</div>
+<div id="weixinShare" style="display: none;">
+    <div class="body-mask2"></div>
+    <div class="weixin-mask"></div>
+    <div class="weixin-info-box">
+        <div class="weixin-info">
+            <ul>
+                <li>1、在Safari浏览器中点击<img src="http://image.bitautoimg.com/uimg/mbt2015/images/weixin_share1.png" width="41"></li>
+                <li>2、在弹出的浮层中点击更多<img src="http://image.bitautoimg.com/uimg/mbt2015/images/weixin_share2.png" width="48"></li>
+                <li>3、微信置为<img src="http://image.bitautoimg.com/uimg/mbt2015/images/weixin_share3.png" width="66">状态</li>
+                <li>4、完成以上操作即可看到“微信”图标<img src="http://image.bitautoimg.com/uimg/mbt2015/images/weixin_share4.png" width="134">点击完成分享</li>
+            </ul>
+        </div>
+    </div>
+    <div class="weixin-info-triangle"></div>
+</div>
+
+<!-- 分享 end-->
+<script type="text/javascript">
+        $(document).ready(function () {// 分享
+            var isQQorUC = /(mqqbrowser|ucbrowser)/i.test(navigator.appVersion);
+            if (isQQorUC && !navigator.userAgent.match(/MicroMessenger/ig)) {
+
+                var s = document.createElement("script"); s.type = "text/javascript"; s.charset = "utf-8";
+                if (s.readyState) {
+                    s.onreadystatechange = function () {
+                        if (s.readyState == "loaded" || s.readyState == "complete") {
+                            s.onreadystatechange = null;
+                            var share_obj = new nativeShare('shareul', share_config);
+                        }
+                    };
+                }
+                else { s.onload = function () { var share_obj = new nativeShare('shareul', share_config); }; }
+                s.src = 'http://image.bitautoimg.com/wap/js/m.nativeShare.js?v=2016.4.5'; document.getElementsByTagName("head")[0].appendChild(s);
+            }
+            if (!isQQorUC && /(ip(ad|hone|od))/i.test(navigator.userAgent) && /safari\//i.test(navigator.userAgent)) {
+                $("#shareul div").before($('<li><a href="javascript:;" class="icon-weixin" id="weixinBtn">微信好友</a></li>'));
+                $("#weixinBtn").bind("click", function () {
+                    $("#weixinShare").show();
+                });
+                $("#weixinShare").bind("touchstart", function () {
+                    $(this).hide();
+                });
+            }
+            window._bd_share_config = {
+                share: [{
+                    "tag": "share_2",
+                    "bdSize": 32,
+                    "bdCustomStyle": "http://image.bitautoimg.com/uimg/css/0016/myiche2014_cube_newsshare_style-20140808140022-802.css"
+                }]
+            }
+            with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+            $('[data-action=popup-share]').rightSwipe({
+                clickEnd: function (b) {
+                    var $leftPopup = this;
+                    if (b) {
+                        var $back = $('.' + $leftPopup.attr('data-back'));
+                        $back.touches({ touchstart: function (ev) { ev.preventDefault(); }, touchmove: function (ev) { ev.preventDefault(); } });
+                        $leftPopup.find('.close,#shareul li a').on('click', function (ev) {
+                            $back.trigger('close');
+                        })
+                    }
+                }
+            });
+        });
+</script>

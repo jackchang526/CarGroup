@@ -1,0 +1,50 @@
+﻿<div class="line_box">
+    <h3 type="text/css" rel="stylesheet" href="#">
+        <span>热点车型</span></h3>
+    <ul class="pic_t_box pic_12080 ">
+        <li><a href="#">
+            <img src="css/images/pic_120_80.jpg"></a><p>
+                <a href="#">易车体验</a></p>
+        </li>
+        <li><a href="#">
+            <img src="css/images/pic_120_80.jpg"></a><p>
+                <a href="#">易车体验</a></p>
+        </li>
+        <li><a href="#">
+            <img src="css/images/pic_120_80.jpg"></a><p>
+                <a href="#">易车体验</a></p>
+        </li>
+        <li><a href="#">
+            <img src="css/images/pic_120_80.jpg"></a><p>
+                <a href="#">易车体验</a></p>
+        </li>
+        <li><a href="#">
+            <img src="css/images/pic_120_80.jpg"></a><p>
+                <a href="#">易车体验</a></p>
+        </li>
+        <li><a href="#">
+            <img src="css/images/pic_120_80.jpg"></a><p>
+                <a href="#">易车体验</a></p>
+        </li>
+        <li><a href="#">
+            <img src="css/images/pic_120_80.jpg"></a><p>
+                <a href="#">易车体验</a></p>
+        </li>
+        <li><a href="#">
+            <img src="css/images/pic_120_80.jpg"></a><p>
+                <a href="#">易车体验</a></p>
+        </li>
+        <li><a href="#">
+            <img src="css/images/pic_120_80.jpg"></a><p>
+                <a href="#">易车体验</a></p>
+        </li>
+        <li><a href="#">
+            <img src="css/images/pic_120_80.jpg"></a><p>
+                <a href="#">易车体验</a></p>
+        </li>
+    </ul>
+    <div class="clear">
+    </div>
+    <div class="more">
+        <a href="#">更多&gt;&gt;</a></div>
+</div>

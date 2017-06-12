@@ -1,0 +1,47 @@
+﻿<!--include file="/include/z/shanghaichezhan2011/2011shczzhanzhongban/2011shczgonggong/00001/2011shcz_gydh_zdh_Manual.shtml"-->
+<div class="nav_wx">
+    <dl>
+        <dt class="index"><a href="#">车展首页</a></dt>
+    </dl>
+<!--    <dl class="nav_dl_wx">    
+        <dt class="newcar"><a href="http://chezhan.bitauto.com/shanghai/2011/newcar/">看新车</a></dt>
+        <dd class="zcsd"><a href="#">展车速递</a></dd>
+        <dd class="qxtg"><a href="http://chezhan.bitauto.com/shanghai/2011/newcar/tanguan.shtml">抢先探馆</a></dd>
+        <dd class="djjx"><a href="http://chezhan.bitauto.com/shanghai/2011/newcar/chexingjiexi.shtml">独家解析</a></dd>
+        <dd class="cxdg"><a href="#">车型导购</a></dd>
+    </dl> --> 
+    
+    <!----> 
+    <dl class="nav_dl_wx">    
+        <dt class="newcar"><a href="http://chezhan.bitauto.com/shanghai/2011/newcar/">看新车</a></dt>
+        <dd class="zcsd"><a href="#">展车速递</a></dd>
+        <dd class="s_djjx"><a href="http://chezhan.bitauto.com/shanghai/2011/newcar/chexingjiexi.shtml">独家解析</a></dd>
+
+        <dd class="s_wszt"><a href="http://chezhan.bitauto.com/shanghai/zhanguan/1/">网上展厅</a></dd>
+        <dd class="s_xctp"><a href="#">新车图片</a></dd>
+    </dl>  
+    <!---->  
+    
+    <dl class="nav_dl_wx nav_dl_wx2">
+        <dt class="model"><a href="http://chezhan.bitauto.com/shanghai/2011/mod/">看车模</a></dt>
+        <dd class="mntp"><a href="#">美女图片</a></dd>
+        <dd class="mm"><a href="#">名模</a></dd>
+
+        <dd class="cmdx"><a href="#">车模大选</a></dd>
+        <dd class="sp"><a href="#">视频</a></dd>
+    </dl>    
+    <dl class="nav_dl_wx">    
+        <dt class="news"><a href="http://chezhan.bitauto.com/shanghai/2011/news/">看资讯</a></dt>
+        <dd class="gdft"><a href="#">高端访谈</a></dd>
+        <dd class="gdxw"><a href="http://chezhan.bitauto.com/shanghai/newslist/gundong/n/">滚动新闻</a></dd>
+
+        <dd class="csdt"><a href="#">厂商动态</a></dd>
+        <dd class="zhxw"><a href="#">展会新闻</a></dd>
+    </dl>
+    <dl class="nav_dl_wx3">    
+        <dt class="video"><a href="http://chezhan.bitauto.com/shanghai/2011/video/">看视频</a></dt>
+        <dd class="cxsp"><a href="http://v.bitauto.com/chezhan/shanghai/video/list1_new.html">车型视频</a></dd>
+        <dd class="mvsp"><a href="http://v.bitauto.com/chezhan/shanghai/chemo/list1_new.html">美女视频</a></dd>
+
+    </dl>
+</div>

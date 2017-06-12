@@ -1,0 +1,17 @@
+[2013/8/12 16:43:14]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/dongfengyuedaqiyak3/?ID=3510&
+Error Message: 输入字符串的格式不正确。
+Stack Trace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Convert.ToInt32(String value)
+   在 BitAuto.CarChannel.BLL.Car_BasicBll.GetCarInfoForSerialSummaryBySerialId(Int32 serialId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_BasicBll.cs:行号 1289
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummaryNew.MakeCarListHtmlNew() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummaryNew.aspx.cs:行号 768
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummaryNew.RenderPage() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummaryNew.aspx.cs:行号 191
+   在 BitAuto.CarChannel.CarchannelWeb.PageSerial.CsSummaryNew.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageSerial\CsSummaryNew.aspx.cs:行号 168
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 142
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

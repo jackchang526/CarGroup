@@ -1,0 +1,48 @@
+/* reset */
+.bt_page{padding:0;margin:0;}
+.bt_page ol,.bt_page ul{list-style:none;padding:0;margin:0;}
+
+/* global */
+.bt_page{font:12px Arial,"simsun";color:#4D4D4D;background:#fff;}
+.bt_page a{color:#55606c;text-decoration:none;}
+.bt_page a:hover{text-decoration:underline;}
+
+
+.bt_page{ width:225px; height:373px;}
+.select_car_l{ background:#f3f3f3; height:373px;}
+
+.h3_tab{ height:33px; background:url(http://image.bitautoimg.com/carchannel/Cooperation/cnr2/images/bg_h3.png) no-repeat 0 0;}
+.h3_tab ul{ padding-left:5px;}
+.h3_tab ul li{height:33px;	margin:0; line-height:33px;	width:91px;	font-size:14px;background:url(http://image.bitautoimg.com/carchannel/Cooperation/cnr2/images/bg_h3_li.png) no-repeat 100% 0; float:left; text-align:center;}
+.h3_tab ul li a:link,.h3_tab ul li a:visited{ color:#333;}
+.h3_tab ul li.current{background:url(http://image.bitautoimg.com/carchannel/Cooperation/cnr2/images/bg_h3_li_c.png) no-repeat 100% 0; font-weight:800;}
+
+.hot_rank_box{ background:#f3f3f3; width:215px; background:#fff; margin:0 auto; height:334px; overflow:hidden;}
+.col_tab{float:left;margin-right:5px;}
+.col_tab ul{height:334px;width:59px; background:#f3f3f3;}
+.col_tab ul li{cursor:pointer;height:34px;line-height:32px;padding:0 0 0 10px;width:49px; background:url(http://image.bitautoimg.com/carchannel/Cooperation/cnr2/images/bg_ul.png) repeat-x 0 100%;}
+.col_tab ul li a:link,.col_tab ul li a:visited{ color:#333;}
+.col_tab ul li.current{background:#fff}
+.col_tab ul li.current a:link,.col_tab ul li.current a:visited{color:#333;}
+.hot_ranking{margin:0 10px !important;position:relative;float:left;display:inline;height:309px;overflow:hidden;width:125px; padding:10px 0 0 !important;}
+.hot_ranking li{height:30px;line-height:30px;position:relative;width:100%;overflow:hidden;float:left;border-bottom:1px #f0f0f0 solid;}
+.hot_ranking li em{float:left; width:16px; height:16px; background:#e3e3e3; line-height:16px; color:#656565; font-size:12px; margin:7px 11px 0 0; text-align:center; font-style:normal;}
+.hot_ranking li.fist em{background:#ff0000;color:#fff;}
+.hot_ranking li a{line-height:30px;float:left; width:94px; overflow:hidden;}
+
+
+
+/*icon*/
+.item-list{overflow:hidden; width:185px; margin:0 auto !important; padding:10px 0 0 !important;}
+.item-list .num-top, .item-list .num-normal{margin-right:10px;}
+.item-list .icon-up, .item-list .icon-fall, .item-list .icon-fair, .item-list .icon-none{text-align:right;width:70px;margin-left:0;}
+.item-list .icon-rise{text-align:right;width:0;margin-left:0;}
+.item-list li{border-bottom:1px solid  #efefef;width:100%;overflow:hidden;width:100%;float:left;height:23px; padding:7px 0 0;}
+.item-list li a{ float:left; margin:2px 0 0; width:70px; overflow:hidden; height:16px;}
+.item-list li.current{background:#FCFCFD;}
+.item-list li.end{ border:0;}
+
+.num-top{width:16px;height:16px;color:#fff;text-align:center;float:left;font-size:12px;line-height:16px;background:#ff0302;}
+.num-normal{width:16px;height:16px;color:#656565;text-align:center;float:left;font-size:12px;line-height:16px;background:#e3e3e3;}
+
+.clicks{float:right;text-align: right;margin-left:0; color:#999; margin:2px 0 0;}

@@ -1,0 +1,76 @@
+[2013/5/22 10:12:49]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/CarCompareTool.aspx
+Error Message: 未能加载类型“WirelessWeb.CarCompareTool”。
+Stack Trace:    在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+
+[2013/5/22 10:48:40]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/CarCompareTool.aspx?carIDs=15467,100038
+Error Message: 找不到方法:“System.Collections.Generic.IDictionary`2<System.String,System.Object> BitAuto.Utils.Config.Services.Cache.CacheProvider.GetMultiValue(System.Collections.Generic.IList`1<System.String>)”。
+Stack Trace:    在 BitAuto.Services.Cache.DistCache.GetMultiValue(IList`1 keys)
+   在 BitAuto.Services.Cache.DistCacheWrapper.GetMultiValue(IList`1 keys)
+   在 BitAuto.CarChannel.Common.Cache.MemCache.GetMultipleMemCacheByKey(IList`1 listKey) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\Cache\MemCache.cs:行号 69
+   在 BitAuto.CarChannel.BLL.Car_BasicBll.GetCarCompareDataByCarIDs(List`1 listCarID) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_BasicBll.cs:行号 962
+   在 WirelessWeb.CarCompareTool.GetValidCarJsObject() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarCompareTool.aspx.cs:行号 62
+   在 WirelessWeb.CarCompareTool.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarCompareTool.aspx.cs:行号 47
+   在 WirelessWeb.CarCompareTool.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarCompareTool.aspx.cs:行号 25
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 141
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2013/5/22 10:53:42]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/CarCompareTool.aspx?carIDs=15467,100038
+Error Message: 找不到方法:“System.Collections.Generic.IDictionary`2<System.String,System.Object> BitAuto.Utils.Config.Services.Cache.CacheProvider.GetMultiValue(System.Collections.Generic.IList`1<System.String>)”。
+Stack Trace:    在 BitAuto.Services.Cache.DistCache.GetMultiValue(IList`1 keys)
+   在 BitAuto.Services.Cache.DistCacheWrapper.GetMultiValue(IList`1 keys)
+   在 BitAuto.CarChannel.Common.Cache.MemCache.GetMultipleMemCacheByKey(IList`1 listKey) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\Cache\MemCache.cs:行号 69
+   在 BitAuto.CarChannel.BLL.Car_BasicBll.GetCarCompareDataByCarIDs(List`1 listCarID) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_BasicBll.cs:行号 962
+   在 WirelessWeb.CarCompareTool.GetValidCarJsObject() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarCompareTool.aspx.cs:行号 62
+   在 WirelessWeb.CarCompareTool.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarCompareTool.aspx.cs:行号 47
+   在 WirelessWeb.CarCompareTool.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarCompareTool.aspx.cs:行号 25
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 141
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2013/5/22 10:56:04]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/CarCompareTool.aspx?carIDs=15467,100038
+Error Message: 找不到方法:“System.Collections.Generic.IDictionary`2<System.String,System.Object> BitAuto.Utils.Config.Services.Cache.CacheProvider.GetMultiValue(System.Collections.Generic.IList`1<System.String>)”。
+Stack Trace:    在 BitAuto.Services.Cache.DistCache.GetMultiValue(IList`1 keys)
+   在 BitAuto.Services.Cache.DistCacheWrapper.GetMultiValue(IList`1 keys)
+   在 BitAuto.CarChannel.Common.Cache.MemCache.GetMultipleMemCacheByKey(IList`1 listKey) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\Cache\MemCache.cs:行号 69
+   在 BitAuto.CarChannel.BLL.Car_BasicBll.GetCarCompareDataByCarIDs(List`1 listCarID) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_BasicBll.cs:行号 962
+   在 WirelessWeb.CarCompareTool.GetValidCarJsObject() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarCompareTool.aspx.cs:行号 62
+   在 WirelessWeb.CarCompareTool.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarCompareTool.aspx.cs:行号 47
+   在 WirelessWeb.CarCompareTool.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarCompareTool.aspx.cs:行号 25
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 141
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2013/5/22 10:58:30]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/CarCompareTool.aspx?carIDs=15467,100038
+Error Message: 找不到方法:“System.Collections.Generic.IDictionary`2<System.String,System.Object> BitAuto.Utils.Config.Services.Cache.CacheProvider.GetMultiValue(System.Collections.Generic.IList`1<System.String>)”。
+Stack Trace:    在 BitAuto.Services.Cache.DistCache.GetMultiValue(IList`1 keys)
+   在 BitAuto.Services.Cache.DistCacheWrapper.GetMultiValue(IList`1 keys)
+   在 BitAuto.CarChannel.Common.Cache.MemCache.GetMultipleMemCacheByKey(IList`1 listKey) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\Cache\MemCache.cs:行号 69
+   在 BitAuto.CarChannel.BLL.Car_BasicBll.GetCarCompareDataByCarIDs(List`1 listCarID) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_BasicBll.cs:行号 962
+   在 WirelessWeb.CarCompareTool.GetValidCarJsObject() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarCompareTool.aspx.cs:行号 62
+   在 WirelessWeb.CarCompareTool.InitData() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarCompareTool.aspx.cs:行号 47
+   在 WirelessWeb.CarCompareTool.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarCompareTool.aspx.cs:行号 25
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 141
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

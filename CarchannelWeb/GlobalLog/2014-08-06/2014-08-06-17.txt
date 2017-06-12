@@ -1,0 +1,24 @@
+[2014/8/6 17:12:38]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/ajaxnew/SelectListForCompare.aspx?type=1&level=4&serialIDs=0
+Ref: http://car01.bitauto.com/tupianduibi/?csids=2370
+Error Message: 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+Stack Trace:    在 System.Collections.Generic.List`1.get_Item(Int32 index)
+   在 BitAuto.CarChannel.CarchannelWeb.AjaxNew.SelectListForCompare.GetHotCarBySerialId() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\AjaxNew\SelectListForCompare.aspx.cs:行号 61
+   在 BitAuto.CarChannel.CarchannelWeb.AjaxNew.SelectListForCompare.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\AjaxNew\SelectListForCompare.aspx.cs:行号 51
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 143
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/8/6 17:18:16]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/ajaxnew/SelectListForCompare.aspx?type=1&level=4&serialIDs=0
+Ref: http://car01.bitauto.com/tupianduibi/?csids=2370
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannel.CarchannelWeb.AjaxNew.SelectListForCompare.GetHotCarBySerialId() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\AjaxNew\SelectListForCompare.aspx.cs:行号 63
+   在 BitAuto.CarChannel.CarchannelWeb.AjaxNew.SelectListForCompare.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\AjaxNew\SelectListForCompare.aspx.cs:行号 51
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 143
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

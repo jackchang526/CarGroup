@@ -1,0 +1,12 @@
+[2013/10/21 11:46:26]  
+IP: 127.0.0.1
+Error in: http://api.car.bitauto.com/Mai/GetSerialGoods.ashx?serialid=2677&cityid=201&
+Error Message: 索引和长度必须引用该字符串内的位置。
+参数名: length
+Stack Trace:    在 System.String.InternalSubStringWithChecks(Int32 startIndex, Int32 length, Boolean fAlwaysCopy)
+   在 BitAuto.CarChannelAPI.Web.Mai.GetSerialGoods.GetImage(String imgPath) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Mai\GetSerialGoods.ashx.cs:行号 94
+   在 BitAuto.CarChannelAPI.Web.Mai.GetSerialGoods.RenderContent() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Mai\GetSerialGoods.ashx.cs:行号 61
+   在 BitAuto.CarChannelAPI.Web.Mai.GetSerialGoods.ProcessRequest(HttpContext context) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Mai\GetSerialGoods.ashx.cs:行号 42
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

@@ -1,0 +1,103 @@
+﻿<!--HeaderJs-->
+
+<script>
+if(typeof(jQuery)=="undefined") {
+ document.write('<scri'+'pt type="text/javascript" src="http://image.bitautoimg.com/uimg/index100528/js/jquery.1.3.2.min.js"></scr'+'ipt>');
+  }
+</script>
+
+<!--HeaderContent-->
+<!--Content-->
+<!-- baidu-tc begin {"action":"DELETE"} -->
+<div class="bit_top">
+    <div class="bit950">
+        <ul>
+            <li><a target="_blank" href="http://www.bitauto.com/">易车</a></li>
+            <li data-channelid="1.106.1038"><a target="_blank" href="http://www.taoche.com/?ref=pc_yc_dt_esc">易车二手车</a></li>
+            <li data-channelid="1.106.1039"><a target="_blank" href="http://www.huimaiche.com/?tracker_u=71_dbtydh" rel="nofollow">惠买车</a></li>
+            <li data-channelid="1.106.1041"><a target="_blank" href="http://mai.bitauto.com/?ref=top1&rfpa_tracker=1_2" rel="nofollow">易车惠</a></li>
+            <li data-channelid="1.106.1485"><a target="_blank" href="http://www.daikuan.com/?from=731" rel="nofollow">易鑫车贷</a></li>
+            <li class="bit_link" onmouseout="document.getElementById('login_app').style.display='none';this.className='bit_link';" onmouseover="document.getElementById('login_app').style.display='';this.className='bit_link bit_hover';" class="bit_link">
+                <a href="http://app.yiche.com/" target="_blank" rel="nofollow">移动应用<em></em></a>
+                <dl style="display: none;" id="login_app" class="login_fav">
+                    <dt class="block"><a target="_blank" href="http://m.yiche.com/">手机易车网</a></dt>
+                    <dt class="block"><a target="_blank" href="http://app.yiche.com/yiche/" rel="nofollow">易车APP</a></dt>
+                    <dt class="block"><a target="_blank" href="http://app.yiche.com/qichebaojiadaquan/" rel="nofollow">汽车报价大全</a></dt>
+                    <dt class="block"><a target="_blank" href="http://app.yiche.com/huimaiche/" rel="nofollow">惠买车</a></dt>
+                    <dt class="block"><a target="_blank" href="http://app.yiche.com/taoche/" rel="nofollow">易车二手车</a></dt>
+                    <dt class="block"><a target="_blank" href="http://app.yiche.com/chexingshouce/" rel="nofollow">来一车</a></dt>
+
+
+                </dl>
+            </li>
+
+
+        </ul>
+        <div class="bt_login_box" id="divLoginDivID">&nbsp;</div>
+    </div>
+</div>
+<!-- baidu-tc end -->
+<div class="btnav_b">
+    <div class="cartabs100312">
+        <ul>
+            <li class="f1"><a target="_blank" href="http://car.bitauto.com/weixingche/">微型车</a></li>
+            <li class="f2"><a target="_blank" href="http://car.bitauto.com/xiaoxingche/">小型车</a></li>
+            <li class="f3"><a target="_blank" href="http://car.bitauto.com/jincouxingche/">紧凑型车</a></li>
+            <li class="f4"><a target="_blank" href="http://car.bitauto.com/zhongxingche/">中型车</a></li>
+            <li class="f5"><a target="_blank" href="http://car.bitauto.com/zhongdaxingche/">中大型车</a></li>
+            <li class="f6"><a target="_blank" href="http://car.bitauto.com/haohuaxingche/">豪华车</a></li>
+            <li class="f7"><a target="_blank" href="http://car.bitauto.com/mpv/">MPV多用途车</a></li>
+            <li class="f8"><a target="_blank" href="http://car.bitauto.com/suv/">SUV越野车</a></li>
+            <li class="f9"><a target="_blank" href="http://car.bitauto.com/paoche/">跑车</a></li>
+            <li class="f10"><a target="_blank" href="http://car.bitauto.com/mianbaoche/">面包车</a></li>
+        </ul>
+    </div>
+    <ul class="interval">
+        <li><a target="_blank" href="http://car.bitauto.com/xuanchegongju/?p=0-5">5万以下</a></li>
+        <li><a target="_blank" href="http://car.bitauto.com/xuanchegongju/?p=5-8">5万-8万</a></li>
+        <li><a target="_blank" href="http://car.bitauto.com/xuanchegongju/?p=8-12">8万-12万</a></li>
+        <li><a target="_blank" href="http://car.bitauto.com/xuanchegongju/?p=12-18">12万-18万</a></li>
+        <li><a target="_blank" href="http://car.bitauto.com/xuanchegongju/?p=18-25">18万-25万</a></li>
+        <li id="interval_more" class="interval_more">
+            <span>更多</span>
+            <dl id="interval_pop" class="interval_pop">
+                <dt>更多</dt>
+                <dd><a target="_blank" href="http://car.bitauto.com/xuanchegongju/?p=25-40">25万-40万</a></dd>
+                <dd><a target="_blank" href="http://car.bitauto.com/xuanchegongju/?p=40-80">40万-80万</a></dd>
+                <dd><a target="_blank" href="http://car.bitauto.com/xuanchegongju/?p=80-9999">80万以上</a></dd>
+            </dl>
+        </li>
+    </ul>
+</div>
+<dl class="bt_nav">
+    <dt class="first"><a target="_blank" href="http://kan.bitauto.com/">选车</a></dt>
+    <dd><a target="_blank" href="http://car.bitauto.com/" class="hot">车型</a></dd>
+    <dd><a target="_blank" href="http://photo.bitauto.com/">图片</a></dd>
+    <dd><a target="_blank" href="http://v.bitauto.com/">视频</a></dd>
+    <dd><a href="http://car.bitauto.com/top_daogou/" target="_blank">导购</a></dd>
+    <dd><a href="http://photo.bitauto.com/tujie/" target="_blank">图解</a></dd>
+    <dd><a href="http://car.bitauto.com/tree_pingce/" target="_blank">评测</a></dd>
+
+    <dd><a target="_blank" href="http://kan.bitauto.com/xinche/">新车</a></dd>
+    <dd><a target="_blank" href="http://price.bitauto.com/">报价</a></dd>
+    <dd><a target="_blank" href="http://dealer.bitauto.com/">经销商</a></dd>
+    <dd><a target="_blank" href="http://car.bitauto.com/tree_hangqing/">行情</a></dd>
+    <dd><a target="_blank" href="http://i.bitauto.com/apps/!go/">车易购</a></dd>
+
+    <dt><a target="_blank" href="http://use.bitauto.com/">用车</a></dt>
+    <dd><a href="http://ask.bitauto.com/tree/" target="_blank">问答</a></dd>
+    <dd><a href="http://car.bitauto.com/tree_baoyang/" target="_blank">养护</a></dd>
+    <dd><a href="http://use.bitauto.com/shouce/" target="_blank">手册</a></dd>
+    <dd><a href="http://i.bitauto.com/apps/!jz/" target="_blank">记账</a></dd>
+
+    <dt><a target="_blank" href="http://news.bitauto.com/">新闻</a></dt>
+    <dd><a target="_blank" href="http://news.bitauto.com/renwu/">人物</a></dd>
+    <dd><a href="http://news.bitauto.com/diaocha/" target="_blank">调查</a></dd>
+    <dd><a href="http://news.bitauto.com/chanxiao/" target="_blank">销量</a></dd>
+    <dd><a href="http://index.bitauto.com/" target="_blank">指数</a></dd>
+
+    <dt><a target="_blank" href="http://baa.bitauto.com/">论坛</a></dt>
+    <dd><a target="_blank" href="http://zijia.bitauto.com/">自驾</a></dd>
+    <dd><a target="_blank" href="http://baa.bitauto.com/foruminterrelated/moretopic.html">聚会</a></dd>
+    <dd><a href="http://www.qichetong.com/" target="_blank">汽车通</a></dd>
+</dl>

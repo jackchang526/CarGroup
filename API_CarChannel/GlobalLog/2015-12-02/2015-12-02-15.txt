@@ -1,0 +1,32 @@
+[2015/12/2 15:17:36]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/CarInfo/getlefttreejson.ashx?tagtype=baojia&pagetype=masterbrand&objid=8&dd
+Error Message: 对路径“\\192.168.0.174\Data\CarTree\treeTagUrl.xml”的访问被拒绝。
+Stack Trace:    在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   在 System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   在 System.Xml.XmlTextReaderImpl.FinishInitUriString()
+   在 System.Xml.XmlReaderSettings.CreateReader(String inputUri, XmlParserContext inputContext)
+   在 BitAuto.CarChannel.BLL.CarTreeData.TagData.GetTagDataDictionary() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\CarTreeData\TreeDataObjects.cs:行号 182
+   在 BitAuto.CarChannelAPI.Web.CarInfo.GetLeftTreeJson.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\GetLeftTreeJson.ashx.cs:行号 86
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2015/12/2 15:19:36]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/CarInfo/getlefttreejson.ashx?tagtype=baojia&pagetype=masterbrand&objid=8&dd
+Error Message: 对路径“\\192.168.0.174\Data\CarTree\treeTagUrl.xml”的访问被拒绝。
+Stack Trace:    在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   在 System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   在 System.Xml.XmlTextReaderImpl.FinishInitUriString()
+   在 System.Xml.XmlReaderSettings.CreateReader(String inputUri, XmlParserContext inputContext)
+   在 BitAuto.CarChannel.BLL.CarTreeData.TagData.GetTagDataDictionary() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\CarTreeData\TreeDataObjects.cs:行号 182
+   在 BitAuto.CarChannelAPI.Web.CarInfo.GetLeftTreeJson.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\GetLeftTreeJson.ashx.cs:行号 86
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

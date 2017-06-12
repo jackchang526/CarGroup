@@ -1,0 +1,20 @@
+﻿   
+<link rel="stylesheet" type="text/css" href="http://image.bitautoimg.com/uimg/css/0016/car_paihang_style_v2-20131202132245.css"
+	media="all" />
+<link href="http://192.168.0.10:8888/工作/前端/D_车型/综述页/2013车型综述页/common.css" rel="stylesheet"
+	type="text/css" media="all" />
+<link href="http://192.168.0.10:8888/工作/前端/D_车型/综述页/2013综述页其他页面扁平/new/头部筛选分类.css"
+	rel="stylesheet" type="text/css" />
+<link href="http://192.168.0.10:8888/工作/前端/D_车型/综述页/2013综述页其他页面扁平/new/车型公共调整.css"
+	rel="stylesheet" type="text/css" />
+<link href="http://192.168.0.10:8888/工作/前端/D_车型/综述页/2013车型综述页/互联互通去掉更多样式.css" rel="stylesheet"
+	type="text/css" />
+<link href="http://192.168.0.10:8888/工作/前端/D_车型/综述页/2013综述页其他页面扁平/new/覆盖排行公共.css"
+	rel="stylesheet" type="text/css" />
+<style type="text/css">
+.gzd{overflow:hidden; width:960px;}
+.line_box .carduibi h3{background:none; border:none; font-size:12px; color:#333333; height:20px;}
+.line_box .carduibi h3 span{height:20px; line-height:20px; font-weight:bold;}
+.line_box .carduibi .h-line{width:960px; height:1px; overflow:hidden; font-size:0; line-height:0; background:#E9E9E9;}
+.line_box .carduibi .a4{margin-top:16px; margin-bottom:6px;}
+</style>

@@ -1,0 +1,50 @@
+[2014/9/1 15:46:12]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/langyi/2014/?ID=2370&year=2014&
+Stack Trace: System.Data.EvaluateException: 未找到列 [Car_YearType]。
+   在 System.Data.NameNode.Bind(DataTable table, List`1 list)
+   在 System.Data.BinaryNode.Bind(DataTable table, List`1 list)
+   在 System.Data.DataExpression.Bind(DataTable table)
+   在 System.Data.DataTable.Select(String filterExpression)
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialUCarYearPrice(Int32 serialId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 7068
+
+[2014/9/1 15:46:30]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/langyi/?ID=2370&
+Stack Trace: System.Data.EvaluateException: 未找到列 [Car_YearType]。
+   在 System.Data.NameNode.Bind(DataTable table, List`1 list)
+   在 System.Data.BinaryNode.Bind(DataTable table, List`1 list)
+   在 System.Data.DataExpression.Bind(DataTable table)
+   在 System.Data.DataTable.Select(String filterExpression)
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetUCarSerialPrice() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 7032
+
+[2014/9/1 15:46:47]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/langyi/?ID=2370&
+Stack Trace: System.Data.EvaluateException: 未找到列 [Car_YearType]。
+   在 System.Data.NameNode.Bind(DataTable table, List`1 list)
+   在 System.Data.BinaryNode.Bind(DataTable table, List`1 list)
+   在 System.Data.DataExpression.Bind(DataTable table)
+   在 System.Data.DataTable.Select(String filterExpression)
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetUCarSerialPrice() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 7032
+
+[2014/9/1 15:47:42]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/langyi/?ID=2370&
+Stack Trace: System.Data.EvaluateException: 未找到列 [Car_YearType]。
+   在 System.Data.NameNode.Bind(DataTable table, List`1 list)
+   在 System.Data.BinaryNode.Bind(DataTable table, List`1 list)
+   在 System.Data.DataExpression.Bind(DataTable table)
+   在 System.Data.DataTable.Select(String filterExpression)
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetUCarSerialPrice() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 7032
+
+[2014/9/1 15:48:01]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/langyi/?ID=2370&
+Stack Trace: System.Data.EvaluateException: 未找到列 [Car_YearType]。
+   在 System.Data.NameNode.Bind(DataTable table, List`1 list)
+   在 System.Data.BinaryNode.Bind(DataTable table, List`1 list)
+   在 System.Data.DataExpression.Bind(DataTable table)
+   在 System.Data.DataTable.Select(String filterExpression)
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetUCarSerialPrice() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 7032
+

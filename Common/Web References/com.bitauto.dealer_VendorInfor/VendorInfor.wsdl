@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetVendorNewsListBySerialId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SeriesID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ProvinceID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="RowCount" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVendorNewsListBySerialIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVendorNewsListBySerialIdResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVendorNewsListByBrandId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BrandID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="ProvinceID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVendorNewsListByBrandIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVendorNewsListByBrandIdResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetVendorNewsListBySerialIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVendorNewsListBySerialId" />
+  </wsdl:message>
+  <wsdl:message name="GetVendorNewsListBySerialIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVendorNewsListBySerialIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVendorNewsListByBrandIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVendorNewsListByBrandId" />
+  </wsdl:message>
+  <wsdl:message name="GetVendorNewsListByBrandIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVendorNewsListByBrandIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="VendorInforSoap">
+    <wsdl:operation name="GetVendorNewsListBySerialId">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据子品牌取得推荐的经销商</wsdl:documentation>
+      <wsdl:input message="tns:GetVendorNewsListBySerialIdSoapIn" />
+      <wsdl:output message="tns:GetVendorNewsListBySerialIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVendorNewsListByBrandId">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据品牌ID取得推荐的前十条经销商</wsdl:documentation>
+      <wsdl:input message="tns:GetVendorNewsListByBrandIdSoapIn" />
+      <wsdl:output message="tns:GetVendorNewsListByBrandIdSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="VendorInforSoap" type="tns:VendorInforSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetVendorNewsListBySerialId">
+      <soap:operation soapAction="http://tempuri.org/GetVendorNewsListBySerialId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVendorNewsListByBrandId">
+      <soap:operation soapAction="http://tempuri.org/GetVendorNewsListByBrandId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="VendorInforSoap12" type="tns:VendorInforSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetVendorNewsListBySerialId">
+      <soap12:operation soapAction="http://tempuri.org/GetVendorNewsListBySerialId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVendorNewsListByBrandId">
+      <soap12:operation soapAction="http://tempuri.org/GetVendorNewsListByBrandId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VendorInfor">
+    <wsdl:port name="VendorInforSoap" binding="tns:VendorInforSoap">
+      <soap:address location="http://api.dealer.bitauto.com/api/Service/VendorInfor.asmx" />
+    </wsdl:port>
+    <wsdl:port name="VendorInforSoap12" binding="tns:VendorInforSoap12">
+      <soap12:address location="http://api.dealer.bitauto.com/api/Service/VendorInfor.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

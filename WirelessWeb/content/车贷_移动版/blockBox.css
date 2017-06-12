@@ -1,0 +1,11 @@
+/*弹出层*/
+.m-popup-box{width:100%; height:auto; background:#666; -moz-box-shadow:0 4px 4px #3A3A3A inset; -webkit-box-shadow:0 4px 4px #3A3A3A inset; box-shadow:0 4px 4px #3A3A3A inset; margin-top:12px; color:#FFF; padding:20px 0 0; text-align:left; text-shadow:1px 1px 1px #1A1A1A}
+.m-popup-box a{color:#FFF;}
+.m-popup{width:100%; height:auto; -moz-box-shadow:0 -4px 4px #3A3A3A inset; -webkit-box-shadow:0 -4px 4px #3A3A3A inset; box-shadow:0 -4px 4px #3A3A3A inset; padding:0 0 20px;}
+.m-popup-arrow b{display:block; width:0; height:0px; border:6px solid #393939; border-color:#393939 #FFF; border-width:0 12px 12px 12px; margin:9px auto 0;}
+
+.m-popup-box .m-cars{margin-left:-40px; padding-right:40px}
+.m-popup-box .m-cars dl{width:108%; clear:both; overflow:hidden; padding-bottom:12px; margin:0 0 0 20px;}
+.m-popup-box .m-cars dt{font-weight:bold; font-size:2.0rem; padding-bottom:5px; line-height:1.5;}
+.m-popup-box .m-cars dd{float:left; width:145px; line-height:1.2; font-size:1.6rem; margin-bottom:12px}
+.m-popup-box .m-cars dd a{display:block; width:100%}

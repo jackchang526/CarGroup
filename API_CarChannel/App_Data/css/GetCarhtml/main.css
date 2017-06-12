@@ -1,0 +1,60 @@
+﻿@charset "utf-8";
+/*reset*/
+
+html{font-size:62.5%;}
+.clearfix:after { display: block; overflow: hidden; clear: both; height: 0; visibility: hidden; content: "."; }
+/*容器*/
+.car-dress,.car-type,.more-message{ background: url(http://image.bitautoimg.com/carchannel/Cooperation/baike/images/tb_img_bg.png) no-repeat; background-size: 17px 44px}
+.car-container{ padding: 0 12px}
+.car-container .tit-box{line-height: 33px;  width: 100%; position: relative; z-index:100; border: 1px solid #d9d9d9;border-width: 0 0 1px; box-shadow: 0 1px #fafafa; margin: 0 0 11px}
+#titWrap h3{  line-height: 18px; padding-left: 11px; margin: 20px 0 0 0; font-weight: bold; color: #1a1a1a; font-size: 18px; height: 26px; background: url(http://baike.bdimg.com/static/mobile/wiki/img/ml-icon_7ed2e85b.png) no-repeat 0 2px #f2f2f2;background-size: 5px 67px; float: left;border:none;box-shadow:none; }
+
+.car-container .tit-box em{color: #888888; font-size: 1.4rem; margin: 13px 0 0 8px; float: left;}
+.car-container .tit-box .car-dress{ position: absolute; top: 20px; right: 0; color: #2a7bca; font-size: 1.3rem; background-position: 28px -13px; padding: 0 14px 0 0; display: block; height: 17px; line-height: 17px}
+.car-container .tit-box .car-list-box{ position: absolute; top: 46px;width: 100%; background: #ffffff; display: none;}
+.car-container .tit-box ul{  border: 1px solid #c8c8c8; padding: 0 }
+.car-container .tit-box li{ height: 44px; line-height: 44px; overflow: hidden; border-bottom: 1px solid #c8c8c8;}
+.car-container .tit-box li:last-of-type{ border-bottom: 0}
+.car-container .tit-box .car-name{ display: block; float: left; line-height: 44px;  font-size: 1.5rem; color: #323232}
+.car-container .tit-box li .car-type{display: block; float: right; height: 12px;  width: 29px; margin: 16px 0 0 0; background-position: 100px  100px;}
+.car-container .tit-box li.current .car-type{background-position: 0 0;}
+
+.car-list-box{ width: 100%}
+.car-list-box ul{ margin: 0; padding: 0 0 10px}
+.car-list-box li{ margin: 0; border-bottom: 1px solid #e7e7e7; padding: 5px 0 5px 10px; overflow: hidden; position: relative;}
+.car-list-box li:last-of-type{ border-bottom: 0}
+.car-list-box .img-box{ float: left; width: 94px; height: 62px;}
+.car-list-box .img-box img{ width: 94px; height: 62px}
+.car-list-box .txt-box{ padding: 0 0 0 105px; position: relative; }
+.car-list-box .txt-box .p-name{ height: 20px; line-height: 20px; font-size: 1.3rem; color: #323232; padding: 7px 0 0 0;display: block; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; }
+.car-list-box .ck-link{ display: block; margin: 0 70px 0 0}
+.car-list-box .txt-box .p-price{height: 20px; line-height: 20px; font-size: 1.2rem; color: #f54545; display: block; padding: 0 0 7px;text-overflow:ellipsis; overflow:hidden; white-space:nowrap; }
+.car-list-box .txt-box .s1{ font-size: 1.2rem; color: #666666; margin: 0 20px 0 0}
+.car-list-box .txt-box .s2{color: #f54545}
+.car-list-box .z-pp{ margin: 0}
+.car-list-box .z-pp .p-price,.car-list-box .z-pp .p-name{ text-overflow:ellipsis; overflow:hidden; white-space:nowrap; }
+.car-list-box .xj-btn{ display: block; width: 56px; height: 30px; line-height: 30px; border-radius: 3px; font-size: 1.4rem; color: #ffffff; text-align: center; position: absolute; right: 0; top: 50%; background: #58a0ec;-webkit-transform:translate(0,-50%);-webkit-transform:translate(0,-50%);transform:translate(0,-50%)}
+.car-list-box .xd-link{ display: block; margin: 0 66px 0 0}
+
+
+.car-zpp li{ padding: 0 0 0 10px;}
+.car-zpp .txt-box{padding-left: 0}
+
+.more-list{ display: block; height: 25px; line-height: 25px; background: #eeeeee; text-align: center; font-size: 1.2rem; color: #949494}
+.more-list i{ display: inline-block; width: 10px; height: 6px; background-position: 0 -32px; margin: 0 0 0 5px}
+
+/*焦点图*/
+
+.focus-img-box{ background: #ffffff; border: 1px solid #e5e5e5; padding: 5px; display: none;}
+.focus-img-box .img-box{ width: 100%}
+.m-focus{width:100%; background:#ffffff; overflow:hidden;}
+.m-focus-box{ margin:0 auto; position:relative;}
+.m-focus-box li{float:left; }
+.m-focus-box .m-focus-scroll-box{ padding: 0 0 20px}
+.m-focus-box li img{width:100%; display:block;}
+.m-focus-box .pagination-focus{position:absolute; z-index:20; right:5px; bottom:1px; left: 50%;-webkit-transform:translate(-50%,0);-webkit-transform:translate(-50%,0);transform:translate(-50%,0); text-align: center; width:100% }
+.m-focus-box span{ width: 26px; border: solid 1px #dbdbdb; display: inline-block; height: 6px;  margin: 0 4px 0 0; position: relative; top: 2px}
+.m-focus-box span:last-of-type{ margin: 0}
+ 
+
+

@@ -1,0 +1,12 @@
+﻿<!-- include file="~/ushtml/block/so/so_formonebutton_chexing.shtml"-->
+<div class="search_text"> 
+    <a title="车易搜" href="http://www.cheyisou.com/" class="search" target="_blank">车易搜</a> 
+    <div style="position: relative; float: left;"> 
+        <form id="sug_form" name="sug_form" target="_blank" method="get" action="http://www.cheyisou.com/post.aspx"> 
+        <input type="text" value="" onfocus="this.value=''" name="so_keywords" id="sug_txt_keyword"
+            class="select_sea" autocomplete="off"> 
+        <input type="submit" value="搜索" class="select_more" id="sug_submit" /> 
+        <input id="sug_datatype" name="sug_datatype" value="chexing" type="hidden" /> 
+        <input id="sug_encoding" name="sug_encoding" value="utf-8" type="hidden" /> 
+    </div> 
+</div>

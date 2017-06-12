@@ -1,0 +1,15 @@
+﻿<script type="text/javascript">
+    (function () {
+        var ver = '20140304';
+        var url = 'http://image.bitautoimg.com/carchannel/chedai/chedaiv2.min.js?v=' + ver;
+        if (typeof chedai_config != 'undefined') {
+            if (chedai_config.debug == 'true') {
+                url = chedai_config.localscript == 'true' ? '/jsnew/chedai/chedaiv2.js' : 'http://image.bitautoimg.com/carchannel/jsnew/chedai/chedaiv2.js?v=' + ver
+            }
+            else {
+                url = chedai_config.localscript == 'true' ? '/jsnew/chedai/chedaiv2.min.js' : 'http://image.bitautoimg.com/carchannel/jsnew/chedai/chedaiv2.min.js?v=' + ver
+            }
+        }
+        document.write('<scri' + 'pt type="text/javascript" src="' + url + '" type="text\/javascript"></scr' + 'ipt>');
+    })();
+</script>

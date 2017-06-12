@@ -1,0 +1,58 @@
+﻿<div class="vertical-tag vertical-tag-suv">
+    <ul id="data_tab3" class="v-t-list" changetabid="3">
+        <li class="current"><span>通过性能：</span><b></b></li>
+        <li class=""><span>离地间隙：</span><b></b></li>
+        <li class=""><span>涉水深度：</span><b></b></li>
+    </ul>
+    <div id="data_box3_0" class="suv-con-box" style="display: block;">
+        <div class="suv-con-box-l">
+            <img src="images/suv_pic_1.png">
+            <span class="angle-1">32°</span> <span class="angle-2">22°</span> <span class="angle-3">
+                38°</span>
+        </div>
+        <div class="suv-con-box-r">
+            <h5>
+                通过性能：</h5>
+            <p>
+                1在一定载质量下，汽车能以足够高的平均车速通过各种坏路及无路地带和克服各种障碍的能力，称为汽车的通过性。主要指标有：接近角、离去角、最小离地间隙...<a href="#">详细&gt;&gt;</a></p>
+        </div>
+    </div>
+    <div style="display: none;" id="data_box3_1" class="suv-con-box">
+        <div class="suv-con-box-l">
+            <img src="images/suv_pic_2.png">
+            <span class="height-1">198mm</span>
+        </div>
+        <div class="suv-con-box-r">
+            <h5>
+                通过性能：</h5>
+            <p>
+                2在一定载质量下，汽车能以足够高的平均车速通过各种坏路及无路地带和克服各种障碍的能力，称为汽车的通过性。主要指标有：接近角、离去角、最小离地间隙...<a href="#">详细&gt;&gt;</a></p>
+        </div>
+    </div>
+    <div style="display: none;" id="data_box3_2" class="suv-con-box">
+        <div class="suv-con-box-l">
+            <img src="images/suv_pic_3.png">
+            <span class="water-1">438mm</span>
+        </div>
+        <div class="suv-con-box-r">
+            <h5>
+                通过性能：</h5>
+            <p>
+                3在一定载质量下，汽车能以足够高的平均车速通过各种坏路及无路地带和克服各种障碍的能力，称为汽车的通过性。主要指标有：接近角、离去角、最小离地间隙...<a href="#">详细&gt;&gt;</a></p>
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+    <div class="zhishi_box">
+        <p>
+            <strong><a href="#" target="_blank">非独立悬架</a></strong><em>|</em><strong><a href="http://baike.bitauto.com/other/20120629/1405744928.html"
+                target="_blank">四轮驱动</a></strong><em>|</em><strong><a href="#" target="_blank">非承载式车身</a></strong><em>|</em><strong><a
+                    href="#" target="_blank">最大爬坡度</a></strong><em>|</em><strong><a href="#" target="_blank">最大涉水深度</a></strong><em>|</em><strong><a
+                        href="#" target="_blank">最小离地间隙</a></strong></p>
+        <p>
+            <strong><a href="#" target="_blank">通过角</a></strong><em>|</em><strong><a href="#"
+                target="_blank">离去角</a></strong><em>|</em><strong><a href="#" target="_blank">接近角</a></strong><em>|</em><strong><a
+                    href="#" target="_blank">全时四驱</a></strong><em>|</em><strong><a href="#" target="_blank">适时四驱</a></strong><em>|</em><strong><a
+                        href="#" target="_blank">分时四驱</a></strong></p>
+    </div>
+</div>

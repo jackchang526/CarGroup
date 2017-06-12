@@ -1,0 +1,2 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GetSerialForNotion.aspx.cs" Inherits="BitAuto.CarChannel.CarchannelWeb.interfaceforbitauto.GetSerialForNotion" %>
+<%@ OutputCache Duration="600" VaryByParam="none" %>

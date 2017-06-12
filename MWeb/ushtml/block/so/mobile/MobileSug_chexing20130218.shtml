@@ -1,0 +1,18 @@
+﻿<input type="search" id="txtkeyword" size="10" onkeydown="redirectBEnter(event)" />
+<input type="submit" value="" onclick="redirect()" />
+<div class="m-sug" id="div_so_pop"></div>
+<script type="text/javascript" src="http://image.bitautoimg.com/bsearch/mobileScript/moblieSug20130218.min.js?v1"></script>
+<script type="text/javascript">
+	CheyisouAutoComplete(
+    {
+    	pop_txtid: "txtkeyword",
+    	pop_divid: "div_so_pop",
+    	pop_typeid: "-100",
+    	pop_channelname: "qiche",
+    	pop_chart: "utf-8",
+    	pop_overclass: "current",
+    	pop_outclass: "",
+    	pop_len: 5,
+    	pop_textclearid: "divsugtextclear"
+    });
+</script>

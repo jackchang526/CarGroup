@@ -1,0 +1,65 @@
+﻿<div class="tree_wrap_box">
+	<div class="header_style" id="header_logo">
+		<div class="bitauto_logo">
+		</div>
+		<!--页头导航_yiche_LOGO开始-->
+		<div class="yiche_logo">
+			<a href="http://www.bitauto.com">易车网</a></div>
+		<!--页头导航_yiche_LOGO结束-->
+		<div class="bt_searchNew">
+			<form id="sug_form" name="sug_form" method="get" target="_blank" action="http://www.cheyisou.com/search">
+			<div class="bor">
+				<em>搜索</em>
+				<input id="sug_txtkeyword" type="text" class="select_t" name="wd" value="" autocomplete="off"
+					maxlength="20">
+				<span class="bor_b">
+					<input type="button" id="sug_submit" value="搜索" class="select_b">
+				</span>
+				<div onselectstart="return false" id="sug" style="display: none;">
+				</div>
+				<input type="hidden" name="t" value="chexing" />
+				<input type="hidden" id="sugcsurl" name="sugcsurl" value="" />
+			</div>
+			</form>
+			<script src="http://image.bitautoimg.com/bsearch/BSearchJS2014/CarSugForZD.min.js"
+				type="text/javascript"></script>
+			<script type="text/javascript">
+				new bitautoautosug(
+{
+	input: document.getElementById("sug_txtkeyword"),
+	sugdiv: document.getElementById("sug"),
+	submit: document.getElementById("sug_submit"),
+	csurl: document.getElementById("sugcsurl"),
+	overclass: "current",
+	outclass: "ml",
+	channel: "chexing",
+	sugtype: 3
+});
+			</script>
+		</div>
+		<div id="divSerialSummaryMianBaoAD" class="bt_hot">
+			<ins id="div_ba10f730-0c13-4dcf-aa81-8b5ccafc9e21" type="ad_play" adplay_ip="" adplay_areaname=""
+				adplay_cityname="" adplay_brandid="" adplay_brandname="" adplay_brandtype=""
+				adplay_blockcode="ba10f730-0c13-4dcf-aa81-8b5ccafc9e21"></ins>
+		</div>
+	</div>
+	<div class="publicTabNew" id="treeFixedNav">
+		<ul class="tab" id="ulForTempClickStat">
+			<li id="treeNav_chexing" class=" current"><a href="http://car.bitauto.com/">车型</a></li>
+			<li id="treeNav_tupian"><a href="http://photo.bitauto.com/">图片</a></li>
+			<li id="treeNav_shipin"><a href="http://v.bitauto.com/">视频</a></li>
+			<li id="treeNav_huati"><a href="http://www.bitauto.com/huati/">话题</a></li>
+			<li id="treeNav_pingce"><a href="http://car.bitauto.com/tree_pingce/">评测</a></li>
+			<li id="treeNav_daogou"><a href="http://car.bitauto.com/tree_daogou/">导购</a></li>
+			<li id="treeNav_pirce"><a href="http://price.bitauto.com/">报价</a></li>
+			<li id="treeNav_jiangjia"><a href="http://jiangjia.bitauto.com/">降价</a></li>
+			<li id="treeNav_dealer"><a href="http://dealer.bitauto.com/">经销商</a></li>
+			<li id="treeNav_wenda"><a href="http://ask.bitauto.com/">问答</a></li>
+			<li id="treeNav_jinkouche"><a href="http://koubei.bitauto.com/">口碑</a></li>
+			<li id="treeNav_yongche"><a href="http://car.bitauto.com/tree_baoyang/">养护</a></li>
+			<li id="treeNav_ershouche"><a href="http://www.taoche.com/">二手车</a></li>
+			<li id="treeNav_baa"><a href="http://baa.bitauto.com/">论坛</a></li>
+			<li class="last" id="treeNav_zijia"><a href="http://zijia.bitauto.com/">自驾游</a></li>
+		</ul>
+	</div>
+</div>

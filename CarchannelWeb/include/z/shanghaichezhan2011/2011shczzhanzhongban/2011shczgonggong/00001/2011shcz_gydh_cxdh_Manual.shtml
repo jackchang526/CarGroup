@@ -1,0 +1,69 @@
+﻿<!--include file="/include/z/shanghaichezhan2011/2011shczzhanzhongban/2011shczgonggong/00001/2011shcz_gydh_cxdh_Manual.shtml"-->
+<div class="carbox_wx">
+	
+    <div class="carbox_t_wx">
+    	<h2><a href="#">车型</a></h2>
+    </div>    
+    <!--switch-->
+    <ul id="ul_id_1" class="switch carswitch_wx">
+        <li><span><a href="http://chezhan.bitauto.com/shanghai/xinche/1/">首发</a></span></li>
+        <li><span><a href="http://chezhan.bitauto.com/shanghai/xinche/2/">上市</a></span></li>
+
+        <li><span><a href="http://chezhan.bitauto.com/shanghai/xinche/3/">热门</a></span></li>
+        <li><span><a href="http://chezhan.bitauto.com/shanghai/xinche/4/">自主</a></span></li>
+        <li><span><a href="http://chezhan.bitauto.com/shanghai/xinche/5/">概念</a></span></li>
+    </ul>
+    <!--switch-->
+
+	<dl class="wszt">
+    	<dt><a href="#">网上展厅</a></dt>
+
+        <dd><span><a href="http://chezhan.bitauto.com/shanghai/zhanguan/1/">E1</a></span></dd>
+        <dd><span><a href="http://chezhan.bitauto.com/shanghai/zhanguan/2/">E2</a></span></dd>
+        <dd><span><a href="http://chezhan.bitauto.com/shanghai/zhanguan/3/">E3</a></span></dd>
+        <dd><span><a href="http://chezhan.bitauto.com/shanghai/zhanguan/4/">E4</a></span></dd>
+        <dd><span><a href="http://chezhan.bitauto.com/shanghai/zhanguan/5/">E5</a></span></dd>
+        <dd><span><a href="http://chezhan.bitauto.com/shanghai/zhanguan/6/">E6</a></span></dd>
+
+        <dd><span><a href="http://chezhan.bitauto.com/shanghai/zhanguan/7/">E7</a></span></dd>
+        <dd><span><a href="http://chezhan.bitauto.com/shanghai/zhanguan/8/">W1</a></span></dd>
+        <dd><span><a href="http://chezhan.bitauto.com/shanghai/zhanguan/9/">W2</a></span></dd>
+        <dd><span><a href="http://chezhan.bitauto.com/shanghai/zhanguan/10/">W3</a></span></dd>
+        <dd><span><a href="http://chezhan.bitauto.com/shanghai/zhanguan/11/">N5</a></span></dd>
+    </dl>
+
+        
+    <!--搜索begin-->
+   <dl class="box_sea">
+          <dt class="so"><a target="_blank" href="http://so.bitauto.com/">车易搜：</a></dt>
+          <dd class="so_c">
+    
+    <div style="position: relative; float: left; text-align: left;">
+        <form action="http://www.cheyisou.com/post.aspx" method="get" target="_blank" name="sug_form" id="sug_form">
+            <input type="text" value="" name="so_keywords" id="sug_txt_keyword" class="sug_onblur text" autocomplete="off">
+            <div style="top: 24px; float: left; overflow: hidden; z-index: 200; display: none;" id="sug" onselectstart="return false">
+
+            </div>
+            <input type="submit" class="bt_input" id="sug_submit" value="搜索">
+            <input type="hidden" value="" id="sug_hidurl">
+            <input type="hidden" value="qiche" name="sug_datatype" id="sug_datatype">
+            <input type="hidden" value="gb2312" name="sug_encoding" id="sug_encoding">
+        </form>        
+    </div>
+   
+          </dd>
+        </dl>
+
+<script type="text/javascript">
+    var sug_txt_name = "sug_txt_keyword";
+    var sug_open_type = "open";
+    var sug_txt_css = "text";
+    var so = document.createElement('SCRIPT');
+    so.src = 'http://image.bitautoimg.com/bsearch/js_bar/sug_form_one.js?v5';
+    document.getElementsByTagName('HEAD')[0].appendChild(so);
+    var ti = setInterval(function() { if (!window.bitauto) { return } else { window.bitauto.init(); clearInterval(ti) } }, 200)
+    window.onunload = function() { }; 
+</script>    <!--搜索end-->
+    
+
+</div>

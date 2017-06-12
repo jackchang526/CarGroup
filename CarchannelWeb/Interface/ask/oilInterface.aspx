@@ -1,0 +1,2 @@
+﻿<%@ Page Language="C#" ContentType="text/xml" AutoEventWireup="true" CodeBehind="oilInterface.aspx.cs" Inherits="BitAuto.CarChannel.CarchannelWeb.Interface.ask.oilInterface" %>
+<%@ OutputCache Duration="360" VaryByParam="none" %>

@@ -1,0 +1,8 @@
+[2016/8/15 14:06:14]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/suteng/&serial=1765&channel=2.21.785&logts=1471241173693
+Ref: http://car01.bitauto.com/suteng/
+Error Message: 从客户端(&)中检测到有潜在危险的 Request.Path 值。
+Stack Trace:    在 System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

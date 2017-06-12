@@ -1,0 +1,9 @@
+﻿<link rel="stylesheet" type="text/css" href="http://img2.bitautoimg.com/uimg/css/0016/yiche_2014_backtop-20140613171847.css"
+	media="all" />
+<div class="yiche-side" id="yiche-side">
+	<ul>
+		<li class="side-top w4"><a href="#yicheAnchor" title="返回顶部" id="backtop" style="display: none">
+			返回顶部</a></li>
+	</ul>
+</div>
+<script type="text/javascript" src="http://image.bitautoimg.com/uimg/index2014/js/yicheside.js"></script>

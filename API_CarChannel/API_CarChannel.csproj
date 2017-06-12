@@ -1,0 +1,663 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{15FF6984-382F-4BE8-9FB0-1E25EDD3A2C8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BitAuto.CarChannelAPI.Web</RootNamespace>
+    <AssemblyName>API_CarChannelWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BitAuto.Beyond.Caching.RefreshCache, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dll\BitAuto.Beyond.Caching.RefreshCache.dll</HintPath>
+    </Reference>
+    <Reference Include="BitAuto.CarUtils">
+      <HintPath>..\..\..\Dll\BitAuto.CarUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="BitAuto.Utils">
+      <HintPath>..\..\..\..\..\P公用平台\Release\BitAuto.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="blowery.Web.HttpCompress">
+      <HintPath>..\DLL\blowery.Web.HttpCompress.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\DLL\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=1.1.0.4184, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dll\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=1.1.0.4184, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dll\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppCode\ExhibitionPageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppCode\PageHelper.cs" />
+    <Compile Include="CarInfo\CarInfoJson.ashx.cs">
+      <DependentUpon>CarInfoJson.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\CarPriceListByCarIDAndCityID.aspx.cs">
+      <DependentUpon>CarPriceListByCarIDAndCityID.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\CarPriceListByCarIDAndCityID.aspx.designer.cs">
+      <DependentUpon>CarPriceListByCarIDAndCityID.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\GetAllCarInfo.ashx.cs">
+      <DependentUpon>GetAllCarInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\GetBrandInfo.ashx.cs">
+      <DependentUpon>GetBrandInfo.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\GetCarDataJson.ashx.cs">
+      <DependentUpon>GetCarDataJson.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\GetCarHotCompare.ashx.cs">
+      <DependentUpon>GetCarHotCompare.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\GetCarInfo.ashx.cs">
+      <DependentUpon>GetCarInfo.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\GetCarList.ashx.cs">
+      <DependentUpon>GetCarList.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\GetCarListForSelectCar.ashx.cs">
+      <DependentUpon>GetCarListForSelectCar.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\GetCarListInfoForCompare.ashx.cs">
+      <DependentUpon>GetCarListInfoForCompare.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\GetCarListMaxFavorable.ashx.cs">
+      <DependentUpon>GetCarListMaxFavorable.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\GetCarParameter.ashx.cs">
+      <DependentUpon>GetCarParameter.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\GetCarPriceComputer.ashx.cs">
+      <DependentUpon>GetCarPriceComputer.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\GetCatInfoNoCache.ashx.cs">
+      <DependentUpon>GetCatInfoNoCache.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\GetLeftTreeJson.ashx.cs">
+      <DependentUpon>GetLeftTreeJson.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\GetMasterInfo.ashx.cs">
+      <DependentUpon>GetMasterInfo.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\GetNavigationHtml.ashx.cs">
+      <DependentUpon>GetNavigationHtml.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\GetProducerInfo.ashx.cs">
+      <DependentUpon>GetProducerInfo.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\GetSerialInfo.ashx.cs">
+      <DependentUpon>GetSerialInfo.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\GetSerialInfoByCsIds.ashx.cs">
+      <DependentUpon>GetSerialInfoByCsIds.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\GetSerialJiangJiaInfo.ashx.cs">
+      <DependentUpon>GetSerialJiangJiaInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\GetSerialOverview.ashx.cs">
+      <DependentUpon>GetSerialOverview.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\MasterBrandToSerialForPhoto.ashx.cs">
+      <DependentUpon>MasterBrandToSerialForPhoto.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\MasterBrandToSerialForSug.ashx.cs">
+      <DependentUpon>MasterBrandToSerialForSug.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\MasterBrandToSerialJson.ashx.cs">
+      <DependentUpon>MasterBrandToSerialJson.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\MasterBrandToSerialNew.aspx.cs">
+      <DependentUpon>MasterBrandToSerialNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\MasterBrandToSerialNew.aspx.designer.cs">
+      <DependentUpon>MasterBrandToSerialNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\RangeSerialList.aspx.cs">
+      <DependentUpon>RangeSerialList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\RangeSerialList.aspx.designer.cs">
+      <DependentUpon>RangeSerialList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\SelectCarToXml.ashx.cs">
+      <DependentUpon>SelectCarToXml.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\SerialBaseInfo.aspx.cs">
+      <DependentUpon>SerialBaseInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\SerialBaseInfo.aspx.designer.cs">
+      <DependentUpon>SerialBaseInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\SerialBaseInfoXML.aspx.cs">
+      <DependentUpon>SerialBaseInfoXML.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\SerialBaseInfoXML.aspx.designer.cs">
+      <DependentUpon>SerialBaseInfoXML.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\SerialCompareForPK.ashx.cs">
+      <DependentUpon>SerialCompareForPK.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\SerialCompareJson.aspx.cs">
+      <DependentUpon>SerialCompareJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\SerialCompareJson.aspx.designer.cs">
+      <DependentUpon>SerialCompareJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\SerialCompareVote.ashx.cs">
+      <DependentUpon>SerialCompareVote.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\SerialJsonInfo.aspx.cs">
+      <DependentUpon>SerialJsonInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\SerialJsonInfo.aspx.designer.cs">
+      <DependentUpon>SerialJsonInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\SerialListJson.aspx.cs">
+      <DependentUpon>SerialListJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\SerialListJson.aspx.designer.cs">
+      <DependentUpon>SerialListJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\SerialXmlInfo.ashx.cs">
+      <DependentUpon>SerialXmlInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Cooperation\GetCarData.aspx.cs">
+      <DependentUpon>GetCarData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cooperation\GetCarData.aspx.designer.cs">
+      <DependentUpon>GetCarData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cooperation\GetCarDataJson.ashx.cs">
+      <DependentUpon>GetCarDataJson.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cooperation\GetCarHtml.ashx.cs">
+      <DependentUpon>GetCarHtml.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cooperation\GetCarInfo.ashx.cs">
+      <DependentUpon>GetCarInfo.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cooperation\GetCarList.ashx.cs">
+      <DependentUpon>GetCarList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Cooperation\GetCategorySerialJson.ashx.cs">
+      <DependentUpon>GetCategorySerialJson.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Cooperation\GetSerialData.ashx.cs">
+      <DependentUpon>GetSerialData.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cooperation\WeiXinConfig.ashx.cs">
+      <DependentUpon>WeiXinConfig.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Cooperation\WeiXinInterface.ashx.cs">
+      <DependentUpon>WeiXinInterface.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exhibition\CarExhibitionInterface.aspx.cs">
+      <DependentUpon>CarExhibitionInterface.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exhibition\CarExhibitionInterface.aspx.designer.cs">
+      <DependentUpon>CarExhibitionInterface.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Exhibition\CarExhibitionXml.ashx.cs">
+      <DependentUpon>CarExhibitionXml.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exhibition\GetExhibitionLeftTreeJson.ashx.cs">
+      <DependentUpon>GetExhibitionLeftTreeJson.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForExternal\GetAllBrandSerialCarInfo.ashx.cs">
+      <DependentUpon>GetAllBrandSerialCarInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\GetCarInfoForCompare.aspx.cs">
+      <DependentUpon>GetCarInfoForCompare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\GetCarInfoForCompare.aspx.designer.cs">
+      <DependentUpon>GetCarInfoForCompare.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\GetCarSellData.aspx.cs">
+      <DependentUpon>GetCarSellData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\GetCarSellData.aspx.designer.cs">
+      <DependentUpon>GetCarSellData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\iframeForDealer.aspx.cs">
+      <DependentUpon>iframeForDealer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\iframeForUCar.aspx.cs">
+      <DependentUpon>iframeForUCar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForExternal\GetSerialYearCarColor.ashx.cs">
+      <DependentUpon>GetSerialYearCarColor.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="GetDataFile.ashx.cs">
+      <DependentUpon>GetDataFile.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Level\GetLevelHtmlCode.ashx.cs">
+      <DependentUpon>GetLevelHtmlCode.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Mai\GetSerialCashBacks.ashx.cs">
+      <DependentUpon>GetSerialCashBacks.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Mai\GetSerialDemand.ashx.cs">
+      <DependentUpon>GetSerialDemand.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Mai\GetSerialDirectSell.ashx.cs">
+      <DependentUpon>GetSerialDirectSell.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Mai\GetSerialGoods.ashx.cs">
+      <DependentUpon>GetSerialGoods.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Mai\GetSerialGoodsNew.ashx.cs">
+      <DependentUpon>GetSerialGoodsNew.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Mai\GetSerialParallelAndSell.ashx.cs">
+      <DependentUpon>GetSerialParallelAndSell.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Mai\GetSerialYichehui.ashx.cs">
+      <DependentUpon>GetSerialYichehui.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="NewsInfo\GetHangqingNews.aspx.cs">
+      <DependentUpon>GetHangqingNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewsInfo\GetJiangJiaDealer.ashx.cs">
+      <DependentUpon>GetJiangJiaDealer.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="NewsInfo\GetJiangJiaNews.ashx.cs">
+      <DependentUpon>GetJiangJiaNews.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test\TempBsToCs.aspx.cs">
+      <DependentUpon>TempBsToCs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\TempBsToCs.aspx.designer.cs">
+      <DependentUpon>TempBsToCs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test\TestForSelectCarToXml.ashx.cs">
+      <DependentUpon>TestForSelectCarToXml.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\TestResponse.ashx.cs">
+      <DependentUpon>TestResponse.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\DelMemCache.aspx.cs">
+      <DependentUpon>DelMemCache.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tool\DelMemCache.aspx.designer.cs">
+      <DependentUpon>DelMemCache.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tree\SummaryTree.aspx.cs">
+      <DependentUpon>SummaryTree.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tree\SummaryTree.aspx.designer.cs">
+      <DependentUpon>SummaryTree.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tree\SummaryTreeNode.aspx.cs">
+      <DependentUpon>SummaryTreeNode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tree\SummaryTreeNode.aspx.designer.cs">
+      <DependentUpon>SummaryTreeNode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ucar\SerialCityUCarJson.aspx.cs">
+      <DependentUpon>SerialCityUCarJson.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ucar\SerialCityUCarJson.aspx.designer.cs">
+      <DependentUpon>SerialCityUCarJson.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\cn.ucar.api\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="WxApp\GetCarList.ashx.cs">
+      <DependentUpon>GetCarList.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WxApp\GetCarParamInfo.ashx.cs">
+      <DependentUpon>GetCarParamInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="WxApp\GetNewCarList.ashx.cs">
+      <DependentUpon>GetNewCarList.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WxApp\GetNewsList.ashx.cs">
+      <DependentUpon>GetNewsList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="WxApp\GetSerialBaseInfo.ashx.cs">
+      <DependentUpon>GetSerialBaseInfo.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zhihuan\GetBrandList.ashx.cs">
+      <DependentUpon>GetBrandList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="zhihuan\GetCityList.ashx.cs">
+      <DependentUpon>GetCityList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="zhihuan\GetSerialCount.ashx.cs">
+      <DependentUpon>GetSerialCount.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="zhihuan\GetSerialList.ashx.cs">
+      <DependentUpon>GetSerialList.ashx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="CarInfo\CarPriceListByCarIDAndCityID.aspx" />
+    <Content Include="CarInfo\GetCarInfoForCompare.aspx" />
+    <Content Include="CarInfo\GetCarSellData.aspx" />
+    <Content Include="CarInfo\iframeForDealer.aspx" />
+    <Content Include="CarInfo\iframeForUCar.aspx" />
+    <Content Include="CarInfo\MasterBrandToSerialNew.aspx" />
+    <Content Include="CarInfo\RangeSerialList.aspx" />
+    <Content Include="CarInfo\SerialBaseInfo.aspx" />
+    <Content Include="CarInfo\SerialBaseInfoXML.aspx" />
+    <Content Include="CarInfo\SerialCompareJson.aspx" />
+    <Content Include="CarInfo\SerialJsonInfo.aspx" />
+    <Content Include="CarInfo\SerialListJson.aspx" />
+    <Content Include="config\CooperationConfig.xml" />
+    <Content Include="config\H5SelectSerialList.xml" />
+    <Content Include="config\ParameterForJson.xml" />
+    <Content Include="config\ParameterForJsonNew.xml" />
+    <Content Include="App_Data\css\GetCarhtml\main.css" />
+    <Content Include="Cooperation\GetCarData.aspx" />
+    <Content Include="Cooperation\script\GetCarhtml\main.js" />
+    <Content Include="Cooperation\script\GetCarhtml\renderMobileSerialListForBaidu.js" />
+    <Content Include="Cooperation\script\GetCarhtml\swiper.js" />
+    <Content Include="Cooperation\script\jquery-1.10.1.min.js" />
+    <Content Include="Exhibition\CarExhibitionInterface.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="NewsInfo\GetHangqingNews.aspx" />
+    <Content Include="test.aspx" />
+    <Content Include="Test\TempBsToCs.aspx" />
+    <Content Include="Tool\DelMemCache.aspx" />
+    <Content Include="Tree\SummaryTree.aspx" />
+    <Content Include="Tree\SummaryTreeNode.aspx" />
+    <Content Include="Ucar\SerialCityUCarJson.aspx" />
+    <Content Include="Cooperation\GetCarList.ashx" />
+    <Content Include="config\PhotoImage.config" />
+    <Content Include="NewsInfo\GetJiangJiaNews.ashx" />
+    <Content Include="CarInfo\GetSerialJiangJiaInfo.ashx" />
+    <Content Include="CarInfo\GetCarListMaxFavorable.ashx" />
+    <Content Include="CarInfo\GetCarInfo.ashx" />
+    <Content Include="config\CarInfo.config" />
+    <Content Include="CarInfo\GetLeftTreeJson.ashx" />
+    <Content Include="Exhibition\GetExhibitionLeftTreeJson.ashx" />
+    <Content Include="Exhibition\CarExhibitionXml.ashx" />
+    <Content Include="Cooperation\GetCategorySerialJson.ashx" />
+    <Content Include="CarInfo\GetCatInfoNoCache.ashx" />
+    <Content Include="config\FileToMemcache.config" />
+    <Content Include="CarInfo\SerialXmlInfo.ashx" />
+    <Content Include="CarInfo\GetSerialOverview.ashx" />
+    <Content Include="GetDataFile.ashx" />
+    <Content Include="CarInfo\GetSerialInfo.ashx" />
+    <Content Include="CarInfo\GetProducerInfo.ashx" />
+    <Content Include="CarInfo\GetBrandInfo.ashx" />
+    <Content Include="NewsInfo\GetJiangJiaDealer.ashx" />
+    <Content Include="Mai\GetSerialGoods.ashx" />
+    <Content Include="Mai\GetSerialGoodsNew.ashx" />
+    <Content Include="CarInfo\GetCarHotCompare.ashx" />
+    <Content Include="CarInfo\GetMasterInfo.ashx" />
+    <Content Include="CarInfo\GetCarParameter.ashx" />
+    <Content Include="CarInfo\GetCarListForSelectCar.ashx" />
+    <Content Include="Mai\GetSerialCashBacks.ashx" />
+    <Content Include="CarInfo\SelectCarToXml.ashx" />
+    <Content Include="CarInfo\GetNavigationHtml.ashx" />
+    <Content Include="CarInfo\MasterBrandToSerialJson.ashx" />
+    <Content Include="Mai\GetSerialDemand.ashx" />
+    <Content Include="Mai\GetSerialDirectSell.ashx" />
+    <Content Include="CarInfo\MasterBrandToSerialForSug.ashx" />
+    <Content Include="CarInfo\MasterBrandToSerialForPhoto.ashx" />
+    <Content Include="Cooperation\GetCarHtml.ashx" />
+    <Content Include="CarInfo\SerialCompareForPK.ashx" />
+    <Content Include="CarInfo\SerialCompareVote.ashx" />
+    <Content Include="CarInfo\CarInfoJson.ashx" />
+    <Content Include="CarInfo\GetCarDataJson.ashx" />
+    <Content Include="Mai\GetSerialParallelAndSell.ashx" />
+    <Content Include="Cooperation\WeiXinConfig.ashx" />
+    <Content Include="Mai\GetSerialYichehui.ashx" />
+    <Content Include="Cooperation\WeiXinInterface.ashx" />
+    <Content Include="CarInfo\GetCarListInfoForCompare.ashx" />
+    <Content Include="CarInfo\GetCarList.ashx" />
+    <Content Include="Cooperation\GetCarInfo.ashx" />
+    <Content Include="CarInfo\GetSerialInfoByCsIds.ashx" />
+    <Content Include="CarInfo\GetCarPriceComputer.ashx" />
+    <Content Include="config\ParameterConfigurationNew.config" />
+    <Content Include="Cooperation\GetSerialData.ashx" />
+    <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Test\TestForSelectCarToXml.ashx" />
+    <Content Include="Test\TestResponse.ashx" />
+    <None Include="Web References\cn.ucar.api\CarSourceForBitAuto.disco" />
+    <Content Include="Web.Config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Web References\cn.ucar.api\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="zhihuan\GetSerialList.ashx" />
+    <Content Include="zhihuan\GetCityList.ashx" />
+    <Content Include="zhihuan\GetBrandList.ashx" />
+    <Content Include="zhihuan\GetSerialCount.ashx" />
+    <Content Include="WxApp\GetNewCarList.ashx" />
+    <Content Include="WxApp\GetSerialBaseInfo.ashx" />
+    <Content Include="WxApp\GetCarList.ashx" />
+    <Content Include="WxApp\GetNewsList.ashx" />
+    <Content Include="WxApp\GetCarParamInfo.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{1A787431-F289-4D25-A9C5-D9F6291F6C4D}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{37C98BF2-CDB5-455B-B5E9-C7EDAD27E5FA}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{3539D67B-555B-4856-8736-765992C5D617}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{95AD515E-935F-49C8-8721-8F89D0B8614D}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="config\blowery.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Level\GetLevelHtmlCode.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ForExternal\GetAllBrandSerialCarInfo.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ForExternal\GetSerialYearCarColor.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CarInfo\GetAllCarInfo.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Cooperation\GetCarDataJson.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://api.taoche.cn/CarSourceInterface/CarSourceForBitAuto.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\cn.ucar.api\</RelPath>
+      <UpdateFromURL>http://api.taoche.cn/CarSourceInterface/CarSourceForBitAuto.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>API_CarChannelWeb_cn_ucar_api_CarSourceForBitAuto</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\cn.ucar.api\CarSourceForBitAuto.wsdl" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>26887</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

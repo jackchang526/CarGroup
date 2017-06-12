@@ -1,0 +1,2 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GetCarHotCompareList.aspx.cs" Inherits="BitAuto.CarChannel.CarchannelWeb.AjaxNew.GetCarHotCompareList" %>
+<%@ OutputCache Duration="600" VaryByParam="carID" %>

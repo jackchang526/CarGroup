@@ -1,0 +1,13 @@
+﻿<div class="bt_page">
+    <div class="line_box">
+        <div class="error_page">
+			<h1>很抱歉，您访问的页面不存在。</h1>
+			<p>您正在浏览的网页可能已被删除、重命名或暂时不可用。</p>
+            <dl>
+            	<dt>试试下面几种方法吧：</dt>
+                <dd>1.请检查您输入的网址是否正确。</dd>
+                <dd>2.请直接访问<a href="http://www.yiche.com/">易车网首页</a>。</dd>
+            </dl>
+		</div>
+    </div>
+</div>

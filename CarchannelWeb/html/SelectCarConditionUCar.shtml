@@ -1,0 +1,66 @@
+﻿<!--按条件选车-->
+<div style="border-bottom: 0" id="tempNoborder" class="line_box c0622_01">
+
+    <script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/common/car/selectcarcondition.js"></script>
+
+    <h3>
+        <span>按条件找二手车</span></h3>
+    <div id="showhideCon" class="c0621_01" style="display: none">
+        <dl>
+            <dt>价 格：</dt><dd><ul>
+                <li class="current"><a href="http://car.bitauto.com/tree_ucar/search/">不限</a></li><li>
+                    <a href="http://car.bitauto.com/tree_ucar/search/?p=0-3">3万以下</a></li><li><a href="http://car.bitauto.com/tree_ucar/search/?p=3-5">
+                        3-5万</a></li><li><a href="http://car.bitauto.com/tree_ucar/search/?p=5-8">5-8万</a></li><li>
+                            <a href="http://car.bitauto.com/tree_ucar/search/?p=8-12">8-12万</a></li><li><a href="http://car.bitauto.com/tree_ucar/search/?p=12-18">
+                                12-18万</a></li><li><a href="http://car.bitauto.com/tree_ucar/search/?p=18-25">18-25万</a></li><li>
+                                    <a href="http://car.bitauto.com/tree_ucar/search/?p=25-40">25-40万</a></li><li><a
+                                        href="http://car.bitauto.com/tree_ucar/search/?p=40-9999">40万以上</a></li></ul>
+            </dd>
+        </dl>
+        <dl>
+            <dt>级 别：</dt><dd><ul>
+                <li class="current"><a href="http://car.bitauto.com/tree_ucar/search/">不限</a></li>
+                <li><a href="http://car.bitauto.com/tree_ucar/search/?l=63">轿车</a></li>
+                <li><a href="http://car.bitauto.com/tree_ucar/search/?l=7">MPV</a></li>
+                    <li><a href="http://car.bitauto.com/tree_ucar/search/?l=8">SUV</a></li>
+                    <li><a href="http://car.bitauto.com/tree_ucar/search/?l=9">跑车</a></li>
+                    <li><a href="http://car.bitauto.com/tree_ucar/search/?l=11">面包车</a></li>
+                    </ul>
+            </dd>
+        </dl>
+        <div id="jiaocheBox" class="car_sub_select"><div class="ico_arrow"></div>
+        <ul><li><a href="http://car.bitauto.com/tree_ucar/search/?l=63">全部</a></li>
+        <li><a href="http://car.bitauto.com/tree_ucar/search/?l=1">微型车</a></li>
+        <li><a href="http://car.bitauto.com/tree_ucar/search/?l=2">小型车</a></li>
+        <li><a href="http://car.bitauto.com/tree_ucar/search/?l=3">紧凑型车</a></li>
+        <li><a href="http://car.bitauto.com/tree_ucar/search/?l=5">中型车</a></li>
+        <li><a href="http://car.bitauto.com/tree_ucar/search/?l=4">中大型车</a></li>
+        <li><a href="http://car.bitauto.com/tree_ucar/search/?l=6">豪华车</a></li></ul></div>
+           <dl>
+            <dt>变速箱：</dt><dd><ul>
+                <li class="current"><a href="http://car.bitauto.com/tree_ucar/search/">不限</a></li><li>
+                    <a href="http://car.bitauto.com/tree_ucar/search/?t=1">手动</a></li>
+                    <li><a href="http://car.bitauto.com/tree_ucar/search/?t=62">自动</a></li>
+                    </ul>
+            </dd>
+        </dl>
+
+        <dl>
+            <dt>排 量：</dt><dd><ul>
+                <li class="current"><a href="http://car.bitauto.com/tree_ucar/search/">不限</a></li><li>
+                    <a href="http://car.bitauto.com/tree_ucar/search/?d=0-1.0">1.0以下</a></li><li><a href="http://car.bitauto.com/tree_ucar/search/?d=1.0-1.6">
+                        1.0-1.6L</a></li><li><a href="http://car.bitauto.com/tree_ucar/search/?d=1.6-2.0">1.6-2.0L</a></li><li>
+                            <a href="http://car.bitauto.com/tree_ucar/search/?d=2.0-3.0">2.0-3.0L</a></li><li><a
+                                href="http://car.bitauto.com/tree_ucar/search/?d=3.0-9">3.0L以上</a></li></ul>
+            </dd>
+        </dl>
+     
+        <div class="hideline">
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+    <div class="more">
+      </div>
+</div>
+

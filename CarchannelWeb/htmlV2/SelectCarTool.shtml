@@ -1,0 +1,406 @@
+﻿<div id="showhideCon" class="tool-selectcar-v2 y2015">
+    <dl>
+        <dt>价格：</dt>
+        <dd>
+            <ul>
+                <li id="price0" class="current"><a href="/xuanchegongju/#anchorTitle" data-channelid="2.94.548">不限</a></li>
+                <li id="price1"><a href="/xuanchegongju/?p=0-5#anchorTitle" stattype="price0-5" data-channelid="2.94.552">5万以下</a></li>
+                <li id="price2"><a href="/xuanchegongju/?p=5-8#anchorTitle" stattype="price5-8" data-channelid="2.94.553">5-8万</a></li>
+                <li id="price3"><a href="/xuanchegongju/?p=8-12#anchorTitle" stattype="price8-12" data-channelid="2.94.554">8-12万</a></li>
+                <li id="price4"><a href="/xuanchegongju/?p=12-18#anchorTitle" stattype="price12-18" data-channelid="2.94.555">12-18万</a></li>
+                <li id="price5"><a href="/xuanchegongju/?p=18-25#anchorTitle" stattype="price18-25" data-channelid="2.94.556">18-25万</a></li>
+                <li id="price6"><a href="/xuanchegongju/?p=25-40#anchorTitle" stattype="price25-40" data-channelid="2.94.557">25-40万</a></li>
+                <li id="price7"><a href="/xuanchegongju/?p=40-80#anchorTitle" stattype="price40-80" data-channelid="2.94.558">40-80万</a></li>
+                <li id="price8"><a href="/xuanchegongju/?p=80-9999#anchorTitle" stattype="price80-9999" data-channelid="2.94.559">80万以上</a></li>
+                <li class="last current" id="p_custom_null" style="z-index:9;">
+                    <div class="price-input">
+                        <input type="text" class="txtinput" id="p_min" maxlength="4" /> -
+                        <input type="text" class="txtinput" id="p_max" maxlength="4" /> 万
+                        <div class="prompt-layer" id="p_alert" style="display:none;"></div>
+                    </div>
+                    <a href="javascript:;" class="btn-md" id="btnPriceSubmit" data-channelid="2.94.560">确定</a>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <dl class="dl-level">
+        <dt>级别：</dt>
+        <dd>
+            <ul>
+                <li id="level0" class="current"><a href="/xuanchegongju/#anchorTitle">不限</a></li>
+                <li id="level63"><a href="/xuanchegongju/?l=63#anchorTitle" stattype="jiaoche" data-channelid="2.161.1668">轿车</a></li>
+                <li id="level1">(<a href="/weixingche/#anchorTitle" class="cSubItem" stattype="weixingche" data-channelid="2.161.1669">微型</a></li>
+                <li id="level2"><a href="/xiaoxingche/#anchorTitle" class="cSubItem" stattype="xiaoxingche" data-channelid="2.161.1670">小型</a></li>
+                <li id="level3">
+                    <a href="/jincouxingche/#anchorTitle" class="cSubItem" stattype="jincouxingche" data-channelid="2.161.1671">
+                        紧凑型
+                    </a>
+                </li>
+                <li id="level5"><a href="/zhongxingche/#anchorTitle" class="cSubItem" stattype="zhongxingche" data-channelid="2.161.1672">中型</a></li>
+                <li id="level4">
+                    <a href="/zhongdaxingche/#anchorTitle" class="cSubItem" stattype="zhongdaxingche" data-channelid="2.161.1673">
+                        中大型
+                    </a>
+                </li>
+                <li id="level6"><a href="/haohuaxingche/#anchorTitle" class="cSubItem" stattype="haohuache" data-channelid="2.161.1674">豪华型</a>)</li>
+                <li id="level7"><a href="/mpv/#anchorTitle" stattype="mpv" data-channelid="2.161.1675">MPV</a></li>
+                <li id="level8" class="last" style="z-index: 8;">
+                    <a href="/suv/#anchorTitle" class="ico-arrow" stattype="suv" data-channelid="2.161.1676">SUV</a>
+                    <div id="suv_popup" class="drop-layer" style="display: none;">
+                        <a href="/suv/#anchorTitle" class="current" data-channelid="2.161.1676">SUV</a>
+                        <a href="/suv/x/#anchorTitle" data-channelid="2.161.1677">&nbsp;小型SUV</a>
+                        <a href="/suv/j/#anchorTitle" data-channelid="2.161.1678">&nbsp;紧凑型SUV</a>
+                        <a href="/suv/z/#anchorTitle" data-channelid="2.161.1679">&nbsp;中型SUV</a>
+                        <a href="/suv/zd/#anchorTitle" data-channelid="2.161.1692">&nbsp;中大型SUV</a>
+                        <a href="/suv/q/#anchorTitle" data-channelid="2.161.1681">&nbsp;大型SUV</a>
+                    </div>
+                </li>
+                <li id="level9"><a href="/paoche/#anchorTitle" stattype="paoche" data-channelid="2.161.1682">跑车</a></li>
+                <li id="level11"><a href="/mianbaoche/#anchorTitle" stattype="mianbaoche" data-channelid="2.161.1684">面包车</a></li>
+                <li id="level18"><a href="/pika/#anchorTitle" stattype="pika" data-channelid="2.161.1683">皮卡</a></li>
+                <li id="level19"><a href="/keche/#anchorTitle" stattype="keche" data-channelid="2.161.1685">客车</a></li>
+            </ul>
+        </dd>
+    </dl>
+    <dl class="w-short">
+        <dt>车身：</dt>
+        <dd>
+            <ul>
+                <li id="bodyform0" class="current"><a href="/xuanchegongju/?b=0" data-channelid="2.94.580">不限</a></li>
+                <li id="bodyform1">
+                    <a href="/xuanchegongju/?b=1#anchorTitle" data-channelid="2.94.581">两厢</a>
+                </li>
+                <li id="bodyform2">
+                    <a href="/xuanchegongju/?b=2#anchorTitle" data-channelid="2.94.582">
+                        三厢
+                    </a>
+                </li>
+                <li id="wagon1"><a href="/xuanchegongju/?lv=1#anchorTitle" data-channelid="2.94.583">旅行版</a></li>
+            </ul>
+        </dd>
+    </dl>
+    <dl class="w-long">
+        <dt>能源：</dt>
+        <dd>
+            <ul>
+                <li id="fueltype0" class="current"><a href="/xuanchegongju/?f=0#anchorTitle">不限</a></li>
+                <li id="fueltype7">
+                    <a href="/xuanchegongju/?f=7#anchorTitle" data-channelid="2.161.1686">汽油</a>
+                </li>
+                <li id="fueltype8">
+                    <a href="/xuanchegongju/?f=8#anchorTitle" data-channelid="2.161.1687">
+                        柴油
+                    </a>
+                </li>
+                <li id="fueltype16"><a href="/xuanchegongju/?f=16#anchorTitle" data-channelid="2.161.1688">纯电动</a></li>
+                <li id="fueltype2">
+                    <a href="/xuanchegongju/?f=2#anchorTitle" class="cSubItem" data-channelid="2.161.1689">油电混合</a>
+                </li>
+                <li id="fueltype4">
+                    <a href="/xuanchegongju/?f=4#anchorTitle" data-channelid="2.161.1690">
+                        油气混合
+                    </a>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <dl id="toolGuoBie" class="w-short">
+        <dt>厂商：</dt>
+        <dd>
+            <ul>
+                <li id="brandType0" class="current"><a href="/xuanchegongju/?g=0#anchorTitle" data-channelid="2.94.590">不限</a></li>
+                <li id="brandType1"><a href="/xuanchegongju/?g=1#anchorTitle" stattype="zizhu" data-channelid="2.94.591">自主</a></li>
+                <li id="brandType2"><a href="/xuanchegongju/?g=2#anchorTitle" stattype="hezi" data-channelid="2.94.592">合资</a></li>
+                <li id="brandType4"><a href="/xuanchegongju/?g=4#anchorTitle" stattype="jinkou" data-channelid="2.94.593">进口</a></li>
+
+            </ul>
+        </dd>
+    </dl>
+    <dl class="w-long">
+        <dt>国别：</dt>
+        <dd>
+            <ul>
+                <li id="country0" class="current"><a href="/xuanchegongju/?c=0#anchorTitle" data-channelid="2.94.594">不限</a></li>
+                <li id="country4"><a href="/xuanchegongju/?c=4#anchorTitle" stattype="jinkou" data-channelid="2.94.595">德系</a></li>
+                <li id="country2"><a href="/xuanchegongju/?c=2#anchorTitle" stattype="jinkou" data-channelid="2.94.596">日系</a></li>
+                <li id="country16"><a href="/xuanchegongju/?c=16#anchorTitle" stattype="jinkou" data-channelid="2.94.597">韩系</a></li>
+                <li id="country8"><a href="/xuanchegongju/?c=8#anchorTitle" stattype="jinkou" data-channelid="2.94.598">美系</a></li>
+                <li id="country484"><a href="/xuanchegongju/?c=484#anchorTitle" stattype="jinkou" data-channelid="2.94.599">欧系</a></li>
+                <li id="country509"><a href="/xuanchegongju/?c=509#anchorTitle" stattype="jinkou" data-channelid="2.94.600">非日系</a></li>
+            </ul>
+        </dd>
+    </dl>
+    <dl id="toolBianSuXiang" class="w-short">
+        <dt>变速箱：</dt>
+        <dd>
+            <ul>
+                <li id="trans0" class="current"><a href="/xuanchegongju/?t=0#anchorTitle" data-channelid="2.94.601">不限</a></li>
+                <li id="trans1">
+                    <a href="/xuanchegongju/?t=1#anchorTitle" stattype="trans_mt" data-channelid="2.94.602">手动</a>
+                </li>
+                <li id="trans126" class="last" style="z-index: 2;">
+                    <a href="/xuanchegongju/?t=126#anchorTitle" class="ico-arrow" stattype="trans_at" data-channelid="2.94.603">
+                        自动
+                    </a>
+                    <div id="trans_popup" class="drop-layer" style="display: none;">
+                        <a href="/xuanchegongju/?t=126#anchorTitle" class="current" data-channelid="2.94.604">自动</a>
+                        <a href="/xuanchegongju/?t=32#anchorTitle" stattype="banzidong" data-channelid="2.94.605">&nbsp;半自动（AMT）</a>
+                        <a href="/xuanchegongju/?t=2#anchorTitle" stattype="zidong" data-channelid="2.94.606">&nbsp;自动（AT）</a>
+                        <a href="/xuanchegongju/?t=4#anchorTitle" stattype="shouziyiti" data-channelid="2.94.607">&nbsp;手自一体</a>
+                        <a href="/xuanchegongju/?t=8#anchorTitle" stattype="wujibiansu" data-channelid="2.94.608">&nbsp;无极变速（CVT）</a>
+                        <a href="/xuanchegongju/?t=16#anchorTitle" stattype="shuanglihe" data-channelid="2.94.609">&nbsp;双离合（DSG）</a>
+                    </div>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <dl id="toolPaiLiang" class="w-long">
+        <dt>排量：</dt>
+        <dd>
+            <ul>
+                <li id="dis0" class="current"><a href="/xuanchegongju/?d=#anchorTitle" data-channelid="2.94.610">不限</a></li>
+                <li id="dis1">
+                    <a href="/xuanchegongju/?d=0-1.3#anchorTitle" stattype="dis0-13" data-channelid="2.94.611">1.3L以下</a>
+                </li>
+                <li id="dis2">
+                    <a href="/xuanchegongju/?d=1.3-1.6#anchorTitle" stattype="dis13-16" data-channelid="2.94.612">1.3-1.6L</a>
+                </li>
+                <li id="dis3">
+                    <a href="/xuanchegongju/?d=1.7-2.0#anchorTitle" stattype="dis17-20" data-channelid="2.94.613">1.7-2L</a>
+                </li>
+                <li id="dis4">
+                    <a href="/xuanchegongju/?d=2.1-3.0#anchorTitle" stattype="dis21-30" data-channelid="2.94.614">2.1-3L</a>
+                </li>
+                <li id="dis5">
+                    <a href="/xuanchegongju/?d=3.1-5.0#anchorTitle" stattype="dis31-50" data-channelid="2.94.615">3.1-5L</a>
+                </li>
+                <li id="dis6">
+                    <a href="/xuanchegongju/?d=5.0-9#anchorTitle" stattype="dis50-999" data-channelid="2.94.616">5L以上</a>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <dl class="w-short">
+        <dt>驱动：</dt>
+        <dd>
+            <ul>
+                <li id="drivetype0" class="current"><a href="/xuanchegongju/?dt=0#anchorTitle" data-channelid="2.94.617">不限</a></li>
+                <li id="drivetype1"><a href="/xuanchegongju/?dt=1#anchorTitle" data-channelid="2.94.618">前驱</a></li>
+                <li id="drivetype2">
+                    <a href="/xuanchegongju/?dt=2#anchorTitle" data-channelid="2.94.619">后驱</a>
+                </li>
+                <li id="drivetype252" class="last" style="z-index: 1;">
+                    <a href="/xuanchegongju/?dt=252#anchorTitle" class="ico-arrow" data-channelid="2.94.620">四驱</a>
+                    <div id="drivetype_popup" class="drop-layer" style="display: none;">
+                            <a href="/xuanchegongju/?dt=252#anchorTitle" class="current" data-channelid="2.94.621">四驱</a>
+                            <a href="/xuanchegongju/?dt=4#anchorTitle" data-channelid="2.94.622">&nbsp;全时四驱</a>
+                            <a href="/xuanchegongju/?dt=8#anchorTitle" data-channelid="2.94.623">&nbsp;分时四驱</a>
+                            <a href="/xuanchegongju/?dt=16#anchorTitle" data-channelid="2.94.624">&nbsp;适时四驱</a>
+                    </div>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <!--<dl class="w-long">
+        <dt>油&#12288;耗：</dt>
+        <dd>
+            <ul>
+                <li id="fc0" class="current"><a href="/xuanchegongju/?fc=#anchorTitle" data-channelid="2.94.625">不限</a></li>
+                <li id="fc1">
+                    <a href="/xuanchegongju/?fc=0-6#anchorTitle" data-channelid="2.94.626">6L以下</a>
+                </li>
+                <li id="fc2">
+                    <a href="/xuanchegongju/?fc=6-8#anchorTitle" data-channelid="2.94.627">6-8L</a>
+                </li>
+                <li id="fc3">
+                    <a href="/xuanchegongju/?fc=8-10#anchorTitle" data-channelid="2.94.628">8-10L</a>
+                </li>
+                <li id="fc4">
+                    <a href="/xuanchegongju/?fc=10-12#anchorTitle" data-channelid="2.94.629">10-12L</a>
+                </li>
+                <li id="fc5">
+                    <a href="/xuanchegongju/?fc=12-15#anchorTitle" data-channelid="2.94.630">12-15L</a>
+                </li>
+                <li id="fc6">
+                    <a href="/xuanchegongju/?fc=15-9999#anchorTitle" data-channelid="2.94.631">15L以上</a>
+                </li>
+            </ul>
+        </dd>
+    </dl>-->
+    <dl class="w-long">
+        <dt>排放：</dt>
+        <dd>
+            <ul>
+                <li class="current"><a href="/xuanchegongju/#anchorTitle">不限</a></li>
+                <li>
+                    <a href="/xuanchegongju/?more=126#anchorTitle">国4</a>
+                </li>
+                <li>
+                    <a href="/xuanchegongju/?more=125#anchorTitle">国5</a>
+                </li>
+                <li>
+                    <a href="/xuanchegongju/?more=127#anchorTitle">京5</a>
+                </li>
+                <li>
+                    <a href="/xuanchegongju/?more=123#anchorTitle">欧4</a>
+                </li>
+                <li>
+                    <a href="/xuanchegongju/?more=122#anchorTitle">欧5</a>
+                </li>
+                <li>
+                    <a href="/xuanchegongju/?more=126_123#anchorTitle">国4/欧4</a>
+                </li>
+                <li>
+                    <a href="/xuanchegongju/?more=125_122#anchorTitle">国5/欧5</a>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <dl class="w-short">
+        <dt>车门数：</dt>
+        <dd>
+            <ul>
+                <li id="doors0" class="current"><a href="/xuanchegongju/#anchorTitle" data-channelid="2.94.632">不限</a></li>
+                <li id="doors1">
+                    <a href="/xuanchegongju/?more=268#anchorTitle" data-channelid="2.94.633">2-3门</a>
+                </li>
+                <li id="doors2">
+                    <a href="/xuanchegongju/?more=270#anchorTitle" data-channelid="2.94.634">
+                        4-6门
+                    </a>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <dl class="w-long">
+        <dt>座位数：</dt>
+        <dd>
+            <ul>
+                <li id="seatnum0" class="current"><a href="/xuanchegongju/#anchorTitle" data-channelid="2.94.635">不限</a></li>
+                <li id="seatnum1">
+                    <a href="/xuanchegongju/?more=262#anchorTitle" data-channelid="2.94.636">2座</a>
+                </li>
+                <li id="seatnum2">
+                    <a href="/xuanchegongju/?more=263#anchorTitle" data-channelid="2.94.637">
+                        4-5座
+                    </a>
+                </li>
+                <li id="seatnum3"><a href="/xuanchegongju/?more=265#anchorTitle" data-channelid="2.94.638">6座</a></li>
+                <li id="seatnum4">
+                    <a href="/xuanchegongju/?more=266#anchorTitle" data-channelid="2.94.639">7座</a>
+                </li>
+                <li id="seatnum5">
+                    <a href="/xuanchegongju/?more=267#anchorTitle" data-channelid="2.94.640">
+                        7座以上
+                    </a>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <dl id="toolPeiZhi">
+        <dt>其它：</dt>
+        <dd class="config-list">
+            <ul>
+                <li>
+                    <label>
+                        <input id="more_204" type="checkbox" data-channelid="2.94.641" />天窗
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_196" type="checkbox" data-channelid="2.94.642" />GPS导航
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_200" type="checkbox" data-channelid="2.94.643" />倒车影像
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_180" type="checkbox" data-channelid="2.94.644" />儿童锁
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_101" type="checkbox" data-channelid="2.94.645" />涡轮增压
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_179" type="checkbox" data-channelid="2.94.646" />无钥匙启动
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_141" type="checkbox" data-channelid="2.94.647" />四轮碟刹
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_250" type="checkbox" data-channelid="2.94.648" />真皮座椅
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_184" type="checkbox" data-channelid="2.94.649" />ESP
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_224" type="checkbox" data-channelid="2.94.650" />氙气大灯
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_194" type="checkbox" data-channelid="2.94.651" />定速巡航
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_274" type="checkbox" data-channelid="2.94.652" />自动空调
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_177" type="checkbox" data-channelid="2.94.653" />胎压监测
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_189" type="checkbox" data-channelid="2.94.654" />自动泊车
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_249" type="checkbox" data-channelid="2.94.655" />空气净化器
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_163" type="checkbox" data-channelid="2.94.656" />换挡拨片
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_236" type="checkbox" data-channelid="2.94.657" />电动座椅
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_181" type="checkbox" data-channelid="2.94.658" />儿童座椅接口
+                    </label>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <!--<dl class="tool-info"><span>条件太少？，试试</span><a href="/gaojixuanche/" data-action="tool-msg" target="_blank"> 高级选车工具&gt;&gt;</a></dl>-->
+    <!--<dl class="tool-info">
+        <span>如果以上条件不能满足您，请</span> <a href="http://www.bitauto.com/feedback/?CategoryType=7" target="_blank">告知我们&gt;&gt;</a></dl>-->
+    <dl class="tool-info">
+        <p>
+            <span>条件太少？试试</span>
+            <a href="/gaojixuanche/" target="_blank" data-alert="alert">高级选车工具</a>
+        </p>
+    </dl>
+</div>

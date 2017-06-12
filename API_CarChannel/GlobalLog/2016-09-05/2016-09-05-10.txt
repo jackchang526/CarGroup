@@ -1,0 +1,8 @@
+[2016/9/5 10:13:04]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/CarInfo/MasterBrandToSerialNew.aspx?type=8&pid=4748&rt=cartype&serias=m&key=cartype_4748_8_m&include=1
+Stack Trace: System.ArgumentOutOfRangeException: 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+   在 System.Text.StringBuilder.Remove(Int32 startIndex, Int32 length)
+   在 BitAuto.CarChannelAPI.Web.CarInfo.MasterBrandToSerialNew.GetCarTypeContent() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\MasterBrandToSerialNew.aspx.cs:行号 260
+

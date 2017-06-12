@@ -1,0 +1,14 @@
+﻿<!-- /include/special/seo/00001/bitauto_car_12div_hotcar_new_Manual.shtml -->
+<div class="line_box">
+	<div class="h3_tab">
+		<ul>
+			<li class="current">热门推荐</li>
+		</ul>
+	</div>
+	<h3></h3>
+	<div class="clear"></div>
+	<div class="car-seo-block">
+		<!--#include file="~/include/special/seo/00001/bitauto_car_12div_hotcar_new_Manual.shtml"-->
+	</div>
+	<div class="clear"></div>
+</div>

@@ -1,0 +1,110 @@
+[2013/5/20 14:18:08]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/zhonghuav5/?ID=3534&
+Stack Trace: 未找到对应Memcache的key,文件路径：E:\Data\AllSerialFuel.xml
+
+[2013/5/20 14:18:13]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/zhonghuav5/?ID=3534&
+Stack Trace: 读取文件失败2次且memcache数据源也为空(未将对象引用设置到对象的实例。)，路径：E:\Data\AllSerialFuel.xml
+
+[2013/5/20 14:18:32]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/zhonghuav5/?ID=3534&
+Stack Trace: 未找到对应Memcache的key,文件路径：E:\Data\SerialNews\FocusNews\Xml\Serial_FocusNews_3534.xml
+
+[2013/5/20 14:18:32]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/zhonghuav5/?ID=3534&
+Stack Trace: 读取文件失败2次且memcache数据源也为空(未将对象引用设置到对象的实例。)，路径：E:\Data\SerialNews\FocusNews\Xml\Serial_FocusNews_3534.xml
+
+[2013/5/20 14:18:38]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/zhonghuav5/?ID=3534&
+Stack Trace: 未找到对应Memcache的key,文件路径：E:\Data\SerialNews\SerialVideo\Serial_Video_3534.xml
+
+[2013/5/20 14:18:38]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/zhonghuav5/?ID=3534&
+Stack Trace: 读取文件失败2次且memcache数据源也为空(未将对象引用设置到对象的实例。)，路径：E:\Data\SerialNews\SerialVideo\Serial_Video_3534.xml
+
+[2013/5/20 14:54:56]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/cartree/CX_Default.aspx?tagtype=chexing
+Stack Trace: 未找到文件对应Memcache的key,文件路径：D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\config\guideConfig.xml
+
+[2013/5/20 14:54:56]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/cartree/CX_Default.aspx?tagtype=chexing
+Stack Trace: 读取文件失败2次且memcache数据源也为空(未将对象引用设置到对象的实例。)，路径：D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\config\guideConfig.xml
+
+[2013/5/20 14:54:57]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/cartree/CX_Default.aspx?tagtype=chexing
+Stack Trace: 未找到文件对应Memcache的key,文件路径：E:\Data\autodata.xml
+
+[2013/5/20 14:54:57]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/cartree/CX_Default.aspx?tagtype=chexing
+Stack Trace: 读取文件失败2次且memcache数据源也为空(未将对象引用设置到对象的实例。)，路径：E:\Data\autodata.xml
+
+[2013/5/20 14:54:58]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/cartree/CX_Default.aspx?tagtype=chexing
+Stack Trace: 未找到文件对应Memcache的key,文件路径：D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Data\ad\SerialListAD.xml
+
+[2013/5/20 14:54:58]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/cartree/CX_Default.aspx?tagtype=chexing
+Stack Trace: 读取文件失败2次且memcache数据源也为空(未将对象引用设置到对象的实例。)，路径：D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\App_Data\ad\SerialListAD.xml
+
+[2013/5/20 14:56:01]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/cartree/CX_Default.aspx?tagtype=chexing
+Stack Trace: 未找到文件对应Memcache的key,文件路径：D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\config\guideConfig.xml
+
+[2013/5/20 14:56:01]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/cartree/CX_Default.aspx?tagtype=chexing
+Stack Trace: 读取文件失败2次且memcache数据源也为空(未将对象引用设置到对象的实例。)，路径：D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\config\guideConfig.xml
+
+[2013/5/20 14:56:32]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/cartree/CX_Default.aspx?tagtype=chexing
+Stack Trace: 未找到文件对应Memcache的key,文件路径：D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\config\guideConfig.xml
+
+[2013/5/20 14:56:32]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/cartree/CX_Default.aspx?tagtype=chexing
+Stack Trace: 读取文件失败2次且memcache数据源也为空(未将对象引用设置到对象的实例。)，路径：D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\config\guideConfig.xml
+
+[2013/5/20 14:56:57]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/bc301-3424/?ID=3424&
+Stack Trace: 未找到文件对应Memcache的key,文件路径：E:\Data\AllSerialFuel.xml
+
+[2013/5/20 14:56:57]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/bc301-3424/?ID=3424&
+Stack Trace: 读取文件失败2次且memcache数据源也为空(未将对象引用设置到对象的实例。)，路径：E:\Data\AllSerialFuel.xml
+
+[2013/5/20 14:56:59]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/bc301-3424/?ID=3424&
+Stack Trace: 未找到文件对应Memcache的key,文件路径：E:\Data\SerialNews\FocusNews\Xml\Serial_FocusNews_3424.xml
+
+[2013/5/20 14:56:59]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/bc301-3424/?ID=3424&
+Stack Trace: 读取文件失败2次且memcache数据源也为空(未将对象引用设置到对象的实例。)，路径：E:\Data\SerialNews\FocusNews\Xml\Serial_FocusNews_3424.xml
+
+[2013/5/20 14:57:00]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/bc301-3424/?ID=3424&
+Stack Trace: 未找到文件对应Memcache的key,文件路径：E:\Data\SerialNews\SerialVideo\Serial_Video_3424.xml
+
+[2013/5/20 14:57:00]  
+IP: 127.0.0.1
+Error in: http://car.bitauto.com/bc301-3424/?ID=3424&
+Stack Trace: 读取文件失败2次且memcache数据源也为空(未将对象引用设置到对象的实例。)，路径：E:\Data\SerialNews\SerialVideo\Serial_Video_3424.xml
+

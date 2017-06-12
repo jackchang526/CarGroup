@@ -1,0 +1,62 @@
+﻿<a href="javascript:RedirectShowSearch();" class="btn-search-j">搜索</a>
+<a href="javascript:void(0)" class="btn-menu-p"><span>导航<i></i></span></a>
+
+<div class="menu-pop-n">
+
+	<div class="log-area">
+		<a href="http://m.yiche.com" class="yiche-logo">易车</a>
+		<div id="ibt_LoginContainer">
+			<a href="http://i.m.yiche.com/authenservice/login.aspx" class="yiche-logout">
+				<span class="user-name">请登录</span><span class="user-out"></span>
+			</a>
+		</div>
+	</div>
+	<div class="menu-nav-n">
+		<ul>
+			<li><a href="http://m.yiche.com/">首页</a></li>
+			<li><a href="http://car.m.yiche.com/brandlist.html">选车</a></li>
+			<li><a href="http://price.m.yiche.com/">报价</a></li>
+			<li><a href="http://dealer.m.yiche.com/">经销商</a></li>
+			<li><a href="http://koubei.m.yiche.com/">口碑</a></li>
+			<li><a href="http://m.taoche.com/all/">二手车</a></li>
+			<li><a href="http://news.m.yiche.com/">文章</a></li>
+			<li><a href="http://v.m.yiche.com/">视频</a></li>
+			<li><a href="http://baa.m.yiche.com/">论坛</a></li>
+			<li><a href="http://ask.m.yiche.com/">问答</a></li>
+			<li><a href="http://yiqishuo.m.yiche.com/">易起说</a></li>
+			<li><a href="http://app.m.yiche.com/">APP</a></li>
+
+		</ul>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="http://image.bitautoimg.com/uimg/wap/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="http://image.bitautoimg.com/bsearch/mobilesug201506/showsearchbox.js"></script>
+<script>
+$(function(){
+	var navKey = 1;
+	$('.btn-menu-p').click(function(){
+		if(navKey){
+			$('.menu-pop-n').addClass('menu-pop-n-ati');
+			$('.btn-menu-p').addClass('btn-menu-p-show');
+			$('.op-nav-mark').show();
+			navKey = 0;
+		} else {
+			$('.menu-pop-n').removeClass('menu-pop-n-ati');
+			$('.btn-menu-p').removeClass('btn-menu-p-show');
+			$('.op-nav-mark').hide();
+			navKey = 1;
+		}
+	});
+
+	$('.op-nav-mark').bind('touchmove click', function(){
+		$('.menu-pop-n').removeClass('menu-pop-n-ati');
+		$('.btn-menu-p').removeClass('btn-menu-p-show');
+		$(this).hide();
+		$('html, body').css('height', 'auto');
+        $('html, body').css('overflow', 'visible');
+		navKey = 1;
+	})
+});
+</script>

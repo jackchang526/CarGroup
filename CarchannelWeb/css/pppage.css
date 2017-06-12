@@ -1,0 +1,68 @@
+﻿.pptab .tab .on a{ padding: 0 8px 0 12px; }
+.pptab .on img{ margin: 5px 8px 0 0; float: left; display: inline; position: relative; vertical-align: middle; }
+.pptab .morelinks{ float: right; padding: 7px 7px 0 0; color: #fff; }
+.pptab .morelinks h4{ display: inline; }
+.pptab .morelinks a{ padding: 0 8px; color: #fff; font-size: 14px; }
+.ppgs{ width: 309px; height: 110px; overflow: hidden; }
+.ppgs p{ padding: 10px; text-indent: 2em; }
+.pptopnews{ width: 397px; clear: none; float: right; height: 231px; }
+.pptopnews ul{ padding-top: 5px; }
+.ppgs_c{ height:231px;}
+
+.zppbj{ float: left; width: 718px; }
+.zppbj dl{ float: left; width: 226px; padding: 10px 0 10px 10px; }
+.zppbj dt{ float: left; padding: 0 10px 0 0; }
+.zppbj dt img{ border: 1px solid #ccc; display: block; }
+.zppbj dd{ float: left; font-size: 14px; }
+.zppbj dd p{ padding-bottom: 3px; }
+.zppbj dd .price{}
+.zppbj dd .price a:link,.zppbj dd .price a:visited{ color: #c00;}
+.zppbj dd .no{ color: #666; } 
+.zpppic{ float: left; width: 718px; }
+.zpppic ul{ padding: 15px 0 0 4px; clear:both;}
+.zpppic li{ float: left; width: 122px; margin: 0 10px; padding-bottom: 8px; display: inline; text-align: center; }
+.zpppic li img{ margin-bottom: 5px; border: 1px solid #ccc; display: block; }
+.zpppic li span{ display:block;color:#c00; text-align:center;}
+.zpppic li span a:link,.zpppic li span a:visited{ color:#c00;}
+.zppvideo{ float: left; width: 718px; }
+.zppvideo ul{ padding: 15px 0 5px 4px; float: left; }
+.zppvideo li{ float: left; width: 122px; margin:10px 10px 0; padding-bottom: 8px; display: inline; position:relative;}
+.zppvideo li a.title{ display:block; height:20px; overflow:hidden;}
+.zppvideo li img{ margin-bottom: 5px; border: 1px solid #ccc; display: block; }
+.zppvideo li a.v_bg {	background:url( http://www.bitauto.com/themes/2009/common/images/v_bg120.png) 0 0 no-repeat;_background: none;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader (src='http://www.bitauto.com/themes/2009/common/images/v_bg120.png', sizingMethod='image ');cursor:pointer;display:block;
+height:80px;left:0;position:absolute;top:0;width:120px;}
+.zppvideo li div{ color: #666; }
+.ppkoubei{ float: left; width: 718px; }
+.ppkoubei table tbody td{ background-position: 0 26px; height: 28px; height: 24px\9; }
+.ppkoubei table tbody td a{ padding: 0 0 0 8px; background: url(http://www.bitauto.com/themes/09gq/images/bit_icon091010.png) no-repeat  0 -77px; }
+.ppkoubei .name{ font-weight: bold; font-size: 14px; }
+.ppkoubei .name a{ background: none; }
+.ppkoubei table tbody .nobg td{ background: none }
+.ppdayi{ float: left; width: 718px; }
+.ppdayi ul{ float: left; padding: 10px 0; }
+.ppdayi ul li { width: 333px; margin-left: 18px; padding-left: 8px; float: left; display: inline; background: url(http://www.bitauto.com/themes/09gq/images/bit_icon091010.png) no-repeat scroll 0 -74px; line-height: 20px; height: 20px; position: relative;}
+.ppdayi ul li small{color:#666666;font-size:12px;font-style:normal;position:absolute;right:5px; top:0;}
+
+.ppbbs{ float: left; width: 718px; }
+.ppbbs table tbody  td{ background-position: 0 39px; height: 40px; height: 36px\9; }
+.ppbbs .name1,.ppbbs .name2{ font-size: 14px; }
+.ppbbs .name1 a{ padding: 0 0 0 8px; background: url(http://www.bitauto.com/themes/09gq/images/bit_icon091010.png) no-repeat  0 -77px; }
+.ppbbs table tbody .nobg td{ background-image: none }
+.hotpp{ float: left; }
+.hotpp .bybrand_list{ width: 218px; padding: 15px 0 0 0; background: none; }
+.hotpp .bybrand_list li{ float: left; width: 109px; text-align: center; overflow: hidden; height: 83px; }
+.hotpp .bybrand_list li a{ font-weight: normal; }
+.hotpp .bybrand_list li h3{ width: 109px; float: left; padding: 0; border: none; background: none; font-size: 12px; text-align: center; height: auto; line-height:21px;}
+.hotpp .bybrand_list .brand{ margin: 0 0 0 25px; border: 1px solid #ccc; float: left; display: inline; }
+.frilinks .links{ padding: 10px; }
+.frilinks .links a{ margin-right: 10px; }
+/*  */
+.line_box h2{ padding: 0; background: transparent url(http://www.bitauto.com/themes/2009/common/images/h3_bg.png) repeat-x; color: #000000; font-size: 14px; font-weight: bold; line-height: 28px; height: 29px; overflow: hidden; }
+.line_box h2.car span { padding: 0 0 0 30px; }
+.line_box h2.car span { background: transparent url(http://www.bitauto.com/themes/2009/common/images/icon_h3_car.png) no-repeat scroll 7px 0; }
+
+
+.pptopnews h2{background:none; padding:8px 0 0;}
+
+.table_dealer tr.dealer_bg td{ background:#F6F6F6 url(http://www.bitauto.com/themes/2009/common/images/icon_s_dot.png) repeat-x scroll 0 0;}
+

@@ -1,0 +1,158 @@
+﻿<div class="line_box link">
+	<div class="h3_tab">
+		<ul id="hotcar_tab">
+			<li class="current"><span>热门品牌</span> </li>
+			<li class="last"><span>热门车型</span> </li>
+		</ul>
+	</div>
+	<h3></h3>
+	<div class="clear"></div>
+	<div class="co">
+		<div id="hotcar_tab_0" style="display: block;">
+			<ul>
+				<li><a href="http://car.bitauto.com/volkswagen/" target="_blank">大众</a></li>
+				<li><a href="http://car.bitauto.com/toyota/" target="_blank">丰田</a></li>
+				<li><a href="http://car.bitauto.com/honda/" target="_blank">本田</a></li>
+				<li><a href="http://car.bitauto.com/nissan/" target="_blank">日产</a></li>
+				<li><a href="http://car.bitauto.com/bmw/" target="_blank">宝马</a></li>
+				<li><a href="http://car.bitauto.com/buick/" target="_blank">别克</a></li>
+				<li><a href="http://car.bitauto.com/audi/" target="_blank">奥迪</a></li>
+				<li><a href="http://car.bitauto.com/chevrolet/" target="_blank">雪佛兰</a></li>
+				<li><a href="http://car.bitauto.com/hyundai/" target="_blank">现代</a></li>
+				<li><a href="http://car.bitauto.com/chery/" target="_blank">奇瑞</a></li>
+				<li><a href="http://car.bitauto.com/bydauto/" target="_blank">比亚迪</a></li>
+				<li><a href="http://car.bitauto.com/ford/" target="_blank">福特</a></li>
+				<li><a href="http://car.bitauto.com/mazda/" target="_blank">马自达</a></li>
+				<li><a href="http://car.bitauto.com/geely/" target="_blank">吉利</a></li>
+				<li><a href="http://car.bitauto.com/mercedesbenz/" target="_blank">奔驰</a></li>
+				<li><a href="http://car.bitauto.com/suzuki/" target="_blank">铃木</a></li>
+				<li><a href="http://car.bitauto.com/citroen/" target="_blank">雪铁龙</a></li>
+				<li><a href="http://car.bitauto.com/greatwall/" target="_blank">长城</a></li>
+				<li><a href="http://car.bitauto.com/kia/" target="_blank">起亚</a></li>
+				<li><a href="http://car.bitauto.com/skoda/" target="_blank">斯柯达</a></li>
+				<li><a href="http://car.bitauto.com/jac/" target="_blank">江淮</a></li>
+				<li><a href="http://car.bitauto.com/bugatti/" target="_blank">布加迪</a></li>
+				<li><a href="http://car.bitauto.com/peugeot/" target="_blank">标致</a></li>
+				<li><a href="http://car.bitauto.com/hama/" target="_blank">海马</a></li>
+				<li><a href="http://car.bitauto.com/porsche/" target="_blank">保时捷</a></li>
+				<li><a href="http://car.bitauto.com/lexus/" target="_blank">雷克萨斯</a></li>
+				<li><a href="http://car.bitauto.com/brillianceauto/" target="_blank">中华</a></li>
+				<li><a href="http://car.bitauto.com/lamborghini/" target="_blank">兰博基尼</a></li>
+				<li><a href="http://car.bitauto.com/cadillac/" target="_blank">凯迪拉克</a></li>
+				<li><a href="http://car.bitauto.com/roewe/" target="_blank">荣威</a></li>
+				<li><a href="http://car.bitauto.com/cajc/" target="_blank">长安轿车</a></li>
+				<li><a href="http://car.bitauto.com/volvo/" target="_blank">沃尔沃</a></li>
+				<li><a href="http://car.bitauto.com/hummer/" target="_blank">悍马</a></li>
+				<li><a href="http://car.bitauto.com/jeep/" target="_blank">吉普</a></li>
+				<li><a href="http://car.bitauto.com/subaru/" target="_blank">斯巴鲁</a></li>
+				<li><a href="http://car.bitauto.com/besturn/" target="_blank">奔腾</a></li>
+				<li><a href="http://car.bitauto.com/landrover/" target="_blank">路虎</a></li>
+				<li><a href="http://car.bitauto.com/southeastautomobile/" target="_blank">东南</a></li>
+				<li><a href="http://car.bitauto.com/mitsubishi/" target="_blank">三菱</a></li>
+				<li><a href="http://car.bitauto.com/rolls-royce/" target="_blank">劳斯莱斯</a></li>
+				<li><a href="http://car.bitauto.com/hafeiautomobile/" target="_blank">哈飞</a></li>
+				<li><a href="http://car.bitauto.com/mg-79/" target="_blank">名爵</a></li>
+			</ul>
+		</div>
+		<div style="display: none;" id="hotcar_tab_1">
+			<ul>
+				<li><a target="_blank" href="http://car.bitauto.com/ruiyi-2566/">睿翼</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/mazda6jiaoche/">马自达6</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/rongwein1/">荣威350</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/tiguan/">途观</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/rongwei550/">荣威550</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/a3sanxiang/">奇瑞A3</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/yuanjing/">远景</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/baomax5/">宝马x5</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/langyi/">朗逸</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/kaimeirui/">凯美瑞</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/suteng/">速腾</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/jieda/">捷达</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/heyue/">和悦</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/jingang/">金刚</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/baomaxinz4/">宝马z4</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/xinbaolai/">新宝来</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/maiteng/">迈腾</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/yiqifengtianrav4/">RAV4</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/bentiansiyu/">本田思域</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/aodiq7/">奥迪Q7</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/kaluola/">卡罗拉</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/ruizhi/">锐志</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/dazhongjiakechong/">甲壳虫</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/aodiq5-2855/">奥迪Q5</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/aoditt/">奥迪TT</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/minicooper/">MINI</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/liwei/">骊威</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/aodir8/">奥迪R8</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/mingrui/">明锐</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/jiaodoushi/">角斗士</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/aodia8/">奥迪a8</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/yuyan/">雨燕</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/fengfan/">锋范</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/baomax6/">宝马X6</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/beidouxing/">北斗星</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/xinjunwei/">新君威</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/qida/">骐达</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/mingjuemg6/">名爵MG6</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/lefeng/">乐风</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/408sanxiang/">标致408</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/sailatu/">赛拉图</a></li>
+				<li><a target="_blank" href="http://car.bitauto.com/xiongmao/">吉利熊猫</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<script language="javascript" type="text/javascript">
+	function BtHide(id) {
+		var Div = document.getElementById(id);
+		if (Div) {
+			Div.style.display = "none";
+		}
+	}
+	function BtShow(id) {
+		var Div = document.getElementById(id);
+		if (Div) {
+			Div.style.display = "block";
+		}
+	}
+	function BtTabRemove(index, head, divs) {
+		var tab_heads = document.getElementById(head);
+		if (tab_heads) {
+			var lis = tab_heads.getElementsByTagName("li");
+			var as = tab_heads.getElementsByTagName("span");
+			for (var i = 0; i < as.length; i++) {
+				lis[i].className = "";
+				BtHide(divs + "_" + i);
+				if (i == index) {
+					lis[i].className = "current";
+				}
+			}
+			BtShow(divs + "_" + index);
+		}
+	}
+	function TabOn(head, divs) {
+		var tab_heads = document.getElementById(head);
+		if (tab_heads) {
+			BtTabRemove(0, head, divs);
+			var alis = tab_heads.getElementsByTagName("span");
+			for (var i = 0; i < alis.length; i++) {
+				alis[i].num = i;
+				var innerText = alis[i].innerText;
+				if (!innerText)
+					innerText = alis[i].innerHTML;
+				if (innerText != "最新" && alis[i].className == "nolink")
+					alis[i].style.display = "none";
+				alis[i].onmouseover = function () {
+					BtTabRemove(this.num, head, divs);
+					this.blur();
+					return false;
+				}
+				alis[i].onfocus = function () {
+					BtTabRemove(this.num, head, divs);
+				}
+			}
+		}
+	}
+	TabOn("hotcar_tab", "hotcar_tab");
+</script>

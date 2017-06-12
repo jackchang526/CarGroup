@@ -1,0 +1,14 @@
+﻿<div class="wx_loginbox">
+    <div class="wx_login">
+      <a class="wx_logo" href="http://www.bitauto.com/" target="_blank">易车网首页</a>
+      <ul>
+        <li><a href="http://www.cheyisou.com/" target="_blank">车易搜</a></li>
+        <li><a href="http://car.bitauto.com/" target="_blank">汽车大全</a></li>
+        <li><a href="http://photo.bitauto.com/" target="_blank">汽车图片</a></li>
+        <li><a href="http://price.bitauto.com/" target="_blank">汽车报价</a></li>
+        <li><a href="http://dealer.bitauto.com/" target="_blank">汽车经销商</a></li>
+        <li><a href="http://baa.bitauto.com/" target="_blank">汽车论坛</a></li>
+        <li><a href="http://yiche.taoche.com/" target="_blank">二手车</a></li>
+      </ul>
+    </div>
+</div>

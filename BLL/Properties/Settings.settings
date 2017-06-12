@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BitAuto.CarChannel.BLL.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="BLL_Das_GroupService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://das.bitauto.com/Group/Service/GroupService.asmx</Value>
+    </Setting>
+    <Setting Name="BLL_cn_ucar_api_CarSourceForBitAuto" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://api.taoche.cn/CarSourceInterface/CarSourceForBitAuto.asmx</Value>
+    </Setting>
+    <Setting Name="BLL_com_bitauto_price_DealerPrice" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://price.bitauto.com/interfacemaiche/dealerprice.asmx</Value>
+    </Setting>
+    <Setting Name="BLL_com_bitauto_partner_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://partner.bitauto.com/api/taoche/service.asmx</Value>
+    </Setting>
+    <Setting Name="BLL_com_bitauto_partner1_ReplaceCarService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://partner.bitauto.com/api/order/replacecarService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

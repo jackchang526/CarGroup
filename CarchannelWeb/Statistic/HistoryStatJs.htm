@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript" language="javascript">
+	// 临时统计
+	var tempStatSerialList = "3398,2608,2370";
+	var currentCsID = "<%= this.SerialId %>";
+	if (tempStatSerialList.indexOf(currentCsID) >= 0) {
+		// 年款按钮
+		$(".carPic02 .car .ico").each(function (event) {
+			if (this.tagName.toLowerCase() == "a") {
+				$(this).bind('click', function (event) {
+					statForTempString(currentCsID, '图库页 年款点击', this.innerHTML);
+					event.stopPropagation();
+				});
+			}
+		});
+
+		// 年款下的车型
+		$(".carPic02Pop .pic li a").each(function (event) {
+			if (this.tagName.toLowerCase() == "a") {
+				$(this).bind('click', function (event) {
+					var yearTemp = $(this).parent().parent().parent().parent().children(".ico").html();
+					if (yearTemp.length > 10)
+					{ yearTemp = "年款错误"; }
+					var carName = $(this).html().replace(/<span>(.*)<\/span>/i, "");
+					statForTempString(currentCsID, '图库页 车型点击', yearTemp + " " + carName);
+					event.stopPropagation();
+				});
+			}
+		});
+
+		// 分类
+		$(".carPic02 .theme a").each(function (event) {
+			if (this.tagName.toLowerCase() == "a") {
+				$(this).bind('click', function (event) {
+					statForTempString(currentCsID, '图库页 分类点击', this.innerHTML.replace(/<span>(.*)<\/span>/i, ""));
+					event.stopPropagation();
+				});
+			}
+		});
+
+		// 颜色
+		$(".w550 ul li a").each(function (event) {
+			if (this.tagName.toLowerCase() == "a") {
+				$(this).bind('click', function (event) {
+					statForTempString(currentCsID, '图库页 颜色点击', $(this).find("span").text());
+					event.stopPropagation();
+				});
+			}
+		});
+	}
+
+	function statForTempString(objid, str1, str2) {
+		var _sentImg = new Image(1, 1);
+		// _sentImg.src = "http://carstat.bitauto.com/weblogger/urlrecord.aspx?logtype=temptypestring&objid=" + objid + "&str1=" + encodeURIComponent(str1) + "&str2=" + encodeURIComponent(str2) + "&" + Math.random();
+		_sentImg.src = "http://carstat.bitauto.com/weblogger/img/c.gif?logtype=temptypestring&objid=" + objid + "&str1=" + encodeURIComponent(str1) + "&str2=" + encodeURIComponent(str2) + "&" + Math.random();
+	}
+</script>
+<!-- 树形标签临时统计 add by chengl Jun.15.2012-->
+<!-- 临时统计代码 -->
+<script type="text/javascript">
+	// 父级ul ID
+	var ulIDForTempClickStat = "ulForTempClickStat";
+	var currentTagNameForTempClickStat = "";
+	if (document.getElementById(ulIDForTempClickStat)) {
+		try {
+			var aLinks = document.getElementById(ulIDForTempClickStat).getElementsByTagName("a");
+			for (var i = 0; i < aLinks.length; i++) {
+				var parentNodeLi = aLinks[i].parentNode;
+				if (parentNodeLi && parentNodeLi.nodeType == 1
+			&& parentNodeLi.tagName.toLowerCase() == "li") {
+					if (parentNodeLi.className == "on" || parentNodeLi.className == "on on3")
+					{ currentTagNameForTempClickStat = aLinks[i].innerHTML; }
+					document.all ? aLinks[i].attachEvent('onclick', statForTempString) : aLinks[i].addEventListener('click', statForTempString, false);
+				}
+			}
+			if (document.getElementById(ulIDForTempClickStat).getElementsByTagName("dd")
+		&& document.getElementById(ulIDForTempClickStat).getElementsByTagName("dd").length > 0) {
+				var aMoreLinks = document.getElementById(ulIDForTempClickStat).getElementsByTagName("dd")[0].getElementsByTagName("a");
+				for (var i = 0; i < aMoreLinks.length; i++) {
+					document.all ? aMoreLinks[i].attachEvent('onclick', statForTempString) : aMoreLinks[i].addEventListener('click', statForTempString, false);
+				}
+			}
+		}
+		catch (err) {
+		}
+	}
+	function statForTempString(ev) {
+		ev = ev || window.event;
+		var _eventSrc = ev.target || ev.srcElement;
+		if (currentTagNameForTempClickStat != "" && _eventSrc.innerHTML != "") {
+			var _sentImg = new Image(1, 1);
+			_sentImg.src = "http://carstat.bitauto.com/weblogger/urlrecord.aspx?logtype=temptypestring&objid=0&str1=" + encodeURIComponent(currentTagNameForTempClickStat) + "&str2=" + encodeURIComponent(_eventSrc.innerHTML) + "&" + Math.random();
+			return;
+		}
+	}
+</script>
+<!-- 临时统计代码 -->
+
+<!-- 树形标签临时统计 add by chengl Jun.15.2012-->
+<!-- 临时选车工具更多参数统计代码  -->
+<script type="text/javascript" language="javascript">
+	// 临时统计
+	var urlForSearch = document.location.search;
+	if (urlForSearch.indexOf("?") != -1) {
+		var str = urlForSearch.substr(1)
+		strs = str.split("&");
+		var key = new Array(strs.length);
+		var value = new Array(strs.length);
+		for (i = 0; i < strs.length; i++) {
+			key[i] = strs[i].split("=")[0]
+			value[i] = unescape(strs[i].split("=")[1]);
+			if (key[i] == "m") {
+				if (value[i].length >= 21) {
+					for (var index = 0; index <= 21; index++) {
+						var charParam = value[i].substring(index, index + 1);
+						if (charParam == 1) {
+							statForSelectCarMoreTempString(3, conditionObj.MoreConditionName[index], "");
+						}
+					}
+				}
+			}
+		}
+	}
+
+	function statForSelectCarMoreTempString(objid, str1, str2) {
+		var _sentImg = new Image(1, 1);
+		_sentImg.src = "http://carstat.bitauto.com/weblogger/urlrecord.aspx?logtype=temptypestring&objid=" + objid + "&str1=" + encodeURIComponent(str1) + "&str2=" + encodeURIComponent(str2) + "&" + Math.random();
+	}
+</script>
+<!-- 选车工具 临时统计 -->
+<script type="text/javascript" language="javascript">
+	// 临时统计
+	var urlForSearch = document.location.search;
+	if (urlForSearch.indexOf("?") != -1) {
+		var str = urlForSearch.substr(1)
+		strs = str.split("&");
+		var key = new Array(strs.length);
+		var value = new Array(strs.length);
+		for (i = 0; i < strs.length; i++) {
+			key[i] = strs[i].split("=")[0]
+			value[i] = unescape(strs[i].split("=")[1]);
+			if (key[i] == "m") {
+				if (value[i].length >= 23) {
+					for (var index = 0; index <= 23; index++) {
+						var charParam = value[i].substring(index, index + 1);
+						if (charParam == 1 && conditionObj.MoreConditionName.length > index) {
+							try {
+								statForSelectCarMoreTempString(3, conditionObj.MoreConditionName[index], "");
+							}
+							catch (err)
+							{ }
+						}
+					}
+				}
+			}
+			if (key[i] == "b") {
+				// 两厢、三厢
+				if (value[i].length >= 1) {
+					if (value[i] == 1)
+					{ statForSelectCarMoreTempString(3, "两厢", ""); }
+					if (value[i] == 2)
+					{ statForSelectCarMoreTempString(3, "三厢", ""); }
+					if (value[i] == 3)
+					{ statForSelectCarMoreTempString(3, "两厢", ""); statForSelectCarMoreTempString(3, "三厢", ""); }
+				}
+			}
+		}
+	}
+	function statForSelectCarMoreTempString(objid, str1, str2) {
+		var _sentImg = new Image(1, 1);
+		_sentImg.src = "http://carstat.bitauto.com/weblogger/urlrecord.aspx?logtype=temptypestring&objid=" + objid + "&str1=" + encodeURIComponent(str1) + "&str2=" + encodeURIComponent(str2) + "&" + Math.random();
+	}
+	</script>
+<!-- 选车工具临时统计 Jun.15.2012 -->
+<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsstat/tempstatforselectcar.js?Jun152012"></script>

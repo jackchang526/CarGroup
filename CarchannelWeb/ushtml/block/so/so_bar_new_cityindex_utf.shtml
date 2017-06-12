@@ -1,0 +1,39 @@
+﻿<style type="text/css">
+	#sug ul li.ml_l
+	{
+		background: #fff;
+		color: #164A84;
+	}
+	.sug_reset
+	{
+		background: #fff;
+	}
+	.sug_onblur
+	{
+		background: #fff url(http://image.bitauto.com/bt/logo/so_search_bg.gif) no-repeat right center;
+	}
+</style>
+<a target="_blank" class="search" href="http://www.cheyisou.com/" title="车易搜">车易搜</a>
+<div style="position: relative; float: left; text-align: left;">
+	<form id="sug_form" name="sug_form" target="_blank" method="get" action="http://www.cheyisou.com/post.aspx">
+	<input type="text" class="select_sea" id="sug_txt_keyword" name="so_keywords" value="" />
+	<input type="submit" value="搜索" id="sug_submit" class="select_more" onclick="BSearchRGo()" />
+	<div onselectstart="return false" id="sug" style="top: 24px; float: left; overflow: hidden"></div>
+	<input id="sug_hidurl" value="" type="hidden" />
+	<input id="sug_datatype" name="sug_datatype" value="qiche" type="hidden" />
+	<input id="sug_encoding" name="sug_encoding" value="utf-8" type="hidden" />
+	</form>
+</div>
+<script type="text/javascript">
+	var sug_txt_name = "sug_txt_keyword";
+	var sug_txt_words = [];
+	sug_txt_words.push('大众');
+	sug_txt_words.push('现代');
+	sug_txt_words.push('雪佛兰');
+	sug_txt_words.push('别克');
+	sug_txt_words.push('丰田');
+	sug_txt_words.push('日产');
+	var i = Math.round(Math.random() * sug_txt_words.length);
+	if (i >= 0 && i <= 5)
+		document.getElementById(sug_txt_name).value = sug_txt_words[i];  
+</script>

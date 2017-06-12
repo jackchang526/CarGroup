@@ -1,0 +1,22 @@
+﻿<div class="line_box mgb0">
+	<h3>
+		<span>热门车模</span></h3>
+	<div class="more">
+		<a target="_blank" href="#">更多&gt;&gt;</a></div>
+	<div class="hotrank_wzh hotrank3_wzh">
+		<ol class="clearfix mxl_olbg_02">
+			<li><a href="#" target="_blank">哈弗M4</a><small class="cm_num">22961</small></li>
+			<li><a href="#" target="_blank">哈弗M4</a><small class="cm_num">22961</small></li>
+			<li><a href="#" target="_blank">帕萨特</a><small class="cm_num">22746</small></li>
+			<li><a href="#" target="_blank">大7 SUV</a><small class="cm_num">22227</small></li>
+			<li><a href="#" target="_blank">马自达3</a><small class="cm_num">19416</small></li>
+			<li><a href="#" target="_blank">哈弗IF</a><small class="cm_num">18807</small></li>
+			<li><a href="#" target="_blank">奥迪Q3(海外)</a><small class="cm_num">18105</small></li>
+			<li><a href="#" target="_blank">一汽大众CC</a><small class="cm_num">17900</small></li>
+			<li><a href="#" target="_blank">宝骏630</a><small class="cm_num">17497</small></li>
+			<li><a href="#" target="_blank">比亚迪G6</a><small class="cm_num">16893</small></li>
+			<li><a href="#" target="_blank">宝骏630</a><small class="cm_num">17497</small></li>
+			<li><a href="#" target="_blank">比亚迪G6</a><small class="cm_num">16893</small></li>
+		</ol>
+	</div>
+</div>

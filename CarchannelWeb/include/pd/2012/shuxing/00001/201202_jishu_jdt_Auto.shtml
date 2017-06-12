@@ -1,0 +1,21 @@
+﻿<div class="focus-2">
+    <div class="focusBox-2" id="focusBox-2">
+        <ul class="focusPic-2" id="focusPic-2">
+            <li><a href="" target="_blank">
+                <img src="default.png" alt="轮换帧标题" /></a><a href="" target="_blank">轮换帧标题</a></li><li>
+                    <a href="" target="_blank">
+                        <img src="default.png" alt="轮换帧标题" /></a><a href="" target="_blank">轮换帧标题</a></li><li>
+                            <a href="" target="_blank">
+                                <img src="default.png" alt="轮换帧标题" /></a><a href="" target="_blank">轮换帧标题</a></li><li>
+                                    <a href="" target="_blank">
+                                        <img src="default.png" alt="轮换帧标题" /></a><a href="" target="_blank">轮换帧标题</a></li><li>
+                                            <a href="" target="_blank">
+                                                <img src="default.png" alt="轮换帧标题" /></a><a href="" target="_blank">轮换帧标题</a></li>
+            <ul class="focusTxt-2" id="focusTxt-2">
+            </ul>
+            <ul class="focusNum-2" id="focusNum-2">
+            </ul>
+            <div class="focusTxtBg-2">
+            </div>
+    </div>
+</div>

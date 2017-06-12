@@ -1,0 +1,9 @@
+[2015/7/25 3:17:32]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/CarInfo/GetCarDataJson.ashx?action=car&pid=3454&callback=getData
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 WirelessWeb.handlers.GetCarDataJson.RenderCar() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\GetCarDataJson.ashx.cs:行号 71
+   在 WirelessWeb.handlers.GetCarDataJson.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\GetCarDataJson.ashx.cs:行号 50
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

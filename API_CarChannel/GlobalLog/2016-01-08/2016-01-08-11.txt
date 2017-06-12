@@ -1,0 +1,28 @@
+[2016/1/8 11:43:16]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/CarInfo/MasterBrandToSerialNew.aspx?type=3&pid=2583&rt=cartype&serias=m&key=cartype_2583_3_m&include=0&ddd
+Stack Trace: System.ArgumentException: 列“Car_SaleState”不属于表 Table。
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 BitAuto.CarChannelAPI.Web.CarInfo.MasterBrandToSerialNew.GetCarTypeContent() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\MasterBrandToSerialNew.aspx.cs:行号 246
+
+[2016/1/8 11:43:17]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/CarInfo/MasterBrandToSerialNew.aspx?type=3&pid=2583&rt=cartype&serias=m&key=cartype_2583_3_m&include=0&ddd
+Stack Trace: System.ArgumentException: 列“Car_SaleState”不属于表 Table。
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 BitAuto.CarChannelAPI.Web.CarInfo.MasterBrandToSerialNew.GetCarTypeContent() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\MasterBrandToSerialNew.aspx.cs:行号 246
+
+[2016/1/8 11:44:08]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/CarInfo/MasterBrandToSerialNew.aspx?type=3&pid=2583&rt=cartype&serias=m&key=cartype_2583_3_m&include=0&ddd
+Stack Trace: System.ArgumentException: 列“Car_SaleState”不属于表 Table。
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 BitAuto.CarChannelAPI.Web.CarInfo.MasterBrandToSerialNew.GetCarTypeContent() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\MasterBrandToSerialNew.aspx.cs:行号 246
+
+[2016/1/8 11:45:56]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/CarInfo/MasterBrandToSerialNew.aspx?type=3&pid=2583&rt=cartype&serias=m&key=cartype_2583_3_m&include=0&ddd
+Stack Trace: System.ArgumentException: 列“Car_SaleState”不属于表 Table。
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 BitAuto.CarChannelAPI.Web.CarInfo.MasterBrandToSerialNew.GetCarTypeContent() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\MasterBrandToSerialNew.aspx.cs:行号 246
+

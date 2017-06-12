@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+
+    <LevelAD>
+        <Level>默认</Level>
+        <AD>
+            <![CDATA[<iframe vspace="0" hspace="0" scrolling="no" frameborder="0" id="clip" name="clip" width="218" height="156" src=" http://top.baidu.com/none/clip_176.html?hd_h_info=1&p_name=%E4%BB%8A%E6%97%A5%E7%83%AD%E6%90%9C%E6%B1%BD%E8%BD%A6%E6%8E%92%E8%A1%8C%E6%A6%9C&width=218&line=4&hd_h=1&hd_trend=0&hd_border=1&lh=24&t3_color=%23CE0907&other_color=%23174785&key_color=%23999999&bc_bg=F7F7F7" ></iframe>]]>
+        </AD>
+    </LevelAD>
+
+    <LevelAD>
+        <Level>微型车</Level>
+        <AD>
+            <![CDATA[<iframe vspace="0" hspace="0" scrolling="no" frameborder="0" id="clip" name="clip" width="218" height="156" src="http://top.baidu.com/none/clip_177.html?hd_h_info=1&p_name=今日微型车排行榜&width=218&line=4&hd_h=1&hd_trend=0&hd_border=1&lh=24&t3_color=%23CE0907&other_color=%23174785&key_color=%23999999&bc_bg=F7F7F7" ></iframe>]]>
+        </AD>
+    </LevelAD>
+
+    <LevelAD>
+        <Level>小型车</Level>
+        <AD>
+            <![CDATA[<iframe vspace="0" hspace="0" scrolling="no" frameborder="0" id="clip" name="clip" width="218" height="156" src=" http://top.baidu.com/none/clip_178.html?hd_h_info=1&p_name=%E4%BB%8A%E6%97%A5%E5%B0%8F%E5%9E%8B%E8%BD%A6%E6%8E%92%E8%A1%8C%E6%A6%9C&width=218&line=4&hd_h=1&hd_trend=0&hd_border=1&lh=24&t3_color=%23CE0907&other_color=%23174785&key_color=%23999999&bc_bg=F7F7F7" ></iframe>]]>
+        </AD>
+    </LevelAD>
+
+    <LevelAD>
+        <Level>紧凑型车</Level>
+        <AD>
+            <![CDATA[<iframe vspace="0" hspace="0" scrolling="no" frameborder="0" id="clip" name="clip" width="218" height="156" src=" http://top.baidu.com/none/clip_179.html?hd_h_info=1&p_name=%E4%BB%8A%E6%97%A5%E7%B4%A7%E5%87%91%E5%9E%8B%E8%BD%A6%E6%8E%92%E8%A1%8C%E6%A6%9C&width=218&line=4&hd_h=1&hd_trend=0&hd_border=1&lh=24&t3_color=%23CE0907&other_color=%23174785&key_color=%23999999&bc_bg=F7F7F7" ></iframe>]]>
+        </AD>
+    </LevelAD>
+
+    <LevelAD>
+        <Level>中型车</Level>
+        <AD>
+            <![CDATA[<iframe vspace="0" hspace="0" scrolling="no" frameborder="0" id="clip" name="clip" width="218" height="156" src=" http://top.baidu.com/none/clip_180.html?hd_h_info=1&p_name=%E4%BB%8A%E6%97%A5%E4%B8%AD%E7%BA%A7%E8%BD%A6%E6%8E%92%E8%A1%8C%E6%A6%9C&width=218&line=4&hd_h=1&hd_trend=0&hd_border=1&lh=24&t3_color=%23CE0907&other_color=%23174785&key_color=%23999999&bc_bg=F7F7F7" ></iframe>]]>
+        </AD>
+    </LevelAD>
+
+    <LevelAD>
+        <Level>中大型车</Level>
+        <AD>
+            <![CDATA[<iframe vspace="0" hspace="0" scrolling="no" frameborder="0" id="clip" name="clip" width="218" height="156" src=" http://top.baidu.com/none/clip_281.html?hd_h_info=1&p_name=%E4%BB%8A%E6%97%A5%E4%B8%AD%E9%AB%98%E7%BA%A7%E8%BD%A6%E6%8E%92%E8%A1%8C%E6%A6%9C&width=218&line=4&hd_h=1&hd_trend=0&hd_border=1&lh=24&t3_color=%23CE0907&other_color=%23174785&key_color=%23999999&bc_bg=F7F7F7" ></iframe>]]>
+        </AD>
+    </LevelAD>
+
+    <LevelAD>
+        <Level>豪华型车</Level>
+        <AD>
+            <![CDATA[<iframe vspace="0" hspace="0" scrolling="no" frameborder="0" id="clip" name="clip" width="218" height="156" src=" http://top.baidu.com/none/clip_282.html?hd_h_info=1&p_name=%E4%BB%8A%E6%97%A5%E8%B1%AA%E5%8D%8E%E8%BD%A6%E6%8E%92%E8%A1%8C%E6%A6%9C&width=218&line=4&hd_h=1&hd_trend=0&hd_border=1&lh=24&t3_color=%23CE0907&other_color=%23174785&key_color=%23999999&bc_bg=F7F7F7" ></iframe>]]>
+        </AD>
+    </LevelAD>
+
+    <LevelAD>
+        <Level>MPV</Level>
+        <AD>
+            <![CDATA[<iframe vspace="0" hspace="0" scrolling="no" frameborder="0" id="clip" name="clip" width="218" height="156" src=" http://top.baidu.com/none/clip_284.html?hd_h_info=1&p_name=%E4%BB%8A%E6%97%A5MPV%E6%8E%92%E8%A1%8C%E6%A6%9C&width=218&line=4&hd_h=1&hd_trend=0&hd_border=1&lh=24&t3_color=%23CE0907&other_color=%23174785&key_color=%23999999&bc_bg=F7F7F7" ></iframe>]]>
+        </AD>
+    </LevelAD>
+
+    <LevelAD>
+        <Level>面包车</Level>
+        <AD>
+            <![CDATA[<iframe vspace="0" hspace="0" scrolling="no" frameborder="0" id="clip" name="clip" width="218" height="156" src=" http://top.baidu.com/none/clip_284.html?hd_h_info=1&p_name=%E4%BB%8A%E6%97%A5MPV%E6%8E%92%E8%A1%8C%E6%A6%9C&width=218&line=4&hd_h=1&hd_trend=0&hd_border=1&lh=24&t3_color=%23CE0907&other_color=%23174785&key_color=%23999999&bc_bg=F7F7F7" ></iframe>]]>
+        </AD>
+    </LevelAD>
+
+    <LevelAD>
+        <Level>SUV</Level>
+        <AD>
+            <![CDATA[<iframe vspace="0" hspace="0" scrolling="no" frameborder="0" id="clip" name="clip" width="218" height="156" src=" http://top.baidu.com/none/clip_285.html?hd_h_info=1&p_name=%E4%BB%8A%E6%97%A5SUV%E6%8E%92%E8%A1%8C%E6%A6%9C&width=218&line=4&hd_h=1&hd_trend=0&hd_border=1&lh=24&t3_color=%23CE0907&other_color=%23174785&key_color=%23999999&bc_bg=F7F7F7" ></iframe>]]>
+        </AD>
+    </LevelAD>
+
+    <LevelAD>
+        <Level>跑车</Level>
+        <AD>
+            <![CDATA[<iframe vspace="0" hspace="0" scrolling="no" frameborder="0" id="clip" name="clip" width="218" height="156" src="http://top.baidu.com/none/clip_283.html?hd_h_info=1&p_name=今日跑车排行榜&width=218&line=4&hd_h=1&hd_trend=0&hd_border=1&lh=24&t3_color=%23CE0907&other_color=%23174785&key_color=%23999999&bc_bg=F7F7F7" ></iframe>]]>
+        </AD>
+    </LevelAD>
+</root>

@@ -1,0 +1,18 @@
+[2012/12/25 9:35:06]  
+IP: 127.0.0.1
+Error in: http://car.m.yiche.com/SelectCar.aspx
+Error Message: 值不能为 null。
+参数名: path1
+Stack Trace:    在 System.IO.Path.Combine(String path1, String path2)
+   在 BitAuto.CarChannel.Common.Interface.CarSerialImgUrlService.GetImageUrlDicNew() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\Interface\CarSerialImgUrlService.cs:行号 122
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialImageUrl(Int32 serialId, String imgType) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 3258
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialImageUrl(Int32 serialId) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\BLL\Car_SerialBll.cs:行号 3252
+   在 WirelessWeb.SelectCar.MakeHotCarHtml() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\SelectCar.aspx.cs:行号 78
+   在 WirelessWeb.SelectCar.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\SelectCar.aspx.cs:行号 62
+   在 System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr fp, Object o, Object t, EventArgs e)
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 56
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

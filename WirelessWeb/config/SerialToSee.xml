@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <Serial Id="1879" Name="卡罗拉">
+    <!-- Type: 0,比它大;1,比它省油; -->
+    <Item SerialId="2859" Name="408" Type="0" />
+    <Item SerialId="3773" Name="C4L" Type="0" />
+    <Item SerialId="3589" Name="菲翔" Type="0" />
+    <!--<Item SerialId="4614" Name="卡罗拉双擎" Type="1" />
+    <Item SerialId="4621" Name="雷凌双擎" Type="1" />-->
+    <Item SerialId="2859" Name="408" Type="1" />
+    <Item SerialId="4624" Name="C4世嘉" Type="1" />
+    <Item SerialId="1699" Name="轩逸" Type="1" />
+    <Item SerialId="1611" Name="福克斯三厢" Type="1" />
+    <Item SerialId="2370" Name="朗逸" Type="1" />
+    <Item SerialId="2381" Name="宝来" Type="1" />
+  </Serial>
+  <Serial Id="1765" Name="速腾">
+    <Item SerialId="2859" Name="408" Type="0" />
+    <Item SerialId="3773" Name="C4L" Type="0" />
+    <Item SerialId="3589" Name="菲翔" Type="0" />
+    <Item SerialId="1879" Name="卡罗拉" Type="0" />
+    <Item SerialId="3655" Name="朗动" Type="0" />
+    <Item SerialId="1699" Name="轩逸" Type="0" />
+    <!--<Item SerialId="4614" Name="卡罗拉双擎" Type="1" />
+    <Item SerialId="4621" Name="雷凌双擎" Type="1" />-->
+    <Item SerialId="2859" Name="408" Type="1" />
+    <Item SerialId="4624" Name="C4世嘉" Type="1" />
+    <Item SerialId="1699" Name="轩逸" Type="1" />
+    <Item SerialId="1611" Name="福克斯三厢" Type="1" />
+    <Item SerialId="2370" Name="朗逸" Type="1" />
+    <Item SerialId="2381" Name="宝来" Type="1" />
+  </Serial>
+  <Serial Id="4279" Name="本田XR-V">
+    <Item SerialId="4306" Name="雪铁龙C3-XR" Type="0" />
+    <Item SerialId="2955" Name="Yeti" Type="0" />
+    <Item SerialId="4335" Name="维特拉" Type="1" />
+    <Item SerialId="3815" Name="锋驭" Type="1" />
+    <Item SerialId="3698" Name="翼搏" Type="1" />    
+  </Serial>
+  <Serial Id="4418" Name="传祺GS4">
+    <Item SerialId="2746" Name="X8" Type="0" />
+    <Item SerialId="2249" Name="X6" Type="0" />
+    <Item SerialId="4033" Name="1E" Type="0" />
+    <Item SerialId="4749" Name="K50S" Type="0" />
+    <Item SerialId="4447" Name="宝骏560" Type="0" />
+    <Item SerialId="4156" Name="卡威W1" Type="0" />
+    <Item SerialId="4497" Name="宋" Type="1" />
+    <Item SerialId="1654" Name="瑞鹰" Type="1" />
+  </Serial>
+  <Serial Id="2871" Name="途观">
+    <Item SerialId="3544" Name="X1" Type="0" />
+    <Item SerialId="3882" Name="DS 6" Type="0" />
+    <Item SerialId="2583" Name="奇骏" Type="0" />
+    <Item SerialId="3883" Name="CX-5" Type="0" />
+    <Item SerialId="4477" Name="GLA级" Type="0" />
+    <Item SerialId="3635" Name="翼虎" Type="0" />
+    <Item SerialId="2190" Name="逍客" Type="1" />
+    <Item SerialId="3395" Name="Q3" Type="1" />
+    <Item SerialId="3686" Name="新劲炫ASX" Type="1" />
+    <Item SerialId="4477" Name="GLA级" Type="1" />
+    <Item SerialId="3883" Name="CX-5" Type="1" />
+    <Item SerialId="3882" Name="DS 6" Type="1" />
+  </Serial>
+  <Serial Id="2694" Name="汉兰达">
+    <Item SerialId="4349" Name="QX50" Type="0" />
+    <Item SerialId="4597" Name="GLC级" Type="0" />
+    <Item SerialId="4470" Name="XT5" Type="0" />
+    <Item SerialId="4372" Name="锐界" Type="0" />
+    <Item SerialId="4214" Name="撼路者" Type="0" />
+    <Item SerialId="4555" Name="mu-X" Type="0" />
+    <Item SerialId="3379" Name="昂科威ENVISION" Type="1" />
+    <Item SerialId="4340" Name="XC60" Type="1" />
+    <Item SerialId="4597" Name="GLC级" Type="1" />
+    <Item SerialId="4214" Name="撼路者" Type="1" />
+    <Item SerialId="4555" Name="mu-X" Type="1" />
+    <Item SerialId="3528" Name="GLK级" Type="1" />
+  </Serial>
+  <Serial Id="3466" Name="众泰T600">
+    <Item SerialId="1952" Name="探索者Ⅲ" Type="0" />
+    <Item SerialId="2227" Name="帅舰" Type="0" />
+    <Item SerialId="1858" Name="黄海挑战者" Type="0" />
+    <Item SerialId="1948" Name="探索者Ⅱ" Type="0" />
+    <Item SerialId="3352" Name="探索者6" Type="0" />
+    <Item SerialId="3275" Name="大7 SUV" Type="0" />
+    <Item SerialId="4176" Name="唐" Type="1" />
+    <Item SerialId="3875" Name="S7" Type="1" />
+    <Item SerialId="1952" Name="探索者Ⅲ" Type="1" />
+    <Item SerialId="3288" Name="驭胜" Type="1" />
+  </Serial>
+  <Serial Id="1868" Name="普拉多">
+    <Item SerialId="4320" Name="XC Classic" Type="0" />
+    <Item SerialId="1911" Name="兰德酷路泽" Type="0" />   
+    <Item SerialId="4320" Name="XC Classic" Type="1" />
+  </Serial>
+  <Serial Id="2064" Name="途锐(进口)">
+    <Item SerialId="2149" Name="揽胜" Type="0" />
+    <Item SerialId="4577" Name="揽胜行政加长版" Type="0" />
+    <Item SerialId="2601" Name="昂科雷" Type="0" />
+    <Item SerialId="1994" Name="Q7" Type="0" />
+    <Item SerialId="4464" Name="Levante" Type="0" />
+    <Item SerialId="3631" Name="添越" Type="0" />
+    <!--<Item SerialId="2145" Name="XC90" Type="1" />
+    <Item SerialId="2032" Name="X5" Type="1" />-->
+    <Item SerialId="2149" Name="揽胜" Type="1" />
+    <Item SerialId="2588" Name="揽胜运动版" Type="1" />
+    <Item SerialId="2130" Name="RX" Type="1" />
+    <Item SerialId="4576" Name="揽胜行政版" Type="1" />
+    <Item SerialId="4578" Name="揽胜运动" Type="1" />
+    <Item SerialId="1953" Name="M级" Type="1" />
+  </Serial>
+  <Serial Id="4147" Name="五菱宏光S">
+    <Item SerialId="4271" Name="斯宾特" Type="0" />
+    <Item SerialId="4144" Name="蓝海凌特" Type="0" />
+    <Item SerialId="3954" Name="凌特524" Type="0" />
+    <Item SerialId="4692" Name="东风御风领尊版" Type="0" />
+    <Item SerialId="4698" Name="东风御风警用系列" Type="0" />
+    <Item SerialId="4694" Name="东风御风领航版" Type="0" />
+    <Item SerialId="4323" Name="风光360" Type="1" />
+    <Item SerialId="4507" Name="风行S500" Type="1" />
+    <Item SerialId="4716" Name="伽途ix" Type="1" />
+    <Item SerialId="3523" Name="长安欧诺" Type="1" />
+    <Item SerialId="4394" Name="幻速H2" Type="1" />
+    <Item SerialId="4641" Name="福瑞达M50 S" Type="1" />
+  </Serial>
+  <Serial Id="4726" Name="途安L">
+    <Item SerialId="3542" Name="凌特" Type="0" />
+    <Item SerialId="4138" Name="V级" Type="0" />
+    <Item SerialId="3038" Name="福建奔驰威霆" Type="0" />
+    <Item SerialId="2970" Name="唯雅诺" Type="0" />
+    <Item SerialId="1825" Name="GL8" Type="0" />
+    <Item SerialId="3614" Name="林肯MKT" Type="0" />
+    
+    <Item SerialId="0" Name="最低啦" Type="1" />
+  </Serial>
+  <Serial Id="2750" Name="奥德赛">
+    <Item SerialId="3542" Name="凌特" Type="0" />
+    <Item SerialId="4138" Name="V级" Type="0" />
+    <Item SerialId="3038" Name="福建奔驰威霆" Type="0" />
+    <Item SerialId="2970" Name="唯雅诺" Type="0" />
+    <Item SerialId="1825" Name="GL8" Type="0" />
+    <Item SerialId="3614" Name="林肯MKT" Type="0" />
+    <Item SerialId="4726" Name="途安L" Type="1" />
+    <Item SerialId="1799" Name="途安" Type="1" />
+    <Item SerialId="3037" Name="NV200" Type="1" />
+    <Item SerialId="3303" Name="逸致" Type="1" />
+    <Item SerialId="3701" Name="艾力绅" Type="1" />
+  </Serial>
+  <Serial Id="1825" Name="别克GL8">
+    <Item SerialId="3542" Name="凌特" Type="0" />
+    <Item SerialId="4138" Name="V级" Type="0" />
+    <Item SerialId="3038" Name="福建奔驰威霆" Type="0" />
+    <Item SerialId="2970" Name="唯雅诺" Type="0" />
+    <Item SerialId="4726" Name="途安L" Type="1" />
+    <Item SerialId="1799" Name="途安" Type="1" />
+    <Item SerialId="3037" Name="NV200" Type="1" />
+    <Item SerialId="3303" Name="逸致" Type="1" />
+    <Item SerialId="3701" Name="艾力绅" Type="1" />
+    <Item SerialId="2750" Name="奥德赛" Type="1" />
+  </Serial>
+</Root>

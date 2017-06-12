@@ -1,0 +1,9 @@
+﻿<script type="text/javascript">
+	var adplay_CityName = ''; //城市
+	var adplay_AreaName = ''; //区域
+	var adplay_BrandID = ''; //品牌id 
+	var adplay_BrandType = ''; //品牌类型：（国产）或（进口）
+	var adplay_BrandName = ''; //品牌
+	var adplay_BlockCode = 'c811d53a-e93b-44e1-a474-a29551fd2362'; //广告块编号
+</script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>

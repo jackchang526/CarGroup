@@ -1,0 +1,3270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0AD7B237-55B6-44C2-A8DB-EAF6F339B1DB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BitAuto.CarChannel.CarchannelWeb</RootNamespace>
+    <AssemblyName>CarchannelWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BitAuto.Beyond.Caching.FileCache">
+      <HintPath>..\DLL\BitAuto.Beyond.Caching.FileCache.dll</HintPath>
+    </Reference>
+    <Reference Include="BitAuto.Beyond.Caching.RefreshCache">
+      <HintPath>..\DLL\BitAuto.Beyond.Caching.RefreshCache.dll</HintPath>
+    </Reference>
+    <Reference Include="BitAuto.Beyond.Utils">
+      <HintPath>..\DLL\BitAuto.Beyond.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="BitAuto.CarUtils, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dll\BitAuto.CarUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="BitAuto.Controls">
+      <HintPath>..\..\..\..\..\P公用平台\Release\BitAuto.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="BitAuto.Utils, Version=2.0.7.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\P公用平台\Release\BitAuto.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="BitAuto.Web">
+      <HintPath>..\DLL\BitAuto.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PieceDataProviderLib">
+      <HintPath>..\DLL\PieceDataProviderLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UrlRewritingNet.UrlRewriter">
+      <HintPath>..\DLL\UrlRewritingNet.UrlRewriter.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="404error.aspx" />
+    <Content Include="404error.html" />
+    <Content Include="AjaxNew\CompareInterfaceProxy.aspx" />
+    <Content Include="AjaxNew\ForConfiguration.aspx" />
+    <Content Include="AjaxNew\GetCarByCsID.aspx" />
+    <Content Include="AjaxNew\GetCarCsInfoForCompare.aspx" />
+    <Content Include="AjaxNew\GetCarHotCompareList.aspx" />
+    <Content Include="AjaxNew\GetCarHotCompareListv2.aspx" />
+    <Content Include="AjaxNew\GetCarInfoForCalcTools.aspx" />
+    <Content Include="AjaxNew\GetHotCompareSerial.aspx" />
+    <Content Include="AjaxNew\ListForPhotoComparev1.aspx" />
+    <Content Include="AjaxNew\ListForPingCeComparev1.aspx" />
+    <Content Include="AjaxNew\SelectListForCompare.aspx" />
+    <Content Include="AjaxNew\SerialToCarForCompare.aspx" />
+    <Content Include="App_Data\91cityToCenter.xml" />
+    <Content Include="App_Data\ad\CsSummaryRightBaiduAD.xml" />
+    <Content Include="App_Data\ad\LinkADByCsID.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Data\ad\selectcar.xml" />
+    <Content Include="App_Data\ad\SerialListAD.xml" />
+    <Content Include="App_Data\ad\SUVChannelAdConfig.xml" />
+    <Content Include="App_Data\AllLevelCity.xml" />
+    <Content Include="App_Data\BestCarTop10.xml" />
+    <Content Include="App_Data\BestCarTop10_2012.xml" />
+    <Content Include="App_Data\LevelDesc.xml" />
+    <Content Include="App_Data\SEOTitleForSummary.xml" />
+    <Content Include="App_Data\SerialFocusImgADConfig.xml" />
+    <Content Include="App_Data\SerialFriendLink.xml" />
+    <Content Include="App_Data\SerialToSeeADConfig.xml" />
+    <Content Include="App_Data\SpecialCityForExponential.xml" />
+    <Content Include="App_Data\TopCarAD.xml" />
+    <Content Include="App_Data\TreeHangqingAD.xml" />
+    <Content Include="CarProducer.aspx" />
+    <Content Include="CarService\GetCarTop.aspx" />
+    <Content Include="CarService\GetSerialTop.aspx" />
+    <Content Include="CarshowMasterbrand.aspx" />
+    <Content Include="CarshowSerial.aspx" />
+    <Content Include="CarTreeV2\CX_brand.aspx" />
+    <Content Include="CarTreeV2\CX_masterbrand.aspx" />
+    <Content Include="CarTreeV2\CX_serial.aspx" />
+    <Content Include="CarTree\CX_brand.aspx" />
+    <Content Include="CarTree\CX_default.aspx" />
+    <Content Include="CarTreeV2\CX_default.aspx" />
+    <Content Include="CarTree\CX_Error.aspx" />
+    <Content Include="CarTree\CX_masterbrand.aspx" />
+    <Content Include="CarTree\CX_serial.aspx" />
+    <Content Include="CarTree\SelectCar.aspx" />
+    <Content Include="CarTreeV2\SelectCar.aspx" />
+    <Content Include="config\guideConfig.xml" />
+    <Content Include="config\H5SelectSerialList.xml" />
+    <Content Include="config\IIS6\IsapiRewrite4.dll" />
+    <Content Include="config\IIS6\IsapiRewrite4.pdb" />
+    <Content Include="config\PagerConfig.xml" />
+    <Content Include="config\ParameterForJson.xml" />
+    <Content Include="config\ParameterForJsonNew.xml" />
+    <Content Include="config\PhotoCompareStruct.xml" />
+    <Content Include="CsRegionSEOSiteMap.aspx" />
+    <Content Include="css\alen.css" />
+    <Content Include="css\alert.css" />
+    <Content Include="css\alert\bottom.gif" />
+    <Content Include="css\alert\bottom_left.gif" />
+    <Content Include="css\alert\bottom_right.gif" />
+    <Content Include="css\alert\left.gif" />
+    <Content Include="css\alert\overlay.png" />
+    <Content Include="css\alert\progress.gif" />
+    <Content Include="css\alert\right.gif" />
+    <Content Include="css\alert\top.gif" />
+    <Content Include="css\alert\top_left.gif" />
+    <Content Include="css\alert\top_right.gif" />
+    <Content Include="css\alphacube.css" />
+    <Content Include="css\alphacube\bottom-left-c.gif" />
+    <Content Include="css\alphacube\bottom-middle.gif" />
+    <Content Include="css\alphacube\bottom-right-c.gif" />
+    <Content Include="css\alphacube\button-close-focus.gif" />
+    <Content Include="css\alphacube\button-max-focus.gif" />
+    <Content Include="css\alphacube\button-min-focus.gif" />
+    <Content Include="css\alphacube\frame-left.gif" />
+    <Content Include="css\alphacube\frame-right.gif" />
+    <Content Include="css\alphacube\left-top.gif" />
+    <Content Include="css\alphacube\right-top.gif" />
+    <Content Include="css\alphacube\top-middle.gif" />
+    <Content Include="css\blocking.css" />
+    <Content Include="css\blocking_test.css" />
+    <Content Include="css\calculator2009.css" />
+    <Content Include="css\car2009.css" />
+    <Content Include="css\car2009_1202_1.css" />
+    <Content Include="css\car2010_0308_1.css" />
+    <Content Include="css\car2010_0611_01.css" />
+    <Content Include="css\carindex.css" />
+    <Content Include="css\carsummary2010_0401_3.css" />
+    <Content Include="css\car_a.css" />
+    <Content Include="css\car_jb_0519.css" />
+    <Content Include="css\car_list.css" />
+    <Content Include="css\citylogo.css" />
+    <Content Include="css\cnr_block\style.css" />
+    <Content Include="css\common.css" />
+    <Content Include="css\default.css" />
+    <Content Include="css\default\bottom_left.gif" />
+    <Content Include="css\default\bottom_mid.gif" />
+    <Content Include="css\default\bottom_right.gif" />
+    <Content Include="css\default\bottom_right_resize.gif" />
+    <Content Include="css\default\center_left.gif" />
+    <Content Include="css\default\center_right.gif" />
+    <Content Include="css\default\clear.gif" />
+    <Content Include="css\default\close.gif" />
+    <Content Include="css\default\inspect.gif" />
+    <Content Include="css\default\maximize.gif" />
+    <Content Include="css\default\minimize.gif" />
+    <Content Include="css\default\overlay.png" />
+    <Content Include="css\default\resize.gif" />
+    <Content Include="css\default\sizer.gif" />
+    <Content Include="css\default\top_left.gif" />
+    <Content Include="css\default\top_mid.gif" />
+    <Content Include="css\default\top_right.gif" />
+    <Content Include="css\dialog_box.css" />
+    <Content Include="css\exhibition\common.css" />
+    <Content Include="css\exhibition\common.js" />
+    <Content Include="css\exhibition\kaka.css" />
+    <Content Include="css\exhibition\peihd.css" />
+    <Content Include="css\gg.css" />
+    <Content Include="css\index_style.css" />
+    <Content Include="css\kaka.css" />
+    <Content Include="css\kmy2009.css" />
+    <Content Include="css\peihd.css" />
+    <Content Include="css\pppage.css" />
+    <Content Include="css\reset.css" />
+    <Content Include="css\selet_tools.css" />
+    <Content Include="css\SeoBottomHotList.css" />
+    <Content Include="css\style_pic.css" />
+    <Content Include="css\tree.css" />
+    <Content Include="css\treeview0802_03.css" />
+    <Content Include="css\复件 common.css" />
+    <Content Include="css\对比.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Exhibition\2010beijing_MasterBrand.aspx" />
+    <Content Include="Exhibition\2010beijing_Serial.aspx" />
+    <Content Include="Exhibition\2010guangzhou-chezhan_MasterBrand.aspx" />
+    <Content Include="Exhibition\2010guangzhou-chezhan_Serial.aspx" />
+    <Content Include="Exhibition\2011guangzhou-chezhan_Serial.aspx" />
+    <Content Include="Exhibition\2011shanghai_Serial.aspx" />
+    <Content Include="Exhibition\2012beijing_Serial.aspx" />
+    <Content Include="Exhibition\2012guangzhou-chezhan_Serial.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="GetAwardInfoV2.aspx" />
+    <Content Include="GetAwardInfo.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="htmlV2\bt_searchV3.shtml" />
+    <Content Include="htmlV2\CommonBodyBottom.shtml" />
+    <Content Include="htmlV2\rightbar.shtml" />
+    <Content Include="htmlV2\footer2016.shtml" />
+    <Content Include="htmlV2\header2016.shtml" />
+    <Content Include="htmlV2\treefooter2016.shtml" />
+    <Content Include="html\AD\RightAD001.shtml" />
+    <Content Include="html\bitauto_analytics_News_Manual.shtml" />
+    <Content Include="html\bt_search.shtml" />
+    <Content Include="html\bt_searchNew.shtml" />
+    <Content Include="html\bt_searchV3.shtml" />
+    <Content Include="html\chedai_script.shtml" />
+    <Content Include="html\cheyimai_chexing.shtml" />
+    <Content Include="html\cheyimai_daikuan.shtml" />
+    <Content Include="html\cheyimai_zhihuan.shtml" />
+    <Content Include="html\chezhanallbrand.shtml" />
+    <Content Include="html\CommonBodyBottom.shtml" />
+    <Content Include="html\commonfooter.shtml" />
+    <Content Include="html\exhibitionfooter.shtml" />
+    <Content Include="html\exhibitionheader.shtml" />
+    <Content Include="html\footer.shtml" />
+    <Content Include="html\footer2012.shtml" />
+    <Content Include="html\footer2014.shtml" />
+    <Content Include="html\ForignLink.shtml" />
+    <Content Include="html\friendLink.shtml" />
+    <Content Include="html\header.shtml" />
+    <Content Include="html\header2012.shtml" />
+    <Content Include="html\header2013.shtml" />
+    <Content Include="html\header2014.shtml" />
+    <Content Include="html\headerForDefault.shtml" />
+    <Content Include="html\HomepageHotBrand.shtml" />
+    <Content Include="html\HotBrand.shtml" />
+    <Content Include="html\HotMasterBrandList.shtml" />
+    <Content Include="html\HotSerialList.shtml" />
+    <Content Include="html\htmlFriendLink.shtml" />
+    <Content Include="htmlV2\htmlFriendLink.shtml" />
+    <Content Include="html\Level\haohuaxingche.html" />
+    <Content Include="html\Level\haohuaxingche_all.html" />
+    <Content Include="html\Level\jincouxingche.html" />
+    <Content Include="html\Level\jincouxingche_all.html" />
+    <Content Include="html\Level\mianbaoche.html" />
+    <Content Include="html\Level\mianbaoche_all.html" />
+    <Content Include="html\Level\mpv.html" />
+    <Content Include="html\Level\mpv_all.html" />
+    <Content Include="html\Level\paoche.html" />
+    <Content Include="html\Level\paoche_all.html" />
+    <Content Include="html\Level\pika.html" />
+    <Content Include="html\Level\pika_all.html" />
+    <Content Include="html\Level\qita.html" />
+    <Content Include="html\Level\qita_all.html" />
+    <Content Include="html\Level\suv.html" />
+    <Content Include="html\Level\suv_all.html" />
+    <Content Include="html\Level\weixingche.html" />
+    <Content Include="html\Level\weixingche_all.html" />
+    <Content Include="html\Level\xiaoxingche.html" />
+    <Content Include="html\Level\xiaoxingche_all.html" />
+    <Content Include="html\Level\zhongdaxingche.html" />
+    <Content Include="html\Level\zhongdaxingche_all.html" />
+    <Content Include="html\Level\zhongxingche.html" />
+    <Content Include="html\Level\zhongxingche_all.html" />
+    <Content Include="html\list_hangqing.shtml" />
+    <Content Include="html\NewHotSerialList.shtml" />
+    <Content Include="html\Quene.shtml" />
+    <Content Include="html\searchBar.shtml" />
+    <Content Include="html\searchBarAndGoCarType.shtml" />
+    <Content Include="html\searchBarAndGoCarTypeOld.shtml" />
+    <Content Include="html\SelectCarCondition.shtml" />
+    <Content Include="html\SelectCarConditionForDaogou.shtml" />
+    <Content Include="html\SelectCarConditionForLevel.shtml" />
+    <Content Include="html\SelectCarConditionUCar.shtml" />
+    <Content Include="html\SelectCarMoreCondition.shtml" />
+    <Content Include="html\SelectCarTool.shtml" />
+    <Content Include="htmlV2\SelectCarTool.shtml" />
+    <Content Include="html\SeoBottomHotList.shtml" />
+    <Content Include="html\SeoBottomHotListShort.shtml" />
+    <Content Include="html\SeoHotSerialList.shtml" />
+    <Content Include="html\SerialSEOBottom.shtml" />
+    <Content Include="html\SerialSEOBottomShort.shtml" />
+    <Content Include="html\so_bar_chexing_tree.html" />
+    <Content Include="html\toolbarForCartree.shtml" />
+    <Content Include="html\topAD.shtml" />
+    <Content Include="html\treefooter.shtml" />
+    <Content Include="html\treefooter2014.shtml" />
+    <Content Include="html\treefooterjs.shtml" />
+    <Content Include="html\tree_header2014.shtml" />
+    <Content Include="html\tree_hangqing.shtml" />
+    <Content Include="html\tree_hangqing_header.shtml" />
+    <Content Include="html\tree_header.shtml" />
+    <Content Include="html\yiche_oldside.shtml" />
+    <Content Include="html\yiche_side.shtml" />
+    <Content Include="Iframe\barcomapre.aspx" />
+    <Content Include="Iframe\CarGroup.aspx" />
+    <Content Include="Iframe\cnsuv\HotSUV.aspx" />
+    <Content Include="Iframe\CsList.aspx" />
+    <Content Include="images\3dshow.gif" />
+    <Content Include="images\ad01.gif" />
+    <Content Include="images\bg-add.gif" />
+    <Content Include="images\bg-alltab-btn.gif" />
+    <Content Include="images\bg-btn.gif" />
+    <Content Include="images\bg-btn2.gif" />
+    <Content Include="images\bg-btn3.gif" />
+    <Content Include="images\bg-btn6.gif" />
+    <Content Include="images\bg-buyindex1.gif" />
+    <Content Include="images\bg-buyindex2.gif" />
+    <Content Include="images\bg-buyindex3.gif" />
+    <Content Include="images\bg-bybrand.gif" />
+    <Content Include="images\bg-byletters-list.gif" />
+    <Content Include="images\bg-byn01.gif" />
+    <Content Include="images\bg-byn02.gif" />
+    <Content Include="images\bg-c-dt.gif" />
+    <Content Include="images\bg-cars.gif" />
+    <Content Include="images\bg-cars.jpg" />
+    <Content Include="images\bg-cars2.gif" />
+    <Content Include="images\bg-cars3.gif" />
+    <Content Include="images\bg-compare1.gif" />
+    <Content Include="images\bg-comparec.gif" />
+    <Content Include="images\bg-ctable.gif" />
+    <Content Include="images\bg-deng.gif" />
+    <Content Include="images\bg-dz1.gif" />
+    <Content Include="images\bg-dz2.gif" />
+    <Content Include="images\bg-dz3.gif" />
+    <Content Include="images\bg-fst.gif" />
+    <Content Include="images\bg-hoverc.gif" />
+    <Content Include="images\bg-icons.gif" />
+    <Content Include="images\bg-jb-ul.gif" />
+    <Content Include="images\bg-lr.gif" />
+    <Content Include="images\bg-manual-icon.gif" />
+    <Content Include="images\bg-new.gif" />
+    <Content Include="images\bg-new1.gif" />
+    <Content Include="images\bg-news.gif" />
+    <Content Include="images\bg-page-recodealer.gif" />
+    <Content Include="images\bg-pccon1.gif" />
+    <Content Include="images\bg-pccon2.gif" />
+    <Content Include="images\bg-pccon3.gif" />
+    <Content Include="images\bg-pccon4.gif" />
+    <Content Include="images\bg-pccon5.gif" />
+    <Content Include="images\bg-pccon6.gif" />
+    <Content Include="images\bg-percent.gif" />
+    <Content Include="images\bg-pic-ul.gif" />
+    <Content Include="images\bg-pictab.gif" />
+    <Content Include="images\bg-pictab2.gif" />
+    <Content Include="images\bg-poptit.gif" />
+    <Content Include="images\bg-pring.gif" />
+    <Content Include="images\bg-rank1.gif" />
+    <Content Include="images\bg-rank2.gif" />
+    <Content Include="images\bg-rank3.gif" />
+    <Content Include="images\bg-rank4.gif" />
+    <Content Include="images\bg-selectcity.gif" />
+    <Content Include="images\bg-sp1.gif" />
+    <Content Include="images\bg-span.gif" />
+    <Content Include="images\bg-tab.gif" />
+    <Content Include="images\bg-tab1.gif" />
+    <Content Include="images\bg-tab2.gif" />
+    <Content Include="images\bg-tab3.gif" />
+    <Content Include="images\bg-tit-er.gif" />
+    <Content Include="images\bg-video.gif" />
+    <Content Include="images\bg-wen.gif" />
+    <Content Include="images\bg-yx.gif" />
+    <Content Include="images\bg-zhindex.gif" />
+    <Content Include="images\bg-zpp-a.gif" />
+    <Content Include="images\bg-zpp-f.gif" />
+    <Content Include="images\bg-zpp-l.gif" />
+    <Content Include="images\bg-zpp.gif" />
+    <Content Include="images\bg.jpg" />
+    <Content Include="images\bg_common.png" />
+    <Content Include="images\bg_com_subtt.gif" />
+    <Content Include="images\bg_ctable_2.gif" />
+    <Content Include="images\bg_icon.png" />
+    <Content Include="images\bg_repeat.png" />
+    <Content Include="images\block_imgsb.png" />
+    <Content Include="images\block_imgstab_h4.png" />
+    <Content Include="images\block_imgtabs.png" />
+    <Content Include="images\btn-close.gif" />
+    <Content Include="images\btn-duibi.gif" />
+    <Content Include="images\btn-hide.gif" />
+    <Content Include="images\btn-show.gif" />
+    <Content Include="images\btn-show2.gif" />
+    <Content Include="images\btnclose.gif" />
+    <Content Include="images\btn_change_car.gif" />
+    <Content Include="images\btn_com_car_op.gif" />
+    <Content Include="images\btn_showandhide.gif" />
+    <Content Include="images\btn_style.gif" />
+    <Content Include="images\bt_car_public-li.gif" />
+    <Content Include="images\bt_car_public.gif" />
+    <Content Include="images\bt_car_public_li_bg.png" />
+    <Content Include="images\bxw.gif" />
+    <Content Include="images\c0621_01.png" />
+    <Content Include="images\c0621_02.png" />
+    <Content Include="images\c0621_03.png" />
+    <Content Include="images\c0621_04.png" />
+    <Content Include="images\c0621_05.png" />
+    <Content Include="images\c0622_01.png" />
+    <Content Include="images\c0622_02.png" />
+    <Content Include="images\c0622_03.png" />
+    <Content Include="images\c0622_04.png" />
+    <Content Include="images\c0622_05.png" />
+    <Content Include="images\c0622_06.png" />
+    <Content Include="images\c0622_07.png" />
+    <Content Include="images\c0622_08.png" />
+    <Content Include="images\c0623_01.png" />
+    <Content Include="images\c0623_02.png" />
+    <Content Include="images\c0623_03.png" />
+    <Content Include="images\c0623_04.png" />
+    <Content Include="images\c0623_05.png" />
+    <Content Include="images\c0624_01.png" />
+    <Content Include="images\c0624_02.png" />
+    <Content Include="images\c0624_03.png" />
+    <Content Include="images\c0624_04.png" />
+    <Content Include="images\c1.gif" />
+    <Content Include="images\c2.gif" />
+    <Content Include="images\c3.gif" />
+    <Content Include="images\c4.gif" />
+    <Content Include="images\c5.gif" />
+    <Content Include="images\car-jb-allrepeat1.png" />
+    <Content Include="images\car-jb-norepeat.png" />
+    <Content Include="images\car-jb-repeatx.png" />
+    <Content Include="images\car_logo_q1.gif" />
+    <Content Include="images\car_model.gif" />
+    <Content Include="images\car_model7.png" />
+    <Content Include="images\car_pic.gif" />
+    <Content Include="images\chang_car_btn_scroll.png" />
+    <Content Include="images\chedai_bq_paixu.png" />
+    <Content Include="images\clip_image.gif" />
+    <Content Include="images\closeopen.gif" />
+    <Content Include="images\cnone.gif" />
+    <Content Include="images\cnr_block\bg_h3.png" />
+    <Content Include="images\cnr_block\bg_h3_li.png" />
+    <Content Include="images\cnr_block\bg_h3_li_c.png" />
+    <Content Include="images\cnr_block\bg_ul.png" />
+    <Content Include="images\common\col-side_h_bg.png" />
+    <Content Include="images\common\column_bg.png" />
+    <Content Include="images\common\column_con_bg.png" />
+    <Content Include="images\common\col_h_bg.gif" />
+    <Content Include="images\common\col_h_bg2.gif" />
+    <Content Include="images\common\green.gif" />
+    <Content Include="images\common\grey.gif" />
+    <Content Include="images\common\icon_arrow.gif" />
+    <Content Include="images\common\icon_arrow.png" />
+    <Content Include="images\common\icon_city_arrow.png" />
+    <Content Include="images\common\icon_city_close.gif" />
+    <Content Include="images\common\icon_hot_list_bg.gif" />
+    <Content Include="images\common\icon_input.gif" />
+    <Content Include="images\common\list_dot.gif" />
+    <Content Include="images\common\list_dot_b.gif" />
+    <Content Include="images\common\w100_100.jpg" />
+    <Content Include="images\common\w120.jpg" />
+    <Content Include="images\common\w165.jpg" />
+    <Content Include="images\common\w165_110.jpg" />
+    <Content Include="images\common\w220_150.gif" />
+    <Content Include="images\common\w220_70.gif" />
+    <Content Include="images\common\w220_80.gif" />
+    <Content Include="images\common\w300.jpg" />
+    <Content Include="images\common\w300_200.jpg" />
+    <Content Include="images\common\w720_80.gif" />
+    <Content Include="images\common\w90.jpg" />
+    <Content Include="images\com_car_add_hover.gif" />
+    <Content Include="images\com_floatbar_bg.gif" />
+    <Content Include="images\com_li_dot.gif" />
+    <Content Include="images\com_pingce_con_bg.gif" />
+    <Content Include="images\com_pingce_nav_btn.gif" />
+    <Content Include="images\com_pingce_nav_current_btn.gif" />
+    <Content Include="images\disablebtn.png" />
+    <Content Include="images\focus_h3.png" />
+    <Content Include="images\focus_h3_img.png" />
+    <Content Include="images\focus_tbg.png" />
+    <Content Include="images\foot.gif" />
+    <Content Include="images\headerx.gif" />
+    <Content Include="images\header_1.png" />
+    <Content Include="images\header_4.gif" />
+    <Content Include="images\icon-n.gif" />
+    <Content Include="images\icons.png" />
+    <Content Include="images\icon_nav_hangqing.png" />
+    <Content Include="images\icon_nav_pingce.png" />
+    <Content Include="images\icon_nav_tujie.png" />
+    <Content Include="images\icon_nav_tupian.png" />
+    <Content Include="images\icon_nav_zhishu.png" />
+    <Content Include="images\icon_post2.png" />
+    <Content Include="images\icon_s_dot.png" />
+    <Content Include="images\icon_video.png" />
+    <Content Include="images\ico_defeat.gif" />
+    <Content Include="images\ico_gotop.gif" />
+    <Content Include="images\ico_s3.gif" />
+    <Content Include="images\ico_slippage_left.gif" />
+    <Content Include="images\ico_slippage_right.gif" />
+    <Content Include="images\img-2.gif" />
+    <Content Include="images\img-fen.gif" />
+    <Content Include="images\img-footer.gif" />
+    <Content Include="images\img-header.gif" />
+    <Content Include="images\img-header2.gif" />
+    <Content Include="images\img-header3.gif" />
+    <Content Include="images\img08.gif" />
+    <Content Include="images\img10.gif" />
+    <Content Include="images\img_kedubiao.gif" />
+    <Content Include="images\img_kedubiao2.gif" />
+    <Content Include="images\img_kedubiao_on.gif" />
+    <Content Include="images\img_logo_b1.gif" />
+    <Content Include="images\img_s1.gif" />
+    <Content Include="images\index_spe.png" />
+    <Content Include="images\kaka_ico_style.gif" />
+    <Content Include="images\ka_60_60.gif" />
+    <Content Include="images\ka_azbox.png" />
+    <Content Include="images\ka_azico.png" />
+    <Content Include="images\ka_bg_mbrand1.png" />
+    <Content Include="images\ka_bg_mbrand2.png" />
+    <Content Include="images\ka_demarcation.png" />
+    <Content Include="images\ka_focus.jpg" />
+    <Content Include="images\ka_focus_index.jpg" />
+    <Content Include="images\ka_icon_post3.png" />
+    <Content Include="images\koubei_no_car.png" />
+    <Content Include="images\koubei_no_data.png" />
+    <Content Include="images\lh_bg01.gif" />
+    <Content Include="images\lh_bg02.gif" />
+    <Content Include="images\lh_sf_bg.gif" />
+    <Content Include="images\li-dg.gif" />
+    <Content Include="images\line-sum-list.gif" />
+    <Content Include="images\line.gif" />
+    <Content Include="images\line01.gif" />
+    <Content Include="images\line_dashed_photo.gif" />
+    <Content Include="images\logo_car.jpeg" />
+    <Content Include="images\next.cur" />
+    <Content Include="images\nokoubei300_35.png" />
+    <Content Include="images\nopic300_200.JPG" />
+    <Content Include="images\pccon-ready.gif" />
+    <Content Include="images\phd_02_bg.gif" />
+    <Content Include="images\pic1.jpg" />
+    <Content Include="images\pic2.jpg" />
+    <Content Include="images\pic3.jpg" />
+    <Content Include="images\pic4.jpg" />
+    <Content Include="images\pic5.jpg" />
+    <Content Include="images\pre.cur" />
+    <Content Include="images\public_head.jpg" />
+    <Content Include="images\p_7_bg-imgbg1.gif" />
+    <Content Include="images\p_bg-btn1.gif" />
+    <Content Include="images\p_bg-btn2.gif" />
+    <Content Include="images\p_bg-v.gif" />
+    <Content Include="images\p_bg_zmbmodel.gif" />
+    <Content Include="images\p_icon-hzc.gif" />
+    <Content Include="images\p_line.gif" />
+    <Content Include="images\selets_tool.gif" />
+    <Content Include="images\sum_car_card.gif" />
+    <Content Include="images\table_line.gif" />
+    <Content Include="images\tit-cx.jpg" />
+    <Content Include="images\tool_bg_li.gif" />
+    <Content Include="images\tool_h2.gif" />
+    <Content Include="images\vedioImage.gif" />
+    <Content Include="images\view_tab_bg.gif" />
+    <Content Include="images\wd_azico.png" />
+    <Content Include="images\wd_block_imgstab.png" />
+    <Content Include="images\wd_hotrank_bg.png" />
+    <Content Include="images\wd_listsm.png" />
+    <Content Include="images\wd_rankico.png" />
+    <Content Include="images\wd_rankico_s.png" />
+    <Content Include="images\wd_starcar.png" />
+    <Content Include="images\wd_startab.png" />
+    <Content Include="images\wd_video.png" />
+    <Content Include="images\wx_col-side_h3.png" />
+    <Content Include="images\wx_icon_focus_li.png" />
+    <Content Include="images\wx_icon_focus_li_current.png" />
+    <Content Include="images\wx_linebox_h3.png" />
+    <Content Include="images\wx_play.png" />
+    <Content Include="images\zh_model_li.png" />
+    <Content Include="images\zs-btn1.gif" />
+    <Content Include="images\zs-btn2.gif" />
+    <Content Include="images\zs-line01.gif" />
+    <Content Include="images\zs-line02.gif" />
+    <Content Include="images\zs-percent.gif" />
+    <Content Include="images\zs-sanjiao.gif" />
+    <Content Include="images\zs-sanjiao2.gif" />
+    <Content Include="images\复件 logo_car.jpeg" />
+    <Content Include="include\09gq\09gq_kan\09gq_anquan\00001\09cz_kc_aq_cncapzxcj_Auto.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_anquan\00001\09cz_kc_aq_jdt_Manual.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_anquan\00001\09gq_kc_aq_qcdy_Auto.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_anquan\00001\10cz_kc_aq_aqzsypzcs_Manual.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_anquan\00001\10cz_kc_aq_cncaprdcx_Manual.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_anquan\00001\10cz_kc_aq_encaprdcx_Manual.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_anquan\00001\10cz_kc_aq_encapzxcj_Auto.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_anquan\00001\10cz_kc_aq_pzjgjj_Manual.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_daogou\00001\09gq_kc_dg_dgxw_Auto.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_daogou\00001\09gq_kc_dg_jdt_Manual.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_keji\00001\09gq_kc_kcsy_jdt_Manual.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_keji\00001\09gq_kc_kj_aqjs_Auto.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_keji\00001\09gq_kc_kj_bsxjs_Auto.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_keji\00001\09gq_kc_kj_cdlt_Auto.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_keji\00001\09gq_kc_kj_cnjs_Auto.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_keji\00001\09gq_kc_kj_csjs_Auto.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_keji\00001\09gq_kc_kj_csys_Auto.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_keji\00001\09gq_kc_kj_dpjs_Auto.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_keji\00001\09gq_kc_kj_dzjs_Auto.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_keji\00001\09gq_kc_kj_fdjjs_Auto.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_keji\00001\09gq_kc_kj_mkjs_Auto.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_keji\00001\09gq_kc_kj_sjcl_Auto.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_keji\00001\09gq_kc_kj_zxwz_Auto.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_keji\00001\09gq_kc_kj_zyjs_Auto.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_keji\00001\1006_kc_kj_jszs_Manual.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_pingce\00001\09gq_kc_pcsy_jdq_Auto.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_pingce\00001\09gq_kc_pcsy_jdt_Manual.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_tujie\00001\09gq_kc_tjxc_jdt_Manual.shtml" />
+    <Content Include="include\09gq\09gq_kan\09gq_tujie\00001\09gq_kc_tjxc_jdxw_Auto.shtml" />
+    <Content Include="include\09gq\09gq_news\00001\09gq_xw_yczs_jdtt_Manual.shtml" />
+    <Content Include="include\09gq\09gq_news\09gq_chanxiao\00001\09gq_xw_cxl_jdt_Manual.shtml" />
+    <Content Include="include\09gq\09gq_news\09gq_chanxiao\00001\09gq_xw_cxl_xbtt_Manual.shtml" />
+    <Content Include="include\09gq\carchannel\00001\hhcjdt_Manual.shtml" />
+    <Content Include="include\09gq\carchannel\00001\jcxcjdt_Manual.shtml" />
+    <Content Include="include\09gq\carchannel\00001\mpvjdt_Manual.shtml" />
+    <Content Include="include\09gq\carchannel\00001\pcjdt_Manual.shtml" />
+    <Content Include="include\09gq\carchannel\00001\qtjdt_Manual.shtml" />
+    <Content Include="include\09gq\carchannel\00001\suvjdt_Manual.shtml" />
+    <Content Include="include\09gq\carchannel\00001\test_Manual.shtml" />
+    <Content Include="include\09gq\carchannel\00001\xxcjdt_Manual.shtml" />
+    <Content Include="include\09gq\carchannel\00001\zdxcjdt_Manual.shtml" />
+    <Content Include="include\09gq\carchannel\00001\zxcjdt_Manual.shtml" />
+    <Content Include="include\09gq\gg\2010_ycggzy\tempAD\00001\2012_SPTSXXC_Manual.shtml" />
+    <Content Include="include\09gq\gg\2010_ycggzy\tempAD\00001\2012_SPTS_JCC_Manual.shtml" />
+    <Content Include="include\09gq\gg\2010_ycggzy\tempAD\00001\2012_SPTS_mpv_Manual.shtml" />
+    <Content Include="include\09gq\gg\maicheban\chexinglanmuye\00001\mclmyspts_Manual.htm" />
+    <Content Include="include\09gq\gg\maicheban\chexinglanmuye\00001\mclmyspts_Manual.shtml" />
+    <Content Include="include\BAA\BBS\00001\201311_loulan_ltht_Manual.shtml" />
+    <Content Include="include\BAA\BBS\00001\201401_xbzsy_baa_Manual.shtml" />
+    <Content Include="include\BAA\BBS\00001\20161031_cxzs_luntan_Manual.shtml" />
+    <Content Include="include\BAA\BBS\00001\20170424_cxzs_luntan_new_Manual.shtml" />
+    <Content Include="include\debris\ranks\Top10HotNewsPage.shtml" />
+    <Content Include="include\partner\hezuo_part\00001\201210_hzwz_rmcx_gb2312_Manual.shtml" />
+    <Content Include="include\partner\hezuo_part\00001\201210_hzwz_rmcx_Manual.shtml" />
+    <Content Include="include\pd\2012\chedai\00001\chedai_chedaizixun_Manual.shtml" />
+    <Content Include="include\pd\2012\common\00001\201207_404page_content_gb2312_Manual.shtml" />
+    <Content Include="include\pd\2012\daogou\00001\201312_daogou_xcpd_Auto.shtml" />
+    <Content Include="include\pd\2012\kanche\00001\201202_aq_jdt_Auto.shtml" />
+    <Content Include="include\pd\2012\kanche\00001\201204_pingce_jiaodiantu_Auto.shtml" />
+    <Content Include="include\pd\2012\kanche\00001\201204_pingce_toutiao_Manual.shtml" />
+    <Content Include="include\pd\2012\kanche\00001\201205_daogou_dbgj_Manual.shtml" />
+    <Content Include="include\pd\2012\kanche\00001\201205_daogou_gcsc_Auto.shtml" />
+    <Content Include="include\pd\2012\kanche\00001\201205_daogou_jdt_Auto.shtml" />
+    <Content Include="include\pd\2012\kanche\00001\201205_daogou_jdxw_Auto.shtml" />
+    <Content Include="include\pd\2012\kanche\00001\201205_daogou_jtfw_Auto.shtml" />
+    <Content Include="include\pd\2012\kanche\00001\201205_daogou_ltdc_Auto.shtml" />
+    <Content Include="include\pd\2012\kanche\00001\201205_daogou_pzaq_Auto.shtml" />
+    <Content Include="include\pd\2012\kanche\00001\201205_daogou_rmdhbq_Manual.shtml" />
+    <Content Include="include\pd\2012\kanche\00001\201205_daogou_ssxc_Auto.shtml" />
+    <Content Include="include\pd\2012\kanche\00001\201205_daogou_sypz_Auto.shtml" />
+    <Content Include="include\pd\2012\kanche\00001\201205_daogou_toutiao_Auto.shtml" />
+    <Content Include="include\pd\2012\kanche\00001\201205_daogou_tpt_Auto.shtml" />
+    <Content Include="include\pd\2012\kanche\00001\201205_daogou_xlcx_Auto.shtml" />
+    <Content Include="include\pd\2012\kanche\00001\2012_pingce_yichepingce_Manual.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201202_anquan_jdxwtt_Manual.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201202_anquan_jdxw_Auto.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201202_anquan_pzjg_Manual.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201202_anquan_rdcx_Auto.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201202_anquan_rdcx_Manual.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201202_aq_jdt_Auto.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201202_jishu_jdt_Auto.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201202_jishu_jdxwlb_Auto.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201202_jishu_jdxwtt_Manual.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201202_jishu_jszs_Manual.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201202_jishu_minidh_Manual.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201202_jishu_rmjs_Manual.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201204_pingce_jdt_Auto.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201204_pingce_tlgg_Manual.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201205_anquan_aqwd_Manual.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201205_anquan_pjjg_Manual.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201205_anquan_rmaqjs_Manual.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201206_daogou_wddk_Manual.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201206_hangqing_wddk_Manual.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201206_pingce_wddk_Manual.shtml" />
+    <Content Include="include\pd\2012\shuxing\00001\201206_wenda_wddk_Manual.shtml" />
+    <Content Include="include\pd\2012\wenda\00001\201405_ask_common_gb2312_Manual.shtml" />
+    <Content Include="include\pd\2012\wenda\00001\201405_ask_rk_common_Manual.shtml" />
+    <Content Include="include\pd\2012\xuanche\00001\201202_anquan_pzjg_Manual.shtml" />
+    <Content Include="include\pd\2012\xuanche\00001\201202_anquan_rdcx_Manual.shtml" />
+    <Content Include="include\pd\2014\00001\201408_com_ss_Manual.shtml" />
+    <Content Include="include\pd\2014\00001\201701_cxzsy_ycfdc_Manual.shtml" />
+    <Content Include="include\pd\2014\common\00001\201402_cxzsy_tuijian_ManualV2.shtml" />
+    <Content Include="include\pd\2014\common\00001\201402_cxzsy_tuijian_Manual.shtml" />
+    <Content Include="include\pd\2014\common\00001\201402_cxzsy_xdh_Manual.shtml" />
+    <Content Include="include\pd\2014\common\00001\201402_cxzsy_xdh_utf8_Manual.shtml" />
+    <Content Include="include\pd\2014\common\00001\201402_cxzsy_ycfdc_Manual.shtml" />
+    <Content Include="include\pd\2014\common\00001\201402_cxzsy_ycfhdbfdc_Manual.shtml" />
+    <Content Include="include\pd\2014\common\00001\201402_shuxing_nav_chexing_Manual.shtml" />
+    <Content Include="include\pd\2014\common\00001\201406_shuxing_common_dh_gb2312_Manual.shtml" />
+    <Content Include="include\pd\2014\common\00001\201408_com_ss_gb2312_Manual.shtml" />
+    <Content Include="include\pd\2014\common\00001\201506_typls_js_Manual.shtml" />
+    <Content Include="include\pd\2014\koubei\00001\201703_PCzhan_chexingzongshuyezhanweitu_Manual.shtml" />
+    <Content Include="include\pd\2014\suv\00001\201609_SUV_hotsuv_Manual.shtml" />
+    <Content Include="include\pd\2014\suv\00001\201609_SUV_ask_Manual.shtml" />
+    <Content Include="include\pd\2014\suv\00001\201501_suv_ask_Manual.shtml" />
+    <Content Include="include\pd\2014\suv\00001\201609_SUV_lt_Manual.shtml" />
+    <Content Include="include\pd\2014\suv\00001\201501_suv_baa_Manual.shtml" />
+    <Content Include="include\pd\2014\suv\00001\201609_SUV_CitySUV_Manual.shtml" />
+    <Content Include="include\pd\2014\suv\00001\201501_suv_CitySuv_Manual.shtml" />
+    <Content Include="include\pd\2014\suv\00001\201609_SUV_focuspic_Manual.shtml" />
+    <Content Include="include\pd\2014\suv\00001\201501_suv_FocusPic_Manual.shtml" />
+    <Content Include="include\pd\2014\suv\00001\201501_suv_HotSuv_Manual.shtml" />
+    <Content Include="include\pd\2014\suv\00001\201609_SUV_jjss_Manual.shtml" />
+    <Content Include="include\pd\2014\suv\00001\201501_suv_jjss_Manual.shtml" />
+    <Content Include="include\pd\2014\suv\00001\201609_SUV_yueyesuv_Manual.shtml" />
+    <Content Include="include\pd\2014\suv\00001\201501_suv_yueye_Manual.shtml" />
+    <Content Include="include\pd\2014\suv\00001\201609_SUV_zsk_Manual.shtml" />
+    <Content Include="include\pd\2014\suv\00001\201501_suv_zsk_Manual.shtml" />
+    <Content Include="include\pd\2016\00001\20170118_zongshu_likewhatcar_Manual.shtml" />
+    <Content Include="include\pd\2016\car\00001\20161009_cxzs_luntan_Manual.shtml" />
+    <Content Include="include\pd\2016\car\00001\20161110_zongshu_likewhatcar_Manual.shtml" />
+    <Content Include="include\pd\2016\common\00001\201612_ej_nav_common_gb2312_Manual.shtml" />
+    <Content Include="include\pd\2016\common\00001\201611_common_search_Manual.shtml" />
+    <Content Include="include\pd\2016\common\00001\201607_common_search_Manual.shtml" />
+    <Content Include="include\pd\2016\common\00001\201609_SUV_head_Manual.shtml" />
+    <Content Include="include\pd\2016\common\00001\201607_ejdh_common_Manual.shtml" />
+    <Content Include="include\pd\2016\yipaicms\00001\201701_Summary_SCInfoList_GB2312_Manual.shtml" />
+    <Content Include="include\pd\2016\yipaicms\00001\201701_Summary_SCInfoList_Manual.shtml" />
+    <Content Include="include\pd\2016\yipaicms\00001\201701_Summary_SCInfoPopup_GB2312_Manual.shtml" />
+    <Content Include="include\pd\2016\yipaicms\00001\201701_Summary_SCInfoPopup_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2010_lanmuCommon_head_UTF8_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2012_lanmucommon_Header_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2014_lanmuCommon_footer_conent_Manual.shtml" />
+    <Content Include="include\special\seo\00001\201701_pinpaiye_tj_Manual.shtml" />
+    <Content Include="include\special\seo\00001\2017_chexinglink_Auto.shtml" />
+    <Content Include="include\special\stat\00001\bglogpostlog_Manual.shtml" />
+    <Content Include="include\special\00001\bitauto_analytics_airui_Manual.shtml" />
+    <Content Include="include\special\00001\bitauto_analytics_CheZhan_Manual.shtml" />
+    <Content Include="include\special\00001\bitauto_analytics_chezhan_utf8_Manual.shtml" />
+    <Content Include="include\special\00001\bitauto_WebTrends_Manual.shtml" />
+    <Content Include="include\special\00001\bitauto_WebTrends_utf8_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2010_lanmuCommon_FootFile_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2010_lanmuCommon_head_content_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2010_lanmuCommon_head_Content_UTF8_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2010_lanmuCommon_head_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2012_lanmucommon_footer_content_gb2312_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2012_lanmucommon_footer_gb2312_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2012_lanmucommon_footer_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2012_lanmucommon_Header01_gb2312_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2012_lanmucommon_Header01_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2012_lanmucommon_Header_gb2312_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2012_sjlanmucommon_Header_gb2312_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2013_lanmucommon_Header_jian_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2014_lanmuCommon_footer_gb2312_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2014_lanmuCommon_footer_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2014_lanmuCommon_header_dh_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2014_lanmuCommon_header_gb2312_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2014_lanmuCommon_header_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2014_lanmuCommon_treefooter_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2014_lanmu_common_sxyd_gb2312_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2016_lanmuCommon_footer_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2016_lanmuCommon_header_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2016_lanmuCommon_treefooter_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2016_lanmuCommon_header_gb2312_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2016_lanmuCommon_footer_gb2312_Manual.shtml" />
+    <Content Include="include\special\2010\00001\2016_lanmuCommon_treefooter_gb2312_Manual.shtml" />
+    <Content Include="include\special\2010\00001\test1.shtml" />
+    <Content Include="include\special\2010\00001\test2.shtml" />
+    <Content Include="include\special\2010\00001\test2312.shtml" />
+    <Content Include="include\special\seo\00001\201608_pinpaiye_tj_Manual.shtml" />
+    <Content Include="include\special\seo\00001\201608_zongshuye_tj_Manual.shtml" />
+    <Content Include="include\special\seo\00001\bitauto_car_12div_hotcar_Manual.shtml" />
+    <Content Include="include\special\seo\00001\bitauto_car_12div_hotcar_new_Manual.shtml" />
+    <Content Include="include\special\seo\00001\bitauto_car_frendlink_Manual.shtml" />
+    <Content Include="include\special\seo\00001\bitauto_city_sitemap_Manual.shtml" />
+    <Content Include="include\special\seo\00001\bitauto_newspage_hotcar_bottom_Manual.htm" />
+    <Content Include="include\special\seo\00001\bitauto_news_changshang_Manual.shtml" />
+    <Content Include="include\special\seo\00001\bitauto_news_hotpinpai_Manual.shtml" />
+    <Content Include="include\special\stat\00001\stat_bglog_Manual.shtml" />
+    <Content Include="include\special\yc\00001\2010TopicCommonFoot_Content_Manual.shtml" />
+    <Content Include="include\special\yc\00001\2010TopicCommonFoot_Jiaoben_Manual.shtml" />
+    <Content Include="include\special\yc\00001\2010TopicCommonFoot_Manual.shtml" />
+    <Content Include="include\special\yc\00001\2010TopicCommonFoot_UTF8_Manual.shtml" />
+    <Content Include="include\special\yc\00001\2010TopicCommonHead_Manual.shtml" />
+    <Content Include="include\special\yc\00001\2010TopicCommonHead_UTF8_Manual.shtml" />
+    <Content Include="include\special\yc\00001\Car_DropDownList_PublicScriptsV2_Manual.shtml" />
+    <Content Include="include\special\yc\00001\Car_DropDownList_PublicScripts_Manual.shtml" />
+    <Content Include="include\special\yc\00001\tukushuxingjsyinyong_Manual.shtml" />
+    <Content Include="include\z\bj2010\ing\nav\00001\10bj_gydh_cxdh_Manual.shtml" />
+    <Content Include="include\z\bj2010\ing\nav\00001\10bj_gydh_cxyw_Manual.shtml" />
+    <Content Include="include\z\bj2010\ing\nav\00001\10bj_gydh_rsss_Manual.shtml" />
+    <Content Include="include\z\bj2010\ing\nav\00001\10bj_gydh_ysjb_Manual.shtml" />
+    <Content Include="include\z\bj2010\ing\nav\00001\10bj_gydh_zdh_Manual.shtml" />
+    <Content Include="include\z\bjcz\2012\common\00001\201204_bjcz_wszt_gb2312_Manual.shtml" />
+    <Content Include="include\z\bjcz\2012\common\00001\201204_bjcz_wszt_Manual.shtml" />
+    <Content Include="include\z\bjcz\2012\shouye\00001\201204_bjczsy_dh_gb2312_Manual.shtml" />
+    <Content Include="include\z\bjcz\2012\shouye\00001\201204_bjczsy_dh_Manual.shtml" />
+    <Content Include="include\z\bjcz\2012\shouye\00001\201204_bjczsy_jdq_mnphb_gb2312_Manual.shtml" />
+    <Content Include="include\z\bjcz\2012\shouye\00001\201204_bjczsy_js_Manual.shtml" />
+    <Content Include="include\z\bjcz\2012\shouye\00001\201204_bjczsy_ss_gb2312_Manual.shtml" />
+    <Content Include="include\z\bjcz\2012\shouye\00001\201204_bjczsy_ss_Manual.shtml" />
+    <Content Include="include\z\gzcz2010\gzcz2010zzb\gzcz2010gonggong\00001\2010gzcz_css_Manual.shtml" />
+    <Content Include="include\z\gzcz2010\gzcz2010zzb\gzcz2010gonggong\00001\2010gzcz_gydh_cxdh_Manual.shtml" />
+    <Content Include="include\z\gzcz2010\gzcz2010zzb\gzcz2010gonggong\00001\2010gzcz_gydh_rsss_Manual.shtml" />
+    <Content Include="include\z\gzcz2010\gzcz2010zzb\gzcz2010gonggong\00001\2010gzcz_gydh_zdh_Manual.shtml" />
+    <Content Include="include\z\gzcz2010\gzcz2010zzb\gzcz2010gonggong\00001\2010gzcz_js_Manual.shtml" />
+    <Content Include="include\z\gzcz2011\gzcz2011ztggk\00001\2011gzcz_css_Manual.shtml" />
+    <Content Include="include\z\gzcz2011\gzcz2011ztggk\00001\2011gzcz_css_ssxc_Manual.shtml" />
+    <Content Include="include\z\gzcz2011\gzcz2011ztggk\00001\2011gzcz_css_wszt_Manual.shtml" />
+    <Content Include="include\z\gzcz2011\gzcz2011ztggk\00001\2011gzcz_gydh_rsss_Manual.shtml" />
+    <Content Include="include\z\gzcz2011\gzcz2011ztggk\00001\2011gzcz_gydh_tkmns_Manual.shtml" />
+    <Content Include="include\z\gzcz2011\gzcz2011ztggk\00001\2011gzcz_gydh_xcztdh_Manual.shtml" />
+    <Content Include="include\z\gzcz2011\gzcz2011ztggk\00001\2011gzcz_gydh_zdh_Manual.shtml" />
+    <Content Include="include\z\gzcz2011\gzcz2011ztggk\00001\2011gzcz_js_Manual.shtml" />
+    <Content Include="include\z\gzcz2011\gzcz2011ztggk\00001\gzcz2011_ejlm_wsztlb_Manual.shtml" />
+    <Content Include="include\z\gzcz2011\gzcz2011ztggk\00001\gzcz2011_ejlm_wszt_Manual.shtml" />
+    <Content Include="include\z\gzcz\2012\shouye\00001\201211_gzcz_bdfx_gb2312_Manual.shtml" />
+    <Content Include="include\z\gzcz\2012\shouye\00001\201211_gzcz_bdfx_Manual.shtml" />
+    <Content Include="include\z\gzcz\2012\shouye\00001\201211_gzcz_ssk_gb2312_Manual.shtml" />
+    <Content Include="include\z\gzcz\2012\shouye\00001\201211_gzcz_ssk_Manual.shtml" />
+    <Content Include="include\z\gzcz\2012\shouye\00001\201211_gzcz_sy_dh_gb2312_Manual.shtml" />
+    <Content Include="include\z\gzcz\2012\shouye\00001\201211_gzcz_sy_dh_Manual.shtml" />
+    <Content Include="include\z\gzcz\2012\shouye\00001\201211_gzcz_sy_Js_Manual.shtml" />
+    <Content Include="include\z\gzcz\2012\wszt\00001\gz2012_ejy_cxph_Manual.shtml" />
+    <Content Include="include\z\gzcz\2012\wszt\00001\gzcz2012_ejy_wszt_ggnr_gb2312_Manual.shtml" />
+    <Content Include="include\z\gzcz\2012\wszt\00001\gzcz2012_ejy_wszt_ggnr_Manual.shtml" />
+    <Content Include="include\z\gzcz\2012\wszt\00001\gz_2012_ejy_cmph_Manual.shtml" />
+    <Content Include="include\z\shanghaichezhan2011\2011shczzhanzhongban\2011shczgonggong\00001\2011shcz_css_Manual.shtml" />
+    <Content Include="include\z\shanghaichezhan2011\2011shczzhanzhongban\2011shczgonggong\00001\2011shcz_gydh_cxdh_Manual.shtml" />
+    <Content Include="include\z\shanghaichezhan2011\2011shczzhanzhongban\2011shczgonggong\00001\2011shcz_gydh_xcdh_Manual.shtml" />
+    <Content Include="include\z\shanghaichezhan2011\2011shczzhanzhongban\2011shczgonggong\00001\2011shcz_gydh_xcmnzs_Manual.shtml" />
+    <Content Include="include\z\shanghaichezhan2011\2011shczzhanzhongban\2011shczgonggong\00001\2011shcz_gydh_zdh_Manual.shtml" />
+    <Content Include="include\z\shanghaichezhan2011\2011shczzhanzhongban\2011shczgonggong\00001\2011shcz_js_Manual.shtml" />
+    <Content Include="include\z\shanghaichezhan\2013\gonggongwenjian\00001\2013_shanghaichezhan_css_Manual.shtml" />
+    <Content Include="include\z\shanghaichezhan\2013\gonggongwenjian\00001\2013_shanghaichezhan_daohang_Manual.shtml" />
+    <Content Include="include\z\shanghaichezhan\2013\gonggongwenjian\00001\2013_shanghaichezhan_ejy_css_Manual.shtml" />
+    <Content Include="include\z\shanghaichezhan\2013\gonggongwenjian\00001\2013_shanghaichezhan_ejy_TOP_Manual.shtml" />
+    <Content Include="include\z\shanghaichezhan\2013\gonggongwenjian\00001\2013_shanghaichezhan_js_Manual.shtml" />
+    <Content Include="interfaceforbitauto\AllBrandInfo.aspx" />
+    <Content Include="interfaceforbitauto\AllDBForCar.aspx" />
+    <Content Include="interfaceforbitauto\AllProducerInfo.aspx" />
+    <Content Include="interfaceforbitauto\AllSerialInfo.aspx" />
+    <Content Include="interfaceforbitauto\AllSerialLinkInfo.aspx" />
+    <Content Include="interfaceforbitauto\AllSerialMarketDay.aspx" />
+    <Content Include="interfaceforbitauto\AllSerialName.aspx" />
+    <Content Include="interfaceforbitauto\AllSerialSort.aspx" />
+    <Content Include="interfaceforbitauto\AllSerialSortInfo.aspx" />
+    <Content Include="interfaceforbitauto\CarInfo\CarInfoList.aspx" />
+    <Content Include="interfaceforbitauto\CarInfo\CarListGroupByYear.aspx" />
+    <Content Include="interfaceforbitauto\CarInfo\CarParamInfo.aspx" />
+    <Content Include="interfaceforbitauto\CarInfo\CarPriceInfo.aspx" />
+    <Content Include="interfaceforbitauto\CarInfo\CooperationGetData.aspx" />
+    <Content Include="interfaceforbitauto\CarInfo\GetCarByCsID.aspx" />
+    <Content Include="interfaceforbitauto\CarInfo\StatisticInfo.aspx" />
+    <Content Include="interfaceforbitauto\Exhibition\CarExhibitionInterface.aspx" />
+    <Content Include="interfaceforbitauto\ForBitAutoCompare.aspx" />
+    <Content Include="interfaceforbitauto\ForCarCompareList.aspx" />
+    <Content Include="interfaceforbitauto\ForCarCompareListByCsID.aspx" />
+    <Content Include="interfaceforbitauto\ForNewListWithCategory.aspx" />
+    <Content Include="interfaceforbitauto\ForNewsProducerInfo.aspx" />
+    <Content Include="interfaceforbitauto\ForRainbowData.aspx" />
+    <Content Include="interfaceforbitauto\ForSerialCompareList.aspx" />
+    <Content Include="interfaceforbitauto\GetAllCarInfo.aspx" />
+    <Content Include="interfaceforbitauto\GetAllCarInfoGroupByCsID.aspx" />
+    <Content Include="interfaceforbitauto\GetCarInfoByCsID.aspx" />
+    <Content Include="interfaceforbitauto\GetCarMasterAndLevel.aspx" />
+    <Content Include="interfaceforbitauto\GetCarPriceAndParamLink.aspx" />
+    <Content Include="interfaceforbitauto\GetCarsByCsIDForCompare.aspx" />
+    <Content Include="interfaceforbitauto\GetSerialCompareListByCity.aspx" />
+    <Content Include="interfaceforbitauto\GetSerialForNotion.aspx" />
+    <Content Include="interfaceforbitauto\HotCompareCar.aspx" />
+    <Content Include="interfaceforbitauto\HotSerialTop.aspx" />
+    <Content Include="interfaceforbitauto\IframeForCompare.aspx" />
+    <Content Include="interfaceforbitauto\MasterToSerialList.aspx" />
+    <Content Include="interfaceforbitauto\Master\MasterToSerial.aspx" />
+    <Content Include="interfaceforbitauto\ProducerBrandSerial.aspx" />
+    <Content Include="interfaceforbitauto\producerInfo.aspx" />
+    <Content Include="interfaceforbitauto\RedirectForNewsByCsID.aspx" />
+    <Content Include="interfaceforbitauto\SerialHotListForPriceRange.aspx" />
+    <Content Include="interfaceforbitauto\SerialInfo.aspx" />
+    <Content Include="interfaceforbitauto\SerialInfoCard.aspx" />
+    <Content Include="interfaceforbitauto\SerialInfoForNew.aspx" />
+    <Content Include="interfaceforbitauto\SerialSortByLevelOrPrice.aspx" />
+    <Content Include="interfaceforbitauto\SerialSortList.aspx" />
+    <Content Include="interfaceforbitauto\SerialToSerial.aspx" />
+    <Content Include="interfaceforbitauto\SerialToSerialDetail.aspx" />
+    <Content Include="interfaceforbitauto\SerialYearInfo.aspx" />
+    <Content Include="interfaceforbitauto\SerialYesterdaySort.aspx" />
+    <Content Include="interfaceforbitauto\SerialYouHaoInfo.aspx" />
+    <Content Include="interfaceforbitauto\Serial\AllSerialInfo.aspx" />
+    <Content Include="interfaceforbitauto\Serial\SerialInfo.aspx" />
+    <Content Include="interfaceforbitauto\TransferCsIDToCarIDForCompare.aspx" />
+    <Content Include="interfaceforbitauto\tree\treeXmlContent.aspx" />
+    <Content Include="Interface\3G\AllCarData.aspx" />
+    <Content Include="Interface\ask\oilInterface.aspx" />
+    <Content Include="Interface\AsynAjax.aspx" />
+    <Content Include="Interface\CarData.asmx" />
+    <Content Include="Interface\Cooperation\CommonHeader.aspx" />
+    <Content Include="Interface\Cooperation\css\20110407\style.css" />
+    <Content Include="Interface\Cooperation\css\style.css" />
+    <Content Include="Interface\Cooperation\css\style_1.css" />
+    <Content Include="Interface\Cooperation\css\style_2.css" />
+    <Content Include="Interface\Cooperation\dongbiCommonHeader.aspx" />
+    <Content Include="Interface\Cooperation\IframeGoCarAndPrice.aspx" />
+    <Content Include="Interface\Cooperation\images\20110407\bt_bg_dot.png" />
+    <Content Include="Interface\Cooperation\images\20110407\bt_bg_jy.png" />
+    <Content Include="Interface\Cooperation\images\bt_bg_dot.png" />
+    <Content Include="Interface\Cooperation\images\bt_bg_dot2.png" />
+    <Content Include="Interface\Cooperation\images\bt_bg_dot_1.png" />
+    <Content Include="Interface\Cooperation\images\bt_bg_dot_2.png" />
+    <Content Include="Interface\Cooperation\images\bt_bg_jy.png" />
+    <Content Include="Interface\Cooperation\images\bt_bg_jy2.png" />
+    <Content Include="Interface\Cooperation\images\bt_bg_jy_1.png" />
+    <Content Include="Interface\Cooperation\images\bt_bg_jy_2.png" />
+    <Content Include="Interface\Cooperation\SerialInfo.aspx" />
+    <Content Include="Interface\dlxx\brand.xml" />
+    <Content Include="Interface\dlxx\car.xml" />
+    <Content Include="Interface\dlxx\iFace.aspx" />
+    <Content Include="Interface\dlxx\serial.xml" />
+    <Content Include="Interface\ExhibitionInterface.aspx" />
+    <Content Include="Interface\Exhibition\beijing2010_ExhibitionInterface_Footer.aspx" />
+    <Content Include="Interface\Exhibition\beijing_2010_AlbumSync.aspx" />
+    <Content Include="Interface\Exhibition\beijing_2010_DefaultCarLevelList.aspx" />
+    <Content Include="Interface\Exhibition\beijing_2010_DefaultCarTypeList.aspx" />
+    <Content Include="Interface\Exhibition\beijing_2010_DefaultHotCarType.aspx" />
+    <Content Include="Interface\Exhibition\beijing_2010_DefaultHotModel.aspx" />
+    <Content Include="Interface\Exhibition\Beijing_2010_DefaultNewCarAlbum.aspx" />
+    <Content Include="Interface\Exhibition\beijing_2010_DefaultPavilionList.aspx" />
+    <Content Include="Interface\Exhibition\beijing_2010_ExhibitionInterface.aspx" />
+    <Content Include="Interface\Exhibition\beijing_2010_LevelQuene.aspx" />
+    <Content Include="Interface\Exhibition\Beijing_2010_PavilionAllModelList.aspx" />
+    <Content Include="Interface\Exhibition\beijing_2010_SecondLevel.aspx" />
+    <Content Include="Interface\Exhibition\beijin_2010_Album_HotCarType.aspx" />
+    <Content Include="Interface\Exhibition\guangzhou2010_ExhibitionInterface_Footer.aspx" />
+    <Content Include="Interface\Exhibition\outerExhibitionList.aspx" />
+    <Content Include="Interface\Exhibition\OuterExhibitionRainbow.aspx" />
+    <Content Include="Interface\Exhibition\shanghai2011_ExhibitionInterface_Footer.aspx" />
+    <Content Include="Interface\Exhibition\shanghai_2011_guntu.aspx" />
+    <Content Include="Interface\forbaidu\forbaiduToaliding.aspx" />
+    <Content Include="Interface\forbaidu\forbaiduToaliding.xml" />
+    <Content Include="Interface\GetBrandDealer.aspx" />
+    <Content Include="Interface\GetCarSellData.aspx" />
+    <Content Include="Interface\GetCityHotNewCar.xml" />
+    <Content Include="Interface\GetIndexData.aspx" />
+    <Content Include="Interface\GetMasterDealer.aspx" />
+    <Content Include="Interface\GetSerialOverview.aspx" />
+    <Content Include="Interface\GetSerialOverview.xml" />
+    <Content Include="Interface\hsw\CalcAutoCashTool.aspx" />
+    <Content Include="Interface\hsw\CarPriceTabPage.aspx" />
+    <Content Include="Interface\hsw\css\wd_iframe.css" />
+    <Content Include="Interface\hsw\images\bitauto.png" />
+    <Content Include="Interface\hsw\images\bit_icon100518.png" />
+    <Content Include="Interface\hsw\images\wd_input.png" />
+    <Content Include="Interface\hsw\js\wd_iframe.js" />
+    <Content Include="Interface\iphone\SerialBasicInfo.aspx" />
+    <Content Include="Interface\iphone\SerialInfo.aspx" />
+    <Content Include="Interface\iphone\SerialInfoAndCar.aspx" />
+    <Content Include="Interface\iphone\SerialList.aspx" />
+    <Content Include="Interface\LeveldropdownlistData\dropdownlistdemo.html" />
+    <Content Include="Interface\LeveldropdownlistData\Interface2345.aspx" />
+    <Content Include="Interface\LeveldropdownlistData\interfaceDemo.aspx" />
+    <Content Include="Interface\LeveldropdownlistData\InterfaceDemo360.aspx" />
+    <Content Include="Interface\LeveldropdownlistData\MasterBrandToSerial.aspx" />
+    <Content Include="Interface\LeveldropdownlistData\MasterBrandToSerialNew.aspx" />
+    <Content Include="Interface\LeveldropdownlistData\ProduceToSerial.aspx" />
+    <Content Include="Interface\LeveldropdownlistData\watchcardirectdatainterface.aspx" />
+    <Content Include="Interface\Master\MasterList.aspx" />
+    <Content Include="Interface\SellDataChart.aspx" />
+    <Content Include="Interface\SerialAttention.aspx" />
+    <Content Include="Interface\ServicesFor3DShow.asmx" />
+    <Content Include="Interface\Tree\LeftTreeJs.aspx" />
+    <Content Include="Interface\Tree\SelectCarToXml.aspx" />
+    <Content Include="jsnewV2\audio\jquery.jplayer.swf" />
+    <Content Include="jsnewV2\CarCalculator.js" />
+    <Content Include="jsnewV2\CarChannelBaikeJson.js" />
+    <Content Include="jsnewV2\carcompareforminiV3.js" />
+    <Content Include="jsnewV2\carcomparelist.js" />
+    <Content Include="jsnewV2\carSelectSimple.js" />
+    <Content Include="jsnewV2\circle-progress.min.js" />
+    <Content Include="jsnewV2\common.js" />
+    <Content Include="jsnewV2\CommonFunction.js" />
+    <Content Include="jsnewV2\commons.js" />
+    <Content Include="jsnewV2\cooikehelper.js" />
+    <Content Include="jsnewV2\cssummary.js" />
+    <Content Include="jsnewV2\cssummaryrest.js" />
+    <Content Include="jsnewV2\draggable.js" />
+    <Content Include="jsnewV2\dropdownlistnew.js" />
+    <Content Include="jsnewV2\excanvas.js" />
+    <Content Include="jsnewV2\jquery.autoslider.js" />
+    <Content Include="jsnewV2\jquery.knob.js" />
+    <Content Include="jsnewV2\jquery.lazyload.min.js" />
+    <Content Include="jsnewV2\jquery.qrcode.js" />
+    <Content Include="jsnewV2\JsForParameter.js" />
+    <Content Include="jsnewV2\knob.extend.js" />
+    <Content Include="jsnewV2\KouBeiCompare.js" />
+    <Content Include="jsnewV2\newsViewCount.js" />
+    <Content Include="jsnewV2\photoCompare.js" />
+    <Content Include="jsnewV2\pingceyouhui.js" />
+    <Content Include="jsnewV2\rightbarcarcompare.js" />
+    <Content Include="jsnewV2\serialcompareforpk.js" />
+    <Content Include="jsnewV2\serialexternalcommon.js" />
+    <Content Include="jsnewV2\serialtoseead.js" />
+    <Content Include="jsnewV2\superselectcartool.js" />
+    <Content Include="jsnewV2\taochev2.js" />
+    <Content Include="jsnewV2\ucarserialcity.js" />
+    <Content Include="jsnew\Added_GoCarTypeAndPrice.js" />
+    <Content Include="jsnew\apigetcarhtml.js" />
+    <Content Include="jsnew\audio\jquery.jplayer.swf" />
+    <Content Include="jsnew\BAXmlDom.js" />
+    <Content Include="jsnew\bootstrap-scrollspy.js" />
+    <Content Include="jsnew\brandpvrankingspancode.js" />
+    <Content Include="jsnew\CalculateToolJs.js" />
+    <Content Include="jsnew\CarCalculator.js" />
+    <Content Include="jsnew\CarChannelBaikeJson.js" />
+    <Content Include="jsnew\CarCompareAD.js" />
+    <Content Include="jsnew\carcompareformini.js" />
+    <Content Include="jsnew\carcompareforminiV2.js" />
+    <Content Include="jsnew\carcompareforminiV3.js" />
+    <Content Include="jsnew\carcomparelist.js" />
+    <Content Include="jsnew\CarCompareParamJson.js" />
+    <Content Include="jsnew\carinlet_11.js" />
+    <Content Include="jsnew\CarLevelDropdownListAddin.js" />
+    <Content Include="jsnew\CarPriceForIPLocation.js" />
+    <Content Include="jsnew\carSelectSimple.js" />
+    <Content Include="jsnew\carSelectSimpleV2.js" />
+    <Content Include="jsnew\carSelectSimpleV3.js" />
+    <Content Include="jsnew\carSelectSimpleV4.js" />
+    <Content Include="jsnew\carSelectSimpleV5.js" />
+    <Content Include="jsnew\CarTreeDefaultAttension.js" />
+    <Content Include="jsnew\chedai\chedaiv2.js" />
+    <Content Include="jsnew\chedai\chedaiv2.min.js" />
+    <Content Include="jsnew\city348idmapname.js" />
+    <Content Include="jsnew\CityGroupJsonUTF8.js" />
+    <Content Include="jsnew\cnr_topblock.js" />
+    <Content Include="jsnew\common.js" />
+    <Content Include="jsnew\CommonFunction.js" />
+    <Content Include="jsnew\CommonHeadFunction.js" />
+    <Content Include="jsnew\commons.js" />
+    <Content Include="jsnew\csLevel.js" />
+    <Content Include="jsnew\csRegion.js" />
+    <Content Include="jsnew\csSummary.js" />
+    <Content Include="jsnew\csSummaryNew.js" />
+    <Content Include="jsnew\csSummaryTemp.js" />
+    <Content Include="jsnew\csSummaryv2.1.js" />
+    <Content Include="jsnew\csSummaryv2.2.js" />
+    <Content Include="jsnew\csSummaryv2.3.js" />
+    <Content Include="jsnew\csSummaryv2.4.js" />
+    <Content Include="jsnew\DataControlShow.js" />
+    <Content Include="jsnew\DD_belatedPNG_0.0.8a-min.js" />
+    <Content Include="jsnew\dialog_box.js" />
+    <Content Include="jsnew\DomHelper.js" />
+    <Content Include="jsnew\draggable.js" />
+    <Content Include="jsnew\dropdownlist.js" />
+    <Content Include="jsnew\dropdownlistnew.js" />
+    <Content Include="jsnew\dropdownlistnewforduibi.js" />
+    <Content Include="jsnew\dropdownlistnewV2.js" />
+    <Content Include="jsnew\dropdownlistnewV3.js" />
+    <Content Include="jsnew\dropdownlistnewV4.js" />
+    <Content Include="jsnew\GetBrandDealer.js" />
+    <Content Include="jsnew\GoAllCalculateAndCredit.js" />
+    <Content Include="jsnew\GoAskAndFriend.js" />
+    <Content Include="jsnew\GoCarTypeAndPrice.js" />
+    <Content Include="jsnew\halfprice_11.js" />
+    <Content Include="jsnew\ie6Fixpng.js" />
+    <Content Include="jsnew\intow.js" />
+    <Content Include="jsnew\jquery.autoslider.js" />
+    <Content Include="jsnew\jquery.lazyload.min.js" />
+    <Content Include="jsnewV2\jquery.pagination.js" />
+    <Content Include="jsnew\JsForComparev2.1.js" />
+    <Content Include="jsnew\JsForComparev2.2.js" />
+    <Content Include="jsnew\JsForComparev2.js" />
+    <Content Include="jsnew\JsForParameterv2.1.js" />
+    <Content Include="jsnew\JsForParameterv2.2.js" />
+    <Content Include="jsnew\JsForParameterv2.3.js" />
+    <Content Include="jsnew\JsForParameterv2.4.js" />
+    <Content Include="jsnew\JsForParameterv2.js" />
+    <Content Include="jsnew\JsForParameterV3.0.js" />
+    <Content Include="jsnew\JsForPhotoComparev1.js" />
+    <Content Include="jsnew\JsForPingCeComparev1.js" />
+    <Content Include="jsnew\JSForVisitSerialv2.js" />
+    <Content Include="jsnew\JsForWaitComparev2.js" />
+    <Content Include="jsnew\JsForWaitComparevSummary.js" />
+    <Content Include="jsnew\JSSelectListForCompare.js" />
+    <Content Include="jsnew\lefttree.js" />
+    <Content Include="jsnewV2\lefttree.v2.js" />
+    <Content Include="jsnew\lefttreenew.js" />
+    <Content Include="jsnew\lefttree_exhibition.js" />
+    <Content Include="jsnew\lefttree_noheader.js" />
+    <Content Include="jsnew\leveldropdownlist_version2.js" />
+    <Content Include="jsnew\leverdropdownlist.js" />
+    <Content Include="jsnew\ListForCompare.js" />
+    <Content Include="jsnew\ListForComparev2.1.js" />
+    <Content Include="jsnew\ListForComparev2.2.js" />
+    <Content Include="jsnew\newlevellistgocarandprice.js" />
+    <Content Include="jsnew\NewSelectCarToolV3.js" />
+    <Content Include="jsnewV2\NewSelectCarToolV4.js" />
+    <Content Include="jsnew\newsViewCount.js" />
+    <Content Include="jsnew\photoCompare.js" />
+    <Content Include="jsnew\picLoad1.js" />
+    <Content Include="jsnew\pingceyouhui.js" />
+    <Content Include="jsnew\prototype.js" />
+    <Content Include="jsnew\SelectCarCondition.js" />
+    <Content Include="jsnew\SelectCarTool.js" />
+    <Content Include="jsnew\SelectCarToolV2.js" />
+    <Content Include="jsnew\SellDataInterface.js" />
+    <Content Include="jsnew\SellDataInterfacev2.js" />
+    <Content Include="jsnew\SeoBottomHotList.js" />
+    <Content Include="jsnew\serialcompareforpk.js" />
+    <Content Include="jsnew\serialexternalcommon.js" />
+    <Content Include="jsnew\serialinlet_11.js" />
+    <Content Include="jsnew\serialtoseead.js" />
+    <Content Include="jsnew\superselectcartool.js" />
+    <Content Include="jsnew\taoche.js" />
+    <Content Include="jsnew\TreeContentJs.js" />
+    <Content Include="jsnew\TreeContentJsForOld.js" />
+    <Content Include="jsnew\TreeLastWatchCar.js" />
+    <Content Include="jsnew\TreeMouserTag.js" />
+    <Content Include="jsnew\treeNav.js" />
+    <Content Include="jsnew\TreeStaticsCode.js" />
+    <Content Include="jsnew\TreeTag.js" />
+    <Content Include="jsnew\TreeUcarSelect.js" />
+    <Content Include="jsnew\tree_20100624.js" />
+    <Content Include="jsnew\tree_library2.js" />
+    <Content Include="jsnew\ucarserialcity.js" />
+    <Content Include="jsnew\ued_common.js" />
+    <Content Include="jsnew\window.js" />
+    <Content Include="jsnew\XuanChe.js" />
+    <Content Include="jsnew\yicheSug.js" />
+    <Content Include="jsnew\zampdaforcarchannel.js" />
+    <Content Include="PageLevelV2\LevelPaihang.aspx" />
+    <Content Include="PageListV2\SerialForBrandList.aspx" />
+    <Content Include="PageListV2\SerialForCharList.aspx" />
+    <Content Include="PageListV2\SerialForCountryList.aspx" />
+    <Content Include="PageListV2\SerialForFunctionList.aspx" />
+    <Content Include="PageListV2\SerialForLevel.aspx" />
+    <Content Include="PageListV2\SerialForPriceList.aspx" />
+    <Content Include="PageToolV2\KouBeiCompare.aspx" />
+    <Content Include="MaiCheDefaultPage.aspx" />
+    <Content Include="NewsChannel.aspx" />
+    <Content Include="PageBrandV2\CarBrandPage.aspx" />
+    <Content Include="PageBrandV2\CarBrandPageNews.aspx" />
+    <Content Include="PageBrand\CarBrandPage.aspx" />
+    <Content Include="PageBrand\CarBrandPageNews.aspx" />
+    <Content Include="PageCarV2\CarCompare.aspx" />
+    <Content Include="PageCarV2\CarPhoto.aspx" />
+    <Content Include="PageCarV2\CarSummary.aspx" />
+    <Content Include="PageCar\CarCompare.aspx" />
+    <Content Include="PageCar\CarPhoto.aspx" />
+    <Content Include="PageCar\CarSummary.aspx" />
+    <Content Include="PageLevelV2\SuvChannel.aspx" />
+    <Content Include="PageLevel\LevelPaihang.aspx" />
+    <Content Include="PageLevel\SuvChannel.aspx" />
+    <Content Include="PageList\CarMasterBrandGuideALL.aspx" />
+    <Content Include="PageList\SerialForBrandList.aspx" />
+    <Content Include="PageList\SerialForCharList.aspx" />
+    <Content Include="PageList\SerialForCityPriceRank.aspx" />
+    <Content Include="PageList\SerialForCountryList.aspx" />
+    <Content Include="PageList\SerialForFunctionList.aspx" />
+    <Content Include="PageList\SerialForLevel.aspx" />
+    <Content Include="PageList\SerialForPriceList.aspx" />
+    <Content Include="PageList\SerialForSinglePriceList.aspx" />
+    <Content Include="PageMasterV2\CarMasterBrandPageNews.aspx" />
+    <Content Include="PageMasterV2\CarMasterPage.aspx" />
+    <Content Include="PageMaster\CarMasterBrandPageNews.aspx" />
+    <Content Include="PageMaster\CarMasterPage.aspx" />
+    <Content Include="PageSerialV2\CsCompare.aspx" />
+    <Content Include="PageSerialV2\CsPhoto.aspx" />
+    <Content Include="PageSerialV2\CsPingCe.aspx" />
+    <Content Include="PageSerialV2\CsSummary.aspx" />
+    <Content Include="PageSerialV2\CsSummaryForWaitSale.aspx" />
+    <Content Include="PageSerialV2\SerialNews.aspx" />
+    <Content Include="PageSerial\CsCompare.aspx" />
+    <Content Include="PageSerial\CsCompareRank.aspx" />
+    <Content Include="PageSerial\CsPhoto.aspx" />
+    <Content Include="PageSerial\CsPingCe.aspx" />
+    <Content Include="PageSerial\CsRegion.aspx" />
+    <Content Include="PageSerial\CsRegionNews.aspx" />
+    <Content Include="PageSerial\CsSummary.aspx" />
+    <Content Include="PageSerial\CsSummaryForWaitSale.aspx" />
+    <Content Include="PageSerial\CsSummaryNew.aspx" />
+    <Content Include="PageSerial\SerialNews.aspx" />
+    <Content Include="PageToolV2\CalcAutoCashTool.aspx" />
+    <Content Include="PageToolV2\CalcAutoLoanTool.aspx" />
+    <Content Include="PageToolV2\CalcInsuranceTool.aspx" />
+    <Content Include="PageToolV2\CarCompareList.aspx" />
+    <Content Include="PageToolV2\CarPhotoCompareList.aspx" />
+    <Content Include="PageToolV2\SerialCompareForPK.aspx" />
+    <Content Include="PageToolV2\SuperSelectCarTool.aspx" />
+    <Content Include="PageTool\CalcAutoCashTool.aspx" />
+    <Content Include="PageTool\CalcAutoLoanTool.aspx" />
+    <Content Include="PageTool\CalcInsuranceTool.aspx" />
+    <Content Include="PageTool\CarCompareList.aspx" />
+    <Content Include="PageTool\CarPhotoCompareList.aspx" />
+    <Content Include="PageTool\CarPingCeCompareList.aspx" />
+    <Content Include="PageTool\SerialCompareForPK.aspx" />
+    <Content Include="PageTool\SuperSelectCarTool.aspx" />
+    <Content Include="PageYearV2\CarPhotoByYear.aspx" />
+    <Content Include="PageYearV2\CsSummaryYear.aspx" />
+    <Content Include="PageYearV2\SerialYearNews.aspx" />
+    <Content Include="PageYear\CarPhotoByYear.aspx" />
+    <Content Include="PageYear\CsSummaryYear.aspx" />
+    <Content Include="PageYear\SerialYearNews.aspx" />
+    <Content Include="Readme.txt" />
+    <Content Include="RedirectForSEO.aspx" />
+    <Content Include="Statistic\CarCompareStat.js" />
+    <Content Include="Statistic\CarCompareStatForWireless.js" />
+    <Content Include="Statistic\CarStat.js" />
+    <Content Include="Statistic\CarStatv2.js" />
+    <Content Include="Statistic\HistoryStatJs.htm" />
+    <Content Include="Statistic\StatisticJs.js" />
+    <Content Include="Statistic\StatisticJsOldPV.js" />
+    <Content Include="Statistic\StatisticTest.htm" />
+    <Content Include="Statistic\TempStatForSelectCar.js" />
+    <Content Include="Template\DefaultTemplate.aspx" />
+    <Content Include="Template\PreviewTemplate.aspx" />
+    <Content Include="Test\Perfmon.aspx" />
+    <Content Include="Test\TestForMemcache.aspx" />
+    <Content Include="UserControls\NextToSee.ascx" />
+    <Content Include="UserControls\SerialToSee.ascx" />
+    <Content Include="UserControls\SerialToSeeNew.ascx" />
+    <Content Include="ushtml\0000\yiche_2016_cube_qichedaquan_style-1351.shtml" />
+    <Content Include="ushtml\0000\yiche_2016_cube_qicheguanzhupaihang_style-1352.shtml" />
+    <Content Include="ushtml\0000\114la-151.shtml" />
+    <Content Include="ushtml\0000\2012gz_mxl2-407.shtml" />
+    <Content Include="ushtml\0000\2014_car_duibi-871.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_qichedaquan-1329.shtml" />
+    <Content Include="ushtml\0000\yiche_2016_cube_jisuanqi_style-1268.shtml" />
+    <Content Include="ushtml\0000\yiche_2016_cube_dubi_chanshu_style-1263.shtml" />
+    <Content Include="ushtml\0000\yiche_2016_cube_duibigongju_style-1262.shtml" />
+    <Content Include="ushtml\0000\yiche_2016_cube_koubeiduibi_style-1293.shtml" />
+    <Content Include="ushtml\0000\yiche_2016_cube_other-1247.shtml" />
+    <Content Include="ushtml\0000\yiche_2016_cube_peizhiye_part-1261.shtml" />
+    <Content Include="ushtml\0000\yiche_2016_cube_xinwenzongshu_style-1291.shtml" />
+    <Content Include="ushtml\0000\yiche_2016_cube_xwzw-1280.shtml" />
+    <Content Include="ushtml\0000\yiche_2016_jiangxiang_style-1255.shtml" />
+    <Content Include="ushtml\0000\all_logo_style-322.shtml" />
+    <Content Include="ushtml\0000\yiche_2016_cube_gaojisousuo_style-1265.shtml" />
+    <Content Include="ushtml\0000\car_gaojixuanche-984.shtml" />
+    <Content Include="ushtml\0000\yiche_2016_cube_chexingshuxing_style-1259.shtml" />
+    <Content Include="ushtml\0000\yiche_2016_cube_chexingzongshu_style-1264.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_carsummary_2015hotcar_style-891.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_chexingdaquan-770.shtml" />
+    <Content Include="ushtml\0000\car_article2014-637.shtml" />
+    <Content Include="ushtml\0000\car_baoyang2014-653.shtml" />
+    <Content Include="ushtml\0000\car_baoyang_style_v2-267.shtml" />
+    <Content Include="ushtml\0000\car_baoyang_v1-118.shtml" />
+    <Content Include="ushtml\0000\car_bybrand_logo-201.shtml" />
+    <Content Include="ushtml\0000\car_change_form_style-359.shtml" />
+    <Content Include="ushtml\0000\car_change_pinpai_style-320.shtml" />
+    <Content Include="ushtml\0000\car_change_zipinpai_style-321.shtml" />
+    <Content Include="ushtml\0000\car_chedai2014_yhzz_style-716.shtml" />
+    <Content Include="ushtml\0000\car_chedai_style_v1.shtml" />
+    <Content Include="ushtml\0000\car_chekuan2014-645.shtml" />
+    <Content Include="ushtml\0000\car_chexingduibi_v3-631.shtml" />
+    <Content Include="ushtml\0000\car_common_v2-272.shtml" />
+    <Content Include="ushtml\0000\car_common_v2_B-306.shtml" />
+    <Content Include="ushtml\0000\car_comparetool_v1-124.shtml" />
+    <Content Include="ushtml\0000\car_comparetool_v2-259.shtml" />
+    <Content Include="ushtml\0000\car_detailed2014-636.shtml" />
+    <Content Include="ushtml\0000\car_detailed_list_style_v2-271.shtml" />
+    <Content Include="ushtml\0000\car_detailed_list_v1-117.shtml" />
+    <Content Include="ushtml\0000\car_detailed_style_v2-269.shtml" />
+    <Content Include="ushtml\0000\car_detailed_v1-116.shtml" />
+    <Content Include="ushtml\0000\car_gedipaihang2014-643.shtml" />
+    <Content Include="ushtml\0000\car_jibie_v2-257.shtml" />
+    <Content Include="ushtml\0000\car_localbuy_style_v2-265.shtml" />
+    <Content Include="ushtml\0000\car_localbuy_v1-120.shtml" />
+    <Content Include="ushtml\0000\car_masterBrand_v2-274.shtml" />
+    <Content Include="ushtml\0000\car_niankuan2014-646.shtml" />
+    <Content Include="ushtml\0000\car_paihang_style_v2-264.shtml" />
+    <Content Include="ushtml\0000\car_paihang_v1-122.shtml" />
+    <Content Include="ushtml\0000\car_peizhi_style_v2-266.shtml" />
+    <Content Include="ushtml\0000\car_peizhi_v1-115.shtml" />
+    <Content Include="ushtml\0000\car_peizhi_v3-657.shtml" />
+    <Content Include="ushtml\0000\car_pic2014-641.shtml" />
+    <Content Include="ushtml\0000\car_pickbceping_comparetool_v1-198.shtml" />
+    <Content Include="ushtml\0000\car_pickbceping_comparetool_v2-251.shtml" />
+    <Content Include="ushtml\0000\car_pic_v2-261.shtml" />
+    <Content Include="ushtml\0000\car_pic_v3-488.shtml" />
+    <Content Include="ushtml\0000\car_summary_style_v3-561.shtml" />
+    <Content Include="ushtml\0000\car_summary_v2-252.shtml" />
+    <Content Include="ushtml\0000\car_summary_year_v2-252.shtml" />
+    <Content Include="ushtml\0000\car_type-76.shtml" />
+    <Content Include="ushtml\0000\car_type_style_v2-262.shtml" />
+    <Content Include="ushtml\0000\car_type_v1-114.shtml" />
+    <Content Include="ushtml\0000\car_xiaoliang2014-652.shtml" />
+    <Content Include="ushtml\0000\car_xiaoliang_style_v2-260.shtml" />
+    <Content Include="ushtml\0000\car_xiaoliang_v1-119.shtml" />
+    <Content Include="ushtml\0000\car_zhihuan2014-642.shtml" />
+    <Content Include="ushtml\0000\chedai_style-630.shtml" />
+    <Content Include="ushtml\0000\chedai_yiche-581.shtml" />
+    <Content Include="ushtml\0000\fudongceng_style-559.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_canshupeizhi-743.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_car-685.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_carchekuan-726.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_carniankuan-725.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_carsummary-724.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_car_pic-744.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_car_wenzhang-746.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_chexingduibigongju-772.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_chexingxiangjie-745.shtml" />
+    <Content Include="ushtml\0000\yiche_2016_cube_pinpai_style-1248.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_chexingzhupinpaipinpai-771.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_jisuanqi_style-789.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_jisuanqi_style_20140917-802.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_paihang-793.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_paihangbang-747.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_search_sug_style-788.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_cube_tupianduibi-790.shtml" />
+    <Content Include="ushtml\0000\2014_other_huojiangchexing-901.shtml" />
+    <Content Include="ushtml\0000\yiche2016_2016_jibie_suv_style-1272.shtml" />
+    <Content Include="ushtml\0000\yiche_2014_suv_style-905.shtml" />
+    <Content Include="ushtml\0000\2014_other_huojiangchexing150310-912.shtml" />
+    <Content Include="ushtml\0000\yiche_2015_jusuanqi_style-994.shtml" />
+    <Content Include="ushtml\0000\yiche_2016_navtool_right-1192.shtml" />
+    <Content Include="ushtml\0000\车型_车贷-647.shtml" />
+    <Content Include="ushtml\0000\peizhi_style-72.shtml" />
+    <Content Include="ushtml\0000\tree_anquan_style-217.shtml" />
+    <Content Include="ushtml\0000\tree_daogou_style-312.shtml" />
+    <Content Include="ushtml\0000\tree_jishu_style-216.shtml" />
+    <Content Include="ushtml\0000\tree_pingce_style-263.shtml" />
+    <Content Include="ushtml\0000\wzh-231.shtml" />
+    <Content Include="ushtml\0000\yiche_404_style-315.shtml" />
+    <Content Include="ushtml\autoshow_gz2009\autoshow_2009gz.shtml" />
+    <Content Include="ushtml\block\so\hot_word\new_hot_new_maiche.shtml" />
+    <Content Include="ushtml\block\so\so_bar_js_index.shtml" />
+    <Content Include="ushtml\block\so\so_bar_maiche_jingxiaoshang.shtml" />
+    <Content Include="ushtml\block\so\so_bar_new_cityindex.shtml" />
+    <Content Include="ushtml\block\so\so_bar_new_cityindex_utf.shtml" />
+    <Content Include="ushtml\block\so\so_bar_new_maiche.shtml" />
+    <Content Include="ushtml\block\so\so_css.shtml" />
+    <Content Include="ushtml\block\so\so_formonebutton_chexing.shtml" />
+    <Content Include="ushtml\block\so\sug_ext\sobarforchexing_top.shtml" />
+    <Content Include="ushtml\block\so\sug_ext\sobartwoforchexing.shtml" />
+    <Content Include="ushtml\block\so\sug_tree20110526\sobar_baojia_tree.shtml" />
+    <Content Include="ushtml\block\so\sug_tree20110526\sobar_chexing_tree.shtml" />
+    <Content Include="ushtml\block\so\sug_tree20110526\sobar_dayi_tree.shtml" />
+    <Content Include="ushtml\block\so\sug_tree20110526\sobar_ershouche_tree.shtml" />
+    <Content Include="ushtml\block\so\sug_tree20110526\sobar_jingxiaoshang_tree.shtml" />
+    <Content Include="ushtml\block\so\sug_tree20110526\sobar_koubei_tree.shtml" />
+    <Content Include="ushtml\block\so\sug_tree20110526\sobar_shipin_tree.shtml" />
+    <Content Include="ushtml\block\so\sug_tree20110526\sobar_tupian_tree.shtml" />
+    <Content Include="ushtml\block\so\sug_tree20110526\sobar_zixun_tree.shtml" />
+    <Content Include="ushtml\block\so\sug_tree20110526\sobar_zonghe_tree.shtml" />
+    <Content Include="ushtml\block\so\tree\so_bar_chexing_tree.shtml" />
+    <Content Include="ushtml\car\bitauto_car-type.shtml" />
+    <Content Include="ushtml\car\bitauto_car.shtml" />
+    <Content Include="ushtml\car\bitauto_car_baoyang.shtml" />
+    <Content Include="ushtml\car\bitauto_car_buycar.shtml" />
+    <Content Include="ushtml\car\bitauto_car_chedai_zixun.shtml" />
+    <Content Include="ushtml\car\bitauto_car_chexingduibi.shtml" />
+    <Content Include="ushtml\car\bitauto_car_detailed.shtml" />
+    <Content Include="ushtml\car\bitauto_car_jibie.shtml" />
+    <Content Include="ushtml\car\bitauto_car_masterBrand.shtml" />
+    <Content Include="ushtml\car\bitauto_car_pic-type.shtml" />
+    <Content Include="ushtml\car\bitauto_car_pic.shtml" />
+    <Content Include="ushtml\car\bitauto_car_summary.shtml" />
+    <Content Include="ushtml\car\bitauto_car_treeview.shtml" />
+    <Content Include="ushtml\car\bitauto_tree_hangqing.shtml" />
+    <Content Include="ushtml\car\bitauto_tree_hangqing_header.shtml" />
+    <Content Include="ushtml\car\car_treeview_anquankeji-47.shtml" />
+    <Content Include="ushtml\common\global.shtml" />
+    <Content Include="ushtml\index120401\common_js.shtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="404error.aspx.cs">
+      <DependentUpon>404error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="404error.aspx.designer.cs">
+      <DependentUpon>404error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\CompareInterfaceProxy.aspx.cs">
+      <DependentUpon>CompareInterfaceProxy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxNew\CompareInterfaceProxy.aspx.designer.cs">
+      <DependentUpon>CompareInterfaceProxy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\ForConfiguration.aspx.cs">
+      <DependentUpon>ForConfiguration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxNew\ForConfiguration.aspx.designer.cs">
+      <DependentUpon>ForConfiguration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\GetCarByCsID.aspx.cs">
+      <DependentUpon>GetCarByCsID.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxNew\GetCarByCsID.aspx.designer.cs">
+      <DependentUpon>GetCarByCsID.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\GetCarCsInfoForCompare.aspx.cs">
+      <DependentUpon>GetCarCsInfoForCompare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxNew\GetCarCsInfoForCompare.aspx.designer.cs">
+      <DependentUpon>GetCarCsInfoForCompare.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\GetCarHotCompareList.aspx.cs">
+      <DependentUpon>GetCarHotCompareList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxNew\GetCarHotCompareList.aspx.designer.cs">
+      <DependentUpon>GetCarHotCompareList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\GetCarHotCompareListv2.aspx.cs">
+      <DependentUpon>GetCarHotCompareListv2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxNew\GetCarHotCompareListv2.aspx.designer.cs">
+      <DependentUpon>GetCarHotCompareListv2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\GetCarInfo.ashx.cs">
+      <DependentUpon>GetCarInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\GetCarInfoForCalcTools.aspx.cs">
+      <DependentUpon>GetCarInfoForCalcTools.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxNew\GetCarInfoForCalcTools.aspx.designer.cs">
+      <DependentUpon>GetCarInfoForCalcTools.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\GetCarInfoForCompare.ashx.cs">
+      <DependentUpon>GetCarInfoForCompare.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\GetCityList.ashx.cs">
+      <DependentUpon>GetCityList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\GetDealerList.ashx.cs">
+      <DependentUpon>GetDealerList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\GetHotCarForPhotoCompare.ashx.cs">
+      <DependentUpon>GetHotCarForPhotoCompare.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxNew\GetHotCompareSerial.aspx.cs">
+      <DependentUpon>GetHotCompareSerial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxNew\GetHotCompareSerial.aspx.designer.cs">
+      <DependentUpon>GetHotCompareSerial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\GetMasterToCar.ashx.cs">
+      <DependentUpon>GetMasterToCar.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\GetNoSaleSerailListByYear.ashx.cs">
+      <DependentUpon>GetNoSaleSerailListByYear.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxNew\GetSerailNoCarType_JSon.ashx.cs">
+      <DependentUpon>GetSerailNoCarType_JSon.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\GetSerialByMasterBrand.ashx.cs">
+      <DependentUpon>GetSerialByMasterBrand.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\GoCarTypeAndPriceForCar_Json.ashx.cs">
+      <DependentUpon>GoCarTypeAndPriceForCar_Json.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\GoCarTypeAndPrice_Json.ashx.cs">
+      <DependentUpon>GoCarTypeAndPrice_Json.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\ListForCompare.ashx.cs">
+      <DependentUpon>ListForCompare.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\ListForComparev2.1.ashx.cs">
+      <DependentUpon>ListForComparev2.1.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\ListForPhotoComparev1.aspx.cs">
+      <DependentUpon>ListForPhotoComparev1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxNew\ListForPhotoComparev1.aspx.designer.cs">
+      <DependentUpon>ListForPhotoComparev1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\ListForPingCeComparev1.aspx.cs">
+      <DependentUpon>ListForPingCeComparev1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxNew\ListForPingCeComparev1.aspx.designer.cs">
+      <DependentUpon>ListForPingCeComparev1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\SelectListForCompare.aspx.cs">
+      <DependentUpon>SelectListForCompare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxNew\SelectListForCompare.aspx.designer.cs">
+      <DependentUpon>SelectListForCompare.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\SerialToCarForCompare.ashx.cs">
+      <DependentUpon>SerialToCarForCompare.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxNew\SerialToCarForCompare.aspx.cs">
+      <DependentUpon>SerialToCarForCompare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxNew\SerialToCarForCompare.aspx.designer.cs">
+      <DependentUpon>SerialToCarForCompare.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\beijing_2010_PageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Code\ExhibitionPageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Code\InterfacePageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Code\ServicesFor3DShow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="App_Code\TemplatePagebase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Code\TreePageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarProducer.aspx.cs">
+      <DependentUpon>CarProducer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarProducer.aspx.designer.cs">
+      <DependentUpon>CarProducer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarService\GetCarTop.aspx.cs">
+      <DependentUpon>GetCarTop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarService\GetCarTop.aspx.designer.cs">
+      <DependentUpon>GetCarTop.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarService\GetSerialTop.aspx.cs">
+      <DependentUpon>GetSerialTop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarService\GetSerialTop.aspx.designer.cs">
+      <DependentUpon>GetSerialTop.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarshowMasterbrand.aspx.cs">
+      <DependentUpon>CarshowMasterbrand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarshowMasterbrand.aspx.designer.cs">
+      <DependentUpon>CarshowMasterbrand.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarshowSerial.aspx.cs">
+      <DependentUpon>CarshowSerial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarshowSerial.aspx.designer.cs">
+      <DependentUpon>CarshowSerial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarTreeV2\CX_brand.aspx.cs">
+      <DependentUpon>CX_brand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarTreeV2\CX_brand.aspx.designer.cs">
+      <DependentUpon>CX_brand.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarTreeV2\CX_masterbrand.aspx.cs">
+      <DependentUpon>CX_masterbrand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarTreeV2\CX_masterbrand.aspx.designer.cs">
+      <DependentUpon>CX_masterbrand.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarTreeV2\CX_serial.aspx.cs">
+      <DependentUpon>CX_serial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarTreeV2\CX_serial.aspx.designer.cs">
+      <DependentUpon>CX_serial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarTree\CX_brand.aspx.cs">
+      <DependentUpon>CX_brand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarTree\CX_brand.aspx.designer.cs">
+      <DependentUpon>CX_brand.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarTree\CX_default.aspx.cs">
+      <DependentUpon>CX_default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarTree\CX_default.aspx.designer.cs">
+      <DependentUpon>CX_default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarTreeV2\CX_default.aspx.cs">
+      <DependentUpon>CX_default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarTreeV2\CX_default.aspx.designer.cs">
+      <DependentUpon>CX_default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarTree\CX_Error.aspx.cs">
+      <DependentUpon>CX_Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarTree\CX_Error.aspx.designer.cs">
+      <DependentUpon>CX_Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarTree\CX_masterbrand.aspx.cs">
+      <DependentUpon>CX_masterbrand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarTree\CX_masterbrand.aspx.designer.cs">
+      <DependentUpon>CX_masterbrand.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarTree\CX_serial.aspx.cs">
+      <DependentUpon>CX_serial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarTree\CX_serial.aspx.designer.cs">
+      <DependentUpon>CX_serial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarTree\SelectCar.aspx.cs">
+      <DependentUpon>SelectCar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarTree\SelectCar.aspx.designer.cs">
+      <DependentUpon>SelectCar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarTreeV2\SelectCar.aspx.cs">
+      <DependentUpon>SelectCar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarTreeV2\SelectCar.aspx.designer.cs">
+      <DependentUpon>SelectCar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CsRegionSEOSiteMap.aspx.cs">
+      <DependentUpon>CsRegionSEOSiteMap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CsRegionSEOSiteMap.aspx.designer.cs">
+      <DependentUpon>CsRegionSEOSiteMap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Exhibition\2010beijing_MasterBrand.aspx.cs">
+      <DependentUpon>2010beijing_MasterBrand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exhibition\2010beijing_MasterBrand.aspx.designer.cs">
+      <DependentUpon>2010beijing_MasterBrand.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Exhibition\2010beijing_Serial.aspx.cs">
+      <DependentUpon>2010beijing_Serial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exhibition\2010beijing_Serial.aspx.designer.cs">
+      <DependentUpon>2010beijing_Serial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Exhibition\2010guangzhou-chezhan_MasterBrand.aspx.cs">
+      <DependentUpon>2010guangzhou-chezhan_MasterBrand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exhibition\2010guangzhou-chezhan_MasterBrand.aspx.designer.cs">
+      <DependentUpon>2010guangzhou-chezhan_MasterBrand.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Exhibition\2010guangzhou-chezhan_Serial.aspx.cs">
+      <DependentUpon>2010guangzhou-chezhan_Serial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exhibition\2010guangzhou-chezhan_Serial.aspx.designer.cs">
+      <DependentUpon>2010guangzhou-chezhan_Serial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Exhibition\2011guangzhou-chezhan_Serial.aspx.cs">
+      <DependentUpon>2011guangzhou-chezhan_Serial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exhibition\2011guangzhou-chezhan_Serial.aspx.designer.cs">
+      <DependentUpon>2011guangzhou-chezhan_Serial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Exhibition\2011shanghai_Serial.aspx.cs">
+      <DependentUpon>2011shanghai_Serial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exhibition\2011shanghai_Serial.aspx.designer.cs">
+      <DependentUpon>2011shanghai_Serial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Exhibition\2012beijing_Serial.aspx.cs">
+      <DependentUpon>2012beijing_Serial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exhibition\2012beijing_Serial.aspx.designer.cs">
+      <DependentUpon>2012beijing_Serial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Exhibition\2012guangzhou-chezhan_Serial.aspx.cs">
+      <DependentUpon>2012guangzhou-chezhan_Serial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exhibition\2012guangzhou-chezhan_Serial.aspx.designer.cs">
+      <DependentUpon>2012guangzhou-chezhan_Serial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GetAwardInfoV2.aspx.cs">
+      <DependentUpon>GetAwardInfoV2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GetAwardInfoV2.aspx.designer.cs">
+      <DependentUpon>GetAwardInfoV2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GetAwardInfo.aspx.cs">
+      <DependentUpon>GetAwardInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GetAwardInfo.aspx.designer.cs">
+      <DependentUpon>GetAwardInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Iframe\barcomapre.aspx.cs">
+      <DependentUpon>barcomapre.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Iframe\barcomapre.aspx.designer.cs">
+      <DependentUpon>barcomapre.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Iframe\CarGroup.aspx.cs">
+      <DependentUpon>CarGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Iframe\CarGroup.aspx.designer.cs">
+      <DependentUpon>CarGroup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Iframe\cnsuv\HotSUV.aspx.cs">
+      <DependentUpon>HotSUV.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Iframe\cnsuv\HotSUV.aspx.designer.cs">
+      <DependentUpon>HotSUV.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Iframe\CsList.aspx.cs">
+      <DependentUpon>CsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Iframe\CsList.aspx.designer.cs">
+      <DependentUpon>CsList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\AllBrandInfo.aspx.cs">
+      <DependentUpon>AllBrandInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\AllBrandInfo.aspx.designer.cs">
+      <DependentUpon>AllBrandInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\AllDBForCar.aspx.cs">
+      <DependentUpon>AllDBForCar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\AllDBForCar.aspx.designer.cs">
+      <DependentUpon>AllDBForCar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\AllProducerInfo.aspx.cs">
+      <DependentUpon>AllProducerInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\AllProducerInfo.aspx.designer.cs">
+      <DependentUpon>AllProducerInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\AllSerialInfo.aspx.cs">
+      <DependentUpon>AllSerialInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\AllSerialInfo.aspx.designer.cs">
+      <DependentUpon>AllSerialInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\AllSerialLinkInfo.aspx.cs">
+      <DependentUpon>AllSerialLinkInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\AllSerialLinkInfo.aspx.designer.cs">
+      <DependentUpon>AllSerialLinkInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\AllSerialMarketDay.aspx.cs">
+      <DependentUpon>AllSerialMarketDay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\AllSerialMarketDay.aspx.designer.cs">
+      <DependentUpon>AllSerialMarketDay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\AllSerialName.aspx.cs">
+      <DependentUpon>AllSerialName.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\AllSerialName.aspx.designer.cs">
+      <DependentUpon>AllSerialName.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\AllSerialSort.aspx.cs">
+      <DependentUpon>AllSerialSort.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\AllSerialSort.aspx.designer.cs">
+      <DependentUpon>AllSerialSort.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\AllSerialSortInfo.aspx.cs">
+      <DependentUpon>AllSerialSortInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\AllSerialSortInfo.aspx.designer.cs">
+      <DependentUpon>AllSerialSortInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\CarInfo\CarInfoList.aspx.cs">
+      <DependentUpon>CarInfoList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\CarInfo\CarInfoList.aspx.designer.cs">
+      <DependentUpon>CarInfoList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\CarInfo\CarListGroupByYear.aspx.cs">
+      <DependentUpon>CarListGroupByYear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\CarInfo\CarListGroupByYear.aspx.designer.cs">
+      <DependentUpon>CarListGroupByYear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\CarInfo\CarParamInfo.aspx.cs">
+      <DependentUpon>CarParamInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\CarInfo\CarParamInfo.aspx.designer.cs">
+      <DependentUpon>CarParamInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\CarInfo\CarPriceInfo.aspx.cs">
+      <DependentUpon>CarPriceInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\CarInfo\CarPriceInfo.aspx.designer.cs">
+      <DependentUpon>CarPriceInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\CarInfo\CooperationGetData.aspx.cs">
+      <DependentUpon>CooperationGetData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\CarInfo\CooperationGetData.aspx.designer.cs">
+      <DependentUpon>CooperationGetData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\CarInfo\GetCarByCsID.aspx.cs">
+      <DependentUpon>GetCarByCsID.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\CarInfo\GetCarByCsID.aspx.designer.cs">
+      <DependentUpon>GetCarByCsID.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\CarInfo\GetCarInfo.ashx.cs">
+      <DependentUpon>GetCarInfo.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\CarInfo\StatisticInfo.aspx.cs">
+      <DependentUpon>StatisticInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\CarInfo\StatisticInfo.aspx.designer.cs">
+      <DependentUpon>StatisticInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\Exhibition\CarExhibitionInterface.aspx.cs">
+      <DependentUpon>CarExhibitionInterface.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\Exhibition\CarExhibitionInterface.aspx.designer.cs">
+      <DependentUpon>CarExhibitionInterface.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\ForBitAutoCompare.aspx.cs">
+      <DependentUpon>ForBitAutoCompare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\ForBitAutoCompare.aspx.designer.cs">
+      <DependentUpon>ForBitAutoCompare.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\ForCarCompareList.aspx.cs">
+      <DependentUpon>ForCarCompareList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\ForCarCompareList.aspx.designer.cs">
+      <DependentUpon>ForCarCompareList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\ForCarCompareListByCsID.aspx.cs">
+      <DependentUpon>ForCarCompareListByCsID.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\ForCarCompareListByCsID.aspx.designer.cs">
+      <DependentUpon>ForCarCompareListByCsID.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\ForNewListWithCategory.aspx.cs">
+      <DependentUpon>ForNewListWithCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\ForNewListWithCategory.aspx.designer.cs">
+      <DependentUpon>ForNewListWithCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\ForNewsProducerInfo.aspx.cs">
+      <DependentUpon>ForNewsProducerInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\ForNewsProducerInfo.aspx.designer.cs">
+      <DependentUpon>ForNewsProducerInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\ForRainbowData.aspx.cs">
+      <DependentUpon>ForRainbowData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\ForRainbowData.aspx.designer.cs">
+      <DependentUpon>ForRainbowData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\ForSerialCompareList.aspx.cs">
+      <DependentUpon>ForSerialCompareList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\ForSerialCompareList.aspx.designer.cs">
+      <DependentUpon>ForSerialCompareList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\GetAllCarInfo.aspx.cs">
+      <DependentUpon>GetAllCarInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\GetAllCarInfo.aspx.designer.cs">
+      <DependentUpon>GetAllCarInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\GetAllCarInfoGroupByCsID.aspx.cs">
+      <DependentUpon>GetAllCarInfoGroupByCsID.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\GetAllCarInfoGroupByCsID.aspx.designer.cs">
+      <DependentUpon>GetAllCarInfoGroupByCsID.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\GetCarInfoByCsID.aspx.cs">
+      <DependentUpon>GetCarInfoByCsID.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\GetCarInfoByCsID.aspx.designer.cs">
+      <DependentUpon>GetCarInfoByCsID.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\GetCarMasterAndLevel.aspx.cs">
+      <DependentUpon>GetCarMasterAndLevel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\GetCarMasterAndLevel.aspx.designer.cs">
+      <DependentUpon>GetCarMasterAndLevel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\GetCarPriceAndParamLink.aspx.cs">
+      <DependentUpon>GetCarPriceAndParamLink.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\GetCarPriceAndParamLink.aspx.designer.cs">
+      <DependentUpon>GetCarPriceAndParamLink.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\GetCarsByCsIDForCompare.aspx.cs">
+      <DependentUpon>GetCarsByCsIDForCompare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\GetCarsByCsIDForCompare.aspx.designer.cs">
+      <DependentUpon>GetCarsByCsIDForCompare.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\GetSerialCompareListByCity.aspx.cs">
+      <DependentUpon>GetSerialCompareListByCity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\GetSerialCompareListByCity.aspx.designer.cs">
+      <DependentUpon>GetSerialCompareListByCity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\GetSerialForNotion.aspx.cs">
+      <DependentUpon>GetSerialForNotion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\GetSerialForNotion.aspx.designer.cs">
+      <DependentUpon>GetSerialForNotion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\GetTreeXmlData.ashx.cs">
+      <DependentUpon>GetTreeXmlData.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\HotCompareCar.aspx.cs">
+      <DependentUpon>HotCompareCar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\HotCompareCar.aspx.designer.cs">
+      <DependentUpon>HotCompareCar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\HotSerialTop.aspx.cs">
+      <DependentUpon>HotSerialTop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\HotSerialTop.aspx.designer.cs">
+      <DependentUpon>HotSerialTop.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\IframeForCompare.aspx.cs">
+      <DependentUpon>IframeForCompare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\IframeForCompare.aspx.designer.cs">
+      <DependentUpon>IframeForCompare.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\Interface_Rainbow.ashx.cs">
+      <DependentUpon>Interface_Rainbow.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\MasterToSerialList.aspx.cs">
+      <DependentUpon>MasterToSerialList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\MasterToSerialList.aspx.designer.cs">
+      <DependentUpon>MasterToSerialList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\Master\MasterToSerial.aspx.cs">
+      <DependentUpon>MasterToSerial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\Master\MasterToSerial.aspx.designer.cs">
+      <DependentUpon>MasterToSerial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\ProducerBrandSerial.aspx.cs">
+      <DependentUpon>ProducerBrandSerial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\ProducerBrandSerial.aspx.designer.cs">
+      <DependentUpon>ProducerBrandSerial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\producerInfo.aspx.cs">
+      <DependentUpon>producerInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\producerInfo.aspx.designer.cs">
+      <DependentUpon>producerInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\RedirectForNewsByCsID.aspx.cs">
+      <DependentUpon>RedirectForNewsByCsID.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\RedirectForNewsByCsID.aspx.designer.cs">
+      <DependentUpon>RedirectForNewsByCsID.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SavePageDestop.ashx.cs">
+      <DependentUpon>SavePageDestop.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialHotListForPriceRange.aspx.cs">
+      <DependentUpon>SerialHotListForPriceRange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialHotListForPriceRange.aspx.designer.cs">
+      <DependentUpon>SerialHotListForPriceRange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialInfo.aspx.cs">
+      <DependentUpon>SerialInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialInfo.aspx.designer.cs">
+      <DependentUpon>SerialInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialInfoCard.aspx.cs">
+      <DependentUpon>SerialInfoCard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialInfoCard.aspx.designer.cs">
+      <DependentUpon>SerialInfoCard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialInfoForNew.aspx.cs">
+      <DependentUpon>SerialInfoForNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialInfoForNew.aspx.designer.cs">
+      <DependentUpon>SerialInfoForNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialSortByLevelOrPrice.aspx.cs">
+      <DependentUpon>SerialSortByLevelOrPrice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialSortByLevelOrPrice.aspx.designer.cs">
+      <DependentUpon>SerialSortByLevelOrPrice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialSortList.aspx.cs">
+      <DependentUpon>SerialSortList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialSortList.aspx.designer.cs">
+      <DependentUpon>SerialSortList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialToSerial.aspx.cs">
+      <DependentUpon>SerialToSerial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialToSerial.aspx.designer.cs">
+      <DependentUpon>SerialToSerial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialToSerialDetail.aspx.cs">
+      <DependentUpon>SerialToSerialDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialToSerialDetail.aspx.designer.cs">
+      <DependentUpon>SerialToSerialDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialYearInfo.aspx.cs">
+      <DependentUpon>SerialYearInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialYearInfo.aspx.designer.cs">
+      <DependentUpon>SerialYearInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialYesterdaySort.aspx.cs">
+      <DependentUpon>SerialYesterdaySort.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialYesterdaySort.aspx.designer.cs">
+      <DependentUpon>SerialYesterdaySort.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialYouHaoInfo.aspx.cs">
+      <DependentUpon>SerialYouHaoInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\SerialYouHaoInfo.aspx.designer.cs">
+      <DependentUpon>SerialYouHaoInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\Serial\AllSerialInfo.aspx.cs">
+      <DependentUpon>AllSerialInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\Serial\AllSerialInfo.aspx.designer.cs">
+      <DependentUpon>AllSerialInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\Serial\SerialInfo.aspx.cs">
+      <DependentUpon>SerialInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\Serial\SerialInfo.aspx.designer.cs">
+      <DependentUpon>SerialInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\TransferCsIDToCarIDForCompare.aspx.cs">
+      <DependentUpon>TransferCsIDToCarIDForCompare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\TransferCsIDToCarIDForCompare.aspx.designer.cs">
+      <DependentUpon>TransferCsIDToCarIDForCompare.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interfaceforbitauto\TreeXml.ashx.cs">
+      <DependentUpon>TreeXml.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\tree\treeXmlContent.aspx.cs">
+      <DependentUpon>treeXmlContent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interfaceforbitauto\tree\treeXmlContent.aspx.designer.cs">
+      <DependentUpon>treeXmlContent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\3G\AllCarData.aspx.cs">
+      <DependentUpon>AllCarData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\3G\AllCarData.aspx.designer.cs">
+      <DependentUpon>AllCarData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\ask\oilInterface.aspx.cs">
+      <DependentUpon>oilInterface.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\ask\oilInterface.aspx.designer.cs">
+      <DependentUpon>oilInterface.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\AsynAjax.aspx.cs">
+      <DependentUpon>AsynAjax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\AsynAjax.aspx.designer.cs">
+      <DependentUpon>AsynAjax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\CarData.asmx.cs">
+      <DependentUpon>CarData.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Interface\Cooperation\CommonHeader.aspx.cs">
+      <DependentUpon>CommonHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Cooperation\CommonHeader.aspx.designer.cs">
+      <DependentUpon>CommonHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Cooperation\dongbiCommonHeader.aspx.cs">
+      <DependentUpon>dongbiCommonHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Cooperation\dongbiCommonHeader.aspx.designer.cs">
+      <DependentUpon>dongbiCommonHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Cooperation\IframeGoCarAndPrice.aspx.cs">
+      <DependentUpon>IframeGoCarAndPrice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Cooperation\IframeGoCarAndPrice.aspx.designer.cs">
+      <DependentUpon>IframeGoCarAndPrice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Cooperation\SerialInfo.aspx.cs">
+      <DependentUpon>SerialInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Cooperation\SerialInfo.aspx.designer.cs">
+      <DependentUpon>SerialInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\dlxx\iFace.aspx.cs">
+      <DependentUpon>iFace.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\dlxx\iFace.aspx.designer.cs">
+      <DependentUpon>iFace.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\ExhibitionInterface.aspx.cs">
+      <DependentUpon>ExhibitionInterface.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\ExhibitionInterface.aspx.designer.cs">
+      <DependentUpon>ExhibitionInterface.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing2010_ExhibitionInterface_Footer.aspx.cs">
+      <DependentUpon>beijing2010_ExhibitionInterface_Footer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing2010_ExhibitionInterface_Footer.aspx.designer.cs">
+      <DependentUpon>beijing2010_ExhibitionInterface_Footer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing_2010_AlbumSync.aspx.cs">
+      <DependentUpon>beijing_2010_AlbumSync.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing_2010_AlbumSync.aspx.designer.cs">
+      <DependentUpon>beijing_2010_AlbumSync.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing_2010_DefaultCarLevelList.aspx.cs">
+      <DependentUpon>beijing_2010_DefaultCarLevelList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing_2010_DefaultCarLevelList.aspx.designer.cs">
+      <DependentUpon>beijing_2010_DefaultCarLevelList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing_2010_DefaultCarTypeList.aspx.cs">
+      <DependentUpon>beijing_2010_DefaultCarTypeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing_2010_DefaultCarTypeList.aspx.designer.cs">
+      <DependentUpon>beijing_2010_DefaultCarTypeList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing_2010_DefaultHotCarType.aspx.cs">
+      <DependentUpon>beijing_2010_DefaultHotCarType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing_2010_DefaultHotCarType.aspx.designer.cs">
+      <DependentUpon>beijing_2010_DefaultHotCarType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing_2010_DefaultHotModel.aspx.cs">
+      <DependentUpon>beijing_2010_DefaultHotModel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing_2010_DefaultHotModel.aspx.designer.cs">
+      <DependentUpon>beijing_2010_DefaultHotModel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Exhibition\Beijing_2010_DefaultNewCarAlbum.aspx.cs">
+      <DependentUpon>Beijing_2010_DefaultNewCarAlbum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Exhibition\Beijing_2010_DefaultNewCarAlbum.aspx.designer.cs">
+      <DependentUpon>Beijing_2010_DefaultNewCarAlbum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing_2010_DefaultPavilionList.aspx.cs">
+      <DependentUpon>beijing_2010_DefaultPavilionList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing_2010_DefaultPavilionList.aspx.designer.cs">
+      <DependentUpon>beijing_2010_DefaultPavilionList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing_2010_ExhibitionInterface.aspx.cs">
+      <DependentUpon>beijing_2010_ExhibitionInterface.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing_2010_ExhibitionInterface.aspx.designer.cs">
+      <DependentUpon>beijing_2010_ExhibitionInterface.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing_2010_LevelQuene.aspx.cs">
+      <DependentUpon>beijing_2010_LevelQuene.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing_2010_LevelQuene.aspx.designer.cs">
+      <DependentUpon>beijing_2010_LevelQuene.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Exhibition\Beijing_2010_PavilionAllModelList.aspx.cs">
+      <DependentUpon>Beijing_2010_PavilionAllModelList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Exhibition\Beijing_2010_PavilionAllModelList.aspx.designer.cs">
+      <DependentUpon>Beijing_2010_PavilionAllModelList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing_2010_SecondLevel.aspx.cs">
+      <DependentUpon>beijing_2010_SecondLevel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijing_2010_SecondLevel.aspx.designer.cs">
+      <DependentUpon>beijing_2010_SecondLevel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijin_2010_Album_HotCarType.aspx.cs">
+      <DependentUpon>beijin_2010_Album_HotCarType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Exhibition\beijin_2010_Album_HotCarType.aspx.designer.cs">
+      <DependentUpon>beijin_2010_Album_HotCarType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Exhibition\guangzhou2010_ExhibitionInterface_Footer.aspx.cs">
+      <DependentUpon>guangzhou2010_ExhibitionInterface_Footer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Exhibition\guangzhou2010_ExhibitionInterface_Footer.aspx.designer.cs">
+      <DependentUpon>guangzhou2010_ExhibitionInterface_Footer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Exhibition\outerExhibitionList.aspx.cs">
+      <DependentUpon>outerExhibitionList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Exhibition\outerExhibitionList.aspx.designer.cs">
+      <DependentUpon>outerExhibitionList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Exhibition\OuterExhibitionRainbow.aspx.cs">
+      <DependentUpon>OuterExhibitionRainbow.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Exhibition\OuterExhibitionRainbow.aspx.designer.cs">
+      <DependentUpon>OuterExhibitionRainbow.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Exhibition\shanghai2011_ExhibitionInterface_Footer.aspx.cs">
+      <DependentUpon>shanghai2011_ExhibitionInterface_Footer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Exhibition\shanghai2011_ExhibitionInterface_Footer.aspx.designer.cs">
+      <DependentUpon>shanghai2011_ExhibitionInterface_Footer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Exhibition\shanghai_2011_guntu.aspx.cs">
+      <DependentUpon>shanghai_2011_guntu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Exhibition\shanghai_2011_guntu.aspx.designer.cs">
+      <DependentUpon>shanghai_2011_guntu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\forbaidu\forbaiduToaliding.aspx.cs">
+      <DependentUpon>forbaiduToaliding.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\forbaidu\forbaiduToaliding.aspx.designer.cs">
+      <DependentUpon>forbaiduToaliding.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\GetBrandDealer.aspx.cs">
+      <DependentUpon>GetBrandDealer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\GetBrandDealer.aspx.designer.cs">
+      <DependentUpon>GetBrandDealer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\GetCarSellData.aspx.cs">
+      <DependentUpon>GetCarSellData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\GetCarSellData.aspx.designer.cs">
+      <DependentUpon>GetCarSellData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\GetCityHotNewCar.ashx.cs">
+      <DependentUpon>GetCityHotNewCar.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\GetIndexData.aspx.cs">
+      <DependentUpon>GetIndexData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\GetIndexData.aspx.designer.cs">
+      <DependentUpon>GetIndexData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\GetMasterDealer.aspx.cs">
+      <DependentUpon>GetMasterDealer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\GetMasterDealer.aspx.designer.cs">
+      <DependentUpon>GetMasterDealer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\GetSerialOverview.ashx.cs">
+      <DependentUpon>GetSerialOverview.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\GetSerialOverview.aspx.cs">
+      <DependentUpon>GetSerialOverview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\GetSerialOverview.aspx.designer.cs">
+      <DependentUpon>GetSerialOverview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\GetTagsAllSerialInfoNum.ashx.cs">
+      <DependentUpon>GetTagsAllSerialInfoNum.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\hsw\CalcAutoCashTool.aspx.cs">
+      <DependentUpon>CalcAutoCashTool.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\hsw\CalcAutoCashTool.aspx.designer.cs">
+      <DependentUpon>CalcAutoCashTool.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\hsw\CarPriceTabPage.aspx.cs">
+      <DependentUpon>CarPriceTabPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\hsw\CarPriceTabPage.aspx.designer.cs">
+      <DependentUpon>CarPriceTabPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\iphone\SerialBasicInfo.aspx.cs">
+      <DependentUpon>SerialBasicInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\iphone\SerialBasicInfo.aspx.designer.cs">
+      <DependentUpon>SerialBasicInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\iphone\SerialInfo.aspx.cs">
+      <DependentUpon>SerialInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\iphone\SerialInfo.aspx.designer.cs">
+      <DependentUpon>SerialInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\iphone\SerialInfoAndCar.aspx.cs">
+      <DependentUpon>SerialInfoAndCar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\iphone\SerialInfoAndCar.aspx.designer.cs">
+      <DependentUpon>SerialInfoAndCar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\iphone\SerialList.aspx.cs">
+      <DependentUpon>SerialList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\iphone\SerialList.aspx.designer.cs">
+      <DependentUpon>SerialList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\LeveldropdownlistData\Interface2345.aspx.cs">
+      <DependentUpon>Interface2345.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\LeveldropdownlistData\Interface2345.aspx.designer.cs">
+      <DependentUpon>Interface2345.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\LeveldropdownlistData\interfaceDemo.aspx.cs">
+      <DependentUpon>interfaceDemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\LeveldropdownlistData\interfaceDemo.aspx.designer.cs">
+      <DependentUpon>interfaceDemo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\LeveldropdownlistData\InterfaceDemo360.aspx.cs">
+      <DependentUpon>InterfaceDemo360.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\LeveldropdownlistData\InterfaceDemo360.aspx.designer.cs">
+      <DependentUpon>InterfaceDemo360.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\LeveldropdownlistData\MasterBrandToSerial.aspx.cs">
+      <DependentUpon>MasterBrandToSerial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\LeveldropdownlistData\MasterBrandToSerial.aspx.designer.cs">
+      <DependentUpon>MasterBrandToSerial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\LeveldropdownlistData\MasterBrandToSerialNew.aspx.cs">
+      <DependentUpon>MasterBrandToSerialNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\LeveldropdownlistData\MasterBrandToSerialNew.aspx.designer.cs">
+      <DependentUpon>MasterBrandToSerialNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\LeveldropdownlistData\ProduceToSerial.aspx.cs">
+      <DependentUpon>ProduceToSerial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\LeveldropdownlistData\ProduceToSerial.aspx.designer.cs">
+      <DependentUpon>ProduceToSerial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\LeveldropdownlistData\watchcardirectdatainterface.aspx.cs">
+      <DependentUpon>watchcardirectdatainterface.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\LeveldropdownlistData\watchcardirectdatainterface.aspx.designer.cs">
+      <DependentUpon>watchcardirectdatainterface.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Level\GetLevelHtmlCode.ashx.cs">
+      <DependentUpon>GetLevelHtmlCode.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Master\MasterList.aspx.cs">
+      <DependentUpon>MasterList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Master\MasterList.aspx.designer.cs">
+      <DependentUpon>MasterList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\SellDataChart.aspx.cs">
+      <DependentUpon>SellDataChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\SellDataChart.aspx.designer.cs">
+      <DependentUpon>SellDataChart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\SerialAttention.aspx.cs">
+      <DependentUpon>SerialAttention.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\SerialAttention.aspx.designer.cs">
+      <DependentUpon>SerialAttention.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\ServicesFor3DShow.asmx.cs">
+      <DependentUpon>ServicesFor3DShow.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Interface\Tree\LeftTreeJs.aspx.cs">
+      <DependentUpon>LeftTreeJs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Tree\LeftTreeJs.aspx.designer.cs">
+      <DependentUpon>LeftTreeJs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\Tree\MIdRelationBAllSpell.ashx.cs">
+      <DependentUpon>MIdRelationBAllSpell.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Tree\SelectCarToXml.aspx.cs">
+      <DependentUpon>SelectCarToXml.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Interface\Tree\SelectCarToXml.aspx.designer.cs">
+      <DependentUpon>SelectCarToXml.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageLevelV2\LevelPaihang.aspx.cs">
+      <DependentUpon>LevelPaihang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageLevelV2\LevelPaihang.aspx.designer.cs">
+      <DependentUpon>LevelPaihang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageListV2\SerialForBrandList.aspx.cs">
+      <DependentUpon>SerialForBrandList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageListV2\SerialForBrandList.aspx.designer.cs">
+      <DependentUpon>SerialForBrandList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageListV2\SerialForCharList.aspx.cs">
+      <DependentUpon>SerialForCharList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageListV2\SerialForCharList.aspx.designer.cs">
+      <DependentUpon>SerialForCharList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageListV2\SerialForCountryList.aspx.cs">
+      <DependentUpon>SerialForCountryList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageListV2\SerialForCountryList.aspx.designer.cs">
+      <DependentUpon>SerialForCountryList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageListV2\SerialForFunctionList.aspx.cs">
+      <DependentUpon>SerialForFunctionList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageListV2\SerialForFunctionList.aspx.designer.cs">
+      <DependentUpon>SerialForFunctionList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageListV2\SerialForLevel.aspx.cs">
+      <DependentUpon>SerialForLevel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageListV2\SerialForLevel.aspx.designer.cs">
+      <DependentUpon>SerialForLevel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageListV2\SerialForPriceList.aspx.cs">
+      <DependentUpon>SerialForPriceList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageListV2\SerialForPriceList.aspx.designer.cs">
+      <DependentUpon>SerialForPriceList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageToolV2\KouBeiCompare.aspx.cs">
+      <DependentUpon>KouBeiCompare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageToolV2\KouBeiCompare.aspx.designer.cs">
+      <DependentUpon>KouBeiCompare.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MaiCheDefaultPage.aspx.cs">
+      <DependentUpon>MaiCheDefaultPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MaiCheDefaultPage.aspx.designer.cs">
+      <DependentUpon>MaiCheDefaultPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewsChannel.aspx.cs">
+      <DependentUpon>NewsChannel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewsChannel.aspx.designer.cs">
+      <DependentUpon>NewsChannel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageBrandV2\CarBrandPage.aspx.cs">
+      <DependentUpon>CarBrandPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageBrandV2\CarBrandPage.aspx.designer.cs">
+      <DependentUpon>CarBrandPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageBrandV2\CarBrandPageNews.aspx.cs">
+      <DependentUpon>CarBrandPageNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageBrandV2\CarBrandPageNews.aspx.designer.cs">
+      <DependentUpon>CarBrandPageNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageBrand\CarBrandPage.aspx.cs">
+      <DependentUpon>CarBrandPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageBrand\CarBrandPage.aspx.designer.cs">
+      <DependentUpon>CarBrandPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageBrand\CarBrandPageNews.aspx.cs">
+      <DependentUpon>CarBrandPageNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageBrand\CarBrandPageNews.aspx.designer.cs">
+      <DependentUpon>CarBrandPageNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageCarV2\CarCompare.aspx.cs">
+      <DependentUpon>CarCompare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageCarV2\CarCompare.aspx.designer.cs">
+      <DependentUpon>CarCompare.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageCarV2\CarPhoto.aspx.cs">
+      <DependentUpon>CarPhoto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageCarV2\CarPhoto.aspx.designer.cs">
+      <DependentUpon>CarPhoto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageCarV2\CarSummary.aspx.cs">
+      <DependentUpon>CarSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageCarV2\CarSummary.aspx.designer.cs">
+      <DependentUpon>CarSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageCar\CarCompare.aspx.cs">
+      <DependentUpon>CarCompare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageCar\CarCompare.aspx.designer.cs">
+      <DependentUpon>CarCompare.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageCar\CarPhoto.aspx.cs">
+      <DependentUpon>CarPhoto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageCar\CarPhoto.aspx.designer.cs">
+      <DependentUpon>CarPhoto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageCar\CarSummary.aspx.cs">
+      <DependentUpon>CarSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageCar\CarSummary.aspx.designer.cs">
+      <DependentUpon>CarSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageLevelV2\SuvChannel.aspx.cs">
+      <DependentUpon>SuvChannel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageLevelV2\SuvChannel.aspx.designer.cs">
+      <DependentUpon>SuvChannel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageLevel\LevelPaihang.aspx.cs">
+      <DependentUpon>LevelPaihang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageLevel\LevelPaihang.aspx.designer.cs">
+      <DependentUpon>LevelPaihang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageLevel\SuvChannel.aspx.cs">
+      <DependentUpon>SuvChannel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageLevel\SuvChannel.aspx.designer.cs">
+      <DependentUpon>SuvChannel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageList\CarMasterBrandGuideALL.aspx.cs">
+      <DependentUpon>CarMasterBrandGuideALL.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageList\CarMasterBrandGuideALL.aspx.designer.cs">
+      <DependentUpon>CarMasterBrandGuideALL.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageList\SerialForBrandList.aspx.cs">
+      <DependentUpon>SerialForBrandList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageList\SerialForBrandList.aspx.designer.cs">
+      <DependentUpon>SerialForBrandList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageList\SerialForCharList.aspx.cs">
+      <DependentUpon>SerialForCharList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageList\SerialForCharList.aspx.designer.cs">
+      <DependentUpon>SerialForCharList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageList\SerialForCityPriceRank.aspx.cs">
+      <DependentUpon>SerialForCityPriceRank.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageList\SerialForCityPriceRank.aspx.designer.cs">
+      <DependentUpon>SerialForCityPriceRank.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageList\SerialForCountryList.aspx.cs">
+      <DependentUpon>SerialForCountryList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageList\SerialForCountryList.aspx.designer.cs">
+      <DependentUpon>SerialForCountryList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageList\SerialForFunctionList.aspx.cs">
+      <DependentUpon>SerialForFunctionList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageList\SerialForFunctionList.aspx.designer.cs">
+      <DependentUpon>SerialForFunctionList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageList\SerialForLevel.aspx.cs">
+      <DependentUpon>SerialForLevel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageList\SerialForLevel.aspx.designer.cs">
+      <DependentUpon>SerialForLevel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageList\SerialForPriceList.aspx.cs">
+      <DependentUpon>SerialForPriceList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageList\SerialForPriceList.aspx.designer.cs">
+      <DependentUpon>SerialForPriceList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageList\SerialForSinglePriceList.aspx.cs">
+      <DependentUpon>SerialForSinglePriceList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageList\SerialForSinglePriceList.aspx.designer.cs">
+      <DependentUpon>SerialForSinglePriceList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageMasterV2\CarMasterBrandPageNews.aspx.cs">
+      <DependentUpon>CarMasterBrandPageNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageMasterV2\CarMasterBrandPageNews.aspx.designer.cs">
+      <DependentUpon>CarMasterBrandPageNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageMasterV2\CarMasterPage.aspx.cs">
+      <DependentUpon>CarMasterPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageMasterV2\CarMasterPage.aspx.designer.cs">
+      <DependentUpon>CarMasterPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageMaster\CarMasterBrandPageNews.aspx.cs">
+      <DependentUpon>CarMasterBrandPageNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageMaster\CarMasterBrandPageNews.aspx.designer.cs">
+      <DependentUpon>CarMasterBrandPageNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageMaster\CarMasterPage.aspx.cs">
+      <DependentUpon>CarMasterPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageMaster\CarMasterPage.aspx.designer.cs">
+      <DependentUpon>CarMasterPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSerialV2\CsCompare.aspx.cs">
+      <DependentUpon>CsCompare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSerialV2\CsCompare.aspx.designer.cs">
+      <DependentUpon>CsCompare.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSerialV2\CsPhoto.aspx.cs">
+      <DependentUpon>CsPhoto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSerialV2\CsPhoto.aspx.designer.cs">
+      <DependentUpon>CsPhoto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSerialV2\CsPingCe.aspx.cs">
+      <DependentUpon>CsPingCe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSerialV2\CsPingCe.aspx.designer.cs">
+      <DependentUpon>CsPingCe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSerialV2\CsSummary.aspx.cs">
+      <DependentUpon>CsSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSerialV2\CsSummary.aspx.designer.cs">
+      <DependentUpon>CsSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSerialV2\CsSummaryForWaitSale.aspx.cs">
+      <DependentUpon>CsSummaryForWaitSale.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSerialV2\CsSummaryForWaitSale.aspx.designer.cs">
+      <DependentUpon>CsSummaryForWaitSale.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSerialV2\SerialNews.aspx.cs">
+      <DependentUpon>SerialNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSerialV2\SerialNews.aspx.designer.cs">
+      <DependentUpon>SerialNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSerial\CsCompare.aspx.cs">
+      <DependentUpon>CsCompare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSerial\CsCompare.aspx.designer.cs">
+      <DependentUpon>CsCompare.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSerial\CsCompareRank.aspx.cs">
+      <DependentUpon>CsCompareRank.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSerial\CsCompareRank.aspx.designer.cs">
+      <DependentUpon>CsCompareRank.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSerial\CsPhoto.aspx.cs">
+      <DependentUpon>CsPhoto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSerial\CsPhoto.aspx.designer.cs">
+      <DependentUpon>CsPhoto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSerial\CsPingCe.aspx.cs">
+      <DependentUpon>CsPingCe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSerial\CsPingCe.aspx.designer.cs">
+      <DependentUpon>CsPingCe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSerial\CsRegion.aspx.cs">
+      <DependentUpon>CsRegion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSerial\CsRegion.aspx.designer.cs">
+      <DependentUpon>CsRegion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSerial\CsRegionNews.aspx.cs">
+      <DependentUpon>CsRegionNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSerial\CsRegionNews.aspx.designer.cs">
+      <DependentUpon>CsRegionNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSerial\CsSummary.aspx.cs">
+      <DependentUpon>CsSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSerial\CsSummary.aspx.designer.cs">
+      <DependentUpon>CsSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSerial\CsSummaryForWaitSale.aspx.cs">
+      <DependentUpon>CsSummaryForWaitSale.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSerial\CsSummaryForWaitSale.aspx.designer.cs">
+      <DependentUpon>CsSummaryForWaitSale.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSerial\CsSummaryNew.aspx.cs">
+      <DependentUpon>CsSummaryNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSerial\CsSummaryNew.aspx.designer.cs">
+      <DependentUpon>CsSummaryNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageSerial\SerialNews.aspx.cs">
+      <DependentUpon>SerialNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageSerial\SerialNews.aspx.designer.cs">
+      <DependentUpon>SerialNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageToolV2\CalcAutoCashTool.aspx.cs">
+      <DependentUpon>CalcAutoCashTool.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageToolV2\CalcAutoCashTool.aspx.designer.cs">
+      <DependentUpon>CalcAutoCashTool.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageToolV2\CalcAutoLoanTool.aspx.cs">
+      <DependentUpon>CalcAutoLoanTool.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageToolV2\CalcAutoLoanTool.aspx.designer.cs">
+      <DependentUpon>CalcAutoLoanTool.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageToolV2\CalcInsuranceTool.aspx.cs">
+      <DependentUpon>CalcInsuranceTool.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageToolV2\CalcInsuranceTool.aspx.designer.cs">
+      <DependentUpon>CalcInsuranceTool.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageToolV2\CarCompareList.aspx.cs">
+      <DependentUpon>CarCompareList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageToolV2\CarCompareList.aspx.designer.cs">
+      <DependentUpon>CarCompareList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageToolV2\CarPhotoCompareList.aspx.cs">
+      <DependentUpon>CarPhotoCompareList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageToolV2\CarPhotoCompareList.aspx.designer.cs">
+      <DependentUpon>CarPhotoCompareList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageToolV2\SerialCompareForPK.aspx.cs">
+      <DependentUpon>SerialCompareForPK.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageToolV2\SerialCompareForPK.aspx.designer.cs">
+      <DependentUpon>SerialCompareForPK.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageToolV2\SuperSelectCarTool.aspx.cs">
+      <DependentUpon>SuperSelectCarTool.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageToolV2\SuperSelectCarTool.aspx.designer.cs">
+      <DependentUpon>SuperSelectCarTool.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageTool\CalcAutoCashTool.aspx.cs">
+      <DependentUpon>CalcAutoCashTool.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageTool\CalcAutoCashTool.aspx.designer.cs">
+      <DependentUpon>CalcAutoCashTool.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageTool\CalcAutoLoanTool.aspx.cs">
+      <DependentUpon>CalcAutoLoanTool.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageTool\CalcAutoLoanTool.aspx.designer.cs">
+      <DependentUpon>CalcAutoLoanTool.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageTool\CalcInsuranceTool.aspx.cs">
+      <DependentUpon>CalcInsuranceTool.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageTool\CalcInsuranceTool.aspx.designer.cs">
+      <DependentUpon>CalcInsuranceTool.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageTool\CarCompareList.aspx.cs">
+      <DependentUpon>CarCompareList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageTool\CarCompareList.aspx.designer.cs">
+      <DependentUpon>CarCompareList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageTool\CarPhotoCompareList.aspx.cs">
+      <DependentUpon>CarPhotoCompareList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageTool\CarPhotoCompareList.aspx.designer.cs">
+      <DependentUpon>CarPhotoCompareList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageTool\CarPingCeCompareList.aspx.cs">
+      <DependentUpon>CarPingCeCompareList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageTool\CarPingCeCompareList.aspx.designer.cs">
+      <DependentUpon>CarPingCeCompareList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageTool\SerialCompareForPK.aspx.cs">
+      <DependentUpon>SerialCompareForPK.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageTool\SerialCompareForPK.aspx.designer.cs">
+      <DependentUpon>SerialCompareForPK.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageTool\SuperSelectCarTool.aspx.cs">
+      <DependentUpon>SuperSelectCarTool.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageTool\SuperSelectCarTool.aspx.designer.cs">
+      <DependentUpon>SuperSelectCarTool.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageYearV2\CarPhotoByYear.aspx.cs">
+      <DependentUpon>CarPhotoByYear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageYearV2\CarPhotoByYear.aspx.designer.cs">
+      <DependentUpon>CarPhotoByYear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageYearV2\CsSummaryYear.aspx.cs">
+      <DependentUpon>CsSummaryYear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageYearV2\CsSummaryYear.aspx.designer.cs">
+      <DependentUpon>CsSummaryYear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageYearV2\SerialYearNews.aspx.cs">
+      <DependentUpon>SerialYearNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageYearV2\SerialYearNews.aspx.designer.cs">
+      <DependentUpon>SerialYearNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageYear\CarPhotoByYear.aspx.cs">
+      <DependentUpon>CarPhotoByYear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageYear\CarPhotoByYear.aspx.designer.cs">
+      <DependentUpon>CarPhotoByYear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageYear\CsSummaryYear.aspx.cs">
+      <DependentUpon>CsSummaryYear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageYear\CsSummaryYear.aspx.designer.cs">
+      <DependentUpon>CsSummaryYear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageYear\SerialYearNews.aspx.cs">
+      <DependentUpon>SerialYearNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageYear\SerialYearNews.aspx.designer.cs">
+      <DependentUpon>SerialYearNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RedirectForSEO.aspx.cs">
+      <DependentUpon>RedirectForSEO.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RedirectForSEO.aspx.designer.cs">
+      <DependentUpon>RedirectForSEO.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Template\DefaultTemplate.aspx.cs">
+      <DependentUpon>DefaultTemplate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Template\DefaultTemplate.aspx.designer.cs">
+      <DependentUpon>DefaultTemplate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Template\PreviewTemplate.aspx.cs">
+      <DependentUpon>PreviewTemplate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Template\PreviewTemplate.aspx.designer.cs">
+      <DependentUpon>PreviewTemplate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test\Perfmon.aspx.cs">
+      <DependentUpon>Perfmon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\Perfmon.aspx.designer.cs">
+      <DependentUpon>Perfmon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test\TestForMemcache.aspx.cs">
+      <DependentUpon>TestForMemcache.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\TestForMemcache.aspx.designer.cs">
+      <DependentUpon>TestForMemcache.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NextToSee.ascx.cs">
+      <DependentUpon>NextToSee.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\NextToSee.ascx.designer.cs">
+      <DependentUpon>NextToSee.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SerialToSee.ascx.cs">
+      <DependentUpon>SerialToSee.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\SerialToSee.ascx.designer.cs">
+      <DependentUpon>SerialToSee.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SerialToSeeNew.ascx.cs">
+      <DependentUpon>SerialToSeeNew.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\SerialToSeeNew.ascx.designer.cs">
+      <DependentUpon>SerialToSeeNew.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AjaxNew\GetCarInfo.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{1A787431-F289-4D25-A9C5-D9F6291F6C4D}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{37C98BF2-CDB5-455B-B5E9-C7EDAD27E5FA}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{3539D67B-555B-4856-8736-765992C5D617}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{95AD515E-935F-49C8-8721-8F89D0B8614D}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AjaxNew\GetCarInfoForCompare.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AjaxNew\GetCityList.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AjaxNew\GetDealerList.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AjaxNew\GetMasterToCar.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AjaxNew\GetSerailNoCarType_JSon.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AjaxNew\GetSerialByMasterBrand.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AjaxNew\GoCarTypeAndPrice_Json.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AjaxNew\GoCarTypeAndPriceForCar_Json.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AjaxNew\ListForCompare.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AjaxNew\ListForComparev2.1.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="config\AutoCar.config" />
+    <Content Include="config\blowery.config" />
+    <Content Include="config\ParameterConfiguration.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UrlRewritingNet.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AjaxNew\SerialToCarForCompare.ashx" />
+    <Content Include="config\staticContent.config" />
+    <Content Include="config\FileToMemcache.config" />
+    <Content Include="AjaxNew\GetHotCarForPhotoCompare.ashx" />
+    <Content Include="AjaxNew\GetNoSaleSerailListByYear.ashx" />
+    <None Include="config\IIS6\IsapiRewrite4.ini" />
+    <Content Include="config\IIS7\RewriteRole.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="config\PhotoImage.config" />
+    <Content Include="config\ParameterConfigurationNew.config" />
+    <Content Include="config\SelectCarParams.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="include\special\2010\00001\test1.shtml.bak" />
+    <None Include="include\special\2010\00001\test2.shtml.bak" />
+    <Content Include="Interface\Level\GetLevelHtmlCode.ashx" />
+    <Content Include="Interface\Tree\MIdRelationBAllSpell.ashx" />
+    <Content Include="Interface\GetCityHotNewCar.ashx" />
+    <Content Include="Interface\GetSerialOverview.ashx" />
+    <Content Include="Interface\GetTagsAllSerialInfoNum.ashx" />
+    <Content Include="interfaceforbitauto\CarInfo\GetCarInfo.ashx" />
+    <Content Include="interfaceforbitauto\GetTreeXmlData.ashx" />
+    <Content Include="interfaceforbitauto\Interface_Rainbow.ashx" />
+    <Content Include="interfaceforbitauto\SavePageDestop.ashx" />
+    <Content Include="interfaceforbitauto\TreeXml.ashx" />
+    <None Include="Properties\PublishProfiles\car.bitauto.com.pubxml" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>7513</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,157 @@
+﻿<div class="zh_cartabs">
+      <dl class="car">
+        <dt><a target="_blank" href="http://i.bitauto.com/">车型导航</a></dt>
+        <dd>
+          <ul>
+            <li><a href="#">微型车</a></li>
+            <li><a href="#">小型车</a></li>
+            <li><a href="#">紧凑型车</a></li>
+
+            <li><a href="#">中型车</a></li>
+            <li><a href="#">中大型车</a></li>
+            <li><a href="#">豪华车</a></li>
+            <li><a href="#">SUV</a></li>
+            <li><a href="#">MPV</a></li>
+            <li class="last"><a href="#">跑车</a></li>
+
+          </ul>
+          <ul class="tab_ul">
+            <li><a href="#">5万以内</a></li>
+            <li><a href="#">5-10万</a></li>
+            <li><a href="#">10-15万</a></li>
+            <li><a href="#">15-20万</a></li>
+            <li><a href="#">20-25万</a></li>
+
+            <li><a href="#">25-40万</a></li>
+            <li><a href="#">40-80万</a></li>
+            <li class="last"><a href="#">80万以上</a></li>
+          </ul>
+        </dd>
+      </dl>
+      <dl class="line">
+
+        <dt class="w"><a target="_blank" href="http://i.bitauto.com/">网上展厅</a></dt>
+        <dd>
+          <ul id="wszt_ulli">
+            <li><a href="#">1.2馆</a></li>
+            <li><a href="#">1.1馆</a></li>
+            <li><a href="#">2.1馆</a></li>
+            <li><a href="#">2.2馆</a></li>
+
+            <li><a href="#">3.1馆</a></li>
+            <li><a href="#">3.2馆</a></li>
+            <li><a href="#">4.1馆</a></li>
+            <li><a href="#">4.2馆</a></li>
+            <li><a href="#">5.1馆</a></li>
+            <li class="last"><a href="#">5.2馆</a></li>
+
+          </ul>
+          <div id="wszt_div_0">
+          <ul>
+            <li><a href="#">奥迪Q71</a></li>
+            <li><a href="#">标致207CC</a></li>
+            <li><a href="#">途观</a></li>
+            <li><a href="#">斯柯达明锐</a></li>
+
+            <li class="last"><a href="#">C4asdf</a></li>
+          </ul>
+          </div>
+          
+		  <div id="wszt_div_1" style="display:none;">
+          <ul>
+            <li><a href="#">asdfQ72</a></li>
+            <li><a href="#">标致207CC</a></li>
+
+            <li><a href="#">dfasdf</a></li>
+            <li><a href="#">斯柯达明锐</a></li>
+            <li class="last"><a href="#">C4毕加索</a></li>
+          </ul>
+          </div>
+          
+          <div id="wszt_div_2" style="display:none;">
+          <ul>
+
+            <li><a href="#">asdfQ73</a></li>
+            <li><a href="#">标致207CC</a></li>
+            <li><a href="#">途观</a></li>
+            <li><a href="#">斯柯达明锐</a></li>
+          </ul>
+          </div>
+          
+		  <div id="wszt_div_3" style="display:none;">
+
+          <ul>
+            <li><a href="#">dQ74</a></li>
+            <li><a href="#">标致207CC</a></li>
+            <li><a href="#">ddddd途观</a></li>
+            <li><a href="#">斯柯达明锐</a></li>
+            <li class="last"><a href="#">C4毕加索</a></li>
+
+          </ul>
+          </div>          
+          
+		  <div id="wszt_div_4" style="display:none;">
+          <ul>
+            <li><a href="#">标致207CC</a></li>
+            <li><a href="#">途观</a></li>
+            <li><a href="#">斯柯达明锐</a></li>
+            <li class="last"><a href="#">C4毕加索</a></li>
+
+          </ul>
+          </div>
+          
+		  <div id="wszt_div_5" style="display:none;">
+          <ul>
+            <li><a href="#">ggQ76</a></li>
+            <li><a href="#">标致207CC</a></li>
+            <li><a href="#">途观</a></li>
+
+          </ul>
+          </div>
+          
+		  <div id="wszt_div_6" style="display:none;">
+          <ul>
+            <li><a href="#">hhQ77</a></li>
+            <li><a href="#">标致207CC</a></li>
+            <li><a href="#">斯柯达明锐</a></li>
+
+            <li class="last"><a href="#">C4毕加索</a></li>
+          </ul>
+          </div>
+          
+		  <div id="wszt_div_7" style="display:none;">
+          <ul>
+            <li><a href="#">7uQ78</a></li>
+            <li><a href="#">标致207CC</a></li>
+
+            <li><a href="#">途观</a></li>
+            <li><a href="#">斯柯达明锐</a></li>
+            <li class="last"><a href="#">C4毕加索</a></li>
+          </ul>
+          </div>                                        
+          
+		  <div id="wszt_div_8" style="display:none;">
+          <ul>
+            <li><a href="#">aa</a></li>
+
+            <li><a href="#">标致207CC</a></li>
+            <li><a href="#">途观</a></li>
+            <li><a href="#">斯柯达明锐</a></li>
+            <li class="last"><a href="#">C4毕加索</a></li>
+          </ul>
+          </div>             
+          
+		  <div id="wszt_div_9" style="display:none;">
+
+          <ul>
+            <li><a href="#">gg</a></li>
+            <li><a href="#">标致207CC</a></li>
+            <li><a href="#">途观</a></li>
+            <li><a href="#">斯柯达明锐</a></li>
+            <li class="last"><a href="#">C4毕加索</a></li>
+
+          </ul>
+          </div>             
+        </dd>
+      </dl>
+    </div>

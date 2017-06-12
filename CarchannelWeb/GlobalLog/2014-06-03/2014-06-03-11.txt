@@ -1,0 +1,8 @@
+[2014/6/3 11:26:56]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/hafuh6/"addEventListener(MouseEvent.CLICK,function(e:Event):void {   var mz_clk_url=""http:/e.cn.miaozhen.com/r.gif?k=1013003&p=4+kr50&o="";   navigateToURL(new URLRequest(mz_clk_url),""_blank""); });" http://news.bitauto.com/areashopcar/20140526/2206441717.html
+Ref: http://car01.bitauto.com/hafuh6/
+Error Message: 从客户端(:)中检测到有潜在危险的 Request.Path 值。
+Stack Trace:    在 System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

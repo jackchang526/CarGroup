@@ -1,0 +1,418 @@
+﻿@{
+    Layout = null;
+}
+@model BitAuto.CarChannel.BLL.Data.CarEntity
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>【@(Model.Serial.SeoName+Model.Name)车款综述】_@(Model.Serial.Brand.SeoName)-手机易车网</title>
+    <meta name="Keywords" content="@(Model.Serial.SeoName),@(Model.Serial.SeoName)车款,@(Model.Serial.SeoName)参数,@(Model.Serial.SeoName)配置,@(Model.Serial.Brand.SeoName+Model.Serial.SeoName)" />
+    <meta name="Description" content="@(Model.Serial.SeoName):手机易车网车型频道为您提供全国最新@(Model.Serial.SeoName)报价,权威@(Model.Serial.SeoName)配置,海量@(Model.Serial.SeoName)图片" />
+    <!--#include file="/ushtml/0000/myiche2015_cube_chekuan-1019.shtml"-->
+    <script type="text/javascript" charset="utf-8" src="http://ip.yiche.com/iplocation/setcookie.ashx"></script>
+</head>
+<body>
+<div id="container">
+<!-- header start -->
+<div class="op-nav">
+    <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
+    <div class="tt-name">
+        <a href="http://m.yiche.com/" class="yiche-logo">汽车</a>
+        <h1><a data-channelid="27.24.1322" href="/@(Model.Serial.AllSpell)/">@(Model.Serial.ShowName)</a>
+        </h1>
+    </div>
+    <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
+</div>
+<div class="op-nav-mark" style="display: none;"></div>
+<!-- header end -->
+<input id="hidCsId" type="hidden" value="@(Model.SerialId)"/>
+<input id="hidCarType" type="hidden" value="默认"/>
+<input id="hidCarID" type="hidden" value="@(Model.Id)"/>
+<input id="isElectric" type="hidden" value="@(ViewBag.IsElectrombile)"/>
+<input id="isTingShou" type="hidden" value="@(Model.SaleState.Trim())"/>
+<input id="hidAllSpell" type="hidden" value="@(Model.Serial.AllSpell)"/>
+<script type="text/javascript">
+    var BitautoCityForAd = bit_locationInfo.cityName;
+    var carlevel = '@(Model.Serial != null && Model.Serial.Level != null ? Model.Serial.Level.Name : string.Empty)';
+</script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/carsum/funcInsCode.js"> </script>
+<!-- return block end -->
+<!-- 切换年款 start -->
+<a href="###" class="change-car-top" data-action="firstmodel" data-channelid="27.24.1325" data-id="@(Model.SerialId)">
+    <span>车款</span>
+    <strong>@(Model.CarYear > 0 ? Model.CarYear + "款" : "")@(Model.Name)</strong>
+</a>
+<!-- 切换年款 end -->
+
+<div class="first-tags">
+    <ul>
+        <li class="current"><a href="http://car.m.yiche.com/@(Model.Serial.AllSpell)/m@(Model.Id)"><span>综述</span></a></li>
+        <li><a href="http://price.m.yiche.com/nc@(Model.Id)/" data-channelid="27.24.1323"><span>报价</span></a></li>
+        <li><a href="/@(Model.Serial.AllSpell)/m@(Model.Id)/peizhi/" data-channelid="27.24.1326"><span>配置</span></a></li>
+        <li><a href="http://photo.m.yiche.com/car/@(Model.Id)/" data-channelid="27.24.1327"><span>图片</span></a></li>
+    </ul>
+</div>
+
+
+<!-- 价格信息 start -->
+<ul id="ulJiaGeInfo" class="chek-card"></ul>
+
+<div id="btn-business" class="sum-btn"></div>
+<!-- 价格信息 end -->
+<!-- 经销商推荐 start -->
+<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/common/cityjsonv2.js?v=2016012210"> </script>
+<div id="tuiJianHeader" class="tt-first" data-channelid="27.24.1332">
+    <h3>经销商推荐</h3>
+    <div id="changecity" class="opt-city"><a href="javascript:;" id="m-dealer-city" data-action="province">北京<i></i></a>
+    </div>
+</div>
+<script type="text/javascript">
+    var citycode = 201, cityName = '北京';
+    if (typeof(bit_locationInfo) != "undefined" && typeof(bit_locationInfo.cityId) != "undefined") {
+        citycode = bit_locationInfo.cityId;
+        cityName = bit_locationInfo.cityName;
+    }
+    $("#m-dealer-city").html(cityName + "<i></i>");
+    document.write('<ins Id="ep_union_126" Partner="6" Version="" isUpdate="1" type="4" city_type="1" city_id="' + citycode + '" city_name="0" car_type="3" brandId="0" serialId="0" carId="@(Model.Id)"></ins>');
+    document.write('<a id="moreJingXS" href="http://price.m.yiche.com/nc@(Model.Id)_c' + citycode + '/" class="btn-more"><i>查看更多经销商</i></a>');
+</script>
+<!-- 经销商推荐 end -->
+<!--替换原“ 购车服务” 块 -->
+<div class="car-service" style="display: none">
+</div>
+
+<!-- 限时特惠 start -->
+<div class="prefer-tim"></div>
+<!-- 限时特惠 end -->
+<script type="text/javascript">
+    showNewsInsCode('480997b8-dfa9-46d1-aa99-57f78a566320', '5d4ecc24-ea5c-41f7-ad42-a29102ce1e08', '72d7d82c-dd8a-4f98-88b8-2c6f221aed7f', 'b13b0006-3a09-4f2e-982f-453bc9569144');
+</script>
+<!-- 参数配置 start -->
+<div class="tt-first tt-first-no-bd">
+    <h3>参数配置</h3>
+    <div class="opt-more opt-more-gray"><a href="/@(Model.Serial.AllSpell)/m@(Model.Id)/peizhi/">更多</a>
+    </div>
+</div>
+<div class="car-canshu">
+    @if (ViewBag.IsElectrombile)
+    {
+        <dl>
+            <dt class="w5">百公里耗电：</dt>
+            <dd>@(string.IsNullOrEmpty(ViewBag.PowerConsumptive100) ? "" : ViewBag.PowerConsumptive100 + "kW")</dd>
+        </dl>
+        <dl>
+            <dt class="w4">电池容量：</dt>
+            <dd>@(string.IsNullOrEmpty(ViewBag.BatteryCapacity) ? "" : ViewBag.BatteryCapacity + "kW·h")</dd>
+        </dl>
+        <dl>
+            <dt class="w4">续航里程：</dt>
+            <dd>@(string.IsNullOrEmpty(ViewBag.Mileage) ? "" : ViewBag.Mileage + "公里")</dd>
+        </dl>
+        <dl>
+            <dt class="w4">充电时间：</dt>
+            <dd>@(string.IsNullOrEmpty(ViewBag.ChargeTime) ? "" : ViewBag.ChargeTime + "分钟")</dd>
+        </dl>
+    }
+    else
+    {
+        <dl>
+            <dt class="w2">排量：</dt>
+            <dd>@(ViewBag.Exhaust)</dd>
+        </dl>
+        <dl>
+            <dt class="w2">油耗：</dt>
+            <dd>@(ViewBag.Cfcs.CarSummaryFuelCost == "" ? "暂无" : ViewBag.Cfcs.CarSummaryFuelCost + "/100km")</dd>
+        </dl>
+        <dl>
+            <dt class="w3">发动机：</dt>
+            <dd>@(ViewBag.EngineAllString)</dd>
+        </dl>
+        <dl>
+            <dt class="w3">变速箱：</dt>
+            <dd>@(ViewBag.Cfcs.TransmissionType)</dd>
+        </dl>
+    }
+    <dl class="line">
+        <dt class="w3">颜色：</dt>
+        @Html.Raw(ViewBag.ColorHeader)
+    </dl>
+</div>
+
+<div class="sum-btn sum-btn-one">
+    <ul>
+        <li data-channelid="27.24.1331">
+            <a id="car-compare-@(Model.Id)" href="javascript:;" data-action="car" data-id="@(Model.Id)" data-name="@(Model.Serial.Name + Model.Name)">加入对比</a>
+        </li>
+    </ul>
+</div>
+<!-- 参数配置 end -->
+<!-- 二手车 start -->
+<div id="ershouCheT" class="tt-first" style="display: none">
+</div>
+<div id="ershouCheContent" class="pic-txt pic-txt-car" style="display: none">
+</div>
+<!-- 二手车 end -->
+<script type="text/javascript" src="http://js.bitauto.com/dealer/union/script/eppu.js?v=20151104"></script>
+<!--#include file="/include/special/stat/00001/bglogpostlog_Manual.shtml"-->
+<script type="text/javascript">
+    var serialId = '@(Model.SerialId)';
+    var serialAllSpell = '@(Model.Serial.AllSpell)';
+    var carId = '@(Model.Id)';
+    var ucarPrice = '@(ViewBag.UcarPrice)';
+    var referPrice = '@(Model.ReferPrice)';
+    var cankaoPrice = '@(ViewBag.CankaoPrice)';
+    var totalPay = '@(ViewBag.TotalPay)';
+    var loanDownPay = '@(ViewBag.LoanDownPay)';
+    var monthPay = '@(ViewBag.MonthPay)';
+    var taxContent = '@(ViewBag.TaxContent)';
+    var serialSaleState = '@(Model.Serial.SaleState)';
+    var CarCommonBSID = "@(Model.Serial == null || Model.Serial.Brand == null ? 0 : Model.Serial.Brand.MasterBrandId)"; //大数据组统计用
+    var CarCommonCBID = "@(Model.Serial == null || Model.Serial.Brand == null ? 0 : Model.Serial.Brand.Id)";
+    var CarCommonCSID = "@(Model.Serial == null ? 0 : Model.Serial.Id)";
+    var CarCommonCarID = "@(Model.Id)";
+</script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/carsum/funcGetEsc.js?v=20170525"></script>
+<script type="text/javascript">
+    showNewsInsCode('d5b63897-b9fe-4de8-a5ee-ea4f0ab97d56', '058f9880-76ca-4a3a-bfa4-9d355e1f7395', '81c5ea90-e1d3-44ea-a957-36beea9ec7aa', 'cd6edaab-a803-41a9-8b49-a699cc632537');
+</script>
+<!-- 口碑 start -->
+@Html.Raw(ViewBag.KouBeiHtml)
+<!-- 口碑 end -->
+<!-- 应用推荐 start -->
+<!--#include file="/include/pd/2014/wap/00001/201507_wap_index_ydtj_Manual.shtml" -->
+<!-- 应用推荐 end -->
+<script type="text/javascript">
+    showNewsInsCode('05aa42cc-b6f2-49cf-af36-a781a77fc39f', '9dd45090-2a81-4f59-a362-c1648fc37c57', 'e2dec2ca-5515-4fe2-9538-78dc97d8f1c2', '8c72285e-5e1b-4cdf-bdac-a8f36346bd00');
+</script>
+<!--新加弹出层 start-->
+<div id="master_container" style="z-index: 888888; display: none" class="brandlayer mthead">
+    @Html.Partial("~/html/compareCarTemplate.cshtml")
+</div>
+<!--新加弹出层 end-->
+<!--车款层 start-->
+<div class="leftmask mark leftmask1" style="display: none;"></div>
+<div id="popupCar" class="leftPopup car-model models original firstmodel" data-back="leftmask1" style="display: none" data-key="model">
+    <div class="swipeLeft swipeLeft-sub">
+        <div class="loading">
+            <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" alt=""/>
+            <p>正在加载...</p>
+        </div>
+    </div>
+</div>
+<!--车款层 end-->
+<!--loading模板 start -->
+<div class="template-loading" style="display: none;">
+    <div class="loading">
+        <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" alt=""/>
+        <p>正在加载...</p>
+    </div>
+</div>
+<!--loading模板 end -->
+<!--车款模板 start-->
+<script type="text/template" id="firstModelTemplate">
+            { for(var n in CarList){ }
+            {var iszx = arrMark[n.replace('s', '')]}
+            <div class="tt-small" {=!iszx ? 'data-slider="pic-txt-h"':''}>
+                <span>
+                    {= n.replace('s','')+'款' }
+                    {if(!iszx){}
+                    <em>[停售]</em>
+                    {}}
+                </span>
+                {if(!iszx){}
+                <i></i>
+                {}}
+            </div>
+
+            <!-- 图文混排横向 start -->
+            <div class="pic-txt-h pic-txt-9060 tone {=iszx||salesYearCount ==0?'open':''}">
+                {salesYearCount++;}
+                <ul>
+                    {for(var i=0;i < CarList[n].length;i++){}
+                    <li {=CarList[n][i].CarId.toString() ==(api.model.currentid.toString()) ? 'class="current"':''}">
+                        <a href="#" data-id="{= CarList[n][i].CarId}">
+                            <h4>{= CarList[n][i].CarName} {=CarList[n][i].SaleState =="在销"?"":(CarList[n][i].SaleState=="待销"?"[未上市]":"[停售]")}</h4>
+                            <p><strong>{= CarList[n][i].ReferPrice.toString() == "" ? "暂无":CarList[n][i].ReferPrice+'万'}</strong></p>
+                        </a>
+                    </li>
+                    {}}
+                </ul>
+            </div>
+            {}}
+            {salesYearCount=0;}
+        </script>
+
+<!--弹出层 start-->
+<div class="leftmask leftmaskduibibtn" style="display: none;"></div>
+<div class="leftPopup model" data-back="leftmaskduibibtn" data-zindex="777777" style="display: none;">
+    <div class="swipeLeft">
+        <div class="loading">
+            <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" alt=""/>
+            <p>正在加载...</p>
+        </div>
+    </div>
+</div>
+<!--弹出层 end-->
+<!--一级公共模板 start-->
+<script type="text/template" id="duibibtnTemplate">
+            <div class="y2015-car-01">
+                <div class="slider-box">
+                    <ul class="first-list">
+                        {for(var i =0;i< list.SelectedCars.length;i++){}
+                        <li><div class="line-box"><a class='select' href="/m{= list.SelectedCars[i].CarId }/">{=list.SelectedCars[i].CarName }</a><a href="javascript:;" data-carid="{=list.SelectedCars[i].CarId }" class="btn-close"><i></i></a></div></li>
+                        {}}
+                        {for(var i =0;i< list.AddLables.Count;i++){}
+                        <li class="add"><div class="line-box"><a href="javascript:;">添加对比车款</a></div></li>
+                        {}}
+                        <li class="alert">最多对比4个车款</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="swipeLeft-header">
+                <a href="#" class="btn-clear">清除</a>
+                <!--btn-clear disable-->
+                <a href="#" class="btn-comparison">开始对比</a>
+                <!--btn-comparison disable-->
+                <div class="clear"></div>
+            </div>
+        </script>
+<!--一级公共模板 end-->
+<!--省模板start-->
+<script type="text/template" id="provinceTemplate">
+            <dl class="tt-list">
+                { for(var n in provinces){}
+                <dt><span>{=n}</span></dt>
+                {for(var i=0;i
+                <provinces[n].length;i++){}
+                    <dd>
+                        <a href="#" {=provinces[n][i].children ? 'data-action="city"':''} data-id="{=provinces[n][i].id}" class="{=provinces[n][i].children ? '':'nbg'} {= provinces[n][i].id.toString() == current_province.toString()  ? 'current':''}">
+                            <p>{=provinces[n][i].name}</p>
+                        </a>
+                    </dd>
+                    {}}
+                    {}}
+            </dl>
+        </script>
+<!--省模板end-->
+<!--市模板start-->
+<script type="text/template" id="cityTemplate">
+            <div class="ap">
+                <ul class="first-list rp">
+                    <li class="root"><a>安徽</a></li>
+                    {for(var i=0;i
+                    <citys.length;i++){}
+                        <li><a data-id="{=citys[i].id}" class="{= citys[i].id.toString() == current_city.toString()  ? 'current':''}">{=citys[i].name}</a></li>
+                        {}}
+                </ul>
+            </div>
+        </script>
+<!--市模板end-->
+<!--loading模板 start -->
+<div class="template-loading" style="display: none;">
+    <div class="loading">
+        <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" alt=""/>
+        <p>正在加载...</p>
+    </div>
+</div>
+<!--loading模板 end -->
+<!--footer start-->
+<div class="footer15">
+    <!--搜索框-->
+    @Html.Partial("~/html/footersearch.cshtml")
+    @Html.Partial("~/html/footerV3.cshtml")
+</div>
+<!--footer end-->
+
+<script src="http://image.bitautoimg.com/uimg/wap/js/jquery-1.8.0.min.js" type="text/javascript"></script>
+<script src="http://image.bitautoimg.com/uimg/wap/js/idangerous.swiper-2.0.min.js"></script>
+
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.js,carchannel/wirelessjsv2/v2/underscore.js,carchannel/wirelessjsv2/v2/model.js,carchannel/wirelessjsv2/v2/rightswipe.js,carchannel/wirelessjsv2/v2/note.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.js,carchannel/wirelessjsv2/rightswipe-cityv2.js?v=20170105"></script>
+
+    @*<script type="text/javascript" src="/js/v2/iscroll.js"></script>
+    <script type="text/javascript" src="/js/v2/underscore.js"></script>
+    <script type="text/javascript" src="/js/v2/model.js"></script>
+    <script type="text/javascript" src="/js/v2/rightswipe.js"></script>
+    <script type="text/javascript" src="/js/v2/note.js"></script>
+    <script type="text/javascript" src="/js/v2/brand.js"></script>
+    <script type="text/javascript" src="/js/waitcompareV2.js"></script>
+    <script type="text/javascript" src="/js/rightswipe-cityv2.js"></script>*@
+<!--车款模板 end-->
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/carsum/aboutCarTemp.js"></script>
+
+<!-- black popup start -->
+<!--省份层 start-->
+<div class="leftmask leftmask6" style="display: none;"></div>
+<div id="provinceList" class="leftPopup province year" data-back="leftmask6" style="display: none;">
+    <div class="swipeLeft swipeLeft-sub">
+        <div class="loading">
+            <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" alt=""/>
+            <p>正在加载...</p>
+        </div>
+    </div>
+</div>
+<!--省份层 end-->
+<!--市层 start-->
+<div id="cityList" class="leftPopup month model2 city" data-back="leftmask6" style="display: none;">
+    <div class="swipeLeft swipeLeft-sub">
+        <div class="loading">
+            <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" alt=""/>
+            <p>正在加载...</p>
+        </div>
+    </div>
+</div>
+<!--市层 end-->
+<!-- black popup end -->
+<div class="leftmask duibi-leftmask leftmask2 " style="display: none;"></div>
+<div class="leftPopup duibicar duibi-leftPopup" data-zindex="777777" data-back="leftmask2" style="display: none;">
+    <div class="swipeLeft">
+        <div class="y2015-car-01">
+            <ul class="first-list"></ul>
+        </div>
+        <div class="swipeLeft-header">
+            <a href="###" class="btn-clear">清空</a>
+            <!--btn-clear disable-->
+            <a href="###" class="btn-comparison">开始对比</a>
+            <!--btn-comparison disable-->
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div class="float-r-box">
+    <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
+    <a id="compare-pk" href="#compare" data-action="duibicar" class="float-r-ball float-pk">
+        <span><p>对比</p></span>
+        <i></i>
+    </a>
+</div>
+</div>
+<script type="text/javascript">
+    var apiBrandId = '@(Model.Serial.BrandId)';
+    var apiSerialId = '@(Model.SerialId)';
+    var apiCarId = '@(Model.Id)';
+</script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/carsum/aboutCompare.js"></script>
+    <script type="text/javascript">
+        var  zamCityId= (typeof bit_locationInfo !="undefined")?bit_locationInfo.cityId:"201",
+			modelStr = '@(Model.SerialId)-' + (zamCityId.length >= 4 ? zamCityId.substring(0, 2) : zamCityId.substring(0, 1)) + '-' + zamCityId + '';
+        var zamplus_tag_params = {
+            modelId:modelStr,
+            carId:@Model.Id
+            };
+    </script>
+    <script type="text/javascript">
+        var _zampq = [];
+        _zampq.push(["_setAccount", "12"]);
+        (function () {
+            var zp = document.createElement("script"); zp.type = "text/javascript"; zp.async = true;
+            zp.src = ("https:" == document.location.protocol ? "https://" : "http://") + "cdn.zampda.net/s.js";
+            var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(zp, s);
+        })();
+    </script>
+</body>
+</html>  

@@ -1,0 +1,13 @@
+﻿<!--友情链接-->
+<div class="friend-link">
+    <div class="section-header header2">
+        <div class="box">
+            <h2>友情链接</h2>
+        </div>
+        <div class="more"><a href="http://hezuo.bitauto.com/" target="_blank">申请合作</a><a href="http://friendlink.bitauto.com/" target="_blank">申请链接</a></div>
+    </div>
+    <div class="section-tag-content">
+        <!--#include file="~/include/special/seo/00001/2017_chexinglink_Auto.shtml"-->
+    </div>
+</div>
+<!--/友情链接-->

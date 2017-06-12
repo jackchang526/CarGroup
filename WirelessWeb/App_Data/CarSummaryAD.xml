@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+    <AD>
+        <!-- link标题 -->
+        <Title>贷款买车</Title>
+        <!-- 地址 -->
+        <Link>http://market.bitauto.com/m/Apply/Submit.aspx</Link>
+        <!-- 对应车型ID列表 分号分隔 -->
+        <!-- 改成子品牌ID -->
+        <IDs>2409;1699;1695;2583;2190;1698;1679;3753;2022;2196;2567;1769;1922;2678;3037;2856;2707</IDs>
+    </AD>
+</Root>

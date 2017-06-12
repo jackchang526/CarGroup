@@ -1,0 +1,90 @@
+[2015/1/9 11:04:15]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/CarInfo/getlefttreejson.ashx?tagtype=chexing
+Error Message: 请求在此上下文中不可用
+Stack Trace:    在 System.Web.UI.Page.get_Request()
+   在 BitAuto.CarChannelAPI.Web.CarInfo.GetLeftTreeJson.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\GetLeftTreeJson.ashx.cs:行号 71
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2015/1/9 11:04:20]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/CarInfo/getlefttreejson.ashx?tagtype=chexing
+Error Message: 请求在此上下文中不可用
+Stack Trace:    在 System.Web.UI.Page.get_Request()
+   在 BitAuto.CarChannelAPI.Web.CarInfo.GetLeftTreeJson.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\GetLeftTreeJson.ashx.cs:行号 71
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2015/1/9 11:06:15]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/CarInfo/getlefttreejson.ashx?tagtype=chexing
+Error Message: 此操作要求使用 IIS 集成管线模式。
+Stack Trace:    在 System.Web.HttpResponse.get_Headers()
+   在 BitAuto.CarChannelAPI.Web.CarInfo.GetLeftTreeJson.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\GetLeftTreeJson.ashx.cs:行号 77
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2015/1/9 11:06:16]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/CarInfo/getlefttreejson.ashx?tagtype=chexing
+Error Message: 此操作要求使用 IIS 集成管线模式。
+Stack Trace:    在 System.Web.HttpResponse.get_Headers()
+   在 BitAuto.CarChannelAPI.Web.CarInfo.GetLeftTreeJson.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\GetLeftTreeJson.ashx.cs:行号 77
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2015/1/9 11:06:23]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/CarInfo/getlefttreejson.ashx?tagtype=chexing
+Error Message: 此操作要求使用 IIS 集成管线模式。
+Stack Trace:    在 System.Web.HttpResponse.get_Headers()
+   在 BitAuto.CarChannelAPI.Web.CarInfo.GetLeftTreeJson.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\GetLeftTreeJson.ashx.cs:行号 77
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2015/1/9 11:06:31]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/CarInfo/getlefttreejson.ashx?tagtype=chexing
+Error Message: 此操作要求使用 IIS 集成管线模式。
+Stack Trace:    在 System.Web.HttpResponse.get_Headers()
+   在 BitAuto.CarChannelAPI.Web.CarInfo.GetLeftTreeJson.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\GetLeftTreeJson.ashx.cs:行号 77
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2015/1/9 11:07:25]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/CarInfo/getlefttreejson.ashx?tagtype=chexing
+Error Message: 此操作要求使用 IIS 集成管线模式。
+Stack Trace:    在 System.Web.HttpResponse.get_Headers()
+   在 BitAuto.CarChannelAPI.Web.CarInfo.GetLeftTreeJson.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\GetLeftTreeJson.ashx.cs:行号 77
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2015/1/9 11:07:27]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/CarInfo/getlefttreejson.ashx?tagtype=chexing
+Error Message: 此操作要求使用 IIS 集成管线模式。
+Stack Trace:    在 System.Web.HttpResponse.get_Headers()
+   在 BitAuto.CarChannelAPI.Web.CarInfo.GetLeftTreeJson.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\GetLeftTreeJson.ashx.cs:行号 77
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2015/1/9 11:08:52]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/CarInfo/getlefttreejson.ashx?tagtype=chexing&aaa
+Error Message: 此操作要求使用 IIS 集成管线模式。
+Stack Trace:    在 System.Web.HttpResponse.get_Headers()
+   在 BitAuto.CarChannelAPI.Web.CarInfo.GetLeftTreeJson.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\GetLeftTreeJson.ashx.cs:行号 77
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2015/1/9 11:08:53]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/CarInfo/getlefttreejson.ashx?tagtype=chexing&aaa
+Error Message: 此操作要求使用 IIS 集成管线模式。
+Stack Trace:    在 System.Web.HttpResponse.get_Headers()
+   在 BitAuto.CarChannelAPI.Web.CarInfo.GetLeftTreeJson.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\CarInfo\GetLeftTreeJson.ashx.cs:行号 77
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

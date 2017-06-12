@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Param>
+  <Group Desc="基本数据">
+    <!-- 先2个索引 车型ID,车型名 -->
+    <Item Value="CarImg" Desc="图片" ParamID="0" Unit="" />
+    <Item Value="Cs_ID" Desc="子品牌ID" ParamID="0" Unit="" />
+    <Item Value="Cs_Name" Desc="子品牌名" ParamID="0" Unit="" />
+    <Item Value="Cs_ShowName" Desc="子品牌显示名" ParamID="0" Unit="" />
+    <Item Value="Cs_AllSpell" Desc="子品牌全拼" ParamID="0" Unit="" />
+    <Item Value="Car_YearType" Desc="年款" ParamID="0" Unit="" />
+    <Item Value="Car_ProduceState" Desc="生成状态" ParamID="0" Unit="" />
+    <Item Value="Car_SaleState" Desc="销售状态" ParamID="0" Unit="" />
+    <Item Value="Car_UserFuel" Desc="网友油耗" ParamID="0" Unit="" />
+    <Item Value="Cs_BBSUrl" Desc="论坛" ParamID="0" Unit="" />
+    <Item Value="Cs_CarLevel" Desc="子品牌级别" ParamID="0" Unit="" />
+    <Item Value="Car_OutStat_BodyColorRGB" Desc="车型车身颜色RGB" ParamID="0" Unit="" />
+  </Group>
+  <Group Desc="基本信息">
+    <Item Value="CarReferPrice" Desc="厂家指导价" ParamID="0" Unit="元" />
+    <Item Value="AveragePrice" Desc="经销商报价" ParamID="0" Unit="元" />
+    <Item Value="Car_JiangJiaPrice" Desc="降价优惠" ParamID="0" Unit="元" />
+    <Item Value="Car_RepairPolicy" Desc="保修政策" ParamID="398" Unit="" />
+    <Item Value="Car_Traveltaxrelief" Desc="车船税减免" ParamID="895" Unit="" />
+    <Item Value="Engine_ExhaustForFloat" Desc="排量（升）" ParamID="785" Unit="L" />
+    <Item Value="UnderPan_ForwardGearNum" Desc="变速器型式" ParamID="724" Unit="" />
+    <Item Value="UnderPan_TransmissionType" Desc="变速器型式" ParamID="712" Unit="" />
+    <Item Value="Perf_ShiQuYouHao" Desc="市区工况油耗" ParamID="783" Unit="L" />
+    <Item Value="Perf_ShiJiaoYouHao" Desc="市郊工况油耗" ParamID="784" Unit="L" />
+    <Item Value="Perf_ZongHeYouHao" Desc="综合工况油耗" ParamID="782" Unit="L" />
+    <Item Value="Perf_FuelCostPer100" Desc="百公里等速油耗" ParamID="658" Unit="L" />
+    <Item Value="Perf_MeasuredFuel" Desc="油耗" ParamID="788" Unit="L" />
+    <Item Value="Perf_AccelerateTime" Desc="加速时间" ParamID="650" Unit="s" />
+    <Item Value="Perf_MeasuredAcceleration" Desc="加速时间(0—100km/h)" ParamID="786" Unit="s" />
+    <Item Value="Perf_MaxSpeed" Desc="最高车速" ParamID="663" Unit="km/h" />
+    <Item Value="Perf_SeatNum" Desc="乘员人数（含司机）" ParamID="665" Unit="人" />
+    <Item Value="Perf_Seatscope" Desc="乘员人数（区间）" ParamID="951" Unit="人" />
+    <Item Value="Purchase_Taxrelief" Desc="购置税减免" ParamID="986" Unit="" />
+    <Item Value="Car_EnergySubsidy" Desc="节能补贴" ParamID="853" Unit="" />
+    <Item Value="new_energy_subsidies" Desc="新能源汽车国家补贴" ParamID="997" Unit="万元" />
+  </Group>
+  <Group Desc="车体">
+    <Item Value="OutSet_Length" Desc="长" ParamID="588" Unit="mm" />
+    <Item Value="OutSet_Width" Desc="宽" ParamID="593" Unit="mm" />
+    <Item Value="OutSet_Height" Desc="高" ParamID="586" Unit="mm" />
+    <Item Value="OutSet_WheelBase" Desc="轴距" ParamID="592" Unit="mm" />
+    <Item Value="OutSet_FrontTread" Desc="前轮距" ParamID="585" Unit="mm" />
+    <Item Value="OutSet_BackTread" Desc="后轮距" ParamID="582" Unit="mm" />
+    <Item Value="Perf_Weight" Desc="整备质量" ParamID="669" Unit="kg" />
+    <Item Value="Perf_TotalWeight" Desc="满载质量" ParamID="668" Unit="kg" />
+    <Item Value="OutSet_MinGapFromEarth" Desc="最小离地间隙" ParamID="589" Unit="mm" />
+    <Item Value="Perf_MaxPaddleDepth" Desc="最大涉水深度" ParamID="662" Unit="mm" />
+    <Item Value="OutSet_NearCorner" Desc="接近角" ParamID="591" Unit="" />
+    <Item Value="Perf_Throughtheangle" Desc="通过角" ParamID="890" Unit="" />
+    <Item Value="OutSet_AwayCorner" Desc="离去角" ParamID="581" Unit="" />
+    <Item Value="Inset_TrunkCapacity" Desc="行李厢容积" ParamID="465" Unit="L" />
+    <Item Value="Inset_TrunkCapacityE" Desc="行李厢最大拓展容积" ParamID="466" Unit="L" />
+    <Item Value="InStat_TrunkType" Desc="行李厢盖开合方式" ParamID="556" Unit="" />
+    <Item Value="Inset_BackUpOpenType" Desc="行李厢打开方式" ParamID="441" Unit="" />
+    <Item Value="Body_Doors" Desc="车门数" ParamID="563" Unit="" />
+    <Item Value="Body_TipType" Desc="车顶型式" ParamID="573" Unit="" />
+    <Item Value="Body_sailType" Desc="车篷型式" ParamID="570" Unit="" />
+    <Item Value="OutStat_TopSnelf" Desc="车顶行李箱架" ParamID="627" Unit="" />
+    <Item Value="OutStat_InductEmpennage" Desc="后导流尾翼" ParamID="616" Unit="" />
+    <Item Value="OutStat_Besiege" Desc="运动包围" ParamID="597" Unit="" />
+    <Item Value="Perf_WindBlock" Desc="风阻系数" ParamID="670" Unit="Cd" />
+    <Item Value="OutStat_BodyColor" Desc="车身颜色" ParamID="598" Unit="" />
+
+    <Item Value="Cargo_compartment_form" Desc="货厢形式" ParamID="964" Unit="" />
+    <Item Value="Cargo_length_min" Desc="货厢长度（最小）" ParamID="965" Unit="" />
+    <Item Value="Cargo_length_max" Desc="货厢长度（最大）" ParamID="966" Unit="" />
+    <Item Value="cargo_width_min" Desc="货厢宽度（最小）" ParamID="967" Unit="" />
+    <Item Value="cargo_width_max" Desc="货厢宽度（最大）" ParamID="970" Unit="" />
+    <Item Value="Cargo_height_min" Desc="货厢高度（最小）" ParamID="968" Unit="" />
+    <Item Value="Cargo_height_max" Desc="货厢高度（最大）" ParamID="969" Unit="" />
+    <Item Value="truck_form" Desc="车厢形式" ParamID="971" Unit="" />
+    <Item Value="Seating_arrangement" Desc="座位排列" ParamID="972" Unit="" />
+    <Item Value="nominal_load_capacity" Desc="额定载重量" ParamID="973" Unit="" />
+    <Item Value="maximum_gross_mass" Desc="最大总质量" ParamID="974" Unit="" />
+    
+    <Item Value="OutStat_SportsAppearanceKit" Desc="运动外观套件" ParamID="793" Unit="" />
+    <Item Value="Induction_trunk" Desc="感应行李厢" ParamID="990" Unit="" />
+    <Item Value="Body_CalashOCType" Desc="车篷开合方式" ParamID="562" Unit="" />
+  </Group>
+  <Group Desc="发动机">
+    <Item Value="Engine_Location" Desc="发动机位置" ParamID="428" Unit="" />
+    <Item Value="Engine_Type" Desc="发动机型号" ParamID="436" Unit="" />
+    <Item Value="Engine_ExhaustForFloat" Desc="排量（升）" ParamID="785" Unit="L" />
+    <Item Value="Engine_Exhaust" Desc="排量" ParamID="423" Unit="mL" />
+    <Item Value="Engine_InhaleType" Desc="进气型式" ParamID="425" Unit="" />
+    <Item Value="Engine_AddPressType" Desc="增压方式" ParamID="408" Unit="" />
+    <Item Value="Engine_CylinderRank" Desc="气缸排列型式" ParamID="418" Unit="" />
+    <Item Value="Engine_CylinderNum" Desc="汽缸数" ParamID="417" Unit="个" />
+    <Item Value="Engine_ValvePerCylinder" Desc="每缸气门数" ParamID="437" Unit="个" />
+    <Item Value="Engine_Camshaft" Desc="气门结构" ParamID="410" Unit="" />
+    <Item Value="Engine_CompressRat" Desc="压缩比" ParamID="414" Unit=":1" />
+    <Item Value="Engine_CylinderDM" Desc="缸径" ParamID="415" Unit="mm" />
+    <Item Value="Engine_Route" Desc="行程" ParamID="434" Unit="mm" />
+    <Item Value="Engine_horsepower" Desc="最大马力" ParamID="791" Unit="Ps" />
+    <Item Value="Engine_MaxPower" Desc="最大功率-功率值" ParamID="430" Unit="kW" />
+    <Item Value="Engine_PowerSpeed" Desc="最大功率-转速" ParamID="433" Unit="r/min(rpm)" />
+    <Item Value="Engine_MaxNJ" Desc="最大扭矩-扭矩值" ParamID="429" Unit="Nm   " />
+    <Item Value="Engine_NJSpeed" Desc="最大扭矩—转速" ParamID="432" Unit="r/min(rpm)" />
+    <Item Value="Engine_SpTech" Desc="特有技术" ParamID="435" Unit="" />
+    <Item Value="Oil_FuelType" Desc="燃料类型" ParamID="578" Unit="" />
+    <Item Value="Oil_FuelTab" Desc="燃油标号" ParamID="577" Unit="" />
+    <Item Value="Oil_SupplyType" Desc="供油方式" ParamID="580" Unit="" />
+    <Item Value="Oil_FuelCapacity" Desc="燃油箱容积" ParamID="576" Unit="L" />
+    <Item Value="Engine_CylinderTMaterial" Desc="缸盖材料" ParamID="419" Unit="" />
+    <Item Value="Engine_CylinderMaterial" Desc="缸体材料" ParamID="416" Unit="" />
+    <Item Value="Engine_EnvirStandard" Desc="环保标准" ParamID="421" Unit="" />
+    <Item Value="UnderPan_Startandstopsystem" Desc="启停系统" ParamID="894" Unit="" />
+    <Item Value="Electric_Maximumpowerspeed" Desc="电机最大功率-转速" ParamID="871" Unit="" />
+    <Item Value="Maximummotortorquespeed" Desc="电机最大扭矩-转速" ParamID="873" Unit="" />
+
+    <Item Value="tank_material" Desc="油箱材质" ParamID="978" Unit="" />
+    <Item Value="new_energy_type" Desc="新能源类型" ParamID="998" Unit="" />
+  </Group>
+  <Group Desc="变速箱">
+    <Item Value="UnderPan_TransmissionType" Desc="变速器型式" ParamID="712" Unit="" />
+    <Item Value="UnderPan_ForwardGearNum" Desc="前进档数" ParamID="724" Unit="" />
+    <Item Value="InStat_SteerEtc" Desc="换档拨片" ParamID="547" Unit="" />
+    <Item Value="InStat_EFileBar" Desc="电子档杆" ParamID="844" Unit="" />
+
+    <Item Value="Transmission_type" Desc="变速箱型号" ParamID="979" Unit="" />
+    <Item Value="forward_gears_number" Desc="前进挡数" ParamID="980" Unit="" />
+    <Item Value="backward_gears_number" Desc="倒挡数" ParamID="981" Unit="" />
+  </Group>
+  <Group Desc="底盘制动">
+    <Item Value="Body_Struc" Desc="车体结构" ParamID="572" Unit="" />
+    <Item Value="OutSet_MinWheelRadius" Desc="最小转弯半径" ParamID="590" Unit="m" />
+    <Item Value="UnderPan_DriveAsistTurn" Desc="转向助力" ParamID="735" Unit="" />
+    <Item Value="UnderPan_FrontBrakeType" Desc="前制动类型" ParamID="726" Unit="" />
+    <Item Value="UnderPan_RearBrakeType" Desc="后制动类型" ParamID="718" Unit="" />
+    <Item Value="UnderPan_ParkingBrake" Desc="手刹类型" ParamID="716" Unit="" />
+    <Item Value="Perf_DriveType" Desc="驱动方式" ParamID="655" Unit="" />
+    <Item Value="UnderPan_Airmatic" Desc="空气悬挂" ParamID="814" Unit="" />
+    <Item Value="UnderPan_SuspensionHeightControl" Desc="可调悬挂" ParamID="708" Unit="" />
+    <Item Value="UnderPan_FrontSuspensionType" Desc="前悬挂类型" ParamID="728" Unit="" />
+    <Item Value="UnderPan_RearSuspensionType" Desc="后悬挂类型" ParamID="720" Unit="" />
+    <Item Value="UnderPan_CentralDiffLock" Desc="中央差速器锁" ParamID="733" Unit="" />
+
+    <Item Value="Front_axle_description" Desc="前桥（轴）描述" ParamID="975" Unit="" />
+    <Item Value="Back_axle_description" Desc="后桥描述" ParamID="976" Unit="" />
+    <Item Value="spring_quantity" Desc="弹簧片数" ParamID="977" Unit="" />
+  </Group>
+  <Group Desc="安全配置">
+    <Item Value="Safe_DriverGasBag" Desc="驾驶位安全气囊" ParamID="682" Unit="" />
+    <Item Value="Safe_SubDriverGasBag" Desc="副驾驶位安全气囊" ParamID="697" Unit="" />
+    <Item Value="Safe_FsadGasbag" Desc="前排侧安全气囊" ParamID="691" Unit="" />
+    <Item Value="Safe_FheadGasbag" Desc="前排头部气囊(气帘)" ParamID="690" Unit="" />
+    <Item Value="Safe_KneeGasBag" Desc="膝部气囊" ParamID="835" Unit="" />
+    <Item Value="Safe_BsadGasbag" Desc="后排侧安全气囊" ParamID="680" Unit="" />
+    <Item Value="Safe_BheadGasbag" Desc="后排头部气囊(气帘)" ParamID="679" Unit="" />
+    <Item Value="InStat_BeltBag" Desc="安全带气囊" ParamID="845" Unit="" />
+    <Item Value="Safe_BeltReminder" Desc="安全带未系提示" ParamID="836" Unit="" />
+    <Item Value="UnderPan_lifeBeltlimit" Desc="安全带限力功能" ParamID="701" Unit="" />
+    <Item Value="Safe_BeltPreTighten" Desc="安全带预收紧功能" ParamID="678" Unit="" />
+    <Item Value="Safe_BeltPosTune" Desc="前安全带调节" ParamID="677" Unit="" />
+    <Item Value="Safe_BackBelt" Desc="后排安全带" ParamID="675" Unit="" />
+    <Item Value="Safe_BackthreespotBelt" Desc="后排中间三点式安全带" ParamID="676" Unit="" />
+    <Item Value="Perf_ElecLimitSpeed" Desc="电子限速" ParamID="656" Unit="" />
+    <Item Value="UnderPan_TyrePressureWatcher" Desc="胎压监测装置" ParamID="714" Unit="" />
+    <Item Value="UnderPan_ZeroPressureDrive" Desc="零压续行(零胎压继续行驶)" ParamID="715" Unit="" />
+    <Item Value="UnderPan_turnShrink" Desc="可溃缩转向柱" ParamID="713" Unit="" />
+    <Item Value="Safe_ShrinkFootBrake" Desc="溃缩式制动踏板" ParamID="696" Unit="" />
+    <Item Value="Safe_CentralLock" Desc="车内中控锁" ParamID="837" Unit="" />
+    <Item Value="InStat_CenterControlLock" Desc="中控门锁" ParamID="493" Unit="" />
+    <Item Value="InStat_ChildLock" Desc="儿童锁" ParamID="494" Unit="" />
+    <Item Value="InStat_Rckey" Desc="遥控钥匙" ParamID="538" Unit="" />
+    <Item Value="InStat_AIgnitionSys" Desc="无钥匙启动系统" ParamID="469" Unit="" />
+    <Item Value="Safe_VATS" Desc="电子防盗系统" ParamID="699" Unit="" />
+    <Item Value="Safe_EATS" Desc="发动机防盗系统" ParamID="683" Unit="" />
+    
+    <Item Value="nokey_into" Desc="无钥匙进入系统" ParamID="952" Unit="" />
+  </Group>
+  <Group Desc="车轮">
+    <Item Value="UnderPan_FrontTyreStandard" Desc="前轮胎规格" ParamID="729" Unit="" />
+    <Item Value="UnderPan_RearTyreStandard" Desc="后轮胎规格" ParamID="721" Unit="" />
+    <Item Value="UnderPan_FrontRimStandard" Desc="前轮毂规格" ParamID="727" Unit="" />
+    <Item Value="UnderPan_RearRimStandard" Desc="后轮毂规格" ParamID="719" Unit="" />
+    <Item Value="UnderPan_SpareWheelStandard" Desc="备胎类型" ParamID="707" Unit="" />
+    <Item Value="UnderPan_RimMaterial" Desc="轮毂材料" ParamID="704" Unit="" />
+
+    <Item Value="truck_tire_number" Desc="轮胎数量" ParamID="982" Unit="" />
+  </Group>
+  <Group Desc="行车辅助">
+    <Item Value="Safe_ABS" Desc="ABS(刹车防抱死制动系统)" ParamID="673" Unit="" />
+    <Item Value="Safe_EBD" Desc="电子制动力分配系统" ParamID="685" Unit="" />
+    <Item Value="Safe_EBA" Desc="EBA/EVA(紧急制动辅助系统)" ParamID="684" Unit="" />
+    <Item Value="Safe_TCS" Desc="TCS(牵引力控制系统)" ParamID="698" Unit="" />
+    <Item Value="UnderPan_DSC" Desc="DSC(动态稳定控制系统)" ParamID="700" Unit="" />
+    <Item Value="UnderPan_AsistTurnTune" Desc="随速助力转向调节(EPS)" ParamID="732" Unit="" />
+    <Item Value="InStat_AutoPark" Desc="自动驻车" ParamID="811" Unit="" />
+    <Item Value="InStat_UphillAuxiliary" Desc="上坡辅助" ParamID="812" Unit="" />
+    <Item Value="InStat_HDC" Desc="陡坡缓降" ParamID="813" Unit="" />
+    <Item Value="UnderPan_PRadar" Desc="泊车雷达(车前)" ParamID="800" Unit="" />
+    <Item Value="UnderPan_RRadar" Desc="倒车雷达" ParamID="702" Unit="" />
+    <Item Value="UnderPan_RImage" Desc="倒车影像" ParamID="703" Unit="" />
+    <Item Value="InStat_PanoramicCamera" Desc="全景摄像头" ParamID="820" Unit="" />
+    <Item Value="InStat_SpeedCruise" Desc="定速巡航系统" ParamID="545" Unit="" />
+    <Item Value="InStat_Automaticcruise" Desc="自适应巡航" ParamID="893" Unit="" />
+    <Item Value="InStat_GPS" Desc="GPS电子导航" ParamID="516" Unit="" />
+    <Item Value="InStat_Human-machineInteractionSystem" Desc="人机交互系统" ParamID="806" Unit="" />
+    <Item Value="InStat_AutoParking" Desc="自动泊车入位" ParamID="816" Unit="" />
+    <Item Value="InStat_RoadMergeAuxiliary" Desc="并线辅助" ParamID="817" Unit="" />
+    <Item Value="InStat_ActiveSafetySystems" Desc="主动刹车/主动安全系统" ParamID="818" Unit="" />
+    <Item Value="InStat_OverallActiveSteeringSystem" Desc="整体主动转向系统" ParamID="841" Unit="" />
+    <Item Value="InStat_NightVisionSystem" Desc="夜视系统" ParamID="819" Unit="" />
+    <Item Value="InStat_blindspotdetection" Desc="盲点检测" ParamID="898" Unit="" />
+    <Item Value="Safe_EDCMSR" Desc="发动机阻力矩控制系统（EDC/MSR）" ParamID="897" Unit="" />
+    <Item Value="Safe_CBC" Desc="弯道制动控制系统（CBC）" ParamID="896" Unit="" />
+    
+    <Item Value="Lane_Departure" Desc="车道偏离预警系统" ParamID="955" Unit="" />
+  </Group>
+  <Group Desc="门窗/后视镜">
+    <Item Value="Body_Openmethod" Desc="开门方式" ParamID="891" Unit="" />
+    <Item Value="OutStat_CarWindow" Desc="车窗" ParamID="601" Unit="" />
+    <Item Value="OutStat_UV_InsulatinGlass" Desc="防紫外线/隔热玻璃" ParamID="796" Unit="" />
+    <Item Value="OutStat_AvoidNipHead" Desc="电动窗防夹功能" ParamID="594" Unit="" />
+    <Item Value="Body_LouverOCType" Desc="天窗开合方式" ParamID="568" Unit="" />
+    <Item Value="Body_Louver" Desc="天窗型式" ParamID="567" Unit="" />
+    <Item Value="OutStat_BackCurtain" Desc="后窗遮阳帘" ParamID="595" Unit="" />
+    <Item Value="OutStat_SecondRowCurtain" Desc="后排侧遮阳帘" ParamID="797" Unit="" />
+    <Item Value="OutStat_BBrushSensor" Desc="后雨刷器" ParamID="596" Unit="" />
+    <Item Value="OutStat_FBrushSensor" Desc="雨刷传感器" ParamID="606" Unit="" />
+    <Item Value="InStat_ElectricPick-upDoors" Desc="电动吸合门" ParamID="821" Unit="" />
+    <Item Value="InStat_ElectricTrunkPull" Desc="行李厢电动吸合门" ParamID="822" Unit="" />
+    <Item Value="OutStat_MirrorSideLight" Desc="后视镜带侧转向灯" ParamID="830" Unit="" />
+    <Item Value="OutStat_ReMirrormemory" Desc="外后视镜记忆功能" ParamID="625" Unit="" />
+    <Item Value="OutStat_ReMirrorHot" Desc="外后视镜加热功能" ParamID="624" Unit="" />
+    <Item Value="OutStat_ReMirrorFold" Desc="外后视镜电动折叠功能" ParamID="623" Unit="" />
+    <Item Value="OutStat_ReMirrorElecTune" Desc="外后视镜电动调节" ParamID="622" Unit="" />
+    <Item Value="OutStat_ReMirrorDazzle" Desc="内后视镜防眩目功能" ParamID="621" Unit="" />
+    <Item Value="InStat_FaceMirror" Desc="遮阳板化妆镜" ParamID="512" Unit="" />
+    
+    <Item Value="Privacy_glass" Desc="隐私玻璃" ParamID="989" Unit="" />
+  </Group>
+  <Group Desc="灯光">
+    <Item Value="OutStat_FrontLightType" Desc="前照灯类型" ParamID="614" Unit="" />
+    <Item Value="OutStat_FLightClose" Desc="前大灯自动开闭" ParamID="609" Unit="" />
+    <Item Value="OutStat_FLightAutoClean" Desc="前照灯自动清洗功能" ParamID="608" Unit="" />
+    <Item Value="OutStat_FLightDelay" Desc="前大灯延时关闭" ParamID="611" Unit="" />
+    <Item Value="OutStat_FLightSteer" Desc="前大灯随动转向" ParamID="613" Unit="" />
+    <Item Value="OutStat_FLightHeightTune" Desc="前照灯照射高度调节" ParamID="612" Unit="" />
+    <Item Value="OutStat_FLightDazzle" Desc="会车前灯防眩目功能" ParamID="610" Unit="" />
+    <Item Value="OutStat_FfogLamp" Desc="前雾灯" ParamID="607" Unit="" />
+    <Item Value="InStat_ReadingLight" Desc="车厢前阅读灯" ParamID="539" Unit="" />
+    <Item Value="InStat_BReadingLight" Desc="车厢后阅读灯" ParamID="480" Unit="" />
+    <Item Value="OutStat_atmosphereLight" Desc="车内氛围灯" ParamID="795" Unit="" />
+    <Item Value="OutStat_DaytimeRunningLights" Desc="日间行车灯" ParamID="794" Unit="" />
+    <Item Value="OutStat_LEDtaillights" Desc="LED尾灯" ParamID="846" Unit="" />
+    <Item Value="OutStat_PerchStopLight" Desc="高位(第三)制动灯" ParamID="620" Unit="" />
+    <Item Value="OutStat_Corneringlights" Desc="转向头灯（辅助灯）" ParamID="828" Unit="" />
+    <Item Value="OutStat_SideLight" Desc="侧转向灯" ParamID="626" Unit="" />
+    <Item Value="OutStat_luggageLight" Desc="行李厢灯" ParamID="618" Unit="" />
+    
+    <Item Value="choice_FrontLightType" Desc="选配前大灯类型" ParamID="953" Unit="" />
+   </Group>
+  <Group Desc="内部配置">
+    <Item Value="SteeringAdjustmentLeftAndRight" Desc="方向盘前后调节" ParamID="799" Unit="" />
+    <Item Value="InStat_SteeringAdjustmentUpAndDown" Desc="方向盘上下调节" ParamID="798" Unit="" />
+    <Item Value="InStat_SteerTuneType" Desc="方向盘调节方式" ParamID="552" Unit="" />
+    <Item Value="InStat_SteerMomery" Desc="方向盘记忆设置" ParamID="549" Unit="" />
+    <Item Value="InStat_SteerMaterial" Desc="方向盘表面材料" ParamID="548" Unit="" />
+    <Item Value="InStat_MultiFuncSteer" Desc="多功能方向盘" ParamID="528" Unit="" />
+    <Item Value="InStat_MultiFuncsSteer" Desc="多功能方向盘功能" ParamID="527" Unit="" />
+    <Item Value="InStat_ComputerMonitors" Desc="行车电脑显示屏" ParamID="832" Unit="" />
+    <Item Value="InStat_Hud" Desc="HUD抬头数字显示" ParamID="518" Unit="" />
+    <Item Value="InStat_InteriorColor" Desc="内饰颜色" ParamID="801" Unit="" />
+    <Item Value="InStat_BCarShelf" Desc="后排杯架" ParamID="474" Unit="" />
+    <Item Value="InStat_12VPower" Desc="车内电源电压" ParamID="467" Unit="" />
+
+    <Item Value="Steering_Wheel_hot" Desc="方向盘加热" ParamID="956" Unit="" />
+    <Item Value="Liquid_crystal_instrument_panel" Desc="全液晶仪表盘" ParamID="988" Unit="" />
+  </Group>
+  <Group Desc="座椅">
+    <Item Value="InStat_SportSeat" Desc="运动座椅" ParamID="546" Unit="" />
+    <Item Value="InStat_SeatMaterial" Desc="座椅面料" ParamID="544" Unit="" />
+    <Item Value="InStat_DSeatTuneType" Desc="驾驶座座椅调节方式" ParamID="508" Unit="" />
+    <Item Value="InStat_DSeatTuneDirection" Desc="驾驶座座椅调节方向" ParamID="507" Unit="" />
+    <Item Value="InStat_DASeatTuneType" Desc="副驾驶座椅调节方式" ParamID="503" Unit="" />
+    <Item Value="InStat_DASeatTuneDirection" Desc="副驾驶座椅调节方向" ParamID="502" Unit="" />
+    <Item Value="InStat_DSeatProp" Desc="驾驶座腰部支撑调节" ParamID="506" Unit="" />
+    <Item Value="InStat_AdjustableShoulderSupport" Desc="驾驶座肩部支撑调节" ParamID="802" Unit="" />
+    <Item Value="InStat_FSeatPillowA" Desc="前座椅头枕调节" ParamID="515" Unit="" />
+    <Item Value="InStat_BSeatTuneType" Desc="后排座椅调节方式" ParamID="833" Unit="" />
+    <Item Value="InStat_BSeatLieRate" Desc="后排座位放倒比例" ParamID="482" Unit="" />
+    <Item Value="InStat_FCenterArmrest" Desc="前座中央扶手" ParamID="514" Unit="" />
+    <Item Value="InStat_BCenterArmrest" Desc="后座中央扶手" ParamID="475" Unit="" />
+    <Item Value="InStat_SeatHeat" Desc="座椅通风" ParamID="804" Unit="" />
+    <Item Value="InStat_DSeatHot" Desc="驾驶座座椅加热" ParamID="504" Unit="" />
+    <Item Value="InStat_SeatKnead" Desc="座椅按摩功能" ParamID="543" Unit="" />
+    <Item Value="InStat_ElectricSeatMemory" Desc="电动座椅记忆" ParamID="803" Unit="" />
+    <Item Value="InStat_ChildSeatFix" Desc="儿童安全座椅固定装置" ParamID="495" Unit="" />
+    <Item Value="InStat_3rdRowSeats" Desc="第三排座椅" ParamID="805" Unit="" />
+    
+    <Item Value="Rear_seat_angle_adjustment" Desc="后排座椅角度调节" ParamID="991" Unit="" />
+    <Item Value="seat_height_adjustable" Desc="座椅高低调节" ParamID="992" Unit="" />
+    <Item Value="choice_SeatMaterial" Desc="选配座椅材料" ParamID="948" Unit="" />
+  </Group>
+  <Group Desc="娱乐通讯">
+    <Item Value="InStat_Tel" Desc="车载电话" ParamID="554" Unit="" />
+    <Item Value="InStat_Bluetooth" Desc="蓝牙系统" ParamID="479" Unit="" />
+    <Item Value="InStat_ExternalAudioInterface" Desc="外接音源接口" ParamID="810" Unit="" />
+    <Item Value="InStat_HardDiskCapacity" Desc="内置硬盘容量" ParamID="808" Unit="" />
+    <Item Value="InStat_Built-inHardDrive" Desc="内置硬盘" ParamID="807" Unit="" />
+    <Item Value="InStat_Video" Desc="车载电视" ParamID="559" Unit="" />
+    <Item Value="InStat_LoudHailer" Desc="扬声器数量" ParamID="523" Unit="" />
+    <Item Value="InStat_Audiobrand" Desc="音响品牌" ParamID="473" Unit="" />
+    <Item Value="InStat_DVDPlayer" Desc="DVD" ParamID="510" Unit="" />
+    <Item Value="InStat_DVDNum" Desc="DVD碟数" ParamID="509" Unit="碟" />
+    <Item Value="InStat_CDPlayer" Desc="CD" ParamID="490" Unit="" />
+    <Item Value="InStat_CDNum" Desc="CD碟数" ParamID="489" Unit="碟" />
+    <Item Value="InStat_CCEscreen" Desc="中控台液晶屏" ParamID="488" Unit="" />
+    <Item Value="InStat_BEscreen" Desc="后排液晶显示器" ParamID="477" Unit="" />
+
+    <Item Value="InStat_PositioningInteractiveServices" Desc="定位互动服务" ParamID="834" Unit="" />
+  </Group>
+  <Group Desc="易车测试">
+    <Item Value="Perf_MeasuredAcceleration" Desc="加速时间(0—100km/h)" ParamID="786" Unit="s" />
+    <Item Value="Perf_BrakingDistance" Desc="制动距离(100—0km/h)" ParamID="787" Unit="m" />
+    <Item Value="Perf_MeasuredFuel" Desc="油耗" ParamID="788" Unit="L/百公里" />
+    <Item Value="Perf_Slalomspeed180" Desc="18米绕桩速度" ParamID="861" Unit="km/h" />
+    <Item Value="Perf_MeasuredSlackSpeedNoise" Desc="车内怠速噪音" ParamID="789" Unit="dB(A)" />
+    <Item Value="Perf_MeasuredAveSpeedNoise40" Desc="车内等速(40km/h)噪音" ParamID="857" Unit="dB(A)" />
+    <Item Value="Perf_MeasuredAveSpeedNoise" Desc="车内等速(60km/h)噪音" ParamID="790" Unit="dB(A)" />
+    <Item Value="Perf_MeasuredAveSpeedNoise80" Desc="车内等速(80km/h)噪音" ParamID="858" Unit="dB(A)" />
+    <Item Value="Perf_MeasuredAveSpeedNoise100" Desc="车内等速(100km/h)噪音" ParamID="859" Unit="dB(A)" />
+    <Item Value="Perf_MeasuredAveSpeedNoise120" Desc="车内等速(120km/h)噪音" ParamID="860" Unit="dB(A)" />
+  </Group>
+  <Group Desc="空调/冰箱">
+    <Item Value="InStat_AirCType" Desc="空调控制方式" ParamID="471" Unit="" />
+    <Item Value="InStat_TemperSubCount" Desc="温度分区控制" ParamID="839" Unit="" />
+    <Item Value="InStat_TemperAreaCount" Desc="温区个数" ParamID="555" Unit="个" />
+    <Item Value="InStat_BAirCSystem" Desc="后排独立空调" ParamID="838" Unit="" />
+    <Item Value="InStat_BleakAirNum" Desc="后排出风口" ParamID="478" Unit="" />
+    <Item Value="InStat_AirCondPollenFilter" Desc="空气调节/花粉过滤" ParamID="840" Unit="" />
+    <Item Value="InStat_AirPurification" Desc="车内空气净化装置" ParamID="905" Unit="" />
+    <Item Value="InStat_carFridge" Desc="车载冰箱" ParamID="485" Unit="" />
+  </Group>
+  <Group Desc="电池/电动机">
+    <Item Value="Electric_Peakpower" Desc="电机最大功率" ParamID="870" Unit="kW" />
+    <Item Value="Electric_maximumtorque" Desc="电机最大扭矩" ParamID="872" Unit="kW" />
+    <Item Value="Electric_systemvoltage" Desc="系统电压" ParamID="874" Unit="V" />
+    <Item Value="Electric_RatedPower" Desc="电机额定功率" ParamID="869" Unit="kW" />
+    <Item Value="Electric_Motortype" Desc="电机类型" ParamID="866" Unit="" />
+    <Item Value="Electric_Normalchargingtime" Desc="普通充电时间" ParamID="879" Unit="分钟" />
+    <Item Value="Electric_Fast-chargetime" Desc="快速充电时间" ParamID="878" Unit="分钟" />
+    <Item Value="Electric_Batteryvoltage" Desc="电池电压" ParamID="877" Unit="V" />
+    <Item Value="Electric_Batterycapacity" Desc="电池容量" ParamID="876" Unit="Ah" />
+    <Item Value="Electric_BatteryType" Desc="电池类型" ParamID="875" Unit="" />
+    <Item Value="Electric_Powerconsumption" Desc="百公里耗电量" ParamID="868" Unit="kw/100km" />
+    <Item Value="Electric_mustMileageconstant" Desc="纯电最高续航里程" ParamID="883" Unit="km" />
+    
+    <Item Value="chongdianfangshi" Desc="充电方式" ParamID="954" Unit="" />
+    <Item Value="Electric_number" Desc="电机数量" ParamID="983" Unit="" />
+    <Item Value="Electric_position" Desc="电机位置" ParamID="984" Unit="" />
+  </Group>
+</Param>

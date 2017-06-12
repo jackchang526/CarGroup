@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title> 
+    <script type="text/javascript">
+        var date = new Date();
+        var version = date.getFullYear().toString() + (date.getMonth() + 1).toString() + date.getDate().toString() + date.getHours().toString();
+        document.write(unescape('%3Cscript type="text/javascript" src="http://image.bitautoimg.com/carchannel/h5/js/detectcache.js?v=' + version + '"%3E%3C/script%3E'));
+    </script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript">
+        
+    </script>
+    <!--#include file="~/ushtml/0000/4th_2015_car_style-974.shtml"-->
+    <script src="http://image.bitautoimg.com/carchannel/h5/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        var showDate = new Date();
+        var showStr = showDate.getFullYear().toString()
+            + "-" + showDate.getMonth().toString()
+            + "-" + showDate.getDay().toString()
+            + " " + showDate.getHours().toString()
+            + "-" + showDate.getMinutes().toString()
+            + "-" + showDate.getSeconds().toString();
+        //  alert(showStr);
+        document.write("<br/>" + showStr);
+        var urlCode = "http://" + window.location.hostname + window.location.pathname + window.location.search;
+        document.write("<br/>" + urlCode);
+    </script>
+    <div id="divForweixinObj"></div>
+    <span class="desc">判断当前客户端是否支持指定JS接口</span>
+    <button class="btn btn_primary" id="checkJsApi">checkJsApi</button>
+    <span class="desc">获取“分享给朋友”按钮点击状态及自定义分享内容接口</span>
+    <button class="btn btn_primary" id="onMenuShareAppMessage">onMenuShareAppMessage</button>
+    <span class="desc">获取“分享到朋友圈”按钮点击状态及自定义分享内容接口</span>
+    <button class="btn btn_primary" id="onMenuShareTimeline">onMenuShareTimeline</button>
+    <span class="desc">获取“分享到QQ”按钮点击状态及自定义分享内容接口</span>
+    <button class="btn btn_primary" id="onMenuShareQQ">onMenuShareQQ</button>
+    <span class="desc">获取“分享到腾讯微博”按钮点击状态及自定义分享内容接口</span>
+    <button class="btn btn_primary" id="onMenuShareWeibo">onMenuShareWeibo</button>
+</body>
+</html>
+<script type="text/javascript">
+    var forweixinObj = {
+        debug: true,
+        appId: 'wx0c56521d4263f190',
+        jsApiList: ['checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo']
+    }
+
+    var pageShareContent = {
+        title: '【奥迪A3】车型手册-易车网',
+        keywords: '奥迪A3,奥迪A3报价,奥迪A3图片,奥迪A3口碑',
+        desc: '易车网提供奥迪A3价格，口碑，评测，图片，易车网独家优惠。时时获得最新报价,对比选择最满意的车款，奥迪A3优惠行情、奥迪A3导购信息，最新奥迪A3降价促销活动尽在易车网。',
+        link: 'http://car.h5.yiche.com/aodia3-3999/',
+        imgUrl: 'http://image.bitautoimg.com/newsimg-100-w0-1-q80/carchannel/pic/cspic/3999.jpg'
+    }
+
+    function readyWeixin() {
+        $("#divForweixinObj").append("<p>forweixinObj.url: <b>" + urlCode + "</b></p>");
+        $("#divForweixinObj").append("<p>forweixinObj.debug: <b>" + forweixinObj.debug + "</b></p>");
+        $("#divForweixinObj").append("<p>forweixinObj.appId: <b>" + forweixinObj.appId + "</b></p>");
+        $("#divForweixinObj").append("<p>forweixinObj.timestamp: <b>" + forweixinObj.timestamp + "</b></p>");
+        $("#divForweixinObj").append("<p>forweixinObj.nonceStr: <b>" + forweixinObj.nonceStr + "</b></p>");
+        $("#divForweixinObj").append("<p>forweixinObj.signature: <b>" + forweixinObj.signature + "</b></p>");
+        $("#divForweixinObj").append("<p>forweixinObj.jsApiList: <b>" + forweixinObj.jsApiList.join(",") + "</b></p>");
+        wx.config({
+            debug: forweixinObj.debug,
+            appId: forweixinObj.appId,
+            timestamp: forweixinObj.timestamp,
+            nonceStr: forweixinObj.nonceStr,
+            signature: forweixinObj.signature,
+            jsApiList: forweixinObj.jsApiList
+        });
+    }
+
+    $.ajax({
+        type: 'get',
+        url: 'http://api.car.bitauto.com/Cooperation/WeiXinConfig.ashx',
+        cache: false,
+        dataType: 'jsonp',
+        data: { url: urlCode },
+        jsonpCallback: 'funcweixin',
+        success: function (data) {
+            forweixinObj.timestamp = data["yiche.timestamp"];
+            forweixinObj.nonceStr = data["yiche.nonceStr"];
+            forweixinObj.signature = data["yiche.signature"];
+            readyWeixin();
+        }
+    });
+
+
+    wx.ready(function () {
+        // 1 判断当前版本是否支持指定 JS 接口，支持批量判断
+        document.querySelector('#checkJsApi').onclick = function () {
+            wx.checkJsApi({
+                jsApiList: [
+                  'checkJsApi',
+                  'onMenuShareTimeline'
+                ],
+                success: function (res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+        };
+
+        // 2. 分享接口
+        // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
+        document.querySelector('#onMenuShareAppMessage').onclick = function () {
+            wx.onMenuShareAppMessage({
+                title: pageShareContent.title,
+                desc: pageShareContent.desc,
+                link: pageShareContent.link,
+                imgUrl: pageShareContent.imgUrl,
+                trigger: function (res) {
+                    // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+                    alert('用户点击发送给朋友');
+                },
+                success: function (res) {
+                    alert('已分享');
+                },
+                cancel: function (res) {
+                    alert('已取消');
+                },
+                fail: function (res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+            alert('已注册获取“发送给朋友”状态事件');
+        };
+
+        // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
+        document.querySelector('#onMenuShareTimeline').onclick = function () {
+            wx.onMenuShareTimeline({
+                title: pageShareContent.title,
+                link: pageShareContent.link,
+                imgUrl: pageShareContent.imgUrl,
+                trigger: function (res) {
+                    // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+                    alert('用户点击分享到朋友圈');
+                },
+                success: function (res) {
+                    alert('已分享');
+                },
+                cancel: function (res) {
+                    alert('已取消');
+                },
+                fail: function (res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+            alert('已注册获取“分享到朋友圈”状态事件');
+        };
+
+        // 2.3 监听“分享到QQ”按钮点击、自定义分享内容及分享结果接口
+        document.querySelector('#onMenuShareQQ').onclick = function () {
+            wx.onMenuShareQQ({
+                title: pageShareContent.title,
+                desc: pageShareContent.desc,
+                link: pageShareContent.link,
+                imgUrl: pageShareContent.imgUrl,
+                trigger: function (res) {
+                    alert('用户点击分享到QQ');
+                },
+                complete: function (res) {
+                    alert(JSON.stringify(res));
+                },
+                success: function (res) {
+                    alert('已分享');
+                },
+                cancel: function (res) {
+                    alert('已取消');
+                },
+                fail: function (res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+            alert('已注册获取“分享到 QQ”状态事件');
+        };
+
+        // 2.4 监听“分享到微博”按钮点击、自定义分享内容及分享结果接口
+        document.querySelector('#onMenuShareWeibo').onclick = function () {
+            wx.onMenuShareWeibo({
+                title: pageShareContent.title,
+                desc: pageShareContent.desc,
+                link: pageShareContent.link,
+                imgUrl: pageShareContent.imgUrl,
+                trigger: function (res) {
+                    alert('用户点击分享到微博');
+                },
+                complete: function (res) {
+                    alert(JSON.stringify(res));
+                },
+                success: function (res) {
+                    alert('已分享');
+                },
+                cancel: function (res) {
+                    alert('已取消');
+                },
+                fail: function (res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+            alert('已注册获取“分享到微博”状态事件');
+        };
+    });
+
+    wx.error(function (res) {
+        alert(res.errMsg);
+    });
+</script>

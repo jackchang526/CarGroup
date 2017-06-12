@@ -1,0 +1,71 @@
+﻿<!--<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnew/SelectCarCondition.js"></script>-->
+<script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/common/car/selectcarcondition.js"></script>
+
+<div class="c0621_01" id="showhideCon">
+<dl>
+<dt>价　格：</dt>
+<dd>
+<ul>
+<li id="price0"><a href="javascript:GotoPage('p');">不限</a></li>
+<li id="price1"><a href="javascript:GotoPage('p0-5');">5万以下</a></li>
+<li id="price2"><a href="javascript:GotoPage('p5-10');">5-10万</a></li>
+<li id="price3"><a href="javascript:GotoPage('p10-15');">10-15万</a></li>
+<li id="price4"><a href="javascript:GotoPage('p15-20');">15-20万</a></li>
+<li id="price5"><a href="javascript:GotoPage('p20-25');">20-25万</a></li>
+<li id="price6"><a href="javascript:GotoPage('p25-40');">25-40万</a></li>
+<li id="price7"><a href="javascript:GotoPage('p40-80')">40-80万</a></li>
+<li id="price8"><a href="javascript:GotoPage('p80-9999');">80万以上</a></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>级　别：</dt>
+<dd>
+<ul>
+<li id="level0"><a href="javascript:GotoPage('l0');">不限</a></li>
+<li id="level1"><a href="javascript:GotoPage('l1');">微型车</a></li>
+<li id="level2"><a href="javascript:GotoPage('l2');">小型车</a></li>
+<li id="level3"><a href="javascript:GotoPage('l3');">紧凑型车</a></li>
+<li id="level5"><a href="javascript:GotoPage('l5');">中型车</a></li>
+<li id="level4"><a href="javascript:GotoPage('l4');">中大型车</a></li>
+<li id="level6"><a href="javascript:GotoPage('l6');">豪华车</a></li>
+<li id="level7"><a href="javascript:GotoPage('l7');">MPV</a></li>
+<li id="level8"><a href="javascript:GotoPage('l8');">SUV</a></li>
+<li id="level9"><a href="javascript:GotoPage('l9');">跑车</a></li>
+<li id="level11"><a href="javascript:GotoPage('l11');">面包车</a></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>排　量：</dt>
+<dd>
+<ul>
+<li id="dis0"><a href="javascript:GotoPage('d');">不限</a></li>
+<li id="dis1"><a href="javascript:GotoPage('d0-1.3');">1.3以下</a></li>
+<li id="dis2"><a href="javascript:GotoPage('d1.3-1.6');">1.3-1.6L</a></li>
+<li id="dis3"><a href="javascript:GotoPage('d1.7-2.0');">1.7-2.0L</a></li>
+<li id="dis4"><a href="javascript:GotoPage('d2.1-3.0');">2.1-3.0L</a></li>
+<li id="dis5"><a href="javascript:GotoPage('d3.1-5.0');">3.1-5.0L</a></li>
+<li id="dis6"><a href="javascript:GotoPage('d5.0-9');">5.0L以上</a></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>变速箱：</dt>
+<dd>
+<ul>
+<li id="trans0"><a href="javascript:GotoPage('t0');">不限</a></li>
+<li id="trans1"><a href="javascript:GotoPage('t1');">手动(MT)</a></li>
+<li id="trans2"><a href="javascript:GotoPage('t2');">自动(AT)</a></li>
+</ul>
+</dd>
+</dl>
+<div class="hideline"></div>
+</div>
+<div class="clear"></div>
+<div class="more"><a href="" class="sq"  id="showhide">收起</a></div>
+
+<script>
+	ShowOrHideSelectCondition();
+</script>
+

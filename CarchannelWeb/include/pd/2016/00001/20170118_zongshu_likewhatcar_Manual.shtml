@@ -1,0 +1,398 @@
+﻿
+<div class="layout-2 buywhichcar-sidebar">
+    <h3 class="top-title">
+        大家都买什么车
+    </h3>
+    <div class="row js-tab-container">
+        <div class="tabs-left tabs-left-default4 tabs-left-sm col-auto">
+            <ul>
+                <li class="js-tab-menu current">
+                    全部
+                </li>
+                <li class="js-tab-menu">
+                    微型
+                </li>
+                <li class="js-tab-menu">
+                    小型
+                </li>
+                <li class="js-tab-menu">
+                    紧凑型
+                </li>
+                <li class="js-tab-menu">
+                    中型
+                </li>
+                <li class="js-tab-menu">
+                    中大型
+                </li>
+                <li class="js-tab-menu">
+                    豪华型
+                </li>
+                <li class="js-tab-menu">
+                    SUV
+                </li>
+                <li class="js-tab-menu">
+                    MPV
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content-4 col-auto">
+            ﻿
+            <div class="list-txt list-txt-m list-txt-style-num js-tab-content ">
+                <ul>
+
+                    <li class="first">
+
+                        <div class="img-info-layout img-info-layout-9060">
+                            <div class="img">
+                                <a target="_blank" href="http://car.bitauto.com/hafuh6/"><img src="http://img4.bitautoimg.com/autoalbum/files/20130922/180/0139291801_6.jpg"> </a>
+                            </div>
+                            <ul class="p-list no-wrap">
+                                <li class="name"><a target="_blank" href="http://car.bitauto.com/hafuh6/">哈弗H6 </a></li>
+                                <li class="info"><a target="_blank" href="http://dealer.bitauto.com/zuidijia/nb3152/">询底价</a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+
+
+                    <li><a target="_blank" href="http://car.bitauto.com/jieda/">捷达</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/changancs75/">长安CS75</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/tiguan/">途观</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/quanxinaodia4l/">奥迪A4L</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/baojun730/">宝骏730</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/wulinghongguangs/">五菱宏光S</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/siyucivic/">思域</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/chuanqigs4/">传祺GS4</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/suteng/">速腾</a></li>
+
+                </ul>
+            </div>
+
+            ﻿<div class="list-txt list-txt-m list-txt-style-num js-tab-content hide">
+                <ul>
+
+                    <li class="first">
+
+                        <div class="img-info-layout img-info-layout-9060">
+                            <div class="img">
+                                <a target="_blank" href="http://car.bitauto.com/biyadif0/"><img src="http://img1.bitautoimg.com/autoalbum/files/20120306/635/0502316356_6.jpg"> </a>
+                            </div>
+                            <ul class="p-list no-wrap">
+                                <li class="name"><a target="_blank" href="http://car.bitauto.com/biyadif0/">比亚迪F0 </a></li>
+                                <li class="info"><a target="_blank" href="http://dealer.bitauto.com/zuidijia/nb2420/">询底价</a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+
+
+                    <li><a target="_blank" href="http://car.bitauto.com/benben/">奔奔</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/fortwo/">fortwo(进口)</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/xiongmao/">吉利熊猫</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/xinaotuo/">奥拓</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/benbenmini/">奔奔Mini</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/qiruiqq/">奇瑞QQ</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/beidouxing/">北斗星</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/beidouxingx5/">北斗星X5</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/lechi/">乐驰</a></li>
+
+                </ul>
+            </div>
+            ﻿<div class="list-txt list-txt-m list-txt-style-num js-tab-content hide">
+                <ul>
+
+                    <li class="first">
+
+                        <div class="img-info-layout img-info-layout-9060">
+                            <div class="img">
+                                <a target="_blank" href="http://car.bitauto.com/boluo/"><img src="http://img1.bitautoimg.com/autoalbum/files/20141014/020/0632510209_6.jpg"> </a>
+                            </div>
+                            <ul class="p-list no-wrap">
+                                <li class="name"><a target="_blank" href="http://car.bitauto.com/boluo/">大众POLO </a></li>
+                                <li class="info"><a target="_blank" href="http://dealer.bitauto.com/zuidijia/nb1798/">询底价</a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+
+
+                    <li><a target="_blank" href="http://car.bitauto.com/dongfengyuedaqiyak2/">起亚K2三厢</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/baojun310/">宝骏310</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/xinweichi/">威驰</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/xinfeidu/">飞度</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/verna/">瑞纳三厢</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/saiou3/">赛欧3</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/shanghaiyinglunsc6/">吉利新金刚三厢</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/yarislzhixuan/">YARiS L 致炫</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/gerui/">哥瑞</a></li>
+
+                </ul>
+            </div>
+            ﻿<div class="list-txt list-txt-m list-txt-style-num js-tab-content hide">
+                <ul>
+
+                    <li class="first">
+
+                        <div class="img-info-layout img-info-layout-9060">
+                            <div class="img">
+                                <a target="_blank" href="http://car.bitauto.com/jieda/"><img src="http://img4.bitautoimg.com/autoalbum/files/20160721/358/1054373580_6.jpg"> </a>
+                            </div>
+                            <ul class="p-list no-wrap">
+                                <li class="name"><a target="_blank" href="http://car.bitauto.com/jieda/">捷达 </a></li>
+                                <li class="info"><a target="_blank" href="http://dealer.bitauto.com/zuidijia/nb1905/">询底价</a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+
+
+                    <li><a target="_blank" href="http://car.bitauto.com/siyucivic/">思域</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/suteng/">速腾</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/sangtana/">新桑塔纳</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/langyi/">朗逸</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/langdong/">朗动</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/xuanyi/">轩逸</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/yinglangsanxiang/">英朗</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/xinbaolai/">宝来</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/kaluola/">卡罗拉</a></li>
+
+                </ul>
+            </div>
+            ﻿<div class="list-txt list-txt-m list-txt-style-num js-tab-content hide">
+                <ul>
+
+                    <li class="first">
+
+                        <div class="img-info-layout img-info-layout-9060">
+                            <div class="img">
+                                <a target="_blank" href="http://car.bitauto.com/quanxinaodia4l/"><img src="http://img4.bitautoimg.com/autoalbum/files/20120809/713/0406027131_6.jpg"> </a>
+                            </div>
+                            <ul class="p-list no-wrap">
+                                <li class="name"><a target="_blank" href="http://car.bitauto.com/quanxinaodia4l/">奥迪A4L </a></li>
+                                <li class="info"><a target="_blank" href="http://dealer.bitauto.com/zuidijia/nb2593/">询底价</a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+
+
+                    <li><a target="_blank" href="http://car.bitauto.com/maiteng/">迈腾</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/pasate/">帕萨特</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/dibadaiyage/">雅阁</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/mengdiou/">新蒙迪欧</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/mistramingtu/">MISTRA名图</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/baoma3xi/">宝马3系</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/kaimeirui/">凯美瑞</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/k5/">起亚K5</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/benchicji-2364/">奔驰C级</a></li>
+
+                </ul>
+            </div>
+            ﻿<div class="list-txt list-txt-m list-txt-style-num js-tab-content hide">
+                <ul>
+
+                    <li class="first">
+
+                        <div class="img-info-layout img-info-layout-9060">
+                            <div class="img">
+                                <a target="_blank" href="http://car.bitauto.com/xinaodia6l/"><img src="http://img1.bitautoimg.com/autoalbum/files/20150701/251/0630022511_6.jpg"> </a>
+                            </div>
+                            <ul class="p-list no-wrap">
+                                <li class="name"><a target="_blank" href="http://car.bitauto.com/xinaodia6l/">奥迪A6L </a></li>
+                                <li class="info"><a target="_blank" href="http://dealer.bitauto.com/zuidijia/nb2573/">询底价</a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+
+
+                    <li><a target="_blank" href="http://car.bitauto.com/baoma5xichangzhoujuban/">宝马5系</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/xinjunyue/">君越</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/benchieji/">奔驰E级</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/zhongtaiz700/">众泰Z700</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/xts/">凯迪拉克XTS</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/leikesasies/">雷克萨斯ES</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/futejinniuzuo/">福特金牛座</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/xinhuangguan/">皇冠</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/jiebaoxfl/">捷豹XFL</a></li>
+
+                </ul>
+            </div>
+            ﻿<div class="list-txt list-txt-m list-txt-style-num js-tab-content hide">
+                <ul>
+
+                    <li class="first">
+
+                        <div class="img-info-layout img-info-layout-9060">
+                            <div class="img">
+                                <a target="_blank" href="http://car.bitauto.com/baoma7xi/"><img src="http://img4.bitautoimg.com/autoalbum/files/20121008/923/0955489233_6.jpg"> </a>
+                            </div>
+                            <ul class="p-list no-wrap">
+                                <li class="name"><a target="_blank" href="http://car.bitauto.com/baoma7xi/">宝马7系(进口) </a></li>
+                                <li class="info"><a target="_blank" href="http://dealer.bitauto.com/zuidijia/nb2033/">询底价</a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+
+
+                    <li><a target="_blank" href="http://car.bitauto.com/aodia8l/">奥迪A8L(进口)</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/benchisji/">奔驰S级(进口)</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/aodia7/">奥迪A7(进口)</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/kaidilakect6/">凯迪拉克CT6</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/xinxj/">捷豹XJ</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/linkencontinental/">林肯大陆</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/dazhonghuiteng/">辉腾(进口)</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/zongcai/">玛莎拉蒂总裁</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/maibahesji/">迈巴赫S级</a></li>
+
+                </ul>
+            </div>
+            ﻿<div class="list-txt list-txt-m list-txt-style-num js-tab-content hide">
+                <ul>
+
+                    <li class="first">
+
+                        <div class="img-info-layout img-info-layout-9060">
+                            <div class="img">
+                                <a target="_blank" href="http://car.bitauto.com/hafuh6/"><img src="http://img4.bitautoimg.com/autoalbum/files/20130922/180/0139291801_6.jpg"> </a>
+                            </div>
+                            <ul class="p-list no-wrap">
+                                <li class="name"><a target="_blank" href="http://car.bitauto.com/hafuh6/">哈弗H6 </a></li>
+                                <li class="info"><a target="_blank" href="http://dealer.bitauto.com/zuidijia/nb3152/">询底价</a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+
+
+                    <li><a target="_blank" href="http://car.bitauto.com/changancs75/">长安CS75</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/tiguan/">途观</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/chuanqigs4/">传祺GS4</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/jilinl3/">吉利博越</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/hanlanda/">汉兰达</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/baojun560/">宝骏560</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/bentian2xw/">本田XR-V</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/aodiq5-2855/">奥迪Q5</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/dongfengbentiancrv/">本田CR-V</a></li>
+
+                </ul>
+            </div>
+            ﻿<div class="list-txt list-txt-m list-txt-style-num js-tab-content hide">
+                <ul>
+
+                    <li class="first">
+
+                        <div class="img-info-layout img-info-layout-9060">
+                            <div class="img">
+                                <a target="_blank" href="http://car.bitauto.com/baojun730/"><img src="http://img1.bitautoimg.com/autoalbum/files/20140603/484/0317394841_6.jpg"> </a>
+                            </div>
+                            <ul class="p-list no-wrap">
+                                <li class="name">
+                                    <a target="_blank" href="http://car.bitauto.com/baojun730/">宝骏730 </a>
+                                </li>
+                                <li class="info"><a target="_blank" href="http://dealer.bitauto.com/zuidijia/nb4169/">询底价</a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+
+
+                    <li><a target="_blank" href="http://car.bitauto.com/wulinghongguangs/">五菱宏光S</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/changanoushang/">长安欧尚</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/wulinghongguangs1/">五菱宏光S1</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/biekegl8/">别克GL8</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/tuanl/">途安L</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/fengxings500/">风行S500</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/lingzhi/">菱智</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/xinaodesai/">奥德赛</a></li>
+
+                    <li><a target="_blank" href="http://car.bitauto.com/ounuo/">长安欧诺</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+		$(function() {
+
+			/*公共tab功能*/
+			YICHE_COMMON_FUNC.yicheTabFunc({
+				removeClassName: "current",
+				//切换classname 高亮当前选项
+				controlType: "mouseover" //默认为点击事件
+			});
+		})
+</script>

@@ -1,0 +1,74 @@
+﻿
+<div class="line-box foot_copy">
+    <div class="footer_c">购车咨询：4000-168-168（9:00 &ndash; 17:30）法定假日除外</div>
+    <div class="footer_about">
+        <ul class="about">
+            <li class="first"><a href="http://corp.bitauto.com/about/" rel="nofollow" target="_blank">关于易车</a></li>
+            <li><a href="http://corp.bitauto.com/job/" rel="nofollow" target="_blank">加入易车</a></li>
+            <li><a href="http://corp.bitauto.com/contact/" rel="nofollow" target="_blank">联系我们</a></li>
+            <li><a href="http://corp.bitauto.com/about/legal-notices.shtml" rel="nofollow" target="_blank">法律声明</a></li>
+            <li><a href="http://ir.bitauto.com/" rel="nofollow" target="_blank">Investor Relations</a></li>
+            <li><a href="javascript:Bitauto_IM.ImForm_submit()" rel="nofollow">在线咨询</a></li>
+            <li class="last"><a href="http://dealer.easypass.cn/" rel="nofollow" target="_blank">易湃会员</a></li>
+        </ul>
+    </div>
+    <div class="footer_text">
+        <p>CopyRight &copy; 2000-2016 BitAuto,All Rights Reserved 版权所有 北京易车信息科技有限公司</p>
+    </div>
+</div>
+<!--侧边栏-->
+<div id="bitautoSideBarContainer" class="navtool-fixed-right" style="display:none">
+    <div class="navtool-ul" id="navtool-ul">
+        <ul id="headerModulesContainer" class="upper-part"></ul>
+        <ul id="footerModulesContainer" class="lower-part"></ul>
+    </div>
+    <div id="contentContainer" class="navtool-div-list">
+    </div>
+</div>
+<script type="text/javascript">
+        (function(global) {
+            var extend = function(target, extendObj) {
+                    for (var item in extendObj) {
+                        if (extendObj.hasOwnProperty(item)) {
+                            target[item] = extendObj[item];
+                        }
+                    }
+                    return target;
+                },
+                sidebarConfig = extend({
+                    activate: true
+                }, global.SidebarConfig),
+                scriptElm,
+                loadScript = function(url, callback) {
+                    var script = document.createElement("script");
+                    script.type = "text/javascript";
+                    if (script.readyState) { //IE
+                        script.onreadystatechange = function() {
+                            if (script.readyState == "loaded" ||
+                                script.readyState == "complete") {
+                                script.onreadystatechange = null;
+                                (callback && callback());
+                            }
+                        };
+                    } else { //Others
+                        script.onload = function() {
+                            (callback && callback());
+                        };
+                    }
+                    script.src = url;
+                    document.getElementsByTagName("head")[0].appendChild(script);
+                };
+
+            if (sidebarConfig.activate) {
+                loadScript('http://car24.bitauto.com/jsnewv2/rightbartemp.js');
+            }
+        })(window);
+</script>
+
+<script type="text/javascript" src="http://g.yccdn.com"></script>
+<script>
+if(typeof( ChannelLOGCollector)=="undefined")
+var ChannelLOGCollector=typeof( XCWebLogCollector)=="undefined"?null:XCWebLogCollector;
+</script>
+<script type="text/javascript" src="http://bglog.bitauto.com"></script>
+<script type="text/javascript" src="http://image.bitautoimg.com/index/js/gotoIM.js?v=1.2"></script>

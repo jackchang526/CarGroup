@@ -1,0 +1,10 @@
+[2015/10/15 16:36:48]  
+IP: 127.0.0.1
+Error in: http://api01.car.bitauto.com/mai/GetBusinessService.ashx?city=201&serialid=1765
+Error Message: Could not load file or assembly 'MongoDB.Driver, Version=1.9.2.235, Culture=neutral, PublicKeyToken=f686731cfb9cc103' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+Stack Trace:    在 Noah.Opportunity.Service.Service.BaseService.Get(Int32 cityId, Int32 csId, Int32 carId, Int32 type)
+   在 Noah.Opportunity.Service.ServiceClient.GetPcOpportunityBySerial(Int32 cityId, Int32 csId)
+   在 BitAuto.CarChannelAPI.Web.Mai.GetBusinessService.ProcessRequest(HttpContext context) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\API_CarChannel\Mai\GetBusinessService.ashx.cs:行号 26
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

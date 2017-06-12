@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.bitauto.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.bitauto.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.bitauto.com/">
+      <s:element name="GetAllNumber">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllNumberResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNumberByDealerID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DealerID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNumberByDealerIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNumberByDealerIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNumberByDealerString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DealerID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNumberByDealerStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNumberByDealerStringResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePass">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DealerID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NewPass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePassResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdatePassResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllNumber" />
+  </wsdl:message>
+  <wsdl:message name="GetAllNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNumberByDealerIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNumberByDealerID" />
+  </wsdl:message>
+  <wsdl:message name="GetNumberByDealerIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNumberByDealerIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNumberByDealerStringSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNumberByDealerString" />
+  </wsdl:message>
+  <wsdl:message name="GetNumberByDealerStringSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNumberByDealerStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePassSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePass" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePassSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePassResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DasSoap">
+    <wsdl:operation name="GetAllNumber">
+      <wsdl:input message="tns:GetAllNumberSoapIn" />
+      <wsdl:output message="tns:GetAllNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNumberByDealerID">
+      <wsdl:input message="tns:GetNumberByDealerIDSoapIn" />
+      <wsdl:output message="tns:GetNumberByDealerIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNumberByDealerString">
+      <wsdl:input message="tns:GetNumberByDealerStringSoapIn" />
+      <wsdl:output message="tns:GetNumberByDealerStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePass">
+      <wsdl:input message="tns:UpdatePassSoapIn" />
+      <wsdl:output message="tns:UpdatePassSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DasSoap" type="tns:DasSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllNumber">
+      <soap:operation soapAction="http://www.bitauto.com/GetAllNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNumberByDealerID">
+      <soap:operation soapAction="http://www.bitauto.com/GetNumberByDealerID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNumberByDealerString">
+      <soap:operation soapAction="http://www.bitauto.com/GetNumberByDealerString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePass">
+      <soap:operation soapAction="http://www.bitauto.com/UpdatePass" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DasSoap12" type="tns:DasSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllNumber">
+      <soap12:operation soapAction="http://www.bitauto.com/GetAllNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNumberByDealerID">
+      <soap12:operation soapAction="http://www.bitauto.com/GetNumberByDealerID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNumberByDealerString">
+      <soap12:operation soapAction="http://www.bitauto.com/GetNumberByDealerString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePass">
+      <soap12:operation soapAction="http://www.bitauto.com/UpdatePass" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Das">
+    <wsdl:port name="DasSoap" binding="tns:DasSoap">
+      <soap:address location="http://autocall.bitauto.com/eil/das.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DasSoap12" binding="tns:DasSoap12">
+      <soap12:address location="http://autocall.bitauto.com/eil/das.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

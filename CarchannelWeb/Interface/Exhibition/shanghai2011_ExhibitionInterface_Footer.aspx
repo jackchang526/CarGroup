@@ -1,0 +1,419 @@
+﻿<div class="clear">
+</div>
+<div class="line_box">
+    <h3>
+        <span><a href="http://chezhan.bitauto.com/shanghai/" target="_blank">网上展厅</a></span></h3>
+    <div class="car_webshow_zh">
+        <table>
+            <col class="col01" />
+            <col class="col02" />
+            <col class="col02" />
+            <col class="col02" />
+            <col class="col02" />
+            <col class="col02" />
+            <col class="col02" />
+            <col class="col02" />
+            <col class="col02" />
+            <col class="col02" />
+            <col class="col02" />
+            <col class="col02" />
+            <tbody>
+                <tr class="linebg">
+                    <th>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/1/">E1馆</a>
+                    </th>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/1/10009/">上海通用别克</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/1/20065/">上海大众</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/1/20021/">凯迪拉克</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/1/20142/">MG</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/1/10089/">上汽荣威</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/1/20047/">雪佛兰</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/1/10064/">上海通用雪佛兰</a>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/2/">E2馆</a>
+                    </th>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/2/20167/">宝骏</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/2/10006/">广汽本田</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/2/10007/">比亚迪</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/2/10037/">猎豹</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/2/20159/">广汽</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/2/10028/">吉奥</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/2/20062/">讴歌</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/2/20039/">起亚</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/2/10043/">东风悦达起亚</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/2/10059/">五菱</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/2/10077/">众泰</a>
+                    </td>
+                </tr>
+                <tr class="linebg">
+                    <th>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/3/">E3馆</a>
+                    </th>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/3/10012/">长城</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/3/20027/">雷诺</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/3/10046/">东风日产</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/3/20040/">日产</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/3/10062/">北京现代</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/3/20046/">现代</a>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/4/">E4馆</a>
+                    </th>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/4/10008/">东风标致</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/4/20009/">标致</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/4/20054/">华泰</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/4/20115/">莲花</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/4/10038/">长安铃木</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/4/20165/">纳智捷</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/4/20056/">东南三菱</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/4/20042/">三菱</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/4/20048/">雪铁龙</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/4/10065/">东风雪铁龙</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/4/20054/">华泰</a>
+                    </td>
+                </tr>
+                <tr class="linebg">
+                    <th>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/5/">E5馆</a>
+                    </th>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/5/20004/">奥迪</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/5/10000/">一汽奥迪</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/5/20012/">大众</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/5/10015/">一汽大众</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/5/10031/">江淮</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/5/10092/">上海大众斯柯达</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/5/20064/">西亚特</a>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/6/">E6馆</a>
+                    </th>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/6/20005/">宝马</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/6/20066/">华晨宝马</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/6/20151/">广汽菲亚特</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/6/20036/">MINI</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/6/20032/">马自达</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/6/20074/">长安马自达</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/6/20050/">英菲尼迪</a>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr class="linebg">
+                    <th>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/7/">E7馆</a>
+                    </th>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/7/20007/">奔驰</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/7/20163/">福建戴姆勒</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/7/10075/">北京奔驰</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/7/20035/">捷豹</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/7/20022/">克莱斯勒</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/7/10039/">陆风</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/7/20031/">路虎</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/7/20034/">迈巴赫</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/7/20020/">SMART</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/7/20001/">沃尔沃</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/7/20106/">长安沃尔沃</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/8/">W1馆</a>
+                    </th>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/8/20173/">北京汽车</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/8/20109/">一汽奔腾</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/8/10018/">东南</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/8/10094/">海马</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/8/20160/">郑州海马</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/8/10034/">华晨金杯</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/8/10076/">力帆</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/8/10060/">天津一汽</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/8/10068/">一汽吉林</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/8/10070/">华晨中华</a>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                </tr>
+                <tr class="linebg">
+                    <th>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/9/">W2馆</a>
+                    </th>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/9/20143/">长安轿车</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/9/10011/">长安微车</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/9/20154/">东风风神</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/9/20150/">帝豪</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/9/20017/">福特</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/9/10021/">长安福特</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/9/20111/">风行</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/9/10029/">吉利</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/9/20145/">全球鹰</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/9/20146/">英伦汽车</a>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/10/">W3馆</a>
+                    </th>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/10/20016/">丰田</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/10/20057/">广汽丰田</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/10/20026/">雷克萨斯</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/10/10042/">奇瑞</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/10/20147/">瑞麒</a>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr class="linebg">
+                    <th>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/11/">N5馆</a>
+                    </th>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/11/20003/">阿斯顿马丁</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/11/20144/">布嘉迪</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/11/20010/">宾利</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/11/20006/">保时捷</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/11/20014/">法拉利</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/11/20049/">光冈</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/11/20023/">兰博基尼</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/11/20025/">劳斯莱斯</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/11/20033/">玛莎拉蒂</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/11/20044/">斯巴鲁</a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="http://chezhan.bitauto.com/shanghai/zhanguan/11/20152/">世爵</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,1164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetLatestOrderUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GroupID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="RowCount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLatestOrderUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLatestOrderUserResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DasSoapHeader" type="tns:DasSoapHeader" />
+      <s:complexType name="DasSoapHeader">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TokenKey" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthorizeCode" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="GetActiveGroupPurchaseList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActiveGroupPurchaseListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetActiveGroupPurchaseListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActiveGroupPurchasePageList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PageIndex" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActiveGroupPurchasePageListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetActiveGroupPurchasePageListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActiveGroupPurchaseByCityAndSerial">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SerialID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActiveGroupPurchaseByCityAndSerialResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetActiveGroupPurchaseByCityAndSerialResult" type="tns:GroupPurchaseEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GroupPurchaseEntity">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="GroupID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SerialID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DealerID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SignUpCount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CarPic" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="StopTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="MinPrice" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxPrice" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="AvgDiscount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="CostSaving" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Periods" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsLock" type="s:short" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetActiveGroupPurchaseTopListByCity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="RowCount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActiveGroupPurchaseTopListByCityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetActiveGroupPurchaseTopListByCityResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHistoryGroupPurchaseList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SerialID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="RowCount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHistoryGroupPurchaseListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHistoryGroupPurchaseListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGroupPurchaseInfor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GroupID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGroupPurchaseInforResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGroupPurchaseInforResult" type="tns:GroupPurchaseEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPriorGroupPurchaseInfor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GroupID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPriorGroupPurchaseInforResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPriorGroupPurchaseInforResult" type="tns:GroupPurchaseEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCityList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCityListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCityListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarSerialList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarSerialListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCarSerialListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarSerialListTop">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="RowCount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarSerialListTopResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCarSerialListTopResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddGoupSignUp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entityGoupSignUp" type="tns:GoupSignUpEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GoupSignUpEntity">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SignUpID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="GroupID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CarID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrueName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sex" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telphone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Summary" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Color" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:short" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddGoupSignUpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddGoupSignUpResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGroupCarsList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GroupID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGroupCarsListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGroupCarsListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLastGroupCarsList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GroupID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLastGroupCarsListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLastGroupCarsListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCityNewGroupPurchaseList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCityNewGroupPurchaseListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCityNewGroupPurchaseListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCityListByCsID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CsID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCityListByCsIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCityListByCsIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarListByCsID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CsID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarListByCsIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCarListByCsIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGroupPurchaseSearchCondition">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MasterBrandID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PriceID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CarLevel" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGroupPurchaseSearchConditionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGroupPurchaseSearchConditionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGroupPurchaseSearchContent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MasterBrandID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PriceID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CarLevel" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGroupPurchaseSearchContentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGroupPurchaseSearchContentResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActiveGroupPurchaseTopList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CityID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="RowCount" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="OrderType" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActiveGroupPurchaseTopListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetActiveGroupPurchaseTopListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetLatestOrderUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLatestOrderUser" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestOrderUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLatestOrderUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestOrderUserDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveGroupPurchaseListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActiveGroupPurchaseList" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveGroupPurchaseListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActiveGroupPurchaseListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveGroupPurchaseListDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveGroupPurchasePageListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActiveGroupPurchasePageList" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveGroupPurchasePageListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActiveGroupPurchasePageListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveGroupPurchasePageListDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveGroupPurchaseByCityAndSerialSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActiveGroupPurchaseByCityAndSerial" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveGroupPurchaseByCityAndSerialSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActiveGroupPurchaseByCityAndSerialResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveGroupPurchaseByCityAndSerialDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveGroupPurchaseTopListByCitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetActiveGroupPurchaseTopListByCity" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveGroupPurchaseTopListByCitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetActiveGroupPurchaseTopListByCityResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveGroupPurchaseTopListByCityDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetHistoryGroupPurchaseListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHistoryGroupPurchaseList" />
+  </wsdl:message>
+  <wsdl:message name="GetHistoryGroupPurchaseListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHistoryGroupPurchaseListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHistoryGroupPurchaseListDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupPurchaseInforSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGroupPurchaseInfor" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupPurchaseInforSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGroupPurchaseInforResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupPurchaseInforDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetPriorGroupPurchaseInforSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPriorGroupPurchaseInfor" />
+  </wsdl:message>
+  <wsdl:message name="GetPriorGroupPurchaseInforSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPriorGroupPurchaseInforResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPriorGroupPurchaseInforDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCityListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCityList" />
+  </wsdl:message>
+  <wsdl:message name="GetCityListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCityListDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCarSerialListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCarSerialList" />
+  </wsdl:message>
+  <wsdl:message name="GetCarSerialListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCarSerialListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCarSerialListDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCarSerialListTopSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCarSerialListTop" />
+  </wsdl:message>
+  <wsdl:message name="GetCarSerialListTopSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCarSerialListTopResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCarSerialListTopDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="AddGoupSignUpSoapIn">
+    <wsdl:part name="parameters" element="tns:AddGoupSignUp" />
+  </wsdl:message>
+  <wsdl:message name="AddGoupSignUpSoapOut">
+    <wsdl:part name="parameters" element="tns:AddGoupSignUpResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddGoupSignUpDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupCarsListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGroupCarsList" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupCarsListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGroupCarsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupCarsListDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetLastGroupCarsListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLastGroupCarsList" />
+  </wsdl:message>
+  <wsdl:message name="GetLastGroupCarsListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLastGroupCarsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLastGroupCarsListDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCityNewGroupPurchaseListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCityNewGroupPurchaseList" />
+  </wsdl:message>
+  <wsdl:message name="GetCityNewGroupPurchaseListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCityNewGroupPurchaseListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCityNewGroupPurchaseListDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCityListByCsIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCityListByCsID" />
+  </wsdl:message>
+  <wsdl:message name="GetCityListByCsIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCityListByCsIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCityListByCsIDDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetCarListByCsIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCarListByCsID" />
+  </wsdl:message>
+  <wsdl:message name="GetCarListByCsIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCarListByCsIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCarListByCsIDDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupPurchaseSearchConditionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGroupPurchaseSearchCondition" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupPurchaseSearchConditionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGroupPurchaseSearchConditionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupPurchaseSearchConditionDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupPurchaseSearchContentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGroupPurchaseSearchContent" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupPurchaseSearchContentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGroupPurchaseSearchContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupPurchaseSearchContentDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveGroupPurchaseTopListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActiveGroupPurchaseTopList" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveGroupPurchaseTopListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActiveGroupPurchaseTopListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveGroupPurchaseTopListDasSoapHeader">
+    <wsdl:part name="DasSoapHeader" element="tns:DasSoapHeader" />
+  </wsdl:message>
+  <wsdl:portType name="GroupServiceSoap">
+    <wsdl:operation name="GetLatestOrderUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取最后报名的人员信息</wsdl:documentation>
+      <wsdl:input message="tns:GetLatestOrderUserSoapIn" />
+      <wsdl:output message="tns:GetLatestOrderUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveGroupPurchaseList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取某个城市前活动的团购信息列表</wsdl:documentation>
+      <wsdl:input message="tns:GetActiveGroupPurchaseListSoapIn" />
+      <wsdl:output message="tns:GetActiveGroupPurchaseListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveGroupPurchasePageList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取某个城市前活动的团购信息分页列表</wsdl:documentation>
+      <wsdl:input message="tns:GetActiveGroupPurchasePageListSoapIn" />
+      <wsdl:output message="tns:GetActiveGroupPurchasePageListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveGroupPurchaseByCityAndSerial">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">得到某个城市某个车型前活动的团购信息</wsdl:documentation>
+      <wsdl:input message="tns:GetActiveGroupPurchaseByCityAndSerialSoapIn" />
+      <wsdl:output message="tns:GetActiveGroupPurchaseByCityAndSerialSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveGroupPurchaseTopListByCity">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">得到某个城市报名最多的N个车型的团购信息</wsdl:documentation>
+      <wsdl:input message="tns:GetActiveGroupPurchaseTopListByCitySoapIn" />
+      <wsdl:output message="tns:GetActiveGroupPurchaseTopListByCitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHistoryGroupPurchaseList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取某个团购历史信息列表</wsdl:documentation>
+      <wsdl:input message="tns:GetHistoryGroupPurchaseListSoapIn" />
+      <wsdl:output message="tns:GetHistoryGroupPurchaseListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupPurchaseInfor">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取团购信息</wsdl:documentation>
+      <wsdl:input message="tns:GetGroupPurchaseInforSoapIn" />
+      <wsdl:output message="tns:GetGroupPurchaseInforSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPriorGroupPurchaseInfor">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取上一期团购信息</wsdl:documentation>
+      <wsdl:input message="tns:GetPriorGroupPurchaseInforSoapIn" />
+      <wsdl:output message="tns:GetPriorGroupPurchaseInforSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取开通团购的城市列表</wsdl:documentation>
+      <wsdl:input message="tns:GetCityListSoapIn" />
+      <wsdl:output message="tns:GetCityListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCarSerialList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取某个城市开通团购的车型列表</wsdl:documentation>
+      <wsdl:input message="tns:GetCarSerialListSoapIn" />
+      <wsdl:output message="tns:GetCarSerialListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCarSerialListTop">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取某个城市开通团购的车型列表,按报名人数提取前N条</wsdl:documentation>
+      <wsdl:input message="tns:GetCarSerialListTopSoapIn" />
+      <wsdl:output message="tns:GetCarSerialListTopSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddGoupSignUp">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">新增加团购报名</wsdl:documentation>
+      <wsdl:input message="tns:AddGoupSignUpSoapIn" />
+      <wsdl:output message="tns:AddGoupSignUpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupCarsList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取某个团购的车型及统计信息</wsdl:documentation>
+      <wsdl:input message="tns:GetGroupCarsListSoapIn" />
+      <wsdl:output message="tns:GetGroupCarsListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastGroupCarsList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取上个或上上个团购的车型及统计信息</wsdl:documentation>
+      <wsdl:input message="tns:GetLastGroupCarsListSoapIn" />
+      <wsdl:output message="tns:GetLastGroupCarsListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityNewGroupPurchaseList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取某个城市当前团购信息列表</wsdl:documentation>
+      <wsdl:input message="tns:GetCityNewGroupPurchaseListSoapIn" />
+      <wsdl:output message="tns:GetCityNewGroupPurchaseListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityListByCsID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取某个城市当前团购信息列表</wsdl:documentation>
+      <wsdl:input message="tns:GetCityListByCsIDSoapIn" />
+      <wsdl:output message="tns:GetCityListByCsIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCarListByCsID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取某个车型下的车款列表</wsdl:documentation>
+      <wsdl:input message="tns:GetCarListByCsIDSoapIn" />
+      <wsdl:output message="tns:GetCarListByCsIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupPurchaseSearchCondition">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">得到团购搜索的条件列表</wsdl:documentation>
+      <wsdl:input message="tns:GetGroupPurchaseSearchConditionSoapIn" />
+      <wsdl:output message="tns:GetGroupPurchaseSearchConditionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupPurchaseSearchContent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">得到团购搜索的内容列表</wsdl:documentation>
+      <wsdl:input message="tns:GetGroupPurchaseSearchContentSoapIn" />
+      <wsdl:output message="tns:GetGroupPurchaseSearchContentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveGroupPurchaseTopList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">得到某个城市报名排名前N条团购信息</wsdl:documentation>
+      <wsdl:input message="tns:GetActiveGroupPurchaseTopListSoapIn" />
+      <wsdl:output message="tns:GetActiveGroupPurchaseTopListSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GroupServiceSoap" type="tns:GroupServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLatestOrderUser">
+      <soap:operation soapAction="http://tempuri.org/GetLatestOrderUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetLatestOrderUserDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveGroupPurchaseList">
+      <soap:operation soapAction="http://tempuri.org/GetActiveGroupPurchaseList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetActiveGroupPurchaseListDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveGroupPurchasePageList">
+      <soap:operation soapAction="http://tempuri.org/GetActiveGroupPurchasePageList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetActiveGroupPurchasePageListDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveGroupPurchaseByCityAndSerial">
+      <soap:operation soapAction="http://tempuri.org/GetActiveGroupPurchaseByCityAndSerial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetActiveGroupPurchaseByCityAndSerialDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveGroupPurchaseTopListByCity">
+      <soap:operation soapAction="http://tempuri.org/GetActiveGroupPurchaseTopListByCity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetActiveGroupPurchaseTopListByCityDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHistoryGroupPurchaseList">
+      <soap:operation soapAction="http://tempuri.org/GetHistoryGroupPurchaseList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetHistoryGroupPurchaseListDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupPurchaseInfor">
+      <soap:operation soapAction="http://tempuri.org/GetGroupPurchaseInfor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetGroupPurchaseInforDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPriorGroupPurchaseInfor">
+      <soap:operation soapAction="http://tempuri.org/GetPriorGroupPurchaseInfor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetPriorGroupPurchaseInforDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityList">
+      <soap:operation soapAction="http://tempuri.org/GetCityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCityListDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarSerialList">
+      <soap:operation soapAction="http://tempuri.org/GetCarSerialList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCarSerialListDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarSerialListTop">
+      <soap:operation soapAction="http://tempuri.org/GetCarSerialListTop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCarSerialListTopDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGoupSignUp">
+      <soap:operation soapAction="http://tempuri.org/AddGoupSignUp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:AddGoupSignUpDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupCarsList">
+      <soap:operation soapAction="http://tempuri.org/GetGroupCarsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetGroupCarsListDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastGroupCarsList">
+      <soap:operation soapAction="http://tempuri.org/GetLastGroupCarsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetLastGroupCarsListDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityNewGroupPurchaseList">
+      <soap:operation soapAction="http://tempuri.org/GetCityNewGroupPurchaseList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCityNewGroupPurchaseListDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityListByCsID">
+      <soap:operation soapAction="http://tempuri.org/GetCityListByCsID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCityListByCsIDDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarListByCsID">
+      <soap:operation soapAction="http://tempuri.org/GetCarListByCsID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetCarListByCsIDDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupPurchaseSearchCondition">
+      <soap:operation soapAction="http://tempuri.org/GetGroupPurchaseSearchCondition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetGroupPurchaseSearchConditionDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupPurchaseSearchContent">
+      <soap:operation soapAction="http://tempuri.org/GetGroupPurchaseSearchContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetGroupPurchaseSearchContentDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveGroupPurchaseTopList">
+      <soap:operation soapAction="http://tempuri.org/GetActiveGroupPurchaseTopList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetActiveGroupPurchaseTopListDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GroupServiceSoap12" type="tns:GroupServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLatestOrderUser">
+      <soap12:operation soapAction="http://tempuri.org/GetLatestOrderUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetLatestOrderUserDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveGroupPurchaseList">
+      <soap12:operation soapAction="http://tempuri.org/GetActiveGroupPurchaseList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetActiveGroupPurchaseListDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveGroupPurchasePageList">
+      <soap12:operation soapAction="http://tempuri.org/GetActiveGroupPurchasePageList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetActiveGroupPurchasePageListDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveGroupPurchaseByCityAndSerial">
+      <soap12:operation soapAction="http://tempuri.org/GetActiveGroupPurchaseByCityAndSerial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetActiveGroupPurchaseByCityAndSerialDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveGroupPurchaseTopListByCity">
+      <soap12:operation soapAction="http://tempuri.org/GetActiveGroupPurchaseTopListByCity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetActiveGroupPurchaseTopListByCityDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHistoryGroupPurchaseList">
+      <soap12:operation soapAction="http://tempuri.org/GetHistoryGroupPurchaseList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetHistoryGroupPurchaseListDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupPurchaseInfor">
+      <soap12:operation soapAction="http://tempuri.org/GetGroupPurchaseInfor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetGroupPurchaseInforDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPriorGroupPurchaseInfor">
+      <soap12:operation soapAction="http://tempuri.org/GetPriorGroupPurchaseInfor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetPriorGroupPurchaseInforDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityList">
+      <soap12:operation soapAction="http://tempuri.org/GetCityList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCityListDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarSerialList">
+      <soap12:operation soapAction="http://tempuri.org/GetCarSerialList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCarSerialListDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarSerialListTop">
+      <soap12:operation soapAction="http://tempuri.org/GetCarSerialListTop" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCarSerialListTopDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGoupSignUp">
+      <soap12:operation soapAction="http://tempuri.org/AddGoupSignUp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:AddGoupSignUpDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupCarsList">
+      <soap12:operation soapAction="http://tempuri.org/GetGroupCarsList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetGroupCarsListDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastGroupCarsList">
+      <soap12:operation soapAction="http://tempuri.org/GetLastGroupCarsList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetLastGroupCarsListDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityNewGroupPurchaseList">
+      <soap12:operation soapAction="http://tempuri.org/GetCityNewGroupPurchaseList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCityNewGroupPurchaseListDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityListByCsID">
+      <soap12:operation soapAction="http://tempuri.org/GetCityListByCsID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCityListByCsIDDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarListByCsID">
+      <soap12:operation soapAction="http://tempuri.org/GetCarListByCsID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetCarListByCsIDDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupPurchaseSearchCondition">
+      <soap12:operation soapAction="http://tempuri.org/GetGroupPurchaseSearchCondition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetGroupPurchaseSearchConditionDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupPurchaseSearchContent">
+      <soap12:operation soapAction="http://tempuri.org/GetGroupPurchaseSearchContent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetGroupPurchaseSearchContentDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveGroupPurchaseTopList">
+      <soap12:operation soapAction="http://tempuri.org/GetActiveGroupPurchaseTopList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetActiveGroupPurchaseTopListDasSoapHeader" part="DasSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GroupService">
+    <wsdl:port name="GroupServiceSoap" binding="tns:GroupServiceSoap">
+      <soap:address location="http://das.bitauto.com/Group/Service/GroupService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GroupServiceSoap12" binding="tns:GroupServiceSoap12">
+      <soap12:address location="http://das.bitauto.com/Group/Service/GroupService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

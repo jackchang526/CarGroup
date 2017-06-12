@@ -1,0 +1,53 @@
+﻿<div class="nav_swd">
+	<div class="bt_page">
+		<div class="return_index"><a href="http://chezhan.bitauto.com/beijing/">车展首页</a></div>
+        <div class="fl">
+       <!--主导航-->
+<ul>
+<li id="menu1"><a href="http://photo.bitauto.com/exhibit/class/46250/" target="_blank">新车图片</a></li>
+      <li id="menu2"><a href="http://chezhan.bitauto.com/beijing/n2012/zhanguan/1/">网上展厅</a></li>
+      <li id="menu3"><a href="http://chezhan.bitauto.com/beijing/n2012/newcar/">上市新车</a></li>
+      <li id="menu4"><a href="http://chezhan.bitauto.com/beijing/n2012/newcar/jiexi.shtml">独家解析</a></li>
+      <li id="menu5"><a href="http://chezhan.bitauto.com/beijing/n2012/mod/">美女车模</a></li>
+      <li id="menu6"><a href="http://chezhan.bitauto.com/beijing/n2012/huodong/">网友活动</a></li>
+      <li id="menu9" ><a href="http://chezhan.bitauto.com/beijing/n2012/video/">车展视频</a></li>
+      <li id="menu8"><a href="http://chezhan.bitauto.com/beijing/n2012/gdft/">高端访谈</a></li>
+      <li id="menu7" class="last"><a href="http://www.taoche.com/zhuanti/beijingchezhan/">二手车</a></li>
+            </ul>
+<script>
+    function setMenuItemSelect(ids) {
+        if (ids == "menu7")
+        { document.getElementById(ids).className += ' current_last'; }
+        else {
+            document.getElementById(ids).className += 'current';
+        }
+    }</script>
+            <div class="clear"></div>
+            <!--车型导航-->
+<dl class="mgl30">
+            	<dt>车型</dt>
+                <dd><a href="http://chezhan.bitauto.com/beijing/n2012/jibie/1/" target="_blank">微型</a></dd>
+                <dd><a href="http://chezhan.bitauto.com/beijing/n2012/jibie/2/" target="_blank">小型</a></dd>
+                <dd><a href="http://chezhan.bitauto.com/beijing/n2012/jibie/3/" target="_blank">紧凑型</a></dd>
+                <dd><a href="http://chezhan.bitauto.com/beijing/n2012/jibie/4/" target="_blank">中型</a></dd>
+                <dd><a href="http://chezhan.bitauto.com/beijing/n2012/jibie/5/" target="_blank">中大型</a></dd>
+                <dd><a href="http://chezhan.bitauto.com/beijing/n2012/jibie/6/" target="_blank">豪华车</a></dd>
+                <dd><a href="http://chezhan.bitauto.com/beijing/n2012/jibie/8/" target="_blank">SUV</a></dd>
+                <dd><a href="http://chezhan.bitauto.com/beijing/n2012/jibie/7/" target="_blank">MPV</a></dd>
+                <dd><a href="http://chezhan.bitauto.com/beijing/n2012/jibie/9/" target="_blank">跑车</a></dd>
+            </dl>
+            <!--价格导航-->
+ <dl>
+            	<dt>价格</dt>
+                <dd><a href="http://chezhan.bitauto.com/beijing/n2012/jiage/1/" target="_blank">5万以内</a></dd>
+                <dd><a href="http://chezhan.bitauto.com/beijing/n2012/jiage/2/" target="_blank">5-8万</a></dd>
+                <dd><a href="http://chezhan.bitauto.com/beijing/n2012/jiage/3/" target="_blank">8-12万</a></dd>
+                <dd><a href="http://chezhan.bitauto.com/beijing/n2012/jiage/4/" target="_blank">12-18万</a></dd>
+                <dd><a href="http://chezhan.bitauto.com/beijing/n2012/jiage/5/" target="_blank">18-25万</a></dd>
+                <dd><a href="http://chezhan.bitauto.com/beijing/n2012/jiage/6/" target="_blank">25-40万</a></dd>
+                <dd><a href="http://chezhan.bitauto.com/beijing/n2012/jiage/7/" target="_blank">40万以上</a></dd>
+            </dl>
+
+        </div>
+    </div>
+</div>

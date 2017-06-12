@@ -1,0 +1,28 @@
+﻿  <div class="m-app-part-scroll swiper-container" id="m-app-part-scroll">
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide">
+                        <p><a href="http://app.yiche.com/d/535082b7021855a958e5d57b">
+<img src="http://image.bitauto.com/wap/temp/qichehui_20130606.png"></a>易车</p>
+                        <p><a href="http://api.app.yiche.com/webapi/qrpromotion.ashx?proname=qichebaojiadaquan&source=myiche&isqr=0">
+<img src="http://image.bitauto.com/wap/temp/price20140123.png"></a>汽车报价</p>
+                        <p><a href="http://api.app.yiche.com/webapi/qrpromotion.ashx?proname=taoche&source=myiche&isqr=0">
+<img src="http://img1.bitautoimg.com/bitauto//2014/05/12/134011413.png"></a>淘车</p>
+
+                        <p><a href="http://api.app.yiche.com/webapi/qrpromotion.ashx?name=maichebao-0-myiche">
+<img src="http://img3.bitautoimg.com/bitauto//2014/05/12/13394732.png"></a>卖车宝</p>
+                    </li>
+                    <li class="swiper-slide">
+                        <p><a href="http://api.app.yiche.com/webapi/qrpromotion.ashx?proname=ershouchegujia&source=myiche&isqr=0">
+<img src="http://image.bitauto.com/wap/temp/ershouchegujia_20130805.png"></a>汽车估价</p>
+                     <p><a href="http://api.app.yiche.com/webapi/qrpromotion.ashx?name=qichexinwen-0-myiche" >
+<img src="http://image.bitauto.com/wap/temp/qichexinwen.png"/></a>汽车新闻</p>
+<p><a href="http://api.app.yiche.com/webapi/qrpromotion.ashx?name=cheguanjia-0-myiche">
+<img src="http://image.bitauto.com/wap/temp/qicheguanjia.png" /></a>汽车管家</p>
+                      <p><a href="http://api.app.yiche.com/webapi/qrpromotion.ashx?name=qichezhidao-0-myiche">
+<img src="http://image.bitauto.com/wap/temp/qichezhidao20131125.png" /></a>汽车知道</p>
+                    </li>
+                </ul>
+                <div class="pagination-app">
+                  </div>
+            </div>
+<a href="http://app.m.yiche.com" class="m-btn-line m-btn-gray">进入易车应用中心</a><wait/>

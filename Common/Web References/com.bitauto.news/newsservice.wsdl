@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AsyncNewsTitle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="newsID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="seckey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AsyncNewsTitleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AsyncNewsTitleResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AsyncNewsTitleAndUrl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="newsID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="seckey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AsyncNewsTitleAndUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AsyncNewsTitleAndUrlResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDailyTopNewsList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="day" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDailyTopNewsListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDailyTopNewsListResult" type="tns:ArrayOfNewsReference" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfNewsReference">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NewsReference" nillable="true" type="tns:NewsReference" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NewsReference">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CommentCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PartitionID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PosterCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetWeeklyTopNewsList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="firstDayOfWeek" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWeeklyTopNewsListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWeeklyTopNewsListResult" type="tns:ArrayOfNewsReference" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMonthlyTopNewsList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="firstDayOfMonth" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMonthlyTopNewsListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMonthlyTopNewsListResult" type="tns:ArrayOfNewsReference" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPeriodTimeTopNewsList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fromDate" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="toDate" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPeriodTimeTopNewsListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPeriodTimeTopNewsListResult" type="tns:ArrayOfNewsReference" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SortNewsByComments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="newsIDs" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SortNewsByCommentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SortNewsByCommentsResult" type="tns:ArrayOfNewsReference" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SortTopNewsByComments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="newsIDs" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SortTopNewsByCommentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SortTopNewsByCommentsResult" type="tns:ArrayOfNewsReference" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AsyncNewsTitleSoapIn">
+    <wsdl:part name="parameters" element="tns:AsyncNewsTitle" />
+  </wsdl:message>
+  <wsdl:message name="AsyncNewsTitleSoapOut">
+    <wsdl:part name="parameters" element="tns:AsyncNewsTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="AsyncNewsTitleAndUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:AsyncNewsTitleAndUrl" />
+  </wsdl:message>
+  <wsdl:message name="AsyncNewsTitleAndUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:AsyncNewsTitleAndUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDailyTopNewsListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDailyTopNewsList" />
+  </wsdl:message>
+  <wsdl:message name="GetDailyTopNewsListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDailyTopNewsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWeeklyTopNewsListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWeeklyTopNewsList" />
+  </wsdl:message>
+  <wsdl:message name="GetWeeklyTopNewsListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWeeklyTopNewsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMonthlyTopNewsListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMonthlyTopNewsList" />
+  </wsdl:message>
+  <wsdl:message name="GetMonthlyTopNewsListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMonthlyTopNewsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPeriodTimeTopNewsListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPeriodTimeTopNewsList" />
+  </wsdl:message>
+  <wsdl:message name="GetPeriodTimeTopNewsListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPeriodTimeTopNewsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SortNewsByCommentsSoapIn">
+    <wsdl:part name="parameters" element="tns:SortNewsByComments" />
+  </wsdl:message>
+  <wsdl:message name="SortNewsByCommentsSoapOut">
+    <wsdl:part name="parameters" element="tns:SortNewsByCommentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SortTopNewsByCommentsSoapIn">
+    <wsdl:part name="parameters" element="tns:SortTopNewsByComments" />
+  </wsdl:message>
+  <wsdl:message name="SortTopNewsByCommentsSoapOut">
+    <wsdl:part name="parameters" element="tns:SortTopNewsByCommentsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="NewsServiceSoap">
+    <wsdl:operation name="AsyncNewsTitle">
+      <wsdl:input message="tns:AsyncNewsTitleSoapIn" />
+      <wsdl:output message="tns:AsyncNewsTitleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AsyncNewsTitleAndUrl">
+      <wsdl:input message="tns:AsyncNewsTitleAndUrlSoapIn" />
+      <wsdl:output message="tns:AsyncNewsTitleAndUrlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDailyTopNewsList">
+      <wsdl:input message="tns:GetDailyTopNewsListSoapIn" />
+      <wsdl:output message="tns:GetDailyTopNewsListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWeeklyTopNewsList">
+      <wsdl:input message="tns:GetWeeklyTopNewsListSoapIn" />
+      <wsdl:output message="tns:GetWeeklyTopNewsListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMonthlyTopNewsList">
+      <wsdl:input message="tns:GetMonthlyTopNewsListSoapIn" />
+      <wsdl:output message="tns:GetMonthlyTopNewsListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPeriodTimeTopNewsList">
+      <wsdl:input message="tns:GetPeriodTimeTopNewsListSoapIn" />
+      <wsdl:output message="tns:GetPeriodTimeTopNewsListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SortNewsByComments">
+      <wsdl:input message="tns:SortNewsByCommentsSoapIn" />
+      <wsdl:output message="tns:SortNewsByCommentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SortTopNewsByComments">
+      <wsdl:input message="tns:SortTopNewsByCommentsSoapIn" />
+      <wsdl:output message="tns:SortTopNewsByCommentsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NewsServiceSoap" type="tns:NewsServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AsyncNewsTitle">
+      <soap:operation soapAction="http://tempuri.org/AsyncNewsTitle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsyncNewsTitleAndUrl">
+      <soap:operation soapAction="http://tempuri.org/AsyncNewsTitleAndUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDailyTopNewsList">
+      <soap:operation soapAction="http://tempuri.org/GetDailyTopNewsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWeeklyTopNewsList">
+      <soap:operation soapAction="http://tempuri.org/GetWeeklyTopNewsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMonthlyTopNewsList">
+      <soap:operation soapAction="http://tempuri.org/GetMonthlyTopNewsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPeriodTimeTopNewsList">
+      <soap:operation soapAction="http://tempuri.org/GetPeriodTimeTopNewsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SortNewsByComments">
+      <soap:operation soapAction="http://tempuri.org/SortNewsByComments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SortTopNewsByComments">
+      <soap:operation soapAction="http://tempuri.org/SortTopNewsByComments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NewsServiceSoap12" type="tns:NewsServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AsyncNewsTitle">
+      <soap12:operation soapAction="http://tempuri.org/AsyncNewsTitle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsyncNewsTitleAndUrl">
+      <soap12:operation soapAction="http://tempuri.org/AsyncNewsTitleAndUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDailyTopNewsList">
+      <soap12:operation soapAction="http://tempuri.org/GetDailyTopNewsList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWeeklyTopNewsList">
+      <soap12:operation soapAction="http://tempuri.org/GetWeeklyTopNewsList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMonthlyTopNewsList">
+      <soap12:operation soapAction="http://tempuri.org/GetMonthlyTopNewsList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPeriodTimeTopNewsList">
+      <soap12:operation soapAction="http://tempuri.org/GetPeriodTimeTopNewsList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SortNewsByComments">
+      <soap12:operation soapAction="http://tempuri.org/SortNewsByComments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SortTopNewsByComments">
+      <soap12:operation soapAction="http://tempuri.org/SortTopNewsByComments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NewsService">
+    <wsdl:port name="NewsServiceSoap" binding="tns:NewsServiceSoap">
+      <soap:address location="http://news.bitauto.com/comment/newsservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NewsServiceSoap12" binding="tns:NewsServiceSoap12">
+      <soap12:address location="http://news.bitauto.com/comment/newsservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

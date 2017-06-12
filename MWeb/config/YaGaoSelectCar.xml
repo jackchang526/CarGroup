@@ -1,0 +1,1092 @@
+<Root>
+    <Item Name="高露洁" id="1">
+        <Tag Name="职场菜鸟" id="1">
+            <Recommend>
+                <![CDATA[第一次买车一定要逼格满满，刚工作就有车，同事看你的眼光都是羡慕的不要不要的，这个级别买车主要看脸，因为车的配置和油耗都差不多!]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[好开、保值、大众追求]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>4397,4270,1594,1734</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>3152,1879,3510,3655</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>4279,1765,4616,1991</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>3395,1610,2871,2932</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>4477,4065,2932,3544</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>2593,1729,3395,4477</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2498,4282,2364,4278</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="女司机" id="2">
+            <Recommend>
+                <![CDATA[谁说女司机是马路杀手？对不起，好像都这么说。。那还是安全第一吧，最好自动挡，有倒车影像，安全气囊，储物空间大，再就是必须颜值爆表！]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[颜值高、好开、空间大]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>1798,3167,2407,3398</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>4123,2370,1879,3655</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>2701,1610,1879,4065</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>3297,2932,2593,1660</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>2364,2593,1729,2932</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>4488,4282,2993,2364</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>3874,2758,2261,2623</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="单身汪" id="3">
+            <Recommend>
+                <![CDATA[单身汪，把妹是刚需！易星人觉得您选车注重颜值是拦也不拦不住的，唯一需要注意的是空间要尽可能大些，姑娘都不喜欢压抑的感觉！]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[精致、颜值高、空间大]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>4283,1798,3398,4675</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>3152,4418,1765,4616</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>3395,1610,4711,1991</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>3544,2701,2871,3686</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>2855,1729,2614,3379</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>4282,2364,4654,2694</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2498,2032,2837,2354</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="小夫妻" id="4">
+            <Recommend>
+                <![CDATA[简单来说，媳妇的意见占99%，你的意见占呵呵呵，她看上了买个拖拉机都行；她看不上，宝马也没用。一句话，媳妇喜欢，其他随缘。。。。]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[都是女生喜爱款]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>4675,4169,2407,4189</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>4418,3152,4616,2874</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>2874,4711,2583,2701</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>2701,2694,4654,3492</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>2855,2871,4477,3962</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>4722,2694,3528,1825</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2046,2149,1953,1830</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="我是土豪" id="5">
+            <Recommend>
+                <![CDATA[土豪同志，不是易星人批评你，太低调了，不过没关系，低调里易星人也能给您选到符合您气质的车，往下看！]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[低调的奢华、好开]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>4016,1793,4189,4395</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>2714,4308,4123,2608</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>4738,1909,3323,1977</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>3920,2753,1796,3695</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>3845,3962,2168,3876</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>2855,2694,2871,3544</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>3598,2046,2045,3775</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="你管我是谁" id="6">
+            <Recommend>
+                <![CDATA[么么哒，我管你开什么车！！@#￥%……&*（）。.。。。]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[同价位关注度排名前四]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>1798,1905,1793,4189</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>1879,1765,4418,3152</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>1879,1765,4418,3152</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>1660,3686,2593,2694</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>2855,1660,2593,2694</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>2855,2694,2871,3544</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2259,2032,2498,1994</CsIDs>
+            </Prices>
+        </Tag>
+    </Item>
+    <Item Name="黑人" id="2">
+        <Tag Name="职场菜鸟" id="1">
+            <Recommend>
+                <![CDATA[主要注意两点，第一，油耗低，自动档，性价比；第二，请再看一遍第一条！]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[省油、性价比、动力强]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>4397,4270,1594,1734</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>3152,1879,3510,3655</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>4279,1765,4616,1991</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>3395,1610,2871,2932</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>4477,4065,2932,3544</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>2593,1729,3395,4477</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2498,4282,2364,4278</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="女司机" id="2">
+            <Recommend>
+                <![CDATA[不管车技有多好，在爸妈眼中你永远是他们的宝贝，你开车他们永远会牵挂，告诉爸妈，你选的车有安全气囊，有倒车影像，好开实用，不必担心！]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[安全、省油、性价比]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>1798,3167,2407,3398</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>4123,2370,1879,3655</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>2701,1610,1879,4065</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>3297,2932,2593,1660</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>2364,2593,1729,2932</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>4488,4282,2993,2364</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>3874,2758,2261,2623</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="单身汪" id="3">
+            <Recommend>
+                <![CDATA[买车的时候只看脸，开车的时候然并卵，好开，坐着舒服才是王道，所谓日久见人心这句话的意思就是日系车开久了就得到女人心了，你懂的~]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[撩妹基本款、舒适]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>2407,4190,1699,2408</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>1879,3686,4123,4610</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>3686,4279,1991,4117</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>2406,1660,3883,1977</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>3845,2993,3492,4304</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>2694,3845,2993,3492</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>4026,1868,2109,3812</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="小夫妻" id="4">
+            <Recommend>
+                <![CDATA[简单来说，媳妇的意见占99%，你的意见占呵呵呵，她看上了买个拖拉机都行；她看不上，宝马也没用。一句话，媳妇喜欢，其他随缘。。。。]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[性价比、小情趣、颜值高]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>4675,4169,2407,4189</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>4418,3152,4616,2874</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>2874,4711,2583,2701</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>2701,2694,4654,3492</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>2855,2871,4477,3962</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>4722,2694,3528,1825</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2046,2149,1953,1830</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="我是土豪" id="5">
+            <Recommend>
+                <![CDATA[土豪的钱也不是大风刮来的，凭什么老听4s店忽悠买高配，很多配置一辈子都未必能够使用一次，所以买车一定要买高端级别车中的性价比之王！]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[性价比、低调奢华]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>4016,1793,4189,4395</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>2714,4308,4123,2608</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>4738,1909,3323,1977</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>3920,2753,1796,3695</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>4304,3962,2168,3876</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>2694,1827,1909,2871</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>3598,2046,2045,3775</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="你管我是谁" id="6">
+            <Recommend>
+                <![CDATA[么么哒，我管你开什么车！！@#￥%……&*（）。.。。。]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[同价位关注度排名前四]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>1798,1905,1793,4189</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>1879,1765,4418,3152</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>1879,1765,4418,3152</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>1660,3686,2593,2694</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>2855,1660,2593,2694</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>2855,2694,2871,3544</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2259,2032,2498,1994</CsIDs>
+            </Prices>
+        </Tag>
+    </Item>
+    <Item Name="狮王"  id="3">
+        <Tag Name="职场菜鸟" id="1">
+            <Recommend>
+                <![CDATA[买车就是买品味，让人说你车颜值爆表，让人说你车内饰精良，让人说你车动力充沛，就是要在每个人脸上都盖一个大戳：羡慕嫉妒恨！]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[逼格满、小狂野]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>4675,4610,3398,4718</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>4238,3355,2723,4023</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>4123,3999,2273,4621</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>4477,4065,2593,4654</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>3673,2382,3840,4567</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>4477,2364,2932,1729</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2498,2115,2068,2758</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="女司机" id="2">
+            <Recommend>
+                <![CDATA[感觉对了，什么都不重要！感觉对了，什么都不重要！感觉对了，什么都不重要！推荐完毕，直接往下看，去选车吧!]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[萌萌哒美少女基本款！]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>4016,1978,2609,1604</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>4238,3355,2723,2712</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>4123,3999,2273,4621</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>2061,4065,2593,3492</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>3095,2610,3673,2061</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>3095,4278,4109,2932</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2982,2263,3786,2347</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="单身汪" id="3">
+            <Recommend>
+                <![CDATA[易星人认为咱们选车要4高：颜值爆表回头高，动力钢炮速度高，品牌推广名气高，特立独行逼格高!一句话，4高占全妹自来！]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[撩妹基本款、逼格高]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>4610,1604,3466,3698</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>4238,3355,2723,4023</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>4123,3999,2273,4621</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>4477,4065,2593,3492</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>3673,2382,3840,4567</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>4477,2364,2932,1729</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2498,2115,2068,2758</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="小夫妻" id="4">
+            <Recommend>
+                <![CDATA[简单来说，媳妇的意见占99%，你的意见占呵呵呵，她看上了买个拖拉机都行；她看不上，宝马也没用。一句话，媳妇喜欢，其他随缘。。。。]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[能干所有想干的事！]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>3466,3503,2606,2609</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>3600,3669,2874,3086</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>4711,4439,3357,1660</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>4439,4477,3492,3544</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>4722,2015,2690,3891</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>4732,3268,4667,2062</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2261,1994,2032,2046</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="我是土豪" id="5">
+            <Recommend>
+                <![CDATA[土豪，在推荐车之前我先打听个事儿，您还缺朋友吗？啧啧。。易星人觉得您买车应该避免爆款，就买特立独行的，逼格满满的！]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[看车识土豪！]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>3466,3698,4498,4173</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>2190,2874,3086,4335</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>4437,3920,4382,4209</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>2731,2848,1909,4002</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>2978,2844,2031,2514</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>2690,2596,3833,2131</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>3976,2395,2007,2149</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="你管我是谁" id="6">
+            <Recommend>
+                <![CDATA[么么哒，我管你开什么车！！@#￥%……&*（）。.。。。]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[同价位颜值排名前四]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>4016,1978,2609,1604</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>4238,3355,2723,2712</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>4123,3999,2273,4621</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>2061,4065,2593,3492</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>3095,2610,3673,2061</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>3095,4278,4109,2932</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2982,2263,3786,2347</CsIDs>
+            </Prices>
+        </Tag>
+    </Item>
+    <Item Name="马尔斯"  id="4">
+        <Tag Name="职场菜鸟" id="1">
+            <Recommend>
+                <![CDATA[生活不止苟且，还有诗和远方！菜鸟怎么了？我就要开奔驰，我就要开宝马，我就要过高品质的生活！嗯，没错，小主请往下看！]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[逼格满满、清新、靓]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>3551,2719,3308,4153</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>2421,3362,3386,3669</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>1832,2061,2015,3297</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>3593,2977,2715,3095</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>3673,2382,3840,4567</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>4477,2364,2932,1729</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2498,2115,2068,2758</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="女司机" id="2">
+            <Recommend>
+                <![CDATA[易星人还没有女朋友，牙膏君人长得也挺帅。。。啧啧，跑题了。。给白富美选车，主要看气质，其次是要好开，最后一定要有座椅加热！]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[颜值爆表、舒适好开]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>2868,1978,2609,1604</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>4486,2926,2421,3362</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>3999,4065,4567,2348</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>3297,2932,4477,2061</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>3095,2610,3673,2061</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>3095,4278,4109,2932</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2263,2044,2751,2068</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="单身汪" id="3">
+            <Recommend>
+                <![CDATA[单身汪，要把妹，动力不猛怎么行？车神一脚油门，女神一定叫的不要不要的！除了动力，座椅加热，尤其是独立悬挂都是必备之选，你懂的~]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[把妹神器、动力猛]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>3551,2719,3308,4153</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>3669,2702,2018,4486</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>3999,4065,4567,2348</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>3593,2882,2610,2715</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>3673,2382,3840,4567</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>4477,2364,2932,1729</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2267,3786,2246,2262</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="小夫妻" id="4">
+            <Recommend>
+                <![CDATA[简单来说，媳妇的意见占99%，你的意见占呵呵呵，她看上了买个拖拉机都行；她看不上，宝马也没用。一句话，媳妇喜欢，其他随缘。。。。]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[奢华、精致、逼格高]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>3503,2273,2370,3655</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>3669,2421,2018,4486</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>4439,3357,3883,4117</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>2167,3669,2015,1832</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>2514,2168,2707,2167</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>3031,4488,1987,4214</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>4689,4030,2007,2390</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="我是土豪" id="5">
+            <Recommend>
+                <![CDATA[土豪你好，经过全方位立体需求分析，深度用户特点挖掘，108种重度使用场景模拟，易星人亲情为您推荐下面这种车：最贵，顶配！]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[最贵、顶配、最高消费]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>2381,1905,1798,4648</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>3669,2421,2018,4486</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>4134,4306,3635,3821</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>1729,3913,1909,1610</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>2978,2844,2031,2514</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>2690,2596,3833,2131</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>3976,2395,2007,2149</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="你管我是谁" id="6">
+            <Recommend>
+                <![CDATA[么么哒，我管你开什么车！！@#￥%……&*（）。.。。。]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[同价位关注度排名前四]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>2868,1978,2609,1604</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>4486,2926,2421,3362</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>3999,4065,4567,2348</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>3297,2932,4477,2061</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>3095,2610,3673,2061</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>3095,4278,4109,2932</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2263,2044,2751,2068</CsIDs>
+            </Prices>
+        </Tag>
+    </Item>
+    <Item Name="从来不刷牙"  id="5">
+        <Tag Name="职场菜鸟" id="1">
+            <Recommend>
+                <![CDATA[恭喜，再也没有人会把你当职场菜鸟了，因为不刷牙的你再也找不到工作了，赶紧给车里加套空气过滤器吧。。]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[空气净化器、全景天窗]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>1611,2407,1798,1793</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>3913,4023,3773,1879</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>3913,2874,2583,4399</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>4308,1991,1610,2871</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>3891,4372,2871,1610</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>3673,1827,3778,3310</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2045,2758,1996,3812</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="女司机" id="2">
+            <Recommend>
+                <![CDATA[一个姑娘不刷牙。。对不起。。画面太美。。我不敢闻，咱能买个带天窗的透透气吗。。。]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[空气净化器、全景天窗]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>1611,2407,1798,1793</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>3913,4023,3773,1879</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>2874,2583,3086,4399</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>3464,2701,4308,1991</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>2409,1991,2701,1729</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>3673,1827,3778,3310</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2045,2758,1996,3812</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="单身汪" id="3">
+            <Recommend>
+                <![CDATA[不刷牙是吧，来来来，陪易星人孤老终生吧。。。不对，我才不要跟你呆在一起，赶紧选个带天窗的透透气吧！]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[空气净化器、全景天窗]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>1611,2407,1798,1793</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>3913,4023,3773,1879</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>4418,2874,2583,3086</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>2701,4308,1991,1610</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>3891,4372,2871,1610</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>3673,1827,3778,3310</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>2045,2758,1996,3812</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="小夫妻" id="4">
+            <Recommend>
+                <![CDATA[难以想象，不刷牙的你居然能找到女票，易星人却还是单身。。。。求你赶快买个天窗的透透气吧。。]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[空气净化器、全景天窗]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>4150,2407,1798,4046</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>3913,4023,3773,1879</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>2874,2583,3086,4399</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>2583,2874,2701,2871</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>2409,1991,2701,1729</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>2168,2690,2596,1722</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>4030,2913,3088,2145</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="我是土豪" id="5">
+            <Recommend>
+                <![CDATA[有钱咱就必须任性，就不刷牙怎么了？！没关系呀，空气净化器，全景天窗都给配上就ok了！]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[空气净化器、全景天窗]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>1611,2407,4150,1793</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>3913,4023,3773,1879</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>4418,1796,2614,3086</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>3464,3635,2871,4498</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>3891,4372,2871,1610</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>2373,4176,3768,1977</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>4030,2913,2065,2145</CsIDs>
+            </Prices>
+        </Tag>
+        <Tag Name="你管我是谁" id="6">
+            <Recommend>
+                <![CDATA[脾气这么爆，还敢不刷牙，我管你开什么车！！@#￥%……&*（）。.。。。]]>
+            </Recommend>
+            <Configure>
+                <![CDATA[空气净化器、全景天窗]]>
+            </Configure>
+            <Prices id="1">
+                <Price>5万左右</Price>
+                <CsIDs>1611,2407,1798,1793</CsIDs>
+            </Prices>
+            <Prices id="2">
+                <Price>10万左右</Price>
+                <CsIDs>3913,4023,3773,1879</CsIDs>
+            </Prices>
+            <Prices id="3">
+                <Price>15万左右</Price>
+                <CsIDs>2874,2583,3086,4399</CsIDs>
+            </Prices>
+            <Prices id="4">
+                <Price>20万左右</Price>
+                <CsIDs>2583,2874,2701,2871</CsIDs>
+            </Prices>
+            <Prices id="5">
+                <Price>25万左右</Price>
+                <CsIDs>2409,1991,2701,1729</CsIDs>
+            </Prices>
+            <Prices id="6">
+                <Price>30万左右</Price>
+                <CsIDs>2168,2690,2596,1722</CsIDs>
+            </Prices>
+            <Prices id="7">
+                <Price>无上限</Price>
+                <CsIDs>4030,2913,2065,2145</CsIDs>
+            </Prices>
+        </Tag>
+    </Item>
+</Root>

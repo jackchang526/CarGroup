@@ -1,0 +1,15 @@
+﻿<!-- START OF SmartSource Data Collector TAG -->
+<script src="http://image.bitautoimg.com/bt/webtrends/dcs_tag_h5.js"
+        type="text/javascript"></script>
+<!-- bitauto stat begin -->
+<script>
+    var bit_stat_url = "url=" + escape(document.location);
+    if (document.referrer != null) bit_stat_url += "&refer=" + escape(document.referrer)
+    document.write("<img width=0 height=0 style='display:none;' src='http://log.bitauto.com/newsstat/log.aspx?" + bit_stat_url + "'/>");
+</script>
+<!-- bitauto stat end -->
+<!--airui-->
+<script src="http://img1.bitautoimg.com/stat/iwtToMSite20140218.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://gimg.bitauto.com/js/senseNew.js"></script>
+<script type="text/javascript" src="http://g.yccdn.com"></script>
+<script type="text/javascript" src="http://bglog.bitauto.com"></script>

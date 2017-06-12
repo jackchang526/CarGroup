@@ -1,0 +1,85 @@
+﻿<div id="userInfoContainer" style="display:none;" class="m-popup-box m-popup-login"></div>	
+<footer>
+	<span class="footer-left"><a href="http://m.bitauto.com/w/">简版</a> | <span>触屏版</span>
+ | <a id="a_linkToPcPage" href="javascript:;"><span>电脑版</span></a> 
+</span>
+     <div id="iconContainer" style="display:none;" class="m-footer-login-box"></div>
+<a href="http://m.yiche.com/wap2.0/feedback/" class="m-footer-opinion">提意见&gt;&gt;</a>
+</footer>
+<!-- START OF SmartSource Data Collector TAG -->
+<SCRIPT SRC="http://image.bitautoimg.com/bt/webtrends/dcs_tag_wapnew.js" TYPE="text/javascript"></SCRIPT>
+<!-- END OF SmartSource Data Collector TAG -->
+<!--airui-->
+<SCRIPT SRC="http://img1.bitautoimg.com/stat/iwt20130216.js" TYPE="text/javascript"></SCRIPT>
+
+<script type="text/javascript" src="http://i.m.yiche.com/js/LoginState.js"></script>
+<script type="text/javascript" src="http://i.m.yiche.com/js/RequestToPcPage.js"></script>
+<script type="text/javascript">
+
+	if (typeof (mApps) == 'undefined') var mApps = {};
+
+
+
+	if (typeof (mApps.icons) == 'undefined') {
+
+		//各app icons
+
+		mApps.icons = ['http://image.bitauto.com/wap/temp/qichebaojia_20130606.png',
+
+            'http://image.bitauto.com/wap/temp/qichehui_20130606.png',
+
+            'http://image.bitauto.com/wap/temp/taoche_20130606.png',
+
+            'http://image.bitauto.com/wap/temp/ershouchegujia_20130805.png',
+
+        ];
+
+	}
+
+
+
+	if (typeof (mApps.platform) == 'undefined') {
+
+		//各平台app列表    
+
+		mApps.platform = {
+
+			android: [
+            { img: mApps.icons[1], title: '易车网', link: 'http://api.app.yiche.com/webapi/qrpromotion.ashx?proname=qichehui&source=myiche&isqr=0' },  //汽车汇
+            {img: mApps.icons[0], title: '汽车报价', link: 'http://api.app.yiche.com/webapi/qrpromotion.ashx?proname=qichebaojiadaquan&source=myiche&isqr=0' }, //汽车报价
+            {img: mApps.icons[2], title: '淘车', link: 'http://api.app.yiche.com/webapi/qrpromotion.ashx?proname=taoche&source=myiche&isqr=0' }, //淘车
+            {img: mApps.icons[3], title: '汽车估价', link: 'http://api.app.yiche.com/webapi/qrpromotion.ashx?proname=ershouchegujia&source=myiche&isqr=0'}	// 估价
+        ],
+
+			apple: [
+            { img: mApps.icons[1], title: '易车网', link: 'http://api.app.yiche.com/webapi/qrpromotion.ashx?proname=qichehui&source=myiche&isqr=0' },  //汽车汇
+            {img: mApps.icons[0], title: '汽车报价', link: 'http://api.app.yiche.com/webapi/qrpromotion.ashx?proname=qichebaojiadaquan&source=myiche&isqr=0' }, //汽车报价
+            {img: mApps.icons[2], title: '淘车', link: 'http://api.app.yiche.com/webapi/qrpromotion.ashx?proname=taoche&source=myiche&isqr=0' },  //淘车
+            {img: mApps.icons[3], title: '汽车估价', link: 'http://api.app.yiche.com/webapi/qrpromotion.ashx?proname=ershouchegujia&source=myiche&isqr=0'}   //估价
+        ],
+
+			win: [{ img: mApps.icons[1], title: '易车网', link: 'http://api.app.yiche.com/webapi/qrpromotion.ashx?proname=qichehui&source=myiche&isqr=0'}  //汽车汇
+        ]
+
+		};
+
+	}
+
+</script>
+<script src="http://m.yiche.com/wap2.0/Scripts/mappdownloadrouter.js" type="text/javascript"></script>
+
+ <script type="text/javascript" src="http://g.yccdn.com"></script>
+
+<script type="text/javascript" language="javascript">
+	(function () {
+		var win = window;
+		var scrollLocationBar = function () {
+			try { win.scrollTo(0, 1); } catch (e) { throw new Error("can't to scroll;"); }
+		}
+		scrollLocationBar();
+		win.addEventListener(!!!(typeof (win.onorientationchange) === undefined) ? "orientationchange" : "resize"
+			, scrollLocationBar
+			, false);
+	}
+	)();
+</script>

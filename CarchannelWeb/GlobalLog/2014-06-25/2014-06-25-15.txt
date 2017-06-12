@@ -1,0 +1,28 @@
+[2014/6/25 15:31:17]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/keluzi/2011/?ID=2608&year=2011&
+Ref: http://car01.bitauto.com/keluzi/
+Error Message: 序列不包含任何元素
+Stack Trace:    在 System.Linq.Enumerable.Min(IEnumerable`1 source)
+   在 BitAuto.CarChannel.CarchannelWeb.PageYear.CsSummaryYear.GetSerialYearInfoByCarList(List`1 currentYearCarList) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageYear\CsSummaryYear.aspx.cs:行号 394
+   在 BitAuto.CarChannel.CarchannelWeb.PageYear.CsSummaryYear.MakeCarListHtmlNew() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageYear\CsSummaryYear.aspx.cs:行号 367
+   在 BitAuto.CarChannel.CarchannelWeb.PageYear.CsSummaryYear.RenderPage() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageYear\CsSummaryYear.aspx.cs:行号 174
+   在 BitAuto.CarChannel.CarchannelWeb.PageYear.CsSummaryYear.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageYear\CsSummaryYear.aspx.cs:行号 148
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 143
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2014/6/25 15:34:02]  
+IP: 127.0.0.1
+Error in: http://car01.bitauto.com/keluzi/2010/?ID=2608&year=2010&
+Ref: http://car01.bitauto.com/keluzi/
+Error Message: 序列不包含任何元素
+Stack Trace:    在 System.Linq.Enumerable.Min(IEnumerable`1 source)
+   在 BitAuto.CarChannel.CarchannelWeb.PageYear.CsSummaryYear.GetSerialYearInfoByCarList(List`1 currentYearCarList) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageYear\CsSummaryYear.aspx.cs:行号 394
+   在 BitAuto.CarChannel.CarchannelWeb.PageYear.CsSummaryYear.MakeCarListHtmlNew() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageYear\CsSummaryYear.aspx.cs:行号 367
+   在 BitAuto.CarChannel.CarchannelWeb.PageYear.CsSummaryYear.RenderPage() 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageYear\CsSummaryYear.aspx.cs:行号 174
+   在 BitAuto.CarChannel.CarchannelWeb.PageYear.CsSummaryYear.Page_Load(Object sender, EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\CarchannelWeb\PageYear\CsSummaryYear.aspx.cs:行号 148
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\Common\PageBase.cs:行号 143
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

@@ -1,0 +1,83 @@
+/* phd begin
+======================= */
+/* 子品牌 */
+.phd_01 h3 label.tocx{ font-size: 13px;color: #000 }
+.phd_01 h3 label.tocx a{ color: #000 }
+.p_dptab{float:left;position:relative;}
+.p_dptab ul{float:left;width:309px;}
+.p_dptab li{float:left;width:103px;background:url(../images/p_bg-koubeitab.gif) top right;font-weight:bold;font-size:14px;line-height:29px;height:29px;}
+.p_dptab li span{color:#DA0000;font-weight:normal;font-size:12px;}
+.p_dptab .current{background-position:bottom right;}
+.p_dptab li a{width:100%;display:block;background:url(../images/p_icon-hzc.gif) no-repeat;text-indent:30px;height:29px;}
+.p_dptab #good a{background-position:12px 7px;}
+.p_dptab #normal a{background-position:12px -44px;}
+.p_dptab #bad a{background-position:12px -96px;}
+.p_dptabcontent{float:left;background:#fff;position:relative;}
+.p_dptabcontent ul{float:left;padding:2px 0 0 10px;}
+.p_dptabcontent li{float:left;width:290px;background:url(../images/p_line.gif);line-height:33px;text-indent:17px;height:30px;overflow:hidden;}
+.p_dptabcontent .hideline{float:left;width:97%;background:#fff;height:10px;overflow:hidden;position:relative;top:-1px;}
+.p_iwant{float:left;margin-top:10px;position:relative;}
+.p_iwant dl{float:left;width:397px;border:1px solid #D0D0D0;overflow:hidden;}
+.p_iwant dt{float:left;width:397px;border-bottom:1px solid #D0D0D0;background:#F1F1F1;text-indent:10px;line-height:50px;height:50px;}
+.p_iwant dt a{text-decoration:underline;}
+.p_iwant dt .btn{float:right;padding:11px 5px 0 0;}
+.p_iwant dt .btn a{width:76px;margin-right:5px;display:inline-block;background:url(../images/p_bg-btn1.gif);color:#fff;font-weight:bold;text-decoration:none;line-height:26px;height:26px;overflow:hidden;}
+.p_iwant dt .num{color:#c00;}
+.p_iwant dd{float:left;line-height:28px;text-indent:10px;height:28px;}
+.p_gcyx #IntentionNew{height:370px; width: 218px; overflow: hidden;}
+.p_koubeiiframe{border-bottom:1px solid #D0D0D0;border-right:1px solid #D0D0D0;float:left;width:398px;background:none repeat scroll 0 0 #FFFFFF;height:280px;overflow:hidden;position:static;}
+.col-side .hot_select{margin:5px 10px;background:url(http://www.bitauto.com/themes/2009/common/images/icon_select.png) no-repeat scroll 17px 8px transparent; float: left; display: inline;}
+.col-side .hot_select li{padding:7px 0 1px 0;background:url("http://www.bitauto.com/themes/2009/common/images/icon_s_dot.png") repeat-x scroll 0 100% transparent;color:#CC0000;height:38px;overflow:hidden; float: left; width:200px; display: inline;}
+.col-side .hot_select li .s_input{float:left;width:55px;margin:10px 0 0 0;display:inline;*width:57px;*margin:9px 0 0 0;}
+.col-side .hot_select li .s_num{float:left;width:130px;color:#000;}
+.col-side .hot_select{*background:transparent url(http://pic.baa.bitautotech.com/webpic/images/icon_select.png) no-repeat scroll 21px 8px;}
+.col-side .hot_select li span{margin:2px 0 0;padding-left:2px;display:block;background:transparent url(http://pic.baa.bitautotech.com/webpic/images/icon_line.png) repeat-x scroll 0 0;height:8px;}
+.col-side .hot_select li .s_num em{color:#CC0000;}
+.col-side .hot_select li.post{ background: none }
+.col-side .hot_select li.post input{border:medium none;float:left;width:43px;background:url("http://www.bitauto.com/themes/2009/common/images/icon_post2.png") no-repeat scroll 0 0 transparent;color:#FFFFFF;font-weight:bold;line-height:23px;cursor:pointer;height:21px;}
+.tit-cx{ width: 950px;margin:0 auto; }
+.tit-cx img{display:block  }
+.breadcrumbs{ font-size: 14px; width: 950px;margin:0 auto;  padding: 10px 0; text-indent: 10px; color: #999 }
+.breadcrumbs em{ padding: 0 5px }
+/* 0413 renew 模块21 */
+.phd0413_01{ width: 948px; overflow: hidden }
+.phd0413_01 .have{ width: 960px;  }
+.phd0413_01 .brandcatena ul{ margin-left: -10px; }
+/* 列表renew */
+.phd0413_02 .wd_hotrank li small{ background: none; padding: 0 }
+/* ---------展馆-------- */
+.hauto{ height: auto }
+.hauto dl{ height: auto }
+/* 展馆地图 */
+.phd0413_04{ float: left; width: 300px;}
+.phd0413_04 h3{ background: url(../images/phd_zg03.gif);height: 31px; line-height: 31px; float: left; width: 300px }
+.phd0413_04 h3 span{color: #000; padding: 0 0 0 26px;font-weight: bold;font-size: 14px}
+.phd0413_04 h3 span a{ color: #900 }
+.phd0413_04 .more{ float: right; margin-top: -31px;height: 31px;line-height: 31px; margin-right: 10px; display: inline;}
+.phd0413_04 .more a{color: #900;}
+.phd0413_05{ float: left; background: #fff url(../images/wd_hotrank_bg.png)  no-repeat;width: 298px;border-top: none}
+.phd0413_05 .c{ float: left; height: 175px; overflow: auto;width: 298px; padding: 5px 0}
+.phd0413_05 dl{ float: left;width: 265px;margin:0 0 0 10px; display: inline;overflow: hidden;line-height: 24px;}
+.phd0413_05 dt{ float: left;font-weight: bold; vertical-align: top }
+.phd0413_05 dd{ float: left;width: 300px }
+.phd0413_05 li{ float: left;margin-right: 0.5em; display: inline; white-space: nowrap }
+.phd0413_06{ float: left;width: 298px;border-top: none;height: 153px; overflow: hidden;}
+.phd0413_07{ float: right; }
+.phd0413_07 img{ display:block }
+/* 品牌logo滚动 */
+.phd0413_08{ margin-bottom: 10px;}
+.phd0413_08 .t{ float: left; background: url(../images/phd_zg04.jpg);width: 950px;height: 32px }
+.phd0413_08 .t ul{ padding: 5px 0 0 90px }
+.phd0413_08 .c{ width: 950px;height: 98px; background: url(../images/phd_zg05.png); overflow: hidden; float: left }
+.phd_brand li .brand{ margin: 0 0 5px 0; float: none; display: block;}
+.phd_brand li a{ color: #c00 }
+.btRoll_area{width:877px;overflow:hidden; margin:0 0 0 12px; display: inline; float: left;}
+.btRoll_area ul{float:left; padding: 13px 0 0 0;white-space: nowrap}
+.btRoll_area li{width:57px;overflow:hidden;float:left; margin:0 25px 0 0; text-align:center; display: inline;}
+.btRoll_area li img{display:block;width: 55px;height: 55px}
+.btRoll_area li p{text-align:center}
+.btRollBar .next{cursor:pointer; float: left;width:13px;height: 40px; margin: 25px 0 0 13px; display: inline;}
+.btRollBar .pre{cursor:pointer; float: right;width:13px;height: 40px; margin: 25px 13px 0 0; display: inline;}
+/* phd end========================= */
+
+

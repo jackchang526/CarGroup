@@ -1,0 +1,10 @@
+﻿<!--a_d start-->
+<div class="bt_ad">
+    <div class="bt_ad_main">
+      <ins id="indexAdTopLeft" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="0f043156-2bd1-451e-8cda-8bfcd454c407"></ins>
+    </div>
+    <div class="bt_ad_side">
+       <ins id="indexAdTopRight" type="ad_play" adplay_IP="" adplay_AreaName=""  adplay_CityName=""    adplay_BrandID=""  adplay_BrandName=""  adplay_BrandType=""  adplay_BlockCode="34deedae-07f6-461f-aab6-b1f2c5c99b9e"></ins>
+    </div>
+</div>
+<!--a_d end-->

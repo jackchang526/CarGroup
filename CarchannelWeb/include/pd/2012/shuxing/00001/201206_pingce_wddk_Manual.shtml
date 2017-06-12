@@ -1,0 +1,42 @@
+﻿<div class="QA-q-area">
+        	<div class="q-input-area">
+                <strong><a href="http://ask.bitauto.com/browse/t20/" target=_blank>评测问答</a></strong>
+                <input type="text" class="q-text" value="请输入关键字" id="txtkey" onfocus="if(this.value!=''&&this.value=='请输入关键字'){this.value='';}"
+            onblur="if(this.value==''){this.value='请输入关键字';}" />
+                <span class="q-btn-search"><input type="submit" onclick="if(document.getElementById('txtkey').value=='请输入关键字'||document.getElementById('txtkey').value=='') {window.open('http://www.cheyisou.com/ask/');return false;}window.open('http://www.cheyisou.com/ask/'+encodeURI(document.getElementById('txtkey').value)+'/'); return false;"  value="搜索答案" /></span>
+                <span class="q-btn-tiwen"><a href="#" target="_blank" onclick="if(document.getElementById('txtkey').value=='请输入关键字')document.getElementById('txtkey').value='';window.open('http://ask.bitauto.com/tiwen/'+encodeURI(document.getElementById('txtkey').value)+''); return false;" />我要提问</a></span>
+            </div>
+            <div class="clear"></div>
+            <ul id="data_tab1">
+                <li><a href="javascript:void(0);">全部问题</a></li>
+                <li class="current"><a href="javascript:void(0);">已解决</a></li>               
+                <li><a href="javascript:void(0);">待解决</a></li>
+                <li><a href="javascript:void(0);">悬赏</a></li>
+                <li><a href="javascript:void(0);">零回复</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>   
+     <div class="text_list qa-text-list">
+        	<!--全部问题-->
+             <ul style="display:none" id="data_box1_0">
+             <li><span><a href="http://ask.bitauto.com/detail/3397774" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397774" target="_blank">和悦RS有自动挡的吗</a></li><li><span><a href="http://ask.bitauto.com/detail/3397769" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397769" target="_blank">请问东风标致207手动变速器的变速箱油应该加几升？</a></li><li><span><a href="http://ask.bitauto.com/detail/3397751" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397751" target="_blank">2012长城腾翼c30运动版，</a></li><li><span><a href="http://ask.bitauto.com/detail/3397747" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397747" target="_blank">POLO1.6手动准备下手，各位前辈看看合适不</a></li><li><span><a href="http://ask.bitauto.com/detail/3397738" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397738" target="_blank">买车，投资，旅游，那者更好、、</a></li><li><span><a href="http://ask.bitauto.com/detail/3397723" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397723" target="_blank">我的马三是手动1.6 行驶了 17000 排气管尾部很黑</a></li> 
+             </ul>
+         <!--已解决-->
+              <ul id="data_box1_1">
+             <li><span><a href="http://ask.bitauto.com/detail/3397460" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397460" target="_blank">新车需要配置或者安装什么必要的东西？？</a></li><li><span><a href="http://ask.bitauto.com/detail/3397441" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397441" target="_blank">M4自带导航是不是不太好用？</a></li><li><span><a href="http://ask.bitauto.com/detail/3397248" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397248" target="_blank">今天定的自动1.6舒适版包牌127000送发动机下护版.底盘</a></li><li><span><a href="http://ask.bitauto.com/detail/3397147" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397147" target="_blank">10万左右的车排行榜靠谱吗，想买车.求推荐.</a></li><li><span><a href="http://ask.bitauto.com/detail/3397103" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397103" target="_blank">你好，1.5的海福星上市了，石家庄1.6的还在卖，说是智能加</a></li><li><span><a href="http://ask.bitauto.com/detail/3397004" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397004" target="_blank">家用车排行榜前三有哪些，买车终于提上日程，求大虾指点。</a></li>
+              </ul> 	
+         <!--待解决-->
+            <ul style="display:none" id="data_box1_2">
+             <li><span><a href="http://ask.bitauto.com/detail/3397774" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397774" target="_blank">和悦RS有自动挡的吗</a></li><li><span><a href="http://ask.bitauto.com/detail/3397769" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397769" target="_blank">请问东风标致207手动变速器的变速箱油应该加几升？</a></li><li><span><a href="http://ask.bitauto.com/detail/3397751" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397751" target="_blank">2012长城腾翼c30运动版，</a></li><li><span><a href="http://ask.bitauto.com/detail/3397747" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397747" target="_blank">POLO1.6手动准备下手，各位前辈看看合适不</a></li><li><span><a href="http://ask.bitauto.com/detail/3397738" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397738" target="_blank">买车，投资，旅游，那者更好、、</a></li><li><span><a href="http://ask.bitauto.com/detail/3397723" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397723" target="_blank">我的马三是手动1.6 行驶了 17000 排气管尾部很黑</a></li> 
+              </ul>
+          <!--悬赏-->
+             <ul style="display:none" id="data_box1_3">
+               <li><span><a href="http://ask.bitauto.com/detail/3397747" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397747" target="_blank">POLO1.6手动准备下手，各位前辈看看合适不</a></li><li><span><a href="http://ask.bitauto.com/detail/3397738" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397738" target="_blank">买车，投资，旅游，那者更好、、</a></li><li><span><a href="http://ask.bitauto.com/detail/3397612" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397612" target="_blank">新polo1.4自动</a></li><li><span><a href="http://ask.bitauto.com/detail/3397590" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397590" target="_blank">请问各位新骐达新车用铺地板吗？红色好还是翡翠色！</a></li><li><span><a href="http://ask.bitauto.com/detail/3397473" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397473" target="_blank">11款朗逸1.6品雅手动12款经典福克斯1.8手动时尚哪个好</a></li><li><span><a href="http://ask.bitauto.com/detail/3397405" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397405" target="_blank">2012宝来1.6手动舒适车价11.08万元,弄到好12.6</a></li> 
+             </ul>
+          <!--零回复-->
+          <ul style="display:none" id="data_box1_4"> 
+               <li><span><a href="http://ask.bitauto.com/detail/3397774" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397774" target="_blank">和悦RS有自动挡的吗</a></li><li><span><a href="http://ask.bitauto.com/detail/3397751" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397751" target="_blank">2012长城腾翼c30运动版，</a></li><li><span><a href="http://ask.bitauto.com/detail/3397738" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397738" target="_blank">买车，投资，旅游，那者更好、、</a></li><li><span><a href="http://ask.bitauto.com/detail/3397723" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397723" target="_blank">我的马三是手动1.6 行驶了 17000 排气管尾部很黑</a></li><li><span><a href="http://ask.bitauto.com/detail/3397685" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397685" target="_blank">2012款 君越 2.0T 自动 舒适版 哪地方的4S店价格</a></li><li><span><a href="http://ask.bitauto.com/detail/3397670" target="_blank"></a></span><a href="http://ask.bitauto.com/detail/3397670" target="_blank">卖车报价是自己定价，还是按你们报价为准？</a></li>
+         </ul> 
+          </div>
+<div class="clear"></div>
+    <div class="clear"></div>

@@ -1,0 +1,57 @@
+﻿
+<div class="slide-box slide-1200" id="slideTest5">
+    <div class="slide-box-bg">
+        <ul class="slide-box-big">
+            <li>
+                <div class="slide-list-box clearfix">
+                    <div class="figure-box w480-h320">
+                        <a href="http://news.bitauto.com/drive/20160826/0506633244.html" class="figure"> <img src="http://img2.bitautoimg.com/autoalbum/files/20160716/574/01334857409133_5054409_14.jpg" alt=""> </a>
+                        <div class="title-box">
+                            <h4 class="title"><a href="http://news.bitauto.com/drive/20160826/0506633244.html">12万元买奇瑞史上最好SUV 试驾瑞虎7</a></h4>
+                        </div>
+                    </div>
+                    <div class="col3-row2-238x159">
+                        <div class="list-box clearfix">
+                            <div class="figure-box w238-h159">
+                                <a href="http://news.bitauto.com/drive/20160906/1706635178-1.html" class="figure"> <img src="http://img4.bitautoimg.com/autoalbum/files/20160920/474/22345647477635_5281383_14.JPG" alt=""> </a>
+                                <div class="title-box">
+                                    <h6 class="title"><a href="http://news.bitauto.com/drive/20160906/1706635178-1.html">试驾第三代瑞风S3 配备全新1.6L发动机</a></h6>
+                                </div>
+                            </div>
+                            <div class="figure-box w238-h159">
+                                <a href="http://news.bitauto.com/qxsp/20160902/0606634657.html" class="figure"> <img src="http://img1.bitautoimg.com/autoalbum/files/20160908/887/09070488793743_5253520_14.jpg" alt=""> </a>
+                                <div class="title-box">
+                                    <h6 class="title"><a href="http://news.bitauto.com/qxsp/20160902/0606634657.html">斯柯达Kodiaq 7座SUV实拍图解 </a></h6>
+                                </div>
+                            </div>
+                            <div class="figure-box w238-h159">
+                                <a href="http://news.bitauto.com/qxsp/20160830/1706633885.html" class="figure"> <img src="http://img1.bitautoimg.com/autoalbum/files/20151014/990/11205299038044_4287456_14.jpg" alt=""> </a>
+                                <div class="title-box">
+                                    <h6 class="title"><a href="http://news.bitauto.com/qxsp/20160830/1706633885.html">全新奔腾X80实拍</a></h6>
+                                </div>
+                            </div>
+                            <div class="figure-box w238-h159">
+                                <a href="http://news.bitauto.com/drive/20151217/0506572646.html"> <img src="http://img4.bitautoimg.com/autoalbum/files/20150401/651/22593365107384_3957863_14.jpg" alt=""> </a>
+                                <div class="title-box">
+                                    <h6 class="title"><a href="http://news.bitauto.com/drive/20151217/0506572646.html">试全新雷克萨斯RX 给两个级别对手出难题</a></h6>
+                                </div>
+                            </div>
+                            <div class="figure-box w238-h159">
+                                <a href="http://news.bitauto.com/duibi/20160925/2306633101.html" class="figure"> <img src="http://img1.bitautoimg.com/autoalbum/files/20160825/767/10480276745507_5223948_630x2758__m2.jpg" alt=""> </a>
+                                <div class="title-box">
+                                    <h6 class="title"><a href="http://news.bitauto.com/duibi/20160925/2306633101.html">7万要7座还是性价比</a></h6>
+                                </div>
+                            </div>
+                            <div class="figure-box w238-h159">
+                                <a href="http://baa.bitauto.com/jiliboyue/thread-9369821.html" class="figure"> <img src="http://img4.baa.bitautotech.com/img/V2img4.baa.bitautotech.com/usergroup/2016/6/29/b14bf78e3f544c05824bc82b6d66884f_720_0_max_jpg.jpg" alt=""> </a>
+                                <div class="title-box">
+                                    <h6 class="title"><a href="http://baa.bitauto.com/jiliboyue/thread-9369821.html">国产最美SUV ,选择吉利博越</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

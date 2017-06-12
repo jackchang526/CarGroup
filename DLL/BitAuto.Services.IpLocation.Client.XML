@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BitAuto.Services.IpLocation.Client</name>
+    </assembly>
+    <members>
+        <member name="T:BitAuto.Services.IpLocation.Client.RegionReader">
+            <summary>
+            根据ip地址查询地区
+            </summary>
+        </member>
+        <member name="M:BitAuto.Services.IpLocation.Client.RegionReader.GetProvinceName(System.String)">
+            <summary>
+            获取ip对应的省份名称
+            </summary>
+            <param name="ip">IP地址，格式12.23.34.45</param>
+            <returns>省份</returns>
+        </member>
+        <member name="M:BitAuto.Services.IpLocation.Client.RegionReader.GetOtherName(System.String)">
+            <summary>
+            获取IP对应的地区中除了身份名称以外的信息
+            </summary>
+            <param name="ip">IP地址，格式12.23.34.45</param>
+            <returns>地区全称</returns>
+        </member>
+        <member name="M:BitAuto.Services.IpLocation.Client.RemotingReader.GetIpDistrict(System.String)">
+            <summary>
+            通过Net Remoting服务,查询ip对应地区
+            </summary>
+            <param name="ip"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BitAuto.Services.IpLocation.Client.RemotingReader.GetServerAddress">
+            <summary>
+            读取服务存在服务器Ip配置文件
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:BitAuto.Services.IpLocation.Client.IRegionReader">
+            <summary>
+            与Ip服务通信接口，
+            在客户端应用中不需要使用这个接口
+            </summary>
+        </member>
+    </members>
+</doc>

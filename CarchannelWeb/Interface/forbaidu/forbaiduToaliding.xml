@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<add name="大众CC" id="2932"/>
+	<add name="科鲁兹" id="2608"/>
+	<add name="荣威550" id="2371"/>
+	<add name="比亚迪f0" id="2420"/>
+	<add name="马自达6" id="1914"/>
+	<add name="途观" id="2871"/>
+	<add name="比亚迪f3" id="1594"/>
+	<add name="瑞纳" id="3167"/>
+	<add name="奥迪a6" id="2573"/>
+	<add name="奇瑞a3" id="2369"/>
+</root>

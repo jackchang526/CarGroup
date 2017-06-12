@@ -1,0 +1,18 @@
+[2015/9/22 18:33:09]  
+IP: 127.0.0.1
+Error in: http://car01.m.yiche.com/changancs75/m116206/peizhi/?carid=116206&
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 ASP.carcompare_aspx.__Render__control8(HtmlTextWriter __w, Control parameterContainer) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarCompare.aspx:行号 14
+   在 System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   在 System.Web.UI.HtmlControls.HtmlTitle.Render(HtmlTextWriter writer)
+   在 System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   在 System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   在 System.Web.UI.HtmlControls.HtmlHead.RenderChildren(HtmlTextWriter writer)
+   在 System.Web.UI.HtmlControls.HtmlContainerControl.Render(HtmlTextWriter writer)
+   在 System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   在 ASP.carcompare_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\Carchannel\WirelessWeb\CarCompare.aspx:行号 5
+   在 System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   在 System.Web.UI.Page.Render(HtmlTextWriter writer)
+   在 System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

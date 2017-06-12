@@ -1,0 +1,334 @@
+﻿<!-- 搜索 start -->
+<div class="mark mark1" style="display: none;"></div>
+<div class="header-box">
+    <!--flex-search-->
+    <!--nav-->
+    <nav>
+        <!--logo-->
+        <div class="yiche-logo" style="display: none;">
+            <a href="/">易车网</a>
+        </div>
+        <script type="text/javascript">
+            var needlg = util.GetQueryStringByName("lg");
+            if (needlg != "0") {
+                $(".yiche-logo").show();
+            }
+        </script>
+        <div class="lnk-right">
+            <a class="vs" href="/addchexingduibi/" data-channelid="85.85.1353" onclick="MtaH5.clickStat('a1')">车款对比</a>
+            <script type="text/javascript">
+                if(par.length>0){
+                    $(".vs").attr("href","/addchexingduibi/?"+par);
+                }else{
+                    $(".vs").attr("href","/addchexingduibi/");
+                }
+            </script>
+        </div>
+        <!--logo-->
+    </nav>
+    <!--nav-->
+    <!--搜索 start-->
+    <div class="search-outer">
+        <div class="wrap15">
+            <form id="searchForm" name="searchForm" method="post">
+                <div class="input-box">
+                    <div class="left-box">
+                        <input name="Keyword" type="text"  data-placeholder="请输入关键字" data-remove="lnk-remove" id="keyword" />
+                        <a href="javascript:void(0);" class="lnk-remove" id="removeinput" style="display: none"></a>                        
+                    </div>
+                    <div class="right-box">
+                        <a class="submit" href="javascript:void(0);" id="submit"></a>
+                        <input type="submit" style="display: none" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="search-pop hot-search" style="display: none;">
+            <%--<div class="tt-small">
+                <span>热门搜索</span>
+            </div>
+            <div class="hot-list">
+                <ul>
+                    <li>
+                        <a href="###">科鲁兹三厢</a>
+                    </li>
+                    <li>
+                        <a href="###">速腾</a>
+                    </li>
+                    <li>
+                        <a href="###">凯迪拉克皇家一号</a>
+                    </li>
+                </ul>
+            </div>--%>
+            <div class="tt-small">
+                <span>搜索历史</span>
+                <a href="javascript:void(0);" class="lnk-remove" id="removehistory"></a>
+            </div>
+            <div class="history-list search-list">
+                <%--<ul>
+                    <li>
+                        <a href="###">SUV</a>
+                    </li>                    
+                </ul>--%>
+            </div>
+            <div class="search-bottom">
+                <a class="btn-close" href="###">关闭</a>
+            </div>
+        </div>
+    </div>
+    <script src="http://image.bitautoimg.com/carchannel/h5/js/plugs/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript">
+        var viewedkey = "search_key";
+        var drpitemfun = function (name) {
+            window.location.href = "/xuanche/SearchResultListV1.aspx?Keyword=" + encodeURIComponent(name) + "&" + par;
+        };
+        $("#submit").click(function(){
+            var res=$("#keyword").val()
+            if(res!=="请输入关键字"&&res!=""&&res!=null){
+                var actionurl="/xuanche/SearchResultListV1.aspx?Keyword="+res;
+                var adval = util.GetQueryStringByName("ad");
+                if (adval != "" && adval != null) {
+                    actionurl+="&ad="+adval;
+                }
+
+                var orderval = util.GetQueryStringByName("order");
+                if (orderval != "" && orderval != null) {
+                    actionurl+="&order="+orderval;
+                }
+
+                var lgval = util.GetQueryStringByName("lg");
+                if (lgval != "" && lgval != null) {
+                    actionurl+="&lg="+lgval;
+                }
+
+                var lyval = util.GetQueryStringByName("ly");
+                if (lyval != "" && lyval != null) {
+                    actionurl+="&ly="+lyval;
+                }
+
+                var televal = util.GetQueryStringByName("tele");
+                if (televal != "" && televal != null) {
+                    actionurl+="&tele="+televal;
+                }
+                var wtval = util.GetQueryStringByName("WT.mc_id");
+                if (wtval != "" && wtval != null) {
+                    actionurl+="&WT.mc_id="+wtval;
+                }
+                $("#searchForm").attr("action", actionurl);
+                document.searchForm.submit();
+            }
+        });
+        $("#removehistory").bind("click", function () {
+            $(".history-list").html("");
+            $(this).hide();
+
+            //$('#topSearch').find('[type=search]').focus();
+            //清空搜索历史记录
+            if (window.localStorage) {
+                localStorage.removeItem(viewedkey);
+            } else {
+                $.cookie(viewedkey, null);
+            }
+        });
+        var getSearchData = function (keyword) {
+            $("#removehistory").parent().hide();
+            if (keyword.length > 0) {
+                $("#removeinput").show();
+            } else {
+                $("#removeinput").hide();
+            }
+            $.ajax({
+                type: "get",
+                url: "http://59.151.102.96/yicheappsug.php",
+                data: { k: keyword },
+                dataType: "jsonp",
+                jsonpCallback: "g",
+                success: function (data) {
+                    if (data["suglist"].length > 0) {
+                        var searchRes = "<ul>";
+                        $.each(data["suglist"], function (index, item) {
+                            if (item.name !== "") {
+                                searchRes += "<li> <a href='#' onclick=\"drpitemfun('" + item.name + "')\"> <strong class='ico-s-history'>" + item.name + "</strong> </a> </li>";
+                            }
+                        });
+                        searchRes += "</ul>";
+                        $(".history-list").html(searchRes);
+                        $(".history-list").addClass("search-list");
+                    } else {
+                        $("#search_res").html("");
+                    }
+                }
+            });
+        };
+        var getLocalStorageData = function () {
+            $("#removehistory").parent().show();
+            var strStoreDate = window.localStorage ? localStorage.getItem(viewedkey) : $.cookie(viewedkey);
+            if (strStoreDate) {
+                var arrDisplay = strStoreDate.split(",");
+                if (arrDisplay.length > 0) {
+                    var searchRes = "<ul>";
+                    arrDisplay.reverse(); //反转元素（最前的排到最后、最后的排到最前）
+                    $.each(arrDisplay, function(index, item) {
+                        if (item !== "") {
+                            searchRes += "<li> <a href='#' onclick=\"drpitemfun('" + item + "')\"> <strong class='ico-s-history'>" + item + "</strong> </a> </li>";
+                        }
+                    });
+                    searchRes += "</ul>";
+                    $(".history-list").removeClass("search-list");
+                    $(".history-list").html(searchRes);
+                    //$("#removeinput").show();
+                } else {
+                    $("#removehistory").hide();
+                }
+            } else {
+                $("#removehistory").hide();
+            }
+        };
+    </script>
+    <!--搜索 end-->
+</div>
+<!-- return block start -->
+<script type="text/javascript">
+    /*去掉两侧空格*/
+    String.prototype.trim || (String.prototype.trim = function() {
+        var reg = /^\s+|\s+$/g;
+        return this.replace(reg, '');
+    });
+
+    (function($) {
+        //输入框默认值
+        $.fn.placeholder = function(options) {
+            var setting = {
+                focusin: null,
+                focusout: null
+            }
+            options = Object.extend(options, setting);
+            var $this = this,
+                defaultValue = $this.attr('data-placeholder'),
+                value = $this.val();
+            if (value.trim() == '') {
+                $this.val(defaultValue);
+            }
+
+            $this.focusin(function() {
+                if ($this.val().trim() == defaultValue || $this.val().trim() == '') {
+                    $this.val('');
+                }
+                options.focusin && options.focusin.call($this);
+            });
+
+            $this.focusout(function() {
+                if ($this.val().trim() == '') {
+                    $this.val(defaultValue);
+                }
+                options.focusout && options.focusout.call($this);
+            });
+
+        }
+
+        //输入框删除按钮
+        //$.fn.inputRemove = function() {
+        //    var $this = this;
+        //    var $a = $this.parent().find('.' + $this.attr('data-remove'));
+        //    $a.click(function(ev) {
+        //        ev.preventDefault();
+        //        $this.val('');
+        //    });
+        //}
+    })(jQuery);
+
+    $(function() {
+        //设置输入框删除功能
+        $('#removeinput').click(function () {
+            $(this).hide();
+            $("#keyword").val("");
+            $("#keyword").focus();
+            getLocalStorageData();
+        });
+
+        //搜索层
+        (function() {
+            //设置输入框状态
+            var $hbox = $('.header-box'),
+                $back = $hbox.prev(),
+                $pop = $hbox.find('.search-pop');
+            $hbox.on('close', function(ev) {
+                $back.hide();
+                $pop.hide();
+                $hbox.removeClass('flex-search');
+            });
+
+            $hbox.find('.btn-close').click(function(ev) {
+                ev.preventDefault();
+                $hbox.trigger('close');
+            });
+
+            $back.click(function(ev) {
+                ev.preventDefault();
+                $hbox.trigger('close');
+            });
+
+            var $input = $('.left-box input', $hbox);
+            $input.placeholder({
+                focusin: function () {
+
+                    var keyword = $(this).val();
+                    if (keyword != "") {
+                        $("#removeinput").show();
+                        getSearchData(keyword);
+                    } else {
+                        $("#removeinput").hide();
+                        getLocalStorageData();
+                    }
+
+                    $back.show();
+                    $pop.show();
+                    $hbox.addClass('flex-search');
+                }
+            });
+
+            //$input.keydown(function (ev) {
+            //    //处理搜索逻辑
+            //    //console.log(ev.key);
+            //});
+
+            //头触发关闭事件
+            $hbox.click(function (ev) {
+                if (ev.target.className == 'lnk-right') {
+                    $hbox.trigger('close');
+                }
+            });
+
+            $input.bind({
+                "keyup": function () {
+                    //点击backspace时执行
+                    var keyword = $(this).val();
+                    if (keyword !== "") {
+                        getSearchData(keyword);
+                    } else {
+                        getLocalStorageData();
+                    }
+                },
+                "keypress": function (event) {
+                    var keyword = $(this).val();
+                    if (keyword.length < 15) {
+                        if (keyword !== "") {
+                            getSearchData(keyword);
+                        } else {
+                            getLocalStorageData();
+                        }
+                        if(event.keyCode==13){
+                            $("#submit").trigger("click");
+                        }
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            });
+        })();
+    });
+
+
+</script>
+<!-- 搜索 end -->

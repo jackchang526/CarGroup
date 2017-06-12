@@ -1,0 +1,20 @@
+﻿    <form id="sug_form" name="sug_form" target="_blank" method="get" action="http://www.cheyisou.com/post.aspx">
+    <input type="text" class="sug_onblur txt" id="sug_txt_keyword" name="so_keywords" value="" /><input type="submit" value="搜索" class="btn" id="sug_submit"/>
+    <div onselectstart="return false" id="sug" style="top: 24px; float: left; overflow: hidden;"></div>    
+    <input id="sug_hidurl" value="" type="hidden" />
+    <input id="sug_datatype" name="sug_datatype" value="qiche" type="hidden" />
+	<input id="sug_datatype2" name="sug_datatype2" value="dayi" type="hidden" />
+    <input id="sug_encoding" name="sug_encoding" value="utf-8" type="hidden" />
+    </form>
+
+<script type="text/javascript">
+    var sug_txt_name = "sug_txt_keyword";
+    var sug_open_type = "open";
+    var sug_txt_css = "txt";
+	var sug_flagID = "2";
+    var so = document.createElement('SCRIPT');
+    so.src = 'http://image.bitautoimg.com/bsearch/js_bar/sug_default_form.js?v2011';
+    document.getElementsByTagName('HEAD')[0].appendChild(so);
+    var ti = setInterval(function() { if (!window.bitauto) { return } else { window.bitauto.init(); clearInterval(ti) } }, 200)
+    window.onunload = function() { }; 
+</script>

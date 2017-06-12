@@ -58,20 +58,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BitAuto.CarUtils">
-      <HintPath>..\..\..\Dll\BitAuto.CarUtils.dll</HintPath>
+      <HintPath>..\..\..\packages\BitAuto.CarUtils.dll</HintPath>
     </Reference>
     <Reference Include="BitAuto.Utils, Version=2.0.7.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\BitAuto.Utils.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson">
-      <HintPath>..\..\..\Dll\MongoDB.Bson.dll</HintPath>
+      <HintPath>..\..\..\packages\MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver">
-      <HintPath>..\..\..\Dll\MongoDB.Driver.dll</HintPath>
+      <HintPath>..\..\..\packages\MongoDB.Driver.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\Dll\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

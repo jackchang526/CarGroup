@@ -58,25 +58,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BitAuto.CarUtils">
-      <HintPath>..\..\..\Dll\BitAuto.CarUtils.dll</HintPath>
+      <HintPath>..\..\..\packages\BitAuto.CarUtils.dll</HintPath>
     </Reference>
     <Reference Include="BitAuto.Controls">
-      <HintPath>..\..\..\..\..\P公用平台\Release\BitAuto.Controls.dll</HintPath>
+      <HintPath>..\..\..\packages\BitAuto.Controls.dll</HintPath>
     </Reference>
-    <Reference Include="BitAuto.Services, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Dll\BitAuto.Services.dll</HintPath>
+    <Reference Include="BitAuto.Services">
+      <HintPath>..\..\..\packages\BitAuto.Services.dll</HintPath>
     </Reference>
-    <Reference Include="BitAuto.Utils, Version=2.0.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Dll\BitAuto.Utils.dll</HintPath>
+    <Reference Include="BitAuto.Utils">
+      <HintPath>..\..\..\packages\BitAuto.Utils.dll</HintPath>
     </Reference>
     <Reference Include="Enyim.Caching">
-      <HintPath>..\..\..\Dll\Enyim.Caching.dll</HintPath>
+      <HintPath>..\..\..\packages\Enyim.Caching.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.4.369, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Dll\ICSharpCode.SharpZipLib.dll</HintPath>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\..\packages\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

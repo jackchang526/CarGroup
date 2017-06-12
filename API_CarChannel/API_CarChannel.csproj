@@ -52,9 +52,8 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BitAuto.Beyond.Caching.RefreshCache, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Dll\BitAuto.Beyond.Caching.RefreshCache.dll</HintPath>
+    <Reference Include="BitAuto.Beyond.Caching.RefreshCache">
+      <HintPath>..\..\..\packages\BitAuto.Beyond.Caching.RefreshCache.dll</HintPath>
     </Reference>
     <Reference Include="BitAuto.CarUtils">
       <HintPath>..\..\..\Dll\BitAuto.CarUtils.dll</HintPath>

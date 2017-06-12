@@ -43,27 +43,25 @@
                 </div>
                 <div class="brand-hot">
                     <ins id="div_60f12da8-7643-4414-a939-780a8e12ece0" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="60f12da8-7643-4414-a939-780a8e12ece0">
-                        <ul><li>        <a href="javascript:void(0)" data-action="car" data-id="9">            <img src="http://gimg1.bitautoimg.com/ResourceFiles/0/3/383/20170524095141400.png" alt="">            <p data-key="name">奥迪</p>			<input type="hidden" class="brand-logo m_9_b">        </a>    </li><li>		<a href="javascript:void(0)" data-action="car" data-id="8">			<img src="http://gimg1.bitautoimg.com/ResourceFiles/0/3/383/20170524095311666.png" alt="">			<p data-key="name">大众</p>			<input type="hidden" class="brand-logo m_8_b">		</a>    </li> <li>		<a href="javascript:void(0)" data-action="car" data-id="17">			<img src="http://gimg1.bitautoimg.com/ResourceFiles/0/3/383/20170524095435919.png" alt="">			<p data-key="name">福特</p>			<input type="hidden" class="brand-logo m_17_b">		</a>    </li><li>		<a href="javascript:void(0)" data-action="car" data-id="28">			<img src="http://gimg1.bitautoimg.com/ResourceFiles/0/3/383/20170524095528691.png" alt="">			<p data-key="name">起亚</p>			<input type="hidden" class="brand-logo m_28_b">		</a>    </li><li>		<a href="javascript:void(0)" data-action="car" data-id="13">			<img src="http://gimg1.bitautoimg.com/ResourceFiles/0/3/384/20170524095653684.png" alt="">			<p data-key="name">现代</p>			<input type="hidden" class="brand-logo m_13_b">		</a>    </li></ul>
                     </ins>
                     @*@if (ViewBag.re == "true")
-                    {
-                        @Html.Partial("~/html/HomepageHotBrandSEO.cshtml")
-                    }
-                    else
-                    {
-                        @Html.Partial("~/html/HomepageHotBrand.cshtml")
-                    }*@
+                        {
+                            @Html.Partial("~/html/HomepageHotBrandSEO.cshtml")
+                        }
+                        else
+                        {
+                            @Html.Partial("~/html/HomepageHotBrand.cshtml")
+                        }*@
                 </div>
                 <div class="hot-car-list">
                     <ins id="div_8f582dc7-7250-453a-b8f7-fcc9bcc2df56" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="8f582dc7-7250-453a-b8f7-fcc9bcc2df56">
-                        <ul> <li>                        <a href="//g.bitauto.com/c2.aspx?queryStr=qq4qapG5PqUEjjGtfRwoiQ==&amp;adposid=20481&amp;c=&amp;f=http%3a%2f%2ftest1.car.m.yiche.com%2fbrandlist.html&amp;adurl=http%3a%2f%2fcar.m.yiche.com%2fyinglangsanxiang%2f&amp;k=158904406">                            <img src="http://gimg1.bitautoimg.com/ResourceFiles/0/3/384/20170524103800503.jpg">                            <span>英朗</span>                        </a>                    </li>                    <li>                        <a href="//g.bitauto.com/c2.aspx?queryStr=M8+vEq5JnH6cagq8xfLUGQ==&amp;adposid=20480&amp;c=&amp;f=http%3a%2f%2ftest1.car.m.yiche.com%2fbrandlist.html&amp;adurl=http%3a%2f%2fcar.m.yiche.com%2fbiekegl8%2f&amp;k=3183023">                            <img src="http://gimg1.bitautoimg.com/ResourceFiles/0/3/384/20170524103925449.jpg">                            <span>别克GL8</span>                        </a>                    </li> <li>                        <a href="//g.bitauto.com/c2.aspx?queryStr=zArr2RQsKxcbXnJyHlvQcg==&amp;adposid=20479&amp;c=&amp;f=http%3a%2f%2ftest1.car.m.yiche.com%2fbrandlist.html&amp;adurl=http%3a%2f%2fcar.m.yiche.com%2fquanxinaodia4l%2f&amp;k=99836458">                            <img src="http://gimg1.bitautoimg.com/ResourceFiles/0/3/384/20170524104042230.jpg">                            <span>奥迪A4L</span>                        </a>                    </li></ul> 
                     </ins>
                 </div>
                 @(Html.Raw(ViewBag.brandListHtml))
             </div>
             <!-- 按品牌选车 end -->
             <!-- 字母导航 start -->
-            <div class="fixed-nav" style="opacity: 1; display: block;">
+            <div class="fixed-nav" style="opacity: 0; display: block;">
                 <ul class="rows-box">
                     <li><a href="#">#</a></li>
                     @(Html.Raw(ViewBag.letterListHtml))
@@ -149,14 +147,16 @@
     <script type="text/javascript">
         var url = "http://m.yiche.com/";
     </script>
-    
+
     @*<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/v2/iscroll.js"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/WirelessJsv2/v2/underscore.js"></script>
-    <script type="text/javascript" src="/js/v2/model.js"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/v2/rightswipe.js"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/v2/note.js"></script>*@ 
-    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.js,carchannel/wirelessjsv2/v2/underscore.js,carchannel/wirelessjsv2/v2/model.js,carchannel/wirelessjsv2/v2/rightswipe.js,carchannel/wirelessjsv2/v2/note.js?v=20170517"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/WirelessJsv2/v2/underscore.js"></script>
+        <script type="text/javascript" src="/js/v2/model.js"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/v2/rightswipe.js"></script>
+        <script type="text/javascript" src="/js/v2/note.js"></script>*@
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js?v=201706071616"></script>
     <script type="text/javascript">
+        var $body = $('body');
+
         $(function () {
             if (typeof (bitLoadScript) == "undefined")
                 bitLoadScript = function (url, callback, charset) {
@@ -172,18 +172,25 @@
             var $body = $('body');
             //笔记本滑动效果
             $body.trigger('note');
+
             var reTemp = "@ViewBag.re";
-            if (reTemp.toString() != "true")
-	        {  //右侧子品牌效果
-               $body.trigger('rightswipe3', { model_hide: true });
+            if (reTemp.toString() != "true") {  //右侧子品牌效果
+                $body.trigger('rightswipe3', { model_hide: true });
             }
         });
+        function adCallback(objId) {
+            var parentNode = document.getElementById(objId).parentNode;
+            $(parentNode).imgSucceed({
+                end: function () {  $body.trigger('note'); }
+            });
+        }
     </script>
     <div class="footer15">
         <!--搜索框-->
         @Html.Partial("~/html/footersearch.cshtml")
         <div class="breadcrumb">
             <div class="breadcrumb-box">
+
                 <a href="http://m.yiche.com/">首页</a> &gt; <span>选车</span>
             </div>
         </div>

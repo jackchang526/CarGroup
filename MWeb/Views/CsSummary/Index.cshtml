@@ -24,7 +24,7 @@
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery-1.9.1.min.js"></script>
     <script type="text/javascript">
         var cityId = 201,
-            cityName = "北京"; 
+            cityName = "北京";
         if (typeof (bit_locationInfo) != "undefined" && typeof (bit_locationInfo.cityId) != "undefined") {
             cityId = bit_locationInfo.cityId;
             cityName = bit_locationInfo.cityName;
@@ -108,10 +108,10 @@
                             </a>
                         </li>
                         @*<li>
-                            <a href="http://yanghu.m.yiche.com/xuanze/0/@(serialEntity.Id)/?source=cxytab&amp;atype&amp;type=0" data-channelid="27.23.1376">
-                                <strong>养护</strong>
-                            </a>
-                        </li>*@
+                                <a href="http://yanghu.m.yiche.com/xuanze/0/@(serialEntity.Id)/?source=cxytab&amp;atype&amp;type=0" data-channelid="27.23.1376">
+                                    <strong>养护</strong>
+                                </a>
+                            </li>*@
                     </ul>
                 </div>
                 <div class="right-mask"></div>
@@ -251,7 +251,7 @@
         @if (new int[] { 1574, 1610, 1611, 1661, 1699, 1729, 1796, 1811, 1825, 1879, 1909, 1991, 2109, 2364, 2370, 2381, 2406, 2407, 2408, 2593, 2608, 2714, 2731, 2945, 3152, 3379, 3495, 3600, 3655, 3887, 3913, 3920, 3987, 4002, 4149, 4169, 4238, 4279, 4282, 4283, 4418, 4447, 4557, 4616, 4682, 4711, 4853, 4866, 4881, 4936 }.Contains(serialEntity.Id))
         {
         <!-- 秒懂车 start -->
-            <a href="http://www.bitauto.com/topics/zttj/mdc/index/@(serialEntity.Id).shtml" class="mdc-box b-shadow" id="secondcar"  data-channelid="27.23.1784">
+            <a href="http://www.bitauto.com/topics/zttj/mdc/index/@(serialEntity.Id).shtml" class="mdc-box b-shadow" id="secondcar" data-channelid="27.23.1784">
                 <img src="@serialInfoCard.CsDefaultPic">
                 <span>一分钟了解它的优缺点</span>
             </a>
@@ -293,15 +293,24 @@
         <!--车款列表 start-->
         @(Html.Raw(ViewData["CarListHtml"]))
         <!--车款列表 end-->
-        
+        @{
+            int[] dataCheckCsIds = new int[] { 4123, 4881, 2608, 1574, 2573, 3987, 2032, 1905, 4847, 1798 };
+            bool isShowCheckData = !dataCheckCsIds.Contains(serialEntity.Id);
+        }
+        @{
+            if (isShowCheckData)
+            {
                  <!-- app下载-->
                 <!--#include file="/include/pd/2016/wap/00001/201606_yidongzhan_appdown_Manual.shtml" -->
                 <!-- app下载-->
-           
+            }
+        }
         <script type="text/javascript">
             showNewsInsCode('f327fc17-f1ad-4fcd-91d7-03e42c9b72b4', 'f31814e7-225c-4e92-8ea9-c2876315cee0', '20f3b410-22f8-4035-9bf7-3267a88bda6a', '2afe4673-39b3-4bad-9f48-38b0b6cb9513');
         </script>
-    
+        @{
+            if (isShowCheckData)
+            {
         <!-- 口碑 start -->
                 @(Html.Raw(ViewData["KoubeiImpressionHtml"]))
         <!-- 口碑 end -->
@@ -312,14 +321,14 @@
                 <div class="talk-car-box b-shadow" id="audio_list"></div>
         <!-- 编辑评车 start -->
         <!-- 文章 start -->
-                @{
+                //@{
                 string newsPingceHtml = ViewData["NewsPingceHtml"].ToString();
                 string newsDaogouHtml = ViewData["NewsDaogouHtml"].ToString();
                 string serialNews = ViewData["SerialNews"].ToString();
                 bool pingceLiFlag = ConvertHelper.GetBoolean(ViewData["PingceLiFlag"]);
                 bool daogouLiFlag = ConvertHelper.GetBoolean(ViewData["DaogouLiFlag"]);
                 bool isShowNews = !string.IsNullOrWhiteSpace(newsPingceHtml) || !string.IsNullOrWhiteSpace(newsDaogouHtml) || !string.IsNullOrWhiteSpace(serialNews);
-                }
+                //}
                 <div class="tt-first" id="m-tabs-article" style="@(isShowNews ? "" : "display:none")">
                     <h3>文章</h3>
                     <div class="opt-more">
@@ -434,10 +443,10 @@
                     </div>
                 </div>
         <!-- 文章 end -->
-                @{
+                //@{
                 List<VideoEntity> videoList = (List<VideoEntity>)ViewData["VideoList"];
-                }
-                @if (videoList != null && videoList.Count > 0)
+                // }
+                if (videoList != null && videoList.Count > 0)
                 {
                     <div class="tt-first" data-channelid="27.23.734">
                         <h3>易车视频</h3>
@@ -448,39 +457,41 @@
                     <div class="video-box b-shadow" id="m_video" data-channelid="27.23.735">
                         <ul>
                             @{
-                    var ids = "";
-                    foreach (var videoEntity in videoList)
-                    {
-                        ids += videoEntity.VideoId + ",";
-                        var timeSpan = new TimeSpan(0, 0, videoEntity.Duration).ToString("mm\\:ss");
-                        <li>
-                            <a href="@(videoEntity.ShowPlayUrl.Replace("v.bitauto.com", "v.m.yiche.com"))">
-                                <span>
-                                    <img src="@(videoEntity.ImageLink.ToLower().Replace("video", "newsimg_300x168/Video").Replace("video", "newsimg_300x168/Video"))">
-                                    <i></i>
-                                </span>
-                                <p>@(videoEntity.ShortTitle)</p>
-                                <em>
-                                    <i class="play-num" id="viewcount_@(videoEntity.VideoId)">0</i><i class="play-time">@(timeSpan)</i>
-                                </em>
-                            </a>
-                        </li>
-                    }
+                                var ids = "";
+                                foreach (var videoEntity in videoList)
+                                {
+                                    ids += videoEntity.VideoId + ",";
+                                    var timeSpan = new TimeSpan(0, 0, videoEntity.Duration).ToString("mm\\:ss");
+                                    <li>
+                                        <a href="@(videoEntity.ShowPlayUrl.Replace("v.bitauto.com", "v.m.yiche.com"))">
+                                            <span>
+                                                <img src="@(videoEntity.ImageLink.ToLower().Replace("video", "newsimg_300x168/Video").Replace("video", "newsimg_300x168/Video"))">
+                                                <i></i>
+                                            </span>
+                                            <p>@(videoEntity.ShortTitle)</p>
+                                            <em>
+                                                <i class="play-num" id="viewcount_@(videoEntity.VideoId)">0</i><i class="play-time">@(timeSpan)</i>
+                                            </em>
+                                        </a>
+                                    </li>
+                                }
                             }
                         </ul>
                         <input type="hidden" id="ids" value="@(ids.Length > 0 ? ids.Substring(0, ids.Length - 1) : "")" />
                     </div>
-                }
+                                }
         <!-- 视频 end -->
         <!-- 论坛热帖 start -->
-                @(Html.Raw(ViewData["ForumNewsHtml"]))
+                                @(Html.Raw(ViewData["ForumNewsHtml"]))
         <!-- 论坛热帖 end -->
+                                }
+        }
         <ins id="div_bec90be3-b648-4cd9-8c33-96c6be62451d" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="@(serialEntity.Id)" adplay_brandname="" adplay_brandtype="" adplay_blockcode="bec90be3-b648-4cd9-8c33-96c6be62451d"> </ins>
         <a name="a-dealer"></a>
 
         <script type="text/javascript">
             var CarCommonBSID = "@(serialEntity.Brand == null ? 0 : serialEntity.Brand.MasterBrandId)"; //大数据组统计用
-            var CarCommonCBID = "@(serialEntity.Brand == null ? 0 : serialEntity.Brand.Id)"; 
+            var CarCommonCBID = "@(serialEntity.Brand == null ? 0 : serialEntity.Brand.Id)";
             var CarCommonCSID = "@(serialEntity.Id.ToString(System.Globalization.CultureInfo.InvariantCulture))";
             //app下载设置全局变量
             var global_app_download = false;
@@ -488,9 +499,13 @@
                 cityname = GlobalSummaryConfig.CityName;
             $("#m-hangqing-city").html(cityName + "<i></i>");
             var csId = GlobalSummaryConfig.SerialId;
-            document.write('<scri' + 'pt src="http://m.h5.qiche4s.cn/priceapiv2/ajax/InitData.ashx?action=cardealerlist&brandid=@(serialEntity.Id)&citycode=' + citycode + '" type="text/javascript"></s' + 'cript>');
         </script>
-        
+        @{if (isShowCheckData)
+            {
+                <script type="text/javascript">
+                document.write('<scri' + 'pt src="http://m.h5.qiche4s.cn/priceapiv2/ajax/InitData.ashx?action=cardealerlist&brandid=@(serialEntity.Id)&citycode=' + citycode + '" type="text/javascript"></s' + 'cript>');
+                </script>
+            }}
         <!--看了还看 start-->
         @(Html.Raw(ViewData["SerialToSee"]))
         <!--看了还看 end-->
@@ -521,12 +536,14 @@
         <!--市层 end-->
         <!-- black popup end -->
         <script type="text/javascript">
-            //showNewsInsCode('893f9a91-0f1e-484c-8263-37d815e64d1b', '09dc099f-5b52-4a70-8edd-faa0d7ff4818', '469f45cc-1b72-461c-ba68-0b560c885455', 'cd11763a-ea3e-4315-b054-8baecd23cab8');
-            showNewsInsCode('d919899b-178d-42c6-bfdf-13d8fe743450', 'e570bef3-1939-4012-9c2b-1de99256e34b', 'f034550f-7b8c-47f4-b6f3-63b7fb1026d3', '4a871eb9-835d-4207-a356-a035198b2035');
+                //showNewsInsCode('893f9a91-0f1e-484c-8263-37d815e64d1b', '09dc099f-5b52-4a70-8edd-faa0d7ff4818', '469f45cc-1b72-461c-ba68-0b560c885455', 'cd11763a-ea3e-4315-b054-8baecd23cab8');
+                showNewsInsCode('d919899b-178d-42c6-bfdf-13d8fe743450', 'e570bef3-1939-4012-9c2b-1de99256e34b', 'f034550f-7b8c-47f4-b6f3-63b7fb1026d3', '4a871eb9-835d-4207-a356-a035198b2035');
         </script>
-        
+        @{if (isShowCheckData)
+            {
         <!--#include file="/include/pd/2016/wap/00001/201606_wap_common_ydyy_Manual.shtml" -->
-        
+            }
+        }
         <!--一级公共模板 start-->
         <script type="text/template" id="duibibtnTemplate">
             <div class="y2015-car-01">
@@ -575,7 +592,7 @@
             <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
         </div>
         <script type="text/javascript">
-            showNewsInsCode('893f9a91-0f1e-484c-8263-37d815e64d1b', '09dc099f-5b52-4a70-8edd-faa0d7ff4818', '469f45cc-1b72-461c-ba68-0b560c885455', 'cd11763a-ea3e-4315-b054-8baecd23cab8');
+                showNewsInsCode('893f9a91-0f1e-484c-8263-37d815e64d1b', '09dc099f-5b52-4a70-8edd-faa0d7ff4818', '469f45cc-1b72-461c-ba68-0b560c885455', 'cd11763a-ea3e-4315-b054-8baecd23cab8');
         </script>
 
 
@@ -666,7 +683,7 @@
             <ul class="y2015">
                 <li><a href="#" data-value="不限">不限</a></li>
                 { for(var j = 0 ; j < SubItem.length ; j++){ }
-                <li {=(SubItem[j].toString() ==selSubStopYear||SubItem[j].toString() ==selSubLevel||SubItem[j].toString() ==selSubBodyForm)?"class ='current' ":" "}><a href="#" data-value="{=SubItem[j].toString().replace('款','')}">{=SubItem[j]}</a></li>
+                <li {=(SubItem[j].toString() = =selSubStopYear||SubItem[j].toString() = =selSubLevel||SubItem[j].toString() = =selSubBodyForm)?"class ='current' ":" "}><a href="#" data-value="{=SubItem[j].toString().replace('款','')}">{=SubItem[j]}</a></li>
                 {}}
             </ul>
         </div>
@@ -677,7 +694,8 @@
         <dl class="tt-list">
             { for(var n in provinces){}
             <dt><span>{=n}</span></dt>
-            {for(var i=0;i<provinces[n].length;i++){}
+            {for(var i=0;i
+            <provinces[n].length;i++){}
                 <dd>
                     <a href="#" {=provinces[n][i].children ? 'data-action="city"':''} data-id="{=provinces[n][i].id}" class="{=provinces[n][i].children ? '':'nbg'} {=provinces[n][i].id.toString() == current_province.toString()  ? 'current':''}">
                         <p>{=provinces[n][i].name}</p>
@@ -712,7 +730,7 @@
     <!-- 正常 end -->
     <div class="bottom-float" id="bottomFloat" style="display: none">
         <ul>
-            @if(serialEntity.SaleState == "停销")
+            @if (serialEntity.SaleState == "停销")
             {
                 <li class="two-item item-duibi" id="itemDuibi">
                     <a id="compare-pk" data-channelid="27.23.747" href="#compare" data-action="duibicar"><em id="duibiAti"></em>对比<i></i></a>
@@ -772,24 +790,24 @@
     @if (ConvertHelper.GetInteger(ViewData["YearCount"]) > 0)
     {
         <script type="text/javascript">
-            // 临时统计方法
-            function statForTempString(objid, str1, str2) {
-                var _sentImg = new Image(1,
-                    1);
-                _sentImg.src = "http://carstat.bitauto.com/weblogger/img/c.gif?logtype=temptypestring&objid="
-                    + objid + "&str1=" + encodeURIComponent(str1) + "&str2=" + encodeURIComponent(str2)
-                    + "&" + Math.random();
-            }
+                // 临时统计方法
+                function statForTempString(objid, str1, str2) {
+                    var _sentImg = new Image(1,
+                        1);
+                    _sentImg.src = "http://carstat.bitauto.com/weblogger/img/c.gif?logtype=temptypestring&objid="
+                        + objid + "&str1=" + encodeURIComponent(str1) + "&str2=" + encodeURIComponent(str2)
+                        + "&" + Math.random();
+                }
 
-            var year = "all";
-            var divNum = 0;
+                var year = "all";
+                var divNum = 0;
 
-            //还原筛选项的值
-            function resetOptions() {
-                $("[data-action=level]").removeClass("current").find("span").text("排量");
-                $("[data-action=bodyform]").removeClass("current").find("span").text("变速箱");
-                selSubStopYear = '', selSubLevel = '', selSubBodyForm = '';
-            }
+                //还原筛选项的值
+                function resetOptions() {
+                    $("[data-action=level]").removeClass("current").find("span").text("排量");
+                    $("[data-action=bodyform]").removeClass("current").find("span").text("变速箱");
+                    selSubStopYear = '', selSubLevel = '', selSubBodyForm = '';
+                }
         </script>
     }
 
@@ -830,7 +848,7 @@
     <script type="text/javascript">
         var _zampq = [];
         _zampq.push(["_setAccount", "12"]);
-        (function() {
+        (function () {
             var zp = document.createElement("script");
             zp.type = "text/javascript";
             zp.async = true;

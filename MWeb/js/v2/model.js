@@ -304,7 +304,7 @@ var eventNames = ['webkit', 'moz', 'o'];
         $this.rows = 0;
         var site = [], f1 = 0, otop = 0, t = 0;
         var $first = $this.first();
-        $first.on('to', function (event, r) {
+        function to(event, r) {
             var offsetY = options.toOffsetY || 0;
             var site = sections.sortValue(function (i, j) {
                 if (this[i].top > this[j].top) {
@@ -313,14 +313,15 @@ var eventNames = ['webkit', 'moz', 'o'];
                     this[j] = temp;
                 }
             });
-
             var section = $(site).eq(r), pos = section[0].top;
             //if (pos + offsetY <= 0) { return }
             //滚动屏幕
             $("html,body").animate({
                 scrollTop: pos + offsetY
             }, options.speed);
-        })
+        }
+        $first.off().on('to', to);
+
         var winh = document.body.clientHeight > document.documentElement.clientHeight ? document.documentElement.clientHeight != 0 ? document.documentElement.clientHeight : document.body.clientHeight : document.body.clientHeight,
             scrollh = document.body.scrollHeight > document.documentElement.scrollHeight ? document.documentElement.scrollHeight != 0 ? document.documentElement.scrollHeight : document.body.scrollHeight : document.body.scrollHeight;
 
@@ -437,7 +438,8 @@ var eventNames = ['webkit', 'moz', 'o'];
         var items = this.find(options.items);
         var itemH = items.eq(0).height();
         var $this = this, otop = 0, okey = '', timeout = 0, secs = [];
-        $this.on('compareTop', function (event, ev) {
+
+        function compareTop(event, ev) {
             var isdelay = ev.type != 'touchstart';
             if (!isdelay) {
                 secs.length = 0;
@@ -493,7 +495,9 @@ var eventNames = ['webkit', 'moz', 'o'];
                 okey = key;
             }
             otop = currentTOP;
-        })
+        }
+        $this.off().on('compareTop', compareTop);
+
         options.init && options.init.call($this);
     }
 
@@ -1189,5 +1193,61 @@ var eventNames = ['webkit', 'moz', 'o'];
             $model.remove();
             tips[options.tempateName] = false;
         }, options.delay);
+    }
+    $.fn.onload = function (fnEnd) {
+        function e($o, end) {
+            var obj = $o[0];
+            obj.onerror = function () {
+                end && end.call($o, 0);
+                obj.onreadystatechange = null;
+            }
+
+            obj.onload = function () {
+                end && end.call($o, 1);
+                obj.onreadystatechange = null;
+            }
+            obj.onreadystatechange = function (ev) {
+                if (obj.readyState == 'complete') {
+                    end && end.call($o, 1);
+                    obj.onload = null;
+                }
+            }
+        }
+
+        if (this.length > 0) {
+            var i = 0;
+            this.each(function (index, curr) {
+                var $this = $(curr);
+                e($this, function () {
+                    i++;
+                    if (i >= this.length) { fnEnd && fnEnd.call($this) }
+                });
+            })
+        } else {
+            e(this, fnEnd);
+        }
+    }
+    //图片加载成功状态
+    $.fn.imgSucceed = function (options) {
+        var setting = {
+            end: null
+        }
+        options = Object.extend(options, setting);
+        var $this = this, index = 1;
+        var imgs = $this.find('img');
+        var len = imgs.length;
+        if (len > 0) {
+            imgs.each(function (index, curr) {
+                var $img = $(curr);
+                $img.onload(function () {
+                    if (index == (len - 1)) {
+                        options.end && options.end.call($this);
+                    }
+                    index++;
+                })
+            });
+        } else {
+            options.end && options.end.call($this);
+        }
     }
 })(jQuery);

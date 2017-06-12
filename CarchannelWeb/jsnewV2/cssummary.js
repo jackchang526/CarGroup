@@ -417,7 +417,7 @@ function FocusNews(totalCount, data) {
         if (time.length > 9) {
             time = time.substr(5, 5);
         }
-        h.push("<div class=\"txt\"><strong><a class=\"no-link\">行情</a>|</strong><a data-channelid=\"2.21.1787\" href=\"" + data.News[0].url + "\" target=\"_blank\">" + data.News[0].title + "</a></div><span>" + time + "</span>");
+        h.push("<div class=\"txt\" data-channelid=\"2.21.1787\"><strong><a href=\"http://news.bitauto.com/list/cc1175/\" target=\"_blank\">行情</a>|</strong><a href=\"" + data.News[0].url + "\" target=\"_blank\">" + data.News[0].title + "</a></div><span>" + time + "</span>");
         var newsul = $(content).find("ul");
         var newsli = $(newsul).find("li");
         if ($(newsli).length == totalCount) {
@@ -439,7 +439,8 @@ function FocuNewsForWaitSale(newsCount, data) {
     if (time.length > 9) {
         time = time.substr(5, 5);
     }
-    h.push("<div class=\"txt\"><strong><a class=\"no-link\" target=\"_blank\">行情</a>|</strong><a href=\"" + data.News[0].url + "\" target=\"_blank\">" + data.News[0].title + "</a></div><span>" + time + "</span>");
+    //h.push("<div class=\"txt\"><strong><a class=\"no-link\" target=\"_blank\">行情</a>|</strong><a href=\"" + data.News[0].url + "\" target=\"_blank\">" + data.News[0].title + "</a></div><span>" + time + "</span>");
+    h.push("<div class=\"txt\" data-channelid=\"2.21.1787\"><strong><a href=\"http://news.bitauto.com/list/cc1175/\" target=\"_blank\">行情</a>|</strong><a href=\"" + data.News[0].url + "\" target=\"_blank\">" + data.News[0].title + "</a></div><span>" + time + "</span>");
     var newsli = $(content).find("li");
     if ($(newsli).length < newsCount) {
         if ($(newsli).length == 1) {

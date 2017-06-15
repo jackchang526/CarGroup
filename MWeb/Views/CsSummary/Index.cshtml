@@ -293,24 +293,15 @@
         <!--车款列表 start-->
         @(Html.Raw(ViewData["CarListHtml"]))
         <!--车款列表 end-->
-        @{
-            int[] dataCheckCsIds = new int[] { 4123, 4881, 2608, 1574, 2573, 3987, 2032, 1905, 4847, 1798 };
-            bool isShowCheckData = !dataCheckCsIds.Contains(serialEntity.Id);
-        }
-        @{
-            if (isShowCheckData)
-            {
-                 <!-- app下载-->
-                <!--#include file="/include/pd/2016/wap/00001/201606_yidongzhan_appdown_Manual.shtml" -->
-                <!-- app下载-->
-            }
-        }
+        
+        <!-- app下载-->
+        <!--#include file="/include/pd/2016/wap/00001/201606_yidongzhan_appdown_Manual.shtml" -->
+        <!-- app下载-->
+         
         <script type="text/javascript">
             showNewsInsCode('f327fc17-f1ad-4fcd-91d7-03e42c9b72b4', 'f31814e7-225c-4e92-8ea9-c2876315cee0', '20f3b410-22f8-4035-9bf7-3267a88bda6a', '2afe4673-39b3-4bad-9f48-38b0b6cb9513');
         </script>
-        @{
-            if (isShowCheckData)
-            {
+        
         <!-- 口碑 start -->
                 @(Html.Raw(ViewData["KoubeiImpressionHtml"]))
         <!-- 口碑 end -->
@@ -321,14 +312,14 @@
                 <div class="talk-car-box b-shadow" id="audio_list"></div>
         <!-- 编辑评车 start -->
         <!-- 文章 start -->
-                //@{
+                @{
                 string newsPingceHtml = ViewData["NewsPingceHtml"].ToString();
                 string newsDaogouHtml = ViewData["NewsDaogouHtml"].ToString();
                 string serialNews = ViewData["SerialNews"].ToString();
                 bool pingceLiFlag = ConvertHelper.GetBoolean(ViewData["PingceLiFlag"]);
                 bool daogouLiFlag = ConvertHelper.GetBoolean(ViewData["DaogouLiFlag"]);
                 bool isShowNews = !string.IsNullOrWhiteSpace(newsPingceHtml) || !string.IsNullOrWhiteSpace(newsDaogouHtml) || !string.IsNullOrWhiteSpace(serialNews);
-                //}
+                }
                 <div class="tt-first" id="m-tabs-article" style="@(isShowNews ? "" : "display:none")">
                     <h3>文章</h3>
                     <div class="opt-more">
@@ -443,10 +434,10 @@
                     </div>
                 </div>
         <!-- 文章 end -->
-                //@{
+                @{
                 List<VideoEntity> videoList = (List<VideoEntity>)ViewData["VideoList"];
-                // }
-                if (videoList != null && videoList.Count > 0)
+                }
+                @if (videoList != null && videoList.Count > 0)
                 {
                     <div class="tt-first" data-channelid="27.23.734">
                         <h3>易车视频</h3>
@@ -484,8 +475,7 @@
         <!-- 论坛热帖 start -->
                                 @(Html.Raw(ViewData["ForumNewsHtml"]))
         <!-- 论坛热帖 end -->
-                                }
-        }
+                               
         <ins id="div_bec90be3-b648-4cd9-8c33-96c6be62451d" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="@(serialEntity.Id)" adplay_brandname="" adplay_brandtype="" adplay_blockcode="bec90be3-b648-4cd9-8c33-96c6be62451d"> </ins>
         <a name="a-dealer"></a>
 
@@ -500,12 +490,11 @@
             $("#m-hangqing-city").html(cityName + "<i></i>");
             var csId = GlobalSummaryConfig.SerialId;
         </script>
-        @{if (isShowCheckData)
-            {
-                <script type="text/javascript">
-                document.write('<scri' + 'pt src="http://m.h5.qiche4s.cn/priceapiv2/ajax/InitData.ashx?action=cardealerlist&brandid=@(serialEntity.Id)&citycode=' + citycode + '" type="text/javascript"></s' + 'cript>');
-                </script>
-            }}
+       
+        <script type="text/javascript">
+        document.write('<scri' + 'pt src="http://m.h5.qiche4s.cn/priceapiv2/ajax/InitData.ashx?action=cardealerlist&brandid=@(serialEntity.Id)&citycode=' + citycode + '" type="text/javascript"></s' + 'cript>');
+        </script>
+          
         <!--看了还看 start-->
         @(Html.Raw(ViewData["SerialToSee"]))
         <!--看了还看 end-->
@@ -539,11 +528,9 @@
                 //showNewsInsCode('893f9a91-0f1e-484c-8263-37d815e64d1b', '09dc099f-5b52-4a70-8edd-faa0d7ff4818', '469f45cc-1b72-461c-ba68-0b560c885455', 'cd11763a-ea3e-4315-b054-8baecd23cab8');
                 showNewsInsCode('d919899b-178d-42c6-bfdf-13d8fe743450', 'e570bef3-1939-4012-9c2b-1de99256e34b', 'f034550f-7b8c-47f4-b6f3-63b7fb1026d3', '4a871eb9-835d-4207-a356-a035198b2035');
         </script>
-        @{if (isShowCheckData)
-            {
+       
         <!--#include file="/include/pd/2016/wap/00001/201606_wap_common_ydyy_Manual.shtml" -->
-            }
-        }
+          
         <!--一级公共模板 start-->
         <script type="text/template" id="duibibtnTemplate">
             <div class="y2015-car-01">
@@ -813,7 +800,7 @@
 
 
     <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/commonjs.js,carchannel/wirelessjsv2/city348IDMapName.js"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/cssummaryv2.min.js?v=201705311542"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/cssummaryv2.min.js?v=20170615"></script>
     @*<script type="text/javascript" src="/js/cssummaryv2.js?v=20170303"></script>*@
     <script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars"></script>
     <script src="http://image.bitautoimg.com/uimg/wap/js/idangerous.swiper-2.0.min.js"></script>

@@ -112,23 +112,23 @@ $(document).ready(function () {
                 cache: true,
                 jsonpCallback: "getfocusnewsback",
                 success: function (data) {
-                    if (data.News.length == 0) {
+                    if (data.news.length == 0) {
                         return;
                     }
                     var h = new Array();
-                    var time = data.News[0].publishTime;
+                    var time = data.news[0].publishTime;
                     if (time.length >= 10) {
                         time = time.substr(0, 10);
                     }
-                    var img = data.News[0].imageCoverUrl;
+                    var img = data.news[0].imageCoverUrl;
                     if (img.length > 0) {
                         img = img.replace("_3.", "_1.");
                     }
-                    h.push("<a href=\"" + data.News[0].url + "\" data-channelid=\"27.23.1788\">");
+                    h.push("<a href=\"" + data.news[0].url + "\" data-channelid=\"27.23.1788\">");
                     if (img.length > 0) {
                         h.push("<div class=\"img-box\"><span><img src=\"" + img + "\"></span></div>");
                     }
-                    h.push("<div class=\"con-box\"><h4>" + data.News[0].title + "</h4><em><span>" + time + "</span><span>" + data.News[0].author + "</span><i class=\"ico-comment huifu comment_0_6583989\">" + data.News[0].pv + "</i></em></div></a>");
+                    h.push("<div class=\"con-box\"><h4>" + data.news[0].title + "</h4><em><span>" + time + "</span><span>" + data.news[0].author + "</span><i class=\"ico-comment huifu comment_0_6583989\">" + data.news[0].pv + "</i></em></div></a>");
 
                     var newsli = $(content).find("li");
                     var newscount = $(newsli).length;

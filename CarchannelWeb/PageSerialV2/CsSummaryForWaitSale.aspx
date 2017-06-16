@@ -131,7 +131,7 @@
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
 
         <!--#include file="/include/special/stat/00001/bglogpostlog_Manual.shtml"-->
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201705311545"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=20170616"></script>
         <%--<script type="text/javascript" src="/jsnewv2/cssummary.js?v=20161230"></script>--%>
         <script type="text/javascript">
             var serialId = <%= serialId %>;

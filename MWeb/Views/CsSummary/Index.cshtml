@@ -670,7 +670,7 @@
             <ul class="y2015">
                 <li><a href="#" data-value="不限">不限</a></li>
                 { for(var j = 0 ; j < SubItem.length ; j++){ }
-                <li {=(SubItem[j].toString() = =selSubStopYear||SubItem[j].toString() = =selSubLevel||SubItem[j].toString() = =selSubBodyForm)?"class ='current' ":" "}><a href="#" data-value="{=SubItem[j].toString().replace('款','')}">{=SubItem[j]}</a></li>
+                <li {=(SubItem[j].toString() ==selSubStopYear||SubItem[j].toString() ==selSubLevel||SubItem[j].toString() ==selSubBodyForm)?"class ='current'":" "}><a href="#" data-value="{=SubItem[j].toString().replace('款','')}">{=SubItem[j]}</a></li>
                 {}}
             </ul>
         </div>

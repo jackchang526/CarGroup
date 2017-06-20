@@ -211,26 +211,36 @@ function GetJiangjiaNews() {
 					dataType: "jsonp",
 					jsonpCallback: "getJiangJiaCallback",
 					success: function (data) {
-						count = data.data.length;
+					    count = data.data.length;
+					    var validCount = 0;
 						if (count > 0) {
-							for (var jiangjiaCount = 0; jiangjiaCount < count; jiangjiaCount++) {
-								if (jiangjiaCount > 3) break;
-								var obj = data.data[jiangjiaCount];
+						    for (var jiangjiaCount = 0; jiangjiaCount < count; jiangjiaCount++) {
+						        var obj = data.data[jiangjiaCount];
+						        if (parseFloat(obj.FavorablePrice) == 0 && obj.isPresent == 1 && obj.present == "" && parseFloat(vendorPrice) == 0) {
+						            continue;
+						        }
+						        //if (validCount > 3) break;
+								validCount++;
 								var youhuiStr = "";
 								var className = "";
 								if (parseFloat(obj.FavorablePrice) > 0) {
 								    youhuiStr = "直降" + obj.FavorablePrice + "万";
 								    className = "price-reduction";
 								}
-								else {
+								else if (obj.isPresent == 1 && obj.Present != "") {
 								    youhuiStr = "送礼包";
 								    className = "price-reduction type1";
+								}
+								else {
+								    var vendorPrice = parseFloat(obj.vendorPrice).toFixed(2);
+								    youhuiStr = vendorPrice + "万";
+								    className = "price-reduction type2";
 								}
 								h.push(" <li class=\"col-xs-6\"><a href=\"" + obj.href + "?leads_source=p002005\" target=\"_blank\" class=\"txt\">" + obj.CarName + "</a><a target=\"_blank\" href=\"" + obj.href + "?leads_source=p002005#\" class=\"" + className + "\">" + youhuiStr + "</a></li>");
 							}
 						}
 						var cityHtml = "<li class=\"current\"><a target=\"_blank\" href=\"http://car.bitauto.com/" + serialSpell + "/jiangjia/c" + cityId + "/?leads_source=p002005#\">" + cityName + "</a></li>";
-						if (count > 0) {
+						if (validCount > 0) {
 						    $("#mp-jiangjianews").html(h.join(""));
 						    cityHtml += "<li><a href=\"http://car.bitauto.com/" + serialSpell + "/jiangjia/c" + cityId + "/?leads_source=p002005#\" target=\"_blank\">更多降价&gt;&gt;</a></li>";
 						}
@@ -258,7 +268,13 @@ function GetDownPayment() {
         success: function (data) {
             //var data = $.parseJSON(result);
             if (data != null && typeof data != "undefined" && typeof data.DownPayment != "undefined" && !isNaN(data.DownPayment) && parseFloat(data.DownPayment) > 0) {
-                var downPayment = parseFloat(data.DownPayment).toFixed(2);
+                var downPayment = parseFloat(data.DownPayment);
+                if (downPayment >= 100) {
+                    downPayment = downPayment.toFixed(0);
+                }
+                else {
+                    downPayment = downPayment.toFixed(2);
+                }
                 $("#mp-daikuan h5 a").attr("href", data.PcListUrl).html("首付" + downPayment + "万起>>");
             }
             else {

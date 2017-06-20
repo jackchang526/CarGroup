@@ -278,7 +278,7 @@
         <!--/焦点图、名片区-->
         <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=20170616"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201706201554"></script>
         <%--<script type="text/javascript" src="/jsnewv2/cssummary.js?v=20170171032"></script>--%>
         <script type="text/javascript">
             var serialId = <%= serialId %> ,

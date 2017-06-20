@@ -51,7 +51,7 @@
 <script type="text/javascript" src="/Scripts/carcompare/brand.v1.js"></script>
 <script type="text/javascript" src="/Scripts/carcompare/changecar.v1.js"></script>--%>
 
-<script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/h5/js/carcompare/iscroll.v1.js,carchannel/h5/js/carcompare/underscore.v1.js,carchannel/h5/js/carcompare/model.v1.js,carchannel/h5/js/carcompare/note.v1.js,carchannel/h5/js/carcompare/rightswipe.v1.js,carchannel/h5/js/carcompare/brand.v1.js,carchannel/h5/js/carcompare/changecar.v1.js?20160727"></script>
+<script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/h5/js/carcompare/iscroll.v1.js,carchannel/h5/js/carcompare/underscore.v1.js,carchannel/h5/js/carcompare/model.v1.js,carchannel/h5/js/carcompare/note.v1.js,carchannel/h5/js/carcompare/rightswipe.v1.js,carchannel/h5/js/carcompare/brand.v1.js,carchannel/h5/js/carcompare/changecar.v1.js?20170620"></script>
 <script type="text/javascript">
     $(function() {
         changecar.init({ serialId: <%= SerialId %>, carId: <%= CarId %>, callback: changecar.SelectCarCallback });

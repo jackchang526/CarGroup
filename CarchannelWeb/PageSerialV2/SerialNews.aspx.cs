@@ -697,7 +697,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                     }
                     htmlCode.Append("<div class=\"details\">");
                     htmlCode.Append("    <h2>");
-                    htmlCode.AppendFormat("<a href=\"{0}\">{1}</a>", newsUrl, newsTitle);
+					htmlCode.AppendFormat("<a href=\"{0}\" target=\"_blank\">{1}</a>", newsUrl, newsTitle);
                     htmlCode.Append("    </h2>");
                     htmlCode.Append("    <div class=\"description\">");
                     htmlCode.AppendFormat(

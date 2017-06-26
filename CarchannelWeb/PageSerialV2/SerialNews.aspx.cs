@@ -42,7 +42,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
         // 城市ID 包括4个直辖市 广告使用
         protected string cityIDForAD = string.Empty;
         protected Car_SerialEntity cse;
-		protected SerialEntity serialEntity = null;
+        protected SerialEntity serialEntity = null;
         protected int endIndex;
         protected string HangQingDealerHTML = string.Empty;
 
@@ -177,7 +177,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             {
                 cse = (Car_SerialEntity)serialInfoEntityByCsID;
             }
-			serialEntity = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, serialId);
+            serialEntity = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, serialId);
             // add by chengl May.17.2012 高岩要求开放概念车
             //if (cse.Cs_CarLevel == "概念车")
             //{
@@ -272,6 +272,15 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                     pingCeAndDaoGouSeo = "<a href=\"/" + cse.Cs_AllSpell + "/daogou/\">导购</a>|<a href=\"/" +
                                          cse.Cs_AllSpell + "/pingce/\">评测</a>";
                     _CarNewsType = CarNewsType.anquan;
+                    break;
+                case "wenhua":
+                    pageTitle = "【{0}新闻】_{0}上市新闻_{0}导购用车新闻-易车网";
+                    pageKeywords = "{0}新闻,{0}上市新闻,{0},{0}导购";
+                    pageDescription =
+                        "易车{0}新闻提供最权威的{0}新闻资讯、{0}上市新闻、{0}最新行情资讯、{0}优惠、{0}经销商降价信息、网友点评讨论等。{0}在线询价、底价买车，尽在易车网。";
+                    pingCeAndDaoGouSeo = "<a href=\"/" + cse.Cs_AllSpell + "/daogou/\">导购</a>|<a href=\"/" +
+                                         cse.Cs_AllSpell + "/pingce/\">评测</a>";
+                    _CarNewsType = CarNewsType.wenhua;
                     break;
                 default:
                     newsType = "xinwen";
@@ -418,6 +427,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             titleTag.Add(CarNewsType.gaizhuang, "改装");
             titleTag.Add(CarNewsType.anquan, "安全");
             titleTag.Add(CarNewsType.xinwen, "新闻");
+            titleTag.Add(CarNewsType.wenhua, "文化");
 
             var newsBll = new CarNewsBll();
             var htmlCode = new StringBuilder();
@@ -620,7 +630,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                         (int) CarNewsType.anquan,
                         (int) CarNewsType.xinwen,
                         (int) CarNewsType.pingce,
-                        (int) CarNewsType.treepingce
+                        (int) CarNewsType.treepingce,
+                        (int) CarNewsType.wenhua
                     };
                     newsDs = new CarNewsBll().GetSerialNewsAllData(serialId, carTypeIdList, pageSize, pageIndex,
                         ref newsCount);
@@ -697,7 +708,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                     }
                     htmlCode.Append("<div class=\"details\">");
                     htmlCode.Append("    <h2>");
-					htmlCode.AppendFormat("<a href=\"{0}\" target=\"_blank\">{1}</a>", newsUrl, newsTitle);
+                    htmlCode.AppendFormat("<a href=\"{0}\" target=\"_blank\">{1}</a>", newsUrl, newsTitle);
                     htmlCode.Append("    </h2>");
                     htmlCode.Append("    <div class=\"description\">");
                     htmlCode.AppendFormat(

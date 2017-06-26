@@ -70,7 +70,19 @@ namespace BitAuto.CarChannel.Common.Enum
         /// <summary>
         /// 置换-(品牌、子品牌)
         /// </summary>
-        zhihuan = 15
+        zhihuan = 15,
+        /// <summary>
+        /// 话题|文化
+        /// </summary>
+        huati = 16,
+        /// <summary>
+        /// 口碑报告
+        /// </summary>
+        koubei = 17,
+        /// <summary>
+        /// 文化
+        /// </summary>
+        wenhua = 18
     }
 
     public class CarNewsTypeName

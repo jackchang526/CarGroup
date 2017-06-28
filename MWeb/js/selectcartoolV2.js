@@ -924,7 +924,7 @@ function DrawUlContent(result,sort) {
     {
         h.push("<div class=\"tt-first y2015\"><ul class=\"tags-sub tags-sub-left\"><li><a>选车结果</a></li></ul></div>");
         h.push("<div class=\"wrap\"><div class=\"m-no-result\"><div class=\"face face-fail\"></div><dl><dt>未找到合适的车型！</dt><dd>请调整一下选车条件</dd></dl><div class=\"clear\"></div></div>");
-        h.push("<a class=\"btn-one btn-gray\" href=\"javascript:location.href=document.referrer\">返回</a></div>");
+        h.push("<a class=\"btn-one btn-gray\" style=\"border-top:1px solid #f2f2f2\" href=\"javascript:location.href=document.referrer\">返回</a></div>");
     }
     $(".searchResult").html(h.join(''));
     $(function () { addCarListManual(); });

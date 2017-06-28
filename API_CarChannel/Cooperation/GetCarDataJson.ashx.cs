@@ -14,6 +14,7 @@ using BitAuto.CarChannel.Common.Enum;
 using BitAuto.CarChannel.Common.Cache;
 using BitAuto.CarChannel.Model;
 using System.Data;
+using Newtonsoft.Json;
 
 namespace BitAuto.CarChannelAPI.Web.Cooperation
 {
@@ -106,6 +107,9 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
                         break;
                     case "getcswenzhang":
                         GetCsWenzhangForBaidu();
+                        break;
+                    case "getcsinfo":
+                        GetSerialData();
                         break;
 
                     default: break;
@@ -297,6 +301,51 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
                 }
             }
             response.Write(sb.ToString());
+        }
+
+        private void GetSerialData()
+        {
+            int sku_id = ConvertHelper.GetInteger(request.QueryString["sku_id"]);
+            string from = request.QueryString["from"];
+            if (string.IsNullOrEmpty(from))
+            {
+                from = "WT.mc_id=mbdfdbjh";
+            }
+            object data = null;
+            if (sku_id > 0)
+            {
+                SerialEntity ce = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, sku_id);
+                if (ce != null)
+                {
+                    int price = 0;
+                    if (ce.Price.IndexOf('-') != -1)
+                    {
+                        price = ConvertHelper.GetInteger(ConvertHelper.GetDouble(ce.Price.Split('-')[0]) * 1000000);
+                    }
+                    else
+                    {
+                        price = ConvertHelper.GetInteger(ConvertHelper.GetDouble(ce.Price.Replace("万", "")) * 1000000);
+                    }
+                    data = new
+                    {
+                        sku_id = sku_id,
+                        tp_src = "Yiche",
+                        //from = from,
+                        Source = "易车",
+                        is_on_sale = ce.SaleState == "在销" ? 1 : 0,
+                        name = ce.ShowName,
+                        desc = ce.ShowName,
+                        img = Car_SerialBll.GetSerialImageUrl(sku_id, "6"),
+                        price = price,
+                        mprice = "",
+                        promotion_url = string.Format("http://car.bitauto.com/{0}/?WT.mc_id=mbdfdbjh", ce.AllSpell)
+                    };
+                }
+            }
+
+            var json = new { errmsg = "成功", errno = "0", data = data };
+            string result = JsonConvert.SerializeObject(json);
+            response.Write(result);
         }
 
         #endregion

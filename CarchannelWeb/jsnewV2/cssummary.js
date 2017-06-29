@@ -97,8 +97,9 @@ function GetDealerData(serialSpell) {
 				if (data[0].DealerCount > 0) {
 					$("#mp-dealer").html("（" + data[0].DealerCount + "家本地经销商）");
 				}
-				if (parseFloat(data[0].MaxFavorablePrice) > 0) {
-					$("#mp-jiangjia .desc a").html("直降" + data[0].MaxFavorablePrice + "万>>");
+				var favorablePrice = parseFloat(data[0].MaxFavorablePrice);
+				if (favorablePrice > 0) {
+				    $("#mp-jiangjia .desc a").html("直降" + favorablePrice.toFixed(2) + "万>>");
 				}
 				else {
 					$("#mp-jiangjia .desc").addClass("grey-txt").html("暂无");

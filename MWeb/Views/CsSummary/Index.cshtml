@@ -311,6 +311,8 @@
                 </div>
                 <div class="talk-car-box b-shadow" id="audio_list"></div>
         <!-- 编辑评车 start -->
+        <!--通栏2-->
+        <ins id="div_f53527fc-a2ff-4336-9d38-27a076a98cfb" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="@(serialEntity.Id)" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="f53527fc-a2ff-4336-9d38-27a076a98cfb"> </ins>
         <!-- 文章 start -->
                 @{
                 string newsPingceHtml = ViewData["NewsPingceHtml"].ToString();
@@ -473,7 +475,7 @@
                                 }
         <!-- 视频 end -->
         <!-- 论坛热帖 start -->
-                                @(Html.Raw(ViewData["ForumNewsHtml"]))
+        @(Html.Raw(ViewData["ForumNewsHtml"]))
         <!-- 论坛热帖 end -->
                                
         <ins id="div_bec90be3-b648-4cd9-8c33-96c6be62451d" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="@(serialEntity.Id)" adplay_brandname="" adplay_brandtype="" adplay_blockcode="bec90be3-b648-4cd9-8c33-96c6be62451d"> </ins>
@@ -494,7 +496,10 @@
         <script type="text/javascript">
         document.write('<scri' + 'pt src="http://m.h5.qiche4s.cn/priceapiv2/ajax/InitData.ashx?action=cardealerlist&brandid=@(serialEntity.Id)&citycode=' + citycode + '" type="text/javascript"></s' + 'cript>');
         </script>
-          
+        <!--通栏3广告-->
+        <script type="text/javascript">
+            showNewsInsCode('0fdd1bab-745d-42d9-a86b-3dd5e25877b5', '8a05b2f2-6da8-40a7-8296-d005d870b4bb', '279a56d1-93e3-4cbb-9409-517fe7edec5a', 'c588f73d-9446-4cbb-a56f-941a8ddaa54f');
+        </script>
         <!--看了还看 start-->
         @(Html.Raw(ViewData["SerialToSee"]))
         <!--看了还看 end-->
@@ -547,6 +552,7 @@
                         </li>
                         {}}
                         <li class="alert">最多对比4个车款</li>
+                        <li class="ad-box" id="compareAdBox"></li>
                     </ul>
                 </div>
             </div>
@@ -820,9 +826,13 @@
         var nearestYear = "@(ViewData["NearestYear"])";
         var tabs = document.getElementById("yeartag").getElementsByTagName("li");
         var btnMore = {};
+
+        //var CarCompareAdJson = [//车型对比广告
+        //    { "csId": 2608, "carId": 0, "adCsId": 0, "adCarId": 2945 }
+        //    ,{ "csId": 2608, "carId": 0, "adCsId": 0, "adCarId": 119575 }
+        //];
     </script>
     @Html.Partial("/html/uploadaladingapp.cshtml")
-
 
     <script type="text/javascript">
         var zamCityId = GlobalSummaryConfig.CityId,
@@ -844,6 +854,7 @@
             s.parentNode.insertBefore(zp, s);
         })();
     </script>
+
     @*<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/common/swiper-3.2.7.min.js"></script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/common/cityjsonv2.js"></script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/WirelessJs/v2/iscroll.js?v=20160118"></script>
@@ -856,7 +867,7 @@
         <script type="text/javascript" src="/js/waitcompareV2.js"></script>
         <script type="text/javascript" src="/js/rightswipe-cityV2.js?v=20160202"></script>
         <script type="text/javascript" src="/js/csSummaryConditionV2.js"></script>*@
-    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/common/swiper-3.2.7.min.js,carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.min.js,carchannel/common/cityjsonv2.js,carchannel/wirelessjsv2/rightswipe-cityv2.js,carchannel/wirelessjsv2/cssummaryconditionV2.min.js?v=201705261519"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/common/swiper-3.2.7.min.js,carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.min.js,carchannel/common/cityjsonv2.js,carchannel/wirelessjsv2/rightswipe-cityv2.js,carchannel/wirelessjsv2/cssummaryconditionV2.min.js?v=201705291500"></script>
 
 
     <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=audio/jplayer/jquery.jplayer.min.js,audio/jplayer/audioJPlayerMobile.js?v=20170105"></script>

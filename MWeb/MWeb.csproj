@@ -385,6 +385,7 @@
     <Content Include="Views\Calc\CalcInsuranceDetail.cshtml" />
     <Content Include="Views\YaGaoSelectCar\Index.cshtml" />
     <Content Include="Views\SelectBrand\Index.cshtml" />
+    <Content Include="Views\CsSummary\IndexFocus.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

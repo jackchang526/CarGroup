@@ -73,6 +73,11 @@ namespace WirelessWeb.handlers
 			}
 
 			var serialEntity = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, serialId);
+			if (serialEntity == null || serialEntity.Id <= 0)
+			{
+				RenderJsonP("{}");
+				return;
+			}
 			var serialCarList = new List<EnumCollection.CarInfoForSerialSummary>();
 			List<EnumCollection.CarInfoForSerialSummary> saleCarInfo = new List<EnumCollection.CarInfoForSerialSummary>();
 			//if (serialEntity.SaleState == "停销")

@@ -447,7 +447,8 @@ namespace BitAuto.CarChannel.Common
             CacheManager.GetCachedData(catchkey, out allSErialInfo);
             if (allSErialInfo == null)
             {
-                string sql = " select cs.*,bat.bitautoTestURL,cb.cb_name,csi.Body_Doors,csi.Engine_Exhaust,csi.UnderPan_Num_Type ";
+				string sql = " select  cs.cs_id,cs.cs_name,cs.cs_ShowName,cs.allSpell,cs.cs_Virtues,cs.cs_Defect,cs.CsSaleState,cs.cs_CarLevel,cs.CsBodyForm,cs.cs_Url,";
+				sql += " cs.CsPurpose,bat.bitautoTestURL,cb.cb_name,csi.Body_Doors,csi.Engine_Exhaust,csi.UnderPan_Num_Type,csi.Car_RepairPolicy CsRepairPolicy ";
                 sql += " from dbo.Car_Serial cs ";
                 sql += " left join dbo.Car_Serial_Item csi on cs.cs_id = csi.cs_id ";
                 sql += " left join dbo.Car_Brand cb on cs.cb_id = cb.cb_id ";

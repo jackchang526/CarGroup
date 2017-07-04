@@ -60,7 +60,7 @@
             });
         </script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/newselectcartoolv4.min.js?d=20170207"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/newselectcartoolv4.min.js?d=201707041043"></script>
         <%--<script type="text/javascript" src="/jsnewv2/newselectcartoolv4.js?d=20161228"></script>--%>
         <div class="col-xs-9">
             <div class="cartype-section-main">

@@ -902,7 +902,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.App_Code
             //htmlList.Add("<p id=\"level16\">");
             htmlList.Add("<a id=\"level16\" href=\"" + this.GetLevelSearchQueryString("l", "16", path) + "\" data-channelid=\"2.161.1692\">&nbsp;中大型SUV</a>");
             //htmlList.Add("<p id=\"level17\">");
-            htmlList.Add("<a id=\"level17\" href=\"" + this.GetLevelSearchQueryString("l", "17", path) + "\" data-channelid=\"2.161.1681\">&nbsp;大型SUV</a>");
+            htmlList.Add("<a id=\"level17\" href=\"" + this.GetLevelSearchQueryString("l", "17", path) + "\" data-channelid=\"2.161.1681\">&nbsp;全尺寸SUV</a>");
             //htmlList.Add("</div>");
 
             htmlList.Add("</li>");

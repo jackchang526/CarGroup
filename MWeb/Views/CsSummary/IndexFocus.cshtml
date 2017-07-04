@@ -34,7 +34,6 @@
         var GlobalSummaryConfig = {
             SerialId: "@(serialEntity.Id)",
             CityId: cityId,
-
             CityName: cityName
         };
     </script>
@@ -123,21 +122,22 @@
             </div>
         </div>
         <!--nav fixed end-->
-        <div class="sum-car-img">
-            @{
-                var focusImg = (List<string>)ViewData["FocusImgList"];
-            }
-            @if (focusImg != null && focusImg.Count > 0)
-            {
-                @(Html.Raw(focusImg[0]))
-                <div class="right-area">
-                    @for (int i = 1; i < focusImg.Count; i++)
-                    {
-                        @(Html.Raw(focusImg[i]))
-                    }
-                </div>
-            }
+        <div class="sum-focus">
+            <div class="swiper-container" id="sumFocus">
+                <ul class="swiper-wrapper">
+                   @{
+                      List<string> focusImgList = ViewData["FocusImgList"] as List<string>;
+                      foreach (string str in focusImgList)
+                      { 
+                        @(Html.Raw(str))
+                      }
+                   }
+                </ul>
+                <div class="pagination-num"></div>
+                <div class="clear"></div>
+            </div>
         </div>
+
         <div class="clear"></div>
         <div class="sum-info">
             <div class="car-main">
@@ -298,13 +298,11 @@
         <!--车款列表 start-->
         @(Html.Raw(ViewData["CarListHtml"]))
         <!--车款列表 end-->
-        
-        <!-- app下载-->
         @if(string.IsNullOrWhiteSpace(wtmcid)){
+            <!-- app下载-->
             <!--#include file="/include/pd/2016/wap/00001/201606_yidongzhan_appdown_Manual.shtml" -->
+            <!-- app下载-->
         }
-        <!-- app下载-->
-         
         <script type="text/javascript">
             showNewsInsCode('f327fc17-f1ad-4fcd-91d7-03e42c9b72b4', 'f31814e7-225c-4e92-8ea9-c2876315cee0', '20f3b410-22f8-4035-9bf7-3267a88bda6a', '2afe4673-39b3-4bad-9f48-38b0b6cb9513');
         </script>
@@ -484,8 +482,7 @@
         <!-- 论坛热帖 start -->
         @(Html.Raw(ViewData["ForumNewsHtml"]))
         <!-- 论坛热帖 end -->
-
-        
+                               
         <ins id="div_bec90be3-b648-4cd9-8c33-96c6be62451d" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="@(serialEntity.Id)" adplay_brandname="" adplay_brandtype="" adplay_blockcode="bec90be3-b648-4cd9-8c33-96c6be62451d"> </ins>
         <a name="a-dealer"></a>
 
@@ -541,9 +538,8 @@
         <ins id="div_b5138df0-cd9b-44a3-b87a-76779e8cb1ea" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="@(serialEntity.Id)" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="b5138df0-cd9b-44a3-b87a-76779e8cb1ea"> </ins>
         <!--底部通栏-->
        @if(string.IsNullOrWhiteSpace(wtmcid)){
-            <!--#include file="/include/pd/2016/wap/00001/201606_wap_common_ydyy_Manual.shtml" -->
+        <!--#include file="/include/pd/2016/wap/00001/201606_wap_common_ydyy_Manual.shtml" -->
        }
-          
         <!--一级公共模板 start-->
         <script type="text/template" id="duibibtnTemplate">
             <div class="y2015-car-01">
@@ -874,12 +870,23 @@
         <script type="text/javascript" src="/js/waitcompareV2.js"></script>
         <script type="text/javascript" src="/js/rightswipe-cityV2.js?v=20160202"></script>
         <script type="text/javascript" src="/js/csSummaryConditionV2.js"></script>*@
-    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/common/swiper-3.2.7.min.js,carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.min.js,carchannel/common/cityjsonv2.js,carchannel/wirelessjsv2/rightswipe-cityv2.js,carchannel/wirelessjsv2/cssummaryconditionV2.min.js?v=201707031101"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/common/swiper-3.2.7.min.js,carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.min.js,carchannel/common/cityjsonv2.js,carchannel/wirelessjsv2/rightswipe-cityv2.js,carchannel/wirelessjsv2/cssummaryconditionV2.min.js?v=201707041743"></script>
 
 
     <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=audio/jplayer/jquery.jplayer.min.js,audio/jplayer/audioJPlayerMobile.js?v=20170105"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>
     <script type="text/javascript">
+        // 焦点图
+        var mySwiperfocus = new Swiper('#sumFocus', {
+            autoHeight: true,
+            pagination : '.pagination-num',
+            onTouchEnd: function(swiper){
+                var sTranWidth = swiper.translate;
+                if(mySwiperfocus.isEnd && (-sTranWidth) > (mySwiperfocus.width*2+65)){
+                    location.href = 'http://photo.m.yiche.com/serial/@(serialEntity.Id)/';
+                }
+            }
+        });
         // 文章切换
         var swiperNewslist = new Swiper('.swiper-container-newslist', {
             autoHeight: true,

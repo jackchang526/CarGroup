@@ -35,6 +35,11 @@ namespace MWeb.Controllers
         {
             GetPageParam(RouteData.Values);
             GetCarData();
+			if (ce == null || ce.Id == 0 || ce.Serial == null)
+			{
+				Response.Redirect("/error", true);
+				return new EmptyResult();
+			}
             return View(ce);
         }
         private void GetPageParam(RouteValueDictionary values)

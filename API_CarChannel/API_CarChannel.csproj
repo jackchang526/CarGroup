@@ -55,8 +55,9 @@
     <Reference Include="BitAuto.Beyond.Caching.RefreshCache">
       <HintPath>..\..\..\packages\BitAuto.Beyond.Caching.RefreshCache.dll</HintPath>
     </Reference>
-    <Reference Include="BitAuto.CarUtils">
-      <HintPath>..\..\..\Dll\BitAuto.CarUtils.dll</HintPath>
+    <Reference Include="BitAuto.CarUtils, Version=1.2.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\BitAuto.CarUtils.dll</HintPath>
     </Reference>
     <Reference Include="BitAuto.Utils">
       <HintPath>..\..\..\..\..\P公用平台\Release\BitAuto.Utils.dll</HintPath>

@@ -40,13 +40,20 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageBrandV2
 
 		protected int _MasterBrandId = 0;
 		private Dictionary<string, string> relationList = new Dictionary<string, string>();
-		private int _PageSize = 10;
+        Dictionary<CarNewsType, string> titleTag = new Dictionary<CarNewsType, string>();
+        private int _PageSize = 10;
 		private Car_SerialBll _Csb = new Car_SerialBll();
 		private Car_BrandBll _Cbb = new Car_BrandBll();
 
 		protected BrandEntity brandEntity = null;
 
-		protected void Page_Load(object sender, EventArgs e)
+        private CarNewsBll _carNewsBll;
+
+        public CarBrandPageNews()
+        {
+            _carNewsBll = new CarNewsBll();
+        }
+        protected void Page_Load(object sender, EventArgs e)
 		{
 			base.SetPageCache(10);
 			GetParam();
@@ -72,23 +79,77 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageBrandV2
 			InitRelation();
 			InitMasterBrandEntity();
 			InitTitle();
-			//_BrandGuilder = _Cbb.GetRelationHeader(_BrandId, _BrandName, _BrandSpell, _MasterBrandId, "brand", _RequestType);
-            _WenZhangHeader = _Cbb.GetWenZhangHeaderFor1200(_BrandId, _BrandName, _BrandSpell, _MasterBrandId, "brand", _RequestType);
-			InitNewsCount();
+            InitNewsHeader();
+            //_BrandGuilder = _Cbb.GetRelationHeader(_BrandId, _BrandName, _BrandSpell, _MasterBrandId, "brand", _RequestType);
+            //_WenZhangHeader = _Cbb.GetWenZhangHeaderFor1200(_BrandId, _BrandName, _BrandSpell, _MasterBrandId, "brand", _RequestType);
+            InitNewsCount();
 			//InitNewsList();
 			InitNewsListNew();
 		}
-		/// <summary>
-		/// 初始化对应关系
-		/// </summary>
-		private void InitRelation()
+
+        private void InitNewsHeader()
+        {
+            StringBuilder liList = new StringBuilder();
+            liList.AppendLine("<div class=\"section-header header2 h-default mbl\">");
+            liList.AppendLine("<div class=\"box\">");
+            liList.AppendLine("<ul class=\"nav\">");
+            foreach (var kv in titleTag)
+            {
+                int newsCount = 0;
+                if (kv.Key == CarNewsType.wenzhang)
+                {
+                    List<int> carTypeIdList = new List<int>()
+                    {
+                        (int) CarNewsType.pingce,
+                        (int) CarNewsType.daogou,
+                        (int) CarNewsType.yongche,
+                        (int) CarNewsType.xinwen,
+                        (int) CarNewsType.keji,
+                        (int) CarNewsType.wenhua
+                    };
+                    newsCount = _carNewsBll.GetBrandNewsCount(_BrandId, carTypeIdList);
+                }
+                else
+                {
+                    newsCount = _carNewsBll.GetBrandNewsCount(_BrandId, kv.Key);
+                }
+                if (newsCount > 0)
+                {
+                    liList.AppendFormat("<li class=\"{1}\"><a  href=\"/{0}/{3}/\">{2}</a></li>"
+                                   , _BrandSpell
+                                   , _RequestType == kv.Key.ToString() ? "current" : ""
+                                   , kv.Value
+                                   , kv.Key.ToString());
+                }
+            }
+            liList.AppendLine("</ul>");
+            liList.AppendLine("</div>");
+            liList.AppendLine("</div>");
+            _WenZhangHeader = liList.ToString();
+        }
+
+        /// <summary>
+        /// 初始化对应关系
+        /// </summary>
+        private void InitRelation()
 		{
 			relationList.Add("xinwen", "新闻");
-			relationList.Add("hangqing", "行情");
+			//relationList.Add("hangqing", "行情");
 			relationList.Add("daogou", "导购");
 			relationList.Add("pingce", "评测");
 			relationList.Add("yongche", "用车");
-		}
+            relationList.Add("keji", "科技");
+            relationList.Add("wenhua", "文化");
+
+
+            titleTag.Add(CarNewsType.wenzhang, "全部");
+            titleTag.Add(CarNewsType.pingce, "评测");
+            titleTag.Add(CarNewsType.daogou, "导购");
+            titleTag.Add(CarNewsType.yongche, "用车");
+            titleTag.Add(CarNewsType.keji, "科技");
+            titleTag.Add(CarNewsType.wenhua, "文化");
+            titleTag.Add(CarNewsType.xinwen, "新闻");
+        }
 		/// <summary>
 		/// 初始化标题
 		/// </summary>
@@ -151,19 +212,22 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageBrandV2
 
 			if (newsType == "pingce")
 			{
-				newsType = "treepingce";
-				ds = new CarNewsBll().GetBrandNews(_BrandId, CarNewsType.treepingce, _PageSize, _PageIndex, ref rowCount);
+				//newsType = "treepingce";
+				ds = new CarNewsBll().GetBrandNews(_BrandId, CarNewsType.pingce, _PageSize, _PageIndex, ref rowCount);
 			}
 			else
 			{
 				if (newsType == "wenzhang")
 				{
 					List<int> carTypeIdList = new List<int>() 
-					{ 
-					(int)CarNewsType.daogou,
-					(int)CarNewsType.yongche,
-					(int)CarNewsType.xinwen
-					};
+					{
+                        (int) CarNewsType.pingce,
+                        (int) CarNewsType.daogou,
+                        (int) CarNewsType.yongche,
+                        (int) CarNewsType.xinwen,
+                        (int) CarNewsType.keji,
+                        (int) CarNewsType.wenhua
+                    };
 					ds = new CarNewsBll().GetBrandNews(_BrandId, carTypeIdList, _PageSize, _PageIndex, ref rowCount);
 				}
 				else
@@ -276,7 +340,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageBrandV2
 					type = "xinwen";
 					break;
 				case "pingce":
-					type = "treepingce";
+					type = "pingce";
 					break;
 				default:
 					type = _RequestType;

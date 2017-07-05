@@ -53,9 +53,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\P公用平台\Release\BitAuto.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="LocalFileReadModule, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Dll\LocalFileReadModule.dll</HintPath>
+    <Reference Include="LocalFileReadModule">
+      <HintPath>..\..\..\packages\LocalFileReadModule.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />

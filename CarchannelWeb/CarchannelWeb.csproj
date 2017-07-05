@@ -670,6 +670,7 @@
     <Content Include="include\BAA\BBS\00001\20161031_cxzs_luntan_Manual.shtml" />
     <Content Include="include\BAA\BBS\00001\20170424_cxzs_luntan_new_Manual.shtml" />
     <Content Include="include\debris\ranks\Top10HotNewsPage.shtml" />
+    <Content Include="include\debris\ranks\Top10HotNewsPage_utf8.shtml" />
     <Content Include="include\partner\hezuo_part\00001\201210_hzwz_rmcx_gb2312_Manual.shtml" />
     <Content Include="include\partner\hezuo_part\00001\201210_hzwz_rmcx_Manual.shtml" />
     <Content Include="include\pd\2012\chedai\00001\chedai_chedaizixun_Manual.shtml" />

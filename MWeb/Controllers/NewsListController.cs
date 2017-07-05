@@ -168,9 +168,15 @@ namespace MWeb.Controllers
             Dictionary<CarNewsType, string> titleTag = new Dictionary<CarNewsType, string>();
             titleTag.Add(CarNewsType.wenzhang, "全部");
             titleTag.Add(CarNewsType.pingce, "评测");
-            titleTag.Add(CarNewsType.shijia, "试驾");
+            //titleTag.Add(CarNewsType.shijia, "体验试驾");
+            //titleTag.Add("xinwen", "新闻");
+            //titleTag.Add("hangqing", "行情");
             titleTag.Add(CarNewsType.daogou, "导购");
-            titleTag.Add(CarNewsType.gaizhuang, "改装");
+            titleTag.Add(CarNewsType.yongche, "用车");
+            //titleTag.Add(CarNewsType.gaizhuang, "改装");
+            //titleTag.Add(CarNewsType.anquan, "安全");
+            titleTag.Add(CarNewsType.keji, "科技");
+            titleTag.Add(CarNewsType.wenhua, "文化");
             titleTag.Add(CarNewsType.xinwen, "新闻");
 
             CarNewsBll newsBll = new CarNewsBll();
@@ -221,17 +227,21 @@ namespace MWeb.Controllers
 
             if (_newsType == "wenzhang")
             {
-                List<int> carTypeIdList = new List<int>() 
-				{ 
-                (int)CarNewsType.serialfocus,
-				(int)CarNewsType.shijia,
-				(int)CarNewsType.daogou,
-				(int)CarNewsType.yongche,
-				(int)CarNewsType.gaizhuang,
-				(int)CarNewsType.anquan,
-				(int)CarNewsType.xinwen,
-                (int)CarNewsType.pingce
-				};
+                var carTypeIdList = new List<int>
+                    {
+                        (int)CarNewsType.serialfocus, //add 2016-10-11 by gux,liub
+                        //(int) CarNewsType.shijia,
+                        (int) CarNewsType.pingce,
+                        (int) CarNewsType.daogou,
+                        (int) CarNewsType.yongche,
+                        //(int) CarNewsType.gaizhuang,
+                        //(int) CarNewsType.anquan,
+                        (int) CarNewsType.xinwen,
+                        //(int) CarNewsType.pingce,
+                        //(int) CarNewsType.treepingce,
+                        (int) CarNewsType.keji,
+                        (int) CarNewsType.wenhua
+                    };
                 newsDs = new CarNewsBll().GetSerialNewsAllData(_serialId, carTypeIdList, _pageSize, _pageIndex, ref newsCount);
             }
             else

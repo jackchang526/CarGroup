@@ -329,9 +329,9 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
                     data = new
                     {
                         sku_id = sku_id,
-                        tp_src = "Yiche",
+                        tp_src = "yiche",
                         //from = from,
-                        Source = "易车",
+                        source = "易车",
                         is_on_sale = ce.SaleState == "在销" ? 1 : 0,
                         name = ce.ShowName,
                         desc = ce.ShowName,

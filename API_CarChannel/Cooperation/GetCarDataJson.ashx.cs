@@ -329,16 +329,16 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
                     data = new
                     {
                         sku_id = sku_id,
-                        tp_src = "Yiche",
+                        tp_src = "yiche",
                         //from = from,
-                        Source = "易车",
+                        source = "易车",
                         is_on_sale = ce.SaleState == "在销" ? 1 : 0,
                         name = ce.ShowName,
                         desc = ce.ShowName,
                         img = Car_SerialBll.GetSerialImageUrl(sku_id, "6"),
                         price = price,
                         mprice = "",
-                        promotion_url = string.Format("http://car.bitauto.com/{0}/?WT.mc_id=mbdfdbjh", ce.AllSpell)
+                        promotion_url = string.Format("http://car.h5.yiche.com/{0}/?order=page0,page1,page7,page2,page5,page3,page4,page6,page9&ad=0&WT.mc_id=mbdfdbjh", ce.AllSpell)
                     };
                 }
             }

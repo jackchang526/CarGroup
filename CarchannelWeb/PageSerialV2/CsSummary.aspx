@@ -412,7 +412,7 @@
                                     <h2><a href="<%=baaUrl %>" target="_blank">
                                         <% if (isHaveBaa)
                                            { %>
-                                        <%=serialSeoName %>论坛</a>
+                                        <%=serialShowName %>论坛</a>
                                         <%}
                                            else
                                            { %>

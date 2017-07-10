@@ -391,7 +391,7 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
                         { imgURL = String.Format(imgList[0].ImageUrl, 4); }
                     }
 
-                    sb.Append(string.Format("{{\"CarID\":{0},\"CarName\":\"{1}\",\"CarYear\":\"{2}\",\"CsID\":{3},\"Displacement\":\"{4}\",\"CarReferPrice\":\"{5}\",\"Power\":\"{6}\",\"Gearbox\":\"{7}\",\"CoverImage\":\"{8}\",\"CarSaleState\":\"{9}\"}}"
+                    sb.Append(string.Format("{{\"CarID\":{0},\"CarName\":\"{1}\",\"CarYear\":\"{2}\",\"CsID\":{3},\"Displacement\":\"{4}\",\"CarReferPrice\":\"{5}\",\"Power\":\"{6}\",\"Gearbox\":\"{7}\",\"CoverImage\":\"{8}\",\"CarSaleState\":\"{9}\",\"CarProduceState\":\"{10}\"}}"
                         , carid
                         , CommonFunction.GetUnicodeByString(dsCarBasic.Tables[0].Rows[0]["Car_name"].ToString().Trim())
                         , dsCarBasic.Tables[0].Rows[0]["Car_yearType"].ToString()
@@ -403,6 +403,7 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
                             + (dic712.ContainsKey(carid) ? CommonFunction.GetUnicodeByString(dic712[carid]) : ""))
                         , imgURL
                         , dsCarBasic.Tables[0].Rows[0]["Car_SaleState"].ToString()
+                        , dsCarBasic.Tables[0].Rows[0]["Car_ProduceState"]
                         ));
                 }
             }

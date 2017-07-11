@@ -55,7 +55,7 @@
     <div class="container paihang-section">
         <div class="row head-box">
             <h3 class="title col-auto"><%=LevelFullName %>关注度排行</h3>
-            <div class="col-auto city drop-layer-box">
+            <%--<div class="col-auto city drop-layer-box">
                 <a id="currentCity" href="javascript:;" class="arrow-down"><%=CityName %></a>
                 <div id="popCity" class="drop-layer">
                     <ul class="layer-txt-list">
@@ -63,7 +63,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-auto note">7日排行</div>
+            <div class="col-auto note">7日排行</div>--%>
         </div>
         <div class="ol-list">
             <ol class="list">

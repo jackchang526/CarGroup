@@ -138,120 +138,6 @@
             </div>
         </div>
 
-        <div class="clear"></div>
-        <div class="sum-info">
-            <div class="car-main">
-                <div class="car-logo">
-                    <a href="http://car.m.yiche.com/@(serialEntity.Brand.MasterBrand.AllSpell)/">
-                        <img src="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_@(serialEntity.Brand.MasterBrand.Id)_100.png">
-                    </a>
-                </div>
-                <dl>
-                    <dt>
-                        <h2>@(serialEntity.SeoName)</h2>@(Html.Raw(serialEntity.SaleState == "停销" ? "<em>停售</em>" : serialEntity.SaleState == "待销" ? "<em>未上市</em>" : ""))
-                    </dt>
-                    <dd>
-                        <a href="http://price.m.yiche.com/nb@(serialEntity.Id)/" data-channelid="27.23.952">
-                            @{
-                                string title = "全国参考价";
-                                string serialPrice = ViewData["serialPrice"].ToString();
-                                string price = string.IsNullOrEmpty(serialPrice) ? "暂无" : serialPrice;
-                                if (serialEntity.SaleState == "停销")
-                                {
-                                    title = "二手价";
-                                    price = ViewData["uCarPriceRange"].ToString();
-                                }
-                                else if (serialEntity.SaleState == "待销")
-                                {
-                                    title = "预售价";
-                                }
-                            }
-                            @Html.Raw(title + "：<strong>" + price + "</strong>")
-                            <i class="dujia" id="dujia" style="display: none">独家</i>
-                        </a>
-                    </dd>
-                </dl>
-                <a href="javascript:void(0);" id="favstar" data-channelid="27.23.726" class="ico-favorite">
-                    <i></i>
-                    关注
-                </a>
-                @if (serialEntity.SaleState != "停销")
-                {
-                    <a href="http://car.h5.yiche.com/@(serialEntity.AllSpell)/" class="ico-laiyiche" data-channelid="27.23.1317"><i></i>来一车</a>
-                }
-            </div>
-            <div class="car-price">
-                <dl class="w">
-                    <dt class="w3">指导价：</dt>
-                    <dd>@(serialEntity.ReferPrice.Replace("万-", "-"))</dd>
-                </dl>
-                <dl>
-                    <dt class="w2">排名：</dt>
-                    <dd>@(ViewData["serialTotalPV"])</dd>
-
-                </dl>
-                <div class="clear"></div>
-
-                @if (BitAuto.Utils.ConvertHelper.GetBoolean(ViewData["isElectrombile"]))
-                {
-                    string mileageRange = ViewData["mileageRange"].ToString();
-                    if (string.IsNullOrEmpty(mileageRange))
-                    {
-                        mileageRange = "暂无";
-                    }
-                    <dl class="w">
-                        <dt class="w3">续航：</dt>
-                        <dd>
-                            @(mileageRange)
-                        </dd>
-                    </dl>
-                }
-                else
-                {
-                    string serialFuelCost = ViewData["serialFuelCost"].ToString();
-                    <dl class="w">
-                        <dt class="w3">油耗：</dt>
-                        <dd>
-                            <a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/youhao/?ref=Hlht_yh" class="" data-channelid="27.23.953">@(serialFuelCost)</a>
-                        </dd>
-                    </dl>
-                }
-
-                <dl>
-                    <dt class="w2">厂商：</dt>
-                    <dd>@(ViewData["ChanDi"])</dd>
-                </dl>
-                <div class="clear"></div>
-                @{
-                    List<SerialColorEntity> SerialColorList = (List<SerialColorEntity>)ViewData["SerialColorList"];
-                    if (SerialColorList.Count > 0)
-                    {
-                        <dl class="line">
-                            <dt class="w3">颜色：</dt>
-                            <dd>
-                                @foreach (var serialColorEntity in SerialColorList)
-                                {
-                                    @Html.Raw("<em style='background: " + serialColorEntity.ColorRGB + "'></em> ");
-                                }
-                            </dd>
-                        </dl>
-                    }
-                }
-            </div>
-            <div class="clear"></div>
-            <div class="sum-btn" id="btn-business"></div>
-        </div>
-        <!-- 易车购车服务 start -->
-        <div class="car-service b-shadow" id="carservice" style="display: none">
-            <div class="tt-first">
-                <h3>易车购车服务</h3>
-                <a href="http://11.m.yiche.com/" class="tt-first-double">11.11购车狂欢节</a>
-                <div class="opt-more opt-more-gray">
-                    <a href="http://gouche.m.yiche.com/sb@(serialEntity.Id)/">更多</a>
-                </div>
-            </div>
-            <ul id="buycar-youhui" class="one-service service-new"></ul>
-        </div>
         <!-- 易车购车服务 end -->
         @if (new int[] { 1574, 1610, 1611, 1661, 1699, 1729, 1796, 1811, 1825, 1879, 1909, 1991, 2109, 2364, 2370, 2381, 2406, 2407, 2408, 2593, 2608, 2714, 2731, 2945, 3152, 3379, 3495, 3600, 3655, 3887, 3913, 3920, 3987, 4002, 4149, 4169, 4238, 4279, 4282, 4283, 4418, 4447, 4557, 4616, 4682, 4711, 4853, 4866, 4881, 4936 }.Contains(serialEntity.Id))
         {
@@ -810,8 +696,8 @@
 
 
     <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/commonjs.js,carchannel/wirelessjsv2/city348IDMapName.js"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/cssummaryv2.min.js?v=20170615"></script>
-    @*<script type="text/javascript" src="/js/cssummaryv2.js?v=20170303"></script>*@
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/csSummaryForFocus.min.js?v=20170615"></script>
+    @*<script type="text/javascript" src="/js/csSummaryForFocus.js?v=20170303"></script>*@
     <script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars"></script>
     <script src="http://image.bitautoimg.com/uimg/wap/js/idangerous.swiper-2.0.min.js"></script>
 

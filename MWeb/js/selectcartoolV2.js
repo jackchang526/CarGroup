@@ -927,7 +927,7 @@ function DrawUlContent(result,sort) {
         h.push("<a class=\"btn-one btn-gray\" style=\"border-top:1px solid #f2f2f2\" href=\"javascript:location.href=document.referrer\">返回</a></div>");
     }
     $(".searchResult").html(h.join(''));
-    $(function () { addCarListManual(); });
+    //$(function () { addCarListManual(); });
 }
 //广告
 function GetAdPosition(json) {
@@ -1108,6 +1108,7 @@ function linetrim(str)
 {
     return str.replace(/(^_*)|(_*$)/g,'');
 }
+/*
 function addCarListManual(curPageN) {
     var curPageNum;
     if (curPageN == null) {
@@ -1172,3 +1173,4 @@ function addCarListManual(curPageN) {
         })
     }
 }
+*/

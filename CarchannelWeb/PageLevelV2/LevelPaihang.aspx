@@ -27,13 +27,13 @@
     <!--头部开始-->
     <header class="header-main special-header2">
         <div class="container section-layout top" id="topBox">
-            <div class="col-xs-4 left-box">
+            <div class="col-xs-6 left-box">
                 <div class="section-left">
                     <h1 class="logo"><a href="http://www.bitauto.com">易车yiche.com</a></h1>
-                    <h2 class="title">网友关注排行</h2>
+                    <h2 class="title">车型关注今日排行榜</h2>
                 </div>
             </div>
-            <div class="col-xs-8 right-box">
+            <div class="col-xs-6 right-box">
                 <!--#include file="~/htmlV2/bt_searchV3.shtml"-->
             </div>
         </div>
@@ -54,7 +54,7 @@
     <!--排行-->
     <div class="container paihang-section">
         <div class="row head-box">
-            <h3 class="title col-auto"><%=LevelFullName %>关注度排行</h3>
+            <h3 class="title col-auto"><%=LevelFullName %>今日排行</h3>
             <%--<div class="col-auto city drop-layer-box">
                 <a id="currentCity" href="javascript:;" class="arrow-down"><%=CityName %></a>
                 <div id="popCity" class="drop-layer">

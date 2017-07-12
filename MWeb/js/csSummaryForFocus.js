@@ -859,6 +859,7 @@ function callCommonMethod(url, dataType, callBackName, callBackFunc) {
         jsonpCallback: callBackName,
         success: function (data) {
             callBackFunc(data);
+            Bglog_InitPostLog();
         }
     });
 }

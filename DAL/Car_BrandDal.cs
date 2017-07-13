@@ -678,16 +678,18 @@ namespace BitAuto.CarChannel.DAL
                                                              WHEN '´ýÏú' THEN 0
                                                              WHEN 'Í£Ïú' THEN 2
                                                              ELSE 3
-                                                           END ) AS salestate
+                                                           END ) AS salestate,
+									cb.weight as cb_weight,cs.weight cs_weight
+									
                             FROM    dbo.Car_Serial cs
                                     INNER JOIN dbo.Car_Brand cb ON cs.cb_Id = cb.cb_Id
                                                                    AND cb.IsState = 1
                                     LEFT JOIN dbo.Car_MasterBrand_Rel cmbr ON cmbr.cb_Id = cb.cb_Id
-                                    LEFT JOIN dbo.Car_Serial_30UV cs30 ON cs30.cs_id = cs.cs_Id
+                                    --LEFT JOIN dbo.Car_Serial_30UV cs30 ON cs30.cs_id = cs.cs_Id
                                     LEFT JOIN dbo.Car_Serial_Item csi ON cs.cs_Id = csi.cs_Id
                             WHERE   cmbr.bs_Id = @bs_id {0} 
                                     AND cs.IsState = 1
-                            ORDER BY salestate, cs30.UVCount DESC, cs.spell";
+                            ORDER BY cb_weight desc,cb.spell, salestate ,cs.weight desc,cs.spell,cs.cs_id";
             if (type <= 0)
             {
                 sql = string.Format(sql, "and cs.csSaleState<>'Í£Ïú'");

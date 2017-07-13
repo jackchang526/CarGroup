@@ -667,7 +667,7 @@ namespace MWeb.Controllers
 		/// </summary>
 		private void MakeSerialInfoHtmlV2()
 		{
-			string liFormatter = "<li class=\"swiper-slide\"><a href=\"http://photo.m.yiche.com/picture/{0}/{1}/\" data-channelid=\"27.23.723\"><img src=\"{2}\">{3}</a>{4}</li>";
+			string liFormatter = "<li class=\"swiper-slide\"><a href=\"http://photo.m.yiche.com/picture/{0}/{1}/\" data-channelid=\"{5}\"><img src=\"{2}\">{3}</a>{4}</li>";
 			string summaryInfoStr = "<div class=\"sum-mask\"><div class=\"sum-mask-info\"><h2>{0}</h2><strong>{1}</strong><p><span>{2}</span><span>指导价：{3}</span></p></div><a href=\"javascript:;\" class=\"ico-favorite\" id=\"favstar\" data-channelid=\"27.23.726\"></a></div>";
 			summaryInfoStr = string.Format(summaryInfoStr, serialEntity.SeoName, ViewData["serialPrice"], ViewData["serialTotalPV"], serialEntity.ReferPrice.Replace("万-", "-"));
 
@@ -688,7 +688,8 @@ namespace MWeb.Controllers
 						, image.ImageId
 						, String.Format(image.ImageUrl, 3)
 						, string.Empty
-						, summaryInfoStr);
+						, summaryInfoStr
+						, "27.23.723");
 				if (!focusImgId.ContainsKey(image.ImageId))
 				{
 					focusImgId.Add(image.ImageId, _serialImage);
@@ -710,7 +711,8 @@ namespace MWeb.Controllers
 							, csImg.ImageId
 							, smallImgUrl
 							, string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<em class=\"btn-pic\">点击查看" + csImg.GroupName + "图册</em>"
-							, string.Empty);
+							, string.Empty
+							, "27.23.724");
 					if (!focusImgId.ContainsKey(csImg.ImageId))
 					{
 						focusImgId.Add(csImg.ImageId, secondImg);
@@ -729,7 +731,8 @@ namespace MWeb.Controllers
 							, dicPicNoneWhite[serialId].FirstOrDefault().Key
 							, dicPicNoneWhite[serialId].FirstOrDefault().Value
 							, string.Empty
-							, summaryInfoStr);
+							, summaryInfoStr
+							, "27.23.723");
 					if (!focusImgId.ContainsKey(dicPicNoneWhite[serialId].FirstOrDefault().Key))
 					{
 						focusImgId.Add(dicPicNoneWhite[serialId].FirstOrDefault().Key, _serialImage);
@@ -763,7 +766,8 @@ namespace MWeb.Controllers
 						, imgId
 						, imgUrl
 						, "<em class=\"btn-pic\">点击查看空间图册</em>"
-						, string.Empty);
+						, string.Empty
+						, "27.23.725");
 					if (!focusImgId.ContainsKey(imgId))
 					{
 						focusImgId.Add(imgId, thirdImg);
@@ -791,7 +795,8 @@ namespace MWeb.Controllers
 							, csImg.ImageId
 							, smallImgUrl
 							, string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<em class=\"btn-pic\">点击查看" + csImg.GroupName + "图册</em>"
-							, string.Empty);
+							, string.Empty
+							, "27.23.724");
 					if (!focusImgId.ContainsKey(csImg.ImageId))
 					{
 						focusImgId.Add(csImg.ImageId, secondImg);
@@ -812,7 +817,9 @@ namespace MWeb.Controllers
 							, imgId
 							, firstTujieNode.Attributes["ImageUrl"].Value.Replace("_4.", "_8.")
 							, string.IsNullOrEmpty(groupName) ? string.Empty : "<em class=\"btn-pic\">点击查看" + groupName + "图册</em>"
-							, string.Empty);
+							, string.Empty
+							, focusImg.Count > 1 ? "27.23.724" : "27.23.723"
+						);
 						if (!focusImgId.ContainsKey(imgId))
 						{
 							focusImgId.Add(imgId, backupImg);

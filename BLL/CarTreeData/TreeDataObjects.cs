@@ -88,7 +88,7 @@ namespace BitAuto.CarChannel.BLL.CarTreeData
 					return null;
 
 				XmlDocument xmlDoc = CommonFunction.ReadXmlFromUrl(url, LeftTreeRequestTimeOut);
-				if (xmlDoc == null)
+				if (xmlDoc == null || string.IsNullOrWhiteSpace(xmlDoc.OuterXml))
 					return null;
 				StringReader strReader = new StringReader(xmlDoc.OuterXml);
 				XmlReader reader = XmlReader.Create(strReader);

@@ -6,7 +6,7 @@
         <h2>贷款购车</h2>
     </header>
     {{if existCount>0}}
-    <div class="slide" data-anchor="slide8-1">
+    <div class="slide" data-anchor="slide8-1"> 
         <div class="con_top_bg"></div>
         <!--大背景容器开始-->
         <div class="big_bg">

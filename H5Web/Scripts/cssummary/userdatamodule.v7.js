@@ -279,7 +279,7 @@
 
 		var yhgc = {};
 
-		////惠买车
+		//惠买车
 		//$.ajax({
 		//	type: "GET",
 		//	url: "http://www.huimaiche.com/api/GetCarSerialSaleDataNew.ashx?csid=" + Config.serialId + "&ccode=" + bit_locationInfo.cityId,
@@ -404,7 +404,7 @@
 		});
 
 		var timeFun = setInterval(function () {
-			if (youhuiCount === 4) {
+			if (youhuiCount === 3) {
 				clearInterval(timeFun);
 				yhgc.existCount = existCount;
 				yhgc.isAd = Config.isAd;

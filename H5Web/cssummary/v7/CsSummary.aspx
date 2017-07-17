@@ -601,7 +601,7 @@
 <script src="http://image.bitautoimg.com/carchannel/h5/js/plugs/underscore/underscore.js"></script>
 <script src="http://image.bitautoimg.com/carchannel/h5/js/plugs/backbone/backbone.js"></script>
 
-<script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/h5/js/cssummary/userdatamodule.v7.js,carchannel/h5/js/cssummary/ColorModule.v6.js,carchannel/h5/js/cssummary/fullpagemodule.v7.js,carchannel/h5/js/cssummary/userroutersetting.v7.js?201707171534"></script>
+<script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/h5/js/cssummary/userdatamodule.v7.js,carchannel/h5/js/cssummary/ColorModule.v6.js,carchannel/h5/js/cssummary/fullpagemodule.v7.js,carchannel/h5/js/cssummary/userroutersetting.v7.js?201707171746"></script>
 
 <%--<script src="/Scripts/cssummary/userdatamodule.v7.js"></script>
 <script src="/Scripts/cssummary/ColorModule.v6.js"></script>

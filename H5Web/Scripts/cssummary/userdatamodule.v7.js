@@ -279,40 +279,40 @@
 
 		var yhgc = {};
 
-		//惠买车
-		$.ajax({
-			type: "GET",
-			url: "http://www.huimaiche.com/api/GetCarSerialSaleDataNew.ashx?csid=" + Config.serialId + "&ccode=" + bit_locationInfo.cityId,
-			async: true,
-			cache: true,
-			dataType: "jsonp",
-			timeout: Config.timeout, //超时时间设置，单位毫秒
-			jsonpCallback: "huimaiche",
-			success: function (data) {
-				if (typeof data["SaveMoney"] != "undefined" && data["SaveMoney"] != "" && typeof data["Description"] != "undefined" && typeof data["OrderUrl"] != "undefined" && data["OrderUrl"] != "") {
-					existCount++;
-					var huimaiche = {};
-					huimaiche.SaveMoney = data["SaveMoney"];
-					huimaiche.Description = data["Description"];
+		////惠买车
+		//$.ajax({
+		//	type: "GET",
+		//	url: "http://www.huimaiche.com/api/GetCarSerialSaleDataNew.ashx?csid=" + Config.serialId + "&ccode=" + bit_locationInfo.cityId,
+		//	async: true,
+		//	cache: true,
+		//	dataType: "jsonp",
+		//	timeout: Config.timeout, //超时时间设置，单位毫秒
+		//	jsonpCallback: "huimaiche",
+		//	success: function (data) {
+		//		if (typeof data["SaveMoney"] != "undefined" && data["SaveMoney"] != "" && typeof data["Description"] != "undefined" && typeof data["OrderUrl"] != "undefined" && data["OrderUrl"] != "") {
+		//			existCount++;
+		//			var huimaiche = {};
+		//			huimaiche.SaveMoney = data["SaveMoney"];
+		//			huimaiche.Description = data["Description"];
 
-					var targetLink = "";
-					if (WTmc_id && WTmc_id != "") {
-						targetLink = data["OrderUrl"] + "&leads_source=H001001&tracker_u=269_ycdsj_" + WTmc_id;
-					} else if (WTmc_jz && WTmc_jz != "") {
-						targetLink = data["OrderUrl"] + "&leads_source=H001001&tracker_u=269_ycdsj_" + WTmc_jz;
-					} else {
-						targetLink = data["OrderUrl"] + "&leads_source=H001001&tracker_u=269_ycdsj";
-					}
-					huimaiche.OrderUrl = targetLink;
+		//			var targetLink = "";
+		//			if (WTmc_id && WTmc_id != "") {
+		//				targetLink = data["OrderUrl"] + "&leads_source=H001001&tracker_u=269_ycdsj_" + WTmc_id;
+		//			} else if (WTmc_jz && WTmc_jz != "") {
+		//				targetLink = data["OrderUrl"] + "&leads_source=H001001&tracker_u=269_ycdsj_" + WTmc_jz;
+		//			} else {
+		//				targetLink = data["OrderUrl"] + "&leads_source=H001001&tracker_u=269_ycdsj";
+		//			}
+		//			huimaiche.OrderUrl = targetLink;
 
-					yhgc.huimaiche = huimaiche;
+		//			yhgc.huimaiche = huimaiche;
 
-				}
-			},
-			complete: function () {
-				youhuiCount++;
-			}
-		});
+		//		}
+		//	},
+		//	complete: function () {
+		//		youhuiCount++;
+		//	}
+		//});
 
 		//商城
 		$.ajax({

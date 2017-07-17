@@ -3,7 +3,7 @@
 <!--优惠购车模版-->
 <script type="text/x-jquery-tmpl" id="gouchetmplnew">
     <header>
-        <h2>优惠购车</h2>
+        <h2>贷款购车</h2>
     </header>
     {{if existCount>0}}
     <div class="slide" data-anchor="slide8-1">
@@ -11,7 +11,7 @@
         <!--大背景容器开始-->
         <div class="big_bg">
             <ul class="car_price car_price2">
-                {{if typeof huimaiche != "undefined"}}
+                <%--{{if typeof huimaiche != "undefined"}}
                 <li id="li_huimaiche" style="display: block">
                     <a href="${huimaiche.OrderUrl}">
                         <div class="name">
@@ -26,7 +26,7 @@
                     </a>
                     <section></section>
                 </li>
-                {{/if}}
+                {{/if}}--%>
                 {{if typeof yicheshangcheng != "undefined"}}
                 <li id="li_yicheshangcheng" style="display: block">
                     <a href="${yicheshangcheng.Url}">

@@ -1,0 +1,156 @@
+[2017/7/17 14:06:13]  
+IP: 127.0.0.1
+Error in: http://car26.h5.yiche.com/qijun/?csID=2583&IsUserEdition=1&&ref=tj&h5from=brand&daycache=201771713
+Ref: 
+Error Message: 在与 SQL Server 建立连接时出现与网络相关的或特定于实例的错误。未找到或无法访问服务器。请验证实例名称是否正确并且 SQL Server 已配置为允许远程连接。 (provider: SQL Network Interfaces, error: 26 - 定位指定的服务器/实例时出错)
+Stack Trace:    在 System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling)
+   在 System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   在 System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 BitAuto.Utils.Data.SqlHelper.ExecuteDataset(String connectionString, CommandType commandType, String commandText, SqlParameter[] commandParameters)
+   在 BitAuto.CarChannel.DAL.Data.TSerialDAL.GetSerialDataById(Int32 serialId) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\DAL\Data\TSerialDAL.cs:行号 28
+   在 BitAuto.CarChannel.BLL.Data.SerialEntity.InitData(Int32 id) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\Data\SerialEntity.cs:行号 510
+   在 BitAuto.CarChannel.BLL.Data.DataManager.GetDataEntity(EntityType eType, Int32 id) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\Data\DataManager.cs:行号 50
+   在 H5Web.cssummary.v7.CsSummary.InitData() 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\H5Web\cssummary\v7\CsSummary.aspx.cs:行号 146
+   在 H5Web.cssummary.v7.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\H5Web\cssummary\v7\CsSummary.aspx.cs:行号 28
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\PageBase.cs:行号 145
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2017/7/17 14:52:11]  
+IP: 127.0.0.1
+Error in: http://car26.h5.yiche.com/kugahaiwai/?csID=3635&IsUserEdition=1&&&h5from=brand
+Ref: http://car26.h5.yiche.com/
+Error Message: 指定的网络名不再可用。
+
+Stack Trace:    在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   在 System.Xml.XmlDownloadManager.GetStream(Uri uri, ICredentials credentials, IWebProxy proxy, RequestCachePolicy cachePolicy)
+   在 System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   在 System.Xml.XmlTextReaderImpl.OpenUrlDelegate(Object xmlResolver)
+   在 System.Runtime.CompilerServices.RuntimeHelpers.ExecuteCodeWithGuaranteedCleanup(TryCode code, CleanupCode backoutCode, Object userData)
+   在 System.Threading.CompressedStack.Run(CompressedStack compressedStack, ContextCallback callback, Object state)
+   在 System.Xml.XmlTextReaderImpl.OpenUrl()
+   在 System.Xml.XmlTextReaderImpl.Read()
+   在 System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   在 System.Xml.XmlDocument.Load(XmlReader reader)
+   在 System.Xml.XmlDocument.Load(String filename)
+   在 BitAuto.CarChannel.Common.PageBase.GetAllSerialConverImgAndCount() 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\PageBase.cs:行号 3729
+   在 BitAuto.CarChannel.Common.PageBase.GetSerialPicAndCountByCsID(Int32 csID, String& csPic, Int32& csCount, Boolean isUseNew) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\PageBase.cs:行号 3422
+   在 BitAuto.CarChannel.Common.PageBase.GetSerialInfoCardByCsID(Int32 csid, Int32 carYear) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\PageBase.cs:行号 394
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialInfoCard(Int32 serialId, Int32 carYear) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\Car_SerialBll.cs:行号 2022
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialInfoCard(Int32 serialId) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\Car_SerialBll.cs:行号 2006
+   在 BitAuto.CarChannel.BLL.SerialFourthStageBll.GetSerialColorList(Int32 serialId) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\SerialFourthStageBll.cs:行号 105
+   在 H5Web.cssummary.v7.CsSummary.InitColorList() 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\H5Web\cssummary\v7\CsSummary.aspx.cs:行号 151
+   在 H5Web.cssummary.v7.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\H5Web\cssummary\v7\CsSummary.aspx.cs:行号 80
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\PageBase.cs:行号 145
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2017/7/17 14:52:32]  
+IP: 127.0.0.1
+Error in: http://car26.h5.yiche.com/kugahaiwai/?csID=3635&IsUserEdition=1&&&h5from=brand
+Ref: http://car26.h5.yiche.com/
+Error Message: 指定的网络名不再可用。
+
+Stack Trace:    在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   在 System.Xml.XmlDownloadManager.GetStream(Uri uri, ICredentials credentials, IWebProxy proxy, RequestCachePolicy cachePolicy)
+   在 System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   在 System.Xml.XmlTextReaderImpl.OpenUrlDelegate(Object xmlResolver)
+   在 System.Runtime.CompilerServices.RuntimeHelpers.ExecuteCodeWithGuaranteedCleanup(TryCode code, CleanupCode backoutCode, Object userData)
+   在 System.Threading.CompressedStack.Run(CompressedStack compressedStack, ContextCallback callback, Object state)
+   在 System.Xml.XmlTextReaderImpl.OpenUrl()
+   在 System.Xml.XmlTextReaderImpl.Read()
+   在 System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   在 System.Xml.XmlDocument.Load(XmlReader reader)
+   在 System.Xml.XmlDocument.Load(String filename)
+   在 BitAuto.CarChannel.Common.PageBase.GetAllSerialConverImgAndCount() 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\PageBase.cs:行号 3729
+   在 BitAuto.CarChannel.Common.PageBase.GetSerialPicAndCountByCsID(Int32 csID, String& csPic, Int32& csCount, Boolean isUseNew) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\PageBase.cs:行号 3422
+   在 BitAuto.CarChannel.Common.PageBase.GetSerialInfoCardByCsID(Int32 csid, Int32 carYear) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\PageBase.cs:行号 394
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialInfoCard(Int32 serialId, Int32 carYear) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\Car_SerialBll.cs:行号 2022
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialInfoCard(Int32 serialId) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\Car_SerialBll.cs:行号 2006
+   在 BitAuto.CarChannel.BLL.SerialFourthStageBll.GetSerialColorList(Int32 serialId) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\SerialFourthStageBll.cs:行号 105
+   在 H5Web.cssummary.v7.CsSummary.InitColorList() 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\H5Web\cssummary\v7\CsSummary.aspx.cs:行号 151
+   在 H5Web.cssummary.v7.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\H5Web\cssummary\v7\CsSummary.aspx.cs:行号 80
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\PageBase.cs:行号 145
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2017/7/17 14:53:59]  
+IP: 127.0.0.1
+Error in: http://car26.h5.yiche.com/quanxinaodia4l/?csID=2593&IsUserEdition=1&&&h5from=brand
+Ref: http://car26.h5.yiche.com/
+Error Message: 指定的网络名不再可用。
+
+Stack Trace:    在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   在 System.Xml.XmlDownloadManager.GetStream(Uri uri, ICredentials credentials, IWebProxy proxy, RequestCachePolicy cachePolicy)
+   在 System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   在 System.Xml.XmlTextReaderImpl.OpenUrlDelegate(Object xmlResolver)
+   在 System.Runtime.CompilerServices.RuntimeHelpers.ExecuteCodeWithGuaranteedCleanup(TryCode code, CleanupCode backoutCode, Object userData)
+   在 System.Threading.CompressedStack.Run(CompressedStack compressedStack, ContextCallback callback, Object state)
+   在 System.Xml.XmlTextReaderImpl.OpenUrl()
+   在 System.Xml.XmlTextReaderImpl.Read()
+   在 System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   在 System.Xml.XmlDocument.Load(XmlReader reader)
+   在 System.Xml.XmlDocument.Load(String filename)
+   在 BitAuto.CarChannel.Common.PageBase.GetAllSerialConverImgAndCount() 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\PageBase.cs:行号 3729
+   在 BitAuto.CarChannel.Common.PageBase.GetSerialPicAndCountByCsID(Int32 csID, String& csPic, Int32& csCount, Boolean isUseNew) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\PageBase.cs:行号 3422
+   在 BitAuto.CarChannel.Common.PageBase.GetSerialInfoCardByCsID(Int32 csid, Int32 carYear) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\PageBase.cs:行号 394
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialInfoCard(Int32 serialId, Int32 carYear) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\Car_SerialBll.cs:行号 2022
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialInfoCard(Int32 serialId) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\Car_SerialBll.cs:行号 2006
+   在 BitAuto.CarChannel.BLL.SerialFourthStageBll.GetSerialColorList(Int32 serialId) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\SerialFourthStageBll.cs:行号 105
+   在 H5Web.cssummary.v7.CsSummary.InitColorList() 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\H5Web\cssummary\v7\CsSummary.aspx.cs:行号 151
+   在 H5Web.cssummary.v7.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\H5Web\cssummary\v7\CsSummary.aspx.cs:行号 80
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\PageBase.cs:行号 145
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+
+[2017/7/17 14:54:42]  
+IP: 127.0.0.1
+Error in: http://car26.h5.yiche.com/biyadis6/?csID=2929&IsUserEdition=1&&&h5from=brand
+Ref: http://car26.h5.yiche.com/
+Error Message: 指定的网络名不再可用。
+
+Stack Trace:    在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   在 System.Xml.XmlDownloadManager.GetStream(Uri uri, ICredentials credentials, IWebProxy proxy, RequestCachePolicy cachePolicy)
+   在 System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   在 System.Xml.XmlTextReaderImpl.OpenUrlDelegate(Object xmlResolver)
+   在 System.Runtime.CompilerServices.RuntimeHelpers.ExecuteCodeWithGuaranteedCleanup(TryCode code, CleanupCode backoutCode, Object userData)
+   在 System.Threading.CompressedStack.Run(CompressedStack compressedStack, ContextCallback callback, Object state)
+   在 System.Xml.XmlTextReaderImpl.OpenUrl()
+   在 System.Xml.XmlTextReaderImpl.Read()
+   在 System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   在 System.Xml.XmlDocument.Load(XmlReader reader)
+   在 System.Xml.XmlDocument.Load(String filename)
+   在 BitAuto.CarChannel.Common.PageBase.GetAllSerialConverImgAndCount() 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\PageBase.cs:行号 3729
+   在 BitAuto.CarChannel.Common.PageBase.GetSerialPicAndCountByCsID(Int32 csID, String& csPic, Int32& csCount, Boolean isUseNew) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\PageBase.cs:行号 3422
+   在 BitAuto.CarChannel.Common.PageBase.GetSerialInfoCardByCsID(Int32 csid, Int32 carYear) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\PageBase.cs:行号 394
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialInfoCard(Int32 serialId, Int32 carYear) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\Car_SerialBll.cs:行号 2022
+   在 BitAuto.CarChannel.BLL.Car_SerialBll.GetSerialInfoCard(Int32 serialId) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\Car_SerialBll.cs:行号 2006
+   在 BitAuto.CarChannel.BLL.SerialFourthStageBll.GetSerialColorList(Int32 serialId) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\SerialFourthStageBll.cs:行号 105
+   在 H5Web.cssummary.v7.CsSummary.InitColorList() 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\H5Web\cssummary\v7\CsSummary.aspx.cs:行号 151
+   在 H5Web.cssummary.v7.CsSummary.Page_Load(Object sender, EventArgs e) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\H5Web\cssummary\v7\CsSummary.aspx.cs:行号 80
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 BitAuto.CarChannel.Common.PageBase.OnLoad(EventArgs e) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\PageBase.cs:行号 145
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+

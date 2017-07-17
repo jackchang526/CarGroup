@@ -60,7 +60,7 @@
             });
         </script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/newselectcartoolv4.min.js?d=20170207"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/newselectcartoolv4.min.js?d=201707041043"></script>
         <%--<script type="text/javascript" src="/jsnewv2/newselectcartoolv4.js?d=20161228"></script>--%>
         <div class="col-xs-9">
             <div class="cartype-section-main">
@@ -81,10 +81,22 @@
                         if(r!=null)return  unescape(r[2]); return null;
                     }
                     var levelID = GetQueryString("l")
-                    if((location.pathname&&location.pathname.toLowerCase().indexOf("zhongxingche")>=0)
-                        ||levelID=="5")
+                    var adBlockCode = "";
+                    var pathname = location.pathname&&location.pathname.toLowerCase();
+                    if(pathname.indexOf("zhongxingche")>=0 ||levelID=="5")
                     {
-                        var adBlockCode = 'b9f32607-f7bc-4ed9-8216-b97a461f6a21';
+                        adBlockCode = 'b9f32607-f7bc-4ed9-8216-b97a461f6a21';
+                    }
+                    else if(pathname.indexOf("jincouxingche")>=0 || levelID=="3"){
+                        adBlockCode="31aa4e85-9407-42e1-887f-e811a587568c";
+                    }
+                    else if(pathname.indexOf("zhongdaxingche")>=0 || levelID=="4"){
+                        adBlockCode="cf912398-f6e3-4b12-8a89-c2af9f9a2e16";
+                    }
+                    else if (pathname.indexOf("haohuaxingche")>=0 || levelID=="6"){
+                        adBlockCode="636406f2-7ec7-41bb-8afa-24cf23b2d5d4";
+                    }
+                    if(adBlockCode != ""){
                         document.write('<ins id="div_' + adBlockCode + '" type="ad_play" adplay_blockcode="' + adBlockCode + '"></ins>');
                     }
                 </script>

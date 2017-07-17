@@ -113,10 +113,15 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
                     _CarNewsType = CarNewsType.daogou;
                     break;
                 case "shijia":
-                    pageTitle = "【{0}促销-{0}试驾】_{1}{0}-易车网";
-                    pageKeywords = "{0}试驾,{0}促销,{1}{2}";
-                    pageDescription = "{0}试驾:易车网车型频道为您提供最权威的{1}{0}试驾信息、最及时的{1}{0}优惠促销信息、{2}最新报价、{2}价格、{2}经销商降价信息、网友点评讨论等。";
-                    _CarNewsType = CarNewsType.shijia;
+                    //pageTitle = "【{0}促销-{0}试驾】_{1}{0}-易车网";
+                    //pageKeywords = "{0}试驾,{0}促销,{1}{2}";
+                    //pageDescription = "{0}试驾:易车网车型频道为您提供最权威的{1}{0}试驾信息、最及时的{1}{0}优惠促销信息、{2}最新报价、{2}价格、{2}经销商降价信息、网友点评讨论等。";
+                    //_CarNewsType = CarNewsType.pingce;
+                    //break;
+                    pageTitle = "【{0}评测-{0}单车评测】_{1}-易车网BitAuto.com";
+                    pageKeywords = "{0}评测,{0}单车评测,{1}{2}";
+                    pageDescription = "{0}评测:易车网(BitAuto.com)导购频道为您提供最权威的{0}单车评测、最及时的{0}优惠促销信息、网友点评讨论等。";
+                    _CarNewsType = CarNewsType.pingce;
                     break;
                 case "yongche":
                     pageTitle = "【{0}用车-{0}用车指南】_{1}{0}-易车网";
@@ -147,6 +152,18 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
                     pageKeywords = "{0}安全,{0}碰撞测试,{1}{0}";
                     pageDescription = "{0}安全:易车网车型频道为您提供最权威的{1}{0}安全指南、最及时的{1}{0}碰撞安全测试、{2}最新报价、{2}价格、{2}经销商降价信息、网友点评讨论等。";
                     _CarNewsType = CarNewsType.anquan;
+                    break;
+                case "keji":
+                    pageTitle = "【{0}安全-{0}碰撞安全测试】_{1}{0}-易车网";
+                    pageKeywords = "{0}安全,{0}碰撞测试,{1}{0}";
+                    pageDescription = "{0}安全:易车网车型频道为您提供最权威的{1}{0}安全指南、最及时的{1}{0}碰撞安全测试、{2}最新报价、{2}价格、{2}经销商降价信息、网友点评讨论等。";
+                    _CarNewsType = CarNewsType.keji;
+                    break;
+                case "wenhua":
+                    pageTitle = "【{0}安全-{0}碰撞安全测试】_{1}{0}-易车网";
+                    pageKeywords = "{0}安全,{0}碰撞测试,{1}{0}";
+                    pageDescription = "{0}安全:易车网车型频道为您提供最权威的{1}{0}安全指南、最及时的{1}{0}碰撞安全测试、{2}最新报价、{2}价格、{2}经销商降价信息、网友点评讨论等。";
+                    _CarNewsType = CarNewsType.wenhua;
                     break;
                 default:
                     newsType = "xinwen";
@@ -193,14 +210,16 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
         {
             Dictionary<CarNewsType, string> titleTag = new Dictionary<CarNewsType, string>();
             titleTag.Add(CarNewsType.wenzhang, "全部");
-            //titleTag.Add(CarNewsType.pingce, "易车评测");
-            titleTag.Add(CarNewsType.shijia, "体验试驾");
+            titleTag.Add(CarNewsType.pingce, "评测");
+            //titleTag.Add(CarNewsType.shijia, "体验试驾");
             //titleTag.Add("xinwen", "新闻");
             //titleTag.Add("hangqing", "行情");
             titleTag.Add(CarNewsType.daogou, "导购");
             titleTag.Add(CarNewsType.yongche, "用车");
-            titleTag.Add(CarNewsType.gaizhuang, "改装");
-            titleTag.Add(CarNewsType.anquan, "安全");
+            //titleTag.Add(CarNewsType.gaizhuang, "改装");
+            //titleTag.Add(CarNewsType.anquan, "安全");
+            titleTag.Add(CarNewsType.keji, "科技");
+            titleTag.Add(CarNewsType.wenhua, "文化");
             titleTag.Add(CarNewsType.xinwen, "新闻");
             CarNewsBll newsBll = new CarNewsBll();
             StringBuilder htmlCode = new StringBuilder();
@@ -224,14 +243,26 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
                 if (entity.Key == _CarNewsType)
                 {
                     if (_CurrentNewsCount > 0)
-                        listTemp.Add(string.Format("<li class=\"current\"><a href=\"{1}{2}/\">{0}</a></li>", entity.Value, baseUrl, entity.Key.ToString(), _CurrentNewsCount.ToString()));
+                    {
+                        listTemp.Add(string.Format("<li class=\"current\"><a href=\"{1}{2}/\">{0}</a></li>",
+                            entity.Value,
+                            baseUrl,
+                            entity.Key == CarNewsType.pingce ? CarNewsType.shijia : entity.Key,
+                            _CurrentNewsCount.ToString()));
+                    }
                     else
                         listTemp.Add(string.Format("<li class=\"current\"><a>{0}</a></li>", entity.Value));
                     continue;
                 }
-                int newsCount = newsBll.GetSerialNewsCount(serialId, year, entity.Key);
+                int newsCount = newsBll.GetSerialNewsCount(serialId, entity.Key);
                 if (newsCount > 0)
-                    listTemp.Add(string.Format("<li><a href=\"{0}{1}/\">{2}</a></li>", baseUrl, entity.Key.ToString(), entity.Value, newsCount.ToString()));
+                {
+                    listTemp.Add(string.Format("<li><a href=\"{0}{1}/\">{2}</a></li>",
+                        baseUrl,
+                        entity.Key == CarNewsType.pingce ? CarNewsType.shijia : entity.Key,
+                        entity.Value,
+                        newsCount.ToString()));
+                }
                 //else
                 //    htmlCode.AppendFormat("<li><a class=\"nolink\">{0}</a></li>", entity.Value);
             }
@@ -271,15 +302,21 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
 
             if (newsType == "wenzhang")
             {
-                List<int> carTypeIdList = new List<int>();
-                carTypeIdList.Add((int)CarNewsType.shijia);
-                carTypeIdList.Add((int)CarNewsType.daogou);
-                carTypeIdList.Add((int)CarNewsType.yongche);
-                carTypeIdList.Add((int)CarNewsType.gaizhuang);
-                carTypeIdList.Add((int)CarNewsType.anquan);
-                carTypeIdList.Add((int)CarNewsType.xinwen);
-                carTypeIdList.Add((int)CarNewsType.pingce);
-                carTypeIdList.Add((int)CarNewsType.treepingce);
+                var carTypeIdList = new List<int>
+                    {
+                        //(int)CarNewsType.serialfocus, //add 2016-10-11 by gux,liub
+                        //(int) CarNewsType.shijia,
+                        (int) CarNewsType.pingce,
+                        (int) CarNewsType.daogou,
+                        (int) CarNewsType.yongche,
+                        //(int) CarNewsType.gaizhuang,
+                        //(int) CarNewsType.anquan,
+                        (int) CarNewsType.xinwen,
+                        //(int) CarNewsType.pingce,
+                        //(int) CarNewsType.treepingce,
+                        (int) CarNewsType.keji,
+                        (int) CarNewsType.wenhua
+                    };
 
                 newsDs = new CarNewsBll().GetSerialYearNewsAllData(serialId, year, carTypeIdList, pageSize, pageIndex, out newsCount);
             }

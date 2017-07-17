@@ -31,7 +31,9 @@ var WaitCompare = (function (module) {
         defaults = {
             count: 4,
             duibiCookieName: "m_comparecarlist",
+            duibiLocalName:"car_m_localcomaprelist",
             historyCookieName: "m_historycomparecarlist",
+            historyLocalName:"car_m_localhistorycomparelist",
             url: "/handlers/getcarinfoforcompare.ashx?carid=",  //http://car.m.yiche.com/handlers/getcarinfoforcompare.ashx?carid=114462
             selector: "a[id^='car-compare']",//绑定所有点击事件
             oneSelector: "#car-compare-",//绑定单个点击事件
@@ -78,7 +80,7 @@ var WaitCompare = (function (module) {
         };
     //添加对比
     module.addCompareCar = function (id, name, elem) {
-        var cookieCar = CookieHelper.getCookie(defaults.duibiCookieName),
+        var cookieCar = LocalStorageData.getData(defaults.duibiLocalName);// CookieHelper.getCookie(defaults.duibiCookieName),
             arrCarId = [];
         if (cookieCar) {
             arrCarId = cookieCar.split('|');
@@ -94,7 +96,9 @@ var WaitCompare = (function (module) {
             return;
         }
         arrCarId.push(id);
-        CookieHelper.setCookie(defaults.duibiCookieName, arrCarId.join('|'));
+        //CookieHelper.setCookie(defaults.duibiCookieName, arrCarId.join('|'));
+        LocalStorageData.setData(defaults.duibiLocalName, arrCarId.join('|'));
+
         self.updateHistoryCars(id);
         compareData.push({
             CarId: id,
@@ -105,10 +109,12 @@ var WaitCompare = (function (module) {
         if (defaults.selectedFunc && defaults.selectedFunc instanceof Function) {
             defaults.selectedFunc(id);
         }
+        CarCompareAd.initAd(compareData);
+
     };
     //清空对比
     module.clearCompareCarAll = function () {
-        CookieHelper.clearCookie(defaults.duibiCookieName);
+        LocalStorageData.clearData(defaults.duibiLocalName);
         compareData = [];
         drawDuibiBtnUI(compareData);
         self.updateCount();
@@ -116,10 +122,12 @@ var WaitCompare = (function (module) {
         if (defaults.clearFunc && defaults.clearFunc instanceof Function) {
             defaults.clearFunc();
         }
+        CarCompareAd.initAd(compareData);
+
     };
     //删除对比车款
     module.delCompareCar = function (carId) {
-        var cookieCar = CookieHelper.getCookie(defaults.duibiCookieName),
+        var cookieCar = LocalStorageData.getData(defaults.duibiLocalName); //CookieHelper.getCookie(defaults.duibiCookieName),
             arrCarId = [],
             newCompareData = [];
         if (cookieCar) {
@@ -128,21 +136,25 @@ var WaitCompare = (function (module) {
                 arrCarId.remove(carId);
             }
         }
-        CookieHelper.setCookie(defaults.duibiCookieName, arrCarId.join('|'));
+        //CookieHelper.setCookie(defaults.duibiCookieName, arrCarId.join('|'));
+        LocalStorageData.setData(defaults.duibiLocalName, arrCarId.join('|'));
         for (var i = 0; i < compareData.length; i++) {
             if (compareData[i].CarId == carId) continue;
             newCompareData.push(compareData[i]);
         };
         compareData = newCompareData;
         drawDuibiBtnUI();
+        
         self.updateCount();
         if (defaults.delFunc && defaults.delFunc instanceof Function) {
             defaults.delFunc(carId);
         }
+
+        CarCompareAd.initAd(compareData);
     };
     //开始对比
     module.submitCompare = function () {
-        var cookieCar = CookieHelper.getCookie(defaults.duibiCookieName),
+        var cookieCar = LocalStorageData.getData(defaults.duibiLocalName);// CookieHelper.getCookie(defaults.duibiCookieName),
 			arrCarId = [];
         if (cookieCar) {
             arrCarId = cookieCar.split('|');
@@ -158,11 +170,19 @@ var WaitCompare = (function (module) {
     //初始化 对比数据
     module.initCompreData = function (options) {
         $.extend(true, defaults, options);
-        var cookieCar = CookieHelper.getCookie(defaults.duibiCookieName),
+
+        var cookieCar = CookieHelper.getCookie(defaults.duibiCookieName), //将cookie存到storage,并清空cookie
 			arrCarId = [];
         if (cookieCar) {
             arrCarId = cookieCar.split('|');
+            LocalStorageData.setData(defaults.duibiLocalName, cookieCar);
+            CookieHelper.clearCookie(defaults.duibiCookieName);
         }
+        var storageCar = LocalStorageData.getData(defaults.duibiLocalName);
+        if (storageCar) {
+            arrCarId = storageCar.split('|');
+        }
+
         if (arrCarId.length > 0) {
             $(arrCarId).each(function (index, item) {
                 defaults.selectedFunc(item);
@@ -173,7 +193,9 @@ var WaitCompare = (function (module) {
                     for (i = 0; i < (data.length) ; i++) {
                         compareData.push({
                             CarId: data[i].CarId,
-                            CarName: data[i].CarName
+                            CarName: data[i].CarName,
+                            ReferPrice: data[i].CarReferPrice,
+                            CsId:data[i].SerialId
                         });
                     }
                 }
@@ -191,7 +213,7 @@ var WaitCompare = (function (module) {
     //更新pk数量
     module.updateCount = function () {
         var count = 0;
-        var cookieCar = CookieHelper.getCookie(defaults.duibiCookieName),
+        var cookieCar = LocalStorageData.getData(defaults.duibiLocalName);// CookieHelper.getCookie(defaults.duibiCookieName),
            arrCarId = [];
         if (cookieCar) {
             arrCarId = cookieCar.split('|');
@@ -202,6 +224,11 @@ var WaitCompare = (function (module) {
     module.updateHistoryCars = function (curNewCarId) {
         var historyCookieCar = CookieHelper.getCookie(defaults.historyCookieName);
         var newHistoryCars = [];
+        if (historyCookieCar) {
+            LocalStorageData.setData(defaults.historyLocalName, historyCookieCar); //将历史记录保存到localstorage
+            CookieHelper.clearCookie(defaults.historyCookieName);
+        }
+        historyCookieCar = LocalStorageData.getData(defaults.historyLocalName);
         if (historyCookieCar) {
             newHistoryCars = historyCookieCar.split('|');
             if (!newHistoryCars.Contains(curNewCarId)) {
@@ -214,7 +241,7 @@ var WaitCompare = (function (module) {
             }
         }
         newHistoryCars.push(curNewCarId);
-        CookieHelper.setCookie(defaults.historyCookieName, newHistoryCars.join('|'));
+        LocalStorageData.setData(defaults.historyLocalName, newHistoryCars.join('|'));
     }
     //重画加号所在层的dom
     var drawDuibiBtnUI = function () {
@@ -333,7 +360,7 @@ var WaitCompare = (function (module) {
                         else if (idx == 1)  //按品牌查找 
                         {
                             //已选择车款
-                            var historyCookieCar = CookieHelper.getCookie(defaults.duibiCookieName);
+                            var historyCookieCar = LocalStorageData.getData(defaults.duibiLocalName); //CookieHelper.getCookie(defaults.duibiCookieName);
                             if (historyCookieCar) {
                                 duibiCarDataIds = historyCookieCar.split('|');
                             }
@@ -475,6 +502,7 @@ var WaitCompare = (function (module) {
                 var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
                 //调用绑定加号事件
                 bindEvent();
+                CarCompareAd.initAd(compareData);
                 //$back.trigger('close');
             },
             closeEnd: function () {
@@ -489,14 +517,14 @@ var WaitCompare = (function (module) {
             arrCarId = [],
             h = [];
         //已选择车款
-        var duibiCookieCar = CookieHelper.getCookie(defaults.duibiCookieName);
+        var duibiCookieCar = LocalStorageData.getData(defaults.duibiLocalName); //CookieHelper.getCookie(defaults.duibiCookieName);
         if (duibiCookieCar) {
             duibiCarDataIds = duibiCookieCar.split('|');
         }
         else {
             duibiCarDataIds = [];
         }
-        var historyCookieCar = CookieHelper.getCookie(defaults.historyCookieName);
+        var historyCookieCar = LocalStorageData.getData(defaults.historyLocalName); //CookieHelper.getCookie(defaults.historyCookieName);
         if (historyCookieCar) {
             arrCarId = historyCookieCar.split('|');
         }
@@ -554,10 +582,303 @@ Object.extend = function (destination, source) {
     return destination;
 }
 
+//对比广告
+var CarCompareAd = (function(module){
+    var self = module,
+        compareData = [],//对比车款
+        adData = null,//所有
+        adCarObj = null,//广告车款对象
+        carDataUrl = "/handlers/getcarinfoforcompare.ashx?carid={carids}",
+        adCarDataUrl = "http://api.car.bitauto.com/CarInfo/GetCarList.ashx?saleState=1&csids={csids}&carids={carids}"; //测试地址
+
+    module.initAd = function (carObjs) {
+        //console.log("init ad");
+        try {
+            if ($(".duibi-leftPopup").is(":hidden")) {
+                return;
+            }
+            if (typeof (carObjs) == 'undefined' || carObjs.length > 3 || carObjs.length == 0 || typeof (CarCompareAdJson) == 'undefined' || CarCompareAdJson.length == 0) {
+                self.adCarObj = null;
+                $("#compareAdBox").html("");
+                return;
+            }
+            this.compareData = carObjs;
+            self.getData();
+        } catch (e) {
+            console.log("error");
+        }
+    };
+    module.getData = function () {
+        self.adCarObj = null;
+        if (self.adData == null) {
+            var csIdArr = new Array(),
+                carIdArr = new Array();
+            CarCompareAdJson.forEach(function (obj) {
+                if (typeof (obj.adCsId) != "undefined" && obj.adCsId > 0) {
+                    csIdArr.push(obj.adCsId);
+                }
+                if (typeof (obj.adCarId) != "undefined" && obj.adCarId > 0) {
+                    carIdArr.push(obj.adCarId);
+                }
+            });
+            var tempAdCarUrl = adCarDataUrl.replace("{carids}", carIdArr.join(",")).replace("{csids}", csIdArr.join(","));
+            $.ajax({
+                url: tempAdCarUrl,
+                cache: true,
+                dataType: 'jsonp',
+                jsonpCallback: "adCarCallback",
+                success: function (data) {
+                    self.adData = data;
+
+                    self.getCompareCarData();
+                }
+            });
+        }
+        else {
+            self.getCompareCarData();
+        }
+    };
+    module.getCompareCarData = function () {
+        var carIdArr = new Array();
+        self.compareData.forEach(function (obj) {
+            if ((typeof (obj.CsId) == "undefined" || obj.CsId == 0) || (typeof (obj.ReferPrice) == "undefined" || obj.ReferPrice == 0)) {
+                carIdArr.push(obj.CarId);
+            }
+        });
+        if (carIdArr.length > 0) {
+            var tempCarCompareUrl = carDataUrl.replace("{carids}", carIdArr.join(","));
+
+            var carCompreAjax = $.ajax({
+                url: tempCarCompareUrl,
+                cache: true,
+                dataType: 'json',
+                success: function (data) {
+                    for (var j = 0; j < data.length; j++) {
+                        for (var i = 0; i < self.compareData.length; i++) {
+                            if (data[j].CarId == self.compareData[i].CarId) {
+                                self.compareData[i].CsId = data[j].SerialId;
+                                self.compareData[i].ReferPrice = data[j].CarReferPrice;
+                                break;
+                            }
+                        }
+                    }
+                    self.getAdData(self.compareData,self.adData);
+                }
+            });
+        }
+        else {
+            self.getAdData(self.compareData, self.adData);
+        }
+    };
+   
+    module.isCarCompare = function (carcompareData,carId) {//竞品车款是否在对比中
+        for (var j = 0, carCount = carcompareData.length; j < carCount; j++) {
+            if (carId == carcompareData[j].CarId) {
+                return carcompareData[j];
+            }
+        }
+        return null;
+    };
+    module.isCsCompare = function (carcompareData,csId) {//竞品车系是否在对比中
+        for (var j = 0, carCount = carcompareData.length; j < carCount; j++) {
+            if (csId == carcompareData[j].CsId) {
+                return carcompareData[j];
+            }
+        }
+        return null;
+    };
+    module.isAdCarCompare = function (carcompareData,adCarId) {//广告车款是否在对比中
+        for (var j = 0, carCount = carcompareData.length; j < carCount; j++) {
+            if (adCarId == carcompareData[j].CarId) {
+                return true;
+            }
+        }
+        return false;
+    };
+    module.sortByReferPriceAndPv = function (csCarList) {//按指导价和pv排序
+        return csCarList.sort(function (a, b) {//排序
+            var rp1 = parseFloat(a["referPrice"]),
+                rp2 = parseFloat(b["referPrice"]),
+                pv1 = parseInt(a["pv"]),
+                pv2 = parseInt(b["pv"]);
+            return ((rp1 < rp2) ? -1 : ((rp1 > rp2) ? 1 : ((pv1 < pv2) ? 1 : ((pv1 > pv2) ? -1 : 0))));
+        });
+    };
+    module.getNearCarArray = function (csCarList, compareCarObj) {//返回和金品车款指导价最接近的车款数组
+        var nearCarArray = new Array();
+        for (var i = 0; i < csCarList.length; i++) {
+            var obj = {};
+            obj.carId = csCarList[i].carId;
+            obj.diffPrice = Math.abs(parseFloat(csCarList[i].referPrice) - parseFloat(compareCarObj.ReferPrice));
+            obj.pv = csCarList[i].pv;
+            nearCarArray.push(obj);
+        }
+        return nearCarArray.sort(function (a, b) {
+            var df1 = a.diffPrice,
+                df2 = b.diffPrice,
+                pv1 = a.pv,
+                pv2 = b.pv;
+            return df1 > df2 ? 1 : df1 < df2 ? -1 : pv1 > pv2 ? - 1 : pv1 < pv2 ? 1 : 0;
+        });
+    };
+    module.sortByPv = function (csCarList) {//按pv排序
+        if (csCarList == null || csCarList.length == 0) {
+            return csCarList;
+        }
+        return csCarList.sort(function (a, b) {
+            var pv1 = parseInt(a["pv"]),
+                pv2 = parseInt(b["pv"]);
+            return ((pv1 < pv2) ? 1 : ((pv1 > pv2) ? -1 : 0));
+        });
+    };
+    module.getAdByReferPriceOrPv = function (compareCarObj,carcompareData, adCarData,adObj) {
+        if (!isNaN(compareCarObj.ReferPrice) && parseFloat(compareCarObj.ReferPrice) > 0) {//有指导价，按指导价和pv排序
+            var csCarList = self.sortByReferPriceAndPv(adCarData.serial[adObj.adCsId]);
+            var nearPriceArray = self.getNearCarArray(csCarList, compareCarObj);
+            for (var j = 0; j < nearPriceArray.length; j++) {
+                if (!self.isAdCarCompare(carcompareData, nearPriceArray[j].carId)) {
+                    var adCarId = nearPriceArray[j].carId;
+                    for (var k = 0; k < adCarData.serial[adObj.adCsId].length; k++) {
+                        var obj = adCarData.serial[adObj.adCsId][k];
+                        if (obj.carId == adCarId) {
+                            self.getAdObj(adCarId, obj.csName + " " + obj.carName);
+                            break;
+                        }
+                    }
+                    if (self.adCarObj != null) {
+                        break;
+                    }
+                }
+            }
+        }
+        else {//没有指导价
+            var csCarList = self.sortByPv(adCarData.serial[adObj.adCsId]);
+            for (var j = 0; j < csCarList.length; j++) {
+                if (!self.isAdCarCompare(carcompareData, csCarList[j].carId)) {
+                    var obj = csCarList[j];
+                    self.getAdObj(obj.carId, obj.csName + " " + obj.carName);
+                    break;
+                }
+            }
+        }
+    };
+    module.getAdData = function (carcompareData, adCarData) {
+        if (carcompareData.length == 0 || ($.isEmptyObject(adCarData.car) && $.isEmptyObject(adCarData.serial))) {
+            return;
+        }
+        for (var i = 0, adCount = CarCompareAdJson.length; i < adCount; i++) {
+            var adObj = CarCompareAdJson[i];
+            if ((typeof (adObj.csId) == "undefined" || adObj.csId == 0) && adObj.carId >0) {//按车款投
+                if ((typeof (adObj.adCsId) == 'undefined' || adObj.adCsId == 0) && adObj.adCarId >= 0) {//投放车款
+                    var isShowAd = self.isCarCompare(carcompareData, adObj.carId);
+                    if (isShowAd) {
+                        if (!self.isAdCarCompare(carcompareData, adObj.adCarId)) {
+                            self.getAdObj(adObj.adCarId, adCarData.car[adObj.adCarId].SerialName + " " + adCarData.car[adObj.adCarId].CarName);
+                        }
+                    }
+                }
+                else if (adObj.adCsId > 0)
+                {
+                    var compareCarObj = self.isCarCompare(carcompareData, adObj.carId);
+                    if (compareCarObj != null && compareCarObj.CarId > 0) {
+                        if (typeof (adObj.adCarId) != "undefined" && adObj.adCarId > 0) {//默认车款
+                            if (!self.isAdCarCompare(carcompareData, adObj.adCarId)) {
+                                self.getAdObj(adObj.adCarId, adCarData.car[adObj.adCarId].SerialName + " " + adCarData.car[adObj.adCarId].CarName);
+                            }
+                        }
+                        if (self.adCarObj == null) {
+                            self.getAdByReferPriceOrPv(compareCarObj, carcompareData, adCarData, adObj);
+                        }
+                    }
+                    
+                }
+            }
+            else if (typeof (adObj.csId) != "undefined" && adObj.csId > 0) {//按车系投
+                if ((typeof (adObj.adCsId) == "undefined" || adObj.adCsId == 0) && adObj.adCarId > 0) { //投车款
+                    var compareCarObj = self.isCsCompare(carcompareData, adObj.csId);
+                    if (compareCarObj != null && compareCarObj.CarId > 0) {
+                        if (!self.isAdCarCompare(carcompareData, adObj.adCarId)) {
+                            self.getAdObj(adObj.adCarId, adCarData.car[adObj.adCarId].SerialName + " " + adCarData.car[adObj.adCarId].CarName);
+                        }
+                    }
+                }
+                else if (typeof(adObj.adCsId) != "undefined" && adObj.adCsId > 0) {
+                    var compareCarObj = self.isCsCompare(carcompareData, adObj.csId);
+                    if (compareCarObj != null && compareCarObj.CarId > 0) {//有广告
+                        if (typeof (adObj.adCarId) != "undefined" && adObj.adCarId > 0) {//默认车款
+                            if (!self.isAdCarCompare(carcompareData, adObj.adCarId)) {
+                                self.getAdObj(adObj.adCarId, adCarData.car[adObj.adCarId].SerialName + " " + adCarData.car[adObj.adCarId].CarName);
+                            }
+                        }
+                        if (self.adCarObj == null)
+                        {
+                            self.getAdByReferPriceOrPv(compareCarObj, carcompareData, adCarData, adObj);
+                        }
+                    }
+                }
+            }
+
+            if (self.adCarObj != null) {
+                var h = new Array();
+                h.push("<div class=\"ad-title\"><h6>推荐对比</h6><span class=\"rb\">广告</span></div>");
+                h.push("<div class=\"line-box\"><a href=\"#compare\" id=\"car-compare_" + self.adCarObj.carId + "\">" + self.adCarObj.carName + "</a></div>");
+                $("#compareAdBox").html(h.join(""));
+                $("#car-compare_" + self.adCarObj.carId).click(function () {
+                    WaitCompare.addCompareCar(self.adCarObj.carId, self.adCarObj.carName);
+                });
+                break;
+            }
+        }
+    };
+    module.getAdObj = function(carId,carName){
+        self.adCarObj = {};
+        self.adCarObj.carId = carId;
+        self.adCarObj.carName = carName;
+    }
+    return module;
+})(CarCompareAd || {});
+
+var LocalStorageData = function (module) {
+    var self = module,
+        defaults = {
+            domain: window.location.host
+        };
+    module.getData = function (name, options) {
+        Object.extend(defaults, options);
+        if (defaults.domain)
+            document.domain = defaults.domain;
+        var compareCar = localStorage[name];
+        if (compareCar != null) {
+            return unescape(compareCar);
+        }
+        return null;
+    };
+    module.setData = function (name,value,options) {
+        Object.extend(defaults, options);
+        if (typeof value != 'undefined') {
+            options = options || {};
+            if (value === null) {
+                value = '';
+            }
+            if (defaults.domain)
+                document.domain = defaults.domain;
+            localStorage[name] = value;
+        }
+    };
+    module.clearData = function (name, options) {
+        Object.extend(defaults, options);
+        if (defaults.domain) {
+            document.domain = defaults.domain;
+        }
+        localStorage.removeItem(name);
+    };
+    return module;
+}(LocalStorageData || {});
+
 var CookieHelper = (function (module) {
     var self = module,
         defaults = {
-            domain: "car.m.yiche.com",
+            domain: window.location.host,
             expires: 30 * 30,
             path: "/"
         };
@@ -597,7 +918,6 @@ var CookieHelper = (function (module) {
     };
     module.getCookie = function (name) {
         var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
-
         if (arr != null) {
             return unescape(arr[2]);
         }

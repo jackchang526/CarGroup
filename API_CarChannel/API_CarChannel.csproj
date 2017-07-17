@@ -55,8 +55,9 @@
     <Reference Include="BitAuto.Beyond.Caching.RefreshCache">
       <HintPath>..\..\..\packages\BitAuto.Beyond.Caching.RefreshCache.dll</HintPath>
     </Reference>
-    <Reference Include="BitAuto.CarUtils">
-      <HintPath>..\..\..\Dll\BitAuto.CarUtils.dll</HintPath>
+    <Reference Include="BitAuto.CarUtils, Version=1.2.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\BitAuto.CarUtils.dll</HintPath>
     </Reference>
     <Reference Include="BitAuto.Utils">
       <HintPath>..\..\..\..\..\P公用平台\Release\BitAuto.Utils.dll</HintPath>
@@ -77,7 +78,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Dll\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -141,6 +142,10 @@
     </Compile>
     <Compile Include="CarInfo\GetCarListMaxFavorable.ashx.cs">
       <DependentUpon>GetCarListMaxFavorable.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\GetCarListWithTax.ashx.cs">
+      <DependentUpon>GetCarListWithTax.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CarInfo\GetCarParameter.ashx.cs">
       <DependentUpon>GetCarParameter.ashx</DependentUpon>
@@ -546,6 +551,7 @@
     <Content Include="CarInfo\GetCarPriceComputer.ashx" />
     <Content Include="config\ParameterConfigurationNew.config" />
     <Content Include="Cooperation\GetSerialData.ashx" />
+    <Content Include="CarInfo\GetCarListWithTax.ashx" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -487,13 +487,13 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 }
             }
             //排除包含在售年款
-            foreach (string year in saleYearList)
-            {
-                if (noSaleYearList.Contains(year))
-                {
-                    noSaleYearList.Remove(year);
-                }
-            }
+			//foreach (string year in saleYearList)
+			//{
+			//	if (noSaleYearList.Contains(year))
+			//	{
+			//		noSaleYearList.Remove(year);
+			//	}
+			//}
             List<CarInfoForSerialSummaryEntity> carinfoSaleList = carinfoList
                 .FindAll(p => p.SaleState == "在销");
             List<CarInfoForSerialSummaryEntity> carinfoWaitSaleList = carinfoList

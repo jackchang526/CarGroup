@@ -38,6 +38,8 @@ namespace MWeb.Controllers
         protected int maxPv = 0;//车款的最大pv数量
         protected string nearestYear = string.Empty;//所有停售车款里的最近年份
                                                     //protected int yearCount;
+		//焦点图测试的10个车系
+		private List<int> TestCsIds = new List<int>() { 1879, 2064, 2406, 2408, 2593, 2713, 2714, 2750, 3152, 4502 };
 
         /// <summary>
         /// 车系为电动车的续航里程区间
@@ -57,10 +59,16 @@ namespace MWeb.Controllers
         public ActionResult Index(int id)
         {
             serialId = id;
+			InitParam();//处理其他参数
             InitData(); //初始化数据
+			if (serialEntity == null || serialEntity.Id <= 0)
+			{
+				Response.Redirect("/error", true);
+				return new EmptyResult();
+			}
             InitTitle();  //初始化title信息
             InitSerialData(); //车系信息
-            MakeSerialInfoHtml(); //焦点图
+			
             GetCarList(); //车款列表
             GetChanDiName();//产地
             GetSerialColors(); //车系颜色
@@ -70,20 +78,43 @@ namespace MWeb.Controllers
             MakeForumNewsHtml();//论坛
             MakeSerialToSerialHtml();//看了还看
 
-            return View();
+			bool isTestCs = TestCsIds.Contains(serialId);
+			if (isTestCs)
+			{
+				MakeSerialInfoHtmlV2(); //焦点图
+				return View("~/Views/CsSummary/IndexFocus.cshtml");
+			}
+			
+			MakeSerialInfoHtml(); //焦点图
+			return View();
         }
+
+		/// <summary>
+		/// 其他参数
+		/// </summary>
+		private void InitParam()
+		{
+			string wtmcid = Request["WT.mc_id"];
+			ViewData["wtmcid"] = wtmcid;
+		}
 
         /// <summary>
         /// 数据初始化
         /// </summary>
         private void InitData()
         {
-            if (serialId < 1)
-                Response.Redirect("/error", true);
+			if (serialId < 1)
+			{
+				//Response.Redirect("/error", true);
+				return;
+			}
 
             serialEntity = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, serialId);
-            if (serialEntity == null || serialEntity.Id <= 0)
-                Response.Redirect("/error", true);
+			if (serialEntity == null || serialEntity.Id <= 0)
+			{
+				//Response.Redirect("/error", true);
+				return;
+			}
 
             serialInfoCard = new Car_SerialBll().GetSerialInfoCard(serialId);
 
@@ -631,6 +662,175 @@ namespace MWeb.Controllers
             ViewData["NearestYear"] = nearestYear;
         }
 
+		/// <summary>
+		/// 焦点图测试版本
+		/// </summary>
+		private void MakeSerialInfoHtmlV2()
+		{
+			string liFormatter = "<li class=\"swiper-slide\"><a href=\"http://photo.m.yiche.com/picture/{0}/{1}/\" data-channelid=\"{5}\"><img src=\"{2}\">{3}</a>{4}</li>";
+			string summaryInfoStr = "<div class=\"sum-mask\"><div class=\"sum-mask-info\"><h2>{0}</h2><strong>{1}</strong><p><span>{2}</span><span>指导价：{3}</span></p></div><a href=\"javascript:;\" class=\"ico-favorite\" id=\"favstar\" data-channelid=\"27.23.726\"></a></div>";
+			summaryInfoStr = string.Format(summaryInfoStr, serialEntity.SeoName, ViewData["serialPrice"], ViewData["serialTotalPV"], serialEntity.ReferPrice.Replace("万-", "-"));
+
+			var focusImgId = new Dictionary<int, string>();
+			List<string> focusImg = new List<string>();
+			List<SerialFocusImage> imgList = serialBLL.GetSerialFocusImageList(serialEntity.Id);
+			string xmlPicPath = Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, serialId));
+			DataSet dsCsPic = pageBase.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialEntity.Id, xmlPicPath, 60);
+			Dictionary<int, Dictionary<int, string>> dicPicNoneWhite = pageBase.GetAllSerialPicNoneWhiteBackground(8);
+
+			if (imgList != null && imgList.Count > 0)
+			{
+				//大图默认显示焦点图第一张，如果没有焦点图，显示封面图
+				SerialFocusImage image = imgList[0];
+				string _serialImage =
+					string.Format(liFormatter
+						, serialId
+						, image.ImageId
+						, String.Format(image.ImageUrl, 3)
+						, string.Empty
+						, summaryInfoStr
+						, "27.23.723");
+				if (!focusImgId.ContainsKey(image.ImageId))
+				{
+					focusImgId.Add(image.ImageId, _serialImage);
+					focusImg.Add(_serialImage);
+				}
+
+				//第二张图取子品牌焦点图第3张（完整内饰）
+				if (imgList.Count >= 3)
+				{
+					SerialFocusImage csImg = imgList[2];
+					string smallImgUrl = csImg.ImageUrl;
+					if (csImg.ImageId > 0)
+					{
+						smallImgUrl = String.Format(smallImgUrl, 3);
+					}
+					string secondImg =
+						string.Format(liFormatter
+							, serialId
+							, csImg.ImageId
+							, smallImgUrl
+							, string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<em class=\"btn-pic\">点击查看" + csImg.GroupName + "图册</em>"
+							, string.Empty
+							, "27.23.724");
+					if (!focusImgId.ContainsKey(csImg.ImageId))
+					{
+						focusImgId.Add(csImg.ImageId, secondImg);
+						focusImg.Add(secondImg);
+					}
+				}
+			}
+			else
+			{
+
+				if (dicPicNoneWhite.ContainsKey(serialId))
+				{
+					string _serialImage =
+						string.Format(liFormatter
+							, serialId
+							, dicPicNoneWhite[serialId].FirstOrDefault().Key
+							, dicPicNoneWhite[serialId].FirstOrDefault().Value
+							, string.Empty
+							, summaryInfoStr
+							, "27.23.723");
+					if (!focusImgId.ContainsKey(dicPicNoneWhite[serialId].FirstOrDefault().Key))
+					{
+						focusImgId.Add(dicPicNoneWhite[serialId].FirstOrDefault().Key, _serialImage);
+						focusImg.Add(_serialImage);
+					}
+				}
+			}
+
+			DataTable dtC = null;
+			//第三张图取空间分类第1张图
+			if (dsCsPic != null && dsCsPic.Tables.Count > 0 && dsCsPic.Tables.Contains("C"))
+			{
+				//if (dsCsPic.Tables.Contains("C") && dsCsPic.Tables["C"].Rows.Count > 0)
+				//{
+				dtC = dsCsPic.Tables["C"];
+				//取空间图片第一张图片,与前两张图片不重复
+
+				DataRow[] drP8 = dtC.Select("P='8'");
+				foreach (DataRow row in drP8) //空间
+				{
+					int imgId = row["I"] == DBNull.Value ? 0 : Convert.ToInt32(row["I"]);
+					string imgUrl = row["U"] == DBNull.Value ? "" : Convert.ToString(row["U"]);
+					if (imgId == 0 || imgUrl.Length == 0 || focusImgId.ContainsKey(imgId))
+					{
+						continue;
+					}
+					imgUrl = CommonFunction.GetPublishHashImgUrl(3, imgUrl, imgId);
+					string thirdImg =
+						string.Format(liFormatter
+						, serialId
+						, imgId
+						, imgUrl
+						, "<em class=\"btn-pic\">点击查看空间图册</em>"
+						, string.Empty
+						, "27.23.725");
+					if (!focusImgId.ContainsKey(imgId))
+					{
+						focusImgId.Add(imgId, thirdImg);
+						focusImg.Add(thirdImg);
+					}
+					break;
+				}
+			}
+
+			if (focusImg.Count < 3)
+			{
+				//如果不够3张,则显示焦点图第2张
+				if (imgList.Count >= 2)
+				{
+					SerialFocusImage csImg = imgList[1];
+					string smallImgUrl = csImg.ImageUrl;
+					if (csImg.ImageId > 0)
+					{
+						smallImgUrl = String.Format(smallImgUrl, 3);
+					}
+					string secondImg =
+						string.Format(
+							liFormatter
+							, serialId
+							, csImg.ImageId
+							, smallImgUrl
+							, string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<em class=\"btn-pic\">点击查看" + csImg.GroupName + "图册</em>"
+							, string.Empty
+							, "27.23.724");
+					if (!focusImgId.ContainsKey(csImg.ImageId))
+					{
+						focusImgId.Add(csImg.ImageId, secondImg);
+						focusImg.Add(secondImg);
+					}
+				}
+				else
+				{
+					//如果没有焦点图第2张,取图解第一张
+					XmlNode firstTujieNode = GetFirstTujieImage(dtC);
+					if (firstTujieNode != null)
+					{
+						string groupName = firstTujieNode.Attributes["GroupName"].Value;
+						string backupImg = string.Empty;
+						int imgId = Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value);
+						backupImg = string.Format(liFormatter
+							, serialId
+							, imgId
+							, firstTujieNode.Attributes["ImageUrl"].Value.Replace("_4.", "_8.")
+							, string.IsNullOrEmpty(groupName) ? string.Empty : "<em class=\"btn-pic\">点击查看" + groupName + "图册</em>"
+							, string.Empty
+							, focusImg.Count > 1 ? "27.23.724" : "27.23.723"
+						);
+						if (!focusImgId.ContainsKey(imgId))
+						{
+							focusImgId.Add(imgId, backupImg);
+							focusImg.Add(backupImg);
+						}
+					}
+				}
+			}
+			ViewData["FocusImgList"] = focusImg;
+		}
+
         //焦点图
         private void MakeSerialInfoHtml()
         {
@@ -776,24 +976,26 @@ namespace MWeb.Controllers
                     {
                         string groupName = firstTujieNode.Attributes["GroupName"].Value;
                         string backupImg = string.Empty;
-                        if (focusImg.Count > 1)
-                        {
-                            backupImg = string.Format("<a href=\"{0}\" data-channelid=\"27.23.724\" class=\"img-box\"><img alt=\"{3}{4}\" src=\"{1}\">{2}</a>",
-                                firstTujieNode.Attributes["Link"].Value,
-                                firstTujieNode.Attributes["ImageUrl"].Value.Replace("_4.", "_4."),
-                                string.IsNullOrEmpty(groupName) ? string.Empty : "<em>" + groupName + "</em>",
-                                serialEntity.SeoName,
-                                groupName);
-                        }
-                        else
-                        {
-							backupImg = string.Format("<a href=\"{0}\" class=\"img-box\"><img alt=\"{3}{4}\" src=\"{1}\">{2}</a>",
-                                firstTujieNode.Attributes["Link"].Value,
-                                firstTujieNode.Attributes["ImageUrl"].Value.Replace("_4.", "_4."),
-                                string.IsNullOrEmpty(groupName) ? string.Empty : "<em>" + groupName + "</em>",
-                                serialEntity.SeoName,
-                                groupName);
-                        }
+
+						if (focusImg.Count > 1)
+						{
+							backupImg = string.Format("<a href=\"{0}\" data-channelid=\"27.23.724\" class=\"img-box\"><img alt=\"{3}{4}\" src=\"{1}\">{2}</a>",
+								firstTujieNode.Attributes["Link"].Value,
+								firstTujieNode.Attributes["ImageUrl"].Value.Replace("_4.", "_4."),
+								string.IsNullOrEmpty(groupName) ? string.Empty : "<em>" + groupName + "</em>",
+								serialEntity.SeoName,
+								groupName);
+						}
+						else
+						{
+							backupImg = string.Format("<a href=\"{0}\" data-channelid=\"27.23.723\"  class=\"left-area\"><img alt=\"{3}{4}\" src=\"{1}\">{2}</a>",
+								firstTujieNode.Attributes["Link"].Value,
+								firstTujieNode.Attributes["ImageUrl"].Value.Replace("_4.", "_4."),
+								string.IsNullOrEmpty(groupName) ? string.Empty : "<em>" + groupName + "</em>",
+								serialEntity.SeoName,
+								groupName);
+						}
+                        
                         if (!focusImgId.ContainsKey(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value)))
                         {
                             focusImgId.Add(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value), backupImg);
@@ -938,9 +1140,7 @@ namespace MWeb.Controllers
                 sb.AppendFormat("</a>");
                 sb.AppendFormat("</li>");
             }
-            sb.Append("<script type=\"text/javascript\">");
-            sb.Append("showNewsInsCode('c32bb18e-3133-42cc-b65c-477543dd487a', '130ba246-33ce-4962-be9f-cfb4eee3fad4', '33461266-42fb-41c3-b603-ce69acee87b4', '21bdf009-15e2-4dfb-bea1-4508e6b04755');");
-            sb.Append("</script>");
+            sb.Append("<ins id=\"div_3bf56f1a-a766-437c-83de-572a58dc3909\" data-type=\"ad_play\" data-adplay_ip=\"\" data-adplay_areaname=\"\" data-adplay_cityname=\"\" data-adplay_brandid=\""+serialEntity.Id+"\" data-adplay_brandname=\"\" data-adplay_brandtype=\"\" data-adplay_blockcode=\"3bf56f1a-a766-437c-83de-572a58dc3909\"> </ins>");
             sb.Append("</ul>");
             sb.Append("</div>");
 

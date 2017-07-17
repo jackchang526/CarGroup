@@ -1,5 +1,0 @@
-[2016/10/26 13:56:00]  
-IP: 127.0.0.1
-Error in: http://api01.car.bitauto.com/Cooperation/GetCarData.aspx?name=toDay&type=car&id=11991
-Stack Trace: 合作接口 IP:127.0.0.1 Url:http://api01.car.bitauto.com/Cooperation/GetCarData.aspx?name=toDay&type=car&id=11991
-

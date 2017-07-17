@@ -34,6 +34,11 @@ namespace MWeb.Controllers
           
             GetPageParam(RouteData.Values);
             this.GetCarIDByCsID();
+			if (se == null || se.Id <= 0)
+			{
+				Response.Redirect("/error", true);
+				return new EmptyResult();
+			}
             ViewBag.CsHeadHTML = pageBase.GetCommonNavigation("MCsCompare", csID);
             ViewBag.CsId = csID;
 
@@ -48,8 +53,11 @@ namespace MWeb.Controllers
             if (csID > 0)
             {
                 se = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, csID);
-                if (se == null || se.Id <= 0)
-                    Response.Redirect("/error", true);
+				if (se == null || se.Id <= 0)
+				{
+					//Response.Redirect("/error", true);
+					return;
+				}
                 DataSet ds = new DataSet();
                 if (se.SaleState == "停销")
                 {

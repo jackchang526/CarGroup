@@ -7728,6 +7728,26 @@ namespace BitAuto.CarChannel.BLL
 			CacheManager.InsertCache(cacheKey, ds, WebConfig.CachedDuration);
 			return ds;
 		}
+
+		/// <summary>
+		/// 按级别和销售状态取车系数据
+		/// </summary>
+		/// <param name="level">级别</param>
+		/// <param name="saleState">销售状态，如果取全部数据传null</param>
+		/// <returns></returns>
+		public DataSet GetLevelSerialByUVAndSaleState(string level, List<string> saleState)
+		{
+			string saleStateStr = saleState == null || saleState.Count == 0 ? "All" : string.Join(",", saleState.ToArray());
+			string cacheKey = "Car_SerialBll_GetLevelSerialByUVAndSaleState_" + level + "_" + saleStateStr;
+			object obj = CacheManager.GetCachedData(cacheKey);
+			if (obj != null)
+			{ return (DataSet)obj; }
+
+			DataSet ds = csd.GetLevelSerialDataByUVAndSaleState(level, saleState);
+			CacheManager.InsertCache(cacheKey, ds, WebConfig.CachedDuration);
+			return ds;
+		}
+
 		/// <summary>
 		///  易湃的销量最高的suv车型接口数据
 		/// </summary>

@@ -18,7 +18,7 @@ namespace MWeb.Controllers
         // GET: /SelectBrand/
 		private Car_BrandBll carBrandBll = null;
 		private PageBase pageBase = null;
-
+		private bool isValidMasterBrand = true;
 
 		public SelectBrandController()
 		{
@@ -33,6 +33,11 @@ namespace MWeb.Controllers
 		public ActionResult Index(int id)
         {
 			RenderMasterBrand(id);
+			if (!isValidMasterBrand)
+			{
+				Response.Redirect("/error", true);
+				return new EmptyResult();
+			}
 			RenderBrandList(id);
             return View();
         }
@@ -53,7 +58,8 @@ namespace MWeb.Controllers
 			}
 			else
 			{
-				Response.Redirect("/error", true);
+				//Response.Redirect("/error", true);
+				isValidMasterBrand = false;
 			}
 			ViewData["masterName"] = masterName;
 			ViewData["masterSpell"] = masterSpell;

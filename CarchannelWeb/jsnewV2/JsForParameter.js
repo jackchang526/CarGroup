@@ -886,7 +886,8 @@ function createMulti(arrFieldRow) {
                             // field += unitArray[pint];
                             multiField = multiField + (joinCodeArray[pint] || "") + field;
                             //add by sk 2016.01.08 以下参数有值 直接显示 忽略第二个参数
-                            if (pidArray[pint] == "509" || pidArray[pint] == "489" | pidArray[pint] == "555" || pidArray[pint] == "808") {
+                            if (pidArray[pint] == "509" || pidArray[pint] == "489" || pidArray[pint] == "555" || pidArray[pint] == "808") {
+                                isAllunknown = false;  
                                 break;
                             }
                         }

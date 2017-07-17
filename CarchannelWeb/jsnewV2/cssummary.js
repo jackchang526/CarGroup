@@ -97,8 +97,9 @@ function GetDealerData(serialSpell) {
 				if (data[0].DealerCount > 0) {
 					$("#mp-dealer").html("（" + data[0].DealerCount + "家本地经销商）");
 				}
-				if (parseFloat(data[0].MaxFavorablePrice) > 0) {
-					$("#mp-jiangjia .desc a").html("直降" + data[0].MaxFavorablePrice + "万>>");
+				var favorablePrice = parseFloat(data[0].MaxFavorablePrice);
+				if (favorablePrice > 0) {
+				    $("#mp-jiangjia .desc a").html("直降" + favorablePrice.toFixed(2) + "万>>");
 				}
 				else {
 					$("#mp-jiangjia .desc").addClass("grey-txt").html("暂无");
@@ -165,85 +166,54 @@ function getBuyYch(data) {
 }
 //降价
 function GetJiangjiaNews() {
-	var newDemandAjax = $.ajax({
-		url: "http://m.h5.qiche4s.cn/temai/handler/ActiveCommonHandler.ashx?action=getcaractivebycityandserial&count=4&cityId=" + cityId + "&brandId=" + serialId,
+    if (priceRang == "未上市") {
+        return;
+    }
+	$.ajax({
+		url: "http://m.h5.qiche4s.cn/jiangjiaapi/GetPromtionNews.ashx?op=carlist&count=4&csid=" + serialId + "&cid=" + cityId,
 		cache: true,
 		dataType: "jsonp",
-		jsonpCallback: "newDemandCallback",
-		success: function (newdemanddata) {
+		jsonpCallback: "getJiangJiaCallback",
+		success: function (data) {
 		    var h = [];
-			var count = 0;
-			if (priceRang != "未上市" && typeof newdemanddata.CarList != 'undefined' && newdemanddata.CarList != null && newdemanddata.CarList.length > 0) {
-				count = newdemanddata.CarList.length;
-				if (count > 4) count = 4;
-				for (var i = 0; i < count ; i++) {
-				    if (i > count - 1) break;
-				    var obj = newdemanddata.CarList[i],
-				        txt = "",
-				        className = "price-reduction";
-					if (changeTwoDecimal(obj.MaxRP) < 0.01
-                        && typeof obj.RP != 'undefined'
-                        && obj.RP != "") {
-					    txt = obj.RP + "万起";
-					    className = "price-reduction type1";
+			count = data.data.length;
+			if (count > 0) {
+				for (var jiangjiaCount = 0; jiangjiaCount < count; jiangjiaCount++) {
+					var obj = data.data[jiangjiaCount];
+
+				    var youhuiStr = "",
+                        youhuiUrl= "",
+					    className = "";
+				    if (obj.IsJJ == 1) { //降价
+				        if (obj.showtype == 1) {
+				            youhuiStr = "直降" + obj.FavorablePrice + "万";
+				            className = "price-reduction";
+				            youhuiUrl = obj.zuidijiaUrl;
+				        }
+				        else { //送礼包
+				            youhuiStr = "送礼包";
+				            className = "price-reduction type1";
+				            youhuiUrl = obj.href;
+				        }
 					}
-					else {
-					    txt = "直降" + changeTwoDecimal(obj.MaxRP) + "万";
+					else{ //报价
+					    var vendorPrice = parseFloat(obj.vendorPrice).toFixed(2);
+					    youhuiStr = vendorPrice + "万";
+					    className = "price-reduction type2";
+					    youhuiUrl = obj.zuidijiaUrl;
 					}
-					h.push("<li class=\"col-xs-6\"><a href=\"" + obj.pcUrl
-                        + "?leads_source=p002022#" + obj.CarID + "\" target=\"_blank\" class=\"txt\">" + ((obj.carYear > 0 ? (obj.carYear + "款 ") : "")+ obj.Name)
-                        + "</a><a href=\"" +obj.pcUrl + "?leads_source=p002022#\" target=\"_blank\" class=\"" + className + "\">" + txt + "</a></li>");
+				    h.push(" <li class=\"col-xs-6\"><a href=\"" + obj.href + "?leads_source=p002005\" target=\"_blank\" class=\"txt\">" + obj.CarName + "</a><a target=\"_blank\" href=\"" + youhuiUrl + "\" class=\"" + className + "\">" + youhuiStr + "</a></li>");
 				}
-				var cityHtml = "<li class=\"current\"><a target=\"_blank\" href=\"http://car.bitauto.com/" + serialSpell + "/jiangjia/c" + cityId + "/?leads_source=p002022#\">" + cityName + "</a></li>";
-				if (count > 0) {
-				    $("#mp-jiangjianews").html(h.join(""));
-				    cityHtml += "<li><a href=\"http://car.bitauto.com/" + serialSpell + "/jiangjia/c" + cityId + "/?leads_source=p002022#\" target=\"_blank\">更多降价&gt;&gt;</a></li>";
-				}
-				else {
-				    $("#mp-jiangjianews").html("<li class=\"col-xs-6\"><a class=\"txt\" style=\"color: #333;\">本地暂无降价信息</a></li>");
-				}
-				$("#mp-jiangjiacity").html(cityHtml);
 			}
-			if (priceRang != "未上市" && count == 0) {
-				$.ajax({
-					url: "http://m.h5.qiche4s.cn/jiangjiaapi/GetPromtionNews.ashx?op=carlist&count=4&csid=" + serialId + "&cid=" + cityId,
-					cache: true,
-					dataType: "jsonp",
-					jsonpCallback: "getJiangJiaCallback",
-					success: function (data) {
-						count = data.data.length;
-						if (count > 0) {
-							for (var jiangjiaCount = 0; jiangjiaCount < count; jiangjiaCount++) {
-								if (jiangjiaCount > 3) break;
-								var obj = data.data[jiangjiaCount];
-								var youhuiStr = "";
-								var className = "";
-								if (parseFloat(obj.FavorablePrice) > 0) {
-								    youhuiStr = "直降" + obj.FavorablePrice + "万";
-								    className = "price-reduction";
-								}
-								else {
-								    youhuiStr = "送礼包";
-								    className = "price-reduction type1";
-								}
-								h.push(" <li class=\"col-xs-6\"><a href=\"" + obj.href + "?leads_source=p002005\" target=\"_blank\" class=\"txt\">" + obj.CarName + "</a><a target=\"_blank\" href=\"" + obj.href + "?leads_source=p002005#\" class=\"" + className + "\">" + youhuiStr + "</a></li>");
-							}
-						}
-						var cityHtml = "<li class=\"current\"><a target=\"_blank\" href=\"http://car.bitauto.com/" + serialSpell + "/jiangjia/c" + cityId + "/?leads_source=p002005#\">" + cityName + "</a></li>";
-						if (count > 0) {
-						    $("#mp-jiangjianews").html(h.join(""));
-						    cityHtml += "<li><a href=\"http://car.bitauto.com/" + serialSpell + "/jiangjia/c" + cityId + "/?leads_source=p002005#\" target=\"_blank\">更多降价&gt;&gt;</a></li>";
-						}
-						else {
-						    $("#mp-jiangjianews").html("<li class=\"col-xs-6\"><a class=\"txt\"  style=\"color: #333;\">本地暂无降价信息</a></li>");
-						}
-						$("#mp-jiangjiacity").html(cityHtml);
-					}
-				});
+			var cityHtml = "<li class=\"current\"><a target=\"_blank\" href=\"http://car.bitauto.com/" + serialSpell + "/jiangjia/c" + cityId + "/?leads_source=p002005#\">" + cityName + "</a></li>";
+			if (count > 0) {
+				$("#mp-jiangjianews").html(h.join(""));
+				cityHtml += "<li><a href=\"http://car.bitauto.com/" + serialSpell + "/jiangjia/c" + cityId + "/?leads_source=p002005#\" target=\"_blank\">更多降价&gt;&gt;</a></li>";
 			}
-			//if (priceRang == "未上市") {
-			//	InitJiangjiaHtml(h);
-			//}
+			else {
+				$("#mp-jiangjianews").html("<li class=\"col-xs-6\"><a class=\"txt\"  style=\"color: #333;\">本地暂无降价信息</a></li>");
+			}
+			$("#mp-jiangjiacity").html(cityHtml);
 		}
 	});
 }
@@ -258,7 +228,13 @@ function GetDownPayment() {
         success: function (data) {
             //var data = $.parseJSON(result);
             if (data != null && typeof data != "undefined" && typeof data.DownPayment != "undefined" && !isNaN(data.DownPayment) && parseFloat(data.DownPayment) > 0) {
-                var downPayment = parseFloat(data.DownPayment).toFixed(2);
+                var downPayment = parseFloat(data.DownPayment);
+                if (downPayment >= 100) {
+                    downPayment = downPayment.toFixed(0);
+                }
+                else {
+                    downPayment = downPayment.toFixed(2);
+                }
                 $("#mp-daikuan h5 a").attr("href", data.PcListUrl).html("首付" + downPayment + "万起>>");
             }
             else {

@@ -14,6 +14,7 @@ using BitAuto.CarChannel.Common.Enum;
 using BitAuto.CarChannel.Common.Cache;
 using BitAuto.CarChannel.Model;
 using System.Data;
+using Newtonsoft.Json;
 
 namespace BitAuto.CarChannelAPI.Web.Cooperation
 {
@@ -106,6 +107,9 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
                         break;
                     case "getcswenzhang":
                         GetCsWenzhangForBaidu();
+                        break;
+                    case "getcsinfo":
+                        GetSerialData();
                         break;
 
                     default: break;
@@ -299,6 +303,51 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
             response.Write(sb.ToString());
         }
 
+        private void GetSerialData()
+        {
+            int sku_id = ConvertHelper.GetInteger(request.QueryString["sku_id"]);
+            string from = request.QueryString["from"];
+            if (string.IsNullOrEmpty(from))
+            {
+                from = "WT.mc_id=mbdfdbjh";
+            }
+            object data = null;
+            if (sku_id > 0)
+            {
+                SerialEntity ce = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, sku_id);
+                if (ce != null)
+                {
+                    int price = 0;
+                    if (ce.Price.IndexOf('-') != -1)
+                    {
+                        price = ConvertHelper.GetInteger(ConvertHelper.GetDouble(ce.Price.Split('-')[0]) * 1000000);
+                    }
+                    else
+                    {
+                        price = ConvertHelper.GetInteger(ConvertHelper.GetDouble(ce.Price.Replace("万", "")) * 1000000);
+                    }
+                    data = new
+                    {
+                        sku_id = sku_id,
+                        tp_src = "yiche",
+                        //from = from,
+                        source = "易车",
+                        is_on_sale = ce.SaleState == "在销" ? 1 : 0,
+                        name = ce.ShowName,
+                        desc = ce.ShowName,
+                        img = Car_SerialBll.GetSerialImageUrl(sku_id, "6"),
+                        price = price,
+                        mprice = "",
+                        promotion_url = string.Format("http://car.h5.yiche.com/{0}/?order=page0,page1,page7,page2,page5,page3,page4,page6,page9&ad=0&WT.mc_id=mbdfdbjh", ce.AllSpell)
+                    };
+                }
+            }
+
+            var json = new { errmsg = "成功", errno = "0", data = data };
+            string result = JsonConvert.SerializeObject(json);
+            response.Write(result);
+        }
+
         #endregion
 
         #region 好贷&易车购车贷款合作
@@ -342,7 +391,7 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
                         { imgURL = String.Format(imgList[0].ImageUrl, 4); }
                     }
 
-                    sb.Append(string.Format("{{\"CarID\":{0},\"CarName\":\"{1}\",\"CarYear\":\"{2}\",\"CsID\":{3},\"Displacement\":\"{4}\",\"CarReferPrice\":\"{5}\",\"Power\":\"{6}\",\"Gearbox\":\"{7}\",\"CoverImage\":\"{8}\",\"CarSaleState\":\"{9}\"}}"
+                    sb.Append(string.Format("{{\"CarID\":{0},\"CarName\":\"{1}\",\"CarYear\":\"{2}\",\"CsID\":{3},\"Displacement\":\"{4}\",\"CarReferPrice\":\"{5}\",\"Power\":\"{6}\",\"Gearbox\":\"{7}\",\"CoverImage\":\"{8}\",\"CarSaleState\":\"{9}\",\"CarProduceState\":\"{10}\"}}"
                         , carid
                         , CommonFunction.GetUnicodeByString(dsCarBasic.Tables[0].Rows[0]["Car_name"].ToString().Trim())
                         , dsCarBasic.Tables[0].Rows[0]["Car_yearType"].ToString()
@@ -354,6 +403,7 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
                             + (dic712.ContainsKey(carid) ? CommonFunction.GetUnicodeByString(dic712[carid]) : ""))
                         , imgURL
                         , dsCarBasic.Tables[0].Rows[0]["Car_SaleState"].ToString()
+                        , dsCarBasic.Tables[0].Rows[0]["Car_ProduceState"]
                         ));
                 }
             }

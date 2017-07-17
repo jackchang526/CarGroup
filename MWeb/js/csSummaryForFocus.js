@@ -722,7 +722,7 @@ function initLoginFavCar(carLoginresult) {
                     for (var i = 0; i < concernedcar.length; i++) {
                         if (concernedcar[i] == GlobalSummaryConfig.SerialId) {
                             added = true;
-                            $("#favstar").html("<i></i>已关注").addClass("ico-favorite ico-favorite-sel");
+                            $("#favstar").addClass("ico-favorite ico-favorite-sel");
                             break;
                         }
                     }
@@ -754,11 +754,11 @@ function FocusCar(obj) {
         if (Bitauto.UserCars.concernedcar.message[0] == "已超过上限") {
             alert("关注数量已达上限");
         } else {
-            obj.addClass("ico-favorite ico-favorite-sel").html("<i></i>已关注");
+            obj.addClass("ico-favorite ico-favorite-sel");
             Bitauto.UserCars.concernedcar.arrconcernedcar.unshift(id);
         }
     }) : Bitauto.UserCars.delConcernedCar(id, function () {
-        obj.removeClass("ico-favorite-sel").html("<i></i>关注");
+        obj.removeClass("ico-favorite-sel");
     });
 }
 
@@ -782,17 +782,19 @@ $(function () {
     }
 
     // 底部浮动层
-    var curSerialSaleState = "@(serialEntity.SaleState)";//
     var screenHeight = $(window).height();
+    $('#bottomFloat').show();
+   
     $(window).bind("scroll", function () {
         if ($(window).scrollTop() > screenHeight - 300) {
-            $('#bottomFloat').show();
+   //         $('#bottomFloat').show();
             $('#carNavFixed').show();
         } else {
-            $('#bottomFloat').hide();
+         //   $('#bottomFloat').hide();
             $('#carNavFixed').hide();
         }
     });
+   
 
     //空间详情
     $(".scroll-card .car-info-txt").find("em").on("click", function (e) {

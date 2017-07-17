@@ -209,7 +209,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 									   , dr["bs_id"]
 									   , dr["bs_Name"].ToString().Trim()
 									   , dr["bsallspell"].ToString().ToLower()
-									   , dr["bsspell"]
+									   , dr["bsspell"].ToString().ToUpper()
 									   , ""));
 				jsonString.Add("}");
 			}

@@ -76,7 +76,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Dll\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PieceDataProviderLib">
       <HintPath>..\DLL\PieceDataProviderLib.dll</HintPath>
@@ -155,7 +155,6 @@
     <Content Include="config\guideConfig.xml" />
     <Content Include="config\H5SelectSerialList.xml" />
     <Content Include="config\IIS6\IsapiRewrite4.dll" />
-    <Content Include="config\IIS6\IsapiRewrite4.pdb" />
     <Content Include="config\PagerConfig.xml" />
     <Content Include="config\ParameterForJson.xml" />
     <Content Include="config\ParameterForJsonNew.xml" />
@@ -671,6 +670,7 @@
     <Content Include="include\BAA\BBS\00001\20161031_cxzs_luntan_Manual.shtml" />
     <Content Include="include\BAA\BBS\00001\20170424_cxzs_luntan_new_Manual.shtml" />
     <Content Include="include\debris\ranks\Top10HotNewsPage.shtml" />
+    <Content Include="include\debris\ranks\Top10HotNewsPage_utf8.shtml" />
     <Content Include="include\partner\hezuo_part\00001\201210_hzwz_rmcx_gb2312_Manual.shtml" />
     <Content Include="include\partner\hezuo_part\00001\201210_hzwz_rmcx_Manual.shtml" />
     <Content Include="include\pd\2012\chedai\00001\chedai_chedaizixun_Manual.shtml" />

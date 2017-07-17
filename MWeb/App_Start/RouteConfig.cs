@@ -127,7 +127,7 @@ namespace MWeb
                name: "newslist",
                url: "{allspell}/{newstags}",
                defaults: new { controller = "NewsList", action = "Index", id = UrlParameter.Optional },
-               constraints: new { allspell = new SerialAllSpellConstraint(), newstags = @"(wenzhang|xinwen|daogou|hangqing|yongche|shijia|pingce|gaizhuang|anquan)" }
+               constraints: new { allspell = new SerialAllSpellConstraint(), newstags = @"(wenzhang|xinwen|daogou|hangqing|yongche|shijia|pingce|gaizhuang|anquan|keji|wenhua)" }
            );
             //车系配置
             routes.MapRoute(

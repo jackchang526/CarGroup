@@ -94,7 +94,7 @@ namespace BitAuto.CarChannel.BLL.Data
 			{
 				if (String.IsNullOrEmpty(m_showName))
 				{
-					if (m_producerCountry != "中国")
+					if (m_country != "中国")
 						m_showName = "进口" + m_name;
 					else
 						m_showName = m_name;

@@ -78,6 +78,11 @@ namespace MWeb.Controllers
 			//GetPageParam(RouteData.Values);
 			CarId = carid;
 			GetCarData();
+			if (ce == null || ce.Id == 0 || ce.Serial == null)
+			{
+				Response.Redirect("/error", true);
+				return new EmptyResult();
+			}
 			return View(ce);
 		}
 		#region private Method
@@ -97,10 +102,10 @@ namespace MWeb.Controllers
 					GetCarParam();
 					GetCarKouBei();
 				}
-				else
-				{
-					Response.Redirect("/error", true);
-				}
+				//else
+				//{
+				//	Response.Redirect("/error", true);
+				//}
 			}
 		}
 

@@ -626,10 +626,10 @@ namespace BitAuto.CarChannel.Common.Interface
 						xSerialElemList.Add(xSerialElement);
 					}
 					//如果结点数量大于1
-					if (xSerialElemList.Count > 1)
-					{
-						xSerialElemList.Sort(NodeCompare.TreeSerialCompare);
-					}
+					//if (xSerialElemList.Count > 1)
+					//{
+					//	xSerialElemList.Sort(NodeCompare.TreeSerialCompare);
+					//}
 					foreach (XmlElement serialElement in xSerialElemList)
 					{
 						string serialName = serialElement.GetAttribute("ShowName");

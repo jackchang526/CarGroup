@@ -318,13 +318,29 @@ namespace WirelessWeb.handlers
 					//	priceRange = "暂无报价";
 
 					string referPrice = dr["ReferPriceRange"].ToString();
-					if (referPrice.Length == 0)
+					if (csSaleState == "在销")
+					{
+						if (referPrice.Length == 0)
+						{
+							referPrice = "暂无指导价";
+						}
+						else
+						{
+							referPrice = referPrice + "万";
+						}
+					}
+					else if (csSaleState == "待销")
+					{
+						referPrice = "未上市";
+					}
+					else if (csSaleState == "待查")
 					{
 						referPrice = "暂无指导价";
 					}
 					else
 					{
-						referPrice = referPrice + "万";
+						// 停销
+						referPrice = "停售";
 					}
 
 					string imgUrl = Car_SerialBll.GetSerialImageUrl(serialId).Replace("_2.", "_1.");

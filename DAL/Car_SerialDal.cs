@@ -1308,6 +1308,42 @@ namespace BitAuto.CarChannel.DAL
 			ds = SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, _param);
 			return ds;
 		}
+
+		/// <summary>
+		/// 按销售状态，取某级别的按UV倒序的子品牌数据
+		/// </summary>
+		/// <param name="levelId">级别</param>
+		/// <param name="saleState">销售状态,如果取全部状态，可为空</param>
+		/// <returns></returns>
+		public DataSet GetLevelSerialDataByUVAndSaleState(string level,List<string> saleState)
+		{
+			DataSet ds = new DataSet();
+			string sql = @"select cs.cs_id,cs.cs_name,cs.allspell as csAllSpell,cs.cs_ShowName,cs.cs_CarLevel,cs.cs_seoname
+                        ,cs30.uvcount,cs.CsSaleState
+                        from car_serial cs
+                        left join dbo.Car_Serial_30UV cs30 on cs.cs_id=cs30.cs_id
+                        where cs.isState=1 and cs.cs_CarLevel = @level {0}
+                        order by cs30.uvcount desc";
+
+			List<SqlParameter> _param = new List<SqlParameter>() {
+                new SqlParameter("@level",SqlDbType.VarChar)
+            };
+			_param[0].Value = level;
+			if (saleState != null && saleState.Count > 0)
+			{
+				sql = string.Format(sql, " and cs.CsSaleState in (@saleState)");
+				_param.Add(new SqlParameter("@saleState", SqlDbType.NVarChar));
+				_param[1].Value = string.Join(",", saleState.ToArray());
+			}
+			else
+			{
+				sql = string.Format(sql, string.Empty);
+			}
+			
+			ds = SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, _param.ToArray());
+			return ds;
+		}
+
 		/// <summary>
 		/// 获取 所有 子品牌 UV
 		/// </summary>

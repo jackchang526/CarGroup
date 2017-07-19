@@ -30,7 +30,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
         {
             OutputCachedPage page = new OutputCachedPage(new OutputCacheParameters
             {
-                Duration = 60 * 60 * 24,
+                Duration = 60 * 60 * 6,
                 Location = OutputCacheLocation.Any,
                 VaryByParam = "*"
             });
@@ -97,7 +97,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
             string content = string.Format("{{CharList:[{0}],DataList:[{1}]}}",
                 string.Join(",", charList.ToArray()),
                 string.Join(",", contentList.ToArray()));
-            CacheManager.InsertCache(cacheKey, content, 60 * 24);
+            CacheManager.InsertCache(cacheKey, content, 60 * 6);
 
             return content;
         }
@@ -143,7 +143,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
             if (query.Count() > 0) sb.Remove(sb.Length - 1, 1);
             string content = string.Format("[{0}]", sb.ToString());
 
-            CacheManager.InsertCache(cacheKey, content, 60 * 24);
+            CacheManager.InsertCache(cacheKey, content, 60 * 6);
             return content;
         }
 

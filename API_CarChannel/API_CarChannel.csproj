@@ -143,6 +143,10 @@
     <Compile Include="CarInfo\GetCarListMaxFavorable.ashx.cs">
       <DependentUpon>GetCarListMaxFavorable.ashx</DependentUpon>
     </Compile>
+    <Compile Include="CarInfo\GetCarListWithTax.ashx.cs">
+      <DependentUpon>GetCarListWithTax.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="CarInfo\GetCarParameter.ashx.cs">
       <DependentUpon>GetCarParameter.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -547,6 +551,7 @@
     <Content Include="CarInfo\GetCarPriceComputer.ashx" />
     <Content Include="config\ParameterConfigurationNew.config" />
     <Content Include="Cooperation\GetSerialData.ashx" />
+    <Content Include="CarInfo\GetCarListWithTax.ashx" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

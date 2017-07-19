@@ -382,7 +382,7 @@ namespace BitAuto.CarChannel.DAL
                                             AND cb.isstate = 1
                                             AND bs.isstate = 1
                                             AND bs.bs_id = @bs_id
-                                    ORDER BY Cp_Country DESC, cb.spell";
+                                    ORDER BY cb.weight desc, cb.spell";
 
 
             //string sqlResult = "select cb.cb_id, cb.cb_name, cb.allspell as cbspell"
@@ -400,7 +400,11 @@ namespace BitAuto.CarChannel.DAL
 
             string sqlResult = string.Format(@"SELECT  cb.cb_id, cb.cb_name, cb.allspell AS cbspell, cs.cs_id, cs.cs_name,
 									cs.cs_ShowName, cs.allspell AS csspell, cs.cs_CarLevel AS cslevel,
-									cs.CsSaleState, cs.spell AS spell,cs.cs_seoname,csi.ReferPriceRange
+									cs.CsSaleState, cs.spell AS spell,cs.cs_seoname,csi.ReferPriceRange, ( CASE cs.CsSaleState
+										WHEN '在销' THEN 1
+										WHEN '待销' THEN 1
+										ELSE 3
+										END ) AS CsSaleStateSort
 							FROM    Car_MasterBrand bs
 									LEFT JOIN Car_MasterBrand_Rel cmr ON cmr.bs_id = bs.bs_id
 									LEFT JOIN Car_Brand cb ON cmr.cb_id = cb.cb_id
@@ -409,7 +413,9 @@ namespace BitAuto.CarChannel.DAL
 									LEFT JOIN dbo.Car_Serial_30UV uv ON cs.cs_Id = uv.cs_id
 									LEFT JOIN dbo.Car_Serial_Item csi on cs.cs_Id=csi.cs_Id
 							WHERE   bs.bs_id = @bs_id
-							ORDER BY cs.CsSaleState DESC, uv.UVCount DESC, csspell", (!isAll ? " and cs.CsSaleState<>'停销'" : ""));
+							ORDER BY 
+			cb.weight desc,cb.spell,cb.cb_id,
+			CsSaleStateSort,cs.weight desc,cs.spell,cs.cs_id", (!isAll ? " and cs.CsSaleState<>'停销'" : ""));
 			//StringBuilder sqlResult = new StringBuilder();
 
 			//sqlResult.Append("SELECT cb.cb_id, cb.cb_name, cb.allspell as cbspell, cs.cs_id, cs.cs_name,cs.cs_ShowName, cs.allspell as csspell,cs.cs_CarLevel as cslevel,cs.CsSaleState ");
@@ -678,16 +684,18 @@ namespace BitAuto.CarChannel.DAL
                                                              WHEN '待销' THEN 0
                                                              WHEN '停销' THEN 2
                                                              ELSE 3
-                                                           END ) AS salestate
+                                                           END ) AS salestate,
+									cb.weight as cb_weight,cs.weight cs_weight
+									
                             FROM    dbo.Car_Serial cs
                                     INNER JOIN dbo.Car_Brand cb ON cs.cb_Id = cb.cb_Id
                                                                    AND cb.IsState = 1
                                     LEFT JOIN dbo.Car_MasterBrand_Rel cmbr ON cmbr.cb_Id = cb.cb_Id
-                                    LEFT JOIN dbo.Car_Serial_30UV cs30 ON cs30.cs_id = cs.cs_Id
+                                    --LEFT JOIN dbo.Car_Serial_30UV cs30 ON cs30.cs_id = cs.cs_Id
                                     LEFT JOIN dbo.Car_Serial_Item csi ON cs.cs_Id = csi.cs_Id
                             WHERE   cmbr.bs_Id = @bs_id {0} 
                                     AND cs.IsState = 1
-                            ORDER BY salestate, cs30.UVCount DESC, cs.spell";
+                            ORDER BY cb_weight desc,cb.spell, salestate ,cs.weight desc,cs.spell,cs.cs_id";
             if (type <= 0)
             {
                 sql = string.Format(sql, "and cs.csSaleState<>'停销'");

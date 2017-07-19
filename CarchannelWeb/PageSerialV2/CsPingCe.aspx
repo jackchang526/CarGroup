@@ -291,7 +291,7 @@
 <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/serialtoseead.min.js?v=20161228"></script>
 <%--<script src="/jsnewV2/serialtoseead.js?v=20151211" type="text/javascript" ></script>--%>
 <script src="http://image.bitautoimg.com/carchannel/jsnewv2/ucarserialcity.min.js?v=20161228" type="text/javascript"></script>
-<script src="http://image.bitautoimg.com/carchannel/jsnewv2/pingceyouhui.min.js?v=2016122917" type="text/javascript"></script>
+<%--<script src="http://image.bitautoimg.com/carchannel/jsnewv2/pingceyouhui.min.js?v=2016122917" type="text/javascript"></script>--%>
 <%--<script src="/jsnewV2/pingceyouhui.js?v=20151211" type="text/javascript" ></script>--%>
      
 <script type="text/javascript">
@@ -336,7 +336,7 @@
 
     //if("<%= currentPageIndex %>" == "100"){
     //$(function(){ //优惠
-    PingceYouhui.Init(CarCommonCSID, cityId, <%= currentPageIndex %>, "<%= BaseUrl %>");
+    //PingceYouhui.Init(CarCommonCSID, cityId, <%= currentPageIndex %>, "<%= BaseUrl %>");
     //});
     //}
 

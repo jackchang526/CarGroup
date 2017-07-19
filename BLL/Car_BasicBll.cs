@@ -1730,5 +1730,60 @@ namespace BitAuto.CarChannel.BLL
 			}
 		}
 		#endregion
+
+
+		/// <summary>
+		/// 根据车款判断是否减税或者免税
+		/// </summary>
+		/// <param name="carIdList"></param>
+		/// <returns></returns>
+		public Dictionary<int, string> GetSubTaxByCarIds(List<int> carIdList)
+		{
+			if (carIdList == null || carIdList.Count == 0)
+			{
+				return null;
+			}
+			//购置税减免批次
+			var dictPurchaseTaxParamN = this.GetCarParamValueByCarIds(carIdList.ToArray(), 987);
+			//购置税减免
+			var dictPurchaseTaxParam = this.GetCarParamValueByCarIds(carIdList.ToArray(), 986);
+			//排量
+			var dictEngine_ExhaustParam = this.GetCarParamValueByCarIds(carIdList.ToArray(), 785);
+
+			Dictionary<int, string> dictCarTaxTag = new Dictionary<int, string>();
+			foreach (int carId in carIdList)
+			{
+				double exhaust = 0;
+				if (dictEngine_ExhaustParam.ContainsKey(carId))
+				{
+					exhaust = ConvertHelper.GetDouble(dictEngine_ExhaustParam[carId]);
+				}
+				if (dictPurchaseTaxParamN.ContainsKey(carId) && (dictPurchaseTaxParamN[carId] == "第1批" || dictPurchaseTaxParamN[carId] == "第2批" || dictPurchaseTaxParamN[carId] == "第3批" || dictPurchaseTaxParamN[carId] == "第4批" || dictPurchaseTaxParamN[carId] == "第5批" || dictPurchaseTaxParamN[carId] == "第6批") && dictPurchaseTaxParam.ContainsKey(carId))
+				{
+					if (dictPurchaseTaxParam[carId] == "减半")
+					{
+						if (!dictCarTaxTag.ContainsKey(carId))
+						{
+							dictCarTaxTag.Add(carId, "减税");
+						}
+					}
+					else if (dictPurchaseTaxParam[carId] == "免征")
+					{
+						if (!dictCarTaxTag.ContainsKey(carId))
+						{
+							dictCarTaxTag.Add(carId, "免税");
+						}
+					}
+				}
+				else if (exhaust > 0 && exhaust <= 1.6)
+				{
+					if (!dictCarTaxTag.ContainsKey(carId))
+					{
+						dictCarTaxTag.Add(carId, "减税");
+					}
+				}
+			}
+			return dictCarTaxTag;
+		}
 	}
 }

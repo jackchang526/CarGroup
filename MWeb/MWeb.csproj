@@ -234,6 +234,7 @@
     <Content Include="js\CommonJs.js" />
     <Content Include="js\csSummaryConditionV2.js" />
     <Content Include="js\csSummaryV2.js" />
+    <Content Include="js\csSummaryForFocus.js" />
     <Content Include="js\iscroll-infinite.js" />
     <Content Include="js\model.js" />
     <Content Include="js\mpeizhi.js" />

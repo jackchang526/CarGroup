@@ -26,7 +26,7 @@ var api = {
         currentid: ''
     },
     'car': {
-        url: 'http://api.car.bitauto.com/CarInfo/GetCarDataJson.ashx?action=serialv2&pid={0}&datatype=1', callName: 'businessCarCallBack', templteName: '#carTemplate',
+        url: 'http://api.car.bitauto.com/CarInfo/GetCarDataJson.ashx?action=serial&pid={0}&datatype=1', callName: 'businessCarCallBack', templteName: '#carTemplate',
         currentid: '',
         clickEnd: null
     },

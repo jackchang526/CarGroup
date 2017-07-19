@@ -141,6 +141,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\NewsListController.cs" />
+    <Compile Include="Controllers\RecognitionController.cs" />
     <Compile Include="Controllers\SelectBrandController.cs" />
     <Compile Include="Controllers\SelectCarController.cs" />
     <Compile Include="Controllers\SelectCarOfSceneController.cs" />
@@ -222,6 +223,7 @@
     <Content Include="js\ajax.js" />
     <Content Include="js\brand.js" />
     <Content Include="js\calcautocashdetailv1.js" />
+    <Content Include="js\car.recognition.js" />
     <Content Include="js\CarCalculator.js" />
     <Content Include="js\carcomparetoolV2.js" />
     <Content Include="js\carsum\aboutCarTemp.js" />
@@ -276,7 +278,9 @@
     <Content Include="ushtml\block\so\mobile\MobileSug_chexing.shtml" />
     <Content Include="ushtml\block\so\mobile\MobileSug_chexing20130218.shtml" />
     <Content Include="ushtml\block\so\myiche20140620\mSearchBoxBottom.shtml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -386,6 +390,7 @@
     <Content Include="Views\YaGaoSelectCar\Index.cshtml" />
     <Content Include="Views\SelectBrand\Index.cshtml" />
     <Content Include="Views\CsSummary\IndexFocus.cshtml" />
+    <Content Include="Views\Recognition\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

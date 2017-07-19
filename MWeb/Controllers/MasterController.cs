@@ -113,9 +113,9 @@ namespace MWeb.Controllers
         private string GetSerialHtml(DataTable brandTable)
         {
             StringBuilder serialList = new StringBuilder();
-            StringBuilder htmlAllwaitSaleHtml = new StringBuilder();
-            StringBuilder htmlAllnoPriceHtml = new StringBuilder();
-            StringBuilder htmlAllstopSaleHtml = new StringBuilder();
+			//StringBuilder htmlAllwaitSaleHtml = new StringBuilder();
+			//StringBuilder htmlAllnoPriceHtml = new StringBuilder();
+			//StringBuilder htmlAllstopSaleHtml = new StringBuilder();
             serialList.Append("<div class=\"car-list2 car-list2-w\"><ul>");
             foreach (DataRow row in brandTable.Rows)
             {
@@ -157,7 +157,7 @@ namespace MWeb.Controllers
                     if (priceRange.Trim().Length == 0)
                     {
                         priceRange = "暂无报价";
-                        htmlAllnoPriceHtml.AppendFormat(liStr, csSpell, imgUrl, csShowName, priceRange);
+						serialList.AppendFormat(liStr, csSpell, imgUrl, csShowName, priceRange);
                     }
                     else
                     {
@@ -168,19 +168,19 @@ namespace MWeb.Controllers
                 else if (sellState == "待销")
                 {
                     priceRange = "未上市";
-                    htmlAllwaitSaleHtml.AppendFormat(liStr, csSpell, imgUrl, csShowName, priceRange);
+					serialList.AppendFormat(liStr, csSpell, imgUrl, csShowName, priceRange);
                 }
                 else
                 {
                     // 停销
                     priceRange = "停售";
-                    htmlAllstopSaleHtml.AppendFormat(liStr, csSpell, imgUrl, csShowName, priceRange);
+					serialList.AppendFormat(liStr, csSpell, imgUrl, csShowName, priceRange);
                 }
                 _serialCount++;
             }
-            serialList.Append(htmlAllnoPriceHtml.ToString());
-            serialList.Append(htmlAllwaitSaleHtml.ToString());
-            serialList.Append(htmlAllstopSaleHtml.ToString());
+			//serialList.Append(htmlAllnoPriceHtml.ToString());
+			//serialList.Append(htmlAllwaitSaleHtml.ToString());
+			//serialList.Append(htmlAllstopSaleHtml.ToString());
 
             serialList.Append("</ul></div>");
             return serialList.ToString();

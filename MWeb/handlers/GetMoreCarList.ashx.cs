@@ -486,10 +486,10 @@ namespace WirelessWeb.handlers
 
 						stringBuilder.Append("</a>");
 						bool maiBtnFlag = false;
-						if (year != "unlisted" && year != "nosalelist" && carInfo.SaleState != "待销" && carInfo.SaleState != "停销")
-						{
-							maiBtnFlag = true;
-						}
+						//if (year != "unlisted" && year != "nosalelist" && carInfo.SaleState != "待销" && carInfo.SaleState != "停销")
+						//{
+						//	maiBtnFlag = true;
+						//}
 						string ulStyle = "car-btn";
 						if (!maiBtnFlag)
 						{
@@ -507,9 +507,9 @@ namespace WirelessWeb.handlers
 							carInfo.CarID, "");
 						if (year != "unlisted" && year != "nosalelist" && carInfo.SaleState != "待销" && carInfo.SaleState != "停销")
 						{
-							stringBuilder.AppendFormat(
-								   "<li><a data-car=\"{0}\" href='javascript:void(0)' class=\"btn-mmm\"  data-action=\"mmm\" data-channelid=\"27.23.1321\">买买买</a></li>",
-								   carInfo.CarID);
+							//stringBuilder.AppendFormat(
+							//	   "<li><a data-car=\"{0}\" href='javascript:void(0)' class=\"btn-mmm\"  data-action=\"mmm\" data-channelid=\"27.23.1321\">买买买</a></li>",
+							//	   carInfo.CarID);
 						}
 						if (carInfo.SaleState != "停销")
 						{

@@ -105,55 +105,55 @@ $(document).ready(function () {
             if ($(content).length == 0) {
                 return;
             }
-            var rurl = "http://api.admin.bitauto.com/news3/v1/news/get?categoryids=625&cityids=" + cityId + "&serialids=" + serialId + "&pagesize=1";
-            $.ajax({
-                url: rurl,
-                dataType: "jsonp",
-                cache: true,
-                jsonpCallback: "getfocusnewsback",
-                success: function (data) {
-                    if (data.news.length == 0) {
-                        return;
-                    }
-                    var h = new Array();
-                    var time = data.news[0].publishTime;
-                    if (time.length >= 10) {
-                        time = time.substr(0, 10);
-                    }
-                    var img = data.news[0].imageCoverUrl;
-                    if (img.length > 0) {
-                        img = img.replace("_3.", "_1.");
-                    }
-                    h.push("<a href=\"" + data.news[0].url + "\" data-channelid=\"27.23.1788\">");
-                    if (img.length > 0) {
-                        h.push("<div class=\"img-box\"><span><img src=\"" + img + "\"></span></div>");
-                    }
-                    h.push("<div class=\"con-box\"><h4>" + data.news[0].title + "</h4><em><span>" + time + "</span><span>" + data.news[0].author + "</span><i class=\"ico-comment huifu comment_0_6583989\">" + data.news[0].pv + "</i></em></div></a>");
+            //var rurl = "http://api.admin.bitauto.com/news3/v1/news/get?categoryids=625&cityids=" + cityId + "&serialids=" + serialId + "&pagesize=1";
+            //$.ajax({
+            //    url: rurl,
+            //    dataType: "jsonp",
+            //    cache: true,
+            //    jsonpCallback: "getfocusnewsback",
+            //    success: function (data) {
+            //        if (data.news.length == 0) {
+            //            return;
+            //        }
+            //        var h = new Array();
+            //        var time = data.news[0].publishTime;
+            //        if (time.length >= 10) {
+            //            time = time.substr(0, 10);
+            //        }
+            //        var img = data.news[0].imageCoverUrl;
+            //        if (img.length > 0) {
+            //            img = img.replace("_3.", "_1.");
+            //        }
+            //        h.push("<a href=\"" + data.news[0].url + "\" data-channelid=\"27.23.1788\">");
+            //        if (img.length > 0) {
+            //            h.push("<div class=\"img-box\"><span><img src=\"" + img + "\"></span></div>");
+            //        }
+            //        h.push("<div class=\"con-box\"><h4>" + data.news[0].title + "</h4><em><span>" + time + "</span><span>" + data.news[0].author + "</span><i class=\"ico-comment huifu comment_0_6583989\">" + data.news[0].pv + "</i></em></div></a>");
 
-                    var newsli = $(content).find("li");
-                    var newscount = $(newsli).length;
-                    if (newscount == 6) {
-                        $(newsli).last().html(h.join(""));
-                    }
-                    else {
-                        if (newscount < 3) {
-                            h.splice(0, 0, "<li" + (img.length > 0 ? "" : " class=\"news-noimg\"") + ">");
-                            h.push("</li>");
-                        }
-                        else {
-                            h.splice(0, 0, "<li style=\"display:none;\" " + (img.length > 0 ? "" : " class=\"news-noimg\"") + ">");
-                            h.push("</li>");
-                        }
-                        $(content).find("ul").append(h.join(""));
-                        if ($(content).find("li").length > 3 && $("#btn-hot-more").length == 0) {
-                            $(content).find(".btn-more").remove();
-                            $(content).append("<a href=\"javascript:void(0);\" id=\"btn-hot-more\" class=\"btn-more btn-add-more\"><i>加载更多</i></a>");
-                            s.init();
-                        }
-                    }
-                    Bglog_InitPostLog();
-                }
-            });
+            //        var newsli = $(content).find("li");
+            //        var newscount = $(newsli).length;
+            //        if (newscount == 6) {
+            //            $(newsli).last().html(h.join(""));
+            //        }
+            //        else {
+            //            if (newscount < 3) {
+            //                h.splice(0, 0, "<li" + (img.length > 0 ? "" : " class=\"news-noimg\"") + ">");
+            //                h.push("</li>");
+            //            }
+            //            else {
+            //                h.splice(0, 0, "<li style=\"display:none;\" " + (img.length > 0 ? "" : " class=\"news-noimg\"") + ">");
+            //                h.push("</li>");
+            //            }
+            //            $(content).find("ul").append(h.join(""));
+            //            if ($(content).find("li").length > 3 && $("#btn-hot-more").length == 0) {
+            //                $(content).find(".btn-more").remove();
+            //                $(content).append("<a href=\"javascript:void(0);\" id=\"btn-hot-more\" class=\"btn-more btn-add-more\"><i>加载更多</i></a>");
+            //                s.init();
+            //            }
+            //        }
+            //        Bglog_InitPostLog();
+            //    }
+            //});
         }
         //初始化页面
         s.init = function () {
@@ -189,9 +189,9 @@ else if (typeof define === 'function' && define.amd) {
     });
 }
 
-$(function () {
-    typeof swiperNewslist.updateAutoHeight == "function" && swiperNewslist.updateAutoHeight();//热点新闻，最后一个异步加载显示惠买车，加载完成，重新计算高度
-});
+//$(function () {
+//    typeof swiperNewslist.updateAutoHeight == "function" && swiperNewslist.updateAutoHeight();//热点新闻，最后一个异步加载显示惠买车，加载完成，重新计算高度
+//});
 
 //加载降价新闻（最新行情）
 
@@ -1015,7 +1015,7 @@ var _bindBtnMaiEvent = function () {
                 var html = '';
                 $leftPopup.find('.ap').show();
                 $leftPopup.find('.mmm-none').show();
-                getComparisonBuy(citycode, curCarId, $leftPopup);
+                //getComparisonBuy(citycode, curCarId, $leftPopup);
                 getDirectSell(citycode, curCarId, $leftPopup);
                 getCoupon(citycode, curCarId, $leftPopup);
                 getDaikuan(citycode, curCarId, $leftPopup);

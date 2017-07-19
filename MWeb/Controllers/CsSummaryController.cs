@@ -605,8 +605,8 @@ namespace MWeb.Controllers
                             stringBuilder.Append("</a>");
 
                             bool maiBtnFlag = false;
-                            if (year != "未上市" && year != "停售" && carInfo.SaleState != "待销" && carInfo.SaleState != "停销")
-                            { maiBtnFlag = true; }
+							//if (year != "未上市" && year != "停售" && carInfo.SaleState != "待销" && carInfo.SaleState != "停销")
+							//{ maiBtnFlag = true; }
                             string ulStyle = "car-btn";
                             if (!maiBtnFlag)
                             {

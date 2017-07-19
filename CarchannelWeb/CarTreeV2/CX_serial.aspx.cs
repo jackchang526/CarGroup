@@ -64,7 +64,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 		protected string chargeTimeRange = string.Empty;
 		protected string fastChargeTimeRange = string.Empty;
 		protected string mileageRange = string.Empty;
-		protected string shijiaOrHuimaiche = string.Empty;
+		//protected string shijiaOrHuimaiche = string.Empty;
 
 
 		public CX_serial()
@@ -168,11 +168,11 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 			var arrTrans = sic.CsTransmissionType.Split('、');
 			serialTransmission = arrTrans.Length > 0 ? string.Join(" ", arrTrans) : "暂无";
 			//惠买车 低价
-			Dictionary<int, string> dicHuiMaiChe = _serialBLL.GetEPHuiMaiCheAllCsUrl();
-			if (dicHuiMaiChe != null && dicHuiMaiChe.ContainsKey(_SerialId))
-			{
-                shijiaOrHuimaiche = string.Format("<a class=\"btn\" href=\"{0}?tracker_u=77_cxsxcx&leads_source=p015002\" data-channelid=\"2.22.109\" target=\"_blank\">买新车</a>", dicHuiMaiChe[_SerialId]);
-			}
+			//Dictionary<int, string> dicHuiMaiChe = _serialBLL.GetEPHuiMaiCheAllCsUrl();
+			//if (dicHuiMaiChe != null && dicHuiMaiChe.ContainsKey(_SerialId))
+			//{
+			//	shijiaOrHuimaiche = string.Format("<a class=\"btn\" href=\"{0}?tracker_u=77_cxsxcx&leads_source=p015002\" data-channelid=\"2.22.109\" target=\"_blank\">买新车</a>", dicHuiMaiChe[_SerialId]);
+			//}
 		}
 		/// <summary>
 		/// 得到子品牌描述

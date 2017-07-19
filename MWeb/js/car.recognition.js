@@ -1,5 +1,5 @@
 $(function () {
-    var uploadApi = "http://mps219.yiche.com/pic/upload?v=1" //图片上传接口
+    var uploadApi = "http://mps.yiche.com/pic/upload?v=1" //图片上传接口
     var checkApiLocal = "http://mps219.yiche.com/url/?callback=funtest&transformurl="; // 本地图片识别接口
     var checkApi = "http://car.m.yiche.com/recognition/api?img=" //图片识别接口
     var selectApi = "http://api.car.bitauto.com/carinfo/getserialinfo.ashx?dept=getserialbaseinfobyidjson&csid=" //车型数据接口

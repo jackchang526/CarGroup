@@ -292,8 +292,8 @@ $(function () {
                 togglePage("recg");
                 curImgShoutCut = data.url.replace("cargroup", "newsimg-180-w0/cargroup");
                 //console.log(curImgShoutCut);
-                //recognition(data.url);
-                recognitionLocal(data.url);
+                recognition(data.url);
+                //recognitionLocal(data.url);
             },
             error: function (data) {
                 //console.log(data); 
@@ -633,7 +633,7 @@ $(function () {
         recognitionCount = 0; //当前识别出的车型
         recognitionRightCount = 0; //当前识别出的而且能在车型库取到数据的车型 
         $("#file_upload").show();
-        $("#file_upload").click();
+        //$("#file_upload").click();
     }
 
     // 判断json是否是空对象

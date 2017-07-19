@@ -147,7 +147,7 @@
                                     <div class="btn-group">
                                     <a id="car_zixun" href="http://dealer.bitauto.com/zuidijia/nb<%=_SerialId %>/?T=1&leads_source=p015001" target="_blank" class="btn" data-channelid="2.22.108">询底价</a>
                                     <a id="divDemandCsBut" class="btn" style="display: none;" href="#" data-channelid="">特卖</a>
-                                     <%=shijiaOrHuimaiche%>
+                                    <%-- <%=shijiaOrHuimaiche%>--%>
                                     <a id="car_chedai" href="http://chedai.bitauto.com/<%=_SerialSpell %>/chedai/?from=yc9&leads_source=p015003" class="btn" target="_blank" data-channelid="2.22.110">贷款</a>
                                     <a id="btnZhihuan" href="http://maiche.taoche.com/zhihuan/?serial=<%=_SerialId %>&leads_source=p015004&ref=chexisxhuan" class="btn" target="_blank" data-channelid="2.22.111">置换</a>
                                     <a href="http://www.taoche.com/<%=_SerialSpell %>/?ref=chexizsmai&leads_source=p015005" class="btn" target="_blank" data-channelid="2.22.112">二手车</a>

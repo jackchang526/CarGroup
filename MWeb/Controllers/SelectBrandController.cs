@@ -94,10 +94,10 @@ namespace MWeb.Controllers
 		private string GetSerialHtml(DataTable brandTable)
 		{
 			StringBuilder serialList = new StringBuilder();
-			StringBuilder htmlAllwaitSaleHtml = new StringBuilder();
-			StringBuilder htmlAllnoPriceHtml = new StringBuilder();
-			StringBuilder htmlAllwaitCheckHtml = new StringBuilder();
-			StringBuilder htmlAllstopSaleHtml = new StringBuilder();
+			//StringBuilder htmlAllwaitSaleHtml = new StringBuilder();
+			//StringBuilder htmlAllnoPriceHtml = new StringBuilder();
+			//StringBuilder htmlAllwaitCheckHtml = new StringBuilder();
+			//StringBuilder htmlAllstopSaleHtml = new StringBuilder();
 			string formatHtml = "<li><a href=\"/{0}/\"><img src=\"{1}\"/><h4>{2}</h4><p><strong>{3}</strong></p></a></li>";
 			serialList.Append("<ul>");
 
@@ -133,7 +133,7 @@ namespace MWeb.Controllers
 					if (priceRange.Trim().Length == 0)
 					{
 						priceRange = "暂无指导价";
-						htmlAllnoPriceHtml.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange);
+						serialList.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange);
 					}
 					else
 					{
@@ -144,24 +144,24 @@ namespace MWeb.Controllers
 				else if (sellState == "待销")
 				{
 					priceRange = "未上市";
-					htmlAllwaitSaleHtml.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange);
+					serialList.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange);
 				}
 				else if (sellState == "待查")
 				{
 					priceRange = "暂无指导价";
-					htmlAllwaitCheckHtml.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange);
+					serialList.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange);
 				}
 				else
 				{
 					// 停销
 					priceRange = "停售";
-					htmlAllstopSaleHtml.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange);
+					serialList.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange);
 				}
 			}
-			serialList.Append(htmlAllnoPriceHtml.ToString());
-			serialList.Append(htmlAllwaitSaleHtml.ToString());
-			serialList.Append(htmlAllwaitCheckHtml.ToString());//待查
-			serialList.Append(htmlAllstopSaleHtml.ToString());
+			//serialList.Append(htmlAllnoPriceHtml.ToString());
+			//serialList.Append(htmlAllwaitSaleHtml.ToString());
+			//serialList.Append(htmlAllwaitCheckHtml.ToString());//待查
+			//serialList.Append(htmlAllstopSaleHtml.ToString());
 
 			serialList.Append("</ul>");
 			return serialList.ToString();

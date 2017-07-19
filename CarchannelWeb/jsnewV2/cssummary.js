@@ -317,12 +317,12 @@ function GetHmcJiangJia() {
 			//    $("#mp-dijia-savemoney") && $("#mp-dijia-savemoney").html("省" + data.savemoney + ">>");
 			//    $("#mp-dijia") && $("#mp-dijia").show()
 			//}
-			var hmcjiangjia = setInterval(function () {
-				if ($("#gouche-hmc").length > 0) {
-					clearInterval(hmcjiangjia);
-					GetBuyHmc(data);
-				}
-			}, 100);
+			//var hmcjiangjia = setInterval(function () {
+			//	if ($("#gouche-hmc").length > 0) {
+			//		clearInterval(hmcjiangjia);
+			//		GetBuyHmc(data);
+			//	}
+			//}, 100);
 		}
 	});
 }

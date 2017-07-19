@@ -378,9 +378,9 @@
             </div>
         </div>
         <script type="text/javascript" src="http://gimg.bitauto.com/js/senseNewFs.js"></script>
-        <script type="text/javascript">
+       <%-- <script type="text/javascript">
             GetFocusNewsLast(csSaleState,8);
-        </script>
+        </script>--%>
         <div class="row section-layout">
             <div class="col-xs-9">
                 <div class="section-main">
@@ -593,8 +593,8 @@
                     </script>
                     <!--/经销商开始-->
                     <div class="layout-1">
-                        <div class="row special-layout-17" id="gouche-hmc" style="display: none;" data-channelid="2.21.104">
-                        </div>
+                        <%--<div class="row special-layout-17" id="gouche-hmc" style="display: none;" data-channelid="2.21.104">
+                        </div>--%>
                         <div class="row special-layout-17" id="gouche-ych" style="display: none;" data-channelid="2.21.106">
                         </div>
                         <%--  <div class="row special-layout-17" id="gouche-xscg" style="display: none;" data-channelid="2.21.995">
@@ -678,7 +678,7 @@
     </div>
     <!--页底浮层广告-->
     <ins id="div_c62213b4-2900-4ed8-967d-3f3866014dc5" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="c62213b4-2900-4ed8-967d-3f3866014dc5"></ins>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryrest.min.js?v=20170531"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryrest.min.js?v=20170719"></script>
     <%--<script type="text/javascript" src="/jsnewv2/cssummaryrest.js?v=20161230"></script>--%>
     <script type="text/javascript">
         var CarCommonBSID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.MasterBrandId %>"; //大数据组统计用

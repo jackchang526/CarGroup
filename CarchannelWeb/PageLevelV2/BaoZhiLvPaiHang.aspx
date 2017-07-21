@@ -22,7 +22,7 @@
     <!--头部开始-->
     <header class="header-main special-header2">
         <div class="container section-layout top" id="topBox">
-            <div class="col-xs-6 left-box">
+            <div class="col-xs-6 left-box"> 
                 <div class="section-left">
                     <h1 class="logo"><a href="http://www.bitauto.com">易车yiche.com</a></h1>
                     <h2 class="title">汽车五年保值率排行榜</h2>

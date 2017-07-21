@@ -21,7 +21,7 @@
     <script src="http://img1.bitautoimg.com/uimg/2016/yiche/js/Respond.min.js"></script>
     <![endif]-->
     <!--#include file="~/ushtml/0000/yiche_2016_cube_chexingzongshu_style-1264.shtml"-->
-</head>
+</head> 
 <body>
 
     <!--公共头部开始-->

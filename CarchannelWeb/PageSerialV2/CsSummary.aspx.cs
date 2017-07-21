@@ -76,7 +76,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
         protected string carPingceHtml = string.Empty;//车型详解
         protected string brandOtherSerial = string.Empty;//其他车型
 
-		protected string baoZhiLv = string.Empty;
+		protected string baoZhiLv = string.Empty; 
         #endregion
 
         public CsSummary()

@@ -127,8 +127,11 @@
         <li class="buy111">
             <a data-channelid="85.6.21" href="#page8"></a>
         </li>--%>
-        <li>
+        <%--<li>
             <a data-channelid="85.6.21" href="#page8">优惠</a>
+        </li>--%>
+        <li>
+            <a data-channelid="85.6.21" href="#page8">贷款</a>
         </li>
         <li>
             <a data-channelid="85.6.886" href="#page14">二手车</a>
@@ -184,22 +187,22 @@
         var returnUrl = 'http://' + window.location.host;
         var h5From = util.GetQueryStringByName("h5from");
         switch (h5From) {
-        case "fashao":
-        case "feel":
-        case "search":
-            if (window.sessionStorage["listUrl"]) {
-                returnUrl = window.sessionStorage["listUrl"];
-            } else {
-                if (cspara.length > 0) {
-                    returnUrl += "?" + cspara;
+            case "fashao":
+            case "feel":
+            case "search":
+                if (window.sessionStorage["listUrl"]) {
+                    returnUrl = window.sessionStorage["listUrl"];
+                } else {
+                    if (cspara.length > 0) {
+                        returnUrl += "?" + cspara;
+                    }
                 }
-            }
-            break;
-        case "brand":
-            returnUrl += cspara.length > 0 ? "/chebiaodang/?" + cspara : "/chebiaodang/";
-            break;
-        default:
-            returnUrl += cspara.length > 0 ? "/chebiaodang/?" + cspara : "/chebiaodang/";
+                break;
+            case "brand":
+                returnUrl += cspara.length > 0 ? "/chebiaodang/?" + cspara : "/chebiaodang/";
+                break;
+            default:
+                returnUrl += cspara.length > 0 ? "/chebiaodang/?" + cspara : "/chebiaodang/";
         }
         //换车按钮属性修改及事件绑定
         $("#changecar_f").attr("href", returnUrl.replace("?&", "?"));
@@ -385,8 +388,11 @@
             <span></span>
         </a>
     </li>--%>
-    <li data-menuanchor="">
+    <%--<li data-menuanchor="">
         <a data-channelid="85.5.12" onclick="MtaH5.clickStat('ba3');" href="#page8">优惠</a>
+    </li>--%>
+    <li data-menuanchor="">
+        <a data-channelid="85.5.12" onclick="MtaH5.clickStat('ba3');" href="#page8">贷款</a>
     </li>
     <li data-menuanchor="">
         <a data-channelid="85.5.884" onclick="MtaH5.clickStat('ba4');" href="#page14">二手车</a>
@@ -595,7 +601,7 @@
 <script src="http://image.bitautoimg.com/carchannel/h5/js/plugs/underscore/underscore.js"></script>
 <script src="http://image.bitautoimg.com/carchannel/h5/js/plugs/backbone/backbone.js"></script>
 
-<script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/h5/js/cssummary/userdatamodule.v7.js,carchannel/h5/js/cssummary/ColorModule.v6.js,carchannel/h5/js/cssummary/fullpagemodule.v7.js,carchannel/h5/js/cssummary/userroutersetting.v7.js?20160913"></script>
+<script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/h5/js/cssummary/userdatamodule.v7.js,carchannel/h5/js/cssummary/ColorModule.v6.js,carchannel/h5/js/cssummary/fullpagemodule.v7.js,carchannel/h5/js/cssummary/userroutersetting.v7.js?201707171746"></script>
 
 <%--<script src="/Scripts/cssummary/userdatamodule.v7.js"></script>
 <script src="/Scripts/cssummary/ColorModule.v6.js"></script>

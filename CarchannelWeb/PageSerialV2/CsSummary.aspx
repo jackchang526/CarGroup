@@ -553,6 +553,7 @@
                                     <span class="title">安全碰撞</span>
                                     <h4 <%= CNCAPAndENCAPStr=="暂无" ? "class='none'":"" %>><%= CNCAPAndENCAPStr %></h4>
                                 </li>
+                                <%= baoZhiLv %>
                                 <%= awardHtml %>
                             </ul>
                         </div>

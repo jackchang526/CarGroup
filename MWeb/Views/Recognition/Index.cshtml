@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <meta content="black" name="apple-mobile-web-app-status-bar-style" />
-    <meta content="telephone=no" name="format-detection" /> 
+    <meta content="telephone=no" name="format-detection" />
     <!--#include file="/ushtml/0000/myiche2016_cube_paizhaoshiche-1384.shtml"-->
 </head>
 <body>
@@ -24,14 +24,17 @@
         </div>
         <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
     </div>
+    <div class="op-nav-mark" style="display: none;"></div>
+    <!-- header end -->
+
+    <!-- 拍照识车 start -->
     <div id="recg">
-        <!-- 拍照识车 start -->
         <div class="zs-big-ball"></div>
         <div class="zs-small-ball"></div>
         <div class="shiche-box">
             <h1>拍照识车</h1>
             <p>给我一张汽车图，我帮您找出TA是哪辆哦！</p>
-             
+
             <div id="content" class="shiche-pic">
                 <!--page1-->
                 <div class="ico-sc-car"></div>
@@ -114,7 +117,86 @@
     </div>
 
     <script src="http://image.bitautoimg.com/uimg/mbt2015/js/jquery-2.1.4.min.js" type="text/javascript"></script>
-    <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/car.recognition.js" type="text/javascript"></script>
+    <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/car.recognition.js?v=201707191748" type="text/javascript"></script>
 
+    <!--统计开始-->
+    <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
+    <script type="text/javascript">
+        var ChannelLOGCollector = {
+            area: '201',
+            mainbrand: '',
+            brand: '',
+            serial: '',
+            car: '',
+            product: ''
+        };
+        if (typeof (bit_locationInfo) != "undefined" && typeof (bit_locationInfo.cityId) != "undefined") {
+            ChannelLOGCollector.area = bit_locationInfo.cityId;
+        }
+        if (typeof (CarCommonBSID) != "undefined") {
+            ChannelLOGCollector.mainbrand = CarCommonBSID;
+        }
+        if (typeof (CarCommonCBID) != "undefined") {
+            ChannelLOGCollector.brand = CarCommonCBID;
+        }
+        if (typeof (CarCommonCSID) != "undefined") {
+            ChannelLOGCollector.serial = CarCommonCSID;
+        }
+        if (typeof (CarCommonCarID) != "undefined") {
+            ChannelLOGCollector.car = CarCommonCarID;
+        }
+    </script>
+    <script type="text/javascript">
+        // 统计
+        var XCWebLogCollector = { area: '201' };
+        if (typeof (bit_locationInfo) != "undefined" && typeof (bit_locationInfo.cityId) != "undefined") {
+            XCWebLogCollector.area = bit_locationInfo.cityId;
+        }
+        if (typeof (CarCommonBSID) != "undefined") {
+            XCWebLogCollector.mainbrand = CarCommonBSID;
+        }
+        if (typeof (CarCommonCBID) != "undefined") {
+            XCWebLogCollector.brand = CarCommonCBID;
+        }
+        if (typeof (CarCommonCSID) != "undefined") {
+            XCWebLogCollector.serial = CarCommonCSID;
+        }
+        if (typeof (CarCommonCarID) != "undefined") {
+            XCWebLogCollector.car = CarCommonCarID;
+        }
+    </script>
+    <!--统计代码开始-->
+    <!-- START OF SmartSource Data Collector TAG -->
+    <script src="http://image.bitautoimg.com/bt/webtrends/dcs_tag_wapnew.js?20160602" type="text/javascript"></script>
+    <!-- bitauto stat begin -->
+    <script>
+        var bit_stat_url = "url=" + escape(document.location);
+        if (document.referrer != null) bit_stat_url += "&refer=" + escape(document.referrer)
+        document.write("<img width=0 height=0 style='display:none;' src='http://log.bitauto.com/newsstat/log.aspx?" + bit_stat_url + "'/>");
+    </script>
+    <!-- bitauto stat end -->
+    <!--airui-->
+    <script src="http://img1.bitautoimg.com/stat/iwtToMSite20140218.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://g.yccdn.com"></script>
+    <!--#include file="/include/special/stat/00001/stat_bglog_Manual.shtml"-->
+
+    <script type="text/javascript">
+        (function () {
+            var dc = document.createElement('script'); dc.type = 'text/javascript'; dc.async = true;
+            dc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'js.ctags.cn/dc.js?10';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(dc, s);
+        })();
+    </script>
+    <!--统计代码结束-->
+    <!--统计结束-->
+
+    <!--返回上一页开始-->
+    <script type="text/javascript" src="//jsinc.baa.bitautotech.com/c/c.js?s=Bitauto.Login.M.Version5&v=20170112.1"></script>
+    <script type="text/javascript">
+        if (document.getElementById("gobackElm") != null) {
+            Bitauto.GoBacker.goBackByElementEvent('gobackElm', 'click');
+        }
+    </script>
+    <!--返回上一页结束-->
 </body>
 </html>

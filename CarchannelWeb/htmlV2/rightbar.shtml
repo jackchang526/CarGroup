@@ -9,7 +9,7 @@
 <script type="text/javascript">
     (function(global) {
         global.SidebarConfig={
-            headerModules: ['my', 'planCar', 'collectCar', 'viewedCar', 'coupon', 'toolkit', 'comparison']
+            headerModules: ['my', 'collectCar', 'viewedCar', 'coupon', 'toolkit', 'comparison']
         };
     })(window);
 </script>

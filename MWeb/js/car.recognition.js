@@ -1,5 +1,5 @@
 $(function () {
-    var uploadApi = "http://mps219.yiche.com/pic/upload?v=1" //图片上传接口
+    var uploadApi = "http://mps.yiche.com/pic/upload?v=1" //图片上传接口
     var checkApiLocal = "http://mps219.yiche.com/url/?callback=funtest&transformurl="; // 本地图片识别接口
     var checkApi = "http://car.m.yiche.com/recognition/api?img=" //图片识别接口
     var selectApi = "http://api.car.bitauto.com/carinfo/getserialinfo.ashx?dept=getserialbaseinfobyidjson&csid=" //车型数据接口
@@ -632,7 +632,8 @@ $(function () {
         togglePage("default");
         recognitionCount = 0; //当前识别出的车型
         recognitionRightCount = 0; //当前识别出的而且能在车型库取到数据的车型 
-        $("#file_upload").show(); 
+        $("#file_upload").show();
+        //$("#file_upload").click();
     }
 
     // 判断json是否是空对象

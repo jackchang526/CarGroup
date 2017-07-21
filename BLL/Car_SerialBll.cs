@@ -7676,7 +7676,7 @@ namespace BitAuto.CarChannel.BLL
 		/// </summary>
 		/// <param name="serialId"></param>
 		/// <returns></returns>
-		public List<string> GetSaleCarExhaustBySerialId(int serialId)
+		public List<string> GetSaleCarExhaustBySerialId(int serialId) 
 		{
 			string cacheKey = "Car_SerialBll_GetSaleCarExhaustBySerialId_" + serialId;
 			object objExhaustList = CacheManager.GetCachedData(cacheKey);

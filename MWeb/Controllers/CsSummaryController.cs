@@ -1085,7 +1085,7 @@ namespace MWeb.Controllers
             string baaUrl = serialBLL.GetForumUrlBySerialId(serialId).Replace("baa.bitauto.com", "baa.m.yiche.com");
 
             sb.Append("<div class='tt-first' data-channelid=\"27.23.736\">");
-            sb.Append("<h3>论坛</h3>");
+            sb.Append("<h3>社区</h3>");
             sb.AppendFormat("<div class='opt-more'><a href='{0}'>更多</a></div>", baaUrl);
             sb.Append("</div>");
             sb.Append("<div class='card-news card-news-bbs b-shadow' id='m_hotforum' data-channelid=\"27.23.737\">");
@@ -1311,12 +1311,12 @@ namespace MWeb.Controllers
         /// </summary>
         private void InitTitle()
         {
-            string title = string.Format("【{0}】最新{0}报价_参数_图片_{1}{2}论坛-手机易车网"
+            string title = string.Format("【{0}】最新{0}报价_参数_图片_{1}{2}社区-手机易车网"
                 , serialEntity.SeoName
                 , serialEntity.Brand.MasterBrand.Name
                 , serialEntity.Name);
 
-            string keyWords = string.Format("{0},{0}报价,{0}价格,{0}参数,{0}论坛,手机易车网,car.m.yiche.com"
+            string keyWords = string.Format("{0},{0}报价,{0}价格,{0}参数,{0}社区,手机易车网,car.m.yiche.com"
                 , serialEntity.SeoName);
 
             string description =

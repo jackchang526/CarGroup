@@ -48,7 +48,7 @@
 
     <div class="container paihang-section">
         <div class="row head-box">
-            <h3 class="title col-auto"><%= LevelFullName %>保值率排行榜</h3>
+            <h3 class="title col-auto"><%= LevelFullName %>五年保值率排行榜</h3>
         </div>
         <div class="ol-list">
             <ol class="list"> 

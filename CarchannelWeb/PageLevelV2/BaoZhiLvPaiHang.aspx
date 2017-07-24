@@ -51,7 +51,7 @@
             <h3 class="title col-auto"><%= LevelFullName %>保值率排行榜</h3>
         </div>
         <div class="ol-list">
-            <ol class="list">
+            <ol class="list"> 
                 <%= SerialHtml %>
             </ol>
         </div>

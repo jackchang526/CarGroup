@@ -7,10 +7,10 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>【<%=serialSeoName %>】最新<%=serialSeoName %>报价_参数_图片_<%=serialEntity.Brand.MasterBrand.Name+serialName %>论坛-易车网</title>
+    <title>【<%=serialSeoName %>】最新<%=serialSeoName %>报价_参数_图片_<%=serialEntity.Brand.MasterBrand.Name+serialName %>社区-易车网</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="renderer" content="webkit" />
-    <meta name="Keywords" content="<%=serialSeoName%>,<%= serialSeoName%>报价,<%= serialSeoName%>价格,<%= serialSeoName%>参数,<%= serialSeoName%>论坛,易车网,car.bitauto.com" />
+    <meta name="Keywords" content="<%=serialSeoName%>,<%= serialSeoName%>报价,<%= serialSeoName%>价格,<%= serialSeoName%>参数,<%= serialSeoName%>社区,易车网,car.bitauto.com" />
     <meta name="Description" content="<%= serialEntity.Brand.MasterBrand.Name + serialName%>,易车提供全国官方4S店<%= serialSeoName%>报价,最新<%= serialEntity.Brand.MasterBrand.Name + serialName%>降价优惠信息。以及<%= serialSeoName%>报价,<%= serialSeoName%>图片,<%= serialSeoName%>在线询价服务,低价买车尽在易车网 " />
     <meta http-equiv="mobile-agent" content="format=html5; url=http://car.m.yiche.com/<%=serialSpell %>/" />
     <link rel="alternate" media="only screen and (max-width: 640px)" href=" http://car.m.yiche.com/<%=serialSpell %>/" />
@@ -21,7 +21,7 @@
     <script src="http://img1.bitautoimg.com/uimg/2016/yiche/js/Respond.min.js"></script>
     <![endif]-->
     <!--#include file="~/ushtml/0000/yiche_2016_cube_chexingzongshu_style-1264.shtml"-->
-</head>
+</head> 
 <body>
 
     <!--公共头部开始-->
@@ -412,7 +412,7 @@
                                     <h2><a href="<%=baaUrl %>" target="_blank">
                                         <% if (isHaveBaa)
                                            { %>
-                                        <%=serialShowName %>论坛</a>
+                                        <%=serialShowName %>社区</a>
                                         <%}
                                            else
                                            { %>
@@ -434,7 +434,7 @@
                                 <ul>
                                     <li class="no-link">
                                         <div class="txt">
-                                            <a>暂无<%= serialShowName %>论坛，为您推荐以下内容：</a>
+                                            <a>暂无<%= serialShowName %>社区，为您推荐以下内容：</a>
                                         </div>
                                     </li>
                                     <%= bbsNewsHtml %>
@@ -553,6 +553,7 @@
                                     <span class="title">安全碰撞</span>
                                     <h4 <%= CNCAPAndENCAPStr=="暂无" ? "class='none'":"" %>><%= CNCAPAndENCAPStr %></h4>
                                 </li>
+                                <%= baoZhiLv %>
                                 <%= awardHtml %>
                             </ul>
                         </div>

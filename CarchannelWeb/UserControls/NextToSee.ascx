@@ -48,7 +48,7 @@
                 <li>
                     <div class="txt">
                         <a href="<%= baaUrl %>">
-                            <%= serialShowName%>论坛</a>
+                            <%= serialShowName%>社区</a>
                     </div>
                 </li>
                 <%=nextSeeDaogouHtml %>

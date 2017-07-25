@@ -187,22 +187,22 @@
         var returnUrl = 'http://' + window.location.host;
         var h5From = util.GetQueryStringByName("h5from");
         switch (h5From) {
-        case "fashao":
-        case "feel":
-        case "search":
-            if (window.sessionStorage["listUrl"]) {
-                returnUrl = window.sessionStorage["listUrl"];
-            } else {
-                if (cspara.length > 0) {
-                    returnUrl += "?" + cspara;
+            case "fashao":
+            case "feel":
+            case "search":
+                if (window.sessionStorage["listUrl"]) {
+                    returnUrl = window.sessionStorage["listUrl"];
+                } else {
+                    if (cspara.length > 0) {
+                        returnUrl += "?" + cspara;
+                    }
                 }
-            }
-            break;
-        case "brand":
-            returnUrl += cspara.length > 0 ? "/chebiaodang/?" + cspara : "/chebiaodang/";
-            break;
-        default:
-            returnUrl += cspara.length > 0 ? "/chebiaodang/?" + cspara : "/chebiaodang/";
+                break;
+            case "brand":
+                returnUrl += cspara.length > 0 ? "/chebiaodang/?" + cspara : "/chebiaodang/";
+                break;
+            default:
+                returnUrl += cspara.length > 0 ? "/chebiaodang/?" + cspara : "/chebiaodang/";
         }
         //换车按钮属性修改及事件绑定
         $("#changecar_f").attr("href", returnUrl.replace("?&", "?"));

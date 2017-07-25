@@ -7,9 +7,9 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace BitAuto.CarChannel.CarchannelWeb.UserControls {
+namespace BitAuto.CarChannel.CarchannelWeb.PageLevelV2 {
     
     
-    public partial class NextToSee {
+    public partial class BaoZhiLvPaiHang {
     }
 }

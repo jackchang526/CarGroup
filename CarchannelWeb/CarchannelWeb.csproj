@@ -1158,6 +1158,7 @@
     <Content Include="jsnew\XuanChe.js" />
     <Content Include="jsnew\yicheSug.js" />
     <Content Include="jsnew\zampdaforcarchannel.js" />
+    <Content Include="PageLevelV2\BaoZhiLvPaiHang.aspx" />
     <Content Include="PageLevelV2\LevelPaihang.aspx" />
     <Content Include="PageListV2\SerialForBrandList.aspx" />
     <Content Include="PageListV2\SerialForCharList.aspx" />
@@ -2571,6 +2572,13 @@
     </Compile>
     <Compile Include="Interface\Tree\SelectCarToXml.aspx.designer.cs">
       <DependentUpon>SelectCarToXml.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageLevelV2\BaoZhiLvPaiHang.aspx.cs">
+      <DependentUpon>BaoZhiLvPaiHang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageLevelV2\BaoZhiLvPaiHang.aspx.designer.cs">
+      <DependentUpon>BaoZhiLvPaiHang.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageLevelV2\LevelPaihang.aspx.cs">
       <DependentUpon>LevelPaihang.aspx</DependentUpon>

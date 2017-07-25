@@ -85,19 +85,17 @@ namespace MWeb.Controllers
                 //seo 直接跳转
                 if (rePara == "true")
                 {
-                    sb.Insert(sb.Length - 11, string.Format("<li id=\"char_nav_{2}\"><a href=\"/brandlist/{2}/\"> <span class=\"brand-logo\"><img {3}=\"http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_{0}_100.png\" /></span><span class=\"brand-name\">{1}</span></a></li>",
+                    sb.Insert(sb.Length - 11, string.Format("<li id=\"char_nav_{2}\"><a href=\"/brandlist/{2}/\"> <span class=\"brand-logo m_{0}_b\"></span><span class=\"brand-name\">{1}</span></a></li>",
                         mbId,
                         mbName,
-                        masterSpell,
-                        i > 10 ? "data-original" : "src"));
+                        masterSpell));
                 }
                 else
                 {
-                    sb.Insert(sb.Length - 11, string.Format("<li id=\"char_nav_{2}\"><a data-id=\"{0}\" href=\"javascript:void(0);\" data-action=\"car\"> <span class=\"brand-logo\"><img {3}=\"http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_{0}_100.png\" /></span><span class=\"brand-name\">{1}</span></a></li>",
+                    sb.Insert(sb.Length - 11, string.Format("<li id=\"char_nav_{2}\"><a data-id=\"{0}\" href=\"javascript:void(0);\" data-action=\"car\"> <span class=\"brand-logo m_{0}_b\"></span><span class=\"brand-name\">{1}</span></a></li>",
                        mbId,
                        mbName,
-                       masterSpell,
-                       i > 10 ? "data-original" : "src"));
+                       masterSpell));
                 }
             }
             return sb.ToString();

@@ -96,6 +96,13 @@ namespace MWeb
 			   constraints: new { level = @"(weixingche|xiaoxingche|jincouxingche|zhongxingche|zhongdaxingche|haohuaxingche|mpv|suv|paoche|mianbaoche|pika|qita)" }
 		   );
 
+            routes.MapRoute(
+                name:"baozhilv",
+                url:"{level}/baozhilv/",
+                defaults:new { Controller = "BaoZhiLv", action="Level",id = UrlParameter.Optional },
+                constraints: new { level = @"(weixingche|xiaoxingche|jincouxingche|zhongxingche|zhongdaxingche|haohuaxingche|mpv|suv|paoche|mianbaoche|pika|qita)" }
+                );
+
             //suv
             routes.MapRoute(
                name: "suvchannel",

@@ -1,13 +1,69 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>1保值率-排行榜</title>
+    <link rel="stylesheet" type="text/css" href="../公共控件.css" />
+    <link rel="stylesheet" type="text/css" href="../头部控件.css" />
+    <link rel="stylesheet" type="text/css" href="../底部控件.css" />
+    <link rel="stylesheet" type="text/css" href="../保值率.css" />
 </head>
 <body>
-    <div>
-        @RenderBody()
+    <!-- header start -->
+    <div class="op-nav">
+        <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
+        <div class="tt-name">
+            <a href="http://m.yiche.com/" class="yiche-logo">汽车</a><h1>@ViewData["_brandReplaceName"]</h1>
+        </div>
+        <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
     </div>
+    <div class="op-nav-mark" style="display: none;"></div>
+    <!--保值率 desc start-->
+    <div class="bzl-desc">
+        <h6>五年保值率排行榜</h6>
+        <a href="###" class="lnk-more">
+            什么是保值率
+            <div class="lnk-mark" style="display:none">
+                是指某款车型在使用五年后，将其卖出的价格和先前购买价格的比值，是汽车综合水平的体现。
+            </div>
+        </a>
+    </div>
+    <!--保值率 desc end-->
+    <!--保值率导航 start-->
+    <div class="second-tags-scroll-box">
+        <div class="pd15">
+            <div class="second-tags-scroll">
+                <ul>
+                    <li class="current"><a href="javascript:;"><span>微型车</span></a></li>
+                    <li><a href="javascript:;"><span>小型车</span></a></li>
+                    <li><a href="javascript:;"><span>紧凑型车</span></a></li>
+                    <li><a href="javascript:;"><span>中型车</span></a></li>
+                    <li><a href="javascript:;"><span>中大型车</span></a></li>
+                    <li><a href="javascript:;"><span>大型车</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="right-mask"></div>
+    </div>
+    <!--保值率导航 end-->
+    <!--保值率列表 start-->
+    <div class="bzl-list">
+        <ul>
+
+        </ul>
+    </div>
+    <div class="loading" style="display:none;">
+        <span>正在载入...</span>
+    </div>
+    <!--保值率列表 end-->
 </body>
 </html>

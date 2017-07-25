@@ -20,8 +20,8 @@ $(function () {
             var input = ev.target;
             var file = input.files[0];
             //console.log(file);
-            setTimeout('$("#content .sc-pic-box").is(":hidden") ? $("#content .ico-sc-up").show() : $("#content .ico-sc-up").hide();', 500);
-            showErrorMsg("default"); 
+            setTimeout('$("#content .sc-pic-box").is(":hidden") ? $("#content .ico-sc-up").hide() : $("#content .ico-sc-up").show();', 1000);
+            showErrorMsg("default");
             $("#file_upload").hide();
             //获取图片的方向
             getOrientation(input.files[0], function (data) {
@@ -77,7 +77,7 @@ $(function () {
     function readFile(file) {
         var formdata = new FormData();
         if (!/image\/\w+/.test(file.type)) {
-            showErrorMsg("timeout"); 
+            showErrorMsg("timeout");
             InitStatus();
             return false;
         }
@@ -85,9 +85,9 @@ $(function () {
         var reader = new FileReader();
         reader.readAsDataURL(file);
 
-        reader.onload = function (e) { 
+        reader.onload = function (e) {
             getImgData(e.target.result, orientation, file, function (canvas) {
-                 
+
                 var f_size = file.size
                 console.log("f_size:" + f_size);
                 /*将转换后的图片下载到本地*/
@@ -100,11 +100,11 @@ $(function () {
                 */
                 var data = canvas.toDataURL("image/jpeg", .8)
 
-                 
+
 
                 if (navigator.userAgent.match(/iphone/i)) {
                     f_size -= 10 * 1024;
-                } 
+                }
                 var minImageSize = 30 * 1024;
                 var maxImageSize = 300 * 1024;
 
@@ -118,13 +118,13 @@ $(function () {
                 */
 
                 blob = dataURLtoBlob(data);
-                console.log("blob8:" + blob.size); 
+                console.log("blob8:" + blob.size);
 
                 if (blob.size >= 1024 * 300) {
                     data = canvas.toDataURL("image/jpeg", .75)
                     blob = dataURLtoBlob(data);
                     console.log("blob75:" + blob.size);
-                } 
+                }
                 console.log("图片压缩后：" + (blob.size / 1024) + "K");
                 if (blob.size < minImageSize) {
                     ////alert("blob0:" + blob.size);
@@ -179,7 +179,7 @@ $(function () {
 
             drawWidth = this.naturalWidth;
             drawHeight = this.naturalHeight;
-             
+
             // 改变图片大小，如果图片的最大长度大于1200要进行等比缩放
             if (drawHeight < drawWidth) {
                 if (drawWidth > maxHW) {
@@ -246,7 +246,7 @@ $(function () {
 
 
             var data = canvas.toDataURL("image/jpeg", 1)
-             
+
             togglePage("upload");
             $(".sc-pic-box img").attr("src", data);
             $(".sc-pic-box-sao img").attr("src", data);
@@ -313,7 +313,7 @@ $(function () {
     // 切换页面动态显示效果
     function togglePage(pidx) {
 
-        $("#content .ico-sc-car").hide(); 
+        $("#content .ico-sc-car").hide();
         $("#face").hide();
         $("#content strong").hide();
         $("#content .sc-pic-box").hide();
@@ -329,7 +329,7 @@ $(function () {
             $("#content strong").show();
         } else if (pidx == "upload") {
             $("#content .sc-pic-box").show();
-            $("#content .clear").show(); 
+            $("#content .clear").show();
             $("#content").addClass("shiche-pic-up");
         } else if (pidx == "recg") {
             $("#content .sc-pic-box-sao").show();
@@ -376,11 +376,11 @@ $(function () {
             contentType: false,
             processData: false,
             timeout: 3000,
-            beforeSend: function () { 
+            beforeSend: function () {
             },
             success: function (data) {
                 //console.log(data);
-                if (data.msg === "OK") { 
+                if (data.msg === "OK") {
                     ProcessRecogNew(data.result.model.data);
                 } else {
                     showErrorMsg("fail");
@@ -388,13 +388,13 @@ $(function () {
                     //console.log("recognition识别失败...");
                 }
             },
-            error: function (error) { 
+            error: function (error) {
                 //console.log("recognition识别失败error...");
             },
             complete: function (XMLHttpRequest, status) {
                 //请求完成后最终执行参数
                 if (status != 'success') { //超时timeout,status还有success,error等值的情况
-                    showErrorMsg("fail"); 
+                    showErrorMsg("fail");
                     InitStatus();
                 }
             }
@@ -430,7 +430,7 @@ $(function () {
             complete: function (XMLHttpRequest, status) {
                 //请求完成后最终执行参数
                 if (status != 'success') { //超时timeout,status还有success,error等值的情况
-                    showErrorMsg("fail"); 
+                    showErrorMsg("fail");
                     InitStatus();
                 }
             }
@@ -441,7 +441,7 @@ $(function () {
     function ProcessRecogNew(data) {
         if (data.length == 1) {
             if (data[0]["carModelId"] != undefined) {
-                showErrorMsg("fail"); 
+                showErrorMsg("fail");
                 InitStatus();
             }
         }
@@ -460,7 +460,7 @@ $(function () {
             return;
         }
         var prob = parseInt(model[idx].prob * 100)
-        if (prob == 0) { 
+        if (prob == 0) {
             showErrorMsg("fail");
             InitStatus();
             return;
@@ -482,7 +482,7 @@ $(function () {
                     if (idx <= model.length) {
                         RequestFirstCarModelData(model, idx);
                         return;
-                    } else { 
+                    } else {
                         showErrorMsg("fail");
                         InitStatus();
                         return;

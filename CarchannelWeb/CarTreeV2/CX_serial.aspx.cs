@@ -646,10 +646,38 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 		/// <returns></returns>
 		private string GetCarListHtml(List<CarInfoForSerialSummaryEntity> carList, int maxPv)
 		{
-			List<string> carListHtml = new List<string>();
+            var listGroupNew = new List<IGrouping<object, CarInfoForSerialSummaryEntity>>();
+            var listGroupOff = new List<IGrouping<object, CarInfoForSerialSummaryEntity>>();
+            var listGroupImport = new List<IGrouping<object, CarInfoForSerialSummaryEntity>>();
+
+            var importGroup = carList.GroupBy(p => new { p.IsImport }, p => p);
+            foreach (IGrouping<object, CarInfoForSerialSummaryEntity> info in importGroup)
+            {
+                var key = CommonFunction.Cast(info.Key, new { IsImport = 0 });
+                if (key.IsImport == 1)
+                {
+                    listGroupImport.Add(info);
+                }
+                else
+                {
+                    var querySale = info.ToList().GroupBy(p => new { p.Engine_Exhaust, p.Engine_InhaleType, p.Engine_AddPressType, p.Engine_MaxPower, p.Electric_Peakpower }, p => p);
+                    foreach (IGrouping<object, CarInfoForSerialSummaryEntity> subInfo in querySale)
+                    {
+                        var isStopState = subInfo.FirstOrDefault(p => p.ProduceState != "停产");
+                        if (isStopState != null)
+                            listGroupNew.Add(subInfo);
+                        else
+                            listGroupOff.Add(subInfo);
+                    }
+                }
+            }
+            listGroupNew.AddRange(listGroupOff);
+            listGroupNew.AddRange(listGroupImport);
+
+            List<string> carListHtml = new List<string>();
 			//if (carList.Count == 0)
 			//    carListHtml.Add("<tr>暂无车款！</tr>");
-			var querySale = carList.GroupBy(p => new { p.Engine_Exhaust, p.Engine_InhaleType, p.Engine_AddPressType, p.Engine_MaxPower, p.Electric_Peakpower }, p => p);
+			//var querySale = carList.GroupBy(p => new { p.Engine_Exhaust, p.Engine_InhaleType, p.Engine_AddPressType, p.Engine_MaxPower, p.Electric_Peakpower }, p => p);
 			int groupIndex = 0;
 
 			int minChargeTime = 0;
@@ -658,7 +686,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 			int maxFastChargeTime = 0;
 			int minMileage = 0;
 			int maxMileage = 0;
-			foreach (IGrouping<object, CarInfoForSerialSummaryEntity> info in querySale)
+			foreach (IGrouping<object, CarInfoForSerialSummaryEntity> info in listGroupNew)
 			{
 				var key = CommonFunction.Cast(info.Key, new { Engine_Exhaust = "", Engine_InhaleType = "", Engine_AddPressType = "", Engine_MaxPower = 0, Electric_Peakpower = 0 });
 				string strMaxPowerAndInhaleType = string.Empty;

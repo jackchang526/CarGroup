@@ -78,6 +78,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
         protected string carPingceHtml = string.Empty;//车型详解
         protected string waitFocusNewsHtml = string.Empty;//评测和焦点新闻
         protected string brandOtherSerial = string.Empty;//其他车型
+        protected string VRUrl = string.Empty;//VR
         #endregion
 
         public CsSummaryForWaitSale()
@@ -107,10 +108,22 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             MakePhotoListHtml();//图片列表
             GetCNCAPAndENCAPData();//碰撞数据
             MakeRelatedNewHtml();//相关新闻
+            GetVrUrl(); //VR
             //InitNextSeeNew();//接下来要看 评测和导购
             ucNextToSee.serialId = serialId;
         }
 
+        /// <summary>
+        /// 获取vr url
+        /// </summary>
+        private void GetVrUrl()
+        {
+            Dictionary<int, string> vrDic = _serialBLL.GetSerialVRUrl();
+            if (vrDic != null && vrDic.ContainsKey(serialId))
+            {
+                VRUrl = vrDic[serialId];
+            }
+        }
         protected void MakeBlockHtml()
         {
             int waitFocusNews = (int)CommonHtmlEnum.BlockIdEnum.FocusNewsForWaitSale;//评测

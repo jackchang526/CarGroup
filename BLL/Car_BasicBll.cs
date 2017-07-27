@@ -365,6 +365,42 @@ namespace BitAuto.CarChannel.BLL
 			return dic;
 		}
 
+        /// <summary>
+        /// 取车型封面字典类型 加数据缓存
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<int, XmlElement> GetCarDefaultPhotoXmlElement()
+        {
+            Dictionary<int, XmlElement> dic = new Dictionary<int, XmlElement>();
+
+            string cacheKey = "Car_BLL_GetCarDefaultPhotoXmlElement";
+            object getCarDefaultPhotoDictionary = CacheManager.GetCachedData(cacheKey);
+            if (getCarDefaultPhotoDictionary != null)
+            {
+                dic = (Dictionary<int, XmlElement>)getCarDefaultPhotoDictionary;
+            }
+            else
+            {
+                XmlDocument doc = GetCarDefaultPhoto();
+                if (doc != null && doc.HasChildNodes)
+                {
+                    XmlNodeList itemList = doc.SelectNodes("/ImageData/ImageList/ImageInfo");
+                    if (itemList != null && itemList.Count > 0)
+                    {
+                        foreach (XmlElement item in itemList)
+                        {
+                            int carID = ConvertHelper.GetInteger(item.Attributes["CarId"].Value);
+                            if (!dic.ContainsKey(carID))
+                            {
+                                dic.Add(carID, item);
+                            }
+                        }
+                    }
+                }
+                CacheManager.InsertCache(cacheKey, dic, 60);
+            }
+            return dic;
+        }
 		/// <summary>
 		/// 取车型的封面
 		/// </summary>

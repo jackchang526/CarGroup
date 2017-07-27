@@ -45,7 +45,7 @@ namespace MWeb.Controllers
         /// 车系为电动车的续航里程区间
         /// </summary>
         protected string mileageRange = string.Empty;
-
+        
         public CsSummaryController()
         {
             carBLL = new Car_BasicBll();
@@ -77,8 +77,10 @@ namespace MWeb.Controllers
             GetVideo();//视频
             MakeForumNewsHtml();//论坛
             MakeSerialToSerialHtml();//看了还看
+            GetVrUrl();//获取vr地址
+            GetBaoZhiLv();//保值率
 
-			bool isTestCs = TestCsIds.Contains(serialId);
+            bool isTestCs = TestCsIds.Contains(serialId);
 			if (isTestCs)
 			{
 				MakeSerialInfoHtmlV2(); //焦点图
@@ -667,9 +669,9 @@ namespace MWeb.Controllers
 		/// </summary>
 		private void MakeSerialInfoHtmlV2()
 		{
-			string liFormatter = "<li class=\"swiper-slide\"><a href=\"http://photo.m.yiche.com/picture/{0}/{1}/\" data-channelid=\"{5}\"><img src=\"{2}\">{3}</a>{4}</li>";
-			string summaryInfoStr = "<div class=\"sum-mask\"><div class=\"sum-mask-info\"><h2>{0}</h2><strong>{1}</strong><p><span>{2}</span><span>指导价：{3}</span></p></div><a href=\"javascript:;\" class=\"ico-favorite\" id=\"favstar\" data-channelid=\"27.23.726\"></a></div>";
-			summaryInfoStr = string.Format(summaryInfoStr, serialEntity.SeoName, ViewData["serialPrice"], ViewData["serialTotalPV"], serialEntity.ReferPrice.Replace("万-", "-"));
+			string liFormatter = "<li class=\"swiper-slide\"><a href=\"http://photo.m.yiche.com/picture/{0}/{1}/\" data-channelid=\"{4}\"><img src=\"{2}\">{3}</a></li>";
+			//string summaryInfoStr = "<div class=\"sum-mask\"><div class=\"sum-mask-info\"><h2>{0}</h2><strong>{1}</strong><p><span>{2}</span><span>指导价：{3}</span></p></div><a href=\"javascript:;\" class=\"ico-favorite\" id=\"favstar\" data-channelid=\"27.23.726\"></a></div>";
+			//summaryInfoStr = string.Format(summaryInfoStr, serialEntity.SeoName, ViewData["serialPrice"], ViewData["serialTotalPV"], serialEntity.ReferPrice.Replace("万-", "-"));
 
 			var focusImgId = new Dictionary<int, string>();
 			List<string> focusImg = new List<string>();
@@ -688,7 +690,7 @@ namespace MWeb.Controllers
 						, image.ImageId
 						, String.Format(image.ImageUrl, 3)
 						, string.Empty
-						, summaryInfoStr
+						//, summaryInfoStr
 						, "27.23.723");
 				if (!focusImgId.ContainsKey(image.ImageId))
 				{
@@ -711,7 +713,6 @@ namespace MWeb.Controllers
 							, csImg.ImageId
 							, smallImgUrl
 							, string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<em class=\"btn-pic\">点击查看" + csImg.GroupName + "图册</em>"
-							, string.Empty
 							, "27.23.724");
 					if (!focusImgId.ContainsKey(csImg.ImageId))
 					{
@@ -731,7 +732,6 @@ namespace MWeb.Controllers
 							, dicPicNoneWhite[serialId].FirstOrDefault().Key
 							, dicPicNoneWhite[serialId].FirstOrDefault().Value
 							, string.Empty
-							, summaryInfoStr
 							, "27.23.723");
 					if (!focusImgId.ContainsKey(dicPicNoneWhite[serialId].FirstOrDefault().Key))
 					{
@@ -766,7 +766,6 @@ namespace MWeb.Controllers
 						, imgId
 						, imgUrl
 						, "<em class=\"btn-pic\">点击查看空间图册</em>"
-						, string.Empty
 						, "27.23.725");
 					if (!focusImgId.ContainsKey(imgId))
 					{
@@ -795,7 +794,6 @@ namespace MWeb.Controllers
 							, csImg.ImageId
 							, smallImgUrl
 							, string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<em class=\"btn-pic\">点击查看" + csImg.GroupName + "图册</em>"
-							, string.Empty
 							, "27.23.724");
 					if (!focusImgId.ContainsKey(csImg.ImageId))
 					{
@@ -817,7 +815,6 @@ namespace MWeb.Controllers
 							, imgId
 							, firstTujieNode.Attributes["ImageUrl"].Value.Replace("_4.", "_8.")
 							, string.IsNullOrEmpty(groupName) ? string.Empty : "<em class=\"btn-pic\">点击查看" + groupName + "图册</em>"
-							, string.Empty
 							, focusImg.Count > 1 ? "27.23.724" : "27.23.723"
 						);
 						if (!focusImgId.ContainsKey(imgId))
@@ -1304,6 +1301,43 @@ namespace MWeb.Controllers
         {
             List<SerialColorEntity> SerialColorList = serialBLL.GetProduceSerialColors(serialId);
             ViewData["SerialColorList"] = SerialColorList;
+        }
+
+        /// <summary>
+        /// 获取vr url
+        /// </summary>
+        private void GetVrUrl()
+        {
+            Dictionary<int, string> vrDic = serialBLL.GetSerialVRUrl();
+            string VRUrl = string.Empty;
+            if (vrDic != null && vrDic.ContainsKey(serialId))
+            {
+                 VRUrl = vrDic[serialId];
+            }
+            ViewData["VRUrl"] = VRUrl;
+        }
+
+        /// <summary>
+        /// 五年保值率
+        /// </summary>
+        protected void GetBaoZhiLv()
+        {
+            Dictionary<int, XmlElement> dic = serialBLL.GetSeialBaoZhiLv();
+            string baoZhiLv = string.Empty;
+            string[] baoZhiLvLevel = { "weixingche", "xiaoxingche", "jincouxingche", "zhongxingche", "zhongdaxingche", "haohuaxingche", "mpv", "suv", "paoche", "mianbaoche" };
+            if (dic != null && dic.ContainsKey(serialId))
+            {
+                XmlElement ele = dic[serialId];
+                if (ele != null)
+                {
+                    string levelSpell = BitAuto.CarUtils.Define.CarLevelDefine.GetLevelSpellByName(serialEntity.Level.Name);
+                    baoZhiLv = string.Format("<dl class=\"sum-baozhilv\"><dt class=\"w3\">保值率：</dt><dd>{0}% {1}</dd></dl>"
+                        , Math.Round(ConvertHelper.GetDouble(ele.Attributes["ResidualRatio5"].InnerText) * 100, 1)
+                        , baoZhiLvLevel.Contains(levelSpell) ? string.Format("<a href=\"/{0}/baozhilv/\">排行>></a>",levelSpell) : ""
+                        );
+                }
+            }
+            ViewData["baoZhiLv"] = baoZhiLv;
         }
 
         /// <summary>

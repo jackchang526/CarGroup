@@ -44,7 +44,7 @@
         <div class="op-nav-out">
             <div class="op-nav-static op-nav-fixed">
                 <div class="op-nav">
-                    @if(string.IsNullOrWhiteSpace(wtmcid)){
+                    @if (string.IsNullOrWhiteSpace(wtmcid)) {
                         <a id="gobackElm" data-channelid="27.23.690" href="javascript:;" class="btn-return">返回</a>
                     }
                     <div class="tt-name">
@@ -175,6 +175,17 @@
                     <i></i>
                     关注
                 </a>
+                @{
+                    string VrUrl = ViewData["VRUrl"].ToString();
+                    if (!string.IsNullOrWhiteSpace(VrUrl))
+                    {
+                        <a href="@(VrUrl)" class="vr-chezhan">
+                            <i></i>
+                            VR
+                        </a>
+                    }
+                }
+                
                 @if (serialEntity.SaleState != "停销")
                 {
                     <a href="http://car.h5.yiche.com/@(serialEntity.AllSpell)/" class="ico-laiyiche" data-channelid="27.23.1317"><i></i>来一车</a>
@@ -217,10 +228,7 @@
                     </dl>
                 }
 
-                <dl>
-                    <dt class="w2">厂商：</dt>
-                    <dd>@(ViewData["ChanDi"])</dd>
-                </dl>
+               @(Html.Raw(ViewData["baoZhiLv"]))
                 <div class="clear"></div>
                 @{
                     List<SerialColorEntity> SerialColorList = (List<SerialColorEntity>)ViewData["SerialColorList"];

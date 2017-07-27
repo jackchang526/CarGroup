@@ -129,6 +129,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BaoZhiLvController.cs" />
     <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\CalcController.cs" />
     <Compile Include="Controllers\CarCompareController.cs" />
@@ -153,6 +154,9 @@
     <Compile Include="Filters\ExceptionFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="handlers\GetBaoZhiLv.ashx.cs">
+      <DependentUpon>GetBaoZhiLv.ashx</DependentUpon>
     </Compile>
     <Compile Include="handlers\GetCarInfoForCalcTools.ashx.cs">
       <DependentUpon>GetCarInfoForCalcTools.ashx</DependentUpon>
@@ -191,6 +195,7 @@
     <Content Include="config\SceneCar.xml" />
     <Content Include="config\SecondCar.xml" />
     <Content Include="config\SUVChannel.xml" />
+    <Content Include="config\VR.xml" />
     <Content Include="config\YaGaoSelectCar.xml" />
     <Content Include="Global.asax" />
     <Content Include="html\selectCarTemplate.htm" />
@@ -272,6 +277,7 @@
     <Content Include="ushtml\0000\myiche2016_cube_pinpaiye-1161.shtml" />
     <Content Include="ushtml\0000\myiche2016_cube_qingjingxuanche-1184.shtml" />
     <Content Include="ushtml\0000\myiche2016_cube_summary-1154.shtml" />
+    <Content Include="ushtml\0000\yiche_2016_cube_bozhilv-1390.shtml" />
     <Content Include="ushtml\0000\yiche_2016_cube_peizhiye_part-1261.shtml" />
     <Content Include="ushtml\0000\yidongzhan_chedai-644.shtml" />
     <Content Include="ushtml\block\so\mobile\MobileSugBottom_chexing.shtml" />
@@ -379,6 +385,7 @@
     <Content Include="html\Web.config" />
     <Content Include="handlers\YaGaoSelectCar.ashx" />
     <Content Include="handlers\GetSecondCar.ashx" />
+    <Content Include="handlers\GetBaoZhiLv.ashx" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Calc\CalcAutoCash.cshtml" />
     <Content Include="Views\Calc\CalcAutoCashDetail.cshtml" />
@@ -390,6 +397,7 @@
     <Content Include="Views\SelectBrand\Index.cshtml" />
     <Content Include="Views\CsSummary\IndexFocus.cshtml" />
     <Content Include="Views\Recognition\Index.cshtml" />
+    <Content Include="Views\BaoZhiLv\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

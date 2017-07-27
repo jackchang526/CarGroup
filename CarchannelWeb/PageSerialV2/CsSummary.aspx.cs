@@ -76,7 +76,9 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
         protected string carPingceHtml = string.Empty;//车型详解
         protected string brandOtherSerial = string.Empty;//其他车型
 
-		protected string baoZhiLv = string.Empty; 
+		protected string baoZhiLv = string.Empty;//五年保值率
+        protected string VRUrl = string.Empty;//vr url
+
         #endregion
 
         public CsSummary()
@@ -106,26 +108,40 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             GetCNCAPAndENCAPData();//碰撞数据
             MakeRelatedNewHtml();//相关新闻
 			GetBaoZhiLv();//5年保值率
+            GetVrUrl();//Vr url
             //InitNextSeeNew();//接下来要看 评测和导购
             ucNextToSee.serialId = serialId;
         }
+        
+        /// <summary>
+        /// 获取vr url
+        /// </summary>
+        private void GetVrUrl()
+        {
+            Dictionary<int, string> vrDic = _serialBLL.GetSerialVRUrl();
+            if (vrDic != null && vrDic.ContainsKey(serialId))
+            {
+                VRUrl = vrDic[serialId];
+            }
+        }
 
-		/// <summary>
-		/// 五年保值率
-		/// </summary>
-		protected void GetBaoZhiLv()
+        /// <summary>
+        /// 五年保值率
+        /// </summary>
+        protected void GetBaoZhiLv()
 		{
 			Dictionary<int,XmlElement> dic = _serialBLL.GetSeialBaoZhiLv();
-			if (dic != null && dic.ContainsKey(serialId))
+            string[] baoZhiLvLevel = { "weixingche", "xiaoxingche", "jincouxingche", "zhongxingche", "zhongdaxingche", "haohuaxingche", "mpv", "suv", "paoche", "mianbaoche" };
+            if (dic != null && dic.ContainsKey(serialId))
 			{
 				XmlElement ele = dic[serialId];
 				if (ele != null)
 				{
 					string levelSpell = BitAuto.CarUtils.Define.CarLevelDefine.GetLevelSpellByName(serialEntity.Level.Name);
-					baoZhiLv = string.Format("<li class=\"li3-1\"><span class=\"title\">五年保值率</span><h4>{0}% <a class=\"lnk-bzl\" href=\"/{1}/baozhilv/\" target=\"_blank\" data-channelid=\"2.21.2032\">查看排行&gt;&gt;</a></h4></li>"
+					baoZhiLv = string.Format("<li class=\"li3-1\"><span class=\"title\">五年保值率</span><h4>{0}% {1}</h4></li>"
 						,Math.Round(ConvertHelper.GetDouble(ele.Attributes["ResidualRatio5"].InnerText) * 100,1)
-						, levelSpell
-						);
+						, baoZhiLvLevel.Contains(levelSpell) ? string.Format("<a class=\"lnk-bzl\" href=\"/{0}/baozhilv/\" target=\"_blank\" data-channelid=\"2.21.2032\">查看排行&gt;&gt;</a>",levelSpell) :""
+                        );
 				}
 			}
 		}

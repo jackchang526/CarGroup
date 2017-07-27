@@ -1250,4 +1250,17 @@ var eventNames = ['webkit', 'moz', 'o'];
             options.end && options.end.call($this);
         }
     }
+    //滚动条横向定位
+    $.fn.activeScrollBar = function (options) {
+        var setting = {
+            activeName: '.current'
+        }
+        options = Object.extend(options, setting);
+        this.each(function (index, current) {
+            (function ($o) {
+                var $current = $o.find(options.activeName);
+                $o.animate({ scrollLeft: $current[0].offsetLeft - $current[0].offsetWidth }, 30);
+            })($(current));
+        })
+    }
 })(jQuery);

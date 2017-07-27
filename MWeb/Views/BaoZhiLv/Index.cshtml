@@ -1,0 +1,171 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>2017@(ViewData["LevelFullName"])保值率排行榜_保值率最高的@(ViewData["LevelFullName"])易车网</title>
+    <meta name="Keywords" content="@(ViewData["LevelFullName"])保值率,@(ViewData["LevelFullName"])保值率排行榜,保值率最高的@(ViewData["LevelFullName"])" />
+    <meta name="Description" content="什么@(ViewData["LevelFullName"])保值率最高？易车网为您整理2017保值率最高的@(ViewData["LevelFullName"])排行榜，看保值率最高@(ViewData["LevelFullName"])，尽在易车网保值率频道！" />
+
+    <!-- #include file="/ushtml/0000/yiche_2016_cube_bozhilv-1390.shtml" -->
+</head>
+<body>
+    <!-- header start -->
+    <div class="op-nav">
+        <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
+        <div class="tt-name">
+            <a href="http://m.yiche.com/" class="yiche-logo">汽车</a><h1>保值率排行榜</h1>
+        </div>
+        <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
+    </div>
+    <div class="op-nav-mark" style="display: none;"></div>
+    <!--保值率 desc start-->
+    <div class="bzl-desc">
+        <h6>汽车五年保值率排行榜</h6>
+        <a href="javascript:;" class="lnk-more" id="lnk-more">
+            什么是保值率
+            <div class="lnk-mark" style="display:none" id="lnk-mark">
+                是指某款车型在使用五年后，将其卖出的价格和先前购买价格的比值，是汽车综合水平的体现。
+            </div>
+        </a>
+    </div>
+    <!--保值率 desc end-->
+    <!--保值率导航 start-->
+    <div class="second-tags-scroll-box">
+        <div class="pd15">
+            <div class="second-tags-scroll"  data-type="scrollBar">
+                <ul>
+                    @(Html.Raw(ViewData["LevelHtml"]))
+                </ul>
+            </div>
+        </div>
+        <div class="right-mask"></div>
+    </div>
+    <!--保值率导航 end-->
+    <!--保值率列表 start-->
+    <div class="bzl-list">
+        <ul>
+            @(Html.Raw(ViewData["BaoZhiLvHtml"]))
+        </ul>
+    </div>
+    <div class="mask" style="display:none"></div>
+    <div class="loading" style="display:none;">
+        <span>正在载入...</span>
+    </div>
+    <!--保值率列表 end-->
+    <script src="http://image.bitautoimg.com/uimg/wap/js/jquery-1.8.0.min.js" type="text/javascript"></script>
+    <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/v2/model.min.js?v=201707271505"></script>
+    <script type="text/javascript">
+
+        //滑动横向定位
+        $('[data-type=scrollBar]').activeScrollBar();
+        var levelSpell = "@(ViewData["LevelSpell"])";
+        /*默认值*/
+        Object.extend = function (destination, source) {
+            if (!destination) return source;
+            for (var property in source) {
+                if (!destination[property]) {
+                    destination[property] = source[property];
+                }
+            }
+            return destination;
+        }
+
+        //无限加载分页
+        $.fn.downPage = function (options) {
+            var setting = {
+                nextFn: null,
+                footerH: 0
+            }
+            options = Object.extend(options, setting);
+            var $this = this;
+            $this.oindex = -1;
+            $this.index = 1;
+            $this.on('succeed', function () {
+                $this.index++;
+            });
+            function scrollTo() {
+                var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight,
+                    scrollT = document.documentElement.scrollTop || document.body.scrollTop,
+                    clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+                if (scrollT + clientHeight + options.footerH >= scrollHeight && $this.index != $this.oindex) {
+                    options.nextFn && options.nextFn.call($this);
+                    $this.oindex = $this.index;
+                }
+            }
+            $(window).scroll(scrollTo).trigger('scroll');
+        }
+
+        $(function () {
+            var $comments = $('.bzl-list'), $more = $('.loading');
+            //var $tp1 = $('#tp1');
+            $comments.downPage({
+                nextFn: function () {
+                    var $this = this;
+                    $more.show();
+                    $.ajax({
+                        url: "/handlers/GetBaoZhiLv.ashx",
+                        data: { pageIndex: $this.index + 1, pagesize: 10, level: levelSpell },
+                        cache: true,
+                        //dataType: "json",
+                        success: function (data) {
+                            //alert(data);
+                            if (data.length > 0) {
+                                $more.hide();
+                                $(".bzl-list ul").append(data);
+                                $this.trigger('succeed');
+                            }
+                            else {
+                                $more.hide();
+                            }
+                        },
+                        error: function () {
+                            console.log("error");
+                        }
+                    });
+                }
+            });
+            //弹层
+            var $mark = $(".lnk-mark");
+            $("#lnk-more").on("touchend", function (e) {
+                $("#lnk-mark").show();
+                $(".mask").show();
+            });
+            $(".mask").on("touchstart", function (e) {
+                e.preventDefault();
+                $(this).hide();
+                $("#lnk-mark").hide();
+            });
+        })
+    </script>
+
+    <!--统计代码开始-->
+    <!-- START OF SmartSource Data Collector TAG -->
+    <script src="http://image.bitautoimg.com/bt/webtrends/dcs_tag_wapnew.js?20160602" type="text/javascript"></script>
+    <!-- bitauto stat begin -->
+    <script>
+        var bit_stat_url = "url=" + escape(document.location);
+        if (document.referrer != null) bit_stat_url += "&refer=" + escape(document.referrer)
+        document.write("<img width=0 height=0 style='display:none;' src='http://log.bitauto.com/newsstat/log.aspx?" + bit_stat_url + "'/>");
+    </script>
+    <!-- bitauto stat end -->
+    <!--airui-->
+    <script src="http://img1.bitautoimg.com/stat/iwtToMSite20140218.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://g.yccdn.com"></script>
+    <!--#include file="/include/special/stat/00001/stat_bglog_Manual.shtml"-->
+    <script type="text/javascript">
+        (function () {
+            var dc = document.createElement('script'); dc.type = 'text/javascript'; dc.async = true;
+            dc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'js.ctags.cn/dc.js?10';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(dc, s);
+        })();
+    </script>
+    <!--统计代码结束-->
+</body>
+</html>

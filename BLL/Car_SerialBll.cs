@@ -915,205 +915,7 @@ namespace BitAuto.CarChannel.BLL
 			return ds;
 		}
 
-		/// <summary>
-		/// 子品牌综述页、年款页焦点图
-		/// </summary>
-		/// <param name="serialID"></param>
-		/// <returns></returns>
-		public string MakeSerialFocusImageNew(int serialID, string csShowName)
-		{
-			StringBuilder htmlCode = new StringBuilder();
-			XmlDocument doc = GetSerialFocusImageForNew(serialID);
-			string bigImageCode = "";
-			string smallImageCode = "";
-			if (doc != null && doc.HasChildNodes)
-			{
-				XmlNodeList xnl = doc.SelectNodes("/ImageData/ImageList/ImageInfo");
-				if (xnl != null && xnl.Count > 0)
-				{
-					try
-					{
-						int loop = 0;
-						foreach (XmlNode xn in xnl)
-						{
-							int imgID = int.Parse(xn.Attributes["ImageId"].Value.ToString()) % 4 + 1;
-							if (loop == 0)
-							{
-								bigImageCode += "<div id=\"focusBigImg_" + loop + "\" style=\"display: block;\"><a href=\"" + xn.Attributes["Link"].Value.ToString() + "\" target=\"_blank\"><img alt=\"" + csShowName + xn.Attributes["ImageName"].Value.ToString() + "\" src=\"http://img" + imgID + ".bitautoimg.com/autoalbum/" + string.Format(xn.Attributes["ImageUrl"].Value.ToString(), "4") + "\" width=\"300\" height=\"199\"></a> </div>";
-								smallImageCode += "<li id=\"focusSmallImg_" + loop + "\" class=\"current\"><a href=\"" + xn.Attributes["Link"].Value.ToString() + "\" target=\"_blank\"><img alt=\"" + csShowName + xn.Attributes["ImageName"].Value.ToString() + "\" src=\"http://img" + imgID + ".bitautoimg.com/autoalbum/" + string.Format(xn.Attributes["ImageUrl"].Value.ToString(), "5") + "\"></a></li>";
-							}
-							else
-							{
-								bigImageCode += "<div id=\"focusBigImg_" + loop + "\" style=\"display: none;\"><a href=\"" + xn.Attributes["Link"].Value.ToString() + "\" target=\"_blank\"><img alt=\"" + csShowName + xn.Attributes["ImageName"].Value.ToString() + "\" src=\"http://img" + imgID + ".bitautoimg.com/autoalbum/" + string.Format(xn.Attributes["ImageUrl"].Value.ToString(), "4") + "\" width=\"300\" height=\"199\"></a> </div>";
-								smallImageCode += "<li id=\"focusSmallImg_" + loop + "\"><a href=\"" + xn.Attributes["Link"].Value.ToString() + "\" target=\"_blank\"><img alt=\"" + csShowName + xn.Attributes["ImageName"].Value.ToString() + "\" src=\"http://img" + imgID + ".bitautoimg.com/autoalbum/" + string.Format(xn.Attributes["ImageUrl"].Value.ToString(), "5") + "\"></a></li>";
-							}
-							loop++;
-						}
-					}
-					catch (Exception ex)
-					{
-						bigImageCode = "";
-						smallImageCode = "";
-					}
-				}
-				else
-				{
-					bigImageCode += "<div id=\"focusBigImg_0\" style=\"display: block;\"><img src=\"" + WebConfig.DefaultCarPic + "\" width=\"300\" height=\"199\"></div>";
-					smallImageCode += "<li id=\"focusSmallImg_0\" class=\"current\"><img src=\"" + WebConfig.DefaultCarPic + "\"></li>";
-				}
-				htmlCode.AppendLine("<div class=\"focus_pics\" >");
-				htmlCode.AppendLine("<div class=\"lantern_pic\" id=\"lantern_pic\">");
-				//三张大图
-				htmlCode.AppendLine(bigImageCode);
-				htmlCode.AppendLine("</div>");
-				//三张小图
-				htmlCode.AppendLine("<ul id=\"lantern_list\" class=\"lantern_list\">");
-				htmlCode.AppendLine(smallImageCode);
-				htmlCode.AppendLine("</ul>");
-				htmlCode.AppendLine("</div>");
-			}
-			else
-			{
-				htmlCode.AppendLine("<div class=\"focus_pics\" >");
-				htmlCode.AppendLine("<div class=\"lantern_pic\" id=\"lantern_pic\">");
-				htmlCode.AppendLine("</div>");
-				htmlCode.AppendLine("<ul id=\"lantern_list\" class=\"lantern_list\">");
-				htmlCode.AppendLine("</ul>");
-				htmlCode.AppendLine("</div>");
-			}
-			return htmlCode.ToString();
-		}
-
-		/// <summary>
-		/// 子品牌年款页焦点图
-		/// </summary>
-		/// <param name="serialID"></param>
-		/// <param name="year"></param>
-		/// <param name="csShowName"></param>
-		/// <returns></returns>
-		public string MakeSerialYearFocusImageNew(int serialID, int year, string csShowName)
-		{
-			StringBuilder htmlCode = new StringBuilder();
-			XmlDocument doc = GetSerialYearPhoto(serialID, year, 4);
-			// add by chengl Jan.7.2013 如果年款文件没有读子品牌的
-			// 是否有年款焦点图
-			bool isHasYearPhoto = false;
-			string bigImageCode = "";
-			string smallImageCode = "";
-			if (doc != null && doc.HasChildNodes)
-			{
-				XmlNodeList xnl = doc.SelectNodes("/ImageData/ImageList/ImageInfo");
-				if (xnl != null && xnl.Count > 0)
-				{
-					try
-					{
-						isHasYearPhoto = true;
-						int loop = 0;
-						foreach (XmlNode xn in xnl)
-						{
-							if (loop == 0)
-							{
-								bigImageCode += "<div id=\"focusBigImg_" + loop + "\" style=\"display: block;\"><a href=\"" + xn.Attributes["Link"].Value.ToString() + "\" target=\"_blank\"><img alt=\"" + csShowName + xn.Attributes["ImageName"].Value.ToString() + "\" src=\"" + xn.Attributes["ImageUrl"].Value.ToString() + "\" width=\"300\" height=\"199\"></a> </div>";
-								smallImageCode += "<li id=\"focusSmallImg_" + loop + "\" class=\"current\"><a href=\"" + xn.Attributes["Link"].Value.ToString() + "\" target=\"_blank\"><img alt=\"" + csShowName + xn.Attributes["ImageName"].Value.ToString() + "\" src=\"" + xn.Attributes["ImageUrl"].Value.ToString().Replace("_4.", "_5.") + "\"></a></li>";
-							}
-							else
-							{
-								bigImageCode += "<div id=\"focusBigImg_" + loop + "\" style=\"display: none;\"><a href=\"" + xn.Attributes["Link"].Value.ToString() + "\" target=\"_blank\"><img alt=\"" + csShowName + xn.Attributes["ImageName"].Value.ToString() + "\" src=\"" + xn.Attributes["ImageUrl"].Value.ToString() + "\" width=\"300\" height=\"199\"></a> </div>";
-								smallImageCode += "<li id=\"focusSmallImg_" + loop + "\"><a href=\"" + xn.Attributes["Link"].Value.ToString() + "\" target=\"_blank\"><img alt=\"" + csShowName + xn.Attributes["ImageName"].Value.ToString() + "\" src=\"" + xn.Attributes["ImageUrl"].Value.ToString().Replace("_4.", "_5.") + "\"></a></li>";
-							}
-							loop++;
-						}
-					}
-					catch (Exception ex)
-					{
-						bigImageCode = "";
-						smallImageCode = "";
-					}
-				}
-				else
-				{
-					bigImageCode += "<div id=\"focusBigImg_0\" style=\"display: block;\"><img src=\"" + WebConfig.DefaultCarPic + "\" width=\"300\" height=\"199\"></div>";
-					smallImageCode += "<li id=\"focusSmallImg_0\" class=\"current\"><img src=\"" + WebConfig.DefaultCarPic + "\"></li>";
-				}
-				htmlCode.AppendLine("<div class=\"focus_pics\" >");
-				htmlCode.AppendLine("<div class=\"lantern_pic\" id=\"lantern_pic\">");
-				//三张大图
-				htmlCode.AppendLine(bigImageCode);
-				htmlCode.AppendLine("</div>");
-				//三张小图
-				htmlCode.AppendLine("<ul id=\"lantern_list\" class=\"lantern_list\">");
-				htmlCode.AppendLine(smallImageCode);
-				htmlCode.AppendLine("</ul>");
-				htmlCode.AppendLine("</div>");
-			}
-
-			if (!isHasYearPhoto)
-			{
-				// 如果没有年款图 则取子品牌焦点图
-				doc = GetSerialFocusImageForNew(serialID);
-				#region
-				if (doc != null && doc.HasChildNodes)
-				{
-					XmlNodeList xnl = doc.SelectNodes("/ImageData/ImageList/ImageInfo");
-					if (xnl != null && xnl.Count > 0)
-					{
-						try
-						{
-							isHasYearPhoto = true;
-							int loop = 0;
-							foreach (XmlNode xn in xnl)
-							{
-								int imgID = int.Parse(xn.Attributes["ImageId"].Value.ToString()) % 4 + 1;
-								if (loop == 0)
-								{
-									bigImageCode += "<div id=\"focusBigImg_" + loop + "\" style=\"display: block;\"><a href=\"" + xn.Attributes["Link"].Value.ToString() + "\" target=\"_blank\"><img alt=\"" + csShowName + xn.Attributes["ImageName"].Value.ToString() + "\" src=\"http://img" + imgID + ".bitautoimg.com/autoalbum/" + string.Format(xn.Attributes["ImageUrl"].Value.ToString(), "4") + "\" width=\"300\" height=\"199\"></a> </div>";
-									smallImageCode += "<li id=\"focusSmallImg_" + loop + "\" class=\"current\"><a href=\"" + xn.Attributes["Link"].Value.ToString() + "\" target=\"_blank\"><img alt=\"" + csShowName + xn.Attributes["ImageName"].Value.ToString() + "\" src=\"http://img" + imgID + ".bitautoimg.com/autoalbum/" + string.Format(xn.Attributes["ImageUrl"].Value.ToString(), "5") + "\"></a></li>";
-								}
-								else
-								{
-									bigImageCode += "<div id=\"focusBigImg_" + loop + "\" style=\"display: none;\"><a href=\"" + xn.Attributes["Link"].Value.ToString() + "\" target=\"_blank\"><img alt=\"" + csShowName + xn.Attributes["ImageName"].Value.ToString() + "\" src=\"http://img" + imgID + ".bitautoimg.com/autoalbum/" + string.Format(xn.Attributes["ImageUrl"].Value.ToString(), "4") + "\" width=\"300\" height=\"199\"></a> </div>";
-									smallImageCode += "<li id=\"focusSmallImg_" + loop + "\"><a href=\"" + xn.Attributes["Link"].Value.ToString() + "\" target=\"_blank\"><img alt=\"" + csShowName + xn.Attributes["ImageName"].Value.ToString() + "\" src=\"http://img" + imgID + ".bitautoimg.com/autoalbum/" + string.Format(xn.Attributes["ImageUrl"].Value.ToString(), "5") + "\"></a></li>";
-								}
-								loop++;
-							}
-						}
-						catch (Exception ex)
-						{
-							bigImageCode = "";
-							smallImageCode = "";
-						}
-					}
-					else
-					{
-						bigImageCode += "<div id=\"focusBigImg_0\" style=\"display: block;\"><img src=\"" + WebConfig.DefaultCarPic + "\" width=\"300\" height=\"199\"></div>";
-						smallImageCode += "<li id=\"focusSmallImg_0\" class=\"current\"><img src=\"" + WebConfig.DefaultCarPic + "\"></li>";
-					}
-					htmlCode.AppendLine("<div class=\"focus_pics\" >");
-					htmlCode.AppendLine("<div class=\"lantern_pic\" id=\"lantern_pic\">");
-					//三张大图
-					htmlCode.AppendLine(bigImageCode);
-					htmlCode.AppendLine("</div>");
-					//三张小图
-					htmlCode.AppendLine("<ul id=\"lantern_list\" class=\"lantern_list\">");
-					htmlCode.AppendLine(smallImageCode);
-					htmlCode.AppendLine("</ul>");
-					htmlCode.AppendLine("</div>");
-				}
-				else
-				{
-					htmlCode.AppendLine("<div class=\"focus_pics\" >");
-					htmlCode.AppendLine("<div class=\"lantern_pic\" id=\"lantern_pic\">");
-					htmlCode.AppendLine("</div>");
-					htmlCode.AppendLine("<ul id=\"lantern_list\" class=\"lantern_list\">");
-					htmlCode.AppendLine("</ul>");
-					htmlCode.AppendLine("</div>");
-				}
-				#endregion
-			}
-
-			return htmlCode.ToString();
-		}
-
+		
 		/// <summary>
 		/// 子品牌新焦点图
 		/// </summary>
@@ -1284,9 +1086,14 @@ namespace BitAuto.CarChannel.BLL
 					SerialFocusImage csImg = new SerialFocusImage();
 					csImg.ImageId = ConvertHelper.GetInteger(imgNode.GetAttribute("ImageId"));
 					csImg.ImageName = imgNode.GetAttribute("ImageName");
-					csImg.ImageUrl = CommonFunction.GetPublishHashImageDomain(csImg.ImageId) + imgNode.GetAttribute("ImageUrl");
+					csImg.ImageUrl = imgNode.GetAttribute("ImageUrl");
+                    if (csImg.ImageUrl.ToLower().IndexOf("bitautoimg.com") == -1)
+                    {
+                        csImg.ImageUrl = CommonFunction.GetPublishHashImageDomain(csImg.ImageId) + csImg.ImageUrl;
+                    }
 					csImg.TargetUrl = imgNode.GetAttribute("Link");
 					csImg.GroupName = imgNode.GetAttribute("GroupName");
+                    csImg.CarName = imgNode.GetAttribute("CarModelName");
 					imgList.Add(csImg);
 				}
 
@@ -8302,5 +8109,55 @@ namespace BitAuto.CarChannel.BLL
 			DataSet ds = csd.GetHotCarTop10();
 			return ds;
 		}
+
+        /// <summary>
+        /// 获取车系VR url
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<int, string> GetSerialVRUrl()
+        {
+            Dictionary<int, string> vrDic = null;
+            string cacheKey = "Car_SerialBll_GetSerialVRUrl";
+            object obj = CacheManager.GetCachedData(cacheKey);
+            if (obj != null)
+            {
+                vrDic = (Dictionary<int, string>)obj;
+            }
+            else
+            {
+                try
+                {
+                    string filePath = HttpContext.Current.Server.MapPath("~/config/VR.xml");
+                    if (File.Exists(filePath))
+                    {
+                        XmlDocument xmlDoc = new XmlDocument();
+                        xmlDoc.Load(filePath);
+                        if (xmlDoc != null)
+                        {
+                            XmlNodeList itemList = xmlDoc.SelectNodes("/Root/serial");
+                            if (itemList != null && itemList.Count > 0)
+                            {
+                                vrDic = new Dictionary<int, string>();
+                                foreach (XmlNode node in itemList)
+                                {
+                                    int csId = ConvertHelper.GetInteger(node.Attributes["id"].InnerText);
+                                    string url = node.Attributes["url"].InnerText;
+                                    if (!vrDic.ContainsKey(csId))
+                                    {
+                                        vrDic.Add(csId, url);
+                                    }
+                                }
+                                CacheManager.InsertCache(cacheKey, vrDic, WebConfig.CachedDuration);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    CommonFunction.WriteLog("解析VR.xml错误：" + ex.ToString());
+                }
+            }
+            return vrDic;
+        }
 	}
 }

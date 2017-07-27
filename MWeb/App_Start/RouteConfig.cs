@@ -95,6 +95,13 @@ namespace MWeb
 			   defaults: new { controller = "SelectCar", action = "Level", id = UrlParameter.Optional },
 			   constraints: new { level = @"(weixingche|xiaoxingche|jincouxingche|zhongxingche|zhongdaxingche|haohuaxingche|mpv|suv|paoche|mianbaoche|pika|qita)" }
 		   );
+            //保值率
+            routes.MapRoute(
+                name:"baozhilv",
+                url:"{level}/baozhilv/",
+                defaults:new { Controller = "BaoZhiLv", action="Index",id = UrlParameter.Optional },
+                constraints: new { level = @"(weixingche|xiaoxingche|jincouxingche|zhongxingche|zhongdaxingche|haohuaxingche|mpv|suv|paoche|mianbaoche)" }
+                );
 
             //suv
             routes.MapRoute(

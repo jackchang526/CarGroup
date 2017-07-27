@@ -77,6 +77,10 @@
         <!--焦点图、名片区-->
         <div class="row card-head-box">
             <div class="l-box-sty col-auto">
+                <%if (!string.IsNullOrEmpty(VRUrl))
+                    {%>
+                        <a href="<%= VRUrl %>" target="_blank" class="zs-vr">VR看全景</a>
+                    <%} %>
                 <% if (serialEntity.Brand.MasterBrandId == 3)
                    { %>
                 <div class="bmw-ad-link">

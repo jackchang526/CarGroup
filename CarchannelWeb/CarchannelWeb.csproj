@@ -159,6 +159,7 @@
     <Content Include="config\ParameterForJson.xml" />
     <Content Include="config\ParameterForJsonNew.xml" />
     <Content Include="config\PhotoCompareStruct.xml" />
+    <Content Include="config\VR.xml" />
     <Content Include="CsRegionSEOSiteMap.aspx" />
     <Content Include="css\alen.css" />
     <Content Include="css\alert.css" />

@@ -688,30 +688,43 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 			int maxMileage = 0;
 			foreach (IGrouping<object, CarInfoForSerialSummaryEntity> info in listGroupNew)
 			{
-				var key = CommonFunction.Cast(info.Key, new { Engine_Exhaust = "", Engine_InhaleType = "", Engine_AddPressType = "", Engine_MaxPower = 0, Electric_Peakpower = 0 });
-				string strMaxPowerAndInhaleType = string.Empty;
-				string maxPower = key.Engine_MaxPower == 9999 ? "" : key.Engine_MaxPower + "kW";
-				string inhaleType = key.Engine_InhaleType;
-				if (!string.IsNullOrEmpty(maxPower) || !string.IsNullOrEmpty(inhaleType))
-				{
-					if (inhaleType == "增压")
-					{
-						inhaleType = string.IsNullOrEmpty(key.Engine_AddPressType) ? inhaleType : key.Engine_AddPressType;
-					}
-					if (key.Electric_Peakpower > 0)
-					{
-						maxPower = string.Format("发动机：{0}，发电机：{1}", maxPower, key.Electric_Peakpower + "kW");
-					}
-					strMaxPowerAndInhaleType = string.Format("{0}{1}", maxPower, " " + inhaleType);
-				}
+                string strMaxPowerAndInhaleType = string.Empty;
+                string maxPower = string.Empty;
+                string inhaleType = string.Empty;
+                string exhaust = string.Empty;
+                if (groupIndex == listGroupNew.Count - 1 && listGroupImport.Any())
+                {
+                    exhaust = "平行进口车";
+                }
+                else
+                {
+                    var key = CommonFunction.Cast(info.Key, new { Engine_Exhaust = "", Engine_InhaleType = "", Engine_AddPressType = "", Engine_MaxPower = 0, Electric_Peakpower = 0 });
+
+                    maxPower = key.Engine_MaxPower == 9999 ? "" : key.Engine_MaxPower + "kW";
+                    inhaleType = key.Engine_InhaleType;
+                    exhaust = key.Engine_Exhaust.Replace("L", "升");
+                    if (!string.IsNullOrEmpty(maxPower) || !string.IsNullOrEmpty(inhaleType))
+                    {
+                        if (inhaleType == "增压")
+                        {
+                            inhaleType = string.IsNullOrEmpty(key.Engine_AddPressType) ? inhaleType : key.Engine_AddPressType;
+                        }
+                        if (key.Electric_Peakpower > 0)
+                        {
+                            maxPower = string.Format("发动机：{0}，发电机：{1}", maxPower, key.Electric_Peakpower + "kW");
+                        }
+                        strMaxPowerAndInhaleType = string.Format("<b>/</b>{0}{1}", maxPower, " " + inhaleType);
+                    }
+                }
 
 				//if (groupIndex == 0)
 				//{
 				carListHtml.Add("<tr class=\"table-tit\">");
 				carListHtml.Add("    <th class=\"first-item\">");
-                carListHtml.Add(string.Format("<strong>{0}</strong><b>/</b>{1}",//key.Engine_Exhaust.Replace("L", "升"),
-					key.Engine_Exhaust,strMaxPowerAndInhaleType));
-				carListHtml.Add("    </th>");
+                carListHtml.Add(string.Format("<strong>{0}</strong> {1}",
+                    exhaust,
+                    strMaxPowerAndInhaleType));
+                carListHtml.Add("    </th>");
 				carListHtml.Add("    <th>关注度</th>");
 				carListHtml.Add("    <th>变速箱</th>");
                 carListHtml.Add("    <th class=\"txt-right txt-right-padding\">指导价</th>");

@@ -167,5 +167,20 @@
         })();
     </script>
     <!--统计代码结束-->
+    <script type="text/javascript" src="http://jsinc.baa.bitautotech.com/c/c.js?s=Bitauto.Login.M.Version5&v=20170112.1"></script>
+    <script type="text/javascript">
+        if (document.getElementById("gobackElm") != null) {
+            Bitauto.GoBacker.goBackByElementEvent('gobackElm', 'click');
+        }
+        var backurl = "http://m.yiche.com/";
+        var refer = document.referrer;
+        if (refer != null && refer != "undefined")
+        {
+            backurl = refer;
+        }
+        if (typeof (backurl) != "undefined") {
+            Bitauto.GoBacker.setDefaultURL(backurl);
+        }
+    </script>
 </body>
 </html>

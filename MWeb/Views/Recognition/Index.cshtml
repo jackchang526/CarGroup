@@ -26,7 +26,6 @@
     </div>
     <div class="op-nav-mark" style="display: none;"></div>
     <!-- header end -->
-
     <!-- 拍照识车 start -->
     <div id="recg">
         <div class="zs-big-ball"></div>
@@ -189,7 +188,6 @@
     </script>
     <!--统计代码结束-->
     <!--统计结束-->
-
     <!--返回上一页开始-->
     <script type="text/javascript" src="//jsinc.baa.bitautotech.com/c/c.js?s=Bitauto.Login.M.Version5&v=20170112.1"></script>
     <script type="text/javascript">
@@ -209,5 +207,20 @@
         });
     </script>
     <!--微信分享结束-->
+    <!--通过传入参数判断页面头部标题是否显示开始-->
+    <script type="text/javascript">
+
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+        var ref = GetQueryString("ref");
+        if (ref != null && ref == "ycapph") {
+            $(".op-nav").hide();
+        }
+    </script>
+    <!--通过传入参数判断页面头部标题是否显示结束-->
+
 </body>
 </html>

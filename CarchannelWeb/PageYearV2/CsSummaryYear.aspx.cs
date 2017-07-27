@@ -659,483 +659,6 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
 			return string.Concat(carListHtml.ToArray());
 		}
 		#endregion
-		/// <summary>
-		/// 生成在销的车款列表
-		/// </summary>
-		private void MakeSerialList()
-		{
-			StringBuilder tableCode = new StringBuilder();
-			//获取数据
-			List<EnumCollection.CarInfoForSerialSummary> ls = base.GetAllCarInfoForSerialSummaryByCsID(serialId, true);
-			ls.Sort(NodeCompare.CompareCarByExhaust);
-			List<string> exhaustList = new List<string>();
-			List<string> yearList = new List<string>();
-			// modified by chengl Jun.24.2011
-			// 在销年款
-			List<string> yearSaleList = new List<string>();
-			//停销年款
-			List<string> noSaleYearList = new List<string>();
-			Dictionary<string, string> yearHtmlDic = new Dictionary<string, string>();
-			int maxPv = 0;
-			double maxPrice = Double.MinValue;
-			double minPrice = Double.MaxValue;
-			double maxDealerPrice = Double.MinValue;
-			double minDealerPrice = Double.MaxValue;
-			//double maxNetFuel = Double.MinValue;
-			//double minNetFuel = Double.MaxValue;
-			foreach (EnumCollection.CarInfoForSerialSummary carInfo in ls)
-			{
-				// modified by chengl Oct.12.2011
-				// 判断当前是否是停销年款
-				if (carInfo.CarYear == carYear.ToString())
-				{
-					// 当前年款有1个非停销车 则此年款不是停销年款
-					if (carInfo.SaleState != "停销")
-					{ isNoSaleYear = false; }
-				}
-
-				if (carInfo.CarPV > maxPv)
-					maxPv = carInfo.CarPV;
-				// modified by chengl Jun.24.2011
-				// 显示停销年款
-				if (carInfo.CarYear.Length > 0)// && carInfo.SaleState != "停销")
-				{
-					string yearType = carInfo.CarYear + "款";
-					if (!yearList.Contains(yearType))
-						yearList.Add(yearType);
-
-					// 是否是在销年款
-					if (carInfo.SaleState != "停销")
-					{
-						if (!yearSaleList.Contains(yearType))
-						{ yearSaleList.Add(yearType); }
-					}
-					else
-					{
-						if (!noSaleYearList.Contains(yearType))
-						{ noSaleYearList.Add(yearType); }
-					}
-				}
-
-
-				#region 年款报价
-				if (carInfo.CarYear == carYear.ToString())
-				{
-					double referPrice = 0.0;
-					bool isDouble = Double.TryParse(carInfo.ReferPrice.Replace("万", ""), out referPrice);
-					if (isDouble)
-					{
-						if (referPrice > maxPrice)
-							maxPrice = referPrice;
-						if (referPrice < minPrice)
-							minPrice = referPrice;
-					}
-
-					//报价
-					string[] priceRange = carInfo.CarPriceRange.Replace("万", "").Split('-');
-					foreach (string priceStr in priceRange)
-					{
-						double price = 0.0;
-						isDouble = Double.TryParse(priceStr, out price);
-						if (isDouble)
-						{
-							if (price > maxDealerPrice)
-								maxDealerPrice = price;
-							if (price < minDealerPrice)
-								minDealerPrice = price;
-						}
-					}
-				#endregion
-					//string netFuelStr = new Car_BasicBll().GetCarNetfriendsFuel(carInfo.CarID);
-					//if (netFuelStr != "无")
-					//{
-					//	netFuelStr = netFuelStr.Replace("L", "");
-					//	double fuel = 0.0;
-					//	isDouble = Double.TryParse(netFuelStr, out fuel);
-					//	if (isDouble)
-					//	{
-					//		if (fuel > maxNetFuel)
-					//			maxNetFuel = fuel;
-					//		if (fuel < minNetFuel)
-					//			minNetFuel = fuel;
-					//	}
-					//}
-					#region 车型网友油耗
-				}
-
-					#endregion
-			}
-			//排除包含在售年款
-			foreach (string year in yearSaleList)
-			{
-				if (noSaleYearList.Contains(year))
-				{
-					noSaleYearList.Remove(year);
-				}
-			}
-			// 判断年款是否存在 modified by chengl Apr.21.2010
-			if (!yearList.Contains(carYear + "款"))
-			{ Response.Redirect("/car/404error.aspx?info=无效年款"); }
-
-			yearList.Sort(NodeCompare.CompareStringDesc);
-			noSaleYearList.Sort(NodeCompare.CompareStringDesc);
-
-			////年款的网友油耗
-			//if (maxNetFuel == Double.MinValue && minNetFuel == Double.MaxValue)
-			//	netFuel = "暂无";
-			//else
-			//	netFuel = minNetFuel + "-" + maxNetFuel + "L";
-
-			if (maxPrice == Double.MinValue && minPrice == Double.MaxValue)
-				serialReferPrice = "暂无";
-			else
-				serialReferPrice = minPrice + "万-" + maxPrice + "万";
-
-			if (sic.CsSaleState == "停销")
-				serialPrice = "停售";
-			else if (sic.CsSaleState == "待销")
-				serialPrice = "未上市";
-			else if (maxDealerPrice == Double.MinValue && minDealerPrice == Double.MaxValue)
-				serialPrice = "暂无";
-			else
-				serialPrice = minDealerPrice + "万-" + maxDealerPrice + "万";
-
-			tableCode.AppendLine("<h3><span>" + carYear + "款" + serialShowName + "车款</span><em class=\"h3_spcar\">");
-			tableCode.Append("<a href=\"" + baseUrl + "#car_list\">全部在售</a>");
-
-			// modified by chengl Jun.24.2011
-			// 根据在销年款生成
-			for (int i = 0; i < yearSaleList.Count; i++)
-			{
-				string yearStr = yearSaleList[i];
-				if (yearStr == carYear + "款")
-					continue;
-				string url = baseUrl + yearStr.Replace("款", "") + "/";
-				tableCode.Append("<s>|</s><a href=\"" + url + "#car_list\">" + yearStr + "</a>");
-			}
-			//for (int i = 0; i < yearList.Count; i++)
-			//{
-			//    string yearStr = yearList[i];
-			//    if (yearStr == carYear + "款")
-			//        continue;
-			//    string url = baseUrl + yearStr.Replace("款", "") + "/";
-			//    tableCode.Append("|<a href=\"" + url + "#car_list\">" + yearStr + "</a>");
-			//}
-
-			if (serialId != 1568 && base.CheckSerialHasNoSale(serialId))
-			{
-				if (yearList.Count > 0)
-					tableCode.Append("<s>|</s>");
-				//tableCode.Append("<a href=\"http://www.cheyisou.com/chexing/" + Server.UrlEncode(serialShowName) + "/1.html?para=os|0|en|utf8\" target=\"_blank\">停售车款</a>");
-				tableCode.Append("<dl id=\"bt_car_spcar_table\"><dt>停售年款<em></em></dt><dd style=\"display:none;\">");
-				for (int i = 0; i < noSaleYearList.Count; i++)
-				{
-					string url = baseUrl + noSaleYearList[i].Replace("款", "") + "/";
-					if (i == noSaleYearList.Count - 1)
-						tableCode.Append("<a href=\"" + url + "\" target=\"_self\" class=\"last_a\">" + noSaleYearList[i] + "</a>");
-					else
-					{
-						tableCode.Append("<a href=\"" + url + "\" target=\"_self\">" + noSaleYearList[i] + "</a>");
-					}
-				}
-				tableCode.Append("</dd></dl>");
-			}
-			tableCode.Append("</em></h3>");
-
-			tableCode.AppendLine("<div class=\"comparetable\">");
-
-			tableCode.AppendLine("<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"compare2\" id=\"compare\">");
-			/* tableCode.AppendLine("<tr><th width=\"250px\">车款名称</th>");
-			 tableCode.AppendLine("<th width=\"50px\">热度</th>");
-			 tableCode.AppendLine("<th width=\"70px\">变速箱</th>");
-			 tableCode.AppendLine("<th width=\"85px\">厂家指导价</th>");
-			 tableCode.AppendLine("<th width=\"170px\">商家报价</th>");
-			 tableCode.AppendLine("<th width=\"73px\">车型对比</th>");
-			 tableCode.AppendLine("</tr>");*/
-
-			StringBuilder temp = new StringBuilder();
-			List<string> transList = new List<string>();
-			string carIDs = string.Empty;
-			int index = 0;
-			if (isNoSaleYear)
-			{
-				// 如果是停销年款 取二手车报价
-				dicUcarPrice = new Car_BasicBll().GetAllUcarPrice();
-			}
-			BitAuto.CarChannel.BLL.Car_BasicBll basicBll = new BitAuto.CarChannel.BLL.Car_BasicBll();
-			foreach (EnumCollection.CarInfoForSerialSummary carInfo in ls)
-			{
-				string carUrl = "http://car.bitauto.com/" + serialSpell + "/m" + carInfo.CarID + "/";
-				string yearType = carInfo.CarYear.Trim();
-				if (yearType.Length > 0)
-				{
-					yearType += "款";
-					if (!yearHtmlDic.ContainsKey(yearType))
-						yearHtmlDic[yearType] = "<ul>";
-					yearHtmlDic[yearType] += "<li><a href=\"" + carUrl + "\" target=\"_blank\">" + carInfo.CarName + "</a></li>";
-				}
-
-				//不是本年款的不显示
-				if (carInfo.CarYear != carYear.ToString())
-					continue;
-
-				//累加排量
-				serialExhaust += "、" + carInfo.Engine_Exhaust;
-				if (!exhaustList.Contains(carInfo.Engine_Exhaust))
-				{
-					if (carIDs != "")
-					{
-						tableCode.Append(string.Format(temp.ToString(), carIDs));
-						temp.Remove(0, temp.Length);
-					}
-					carIDs = "";
-					//显示排量行
-					exhaustList.Add(carInfo.Engine_Exhaust);
-					if (index < 1)
-					{
-						temp.AppendLine("<tr style=\"\"><th width=\"255px\" class=\"firstItem\"><b>" + carInfo.Engine_Exhaust + "排量</b></th>");
-						temp.AppendLine("<th width='50px'>热度</th>");
-						temp.AppendLine("<th width='70px'>变速箱</th>");
-						temp.AppendLine("<th width='85px'>厂家指导价</th>");
-						if (!isNoSaleYear)
-						{
-							temp.AppendLine("<th width='180px'>参考成交价</th>");
-						}
-						else
-						{
-							temp.AppendLine("<th width='126px'>二手车报价</th>");
-							temp.AppendLine("<th width=\"\">&nbsp;</th>");
-						}
-						temp.AppendLine("<th width='58px'>&nbsp;</th>");
-						temp.AppendLine("</tr>");
-					}
-					else
-					{
-						temp.AppendLine("<tr style=\"\"><th width=\"255px\" colspan=\"6\" class=\"firstItem\"><b>" + carInfo.Engine_Exhaust + "排量</b></th></tr>");
-					}
-					index++;
-				}
-				if (carIDs != "")
-				{ carIDs += "," + carInfo.CarID; }
-				else
-				{ carIDs += carInfo.CarID; }
-
-
-
-				string carFullName = yearType + " " + serialShowName + "&nbsp;" + carInfo.CarName;
-				if (carInfo.CarName.StartsWith(serialShowName))
-					carFullName = yearType + " " + serialShowName + "&nbsp;" + carInfo.CarName.Substring(serialShowName.Length);
-
-				string stopPrd = "";
-				if (carInfo.ProduceState == "停产")
-					stopPrd += " <span class=\"tc\">停产</span>";
-
-				// 节能补贴 Sep.2.2010
-				string hasEnergySubsidy = "";
-				bool isHasEnergySubsidy = new Car_BasicBll().CarHasParamEx(carInfo.CarID, 853);
-				if (isHasEnergySubsidy)
-				{
-                    hasEnergySubsidy = " <a class=\"color-block2\" href=\"http://news.bitauto.com/zcxwtt/20130924/1406235633.html\" title=\"可获得3000元节能补贴\" target=\"_blank\">补贴</a>";
-				}
-				//============2012-04-09 减税============================
-				Dictionary<int, string> dict = basicBll.GetCarAllParamByCarID(carInfo.CarID);
-				string strTravelTax = "";
-				if (dict.ContainsKey(895))
-				{
-					strTravelTax = " <span class=\"jianshui\"><a target=\"_blank\" title=\"{0}\" href=\"http://news.bitauto.com/others/20120308/0805618954.html\">减税</a></span>";
-					if (dict[895] == "减半")
-						strTravelTax = string.Format(strTravelTax, "减征50%车船使用税");
-					else if (dict[895] == "免征")
-						strTravelTax = string.Format(strTravelTax, "免征车船使用税");
-					else
-						strTravelTax = "";
-				}
-				temp.AppendLine("<tr><td><a href=\"" + carUrl + "\" target=\"_blank\">" + carFullName + "</a>" + stopPrd + strTravelTax + hasEnergySubsidy + "</td>");
-				//计算百分比
-				int percent = (int)Math.Round((double)carInfo.CarPV / maxPv * 100.0, MidpointRounding.AwayFromZero);
-				temp.AppendLine("<td><div class=\"w\"><div class=\"p\"  style=\"width:" + percent + "%\"></div></div></td>");
-
-				// add by chengl Dec.15.2011
-				if (carInfo.CarPV > hotCarHotCount && carInfo.CarPriceRange.Trim().Length > 0)
-				{
-					// 取有报价车型中最热的车型 "预约试驾" url使用
-					hotCarID = carInfo.CarID;
-					hotCarHotCount = carInfo.CarPV;
-				}
-
-				//变速器类型
-				string tempTransmission = carInfo.TransmissionType;
-				if (tempTransmission.IndexOf("挡") >= 0)
-				{
-					tempTransmission = tempTransmission.Substring(tempTransmission.IndexOf("挡") + 1, tempTransmission.Length - tempTransmission.IndexOf("挡") - 1);
-				}
-				tempTransmission = tempTransmission.Replace("变速器", "");
-				temp.AppendLine("<td>" + tempTransmission + "</td>");
-
-				if (transList.Count < 2)
-				{
-					if (tempTransmission.IndexOf("手动") == -1)
-						tempTransmission = "自动";
-					if (!transList.Contains(tempTransmission))
-						transList.Add(tempTransmission);
-				}
-
-				//指导价
-				if (carInfo.ReferPrice.Trim().Length == 0)
-					temp.AppendLine("<td style=\"text-align:right\">暂无</td>");
-				else
-				{
-					if (carInfo.CarPriceRange == "停售")
-					{
-						temp.AppendLine("<td style=\"text-align:right\"><span >" + carInfo.ReferPrice + "万</span><a class=\"icon_cal\" ></a></td>");
-					}
-					else
-					{
-						temp.AppendLine("<td style=\"text-align:right\"><span>" + carInfo.ReferPrice + "万</span><a title=\"购车费用计算\" target=\"_blank\" class=\"icon_cal\" href=\"http://car.bitauto.com/gouchejisuanqi/?carid=" + carInfo.CarID + "\"></a></td>");
-					}
-				}
-				// 			if (carInfo.PerfFuelCostPer100.Trim().Length == 0)
-				// 				temp.AppendLine("<td style=\"text-align:right\"></td>");
-				// 			else
-				// 				temp.AppendLine("<td style=\"text-align:right\">" + carInfo.PerfFuelCostPer100 + "L</td>");
-				//报价
-				if (!isNoSaleYear)
-				{
-					// 非停销年款
-					if (carInfo.CarPriceRange.Trim().Length == 0)
-						temp.AppendLine("<td class=\"noPrice3\" style=\"text-align:right\">暂无报价</td>");
-					else
-					{
-						if (carInfo.CarPriceRange == "停售")
-						{
-							temp.AppendLine("<td style=\"text-align:right\"><span><a>" + carInfo.CarPriceRange + "</a></span></td>");
-						}
-						else
-						{
-							//20130412 edit anh
-							temp.AppendLine("<td style=\"text-align:right\"><span><a href=\"http://car.bitauto.com/" + serialSpell + "/m" + carInfo.CarID + "/baojia/\" target=\"_blank\">" + carInfo.CarPriceRange + "</a></span> <a href=\"http://dealer.bitauto.com/zuidijia/nb" + serialId + "/nc" + carInfo.CarID + "/\" target=\"_blank\">询价>></a></td>");
-						}
-					}
-				}
-				else
-				{
-					// 停销年款用二手车报价
-					if (dicUcarPrice != null && dicUcarPrice.Count > 0 && dicUcarPrice.ContainsKey(carInfo.CarID))
-					{
-						//temp.AppendLine("<td style=\"text-align:right\"><span><a target=\"_blank\" href=\"http://yiche.taoche.com/buycar/b-"
-						//    + serialSpell + "/?page=1&carid=" + carInfo.CarID
-						//    + "\" >" + dicUcarPrice[carInfo.CarID]
-						//    + "</a></span></td>");
-						temp.AppendFormat("<td style=\"text-align:right\"><span><a target=\"_blank\" href=\"http://www.taoche.com/buycar/serial/{0}/?ref=car3\">{1}</a></span></td>", serialSpell, dicUcarPrice[carInfo.CarID]);
-						temp.AppendFormat("<td class=\"small\"><a class=\"addCompare\" href=\"http://www.taoche.com/buycar/serial/{0}/?ref=car3\" target=\"_blank\">二手车</a></td>", serialSpell);
-					}
-					else
-					{
-						temp.AppendLine("<td class=\"noPrice3\" style=\"text-align:right\">暂无报价</td>");
-						temp.Append("<td class=\"small\"></td>");
-					}
-				}
-				temp.Append("<td id=\"tdForCompareCar_" + carInfo.CarID + "\" class=\"small\">");
-				temp.AppendLine("<a class=\"addCompare\" href=\"javascript:addCarToCompare('" + carInfo.CarID.ToString() + "','" + carInfo.CarName.ToString() + "');\" >+对比</a></td></tr>");
-			}
-			if (carIDs != "")
-			{
-				tableCode.Append(string.Format(temp.ToString(), carIDs));
-			}
-			else
-				tableCode.Append("<tr><td class=\"noline\" colspan=\"7\">暂无在销车型！</td></tr>");
-			tableCode.AppendLine("</table>");
-			// modified by chengl Dec.13.2011
-			// tableCode.AppendLine("<div class=\"more\"><a href=\"http://yiche.taoche.com/buycar/b-" + serialSpell + "/\" target=\"_blank\" class=\"more2new\">买二手车</a><a href=\"http://go.bitauto.com/goumai/?id=" + serialId + "\" target=\"_blank\" class=\"more2new\">计划购买</a><a href=\"http://go.bitauto.com/guanzhu/?id=" + serialId + "\" target=\"_blank\" class=\"more2new\">加入收藏</a><a class=\"more2new\" href=\"http://ask.bitauto.com/browse/" + serialId + "/\" target=\"_blank\">买前咨询</a></div>");
-
-			// modified by chengl May.25.2012
-			tableCode.AppendLine("<div class=\"more\"><a href=\"http://www.taoche.com/buycar/serial/" + serialSpell + "/?ref=car2\" target=\"_blank\" class=\"more2new\">买二手车</a><a id=\"LinkForBaaAttention\" href=\"http://i.bitauto.com/baaadmin/car/guanzhu_" + serialId + "/\" target=\"_blank\" class=\"more2new\">加关注</a>");
-			// tableCode.AppendLine("<div class=\"more\"><a href=\"http://yiche.taoche.com/similarcar/serial/" + serialSpell + "/paesf0bxc/?from=bitauto\" target=\"_blank\" class=\"more2new\">买二手车</a><a href=\"http://i.bitauto.com/baaadmin/car/goumai_" + serialId + "/\" target=\"_blank\" class=\"more2new\">计划购买</a><a href=\"http://i.bitauto.com/baaadmin/car/guanzhu_" + serialId + "/\" target=\"_blank\" class=\"more2new\">加入收藏</a>");
-			//20130412 edit anh
-			//if (hotCarID > 0)
-			//{
-			//    tableCode.AppendLine("<a class=\"more2new\" href=\"/" + serialSpell + "/m" + hotCarID + "/baojia/#V\" target=\"_blank\">预约试驾</a>");
-			//}
-			//else
-			//{
-			tableCode.AppendFormat("<a class=\"more2new\" href=\"http://dealer.bitauto.com/shijia/nb{0}/\" target=\"_blank\">预约试驾</a>", serialId);
-			//}
-			tableCode.AppendLine("</div>");
-
-			tableCode.AppendLine("</div>");
-			tableCode.AppendLine("<div class=\"clear\"></div>");
-			carListTableHtml = tableCode.ToString();
-
-			//年款下拉列表
-			StringBuilder listCode = new StringBuilder();
-
-			//listCode.AppendLine("<h5><a>" + carYear + "款</a></h5>");
-			listCode.AppendLine(yearHtmlDic[carYear + "款"] + "</ul>");
-
-			topCarListHtml = listCode.ToString();
-
-			//年款的排量与变速器
-			serialExhaust = CommonFunction.GetExhaust(serialExhaust);
-			serialTransmission = String.Join("　", transList.ToArray());
-
-		}
-
-		/// <summary>
-		/// 生成子品牌焦点图片处的代码
-		/// </summary>
-		private void MakeSerialFocus()
-		{
-			//获取数据
-			//StringBuilder htmlCode = new StringBuilder();
-			//DataSet ds = new Car_SerialBll().GetSerialFocusImage(serialId);
-			//string bigImageCode = "";
-			//string smallImageCode = "";
-			//string imageLibUrl = "http://photo.bitauto.com/picture/" + serialId + "/";
-			//OldPageBase oldPb = new OldPageBase();
-			//if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-			//{
-			//    for (int i = 0; i < 3 && i < ds.Tables[0].Rows.Count; i++)
-			//    {
-			//        DataRow row = ds.Tables[0].Rows[i];
-			//        int imgId = Convert.ToInt32(row["SiteImageId"]);
-			//        string imgUrl = Convert.ToString(row["SiteImageUrl"]);
-			//        string bigUrl = oldPb.GetPublishImage(4, imgUrl, imgId);
-			//        string smallUrl = oldPb.GetPublishImage(5, imgUrl, imgId);
-			//        if (i == 0)
-			//        {
-			//            bigImageCode += "<div id=\"focusBigImg_" + i + "\" style=\"display: block;\"><a href=\"" + imageLibUrl + imgId + "/\" target=\"_blank\"><img alt=\"" + serialShowName + "\" src=\"" + bigUrl + "\" width=\"300\" height=\"199\"></a> </div>";
-			//            smallImageCode += "<li id=\"focusSmallImg_" + i + "\" class=\"current\"><a href=\"" + imageLibUrl + imgId + "/\" target=\"_blank\"><img alt=\"" + serialShowName + "\" src=\"" + smallUrl + "\"></a></li>";
-			//        }
-			//        else
-			//        {
-			//            bigImageCode += "<div id=\"focusBigImg_" + i + "\" style=\"display: none;\"><a href=\"" + imageLibUrl + imgId + "/\" target=\"_blank\"><img alt=\"" + serialShowName + "\" src=\"" + bigUrl + "\" width=\"300\" height=\"199\"></a> </div>";
-			//            smallImageCode += "<li id=\"focusSmallImg_" + i + "\"><a href=\"" + imageLibUrl + imgId + "/\" target=\"_blank\"><img alt=\"" + serialShowName + "\" src=\"" + smallUrl + "\"></a></li>";
-			//        }
-			//    }
-			//}
-			//else
-			//{
-			//    bigImageCode += "<div id=\"focusBigImg_0\" style=\"display: block;\"><img src=\"" + WebConfig.DefaultCarPic + "\" width=\"300\" height=\"199\"></div>";
-			//    smallImageCode += "<li id=\"focusSmallImg_0\" class=\"current\"><img src=\"" + WebConfig.DefaultCarPic + "\"></li>";
-			//}
-			//htmlCode.AppendLine("<div class=\"focus_pics\" >");
-			//htmlCode.AppendLine("<div class=\"lantern_pic\" id=\"lantern_pic\">");
-			////三张大图
-			//htmlCode.AppendLine(bigImageCode);
-			//htmlCode.AppendLine("</div>");
-			////三张小图
-			//htmlCode.AppendLine("<ul id=\"lantern_list\" class=\"lantern_list\">");
-			//htmlCode.AppendLine(smallImageCode);
-			//htmlCode.AppendLine("</ul>");
-			//htmlCode.AppendLine("</div>");
-			//CsPicJiaodian = htmlCode.ToString();
-
-			// old modified by chengl Apr.8.2011
-			// CsPicJiaodian = new Car_SerialBll().MakeSerialFocusImageNew(serialId, serialShowName);
-
-			// new serial year focus image
-			CsPicJiaodian = new Car_SerialBll().MakeSerialYearFocusImageNew(serialId, carYear, serialShowName);
-		}
 
 		private void MakeSerialFocusV2()
 		{
@@ -1147,7 +670,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
 				{
 					foreach (XmlNode xn in nodeList)
 					{
-						CsPicJiaodian = "<a href=\"" + xn.Attributes["Link"].Value.ToString() + "\" target=\"_blank\"><img alt=\"" + serialShowName + xn.Attributes["ImageName"].Value.ToString() + "\" src=\"" + xn.Attributes["ImageUrl"].Value.ToString() + "\" width=\"300\" height=\"200\"></a>";
+						CsPicJiaodian = "<a href=\"" + xn.Attributes["Link"].Value.ToString() + "\" target=\"_blank\"><img alt=\"" + serialShowName + xn.Attributes["ImageName"].Value.ToString() + "\" src=\"" + string.Format(xn.Attributes["ImageUrl"].Value,4) + "\" width=\"300\" height=\"200\"></a>";
 						break;
 					}
 				}
@@ -1167,8 +690,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
 				{
 					foreach (XmlNode xn in nodeList)
 					{
-						int imgID = int.Parse(xn.Attributes["ImageId"].Value.ToString()) % 4 + 1;
-						CsPicJiaodian = "<a href=\"" + xn.Attributes["Link"].Value.ToString() + "\" target=\"_blank\"><img alt=\"" + serialShowName + xn.Attributes["ImageName"].Value.ToString() + "\" src=\"http://img" + imgID + ".bitautoimg.com/autoalbum/" + string.Format(xn.Attributes["ImageUrl"].Value.ToString(), "4") + "\" width=\"300\" height=\"200\"></a>";
+						//int imgID = int.Parse(xn.Attributes["ImageId"].Value.ToString()) % 4 + 1;
+						CsPicJiaodian = "<a href=\"" + xn.Attributes["Link"].Value.ToString() + "\" target=\"_blank\"><img alt=\"" + serialShowName + xn.Attributes["ImageName"].Value.ToString() + "\" src=\"" + string.Format(xn.Attributes["ImageUrl"].Value.ToString(), "4") + "\" width=\"300\" height=\"200\"></a>";
 						break;
 					}
 				}
@@ -1179,66 +702,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
 				return;
 			}
 		}
-		private void MakeKoubeiImpressionHtml()
-		{
-			int koubei = (int)CommonHtmlEnum.BlockIdEnum.KoubeiImpression;
-			if (dictSerialBlockHtml.ContainsKey(koubei))
-			{
-				koubeiImpressionHtml = dictSerialBlockHtml[koubei];
-				return;
-			}
 
-			string filePath = Path.Combine(WebConfig.DataBlockPath, string.Format(@"Data\SerialDianping\Impression\Xml\Impression_{0}.xml", serialId));
-			XmlDocument xmlDoc = new XmlDocument();
-			if (File.Exists(filePath))
-				xmlDoc.Load(filePath);
-			if (xmlDoc == null) return;
-
-			StringBuilder sb = new StringBuilder();
-
-			XmlNode impressionNode = xmlDoc.SelectSingleNode("/Root/Serial/Impression");
-			XmlNode virtuesNode = xmlDoc.SelectSingleNode("/Root/Serial/Virtues");
-			XmlNode defectNode = xmlDoc.SelectSingleNode("/Root/Serial/Defect");
-
-			string impression = impressionNode == null ? String.Empty : impressionNode.InnerText.Trim();
-			string virtues = virtuesNode == null ? String.Empty : virtuesNode.InnerText.Trim();
-			string defect = defectNode == null ? String.Empty : defectNode.InnerText.Trim();
-
-			if (impression.Length > 0 || virtues.Length > 0 || defect.Length > 0)
-			{
-				impression = StringHelper.RemoveHtmlTag(StringHelper.SubString(impression, 96, true));
-				virtues = StringHelper.RemoveHtmlTag(virtues);
-				defect = StringHelper.RemoveHtmlTag(defect);
-
-				string reportUrl = string.Format("/{0}/koubei/", serialSpell);
-
-				sb.Append("	<div class=\"line-box\">");
-				sb.Append("<div class=\"side_title\">");
-				sb.AppendFormat("<h4><a href=\"{0}\" target=\"_blank\">网友对此车的印象</a></h4>", reportUrl);
-				sb.Append("</div>");
-
-				//sb.AppendFormat("<p>{1}<a href=\"{0}\" target=\"_blank\">查看详情&gt;&gt;</a></p>", reportUrl, impression);
-				sb.Append("<div class=\"youque_box\"><h6 class=\"fl\">优点：</h6>");
-				if (StringHelper.GetRealLength(virtues) > 48)
-					sb.AppendFormat("<p class=\"txt\" title=\"{0}\">{1}</p>", virtues, StringHelper.SubString(virtues, 46, true));
-				else
-					sb.AppendFormat("<p class=\"txt\">{0}</p>", virtues);
-				sb.Append("</div>");
-				sb.Append("<div class=\"youque_box quedian\"><h6 class=\"fl\">缺点：</h6>");
-				if (StringHelper.GetRealLength(defect) > 48)
-					sb.AppendFormat("<p class=\"txt\" title=\"{0}\">{1}</p>", defect, StringHelper.SubString(defect, 46, true));
-				else
-					sb.AppendFormat("<p class=\"txt\">{0}</p>", defect);
-				sb.Append("</div>");
-				sb.Append("        <div class=\"btn_box\">");
-				sb.Append("        	<span class=\"button_orange\"><a href=\"http://ask.bitauto.com/tiwen/\" target=\"_blank\" class=\"koubei_b_tiwen\">我要提问</a></span>");
-				sb.AppendFormat("   <span class=\"button_gray\"><a href=\"http://car.bitauto.com/{0}/koubei/#fabu\" target=\"_blank\" class=\"koubei_b_dianping\">我要点评</a></span>", serialSpell);
-				sb.Append("        </div>");
-				sb.Append("<div class=\"clear\"></div>");
-				sb.Append("    </div>");
-			}
-			koubeiImpressionHtml = sb.ToString();
-		}
 		/// <summary>
 		/// 生成颜色Hmtl
 		/// </summary>
@@ -1268,357 +732,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
 			}
 		}
 
-		/// <summary>
-		/// 生成子品牌概况Html
-		/// </summary>
-		private void MakeSerialOverview()
-		{
-
-			//StringBuilder htmlCode = new StringBuilder();
-			////htmlCode.AppendLine("<div class=\"line_box zs02 zs100412_4\">");
-			////htmlCode.Append("<h3><span><a>");
-			////htmlCode.AppendLine(carYear + "款" + serialShowName + "</a></span></h3>");
-			//htmlCode.AppendLine("<ul class=\"d\">");
-			////<li class="w">颜色：<em style="background:black"></em><em style="background:blue"></em><em style="background:red"></em></li>
-
-			//// 停销也按色块显示 anh 20110830
-			//// modified by chengl Sep.26.2010
-			//// 停销子品牌显示全部颜色(文字形式)
-			////if (sic.CsSaleState == "停销")
-			////{
-			////    string colorHtml = "";
-			////    string allColorHtml = "";
-			////    foreach (string colorStr in sic.ColorList)
-			////    {
-			////        if (allColorHtml.Length > 0)
-			////            allColorHtml += "　";
-			////        allColorHtml += colorStr;
-			////    }
-			////    if (sic.ColorList.Count > 4)
-			////    {
-			////        if (sic.ColorList[0].Length + sic.ColorList[1].Length + sic.ColorList[2].Length + sic.ColorList[sic.ColorList.Count - 1].Length > 16)
-			////        {
-			////            colorHtml = sic.ColorList[0] + "　…　" + sic.ColorList[sic.ColorList.Count - 1];
-			////        }
-			////        else
-			////        {
-			////            colorHtml = sic.ColorList[0] + "　" + sic.ColorList[1] + "　" + sic.ColorList[2] + "　" + sic.ColorList[3] + "　…　" + sic.ColorList[sic.ColorList.Count - 1];
-			////        }
-			////    }
-			////    else
-			////    {
-			////        colorHtml = allColorHtml;
-			////    }
-
-			////    htmlCode.Append("<li class=\"w\">颜色：<span class=\"c w330\" title=\"" + allColorHtml + "\">");
-			////    htmlCode.Append(colorHtml);
-			////    htmlCode.Append("</span></li>");
-			////}
-			////else
-			////{
-			//string rgbHTML = "";
-			//string rgbTitle = "";
-			//List<string> listColorName = new List<string>();
-			//List<string> listColorRGB = new List<string>();
-			//new Car_SerialBll().GetSerialColorRGBByCsID(sic.CsID, carYear, 1, sic.ColorList
-			//    , out rgbHTML, out rgbTitle, out listColorName, out listColorRGB);
-			//// new Car_SerialBll().GetSerialColorRGBByCsID(sic.CsID, carYear, sic.ColorList, out rgbHTML, out rgbTitle);
-			//// htmlCode.Append("<li class=\"w\"><label>颜色：</label><span class=\"c\" title=\"" + rgbTitle + "\">");
-			//htmlCode.Append("<li class=\"w\"><label>颜色：</label><span class=\"c w330\" >");
-			//htmlCode.Append(rgbHTML);
-			//htmlCode.Append("</span></li>");
-			////}
-			//// modified end
-
-			//htmlCode.AppendLine("<li><label>保修：</label>" + sic.SerialRepairPolicy + "</li>");
-
-			////         if (sic.CsID == 2566 || sic.CsID == 2844 || sic.CsID == 2944)
-			////         {
-			////             // 2566:睿翼  2844:马自达CX-7 2944:睿翼轿跑 显示 综合工况油耗
-			////             htmlCode.Append("<li class=\"s\">综合工况油耗：");
-			////         }
-			////         else
-			////             htmlCode.Append("<li class=\"s\">官方油耗：");
-			////         htmlCode.Append(sic.CsOfficialFuelCost + "</li>");
-
-			//if (sic.CsSummaryFuelCost.Length > 0)
-			//    htmlCode.Append("<li class=\"s\"><label>综合工况油耗：</label>" + sic.CsSummaryFuelCost + "</li>");
-			//else
-			//    htmlCode.Append("<li class=\"s\"><label>官方油耗：</label>" + sic.CsOfficialFuelCost + "</li>");
-
-			//htmlCode.AppendLine("<li><label>厂家：</label><a href=\"http://car.bitauto.com/producer/" + cse.Cp_id + ".html\" target=\"_blank\">" + cse.Cp_ShortName + "</a></li>");
-			////<li>网友发布：<a href="">11.xL-11.xxL</a></li>
-
-			//htmlCode.AppendLine("<li class=\"s\"><label>网友发布：</label><a href=\"" + baseUrl + "youhao/\" target=\"_blank\">" + netFuel + "</a></li>");
-			//htmlCode.AppendLine("</ul>");
-			////htmlCode.AppendLine("<div class=\"clear\"></div>");
-			////if (sic.OfficialSite.Length > 0)
-			////    htmlCode.AppendLine("<div class=\"more\"><a href=\"" + sic.OfficialSite + "\" target=\"_blank\">官方网站</a></div>");
-
-			//CsDetailInfo = htmlCode.ToString();
-		}
-
-		private void MakeMustSee()
-		{
-			StringBuilder htmlCode = new StringBuilder();
-			htmlCode.AppendLine("<dl class=\"zs02\">");
-			htmlCode.AppendLine("<dt>买车必看</dt>");
-			htmlCode.AppendLine("<dd class=\"sublink\">");
-			string linkStr = "";
-			if (sic.CsNewYiCheCheShi.Trim().Length > 0)
-			{
-				linkStr = "<a href=\"" + sic.CsNewYiCheCheShi + "\" target=\"_blank\">易车评测</a>";
-			}
-			if (sic.CsNewMaiCheCheShi.Trim().Length > 0)
-			{
-				if (linkStr.Length > 0)
-					linkStr += " | ";
-				linkStr += "<a href=\"" + sic.CsNewMaiCheCheShi + "\" target=\"_blank\">买车测试</a>";
-			}
-			htmlCode.AppendLine(linkStr);
-			htmlCode.AppendLine(" | <a class=\"nolink\">口碑报告</a></dd>");
-
-			htmlCode.AppendLine("<dd>");
-			htmlCode.AppendLine("<ul class=\"gb\">");
-			htmlCode.AppendLine("<li title=\"" + cse.Cs_Virtues.Trim() + "\" class=\"g\">" + StringHelper.SubString(cse.Cs_Virtues.Trim(), 68, false) + "</li>");
-			htmlCode.AppendLine("<li title=\"" + cse.Cs_Defect.Trim() + "\" class=\"b\">" + StringHelper.SubString(cse.Cs_Defect.Trim(), 68, false) + "</li>");
-			htmlCode.AppendLine("</ul>");
-			htmlCode.AppendLine("<ul class=\"l\">");
-			htmlCode.AppendLine("<li>");
-			if (sic.CsNewShangShi.Trim().Length == 0)
-				htmlCode.AppendLine("<a class=\"nolink\">上市专题</a></li>");
-			else
-				htmlCode.AppendLine("<a target=\"_blank\" href=\"" + sic.CsNewShangShi + "\">上市专题</a></li>");
-			if (sic.CsNewGouCheShouChe.Trim().Length == 0)
-				htmlCode.AppendLine("<li><a class=\"nolink\">购车手册</a></li>");
-			else
-				htmlCode.AppendLine("<li><a target=\"_blank\" href=\"" + sic.CsNewGouCheShouChe + "\">购车手册</a></li>");
-			if (new ProduceAndSellDataBll().HasSerialData(serialId))
-				htmlCode.AppendLine("<li><a href=\"" + String.Format(sic.CsNewXiaoShouShuJu.Trim(), serialId) + "\" target=\"_blank\">销量</a></li>");
-			else
-				htmlCode.AppendLine("<li><a class=\"nolink\">销量</a></li>");
-			if (sic.CsNewKeJi.Trim().Length == 0)
-				htmlCode.AppendLine("<li><a class=\"nolink\">科技</a></li>");
-			else
-				htmlCode.AppendLine("<li><a href=\"" + sic.CsNewKeJi.Trim() + "\" target=\"_blank\">科技</a></li>");
-			if (sic.CsNewAnQuan.Trim().Length == 0)
-				htmlCode.AppendLine("<li><a class=\"nolink\">安全</a></li>");
-			else
-				htmlCode.AppendLine("<li><a href=\"" + sic.CsNewAnQuan.Trim() + "\" target=\"_blank\">安全</a></li>");
-			if (sic.CsNewWeiXiuBaoYang.Trim().Length == 0)
-				htmlCode.AppendLine("<li><a class=\"nolink\">维修保养</a></li>");
-			else
-				htmlCode.AppendLine("<li><a target=\"_blank\" href=\"" + sic.CsNewWeiXiuBaoYang + "\">维修保养</a></li>");
-			htmlCode.AppendLine("</ul>");
-			htmlCode.AppendLine("</dd>");
-			htmlCode.AppendLine("</dl>");
-			CsMustSeeInfo = htmlCode.ToString();
-		}
-
-		private void MakeTopNews()
-		{
-			//StringBuilder htmlCode = new StringBuilder();
-			////获取数据
-			//XmlDocument xmlDoc = new Car_SerialBll().GetSerialFocusNews(serialId);
-
-			////导购新闻
-			//XmlNodeList newsList = xmlDoc.SelectNodes("/root/Introduce/listNews");
-			//daogouHtml = MakeOtherNews(newsList, "introduce");
-			//导购新闻
-			daogouHtml = MakeDaogouNews();
-		}
-
-		private string MakeTypeNews(string newsType)
-		{
-			StringBuilder htmlCode = new StringBuilder();
-			DataSet newsDs = new Car_SerialBll().GetNewsListBySerialId(serialId, newsType);
-			if (newsDs != null && newsDs.Tables.Count > 0 && newsDs.Tables[0].Rows.Count > 0 && newsDs.Tables.Contains("listNews"))
-			{
-				int newsCounter = 0;
-				foreach (DataRow row in newsDs.Tables["listNews"].Rows)
-				{
-					newsCounter++;
-					string newsTitle = Convert.ToString(row["title"]);
-					int newsId = ConvertHelper.GetInteger(row["newsid"]);
-					newsTitle = StringHelper.RemoveHtmlTag(newsTitle);
-					string newsUrl = Convert.ToString(row["filepath"]);
-					DateTime publishTime = Convert.ToDateTime(row["publishtime"]);
-					htmlCode.AppendLine("<li><a target=\"_blank\" title=\"" + newsTitle + "\" href=\"" + newsUrl + "\">" + newsTitle + "</a><small>" + publishTime.ToString("MM-dd") + "</small></li>");
-					if (newsCounter >= 12)
-						break;
-				}
-			}
-			return htmlCode.ToString();
-		}
-
-		/// <summary>
-		/// 生成导购新闻推荐
-		/// </summary>
-		/// <param name="htmlCode"></param>
-		/// <param name="newsList"></param>
-		private string MakeDaogouNews()
-		{
-			StringBuilder htmlCode = new StringBuilder();
-			DataSet ds = new CarNewsBll().GetTopSerialNews(sic.CsID, CarNewsType.daogou, 6);
-			DataRowCollection rows = null;
-			if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-				rows = ds.Tables[0].Rows;
-			string codeTitle = serialShowName + "-导购推荐";
-			string moreUrl = baseUrl + "daogou/";
-
-			//htmlCode.AppendLine("<h3><span><a href=\"" + moreUrl + "\" target=\"_blank\">" + codeTitle + "</a></span></h3>");
-			htmlCode.AppendLine("<div class=\"h4_box\"><h4><span>导购推荐</span></h4>");
-			if (rows != null && rows.Count > 0)
-				htmlCode.AppendLine("<div class=\"more\"><a href=\"" + moreUrl + "\" target=\"_blank\">更多&gt;&gt; </a></div>");
-			htmlCode.AppendLine("</div>");
-
-			htmlCode.AppendLine("<div class=\"mainlist_box reco\">");
-			htmlCode.AppendLine("<ul class=\"list_date\">");
-			if (rows != null && rows.Count > 0)
-			{
-				foreach (DataRow newsRow in rows)
-				{
-					string newsTitle = CommonFunction.NewsTitleDecode(newsRow["title"].ToString());
-					//过滤Html标签
-					string shortNewsTitle = newsTitle;
-					string filePath = newsRow["filepath"].ToString();
-					string pubTime = Convert.ToDateTime(newsRow["publishtime"]).ToString("MM-dd");
-					if (shortNewsTitle != newsTitle)
-						htmlCode.AppendLine("<li><a href=\"" + filePath + "\" title=\"" + newsTitle + "\" target=\"_blank\">" + shortNewsTitle + "</a><small>" + pubTime + "</small></li>");
-					else
-						htmlCode.AppendLine("<li><a href=\"" + filePath + "\" target=\"_blank\">" + newsTitle + "</a><small>" + pubTime + "</small></li>");
-				}
-			}
-			htmlCode.AppendLine("</ul>");
-			htmlCode.AppendLine("<div class=\"clear\"></div>");
-			htmlCode.AppendLine("</div>");
-			return htmlCode.ToString();
-		}
-		/// <summary>
-		/// 生成论坛新闻推荐
-		/// </summary>
-		/// <param name="htmlCode"></param>
-		/// <param name="newsList"></param>
-		private string MakeForumNews(XmlNodeList newsList)
-		{
-			StringBuilder htmlCode = new StringBuilder();
-			// string bbsURL = new Car_SerialBll().GetForumUrlBySerialId(serialId);
-
-			string codeTitle = serialShowName + "-论坛话题";
-			string moreUrl = baaUrl;
-
-			htmlCode.AppendLine("<h3><span><a href=\"" + moreUrl + "\" target=\"_blank\">" + codeTitle + "</a></span></h3>");
-			if (newsList.Count > 0)
-				htmlCode.AppendLine("<div class=\"more\"><a href=\"" + moreUrl + "\" target=\"_blank\">更多&gt;&gt; </a></div>");
-			htmlCode.AppendLine("<div class=\"mainlist_box reco\">");
-			htmlCode.AppendLine("<ul class=\"list_date\">");
-			int loop = 1;
-			foreach (XmlElement newsNode in newsList)
-			{
-				string newsTitle = newsNode.SelectSingleNode("title").InnerText.Trim();
-				//过滤Html标签
-				newsTitle = StringHelper.RemoveHtmlTag(newsTitle);
-				string shortNewsTitle = StringHelper.SubString(newsTitle, 40, true);
-				string filePath = newsNode.SelectSingleNode("url").InnerText;
-				string pubTime = string.Empty;
-				if (shortNewsTitle != newsTitle)
-					htmlCode.AppendLine("<li><a href=\"" + filePath + "\" title=\"" + newsTitle + "\" target=\"_blank\">" + shortNewsTitle + "</a><small>" + pubTime + "</small></li>");
-				else
-					htmlCode.AppendLine("<li><a href=\"" + filePath + "\" target=\"_blank\">" + newsTitle + "</a><small>" + pubTime + "</small></li>");
-
-				// modified by chengl Jul.22.2010
-				loop++;
-				if (loop > 5)
-				{ break; }
-			}
-			htmlCode.AppendLine("</ul>");
-			htmlCode.AppendLine("<div class=\"clear\"></div>");
-			htmlCode.AppendLine("</div>");
-			return htmlCode.ToString();
-		}
-
-
-		/// <summary>
-		/// 生成彩虹条
-		/// </summary>
-		private void MakeRainbowHtml()
-		{
-			StringBuilder htmlCode = new StringBuilder();
-			//获取数据
-			string rainbowStr = new RainbowListBll().GetRainbowListXML_CSID(serialId);
-			XmlDocument rainbowDoc = new XmlDocument();
-			rainbowDoc.LoadXml(rainbowStr);
-			string headStr = "";
-			string conStr = "";
-			XmlElement serialNode = (XmlElement)rainbowDoc.SelectSingleNode("/RainbowRoot/Serial");
-			bool isShow = Convert.ToBoolean(serialNode.GetAttribute("IsShow"));
-			if (isShow)
-			{
-				XmlNodeList eleList = rainbowDoc.SelectNodes("/RainbowRoot/Serial/Item");
-				string importWidth = importWidth = "style=\"width:70px\""; ;
-				if (eleList.Count == 6)
-					importWidth = "style=\"width:119px\"";
-
-				bool hasCar = false;			//是否已经有车图显示了
-				for (int i = eleList.Count - 1; i >= 0; i--)
-				{
-					XmlElement ele = (XmlElement)eleList[i];
-					string name = ele.GetAttribute("Name");
-					//国产车型去掉三项
-					if (eleList.Count > 6 && (name == "易车评测" || name == "口碑"))
-						continue;
-					string url = ele.GetAttribute("URL");
-					string time = "";
-					if (url.Trim().Length > 0)
-						time = Convert.ToDateTime(ele.GetAttribute("Time")).ToString("yyyy-MM-dd");
-
-					// modified by chengl Dec.8.2009 if KouBei Tag goto koubei link
-					if (name == "口碑")
-					{
-						url = baseUrl + "/koubei/";
-						time = DateTime.Now.ToShortDateString();
-					}
-
-					//计算彩虹条
-					headStr = "<th scope=\"col\"><div " + importWidth + ">" + name + "</div></th>" + headStr;
-					if (url.Length > 0)
-					{
-						if (hasCar)
-							conStr = "<td class=\"rainbow_" + (i + 1) + "\"><a href=\"" + url + "\" target=\"_blank\">" + time + "</a></td>" + conStr;
-						else
-						{
-							conStr = "<td class=\"rainbow_comp\"><a href=\"" + url + "\" target=\"_blank\">" + time + "</a></td>" + conStr;
-							hasCar = true;
-						}
-						//showRainbow = true;
-					}
-					else
-						conStr = "<td class=\"rainbow_none\">及时关注</td>" + conStr;
-				}
-				// string forumUrl = new Car_SerialBll().GetForumUrlBySerialId(serialId);
-
-				htmlCode.AppendLine("<div class=\"line_box rainbow_box\">");
-				htmlCode.AppendLine("<h3 class=\"gr\"><span><span class=\"caption\">" + serialShowName + "追踪报道</span></span></h3>");
-				if (eleList.Count == 6)
-				{
-					//进口车
-					htmlCode.AppendLine("<table class=\"table_rainbow2 table_rainbow\">");
-				}
-				else
-				{
-					htmlCode.AppendLine("<table class=\"table_rainbow\">");
-				}
-				htmlCode.AppendLine("<tbody><tr>");
-				htmlCode.AppendLine(headStr);
-				htmlCode.AppendLine("</tr><tr>");
-				htmlCode.AppendLine(conStr);
-				htmlCode.AppendLine("</tbody></table>");
-				htmlCode.AppendLine("<div class=\"more\"></div>");
-				htmlCode.AppendLine("</div>");
-			}
-			rainbowHtml = htmlCode.ToString();
-		}
-
+		
 		/// <summary>
 		/// 生成图片部分
 		/// </summary>
@@ -1911,157 +1025,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
 			//htmlCode.AppendLine("</div>");
 		}
 
-		/// <summary>
-		/// 生成视频
-		/// </summary>
-		private void MakeVideHtml()
-		{
-			StringBuilder htmlCode = new StringBuilder();
-			//取数据
-			XmlNodeList videoList = new Car_SerialBll().GetSerialVideo(serialId);
-			if (videoList.Count > 0)
-			{
-				htmlCode.AppendLine("<h3>");
-				htmlCode.AppendLine("<span><a href=\"" + baseUrl + "shipin/\" target=\"_blank\">");
-				htmlCode.AppendLine(serialShowName + "视频</a></span></h3>");
-				htmlCode.AppendLine("<div class=\"more\">");
-				htmlCode.AppendLine("<a href=\"" + baseUrl + "shipin/\" target=\"_blank\">更多&gt;&gt;</a></div>");
-				htmlCode.AppendLine("<div class=\"pic_album\">");
-				htmlCode.AppendLine("<ul class=\"list_pic\">");
-				try
-				{
-					foreach (XmlElement videoNode in videoList)
-					{
-						string videoTitle = videoNode.SelectSingleNode("title").InnerText;
-						videoTitle = StringHelper.RemoveHtmlTag(videoTitle);
-
-						string shortTitle = videoNode.SelectSingleNode("facetitle").InnerText;
-						shortTitle = StringHelper.RemoveHtmlTag(shortTitle);
-
-						string imgUrl = videoNode.SelectSingleNode("picture").InnerText;
-						if (imgUrl.Trim().Length == 0)
-							imgUrl = WebConfig.DefaultVideoPic;
-						string filepath = videoNode.SelectSingleNode("filepath").InnerText;
-
-						htmlCode.Append("<li><a href=\"" + filepath + "\" target=\"_blank\" class=\"v_bg\" alt=\"视频播放\"></a><a href=\"" + filepath + "\" target=\"_blank\"><img src=\"" + imgUrl + "\" alt=\"" + serialShowName + videoTitle + "\" width=\"165\" height=\"110\" /></a>");
-						if (shortTitle != videoTitle)
-							htmlCode.AppendLine("<div class=\"name\"><a href=\"" + filepath + "\" title=\"" + videoTitle + "\" target=\"_blank\">" + shortTitle + "</a></div></li>");
-						else
-							htmlCode.AppendLine("<div class=\"name\"><a href=\"" + filepath + "\" target=\"_blank\">" + videoTitle + "</a></div></li>");
-					}
-				}
-				catch
-				{ }
-				htmlCode.AppendLine("</ul>");
-				htmlCode.AppendLine("<div class=\"clear\"></div>");
-				htmlCode.AppendLine("</div>");
-			}
-
-			videosHtml = htmlCode.ToString();
-		}
-
-		private void MakeDianpingHtml()
-		{
-			XmlDocument dpDoc = new Car_SerialBll().GetCarshowSerialDianping(serialId);
-			if (dpDoc == null || !dpDoc.HasChildNodes)
-			{ return; }
-			StringBuilder htmlCode = new StringBuilder();
-			int count = ConvertHelper.GetInteger(dpDoc.DocumentElement.GetAttribute("count"));
-			int dianpingCount = count;
-			htmlCode.AppendLine("<h3 class=\"commu\"><span><span class=\"caption\">" + serialShowName + "-点评精选</span></span><strong><em>" + count + "条</em>|");
-			htmlCode.Append("<a href=\"http://koubei.bitauto.com/" + serialSpell + "/koubei/tianjia/\">我要点评</a>");
-			htmlCode.Append("|<a href=\"http://i.bitauto.com/FriendMore_c0_s" + serialId + "_p1_sort1_r001.html\">和车主聊聊</a>");
-			htmlCode.Append("|<a href=\"http://i.bitauto.com/FriendMore_c0_s" + serialId + "_p1_sort1_r010.html\">和想买的人聊聊</a></strong></h3>");
-
-			StringBuilder tabCode = new StringBuilder();
-			StringBuilder conCode = new StringBuilder();
-			string moreUrl = baseUrl + "koubei/gengduo/";
-			for (int i = 3; i >= 1; i--)
-			{
-				XmlElement dpNode = (XmlElement)dpDoc.SelectSingleNode("/SerialDianping/Dianping[@type=\"" + i + "\"]");
-				if (dpNode == null)
-					continue;
-				count = ConvertHelper.GetInteger(dpNode.GetAttribute("count"));
-				htmlCode.AppendLine("<div class=\"list_li\">");
-				switch (i)
-				{
-					case 1:
-						htmlCode.AppendLine("<h4 class=\"cha\">");
-						htmlCode.AppendLine("<a href=\"" + moreUrl + "\" target=\"_blank\">差评</a><strong><em>(" + count + "条)</em></strong></h4>");
-						break;
-					case 2:
-						htmlCode.AppendLine("<h4 class=\"zhong\">");
-						htmlCode.AppendLine("<a href=\"" + moreUrl + "\" target=\"_blank\">中评</a><strong><em>(" + count + "条)</em></strong></h4>");
-						break;
-					case 3:
-						htmlCode.AppendLine("<h4 class=\"hao\">");
-						htmlCode.AppendLine("<a href=\"" + moreUrl + "\" target=\"_blank\">好评</a><strong><em>(" + count + "条)</em></strong></h4>");
-						break;
-				}
-
-				htmlCode.AppendLine("<ul>");
-				int counter = 0;
-				foreach (XmlElement ele in dpNode.ChildNodes)
-				{
-					counter++;
-					string title = ele.SelectSingleNode("title").InnerText;
-					string url = ele.SelectSingleNode("url").InnerText;
-					string shortTitle = title;
-					if (StringHelper.GetRealLength(title) > 24)
-						shortTitle = StringHelper.SubString(title, 24, false);
-					htmlCode.AppendLine("<li><a href=\"" + url + "\" target=\"_blank\" title=\"" + title + "\">" + shortTitle + "</a></li>");
-					if (counter >= 7)
-						break;
-				}
-				htmlCode.AppendLine("</ul>");
-				htmlCode.AppendLine("<div class=\"more\">");
-				htmlCode.AppendLine("<a target=\"_blank\" href=\"" + moreUrl + "\">更多&gt;&gt;</a></div>");
-				htmlCode.AppendLine("</div>");
-
-			}
-			htmlCode.AppendLine("<div class=\"clear\"></div>");
-			htmlCode.AppendLine("<div class=\"more\">");
-			htmlCode.AppendLine("<a target=\"_blank\" href=\"" + moreUrl + "\">更多&gt;&gt;</a></div>");
-
-			dianpingHtml = htmlCode.ToString();
-		}
-
-		/// <summary>
-		/// 生成热门文章
-		/// </summary>
-		/// <param name="htmlCode"></param>
-		private void MakeHotNewsHtml()
-		{
-			StringBuilder htmlCode = new StringBuilder();
-			//获取数据
-			XmlDocument xmlDoc = new Car_SerialBll().GetSerialHotNews(serialId);
-			XmlNodeList newsList = xmlDoc.SelectNodes("NewDataSet/NewsCommentTop");
-			htmlCode.AppendLine("<div class=\"line_box hot_article\">");
-			htmlCode.AppendLine("<h3><span>" + serialName + "热门文章</span></h3>");
-			htmlCode.AppendLine("<div id=\"rank_newcar_box\">");
-			htmlCode.AppendLine("<ol class=\"hot_ranking\">");
-			int counter = 0;
-			foreach (XmlElement newsNode in newsList)
-			{
-				counter++;
-				string newsTitle = newsNode.SelectSingleNode("NewsTitle").InnerText;
-				//过滤Html标签
-				newsTitle = StringHelper.RemoveHtmlTag(newsTitle);
-				string shortNewsTitle = StringHelper.SubString(newsTitle, 26, true);
-				string filePath = newsNode.SelectSingleNode("NewsUrl").InnerText;
-				string pubTime = newsNode.SelectSingleNode("Time").InnerText;
-				pubTime = Convert.ToDateTime(pubTime).ToString("MM-dd");
-				if (shortNewsTitle != newsTitle)
-					htmlCode.AppendLine("<li><a href=\"" + filePath + "\" title=\"" + newsTitle + "\" target=\"_blank\">" + shortNewsTitle + "</a></li>");
-				else
-					htmlCode.AppendLine("<li><a href=\"" + filePath + "\" target=\"_blank\">" + newsTitle + "</a></li>");
-				if (counter >= 5)
-					break;
-			}
-			htmlCode.AppendLine("</ol></div>");
-			htmlCode.AppendLine("</div>");
-			hotNewsHtml = htmlCode.ToString();
-		}
+		
 
 		/// <summary>
 		/// 子品牌还关注
@@ -2136,162 +1100,87 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
 			hotSerialCompareHtml = String.Concat(htmlList.ToArray());
 		}
 
-		private void MakeSerialIntensionHtml()
-		{
-			intensionHtml = "";
-			Dictionary<int, List<XmlElement>> intensionDic = new Car_SerialBll().GetSerialIntensionDic();
-			if (!intensionDic.ContainsKey(serialId))
-				return;
-
-			StringBuilder htmlCode = new StringBuilder();
-			int counter = 0;
-			foreach (XmlElement userNode in intensionDic[serialId])
-			{
-				counter++;
-				string userName = userNode.SelectSingleNode("name").InnerText;
-				string shortName = userName;
-				if (StringHelper.GetRealLength(userName) > 8)
-					shortName = StringHelper.SubString(userName, 8, true);
-				userName = StringHelper.RemoveHtmlTag(userName);
-				shortName = StringHelper.RemoveHtmlTag(shortName);
-				string userUrl = userNode.SelectSingleNode("url").InnerText;
-				htmlCode.AppendLine("<li><a href=\"" + userUrl + "\" title=\"" + userName + "\" target=\"_blank\">" + shortName + "</a></li>");
-				if (counter >= 9)
-					break;
-			}
-			intensionHtml = htmlCode.ToString();
-		}
-		/// <summary>
+        /// <summary>
 		/// 得到品牌下的其他子品牌
 		/// </summary>
 		/// <returns></returns>
 		protected string GetBrandOtherSerial()
-		{
-			List<CarSerialPhotoEntity> carSerialPhotoList = new Car_BrandBll().GetCarSerialPhotoListByCBID(cse.Cb_Id, false);
+        {
+            List<CarSerialPhotoEntity> carSerialPhotoList = new Car_BrandBll().GetCarSerialPhotoListByCBID(cse.Cb_Id, false);
 
-			carSerialPhotoList.Sort(Car_SerialBll.CompareSerialName);
+            carSerialPhotoList.Sort(Car_SerialBll.CompareSerialName);
 
-			if (carSerialPhotoList == null || carSerialPhotoList.Count < 1)
-			{
-				return "";
-			}
+            if (carSerialPhotoList == null || carSerialPhotoList.Count < 1)
+            {
+                return "";
+            }
 
-			int forLastCount = 0;
-			foreach (CarSerialPhotoEntity entity in carSerialPhotoList)
-			{
-				if (entity.SerialLevel == "概念车" || entity.SerialId == cse.Cs_Id)
-				{
-					continue;
-				}
-				forLastCount++;
-			}
+            int forLastCount = 0;
+            foreach (CarSerialPhotoEntity entity in carSerialPhotoList)
+            {
+                if (entity.SerialLevel == "概念车" || entity.SerialId == cse.Cs_Id)
+                {
+                    continue;
+                }
+                forLastCount++;
+            }
 
-			StringBuilder contentBuilder = new StringBuilder(string.Empty);
-			string serialUrl = "<a target=\"_blank\" href=\"http://car.bitauto.com/{0}/\">{1}</a>";
-			int index = 0;
-			foreach (CarSerialPhotoEntity entity in carSerialPhotoList)
-			{
-				bool IsExitsUrl = true;
-				if (entity.SerialLevel == "概念车" || entity.SerialId == cse.Cs_Id)
-				{
-					continue;
-				}
-				string priceRang = base.GetSerialPriceRangeByID(entity.SerialId);
-				if (entity.SaleState == "待销")
-				{
-					IsExitsUrl = false;
-					priceRang = "未上市";
-				}
-				else if (priceRang.Trim().Length == 0)
-				{
-					IsExitsUrl = false;
-					priceRang = "暂无报价";
-				}
-				if (IsExitsUrl)
-				{
-					priceRang = string.Format("<a href='http://price.bitauto.com/brand.aspx?newbrandid={0}'>{1}</a>", entity.SerialId, priceRang);
-				}
-				string tempCsSeoName = string.IsNullOrEmpty(entity.CS_SeoName) ? entity.ShowName : entity.CS_SeoName;
-				index++;
-				contentBuilder.AppendFormat("<li><div class=\"txt\">{0}</div><span>{1}</span></li>"
-					, string.Format(serialUrl, entity.CS_AllSpell, tempCsSeoName), priceRang
-					 );
-			}
+            StringBuilder contentBuilder = new StringBuilder(string.Empty);
+            string serialUrl = "<a target=\"_blank\" href=\"http://car.bitauto.com/{0}/\">{1}</a>";
+            int index = 0;
+            foreach (CarSerialPhotoEntity entity in carSerialPhotoList)
+            {
+                bool IsExitsUrl = true;
+                if (entity.SerialLevel == "概念车" || entity.SerialId == cse.Cs_Id)
+                {
+                    continue;
+                }
+                string priceRang = base.GetSerialPriceRangeByID(entity.SerialId);
+                if (entity.SaleState == "待销")
+                {
+                    IsExitsUrl = false;
+                    priceRang = "未上市";
+                }
+                else if (priceRang.Trim().Length == 0)
+                {
+                    IsExitsUrl = false;
+                    priceRang = "暂无报价";
+                }
+                if (IsExitsUrl)
+                {
+                    priceRang = string.Format("<a href='http://price.bitauto.com/brand.aspx?newbrandid={0}'>{1}</a>", entity.SerialId, priceRang);
+                }
+                string tempCsSeoName = string.IsNullOrEmpty(entity.CS_SeoName) ? entity.ShowName : entity.CS_SeoName;
+                index++;
+                contentBuilder.AppendFormat("<li><div class=\"txt\">{0}</div><span>{1}</span></li>"
+                    , string.Format(serialUrl, entity.CS_AllSpell, tempCsSeoName), priceRang
+                     );
+            }
 
-			StringBuilder brandOtherSerial = new StringBuilder(string.Empty);
-			if (contentBuilder.Length > 0)
-			{
-				brandOtherSerial.AppendFormat("<h3 class=\"top-title\"><a target=\"_blank\" href=\"http://car.bitauto.com/{0}/\">{1}其他车型</a></h3>",
-					cse.Cb_AllSpell, cse.Cb_Name);
+            StringBuilder brandOtherSerial = new StringBuilder(string.Empty);
+            if (contentBuilder.Length > 0)
+            {
+                brandOtherSerial.AppendFormat("<h3 class=\"top-title\"><a target=\"_blank\" href=\"http://car.bitauto.com/{0}/\">{1}其他车型</a></h3>",
+                    cse.Cb_AllSpell, cse.Cb_Name);
 
-				brandOtherSerial.Append("<div class=\"list-txt list-txt-s list-txt-default list-txt-style5\"><ul>");
+                brandOtherSerial.Append("<div class=\"list-txt list-txt-s list-txt-default list-txt-style5\"><ul>");
 
-				brandOtherSerial.Append(contentBuilder.ToString());
+                brandOtherSerial.Append(contentBuilder.ToString());
 
-				brandOtherSerial.Append("</ul></div>");
-			}
+                brandOtherSerial.Append("</ul></div>");
+            }
 
-			return brandOtherSerial.ToString();
-		}
+            return brandOtherSerial.ToString();
+        }
+        #region new车型图片
 
-		/// <summary>
-		/// 取子品牌相关用户
-		/// </summary>
-		private void GetUserBlockByCarSerialId()
-		{
-			StringBuilder sbUserBlock = new StringBuilder();
-			// 计划购买
-			DataTable dtWant = base.GetUserByCarSerialId(sic.CsID, 2, 3);
-			if (dtWant != null && dtWant.Rows.Count > 0)
-			{
-				sbUserBlock.AppendLine("<div class=\"line_box zh_driver\">");
-				sbUserBlock.AppendLine("<h3><span>和想买这款车的人聊聊</span></h3>");
-				sbUserBlock.AppendLine("<div class=\"index_friend_r_l\">");
-				sbUserBlock.AppendLine("<ul>");
-				for (int i = 0; i < dtWant.Rows.Count; i++)
-				{
-					sbUserBlock.AppendLine("<li><a target=\"_blank\" href=\"http://i.bitauto.com/u" + dtWant.Rows[i]["userId"].ToString() + "/\" title=\"\">");
-					sbUserBlock.AppendLine("<img height=\"60\" width=\"60\" src=\"" + dtWant.Rows[i]["userAvatar"].ToString() + "\" alt=\"\"></a>");
-					sbUserBlock.AppendLine("<strong><a target=\"_blank\" href=\"http://i.bitauto.com/u" + dtWant.Rows[i]["userId"].ToString() + "/\">" + dtWant.Rows[i]["username"].ToString() + "</a></strong>");
-					sbUserBlock.AppendLine("<p><a class=\"add_friend\" href=\"#\" onclick=\"javascript:AjaxAddFriend.show(" + dtWant.Rows[i]["userId"].ToString() + ", " + sic.CsID.ToString() + ");return false;\">加为好友</a></p></li>");
-				}
-				sbUserBlock.AppendLine("</ul>");
-				sbUserBlock.AppendLine("</div><div class=\"clear\"> </div>");
-				sbUserBlock.AppendLine("<div class=\"more\"><a target=\"_blank\" href=\"http://i.bitauto.com/FriendMore_c0_s" + sic.CsID.ToString() + "_p1_sort1_r010.html\">更多&gt;&gt;</a></div>");
-				sbUserBlock.AppendLine("</div>");
-			}
-			// 车主
-			DataTable dtOwner = base.GetUserByCarSerialId(sic.CsID, 3, 3);
-			if (dtOwner != null && dtOwner.Rows.Count > 0)
-			{
-				sbUserBlock.AppendLine("<div class=\"line_box zh_driver\">");
-				sbUserBlock.AppendLine("<h3><span>和车主聊聊</span></h3>");
-				sbUserBlock.AppendLine("<div class=\"index_friend_r_l\">");
-				sbUserBlock.AppendLine("<ul>");
-				for (int i = 0; i < dtOwner.Rows.Count; i++)
-				{
-					sbUserBlock.AppendLine("<li><a target=\"_blank\" href=\"http://i.bitauto.com/u" + dtOwner.Rows[i]["userId"].ToString() + "/\" title=\"\">");
-					sbUserBlock.AppendLine("<img height=\"60\" width=\"60\" src=\"" + dtOwner.Rows[i]["userAvatar"].ToString() + "\" alt=\"\"></a>");
-					sbUserBlock.AppendLine("<strong><a target=\"_blank\" href=\"http://i.bitauto.com/u" + dtOwner.Rows[i]["userId"].ToString() + "/\">" + dtOwner.Rows[i]["username"].ToString() + "</a></strong>");
-					sbUserBlock.AppendLine("<p><a class=\"add_friend\" href=\"#\" onclick=\"AjaxAddFriend.show(" + dtOwner.Rows[i]["userId"].ToString() + ", " + sic.CsID.ToString() + ",3);return false;\">加为好友</a></p></li>");
-				}
-				sbUserBlock.AppendLine("</ul>");
-				sbUserBlock.AppendLine("</div><div class=\"clear\"> </div>");
-				sbUserBlock.AppendLine("<div class=\"more\"><a target=\"_blank\" href=\"http://i.bitauto.com/FriendMore_c0_s" + sic.CsID.ToString() + "_p1_sort1_r001.html\">更多&gt;&gt;</a></div>");
-				sbUserBlock.AppendLine("</div>");
-			}
-			UserBlock = sbUserBlock.ToString();
-		}
-
-		#region new车型图片
-
-		/// <summary>
-		/// 按特定分类取图片
-		/// </summary>
-		/// <param name="_sb"></param>
-		/// <param name="_sbMore"></param>
-		/// <param name="cateid"></param>
-		private void RenderPicByCategory(ref StringBuilder _sb, XmlDocument doc, int cateid, ref bool isHasContent)
+        /// <summary>
+        /// 按特定分类取图片
+        /// </summary>
+        /// <param name="_sb"></param>
+        /// <param name="_sbMore"></param>
+        /// <param name="cateid"></param>
+        private void RenderPicByCategory(ref StringBuilder _sb, XmlDocument doc, int cateid, ref bool isHasContent)
 		{
 			if (doc != null && doc.HasChildNodes)
 			{

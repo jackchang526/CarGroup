@@ -180,7 +180,7 @@
                     }
                 }
 
-                html += "<li" + curIdStr + "><a href=\"" + masterList[j].url + "\" class=\"" + className + "\"><span class=\"logo-img\"><img src=\"http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/30/m_" + masterList[j].id + "_30.png\" alt=\"\"></span><div class=\"brand-name\"><span>" + masterList[j].name + "</span><em>(" + masterList[j].num + ")</em></div></a>";
+                html += "<li" + curIdStr + "><a href=\"" + masterList[j].url + "\" class=\"" + className + "\"><span class=\"logo-img\"><img src=\"http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_" + masterList[j].id + "_100.png\" alt=\"\"></span><div class=\"brand-name\"><span>" + masterList[j].name + "</span><em>(" + masterList[j].num + ")</em></div></a>";
                 //品牌
                 if (masterList[j].child != undefined) {
                     html += getBrandHtml(masterList[j].child);

@@ -67,18 +67,18 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageLevelV2
 		private void RenderLevel()
 		{
 			System.Collections.Generic.List<string> list = new System.Collections.Generic.List<string>();
-			string[] array = new string[]
-			{
-				"微型车",
-				"小型车",
-				"紧凑型车",
-				"中型车",
-				"中大型车",
-				"豪华车",
-				"MPV",
-				"SUV",
-				"跑车",
-				"面包车"
+            string[] array = new string[]
+            {
+                "微型车",
+                "小型车",
+                "紧凑型车",
+                "中型车",
+                "中大型车",
+                "豪华车",
+                "MPV",
+                "SUV",
+                "跑车",
+                "面包车"
 			};
 			for (int i = 0; i < array.Length; i++)
 			{

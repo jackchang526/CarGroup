@@ -1324,16 +1324,16 @@ namespace MWeb.Controllers
         {
             Dictionary<int, XmlElement> dic = serialBLL.GetSeialBaoZhiLv();
             string baoZhiLv = string.Empty;
-            string[] baoZhiLvLevel = { "weixingche", "xiaoxingche", "jincouxingche", "zhongxingche", "zhongdaxingche", "haohuaxingche", "mpv", "suv", "paoche", "mianbaoche" };
+            //string[] baoZhiLvLevel = { "weixingche", "xiaoxingche", "jincouxingche", "zhongxingche", "zhongdaxingche", "haohuaxingche", "mpv", "suv", "paoche", "mianbaoche" };
             if (dic != null && dic.ContainsKey(serialId))
             {
                 XmlElement ele = dic[serialId];
                 if (ele != null)
                 {
                     string levelSpell = BitAuto.CarUtils.Define.CarLevelDefine.GetLevelSpellByName(serialEntity.Level.Name);
-                    baoZhiLv = string.Format("<dl class=\"sum-baozhilv\"><dt class=\"w3\">保值率：</dt><dd>{0}% {1}</dd></dl>"
+                    baoZhiLv = string.Format("<dl class=\"sum-baozhilv\"><dt class=\"w3\">保值率：</dt><dd>{0}% <a href=\"/{1}/baozhilv/\">排行>></a></dd></dl>"
                         , Math.Round(ConvertHelper.GetDouble(ele.Attributes["ResidualRatio5"].InnerText) * 100, 1)
-                        , baoZhiLvLevel.Contains(levelSpell) ? string.Format("<a href=\"/{0}/baozhilv/\" data-channelid=\"27.23.2041\">排行>></a>", levelSpell) : ""
+                        , levelSpell
                         );
                 }
             }

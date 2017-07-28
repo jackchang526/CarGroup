@@ -100,7 +100,7 @@ namespace MWeb
                 name:"baozhilv",
                 url:"{level}/baozhilv/",
                 defaults:new { Controller = "BaoZhiLv", action="Index",id = UrlParameter.Optional },
-                constraints: new { level = @"(weixingche|xiaoxingche|jincouxingche|zhongxingche|zhongdaxingche|haohuaxingche|mpv|suv|paoche|mianbaoche)" }
+                constraints: new { level = @"(weixingche|xiaoxingche|jincouxingche|zhongxingche|zhongdaxingche|haohuaxingche|mpv|suv|paoche|mianbaoche|pika|qita)" }
                 );
 
             //suv

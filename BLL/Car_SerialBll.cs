@@ -8128,6 +8128,7 @@ namespace BitAuto.CarChannel.BLL
                 try
                 {
                     string filePath = HttpContext.Current.Server.MapPath("~/config/VR.xml");
+                    vrDic = new Dictionary<int, string>();
                     if (File.Exists(filePath))
                     {
                         XmlDocument xmlDoc = new XmlDocument();
@@ -8137,7 +8138,7 @@ namespace BitAuto.CarChannel.BLL
                             XmlNodeList itemList = xmlDoc.SelectNodes("/Root/serial");
                             if (itemList != null && itemList.Count > 0)
                             {
-                                vrDic = new Dictionary<int, string>();
+                                
                                 foreach (XmlNode node in itemList)
                                 {
                                     int csId = ConvertHelper.GetInteger(node.Attributes["id"].InnerText);
@@ -8147,10 +8148,10 @@ namespace BitAuto.CarChannel.BLL
                                         vrDic.Add(csId, url);
                                     }
                                 }
-                                CacheManager.InsertCache(cacheKey, vrDic, WebConfig.CachedDuration);
                             }
                         }
                     }
+                    CacheManager.InsertCache(cacheKey, vrDic, WebConfig.CachedDuration);
                 }
                 catch (Exception ex)
                 {

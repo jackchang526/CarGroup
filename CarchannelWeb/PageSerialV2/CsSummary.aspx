@@ -133,9 +133,7 @@
                                     <%--<li>
                                         <span class="note">快充时间: </span><span class="data"><%=fastChargeTimeRange%></span>
                                     </li>--%>
-                                    <li>
-                                        <span class="note">保修: </span><span class="data<%= string.IsNullOrWhiteSpace(serialInfo.SerialRepairPolicy) ? " grey-txt":"" %>" title="<%= serialInfo.SerialRepairPolicy %>"><%= serialInfo.SerialRepairPolicy.Length > 8 ? serialInfo.SerialRepairPolicy.Substring(0,8) : string.IsNullOrWhiteSpace(serialInfo.SerialRepairPolicy) ? "暂无": serialInfo.SerialRepairPolicy %></span>
-                                    </li>
+                                    <%= baoZhiLv %>
                                     <%}
                                        else
                                        { %>
@@ -152,9 +150,7 @@
                                     <li>
                                         <span class="note">变速箱: </span><span class="data<%=string.IsNullOrWhiteSpace(serialTransmission)?" grey-txt":"" %>"><%=string.IsNullOrWhiteSpace(serialTransmission) ? "暂无":serialTransmission%></span>
                                     </li>
-                                    <li>
-                                        <span class="note">保修: </span><span class="data<%=string.IsNullOrWhiteSpace(serialInfo.SerialRepairPolicy)?" grey-txt":"" %>" title="<%= serialInfo.SerialRepairPolicy %>"><%=serialInfo.SerialRepairPolicy.Length > 8 ? serialInfo.SerialRepairPolicy.Substring(0,8) : string.IsNullOrWhiteSpace(serialInfo.SerialRepairPolicy) ? "暂无": serialInfo.SerialRepairPolicy%></span>
-                                    </li>
+                                    <%= baoZhiLv %>
                                     <li>
                                         <span class="note">油耗: </span>
                                         <% if (string.IsNullOrWhiteSpace(serialInfo.CsSummaryFuelCost))
@@ -163,7 +159,7 @@
                                         <%}
                                            else
                                            { %>
-                                        <a class="data" data-channelid="2.21.855" target="_blank" href="http://car.bitauto.com/<%= serialSpell %>/youhao/"><%=serialInfo.CsSummaryFuelCost%></a>
+                                        <a class="data" data-channelid="2.21.855" target="_blank" href="http://car.bitauto.com/<%= serialSpell %>/youhao/"><%=serialInfo.CsSummaryFuelCost%> &gt;</a>
                                         <%} %>
                                     </li>
                                     <%} %>
@@ -557,7 +553,6 @@
                                     <span class="title">安全碰撞</span>
                                     <h4 <%= CNCAPAndENCAPStr=="暂无" ? "class='none'":"" %>><%= CNCAPAndENCAPStr %></h4>
                                 </li>
-                                <%= baoZhiLv %>
                                 <%= awardHtml %>
                             </ul>
                         </div>

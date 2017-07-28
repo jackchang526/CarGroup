@@ -131,19 +131,23 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
         protected void GetBaoZhiLv()
 		{
 			Dictionary<int,XmlElement> dic = _serialBLL.GetSeialBaoZhiLv();
-            string[] baoZhiLvLevel = { "weixingche", "xiaoxingche", "jincouxingche", "zhongxingche", "zhongdaxingche", "haohuaxingche", "mpv", "suv", "paoche", "mianbaoche" };
+            //string[] baoZhiLvLevel = { "weixingche", "xiaoxingche", "jincouxingche", "zhongxingche", "zhongdaxingche", "haohuaxingche", "mpv", "suv", "paoche", "mianbaoche" };
             if (dic != null && dic.ContainsKey(serialId))
 			{
 				XmlElement ele = dic[serialId];
 				if (ele != null)
 				{
 					string levelSpell = BitAuto.CarUtils.Define.CarLevelDefine.GetLevelSpellByName(serialEntity.Level.Name);
-					baoZhiLv = string.Format("<li class=\"li3-1\"><span class=\"title\">五年保值率</span><h4>{0}% {1}</h4></li>"
-						,Math.Round(ConvertHelper.GetDouble(ele.Attributes["ResidualRatio5"].InnerText) * 100,1)
-						, baoZhiLvLevel.Contains(levelSpell) ? string.Format("<a class=\"lnk-bzl\" href=\"/{0}/baozhilv/\" target=\"_blank\" data-channelid=\"2.21.2032\">查看排行&gt;&gt;</a>",levelSpell) :""
-                        );
+                    string ratio = Math.Round(ConvertHelper.GetDouble(ele.Attributes["ResidualRatio5"].InnerText) * 100, 1).ToString();
+                    baoZhiLv = string.Format("<li><span class=\"note\">五年保值率: </span><span class=\"data\"><a class=\"lnk-bzl\" href=\"/{0}/baozhilv/\" target=\"_blank\" data-channelid=\"2.21.2032\">{1}% &gt;</a></span></li>"
+                            , levelSpell
+                            , ratio);
 				}
 			}
+            if (string.IsNullOrEmpty(baoZhiLv))
+            {
+                baoZhiLv = "<li>< span class=\"note\">五年保值率: </span><span class=\"data grey-txt\">暂无</span></li>";
+            }
 		}
 
         protected void MakeBlockHtml()

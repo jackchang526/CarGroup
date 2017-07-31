@@ -1259,6 +1259,7 @@ var eventNames = ['webkit', 'moz', 'o'];
         this.each(function (index, current) {
             (function ($o) {
                 var $current = $o.find(options.activeName);
+                if ($current == "undefined" || $current.length == 0) return;
                 $o.animate({ scrollLeft: $current[0].offsetLeft - $current[0].offsetWidth }, 30);
             })($(current));
         })

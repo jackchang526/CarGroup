@@ -84,42 +84,54 @@ $(function () {
     			return config.templteName;
     		},
     		dataCallBack: function (paras) {
-    			var $swipeLeft = this,
+                var $swipeLeft = this,
                     $leftPopup = $swipeLeft.parent();
+                var $brandName = $leftPopup.find('.brand-name');
+                $brandName[0] && $brandName.html(paras.$current.find('.brand-name,[data-key=name]').html());
+                var $brandborder = $leftPopup.find('.brand-logo-none-border');
+                //新版本
+                var $img = $brandborder.find('img');
+                if ($img.length > 0) {
+                    $img.attr('src', api.imgRoot.replace('id', paras.$current.data('id')));
+                }
+                /*兼容老版本*/
+                $brandlogo = paras.$current.find('.brand-logo');
+                if ($brandlogo[0].className && $brandlogo[0].className.length > 0) {
+                    $brandborder[0] && $brandlogo[0] && ($brandborder[0].className = 'brand-logo-none-border ' + $brandlogo[0].className.split(' ')[1]);
+                }
 
-    			var $brandName = $leftPopup.find('.brand-name');
-    			$brandName[0] && $brandName.html(paras.$current.find('.brand-name,[data-key=name]').html());
-    			var $brandborder = $leftPopup.find('.brand-logo-none-border'),
-                    $brandlogo = paras.$current.find('.brand-logo');
-    			$brandborder[0] && $brandlogo[0] && ($brandborder[0].className = 'brand-logo-none-border ' + $brandlogo[0].className.split(' ')[1]);
+                /*绑定滚动插件*/
+                $swipeLeft.iScroll({ snap: options.snap });
 
-    			/*绑定滚动插件*/
-    			$swipeLeft.iScroll({ snap: 'li,div' });
+                var $back = $('.' + $leftPopup.attr('data-back'));
+                $swipeLeft.touches({ touchmove: function (ev) { ev.preventDefault(); } });
 
-    			var $back = $('.' + $leftPopup.attr('data-back'));
-    			$back.touches({ touchstart: function (ev) { ev.preventDefault(); }, touchmove: function (ev) { ev.preventDefault(); } });
-    			var $loading = $('.template-loading');
-    			var config = getConfig.call($swipeLeft);
-    			/*一级选中*/
+                $back.touches({ touchstart: function (ev) { ev.preventDefault(); }, touchmove: function (ev) { ev.preventDefault(); } });
 
-    			/*二级连选*/
-    			if (options.model_hide) {
-    				$swipeLeft.find('[data-id]').click(function (ev) {
-    					var $click = $(this);
-    					//一级选中
-    					options.masterselect && options.masterselect.call($body.find('.content'), paras.$current.attr('data-id'));
-    					//二级选中
-    					options.carselect && options.carselect.call($swipeLeft, $click);
+                $swipeLeft.parent().find('.swipeBlock').touches({ touchstart: function (ev) { ev.preventDefault(); }, touchmove: function (ev) { ev.preventDefault(); } });
+                var $loading = $('.template-loading');
+                var config = getConfig.call($swipeLeft);
+                /*一级选中*/
 
-    					var masterid = paras.$current && paras.$current.attr('data-id') || 0,
+                /*二级连选*/
+                if (options.model_hide) {
+                    $swipeLeft.find('[data-id]').click(function (ev) {
+                        var $click = $(this);
+                        //一级选中
+                        options.masterselect && options.masterselect.call($body.find('.content'), paras.$current.attr('data-id'));
+                        //二级选中
+                        options.carselect && options.carselect.call($swipeLeft, $click);
+
+                        var masterid = paras.$current && paras.$current.attr('data-id') || 0,
                             carid = $click && $click.attr('data-id') || 0;
-    					config.clickEnd && config.clickEnd.call($leftPopup, { masterobj: paras.$current, $carSwipeLeft: $swipeLeft, masterid: masterid, carid: carid, carobj: $click })
-    				})
-    			} else {
-    				/*一级车款*/
+                        config.clickEnd && config.clickEnd.call($leftPopup, { masterobj: paras.$current, $carSwipeLeft: $swipeLeft, masterid: masterid, carid: carid, carobj: $click });
+                    })
 
-    				$body.trigger('rightswipe1', { actionName: options.actionNameModel, $carSwipeLeft: $swipeLeft, $masterobj: paras.$current, masterselect: options.masterselect, carselect: options.carselect, selectmark: options.selectmark, alert: options.alert, back: options.back });
-    			}
+                } else {
+                    /*一级车款*/
+                    $body.trigger('rightswipe1', { actionName: options.actionNameModel, $carSwipeLeft: $swipeLeft, $masterobj: paras.$current, masterselect: options.masterselect, carselect: options.carselect, selectmark: options.selectmark, alert: options.alert, back: options.back, flatFn: options.flatFn2, fnEnd: options.fnEnd2 });
+                }
+                options.fnEnd1 && options.fnEnd1.call($swipeLeft);
     		},
     		insertHtml: function (html) {
     			this.html('<div class="tt-list absolute">' + html + '</div>');

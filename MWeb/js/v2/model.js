@@ -21,6 +21,7 @@ document.deepCss = function (who, css) {
 
 /*接口默认配置 datatype=0 是在销 ，1 是包含停销*/
 var api = {
+    imgRoot: 'http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_id_100.png',
     'brand': {
         url: 'http://api.car.bitauto.com/CarInfo/GetCarDataJson.ashx?action=master', callName: 'businessBrandCallBack', templteName: '#brandTemplate',
         currentid: ''

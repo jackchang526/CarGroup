@@ -175,7 +175,7 @@
                     <i></i>
                     关注
                 </a>
-                @{
+                @*@{
                     string VrUrl = ViewData["VRUrl"].ToString();
                     if (!string.IsNullOrWhiteSpace(VrUrl))
                     {
@@ -184,7 +184,7 @@
                             VR
                         </a>
                     }
-                }
+                }*@
                 
                 @if (serialEntity.SaleState != "停销")
                 {

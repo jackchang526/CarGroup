@@ -146,7 +146,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
 			}
             if (string.IsNullOrEmpty(baoZhiLv))
             {
-                baoZhiLv = "<li>< span class=\"note\">五年保值率: </span><span class=\"data grey-txt\">暂无</span></li>";
+                baoZhiLv = "<li><span class=\"note\">五年保值率: </span><span class=\"data grey-txt\">暂无</span></li>";
             }
 		}
 

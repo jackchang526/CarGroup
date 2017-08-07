@@ -530,7 +530,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 if (imgList.Count > 0)
                 {
                     SerialFocusImage csImg = imgList[0];
-                    PicUrl = csImg.ImageUrl;
+                    PicUrl = string.Format(csImg.ImageUrl, 4);
                     ImgLink = csImg.TargetUrl;
                     CarPicName = string.Format("当前车款暂无图片，图片显示为:<br>{0}", csImg.CarName);
                 }

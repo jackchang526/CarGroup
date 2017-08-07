@@ -437,7 +437,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 hotCars = hotCarsStr.ToString();
             }
         }
-
+        /*
         /// <summary>
         /// 取车型焦点图
         /// add Jul.6.2011
@@ -499,7 +499,11 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
 
             }
         }
-        /*
+        */
+        /// <summary>
+        /// 取车型焦点图
+        /// add Jul.6.2011
+        /// </summary>
         private void GetCarFocusImage()
         {
             //XmlDocument doc = basicBll.GetCarDefaultPhoto(cbe.Serial.Id, carID, cbe.CarYear);
@@ -535,7 +539,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
 
             }
         }
-        */
+        
 
         /// <summary>
         /// 取车型热门对比车型

@@ -516,7 +516,9 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
             if (carCoverImg != null && carCoverImg.ContainsKey(carID))
             {
                 XmlElement imageItem = carCoverImg[carID];
-                ImgLink = imageItem.Attributes["Link"].Value;
+                ImgLink = string.Format("http://photo.bitauto.com/picture/{0}/{1}/"
+                    , cbe.SerialId
+                    , imageItem.Attributes["ImageId"].Value);//imageItem.Attributes["Link"].Value;
                 PicUrl = imageItem.Attributes["ImageUrl"].Value;
                 PicUrl = PicUrl.Replace("_2.", "_4.");
                 CarPicName = string.Format("共{0}张图片", PhotoCount);
@@ -539,7 +541,6 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
 
             }
         }
-        
 
         /// <summary>
         /// 取车型热门对比车型

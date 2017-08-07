@@ -1500,7 +1500,15 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 if (CNCAPEntity != null) sbCNCAPAndENCAP.Append("C-NCAP ").Append(CastNCAPValue(CNCAPEntity.ParamValue));
                 CNCAPEntity ENCAPEntity = cnlist.Find(x => x.ParamId == 637);
                 if (ENCAPEntity != null) sbCNCAPAndENCAP.Append(sbCNCAPAndENCAP.Length > 0 ? "," : string.Empty).Append("E-NCAP ").Append(CastNCAPValue(ENCAPEntity.ParamValue));
-                CNCAPAndENCAPStr = string.Format("<a href=\"http://car.bitauto.com/{0}/anquan/\" target=\"_blank\">{1}</a>", serialSpell, sbCNCAPAndENCAP.ToString());
+
+                if (!string.IsNullOrWhiteSpace(serialEntity.AnQuan))
+                {
+                    CNCAPAndENCAPStr = string.Format("<a href=\"{0}\" target=\"_blank\">{1}</a>", serialEntity.AnQuan, sbCNCAPAndENCAP.ToString());
+                }
+                else
+                {
+                    CNCAPAndENCAPStr = sbCNCAPAndENCAP.ToString();
+                }
             }
         }
 

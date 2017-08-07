@@ -2701,6 +2701,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
         {
             int csid = 0;
             int top = 10;
+            bool isShowShiPai = false;
             if (request.QueryString["top"] != null && request.QueryString["top"].ToString() != "")
             {
                 string topCount = request.QueryString["top"].ToString();
@@ -2713,12 +2714,24 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                 if (int.TryParse(csIDstr, out csid))
                 { }
             }
+            if (request.QueryString["showshipai"] != null && request.QueryString["showshipai"].ToString() != "")
+            {
+                isShowShiPai = ConvertHelper.GetInteger(request.QueryString["showshipai"]) == 1;
+            }
             if (top < 0 || top > 10)
             { top = 10; }
 
             if (csid > 0 && top > 0)
             {
-                Dictionary<int, string> dicPicWhite = base.GetAllSerialPicURLWhiteBackground();
+                Dictionary<int, string> dicPicWhite;
+                if (isShowShiPai)
+                {
+                    dicPicWhite = base.GetAllSerialPicURL(true);
+                }
+                else
+                {
+                    dicPicWhite = GetAllSerialPicURLWhiteBackground();
+                }
                 List<EnumCollection.SerialToSerial> listSTS = base.GetSerialToSerialByCsID(csid, top);
                 if (listSTS != null && listSTS.Count > 0)
                 {

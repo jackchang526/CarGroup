@@ -438,41 +438,84 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
             }
         }
 
-        /// <summary>
-        /// 取车型焦点图
-        /// add Jul.6.2011
-        /// </summary>
+        ///// <summary>
+        ///// 取车型焦点图
+        ///// add Jul.6.2011
+        ///// </summary>
+        //private void GetCarFocusImage()
+        //{
+        //    XmlDocument doc = basicBll.GetCarDefaultPhoto(cbe.Serial.Id, carID, cbe.CarYear);
+        //    var photoCountDic = basicBll.GetCarPhotoCount();
+        //    if (photoCountDic.ContainsKey(carID))
+        //    {
+        //        PhotoCount = int.Parse(photoCountDic[carID]);
+        //    }
+        //    if (doc != null && doc.HasChildNodes)
+        //    {
+        //        XmlNodeList xnl = doc.SelectNodes("/ImageData/ImageList/ImageInfo");
+        //        if (xnl != null && xnl.Count > 0)
+        //        {
+        //            ImgLink = xnl[0].Attributes["Link"].Value;
+        //            PicUrl = xnl[0].Attributes["ImageUrl"].Value;
+        //            PicUrl = PicUrl.Replace("_2.", "_4.");
+        //            var xmlCarId = int.Parse(xnl[0].Attributes["CarId"].Value);
+        //            if (carID != xmlCarId)
+        //            {
+        //                string carYear = xnl[0].Attributes["CarYear"].Value;
+        //                string carModelName = xnl[0].Attributes["CarModelName"].Value;
+        //                CarPicName = string.Format("当前车款暂无图片，图片显示为:<br>{0}款 {1} ", carYear, carModelName);
+        //            }
+        //            else
+        //            {
+        //                if (PhotoCount > 0)
+        //                {
+        //                    CarPicName = string.Format("共{0}张图片", PhotoCount);
+        //                }
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        // 用子品牌焦点图
+        //        List<SerialFocusImage> imgList = serialBLL.GetSerialFocusImageList(cbe.Serial.Id);
+        //        if (imgList.Count > 0)
+        //        {
+        //            SerialFocusImage csImg = imgList[0];
+        //            string bigImgUrl = csImg.ImageUrl;
+        //            ImgLink = csImg.TargetUrl;
+        //            if (csImg.ImageId > 0)
+        //            {
+        //                PicUrl = String.Format(bigImgUrl, 4);
+        //                if (PhotoCount > 0)
+        //                {
+        //                    CarPicName = string.Format("共{0}张图片", PhotoCount);
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            PicUrl = WebConfig.DefaultCarPic;
+        //        }
+
+        //    }
+        //}
+
         private void GetCarFocusImage()
         {
-            XmlDocument doc = basicBll.GetCarDefaultPhoto(cbe.Serial.Id, carID, cbe.CarYear);
+            //XmlDocument doc = basicBll.GetCarDefaultPhoto(cbe.Serial.Id, carID, cbe.CarYear);
             var photoCountDic = basicBll.GetCarPhotoCount();
             if (photoCountDic.ContainsKey(carID))
             {
                 PhotoCount = int.Parse(photoCountDic[carID]);
             }
-            if (doc != null && doc.HasChildNodes)
+            Dictionary<int, XmlElement> carCoverImg = basicBll.GetCarDefaultPhotoXmlElement();
+            if (carCoverImg != null && carCoverImg.ContainsKey(carID))
             {
-                XmlNodeList xnl = doc.SelectNodes("/ImageData/ImageList/ImageInfo");
-                if (xnl != null && xnl.Count > 0)
-                {
-                    ImgLink = xnl[0].Attributes["Link"].Value;
-                    PicUrl = xnl[0].Attributes["ImageUrl"].Value;
-                    PicUrl = PicUrl.Replace("_2.", "_4.");
-                    var xmlCarId = int.Parse(xnl[0].Attributes["CarId"].Value);
-                    if (carID != xmlCarId)
-                    {
-                        string carYear = xnl[0].Attributes["CarYear"].Value;
-                        string carModelName = xnl[0].Attributes["CarModelName"].Value;
-                        CarPicName = string.Format("当前车款暂无图片，图片显示为:<br>{0}款 {1} ", carYear, carModelName);
-                    }
-                    else
-                    {
-                        if (PhotoCount > 0)
-                        {
-                            CarPicName = string.Format("共{0}张图片", PhotoCount);
-                        }
-                    }
-                }
+                XmlElement imageItem = carCoverImg[carID];
+                ImgLink = imageItem.Attributes["Link"].Value;
+                PicUrl = imageItem.Attributes["ImageUrl"].Value;
+                PicUrl = PicUrl.Replace("_2.", "_4.");
+                CarPicName = string.Format("共{0}张图片", PhotoCount);
             }
             else
             {
@@ -481,16 +524,9 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 if (imgList.Count > 0)
                 {
                     SerialFocusImage csImg = imgList[0];
-                    string bigImgUrl = csImg.ImageUrl;
+                    PicUrl = csImg.ImageUrl;
                     ImgLink = csImg.TargetUrl;
-                    if (csImg.ImageId > 0)
-                    {
-                        PicUrl = String.Format(bigImgUrl, 4);
-                        if (PhotoCount > 0)
-                        {
-                            CarPicName = string.Format("共{0}张图片", PhotoCount);
-                        }
-                    }
+                    CarPicName = string.Format("当前车款暂无图片，图片显示为:<br>{0}", csImg.CarName);
                 }
                 else
                 {
@@ -499,8 +535,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
 
             }
         }
-
-
+        
 
         /// <summary>
         /// 取车型热门对比车型

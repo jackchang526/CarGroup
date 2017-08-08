@@ -11,6 +11,7 @@ namespace BitAuto.CarChannel.DAL
 {
 	public class VideoDal
 	{
+        /*
 		/// <summary>
 		/// 获取子品牌视频数据量
 		/// </summary>
@@ -49,6 +50,7 @@ namespace BitAuto.CarChannel.DAL
 			_params[2].Value = top;
 			return BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text, sql, _params);
 		}
+        */
 		/// <summary>
 		/// 获取多个分类视频
 		/// </summary>

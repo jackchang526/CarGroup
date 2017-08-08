@@ -15,6 +15,7 @@ namespace BitAuto.CarChannel.BLL
 {
 	public class VideoBll
 	{
+        /*
 		/// <summary>
 		/// 获取子品牌视频数据量
 		/// </summary>
@@ -57,6 +58,7 @@ namespace BitAuto.CarChannel.BLL
 			}
 			return list;
 		}
+        */
 		/// <summary>
 		/// 获取多个分类视频
 		/// </summary>

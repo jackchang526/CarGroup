@@ -246,12 +246,12 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageMasterV2
                         firstNewsRow = newsOrderTable.Rows[0];
                     }
                 }
-                if (firstNewsRow == null)
-                {
-                    firstNewsRow = base.GetTopNewsFirstRow(newsTable, new int[] { 33, 31, 32, 4, 179, 102, 115, 120, 29, 30 });
-                    if (firstNewsRow == null)
-                        firstNewsRow = newsTable.Rows[0];
-                }
+                //if (firstNewsRow == null)
+                //{
+                //    firstNewsRow = base.GetTopNewsFirstRow(newsTable, new int[] { 33, 31, 32, 4, 179, 102, 115, 120, 29, 30 });
+                //    if (firstNewsRow == null)
+                //        firstNewsRow = newsTable.Rows[0];
+                //}
 
                 // 有最新新闻
                 htmlTitle.AppendLine("<div class=\"section-header header2\"><div class=\"box\">");
@@ -266,25 +266,29 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageMasterV2
                 htmlTitle.AppendLine("</div>");
                 htmlTitle.AppendLine("</div>");
 
-                int loop = 0;
-                htmlCode.AppendFormat("<div id=\"data_table_MasterNews_{0}\"  class=\"list-txt list-txt-m list-txt-default\">", loop.ToString());
-                loop++;
+                //int loop = 0;
+                htmlCode.Append("<div id=\"data_table_MasterNews_0\"  class=\"list-txt list-txt-m list-txt-default\">");
+                //loop++;
 
                 htmlCode.AppendLine("<ul>");
                 int i = 0;
+                string newsTitle = string.Empty;
+                string newsUrl = string.Empty;
+                if (firstNewsRow != null)
+                {
+                    newsTitle = firstNewsRow["FaceTitle"].ToString();
+                    newsUrl = firstNewsRow["filepath"].ToString();
+                    //过滤Html标签
+                    newsTitle = CommonFunction.NewsTitleDecode(newsTitle);
 
-                string newsTitle = firstNewsRow["FaceTitle"].ToString();
-                string newsUrl = firstNewsRow["filepath"].ToString();
-                //过滤Html标签
-                newsTitle = CommonFunction.NewsTitleDecode(newsTitle);
+                    ListForNewsTitle.Add(newsTitle);
 
-                ListForNewsTitle.Add(newsTitle);
-
-                htmlCode.AppendFormat("<li><div class=\"txt\"><a href=\"{0}\" target=\"_blank\">{1}</a></div><span>{2}</span></li>"
-                                       , newsUrl
-                                       , newsTitle
-                                       , Convert.ToDateTime(firstNewsRow["publishtime"]).ToString("yyyy-MM-dd"));
-                i++;
+                    htmlCode.AppendFormat("<li><div class=\"txt\"><a href=\"{0}\" target=\"_blank\">{1}</a></div><span>{2}</span></li>"
+                                           , newsUrl
+                                           , newsTitle
+                                           , Convert.ToDateTime(firstNewsRow["publishtime"]).ToString("yyyy-MM-dd"));
+                    i++;
+                }
                 foreach (DataRow newsRow in newsTable.Rows)
                 {
                     if (i >= _maxNewsCount)

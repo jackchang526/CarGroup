@@ -218,14 +218,14 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageBrand
                         firstNewsRow = newsOrderTable.Rows[0];
                     }
                 }
-                if (firstNewsRow == null)
-                {
-                    firstNewsRow = base.GetTopNewsFirstRow(newsTable, new int[] { 33, 31, 32, 4, 179, 102, 115, 120, 29, 30 });
-                    if (firstNewsRow == null)
-                    {
-                        firstNewsRow = newsTable.Rows[0];
-                    }
-                }
+                //if (firstNewsRow == null)
+                //{
+                //    firstNewsRow = base.GetTopNewsFirstRow(newsTable, new int[] { 33, 31, 32, 4, 179, 102, 115, 120, 29, 30 });
+                //    if (firstNewsRow == null)
+                //    {
+                //        firstNewsRow = newsTable.Rows[0];
+                //    }
+                //}
 
 
 
@@ -251,19 +251,22 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageBrand
                 htmlCode.AppendLine("<ul class=\"text-list\">");
 
                 int i = 0;
+                string newsTitle = string.Empty;
+                string newsUrl = string.Empty;
+                if (firstNewsRow != null)
+                {
+                    newsTitle = CommonFunction.NewsTitleDecode(firstNewsRow["FaceTitle"].ToString());
+                    newsUrl = firstNewsRow["filepath"].ToString();
 
-                string newsTitle = CommonFunction.NewsTitleDecode(firstNewsRow["FaceTitle"].ToString());
-                string newsUrl = firstNewsRow["filepath"].ToString();
+                    htmlCode.AppendFormat("<li><a href=\"{0}\" target=\"_blank\">{1}</a><span>{2}</span></li>"
+                                           , newsUrl
+                                           , newsTitle
+                                           , Convert.ToDateTime(firstNewsRow["publishtime"]).ToString("yyyy-MM-dd"));
 
-                htmlCode.AppendFormat("<li><a href=\"{0}\" target=\"_blank\">{1}</a><span>{2}</span></li>"
-                                       , newsUrl
-                                       , newsTitle
-                                       , Convert.ToDateTime(firstNewsRow["publishtime"]).ToString("yyyy-MM-dd"));
+                    ListForNewsTitle.Add(newsTitle);
 
-                ListForNewsTitle.Add(newsTitle);
-
-                i++;
-
+                    i++;
+                }
                 //if (firstNewsRow.Table == newsTable)
                 //    newsTable.Rows.Remove(firstNewsRow);
 

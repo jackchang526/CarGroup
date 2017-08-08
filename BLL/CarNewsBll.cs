@@ -2041,7 +2041,7 @@ namespace BitAuto.CarChannel.BLL
             {
                 try
                 {
-                    string newsJson = CommonFunction.GetContentByUrl(string.Format(WebConfig.SerialPingCeDataNew, newsId));
+                    string newsJson = CommonFunction.GetContentByUrl(string.Format(WebConfig.SerialPingCeDataNew, newsId), 10000);
                     if (string.IsNullOrWhiteSpace(newsJson))
                     {
                         return newsEntity;

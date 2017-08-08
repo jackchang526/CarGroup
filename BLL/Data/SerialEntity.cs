@@ -621,8 +621,8 @@ namespace BitAuto.CarChannel.BLL.Data
 			m_officialFuelCost = pageBase.GetSerialPerfFuelCostPer100(m_id, 0);
 			m_summaryFuelCost = pageBase.GetSerialSummaryFuel(m_id, 0);
 			m_guestFuelcost = pageBase.GetSerialDianPingYouHaoByCsID(m_id);
-			// 子品牌业务数量统计
-			m_askCount = pageBase.GetSerialAskCountByCsID(m_id);
+            // 子品牌业务数量统计
+            m_askCount = 0;// pageBase.GetSerialAskCountByCsID(m_id);
 			m_dianpingCount = pageBase.GetSerialDianPingCountByCsID(m_id);
 			pageBase.GetSerialPicAndCountByCsID(m_id, out m_defaultPic, out m_picCount, true);
 			// 子品牌文章link

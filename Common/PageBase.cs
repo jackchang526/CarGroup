@@ -386,7 +386,7 @@ namespace BitAuto.CarChannel.Common
                     }
                     sic.CsGuestFuelCost = this.GetSerialDianPingYouHaoByCsID(sic.CsID);
                     // 子品牌业务数量统计
-                    sic.CsAskCount = this.GetSerialAskCountByCsID(sic.CsID);
+                    sic.CsAskCount = 0;// this.GetSerialAskCountByCsID(sic.CsID);
                     sic.CsDianPingCount = this.GetSerialDianPingCountByCsID(sic.CsID);
                     string defaultPic = "";
                     int picCount = 0;

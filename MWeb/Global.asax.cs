@@ -1,5 +1,7 @@
-﻿using BitAuto.CarChannel.Common;
+﻿using BitAuto.CarChannel.BLL;
+using BitAuto.CarChannel.Common;
 using System;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -70,11 +72,44 @@ namespace MWeb
 			{ }
 		}
 
-		protected void Application_BeginRequest(object sender, EventArgs e)
-		{
-			//没有斜杠 301 添加 斜杠 add by sk 2017.03.07
-			string strUrl = Request.RawUrl;
-			if (strUrl.IndexOf(".", StringComparison.Ordinal) < 0 && strUrl.IndexOf("?", StringComparison.Ordinal) < 0 && !strUrl.EndsWith("/"))
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            string strUrl = Request.RawUrl;
+            int paramPos = strUrl.IndexOf('?');
+            string paramStr = string.Empty;
+            string spell = string.Empty;
+            string urlParam = string.Empty;
+            if (paramPos >= 0)
+            {
+                paramStr = strUrl.Substring(paramPos + 1);
+                spell = strUrl.Substring(0, paramPos).Trim('/');
+            }
+            if (string.IsNullOrWhiteSpace(spell))
+            {
+                spell = strUrl.Trim('/');
+            }
+            int urlPos = spell.IndexOf('/');
+            if (urlPos > -1)
+            {
+                urlParam = spell.Substring(urlPos + 1);
+                spell = spell.Substring(0, urlPos).Trim('/');
+            }
+            Dictionary<string, string> dic = new MVCRouteBll().GetAllChangeUrl();
+            if (dic != null && dic.ContainsKey(spell))
+            {
+                string newUrl = string.Format("{0}://{1}/{2}/{3}{4}",Request.Url.Scheme
+                    ,Request.Url.Authority
+                    ,dic[spell]
+                    ,urlParam.Length > 0 ? (urlParam + "/"): ""
+                    ,string.IsNullOrWhiteSpace(paramStr) ? string.Empty : ("?" + paramStr));
+                Response.StatusCode = 301;
+                Response.AddHeader("Location", newUrl);
+                return;
+            }
+
+            //没有斜杠 301 添加 斜杠 add by sk 2017.03.07
+            //string strUrl = Request.RawUrl;
+            if (strUrl.IndexOf(".", StringComparison.Ordinal) < 0 && strUrl.IndexOf("?", StringComparison.Ordinal) < 0 && !strUrl.EndsWith("/"))
 			{
 				Response.RedirectPermanent(strUrl + "/");
 			}

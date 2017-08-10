@@ -1588,25 +1588,26 @@ namespace BitAuto.CarChannel.BLL
 					//是否是平行进口
 					int isImport = (dictParams.ContainsKey(382) && dictParams[382] == "平行进口") ? 1 : 0;
 
-					carInfoList.Add(new CarInfoForSerialSummaryEntity()
-					{
-						CarID = carId,
-						CarName = dr["car_name"].ToString(),
-						SaleState = saleState,
-						CarPriceRange = carPriceRange,
-						CarPV = dr["Pv_SumNum"].ToString() == "" ? 0 : int.Parse(dr["Pv_SumNum"].ToString()),
-						ReferPrice = dr["car_ReferPrice"].ToString(),
-						TransmissionType = dr["UnderPan_TransmissionType"].ToString(),//变速箱
-						Engine_Exhaust = exhaust,//排量
-						CarYear = dr["Car_YearType"] == DBNull.Value ? "" : dr["Car_YearType"].ToString(),
-						ProduceState = dr["Car_ProduceState"].ToString(),
-						UnderPan_ForwardGearNum = dictParams.ContainsKey(724) ? dictParams[724] : "",//档位个数
-						Engine_MaxPower = kw,//dictParams.ContainsKey(430) ? (int)(Convert.ToDouble(dictParams[430]) * 1.36) : 0,//最大马力
-						Electric_Peakpower = electrickW,
-						Engine_InhaleType = inhaleType,//进气型式
-						Engine_AddPressType = addPressType,//增压方式
-						Oil_FuelType = dictParams.ContainsKey(578) ? dictParams[578] : "",//燃料类型
-						IsImport = isImport
+                    carInfoList.Add(new CarInfoForSerialSummaryEntity()
+                    {
+                        CarID = carId,
+                        CarName = dr["car_name"].ToString(),
+                        SaleState = saleState,
+                        CarPriceRange = carPriceRange,
+                        CarPV = dr["Pv_SumNum"].ToString() == "" ? 0 : int.Parse(dr["Pv_SumNum"].ToString()),
+                        ReferPrice = dr["car_ReferPrice"].ToString(),
+                        TransmissionType = dr["UnderPan_TransmissionType"].ToString(),//变速箱
+                        Engine_Exhaust = exhaust,//排量
+                        CarYear = dr["Car_YearType"] == DBNull.Value ? "" : dr["Car_YearType"].ToString(),
+                        ProduceState = dr["Car_ProduceState"].ToString(),
+                        UnderPan_ForwardGearNum = dictParams.ContainsKey(724) ? dictParams[724] : "",//档位个数
+                        Engine_MaxPower = kw,//dictParams.ContainsKey(430) ? (int)(Convert.ToDouble(dictParams[430]) * 1.36) : 0,//最大马力
+                        Electric_Peakpower = electrickW,
+                        Engine_InhaleType = inhaleType,//进气型式
+                        Engine_AddPressType = addPressType,//增压方式
+                        Oil_FuelType = dictParams.ContainsKey(578) ? dictParams[578] : "",//燃料类型
+                        IsImport = isImport,
+                        BodyForm = dr["Body_Type"].ToString()
 					});
 				}
 			}

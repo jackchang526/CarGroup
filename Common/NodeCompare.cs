@@ -145,18 +145,22 @@ namespace BitAuto.CarChannel.Common
                 ret = 1;
             else
             {
-                ret = String.Compare(car1.Engine_Exhaust, car2.Engine_Exhaust);
+                ret = CompareBodyForm(car1.BodyForm, car2.BodyForm);
                 if (ret == 0)
                 {
-                    ret = CompareTransmissionType(car1.TransmissionType, car2.TransmissionType);
+                    ret = String.Compare(car1.Engine_Exhaust, car2.Engine_Exhaust);
                     if (ret == 0)
                     {
-                        double price1 = ConvertHelper.GetDouble(car1.ReferPrice);
-                        double price2 = ConvertHelper.GetDouble(car2.ReferPrice);
-                        if (price1 > price2)
-                            ret = 1;
-                        else if (price2 > price1)
-                            ret = -1;
+                        ret = CompareTransmissionType(car1.TransmissionType, car2.TransmissionType);
+                        if (ret == 0)
+                        {
+                            double price1 = ConvertHelper.GetDouble(car1.ReferPrice);
+                            double price2 = ConvertHelper.GetDouble(car2.ReferPrice);
+                            if (price1 > price2)
+                                ret = 1;
+                            else if (price2 > price1)
+                                ret = -1;
+                        }
                     }
                 }
             }
@@ -164,6 +168,10 @@ namespace BitAuto.CarChannel.Common
             return ret;
         }
         #endregion
+
+
+
+
         /// <summary>
         /// 实现品牌先按进口与国产排序，后按拼音排序
         /// </summary>
@@ -400,6 +408,35 @@ namespace BitAuto.CarChannel.Common
             return ret;
         }
 
+        /// <summary>
+        /// 按车身形式排序
+        /// </summary>
+        /// <param name="bodyForm1"></param>
+        /// <param name="bodyForm2"></param>
+        /// <returns></returns>
+        public static int CompareBodyForm(string bodyForm1, string bodyForm2)
+        {
+            if (bodyForm1 == bodyForm2) return 0;
+
+            string[] bodyForm = { "两厢","三厢", "suv", "mpv", "跑车", "旅行车", "掀背车", "跨界车", "敞篷车", "单厢", "微面", "皮卡", "客车", "卡车","房车" };
+            int b1 = -1;
+            int b2 = -1;
+            int length = bodyForm.Length;
+            for (int i = 0; i < length; i++)
+            {
+                if (bodyForm1.ToLower() == bodyForm[i])
+                {
+                    b1 = i;
+                }
+                if (bodyForm2.ToLower() == (bodyForm[i]))
+                {
+                    b2 = i;
+                }
+                if (b1 > -1 && b2 > -1)
+                    break;
+            }
+            return b1 - b2;
+        }
 
         /// <summary>
         /// 比较变速器类型

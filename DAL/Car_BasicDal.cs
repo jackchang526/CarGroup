@@ -685,7 +685,7 @@ left join Car_Serial cs on car.Cs_Id=cs.cs_id where car.Car_Id=@carid";
 			string sql = @"SELECT  car.car_id, car.car_name, car.car_ReferPrice, car.Car_YearType,
 									car.Car_ProduceState, car.Car_SaleState, cs.cs_id, cei.Engine_Exhaust,
 									cei.UnderPan_TransmissionType, ccp.PVSum AS Pv_SumNum, cs.cs_name,
-									cs.allSpell
+									cs.allSpell,cei.Body_Type
 							FROM    dbo.Car_Basic car WITH ( NOLOCK )
 									LEFT JOIN dbo.Car_Extend_Item cei WITH ( NOLOCK ) ON car.car_id = cei.car_id
 									LEFT JOIN Car_serial cs WITH ( NOLOCK ) ON car.cs_id = cs.cs_id

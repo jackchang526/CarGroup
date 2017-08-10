@@ -192,6 +192,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="config\ChangeURL.xml" />
     <Content Include="config\SceneCar.xml" />
     <Content Include="config\SecondCar.xml" />
     <Content Include="config\SUVChannel.xml" />

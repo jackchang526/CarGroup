@@ -152,6 +152,7 @@
     <Content Include="CarTree\CX_serial.aspx" />
     <Content Include="CarTree\SelectCar.aspx" />
     <Content Include="CarTreeV2\SelectCar.aspx" />
+    <Content Include="config\ChangeURL.xml" />
     <Content Include="config\guideConfig.xml" />
     <Content Include="config\H5SelectSerialList.xml" />
     <Content Include="config\IIS6\IsapiRewrite4.dll" />

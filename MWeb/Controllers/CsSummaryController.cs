@@ -1331,7 +1331,7 @@ namespace MWeb.Controllers
                 if (ele != null)
                 {
                     string levelSpell = BitAuto.CarUtils.Define.CarLevelDefine.GetLevelSpellByName(serialEntity.Level.Name);
-                    baoZhiLv = string.Format("<dl class=\"sum-baozhilv\"><dt class=\"w3\">保值率：</dt><dd>{0}% <a href=\"/{1}/baozhilv/\">排行>></a></dd></dl>"
+                    baoZhiLv = string.Format("<dl class=\"sum-baozhilv\"><dt class=\"w3\">保值率：</dt><dd>{0}% <a href=\"/{1}/baozhilv/\" data-channelid=\"27.23.2041\">排行>></a></dd></dl>"
                         , Math.Round(ConvertHelper.GetDouble(ele.Attributes["ResidualRatio5"].InnerText) * 100, 1)
                         , levelSpell
                         );

@@ -408,7 +408,7 @@
 
                         <div class="section-header header2 mb0">
                             <div class="box">
-                                <h2><a target="_blank" href="http://www.daikuan.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><%= serialShowName %>贷款方案</a></h2>
+                                <h2><a target="_blank" href="http://fenqi.taoche.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><%= serialShowName %>贷款方案</a></h2>
                             </div>
                         </div>
 
@@ -417,7 +417,7 @@
                         <div class="special-layout-12" id="gouche-chedaicontent">
                         </div>
                         <div class="btn-box1">
-                            <a class="btn btn-default" target="_blank" href="http://www.daikuan.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><span class="more">更多贷款方案</span></a>
+                            <a class="btn btn-default" target="_blank" href="http://fenqi.taoche.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><span class="more">更多贷款方案</span></a>
                         </div>
 
                     </div>

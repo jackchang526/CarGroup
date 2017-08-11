@@ -194,9 +194,9 @@
                     <div class="col-xs-3" id="mp-daikuan" downpayment="<%= serialMinPrice > 0 ? Math.Round(serialMinPrice*0.3,2) : 0 %>">
                         <div class="inner">
                             <span class="note">贷款</span>
-                            <h5><a href="http://www.daikuan.com/www/<%= serialSpell %>/?from=yc9&leads_source=p002003" data-channelid="2.21.1521" target="_blank">加载中...</a></h5>
+                            <h5><a href="http://fenqi.taoche.com/www/<%= serialSpell %>/?from=yc9&leads_source=p002003" data-channelid="2.21.1521" target="_blank">加载中...</a></h5>
                             <%-- <h5 class="grey-txt">暂无</h5>--%>
-                            <a class="btn btn-default" data-channelid="2.21.100" href="http://www.daikuan.com/www/<%= serialSpell %>/?from=yc9&leads_source=p002003" target="_blank">贷款</a>
+                            <a class="btn btn-default" data-channelid="2.21.100" href="http://fenqi.taoche.com/www/<%= serialSpell %>/?from=yc9&leads_source=p002003" target="_blank">贷款</a>
                         </div>
                     </div>
                     <div class="col-xs-3" id="mp-ershouche">
@@ -604,7 +604,7 @@
                     <div class="layout-2 loan-section" id="gouche-chedai">
                         <div class="section-header header2 mb0">
                             <div class="box">
-                                <h2><a target="_blank" href="http://www.daikuan.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><%= serialShowName %>贷款方案</a></h2>
+                                <h2><a target="_blank" href="http://fenqi.taoche.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><%= serialShowName %>贷款方案</a></h2>
                             </div>
                         </div>
                         <div class="special-layout-5 type-1" id="gouche-huodong" data-channelid="2.21.1516">
@@ -612,7 +612,7 @@
                         <div class="special-layout-12" id="gouche-chedaicontent" data-channelid="2.21.820">
                         </div>
                         <div class="btn-box1">
-                            <a class="btn btn-default" target="_blank" href="http://www.daikuan.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><span class="more">更多贷款方案</span></a>
+                            <a class="btn btn-default" target="_blank" href="http://fenqi.taoche.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><span class="more">更多贷款方案</span></a>
                         </div>
                     </div>
 

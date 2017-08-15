@@ -369,7 +369,7 @@
                                     </label></li>
                                 <li>
                                     <label>
-                                        <input type="checkbox" id="t_32" />半自动
+                                        <input type="checkbox" id="t_32" />机械自动式
                                         <span class="popup-layout-1">
                                         <span class="info">介于手动与自动之间的变速器，它不同于手动变速器传统的“H”型挡位结构，其换挡手柄只能前后移动进行升挡或降挡。目前市面上半自动变速器的车型比较少。</span></span>
                                     </label></li>
@@ -455,20 +455,20 @@
                                         <input type="checkbox" id="f_2" />油电混合</label></li>
                                 <li>
                                     <label>
-                                        <input type="checkbox" id="f_4" />油气混合</label></li>
+                                        <input type="checkbox" id="f_" />插电混合</label></li>
                                <%-- <li>
                                     <label>
                                         <input type="checkbox" id="f_32" />LPG</label></li>--%>
                                 <li>
                                     <label>
-                                        <input type="checkbox" id="f_64" />CNG
+                                        <input type="checkbox" id="f_" />天然气
                                         <span class="popup-layout-1">
                                         <span class="info">燃料的一种，CNG(Compressed Natural Gas),即压缩天然气，是天然气加压(超过3,600磅/平方英寸)并以气态储存在容器中。</span></span>
                                     </label></li>
                             </ul>
                         </dd>
                     </dl>
-                    <dl>
+                    <%--<dl>
                         <dt>油耗</dt>
                         <dd>
                             <ul class="tj_list">
@@ -495,7 +495,7 @@
                                         <input type="radio" name="fuelcon" id="fc_6" />15L以上</label></li>
                             </ul>
                         </dd>
-                    </dl>
+                    </dl>--%>
                     <dl>
                         <dt>供油方式</dt>
                         <dd>

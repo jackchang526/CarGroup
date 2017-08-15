@@ -94,13 +94,19 @@
                 </li>
                 <li id="fueltype16"><a href="/xuanchegongju/?f=16#anchorTitle" data-channelid="2.161.1688">纯电动</a></li>
                 <li id="fueltype2">
+                    <a href="/xuanchegongju/?f=#anchorTitle" class="cSubItem" data-channelid="">插电混合</a>
+                </li>
+                <li id="fueltype2">
                     <a href="/xuanchegongju/?f=2#anchorTitle" class="cSubItem" data-channelid="2.161.1689">油电混合</a>
                 </li>
-                <li id="fueltype4">
+                <li id="fueltype2">
+                    <a href="/xuanchegongju/?f=#anchorTitle" class="cSubItem" data-channelid="">天然气</a>
+                </li>
+                <!--<li id="fueltype4">
                     <a href="/xuanchegongju/?f=4#anchorTitle" data-channelid="2.161.1690">
                         油气混合
                     </a>
-                </li>
+                </li>-->
             </ul>
         </dd>
     </dl>
@@ -112,7 +118,6 @@
                 <li id="brandType1"><a href="/xuanchegongju/?g=1#anchorTitle" stattype="zizhu" data-channelid="2.94.591">自主</a></li>
                 <li id="brandType2"><a href="/xuanchegongju/?g=2#anchorTitle" stattype="hezi" data-channelid="2.94.592">合资</a></li>
                 <li id="brandType4"><a href="/xuanchegongju/?g=4#anchorTitle" stattype="jinkou" data-channelid="2.94.593">进口</a></li>
-
             </ul>
         </dd>
     </dl>
@@ -192,10 +197,10 @@
                 <li id="drivetype252" class="last" style="z-index: 1;">
                     <a href="/xuanchegongju/?dt=252#anchorTitle" class="ico-arrow" data-channelid="2.94.620">四驱</a>
                     <div id="drivetype_popup" class="drop-layer" style="display: none;">
-                            <a href="/xuanchegongju/?dt=252#anchorTitle" class="current" data-channelid="2.94.621">四驱</a>
-                            <a href="/xuanchegongju/?dt=4#anchorTitle" data-channelid="2.94.622">&nbsp;全时四驱</a>
-                            <a href="/xuanchegongju/?dt=8#anchorTitle" data-channelid="2.94.623">&nbsp;分时四驱</a>
-                            <a href="/xuanchegongju/?dt=16#anchorTitle" data-channelid="2.94.624">&nbsp;适时四驱</a>
+                        <a href="/xuanchegongju/?dt=252#anchorTitle" class="current" data-channelid="2.94.621">四驱</a>
+                        <a href="/xuanchegongju/?dt=4#anchorTitle" data-channelid="2.94.622">&nbsp;全时四驱</a>
+                        <a href="/xuanchegongju/?dt=8#anchorTitle" data-channelid="2.94.623">&nbsp;分时四驱</a>
+                        <a href="/xuanchegongju/?dt=16#anchorTitle" data-channelid="2.94.624">&nbsp;适时四驱</a>
                     </div>
                 </li>
             </ul>
@@ -239,9 +244,9 @@
                     <a href="/xuanchegongju/?more=125#anchorTitle">国5</a>
                 </li>
                 <li>
-                    <a href="/xuanchegongju/?more=127#anchorTitle">京5</a>
+                    <a href="/xuanchegongju/?more=#anchorTitle">国3</a>
                 </li>
-                <li>
+                <!--<li>
                     <a href="/xuanchegongju/?more=123#anchorTitle">欧4</a>
                 </li>
                 <li>
@@ -252,11 +257,11 @@
                 </li>
                 <li>
                     <a href="/xuanchegongju/?more=125_122#anchorTitle">国5/欧5</a>
-                </li>
+                </li>-->
             </ul>
         </dd>
     </dl>
-    <dl class="w-short">
+    <!--<dl class="w-short">
         <dt>车门数：</dt>
         <dd>
             <ul>
@@ -271,7 +276,7 @@
                 </li>
             </ul>
         </dd>
-    </dl>
+    </dl>-->
     <dl class="w-long">
         <dt>座位数：</dt>
         <dd>
@@ -282,7 +287,12 @@
                 </li>
                 <li id="seatnum2">
                     <a href="/xuanchegongju/?more=263#anchorTitle" data-channelid="2.94.637">
-                        4-5座
+                        4座
+                    </a>
+                </li>
+                <li id="seatnum">
+                    <a href="/xuanchegongju/?more=264#anchorTitle" data-channelid="">
+                        5座
                     </a>
                 </li>
                 <li id="seatnum3"><a href="/xuanchegongju/?more=265#anchorTitle" data-channelid="2.94.638">6座</a></li>
@@ -308,17 +318,7 @@
                 </li>
                 <li>
                     <label>
-                        <input id="more_196" type="checkbox" data-channelid="2.94.642" />GPS导航
-                    </label>
-                </li>
-                <li>
-                    <label>
                         <input id="more_200" type="checkbox" data-channelid="2.94.643" />倒车影像
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input id="more_180" type="checkbox" data-channelid="2.94.644" />儿童锁
                     </label>
                 </li>
                 <li>
@@ -333,27 +333,7 @@
                 </li>
                 <li>
                     <label>
-                        <input id="more_141" type="checkbox" data-channelid="2.94.647" />四轮碟刹
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input id="more_250" type="checkbox" data-channelid="2.94.648" />真皮座椅
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input id="more_184" type="checkbox" data-channelid="2.94.649" />ESP
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input id="more_224" type="checkbox" data-channelid="2.94.650" />氙气大灯
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input id="more_194" type="checkbox" data-channelid="2.94.651" />定速巡航
+                        <input id="more_190" type="checkbox">自动驻车
                     </label>
                 </li>
                 <li>
@@ -363,17 +343,7 @@
                 </li>
                 <li>
                     <label>
-                        <input id="more_177" type="checkbox" data-channelid="2.94.653" />胎压监测
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input id="more_189" type="checkbox" data-channelid="2.94.654" />自动泊车
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <input id="more_249" type="checkbox" data-channelid="2.94.655" />空气净化器
+                        <input id="more_184" type="checkbox" data-channelid="2.94.649" />ESP
                     </label>
                 </li>
                 <li>
@@ -383,12 +353,52 @@
                 </li>
                 <li>
                     <label>
-                        <input id="more_236" type="checkbox" data-channelid="2.94.657" />电动座椅
+                        <input id="more_189" type="checkbox" data-channelid="2.94.654" />自动泊车
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input id="more_181" type="checkbox" data-channelid="2.94.658" />儿童座椅接口
+                        <input id="more_196" type="checkbox" data-channelid="2.94.642" />GPS导航
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_194" type="checkbox" data-channelid="2.94.651" />定速巡航
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_177" type="checkbox" data-channelid="2.94.653" />胎压监测
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_191" type="checkbox">主动刹车
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_188" type="checkbox">上坡辅助
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_230" type="checkbox">LED日间行车灯
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" id="more_247">后排空调
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" id="more_198">启停系统
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input id="more_" type="checkbox" />牵引力制动
                     </label>
                 </li>
             </ul>

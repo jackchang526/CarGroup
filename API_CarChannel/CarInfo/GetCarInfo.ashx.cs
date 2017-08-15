@@ -115,7 +115,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
             {
                 response.Write(!string.IsNullOrEmpty(callback) ? string.Format("{0}({1})", callback, result) : result);
                 return;
-            } 
+            }
             string sql = @"WITH    result
                               AS(SELECT   CarId, [835], [845], [680], [691], [714], [715], [833],
                                             [898], [818], [811], [812], [813], [702], [800], [703],
@@ -154,7 +154,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                 var obj = new
                 {
                     CarId = dr["CarId"],
-                    CarName = dr["Car_Name"],
+                    CarName = CommonFunction.GetUnicodeByString(ConvertHelper.GetString(dr["Car_Name"])),
                     ReferPrice = dr["car_ReferPrice"],
                     Safe_KneeGasBag = dr["835"],
                     InStat_BeltBag = dr["845"],

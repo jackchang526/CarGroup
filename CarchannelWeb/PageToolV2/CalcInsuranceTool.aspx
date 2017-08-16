@@ -15,7 +15,7 @@
 <!--#include file="~/ushtml/0000/yiche_2016_cube_jisuanqi_style-1268.shtml"-->
 <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
 <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/dropdownlistnew.min.js?v=20161130"></script>
-<script type="text/javascript" src="<%= WebConfig.StaticFileBaseUrl %>jsnewV2/CarCalculator.min.js?v=20170324"></script>
+<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/CarCalculator.min.js?v=20170324"></script>
 <%--浮动JS--%>
 <script type="text/javascript">
     function addEvent(obj, type, fn) {

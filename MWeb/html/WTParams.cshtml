@@ -1,0 +1,17 @@
+﻿<script type="text/javascript">
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    var WtParam = sessionStorage.getItem("WT.mc_id");
+    if (!WtParam) {
+        var WtParam = GetQueryString("WT.mc_id");
+        if (WtParam != null) {
+            sessionStorage.setItem("WT.mc_id", WtParam);
+        }
+    }
+</script>
+
+
+

@@ -387,6 +387,7 @@
     <Content Include="handlers\YaGaoSelectCar.ashx" />
     <Content Include="handlers\GetSecondCar.ashx" />
     <Content Include="handlers\GetBaoZhiLv.ashx" />
+    <Content Include="html\WTParams.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Calc\CalcAutoCash.cshtml" />
     <Content Include="Views\Calc\CalcAutoCashDetail.cshtml" />

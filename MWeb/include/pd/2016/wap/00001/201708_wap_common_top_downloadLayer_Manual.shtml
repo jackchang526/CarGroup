@@ -1,0 +1,11 @@
+﻿<!--顶部下载浮层-->
+<div id="app_yc_dwonload">
+    <div class="ad-app ad-app-top">
+        <a id="closeYcApp" class="ad-close" onclick="javascript:document.getElementById('app_yc_dwonload').style.display = 'none';">关闭</a>
+        <img src="http://img1.bitautoimg.com/wap/v2/images/home_img1.png" />
+        <dl>
+            <dt>易车APP</dt>
+            <dd>更快更省流量，签到100%有礼</dd>
+        </dl>	<a href="//g.bitauto.com/c2.aspx?queryStr=GGN6qYKB9BwTk+cboIv/rA==&amp;adposid=18558&amp;c=&amp;f=http%3a%2f%2fprice.m.yiche.com%2fsch2583_c201%2f&amp;adurl=http%3a%2f%2fdl.ycapp.yiche.com%2fy10048%3fs%3d1%26ref%3dycapp10&amp;k=261199311" class="ad-btn-download">立即打开</a>
+    </div>
+</div>

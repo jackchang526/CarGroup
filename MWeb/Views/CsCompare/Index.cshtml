@@ -1,6 +1,7 @@
 ﻿@{
     Layout = null;
     //BitAuto.CarChannel.BLL.Data.SerialEntity serialEntity = ViewBag.SerialEntity;
+    string wtmcid = Request["from"];
 }
 @model BitAuto.CarChannel.BLL.Data.SerialEntity
 <!DOCTYPE html>
@@ -16,17 +17,23 @@
     <meta name="keywords" content="@(Model.SeoName)参数,@(Model.SeoName)配置,@(Model.SeoName)@(Model.Name)" />
     <meta name="description" content="@(Model.SeoName)配置:@(Model.Brand.SeoName)@(Model.Name)频道为您提供@(Model.SeoName)综合配置信息,包括@(Model.SeoName)安全装备,@(Model.SeoName)操控配置,@(Model.SeoName)内饰配置,@(Model.SeoName)参数性能,@(Model.SeoName)车型资料大全等,查@(Model.SeoName)参数配置,就上易车网" />
     <!--#include file="/ushtml/0000/myiche2015_cube_duibi_style-news-1003.shtml"-->
+    <link rel="canonical" href="http://car.bitauto.com/@(Model.AllSpell)/peizhi/" />
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/CommonJs.js"></script>
 </head>
 <body>
+    @Html.Partial("~/html/TopDownloadLayer.cshtml")
     <!-- header start -->
-    <div class="op-nav">
-        <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
-        <div class="tt-name">
-            <a href="http://m.yiche.com/" class="yiche-logo">汽车</a><h1>@Model.ShowName</h1>
+    @if (wtmcid != "mcfw99")
+    {
+        <div class="op-nav">
+            <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
+            <div class="tt-name">
+                <a href="http://m.yiche.com/" class="yiche-logo">汽车</a><h1>@Model.ShowName</h1>
+            </div>
+            <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
         </div>
-        <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
-    </div>
+    }
     <div class="op-nav-mark" style="display: none;"></div>
     <!-- header end -->
     <!-- 互联互通 start -->

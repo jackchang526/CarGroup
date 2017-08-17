@@ -222,6 +222,7 @@
     <Content Include="include\pd\2016\wap\00001\201703_wap_cxjg_jcx_Manual.shtml" />
     <Content Include="include\pd\2016\wap\00001\201703_wap_cxjg_mpv_Manual.shtml" />
     <Content Include="include\pd\2016\wap\00001\201703_wap_cxjg_suv_Manual.shtml" />
+    <Content Include="include\pd\2016\wap\00001\201708_wap_common_top_downloadLayer_Manual.shtml" />
     <Content Include="include\pd\2016\yipaicms\00001\201701_Mobile_Summary_SCInfoBtn_Manual.shtml" />
     <Content Include="include\special\testprice\00001\2017_car_stat_test_Manual.shtml" />
     <Content Include="include\special\stat\00001\bglogpostlog_Manual.shtml" />
@@ -274,6 +275,7 @@
     <Content Include="ushtml\0000\myiche2015_cube_xuanche_style-news-1004.shtml" />
     <Content Include="ushtml\0000\myiche2016_cube_canshupeizhijianhua-1335.shtml" />
     <Content Include="ushtml\0000\myiche2016_cube_daogouxiangqing-1187.shtml" />
+    <Content Include="ushtml\0000\myiche2016_cube_paizhaoshiche-1384.shtml" />
     <Content Include="ushtml\0000\myiche2016_cube_pindaoye-1181.shtml" />
     <Content Include="ushtml\0000\myiche2016_cube_pinpaiye-1161.shtml" />
     <Content Include="ushtml\0000\myiche2016_cube_qingjingxuanche-1184.shtml" />
@@ -388,6 +390,7 @@
     <Content Include="handlers\GetSecondCar.ashx" />
     <Content Include="handlers\GetBaoZhiLv.ashx" />
     <Content Include="html\WTParams.cshtml" />
+    <Content Include="html\TopDownloadLayer.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Calc\CalcAutoCash.cshtml" />
     <Content Include="Views\Calc\CalcAutoCashDetail.cshtml" />

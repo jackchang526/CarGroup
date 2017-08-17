@@ -8,6 +8,7 @@
     EnumCollection.SerialInfoCard serialInfoCard = (EnumCollection.SerialInfoCard)ViewData["SerialInfoCard"];
 
     string wtmcid = ConvertHelper.GetString(ViewData["wtmcid"]);
+    string wtfrom = Request["from"];
 }
 <!DOCTYPE html>
 <html>
@@ -20,7 +21,7 @@
     <title>@(ViewData["title"])></title>
     <meta name="Keywords" content="@(ViewData["keyWords"])" />
     <meta name="Description" content="@(ViewData["description"])" />
-    <link rel="canonical" href="http://car.m.yiche.com/@(serialEntity.AllSpell)/" />
+    <link rel="canonical" href="http://car.bitauto.com/@(serialEntity.AllSpell)/" />
     <!--#include file="/ushtml/0000/myiche2016_cube_summary-1154.shtml"-->
     <script type="text/javascript" charset="utf-8" src="http://ip.yiche.com/iplocation/setcookie.ashx"> </script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery-1.9.1.min.js"></script>
@@ -38,24 +39,37 @@
             CityName: cityName
         };
     </script>
+@if (wtfrom == "mcfw99")
+{
+    <style type="text/css">
+        .car-nav-fixed-box {
+            top: 0;
+        }
+    </style>
+}
 </head>
 <body>
+    @Html.Partial("~/html/TopDownloadLayer.cshtml")
     <div id="container">
-        <div class="op-nav-out">
-            <div class="op-nav-static op-nav-fixed">
-                <div class="op-nav">
-                    @if (string.IsNullOrWhiteSpace(wtmcid)) {
-                        <a id="gobackElm" data-channelid="27.23.690" href="javascript:;" class="btn-return">返回</a>
-                    }
-                    <div class="tt-name">
-                        <a data-channelid="27.23.1032" href="http://m.yiche.com/" class="yiche-logo">汽车</a>
-                        <h1>@(serialEntity.ShowName)</h1>
+        @if (wtfrom != "mcfw99")
+        {
+            <div class="op-nav-out">
+                <div class="op-nav-static" id="op-nav">
+                    <div class="op-nav">
+                        @if (string.IsNullOrWhiteSpace(wtmcid)) {
+                            <a id="gobackElm" data-channelid="27.23.690" href="javascript:;" class="btn-return">返回</a>
+                        }
+                        <div class="tt-name">
+                            <a data-channelid="27.23.1032" href="http://m.yiche.com/" class="yiche-logo">汽车</a>
+                            <h1>@(serialEntity.ShowName)</h1>
+                        </div>
+                        <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
                     </div>
-                    <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
+                    <div class="op-nav-mark" style="display: none;"></div>
                 </div>
-                <div class="op-nav-mark" style="display: none;"></div>
             </div>
-        </div>
+        }
+
         @(Html.Raw(ViewData["HeadHtml"]))
         <!--nav fixed start-->
         <div class="car-nav-fixed-box" id="carNavFixed" style="display: none">
@@ -502,7 +516,7 @@
             var CarCommonCBID = "@(serialEntity.Brand == null ? 0 : serialEntity.Brand.Id)";
             var CarCommonCSID = "@(serialEntity.Id.ToString(System.Globalization.CultureInfo.InvariantCulture))";
             //app下载设置全局变量
-            var global_app_download = false;
+            //var global_app_download = false;
             var citycode = GlobalSummaryConfig.CityId,
                 cityname = GlobalSummaryConfig.CityName;
             $("#m-hangqing-city").html(cityName + "<i></i>");
@@ -954,6 +968,29 @@
                 }
             });
         }
+        //顶部导航
+        var mNewsTagBar = document.getElementById("op-nav");
+        var topHeight = 0;
+        var tempBar = mNewsTagBar;
+        var ua = navigator.userAgent;
+        if (/(ip(ad|hone|od))/i.test(ua)) {
+
+        } else {
+            while (tempBar) {
+                topHeight = topHeight + tempBar.offsetTop;
+                tempBar = tempBar.offsetParent;
+            }
+            $(window).bind("scroll", function () {
+                var scrollHeight = document.body.scrollTop || document.documentElement.scrollTop;
+                if (scrollHeight >= topHeight) {
+                    tempIsFloatTopNavigation = true;
+                    mNewsTagBar.className = "op-nav-static op-nav-fixed";
+                } else {
+                    mNewsTagBar.className = "op-nav-static";
+                    tempIsFloatTopNavigation = false;
+                }
+            });
+        }
     </script>
     <!--评论数JS-->
     <!--#include file="/include/pd/2014/common/00001/201506_typls_js_Manual.shtml"-->

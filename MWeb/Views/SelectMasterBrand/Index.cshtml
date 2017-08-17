@@ -15,6 +15,8 @@
     <!--#include file="/ushtml/0000/myiche2015_cube_brand_style-996.shtml"-->
 </head>
 <body>
+    @Html.Partial("~/html/TopDownloadLayer.cshtml")
+    @Html.Partial("/html/WTParams.cshtml")
     <div class="mbt-page">
         <!-- header start -->
         <div class="op-nav">
@@ -24,6 +26,11 @@
             </div>
             <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
         </div>
+        <script type="text/javascript">
+            if (typeof (WtFrom) != "undefined" && WtFrom == "mcfw99") {
+                $(".op-nav").hide();
+            }
+        </script>
         <div class="op-nav-mark" style="display: none;"></div>
         <!-- header end -->
         <div class="brandfilter">

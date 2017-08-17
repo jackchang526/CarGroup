@@ -11,6 +11,13 @@
             sessionStorage.setItem("WT.mc_id", WtParam);
         }
     }
+    var WtFrom = sessionStorage.getItem("WT.from");
+    if (!WtFrom) {
+        var WtFrom = GetQueryString("from");
+        if (WtFrom != null) {
+            sessionStorage.setItem("WT.from", WtFrom);
+        }
+    }
 </script>
 
 

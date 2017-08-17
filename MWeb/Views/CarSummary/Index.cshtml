@@ -15,9 +15,11 @@
     <meta name="Keywords" content="@(Model.Serial.SeoName),@(Model.Serial.SeoName)车款,@(Model.Serial.SeoName)参数,@(Model.Serial.SeoName)配置,@(Model.Serial.Brand.SeoName+Model.Serial.SeoName)" />
     <meta name="Description" content="@(Model.Serial.SeoName):手机易车网车型频道为您提供全国最新@(Model.Serial.SeoName)报价,权威@(Model.Serial.SeoName)配置,海量@(Model.Serial.SeoName)图片" />
     <!--#include file="/ushtml/0000/myiche2015_cube_chekuan-1019.shtml"-->
+    <link rel="canonical" href="http://car.bitauto.com/@(Model.Serial.AllSpell)/m@(Model.Id)/" />
     <script type="text/javascript" charset="utf-8" src="http://ip.yiche.com/iplocation/setcookie.ashx"></script>
 </head>
 <body>
+    @Html.Partial("~/html/TopDownloadLayer.cshtml")
 <div id="container">
 <!-- header start -->
 <div class="op-nav">

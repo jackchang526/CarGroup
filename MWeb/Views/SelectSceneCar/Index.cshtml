@@ -20,6 +20,8 @@
     </script>
 </head>
 <body>
+    @Html.Partial("~/html/TopDownloadLayer.cshtml")
+    @Html.Partial("/html/WTParams.cshtml")
     <!-- header start -->
     <div class="op-nav">
         <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
@@ -28,6 +30,11 @@
         </div>
         <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
     </div>
+    <script type="text/javascript">
+         if (typeof (WtFrom) != "undefined" && WtFrom == "mcfw99") {
+             $(".op-nav").hide();
+         }
+    </script>
     <!-- header end -->
     <!-- 标签切换 start -->
     <div class="first-tags">

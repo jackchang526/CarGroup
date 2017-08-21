@@ -47,11 +47,11 @@
   <ItemGroup>
     <Reference Include="BitAuto.CarUtils, Version=1.2.0.3, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Dll\BitAuto.CarUtils.dll</HintPath>
+      <HintPath>..\..\..\packages\BitAuto.CarUtils.dll</HintPath>
     </Reference>
     <Reference Include="BitAuto.Utils, Version=2.0.7.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\P公用平台\Release\BitAuto.Utils.dll</HintPath>
+      <HintPath>..\..\..\packages\BitAuto.Utils.dll</HintPath>
     </Reference>
     <Reference Include="LocalFileReadModule">
       <HintPath>..\..\..\packages\LocalFileReadModule.dll</HintPath>

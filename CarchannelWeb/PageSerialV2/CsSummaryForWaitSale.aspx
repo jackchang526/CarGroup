@@ -110,8 +110,9 @@
                     </ul>
                     <div class="mobile-qrcode">
                         <img src="/favicon.ico" id="qrcodelogo" style="display: none;" />
-                        <a href="<%= wirelessSerialUrl %>?ref=pctowap" target="_blank" id="qrcode"><img src="http://image.bitautoimg.com/cargroup/car/qrimages/<%= serialId %>.png?v=1" /></a>
-                        <em>手机看车</em>
+                        <a href="javascript:;"><img src="http://image.bitautoimg.com/cargroup/car/appdownload.png" /></a>
+                        <%--<a href="<%= wirelessSerialUrl %>?ref=pctowap" target="_blank" id="qrcode"><img src="http://image.bitautoimg.com/cargroup/car/qrimages/<%= serialId %>.png?v=1" /></a>--%>
+                        <em>下APP抢1G流量</em>
                     </div>
                 </div>
 
@@ -188,7 +189,7 @@
             <div class="col-xs-9">
                 <div class="section-main">
 
-                    <div class="row col3-adv-1 layout-1">
+                    <div class="row col3-adv-1 layout-1" style="margin-top: -20px;margin-bottom: 30px;">
                         <div class="special-layout-3 ad-tag-box">
                             <cite class="ad-tag2" style="right: 5px; top: 5px;"></cite>
                             <ins id="div_084b9793-2721-4aa1-91d1-c61273417454" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="084b9793-2721-4aa1-91d1-c61273417454"></ins>
@@ -246,7 +247,7 @@
                         </div>
                     </div>
                     <%= serialHeaderJs%>
-                    <div class="layout-1">
+                    <div class="layout-1" style="margin-top: -20px;margin-bottom: 30px;">
                         <script type="text/javascript">
                             var pageCarLevel='<%=serialEntity.Level.Name%>';
                             function showNewsInsCode(dxc, xxc, mpv, suv) {
@@ -442,7 +443,7 @@
             <div class="col-xs-3">
                 <div class="section-right">
                     <%= koubeiReportHtml %>
-                    <div class="special-layout-3 sm layout-1 ad-tag-box">
+                    <div class="special-layout-3 sm layout-1 ad-tag-box" style="margin-top: -20px;margin-bottom: 30px;">
                         <cite class="ad-tag2" style="right: 5px; top: 5px;"></cite>
                         <ins id="div_2ed120ed-a613-4a43-84a2-3b7b5d0d8304" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="2ed120ed-a613-4a43-84a2-3b7b5d0d8304"></ins>
                     </div>

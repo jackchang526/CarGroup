@@ -102,6 +102,11 @@
                             </a>
                         </li>
                         <li>
+                            <a href="http://jiangjia.m.yiche.com/nb@(serialEntity.Id)_c201/" id="navFixedJiangJia" data-channelid="27.23.2114">
+                                <strong>降价</strong>
+                            </a>
+                        </li>
+                        <li>
                             <a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/wenzhang/" data-channelid="27.23.1371">
                                 <strong>文章</strong>
                             </a>
@@ -119,6 +124,11 @@
                         <li>
                             <a href="@(ViewData["BaaUrl"])" data-channelid="27.23.1374">
                                 <strong>社区</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://m.daikuan.com/www/@(serialEntity.AllSpell)/?from=8921" data-channelid="27.23.2151">
+                                <strong>贷款</strong>
                             </a>
                         </li>
                         <li>
@@ -261,7 +271,13 @@
                 }
             </div>
             <div class="clear"></div>
-            <div class="sum-btn" id="btn-business"></div>
+            <div class="sum-btn" id="btn-business">
+                <ul>
+                    <li>
+                        <a data-channelid="27.23.2113" href="javascript:;">经销商</a>
+                    </li>  
+                </ul>
+            </div>
         </div>
         <!-- 易车购车服务 start -->
         <div class="car-service b-shadow" id="carservice" style="display: none">
@@ -290,6 +306,8 @@
             var carlevel = "@(serialEntity.Level.Name)";
             var uCarLowestPrice = "@(ViewData["uCarLowestPrice"])";//二手车最低价
             var serialAllSpell = "@(serialEntity.AllSpell)";
+            $("#navFixedJiangJia").attr("href", "http://jiangjia.m.yiche.com/nb" + GlobalSummaryConfig.SerialId + "_c" + GlobalSummaryConfig.CityId + "/");
+            $("#btn-business a").first().attr("href", "http://dealer.m.yiche.com/" + GlobalSummaryConfig.CityId + "/" + GlobalSummaryConfig.SerialId +"/2/ ");
 
             function showNewsInsCode(dxc, xxc, mpv, suv) {
                 var adBlockCode = xxc;
@@ -836,7 +854,7 @@
 
 
     <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/commonjs.js,carchannel/wirelessjsv2/city348IDMapName.js"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/cssummaryv2.min.js?v=20170719"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/cssummaryv2.min.js?v=20170824"></script>
     @*<script type="text/javascript" src="/js/cssummaryv2.js?v=20170303"></script>*@
     <script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars"></script>
     <script src="http://image.bitautoimg.com/uimg/wap/js/idangerous.swiper-2.0.min.js"></script>

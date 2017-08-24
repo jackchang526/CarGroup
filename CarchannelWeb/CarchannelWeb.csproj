@@ -3239,6 +3239,7 @@
     <Content Include="config\SelectCarParams.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="config\ParameterConfigurationNewV2.config" />
     <None Include="include\special\2010\00001\test1.shtml.bak" />
     <None Include="include\special\2010\00001\test2.shtml.bak" />
     <Content Include="Interface\Level\GetLevelHtmlCode.ashx" />

@@ -419,13 +419,64 @@ left join Car_Serial cs on car.Cs_Id=cs.cs_id where car.Car_Id=@carid";
             }
 			return dic;
 		}
-		/// <summary>
-		/// 获取车款参数值
-		/// </summary>
-		/// <param name="carId"></param>
-		/// <param name="paramId"></param>
-		/// <returns></returns>
-		public string GetCarParamValue(int carId, int paramId)
+        /// <summary>
+        /// 车型所有选配参数
+        /// </summary>
+        /// <param name="carID"></param>
+        /// <returns></returns>
+        public Dictionary<int, Dictionary<string, double>> GetCarAllParamOptionalByCarID(int carID)
+        {
+            Dictionary<int, Dictionary<string, double>> dic = new Dictionary<int, Dictionary<string, double>>();
+            string catchkey = "GetCarAllParamOptionalByCarID_" + carID.ToString();
+            object objGetCarAllParamByCarId = null;
+            CacheManager.GetCachedData(catchkey, out objGetCarAllParamByCarId);
+            if (objGetCarAllParamByCarId == null)
+            {
+                string sql = "select CarId,PropertyId,PropertyValue,Price from dbo.CarDataBaseOptional where CarId=@carID";
+                SqlParameter[] _param ={
+                                      new SqlParameter("@carID",SqlDbType.Int)
+                                  };
+                _param[0].Value = carID;
+                DataSet ds = BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.AutoStorageConnectionString, CommandType.Text, sql, _param);
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        int paramid = 0;
+                        if (int.TryParse(dr["PropertyId"].ToString(), out paramid))
+                        {
+                            if (paramid > 0 && dr["PropertyValue"].ToString().Trim() != "")
+                            {
+                                if (!dic.ContainsKey(paramid))
+                                {
+                                    Dictionary<string, double> dicCs = new Dictionary<string, double>();
+                                    dicCs.Add(dr["PropertyValue"].ToString().Trim(), ((dr["Price"]) == DBNull.Value) ? 0 : Convert.ToDouble(dr["Price"]));
+                                    dic.Add(paramid, dicCs);
+                                }
+                                else
+                                {
+                                    if (!dic[paramid].ContainsKey(dr["PropertyValue"].ToString().Trim()))
+                                    { dic[paramid].Add(dr["PropertyValue"].ToString().Trim(), ((dr["Price"]) == DBNull.Value) ? 0 : Convert.ToDouble(dr["Price"])); }
+                                }
+                            }
+                        }
+                    }
+                }
+                CacheManager.InsertCache(catchkey, dic, WebConfig.CachedDuration);
+            }
+            else
+            {
+                dic = (Dictionary<int, Dictionary<string, double>>)objGetCarAllParamByCarId;
+            }
+            return dic;
+        }
+        /// <summary>
+        /// 获取车款参数值
+        /// </summary>
+        /// <param name="carId"></param>
+        /// <param name="paramId"></param>
+        /// <returns></returns>
+        public string GetCarParamValue(int carId, int paramId)
 		{
 			Dictionary<int, string> dic = new Dictionary<int, string>();
 			string sql = @"SELECT  carid, paramid, pvalue

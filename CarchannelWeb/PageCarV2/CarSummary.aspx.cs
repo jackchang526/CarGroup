@@ -1,20 +1,17 @@
-﻿using System;
-using System.Data;
-using System.Text;
-using System.Xml;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using BitAuto.CarChannel.BLL;
+using BitAuto.CarChannel.BLL.Data;
 using BitAuto.CarChannel.Common;
-using BitAuto.CarChannel.Common.Enum;
 using BitAuto.CarChannel.Common.Cache;
-using BitAuto.CarChannel.BLL;
+using BitAuto.CarChannel.Common.Enum;
 using BitAuto.CarChannel.Model;
 using BitAuto.Utils;
-using BitAuto.CarChannel.BLL.Data;
+using System;
+using System.Collections.Generic;
+using System.Data;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Xml;
 
 namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
 {
@@ -104,6 +101,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
         protected string carPrice = string.Empty;//参考成交价
         //购置税内容
         protected string TaxContent = string.Empty;
+        protected Dictionary<int, Dictionary<string, double>> dictOptional;
+       // protected string carFuelType = ["汽油", "柴油", "纯电动", "油电混合", "插电混合", "客车", "卡车", "天然气"];
         #endregion
 
         private Car_BasicBll basicBll;
@@ -185,7 +184,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 //{ fuelString = "<a href=\"http://car.bitauto.com/" + cbe.Serial.AllSpell.ToLower() + "/youhao/\" target=\"_blank\">" + fuelString + "/100km</a>"; }
 
                 Dictionary<int, string> dict = basicBll.GetCarAllParamByCarID(carID);
-
+                dictOptional = basicBll.GetCarAllParamOptionalByCarID(carID);
                 // 节能补贴 Sep.2.2010 [2012-04-09 样式修改]
                 bool isHasEnergySubsidy = basicBll.CarHasParamEx(carID, 853);
                 //modified by sk 2015.01.30 只显示 第七 八 批 补贴批次
@@ -818,7 +817,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
             else
             {
                 XmlDocument docPC = new XmlDocument();
-                string cache = "CarSummary_ParameterConfigurationNew";
+                string cache = "CarSummary_ParameterConfigurationNewV2";
                 object parameterConfiguration = null;
                 CacheManager.GetCachedData(cache, out parameterConfiguration);
                 if (parameterConfiguration != null)
@@ -827,7 +826,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 }
                 else
                 {
-                    var filePath = System.Web.HttpContext.Current.Server.MapPath("~") + "\\config\\ParameterConfigurationNew.config";
+                    var filePath = System.Web.HttpContext.Current.Server.MapPath("~") + "\\config\\ParameterConfigurationNewV2.config";
                     if (File.Exists(filePath))
                     {
                         docPC.Load(filePath);
@@ -909,7 +908,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 //if (dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value)
                 //	&& dic[carID][item.Attributes.GetNamedItem("Value").Value] != "待查")
                     string pvalue = string.Empty;
-                    //合并参数
+                //合并参数
                     if (item.Attributes.GetNamedItem("Value").Value.IndexOf(",") != -1)
                     {
                         string[] arrKey = item.Attributes.GetNamedItem("Value").Value.Split(',');
@@ -954,9 +953,13 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                     }
                     else
                     {
-                        if (!(dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value)
-                    && dic[carID][item.Attributes.GetNamedItem("Value").Value] != "待查")) continue;
-                        pvalue = string.Format("{0}{1}", dic[carID][item.Attributes.GetNamedItem("Value").Value], item.Attributes.GetNamedItem("Unit").Value);
+                        if (!(dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value))
+                    && !(dictOptional.ContainsKey(int.Parse(item.Attributes.GetNamedItem("ParamID").Value))))
+                       { continue; }
+                        if (dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value))
+                        {
+                            pvalue = string.Format("{0}{1}", dic[carID][item.Attributes.GetNamedItem("Value").Value], item.Attributes.GetNamedItem("Unit").Value);
+                        }
                     }
 
                     isHasChild = true || isHasChild;
@@ -1001,15 +1004,15 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                         }
                     }
                     //解决 变速箱 无极变速 替换成 -
-                    if (item.Attributes.GetNamedItem("Name").Value != "变速箱")
+                    if (item.Attributes.GetNamedItem("Name").Value != "燃油变速箱")
                     {
                         if (pvalue.IndexOf("有") == 0)
                         { pvalue = "●"; }
                         if (pvalue.IndexOf("选配") == 0)
                         { pvalue = "○"; }
                         if (pvalue.IndexOf("无") == 0)
-                        { pvalue = "-"; }
-                    }
+                            { pvalue = "-"; }
+                        }
                      
                     //sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + ":</span></td>");
 
@@ -1042,7 +1045,43 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                     else
                     {
                         sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>");
-                        sbTemp.AppendLine("<td class=\"info\">" + pvalue + "</td>");
+                        if (item.Attributes.GetNamedItem("Value").Value.IndexOf(",") == -1 && dictOptional.ContainsKey(int.Parse(item.Attributes.GetNamedItem("ParamID").Value)))
+                        {
+                            var optionalPara = dictOptional[int.Parse(item.Attributes.GetNamedItem("ParamID").Value)];
+                            if (optionalPara.Count <= 1)
+                            {
+                                var name = optionalPara.Single().Key;
+                                var price = optionalPara.Single().Value;
+                            if (string.IsNullOrEmpty(pvalue))
+                            {
+                                sbTemp.AppendLine("<td><div class=\"info\"><div>" + "○ " + name + "￥" + price + "起</div></div></td>");
+                            }
+                            else
+                            {
+                                sbTemp.AppendLine("<td><div class=\"info\"><div>" + "● " + pvalue + "</div><div>" + "○ " + name + "￥" + price + "起</div></div></td>");
+                            }
+                        }
+                        else
+                        {
+                            if (string.IsNullOrEmpty(pvalue))
+                            {
+                                sbTemp.AppendLine("<td><div class=\"info\">");
+                            }
+                            else {
+                                sbTemp.AppendLine("<td><div class=\"info\"><div>" + "● " + pvalue + "</div>");
+                            }                           
+                            double minPrice = optionalPara.Values.Min();
+                            sbTemp.AppendLine("<div class=\"popup-control-box optional\">" + "○ 选装￥" + minPrice + "起<div class=\"popup-layout-1\"> <ul>");
+                            foreach (var para in optionalPara.Keys)
+                            {
+                                sbTemp.AppendLine("<li> <span class=\"l\">" + para + "</span> <span class=\"r\">" + optionalPara[para] + "</span></li>");
+                            }
+                        sbTemp.AppendLine("</ul></div></div></div>");
+                        }
+                    }
+                    else {
+                        sbTemp.AppendLine("<td><span class=\"info\">" + pvalue + "</span></td>");
+                    }                        
                         loopCount++;
                     }
             }

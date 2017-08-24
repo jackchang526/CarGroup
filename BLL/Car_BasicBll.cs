@@ -721,13 +721,22 @@ namespace BitAuto.CarChannel.BLL
 		{
 			return new Car_BasicDal().GetCarAllParamByCarID(carID);
 		}
-		/// <summary>
-		/// 获取车款参数值
-		/// </summary>
-		/// <param name="carId"></param>
-		/// <param name="paramId"></param>
-		/// <returns></returns>
-		public string GetCarParamValue(int carId, int paramId)
+        /// <summary>
+        /// 取车型全部选配参数项
+        /// </summary>
+        /// <param name="carID"></param>
+        /// <returns></returns>
+        public Dictionary<int, Dictionary<string, double>> GetCarAllParamOptionalByCarID(int carID)
+        {
+            return new Car_BasicDal().GetCarAllParamOptionalByCarID(carID);
+        }
+        /// <summary>
+        /// 获取车款参数值
+        /// </summary>
+        /// <param name="carId"></param>
+        /// <param name="paramId"></param>
+        /// <returns></returns>
+        public string GetCarParamValue(int carId, int paramId)
 		{
 			string result = string.Empty;
 			if (carId <= 0 || paramId <= 0) return result;

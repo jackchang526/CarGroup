@@ -14,9 +14,9 @@
     <Item Value="Cs_BBSUrl" Desc="论坛" ParamID="0" Unit="" />
     <Item Value="Cs_CarLevel" Desc="子品牌级别" ParamID="0" Unit="" />
     <Item Value="Car_OutStat_BodyColorRGB" Desc="车型车身颜色RGB" ParamID="0" Unit="" />
+    <Item Value="CarReferPrice" Desc="厂家指导价" ParamID="0" Unit="元" />
   </Group>
   <Group Desc="基本信息">
-    <Item Value="CarReferPrice" Desc="厂家指导价" ParamID="0" Unit="元" />
     <Item Value="AveragePrice" Desc="经销商报价" ParamID="0" Unit="元" />
     <Item Value="Car_JiangJiaPrice" Desc="降价优惠" ParamID="0" Unit="元" />
     <Item Value="Car_RepairPolicy" Desc="保修政策" ParamID="398" Unit="" />
@@ -44,9 +44,6 @@
     <Item Value="carcheluntaiguige" Desc="轮胎规格" ParamID="1001" Unit="" />
     <Item Value="maximum_gross_mass" Desc="载重质量" ParamID="974" Unit="kg" />
     <Item Value="truck_tire_number" Desc="轮胎数量" ParamID="982" Unit="个" />
-    <Item Value="Cargo_length_max" Desc="货箱长" ParamID="966" Unit="mm" />
-    <Item Value="Cargo_height_max" Desc="货箱高" ParamID="969" Unit="mm" />
-    <Item Value="cargo_width_max" Desc="货箱宽" ParamID="970" Unit="mm" />
   </Group>
   <Group Desc="动力系统">
     <Item Value="Engine_Exhaust" Desc="排量" ParamID="423" Unit="mL" />
@@ -54,13 +51,13 @@
     <Item Value="Engine_MaxPower" Desc="最大功率-功率值" ParamID="430" Unit="kW" />
     <Item Value="Engine_horsepower" Desc="最大马力" ParamID="791" Unit="Ps" />
     <Item Value="Engine_PowerSpeed" Desc="最大功率-转速" ParamID="433" Unit="r/min(rpm)" />
-    <Item Value="Engine_MaxNJ" Desc="最大扭矩-扭矩值" ParamID="429" Unit="Nm" />
+    <Item Value="Engine_MaxNJ" Desc="最大扭矩-扭矩值" ParamID="429" Unit="Nm   " />
     <Item Value="Engine_NJSpeed" Desc="最大扭矩—转速" ParamID="432" Unit="r/min(rpm)" />
     <Item Value="Engine_CylinderRank" Desc="缸体形式" ParamID="418" Unit="" />
     <Item Value="Engine_CylinderNum" Desc="汽缸数" ParamID="417" Unit="个" />
     <Item Value="Engine_InhaleType" Desc="进气型式" ParamID="425" Unit="" />
     <Item Value="Oil_SupplyType" Desc="供油方式" ParamID="580" Unit="" />
-    <Item Value="Engine_CompressRat" Desc="压缩比" ParamID="414" Unit="1" />
+    <Item Value="Engine_CompressRat" Desc="压缩比" ParamID="414" Unit=":1" />
     <Item Value="Oil_FuelTab" Desc="燃油标号" ParamID="577" Unit="" />
     <Item Value="UnderPan_Startandstopsystem" Desc="启停系统" ParamID="894" Unit="" />
     <Item Value="UnderPan_TransmissionType" Desc="燃油变速箱类型" ParamID="712" Unit="" />
@@ -212,7 +209,7 @@
     <Item Value="InStat_GPS" Desc="GPS电子导航" ParamID="516" Unit="" />
     <Item Value="zhinenghuliandingwei" Desc="智能互联定位" ParamID="1033" Unit="" />
     <Item Value="yuyinkongzhi" Desc="语音控制" ParamID="1035" Unit="" />
-    <Item Value="shoujihulian" Desc="手机互联(Carplay &amp; Android)" ParamID="1036" Unit="" />
+    <Item Value="shoujihulian" Desc="手机互联(Carplay & Android)" ParamID="1036" Unit="" />
     <Item Value="shoujiwuxianchongdian" Desc="手机无线充电" ParamID="1037" Unit="" />
     <Item Value="shoushikongzhi" Desc="手势控制系统" ParamID="1034" Unit="" />
     <Item Value="InStat_DVDPlayer" Desc="DVD" ParamID="510" Unit="" />

@@ -542,8 +542,8 @@ var baoxiaoOrImport = [];
                 var serviceHtml = [],
                     btnHtml = [],
                     duibiLevelBtnHtml = [],
-                    btnCount = 0;
-                btnHtml.push("<ul>");
+                    btnCount = 1;
+                //btnHtml.push("<ul>");
                 $.each(data.Button, function (i, n) {
                     if (i > 2) return;
                     if (global_busbtn_arr.indexOf(n.BusinessId) != -1) {
@@ -553,11 +553,11 @@ var baoxiaoOrImport = [];
                         btnCount++;
                     }
                 });
-                btnHtml.push("</ul>");
+                //btnHtml.push("</ul>");
                 if (btnCount == 2) {
-                    $("#btn-business").html(btnHtml.join('')).addClass("sum-btn-two");
+                    $("#btn-business ul").append(btnHtml.join('')).parent().addClass("sum-btn-two");
                 } else {
-                    $("#btn-business").html(btnHtml.join(''));
+                    $("#btn-business ul").append(btnHtml.join(''));
                 }
                 $("#bottomFloat ul").append(duibiLevelBtnHtml.join(''));
                 if ($("#liSCInfo").length > 0 && $("#bottomFloat .xunjia-btn").length > 0) {

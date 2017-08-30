@@ -20,11 +20,9 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 		private Dictionary<int, Dictionary<string, string>> dicCarParam = new Dictionary<int, Dictionary<string, string>>();
 		private bool isParamPage = false;
 		private int topCount = 10;
-		private Dictionary<int, string> dicParamIDToName = new Dictionary<int, string>();
+		//private Dictionary<int, string> dicParamIDToName = new Dictionary<int, string>();
  		// 参数模板
 		private Dictionary<int, List<string>> dicTemp = null;
-        //新版参数
-        private bool isNewParam = false;
 
 		public void ProcessRequest(HttpContext context)
 		{

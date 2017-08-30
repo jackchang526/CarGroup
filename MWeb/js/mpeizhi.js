@@ -281,14 +281,15 @@ function bindEvent() {
     });
     //选装包事件
     bindOptionalEvent();
+}
+//选装包弹层
+function bindOptionalEvent() {
     $('.pop-optional-mask').off("click").click(function () {
         $('body').css('overflow', 'auto');
         $('.pop-optional-mask').hide();
         $('.pop-optional').hide().removeClass('pop-optional-top pop-optional-bottom').find('ul').hide();
-    });
-}
-//选装包弹层
-function bindOptionalEvent() {
+    });
+
     $('.optional.type1').off("click").on("click", function (e) {        e.stopPropagation();        var data = $(this).attr("data-optional");        if (data == "undefined" || data == "") return;        var fieldValue = data.split(',');
         var dataJson = [];
         for (var fieldIndex = 0; fieldIndex < fieldValue.length; fieldIndex++) {
@@ -841,7 +842,15 @@ function createMulti(arrFieldRow) {
                         if (multiField.indexOf("有") >= 0)
                         { multiField = "<span class=\"songti f-bold\">●</span>"; }
                         if (multiField.indexOf("选配") >= 0 && multiField.indexOf("●") < 0)
-                        { multiField = "<span class=\"songti f-bold\">○</span>"; }
+                        {
+                            var fieldInfo = multiField.split('|');
+                            if (fieldInfo.length > 1) {
+                                multiField = "<span class=\"songti\">○ 选配" + formatCurrency(fieldInfo[1]) + "元</span>";
+                            }
+                            else {
+                                multiField = "<span class=\"songti\">○</span>";
+                            }
+                        }
                         if (multiField.indexOf("无") >= 0 && multiField.indexOf("●") < 0 && multiField.length == 1)
                         { multiField = "<span class=\"songti f-bold\">-</span>"; }
 

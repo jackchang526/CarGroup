@@ -1517,5 +1517,30 @@ FROM    dbo.Car_Serial_30UV uv
 				, CommandType.Text, sql);
 			return ds;
 		}
+
+        /// <summary>
+        /// 查询车系选配包信息
+        /// </summary>
+        /// <param name="serialId">车系id</param>
+        /// <returns></returns>
+        public DataSet GetSerialOptionalPackage(int serialId)
+        {
+            string sql = @"SELECT autoid,cs_id,year,packagename,packageprice,packagedescription
+                            FROM Car_SerialPackage WITH(NOLOCK)
+                            WHERE cs_id = @csid
+
+                            SELECT carId, SerialPackageId
+                            FROM carJoinserialpackage WITH(NOLOCK)
+                            WHERE SerialPackageId in (
+                                SELECT autoid
+                                FROM Car_SerialPackage WITH(NOLOCK)
+                                WHERE cs_id = @csid
+                            )";
+            SqlParameter[] param = new SqlParameter[] {
+                new SqlParameter("@csid",serialId)
+            };
+            DataSet ds = SqlHelper.ExecuteDataset(WebConfig.AutoStorageConnectionString, CommandType.Text, sql, param);
+            return ds;
+        }
 	}
 }

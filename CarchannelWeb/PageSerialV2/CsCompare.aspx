@@ -160,6 +160,7 @@
        { %>
     <script type="text/javascript">
         <%= jsContent %>
+        <%= packageJsContent %>
     </script>
     <% } %>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/draggable.js"></script>

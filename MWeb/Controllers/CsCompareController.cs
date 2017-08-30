@@ -9,6 +9,7 @@ using BitAuto.CarChannel.Common;
 using BitAuto.Utils;
 using System.Data;
 using System.Web.UI;
+using BitAuto.CarChannel.BLL;
 
 namespace MWeb.Controllers
 {
@@ -22,7 +23,9 @@ namespace MWeb.Controllers
         private int maxCount = 40;
         protected string carIDs = string.Empty;
         protected string carIDAndName = string.Empty;
-        
+
+        private Car_SerialBll carSerialBll = new Car_SerialBll();
+
         public CsCompareController()
         {
             pageBase = new PageBase();
@@ -39,6 +42,7 @@ namespace MWeb.Controllers
 				Response.Redirect("/error", true);
 				return new EmptyResult();
 			}
+            GetSerialOptionalPackageData();
             ViewBag.CsHeadHTML = pageBase.GetCommonNavigation("MCsCompare", csID);
             ViewBag.CsId = csID;
 
@@ -90,6 +94,13 @@ namespace MWeb.Controllers
                     ViewBag.CarIds = carIDs;
                 }
             }
+        }
+        /// <summary>
+        /// 获取车系选配包json
+        /// </summary>
+        private void GetSerialOptionalPackageData()
+        {
+            ViewData["PackageJsContent"] = carSerialBll.GetSerialOptionalPackageJson(csID);
         }
         #region  应王淞要求，下线参配测试车系3524、3814
         //public ActionResult Index3524()

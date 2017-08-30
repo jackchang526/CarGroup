@@ -8160,5 +8160,37 @@ namespace BitAuto.CarChannel.BLL
             }
             return vrDic;
         }
-	}
+
+
+
+        /// <summary>
+        /// 查询车系选配包信息
+        /// </summary>
+        /// <param name="serialId"></param>
+        /// <returns></returns>
+        public string GetSerialOptionalPackageJson(int serialId)
+        {
+            DataSet ds = csd.GetSerialOptionalPackage(serialId);
+            StringBuilder json = new StringBuilder("[");
+            if (ds != null && ds.Tables.Count > 1 && ds.Tables[0].Rows.Count > 0 && ds.Tables[1].Rows.Count > 0)
+            {
+                DataRowCollection package = ds.Tables[0].Rows;
+                foreach (DataRow dr in package)
+                {
+                    DataRow[] carDrs = ds.Tables[1].Select("SerialPackageId=" + dr["autoid"]);
+                    string carIds = string.Join(",", carDrs.Select(x => x["carid"]).ToList());
+                    json.AppendFormat("{{\"id\":{0},\"csid\":{1},\"name\":\"{2}\",\"price\":{3},\"desc\":\"{4}\",carid:[{5}]}}{6}"
+                        , dr["autoid"]
+                        , dr["cs_id"]
+                        , dr["packagename"]
+                        , dr["packageprice"]
+                        , dr["packagedescription"]
+                        , carIds
+                        , package.IndexOf(dr) == package.Count - 1 ? "" : ",");
+                }
+            }
+            json.Append("]");
+            return json.ToString();
+        }
+    }
 }

@@ -23,6 +23,8 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 		private Dictionary<int, string> dicParamIDToName = new Dictionary<int, string>();
  		// 参数模板
 		private Dictionary<int, List<string>> dicTemp = null;
+        //新版参数
+        private bool isNewParam = false;
 
 		public void ProcessRequest(HttpContext context)
 		{
@@ -86,7 +88,8 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 		{
 			if (listCarID.Count > 0)
 			{
-				dicCarParam = (new Car_BasicBll()).GetCarCompareDataByCarIDs(listCarID);
+                
+				dicCarParam = (new Car_BasicBll()).GetCarCompareDataByCarIDsV2(listCarID);
 
 				#region 生成车型详细参数js数组
 				// 生成车型详细参数js数组

@@ -36,7 +36,7 @@ var ArrChannelNo = {
     "params-carinfo": "27.158.1620", "params-carbody": "27.158.1621", "params-carengine": "27.158.1622", "params-transmission": "27.158.1623",
     "params-bottomstop": "27.158.1624", "params-safeconfig": "27.158.1625", "params-wheel": "27.158.1626", "params-drivingassistance": "27.158.1627",
     "params-doorswindow": "27.158.1628", "params-lights": "27.158.1629", "params-innerconfig": "27.158.1630", "params-chair": "27.158.1631",
-    "params-pastime": "27.158.1632", "params-air": "27.158.1633"
+    "params-pastime": "27.158.1632", "params-air": "27.158.1633","params-optional":""
 };
 
 // 车型对比信息
@@ -177,6 +177,9 @@ function createPageForCompare(isDelSame) {
             case "fieldMulti":
                 if (ComparePageObject.ValidCount > 0) createMulti(arrField[i]);
                 break;
+            case "fieldMultiValue":
+                if (ComparePageObject.ValidCount > 0) fieldMultiValue(arrField[i]);
+                break;
             case "bar":
                 if (ComparePageObject.ValidCount > 0) createBar(arrField[i]);
                 ComparePageObject.DiffList.push(ComparePageObject.DiffCount);
@@ -187,6 +190,9 @@ function createPageForCompare(isDelSame) {
                 break;
             case "fieldPic":
                 createPic(); //ComparePageObject.ArrPageContent.push("<tbody>");
+                break;
+            case "optional":
+                createOptional(arrField[i]);
                 break;
         }
     }
@@ -273,7 +279,52 @@ function bindEvent() {
             $("#popup-menumask").hide();
         }
     });
+    //选装包事件
+    bindOptionalEvent();
+    $('.pop-optional-mask').off("click").click(function () {
+        $('body').css('overflow', 'auto');
+        $('.pop-optional-mask').hide();
+        $('.pop-optional').hide().removeClass('pop-optional-top pop-optional-bottom').find('ul').hide();
+    });
 }
+//选装包弹层
+function bindOptionalEvent() {
+    $('.optional.type1').off("click").on("click", function (e) {        e.stopPropagation();        var data = $(this).attr("data-optional");        if (data == "undefined" || data == "") return;        var fieldValue = data.split(',');
+        var dataJson = [];
+        for (var fieldIndex = 0; fieldIndex < fieldValue.length; fieldIndex++) {
+            var fieldOptional = fieldValue[fieldIndex].split('|');
+            if (fieldOptional.length > 1) {
+                dataJson.push(JSON.parse("{\"text\":\"" + fieldOptional[0] + "\",\"price\":" + fieldOptional[1] + "}"));
+            }
+            else {
+                dataJson.push(JSON.parse("{\"text\":\"" + fieldOptional[0] + "\"}"));
+            }
+        }        //var dataJson = JSON.parse(data);        var h = new Array();        h.push("<ul>");
+        for (var i = 0; i < dataJson.length; i++) {
+            h.push("<li><span class=\"l\">" + dataJson[i].text + "</span>");
+            if (typeof (dataJson[i].price) != "undefined") {
+                h.push("<span class=\"r\">￥" + formatCurrency(dataJson[i].price) + "</span>");
+            }
+            h.push("</li > ");
+        }
+        h.push("</ul>");        var halfScreenHeight = $(window).height() / 2;        var $popOptional = $('.pop-optional');        var thisTop = $(this).offset().top;
+        var thisLeft = $(this).offset().left;        $popOptional.html(h.join(""));        $('body').css('overflow', 'hidden');
+        var popOptionalHeight = $popOptional.height();
+        if (e.clientY < halfScreenHeight) {
+            $popOptional.css({
+                'top': (thisTop + 30),
+                'left': (thisLeft - 100)
+            });
+            $popOptional.addClass('pop-optional-top');
+        } else {
+            $popOptional.css({
+                'top': (thisTop - popOptionalHeight - 15),
+                'left': (thisLeft - 100)
+            });
+            $popOptional.addClass('pop-optional-bottom');
+        }
+        $('.pop-optional-mask').show();
+        $popOptional.show();    });}
 
 function createEmptyTable() {
     var flag = false;
@@ -526,8 +577,15 @@ function createPara(arrFieldRow) {
                     }
                     if (field.indexOf("有") == 0)
                     { field = "<span class=\"f-bold\">●</span>"; }
-                    if (field.indexOf("选配") == 0)
-                    { field = "<span class=\"f-bold\">○</span>"; }
+                    if (field.indexOf("选配") == 0) {
+                        var fieldInfo = field.split('|');
+                        if (fieldInfo.length > 1) {
+                            field = "<span class=\"songti\">○ 选配" + formatCurrency(fieldInfo[1]) + "元</span>";
+                        }
+                        else {
+                            field = "<span class=\"songti\">○</span>";
+                        }
+                    }
                     if (field.indexOf("无") == 0)
                     { field = "<span class=\"f-bold\">-</span>"; }
 
@@ -918,6 +976,177 @@ function createMulti(arrFieldRow) {
     }
 }
 
+// create multi value param for compare
+function fieldMultiValue(arrFieldRow) {
+    var arrTemp = new Array(),
+        num = 0,
+        isAllunknown = true;
+
+    var chkResult = { IsSame: true, CurrCarIndex: 0, CurrParamsValue: 0 };
+    if ((ComparePageObject.IsVantage && arrFieldRow["isVantage"] && arrFieldRow["isVantage"] == "1") || ComparePageObject.IsShowDiff)
+        chkResult = IsFieldSame(arrFieldRow);
+
+    if (!chkResult || (chkResult.IsSame && ComparePageObject.IsDelSame)) {//非法返回，或者隐藏相同项
+        return;
+    }
+
+    for (var i = 0; i < ComparePageObject.ValidCount; i++) {
+        // check every Car is show
+        if (checkCarIsShowForeach(i)) {
+            num++;
+            if (!ComparePageObject.ArrCarInfo[i].CarInfoArray) {
+                arrTemp.push("<td>&nbsp;</td>");
+            }
+            else {
+                if ((ComparePageObject.CurrentCarID == ComparePageObject.ArrCarInfo[i].CarID) && ComparePageObject.IsNeedFirstColor) {//车款配置页
+                    arrTemp.push("<td name=\"td" + i + "\" class=\"f\">");
+                }
+                else if (!chkResult.IsSame) {
+                    arrTemp.push("<td name=\"td" + i + "\" class=\"bg-blue\">");
+                }
+                else {
+                    arrTemp.push("<td name=\"td" + i + "\">");
+                }
+                var field = ComparePageObject.ArrCarInfo[i].CarInfoArray[arrFieldRow["sTrPrefix"]][arrFieldRow["sFieldIndex"]];
+                if (field != "") isAllunknown = false;
+                var fieldValue = field.split(',');
+                var standardJson = [], optionalJson = [];
+                for (var fieldIndex = 0; fieldIndex < fieldValue.length; fieldIndex++) {
+                    var fieldOptional = fieldValue[fieldIndex].split('|');
+                    if (fieldOptional.length > 1) {
+                        optionalJson.push(JSON.parse("{\"text\":\"" + fieldOptional[0] + "\",\"price\":" + fieldOptional[1] + "}"));
+                    }
+                    else {
+                        standardJson.push(JSON.parse("{\"text\":\"" + fieldOptional[0] + "\"}"));
+                    }
+                }
+
+                if (standardJson.length == 1) {//共一项值
+                    arrTemp.push("<div>" + standardJson[0].text + "</div>");
+                }
+                else if (standardJson.length > 1) {//多项
+                    if (optionalJson.length == 0) {
+                        arrTemp.push("<div>");
+                        for (var staIndex = 0; staIndex < standardJson.length; staIndex++) {
+                            arrTemp.push(standardJson[staIndex].text + "&nbsp;&nbsp;");
+                        }
+                        arrTemp.push("</div>");
+                    }
+                    else {
+                        var jsonArr = [];
+                        standardJson.forEach(function (value, index, array) {
+                            jsonArr.push(array[index].text);
+                        });
+                        arrTemp.push("<div class=\"optional type1\" data-optional=\"" + jsonArr.join(",") + "\">● " + standardJson[0].text + "等</div>");
+                        //arrTemp.push("<div class=\"popup-layout-1\"><ul>");
+                        //for (var staIndex = 0; staIndex < standardJson.length; staIndex++) {
+                        //    arrTemp.push("<li><span class=\"l\">" + standardJson[staIndex].text + "</span ></li>");
+                        //}
+                        //arrTemp.push("</ul></div></div>");
+                    }
+                }
+                if (optionalJson.length == 1) {
+                    arrTemp.push("<div>○ 选配" + optionalJson[0].text + "&nbsp;" + formatCurrency(optionalJson[0].price) + "元</div>");
+                }
+                else if (optionalJson.length > 1) {
+                    var jsonArr = [];
+                    optionalJson.forEach(function (value, index, array) {
+                        jsonArr.push(array[index].text + "|" + array[index].price);
+                    });
+                    arrTemp.push("<div class=\"optional type1\" data-optional=\"" + jsonArr.join(",") + "\">○ 选装" + formatCurrency(optionalJson[0].price) + "元起</div>");
+                    //arrTemp.push("<div class=\"popup-layout-1\"><ul>");
+                    //for (var optIndex = 0; optIndex < optionalJson.length; optIndex++) {
+                    //    arrTemp.push("<li><span class=\"l\">" + optionalJson[optIndex].text + "</span ><span class=\"r\">￥" + optionalJson[optIndex].price + "</span></li>");
+                    //}
+                    //arrTemp.push("</ul></div></div>");
+                }
+            }
+        }
+    }
+    arrTemp.push("<td></td>");
+    if (!isAllunknown) {
+        // Is Need Show The Bar
+        if (ComparePageObject.ArrTempBarHTML.length > 0) {
+            ComparePageObject.ArrLeftTitleHtml.push(ComparePageObject.ArrTempBarHTML.join(""));
+            ComparePageObject.ArrTempBarHTML.length = 0;
+
+            ComparePageObject.ArrRightContentHTML.push("<tr class=\"h25\"><td colspan=\"4\">&nbsp;</td></tr>");
+        }
+        //添加左侧菜单
+        ComparePageObject.ArrLeftNavHTML.push(ComparePageObject.ArrTempLeftNavHTML.join(''));
+        ComparePageObject.ArrTempLeftNavHTML.length = 0;
+
+        var leftTitle = arrFieldRow["sFieldTitle"],
+            classStr = "";
+        //,leftTitleStr = leftTitle.length > 10 ? leftTitle : "<span>" + leftTitle + "</span>"
+
+        if (leftTitle.length > 10 && leftTitle.length < 20) {
+            classStr = "class=\"h2\"";
+        } else if (leftTitle.length >= 20) {
+            classStr = "class=\"h3\"";
+        }
+
+        ComparePageObject.ArrLeftTitleHtml.push("<tr " + classStr + ">");
+        ComparePageObject.ArrLeftTitleHtml.push("<th>" + leftTitle + "</th>");
+
+        ComparePageObject.ArrRightContentHTML.push("<tr " + classStr + " id=\"tr" + arrFieldRow["sTrPrefix"] + "_" + arrFieldRow["sFieldIndex"] + "\" >");
+        ComparePageObject.ArrRightContentHTML.push(arrTemp.join(""));
+        if (!chkResult.IsSame) {
+            ComparePageObject.DiffCount++;
+        }
+    }
+    else {
+        return;
+    }
+}
+
+function createOptional(arrFieldRow) {
+    if (ComparePageObject.ValidCount < 1 || typeof optionalPackageJson == "undefined" || optionalPackageJson.length == 0) {
+        return;
+    }
+    var arrTitleTemp = new Array(),
+        arrContentTemp = new Array();
+        //isShow = false;
+    for (var opt = 0; opt < optionalPackageJson.length; opt++) {
+        var showCarCount = 0;
+        //isShow = false;
+        arrContentTemp.push("<tr>");
+        for (var i = 0; i < ComparePageObject.ValidCount; i++) {
+            if (checkCarIsShowForeach(i)) {
+                showCarCount++;
+                if (optionalPackageJson[opt].carid.contains(ComparePageObject.ArrCarInfo[i].CarID)) {
+                    arrContentTemp.push("<td name=\"td" + i + "\" class=\"optional\"><span>○ 选装￥" + optionalPackageJson[opt].price + "</span></td>");
+                    //isShow = true;
+                }
+                else {
+                    arrContentTemp.push("<td name=\"td" + i + "\"><span class=\"songti\">-</span></td>");
+                }
+            }
+        }
+        arrContentTemp.push("<td></td></tr>");
+        arrContentTemp.push("<tr class=\"multi-row2-end\"><td colspan=\"" + (ComparePageObject.ValidCount + 1) + "\"><span class=\"optional-note\">" + optionalPackageJson[opt].desc + "</span></td></tr>");
+        arrContentTemp.push("</tr>");
+
+        arrTitleTemp.push("<tr class=\"optional-h\"><th>" + optionalPackageJson[opt].name + "</th></tr>");
+    }
+    //if (isShow) {
+        if (ComparePageObject.ArrTempBarHTML.length > 0) {
+            ComparePageObject.ArrLeftTitleHtml.push(ComparePageObject.ArrTempBarHTML.join(""));
+            ComparePageObject.ArrTempBarHTML.length = 0;
+
+            ComparePageObject.ArrRightContentHTML.push("<tr class=\"h25\"><td colspan=\"4\">&nbsp;</td></tr>");
+        }
+        //添加左侧菜单
+        ComparePageObject.ArrLeftNavHTML.push(ComparePageObject.ArrTempLeftNavHTML.join(''));
+        ComparePageObject.ArrTempLeftNavHTML.length = 0;
+
+        ComparePageObject.ArrLeftTitleHtml.push(arrTitleTemp.join(""));
+
+        ComparePageObject.ArrRightContentHTML.push(arrContentTemp.join(""));
+   // }
+}
+
+
 function createBar(arrFieldRow) {
     if (ComparePageObject.ValidCount < 1)
     { return; }
@@ -943,12 +1172,12 @@ function createBar(arrFieldRow) {
     var summaryColumn = 1;
     ComparePageObject.ArrTempBarHTML.push("<tr  class=\"phone-title\" data-key=\"" + arrFieldRow["sFieldTitle"] + "\" id=\"" + arrFieldRow["scrollId"] + "\">");
     ComparePageObject.ArrTempBarHTML.push("<td class=\"pd0 bgW\" colspan=\"3\">");
-    if (arrFieldRow["sFieldTitle"] == "外部配置") {
-        ComparePageObject.ArrTempBarHTML.push("<h3><span>" + arrFieldRow["sFieldTitle"] + "</span></h3><div class=\"r-txt r-diff\" data-width=\"160\" >●标配&nbsp;&nbsp;○选配&nbsp;&nbsp;-无 <em id = \"bar_" + (ComparePageObject.DiffList.length + 1) + "\"></em>");
-    }
-    else {
+    //if (arrFieldRow["sFieldTitle"] == "外部配置") {
+    //    ComparePageObject.ArrTempBarHTML.push("<h3><span>" + arrFieldRow["sFieldTitle"] + "</span></h3><div class=\"r-txt r-diff\" data-width=\"160\" >●标配&nbsp;&nbsp;○选配&nbsp;&nbsp;-无 <em id = \"bar_" + (ComparePageObject.DiffList.length + 1) + "\"></em>");
+    //}
+    //else {
         ComparePageObject.ArrTempBarHTML.push("<h3><span>" + arrFieldRow["sFieldTitle"] + "</span></h3><div class=\"r-txt r-diff\" id = \"bar_" + (ComparePageObject.DiffList.length + 1) + "\"></div>");
-    }
+    //}
     ComparePageObject.ArrTempBarHTML.push("</td>");
     ComparePageObject.ArrTempBarHTML.push("</tr>");
 
@@ -1153,8 +1382,214 @@ Array.prototype.indexOf = function (value) { for (var i = 0, l = this.length; i 
 Array.prototype.max = function () { return Math.max.apply({}, this) }
 Array.prototype.min = function () { return Math.min.apply({}, this) }
 
-// page method --------------------------
 var arrField = [
+    { sFieldTitle: "图片", sType: "fieldPic", sPid: "", sFieldIndex: "", sTrPrefix: "1", unit: "", joinCode: "" },
+    { sFieldTitle: "基本信息", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-carinfo" },
+    { sFieldTitle: "厂商指导价", sType: "fieldPara", sPid: "", sTrPrefix: "1", sFieldIndex: "0", unit: "", joinCode: "" },
+    { sFieldTitle: "商家报价", sType: "fieldPrice", sPid: "", sTrPrefix: "1", sFieldIndex: "1", unit: "", joinCode: "" },
+    { sFieldTitle: "保修政策", sType: "fieldPara", sPid: "", sTrPrefix: "1", sFieldIndex: "3", unit: "", joinCode: "" },
+    { sFieldTitle: "排量", sType: "fieldPara", sPid: "785", sTrPrefix: "1", sFieldIndex: "4", unit: "L", joinCode: "" },
+    { sFieldTitle: "进气形式", sType: "fieldPara", sPid: "425", sTrPrefix: "1", sFieldIndex: "5", unit: "", joinCode: "" },
+    { sFieldTitle: "电动变速箱类型", sType: "fieldPara", sPid: "1007", sTrPrefix: "1", sFieldIndex: "", unit: "6", joinCode: "" },
+    { sFieldTitle: "燃油变速箱", sType: "fieldMulti", sPid: "724,712", sTrPrefix: "1,1", sFieldIndex: "7,8", unit: "挡,", joinCode: ", " },
+    { sFieldTitle: "最高车速[km/h]", sType: "fieldPara", sPid: "663", sTrPrefix: "1", sFieldIndex: "9", unit: "", joinCode: "", isVantage: "1", size: "1" },
+
+    { sFieldTitle: "车身尺寸", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-carbody" },
+    { sFieldTitle: "长×宽×高[mm]", sType: "fieldMulti", sPid: "588,593,586", sTrPrefix: "2,2,2", sFieldIndex: "0,1,2", unit: ",,", joinCode: ",x,x", isVantage: "1", size: "1" },
+    { sFieldTitle: "轴距[mm]", sType: "fieldPara", sPid: "592", sTrPrefix: "2", sFieldIndex: "3", unit: "", joinCode: "mm", isVantage: "1", size: "1" },
+    { sFieldTitle: "整备质量[kg]", sType: "fieldPara", sPid: "669", sTrPrefix: "2", sFieldIndex: "4", unit: "", joinCode: "kg" },
+    { sFieldTitle: "座位数[个]", sType: "fieldPara", sPid: "665", sTrPrefix: "2", sFieldIndex: "5", unit: "", joinCode: "" },
+    { sFieldTitle: "行李箱容积[L]", sType: "fieldPara", sPid: "465", sTrPrefix: "2", sFieldIndex: "6", unit: "", joinCode: "", isVantage: "1", size: "1" },
+    { sFieldTitle: "油箱容积[L]", sType: "fieldPara", sPid: "576", sTrPrefix: "2", sFieldIndex: "7", unit: "", joinCode: "", isVantage: "1", size: "1" },
+    { sFieldTitle: "前轮胎规格", sType: "fieldPara", sPid: "729", sTrPrefix: "2", sFieldIndex: "8", unit: "", joinCode: "" },
+    { sFieldTitle: "后轮胎规格", sType: "fieldPara", sPid: "721", sTrPrefix: "2", sFieldIndex: "9", unit: "", joinCode: "" },
+    { sFieldTitle: "备胎", sType: "fieldPara", sPid: "707", sTrPrefix: "2", sFieldIndex: "10", unit: "", joinCode: "" },
+    { sFieldTitle: "保修政策", sType: "fieldPara", sPid: "398", sTrPrefix: "2", sFieldIndex: "11", unit: "", joinCode: "" },
+    { sFieldTitle: "满载质量[kg]", sType: "fieldPara", sPid: "668", sTrPrefix: "2", sFieldIndex: "12", unit: "", joinCode: "" },
+    { sFieldTitle: "轮胎规格",sType: "fieldPara", sPid: "1001", sTrPrefix: "2", sFieldIndex: "13", unit: "", joinCode: "" },
+    { sFieldTitle: "载重质量[kg]", sType: "fieldPara", sPid: "974", sTrPrefix: "2", sFieldIndex: "14", unit: "", joinCode: "" },
+    { sFieldTitle: "轮胎个数", sType: "fieldPara", sPid: "982", sTrPrefix: "2", sFieldIndex: "15", unit: "", joinCode: "" },
+    { sFieldTitle: "货箱长×宽×高[mm]", sType: "fieldMulti", sPid: "966,969,970", sTrPrefix: "2", sFieldIndex: "16,17,18", unit: "mm", joinCode: "x", isVantage: "1", size: "1" },
+
+    { sFieldTitle: "动力系统", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-carengine" },
+    { sFieldTitle: "排气量[ml]", sType: "fieldMulti", sPid: "423,785", sTrPrefix: "3,3", sFieldIndex: "0,1", unit: ",L", joinCode: ",ml " }, /*1987ml 2.0L*/
+    { sFieldTitle: "最大功率[kW(Ps)/rpm]", sType: "fieldPara", sPid: "430", sTrPrefix: "3", sFieldIndex: "2", unit: "", joinCode: "", isVantage: "1", size: "1" },
+    { sFieldTitle: "马力(Ps)", sType: "fieldPara", sPid: "791", sTrPrefix: "3", sFieldIndex: "3", unit: "", joinCode: "", isVantage: "1", size: "1" },
+    { sFieldTitle: "最大功率转速(rpm)", sType: "fieldPara", sPid: "433", sTrPrefix: "3", sFieldIndex: "4", unit: "", joinCode: "", isVantage: "1", size: "1" },
+    { sFieldTitle: "最大扭矩[N.m/rpm]", sType: "fieldPara", sPid: "429", sTrPrefix: "3", sFieldIndex: "5", unit: "", joinCode: "" },
+    { sFieldTitle: "最大扭矩转速(rpm)", sType: "fieldPara", sPid: "432", sTrPrefix: "3", sFieldIndex: "6", unit: "", joinCode: "", isVantage: "1", size: "1" },
+    { sFieldTitle: "缸体形式", sType: "fieldPara", sPid: "418", sTrPrefix: "3", sFieldIndex: "7", unit: "", joinCode: "" },
+    { sFieldTitle: "气缸数[缸]", sType: "fieldPara", sPid: "417", sTrPrefix: "3", sFieldIndex: "8", unit: "", joinCode: "" },
+    { sFieldTitle: "进气形式", sType: "fieldPara", sPid: "425", sTrPrefix: "3", sFieldIndex: "9", unit: "", joinCode: "" },
+    { sFieldTitle: "供油方式", sType: "fieldPara", sPid: "580", sTrPrefix: "3", sFieldIndex: "10", unit: "", joinCode: "" },
+    { sFieldTitle: "压缩比", sType: "fieldPara", sPid: "414", sTrPrefix: "3", sFieldIndex: "11", unit: "", joinCode: "" },
+    { sFieldTitle: "燃油标号[号]", sType: "fieldPara", sPid: "577", sTrPrefix: "3", sFieldIndex: "12", unit: "", joinCode: "" },
+    { sFieldTitle: "发动机启停", sType: "fieldPara", sPid: "894", sTrPrefix: "3", sFieldIndex: "13", unit: "", joinCode: "" },
+    { sFieldTitle: "燃油变速箱类型", sType: "fieldPara", sPid: "712", sTrPrefix: "3", sFieldIndex: "14", unit: "", joinCode: "" },
+    { sFieldTitle: "档位个数", sType: "fieldPara", sPid: "724", sTrPrefix: "3", sFieldIndex: "15", unit: "", joinCode: "" },
+    { sFieldTitle: "最高车速[km/h]", sType: "fieldPara", sPid: "663", sTrPrefix: "3", sFieldIndex: "16", unit: "", joinCode: "" },
+    { sFieldTitle: "0-100km/h加速时间[s]", sType: "fieldPara", sPid: "650", sTrPrefix: "3", sFieldIndex: "17", unit: "", joinCode: "", isVantage: "1", size: "0" },
+    { sFieldTitle: "混合工况油耗(L/100km)", sType: "fieldPara", sPid: "782", sTrPrefix: "3", sFieldIndex: "18", unit: "", joinCode: "", isVantage: "1", size: "0" },
+    { sFieldTitle: "环保标准", sType: "fieldPara", sPid: "421", sTrPrefix: "3", sFieldIndex: "19", unit: "", joinCode: "" },
+    { sFieldTitle: "电动机总功率[kW]", sType: "fieldPara", sPid: "870", sTrPrefix: "3", sFieldIndex: "20", unit: "", joinCode: "", isVantage: "1", size: "1" },
+    { sFieldTitle: "电动机总扭矩[N.m]", sType: "fieldPara", sPid: "872", sTrPrefix: "3", sFieldIndex: "21", unit: "", joinCode: "", isVantage: "1", size: "1" },
+    { sFieldTitle: "前电动机最大功率[kW]", sType: "fieldPara", sPid: "1002", sTrPrefix: "3", sFieldIndex: "22", unit: "", joinCode: "" },
+    { sFieldTitle: "前电动机最大扭矩[N.m]", sType: "fieldPara", sPid: "1004", sTrPrefix: "3", sFieldIndex: "23", unit: "", joinCode: "" },
+    { sFieldTitle: "后电动机最大功率[kW]", sType: "fieldPara", sPid: "1003", sTrPrefix: "3", sFieldIndex: "24", unit: "", joinCode: "" },
+    { sFieldTitle: "后电动机最大扭矩[N.m]", sType: "fieldPara", sPid: "1005", sTrPrefix: "3", sFieldIndex: "25", unit: "", joinCode: "" },
+    { sFieldTitle: "电池容量[kWh]", sType: "fieldPara", sPid: "876", sTrPrefix: "3", sFieldIndex: "26", unit: "", joinCode: "", isVantage: "1", size: "1" },
+    { sFieldTitle: "电池充电时间[h]", sType: "fieldMulti", sPid: "878,879", sTrPrefix: "3", sFieldIndex: "27,28", unit: "", joinCode: "" },
+    { sFieldTitle: "耗电量[kWh/100km]", sType: "fieldPara", sPid: "868", sTrPrefix: "3", sFieldIndex: "29", unit: "", joinCode: "", isVantage: "1", size: "0" },
+    { sFieldTitle: "最大续航里程[km]", sType: "fieldPara", sPid: "883", sTrPrefix: "3", sFieldIndex: "30", unit: "", joinCode: "", isVantage: "1", size: "1" },
+    { sFieldTitle: "电池组质保", sType: "fieldPara", sPid: "1006", sTrPrefix: "3", sFieldIndex: "31", unit: "", joinCode: "" },
+    { sFieldTitle: "电动变速箱类型", sType: "fieldPara", sPid: "1007", sTrPrefix: "3", sFieldIndex: "32", unit: "", joinCode: "" },
+    { sFieldTitle: "系统综合功率[Kw]", sType: "fieldPara", sPid: "1008", sTrPrefix: "3", sFieldIndex: "33", unit: "", joinCode: "" },
+    { sFieldTitle: "系统综合扭矩[N.m]", sType: "fieldPara", sPid: "1009", sTrPrefix: "3", sFieldIndex: "34", unit: "", joinCode: "" },
+    { sFieldTitle: "发动机描述", sType: "fieldPara", sPid: "1010", sTrPrefix: "3", sFieldIndex: "35", unit: "", joinCode: "" },
+    { sFieldTitle: "卡车变速箱描述", sType: "fieldPara", sPid: "1011", sTrPrefix: "3", sFieldIndex: "36", unit: "", joinCode: "" },
+    { sFieldTitle: "卡车前进档位个数", sType: "fieldPara", sPid: "980", sTrPrefix: "3", sFieldIndex: "37", unit: "", joinCode: "" },
+    { sFieldTitle: "卡车倒档位个数", sType: "fieldPara", sPid: "981", sTrPrefix: "3", sFieldIndex: "38", unit: "", joinCode: "" },
+
+    { sFieldTitle: "底盘制动", sType: "bar", sPid: "", sTrPrefix: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-bottomstop" },
+    { sFieldTitle: "驱动方式", sType: "fieldPara", sPid: "655", sTrPrefix: "4", sFieldIndex: "0", unit: "", joinCode: "" },
+    { sFieldTitle: "前悬架类型", sType: "fieldPara", sPid: "728", sTrPrefix: "4", sFieldIndex: "1", unit: "", joinCode: "" },
+    { sFieldTitle: "前悬架类型", sType: "fieldPara", sPid: "720", sTrPrefix: "4", sFieldIndex: "2", unit: "", joinCode: "" },
+    { sFieldTitle: "可调悬挂", sType: "fieldPara", sPid: "708", sTrPrefix: "4", sFieldIndex: "3", unit: "", joinCode: "" },
+    { sFieldTitle: "前轮制动器类型", sType: "fieldPara", sPid: "726", sTrPrefix: "4", sFieldIndex: "4", unit: "", joinCode: "" },
+    { sFieldTitle: "后轮制动器类型", sType: "fieldPara", sPid: "718", sTrPrefix: "4", sFieldIndex: "5", unit: "", joinCode: "" },
+    { sFieldTitle: "驻车制动类型", sType: "fieldPara", sPid: "716", sTrPrefix: "4", sFieldIndex: "6", unit: "", joinCode: "" },
+    { sFieldTitle: "车体结构", sType: "fieldPara", sPid: "572", sTrPrefix: "4", sFieldIndex: "7", unit: "", joinCode: "" },
+    { sFieldTitle: "差速器/差速锁", sType: "fieldPara", sPid: "733", sTrPrefix: "4", sFieldIndex: "8", unit: "", joinCode: "" },
+    { sFieldTitle: "客车前悬架类型", sType: "fieldPara", sPid: "1012", sTrPrefix: "4", sFieldIndex: "9", unit: "", joinCode: "" },
+    { sFieldTitle: "客车后悬架类型", sType: "fieldPara", sPid: "1013", sTrPrefix: "4", sFieldIndex: "10", unit: "", joinCode: "" },
+    { sFieldTitle: "卡车驱动形式", sType: "fieldPara", sPid: "1014", sTrPrefix: "4", sFieldIndex: "11", unit: "", joinCode: "" },
+    { sFieldTitle: "前桥描述", sType: "fieldPara", sPid: "975", sTrPrefix: "4", sFieldIndex: "12", unit: "", joinCode: "" },
+    { sFieldTitle: "前桥允许载荷[kg]", sType: "fieldPara", sPid: "1015", sTrPrefix: "4", sFieldIndex: "13", unit: "", joinCode: "" },
+    { sFieldTitle: "后桥描述", sType: "fieldPara", sPid: "976", sTrPrefix: "4", sFieldIndex: "14", unit: "", joinCode: "" },
+    { sFieldTitle: "后桥允许载荷[kg]", sType: "fieldPara", sPid: "1016", sTrPrefix: "4", sFieldIndex: "15", unit: "", joinCode: "" },
+
+    { sFieldTitle: "安全配置", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-safeconfig" },
+    { sFieldTitle: "防抱死制动(ABS)", sType: "fieldPara", sPid: "673", sTrPrefix: "5", sFieldIndex: "0", unit: "", joinCode: "" },
+    { sFieldTitle: "制动力分配(EBD/CBC等)", sType: "fieldPara", sPid: "685", sTrPrefix: "5", sFieldIndex: "1", unit: "", joinCode: "" },
+    { sFieldTitle: "制动辅助(BA/EBA/BAS等)", sType: "fieldPara", sPid: "684", sTrPrefix: "5", sFieldIndex: "2", unit: "", joinCode: "" },
+    { sFieldTitle: "牵引力控制(ARS/TCS/TRC等)", sType: "fieldPara", sPid: "698", sTrPrefix: "5", sFieldIndex: "3", unit: "", joinCode: "" },
+    { sFieldTitle: "车身稳定控制(ESP/DSC/VSC等)", sType: "fieldPara", sTrPrefix: "5", sPid: "700", sFieldIndex: "4", unit: "", joinCode: "" },
+    { sFieldTitle: "主驾驶安全气囊", sType: "fieldPara", sPid: "682", sTrPrefix: "5", sFieldIndex: "5", unit: "", joinCode: "" },
+    { sFieldTitle: "副驾驶安全气囊", sType: "fieldPara", sPid: "697", sTrPrefix: "5", sFieldIndex: "6", unit: "", joinCode: "" },
+    { sFieldTitle: "前侧气囊", sType: "fieldPara", sPid: "691", sTrPrefix: "5", sFieldIndex: "7", unit: "", joinCode: "" },
+    { sFieldTitle: "后侧气囊", sType: "fieldPara", sPid: "680", sTrPrefix: "5", sFieldIndex: "8", unit: "", joinCode: "" },
+    { sFieldTitle: "侧安全气帘", sType: "fieldPara", sPid: "690", sTrPrefix: "5", sFieldIndex: "9", unit: "", joinCode: "" },
+    { sFieldTitle: "膝部气囊", sType: "fieldPara", sPid: "835", sTrPrefix: "5", sFieldIndex: "10", unit: "", joinCode: "" },
+    { sFieldTitle: "安全带气囊", sType: "fieldPara", sPid: "845", sTrPrefix: "5", sFieldIndex: "11", unit: "", joinCode: "" },
+    { sFieldTitle: "后排中央气囊", sType: "fieldPara", sPid: "1017", sTrPrefix: "5", sFieldIndex: "12", unit: "", joinCode: "" },
+    { sFieldTitle: "胎压监测", sType: "fieldPara", sPid: "714", sTrPrefix: "5", sFieldIndex: "13", unit: "", joinCode: "" },
+    { sFieldTitle: "零胎压续航轮胎",  sType: "fieldPara", sPid: "715", sTrPrefix: "5", sFieldIndex: "14", unit: "", joinCode: "" },
+    { sFieldTitle: "后排儿童座椅接口(ISO FIX/LATCH)", sType: "fieldPara", sPid: "495", sTrPrefix: "5", sFieldIndex: "15", unit: "", joinCode: "" },
+
+    { sFieldTitle: "驾驶辅助", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-drivingassistance" },
+    { sFieldTitle: "定速巡航", sType: "fieldPara", sPid: "545", sTrPrefix: "6", sFieldIndex: "0", unit: "", joinCode: "" },
+    { sFieldTitle: "车道保持/并线辅助", sType: "fieldPara", sTrPrefix: "6", sPid: "898", sFieldIndex: "1", unit: "", joinCode: "" },
+    { sFieldTitle: "碰撞报警/主动刹车", sType: "fieldPara", sTrPrefix: "6", sPid: "818", sFieldIndex: "2", unit: "", joinCode: "" },
+    { sFieldTitle: "疲劳提醒", sType: "fieldPara", sPid: "1018", sTrPrefix: "6", sFieldIndex: "3", unit: "", joinCode: "" },
+    { sFieldTitle: "自动泊车", sType: "fieldPara", sPid: "816", sTrPrefix: "6", sFieldIndex: "4", unit: "", joinCode: "" },
+    { sFieldTitle: "遥控泊车", sType: "fieldPara", sPid: "901", sTrPrefix: "6", sFieldIndex: "5", unit: "", joinCode: "" },
+    { sFieldTitle: "自动驾驶辅助", sType: "fieldPara", sPid: "1019", sTrPrefix: "6", sFieldIndex: "6", unit: "", joinCode: "" },
+    { sFieldTitle: "自动驻车", sType: "fieldPara", sPid: "811", sTrPrefix: "6", sFieldIndex: "7", unit: "", joinCode: "" },
+    { sFieldTitle: "上坡辅助", sType: "fieldPara", sPid: "812", sTrPrefix: "6", sFieldIndex: "8", unit: "", joinCode: "" },
+    { sFieldTitle: "陡坡缓降", sType: "fieldPara", sPid: "813", sTrPrefix: "6", sFieldIndex: "9", unit: "", joinCode: "" },
+    { sFieldTitle: "夜视系统", sType: "fieldPara", sPid: "819", sTrPrefix: "6", sFieldIndex: "10", unit: "", joinCode: "" },
+    { sFieldTitle: "可变齿比转向", sType: "fieldPara", sPid: "1020", sTrPrefix: "6", sFieldIndex: "11", unit: "", joinCode: "" },
+    { sFieldTitle: "前倒车雷达", sType: "fieldPara", sPid: "800", sTrPrefix: "6", sFieldIndex: "12", unit: "", joinCode: "" },
+    { sFieldTitle: "后倒车雷达", sType: "fieldPara", sPid: "702", sTrPrefix: "6", sFieldIndex: "13", unit: "", joinCode: "" },
+    { sFieldTitle: "倒车影像", sType: "fieldPara", sPid: "703", sTrPrefix: "6", sFieldIndex: "14", unit: "", joinCode: "" },
+    { sFieldTitle: "驾驶模式选择", sType: "fieldPara", sPid: "1021", sTrPrefix: "6", sFieldIndex: "15", unit: "", joinCode: "" },
+
+    { sFieldTitle: "外部配置", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-outerconfig" },
+    { sFieldTitle: "前大灯", sType: "fieldPara", sPid: "614", sTrPrefix: "7", sFieldIndex: "0", unit: "", joinCode: "" },
+    { sFieldTitle: "LED日间行车灯", sType: "fieldPara", sPid: "794", sTrPrefix: "7", sFieldIndex: "1", unit: "", joinCode: "" },
+    { sFieldTitle: "自动大灯", sType: "fieldMultiValue", sPid: "609", sTrPrefix: "7", sFieldIndex: "2", unit: "", joinCode: "" },
+    { sFieldTitle: "前雾灯", sType: "fieldPara", sPid: "607", sTrPrefix: "7", sFieldIndex: "3", unit: "", joinCode: "" },
+    { sFieldTitle: "大灯功能", sType: "fieldMultiValue", sPid: "612", sTrPrefix: "7", sFieldIndex: "4", unit: "", joinCode: "" },
+    { sFieldTitle: "天窗类型", sType: "fieldPara", sPid: "567", sTrPrefix: "7", sFieldIndex: "5", unit: "", joinCode: "" },
+    { sFieldTitle: "前电动车窗",sType: "fieldPara", sPid: "601", sTrPrefix: "7", sFieldIndex: "6", unit: "", joinCode: "" },
+    { sFieldTitle: "后电动车窗",sType: "fieldPara", sPid: "1038", sTrPrefix: "7", sFieldIndex: "7", unit: "", joinCode: "" },
+    { sFieldTitle: "外后视镜电动调节", sType: "fieldMultiValue", sPid: "622", sTrPrefix: "7", sFieldIndex: "8", unit: "", joinCode: "" },
+    { sFieldTitle: "外后视镜加热", sType: "fieldPara", sPid: "624", sTrPrefix: "7", sFieldIndex: "9", unit: "", joinCode: "" },
+    { sFieldTitle: "内后视镜自动防炫目", sType: "fieldPara", sPid: "621", sTrPrefix: "7", sFieldIndex: "10", unit: "", joinCode: "" },
+    { sFieldTitle: "外后视镜自动防炫目", sType: "fieldPara", sPid: "1022", sTrPrefix: "7", sFieldIndex: "11", unit: "", joinCode: "" },
+    { sFieldTitle: "隔热/隐私玻璃", sType: "fieldPara", sPid: "796", sTrPrefix: "7", sFieldIndex: "12", unit: "", joinCode: "" },
+    { sFieldTitle: "后排侧遮阳帘", sType: "fieldPara", sPid: "797", sTrPrefix: "7", sFieldIndex: "13", unit: "", joinCode: "" },
+    { sFieldTitle: "后遮阳帘", sType: "fieldPara", sPid: "595", sTrPrefix: "7", sFieldIndex: "14", unit: "", joinCode: "" },
+    { sFieldTitle: "前雨刷器", sType: "fieldPara", sPid: "606", sTrPrefix: "7", sFieldIndex: "15", unit: "", joinCode: "" },
+    { sFieldTitle: "后雨刷器", sType: "fieldMultiValue", sPid: "596", sTrPrefix: "7", sFieldIndex: "16", unit: "", joinCode: "" },
+    { sFieldTitle: "电吸门", sType: "fieldPara", sPid: "821", sTrPrefix: "7", sFieldIndex: "17", unit: "", joinCode: "" },
+    { sFieldTitle: "电动侧滑门", sType: "fieldPara", sPid: "1023", sTrPrefix: "7", sFieldIndex: "18", unit: "", joinCode: "" },
+    { sFieldTitle: "电动行李箱", sType: "fieldMultiValue", sPid: "556", sTrPrefix: "7", sFieldIndex: "19", unit: "", joinCode: "" },
+    { sFieldTitle: "车顶行李架", sType: "fieldPara", sPid: "627", sTrPrefix: "7", sFieldIndex: "20", unit: "", joinCode: "" },
+    { sFieldTitle: "中控锁", sType: "fieldMultiValue", sPid: "493", sTrPrefix: "7", sFieldIndex: "21", unit: "", joinCode: "" },
+    { sFieldTitle: "智能钥匙", sType: "fieldMultiValue", sPid: "952", sTrPrefix: "7", sFieldIndex: "22", unit: "", joinCode: "" },
+    { sFieldTitle: "远程遥控功能", sType: "fieldMultiValue", sPid: "1024", sTrPrefix: "7", sFieldIndex: "23", unit: "", joinCode: "" },
+    { sFieldTitle: "尾翼/扰流板", sType: "fieldPara", sPid: "1025", sTrPrefix: "7", sFieldIndex: "24", unit: "", joinCode: "" },
+    { sFieldTitle: "运动外观套件", sType: "fieldPara", sPid: "793", sTrPrefix: "7", sFieldIndex: "25", unit: "", joinCode: "" },
+
+    { sFieldTitle: "内部配置", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-innerconfig" },
+    { sFieldTitle: "内饰材质", sType: "fieldMultiValue", sPid: "1026", sTrPrefix: "8", sFieldIndex: "0", unit: "", joinCode: "" },
+    { sFieldTitle: "车内氛围灯", sType: "fieldPara", sPid: "795", sTrPrefix: "8", sFieldIndex: "1", unit: "", joinCode: "" },
+    { sFieldTitle: "遮阳板化妆镜", sType: "fieldPara", sPid: "512", sTrPrefix: "8", sFieldIndex: "2", unit: "", joinCode: "" },
+    { sFieldTitle: "方向盘材质", sType: "fieldMultiValue", sPid: "548", sTrPrefix: "8", sFieldIndex: "3", unit: "", joinCode: "" },
+    { sFieldTitle: "多功能方向盘", sType: "fieldPara", sPid: "528", sTrPrefix: "8", sFieldIndex: "4", unit: "", joinCode: "" },
+    { sFieldTitle: "方向盘调节", sType: "fieldMultiValue", sPid: "799", sTrPrefix: "8", sFieldIndex: "5", unit: "", joinCode: "" },
+    { sFieldTitle: "方向盘加热", sType: "fieldPara", sPid: "956", sTrPrefix: "8", sFieldIndex: "6", unit: "", joinCode: "" },
+    { sFieldTitle: "方向盘换挡", sType: "fieldPara", sPid: "574", sTrPrefix: "8", sFieldIndex: "7", unit: "", joinCode: "" },
+    { sFieldTitle: "前排空调", sType: "fieldPara", sPid: "839", sTrPrefix: "8", sFieldIndex: "8", unit: "", joinCode: "" },
+    { sFieldTitle: "后排空调", sType: "fieldPara", sPid: "838", sTrPrefix: "8", sFieldIndex: "9", unit: "", joinCode: "" },
+    { sFieldTitle: "香氛系统", sType: "fieldPara", sPid: "1027", sTrPrefix: "8", sFieldIndex: "10", unit: "", joinCode: "" },
+    { sFieldTitle: "空气净化", sType: "fieldPara", sPid: "905", sTrPrefix: "8", sFieldIndex: "11", unit: "", joinCode: "" },
+    { sFieldTitle: "车载冰箱", sType: "fieldPara", sPid: "485", sTrPrefix: "8", sFieldIndex: "12", unit: "", joinCode: "" },
+
+    { sFieldTitle: "座椅配置", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-chair" },
+    { sFieldTitle: "座椅材质", sType: "fieldPara", sPid: "544", sTrPrefix: "9", sFieldIndex: "0", unit: "", joinCode: "" },
+    { sFieldTitle: "运动风格座椅", sType: "fieldPara", sPid: "546", sTrPrefix: "9", sFieldIndex: "1", unit: "", joinCode: "" },
+    { sFieldTitle: "主副座椅电动调节", sType: "fieldMultiValue", sPid: "508", sTrPrefix: "9", sFieldIndex: "2", unit: "", joinCode: "" },
+    { sFieldTitle: "副座椅电动调节",sType: "fieldMultiValue", sPid: "503", sTrPrefix: "9", sFieldIndex: "3", unit: "", joinCode: "" },
+    { sFieldTitle: "主座椅调节方式", sType: "fieldMultiValue", sPid: "1028", sTrPrefix: "9", sFieldIndex: "4", unit: "", joinCode: "" },
+    { sFieldTitle: "副座椅调节方式", sType: "fieldMultiValue", sPid: "1029", sTrPrefix: "9", sFieldIndex: "5", unit: "", joinCode: "" },
+    { sFieldTitle: "第二排座椅电动调节", sType: "fieldMultiValue", sPid: "833", sTrPrefix: "9", sFieldIndex: "6", unit: "", joinCode: "" },
+    { sFieldTitle: "第二排座椅调节方式", sType: "fieldMultiValue", sPid: "1030", sTrPrefix: "9", sFieldIndex: "7", unit: "", joinCode: "" },
+    { sFieldTitle: "前排座椅功能", sType: "fieldMultiValue", sPid: "504", sTrPrefix: "9", sFieldIndex: "8", unit: "", joinCode: "" },
+    { sFieldTitle: "后排座椅功能", sType: "fieldMultiValue", sPid: "1031", sTrPrefix: "9", sFieldIndex: "9", unit: "", joinCode: "" },
+    { sFieldTitle: "前排中央扶手", sType: "fieldPara", sPid: "514", sTrPrefix: "9", sFieldIndex: "10", unit: "", joinCode: "" },
+    { sFieldTitle: "后排中央扶手", sType: "fieldPara", sPid: "475", sTrPrefix: "9", sFieldIndex: "11", unit: "", joinCode: "" },
+    { sFieldTitle: "第三排座椅", sType: "fieldPara", sPid: "805", sTrPrefix: "9", sFieldIndex: "12", unit: "", joinCode: "" },
+    { sFieldTitle: "座椅放倒方式", sType: "fieldPara", sPid: "482", sTrPrefix: "9", sFieldIndex: "13", unit: "", joinCode: "" },
+    { sFieldTitle: "后排杯架", sType: "fieldPara", sPid: "474", sTrPrefix: "9", sFieldIndex: "14", unit: "", joinCode: "" },
+    { sFieldTitle: "后排折叠桌版", sType: "fieldPara", sPid: "1032", sTrPrefix: "9", sFieldIndex: "15", unit: "", joinCode: "" },
+
+    { sFieldTitle: "信息娱乐", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-pastime" },
+    { sFieldTitle: "中控彩色液晶屏", sType: "fieldPara", sPid: "488", sTrPrefix: "10", sFieldIndex: "0", unit: "", joinCode: "" },
+    { sFieldTitle: "全液晶仪表盘", sType: "fieldPara", sPid: "988", sTrPrefix: "10", sFieldIndex: "1", unit: "", joinCode: "" },
+    { sFieldTitle: "行车电脑显示屏", sType: "fieldPara", sPid: "832", sTrPrefix: "10", sFieldIndex: "2", unit: "", joinCode: "" },
+    { sFieldTitle: "HUD平视显示", sType: "fieldPara", sPid: "518", sTrPrefix: "10", sFieldIndex: "3", unit: "", joinCode: "" },
+    { sFieldTitle: "GSP导航", sType: "fieldPara", sPid: "516", sTrPrefix: "10", sFieldIndex: "4", unit: "", joinCode: "" },
+    { sFieldTitle: "智能互联定位", sType: "fieldPara", sPid: "1033", sTrPrefix: "10", sFieldIndex: "5", unit: "", joinCode: "" },
+    { sFieldTitle: "语音控制", sType: "fieldPara", sPid: "1035", sTrPrefix: "10", sFieldIndex: "6", unit: "", joinCode: "" },
+    { sFieldTitle: "手机互联(Carplay&Android)", sType: "fieldMultiValue", sPid: "1036", sTrPrefix: "10", sFieldIndex: "7", unit: "", joinCode: "" },
+    { sFieldTitle: "手机无线充电", sType: "fieldPara", sPid: "1037", sTrPrefix: "10", sFieldIndex: "8", unit: "", joinCode: "" },
+    { sFieldTitle: "手势控制系统", sType: "fieldPara", sPid: "1034", sTrPrefix: "10", sFieldIndex: "9", unit: "", joinCode: "" },
+    { sFieldTitle: "CD/DVD", sType: "fieldPara", sPid: "510", sTrPrefix: "10", sFieldIndex: "10", unit: "", joinCode: "" },
+    { sFieldTitle: "蓝牙/WIFI连接", sType: "fieldMultiValue", sPid: "479", sTrPrefix: "10", sFieldIndex: "11", unit: "", joinCode: "" },
+    { sFieldTitle: "外接接口", sType: "fieldMultiValue", sPid: "810", sTrPrefix: "10", sFieldIndex: "12", unit: "", joinCode: "" },
+    { sFieldTitle: "车载电视", sType: "fieldPara", sPid: "559", sTrPrefix: "10", sFieldIndex: "13", unit: "", joinCode: "" },
+    { sFieldTitle: "音响品牌", sType: "fieldPara", sPid: "473", sTrPrefix: "10", sFieldIndex: "14", unit: "", joinCode: "" },
+    { sFieldTitle: "扬声器数量(个)", sType: "fieldPara", sPid: "523", sTrPrefix: "10", sFieldIndex: "15", unit: "", joinCode: "" },
+    { sFieldTitle: "后排液晶屏/娱乐系统", sType: "fieldPara", sPid: "477", sTrPrefix: "10", sFieldIndex: "16", unit: "", joinCode: "" },
+    { sFieldTitle: "车载220V电源", sType: "fieldPara", sPid: "467", sTrPrefix: "10", sFieldIndex: "17", unit: "", joinCode: "" },
+
+    { sFieldTitle: "选装包", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-optional" },
+    { sFieldTitle: "选装包", sType: "optional", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "" },
+];
+// page method --------------------------
+var arrField2 = [
    { sType: "fieldPic", sFieldIndex: "", sFieldTitle: "图片", sPid: "", sTrPrefix: "1", unit: "", joinCode: "" },
    { sType: "bar", sFieldIndex: "", sFieldTitle: "基本信息", sPid: "", sTrPrefix: "1", unit: "", joinCode: "", scrollId: "params-carinfo" },
    { sType: "fieldPara", sFieldIndex: "0", sFieldTitle: "厂家指导价", sPid: "", sTrPrefix: "1", unit: "", joinCode: "" },
@@ -1835,4 +2270,27 @@ function callbackFunc() {
              }
          }
      });
+}
+//6701->6,701
+function formatCurrency(num) {
+    if (isNaN(num)) {
+        return "";
+    }
+    num = num.toString().replace(/\$|\,/g, '');
+    if (isNaN(num)) num = "0";
+    sign = (num == (num = Math.abs(num)));
+    num = Math.floor(num * 100 + 0.50000000001);
+    num = Math.floor(num / 100).toString();
+    for (var i = 0; i < Math.floor((num.length - (1 + i)) / 3); i++)
+        num = num.substring(0, num.length - (4 * i + 3)) + ',' + num.substring(num.length - (4 * i + 3));
+    return (((sign) ? '' : '-') + num);
+}
+//数组包含元素
+Array.prototype.contains = function (item) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i] == item) {
+            return true;
+        }
+    }
+    return false;
 }

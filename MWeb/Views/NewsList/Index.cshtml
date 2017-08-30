@@ -101,7 +101,7 @@
                         }
                         if (!loading) {
                             loading = true;
-                            jsonp("/handlers/getcsnews.ashx?call=loadNews&ts=20140912&cs=@ViewData["SerialId"]&t=@ViewData["NewsType&size"]=@ViewData["PageSize"]&i=" + (++cp));
+                            jsonp("/handlers/getcsnews.ashx?call=loadNews&ts=20140912&cs=@ViewData["SerialId"]&t=@ViewData["NewsType"]&size=@ViewData["PageSize"]&i=" + (++cp));
                         }
                         $(window).scrollTop(0);
                         return false;

@@ -1,0 +1,49 @@
+[2017/8/22 16:42:36]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx?groupname=RidingComfortGroup&evaluationId=2448
+Ref: 
+Error Message: Element 'FrontDescription' does not match any field or property of class BitAuto.CarChannel.Model.Assessment.ChairEntity.
+Stack Trace:    在 MongoDB.Bson.Serialization.BsonClassMapSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/22 16:43:14]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx?groupname=RidingComfortGroup&evaluationId=2448
+Ref: 
+Error Message: Element 'FrontDescription' does not match any field or property of class BitAuto.CarChannel.Model.Assessment.ChairEntity.
+Stack Trace:    在 MongoDB.Bson.Serialization.BsonClassMapSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/22 16:44:15]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx?groupname=RidingComfortGroup&evaluationId=2448
+Ref: 
+Error Message: Element 'FrontDescription' does not match any field or property of class BitAuto.CarChannel.Model.Assessment.ChairEntity.
+Stack Trace:    在 MongoDB.Bson.Serialization.BsonClassMapSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/22 16:44:42]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx?groupname=RidingComfortGroup&evaluationId=2448
+Ref: 
+Error Message: Element 'FrontDescription' does not match any field or property of class BitAuto.CarChannel.Model.Assessment.ChairEntity.
+Stack Trace:    在 MongoDB.Bson.Serialization.BsonClassMapSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/22 16:46:30]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx?groupname=RidingComfortGroup&evaluationId=2448
+Ref: 
+Error Message: Connection is closed.
+Stack Trace:    在 MongoDB.Driver.Internal.MongoConnection.SendMessage(BsonBuffer buffer, Int32 requestId)
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(MongoRequestMessage message)
+   在 MongoDB.Driver.Operations.QueryOperation`1.GetFirstBatch(IConnectionProvider connectionProvider)
+   在 MongoDB.Driver.Operations.QueryOperation`1.Execute(IConnectionProvider connectionProvider)
+   在 System.Linq.Enumerable.Any[TSource](IEnumerable`1 source)
+   在 BitAuto.CarChannel.Common.MongoDB.MongoDBHelper.GetOne[T](String connectionString, String databaseName, String collectionName, IMongoQuery query, String[] fields, IMongoSortBy sortBy) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\MongoDB\MongoDBHelper.cs:行号 439
+   在 BitAuto.CarChannel.DAL.EvaluationDal.GetOne[T](IMongoQuery query, String[] fields, Dictionary`2 sortdic) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\DAL\EvaluationDal.cs:行号 91
+   在 BitAuto.CarChannel.BLL.EvaluationBll.GetOne[T](IMongoQuery query, String[] fields, Dictionary`2 sortdic) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\EvaluationBll.cs:行号 83
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetAssessmentInfo.ashx.cs:行号 48
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

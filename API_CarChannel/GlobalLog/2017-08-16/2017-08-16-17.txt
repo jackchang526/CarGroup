@@ -1,0 +1,24 @@
+[2017/8/16 17:25:17]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx?groupname=BodyAndSpaceGroup
+Ref: 
+Error Message: 值不能为 null。
+参数名: value
+Stack Trace:    在 MongoDB.Driver.Builders.Query.EQ(String name, BsonValue value)
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetAssessmentInfo.ashx.cs:行号 26
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/16 17:28:37]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx?groupname=BodyAndSpaceGroup&csid=1765
+Ref: 
+Error Message: 序列不包含任何元素
+Stack Trace:    在 System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   在 BitAuto.CarChannel.Common.MongoDB.MongoDBHelper.GetOne[T](String connectionString, String databaseName, String collectionName, IMongoQuery query, String[] fields) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\MongoDB\MongoDBHelper.cs:行号 434
+   在 BitAuto.CarChannel.DAL.EvaluationDal.GetOne[T](IMongoQuery query, String[] fields) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\DAL\EvaluationDal.cs:行号 54
+   在 BitAuto.CarChannel.BLL.EvaluationBll.GetOne[T](IMongoQuery query, String[] fields) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\EvaluationBll.cs:行号 59
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetAssessmentInfo.ashx.cs:行号 27
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

@@ -1,0 +1,232 @@
+[2017/8/16 16:21:05]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEvaluationParam/GetAssessmentInfo.ashx
+Ref: 
+Error Message: 文件“/Assessment/GetEvaluationParam/GetAssessmentInfo.ashx”不存在。
+Stack Trace:    在 System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   在 System.Web.UI.SimpleHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/16 16:21:11]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEvaluationParam/GetAssessmentInfo.ashx
+Ref: 
+Error Message: 文件“/Assessment/GetEvaluationParam/GetAssessmentInfo.ashx”不存在。
+Stack Trace:    在 System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   在 System.Web.UI.SimpleHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/16 16:21:20]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEvaluationParam/GetAssessmentInfo.ashx
+Ref: 
+Error Message: 文件“/Assessment/GetEvaluationParam/GetAssessmentInfo.ashx”不存在。
+Stack Trace:    在 System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   在 System.Web.UI.SimpleHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/16 16:21:57]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEvaluationParam/GetAssessmentInfo.ashx
+Ref: 
+Error Message: 文件“/Assessment/GetEvaluationParam/GetAssessmentInfo.ashx”不存在。
+Stack Trace:    在 System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   在 System.Web.UI.SimpleHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/16 16:22:53]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx
+Ref: 
+Error Message: 未能加载文件或程序集“MongoDB.Bson, Version=1.1.0.4184, Culture=neutral, PublicKeyToken=f686731cfb9cc103”或它的某一个依赖项。找到的程序集清单定义与程序集引用不匹配。 (异常来自 HRESULT:0x80131040)
+Stack Trace:    在 System.ModuleHandle.ResolveType(RuntimeModule module, Int32 typeToken, IntPtr* typeInstArgs, Int32 typeInstCount, IntPtr* methodInstArgs, Int32 methodInstCount, ObjectHandleOnStack type)
+   在 System.ModuleHandle.ResolveTypeHandleInternal(RuntimeModule module, Int32 typeToken, RuntimeTypeHandle[] typeInstantiationContext, RuntimeTypeHandle[] methodInstantiationContext)
+   在 System.Reflection.RuntimeModule.ResolveType(Int32 metadataToken, Type[] genericTypeArguments, Type[] genericMethodArguments)
+   在 System.Reflection.CustomAttribute.FilterCustomAttributeRecord(CustomAttributeRecord caRecord, MetadataImport scope, Assembly& lastAptcaOkAssembly, RuntimeModule decoratedModule, MetadataToken decoratedToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, Object[] attributes, IList derivedAttributes, RuntimeType& attributeType, IRuntimeMethodInfo& ctor, Boolean& ctorHasParameters, Boolean& isVarArg)
+   在 System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeModule decoratedModule, Int32 decoratedMetadataToken, Int32 pcaCount, RuntimeType attributeFilterType, Boolean mustBeInheritable, IList derivedAttributes, Boolean isDecoratedTargetSecurityTransparent)
+   在 System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeType type, RuntimeType caType, Boolean inherit)
+   在 MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer(Type type)
+   在 MongoDB.Driver.MongoCollection.FindOneAs[TDocument](FindOneArgs args)
+   在 BitAuto.CarChannel.Common.MongoDB.MongoDBHelper.GetOne[T](String connectionString, String databaseName, String collectionName, IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\MongoDB\MongoDBHelper.cs:行号 413
+   在 BitAuto.CarChannel.DAL.EvaluationDal.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\DAL\EvaluationDal.cs:行号 49
+   在 BitAuto.CarChannel.BLL.EvaluationBll.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\EvaluationBll.cs:行号 47
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetAssessmentInfo.ashx.cs:行号 27
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/16 16:24:32]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx
+Ref: 
+Error Message: 未能加载文件或程序集“MongoDB.Bson, Version=1.1.0.4184, Culture=neutral, PublicKeyToken=f686731cfb9cc103”或它的某一个依赖项。找到的程序集清单定义与程序集引用不匹配。 (异常来自 HRESULT:0x80131040)
+Stack Trace:    在 System.ModuleHandle.ResolveType(RuntimeModule module, Int32 typeToken, IntPtr* typeInstArgs, Int32 typeInstCount, IntPtr* methodInstArgs, Int32 methodInstCount, ObjectHandleOnStack type)
+   在 System.ModuleHandle.ResolveTypeHandleInternal(RuntimeModule module, Int32 typeToken, RuntimeTypeHandle[] typeInstantiationContext, RuntimeTypeHandle[] methodInstantiationContext)
+   在 System.Reflection.RuntimeModule.ResolveType(Int32 metadataToken, Type[] genericTypeArguments, Type[] genericMethodArguments)
+   在 System.Reflection.CustomAttribute.FilterCustomAttributeRecord(CustomAttributeRecord caRecord, MetadataImport scope, Assembly& lastAptcaOkAssembly, RuntimeModule decoratedModule, MetadataToken decoratedToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, Object[] attributes, IList derivedAttributes, RuntimeType& attributeType, IRuntimeMethodInfo& ctor, Boolean& ctorHasParameters, Boolean& isVarArg)
+   在 System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeModule decoratedModule, Int32 decoratedMetadataToken, Int32 pcaCount, RuntimeType attributeFilterType, Boolean mustBeInheritable, IList derivedAttributes, Boolean isDecoratedTargetSecurityTransparent)
+   在 System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeType type, RuntimeType caType, Boolean inherit)
+   在 MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer(Type type)
+   在 MongoDB.Driver.MongoCollection.FindOneAs[TDocument](FindOneArgs args)
+   在 BitAuto.CarChannel.Common.MongoDB.MongoDBHelper.GetOne[T](String connectionString, String databaseName, String collectionName, IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\MongoDB\MongoDBHelper.cs:行号 413
+   在 BitAuto.CarChannel.DAL.EvaluationDal.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\DAL\EvaluationDal.cs:行号 49
+   在 BitAuto.CarChannel.BLL.EvaluationBll.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\EvaluationBll.cs:行号 47
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetAssessmentInfo.ashx.cs:行号 27
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/16 16:28:23]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx
+Ref: 
+Error Message: 未能加载文件或程序集“MongoDB.Bson, Version=1.1.0.4184, Culture=neutral, PublicKeyToken=f686731cfb9cc103”或它的某一个依赖项。找到的程序集清单定义与程序集引用不匹配。 (异常来自 HRESULT:0x80131040)
+Stack Trace:    在 System.ModuleHandle.ResolveType(RuntimeModule module, Int32 typeToken, IntPtr* typeInstArgs, Int32 typeInstCount, IntPtr* methodInstArgs, Int32 methodInstCount, ObjectHandleOnStack type)
+   在 System.ModuleHandle.ResolveTypeHandleInternal(RuntimeModule module, Int32 typeToken, RuntimeTypeHandle[] typeInstantiationContext, RuntimeTypeHandle[] methodInstantiationContext)
+   在 System.Reflection.RuntimeModule.ResolveType(Int32 metadataToken, Type[] genericTypeArguments, Type[] genericMethodArguments)
+   在 System.Reflection.CustomAttribute.FilterCustomAttributeRecord(CustomAttributeRecord caRecord, MetadataImport scope, Assembly& lastAptcaOkAssembly, RuntimeModule decoratedModule, MetadataToken decoratedToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, Object[] attributes, IList derivedAttributes, RuntimeType& attributeType, IRuntimeMethodInfo& ctor, Boolean& ctorHasParameters, Boolean& isVarArg)
+   在 System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeModule decoratedModule, Int32 decoratedMetadataToken, Int32 pcaCount, RuntimeType attributeFilterType, Boolean mustBeInheritable, IList derivedAttributes, Boolean isDecoratedTargetSecurityTransparent)
+   在 System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeType type, RuntimeType caType, Boolean inherit)
+   在 MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer(Type type)
+   在 MongoDB.Driver.MongoCollection.FindOneAs[TDocument](FindOneArgs args)
+   在 BitAuto.CarChannel.Common.MongoDB.MongoDBHelper.GetOne[T](String connectionString, String databaseName, String collectionName, IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\MongoDB\MongoDBHelper.cs:行号 413
+   在 BitAuto.CarChannel.DAL.EvaluationDal.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\DAL\EvaluationDal.cs:行号 49
+   在 BitAuto.CarChannel.BLL.EvaluationBll.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\EvaluationBll.cs:行号 47
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetAssessmentInfo.ashx.cs:行号 27
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/16 16:29:09]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx
+Ref: 
+Error Message: 未能加载文件或程序集“MongoDB.Bson, Version=1.1.0.4184, Culture=neutral, PublicKeyToken=f686731cfb9cc103”或它的某一个依赖项。找到的程序集清单定义与程序集引用不匹配。 (异常来自 HRESULT:0x80131040)
+Stack Trace:    在 System.ModuleHandle.ResolveType(RuntimeModule module, Int32 typeToken, IntPtr* typeInstArgs, Int32 typeInstCount, IntPtr* methodInstArgs, Int32 methodInstCount, ObjectHandleOnStack type)
+   在 System.ModuleHandle.ResolveTypeHandleInternal(RuntimeModule module, Int32 typeToken, RuntimeTypeHandle[] typeInstantiationContext, RuntimeTypeHandle[] methodInstantiationContext)
+   在 System.Reflection.RuntimeModule.ResolveType(Int32 metadataToken, Type[] genericTypeArguments, Type[] genericMethodArguments)
+   在 System.Reflection.CustomAttribute.FilterCustomAttributeRecord(CustomAttributeRecord caRecord, MetadataImport scope, Assembly& lastAptcaOkAssembly, RuntimeModule decoratedModule, MetadataToken decoratedToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, Object[] attributes, IList derivedAttributes, RuntimeType& attributeType, IRuntimeMethodInfo& ctor, Boolean& ctorHasParameters, Boolean& isVarArg)
+   在 System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeModule decoratedModule, Int32 decoratedMetadataToken, Int32 pcaCount, RuntimeType attributeFilterType, Boolean mustBeInheritable, IList derivedAttributes, Boolean isDecoratedTargetSecurityTransparent)
+   在 System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeType type, RuntimeType caType, Boolean inherit)
+   在 MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer(Type type)
+   在 MongoDB.Driver.MongoCollection.FindOneAs[TDocument](FindOneArgs args)
+   在 BitAuto.CarChannel.Common.MongoDB.MongoDBHelper.GetOne[T](String connectionString, String databaseName, String collectionName, IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\MongoDB\MongoDBHelper.cs:行号 413
+   在 BitAuto.CarChannel.DAL.EvaluationDal.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\DAL\EvaluationDal.cs:行号 49
+   在 BitAuto.CarChannel.BLL.EvaluationBll.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\EvaluationBll.cs:行号 47
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetAssessmentInfo.ashx.cs:行号 27
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/16 16:33:59]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx
+Ref: 
+Error Message: 未能加载文件或程序集“MongoDB.Bson, Version=1.1.0.4184, Culture=neutral, PublicKeyToken=f686731cfb9cc103”或它的某一个依赖项。找到的程序集清单定义与程序集引用不匹配。 (异常来自 HRESULT:0x80131040)
+Stack Trace:    在 System.ModuleHandle.ResolveType(RuntimeModule module, Int32 typeToken, IntPtr* typeInstArgs, Int32 typeInstCount, IntPtr* methodInstArgs, Int32 methodInstCount, ObjectHandleOnStack type)
+   在 System.ModuleHandle.ResolveTypeHandleInternal(RuntimeModule module, Int32 typeToken, RuntimeTypeHandle[] typeInstantiationContext, RuntimeTypeHandle[] methodInstantiationContext)
+   在 System.Reflection.RuntimeModule.ResolveType(Int32 metadataToken, Type[] genericTypeArguments, Type[] genericMethodArguments)
+   在 System.Reflection.CustomAttribute.FilterCustomAttributeRecord(CustomAttributeRecord caRecord, MetadataImport scope, Assembly& lastAptcaOkAssembly, RuntimeModule decoratedModule, MetadataToken decoratedToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, Object[] attributes, IList derivedAttributes, RuntimeType& attributeType, IRuntimeMethodInfo& ctor, Boolean& ctorHasParameters, Boolean& isVarArg)
+   在 System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeModule decoratedModule, Int32 decoratedMetadataToken, Int32 pcaCount, RuntimeType attributeFilterType, Boolean mustBeInheritable, IList derivedAttributes, Boolean isDecoratedTargetSecurityTransparent)
+   在 System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeType type, RuntimeType caType, Boolean inherit)
+   在 MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer(Type type)
+   在 MongoDB.Driver.MongoCollection.FindOneAs[TDocument](FindOneArgs args)
+   在 BitAuto.CarChannel.Common.MongoDB.MongoDBHelper.GetOne[T](String connectionString, String databaseName, String collectionName, IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\MongoDB\MongoDBHelper.cs:行号 413
+   在 BitAuto.CarChannel.DAL.EvaluationDal.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\DAL\EvaluationDal.cs:行号 49
+   在 BitAuto.CarChannel.BLL.EvaluationBll.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\EvaluationBll.cs:行号 47
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetAssessmentInfo.ashx.cs:行号 27
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/16 16:42:44]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx
+Ref: 
+Error Message: 未能加载文件或程序集“MongoDB.Bson, Version=1.1.0.4184, Culture=neutral, PublicKeyToken=f686731cfb9cc103”或它的某一个依赖项。找到的程序集清单定义与程序集引用不匹配。 (异常来自 HRESULT:0x80131040)
+Stack Trace:    在 System.ModuleHandle.ResolveType(RuntimeModule module, Int32 typeToken, IntPtr* typeInstArgs, Int32 typeInstCount, IntPtr* methodInstArgs, Int32 methodInstCount, ObjectHandleOnStack type)
+   在 System.ModuleHandle.ResolveTypeHandleInternal(RuntimeModule module, Int32 typeToken, RuntimeTypeHandle[] typeInstantiationContext, RuntimeTypeHandle[] methodInstantiationContext)
+   在 System.Reflection.RuntimeModule.ResolveType(Int32 metadataToken, Type[] genericTypeArguments, Type[] genericMethodArguments)
+   在 System.Reflection.CustomAttribute.FilterCustomAttributeRecord(CustomAttributeRecord caRecord, MetadataImport scope, Assembly& lastAptcaOkAssembly, RuntimeModule decoratedModule, MetadataToken decoratedToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, Object[] attributes, IList derivedAttributes, RuntimeType& attributeType, IRuntimeMethodInfo& ctor, Boolean& ctorHasParameters, Boolean& isVarArg)
+   在 System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeModule decoratedModule, Int32 decoratedMetadataToken, Int32 pcaCount, RuntimeType attributeFilterType, Boolean mustBeInheritable, IList derivedAttributes, Boolean isDecoratedTargetSecurityTransparent)
+   在 System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeType type, RuntimeType caType, Boolean inherit)
+   在 MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer(Type type)
+   在 MongoDB.Driver.MongoCollection.FindOneAs[TDocument](FindOneArgs args)
+   在 BitAuto.CarChannel.Common.MongoDB.MongoDBHelper.GetOne[T](String connectionString, String databaseName, String collectionName, IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\MongoDB\MongoDBHelper.cs:行号 413
+   在 BitAuto.CarChannel.DAL.EvaluationDal.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\DAL\EvaluationDal.cs:行号 49
+   在 BitAuto.CarChannel.BLL.EvaluationBll.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\EvaluationBll.cs:行号 47
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetAssessmentInfo.ashx.cs:行号 27
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/16 16:44:05]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx
+Ref: 
+Error Message: 未能加载文件或程序集“MongoDB.Bson, Version=1.1.0.4184, Culture=neutral, PublicKeyToken=f686731cfb9cc103”或它的某一个依赖项。找到的程序集清单定义与程序集引用不匹配。 (异常来自 HRESULT:0x80131040)
+Stack Trace:    在 System.ModuleHandle.ResolveType(RuntimeModule module, Int32 typeToken, IntPtr* typeInstArgs, Int32 typeInstCount, IntPtr* methodInstArgs, Int32 methodInstCount, ObjectHandleOnStack type)
+   在 System.ModuleHandle.ResolveTypeHandleInternal(RuntimeModule module, Int32 typeToken, RuntimeTypeHandle[] typeInstantiationContext, RuntimeTypeHandle[] methodInstantiationContext)
+   在 System.Reflection.RuntimeModule.ResolveType(Int32 metadataToken, Type[] genericTypeArguments, Type[] genericMethodArguments)
+   在 System.Reflection.CustomAttribute.FilterCustomAttributeRecord(CustomAttributeRecord caRecord, MetadataImport scope, Assembly& lastAptcaOkAssembly, RuntimeModule decoratedModule, MetadataToken decoratedToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, Object[] attributes, IList derivedAttributes, RuntimeType& attributeType, IRuntimeMethodInfo& ctor, Boolean& ctorHasParameters, Boolean& isVarArg)
+   在 System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeModule decoratedModule, Int32 decoratedMetadataToken, Int32 pcaCount, RuntimeType attributeFilterType, Boolean mustBeInheritable, IList derivedAttributes, Boolean isDecoratedTargetSecurityTransparent)
+   在 System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeType type, RuntimeType caType, Boolean inherit)
+   在 MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer(Type type)
+   在 MongoDB.Driver.MongoCollection.FindOneAs[TDocument](FindOneArgs args)
+   在 BitAuto.CarChannel.Common.MongoDB.MongoDBHelper.GetOne[T](String connectionString, String databaseName, String collectionName, IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\MongoDB\MongoDBHelper.cs:行号 413
+   在 BitAuto.CarChannel.DAL.EvaluationDal.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\DAL\EvaluationDal.cs:行号 49
+   在 BitAuto.CarChannel.BLL.EvaluationBll.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\EvaluationBll.cs:行号 47
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetAssessmentInfo.ashx.cs:行号 27
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/16 16:49:25]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx
+Ref: 
+Error Message: 未能加载文件或程序集“MongoDB.Bson, Version=1.1.0.4184, Culture=neutral, PublicKeyToken=f686731cfb9cc103”或它的某一个依赖项。找到的程序集清单定义与程序集引用不匹配。 (异常来自 HRESULT:0x80131040)
+Stack Trace:    在 System.ModuleHandle.ResolveType(RuntimeModule module, Int32 typeToken, IntPtr* typeInstArgs, Int32 typeInstCount, IntPtr* methodInstArgs, Int32 methodInstCount, ObjectHandleOnStack type)
+   在 System.ModuleHandle.ResolveTypeHandleInternal(RuntimeModule module, Int32 typeToken, RuntimeTypeHandle[] typeInstantiationContext, RuntimeTypeHandle[] methodInstantiationContext)
+   在 System.Reflection.RuntimeModule.ResolveType(Int32 metadataToken, Type[] genericTypeArguments, Type[] genericMethodArguments)
+   在 System.Reflection.CustomAttribute.FilterCustomAttributeRecord(CustomAttributeRecord caRecord, MetadataImport scope, Assembly& lastAptcaOkAssembly, RuntimeModule decoratedModule, MetadataToken decoratedToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, Object[] attributes, IList derivedAttributes, RuntimeType& attributeType, IRuntimeMethodInfo& ctor, Boolean& ctorHasParameters, Boolean& isVarArg)
+   在 System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeModule decoratedModule, Int32 decoratedMetadataToken, Int32 pcaCount, RuntimeType attributeFilterType, Boolean mustBeInheritable, IList derivedAttributes, Boolean isDecoratedTargetSecurityTransparent)
+   在 System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeType type, RuntimeType caType, Boolean inherit)
+   在 MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer(Type type)
+   在 MongoDB.Driver.MongoCollection.FindOneAs[TDocument](FindOneArgs args)
+   在 BitAuto.CarChannel.Common.MongoDB.MongoDBHelper.GetOne[T](String connectionString, String databaseName, String collectionName, IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\MongoDB\MongoDBHelper.cs:行号 413
+   在 BitAuto.CarChannel.DAL.EvaluationDal.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\DAL\EvaluationDal.cs:行号 49
+   在 BitAuto.CarChannel.BLL.EvaluationBll.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\EvaluationBll.cs:行号 47
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetAssessmentInfo.ashx.cs:行号 27
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/16 16:53:55]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx
+Ref: 
+Error Message: 未能加载文件或程序集“MongoDB.Bson, Version=1.1.0.4184, Culture=neutral, PublicKeyToken=f686731cfb9cc103”或它的某一个依赖项。找到的程序集清单定义与程序集引用不匹配。 (异常来自 HRESULT:0x80131040)
+Stack Trace:    在 System.ModuleHandle.ResolveType(RuntimeModule module, Int32 typeToken, IntPtr* typeInstArgs, Int32 typeInstCount, IntPtr* methodInstArgs, Int32 methodInstCount, ObjectHandleOnStack type)
+   在 System.ModuleHandle.ResolveTypeHandleInternal(RuntimeModule module, Int32 typeToken, RuntimeTypeHandle[] typeInstantiationContext, RuntimeTypeHandle[] methodInstantiationContext)
+   在 System.Reflection.RuntimeModule.ResolveType(Int32 metadataToken, Type[] genericTypeArguments, Type[] genericMethodArguments)
+   在 System.Reflection.CustomAttribute.FilterCustomAttributeRecord(CustomAttributeRecord caRecord, MetadataImport scope, Assembly& lastAptcaOkAssembly, RuntimeModule decoratedModule, MetadataToken decoratedToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, Object[] attributes, IList derivedAttributes, RuntimeType& attributeType, IRuntimeMethodInfo& ctor, Boolean& ctorHasParameters, Boolean& isVarArg)
+   在 System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeModule decoratedModule, Int32 decoratedMetadataToken, Int32 pcaCount, RuntimeType attributeFilterType, Boolean mustBeInheritable, IList derivedAttributes, Boolean isDecoratedTargetSecurityTransparent)
+   在 System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeType type, RuntimeType caType, Boolean inherit)
+   在 MongoDB.Bson.Serialization.BsonSerializer.LookupSerializer(Type type)
+   在 MongoDB.Driver.MongoCollection.FindOneAs[TDocument](FindOneArgs args)
+   在 BitAuto.CarChannel.Common.MongoDB.MongoDBHelper.GetOne[T](String connectionString, String databaseName, String collectionName, IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\MongoDB\MongoDBHelper.cs:行号 413
+   在 BitAuto.CarChannel.DAL.EvaluationDal.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\DAL\EvaluationDal.cs:行号 49
+   在 BitAuto.CarChannel.BLL.EvaluationBll.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\EvaluationBll.cs:行号 47
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetAssessmentInfo.ashx.cs:行号 27
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

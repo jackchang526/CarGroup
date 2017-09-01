@@ -1,0 +1,199 @@
+[2017/8/30 11:07:19]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx?groupname=BodyAndSpaceGroup&evaluationId=2461
+Ref: 
+Error Message: 未能创建类型“BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo”。
+Stack Trace:    在 System.Web.UI.SimpleWebHandlerParser.GetType(String typeName)
+   在 System.Web.UI.SimpleWebHandlerParser.GetTypeToCache(Assembly builtAssembly)
+   在 System.Web.Compilation.SimpleHandlerBuildProvider.GetGeneratedType(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.CreateBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.GetBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   在 System.Web.UI.SimpleHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/30 11:07:28]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx?groupname=BodyAndSpaceGroup&evaluationId=2461
+Ref: 
+Error Message: 未能创建类型“BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo”。
+Stack Trace:    在 System.Web.UI.SimpleWebHandlerParser.GetType(String typeName)
+   在 System.Web.UI.SimpleWebHandlerParser.GetTypeToCache(Assembly builtAssembly)
+   在 System.Web.Compilation.SimpleHandlerBuildProvider.GetGeneratedType(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.CreateBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.GetBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   在 System.Web.UI.SimpleHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/30 11:07:34]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx?groupname=BodyAndSpaceGroup&evaluationId=2461
+Ref: 
+Error Message: 未能创建类型“BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo”。
+Stack Trace:    在 System.Web.UI.SimpleWebHandlerParser.GetType(String typeName)
+   在 System.Web.UI.SimpleWebHandlerParser.GetTypeToCache(Assembly builtAssembly)
+   在 System.Web.Compilation.SimpleHandlerBuildProvider.GetGeneratedType(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.CreateBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.GetBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   在 System.Web.UI.SimpleHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/30 11:07:35]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx?groupname=BodyAndSpaceGroup&evaluationId=2461
+Ref: 
+Error Message: 未能创建类型“BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo”。
+Stack Trace:    在 System.Web.UI.SimpleWebHandlerParser.GetType(String typeName)
+   在 System.Web.UI.SimpleWebHandlerParser.GetTypeToCache(Assembly builtAssembly)
+   在 System.Web.Compilation.SimpleHandlerBuildProvider.GetGeneratedType(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.CreateBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.GetBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   在 System.Web.UI.SimpleHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/30 11:07:36]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx?groupname=BodyAndSpaceGroup&evaluationId=2461
+Ref: 
+Error Message: 未能创建类型“BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo”。
+Stack Trace:    在 System.Web.UI.SimpleWebHandlerParser.GetType(String typeName)
+   在 System.Web.UI.SimpleWebHandlerParser.GetTypeToCache(Assembly builtAssembly)
+   在 System.Web.Compilation.SimpleHandlerBuildProvider.GetGeneratedType(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.CreateBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.GetBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   在 System.Web.UI.SimpleHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/30 11:07:36]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx?groupname=BodyAndSpaceGroup&evaluationId=2461
+Ref: 
+Error Message: 未能创建类型“BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo”。
+Stack Trace:    在 System.Web.UI.SimpleWebHandlerParser.GetType(String typeName)
+   在 System.Web.UI.SimpleWebHandlerParser.GetTypeToCache(Assembly builtAssembly)
+   在 System.Web.Compilation.SimpleHandlerBuildProvider.GetGeneratedType(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.CreateBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.GetBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   在 System.Web.UI.SimpleHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/30 11:07:36]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx?groupname=BodyAndSpaceGroup&evaluationId=2461
+Ref: 
+Error Message: 未能创建类型“BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo”。
+Stack Trace:    在 System.Web.UI.SimpleWebHandlerParser.GetType(String typeName)
+   在 System.Web.UI.SimpleWebHandlerParser.GetTypeToCache(Assembly builtAssembly)
+   在 System.Web.Compilation.SimpleHandlerBuildProvider.GetGeneratedType(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.CreateBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.GetBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   在 System.Web.UI.SimpleHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/30 11:07:37]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx?groupname=BodyAndSpaceGroup&evaluationId=2461
+Ref: 
+Error Message: 未能创建类型“BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo”。
+Stack Trace:    在 System.Web.UI.SimpleWebHandlerParser.GetType(String typeName)
+   在 System.Web.UI.SimpleWebHandlerParser.GetTypeToCache(Assembly builtAssembly)
+   在 System.Web.Compilation.SimpleHandlerBuildProvider.GetGeneratedType(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.CreateBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.GetBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   在 System.Web.UI.SimpleHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/30 11:07:37]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx?groupname=BodyAndSpaceGroup&evaluationId=2461
+Ref: 
+Error Message: 未能创建类型“BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo”。
+Stack Trace:    在 System.Web.UI.SimpleWebHandlerParser.GetType(String typeName)
+   在 System.Web.UI.SimpleWebHandlerParser.GetTypeToCache(Assembly builtAssembly)
+   在 System.Web.Compilation.SimpleHandlerBuildProvider.GetGeneratedType(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.CreateBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.GetBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   在 System.Web.UI.SimpleHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/30 11:07:37]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx?groupname=BodyAndSpaceGroup&evaluationId=2461
+Ref: 
+Error Message: 未能创建类型“BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo”。
+Stack Trace:    在 System.Web.UI.SimpleWebHandlerParser.GetType(String typeName)
+   在 System.Web.UI.SimpleWebHandlerParser.GetTypeToCache(Assembly builtAssembly)
+   在 System.Web.Compilation.SimpleHandlerBuildProvider.GetGeneratedType(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.CreateBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildProvider.GetBuildResult(CompilerResults results)
+   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   在 System.Web.UI.SimpleHandlerFactory.System.Web.IHttpHandlerFactory2.GetHandler(HttpContext context, String requestType, VirtualPath virtualPath, String physicalPath)
+   在 System.Web.HttpApplication.MapHttpHandler(HttpContext context, String requestType, VirtualPath path, String pathTranslated, Boolean useAppConfig)
+   在 System.Web.HttpApplication.MapHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/30 11:36:49]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetAssessmentInfo.ashx?groupname=YhBaseGroup&evaluationId=2452&callback=success_jsonpCallback&_=1504064187952
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.Assessment.GetAssessmentInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetAssessmentInfo.ashx.cs:行号 55
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

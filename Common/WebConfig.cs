@@ -83,10 +83,16 @@ namespace BitAuto.CarChannel.Common
 		/// </summary>
 		public static string MongoDBForCarConnectionString;	// MongoDB for Car
 
-		/// <summary>
-		/// ÍøÕ¾»ù×¼ÍøÖ·
-		/// </summary>
-		public static string WebSiteBaseUrl
+        public static string CarsEvaluationDataConnectionString;
+        public static string MongoDBConnectionString;
+        public static string MongoDBDefaultDataBase;
+        public static string MongoDBDefaultDataTable;
+
+
+        /// <summary>
+        /// ÍøÕ¾»ù×¼ÍøÖ·
+        /// </summary>
+        public static string WebSiteBaseUrl
 		{
 			get
 			{
@@ -215,7 +221,13 @@ namespace BitAuto.CarChannel.Common
 				&& bool.TryParse(ConfigurationManager.AppSettings["IsUseMemcache"], out IsUseMemcache))
 			{ }
 			MongoDBForCarConnectionString = ConfigurationManager.AppSettings["MongoDBForCarConnectionString"];
-		}
+
+
+            CarsEvaluationDataConnectionString=ConfigurationManager.ConnectionStrings["CarsEvaluationData"].ConnectionString;
+            MongoDBConnectionString = ConfigurationManager.AppSettings["MongoDBConnectionString"];
+            MongoDBDefaultDataBase = ConfigurationManager.AppSettings["MongoDBDefaultDataBase"];
+            MongoDBDefaultDataTable = ConfigurationManager.AppSettings["MongoDBDefaultDataTable"];
+        }
 
 	}
 }

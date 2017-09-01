@@ -22,7 +22,7 @@ namespace MWeb.Controllers
         /// </summary>
         /// <param name="re">seo 参数 判断 是否直接输出</param>
         /// <returns></returns>
-        [OutputCache(Duration = 1800, Location = OutputCacheLocation.Downstream, VaryByParam = "*")]
+        [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream, VaryByParam = "*")]
         public ActionResult Index(string re)
         {
             rePara = re;

@@ -23,7 +23,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
             string callback = context.Request.QueryString["callback"];
             string editorAccount = context.Request.QueryString["editoraccount"];
             string xmlFile = Path.Combine(WebConfig.DataBlockPath, @"Data\EidtorUserUrl.xml");
-            string UserId = "", UserName = "", UserLoginName = "", UserBlogUrl = "", UserImageUrl = "", SquarePhoto = "", CityId = "", CityName = "";
+            string UserId = "", UserName = "", UserLoginName = "", UserBlogUrl = "", UserImageUrl = "", SquarePhoto = "", CityId = "", CityName = "", YicheAccountId = "", UserBlogMUrl = "";
             if (File.Exists(xmlFile))
             {
                 XDocument doc = XDocument.Load(xmlFile);
@@ -35,15 +35,17 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 {
                     UserId = item.Element("UserId").Value;
                     UserName = item.Element("ShowName").Value;
-                    UserLoginName = item.Element("UserLoginName").Value;
-                    UserBlogUrl = item.Element("UserBlogUrl").Value;
+                    UserLoginName = item.Element("UserLoginName").Value;                   
                     UserImageUrl = item.Element("Avatar").Value;
                     SquarePhoto = item.Element("SquarePhoto").Value;
                     CityId = item.Element("CityId").Value;
                     CityName = item.Element("CityName").Value;
+                    YicheAccountId= item.Element("YicheAccountId").Value;
+                    UserBlogMUrl = "http://i.m.yiche.com/u" + YicheAccountId + "/!media/works/";
+                    UserBlogUrl = "http://i.yiche.com/u" + YicheAccountId + "/!media/works/";//item.Element("UserBlogUrl").Value;
                 });
             }
-            var data = new { UserId = UserId, UserName = UserName, UserLoginName = UserLoginName, UserBlogUrl = UserBlogUrl, UserImageUrl = UserImageUrl, SquarePhoto = SquarePhoto, CityId = CityId, CityName = CityName };
+            var data = new { UserId = UserId, UserName = UserName, UserLoginName = UserLoginName, UserBlogUrl = UserBlogUrl, UserImageUrl = UserImageUrl, SquarePhoto = SquarePhoto, CityId = CityId, CityName = CityName, YicheAccountId = YicheAccountId , UserBlogMUrl= UserBlogMUrl };
             var json = JsonConvert.SerializeObject(data);
             context.Response.Write(!string.IsNullOrEmpty(callback) ? string.Format("{0}({1})", callback, json) : json);
         }

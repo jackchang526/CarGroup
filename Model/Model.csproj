@@ -57,17 +57,32 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MongoDB.Bson">
-      <HintPath>..\..\..\packages\MongoDB.Bson.dll</HintPath>
+    <Reference Include="MongoDB.Bson, Version=1.1.0.4184, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Mongodb.1.9.2\MongoDB.Bson.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>..\..\..\packages\MongoDB.Driver.dll</HintPath>
+    <Reference Include="MongoDB.Driver, Version=1.1.0.4184, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Mongodb.1.9.2\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assessment\AssessmentEntity.cs" />
+    <Compile Include="Assessment\BodyAndSpaceGroup.cs" />
+    <Compile Include="Assessment\CommonImageVideoEntity.cs" />
+    <Compile Include="Assessment\CommonInfoGroup.cs" />
+    <Compile Include="Assessment\CostBaseGroup.cs" />
+    <Compile Include="Assessment\DynamicPerformanceGroup.cs" />
+    <Compile Include="Assessment\EditorCommentEntity.cs" />
+    <Compile Include="Assessment\GeneralBaseGroup.cs" />
+    <Compile Include="Assessment\JsBaseGroup.cs" />
+    <Compile Include="Assessment\RidingComfortGroup.cs" />
+    <Compile Include="Assessment\SafetyGroup.cs" />
+    <Compile Include="Assessment\WikiEntity.cs" />
+    <Compile Include="Assessment\YhBaseGroup.cs" />
     <Compile Include="CarDealerList.cs" />
     <Compile Include="CarGoodsEntity.cs" />
     <Compile Include="CarInfoForSerialSummaryEntity.cs" />
@@ -86,6 +101,7 @@
     <Compile Include="City.cs" />
     <Compile Include="CNCAPEntity.cs" />
     <Compile Include="DaoGouEntity.cs" />
+    <Compile Include="EvaluationEntity.cs" />
     <Compile Include="LoanPackage.cs" />
     <Compile Include="DealerInfo.cs" />
     <Compile Include="Editer.cs" />
@@ -117,6 +133,7 @@
     <Compile Include="SerialPingCeNews.cs" />
     <Compile Include="SerialPostionImageEntity.cs" />
     <Compile Include="SerialSparkle.cs" />
+    <Compile Include="TestBaseEntity.cs" />
     <Compile Include="TreeTagConfigEntity.cs" />
     <Compile Include="UCarInfoEntity.cs" />
     <Compile Include="VideoEntity.cs" />
@@ -138,6 +155,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

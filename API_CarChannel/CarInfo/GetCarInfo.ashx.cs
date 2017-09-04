@@ -108,6 +108,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 
         private void RenderGetCarParamInfoForEValuation()
         {
+            response.ContentType = "application/x-javascript";
             string result = "{}";
             string callback = request.QueryString["callback"];
             int carId = ConvertHelper.GetInteger(request.QueryString["carid"]);
@@ -120,7 +121,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                               AS(SELECT   CarId, [835], [845], [680], [691], [714], [715], [833],
                                             [898], [818], [811], [812], [813], [702], [800], [703],
                                             [624], [518], [576], [577], [578], [579], [782], [788],
-                                             [398]
+                                             [398],[665],[470],[471],[663],[495]
                                    FROM(SELECT    CarId, ParamId, Pvalue
                                               FROM      dbo.CarDataBase
                                               WHERE     CarId = @CarId
@@ -136,7 +137,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                                                                                   [576], [577],
                                                                                   [578], [579],
                                                                                   [782], [788],
-                                                                                   [398])) AS T2
+                                                                                   [398],[665],[470],[471],[663],[495])) AS T2
                                  )
                         SELECT car.car_ReferPrice,Car_Name,result.*
                        FROM    dbo.Car_relation car
@@ -179,7 +180,12 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                     Oil_SboxSpace = dr["579"],
                     Perf_ZongHeYouHao = dr["782"],
                     Perf_MeasuredFuel = dr["788"],
-                    Car_RepairPolicy = dr["398"]
+                    Car_RepairPolicy = dr["398"],
+                    Perf_SeatNum = dr["665"],
+                    InStat_AirCSystem = dr["470"],
+                    InStat_AirCType =dr["471"],
+                    Perf_MaxSpeed=dr["663"],
+                    InStat_ChildSeatFix= dr["495"]
                 };
 
                 result = JsonConvert.SerializeObject(obj);

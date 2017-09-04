@@ -1,0 +1,12 @@
+[2017/8/16 11:36:34]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEvaluationInfo.ashx?carid=1765
+Ref: 
+Error Message: 值不能为 null。
+参数名: String
+Stack Trace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetEvaluationInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetEvaluationInfo.ashx.cs:行号 29
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

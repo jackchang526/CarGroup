@@ -1,0 +1,126 @@
+[2017/8/29 17:21:07]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2455
+Ref: 
+Error Message: Truncation resulted in data loss.
+Stack Trace:    在 MongoDB.Bson.Serialization.Options.RepresentationSerializationOptions.ToSingle(Double value)
+   在 MongoDB.Bson.Serialization.Serializers.SingleSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/29 17:31:22]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2455
+Ref: 
+Error Message: Truncation resulted in data loss.
+Stack Trace:    在 MongoDB.Bson.Serialization.Options.RepresentationSerializationOptions.ToSingle(Double value)
+   在 MongoDB.Bson.Serialization.Serializers.SingleSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/29 17:31:45]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2455
+Ref: 
+Error Message: Truncation resulted in data loss.
+Stack Trace:    在 MongoDB.Bson.Serialization.Options.RepresentationSerializationOptions.ToSingle(Double value)
+   在 MongoDB.Bson.Serialization.Serializers.SingleSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/29 17:31:47]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2455
+Ref: 
+Error Message: Truncation resulted in data loss.
+Stack Trace:    在 MongoDB.Bson.Serialization.Options.RepresentationSerializationOptions.ToSingle(Double value)
+   在 MongoDB.Bson.Serialization.Serializers.SingleSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/29 17:31:48]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2455
+Ref: 
+Error Message: Truncation resulted in data loss.
+Stack Trace:    在 MongoDB.Bson.Serialization.Options.RepresentationSerializationOptions.ToSingle(Double value)
+   在 MongoDB.Bson.Serialization.Serializers.SingleSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/29 17:31:49]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2455
+Ref: 
+Error Message: Truncation resulted in data loss.
+Stack Trace:    在 MongoDB.Bson.Serialization.Options.RepresentationSerializationOptions.ToSingle(Double value)
+   在 MongoDB.Bson.Serialization.Serializers.SingleSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/29 17:31:49]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2455
+Ref: 
+Error Message: Truncation resulted in data loss.
+Stack Trace:    在 MongoDB.Bson.Serialization.Options.RepresentationSerializationOptions.ToSingle(Double value)
+   在 MongoDB.Bson.Serialization.Serializers.SingleSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/29 17:31:50]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2455
+Ref: 
+Error Message: Truncation resulted in data loss.
+Stack Trace:    在 MongoDB.Bson.Serialization.Options.RepresentationSerializationOptions.ToSingle(Double value)
+   在 MongoDB.Bson.Serialization.Serializers.SingleSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/29 17:31:50]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2455
+Ref: 
+Error Message: Truncation resulted in data loss.
+Stack Trace:    在 MongoDB.Bson.Serialization.Options.RepresentationSerializationOptions.ToSingle(Double value)
+   在 MongoDB.Bson.Serialization.Serializers.SingleSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/29 17:34:10]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2455
+Ref: 
+Error Message: Truncation resulted in data loss.
+Stack Trace:    在 MongoDB.Bson.Serialization.Options.RepresentationSerializationOptions.ToSingle(Double value)
+   在 MongoDB.Bson.Serialization.Serializers.SingleSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/29 17:51:56]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2455
+Ref: 
+Error Message: Connection is closed.
+Stack Trace:    在 MongoDB.Driver.Internal.MongoConnection.SendMessage(BsonBuffer buffer, Int32 requestId)
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(MongoRequestMessage message)
+   在 MongoDB.Driver.Operations.QueryOperation`1.GetFirstBatch(IConnectionProvider connectionProvider)
+   在 MongoDB.Driver.Operations.QueryOperation`1.Execute(IConnectionProvider connectionProvider)
+   在 System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   在 MongoDB.Driver.MongoCollection.FindOneAs[TDocument](FindOneArgs args)
+   在 BitAuto.CarChannel.Common.MongoDB.MongoDBHelper.GetOne[T](String connectionString, String databaseName, String collectionName, IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\Common\MongoDB\MongoDBHelper.cs:行号 413
+   在 BitAuto.CarChannel.DAL.EvaluationDal.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\DAL\EvaluationDal.cs:行号 69
+   在 BitAuto.CarChannel.BLL.EvaluationBll.GetOne[T](IMongoQuery query) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\EvaluationBll.cs:行号 71
+   在 BitAuto.CarChannelAPI.Web.Assessment.ViewScore.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\ViewScore.ashx.cs:行号 76
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/29 17:53:50]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2455
+Ref: 
+Error Message: Truncation resulted in data loss.
+Stack Trace:    在 MongoDB.Bson.Serialization.Options.RepresentationSerializationOptions.ToSingle(Double value)
+   在 MongoDB.Bson.Serialization.Serializers.SingleSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/29 17:56:08]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2455
+Ref: 
+Error Message: Truncation resulted in data loss.
+Stack Trace:    在 MongoDB.Bson.Serialization.Options.RepresentationSerializationOptions.ToSingle(Double value)
+   在 MongoDB.Bson.Serialization.Serializers.SingleSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+

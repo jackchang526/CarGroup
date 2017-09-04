@@ -104,6 +104,12 @@ namespace MWeb.Controllers
                     _pageDescription = "{0}安全:易车网车型频道为您提供最权威的{1}{0}安全指南、最及时的{1}{0}碰撞安全测试、{0}最新报价、{0}价格、{0}经销商降价信息、网友点评讨论等。";
                     _carNewsType = CarNewsType.anquan;
                     break;
+                case "keji":
+                    _pageTitle = "【{0}科技-{0}科技】_{1}{0}-易车网";
+                    _pageKeywords = "{0}科技,{0}科技,{1}{0}";
+                    _pageDescription = "{0}科技:易车网车型频道为您提供最权威的{1}{0}安全指南、最及时的{1}{0}碰撞安全测试、{0}最新报价、{0}价格、{0}经销商降价信息、网友点评讨论等。";
+                    _carNewsType = CarNewsType.keji;
+                    break;
                 default:
                     _newsType = "xinwen";
                     _pageTitle = "【{0}新闻-{0}上市新闻】_{1}{0}-手机易车网";

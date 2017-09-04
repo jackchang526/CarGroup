@@ -279,10 +279,10 @@ function bindEvent() {
             $("#popup-menumask").hide();
         }
     });
-    //选装包事件
+    //选配包事件
     bindOptionalEvent();
 }
-//选装包弹层
+//选配包弹层
 function bindOptionalEvent() {
     $('.pop-optional-mask').off("click").click(function () {
         $('body').css('overflow', 'auto');
@@ -1062,13 +1062,14 @@ function fieldMultiValue(arrFieldRow) {
                     optionalJson.forEach(function (value, index, array) {
                         jsonArr.push(array[index].text + "|" + array[index].price);
                     });
-                    arrTemp.push("<div class=\"optional type1\" data-optional=\"" + jsonArr.join(",") + "\">○ 选装" + formatCurrency(optionalJson[0].price) + "元起</div>");
+                    arrTemp.push("<div class=\"optional type1\" data-optional=\"" + jsonArr.join(",") + "\">○ 选配" + formatCurrency(optionalJson[0].price) + "元起</div>");
                     //arrTemp.push("<div class=\"popup-layout-1\"><ul>");
                     //for (var optIndex = 0; optIndex < optionalJson.length; optIndex++) {
                     //    arrTemp.push("<li><span class=\"l\">" + optionalJson[optIndex].text + "</span ><span class=\"r\">￥" + optionalJson[optIndex].price + "</span></li>");
                     //}
                     //arrTemp.push("</ul></div></div>");
                 }
+                arrTemp.push("</td>");
             }
         }
     }
@@ -1124,7 +1125,7 @@ function createOptional(arrFieldRow) {
             if (checkCarIsShowForeach(i)) {
                 showCarCount++;
                 if (optionalPackageJson[opt].carid.contains(ComparePageObject.ArrCarInfo[i].CarID)) {
-                    arrContentTemp.push("<td name=\"td" + i + "\" class=\"optional\"><span>○ 选装￥" + optionalPackageJson[opt].price + "</span></td>");
+                    arrContentTemp.push("<td name=\"td" + i + "\" class=\"optional\"><span>○ 选配￥" + optionalPackageJson[opt].price + "</span></td>");
                     //isShow = true;
                 }
                 else {
@@ -1510,7 +1511,7 @@ var arrField = [
     { sFieldTitle: "可变齿比转向", sType: "fieldPara", sPid: "1020", sTrPrefix: "6", sFieldIndex: "11", unit: "", joinCode: "" },
     { sFieldTitle: "前倒车雷达", sType: "fieldPara", sPid: "800", sTrPrefix: "6", sFieldIndex: "12", unit: "", joinCode: "" },
     { sFieldTitle: "后倒车雷达", sType: "fieldPara", sPid: "702", sTrPrefix: "6", sFieldIndex: "13", unit: "", joinCode: "" },
-    { sFieldTitle: "倒车影像", sType: "fieldPara", sPid: "703", sTrPrefix: "6", sFieldIndex: "14", unit: "", joinCode: "" },
+    { sFieldTitle: "倒车影像", sType: "fieldMultiValue", sPid: "703", sTrPrefix: "6", sFieldIndex: "14", unit: "", joinCode: "" },
     { sFieldTitle: "驾驶模式选择", sType: "fieldPara", sPid: "1021", sTrPrefix: "6", sFieldIndex: "15", unit: "", joinCode: "" },
 
     { sFieldTitle: "外部配置", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-outerconfig" },
@@ -1575,7 +1576,7 @@ var arrField = [
     { sFieldTitle: "后排折叠桌版", sType: "fieldPara", sPid: "1032", sTrPrefix: "9", sFieldIndex: "15", unit: "", joinCode: "" },
 
     { sFieldTitle: "信息娱乐", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-pastime" },
-    { sFieldTitle: "中控彩色液晶屏", sType: "fieldPara", sPid: "488", sTrPrefix: "10", sFieldIndex: "0", unit: "", joinCode: "" },
+    { sFieldTitle: "中控彩色液晶屏", sType: "fieldMultiValue", sPid: "488", sTrPrefix: "10", sFieldIndex: "0", unit: "", joinCode: "" },
     { sFieldTitle: "全液晶仪表盘", sType: "fieldPara", sPid: "988", sTrPrefix: "10", sFieldIndex: "1", unit: "", joinCode: "" },
     { sFieldTitle: "行车电脑显示屏", sType: "fieldPara", sPid: "832", sTrPrefix: "10", sFieldIndex: "2", unit: "", joinCode: "" },
     { sFieldTitle: "HUD平视显示", sType: "fieldPara", sPid: "518", sTrPrefix: "10", sFieldIndex: "3", unit: "", joinCode: "" },
@@ -1594,8 +1595,8 @@ var arrField = [
     { sFieldTitle: "后排液晶屏/娱乐系统", sType: "fieldPara", sPid: "477", sTrPrefix: "10", sFieldIndex: "16", unit: "", joinCode: "" },
     { sFieldTitle: "车载220V电源", sType: "fieldPara", sPid: "467", sTrPrefix: "10", sFieldIndex: "17", unit: "", joinCode: "" },
 
-    { sFieldTitle: "选装包", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-optional" },
-    { sFieldTitle: "选装包", sType: "optional", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "" },
+    { sFieldTitle: "选配包", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-optional" },
+    { sFieldTitle: "选配包", sType: "optional", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "" },
 ];
 // page method --------------------------
 var arrField2 = [

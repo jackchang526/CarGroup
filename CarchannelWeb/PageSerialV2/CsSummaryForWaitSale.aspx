@@ -110,9 +110,9 @@
                     </ul>
                     <div class="mobile-qrcode">
                         <img src="/favicon.ico" id="qrcodelogo" style="display: none;" />
-                        <a href="javascript:;"><img src="http://image.bitautoimg.com/cargroup/car/appdownload.png" /></a>
+                        <a href="http://app.yiche.com/yiche/"><img src="http://image.bitautoimg.com/cargroup/car/appdownloadv2.png" /></a>
                         <%--<a href="<%= wirelessSerialUrl %>?ref=pctowap" target="_blank" id="qrcode"><img src="http://image.bitautoimg.com/cargroup/car/qrimages/<%= serialId %>.png?v=1" /></a>--%>
-                        <em>下APP抢1G流量</em>
+                        <em>APP看车领福利</em>
                     </div>
                 </div>
 

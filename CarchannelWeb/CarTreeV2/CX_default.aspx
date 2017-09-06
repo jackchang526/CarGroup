@@ -247,7 +247,7 @@
             });
         });
     </script>
-    <script type="text/javascript" src="http://gimg.bitauto.com/js/senseNew.js"></script>
+    <script type="text/javascript" src="http://d2.yiche.com/js/senseNew.js"></script>
     <!--#include file="~/htmlv2/CommonBodyBottom.shtml"-->
 </body>
 </html>
@@ -260,7 +260,7 @@
     var adplay_BrandName = ''; //品牌
     var adplay_BlockCode = 'fb4948ab-c2d4-493a-ac7a-d87c6591b605'; //广告块编号
 </script>
-<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>
+<script type="text/javascript" src="http://d2.yiche.com/js/sense.js"></script>
 <script type="text/javascript">
     var adplay_CityName = ''; //城市
     var adplay_AreaName = ''; //区域
@@ -269,7 +269,7 @@
     var adplay_BrandName = ''; //品牌
     var adplay_BlockCode = '6774e482-4280-420a-81fd-cec7edda6637'; //广告块编号
 </script>
-<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>
+<script type="text/javascript" src="http://d2.yiche.com/js/sense.js"></script>
 <!-- add by chengl Jun.27.2012 -->
 <%--<script type="text/javascript">
     var adplay_CityName = ''; //城市
@@ -280,8 +280,8 @@
     if (global_hash != "#jrtt") {
         var adplay_BlockCode = '56dda5da-43a3-406d-9291-974566759ddd'; //广告块编号
     }
-</script>--%>
-<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>
+</script>
+<script type="text/javascript" src="http://d2.yiche.com/js/sense.js"></script>--%>
 <!-- add by chengl May.7.2013 -->
 <script type="text/javascript">
     var adplay_CityName = ''; //城市
@@ -291,7 +291,7 @@
     var adplay_BrandName = ''; //品牌
     var adplay_BlockCode = '8eba16c6-95bf-477c-8967-a611040a5762'; //广告块编号
 </script>
-<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>
+<script type="text/javascript" src="http://d2.yiche.com/js/sense.js"></script>
 <!--车型栏目页/底部浮层-->
 <script type="text/javascript">
     var adplay_CityName = '';//城市
@@ -301,7 +301,7 @@
     var adplay_BrandName = '';//品牌
     var adplay_BlockCode = 'aa88205a-8a73-4bf9-8b9b-9232299bc59e';//广告块编号
 </script>
-<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>
+<script type="text/javascript" src="http://d2.yiche.com/js/sense.js"></script>
 
 <%--<!--add by hepw Jan.26.2016 for select car condition's click count-->
 <script type="text/javascript" src="http://bglog.bitauto.com/bglogpostlog.js"></script> --%>

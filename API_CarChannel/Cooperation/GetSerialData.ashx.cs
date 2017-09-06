@@ -63,25 +63,29 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
                 {
                     #region 查询数据
 
-                    string sql = @"SELECT  cs.cs_id, cs.csname, cs.csshowname, cl.classvalue AS carLevel,
-                                            cs.allspell, car.car_id, car.car_name, car.car_ReferPrice,
-                                            cdb1.pvalue AS pyear, cdb2.pvalue AS pmonth, cdb3.pvalue AS pday
-                                    FROM    car_relation car
-                                            LEFT JOIN car_serial cs ON car.cs_id = cs.cs_id
-                                            LEFT JOIN class cl ON cs.carlevel = cl.classid
-                                            LEFT JOIN cardatabase cdb1 ON car.car_id = cdb1.carid
-                                                                          AND cdb1.paramid = 385
-                                            LEFT JOIN cardatabase cdb2 ON car.car_id = cdb2.carid
-                                                                          AND cdb2.paramid = 384
-                                            LEFT JOIN cardatabase cdb3 ON car.car_id = cdb3.carid
-                                                                          AND cdb3.paramid = 383
-                                    WHERE   car.isstate = 0
-                                            AND cs.isstate = 0
-                                            AND cdb1.pvalue = @CarYear
-                                            AND ISNUMERIC(cdb2.pvalue) >= 1
-                                            AND ISNUMERIC(cdb3.pvalue) >= 1
-                                    ORDER BY CONVERT(INT, cdb2.pvalue) DESC, CONVERT(INT, cdb3.pvalue) DESC,
-                                            cs.cs_id, car.car_ReferPrice";
+                    string sql = @"SELECT  mb.bs_Name, mb.bs_Country, cb.cb_Name, cb.cb_country, cs.cs_id,
+        cs.csname, cs.csshowname, cl.classvalue AS carLevel, cs.allspell,
+        car.car_id, car.car_name, car.car_ReferPrice, cdb1.pvalue AS pyear,
+        cdb2.pvalue AS pmonth, cdb3.pvalue AS pday
+FROM    car_relation car WITH ( NOLOCK )
+        LEFT JOIN car_serial cs WITH ( NOLOCK ) ON car.cs_id = cs.cs_id
+        LEFT JOIN dbo.Car_Brand cb WITH ( NOLOCK ) ON cb.cb_Id = cs.cb_Id
+        LEFT JOIN dbo.Car_MasterBrand_Rel cmr WITH ( NOLOCK ) ON cmr.cb_Id = cb.cb_Id
+        LEFT JOIN dbo.Car_MasterBrand mb WITH ( NOLOCK ) ON mb.bs_Id = cmr.bs_Id
+        LEFT JOIN class cl WITH ( NOLOCK ) ON cs.carlevel = cl.classid
+        LEFT JOIN cardatabase cdb1 WITH ( NOLOCK ) ON car.car_id = cdb1.carid
+                                                      AND cdb1.paramid = 385
+        LEFT JOIN cardatabase cdb2 WITH ( NOLOCK ) ON car.car_id = cdb2.carid
+                                                      AND cdb2.paramid = 384
+        LEFT JOIN cardatabase cdb3 WITH ( NOLOCK ) ON car.car_id = cdb3.carid
+                                                      AND cdb3.paramid = 383
+WHERE   car.isstate = 0
+        AND cs.isstate = 0
+        AND cdb1.pvalue = @CarYear
+        AND ISNUMERIC(cdb2.pvalue) >= 1
+        AND ISNUMERIC(cdb3.pvalue) >= 1
+ORDER BY CONVERT(INT, cdb2.pvalue) DESC, CONVERT(INT, cdb3.pvalue) DESC,
+        cs.cs_id, car.car_ReferPrice";
 
                     SqlParameter[] _params = { new SqlParameter("@CarYear", SqlDbType.VarChar) };
                     _params[0].Value = year;
@@ -107,6 +111,23 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
                             int pyear = int.Parse(dr["pyear"].ToString());
                             int pmonth = int.Parse(dr["pmonth"].ToString());
                             int pday = int.Parse(dr["pday"].ToString());
+                            string masterBrandName = dr["bs_Name"].ToString().Trim();
+                            string brandName = dr["cb_Name"].ToString().Trim();
+                            int masterBrandCountry = ConvertHelper.GetInteger(dr["bs_Country"]);
+                            int brandCountry = ConvertHelper.GetInteger(dr["cb_country"]);
+                            string producerType = string.Empty;
+                            if (brandCountry == 90 && masterBrandCountry == 90)
+                            {
+                                producerType = "自主";
+                            }
+                            if (brandCountry == 90 && masterBrandCountry != 90)
+                            {
+                                producerType = "合资";
+                            }
+                            if (brandCountry != 90)
+                            {
+                                producerType = "进口";
+                            }
                             DateTime tempDt = DateTime.Now.AddDays(1);
                             if (DateTime.TryParse(pyear + "-" + pmonth + "-" + pday, out tempDt))
                             {
@@ -126,19 +147,24 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
                                 if (lastCsID > 0)
                                 {
                                     // 已有数据 补价格区间
-                                    jsonString.Add(string.Format(",Price:\"{0}\""
+                                    jsonString.Add(string.Format(",\"Price\":\"{0}\""
                                         , CommonFunction.GetUnicodeByString(GetPriceStr(minP, maxP))
                                         ));
                                     jsonString.Add("},");
                                     minP = 0;
                                     maxP = 0;
-                                } 
+                                }
                                 jsonString.Add("{");
-                                jsonString.Add(string.Format("ID:\"{0}\",ShowName:\"{1}\",MakeDay:\"{2}\",Pic:\"{3}\""
+                                jsonString.Add(string.Format("\"ID\":\"{0}\",\"ShowName\":\"{1}\",\"MakeDay\":\"{2}\",\"Pic\":\"{3}\",\"CarLevel\":\"{4}\",\"MasterBrandName\":\"{5}\",\"BrandName\":\"{6}\",\"ProducerType\":\"{7}\""
                                     , csid
                                     , CommonFunction.GetUnicodeByString(csShowName)
                                     , tempDt.ToString("yyyy-MM-dd")
-                                    , dicPicWhite.ContainsKey(csid) ? dicPicWhite[csid] : WebConfig.DefaultCarPic));
+                                    , dicPicWhite.ContainsKey(csid) ? dicPicWhite[csid] : WebConfig.DefaultCarPic
+                                    , csLevel
+                                    , masterBrandName
+                                    , brandName
+                                    , producerType
+                                    ));
 
                                 lastCsID = csid;
                                 lastDT = tempDt;
@@ -152,7 +178,7 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
                                 { minP = referPrice; }
                             }
                         }
-                        jsonString.Add(string.Format(",Price:\"{0}\""
+                        jsonString.Add(string.Format(",\"Price\":\"{0}\""
                             , CommonFunction.GetUnicodeByString(GetPriceStr(minP, maxP))
                             ));
                         jsonString.Add("}");

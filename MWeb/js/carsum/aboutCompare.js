@@ -20,9 +20,11 @@ $(function () {
                 if (data && data.result == "yes") {
                     var tuangouUrl = data.url;
                     var slogan = data.slogan;
-                    h.push("<span class=\"yh-tap\"></span>");
+                    var title = data.title;
+                    var tuangouTag = data.tag;
+                    h.push("<span class=\"yh-tap-txt\"><b>" + tuangouTag + "</b></span>");
                     h.push("<div class=\"cont-box\">");
-                    h.push("<h4>本地限时特惠</h4>");
+                    h.push("<h4>" + title + "</h4>");
                     h.push("<p>" + slogan + "</p>");
                     h.push("</div>");
 

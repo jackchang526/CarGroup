@@ -750,7 +750,7 @@
 
 
     <script type="text/javascript">
-        $.ajax({
+        <%--$.ajax({
             type: "GET",
             url: "http://api.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=<%= serialId %>",
             dataType: "jsonp",
@@ -814,7 +814,7 @@
             complete: function () {
 
             }
-        });
+        });--%>
     </script>
     
     <!--看了还看js-->

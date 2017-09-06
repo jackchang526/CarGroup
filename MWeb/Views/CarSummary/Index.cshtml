@@ -398,7 +398,8 @@
     var apiSerialId = '@(Model.SerialId)';
     var apiCarId = '@(Model.Id)';
 </script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/carsum/aboutCompare.js"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/carsum/aboutCompare.min.js?v=20170906"></script>
+    @*<script type="text/javascript" src="/js/carsum/aboutCompare.js"></script>*@
     <script type="text/javascript">
         var  zamCityId= (typeof bit_locationInfo !="undefined")?bit_locationInfo.cityId:"201",
 			modelStr = '@(Model.SerialId)-' + (zamCityId.length >= 4 ? zamCityId.substring(0, 2) : zamCityId.substring(0, 1)) + '-' + zamCityId + '';

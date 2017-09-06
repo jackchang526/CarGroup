@@ -1037,7 +1037,7 @@
         $(function () {
             $.ajax({
                 type: "GET",               
-                url: "http://api24.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=@(serialEntity.Id)",
+                url: "http://api.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=@(serialEntity.Id)",
                 dataType: "jsonp",
                 jsonpCallback: "success_jsonpCallback_getEntranceData",
                 success: function (data) {
@@ -1056,7 +1056,7 @@
                         htmlArr.push("            </dl>");
                         //htmlArr.push("            <a href='#'>同级别排名第<b>6</b>位 ></a>");
                         htmlArr.push("        </div>");
-                        htmlArr.push("        <a target='_blank' href='http://pingce24.m.yiche.com/details/" + data.EvaluationId + "-2.html' class='pc-btn'>");
+                        htmlArr.push("        <a href='http://pingce.m.yiche.com/details/" + data.EvaluationId + "-2.html' class='pc-btn'>");
                         htmlArr.push("            <span>立即查看</span>");
                         htmlArr.push("            <i class='iconfont icon-arrowright'></i><i class='iconfont icon-arrowright'></i>");
                         htmlArr.push("        </a>");

@@ -114,7 +114,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         }
                         if (assessmentEntity.BodyAndSpaceGroup.StoragespaceEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "空间变化 ", Score = assessmentEntity.BodyAndSpaceGroup.StoragespaceEntity.Score });
+                            ItemList.Add(new ParaKeyValue() { Name = "空间变化", Score = assessmentEntity.BodyAndSpaceGroup.StoragespaceEntity.Score });
                         }
                         if (assessmentEntity.BodyAndSpaceGroup.ConvenienceEntity != null)
                         {
@@ -124,7 +124,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
 
                         if (assessmentEntity.BodyAndSpaceGroup.QualityEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "制造质量 ", Score = assessmentEntity.BodyAndSpaceGroup.QualityEntity.Score });
+                            ItemList.Add(new ParaKeyValue() { Name = "制造质量", Score = assessmentEntity.BodyAndSpaceGroup.QualityEntity.Score });
                         }                        
                         bodyAndSpaceGroup.ItemList = ItemList;
                         list.Add(bodyAndSpaceGroup);
@@ -141,14 +141,14 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
 
                         if (assessmentEntity.RidingComfortGroup.ChairEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "前排座椅 ", Score = assessmentEntity.RidingComfortGroup.ChairEntity.FrontChair });
-                            ItemList.Add(new ParaKeyValue() { Name = "后排座椅 ", Score = assessmentEntity.RidingComfortGroup.ChairEntity.BehindChair });
+                            ItemList.Add(new ParaKeyValue() { Name = "前排座椅", Score = assessmentEntity.RidingComfortGroup.ChairEntity.FrontChair });
+                            ItemList.Add(new ParaKeyValue() { Name = "后排座椅", Score = assessmentEntity.RidingComfortGroup.ChairEntity.BehindChair });
                         }
 
                         if (assessmentEntity.RidingComfortGroup.AirConditionerEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "空调感受 ", Score = assessmentEntity.RidingComfortGroup.AirConditionerEntity.AirConditionerFeel });
-                            ItemList.Add(new ParaKeyValue() { Name = "空调降温 ", Score = assessmentEntity.RidingComfortGroup.AirConditionerEntity.Refrigeration });
+                            ItemList.Add(new ParaKeyValue() { Name = "空调感受", Score = assessmentEntity.RidingComfortGroup.AirConditionerEntity.AirConditionerFeel });
+                            ItemList.Add(new ParaKeyValue() { Name = "空调降温", Score = assessmentEntity.RidingComfortGroup.AirConditionerEntity.Refrigeration });
                         }
 
                         if (assessmentEntity.RidingComfortGroup.HangComfortEntity != null)
@@ -158,14 +158,14 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
 
                         if (assessmentEntity.RidingComfortGroup.NoiseEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "车内噪声测量值 ", Score = assessmentEntity.RidingComfortGroup.NoiseEntity.NoiseScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "车内噪声测量值", Score = assessmentEntity.RidingComfortGroup.NoiseEntity.NoiseScore });
                         }
 
                         if (assessmentEntity.RidingComfortGroup.NoiseFeelEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "车内噪声印象 ", Score = assessmentEntity.RidingComfortGroup.NoiseFeelEntity.NoiseFeel });
-                            ItemList.Add(new ParaKeyValue() { Name = "怠速噪声 ", Score = assessmentEntity.RidingComfortGroup.NoiseFeelEntity.IdlingNoise });
-                            ItemList.Add(new ParaKeyValue() { Name ="行驶噪声 ", Score = assessmentEntity.RidingComfortGroup.NoiseFeelEntity.RunNoise });
+                            ItemList.Add(new ParaKeyValue() { Name = "车内噪声印象", Score = assessmentEntity.RidingComfortGroup.NoiseFeelEntity.NoiseFeel });
+                            ItemList.Add(new ParaKeyValue() { Name = "怠速噪声", Score = assessmentEntity.RidingComfortGroup.NoiseFeelEntity.IdlingNoise });
+                            ItemList.Add(new ParaKeyValue() { Name ="行驶噪声", Score = assessmentEntity.RidingComfortGroup.NoiseFeelEntity.RunNoise });
                         }
 
                         ridingComfortGroup.ItemList = ItemList;
@@ -182,27 +182,27 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         dynamicPerformanceGroup.Score = assessmentEntity.DynamicPerformanceGroup.Score;
                         if (assessmentEntity.DynamicPerformanceGroup.AccelerateEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "加速 ", Score = assessmentEntity.DynamicPerformanceGroup.AccelerateEntity.AccelerateScroe });                            
+                            ItemList.Add(new ParaKeyValue() { Name = "加速", Score = assessmentEntity.DynamicPerformanceGroup.AccelerateEntity.AccelerateScroe });                            
                         }
                         if (assessmentEntity.DynamicPerformanceGroup.EngineEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "扭矩表现 ", Score = assessmentEntity.DynamicPerformanceGroup.EngineEntity.Torque });
-                            ItemList.Add(new ParaKeyValue() { Name = "牵引力 ", Score = assessmentEntity.DynamicPerformanceGroup.EngineEntity.TractiveForce });
-                            ItemList.Add(new ParaKeyValue() { Name = "功率表现 ", Score = assessmentEntity.DynamicPerformanceGroup.EngineEntity.Power });
+                            ItemList.Add(new ParaKeyValue() { Name = "扭矩表现", Score = assessmentEntity.DynamicPerformanceGroup.EngineEntity.Torque });
+                            ItemList.Add(new ParaKeyValue() { Name = "牵引力", Score = assessmentEntity.DynamicPerformanceGroup.EngineEntity.TractiveForce });
+                            ItemList.Add(new ParaKeyValue() { Name = "功率表现", Score = assessmentEntity.DynamicPerformanceGroup.EngineEntity.Power });
                         }
                         if (assessmentEntity.DynamicPerformanceGroup.MotilityEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "运动性 ", Score = assessmentEntity.DynamicPerformanceGroup.MotilityEntity.Score });
+                            ItemList.Add(new ParaKeyValue() { Name = "运动性", Score = assessmentEntity.DynamicPerformanceGroup.MotilityEntity.Score });
                         }
 
                         if (assessmentEntity.DynamicPerformanceGroup.EngineSmoothnessEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "发动机平顺性 ", Score = assessmentEntity.DynamicPerformanceGroup.EngineSmoothnessEntity.Score });
+                            ItemList.Add(new ParaKeyValue() { Name = "发动机平顺性", Score = assessmentEntity.DynamicPerformanceGroup.EngineSmoothnessEntity.Score });
                         }
 
                         if (assessmentEntity.DynamicPerformanceGroup.GearboxEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "换挡及变速箱 ", Score = assessmentEntity.DynamicPerformanceGroup.GearboxEntity.Score });
+                            ItemList.Add(new ParaKeyValue() { Name = "换挡及变速箱", Score = assessmentEntity.DynamicPerformanceGroup.GearboxEntity.Score });
                         }
                         dynamicPerformanceGroup.ItemList = ItemList;
                         list.Add(dynamicPerformanceGroup);
@@ -229,11 +229,11 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         }
                         if (assessmentEntity.SafetyGroup.VisualFieldEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "车内视野 ", Score = assessmentEntity.SafetyGroup.VisualFieldEntity.ViewScore });                            
+                            ItemList.Add(new ParaKeyValue() { Name = "车内视野", Score = assessmentEntity.SafetyGroup.VisualFieldEntity.ViewScore });                            
                         }
                         if (assessmentEntity.SafetyGroup.LightEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "灯光 ", Score = assessmentEntity.SafetyGroup.LightEntity.LightScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "灯光", Score = assessmentEntity.SafetyGroup.LightEntity.LightScore });
                         }
                         safetyGroup.ItemList = ItemList;
                         list.Add(safetyGroup);
@@ -250,14 +250,14 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
 
                         if (assessmentEntity.YhBaseGroup.YgEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "低速油耗 ", Score = assessmentEntity.YhBaseGroup.YgEntity.LowSpeedYhScore });
-                            ItemList.Add(new ParaKeyValue() { Name = "高速油耗 ", Score = assessmentEntity.YhBaseGroup.YgEntity.HighSpeedYhScore });
-                            ItemList.Add(new ParaKeyValue() { Name = "工信部油耗 ", Score = assessmentEntity.YhBaseGroup.YgEntity.MiitYhScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "低速油耗", Score = assessmentEntity.YhBaseGroup.YgEntity.LowSpeedYhScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "高速油耗", Score = assessmentEntity.YhBaseGroup.YgEntity.HighSpeedYhScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "工信部油耗", Score = assessmentEntity.YhBaseGroup.YgEntity.MiitYhScore });
                         }
 
                         if (assessmentEntity.YhBaseGroup.YaEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "空气质量 ", Score = assessmentEntity.YhBaseGroup.YaEntity.AirQualityScore });                            
+                            ItemList.Add(new ParaKeyValue() { Name = "空气质量", Score = assessmentEntity.YhBaseGroup.YaEntity.AirQualityScore });                            
                         }
 
                         yhBaseGroup.ItemList = ItemList;
@@ -274,20 +274,20 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         jsBaseGroup.Score = assessmentEntity.JsBaseGroup.Score;
                         if (assessmentEntity.JsBaseGroup.JdaEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "操控性 ", Score = assessmentEntity.JsBaseGroup.JdaEntity.ControllabilityScore });
-                            ItemList.Add(new ParaKeyValue() { Name = "动态驾驶感受 ", Score = assessmentEntity.JsBaseGroup.JdaEntity.DriverSenseScore });
-                            ItemList.Add(new ParaKeyValue() { Name = "抓地力 ", Score = assessmentEntity.JsBaseGroup.JdaEntity.GripScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "操控性", Score = assessmentEntity.JsBaseGroup.JdaEntity.ControllabilityScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "动态驾驶感受", Score = assessmentEntity.JsBaseGroup.JdaEntity.DriverSenseScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "抓地力", Score = assessmentEntity.JsBaseGroup.JdaEntity.GripScore });
                         }
 
                         if (assessmentEntity.JsBaseGroup.JtsEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "转弯直径 ", Score = assessmentEntity.JsBaseGroup.JtsEntity.TurnDiameterScore });
-                            ItemList.Add(new ParaKeyValue() { Name = "方向盘 ", Score = assessmentEntity.JsBaseGroup.JtsEntity.SteeringWheelScore });
-                            ItemList.Add(new ParaKeyValue() { Name = "直线行驶稳定性 ", Score = assessmentEntity.JsBaseGroup.JtsEntity.StraightPerferScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "转弯直径", Score = assessmentEntity.JsBaseGroup.JtsEntity.TurnDiameterScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "方向盘", Score = assessmentEntity.JsBaseGroup.JtsEntity.SteeringWheelScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "直线行驶稳定性", Score = assessmentEntity.JsBaseGroup.JtsEntity.StraightPerferScore });
                         }
                         if (assessmentEntity.JsBaseGroup.JdfEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "驾驶乐趣 ", Score = assessmentEntity.JsBaseGroup.JdfEntity.DriveFunScore });                            
+                            ItemList.Add(new ParaKeyValue() { Name = "驾驶乐趣", Score = assessmentEntity.JsBaseGroup.JdfEntity.DriveFunScore });                            
                         }
                         jsBaseGroup.ItemList = ItemList;
                         list.Add(jsBaseGroup);
@@ -303,21 +303,21 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         costBaseGroup.Score = assessmentEntity.CostBaseGroup.Score;
                         if (assessmentEntity.CostBaseGroup.CpEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "厂商指导价 ", Score = assessmentEntity.CostBaseGroup.CpEntity.ProducerPriceScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "厂商指导价", Score = assessmentEntity.CostBaseGroup.CpEntity.ProducerPriceScore });
                         }
                         if (assessmentEntity.CostBaseGroup.CsyEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "燃油费用 ", Score = assessmentEntity.CostBaseGroup.CsyEntity.OilPayScore });
-                            ItemList.Add(new ParaKeyValue() { Name = "保险费用 ", Score = assessmentEntity.CostBaseGroup.CsyEntity.InsuranceExpenseScore });
-                            ItemList.Add(new ParaKeyValue() { Name = "保养费用 ", Score = assessmentEntity.CostBaseGroup.CsyEntity.MaintenanceCostScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "燃油费用", Score = assessmentEntity.CostBaseGroup.CsyEntity.OilPayScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "保险费用", Score = assessmentEntity.CostBaseGroup.CsyEntity.InsuranceExpenseScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "保养费用", Score = assessmentEntity.CostBaseGroup.CsyEntity.MaintenanceCostScore });
                         }
                         if (assessmentEntity.CostBaseGroup.CgpEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "质保期 ", Score = assessmentEntity.CostBaseGroup.CgpEntity.GuaranPeriodScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "质保期", Score = assessmentEntity.CostBaseGroup.CgpEntity.GuaranPeriodScore });
                         }
                         if (assessmentEntity.CostBaseGroup.CgqEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "保值 ", Score = assessmentEntity.CostBaseGroup.CgqEntity.GuaranQualityScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "保值", Score = assessmentEntity.CostBaseGroup.CgqEntity.GuaranQualityScore });
                         }
                         costBaseGroup.ItemList = ItemList;
                         list.Add(costBaseGroup);

@@ -748,75 +748,72 @@
             }, "utf-8");    </script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/newsViewCount.min.js?v=20161228"></script>
     <script type="text/javascript" charset="utf-8" src="http://img4.bitautoimg.com/uimg/car/js/tabs_20140512_4.js"></script>
-
-
     <script type="text/javascript">
-
         var loadPingce = function () {
             var pingceurl ="http://pingce.bitauto.com"
             $.ajax({
                 type: "GET",
                 url: "http://api.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=<%= serialId %>",
-            dataType: "jsonp",
-            jsonpCallback: "success_jsonpCallback_getEntranceData",
-            success: function (data) {
-                if (data.EvaluationId > 0) {
-                    var htmlArr = [];
-                    htmlArr.push("    <div class='col-auto left'>");
-                    htmlArr.push("        <a data-channelid='2.21.2152' target='_blank' href='" + pingceurl+"/details/" + data.EvaluationId + "-2.html'>");
-                    htmlArr.push("            <div class='figure'>");
-                    htmlArr.push("                <img src='" + data.ImageUrl + "' alt=''>");
-                    htmlArr.push("            </div>");
-                    htmlArr.push("            <div class='caption'>");
-                    htmlArr.push("                <span class='title'>总体得分</span>");
-                    htmlArr.push("                <h4>" + data.TotalScore + "<i> 分</i></h4>");
-                    htmlArr.push("            </div>");
-                    htmlArr.push("        </a>");
-                    htmlArr.push("        <div class='bottom'>");
-                    //htmlArr.push("            <a target='_blank' href=''>同级别排名第128位&gt;&gt;</a>");
-                    htmlArr.push("        </div>");
-                    htmlArr.push("    </div>");
-                    htmlArr.push("    <div class='col-auto right'>");
-                    htmlArr.push("        <span class='t-flag'>超级评测</span>");
-                    htmlArr.push("        <h3><a data-channelid='2.21.2153' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-2.html'>" + unescape(data.CarName.replace(/\\/g, "%")) + "</a></h3>");
-                    htmlArr.push("        <div class='info'><span class='view'> </span><span class='comment'> </span>");
-                    htmlArr.push("        </div>");
-                    htmlArr.push("        <ul class='list list-gapline sm'>");
-                    htmlArr.push("            <li>");
-                    htmlArr.push("                <a data-channelid='2.21.2154' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-2.html'>空间 " + data.BodyAndSpaceGroupScore + "分</a>");
-                    htmlArr.push("            </li>");
-                    htmlArr.push("            <li>");
-                    htmlArr.push("                <a data-channelid='2.21.2155' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-4.html'>舒适 " + data.RidingComfortGroupScore + "分</a>");
-                    htmlArr.push("            </li>");
-                    htmlArr.push("            <li>");
-                    htmlArr.push("                <a data-channelid='2.21.2156' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-5.html'>动力 " + data.DynamicPerformanceGroupScore + "分</a>");
-                    htmlArr.push("            </li>");
-                    htmlArr.push("            <li>");
-                    htmlArr.push("                <a data-channelid='2.21.2157' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-6.html'>驾驶 " + data.JsBaseGroupScore + "分</a>");
-                    htmlArr.push("            </li>");
-                    htmlArr.push("            <li>");
-                    htmlArr.push("                <a data-channelid='2.21.2158' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-3.html'>安全 " + data.SafetyGroupScore + "分</a>");
-                    htmlArr.push("            </li>");
-                    htmlArr.push("            <li>");
-                    htmlArr.push("                <a data-channelid='2.21.2159' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-7.html'>油耗 " + data.YhBaseGroupScore + "分</a>");
-                    htmlArr.push("            </li>");
-                    htmlArr.push("            <li>");
-                    htmlArr.push("                <a data-channelid='2.21.2160' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-8.html'>费用 " + data.CostBaseGroupScore + "分</a>");
-                    htmlArr.push("            </li>");
-                    htmlArr.push("            <li>");
-                    htmlArr.push("                <a data-channelid='2.21.2161' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-2.html'>更多&gt;&gt;</a>");
-                    htmlArr.push("            </li>");
-                    htmlArr.push("        </ul>");
-                    htmlArr.push("        <div class='bottom'>");
-                    htmlArr.push("            易车出品");
-                    htmlArr.push("        </div>");
-                    htmlArr.push("    </div>");                    
-                    $("#pingce_left_top").addClass("super-test").html(htmlArr.join(""));
-                }
-            },
-            complete: function () {
+                dataType: "jsonp",
+                jsonpCallback: "success_jsonpCallback_getEntranceData",
+                success: function (data) {
+                    if (data.EvaluationId > 0) {
+                        var htmlArr = [];
+                        htmlArr.push("    <div class='col-auto left'>");
+                        htmlArr.push("        <a data-channelid='2.21.2152' target='_blank' href='" + pingceurl+"/details/" + data.EvaluationId + "-2.html'>");
+                        htmlArr.push("            <div class='figure'>");
+                        htmlArr.push("                <img src='" + data.ImageUrl + "' alt=''>");
+                        htmlArr.push("            </div>");
+                        htmlArr.push("            <div class='caption'>");
+                        htmlArr.push("                <span class='title'>总体得分</span>");
+                        htmlArr.push("                <h4>" + data.TotalScore + "<i> 分</i></h4>");
+                        htmlArr.push("            </div>");
+                        htmlArr.push("        </a>");
+                        htmlArr.push("        <div class='bottom'>");
+                        //htmlArr.push("            <a target='_blank' href=''>同级别排名第128位&gt;&gt;</a>");
+                        htmlArr.push("        </div>");
+                        htmlArr.push("    </div>");
+                        htmlArr.push("    <div class='col-auto right'>");
+                        htmlArr.push("        <span class='t-flag'>超级评测</span>");
+                        htmlArr.push("        <h3><a data-channelid='2.21.2153' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-2.html'>" + unescape(data.CarName.replace(/\\/g, "%")) + "</a></h3>");
+                        htmlArr.push("        <div class='info'><span class='view'> </span><span class='comment'> </span>");
+                        htmlArr.push("        </div>");
+                        htmlArr.push("        <ul class='list list-gapline sm'>");
+                        htmlArr.push("            <li>");
+                        htmlArr.push("                <a data-channelid='2.21.2154' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-2.html'>空间 " + data.BodyAndSpaceGroupScore + "分</a>");
+                        htmlArr.push("            </li>");
+                        htmlArr.push("            <li>");
+                        htmlArr.push("                <a data-channelid='2.21.2155' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-4.html'>舒适 " + data.RidingComfortGroupScore + "分</a>");
+                        htmlArr.push("            </li>");
+                        htmlArr.push("            <li>");
+                        htmlArr.push("                <a data-channelid='2.21.2156' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-5.html'>动力 " + data.DynamicPerformanceGroupScore + "分</a>");
+                        htmlArr.push("            </li>");
+                        htmlArr.push("            <li>");
+                        htmlArr.push("                <a data-channelid='2.21.2157' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-6.html'>驾驶 " + data.JsBaseGroupScore + "分</a>");
+                        htmlArr.push("            </li>");
+                        htmlArr.push("            <li>");
+                        htmlArr.push("                <a data-channelid='2.21.2158' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-3.html'>安全 " + data.SafetyGroupScore + "分</a>");
+                        htmlArr.push("            </li>");
+                        htmlArr.push("            <li>");
+                        htmlArr.push("                <a data-channelid='2.21.2159' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-7.html'>油耗 " + data.YhBaseGroupScore + "分</a>");
+                        htmlArr.push("            </li>");
+                        htmlArr.push("            <li>");
+                        htmlArr.push("                <a data-channelid='2.21.2160' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-8.html'>费用 " + data.CostBaseGroupScore + "分</a>");
+                        htmlArr.push("            </li>");
+                        htmlArr.push("            <li>");
+                        htmlArr.push("                <a data-channelid='2.21.2161' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-2.html'>更多&gt;&gt;</a>");
+                        htmlArr.push("            </li>");
+                        htmlArr.push("        </ul>");
+                        htmlArr.push("        <div class='bottom'>");
+                        htmlArr.push("            易车出品");
+                        htmlArr.push("        </div>");
+                        htmlArr.push("    </div>");                    
+                        $("#pingce_left_top").addClass("super-test").html(htmlArr.join(""));
+                    }
+                },
+                complete: function () {
 
-            }
+                }
             });
         }
         //loadPingce();

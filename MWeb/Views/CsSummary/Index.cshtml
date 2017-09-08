@@ -440,45 +440,45 @@
                         </div>
                         <!-- 测评报告 end -->
                         <script type="text/javascript">
-                         var loadPingCe = function () {
-                                     $.ajax({
-                                        type: "GET",
-                                        url: "http://api.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=@(serialEntity.Id)",
-                                        dataType: "jsonp",
-                                        jsonpCallback: "success_jsonpCallback_getEntranceData",
-                                        success: function (data) {
-                                            if (data.EvaluationId > 0) {
-                                                var htmlArr = [];
-                                                //htmlArr.push("<div class='pcbg-wrap'>");
-                                                htmlArr.push("    <div class='pcbg-box'>");
-                                                htmlArr.push("        <div class='pc-img'>");
-                                                htmlArr.push("            <img src='" + data.ImageUrl + "' alt=''/>");
-                                                htmlArr.push("            <em>超级测评</em>");
-                                                htmlArr.push("        </div>");
-                                                htmlArr.push("        <div class='pc-txt'>");
-                                                htmlArr.push("            <dl>");
-                                                htmlArr.push("                <dt>总体得分</dt>");
-                                                htmlArr.push("                <dd><strong>" + data.TotalScore + "</strong>分</dd>");
-                                                htmlArr.push("            </dl>");
-                                                //htmlArr.push("            <a href='#'>同级别排名第<b>6</b>位 ></a>");
-                                                htmlArr.push("        </div>");
-                                                htmlArr.push("        <a href='http://pingce.m.yiche.com/details/" + data.EvaluationId + "-2.html' class='pc-btn'>");
-                                                htmlArr.push("            <span>立即查看</span>");
-                                                htmlArr.push("            <i class='iconfont icon-arrowright'></i><i class='iconfont icon-arrowright'></i>");
-                                                htmlArr.push("        </a>");
-                                                htmlArr.push("    </div>");
-                                                //htmlArr.push("</div>");
+                             var loadPingCe = function () {
+                                    $.ajax({
+                                    type: "GET",
+                                    url: "http://api.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=@(serialEntity.Id)",
+                                    dataType: "jsonp",
+                                    jsonpCallback: "success_jsonpCallback_getEntranceData",
+                                    success: function (data) {
+                                        if (data.EvaluationId > 0) {
+                                            var htmlArr = [];
+                                            //htmlArr.push("<div class='pcbg-wrap'>");
+                                            htmlArr.push("    <div class='pcbg-box'>");
+                                            htmlArr.push("        <div class='pc-img'>");
+                                            htmlArr.push("            <img src='" + data.ImageUrl + "' alt=''/>");
+                                            htmlArr.push("            <em>超级测评</em>");
+                                            htmlArr.push("        </div>");
+                                            htmlArr.push("        <div class='pc-txt'>");
+                                            htmlArr.push("            <dl>");
+                                            htmlArr.push("                <dt>总体得分</dt>");
+                                            htmlArr.push("                <dd><strong>" + data.TotalScore + "</strong>分</dd>");
+                                            htmlArr.push("            </dl>");
+                                            //htmlArr.push("            <a href='#'>同级别排名第<b>6</b>位 ></a>");
+                                            htmlArr.push("        </div>");
+                                            htmlArr.push("        <a href='http://pingce.m.yiche.com/details/" + data.EvaluationId + "-2.html' class='pc-btn'>");
+                                            htmlArr.push("            <span>立即查看</span>");
+                                            htmlArr.push("            <i class='iconfont icon-arrowright'></i><i class='iconfont icon-arrowright'></i>");
+                                            htmlArr.push("        </a>");
+                                            htmlArr.push("    </div>");
+                                            //htmlArr.push("</div>");
 
-                                                $("#pingce").html(htmlArr.join(""));
-                                                $("#pingce").show();
-                                            }
-                                        },
-                                        complete: function () {
-
+                                            $("#pingce").html(htmlArr.join(""));
+                                            $("#pingce").show();
                                         }
-                                    });
-                                }
-                          //loadPingCe();
+                                    },
+                                    complete: function () {
+
+                                    }
+                                });
+                             }
+                             loadPingCe();
                         </script>
                         @(Html.Raw(serialNews))
                     </div>

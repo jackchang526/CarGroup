@@ -110,7 +110,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         }
                         if (assessmentEntity.BodyAndSpaceGroup.TrunkEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "行李箱容积", Score = assessmentEntity.BodyAndSpaceGroup.TrunkEntity.Cubage });            
+                            ItemList.Add(new ParaKeyValue() { Name = "行李厢容积", Score = assessmentEntity.BodyAndSpaceGroup.TrunkEntity.Cubage });            
                         }
                         if (assessmentEntity.BodyAndSpaceGroup.StoragespaceEntity != null)
                         {

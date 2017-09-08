@@ -816,7 +816,7 @@
                 }
             });
         }
-        //loadPingce();
+        loadPingce();
     </script>
 
     <!--看了还看js-->

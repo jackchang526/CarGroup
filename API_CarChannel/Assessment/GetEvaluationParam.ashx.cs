@@ -219,7 +219,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                     DzhuZuoZheBiJiaoDu = dr["257"],
                     DzhuYouZheBiJiaoDu = dr["258"],
                     BaoYangFeiYong6Nian=dr["255"],
-                    KongTiaoChuFengKouShuLiang= dr["254"]
+                    KongTiaoChuFengKouShuLiang= dr["254"] 
                 };
                 result = JsonConvert.SerializeObject(obj);
             }

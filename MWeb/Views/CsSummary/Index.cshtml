@@ -419,7 +419,7 @@
                     <div class="swiper-slide" id="m_article" data-channelid="27.23.732">
 
                         <!-- 测评报告 start -->
-                        <div class="pcbg-wrap" id="pingce" style="display:none">
+                        <a class="pcbg-wrap" id="pingce" style="display:none" href="#">
                             @*<div class="pcbg-box">
                                     <div class="pc-img">
                                         <img src="../images/pic_240x160.jpg" />
@@ -437,7 +437,7 @@
                                         <i class="iconfont icon-arrowright"></i><i class="iconfont icon-arrowright"></i>
                                     </a>
                                 </div>*@
-                        </div>
+                        </a>
                         <!-- 测评报告 end -->
                         <script type="text/javascript">
                              var loadPingCe = function () {
@@ -468,7 +468,7 @@
                                             htmlArr.push("        </a>");
                                             htmlArr.push("    </div>");
                                             //htmlArr.push("</div>");
-
+                                            $("#pingce").attr("href", "http://pingce.m.yiche.com/details/" + data.EvaluationId + "-2.html")
                                             $("#pingce").html(htmlArr.join(""));
                                             $("#pingce").show();
                                         }

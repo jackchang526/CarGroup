@@ -158,14 +158,14 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
 
                         if (assessmentEntity.RidingComfortGroup.NoiseEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "车内噪声测量值", Score = assessmentEntity.RidingComfortGroup.NoiseEntity.NoiseScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "车内噪音测量值", Score = assessmentEntity.RidingComfortGroup.NoiseEntity.NoiseScore });
                         }
 
                         if (assessmentEntity.RidingComfortGroup.NoiseFeelEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "车内噪声印象", Score = assessmentEntity.RidingComfortGroup.NoiseFeelEntity.NoiseFeel });
-                            ItemList.Add(new ParaKeyValue() { Name = "怠速噪声", Score = assessmentEntity.RidingComfortGroup.NoiseFeelEntity.IdlingNoise });
-                            ItemList.Add(new ParaKeyValue() { Name ="行驶噪声", Score = assessmentEntity.RidingComfortGroup.NoiseFeelEntity.RunNoise });
+                            ItemList.Add(new ParaKeyValue() { Name = "车内噪音印象", Score = assessmentEntity.RidingComfortGroup.NoiseFeelEntity.NoiseFeel });
+                            ItemList.Add(new ParaKeyValue() { Name = "怠速噪音", Score = assessmentEntity.RidingComfortGroup.NoiseFeelEntity.IdlingNoise });
+                            ItemList.Add(new ParaKeyValue() { Name = "行驶噪音", Score = assessmentEntity.RidingComfortGroup.NoiseFeelEntity.RunNoise });
                         }
 
                         ridingComfortGroup.ItemList = ItemList;

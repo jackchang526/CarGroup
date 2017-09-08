@@ -202,7 +202,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
 
                         if (assessmentEntity.DynamicPerformanceGroup.GearboxEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "换挡及变速箱", Score = assessmentEntity.DynamicPerformanceGroup.GearboxEntity.Score });
+                            ItemList.Add(new ParaKeyValue() { Name = "变速箱及换挡", Score = assessmentEntity.DynamicPerformanceGroup.GearboxEntity.Score });
                         }
                         dynamicPerformanceGroup.ItemList = ItemList;
                         list.Add(dynamicPerformanceGroup);
@@ -218,7 +218,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         safetyGroup.Score = assessmentEntity.SafetyGroup.Score;
                         if (assessmentEntity.SafetyGroup.BrakeEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "空载刹车测量值", Score = assessmentEntity.SafetyGroup.BrakeEntity.EmptyScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "冷刹车测量值", Score = assessmentEntity.SafetyGroup.BrakeEntity.EmptyScore });
                             ItemList.Add(new ParaKeyValue() { Name = "满载刹车测量值", Score = assessmentEntity.SafetyGroup.BrakeEntity.FullScore });
                             ItemList.Add(new ParaKeyValue() { Name = "刹车踏板感受", Score = assessmentEntity.SafetyGroup.BrakeEntity.BrakeFeel });
                         }

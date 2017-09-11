@@ -93,14 +93,14 @@
                     </a>
                 </li>
                 <li id="fueltype16"><a href="/xuanchegongju/?f=16#anchorTitle" data-channelid="2.161.1688">纯电动</a></li>
-                <li id="fueltype2">
-                    <a href="/xuanchegongju/?f=#anchorTitle" class="cSubItem" data-channelid="">插电混合</a>
+                <li id="fueltype4">
+                    <a href="/xuanchegongju/?f=4#anchorTitle" class="cSubItem" data-channelid="">插电混合</a>
                 </li>
                 <li id="fueltype2">
                     <a href="/xuanchegongju/?f=2#anchorTitle" class="cSubItem" data-channelid="2.161.1689">油电混合</a>
                 </li>
-                <li id="fueltype2">
-                    <a href="/xuanchegongju/?f=#anchorTitle" class="cSubItem" data-channelid="">天然气</a>
+                <li id="fueltype32">
+                    <a href="/xuanchegongju/?f=32#anchorTitle" class="cSubItem" data-channelid="">天然气</a>
                 </li>
                 <!--<li id="fueltype4">
                     <a href="/xuanchegongju/?f=4#anchorTitle" data-channelid="2.161.1690">
@@ -277,7 +277,7 @@
             </ul>
         </dd>
     </dl>-->
-    <dl class="w-long">
+    <dl class="dl-level">
         <dt>座位数：</dt>
         <dd>
             <ul>
@@ -313,7 +313,7 @@
             <ul>
                 <li>
                     <label>
-                        <input id="more_296" type="checkbox" data-channelid="2.94.641" />天窗
+                        <input id="more_207" type="checkbox" data-channelid="2.94.641" />天窗
                     </label>
                 </li>
                 <li>
@@ -338,7 +338,7 @@
                 </li>
                 <li>
                     <label>
-                        <input id="more_298" type="checkbox" data-channelid="2.94.652" />自动空调
+                        <input id="more_244" type="checkbox" data-channelid="2.94.652" />自动空调
                     </label>
                 </li>
                 <li>
@@ -388,7 +388,7 @@
                 </li>
                 <li>
                     <label>
-                        <input type="checkbox" id="more_299">后排空调
+                        <input type="checkbox" id="more_246">后排空调
                     </label>
                 </li>
                 <li>

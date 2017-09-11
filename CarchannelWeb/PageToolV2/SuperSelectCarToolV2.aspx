@@ -449,13 +449,13 @@
                                     <input type="checkbox" id="f_2" />油电混合</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="f_" />插电混合</label></li>
+                                    <input type="checkbox" id="f_4" />插电混合</label></li>
                             <%-- <li>
                                     <label>
                                         <input type="checkbox" id="f_32" />LPG</label></li>--%>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="f_" />天然气
+                                    <input type="checkbox" id="f_32" />天然气
                                         <span class="popup-layout-1">
                                             <span class="info">燃料的一种，CNG(Compressed Natural Gas),即压缩天然气，是天然气加压(超过3,600磅/平方英寸)并以气态储存在容器中。</span></span>
                                 </label>
@@ -700,7 +700,7 @@
                                     <input type="checkbox" id="more_129" />9</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_230" />10</label></li>
+                                    <input type="checkbox" id="more_130" />10</label></li>
                         </ul>
                     </dd>
                 </dl>
@@ -710,16 +710,16 @@
                         <ul class="tj_list">
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_231" />92</label></li>
+                                    <input type="checkbox" id="more_131" />92</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_232" />95</label></li>
+                                    <input type="checkbox" id="more_132" />95</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_233" />98</label></li>
+                                    <input type="checkbox" id="more_133" />98</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_234" />柴油</label></li>
+                                    <input type="checkbox" id="more_134" />柴油</label></li>
                         </ul>
                     </dd>
                 </dl>

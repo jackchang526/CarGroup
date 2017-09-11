@@ -56,7 +56,7 @@ namespace H5Web.carcompare
         {
             //List<string> sbForApi = new List<string>();
             StringBuilder sbForApi = new StringBuilder();
-            Dictionary<int, Dictionary<string, string>> dicCarParam = (new Car_BasicBll()).GetCarCompareDataByCarIDs(new List<int> { CarId1, CarId2 });
+            Dictionary<int, Dictionary<string, string>> dicCarParam = (new Car_BasicBll()).GetCarCompareDataByCarIDsV2(new List<int> { CarId1, CarId2 });
             Dictionary<int, List<string>> dicTemp = base.GetCarParameterJsonConfigNew();
             if (dicTemp != null && dicTemp.Count > 0)
             {

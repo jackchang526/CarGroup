@@ -84,7 +84,7 @@
     <Item Value="diandongbiansuxiangleixing" Desc="电动变速箱类型" ParamID="1007" Unit="km" />
     <Item Value="xitongzonghegonglv" Desc="系统综合功率" ParamID="1008" Unit="km" />
     <Item Value="xitongzongheniuju" Desc="系统综合扭矩" ParamID="1009" Unit="N.m" />
-    <Item Value="fadongjimiaoshu" Desc="发动机描述" ParamID="1010" Unit="km" />
+    <Item Value="fadongjimiaoshu" Desc="发动机描述" ParamID="945" Unit="km" />
     <Item Value="kachebiansuxiangmiaoshu" Desc="卡车变速箱描述" ParamID="1011" Unit="km" />
     <Item Value="forward_gears_number" Desc="卡车前进档位个数" ParamID="980" Unit="" />
     <Item Value="backward_gears_number" Desc="卡车倒档位个数" ParamID="981" Unit="" />

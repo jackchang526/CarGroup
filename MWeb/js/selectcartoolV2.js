@@ -18,9 +18,9 @@ var SelectCarTool = {
 	, DriveTypeName: { 1: "前驱", 2: "后驱", 252: "四驱", 4: "全时四驱", 8: "分时四驱", 16: "适时四驱", 32: "智能四驱", 64: "四轮驱动", 128: "前置四驱" }
 	, FuelType: 0	//燃料类型
     , Environment: ""
-    , EnvironmentName: {"126":"国4","125":"国5","127":"京5","123":"欧4","122":"欧5","126_123":"国4/欧4","125_122":"国5/欧5"}
-	, FuelTypeName: { 7: "汽油", 8: "柴油", 2: "油电混合", 16: "纯电动", 4: "油气混合" }
-	, BodyDoors: ""	//车门数
+    , EnvironmentName: {"120":"国5","121":"国4","122":"国3"}
+    , FuelTypeName: { 7: "汽油", 8: "柴油", 2: "油电混合", 16: "纯电动", 4: "插电混合", 32:"天然气" }
+	//, BodyDoors: ""	//车门数
 	, PerfSeatNum: ""	//座位数
 	, IsWagon: 0	//是否旅行版
 	, MoreCondition: {}   //存放url参数more对象，包含“配置”;   key-value :如果value为0代表是从“配置”中选择的项
@@ -92,14 +92,14 @@ var SelectCarTool = {
 	//绑定条件点击事件
 	, bindFilterClickEvent: function () {
 	    var that = this;
-		var btnFilter = document.getElementById("m-btn-filter");
-		if (btnFilter) {
-			var liList = btnFilter.getElementsByTagName("li");
-			for (var i = 0; i < liList.length; i++) {
-				//if (liList[i].className === "m-btn" || liList[i].className === "m-btn current" || liList[i].className === "sub m-btn")
-				//    liList[i].onclick = this.filterClickEvent;
-			}
-		}
+		//var btnFilter = document.getElementById("m-btn-filter");
+		//if (btnFilter) {
+		//	var liList = btnFilter.getElementsByTagName("li");
+		//	for (var i = 0; i < liList.length; i++) {
+		//		//if (liList[i].className === "m-btn" || liList[i].className === "m-btn current" || liList[i].className === "sub m-btn")
+		//		//    liList[i].onclick = this.filterClickEvent;
+		//	}
+		//}
 
 		var btnPriceSubmit = document.getElementById("btnPriceSubmit");
 		if (btnPriceSubmit) {
@@ -204,7 +204,7 @@ var SelectCarTool = {
 			SelectCarTool.DriveType = 0;
 			SelectCarTool.FuelType = 0;
 			SelectCarTool.Environment = "";
-			SelectCarTool.BodyDoors = "";
+			//SelectCarTool.BodyDoors = "";
 			SelectCarTool.PerfSeatNum = "";
 			$$("btnDrive").childNodes[0].childNodes[1].innerHTML = "";
 			$$("btnFuel").childNodes[0].childNodes[1].innerHTML = "";
@@ -215,10 +215,10 @@ var SelectCarTool = {
 
 			$(".drivetype" + SelectCarTool.DriveType.toString()).addClass("current");
 			$("#fueltype" + SelectCarTool.FuelType.toString()).addClass("current");
-			var doorNum = 0;
-			if (SelectCarTool.BodyDoors != "") {
-				doorNum = SelectCarTool.BodyDoors.charAt(0);
-			}
+			//var doorNum = 0;
+			//if (SelectCarTool.BodyDoors != "") {
+			//	doorNum = SelectCarTool.BodyDoors.charAt(0);
+			//}
 			var seatNum = 0;
 			if (SelectCarTool.PerfSeatNum != "") {
 				seatNum = SelectCarTool.PerfSeatNum.charAt(0);
@@ -495,13 +495,13 @@ var SelectCarTool = {
     	    $$("btnEnvironment").childNodes[0].childNodes[1].innerHTML = "";
     	}
 
-    	if (parseInt(this.BodyDoors) > 0 && this.BodyDoors.length > 0) {
-    		total++;
-    		$$("btnDoor").childNodes[0].childNodes[1].innerHTML = this.BodyDoors + "门";;
-    	}
-    	else {
-    		$$("btnDoor").childNodes[0].childNodes[1].innerHTML = "";
-    	}
+    	//if (parseInt(this.BodyDoors) > 0 && this.BodyDoors.length > 0) {
+    	//	total++;
+    	//	$$("btnDoor").childNodes[0].childNodes[1].innerHTML = this.BodyDoors + "门";;
+    	//}
+    	//else {
+    	//	$$("btnDoor").childNodes[0].childNodes[1].innerHTML = "";
+    	//}
     	if (parseInt(this.PerfSeatNum) > 0 && this.PerfSeatNum.length > 0) {
     		total++;
     		$$("btnSeat").childNodes[0].childNodes[1].innerHTML = this.PerfSeatNum + "座";
@@ -526,10 +526,10 @@ var SelectCarTool = {
         //$("#drivetype" + this.DriveType.toString()).addClass("current");
     	$(".drivetype" + this.DriveType.toString()).addClass("current");
     	$("#fueltype" + this.FuelType.toString()).addClass("current");
-    	var doorNum = 0;
-    	if (this.BodyDoors != "") {
-    		doorNum = this.BodyDoors.charAt(0);
-    	}
+    	//var doorNum = 0;
+    	//if (this.BodyDoors != "") {
+    	//	doorNum = this.BodyDoors.charAt(0);
+    	//}
     	var seatNum = 0;
     	if (this.PerfSeatNum != "") {
     		seatNum = this.PerfSeatNum.charAt(0);
@@ -539,37 +539,31 @@ var SelectCarTool = {
     	    envrionmentNum = this.Environment;
     	}
     	$("#envrionmentType" + envrionmentNum).addClass("current");
-    	$("#doors" + doorNum.toString()).addClass("current");
+    	//$("#doors" + doorNum.toString()).addClass("current");
     	$("#seatnum" + seatNum.toString()).addClass("current");
     }
 	, SetMoreCondition: function (mcConditionStr) {
 	    var more = [];
 	    //特殊处理：环保标准(参数下划线不分开处理)
-	    if (mcConditionStr.indexOf("126_123") > -1) { this.Environment = "126_123"; mcConditionStr = mcConditionStr.replace(this.Environment, ""); }
-	    else if (mcConditionStr.indexOf("125_122") > -1) { this.Environment = "125_122"; mcConditionStr = mcConditionStr.replace(this.Environment, ""); }
-	    else if (mcConditionStr.indexOf("126") > -1) { this.Environment = "126"; mcConditionStr = mcConditionStr.replace(this.Environment, ""); }
-	    else if (mcConditionStr.indexOf("125") > -1) { this.Environment = "125"; mcConditionStr = mcConditionStr.replace(this.Environment, ""); }
-	    else if (mcConditionStr.indexOf("127") > -1) { this.Environment = "127"; mcConditionStr = mcConditionStr.replace(this.Environment, ""); }
-	    else if (mcConditionStr.indexOf("122") > -1) { this.Environment = "122"; mcConditionStr = mcConditionStr.replace(this.Environment, ""); }
-	    else if (mcConditionStr.indexOf("123") > -1) { this.Environment = "123"; mcConditionStr = mcConditionStr.replace(this.Environment, ""); }
-	    else { }
+        if (mcConditionStr.indexOf("120") > -1) { this.Environment = "120"; mcConditionStr = mcConditionStr.replace(this.Environment, ""); }
+        else if (mcConditionStr.indexOf("121") > -1) { this.Environment = "121"; mcConditionStr = mcConditionStr.replace(this.Environment, ""); }
+        else if (mcConditionStr.indexOf("122") > -1) { this.Environment = "122"; mcConditionStr = mcConditionStr.replace(this.Environment, ""); }
 	    if (mcConditionStr.length > 0) {
 	        //一般处理
 	        more =linetrim(mcConditionStr).split('_');
 	    }
 		for (var i = 0; i < more.length; i++) {
-		    if (more[i] == 268 || more[i] == 270 || more[i] == 262 || more[i] == 263 || more[i] == 265 || more[i] == 266 || more[i] == 267) { //"更多"选项中 车门、座位对应的参数形式
-		        //268:2-3门   270:4-6门  262:2座  263:4-5座  265:6座  266:7座  267:7座以上
-		        //初始化车门和座位
+            if (more[i] == 279 || more[i] == 280 || more[i] == 281 || more[i] == 282 || more[i] == 283 || more[i] == 284) { //"更多"选项中 车门、座位对应的参数形式
+		        //279:2座  280:4座  281:5座  282:6座  283:7座  284:7座以上
+		        //初始化座位
 		        switch (more[i])
 		        {
-		            case "268": this.BodyDoors = "2-3"; break;
-		            case "270": this.BodyDoors = "4-6"; break;
-		            case "262": this.PerfSeatNum = "2"; break;
-		            case "263": this.PerfSeatNum = "4-5"; break;
-		            case "265": this.PerfSeatNum = "6"; break;
-		            case "266": this.PerfSeatNum = "7"; break;
-		            case "267": this.PerfSeatNum = "8-9999"; break;
+		            case "279": this.PerfSeatNum = "2"; break;
+                    case "280": this.PerfSeatNum = "4"; break;
+                    case "281": this.PerfSeatNum = "4"; break;
+		            case "282": this.PerfSeatNum = "6"; break;
+		            case "283": this.PerfSeatNum = "7"; break;
+		            case "284": this.PerfSeatNum = "8-9999"; break;
 		            default: break;
 		        }
 		    }
@@ -598,13 +592,16 @@ var SelectCarTool = {
 		        more += key + "_";
 		        if (mode == 1) {
 		            //天窗形式-单天窗、双天窗、全景
-		            if (key.indexOf("204") > -1) {
-		                more += "205_206_";
-		            }
-		            //四轮碟刹
-		            if (key.indexOf("141") > -1) {
-		                more += "143_144_145_146_148_149_150_";
-		            }
+                    if (key.indexOf("207") > -1) {
+		                more += "208_209_";
+                    }
+                    //自动空调-前排自动空调;双温区自动空调
+                    else if (key.indexOf("244") > -1) {
+                        more = more + "245_";
+                    }
+                    else if (key.indexOf("246") > -1) {
+                        more = more + "247_248_";
+                    }
 		        }
 		    }
 		    more = more.substr(0, more.length - 1);

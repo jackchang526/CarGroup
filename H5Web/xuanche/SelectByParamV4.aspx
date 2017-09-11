@@ -167,8 +167,11 @@
         <a href="javascript:void(0);">油电混合</a>
     </li>
     <li id="f_4">
-        <a href="javascript:void(0);">油气混合</a>
+        <a href="javascript:void(0);">插电混合</a>
     </li>
+    <%-- <li id="f_32">
+        <a href="javascript:void(0);">天然气</a>
+    </li>--%>
 </ul>
 <h2>
     <span>国别</span>
@@ -267,32 +270,35 @@
 <h2>
     <span>车门数</span></h2>
 
-<ul class="txt_select">
+<%--<ul class="txt_select">
     <li id="more_268">
         <a href="javascript:void(0);">2-3门</a>
     </li>
     <li id="more_270">
         <a href="javascript:void(0);">4-6门</a>
     </li>
-</ul>
+</ul>--%>
 
 <h2>
     <span>座位数</span></h2>
 
 <ul class="txt_select">
-    <li id="more_262">
+    <li id="more_279">
         <a href="javascript:void(0);">2座</a>
     </li>
-    <li id="more_263">
-        <a href="javascript:void(0);">4-5座</a>
+    <li id="more_280">
+        <a href="javascript:void(0);">4座</a>
     </li>
-    <li id="more_265">
+    <li id="more_281">
+        <a href="javascript:void(0);">5座</a>
+    </li>
+    <li id="more_282">
         <a href="javascript:void(0);">6座</a>
     </li>
-    <li id="more_266">
+    <li id="more_283">
         <a href="javascript:void(0);">7座</a>
     </li>
-    <li id="more_267">
+    <li id="more_284">
         <a href="javascript:void(0);">7座以上</a>
     </li>
 </ul>
@@ -301,59 +307,59 @@
     <span>配置</span></h2>
 
 <ul class="txt_select">
-    <li id="more_204">
+    <li id="more_296">
         <a href="javascript:void(0);">天窗</a>
     </li>
-    <li id="more_196">
-        <a href="javascript:void(0);">GPS导航</a>
-    </li>
-    <li id="more_200">
+     <li id="more_197">
         <a href="javascript:void(0);">倒车影像</a>
-    </li>
-    <li id="more_180">
-        <a href="javascript:void(0);">儿童锁</a>
     </li>
     <li id="more_101">
         <a href="javascript:void(0);">涡轮增压</a>
     </li>
-    <li id="more_179">
+     <li id="more_226">
         <a href="javascript:void(0);">无钥匙启动</a>
     </li>
-    <li id="more_141">
-        <a href="javascript:void(0);">四轮碟刹</a>
+    <li id="more_192">
+        <a href="javascript:void(0);">自动驻车</a>
     </li>
-    <li id="more_250">
-        <a href="javascript:void(0);">真皮座椅</a>
-    </li>
-    <li id="more_184">
-        <a href="javascript:void(0);">ESP</a>
-    </li>
-    <li id="more_224">
-        <a href="javascript:void(0);">氙气大灯</a>
-    </li>
-    <li id="more_194">
-        <a href="javascript:void(0);">定速巡航</a>
-    </li>
-    <li id="more_274">
+    <li id="more_244">
         <a href="javascript:void(0);">自动空调</a>
     </li>
-    <li id="more_177">
-        <a href="javascript:void(0);">胎压监测</a>
-    </li>
-    <li id="more_189">
-        <a href="javascript:void(0);">自动泊车</a>
-    </li>
-    <li id="more_249">
-        <a href="javascript:void(0);">空气净化器</a>
+    <li id="more_170">
+        <a href="javascript:void(0);">ESP</a>
     </li>
     <li id="more_163">
         <a href="javascript:void(0);">换挡拨片</a>
     </li>
-    <li id="more_236">
-        <a href="javascript:void(0);">电动座椅</a>
+    <li id="more_189">
+        <a href="javascript:void(0);">自动泊车</a>
     </li>
-    <li id="more_181">
-        <a href="javascript:void(0);">儿童座椅接口</a>
+    <li id="more_196">
+        <a href="javascript:void(0);">GPS导航</a>
+    </li>
+     <li id="more_182">
+        <a href="javascript:void(0);">定速巡航</a>
+    </li>
+    <li id="more_178">
+        <a href="javascript:void(0);">胎压监测</a>
+    </li>
+    <li id="more_184">
+        <a href="javascript:void(0);">主动刹车</a>
+    </li>
+    <li id="more_194">
+        <a href="javascript:void(0);">上坡辅助</a>
+    </li>
+    <li id="more_201">
+        <a href="javascript:void(0);">LED日间行车灯</a>
+    </li>
+    <li id="more_246">
+        <a href="javascript:void(0);">后排空调</a>
+    </li>
+    <li id="more_300">
+        <a href="javascript:void(0);">启停系统</a>
+    </li>
+    <li id="more_169">
+        <a href="javascript:void(0);">牵引力制动</a>
     </li>
 </ul>
 </div>

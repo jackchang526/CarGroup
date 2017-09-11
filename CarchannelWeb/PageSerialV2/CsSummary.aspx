@@ -750,11 +750,12 @@
     <script type="text/javascript" charset="utf-8" src="http://img4.bitautoimg.com/uimg/car/js/tabs_20140512_4.js"></script>
     <script type="text/javascript">
         var loadPingce = function () {
-            var pingceurl ="http://pingce.bitauto.com"
+            var pingceurl = "http://pingce.bitauto.com";
             $.ajax({
                 type: "GET",
                 url: "http://api.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=<%= serialId %>",
                 dataType: "jsonp",
+                cache: true,
                 jsonpCallback: "success_jsonpCallback_getEntranceData",
                 success: function (data) {
                     if (data.EvaluationId > 0) {
@@ -762,7 +763,7 @@
                         htmlArr.push("    <div class='col-auto left'>");
                         htmlArr.push("        <a data-channelid='2.21.2152' target='_blank' href='" + pingceurl+"/details/" + data.EvaluationId + "-2.html'>");
                         htmlArr.push("            <div class='figure'>");
-                        htmlArr.push("                <img src='" + data.ImageUrl + "' alt=''>");
+                        htmlArr.push("                <img src='" + data.ImageUrl.replace("cargroup", "newsimg_150_w0_1/cargroup") + "' alt=''>");
                         htmlArr.push("            </div>");
                         htmlArr.push("            <div class='caption'>");
                         htmlArr.push("                <span class='title'>总体得分</span>");

@@ -170,6 +170,14 @@ namespace MWeb.Controllers
                 serialFuelCost = serialSummaryFuelCost; //+ "(综合)";
             }
             ViewData["serialFuelCost"] = serialFuelCost;
+
+            Dictionary<int, string> serialPicUrl = pageBase.GetAllSerialPicURL(true);//白底封面图
+            string whitePicUrl = WebConfig.DefaultCarPic;
+            if (serialPicUrl.ContainsKey(serialId))
+            {
+                whitePicUrl = serialPicUrl[serialId].Replace("_2.","_4.");
+            }
+            ViewData["WhitePicUrl"] = whitePicUrl;
         }
 
         /// <summary>
@@ -898,6 +906,7 @@ namespace MWeb.Controllers
                         focusImgId.Add(dicPicNoneWhite[serialId].FirstOrDefault().Key, _serialImage);
                         focusImg.Add(_serialImage);
                     }
+
                 }
             }
 

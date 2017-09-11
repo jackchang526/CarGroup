@@ -35,7 +35,6 @@
         var GlobalSummaryConfig = {
             SerialId: "@(serialEntity.Id)",
             CityId: cityId,
-
             CityName: cityName
         };
     </script>
@@ -47,9 +46,26 @@
             }
         </style>
     }
+    @if (wtmcid == "mbdofcl")
+    {
+        <script src="//msite.baidu.com/sdk/c.js?appid=1569705116260104"></script>
+        <script type="application/ld+json">
+            {
+            "@@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
+            "@@id": "@(Request.Url.ToString())",
+            "title": "@(ViewData["title"])",
+            "images": [@(ViewData["WhitePicUrl"])],
+            "description":"",
+            "pubDate": "2017-09-11T08:00:01"
+            }
+        </script>
+    }
 </head>
 <body>
-    @Html.Partial("~/html/TopDownloadLayer.cshtml")
+    @if (wtmcid != "mbdofcl")
+    { 
+        @Html.Partial("~/html/TopDownloadLayer.cshtml")
+    }
     <div id="container">
         @if (wtfrom != "mcfw99")
         {
@@ -149,7 +165,7 @@
         </div>
         <!--nav fixed end-->
         <div class="sum-car-img">
-            @{
+            @{ 
                 var focusImg = (List<string>)ViewData["FocusImgList"];
             }
             @if (focusImg != null && focusImg.Count > 0)

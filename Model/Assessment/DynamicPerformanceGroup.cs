@@ -220,6 +220,10 @@ namespace BitAuto.CarChannel.Model.Assessment
         /// </summary>
         public string Viewpoint { get; set; }
         /// <summary>
+        /// 换挡及变速箱视频
+        /// </summary>
+        public List<string> Videos { get; set; }
+        /// <summary>
         /// 换挡及变速箱图片及文案
         /// </summary>
         public IList<CommonImageVideoEntity> Images { get; set; }

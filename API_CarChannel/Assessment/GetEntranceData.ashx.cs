@@ -51,7 +51,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
             EvaluationBll evaluationBll = new EvaluationBll();
             AssessmentEntity assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query, paraList.ToArray(), sortdic);
 
-            string ImageUrl = "", CarName="";
+            string ImageUrl = "", CarName = "";
             int SId = 0, CarId = 0, EId = 0;
             double TotalScore = 0, CommonInfoGroupScore = 0, BodyAndSpaceGroupScore = 0, SafetyGroupScore = 0, RidingComfortGroupScore = 0, DynamicPerformanceGroupScore = 0, JsBaseGroupScore = 0, YhBaseGroupScore = 0, CostBaseGroupScore = 0;
 
@@ -70,23 +70,23 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 if (assessmentEntity.BodyAndSpaceGroup != null)
                 {
                     BodyAndSpaceGroupScore = assessmentEntity.BodyAndSpaceGroup.Score;
-                }                             
+                }
                 if (assessmentEntity.SafetyGroup != null)
                 {
                     SafetyGroupScore = assessmentEntity.SafetyGroup.Score;
-                }              
+                }
                 if (assessmentEntity.RidingComfortGroup != null)
                 {
                     RidingComfortGroupScore = assessmentEntity.RidingComfortGroup.Score;
-                }            
+                }
                 if (assessmentEntity.DynamicPerformanceGroup != null)
                 {
                     DynamicPerformanceGroupScore = assessmentEntity.DynamicPerformanceGroup.Score;
-                }              
+                }
                 if (assessmentEntity.JsBaseGroup != null)
                 {
                     JsBaseGroupScore = assessmentEntity.JsBaseGroup.Score;
-                }              
+                }
                 if (assessmentEntity.YhBaseGroup != null)
                 {
                     YhBaseGroupScore = assessmentEntity.YhBaseGroup.Score;
@@ -98,7 +98,11 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 CarEntity cbe = (CarEntity)DataManager.GetDataEntity(EntityType.Car, assessmentEntity.CarId);
                 if (cbe != null)
                 {
-                    CarName = CommonFunction.GetUnicodeByString(cbe.Name);
+                    CarName = CommonFunction.GetUnicodeByString(cbe.Serial.ShowName + " " + cbe.CarYear + "款" + cbe.Name);
+                }
+                else
+                {
+                    CarName = "";
                 }
             }
 

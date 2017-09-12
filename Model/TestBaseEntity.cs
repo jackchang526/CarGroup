@@ -53,5 +53,13 @@ namespace BitAuto.CarChannel.Model
         public string Weather { get; set; }
 
         public string ShowName { get; set; }
+        /// <summary>
+        /// 风力
+        /// </summary>
+        public string Wind { get; set; }
+        /// <summary>
+        /// 温度
+        /// </summary>
+        public string Temperature { get; set; }
     }
 }

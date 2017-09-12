@@ -393,7 +393,7 @@
                 </li>
                 <li>
                     <label>
-                        <input type="checkbox" id="more_297">启停系统
+                        <input type="checkbox" id="more_297">发动机启停
                     </label>
                 </li>
                 <li>

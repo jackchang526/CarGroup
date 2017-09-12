@@ -355,8 +355,8 @@
     <li id="more_246">
         <a href="javascript:void(0);">后排空调</a>
     </li>
-    <li id="more_300">
-        <a href="javascript:void(0);">启停系统</a>
+    <li id="more_297">
+        <a href="javascript:void(0);">发动机启停</a>
     </li>
     <li id="more_169">
         <a href="javascript:void(0);">牵引力制动</a>

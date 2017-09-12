@@ -61,6 +61,8 @@ namespace BitAuto.CarChannel.BLL
                     item.WeatherDesc= Convert.ToString(dr["WeatherDesc"].ToString());
                     item.Weather = Convert.ToString(dr["Weather"].ToString());  
                     item.StyleId= Convert.ToInt32(dr["StyleId"]);
+                    item.Wind= Convert.ToString(dr["Wind"].ToString());
+                    item.Temperature = Convert.ToString(dr["Temperature"].ToString());
                     break;//只获取一条数据
                 }
             }

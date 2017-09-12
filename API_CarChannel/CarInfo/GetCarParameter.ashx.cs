@@ -87,7 +87,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 			if (listCarID.Count > 0)
 			{
                 
-				dicCarParam = (new Car_BasicBll()).GetCarCompareDataByCarIDsV2(listCarID);
+				dicCarParam = (new Car_BasicBll()).GetCarCompareDataByCarIDs(listCarID);
 
 				#region 生成车型详细参数js数组
 				// 生成车型详细参数js数组

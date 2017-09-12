@@ -34,7 +34,7 @@ namespace BitAuto.CarChannel.DAL
                                         LEFT JOIN [dbo].[StyleProperty] sp
                                         ON sp.Id = spv.PropertyId 
                                         LEFT JOIN StylePropertyGroup spg ON sp.GroupId=spg.Id
-                                 ORDER BY spg.OrderId,sp.GroupId";
+                                 ORDER BY spg.OrderId,sp.GroupId,sp.OrderId";
             SqlParameter[] parameters = {
                                             new SqlParameter("@evaluationId",SqlDbType.Int)
                                         };

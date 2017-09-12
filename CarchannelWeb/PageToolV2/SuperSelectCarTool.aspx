@@ -1511,13 +1511,13 @@
                                     <input type="checkbox" id="more_286" />中控液晶屏</label></li>
                             <li>                                    
                                 <label>                             
-                                    <input type="checkbox" id="more_287" />gps</label></li>
+                                    <input type="checkbox" id="more_287" />GPS</label></li>
                             <li>                                    
                                 <label>                             
                                     <input type="checkbox" id="more_288" />行车电脑</label></li>
                             <li>                                    
                                 <label>                             
-                                    <input type="checkbox" id="more_289" />hud平视</label></li>
+                                    <input type="checkbox" id="more_289" />HUD平视</label></li>
                             <li>                                    
                                 <label>                             
                                     <input type="checkbox" id="more_290" />智能互联定位</label></li>
@@ -1530,10 +1530,10 @@
                         <ul class="tj_list">
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_291" />carplay</label></li>
+                                    <input type="checkbox" id="more_291" />CARPLAY</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_292" />android</label></li>
+                                    <input type="checkbox" id="more_292" />ANDROID</label></li>
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_293" />手机无线充电</label></li>
@@ -1542,10 +1542,10 @@
                                     <input type="checkbox" id="more_294" />蓝牙</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_295" />wifi</label></li>
+                                    <input type="checkbox" id="more_295" />WIFI</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_296" />220v电源</label></li>
+                                    <input type="checkbox" id="more_296" />220V电源</label></li>
                         </ul>
                     </dd>
                 </dl>

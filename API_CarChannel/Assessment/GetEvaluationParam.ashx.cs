@@ -39,7 +39,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
         [72], [73], [74], [144], [124], [126], [128], [130], [132], [143],
         [39], [40], [41], [42], [43], [44], [45], [46], [47], [48], [49], [50],
         [51], [52], [53], [54], [55], [56], [22], [21], [23], [27], [28], [29],
-        [85], [213], [214], [215], [216], [217], [264], [265], [263], [262]
+        [85], [213], [214], [215], [216], [217], [257],[258],[255],[254]
  FROM   ( SELECT    [PropertyId], [PropertyValue]
           FROM      [dbo].[StylePropertyValue]
           WHERE     EvaluationId = @evaluationId
@@ -85,9 +85,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                                                               [28], [29], [85],
                                                               [213], [214],
                                                               [215], [216],
-                                                              [217], [264],
-                                                              [265], [263],
-                                                              [262] ) ) AS T2";
+                                                              [217], [257],[258],[255],[254] ) ) AS T2";
             SqlParameter[] _params = {
                                          new SqlParameter("@evaluationId",SqlDbType.Int),
                                          new SqlParameter("@carId",SqlDbType.Int)
@@ -218,12 +216,11 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                     FangXiangPanZhiJingZhong = dr["216"],
                     FangXiangPanZhiJingWai = dr["217"],
 
-                    DzhuZuoZheBiJiaoDu = dr["264"],
-                    DzhuYouZheBiJiaoDu = dr["265"],
-                    BaoYangFeiYong6Nian=dr["263"],
-                    KongTiaoChuFengKouShuLiang= dr["262"]
+                    DzhuZuoZheBiJiaoDu = dr["257"],
+                    DzhuYouZheBiJiaoDu = dr["258"],
+                    BaoYangFeiYong6Nian=dr["255"],
+                    KongTiaoChuFengKouShuLiang= dr["254"] 
                 };
-
                 result = JsonConvert.SerializeObject(obj);
             }
             context.Response.Write(!string.IsNullOrEmpty(callback) ? string.Format("{0}({1})", callback, result) : result);

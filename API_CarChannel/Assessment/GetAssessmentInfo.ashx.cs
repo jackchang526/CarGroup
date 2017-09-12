@@ -57,13 +57,13 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 CarEntity cbe = (CarEntity)DataManager.GetDataEntity(EntityType.Car, assessmentEntity.CarId);
                 if (cbe != null)
                 {
-                    assessmentEntity.CarName = CommonFunction.GetUnicodeByString(cbe.Serial.ShowName + cbe.CarYear + "款" + cbe.Name);
+                    assessmentEntity.CarName = CommonFunction.GetUnicodeByString(cbe.Serial.ShowName + " " + cbe.CarYear + "款" + cbe.Name);
                 }
                 else
                 {
                     assessmentEntity.CarName = "";
                 }
-            }           
+            }
             var json = JsonConvert.SerializeObject(assessmentEntity);
             context.Response.Write(!string.IsNullOrEmpty(callback) ? string.Format("{0}({1})", callback, json) : json);
         }

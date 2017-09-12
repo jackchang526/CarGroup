@@ -122,11 +122,12 @@
             if (data.result == 'yes') {
                 var tgouUrl = data.url;
                 var signName;
-                if (data.sign == "1") {
-                    signName = "团购";
-                } else if (data.sign == "2") {
-                    signName = "优惠";
-                }
+                //if (data.sign == "1") {
+                //    signName = "团购";
+                //} else if (data.sign == "2") {
+                //    signName = "优惠";
+                //}
+                signName = data.tag;
                 $.each(data.carIds, function (i, n) {
                     $("#carlist_" + n).append("<a href=\"" + tgouUrl + "\" target=\"_blank\" class=\"color-block\">" + signName + "</a>");
                 });

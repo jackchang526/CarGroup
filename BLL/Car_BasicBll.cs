@@ -1152,63 +1152,63 @@ namespace BitAuto.CarChannel.BLL
 			return new Car_BasicDal().GetCarBaseInfoForCompareByCsIDs(csIDs);
 		}
 
-		/// <summary>
-		/// 根据车型ID列表取车型对比数据
-		/// </summary>
-		/// <param name="listCarID">车型ID列表</param>
-		/// <returns></returns>
-		public Dictionary<int, Dictionary<string, string>> GetCarCompareDataByCarIDs(List<int> listCarID)
-		{
-			Dictionary<int, Dictionary<string, string>> dic = new Dictionary<int, Dictionary<string, string>>();
-			if (listCarID.Count > 0)
-			{
-				string keyTemp = "Car_Dictionary_CarCompareData_{0}";
-				IList<string> keyForMemCache = new List<string>();
-				foreach (int carid in listCarID)
-				{
-					if (!keyForMemCache.Contains(string.Format(keyTemp, carid)))
-					{ keyForMemCache.Add(string.Format(keyTemp, carid)); }
-				}
+		///// <summary>
+		///// 根据车型ID列表取车型对比数据
+		///// </summary>
+		///// <param name="listCarID">车型ID列表</param>
+		///// <returns></returns>
+		//public Dictionary<int, Dictionary<string, string>> GetCarCompareDataByCarIDs(List<int> listCarID)
+		//{
+		//	Dictionary<int, Dictionary<string, string>> dic = new Dictionary<int, Dictionary<string, string>>();
+		//	if (listCarID.Count > 0)
+		//	{
+		//		string keyTemp = "Car_Dictionary_CarCompareData_{0}";
+		//		IList<string> keyForMemCache = new List<string>();
+		//		foreach (int carid in listCarID)
+		//		{
+		//			if (!keyForMemCache.Contains(string.Format(keyTemp, carid)))
+		//			{ keyForMemCache.Add(string.Format(keyTemp, carid)); }
+		//		}
 
-				IDictionary<string, object> dicMemCache = MemCache.GetMultipleMemCacheByKey(keyForMemCache);
-				// Hashtable ht = MemCache.GetMultipleMemCacheByKey(keyForMemCache);
-				// 补齐没有memcache缓存的车型
-				foreach (int carid in listCarID)
-				{
-					if (dicMemCache.Count > 0
-						&& dicMemCache.ContainsKey(string.Format(keyTemp, carid))
-						&& dicMemCache[string.Format(keyTemp, carid)] != null
-						)
-					{
-						// 有memcache
-						Dictionary<string, string> dicCar = dicMemCache[string.Format(keyTemp, carid)] as Dictionary<string, string>;
-						if (dicCar != null && !dic.ContainsKey(carid))
-						{ dic.Add(carid, dicCar); }
-					}
-					else
-					{
-						// modified Jan.13.2012 by chengl 当没有memcache时取数据重建memcache 缓存时间1天
-						Dictionary<string, string> dicCar = new Dictionary<string, string>();
-						GetCarInfoAndParamToDictionary(carid, ref dicCar);
-						if (dicCar != null && dicCar.Count > 0)
-						{
-							//modified by sk mem 2小时
-							MemCache.SetMemCacheByKey(string.Format(keyTemp, carid), dicCar, 1000 * 60 * 60 * 2);
-						}
-						if (!dic.ContainsKey(carid) && dicCar.Count > 0)
-						{ dic.Add(carid, dicCar); }
-					}
-				}
-			}
-			return dic;
-		}
+		//		IDictionary<string, object> dicMemCache = MemCache.GetMultipleMemCacheByKey(keyForMemCache);
+		//		// Hashtable ht = MemCache.GetMultipleMemCacheByKey(keyForMemCache);
+		//		// 补齐没有memcache缓存的车型
+		//		foreach (int carid in listCarID)
+		//		{
+		//			if (dicMemCache.Count > 0
+		//				&& dicMemCache.ContainsKey(string.Format(keyTemp, carid))
+		//				&& dicMemCache[string.Format(keyTemp, carid)] != null
+		//				)
+		//			{
+		//				// 有memcache
+		//				Dictionary<string, string> dicCar = dicMemCache[string.Format(keyTemp, carid)] as Dictionary<string, string>;
+		//				if (dicCar != null && !dic.ContainsKey(carid))
+		//				{ dic.Add(carid, dicCar); }
+		//			}
+		//			else
+		//			{
+		//				// modified Jan.13.2012 by chengl 当没有memcache时取数据重建memcache 缓存时间1天
+		//				Dictionary<string, string> dicCar = new Dictionary<string, string>();
+		//				GetCarInfoAndParamToDictionary(carid, ref dicCar);
+		//				if (dicCar != null && dicCar.Count > 0)
+		//				{
+		//					//modified by sk mem 2小时
+		//					MemCache.SetMemCacheByKey(string.Format(keyTemp, carid), dicCar, 1000 * 60 * 60 * 2);
+		//				}
+		//				if (!dic.ContainsKey(carid) && dicCar.Count > 0)
+		//				{ dic.Add(carid, dicCar); }
+		//			}
+		//		}
+		//	}
+		//	return dic;
+		//}
 
         /// <summary>
 		/// 根据车型ID列表取车型对比数据
 		/// </summary>
 		/// <param name="listCarID">车型ID列表</param>
 		/// <returns></returns>
-		public Dictionary<int, Dictionary<string, string>> GetCarCompareDataByCarIDsV2(List<int> listCarID)
+		public Dictionary<int, Dictionary<string, string>> GetCarCompareDataByCarIDs(List<int> listCarID)
         {
             Dictionary<int, Dictionary<string, string>> dic = new Dictionary<int, Dictionary<string, string>>();
             if (listCarID.Count > 0)
@@ -1263,7 +1263,7 @@ namespace BitAuto.CarChannel.BLL
             if (carIdList == null || carIdList.Count == 0) return string.Empty;
 				
             StringBuilder sbForApi = new StringBuilder();
-            Dictionary<int, Dictionary<string, string>> dicCarParam = GetCarCompareDataByCarIDsV2(carIdList);
+            Dictionary<int, Dictionary<string, string>> dicCarParam = GetCarCompareDataByCarIDs(carIdList);
             Dictionary<int, List<string>> dicTemp = new Common.PageBase().GetCarParameterJsonConfigNew();
             if (dicTemp != null && dicTemp.Count > 0)
             {

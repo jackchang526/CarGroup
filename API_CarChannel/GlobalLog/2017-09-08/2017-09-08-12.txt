@@ -1,0 +1,65 @@
+[2017/9/8 12:02:01]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEvaluationInfo.ashx?evaluationId=2449&callback=success_jsonpCallback?fdsfsf
+Ref: 
+Error Message: 输入字符串的格式不正确。
+Stack Trace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Convert.ToInt32(String value)
+   在 BitAuto.CarChannel.BLL.EvaluationBll.GetByStyleEvaluation(Int32 evaluationId) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\EvaluationBll.cs:行号 33
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetEvaluationInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetEvaluationInfo.ashx.cs:行号 30
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/9/8 12:02:43]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEvaluationInfo.ashx?evaluationId=2449&callback=success_jsonpCallback?fdsfsf
+Ref: 
+Error Message: 输入字符串的格式不正确。
+Stack Trace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Convert.ToInt32(String value)
+   在 BitAuto.CarChannel.BLL.EvaluationBll.GetByStyleEvaluation(Int32 evaluationId) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\EvaluationBll.cs:行号 33
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetEvaluationInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetEvaluationInfo.ashx.cs:行号 30
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/9/8 12:03:56]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEvaluationInfo.ashx?evaluationId=2449&callback=success_jsonpCallback?fdsfsf
+Ref: 
+Error Message: 输入字符串的格式不正确。
+Stack Trace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Convert.ToInt32(String value)
+   在 BitAuto.CarChannel.BLL.EvaluationBll.GetByStyleEvaluation(Int32 evaluationId) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\EvaluationBll.cs:行号 33
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetEvaluationInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetEvaluationInfo.ashx.cs:行号 30
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/9/8 12:04:03]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEvaluationInfo.ashx?evaluationId=2449&callback=success_jsonpCallback?fdsfsf
+Ref: 
+Error Message: 输入字符串的格式不正确。
+Stack Trace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Convert.ToInt32(String value)
+   在 BitAuto.CarChannel.BLL.EvaluationBll.GetByStyleEvaluation(Int32 evaluationId) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\EvaluationBll.cs:行号 33
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetEvaluationInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetEvaluationInfo.ashx.cs:行号 30
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/9/8 12:05:44]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEvaluationInfo.ashx?evaluationId=2449&callback=success_jsonpCallback?fdsfsf
+Ref: 
+Error Message: 输入字符串的格式不正确。
+Stack Trace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Convert.ToInt32(String value)
+   在 BitAuto.CarChannel.BLL.EvaluationBll.GetByStyleEvaluation(Int32 evaluationId) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\BLL\EvaluationBll.cs:行号 33
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetEvaluationInfo.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetEvaluationInfo.ashx.cs:行号 34
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

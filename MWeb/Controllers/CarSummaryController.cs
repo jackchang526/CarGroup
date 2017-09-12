@@ -175,7 +175,7 @@ namespace MWeb.Controllers
 			PowerConsumptive100 = dict.ContainsKey(868) ? dict[868] : "";//百公里耗电
 			Mileage = dict.ContainsKey(883) ? dict[883] : "";//续航里程
 			ChargeTime = dict.ContainsKey(879) ? dict[879] : "";//充电时间
-			Exhaust = (dict.ContainsKey(425) && dict[425] == "增压") ? (string.IsNullOrEmpty(cfcs.Engine_Exhaust) ? "" : cfcs.Engine_Exhaust.Replace("L", "T")) : cfcs.Engine_Exhaust;//排量
+			Exhaust = (dict.ContainsKey(425) && dict[425].Contains("增压")) ? (string.IsNullOrEmpty(cfcs.Engine_Exhaust) ? "" : cfcs.Engine_Exhaust.Replace("L", "T")) : cfcs.Engine_Exhaust;//排量
 			//减税 购置税
 			double dEx = 0.0;
 			if (!string.IsNullOrEmpty(cfcs.Engine_Exhaust))

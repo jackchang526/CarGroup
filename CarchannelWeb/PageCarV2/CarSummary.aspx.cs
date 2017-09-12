@@ -229,7 +229,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 mileage = dict.ContainsKey(883) ? dict[883] : "";
                 chargeTime = dict.ContainsKey(879) ? dict[879] : "";
                 fastChargeTime = dict.ContainsKey(878) ? dict[878] : "";
-                exhaust = (dict.ContainsKey(425) && dict[425] == "增压") ? cfcs.Engine_Exhaust.Replace("L", "T") : cfcs.Engine_Exhaust;
+                exhaust = (dict.ContainsKey(425) && dict[425].Contains("增压")) ? cfcs.Engine_Exhaust.Replace("L", "T") : cfcs.Engine_Exhaust;
                 //论坛Url
                 // forumUrl = new Car_SerialBll().GetForumUrlBySerialId(cbe.Serial.Id);
                 #endregion
@@ -993,16 +993,16 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                         }
                     }
                     // 进气型式 如果自然吸气直接显示，如果是增压则显示增压方式
-                    if (item.Attributes.GetNamedItem("ParamID").Value == "425"
-                        && pvalue == "增压")
-                    {
-                        if (dic[carID].ContainsKey("CarParams/Engine_AddPressType")
-                    && dic[carID]["CarParams/Engine_AddPressType"] != "待查")
-                        {
-                            pvalueOther = dic[carID]["CarParams/Engine_AddPressType"];
-                            pvalue = pvalue + " " + pvalueOther;
-                        }
-                    }
+                    //if (item.Attributes.GetNamedItem("ParamID").Value == "425"
+                    //    && pvalue == "增压")
+                    //{
+                    //    if (dic[carID].ContainsKey("CarParams/Engine_AddPressType")
+                    //&& dic[carID]["CarParams/Engine_AddPressType"] != "待查")
+                    //    {
+                    //        pvalueOther = dic[carID]["CarParams/Engine_AddPressType"];
+                    //        pvalue = pvalue + " " + pvalueOther;
+                    //    }
+                    //}
                     //解决 变速箱 无极变速 替换成 -
                     if (item.Attributes.GetNamedItem("Name").Value != "燃油变速箱")
                     {

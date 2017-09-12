@@ -109,7 +109,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                                 int carId = Convert.ToInt32(dr["car_id"]);
                                 Dictionary<int, string> dictCarAllParams = new Car_BasicBll().GetCarAllParamByCarID(carId);
                                 var exhaust = dr["Engine_Exhaust"].ToString().Trim();
-                                if (dictCarAllParams.ContainsKey(425) && dictCarAllParams[425] == "增压")
+                                if (dictCarAllParams.ContainsKey(425) && dictCarAllParams[425].Contains("增压"))
                                 {
                                     exhaust = exhaust.Replace("L", "T");
                                 }

@@ -728,12 +728,12 @@ namespace BitAuto.CarChannel.Common
                         }
                         //add by sk 2014.3.31 增压方式
                         string addPressType = string.Empty;
-                        if (dictParams.ContainsKey(408))
-                        {
-                            if (dictParams[408] == "" || dictParams[408] == "待查" || dictParams[408] == "无") { }
-                            else
-                                addPressType = dictParams[408];
-                        }
+                        //if (dictParams.ContainsKey(425))
+                        //{
+                        //    if (dictParams[425] == "" || dictParams[425] == "待查" || dictParams[425] == "无") { }
+                        //    else
+                        //        addPressType = dictParams[425];
+                        //}
                         int kw = 0;
                         if (dictParams.ContainsKey(430))
                         {
@@ -808,12 +808,12 @@ namespace BitAuto.CarChannel.Common
                     }
                     //add by sk 2014.3.31 增压方式
                     string addPressType = string.Empty;
-                    if (dictParams.ContainsKey(408))
-                    {
-                        if (dictParams[408] == "" || dictParams[408] == "待查" || dictParams[408] == "无") { }
-                        else
-                            addPressType = dictParams[408];
-                    }
+                    //if (dictParams.ContainsKey(425))
+                    //{
+                    //    if (dictParams[425] == "" || dictParams[425] == "待查" || dictParams[425] == "无") { }
+                    //    else
+                    //        addPressType = dictParams[425];
+                    //}
                     int kw = 0;
                     if (dictParams.ContainsKey(430))
                     {

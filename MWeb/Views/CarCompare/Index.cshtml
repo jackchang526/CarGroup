@@ -199,7 +199,13 @@
         </div>
         <!--footer end-->
     </div>
-
+    <!-- 选装弹层 start -->
+    <div class="pop-optional-mask" style="display:none;"></div>
+    <div class="pop-optional" style="display:none;">
+        <!--data-optionID和表格中的选装参数对应输出-->
+        @Html.Raw(ViewBag.CarAllParamPop)
+    </div>
+    <!-- 选装弹层 end -->
     <script type="text/javascript">
 
         $(document).on('touchstart', function (event) {
@@ -236,6 +242,45 @@
             $(".catalog-list").hide();
             $("#popup-menumask").hide();
         });
+        // 选装弹层
+        $(function () {
+            var halfScreenHeight = $(window).height() / 2;
+            $('.optional.type1').click(function (e) {
+                e.stopPropagation();
+                var thisID = $(this).data('optionid');
+                var thisTop = $(this).offset().top;
+                var thisLeft = $(this).offset().left;
+                var $popOptional = $('.pop-optional');
+
+                $('body').css('overflow', 'hidden');
+                $('.pop-optional-mask').show();
+
+                $popOptional.find('ul[data-optionid=' + thisID + ']').show();
+
+                var popOptionalHeight = $popOptional.height();
+                if (e.clientY < halfScreenHeight) {
+                    $popOptional.css({
+                        'top': (thisTop + 30),
+                        'left': (thisLeft - 100)
+                    });
+                    $popOptional.addClass('pop-optional-top');
+                } else {
+                    $popOptional.css({
+                        'top': (thisTop - popOptionalHeight - 15),
+                        'left': (thisLeft - 100)
+                    });
+                    $popOptional.addClass('pop-optional-bottom');
+                }
+
+                $popOptional.show();
+            });
+            $('.pop-optional-mask').click(function () {
+                $('body').css('overflow', 'auto');
+                $('.pop-optional-mask').hide();
+                $('.pop-optional').hide().removeClass('pop-optional-top pop-optional-bottom')
+                    .find('ul').hide();
+            });
+        })
     </script>
 
 
@@ -276,6 +321,7 @@
                 $('.brandlist').height(document.documentElement.clientHeight);
             }
         }
+
     </script>
 
     <script type="text/javascript">

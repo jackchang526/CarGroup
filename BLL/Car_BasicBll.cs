@@ -1763,12 +1763,12 @@ namespace BitAuto.CarChannel.BLL
 					}
 					//add by sk 2014.3.31 增压方式
 					string addPressType = string.Empty;
-					if (dictParams.ContainsKey(408))
-					{
-						if (dictParams[408] == "" || dictParams[408] == "待查" || dictParams[408] == "无") { }
-						else
-							addPressType = dictParams[408];
-					}
+					//if (dictParams.ContainsKey(425))
+					//{
+					//	if (dictParams[425] == "" || dictParams[425] == "待查" || dictParams[425] == "无") { }
+					//	else
+					//		addPressType = dictParams[425];
+					//}
 					////马力优先 马力参数 如果没有值 利用千万时计算马力 再没有排最后
 					//int maxPower = 0;
 					//if (dictParams.ContainsKey(791))

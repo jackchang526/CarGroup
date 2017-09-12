@@ -151,7 +151,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                         //add by 2015.02.01 排量增加 T
                         Dictionary<int, string> dictCarAllParams = new Car_BasicBll().GetCarAllParamByCarID(carId);
                         var exhaust = dt.Rows[i]["Engine_Exhaust"].ToString().Trim();
-                        if (dictCarAllParams.ContainsKey(425) && dictCarAllParams[425] == "增压")
+                        if (dictCarAllParams.ContainsKey(425) && dictCarAllParams[425].Contains("增压"))
                         {
                             exhaust = exhaust.Replace("L", "T");
                         }

@@ -25,6 +25,7 @@ namespace MWeb.Controllers
         protected string transmissionType = string.Empty;
         protected string carAllParamHTML = string.Empty;
         protected string carAllParamMenu = string.Empty;
+        protected string carAllParamPop = string.Empty;
         protected CarEntity ce;
         public CarCompareController()
         {
@@ -65,6 +66,7 @@ namespace MWeb.Controllers
         private void GetCarAllParam()
         {
             Dictionary<int, string> dic = new Car_BasicBll().GetCarAllParamByCarID(carID);
+            Dictionary<int, Dictionary<string, double>> dicOptional = new Car_BasicBll().GetCarAllParamOptionalByCarID(carID);
             exhaustForFloat = dic.ContainsKey(785) ? dic[785] + "L" : "暂无";  //785代表所有排量
             //档位个数
             string forwardGearNum = (dic.ContainsKey(724) && dic[724] != "无级") ? dic[724] + "档" : "";
@@ -90,7 +92,7 @@ namespace MWeb.Controllers
             string carColorHTML = GetCarColor(listColor);
 
             XmlDocument docPC = new XmlDocument();
-            string cache = "CarSummary_ParameterConfigurationNew";
+            string cache = "CarSummary_ParameterConfigurationNewV2";
             object parameterConfiguration = null;
             CacheManager.GetCachedData(cache, out parameterConfiguration);
             if (parameterConfiguration != null)
@@ -99,7 +101,7 @@ namespace MWeb.Controllers
             }
             else
             {
-                var filePath = System.Web.HttpContext.Current.Server.MapPath("~") + "\\config\\ParameterConfigurationNew.config";
+                var filePath = System.Web.HttpContext.Current.Server.MapPath("~") + "\\config\\ParameterConfigurationNewV2.config";
                 if (System.IO.File.Exists(filePath))
                 {
                     docPC.Load(filePath);
@@ -111,6 +113,8 @@ namespace MWeb.Controllers
             List<string> listCarAllParamHTML = new List<string>();
             //车型全部参数菜单
             List<string> listMenu = new List<string>();
+            //选配具体内容
+            List<string> listPop = new List<string>();
             #region 车型详细参数
             if (docPC != null && docPC.HasChildNodes)
             {
@@ -145,18 +149,58 @@ namespace MWeb.Controllers
                                         // 每个参数
                                         if (xn.NodeType != XmlNodeType.Element)
                                         { continue; }
+                                        string pvalue = string.Empty;
                                         int pid = 0;
-                                        if (xn.Attributes["ParamID"] != null
-                                            && xn.Attributes["ParamID"].Value != ""
-                                            && int.TryParse(xn.Attributes["ParamID"].Value, out pid))
-                                        { }
-                                        if (pid > 0 && dic.ContainsKey(pid)
-                                            && dic[pid] != "待查")
+                                        //合并参数
+                                        if (xn.Attributes.GetNamedItem("Value").Value.IndexOf(",") != -1)
+                                        {
+                                            string[] arrKey = xn.Attributes.GetNamedItem("Value").Value.Split(',');
+                                            string[] arrUnit = xn.Attributes.GetNamedItem("Unit").Value.Split(',');
+                                            string[] arrParam = xn.Attributes.GetNamedItem("ParamID").Value.Split(',');
+                                            List<string> list = new List<string>();
+                                            for (var i = 0; i < arrParam.Length; i++)
+                                            {
+                                                int paraId = 0;
+                                                if (!(int.TryParse(arrParam[i], out paraId))){ continue; }
+                                                if (!(dic.ContainsKey(paraId) && dic[paraId] != "待查"))
+                                                    continue;
+                                                //档位数 0 不显示
+                                                if (arrParam[i] == "724")
+                                                {
+                                                    var d = ConvertHelper.GetInteger(dic[paraId]);
+                                                    if (d <= 0) continue;
+                                                }
+
+                                                list.Add(string.Format("{0}{1}", dic[paraId], arrUnit[i]));
+                                            }
+                                            if (list.Count <= 0) continue;
+                                            //解决2个参数 其中“有” 后面参数有值 替换成 实心圈
+                                            var you = list.Find(p => p.IndexOf("有") != -1);
+                                            if (you != null && list.Count > 1)
+                                                list.Remove(you);
+                                            
+                                            pvalue = string.Join(" ", list.ToArray());
+                                        }
+                                        else
+                                        {
+                                            
+                                            if (xn.Attributes["ParamID"] != null
+                                                && xn.Attributes["ParamID"].Value != ""
+                                                && int.TryParse(xn.Attributes["ParamID"].Value, out pid))
+                                            { }
+                                            if (!(dic.ContainsKey(pid))&& !(dicOptional.ContainsKey(pid)) && pid <= 0 )
+                                            { continue; }
+                                            //参配值
+                                            if (dic.ContainsKey(pid) && dic[pid] != "待查")
+                                            {
+                                                pvalue = string.Format("{0}{1}", dic[pid], xn.Attributes.GetNamedItem("Unit").Value);
+                                            }
+                                        }
+                                        if (!string.IsNullOrEmpty(pvalue)|| dicOptional.ContainsKey(pid))
                                         {
                                             isHasChild = true || isHasChild;
                                             listTempClass.Add("<tr>");
 
-                                            string pvalue = dic[pid] + xn.Attributes["Unit"].Value;
                                             // 燃料类型 汽油的话同时显示 燃油标号
                                             string pvalueOther;
                                             if (pid == 578 && pvalue == "汽油")
@@ -174,17 +218,9 @@ namespace MWeb.Controllers
                                                     pvalue = pvalue + " " + pvalueOther;
                                                 }
                                             }
-                                            // 进气型式 如果自然吸气直接显示，如果是增压则显示增压方式
-                                            if (pid == 425 && pvalue == "增压")
-                                            {
-                                                if (dic.ContainsKey(408) && dic[408] != "待查")
-                                                {
-                                                    pvalueOther = dic[408];
-                                                    pvalue = pvalue + " " + pvalueOther;
-                                                }
-                                            }
+
                                             //解决 变速箱 无极变速 替换成 -
-                                            if (xn.Attributes.GetNamedItem("Name").Value != "变速箱")
+                                            if (xn.Attributes.GetNamedItem("Name").Value != "燃油变速箱")
                                             {
                                                 if (pvalue.IndexOf("有") == 0)
                                                 { pvalue = "●"; }
@@ -215,8 +251,46 @@ namespace MWeb.Controllers
                                             }
                                             else
                                             {
-                                                listTempClass.Add("<td>" + pvalue + "</td>");
-                                            }
+                                                if (pid > 0 && dicOptional.ContainsKey(pid))
+                                                {
+                                                    var optionalPara = dicOptional[pid];
+                                                    if (optionalPara.Count <= 1)
+                                                    {
+                                                        var name = optionalPara.Single().Key;
+                                                        var price = optionalPara.Single().Value;
+                                                        if (string.IsNullOrEmpty(pvalue))
+                                                        {
+                                                            listTempClass.Add("<td><div class=\"optional\">" + "○ " + name + "￥" + price + "起</div></td>");
+                                                        }
+                                                        else
+                                                        {
+                                                            listTempClass.Add("<td><div>" + "● " + pvalue + "</div><div class=\"optional\">" + "○ " + name + "￥" + price + "起</div></td>");
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        if (string.IsNullOrEmpty(pvalue))
+                                                        {
+                                                            listTempClass.Add("<td>");
+                                                        }
+                                                        else
+                                                        {
+                                                            listTempClass.Add("<td><div>" + "● " + pvalue + "</div>");
+                                                        }
+                                                        double minPrice = optionalPara.Values.Min();
+                                                        listTempClass.Add("<div class=\"optional type1\" data-optionid=" + pid + ">" + "○ 选装￥" + minPrice + "起</div></td>");
+                                                        listPop.Add("<ul data-optionID=\"" + pid + "\" style=\"display: none; \">");
+                                                        foreach (var para in optionalPara.Keys)
+                                                        {                                                           
+                                                            listPop.Add("<li> <span class=\"l\">" + para + "</span> <span class=\"r\">" + optionalPara[para] + "</span></li>");
+                                                        }
+                                                        listPop.Add("</ul>");
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    listTempClass.Add("<td>" + pvalue + "</td>");}
+                                                }
                                         }
                                         else
                                         {
@@ -261,9 +335,11 @@ namespace MWeb.Controllers
                 listCarAllParamHTML.Add("</table>");
                 carAllParamHTML = string.Concat(listCarAllParamHTML.ToArray());
                 carAllParamMenu = string.Concat(listMenu.ToArray());
+                carAllParamPop = string.Concat(listPop.ToArray());
             }
             ViewBag.CarAllParamHTML = carAllParamHTML;
             ViewBag.CarAllParamMenu = carAllParamMenu;
+            ViewBag.CarAllParamPop= carAllParamPop;
         }
         /// <summary>
         /// 生成车型颜色块

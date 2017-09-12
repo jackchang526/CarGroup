@@ -1080,7 +1080,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.App_Code
             htmlList.Add("	<li><label><input id=\"more_194\" type=\"checkbox\" />上坡辅助</label></li>");
             htmlList.Add("	<li><label><input id=\"more_201\" type=\"checkbox\" />LED日间行车灯</label></li>");
             htmlList.Add("	<li><label><input id=\"more_246\" type=\"checkbox\" />后排空调</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_300\" type=\"checkbox\" />启停系统</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_297\" type=\"checkbox\" />启停系统</label></li>");
             htmlList.Add("	<li><label><input id=\"more_169\" type=\"checkbox\" />牵引力制动</label></li><a id=\"anchorcarlist\"></a></li>");
             htmlList.Add("</ul>");
             htmlList.Add("</dd>");

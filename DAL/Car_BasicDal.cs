@@ -432,7 +432,7 @@ left join Car_Serial cs on car.Cs_Id=cs.cs_id where car.Car_Id=@carid";
             CacheManager.GetCachedData(catchkey, out objGetCarAllParamByCarId);
             if (objGetCarAllParamByCarId == null)
             {
-                string sql = "select CarId,PropertyId,PropertyValue,Price from dbo.CarDataBaseOptional where CarId=@carID";
+                string sql = "select CarId,PropertyId,PropertyValue,Price from dbo.CarDataBaseOptional where CarId=@carID order by PropertyId,Price";
                 SqlParameter[] _param ={
                                       new SqlParameter("@carID",SqlDbType.Int)
                                   };

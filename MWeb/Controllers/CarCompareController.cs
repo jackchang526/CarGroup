@@ -193,7 +193,7 @@ namespace MWeb.Controllers
                                             //参配值
                                             if (dic.ContainsKey(pid) && dic[pid] != "待查")
                                             {
-                                                pvalue = string.Format("{0}{1}", dic[pid], xn.Attributes.GetNamedItem("Unit").Value);
+                                                pvalue = string.Format("{0}{1}", dic[pid].Replace(',',' '), xn.Attributes.GetNamedItem("Unit").Value);
                                             }
                                         }
                                         if (!string.IsNullOrEmpty(pvalue)|| dicOptional.ContainsKey(pid))
@@ -260,11 +260,11 @@ namespace MWeb.Controllers
                                                         var price = optionalPara.Single().Value;
                                                         if (string.IsNullOrEmpty(pvalue))
                                                         {
-                                                            listTempClass.Add("<td><div class=\"optional\">" + "○ " + name + "￥" + price + "起</div></td>");
+                                                            listTempClass.Add("<td><div class=\"optional\">" + "○ " + name  + price + "元</div></td>");
                                                         }
                                                         else
                                                         {
-                                                            listTempClass.Add("<td><div>" + "● " + pvalue + "</div><div class=\"optional\">" + "○ " + name + "￥" + price + "起</div></td>");
+                                                            listTempClass.Add("<td><div>" + "● " + pvalue + "</div><div class=\"optional\">" + "○ " + name  + price + "元</div></td>");
                                                         }
                                                     }
                                                     else
@@ -278,7 +278,7 @@ namespace MWeb.Controllers
                                                             listTempClass.Add("<td><div>" + "● " + pvalue + "</div>");
                                                         }
                                                         double minPrice = optionalPara.Values.Min();
-                                                        listTempClass.Add("<div class=\"optional type1\" data-optionid=" + pid + ">" + "○ 选装￥" + minPrice + "起</div></td>");
+                                                        listTempClass.Add("<div class=\"optional type1\" data-optionid=" + pid + ">" + "○ 选装" + minPrice + "元起</div></td>");
                                                         listPop.Add("<ul data-optionID=\"" + pid + "\" style=\"display: none; \">");
                                                         foreach (var para in optionalPara.Keys)
                                                         {                                                           

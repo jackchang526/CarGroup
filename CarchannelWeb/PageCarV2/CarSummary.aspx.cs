@@ -953,12 +953,12 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                     }
                     else
                     {
-                        if (!(dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value))
+                    if (!(dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value))
                     && !(dictOptional.ContainsKey(int.Parse(item.Attributes.GetNamedItem("ParamID").Value))))
                        { continue; }
-                        if (dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value))
+                        if (dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value)&& dic[carID][item.Attributes.GetNamedItem("Value").Value] != "待查")
                         {
-                            pvalue = string.Format("{0}{1}", dic[carID][item.Attributes.GetNamedItem("Value").Value], item.Attributes.GetNamedItem("Unit").Value);
+                            pvalue = string.Format("{0}{1}", dic[carID][item.Attributes.GetNamedItem("Value").Value].Replace(',',' '), item.Attributes.GetNamedItem("Unit").Value);
                         }
                     }
 
@@ -1004,7 +1004,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                     //    }
                     //}
                     //解决 变速箱 无极变速 替换成 -
-                    if (item.Attributes.GetNamedItem("Name").Value != "燃油变速箱")
+                    if (item.Attributes.GetNamedItem("Name").Value != "燃油变速箱" )
                     {
                         if (pvalue.IndexOf("有") == 0)
                         { pvalue = "●"; }
@@ -1013,52 +1013,52 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                         if (pvalue.IndexOf("无") == 0)
                             { pvalue = "-"; }
                         }
-                     
-                    //sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + ":</span></td>");
 
-                    //Note:设页面中2个td为一组，一行有3组，颜色块占1行中的2组,并且补齐1行中的6个td保持行线完整
-                    // 车身颜色呈现特殊化
-                    if (item.Attributes.GetNamedItem("Name").Value == "车身颜色")
+                //sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + ":</span></td>");
+
+                //Note:设页面中2个td为一组，一行有3组，颜色块占1行中的2组,并且补齐1行中的6个td保持行线完整
+                // 车身颜色呈现特殊化
+                if (item.Attributes.GetNamedItem("Name").Value == "车身颜色")
+                {
+                    strColorHtmlBlock = "<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>";
+                    strColorHtmlBlock += "<td colspan=\"3\"><div class=\"focus-color-warp\"><ul id=\"color-listbox\"><!--车身颜色--></ul></div></td>";
+
+                    if (loopCount != 0)
                     {
-                        strColorHtmlBlock="<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>";
-                        strColorHtmlBlock+="<td colspan=\"3\"><div class=\"focus-color-warp\"><ul id=\"color-listbox\"><!--车身颜色--></ul></div></td>";
-
-                        if (loopCount != 0)
+                        if (loopCount % 3 == 2)   //余1组td时，不足以填充颜色块，则补充当前行，并将颜色块移到下一行
                         {
-                            if (loopCount % 3 == 2)   //余1组td时，不足以填充颜色块，则补充当前行，并将颜色块移到下一行
-                            {
-                                sbTemp.AppendLine("<td></td><td></td></tr><tr>#colorblock#");   
-                                loopCount += 3;
-                            }
-                            else   //余0或2组td时，将颜色块直接填充到当前行
-                            {
-                                sbTemp.AppendLine("#colorblock#");
-                                loopCount += 2;
-                            }
+                            sbTemp.AppendLine("<td></td><td></td></tr><tr>#colorblock#");
+                            loopCount += 3;
                         }
-                        else   //颜色块占 首行的前两组时
+                        else   //余0或2组td时，将颜色块直接填充到当前行
                         {
-                            sbTemp.AppendLine("#colorblock#");  
+                            sbTemp.AppendLine("#colorblock#");
                             loopCount += 2;
                         }
                     }
-                    else
+                    else   //颜色块占 首行的前两组时
                     {
-                        sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>");
-                        if (item.Attributes.GetNamedItem("Value").Value.IndexOf(",") == -1 && dictOptional.ContainsKey(int.Parse(item.Attributes.GetNamedItem("ParamID").Value)))
+                        sbTemp.AppendLine("#colorblock#");
+                        loopCount += 2;
+                    }
+                }
+                else
+                {
+                    sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>");
+                    if (item.Attributes.GetNamedItem("Value").Value.IndexOf(",") == -1 && dictOptional.ContainsKey(int.Parse(item.Attributes.GetNamedItem("ParamID").Value)))
+                    {
+                        var optionalPara = dictOptional[int.Parse(item.Attributes.GetNamedItem("ParamID").Value)];
+                        if (optionalPara.Count <= 1)
                         {
-                            var optionalPara = dictOptional[int.Parse(item.Attributes.GetNamedItem("ParamID").Value)];
-                            if (optionalPara.Count <= 1)
-                            {
-                                var name = optionalPara.Single().Key;
-                                var price = optionalPara.Single().Value;
+                            var name = optionalPara.Single().Key;
+                            var price = optionalPara.Single().Value;
                             if (string.IsNullOrEmpty(pvalue))
                             {
-                                sbTemp.AppendLine("<td><div class=\"info\"><div>" + "○ " + name + "￥" + price + "起</div></div></td>");
+                                sbTemp.AppendLine("<td><div class=\"info\"><div>" + "○ " + name + price + "元</div></div></td>");
                             }
                             else
                             {
-                                sbTemp.AppendLine("<td><div class=\"info\"><div>" + "● " + pvalue + "</div><div>" + "○ " + name + "￥" + price + "起</div></div></td>");
+                                sbTemp.AppendLine("<td><div class=\"info\"><div>" + "● " + pvalue + "</div><div>" + "○ " + name + price + "元</div></div></td>");
                             }
                         }
                         else
@@ -1067,23 +1067,25 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                             {
                                 sbTemp.AppendLine("<td><div class=\"info\">");
                             }
-                            else {
+                            else
+                            {
                                 sbTemp.AppendLine("<td><div class=\"info\"><div>" + "● " + pvalue + "</div>");
-                            }                           
+                            }
                             double minPrice = optionalPara.Values.Min();
-                            sbTemp.AppendLine("<div class=\"popup-control-box optional\">" + "○ 选装￥" + minPrice + "起<div class=\"popup-layout-1\"> <ul>");
+                            sbTemp.AppendLine("<div class=\"popup-control-box optional\">" + "○ 选装" + minPrice + "元起<div class=\"popup-layout-1\"> <ul>");
                             foreach (var para in optionalPara.Keys)
                             {
                                 sbTemp.AppendLine("<li> <span class=\"l\">" + para + "</span> <span class=\"r\">" + optionalPara[para] + "</span></li>");
                             }
-                        sbTemp.AppendLine("</ul></div></div></div>");
+                            sbTemp.AppendLine("</ul></div></div></div>");
                         }
                     }
-                    else {
+                    else
+                    {
                         sbTemp.AppendLine("<td><span class=\"info\">" + pvalue + "</span></td>");
-                    }                        
-                        loopCount++;
                     }
+                    loopCount++;
+                }
             }
             if (loopCount != 0)   //处理一行结尾的tr
             {

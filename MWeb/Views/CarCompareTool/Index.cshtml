@@ -77,7 +77,7 @@
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsStat/CarCompareStatForWireless.js?201412"></script>
     <script type="text/javascript">
     function initCarInfo(carId) {
-        loadJS.push("http://test.api.car.bitauto.com/CarInfo/GetCarParameter.ashx?isParamPage=1&carids=" + carId, "utf-8", function () {
+        loadJS.push("http://api24.car.bitauto.com/CarInfo/GetCarParameter.ashx?isParamPage=1&carids=" + carId, "utf-8", function () {
             initPageForCompare();
         });
     }

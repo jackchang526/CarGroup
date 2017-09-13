@@ -198,7 +198,7 @@ function createPageForCompare(isDelSame) {
 	ComparePageObject.ArrPageContent.push("<div class=\"section-tx\">");
 	ComparePageObject.ArrPageContent.push("    <div class=\"tit\">");
 	ComparePageObject.ArrPageContent.push("        <div class=\"tit-box\">");
-	ComparePageObject.ArrPageContent.push("            <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\">");
+    ComparePageObject.ArrPageContent.push("            <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" id=\"fixTable\">");
 	ComparePageObject.ArrPageContent.push("                <tbody>");
 	ComparePageObject.ArrPageContent.push(ComparePageObject.ArrLeftTitleHtml.join(''));
 	ComparePageObject.ArrPageContent.push("                </tbody>");
@@ -208,7 +208,7 @@ function createPageForCompare(isDelSame) {
 	ComparePageObject.ArrPageContent.push("    <div class=\"cont\">");
 	ComparePageObject.ArrPageContent.push("        <!--右侧内容区域 start-->");
 	ComparePageObject.ArrPageContent.push("        <div class=\"cont-box\">");
-	ComparePageObject.ArrPageContent.push("            <table cellspacing=\"0\" cellpadding=\"0\">");
+	ComparePageObject.ArrPageContent.push("            <table cellspacing=\"0\" cellpadding=\"0\" id=\"conTable\">");
 	ComparePageObject.ArrPageContent.push("                <tbody>");
 	ComparePageObject.ArrPageContent.push(ComparePageObject.ArrRightContentHTML.join(''));
 	ComparePageObject.ArrPageContent.push("                </tbody>");
@@ -252,6 +252,13 @@ function createPageForCompare(isDelSame) {
 }
 
 function bindEvent() {
+    //控制左侧浮动表格行高同主表行高一致
+    var $conTable = $('#conTable').find(' > tbody > tr'),
+        $fixTable = $('#fixTable').find(' > tbody > tr');
+    $fixTable.each(function (i) {
+        this.style.height = $conTable.eq(i).outerHeight() + 'px';
+    });
+
 	$(".m-btn-duibi-close").on("click", function (e) {
 	    var index = $(this).data("index");
 	    var curDelCarId = $(this).parent(".car-item").find("a.duibi-box").data("car");

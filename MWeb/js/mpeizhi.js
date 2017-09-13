@@ -202,7 +202,7 @@ function createPageForCompare(isDelSame) {
     ComparePageObject.ArrPageContent.push("<div class=\"section-tx\">");
     ComparePageObject.ArrPageContent.push("    <div class=\"tit\">");
     ComparePageObject.ArrPageContent.push("        <div class=\"tit-box\">");
-    ComparePageObject.ArrPageContent.push("            <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\">");
+    ComparePageObject.ArrPageContent.push("            <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" id=\"fixTable\">");
     ComparePageObject.ArrPageContent.push("                <tbody>");
     ComparePageObject.ArrPageContent.push(ComparePageObject.ArrLeftTitleHtml.join(''));
     ComparePageObject.ArrPageContent.push("                </tbody>");
@@ -212,7 +212,7 @@ function createPageForCompare(isDelSame) {
     ComparePageObject.ArrPageContent.push("    <div class=\"cont\">");
     ComparePageObject.ArrPageContent.push("        <!--右侧内容区域 start-->");
     ComparePageObject.ArrPageContent.push("        <div class=\"cont-box\">");
-    ComparePageObject.ArrPageContent.push("            <table cellspacing=\"0\" cellpadding=\"0\">");
+    ComparePageObject.ArrPageContent.push("            <table cellspacing=\"0\" cellpadding=\"0\" id=\"conTable\">");
     ComparePageObject.ArrPageContent.push("                <tbody>");
     ComparePageObject.ArrPageContent.push(ComparePageObject.ArrRightContentHTML.join(''));
     ComparePageObject.ArrPageContent.push("                </tbody>");
@@ -258,11 +258,16 @@ function createPageForCompare(isDelSame) {
 }
 
 function bindEvent() {
-    $(".m-btn-duibi-close").on("click", function (e) {
+    //控制左侧浮动表格行高同主表行高一致
+    var $conTable = $('#conTable').find(' > tbody > tr'),
+        $fixTable = $('#fixTable').find(' > tbody > tr');
+    $fixTable.each(function (i) {
+        this.style.height = $conTable.eq(i).outerHeight() + 'px';
+    });
 
+    $(".m-btn-duibi-close").on("click", function (e) {
         var index = $(this).data("index");
         delCarToCompare(index);
-
     });
     $(".car-item-add").on("click", function () {
         selectCar(serialId, 0);
@@ -1019,7 +1024,9 @@ function fieldMultiValue(arrFieldRow) {
                 var field = ComparePageObject.ArrCarInfo[i].CarInfoArray[arrFieldRow["sTrPrefix"]][arrFieldRow["sFieldIndex"]];
                 if (field != "") isAllunknown = false;
                 var fieldValue = field.split(',');
-                var standardJson = [], optionalJson = [];
+                var standardJson = [],
+                    optionalJson = [],
+                    standardStrLength = 0;
                 for (var fieldIndex = 0; fieldIndex < fieldValue.length; fieldIndex++) {
                     var fieldOptional = fieldValue[fieldIndex].split('|');
                     if (fieldOptional.length > 1) {
@@ -1027,32 +1034,36 @@ function fieldMultiValue(arrFieldRow) {
                     }
                     else {
                         standardJson.push(JSON.parse("{\"text\":\"" + fieldOptional[0] + "\"}"));
+                        standardStrLength += fieldOptional[0].length;
                     }
                 }
 
-                if (standardJson.length == 1) {//共一项值
-                    arrTemp.push("<div>" + standardJson[0].text + "</div>");
-                }
-                else if (standardJson.length > 1) {//多项
-                    if (optionalJson.length == 0) {
-                        arrTemp.push("<div>");
-                        for (var staIndex = 0; staIndex < standardJson.length; staIndex++) {
-                            arrTemp.push(standardJson[staIndex].text + "&nbsp;&nbsp;");
-                        }
-                        arrTemp.push("</div>");
+                if (standardJson.length > 0) {//多项
+                    //if (optionalJson.length == 0) {
+                    arrTemp.push("<div>");
+                    var staHtmlArr = [];
+                    var splitStr = "&nbsp;&nbsp;";
+                    if (standardStrLength > 8) {
+                        splitStr = "<br />";
                     }
-                    else {
-                        var jsonArr = [];
-                        standardJson.forEach(function (value, index, array) {
-                            jsonArr.push(array[index].text);
-                        });
-                        arrTemp.push("<div class=\"optional type1\" data-optional=\"" + jsonArr.join(",") + "\">● " + standardJson[0].text + "等</div>");
-                        //arrTemp.push("<div class=\"popup-layout-1\"><ul>");
-                        //for (var staIndex = 0; staIndex < standardJson.length; staIndex++) {
-                        //    arrTemp.push("<li><span class=\"l\">" + standardJson[staIndex].text + "</span ></li>");
-                        //}
-                        //arrTemp.push("</ul></div></div>");
+                     for (var staIndex = 0; staIndex < standardJson.length; staIndex++) {
+                        staHtmlArr.push(standardJson[staIndex].text);
                     }
+                    arrTemp.push(staHtmlArr.join(splitStr));
+                    arrTemp.push("</div>");
+                   // }
+                    //else {
+                    //    var jsonArr = [];
+                    //    standardJson.forEach(function (value, index, array) {
+                    //        jsonArr.push(array[index].text);
+                    //    });
+                    //    arrTemp.push("<div class=\"optional type1\" data-optional=\"" + jsonArr.join(",") + "\">● " + standardJson[0].text + "等</div>");
+                    //    //arrTemp.push("<div class=\"popup-layout-1\"><ul>");
+                    //    //for (var staIndex = 0; staIndex < standardJson.length; staIndex++) {
+                    //    //    arrTemp.push("<li><span class=\"l\">" + standardJson[staIndex].text + "</span ></li>");
+                    //    //}
+                    //    //arrTemp.push("</ul></div></div>");
+                    //}
                 }
                 if (optionalJson.length == 1) {
                     arrTemp.push("<div>○ 选配" + optionalJson[0].text + "&nbsp;" + formatCurrency(optionalJson[0].price) + "元</div>");
@@ -1137,7 +1148,7 @@ function createOptional(arrFieldRow) {
         arrContentTemp.push("<tr class=\"multi-row2-end\"><td colspan=\"" + (ComparePageObject.ValidCount + 1) + "\"><span class=\"optional-note\">" + optionalPackageJson[opt].desc + "</span></td></tr>");
         arrContentTemp.push("</tr>");
 
-        arrTitleTemp.push("<tr class=\"optional-h\"><th>" + optionalPackageJson[opt].name + "</th></tr>");
+        arrTitleTemp.push("<tr class=\"optional-h\"><th>" + optionalPackageJson[opt].name + "</th></tr><tr style=\"display: none;\"></tr>");
     }
     //if (isShow) {
         if (ComparePageObject.ArrTempBarHTML.length > 0) {

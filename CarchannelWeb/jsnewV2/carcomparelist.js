@@ -1358,7 +1358,9 @@ function fieldMultiValue(arrFieldRow) {
                 var field = ComparePageObject.AllCarJson[i][arrFieldRow["sTrPrefix"]][arrFieldRow["sFieldIndex"]];
                 if (field != "") isAllunknown = false;
                 var fieldValue = field.split(',');
-                var standardJson = [], optionalJson = [];
+                var standardJson = [],
+                    optionalJson = [],
+                    standardStrLength = 0;
                 for (var fieldIndex = 0; fieldIndex < fieldValue.length; fieldIndex++) {
                     var fieldOptional = fieldValue[fieldIndex].split('|');
                     if (fieldOptional.length > 1) {
@@ -1366,28 +1368,32 @@ function fieldMultiValue(arrFieldRow) {
                     }
                     else {
                         standardJson.push(JSON.parse("{\"text\":\"" + fieldOptional[0] + "\"}"));
+                        standardStrLength += fieldOptional[0].length;
                     }
                 }
 
-                if (standardJson.length == 1) {//共一项值
-                    arrTemp.push("<div>" + standardJson[0].text + "</div>");
-                }
-                else if (standardJson.length > 1) {//多项
-                    if (optionalJson.length == 0) {
-                        arrTemp.push("<div>");
+                if (standardJson.length > 0) {//多项
+                    //if (optionalJson.length == 0) {
+                    arrTemp.push("<div>");
+                    var staHtmlArr = [];
+                    var splitStr = "&nbsp;&nbsp;";
+                    if (standardStrLength > 10) {
+                        splitStr = "<br />";
+                    }
                         for (var staIndex = 0; staIndex < standardJson.length; staIndex++) {
-                            arrTemp.push(standardJson[staIndex].text + "&nbsp;&nbsp;");
-                        }
+                            staHtmlArr.push(standardJson[staIndex].text);
+                    }
+                        arrTemp.push(staHtmlArr.join(splitStr));
                         arrTemp.push("</div>");
-                    }
-                    else {
-                        arrTemp.push("<div class=\"popup-control-box optional\">● " + standardJson[0].text + "等");
-                        arrTemp.push("<div class=\"popup-layout-1\"><ul>");
-                        for (var staIndex = 0; staIndex < standardJson.length; staIndex++) {
-                            arrTemp.push("<li><span class=\"l\">" + standardJson[staIndex].text + "</span ></li>");
-                        }
-                        arrTemp.push("</ul></div></div>");
-                    }
+                    //}
+                    //else {
+                    //    arrTemp.push("<div class=\"popup-control-box optional\">● " + standardJson[0].text + "等");
+                    //    arrTemp.push("<div class=\"popup-layout-1\"><ul>");
+                    //    for (var staIndex = 0; staIndex < standardJson.length; staIndex++) {
+                    //        arrTemp.push("<li><span class=\"l\">" + standardJson[staIndex].text + "</span ></li>");
+                    //    }
+                    //    arrTemp.push("</ul></div></div>");
+                    //}
                 }
                 if (optionalJson.length == 1) {
                     arrTemp.push("<div>○ 选配" + optionalJson[0].text + "&nbsp;" + formatCurrency(optionalJson[0].price) + "元</div>");

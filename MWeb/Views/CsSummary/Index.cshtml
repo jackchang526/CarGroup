@@ -54,7 +54,7 @@
             "@@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
             "@@id": "@(Request.Url.ToString())",
             "title": "@(ViewData["title"])",
-            "images": [@(ViewData["WhitePicUrl"])],
+            "images": ["@(ViewData["WhitePicUrl"])"],
             "description":"",
             "pubDate": "2017-09-11T08:00:01"
             }
@@ -461,6 +461,7 @@
                                     type: "GET",
                                     url: "http://api.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=@(serialEntity.Id)",
                                     dataType: "jsonp",
+                                    cache: true,
                                     jsonpCallback: "success_jsonpCallback_getEntranceData",
                                     success: function (data) {
                                         if (data.EvaluationId > 0) {
@@ -468,7 +469,7 @@
                                             //htmlArr.push("<div class='pcbg-wrap'>");
                                             htmlArr.push("    <div class='pcbg-box'>");
                                             htmlArr.push("        <div class='pc-img'>");
-                                            htmlArr.push("            <img src='" + data.ImageUrl + "' alt=''/>");
+                                            htmlArr.push("            <img src='" + data.ImageUrl.replace("cargroup", "newsimg_120_w0_1/cargroup") + "' alt=''/>");
                                             htmlArr.push("            <em>超级测评</em>");
                                             htmlArr.push("        </div>");
                                             htmlArr.push("        <div class='pc-txt'>");

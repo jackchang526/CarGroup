@@ -1240,7 +1240,7 @@ namespace BitAuto.CarChannel.BLL
                     {
                         // modified Jan.13.2012 by chengl 当没有memcache时取数据重建memcache 缓存时间1天
                         Dictionary<string, string> dicCar = new Dictionary<string, string>();
-                        GetCarInfoAndParamToDictionaryV2(carid, ref dicCar);
+                        GetCarInfoAndParamToDictionary(carid, ref dicCar);
                         if (dicCar != null && dicCar.Count > 0)
                         {
                             //modified by sk mem 2小时
@@ -1322,156 +1322,156 @@ namespace BitAuto.CarChannel.BLL
             return sbForApi.ToString();
         }
 
-		/// <summary>
-		/// 取车型对比数据 字典
-		/// </summary>
-		/// <param name="carID"></param>
-		/// <param name="dic"></param>
-		private void GetCarInfoAndParamToDictionary(int carID, ref Dictionary<string, string> dic)
-		{
-			Dictionary<int, string> dicCarPhoto = GetCarDefaultPhotoDictionary(2);
-			PageBase page = new PageBase();
-			Dictionary<int, string> dicCsPhoto = page.GetAllSerialPicURL(false);
-			Dictionary<int, string> dicCarPrice = page.GetAllCarPriceRange();
-			// 车型行情价 add by chengl Aug.27.2012
-			Dictionary<int, string> dicCarHangQingPrice = new HangQingTree().GetAllCarHangQingPrice();
-			// 子品牌车身颜色RGB
-			Dictionary<int, Dictionary<string, string>> dicSerialColor = new Car_SerialBll().GetAllSerialColorNameRGB();
-			// 车型降价
-			Dictionary<int, string> dicJiangJia = new CarNewsBll().GetAllCarJiangJia();
+		///// <summary>
+		///// 取车型对比数据 字典
+		///// </summary>
+		///// <param name="carID"></param>
+		///// <param name="dic"></param>
+		//private void GetCarInfoAndParamToDictionary(int carID, ref Dictionary<string, string> dic)
+		//{
+		//	Dictionary<int, string> dicCarPhoto = GetCarDefaultPhotoDictionary(2);
+		//	PageBase page = new PageBase();
+		//	Dictionary<int, string> dicCsPhoto = page.GetAllSerialPicURL(false);
+		//	Dictionary<int, string> dicCarPrice = page.GetAllCarPriceRange();
+		//	// 车型行情价 add by chengl Aug.27.2012
+		//	Dictionary<int, string> dicCarHangQingPrice = new HangQingTree().GetAllCarHangQingPrice();
+		//	// 子品牌车身颜色RGB
+		//	Dictionary<int, Dictionary<string, string>> dicSerialColor = new Car_SerialBll().GetAllSerialColorNameRGB();
+		//	// 车型降价
+		//	Dictionary<int, string> dicJiangJia = new CarNewsBll().GetAllCarJiangJia();
 
-			#region 车型基本参数
-			CarEntity ce = (CarEntity)DataManager.GetDataEntity(EntityType.Car, carID);
-			if (ce == null || ce.Id <= 0)
-			{ return; }
+		//	#region 车型基本参数
+		//	CarEntity ce = (CarEntity)DataManager.GetDataEntity(EntityType.Car, carID);
+		//	if (ce == null || ce.Id <= 0)
+		//	{ return; }
 
-			string carReferPrice = ce.ReferPrice <= 0 ? "无" : (decimal.Parse(ce.ReferPrice.ToString())).ToString("F2") + "万";
-			string carYearType = ce.CarYear <= 0 ? "" : ce.CarYear.ToString();
-			string bbsURL = new Car_SerialBll().GetForumUrlBySerialId(ce.SerialId);
-			// 车型网友油耗
-			string userFuel = new Car_BasicBll().GetCarNetfriendsFuel(carID);
-			userFuel = (userFuel == "无" ? "" : userFuel);
-			// 车型报价区间
-			string carPriceRange = dicCarPrice.ContainsKey(carID) ? dicCarPrice[carID] : "无";
-			// 车型图片 先检查车型是否有封面，再检查子品牌封面
-			string carPic = WebConfig.DefaultCarPic;
-			if (dicCarPhoto.ContainsKey(carID))
-			{ carPic = dicCarPhoto[carID]; }
-			else if (dicCsPhoto.ContainsKey(ce.SerialId))
-			{ carPic = dicCsPhoto[ce.SerialId]; }
-			else
-			{ carPic = WebConfig.DefaultCarPic; }
-			// 车型行情价
-			string carHangQingPrice = "";
-			if (dicCarHangQingPrice.ContainsKey(carID))
-			{ carHangQingPrice = dicCarHangQingPrice[carID]; }
-			// add by chengl Mar.25.2013
-			string carJiangJiaPrice = "";
-			if (dicJiangJia.ContainsKey(carID))
-			{ carJiangJiaPrice = dicJiangJia[carID]; }
+		//	string carReferPrice = ce.ReferPrice <= 0 ? "无" : (decimal.Parse(ce.ReferPrice.ToString())).ToString("F2") + "万";
+		//	string carYearType = ce.CarYear <= 0 ? "" : ce.CarYear.ToString();
+		//	string bbsURL = new Car_SerialBll().GetForumUrlBySerialId(ce.SerialId);
+		//	// 车型网友油耗
+		//	string userFuel = new Car_BasicBll().GetCarNetfriendsFuel(carID);
+		//	userFuel = (userFuel == "无" ? "" : userFuel);
+		//	// 车型报价区间
+		//	string carPriceRange = dicCarPrice.ContainsKey(carID) ? dicCarPrice[carID] : "无";
+		//	// 车型图片 先检查车型是否有封面，再检查子品牌封面
+		//	string carPic = WebConfig.DefaultCarPic;
+		//	if (dicCarPhoto.ContainsKey(carID))
+		//	{ carPic = dicCarPhoto[carID]; }
+		//	else if (dicCsPhoto.ContainsKey(ce.SerialId))
+		//	{ carPic = dicCsPhoto[ce.SerialId]; }
+		//	else
+		//	{ carPic = WebConfig.DefaultCarPic; }
+		//	// 车型行情价
+		//	string carHangQingPrice = "";
+		//	if (dicCarHangQingPrice.ContainsKey(carID))
+		//	{ carHangQingPrice = dicCarHangQingPrice[carID]; }
+		//	// add by chengl Mar.25.2013
+		//	string carJiangJiaPrice = "";
+		//	if (dicJiangJia.ContainsKey(carID))
+		//	{ carJiangJiaPrice = dicJiangJia[carID]; }
 
-			dic.Add("Car_ID", carID.ToString());
-			dic.Add("Car_Name", ce.Name);
-			dic.Add("CarImg", carPic);
-			dic.Add("Cs_ID", ce.SerialId.ToString());
-			dic.Add("Cs_Name", ce.Serial == null ? "" : ce.Serial.Name);
-			dic.Add("Cs_ShowName", ce.Serial == null ? "" : ce.Serial.ShowName);
-			dic.Add("Cs_AllSpell", ce.Serial == null ? "" : ce.Serial.AllSpell);
-			dic.Add("Car_YearType", ce.CarYear.ToString());
-			dic.Add("Car_ProduceState", ce.ProduceState);
-			dic.Add("Car_SaleState", ce.SaleState);
-			dic.Add("CarReferPrice", carReferPrice);
-			dic.Add("AveragePrice", carPriceRange);
-			dic.Add("Car_UserFuel", userFuel);
-			dic.Add("Cs_BBSUrl", bbsURL);
-			dic.Add("Cs_CarLevel", (ce.Serial == null || ce.Serial.Level == null) ? "" : ce.Serial.Level.Name);
-			// 车型行情价
-			dic.Add("Car_HangQingPrice", carHangQingPrice);
-			dic.Add("Car_JiangJiaPrice", carJiangJiaPrice);
-			#endregion
+		//	dic.Add("Car_ID", carID.ToString());
+		//	dic.Add("Car_Name", ce.Name);
+		//	dic.Add("CarImg", carPic);
+		//	dic.Add("Cs_ID", ce.SerialId.ToString());
+		//	dic.Add("Cs_Name", ce.Serial == null ? "" : ce.Serial.Name);
+		//	dic.Add("Cs_ShowName", ce.Serial == null ? "" : ce.Serial.ShowName);
+		//	dic.Add("Cs_AllSpell", ce.Serial == null ? "" : ce.Serial.AllSpell);
+		//	dic.Add("Car_YearType", ce.CarYear.ToString());
+		//	dic.Add("Car_ProduceState", ce.ProduceState);
+		//	dic.Add("Car_SaleState", ce.SaleState);
+		//	dic.Add("CarReferPrice", carReferPrice);
+		//	dic.Add("AveragePrice", carPriceRange);
+		//	dic.Add("Car_UserFuel", userFuel);
+		//	dic.Add("Cs_BBSUrl", bbsURL);
+		//	dic.Add("Cs_CarLevel", (ce.Serial == null || ce.Serial.Level == null) ? "" : ce.Serial.Level.Name);
+		//	// 车型行情价
+		//	dic.Add("Car_HangQingPrice", carHangQingPrice);
+		//	dic.Add("Car_JiangJiaPrice", carJiangJiaPrice);
+		//	#endregion
 
-			// 车型车身颜色中文名
-			string bodyColor = string.Empty;
+		//	// 车型车身颜色中文名
+		//	string bodyColor = string.Empty;
 
-			#region 车型扩展参数
-			// 参数ID 对于 名
-			Dictionary<int, string> dicParamIDToName = GetAllParamAliasNameDictionary();
+		//	#region 车型扩展参数
+		//	// 参数ID 对于 名
+		//	Dictionary<int, string> dicParamIDToName = GetAllParamAliasNameDictionary();
 
-			// 车型扩展参数
-			DataSet dsParam = new Car_BasicBll().GetCarParamForCompare(carID.ToString());
-			if (dsParam != null && dsParam.Tables.Count > 0 && dsParam.Tables[0].Rows.Count > 0)
-			{
-				foreach (DataRow dr in dsParam.Tables[0].Rows)
-				{
-					int carid = Convert.ToInt32(dr["CarId"]);
-					int pid = Convert.ToInt32(dr["Paramid"]);
-					string aliasName = string.Empty;
-					if (dicParamIDToName.ContainsKey(pid))
-					{ aliasName = dicParamIDToName[pid]; }
-					else { continue; }
-					string pvalue = dr["Pvalue"].ToString().Trim();
+		//	// 车型扩展参数
+		//	DataSet dsParam = new Car_BasicBll().GetCarParamForCompare(carID.ToString());
+		//	if (dsParam != null && dsParam.Tables.Count > 0 && dsParam.Tables[0].Rows.Count > 0)
+		//	{
+		//		foreach (DataRow dr in dsParam.Tables[0].Rows)
+		//		{
+		//			int carid = Convert.ToInt32(dr["CarId"]);
+		//			int pid = Convert.ToInt32(dr["Paramid"]);
+		//			string aliasName = string.Empty;
+		//			if (dicParamIDToName.ContainsKey(pid))
+		//			{ aliasName = dicParamIDToName[pid]; }
+		//			else { continue; }
+		//			string pvalue = dr["Pvalue"].ToString().Trim();
 
-					if (pvalue == "")
-					{ continue; }
+		//			if (pvalue == "")
+		//			{ continue; }
 
-					if (!dic.ContainsKey(aliasName))
-					{
-						dic.Add(aliasName, pvalue);
-					}
-					// 如果是车身颜色
-					if (aliasName == "OutStat_BodyColor")
-					{ bodyColor = pvalue; }
-				}
-			}
-            #endregion
+		//			if (!dic.ContainsKey(aliasName))
+		//			{
+		//				dic.Add(aliasName, pvalue);
+		//			}
+		//			// 如果是车身颜色
+		//			if (aliasName == "OutStat_BodyColor")
+		//			{ bodyColor = pvalue; }
+		//		}
+		//	}
+  //          #endregion
 
-            #region 车型车身颜色RGB值
+  //          #region 车型车身颜色RGB值
 
-            List<string> listBodyColorRGB = new List<string>();
-			if (!string.IsNullOrEmpty(bodyColor))
-			{
-				if (dicSerialColor.ContainsKey(ce.SerialId))
-				{
-					// 临时车型参数颜色名
-					List<string> listTemp = new List<string>();
-					string[] colorNameArray = bodyColor.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-					if (colorNameArray.Length > 0)
-					{
-						foreach (string name in colorNameArray)
-						{
-							string colorName = name.Trim();
-							if (colorName != "" && !listTemp.Contains(colorName))
-							{
-								listTemp.Add(colorName);
-							}
-						}
-					}
-					if (listTemp.Count > 0)
-					{
-						foreach (KeyValuePair<string, string> kvp in dicSerialColor[ce.SerialId])
-						{
-							if (listTemp.Contains(kvp.Key))
-							{
-								if (listBodyColorRGB.Count > 0)
-								{ listBodyColorRGB.Add("|"); }
-								listBodyColorRGB.Add(kvp.Key + "," + kvp.Value);
-							}
-						}
-					}
-				}
-			}
+  //          List<string> listBodyColorRGB = new List<string>();
+		//	if (!string.IsNullOrEmpty(bodyColor))
+		//	{
+		//		if (dicSerialColor.ContainsKey(ce.SerialId))
+		//		{
+		//			// 临时车型参数颜色名
+		//			List<string> listTemp = new List<string>();
+		//			string[] colorNameArray = bodyColor.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+		//			if (colorNameArray.Length > 0)
+		//			{
+		//				foreach (string name in colorNameArray)
+		//				{
+		//					string colorName = name.Trim();
+		//					if (colorName != "" && !listTemp.Contains(colorName))
+		//					{
+		//						listTemp.Add(colorName);
+		//					}
+		//				}
+		//			}
+		//			if (listTemp.Count > 0)
+		//			{
+		//				foreach (KeyValuePair<string, string> kvp in dicSerialColor[ce.SerialId])
+		//				{
+		//					if (listTemp.Contains(kvp.Key))
+		//					{
+		//						if (listBodyColorRGB.Count > 0)
+		//						{ listBodyColorRGB.Add("|"); }
+		//						listBodyColorRGB.Add(kvp.Key + "," + kvp.Value);
+		//					}
+		//				}
+		//			}
+		//		}
+		//	}
 
-			dic.Add("Car_OutStat_BodyColorRGB", string.Concat(listBodyColorRGB.ToArray()));
+		//	dic.Add("Car_OutStat_BodyColorRGB", string.Concat(listBodyColorRGB.ToArray()));
 
-			#endregion
-		}
+		//	#endregion
+		//}
 
         /// <summary>
 		/// 取车型对比数据 字典
 		/// </summary>
 		/// <param name="carID"></param>
 		/// <param name="dic"></param>
-		private void GetCarInfoAndParamToDictionaryV2(int carID, ref Dictionary<string, string> dic)
+		private void GetCarInfoAndParamToDictionary(int carID, ref Dictionary<string, string> dic)
         {
             Dictionary<int, string> dicCarPhoto = GetCarDefaultPhotoDictionary(2);
             PageBase page = new PageBase();

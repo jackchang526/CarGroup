@@ -159,7 +159,7 @@ ORDER BY CONVERT(INT, cdb2.pvalue) DESC, CONVERT(INT, cdb3.pvalue) DESC,
                                     , csid
                                     , CommonFunction.GetUnicodeByString(csShowName)
                                     , tempDt.ToString("yyyy-MM-dd")
-                                    , dicPicWhite.ContainsKey(csid) ? dicPicWhite[csid] : WebConfig.DefaultCarPic
+                                    , dicPicWhite.ContainsKey(csid) ? dicPicWhite[csid].Replace("_2.", "_4.") : WebConfig.DefaultCarPic
                                     , csLevel
                                     , masterBrandName
                                     , brandName

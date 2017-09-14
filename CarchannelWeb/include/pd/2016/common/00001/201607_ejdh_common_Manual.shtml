@@ -29,7 +29,16 @@
                     <input type="hidden" id="sugcsurl" name="sugcsurl" value="" />
                 </div>
             </form>
-            <script src="http://image.bitautoimg.com/carchannel/jsnew/yicheSug.min.js?v=20161118" type="text/javascript" charset="utf-8"></script>
+            <ul id="adv-app-1g" style="display:none;">
+                <li data-index="{adItemIndex}" data-hyperlink="http://news.bitauto.com/others/20170816/1606875754.html">
+                    <!--app1g流量广告-->
+                    <a class="adv-app-1g">
+                        <img class="s" width="195" height="26" src="http://image.bitautoimg.com/2016/pc1200/img/app1g.png" alt="">
+                        <img class="t" width="90" height="90" src="http://image.bitautoimg.com/2016/pc1200/img/qr-170914.png" alt="">
+                    </a>
+                </li>
+            </ul>
+            <script src="http://image.bitautoimg.com/carchannel/jsnew/yicheSug.min.js?v=20170914" type="text/javascript" charset="utf-8"></script>
             <script type="text/javascript">
 BitautoAutoComplete();
             </script>

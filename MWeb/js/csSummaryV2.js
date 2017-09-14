@@ -516,7 +516,7 @@ var baoxiaoOrImport = [];
     });
 
     //统计
-    var channelIDs = { "3": "27.23.115", "9": "27.23.119", "10": "27.23.120", "11": "27.23.121", "12": "27.23.122", "13": "27.23.123", "14": "27.23.994" };
+    var channelIDs = { "3": "27.23.115", "9": "27.23.119", "10": "27.23.120", "11": "27.23.121", "12": "27.23.122", "13": "27.23.123", "14": "27.23.994", "15": "27.23.2178" };
     var urlEndPartCode = { "3": "?ref=mchexizshuan&leads_source=m002002", "9": "&tracker_u=18_ycydcx&leads_source=m002004", "10": "&source=100064&leads_source=m002005", "11": "?ref=mcar1&rfpa_tracker=2_22&leads_source=m002006", "12": "?ref=mchexizska&leads_source=m002007", "14": "?leads_source=m002017" };
     //按钮统计
     var global_busbtn_arr = ["1", "2", "0", "5", "6"];

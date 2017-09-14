@@ -223,7 +223,7 @@ namespace BitAuto.CarChannel.Common
 			MongoDBForCarConnectionString = ConfigurationManager.AppSettings["MongoDBForCarConnectionString"];
 
 
-            CarsEvaluationDataConnectionString=ConfigurationManager.ConnectionStrings["CarsEvaluationData"].ConnectionString;
+            CarsEvaluationDataConnectionString=ConfigurationManager.ConnectionStrings["CarsEvaluationData"] != null ? ConfigurationManager.ConnectionStrings["CarsEvaluationData"].ConnectionString : string.Empty;
             MongoDBConnectionString = ConfigurationManager.AppSettings["MongoDBConnectionString"];
             MongoDBDefaultDataBase = ConfigurationManager.AppSettings["MongoDBDefaultDataBase"];
             MongoDBDefaultDataTable = ConfigurationManager.AppSettings["MongoDBDefaultDataTable"];

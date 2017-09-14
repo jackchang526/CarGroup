@@ -134,6 +134,9 @@
             <a data-channelid="85.6.21" href="#page8">贷款</a>
         </li>
         <li>
+            <a data-channelid="85.6.22" href="#page9">经销商</a>
+        </li>
+        <li>
             <a data-channelid="85.6.886" href="#page14">二手车</a>
         </li>
         <li>
@@ -147,10 +150,7 @@
         </li>
         <li>
             <a data-channelid="85.6.19" href="#page6">点评</a>
-        </li>
-        <li>
-            <a data-channelid="85.6.22" href="#page9">经销商</a>
-        </li>
+        </li>        
         <li>
             <a data-channelid="85.6.23" href="#page10">车险</a>
         </li>
@@ -395,6 +395,9 @@
         <a data-channelid="85.5.12" onclick="MtaH5.clickStat('ba3');" href="#page8">贷款</a>
     </li>
     <li data-menuanchor="">
+        <a data-channelid="85.5.13" onclick="MtaH5.clickStat('ba10');" href="#page9">经销商</a>
+    </li>
+    <li data-menuanchor="">
         <a data-channelid="85.5.884" onclick="MtaH5.clickStat('ba4');" href="#page14">二手车</a>
     </li>
     <li data-menuanchor="">
@@ -409,9 +412,7 @@
     <li data-menuanchor="">
         <a data-channelid="85.5.10" onclick="MtaH5.clickStat('ba8');" href="#page6">点评</a>
     </li>
-     <li data-menuanchor="">
-        <a data-channelid="85.5.13" onclick="MtaH5.clickStat('ba10');" href="#page9">经销商</a>
-    </li>
+     
     <%--<li data-menuanchor="">
         <a data-channelid="85.5.1309" onclick="MtaH5.clickStat('ba9');" href="#page11">养护</a>
     </li>--%>
@@ -426,6 +427,8 @@
 </div>
 <div class="section page8" data-anchor="page8">
 </div>
+<div class="section page9" data-anchor="page9">
+</div>
 <div class="section page11" data-anchor="page14">
 </div>
 <div class="section page4" data-anchor="page4">
@@ -435,8 +438,6 @@
 <div class="section page3" data-anchor="page3">
 </div>
 <div class="section page6" data-anchor="page6">
-</div>
-<div class="section page9" data-anchor="page9">
 </div>
 <div class="section page10" data-anchor="page10">
 </div>

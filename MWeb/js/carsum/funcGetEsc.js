@@ -152,7 +152,8 @@
                                 } else {
                                     //购车服务块不显示
                                     //$('.car-service').hide();
-                                    return;
+                                    //return;
+                                    serviceHtml.push("<ul class=\"one-service\">");
                                 }
                                 var i;
                                 for (i = 0; i < forend; i++) {

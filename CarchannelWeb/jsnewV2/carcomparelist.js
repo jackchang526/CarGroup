@@ -1377,14 +1377,15 @@ function fieldMultiValue(arrFieldRow) {
                     arrTemp.push("<div>");
                     var staHtmlArr = [];
                     var splitStr = "&nbsp;&nbsp;";
-                    if (standardStrLength > 10) {
-                        splitStr = "<br />";
+                    //if (standardStrLength > 10) {
+                    //    splitStr = "<br />";
+                    //}
+                    staHtmlArr.push("<span class=\"songti\">●</span>");
+                    for (var staIndex = 0; staIndex < standardJson.length; staIndex++) {
+                        staHtmlArr.push(standardJson[staIndex].text);
                     }
-                        for (var staIndex = 0; staIndex < standardJson.length; staIndex++) {
-                            staHtmlArr.push(standardJson[staIndex].text);
-                    }
-                        arrTemp.push(staHtmlArr.join(splitStr));
-                        arrTemp.push("</div>");
+                    arrTemp.push(staHtmlArr.join(splitStr));
+                    arrTemp.push("</div>");
                     //}
                     //else {
                     //    arrTemp.push("<div class=\"popup-control-box optional\">● " + standardJson[0].text + "等");

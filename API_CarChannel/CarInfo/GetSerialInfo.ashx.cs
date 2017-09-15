@@ -1187,7 +1187,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 
             string sqlGetOilElectricByCarID = @"select paramid,pvalue
 			from CarDataBase
-			where carid=@carID and paramid in (998,782,430,870)";
+			where carid=@carID and paramid in (578,782,430,870)";
             SqlParameter[] _param ={
                                       new SqlParameter("@carID",SqlDbType.Int)
                                   };
@@ -1197,7 +1197,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 															select carid from CarDataBase
 															where 
 															paramid = 578
-															and Pvalue='油电混合动力') t
+															and( Pvalue='油电混合' or Pvalue='插电混合')) t
 															left join Car_relation car on t.CarId=car.Car_Id
 															left join Car_Serial cs on car.Cs_Id=cs.cs_Id
 															left join Car_Serial_30UV cs30 on cs.cs_Id=cs30.cs_id
@@ -1267,9 +1267,9 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                             switch (drCar["paramid"].ToString())
                             {
                                 case "430": GetMinOrMax(drCar["pvalue"].ToString().Trim(), ref minEM, ref maxEM); break;
+                                case "578":  if ((!listNE.Contains(drCar["pvalue"].ToString().Trim()))&& drCar["pvalue"].ToString().Trim().IndexOf("混合")>=0) { listNE.Add(drCar["pvalue"].ToString().Trim()); }; break;
                                 case "782": GetMinOrMax(drCar["pvalue"].ToString().Trim(), ref minPZ, ref maxPZ); break;
                                 case "870": GetMinOrMax(drCar["pvalue"].ToString().Trim(), ref minEP, ref maxEP); break;
-                                case "998": if (!listNE.Contains(drCar["pvalue"].ToString().Trim())) { listNE.Add(drCar["pvalue"].ToString().Trim()); }; break;
                                 default: break;
                             }
                         }

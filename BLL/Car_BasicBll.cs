@@ -1551,11 +1551,11 @@ namespace BitAuto.CarChannel.BLL
 					var fuelType = dictParams.ContainsKey(578) ? dictParams[578] : string.Empty;
 					int kw = 0;
 					int electrickW = 0;
-					if (fuelType == "电力")
+					if (fuelType == "纯电")
 					{
 						kw = dictParams.ContainsKey(870) ? ConvertHelper.GetInteger(dictParams[870]) : 0;
 					}
-					else if (fuelType == "油电混合动力")
+					else if (fuelType == "油电混合"|| fuelType == "插电混合")
 					{
 						double tempDiankW;
 						if (dictParams.ContainsKey(870) && double.TryParse(dictParams[870], out tempDiankW))
@@ -1591,7 +1591,7 @@ namespace BitAuto.CarChannel.BLL
 					if (string.IsNullOrEmpty(exhaust) || ConvertHelper.GetDouble(exhaust.Replace("L", "")) <= 0)
 					{
 						exhaust = "其他";
-						if (fuelType == "电力")
+						if (fuelType == "纯电")
 							exhaust = "电动车";
 					}
 					//是否是平行进口

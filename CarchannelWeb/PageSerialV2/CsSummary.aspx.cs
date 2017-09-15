@@ -555,10 +555,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             var fuelTypeList = carinfoSaleList.Where(p => p.Oil_FuelType != "")
                                               .GroupBy(p => p.Oil_FuelType)
                                               .Select(g => g.Key).ToList();
-            isElectrombile = fuelTypeList.Count == 1 && fuelTypeList[0] == "电力" ? true : false;
+            isElectrombile = fuelTypeList.Count == 1 && fuelTypeList[0] == "纯电" ? true : false;
             //add by 2014.03.18 在销车款 排量输出
             var exhaustList = carinfoSaleList.Where(p => p.Engine_Exhaust.EndsWith("L"))
-                .Select(p => p.Engine_InhaleType == "增压" ? p.Engine_Exhaust.Replace("L", "T") : p.Engine_Exhaust)
+                .Select(p => p.Engine_InhaleType.IndexOf("增压") >= 0 ? p.Engine_Exhaust.Replace("L", "T") : p.Engine_Exhaust)
                                             .GroupBy(p => p)
                                             .Select(group => group.Key).ToList();
 
@@ -570,7 +570,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             List<string> noSaleExhaustList = tempList.Where(p => p.Engine_Exhaust.EndsWith("L"))
                                                               .Select(
                                                                   p =>
-                                                                  p.Engine_InhaleType == "增压"
+                                                                  p.Engine_InhaleType.IndexOf("增压") >= 0
                                                                       ? p.Engine_Exhaust.Replace("L", "T")
                                                                       : p.Engine_Exhaust)
                                                               .GroupBy(p => p)
@@ -588,13 +588,13 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                     serialNoSaleDisplacement = string.Concat(noSaleExhaustList[0], " ", noSaleExhaustList[1]
                                                              , "..."
                                                              , noSaleExhaustList[noSaleExhaustList.Count - 1],
-                                                             fuelTypeListForNoSeal.Contains("电力") ? " 电动" : "");
+                                                             fuelTypeListForNoSeal.Contains("纯电") ? " 电动" : "");
                 }
                 else
                     serialNoSaleDisplacement = string.Join(" ", noSaleExhaustList.ToArray()) +
-                                               (fuelTypeListForNoSeal.Contains("电力") ? " 电动" : "");
+                                               (fuelTypeListForNoSeal.Contains("纯电") ? " 电动" : "");
                 serialNoSaleDisplacementalt = string.Join(" ", noSaleExhaustList.ToArray()) +
-                                              (fuelTypeListForNoSeal.Contains("电力") ? " 电动" : "");
+                                              (fuelTypeListForNoSeal.Contains("纯电") ? " 电动" : "");
             }
 
             #endregion
@@ -607,12 +607,12 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                     serialSaleDisplacement = string.Concat(exhaustList[0], "-", exhaustList[exhaustList.Count - 1]);
                 }
                 else
-                    serialSaleDisplacement = string.Join(" ", exhaustList.ToArray()) + (fuelTypeList.Contains("电力") ? " 电动" : "");
+                    serialSaleDisplacement = string.Join(" ", exhaustList.ToArray()) + (fuelTypeList.Contains("纯电") ? " 电动" : "");
                 serialSaleDisplacementalt = string.Join(" ", exhaustList.ToArray());
             }
             //add by 2014.05.20 车型筛选所用
             var newExhaustList = exhaustList.GetRange(0, exhaustList.Count);
-            if (fuelTypeList.Contains("电力"))
+            if (fuelTypeList.Contains("纯电"))
                 newExhaustList.Add("电动");
 
             carinfoSaleList.Sort(NodeCompare.CompareCarByExhaustAndPowerAndInhaleType);
@@ -779,7 +779,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                     .Select(g => g.Key)
                     .ToArray();
                 var exhausts = carGroupList
-                    .Select(p => p.Engine_InhaleType == "增压" ? p.Engine_Exhaust.Replace("L", "T") : p.Engine_Exhaust)
+                    .Select(p => p.Engine_InhaleType.IndexOf("增压") >= 0 ? p.Engine_Exhaust.Replace("L", "T") : p.Engine_Exhaust)
                     .GroupBy(year => year)
                     .Select(g => g.Key)
                     .Select(s => s == "电动车" ? "电动" : s)
@@ -801,7 +801,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                     dictCarList.Add(entity.CarID.ToString(), new
                     {
                         YearType = entity.CarYear,
-                        Exhaust = entity.Engine_Exhaust == "电动车" ? "电动" : (entity.Engine_InhaleType == "增压" ? entity.Engine_Exhaust.Replace("L", "T") : entity.Engine_Exhaust),
+                        Exhaust = entity.Engine_Exhaust == "电动车" ? "电动" : (entity.Engine_InhaleType.IndexOf("增压") >= 0 ? entity.Engine_Exhaust.Replace("L", "T") : entity.Engine_Exhaust),
                         Transmission = entity.TransmissionType.IndexOf("手动") != -1 ? "手动" : "自动"
                     });
                 }
@@ -1026,7 +1026,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
 
                     //混动车标签
                     string fuelTypeStr = "";
-                    if (entity.Oil_FuelType == "油电混合动力" || entity.Oil_FuelType == "油气混合动力")
+                    if (entity.Oil_FuelType == "油电混合" || entity.Oil_FuelType == "插电混合")
                     {
                         fuelTypeStr = "<span class=\"color-block2\">混动</span>";
                     }

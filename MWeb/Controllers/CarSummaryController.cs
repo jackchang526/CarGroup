@@ -169,7 +169,7 @@ namespace MWeb.Controllers
 			//}
 			Dictionary<int, string> dict = car_Basic.GetCarAllParamByCarID(CarId);
 			//add by 2014.05.04 电动车参数
-			IsElectrombile = dict.ContainsKey(578) && dict[578] == "电力"; //是否是电动车
+			IsElectrombile = dict.ContainsKey(578) && dict[578] == "纯电"; //是否是电动车
 
 			BatteryCapacity = dict.ContainsKey(876) ? dict[876] : "";//电池容量
 			PowerConsumptive100 = dict.ContainsKey(868) ? dict[868] : "";//百公里耗电

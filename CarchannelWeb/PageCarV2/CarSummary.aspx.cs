@@ -223,7 +223,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                     TaxContent = "购置税75折";
                 }
                 //add by 2014.05.04 电动车参数
-                isElectrombile = dict.ContainsKey(578) && dict[578] == "电力" ? true : false;
+                isElectrombile = dict.ContainsKey(578) && dict[578] == "纯电" ? true : false;
                 batteryCapacity = dict.ContainsKey(876) ? dict[876] : "";
                 powerConsumptive100 = dict.ContainsKey(868) ? dict[868] : "";
                 mileage = dict.ContainsKey(883) ? dict[883] : "";
@@ -939,16 +939,16 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                         if (you != null && list.Count > 1)
                             list.Remove(you);
                         //进气形式 2个参数 增压 显示 增压方式 不是则显示 进气形式
-                        if (item.Attributes.GetNamedItem("Name").Value == "进气形式")
-                        {
-                            if (list.Count > 1)
-                            {
-                                if (list[0] == "增压")
-                                    list.RemoveAt(0);
-                                else
-                                    list.RemoveAt(1);
-                            }
-                        }
+                        //if (item.Attributes.GetNamedItem("Name").Value == "进气形式")
+                        //{
+                        //    if (list.Count > 1)
+                        //    {
+                        //        if (list[0] == "增压")
+                        //            list.RemoveAt(0);
+                        //        else
+                        //            list.RemoveAt(1);
+                        //    }
+                        //}
                         pvalue = string.Join(" ", list.ToArray());
                     }
                     else

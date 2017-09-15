@@ -552,6 +552,7 @@
     <Content Include="config\ParameterConfigurationNew.config" />
     <Content Include="Cooperation\GetSerialData.ashx" />
     <Content Include="CarInfo\GetCarListWithTax.ashx" />
+    <Content Include="config\ParameterConfigurationNewV2.config" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -159,7 +159,7 @@ namespace MWeb.Controllers
             var fuelTypeList = serialCarList.FindAll(p => p.SaleState == "在销").Where(p => p.Oil_FuelType != "")
                 .GroupBy(p => p.Oil_FuelType)
                 .Select(g => g.Key).ToList();
-            isElectrombile = fuelTypeList.Count == 1 && fuelTypeList[0] == "电力";
+            isElectrombile = fuelTypeList.Count == 1 && fuelTypeList[0] == "纯电";
             ViewData["isElectrombile"] = isElectrombile;
 
             string serialSummaryFuelCost = serialInfoCard.CsSummaryFuelCost;

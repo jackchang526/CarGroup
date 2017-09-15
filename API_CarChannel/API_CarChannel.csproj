@@ -418,6 +418,10 @@
     <Compile Include="Test\TempBsToCs.aspx.designer.cs">
       <DependentUpon>TempBsToCs.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Test\TestForSelectCarToXml.ashx.cs">
+      <DependentUpon>TestForSelectCarToXml.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Test\TestResponse.ashx.cs">
       <DependentUpon>TestResponse.ashx</DependentUpon>
     </Compile>
@@ -576,6 +580,7 @@
     <Content Include="Assessment\GetEditorInfo.ashx" />
     <Content Include="Assessment\GetEntranceData.ashx" />
     <Content Include="Assessment\ViewScore.ashx" />
+    <Content Include="config\ParameterConfigurationNewV2.config" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

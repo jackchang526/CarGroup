@@ -69,7 +69,7 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
                     var fuelTypeList = carinfoList.Where(p => p.Oil_FuelType != "")
                         .GroupBy(p => p.Oil_FuelType)
                         .Select(g => g.Key).ToList();
-                    isElectrombile = fuelTypeList.Count == 1 && fuelTypeList[0] == "电力" ? true : false;
+                    isElectrombile = fuelTypeList.Count == 1 && fuelTypeList[0] == "纯电" ? true : false;
 
                     string oneRowText = string.Empty;
                     if (isElectrombile)

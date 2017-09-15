@@ -338,15 +338,15 @@ namespace BitAuto.CarChannel.BLL
 			var fuelTypeList = carinfoSaleList.Where(p => p.Oil_FuelType != "")
 											  .GroupBy(p => p.Oil_FuelType)
 											  .Select(g => g.Key).ToList();
-			isElectrombile = fuelTypeList.Count == 1 && fuelTypeList[0] == "电力" ? true : false;
+			isElectrombile = fuelTypeList.Count == 1 && fuelTypeList[0] == "纯电" ? true : false;
 			//add by 2014.03.18 在销车款 排量输出
 			var exhaustList = carinfoSaleList.Where(p => p.Engine_Exhaust.EndsWith("L"))
-				.Select(p => p.Engine_InhaleType == "增压" ? p.Engine_Exhaust.Replace("L", "T") : p.Engine_Exhaust)
+				.Select(p => p.Engine_InhaleType.IndexOf("增压") >= 0 ? p.Engine_Exhaust.Replace("L", "T") : p.Engine_Exhaust)
 											.GroupBy(p => p)
 											.Select(group => group.Key).ToList();
 			//add by 2014.05.20 车型筛选所用
 			var newExhaustList = exhaustList.GetRange(0, exhaustList.Count);
-			if (fuelTypeList.Contains("电力"))
+			if (fuelTypeList.Contains("纯电"))
 				newExhaustList.Add("电动");
 
 			carinfoSaleList.Sort(NodeCompare.CompareCarByExhaustAndPowerAndInhaleType);

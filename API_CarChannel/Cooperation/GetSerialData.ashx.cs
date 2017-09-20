@@ -155,15 +155,16 @@ ORDER BY CONVERT(INT, cdb2.pvalue) DESC, CONVERT(INT, cdb3.pvalue) DESC,
                                     maxP = 0;
                                 }
                                 jsonString.Add("{");
-                                jsonString.Add(string.Format("\"ID\":\"{0}\",\"ShowName\":\"{1}\",\"MakeDay\":\"{2}\",\"Pic\":\"{3}\",\"CarLevel\":\"{4}\",\"MasterBrandName\":\"{5}\",\"BrandName\":\"{6}\",\"ProducerType\":\"{7}\""
+                                jsonString.Add(string.Format("\"ID\":\"{0}\",\"ShowName\":\"{1}\",\"MakeDay\":\"{2}\",\"Pic\":\"{3}\",\"CarLevel\":\"{4}\",\"MasterBrandName\":\"{5}\",\"BrandName\":\"{6}\",\"ProducerType\":\"{7}\",\"MUrl\":\"{8}\""
                                     , csid
                                     , CommonFunction.GetUnicodeByString(csShowName)
                                     , tempDt.ToString("yyyy-MM-dd")
-                                    , dicPicWhite.ContainsKey(csid) ? dicPicWhite[csid] : WebConfig.DefaultCarPic
+                                    , dicPicWhite.ContainsKey(csid) ? dicPicWhite[csid].Replace("_2.", "_4.") : WebConfig.DefaultCarPic
                                     , csLevel
                                     , masterBrandName
                                     , brandName
                                     , producerType
+                                    , string.Format("http://car.m.yiche.com/{0}/", csAllspell)
                                     ));
 
                                 lastCsID = csid;

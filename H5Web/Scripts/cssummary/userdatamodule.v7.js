@@ -517,32 +517,32 @@
 
     },
 
-    //养护
-    yanghu: function (name) {
+    ////养护
+    //yanghu: function (name) {
 
-        //console.log(name);
+    //    //console.log(name);
 
-        $.get("/handlers/GetDataAsynV3.ashx?service=yanghu&method=yanghu&csid=" + Config.serialId + "&cityid=" + bit_locationInfo.cityId + "&", function (data) {
+    //    $.get("/handlers/GetDataAsynV3.ashx?service=yanghu&method=yanghu&csid=" + Config.serialId + "&cityid=" + bit_locationInfo.cityId + "&", function (data) {
 
-            var html = data.replace(/\r\n/ig, "");
-            if (html.length > 0 && util.CheckData(data)) {
-                $("#yanghutmpl").tmpl({ html: html }).appendTo("div[data-anchor='" + name + "']");
+    //        var html = data.replace(/\r\n/ig, "");
+    //        if (html.length > 0 && util.CheckData(data)) {
+    //            $("#yanghutmpl").tmpl({ html: html }).appendTo("div[data-anchor='" + name + "']");
 
-                var index = Config.auchors.indexOf(name);
-                $("#fullpage").fullpage.resetSlides(index);
+    //            var index = Config.auchors.indexOf(name);
+    //            $("#fullpage").fullpage.resetSlides(index);
 
-                //最后一页去掉向下箭头
-                if (Config.auchors[Config.auchors.length - 1] === name) {
-                    $("div[data-anchor='" + name + "']").find(".arrow_down").hide();
-                }
-            } else {
-                //$("div[data-anchor='" + name + "']").remove();
-                //$("#fullpage").fullpage.reBuild();
-                $("#nodatatmpl").tmpl({ title: "车辆养护" }).appendTo("div[data-anchor='" + name + "']");
-            }
+    //            //最后一页去掉向下箭头
+    //            if (Config.auchors[Config.auchors.length - 1] === name) {
+    //                $("div[data-anchor='" + name + "']").find(".arrow_down").hide();
+    //            }
+    //        } else {
+    //            //$("div[data-anchor='" + name + "']").remove();
+    //            //$("#fullpage").fullpage.reBuild();
+    //            $("#nodatatmpl").tmpl({ title: "车辆养护" }).appendTo("div[data-anchor='" + name + "']");
+    //        }
 
-        });
-    },
+    //    });
+    //},
 
     //看了还看
     kanlehaikan: function (name) {

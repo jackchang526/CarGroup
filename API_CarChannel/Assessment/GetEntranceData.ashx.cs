@@ -113,6 +113,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 CarId = CarId,
                 CarName = CarName,
                 EvaluationId = EId,
+                FullScore = 650,
                 TotalScore = TotalScore,
                 CommonInfoGroupScore = CommonInfoGroupScore,
                 BodyAndSpaceGroupScore = BodyAndSpaceGroupScore,

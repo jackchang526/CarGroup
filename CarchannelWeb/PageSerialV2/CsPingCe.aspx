@@ -368,7 +368,7 @@
     var adplay_BrandName = ''; //品牌
     var adplay_BlockCode = '820925db-53c1-4bf8-89d2-198f4c599f4e'; //广告块编号
 </script>
-<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>
+<script type="text/javascript" src="http://d2.yiche.com/js/sense.js"></script>
 <% if (csID == 2370 || csID == 2608 || csID == 3398 || csID == 3023 || csID == 2388)
    { %>
     <!--百度热力图-->

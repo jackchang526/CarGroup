@@ -201,7 +201,7 @@
 				}
                 })();
             </script>
-			<script type="text/javascript" src="http://gimg.bitauto.com/js/senseNew.js"></script>
+			<script type="text/javascript" src="http://d2.yiche.com/js/senseNew.js"></script>
 		    </div>
              <!--#include file="~/htmlV2/rightbar.shtml"-->
              <!--#include file="~/htmlV2/treefooter2016.shtml"-->

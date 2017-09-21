@@ -367,7 +367,7 @@
                             </li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="t_32" />机械自动式
+                                    <input type="checkbox" id="t_32" />机械自动
                                 </label>
                             </li>
                             <li>
@@ -412,13 +412,13 @@
                                     <input type="checkbox" id="f_2" />油电混合</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="f_4" />插电混合</label></li>
+                                    <input type="checkbox" id="f_128" />插电混合</label></li>
                             <%-- <li>
                                     <label>
                                         <input type="checkbox" id="f_32" />LPG</label></li>--%>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="f_32" />天然气
+                                    <input type="checkbox" id="f_256" />天然气
                                 </label>
                             </li>
                         </ul>
@@ -1498,7 +1498,7 @@
                         </ul>
                     </dd>
                 </dl>
-                <h6 id="params-pastime">娱乐通讯</h6>
+                <h6 id="params-pastime">信息娱乐</h6>
                 <dl id="anchorTarget">
                     <dt>驾驶辅助</dt>
                     <dd>

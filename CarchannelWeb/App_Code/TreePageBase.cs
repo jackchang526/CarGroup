@@ -971,7 +971,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.App_Code
             htmlList.Add("<li id=\"trans126\" class=\"last\" style=\"z-index:2;\"><a href=\"" + this.GetSearchQueryString("t", "126", path) + "\" class=\"ico-arrow\" stattype=\"trans_at\" data-channelid=\"2.94.603\">自动</a>");
             htmlList.Add("<div id=\"trans_popup\" class=\"drop-layer\" style=\"display:none;\">");
             htmlList.Add("<a href=\"" + this.GetSearchQueryString("t", "126", path) + "\" data-channelid=\"2.94.604\">自动</a>");
-			htmlList.Add("<a id=\"trans32\" href=\"" + this.GetSearchQueryString("t", "32", path) + "\" class=\"cSubItem\" stattype=\"banzidong\" data-channelid=\"2.94.605\">&nbsp;半自动（AMT）</a>");
+			htmlList.Add("<a id=\"trans32\" href=\"" + this.GetSearchQueryString("t", "32", path) + "\" class=\"cSubItem\" stattype=\"banzidong\" data-channelid=\"2.94.605\">&nbsp;机械自动（AMT）</a>");
 			htmlList.Add("<a id=\"trans2\" href=\"" + this.GetSearchQueryString("t", "2", path) + "\" class=\"cSubItem\" stattype=\"zidong\" data-channelid=\"2.94.606\">&nbsp;自动（AT）</a>");
 			htmlList.Add("<a id=\"trans4\" href=\"" + this.GetSearchQueryString("t", "4", path) + "\" class=\"cSubItem\" stattype=\"shouziyiti\" data-channelid=\"2.94.607\">&nbsp;手自一体</a>");
 			htmlList.Add("<a id=\"trans8\" href=\"" + this.GetSearchQueryString("t", "8", path) + "\" class=\"cSubItem\" stattype=\"wujibiansu\" data-channelid=\"2.94.608\">&nbsp;无极变速（CVT）</a>");
@@ -1080,7 +1080,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.App_Code
             htmlList.Add("	<li><label><input id=\"more_194\" type=\"checkbox\" />上坡辅助</label></li>");
             htmlList.Add("	<li><label><input id=\"more_201\" type=\"checkbox\" />LED日间行车灯</label></li>");
             htmlList.Add("	<li><label><input id=\"more_246\" type=\"checkbox\" />后排空调</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_297\" type=\"checkbox\" />发动机系统</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_297\" type=\"checkbox\" />发动机启停</label></li>");
             htmlList.Add("	<li><label><input id=\"more_169\" type=\"checkbox\" />牵引力制动</label></li><a id=\"anchorcarlist\"></a></li>");
             htmlList.Add("</ul>");
             htmlList.Add("</dd>");

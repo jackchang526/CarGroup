@@ -47,6 +47,8 @@
     <Item Value="Cargo_length_max" Desc="货箱长" ParamID="966" Unit="mm" />
     <Item Value="Cargo_height_max" Desc="货箱高" ParamID="969" Unit="mm" />
     <Item Value="cargo_width_max" Desc="货箱宽" ParamID="970" Unit="mm" />
+    <Item Value="Inset_TrunkCapacityE" Desc="行李箱扩展容积" ParamID="466" Unit="L" />
+    <Item Value="xinglixang most big" Desc="行李箱最大容积" ParamID="1000" Unit="L" />
   </Group>
   <Group Desc="动力系统">
     <Item Value="Engine_Exhaust" Desc="排量" ParamID="423" Unit="mL" />
@@ -115,8 +117,8 @@
     <Item Value="UnderPan_DSC" Desc="DSC(动态稳定控制系统)" ParamID="700" Unit="" />
     <Item Value="Safe_DriverGasBag" Desc="驾驶位安全气囊" ParamID="682" Unit="" />
     <Item Value="Safe_SubDriverGasBag" Desc="副驾驶位安全气囊" ParamID="697" Unit="" />
-    <Item Value="Safe_BsadGasbag" Desc="后排侧安全气囊" ParamID="691" Unit="" />
-    <Item Value="Safe_FsadGasbag" Desc="前排侧安全气囊" ParamID="680" Unit="" />
+    <Item Value="Safe_BsadGasbag" Desc="后排侧安全气囊" ParamID="680" Unit="" />
+    <Item Value="Safe_FsadGasbag" Desc="前排侧安全气囊" ParamID="691" Unit="" />
     <Item Value="Safe_FheadGasbag" Desc="前排头部气囊(气帘)" ParamID="690" Unit="" />
     <Item Value="Safe_KneeGasBag" Desc="膝部气囊" ParamID="835" Unit="" />
     <Item Value="InStat_BeltBag" Desc="安全带气囊" ParamID="845" Unit="" />
@@ -176,14 +178,14 @@
     <Item Value="OutStat_atmosphereLight" Desc="车内氛围灯" ParamID="795" Unit="" />
     <Item Value="InStat_FaceMirror" Desc="遮阳板化妆镜" ParamID="512" Unit="" />
     <Item Value="InStat_SteerMaterial" Desc="方向盘表面材料" ParamID="548" Unit="" />
-    <Item Value="InStat_MultiFuncsSteer" Desc="多功能方向盘功能" ParamID="527" Unit="" />
+    <Item Value="InStat_MultiFuncSteer" Desc="多功能方向盘功能" ParamID="528" Unit="" />
     <Item Value="SteeringAdjustmentLeftAndRight" Desc="方向盘前后调节" ParamID="799" Unit="" />
     <Item Value="Steering_Wheel_hot" Desc="方向盘加热" ParamID="956" Unit="" />
     <Item Value="InStat_SteerEtc" Desc="方向盘换挡" ParamID="547" Unit="" />
     <Item Value="InStat_AirCType" Desc="空调控制方式" ParamID="471" Unit="" />
     <Item Value="InStat_BAirCSystem" Desc="后排独立空调" ParamID="838" Unit="" />
     <Item Value="xiangfenxitong" Desc="香氛系统" ParamID="1027" Unit="" />
-    <Item Value="InStat_AirPurification" Desc="空气净化" ParamID="905" Unit="" />
+    <Item Value="AirCondition_AirPurification" Desc="空气净化" ParamID="905" Unit="" />
     <Item Value="InStat_carFridge" Desc="车载冰箱" ParamID="485" Unit="" />
   </Group>
   <Group Desc="座椅配置">

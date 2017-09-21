@@ -1213,7 +1213,7 @@ namespace BitAuto.CarChannel.BLL
             Dictionary<int, Dictionary<string, string>> dic = new Dictionary<int, Dictionary<string, string>>();
             if (listCarID.Count > 0)
             {
-                string keyTemp = "Car_Dictionary_CarCompareDataV2_{0}";
+                string keyTemp = "Car_Dictionary_CarCompareData_{0}";
                 IList<string> keyForMemCache = new List<string>();
                 foreach (int carid in listCarID)
                 {

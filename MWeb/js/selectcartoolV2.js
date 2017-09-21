@@ -13,7 +13,7 @@ var SelectCarTool = {
 	, LevelName: { 1: '微型车', 2: '小型车', 3: '紧凑型车', 4: '中大型车', 5: '中型车', 6: '豪华车', 7: 'MPV', 8: 'SUV', 9: '跑车', 11: '面包车', 12: '皮卡', 63: '轿车', 13: '小型SUV', 14: '紧凑型SUV', 15: '中型SUV', 16: '中大型SUV', 17: '大型SUV',18:'客车' }		//级别名称
 	, Displacement: ""
 	, TransmissionType: 0		//0不限，1手动，2自动
-	, TransmissionTypeName: { 1: "手动", 126: "自动", 32: "半自动（AMT）", 2: "自动（AT）", 4: "手自一体", 8: "无级变速", 16: "双离合" }
+    , TransmissionTypeName: { 1: "手动", 126: "自动", 32: "机械自动（AMT）", 2: "自动（AT）", 4: "手自一体", 8: "无级变速", 16: "双离合" }
     , DriveType: 0	//驱动方式
 	, DriveTypeName: { 1: "前驱", 2: "后驱", 252: "四驱", 4: "全时四驱", 8: "分时四驱", 16: "适时四驱", 32: "智能四驱", 64: "四轮驱动", 128: "前置四驱" }
 	, FuelType: 0	//燃料类型
@@ -40,7 +40,7 @@ var SelectCarTool = {
 	, MoreSelectNum: 0   //统计“配置”层选中项的数量 
     , MoreFilterNum: 0    //统计“更多”层选中项的数量 
     , pageSize:20
-    , apiUrl: "http://select.car.yiche.com/api/selectcartool/searchresult"
+    , apiUrl: "http://select24.car.yiche.com/api/selectcartool/searchresult"
 	//初始化页面显示
 	, initPageCondition: function () {
 		this.initShowDefault();
@@ -560,7 +560,7 @@ var SelectCarTool = {
 		        {
 		            case "279": this.PerfSeatNum = "2"; break;
                     case "280": this.PerfSeatNum = "4"; break;
-                    case "281": this.PerfSeatNum = "4"; break;
+                    case "281": this.PerfSeatNum = "5"; break;
 		            case "282": this.PerfSeatNum = "6"; break;
 		            case "283": this.PerfSeatNum = "7"; break;
 		            case "284": this.PerfSeatNum = "8-9999"; break;
@@ -628,22 +628,22 @@ var SelectCarTool = {
 		        more += "_";
 		    }
 		    if (this.PerfSeatNum.indexOf('2') > -1) {
-		        more += "262_";
+		        more += "279_";
 		    }
-		    if (this.PerfSeatNum.indexOf('4-5') > -1) {
-		        more += "263_";
-		        if (mode == 1) {
-		            more += "264_";
-		        }
-		    }
+		    if (this.PerfSeatNum.indexOf('4') > -1) {
+		        more += "280_";
+            }
+            if (this.PerfSeatNum.indexOf('5') > -1) {
+                more += "281_";
+            }
 		    if (this.PerfSeatNum.indexOf('6') > -1) {
-		        more += "265_";
+		        more += "282_";
 		    }
 		    if (this.PerfSeatNum.indexOf('7') > -1) {
-		        more += "266_";
+		        more += "283_";
 		    }
 		    if (this.PerfSeatNum.indexOf('8-9999') > -1) {
-		        more += "267_";
+		        more += "284_";
 		    }
 		    more = more.substr(0, more.length - 1);
 		}

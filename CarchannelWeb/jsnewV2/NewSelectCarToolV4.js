@@ -66,7 +66,7 @@ var conditionObj =
         , LevelName: new Array('', '微型车', '小型车', '紧凑型车', '中大型车', '中型车', '豪华车', 'MPV', 'SUV', '跑车', '其他', '面包车', '皮卡', '小型SUV', '紧凑型SUV', '中型SUV', '中大型SUV', '全尺寸SUV')		//级别名称
         , Displacement: ""
         , TransmissionType: 0		//0不限，1手动，2自动
-        , TransmissionTypeName: { 1: "手动", 126: "自动", 32: "半自动（AMT）", 2: "自动（AT）", 4: "手自一体", 8: "无极变速（CVT）", 16: "双离合（DSG）" }
+        , TransmissionTypeName: { 1: "手动", 126: "自动", 32: "机械自动（AMT）", 2: "自动（AT）", 4: "手自一体", 8: "无极变速（CVT）", 16: "双离合（DSG）" }
         , DriveType: 0	//驱动方式
         , DriveTypeName: { 1: "前驱", 2: "后驱", 252: "四驱", 4: "全时四驱", 8: "分时四驱", 16: "适时四驱", 32: "智能四驱", 64: "四轮驱动", 128: "前置四驱" }
         , FuelType: 0	//燃料类型
@@ -90,7 +90,7 @@ var conditionObj =
         , Domain: window.location.host
         , PriceTimer: 0
         //, FuelConsumption: ""
-        , apiUrl: "http://select.car.yiche.com/selectcartool/searchresult"
+        , apiUrl: "http://select24.car.yiche.com/selectcartool/searchresult"
         , Page: 1
         //初始化页面显示
         , InitPageCondition: function () {

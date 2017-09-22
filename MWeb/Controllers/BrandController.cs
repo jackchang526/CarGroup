@@ -35,6 +35,7 @@ namespace MWeb.Controllers
             RenderIntroduce();
             RenderBrandSerials();
             ViewData["_brandName"] = _brandName;
+            ViewData["_brandSpell"] = _brandSpell;
             ViewData["_brandListHtml"] = _brandListHtml;
             ViewData["_brandReplaceName"] = _brandReplaceName;
 			ViewData["_brandId"] = _brandId;

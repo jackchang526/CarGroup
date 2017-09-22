@@ -1054,11 +1054,11 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                             var price = optionalPara.Single().Value;
                             if (string.IsNullOrEmpty(pvalue))
                             {
-                                sbTemp.AppendLine("<td><div class=\"info\"><div>" + "○ " + name + price + "元</div></div></td>");
+                                sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + "</div><div class=\"r\">" + price + "元</div></div></div></td>");
                             }
                             else
                             {
-                                sbTemp.AppendLine("<td><div class=\"info\"><div>" + "● " + pvalue + "</div><div>" + "○ " + name + price + "元</div></div></td>");
+                                sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pvalue + "</div></div><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + "</div><div class=\"r\">" + price + "元</div></div></div></td>");
                             }
                         }
                         else
@@ -1069,15 +1069,13 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                             }
                             else
                             {
-                                sbTemp.AppendLine("<td><div class=\"info\"><div>" + "● " + pvalue + "</div>");
+                                sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pvalue + "</div></div>");
                             }
-                            double minPrice = optionalPara.Values.Min();
-                            sbTemp.AppendLine("<div class=\"popup-control-box optional\">" + "○ 选装" + minPrice + "元起<div class=\"popup-layout-1\"> <ul>");
                             foreach (var para in optionalPara.Keys)
                             {
-                                sbTemp.AppendLine("<li> <span class=\"l\">" + para + "</span> <span class=\"r\">" + optionalPara[para] + "</span></li>");
+                                sbTemp.AppendLine("<div class=\"optional type2\"><div class=\"l\"><i>○</i>" + para + "</div><div class=\"r\">" + optionalPara[para] + "元</div></div>");
                             }
-                            sbTemp.AppendLine("</ul></div></div></div>");
+                            sbTemp.AppendLine("</div></td>");
                         }
                     }
                     else

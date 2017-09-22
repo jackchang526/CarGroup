@@ -260,11 +260,11 @@ namespace MWeb.Controllers
                                                         var price = optionalPara.Single().Value;
                                                         if (string.IsNullOrEmpty(pvalue))
                                                         {
-                                                            listTempClass.Add("<td><div class=\"optional\">" + "○ " + name  + price + "元</div></td>");
+                                                            listTempClass.Add("<td><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name  +"</div><div class=\"r\">"+ price + "元</div></div></td>");
                                                         }
                                                         else
                                                         {
-                                                            listTempClass.Add("<td><div>" + "● " + pvalue + "</div><div class=\"optional\">" + "○ " + name  + price + "元</div></td>");
+                                                            listTempClass.Add("<td><div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pvalue + "</div></div><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + "</div><div class=\"r\">" + price + "元</div></div></td>");
                                                         }
                                                     }
                                                     else
@@ -275,16 +275,13 @@ namespace MWeb.Controllers
                                                         }
                                                         else
                                                         {
-                                                            listTempClass.Add("<td><div>" + "● " + pvalue + "</div>");
+                                                            listTempClass.Add("<td><div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pvalue + "</div></div>");
                                                         }
-                                                        double minPrice = optionalPara.Values.Min();
-                                                        listTempClass.Add("<div class=\"optional type1\" data-optionid=" + pid + ">" + "○ 选装" + minPrice + "元起</div></td>");
-                                                        listPop.Add("<ul data-optionID=\"" + pid + "\" style=\"display: none; \">");
                                                         foreach (var para in optionalPara.Keys)
-                                                        {                                                           
-                                                            listPop.Add("<li> <span class=\"l\">" + para + "</span> <span class=\"r\">" + optionalPara[para] + "</span></li>");
+                                                        {
+                                                            listTempClass.Add("<div class=\"optional type2\"><div class=\"l\"><i>○</i>" + para + "</div><div class=\"r\">" + optionalPara[para] + "元</div></div>");
                                                         }
-                                                        listPop.Add("</ul>");
+                                                        listTempClass.Add("</td>");
                                                     }
                                                 }
                                                 else

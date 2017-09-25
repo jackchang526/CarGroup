@@ -5,6 +5,7 @@ using System.Web;
 using BitAuto.CarChannel.Common;
 using BitAuto.CarChannel.BLL;
 using System.Web.UI;
+using System.Text;
 
 namespace BitAuto.CarChannelAPI.Web.CarInfo
 {
@@ -39,9 +40,12 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 			request = context.Request;
 
  			GetPageParam();
- 			response.Write(" var carCompareJson = [");
-			GetCarParamData();
-			response.Write("];");
+            StringBuilder sb = new StringBuilder();
+            sb.Append(" var carCompareJson = [");
+            sb.Append(GetCarParamData());
+            sb.Append("];");
+
+            response.Write(sb.ToString());
 		}
 
 		/// <summary>
@@ -82,86 +86,13 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 		/// <summary>
 		/// 取车型详细参数
 		/// </summary>
-		private void GetCarParamData()
+		private string GetCarParamData()
 		{
-			if (listCarID.Count > 0)
-			{
-                
-				dicCarParam = (new Car_BasicBll()).GetCarCompareDataByCarIDs(listCarID);
-
-				#region 生成车型详细参数js数组
-				// 生成车型详细参数js数组
-				if (dicCarParam.Count > 0)
-				{
-					dicTemp = base.GetCarParameterJsonConfigNew();
-					if (dicTemp != null && dicTemp.Count > 0)
-					{
-						int loopCar = 0;
-						foreach (KeyValuePair<int, Dictionary<string, string>> kvpCar in dicCarParam)
-						{
-							if (loopCar > 0)
-							{ response.Write(","); }
-
-							response.Write("[");
-							// 循环模板
-							foreach (KeyValuePair<int, List<string>> kvpTemp in dicTemp)
-							{
-								if (kvpTemp.Key == 0)
-								{
-									// 基本数据
-									response.Write("[\"" + kvpCar.Value["Car_ID"] + "\"");
-									response.Write(",\"" + kvpCar.Value["Car_Name"].Replace("\"", "'") + "\"");
-									foreach (string param in kvpTemp.Value)
-									{
-										if (kvpCar.Value.ContainsKey(param))
-										{ response.Write(",\"" + kvpCar.Value[param].Replace("\"", "'") + "\""); }
-										else
-										{ response.Write(",\"\""); }
-									}
-									response.Write("]");
-								}
-								else
-								{
-									// 扩展数据
-									response.Write(",[");
-									int loop = 0;
-									foreach (string param in kvpTemp.Value)
-									{
-										if (loop > 0)
-										{ response.Write(","); }
-										if (kvpCar.Value.ContainsKey(param))
-										{ response.Write("\"" + kvpCar.Value[param].Replace("\"", "'") + "\""); }
-										else
-										{ response.Write("\"\""); }
-										loop++;
-									}
-									response.Write("]");
-								}
-							}
-							response.Write("]");
-
-							loopCar++;
-
-							//// 循环车型
-							//foreach (KeyValuePair<string, string> kvpParam in kvpCar.Value)
-							//{
-							//    // 循环车型的参数
-							//}
-						}
-					}
-				}
-				#endregion
-
-				#region 清除数据
-				//dicCarParam.Clear();
-				//dsCarBaseInfo.Clear();
-				//dsParam.Clear();
-				//sbCarID.Remove(0, sbCarID.Length);
-				//listCarID.Clear();
-				#endregion
-
-			}
-
+            if (listCarID.Count > 0)
+            {
+                return (new Car_BasicBll()).GetValidCarJsObject(listCarID);
+            }
+            return string.Empty;
 		}
 
 		public bool IsReusable

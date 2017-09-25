@@ -19,7 +19,7 @@ var SelectCarTool = {
 	, FuelType: 0	//燃料类型
     , Environment: ""
     , EnvironmentName: {"120":"国5","121":"国4","122":"国3"}
-    , FuelTypeName: { 7: "汽油", 8: "柴油", 2: "油电混合", 16: "纯电动", 4: "插电混合", 32:"天然气" }
+    , FuelTypeName: { 7: "汽油", 8: "柴油", 2: "油电混合", 16: "纯电动", 128: "插电混合", 256:"天然气" }
 	//, BodyDoors: ""	//车门数
 	, PerfSeatNum: ""	//座位数
 	, IsWagon: 0	//是否旅行版

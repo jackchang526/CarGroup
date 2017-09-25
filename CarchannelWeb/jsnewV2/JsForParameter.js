@@ -913,7 +913,7 @@ function createMulti(arrFieldRow) {
                                 field += unitArray[pint] || "";
                             }
                             // field += unitArray[pint];
-                            multiField = multiField + (joinCodeArray[pint] || "") + field;
+                            multiField = (multiField.length > 0 ? (multiField + (joinCodeArray[pint] || "")) : "") + field;
                             //add by sk 2016.01.08 以下参数有值 直接显示 忽略第二个参数
                             if (pidArray[pint] == "509" || pidArray[pint] == "489" || pidArray[pint] == "555" || pidArray[pint] == "808") {
                                 isAllunknown = false;  
@@ -956,7 +956,9 @@ function createMulti(arrFieldRow) {
                             { multiField = ""; }
                             else if (multiField == "<span class=\"songti\">○</span>" || multiField == "<span class=\"songti\">-</span>")
                             { break; }
-                            else { }
+                            else {
+                                
+                            }
                             // 如果第1项是选配或无，则不显示第2项
                         }
                     }
@@ -1117,52 +1119,36 @@ function fieldMultiValue(arrFieldRow) {
                 }
 
                 if (standardJson.length > 0) {
-                    //if (optionalJson.length == 0) {
-                    arrTemp.push("<div>");
-                    
-                    var staHtmlArr = [];
-                    var splitStr = "&nbsp;&nbsp;";
-                    //if (standardStrLength > 10) {
-                    //    splitStr = "<br />";
-                    //}
                     for (var staIndex = 0; staIndex < standardJson.length; staIndex++) {
                         if (standardJson[0].text == "无") {
-                            arrTemp.push("<span class=\"songti\">-</span>");
+                            if (standardJson.length == 1 && optionalJson.length == 0) {
+                                arrTemp.push("<div class=\"optional type2 std\">");
+                                arrTemp.push("<div class=\"l\"><i>-</i>&nbsp;</div>");
+                                arrTemp.push("</div>");
+                                break;
+                            }
+                            else {
+                                continue;
+                            }
                         }
-                        else if (standardJson[0].text == "有") {
-                            arrTemp.push("<span class=\"songti\">●</span>");
+                        arrTemp.push("<div class=\"optional type2 std\">");
+                        if (standardJson[0].text == "有") {
+                            arrTemp.push("<div class=\"l\"><i>●</i>&nbsp;</div>");
                         }
                         else{
-                            staHtmlArr.push(standardJson[staIndex].text);
+                            arrTemp.push("<div class=\"l\"><i>●</i>" + (standardJson[staIndex].text.length > 0 ? standardJson[staIndex].text:"&nbsp;") + "</div>");
                         }
+                        arrTemp.push("</div>");
                     }
-                    if (staHtmlArr.length > 0) {
-                        arrTemp.push("<span class=\"songti\">●</span>");
-                        arrTemp.push(staHtmlArr.join(splitStr));
-                    }
-                    arrTemp.push("</div>");
-                    //}
-                    //else {
-                    //    arrTemp.push("<div class=\"popup-control-box optional\">● " + standardJson[0].text + "等");
-                    //    arrTemp.push("<div class=\"popup-layout-1\"><ul>");
-                    //    for (var staIndex = 0; staIndex < standardJson.length; staIndex++) {
-                    //        arrTemp.push("<li><span class=\"l\">" + standardJson[staIndex].text + "</span ></li>");
-                    //    }
-                    //    arrTemp.push("</ul></div></div>");
-                    //}
                 }
-                if (optionalJson.length == 1) {
-                    arrTemp.push("<div>○选配" + optionalJson[0].text + "&nbsp;" + formatCurrency(optionalJson[0].price) + "元</div>");
-                }
-                else if (optionalJson.length > 1) {
-                    arrTemp.push("<div class=\"popup-control-box optional\">○ 选配" + formatCurrency(optionalJson[0].price) + "元起");
-                    arrTemp.push("<div class=\"popup-layout-1\"><ul>");
+                if (optionalJson.length > 0) {
                     for (var optIndex = 0; optIndex < optionalJson.length; optIndex++) {
-                        arrTemp.push("<li><span class=\"l\">" + optionalJson[optIndex].text + "</span ><span class=\"r\">￥" + formatCurrency(optionalJson[optIndex].price) + "</span></li>");
+                        arrTemp.push("<div class=\"optional type2\">");
+                        arrTemp.push("<div class=\"l\"><i>○</i>" + optionalJson[optIndex].text + "</div>");
+                        arrTemp.push("<div class=\"r\">" + formatCurrency(optionalJson[0].price) + "元</div>");
+                        arrTemp.push("</div>");
                     }
-                    arrTemp.push("</ul></div></div>");
                 }
-                //arrTemp.push("</td>");
             }
         }
     }

@@ -914,7 +914,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.App_Code
             htmlList.Add("<li id=\"bodyform0\"><a href=\"" + this.GetSearchQueryString("b", "0", path) + "\" data-channelid=\"2.94.580\">不限</a></li>");
             htmlList.Add("<li id=\"bodyform1\"><a href=\"" + this.GetSearchQueryString("b", "1", path) + "\" data-channelid=\"2.94.581\">两厢</a></li>");
             htmlList.Add("<li id=\"bodyform2\"><a href=\"" + this.GetSearchQueryString("b", "2", path) + "\" data-channelid=\"2.94.582\">三厢</a></li>");
-            htmlList.Add("<li id=\"wagon1\"><a href=\"" + this.GetSearchQueryString("lv", "1", path) + "\" data-channelid=\"2.94.583\">旅行版</a></li>");
+            htmlList.Add("<li id=\"wagon1\"><a href=\"" + this.GetSearchQueryString("b", "8", path) + "\" data-channelid=\"2.94.583\">旅行版</a></li>");
             htmlList.Add("</ul>");
             htmlList.Add("</dd>");
             htmlList.Add("</dl>");
@@ -927,9 +927,9 @@ namespace BitAuto.CarChannel.CarchannelWeb.App_Code
             htmlList.Add("<li id=\"fueltype7\"><a href=\"" + this.GetSearchQueryString("f", "7", path) + "\" data-channelid=\"2.161.1686\">汽油</a></li>");
             htmlList.Add("<li id=\"fueltype8\"><a href=\"" + this.GetSearchQueryString("f", "8", path) + "\" data-channelid=\"2.161.1687\">柴油</a></li>");
             htmlList.Add("<li id=\"fueltype16\"><a href=\"" + this.GetSearchQueryString("f", "16", path) + "\" data-channelid=\"2.161.1688\">纯电动</a></li>");
-            htmlList.Add("<li id=\"fueltype4\"><a href=\"" + this.GetSearchQueryString("f", "4", path) + "\">插电混合</a></li>");
+            htmlList.Add("<li id=\"fueltype128\"><a href=\"" + this.GetSearchQueryString("f", "128", path) + "\">插电混合</a></li>");
             htmlList.Add("<li id=\"fueltype2\"><a href=\"" + this.GetSearchQueryString("f", "2", path) + "\" data-channelid=\"2.161.1689\">油电混合</a></li>");
-            htmlList.Add("<li id=\"fueltype32\"><a href=\"" + this.GetSearchQueryString("f", "32", path) + "\">天然气</a></li>");
+            htmlList.Add("<li id=\"fueltype256\"><a href=\"" + this.GetSearchQueryString("f", "256", path) + "\">天然气</a></li>");
             htmlList.Add("</ul>");
             htmlList.Add("</dd>");
             htmlList.Add("</dl>");
@@ -1075,7 +1075,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.App_Code
             htmlList.Add("	<li><label><input id=\"more_191\" type=\"checkbox\" data-channelid=\"2.94.654\" />自动泊车</label></li>");
             htmlList.Add("	<li><label><input id=\"more_287\" type=\"checkbox\" data-channelid=\"2.94.642\" />GPS导航</label></li>");
             htmlList.Add("	<li><label><input id=\"more_182\" type=\"checkbox\" data-channelid=\"2.94.651\" />定速巡航</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_178\" type=\"checkbox\" data-channelid=\"2.94.653\" />胎压监测</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_179\" type=\"checkbox\" data-channelid=\"2.94.653\" />胎压监测</label></li>");
             htmlList.Add("	<li><label><input id=\"more_184\" type=\"checkbox\" />主动刹车</label></li>");
             htmlList.Add("	<li><label><input id=\"more_194\" type=\"checkbox\" />上坡辅助</label></li>");
             htmlList.Add("	<li><label><input id=\"more_201\" type=\"checkbox\" />LED日间行车灯</label></li>");

@@ -826,7 +826,8 @@ function createMulti(arrFieldRow) {
                                 field += unitArray[pint];
                             }
                             // field += unitArray[pint];
-                            multiField = multiField + joinCodeArray[pint] + field;
+                            multiField = (multiField.length > 0 ? (multiField + joinCodeArray[pint]) : "") + field;
+
                         	//add by sk 2016.01.08 以下参数有值 直接显示 忽略第二个参数
                             if (pidArray[pint] == "509" || pidArray[pint] == "489" | pidArray[pint] == "555" || pidArray[pint] == "808") {
                             	break;
@@ -1042,45 +1043,35 @@ function fieldMultiValue(arrFieldRow) {
                 }
 
                 if (standardJson.length > 0) {
-                    arrTemp.push("<div>");
-                    
-                    var staHtmlArr = [];
-                    var splitStr = "&nbsp;&nbsp;";
-                    //if (standardStrLength > 8) {
-                    //    splitStr = "<br />";
-                    //}
                     for (var staIndex = 0; staIndex < standardJson.length; staIndex++) {
                         if (standardJson[0].text == "无") {
-                            arrTemp.push("<span class=\"songti\">-</span>");
+                            if (standardJson.length == 1 && optionalJson.length == 0) {
+                                arrTemp.push("<div class=\"optional type2 std\">");
+                                arrTemp.push("<div class=\"l\"><i>-</i>&nbsp;</div>");
+                                arrTemp.push("</div>");
+                                break;
+                            }
+                            else {
+                                continue;
+                            }
                         }
-                        else if (standardJson[0].text == "有") {
-                            arrTemp.push("<span class=\"songti\">●</span>");
+                        arrTemp.push("<div class=\"optional type2 std\">");
+                        if (standardJson[0].text == "有") {
+                            arrTemp.push("<div class=\"l\"><i>●</i>&nbsp;</div>");
                         }
                         else {
-                            staHtmlArr.push(standardJson[staIndex].text);
+                            arrTemp.push("<div class=\"l\"><i>●</i>" + (standardJson[staIndex].text.length > 0 ? standardJson[staIndex].text : "&nbsp;") + "</div>");
                         }
+                        arrTemp.push("</div>");
                     }
-                    if (staHtmlArr.length > 0) {
-                        arrTemp.push("<span class=\"songti\">●</span>");
-                        arrTemp.push(staHtmlArr.join(splitStr));
+                }
+                if (optionalJson.length > 0) {
+                    for (var optIndex = 0; optIndex < optionalJson.length; optIndex++) {
+                        arrTemp.push("<div class=\"optional type2\">");
+                        arrTemp.push("<div class=\"l\"><i>○</i>" + optionalJson[optIndex].text + "</div>");
+                        arrTemp.push("<div class=\"r\">" + formatCurrency(optionalJson[0].price) + "元</div>");
+                        arrTemp.push("</div>");
                     }
-                    arrTemp.push("</div>");
-                    
-                }
-                if (optionalJson.length == 1) {
-                    arrTemp.push("<div>○选配" + optionalJson[0].text + "&nbsp;" + formatCurrency(optionalJson[0].price) + "元</div>");
-                }
-                else if (optionalJson.length > 1) {
-                    var jsonArr = [];
-                    optionalJson.forEach(function (value, index, array) {
-                        jsonArr.push(array[index].text + "|" + array[index].price);
-                    });
-                    arrTemp.push("<div class=\"optional type1\" data-optional=\"" + jsonArr.join(",") + "\">○ 选配" + formatCurrency(optionalJson[0].price) + "元起</div>");
-                    //arrTemp.push("<div class=\"popup-layout-1\"><ul>");
-                    //for (var optIndex = 0; optIndex < optionalJson.length; optIndex++) {
-                    //    arrTemp.push("<li><span class=\"l\">" + optionalJson[optIndex].text + "</span ><span class=\"r\">￥" + optionalJson[optIndex].price + "</span></li>");
-                    //}
-                    //arrTemp.push("</ul></div></div>");
                 }
                 arrTemp.push("</td>");
             }
@@ -1390,7 +1381,7 @@ function selectCarId(carId, currentIndex) {
         //ComparePageObject.arrCarIds.unshift(carId);
         ComparePageObject.arrCarIds.push(carId);
     }
-    $.getScript("http://api.car.bitauto.com/CarInfo/GetCarParameter.ashx?isParamPage=1&carids=" + ComparePageObject.arrCarIds.join(","), function (data) {
+    $.getScript("http://api24.car.bitauto.com/CarInfo/GetCarParameter.ashx?isParamPage=1&carids=" + ComparePageObject.arrCarIds.join(","), function (data) {
         //if (carinfo_container)
         //	carinfo_container.style.display = "none";
         //if (container)

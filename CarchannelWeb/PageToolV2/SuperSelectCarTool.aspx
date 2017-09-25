@@ -249,31 +249,11 @@
                         <div class="clear"></div>
                         <div class="openlayer">
                             <ul id="suvList">
-                                <li>
-                                    <label>
-                                        <input type="checkbox" id="l_13" />小型SUV
-                                    </label>
-                                </li>
-                                <li>
-                                    <label>
-                                        <input type="checkbox" id="l_14" />紧凑型SUV
-                                    </label>
-                                </li>
-                                <li>
-                                    <label>
-                                        <input type="checkbox" id="l_15" />中型SUV 
-                                    </label>
-                                </li>
-                                <li>
-                                    <label>
-                                        <input type="checkbox" id="l_16" />中大型SUV
-                                    </label>
-                                </li>
-                                <li>
-                                    <label>
-                                        <input type="checkbox" id="l_17" />全尺寸SUV
-                                    </label>
-                                </li>
+                                <li><label><input type="checkbox" id="l_13" />小型SUV</label></li>
+                                <li><label><input type="checkbox" id="l_14" />紧凑型SUV</label></li>
+                                <li><label><input type="checkbox" id="l_15" />中型SUV</label></li>
+                                <li><label><input type="checkbox" id="l_16" />中大型SUV</label></li>
+                                <li><label><input type="checkbox" id="l_17" />全尺寸SUV</label></li>
                             </ul>
                             <div class="clear"></div>
                         </div>
@@ -431,20 +411,20 @@
                         <ul class="tj_list">
                             <li>
                                 <label>
-                                    <input type="radio" name="body" id="b_0" />不限</label></li>
+                                    <input type="checkbox" name="body" id="b_0" />不限</label></li>
                             <li>
                                 <label>
-                                    <input type="radio" name="body" id="b_1" />两厢
+                                    <input type="checkbox" name="body" id="b_1" />两厢
                                 </label>
                             </li>
                             <li>
                                 <label>
-                                    <input type="radio" name="body" id="b_2" />三厢
+                                    <input type="checkbox" name="body" id="b_2" />三厢
                                 </label>
                             </li>
                             <li>
                                 <label>
-                                    <input type="radio" name="body" id="lv_1" />旅行版
+                                    <input type="checkbox" name="body" id="b_8" />旅行版
                                 </label>
                             </li>
                         </ul>
@@ -1228,10 +1208,10 @@
                         <ul class="tj_list">
                             <li>
                                 <label>
-                                    <input type="radio" name="roof" id="more_225" />无钥匙进入</label></li>
+                                    <input type="checkbox" name="roof" id="more_225" />智能进入</label></li>
                             <li>
                                 <label>
-                                    <input type="radio" name="roof" id="more_226" />无钥匙启动</label></li>
+                                    <input type="checkbox" name="roof" id="more_226" />无钥匙启动</label></li>
                         </ul>
                     </dd>
                 </dl>
@@ -1254,10 +1234,10 @@
                         <ul class="tj_list">
                             <li>
                                 <label>
-                                    <input type="radio" name="boot" id="more_229" />电动开合</label></li>
+                                    <input type="checkbox" name="boot" id="more_229" />电动开合</label></li>
                             <li>
                                 <label>
-                                    <input type="radio" name="boot" id="more_230" />感应开合</label></li>
+                                    <input type="checkbox" name="boot" id="more_230" />感应开合</label></li>
                         </ul>
                     </dd>
                 </dl>

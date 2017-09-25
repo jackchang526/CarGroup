@@ -24,7 +24,7 @@ var anchorFlag = false;
 
 var SuperSelectCarTool = {
     Parameters: new Array()
-    , apiUrl: "http://select.car.yiche.com/selectcartool/searchresult"
+    , apiUrl: "http://select24.car.yiche.com/selectcartool/searchresult"
     , OneLeftScrollFlag: false //滚动菜单是否显示 ，用于 左侧滚动 > 居左距离
     , MenuOffsetTop: 304 //滚动菜单 相对车款头的高度偏移量
 
@@ -420,17 +420,17 @@ var SuperSelectCarTool = {
                         }
                     }
                     //智能钥匙
-                    else if (conStr == 225 || conStr == 226) {
-                        if (conStr == 225) {
-                            SuperSelectCarTool.RemoveMoreCondition(conType, 226);
-                            SuperSelectCarTool.UpdateParameters(false, 'more_' + 226, conType);
-                        }
-                        else {
-                            SuperSelectCarTool.RemoveMoreCondition(conType, 225);
-                            SuperSelectCarTool.UpdateParameters(false, 'more_' + 225, conType);
-                        }
-                        SuperSelectCarTool.AddMoreCondition(conType, conStr);
-                    }
+                    //else if (conStr == 225 || conStr == 226) {
+                    //    if (conStr == 225) {
+                    //        SuperSelectCarTool.RemoveMoreCondition(conType, 226);
+                    //        SuperSelectCarTool.UpdateParameters(false, 'more_' + 226, conType);
+                    //    }
+                    //    else {
+                    //        SuperSelectCarTool.RemoveMoreCondition(conType, 225);
+                    //        SuperSelectCarTool.UpdateParameters(false, 'more_' + 225, conType);
+                    //    }
+                    //    SuperSelectCarTool.AddMoreCondition(conType, conStr);
+                    //}
                     //车门
                     else if (conStr == 227 || conStr == 228) {
                         if (conStr == 227) {

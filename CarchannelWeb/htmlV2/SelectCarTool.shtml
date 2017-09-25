@@ -75,7 +75,7 @@
                         三厢
                     </a>
                 </li>
-                <li id="wagon1"><a href="/xuanchegongju/?lv=1#anchorTitle" data-channelid="2.94.583">旅行版</a></li>
+                <li id="wagon1"><a href="/xuanchegongju/?b=8#anchorTitle" data-channelid="2.94.583">旅行版</a></li>
             </ul>
         </dd>
     </dl>
@@ -94,13 +94,13 @@
                 </li>
                 <li id="fueltype16"><a href="/xuanchegongju/?f=16#anchorTitle" data-channelid="2.161.1688">纯电动</a></li>
                 <li id="fueltype4">
-                    <a href="/xuanchegongju/?f=4#anchorTitle" class="cSubItem" data-channelid="">插电混合</a>
+                    <a href="/xuanchegongju/?f=128#anchorTitle" class="cSubItem" data-channelid="">插电混合</a>
                 </li>
                 <li id="fueltype2">
                     <a href="/xuanchegongju/?f=2#anchorTitle" class="cSubItem" data-channelid="2.161.1689">油电混合</a>
                 </li>
                 <li id="fueltype32">
-                    <a href="/xuanchegongju/?f=32#anchorTitle" class="cSubItem" data-channelid="">天然气</a>
+                    <a href="/xuanchegongju/?f=256#anchorTitle" class="cSubItem" data-channelid="">天然气</a>
                 </li>
                 <!--<li id="fueltype4">
                     <a href="/xuanchegongju/?f=4#anchorTitle" data-channelid="2.161.1690">
@@ -368,7 +368,7 @@
                 </li>
                 <li>
                     <label>
-                        <input id="more_178" type="checkbox" data-channelid="2.94.653" />胎压监测
+                        <input id="more_179" type="checkbox" data-channelid="2.94.653" />胎压监测
                     </label>
                 </li>
                 <li>

@@ -49,7 +49,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
 
                 sbForApi.Append(carJson);
                 sbForApi.Append("[");
-                GetCarParamData();
+                sbForApi.Append(GetCarParamData());
                 sbForApi.Append("];");
                 jsContent = sbForApi.ToString();
                 GetSerialOptionalPackageData();
@@ -186,8 +186,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
         /// <summary>
         /// 取车型详细参数
         /// </summary>
-        private void GetCarParamData()
+        private string GetCarParamData()
         {
+            return (new Car_BasicBll()).GetValidCarJsObject(listCarID);
+            /*
             if (listCarID.Count > 0)
             {
                 dicCarParam = (new Car_BasicBll()).GetCarCompareDataByCarIDs(listCarID);
@@ -253,7 +255,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 #endregion
 
             }
-
+            */
         }
         /// <summary>
         /// 获取车系选配包json

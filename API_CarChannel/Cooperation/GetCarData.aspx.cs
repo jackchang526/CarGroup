@@ -348,7 +348,7 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
 		//加载XML
 		private XmlDocument LoadXml()
 		{
-			string physicsPath = System.Web.HttpContext.Current.Server.MapPath(@"~/config/CooperationConfig.xml");
+			string physicsPath = System.Web.HttpContext.Current.Server.MapPath(@"~/config/CooperationConfigV2.xml");
 			XmlDocument xmlDoc = null;
 			string cacheName = "BITAUTO_Cooperation_Car_Photo_API";
 			Cache cache = System.Web.HttpContext.Current.Cache;

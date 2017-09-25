@@ -500,6 +500,7 @@
     <Content Include="CarInfo\SerialJsonInfo.aspx" />
     <Content Include="CarInfo\SerialListJson.aspx" />
     <Content Include="config\CooperationConfig.xml" />
+    <Content Include="config\CooperationConfigV2.xml" />
     <Content Include="config\H5SelectSerialList.xml" />
     <Content Include="config\ParameterForJson.xml" />
     <Content Include="config\ParameterForJsonNew.xml" />

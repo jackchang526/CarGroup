@@ -1038,7 +1038,7 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
         private List<string> LoadCoopNameXml()
         {
             List<string> coopNameList = new List<string>();
-            string physicsPath = System.Web.HttpContext.Current.Server.MapPath(@"~/config/CooperationConfig.xml");
+            string physicsPath = System.Web.HttpContext.Current.Server.MapPath(@"~/config/CooperationConfigV2.xml");
             XmlDocument xmlDoc = null;
             string cacheName = "BITAUTO_Cooperation_Coop_Name_List";
             object objCache = CacheManager.GetCachedData(cacheName);

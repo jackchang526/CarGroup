@@ -37,8 +37,7 @@ namespace BitAuto.CarChannel.DAL
                             FROM    dbo.Car_SerialNewsV2 sn WITH ( NOLOCK ) 
 			                            INNER JOIN func_splitid_clustered(@CategoryId,',') c ON c.c1 =sn.CategoryId
                             WHERE   sn.SerialId = @SerialId
-                                    AND sn.CopyRight = 0 
-                                    AND sn.ZbEditor = 1";
+                                    AND sn.CopyRight = 0";
 
             SqlParameter[] param = {
                 new SqlParameter("@SerialId",SqlDbType.Int),
@@ -64,8 +63,7 @@ namespace BitAuto.CarChannel.DAL
                             FROM    dbo.Car_SerialNewsV2 sn
                                     INNER JOIN dbo.func_splitid_clustered(@SerialIds, ',') st ON sn.SerialId = st.c1
                                     INNER JOIN dbo.func_splitid_clustered(@CategoryIds, ',') ct ON sn.CategoryId = ct.c1
-                            WHERE   sn.CopyRight = 0 
-                                    AND sn.ZbEditor = 1";
+                            WHERE   sn.CopyRight = 0";
 
             SqlParameter[] param = {
                 new SqlParameter("@SerialIds",SqlDbType.VarChar),
@@ -406,7 +404,7 @@ ORDER BY PublishTime DESC", param);
                         INNER JOIN dbo.func_splitid_clustered(@SerialIds, ',') st ON sn.SerialId = st.c1
                         INNER JOIN dbo.func_splitid_clustered(@CategoryIds,
                                                               ',') ct ON sn.CategoryId = ct.c1
-                where sn.CopyRight = 0 and sn.ZbEditor=1
+                where sn.CopyRight = 0
                 ORDER BY sn.PublishTime DESC
 
 SELECT TOP (@EndOrder) CmsNewsId, Title, FaceTitle, FilePath, PublishTime, CategoryId, OrderNumber 
@@ -627,7 +625,7 @@ ORDER BY OrderNumber ASC
                         INNER JOIN dbo.func_splitid_clustered(@SerialIds, ',') st ON sn.SerialId = st.c1
                         INNER JOIN dbo.func_splitid_clustered(@CategoryIds,
                                                               ',') ct ON sn.CategoryId = ct.c1
-                where sn.CopyRight = 0 and sn.ZbEditor=1
+                where sn.CopyRight = 0
                 ORDER BY sn.PublishTime DESC
 
 SELECT TOP (@EndOrder) CmsNewsId, Title, FaceTitle, FilePath, PublishTime, CategoryId, OrderNumber 
@@ -802,7 +800,7 @@ ORDER BY OrderNumber ASC"
                         INNER JOIN dbo.Car_NewsV2 n ON sn.CarNewsId = n.Id
                         INNER JOIN dbo.func_splitid_clustered(@SerialIds, ',') st ON sn.SerialId = st.c1
                         INNER JOIN dbo.func_splitid_clustered(@CategoryIds, ',') ct ON sn.CategoryId = ct.c1
-                where sn.CopyRight = 0 and sn.ZbEditor=1
+                where sn.CopyRight = 0
                 ORDER BY sn.PublishTime DESC";
 
             SqlParameter[] param = {
@@ -860,14 +858,14 @@ order by publishtime desc", param);
                 SqlParameter[] param = null;
                 if (year > 0)
                 {
-                    selectSql = "SELECT COUNT(1) FROM Car_SerialNewsV2 sn INNER JOIN dbo.func_splitid_clustered(@CategoryIds,',') ct ON sn.CategoryId = ct.c1 WHERE sn.SerialId = @SerialId  and sn.CopyRight = 0 and sn.ZbEditor=1 AND YearType=@Year";
+                    selectSql = "SELECT COUNT(1) FROM Car_SerialNewsV2 sn INNER JOIN dbo.func_splitid_clustered(@CategoryIds,',') ct ON sn.CategoryId = ct.c1 WHERE sn.SerialId = @SerialId  and sn.CopyRight = 0 AND YearType=@Year";
                     param = new SqlParameter[] {
                         new SqlParameter("@CategoryIds",arrCategoryIds==null?"":string.Join(",", arrCategoryIds)),
                         new SqlParameter("@SerialId", serialId), new SqlParameter("@Year", year) };
                 }
                 else
                 {
-                    selectSql = "SELECT COUNT(1) FROM Car_SerialNewsV2 sn INNER JOIN dbo.func_splitid_clustered(@CategoryIds,',') ct ON sn.CategoryId = ct.c1 WHERE sn.SerialId = @SerialId  and sn.CopyRight = 0 and sn.ZbEditor=1";
+                    selectSql = "SELECT COUNT(1) FROM Car_SerialNewsV2 sn INNER JOIN dbo.func_splitid_clustered(@CategoryIds,',') ct ON sn.CategoryId = ct.c1 WHERE sn.SerialId = @SerialId  and sn.CopyRight = 0";
                     param = new SqlParameter[] {
                         new SqlParameter("@CategoryIds",arrCategoryIds==null?"": string.Join(",", arrCategoryIds)),
                         new SqlParameter("@SerialId", serialId) };
@@ -917,7 +915,7 @@ order by publishtime desc", param);
                         FROM    dbo.Car_SerialNewsV2 sn
                         INNER JOIN dbo.Car_NewsV2 n ON sn.CarNewsId = n.Id
                         INNER JOIN dbo.func_splitid_clustered(@CategoryIds,',') ct ON sn.CategoryId = ct.c1
-                WHERE   sn.SerialId = @SerialId and  sn.CopyRight = 0 and sn.ZbEditor=1 
+                WHERE   sn.SerialId = @SerialId and  sn.CopyRight = 0 
                 ORDER BY sn.PublishTime DESC", param);
             return ds;
         }
@@ -937,7 +935,7 @@ order by publishtime desc", param);
                 @" SELECT TOP ( @Top )  n.NewsId AS CmsNewsId,n.Title, n.Url AS FilePath,n.ShortTitle AS FaceTitle
                         FROM    dbo.Car_SerialNewsV2 sn
                         INNER JOIN dbo.Car_NewsV2 n ON sn.CarNewsId = n.Id
-                   WHERE   sn.SerialId = @SerialId and  sn.CopyRight = 0 and sn.ZbEditor=1 
+                   WHERE   sn.SerialId = @SerialId and  sn.CopyRight = 0 
                    ORDER BY sn.PublishTime DESC", param);
             return ds;
         }
@@ -1099,7 +1097,7 @@ order by publishtime desc", param);
                 FROM    dbo.Car_SerialNewsV2 sn
                         INNER JOIN dbo.Car_NewsV2 n ON sn.CarNewsId = n.Id
                         INNER JOIN dbo.func_splitid_clustered(@CategoryIds,',') ct ON sn.CategoryId = ct.c1
-                where  sn.SerialId = @SerialId and sn.CopyRight = 0 and sn.ZbEditor=1
+                where  sn.SerialId = @SerialId and sn.CopyRight = 0
                 ORDER BY sn.PublishTime DESC  ", param);
             return ds;
         }
@@ -1223,7 +1221,7 @@ order by publishtime desc", param);
                         FROM    dbo.Car_SerialNewsV2 sn
                         INNER JOIN dbo.Car_NewsV2 n ON sn.CarNewsId = n.Id
                         INNER JOIN dbo.func_splitid_clustered(@CategoryIds,',') ct ON sn.CategoryId = ct.c1
-                WHERE   sn.SerialId = @SerialId and  sn.CopyRight = 0 and sn.ZbEditor=1 AND sn.YearType=@CarYear 
+                WHERE   sn.SerialId = @SerialId and  sn.CopyRight = 0 AND sn.YearType=@CarYear 
                 ORDER BY sn.PublishTime DESC", param);
             return ds;
         }
@@ -1693,7 +1691,7 @@ ORDER BY sn.PublishTime DESC", param);
                         FROM    dbo.Car_SerialNewsV2 sn
                         INNER JOIN dbo.Car_NewsV2 n ON sn.CarNewsId = n.Id
                         INNER JOIN dbo.func_splitid_clustered(@{2},',') ct ON sn.CategoryId = ct.c1
-                WHERE   sn.SerialId = @SerialId and  sn.CopyRight = 0 and sn.ZbEditor=1
+                WHERE   sn.SerialId = @SerialId and  sn.CopyRight = 0
                  {1}"
                     , (int)type, (j < types.Count - 1 ? " union all " : string.Empty), type.ToString());
             }

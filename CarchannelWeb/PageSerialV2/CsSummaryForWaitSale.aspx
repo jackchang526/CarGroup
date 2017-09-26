@@ -183,7 +183,7 @@
                 }catch(e){}
             }, "utf-8");
         </script>
-        <script type="text/javascript" src="http://gimg.bitauto.com/js/senseNewFs.js"></script>
+        <script type="text/javascript" src="http://d2.yiche.com/js/senseNewFs.js"></script>
         <!--文章-->
         <div class="row section-layout layout-1">
             <div class="col-xs-9">

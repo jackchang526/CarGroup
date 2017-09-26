@@ -131,11 +131,11 @@
             <a data-channelid="85.6.21" href="#page8">优惠</a>
         </li>--%>
         <li>
-            <a data-channelid="85.6.21" href="#page8">贷款</a>
-        </li>
-        <li>
             <a data-channelid="85.6.22" href="#page9">经销商</a>
         </li>
+        <li>
+            <a data-channelid="85.6.21" href="#page8">贷款</a>
+        </li>        
         <li>
             <a data-channelid="85.6.886" href="#page14">二手车</a>
         </li>
@@ -154,9 +154,9 @@
         <li>
             <a data-channelid="85.6.23" href="#page10">车险</a>
         </li>
-        <li>
+        <%--<li>
             <a data-channelid="85.6.885" href="#page11">养护</a>
-        </li>
+        </li>--%>
         <li>
             <a data-channelid="85.6.887" href="#page12">同级车</a>
         </li>
@@ -392,11 +392,11 @@
         <a data-channelid="85.5.12" onclick="MtaH5.clickStat('ba3');" href="#page8">优惠</a>
     </li>--%>
     <li data-menuanchor="">
-        <a data-channelid="85.5.12" onclick="MtaH5.clickStat('ba3');" href="#page8">贷款</a>
-    </li>
-    <li data-menuanchor="">
         <a data-channelid="85.5.13" onclick="MtaH5.clickStat('ba10');" href="#page9">经销商</a>
     </li>
+    <li data-menuanchor="">
+        <a data-channelid="85.5.12" onclick="MtaH5.clickStat('ba3');" href="#page8">贷款</a>
+    </li>    
     <li data-menuanchor="">
         <a data-channelid="85.5.884" onclick="MtaH5.clickStat('ba4');" href="#page14">二手车</a>
     </li>
@@ -411,8 +411,7 @@
     </li>
     <li data-menuanchor="">
         <a data-channelid="85.5.10" onclick="MtaH5.clickStat('ba8');" href="#page6">点评</a>
-    </li>
-     
+    </li>     
     <%--<li data-menuanchor="">
         <a data-channelid="85.5.1309" onclick="MtaH5.clickStat('ba9');" href="#page11">养护</a>
     </li>--%>
@@ -425,9 +424,9 @@
 <!--第一屏结束-->
 <div class="section page7" data-anchor="page7">
 </div>
-<div class="section page8" data-anchor="page8">
-</div>
 <div class="section page9" data-anchor="page9">
+</div>
+<div class="section page8" data-anchor="page8">
 </div>
 <div class="section page11" data-anchor="page14">
 </div>
@@ -441,8 +440,8 @@
 </div>
 <div class="section page10" data-anchor="page10">
 </div>
-<div class="section page11 yanghu" data-anchor="page11">
-</div>
+<%--<div class="section page11 yanghu" data-anchor="page11">
+</div>--%>
 <div class="section page12" data-anchor="page12">
 </div>
 <!--ending-->
@@ -602,7 +601,7 @@
 <script src="http://image.bitautoimg.com/carchannel/h5/js/plugs/underscore/underscore.js"></script>
 <script src="http://image.bitautoimg.com/carchannel/h5/js/plugs/backbone/backbone.js"></script>
 
-<script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/h5/js/cssummary/userdatamodule.v7.js,carchannel/h5/js/cssummary/ColorModule.v6.js,carchannel/h5/js/cssummary/fullpagemodule.v7.js,carchannel/h5/js/cssummary/userroutersetting.v7.js?201707171746"></script>
+<script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/h5/js/cssummary/userdatamodule.v7.js,carchannel/h5/js/cssummary/ColorModule.v6.js,carchannel/h5/js/cssummary/fullpagemodule.v7.js,carchannel/h5/js/cssummary/userroutersetting.v7.js?201709201146"></script>
 
 <%--<script src="/Scripts/cssummary/userdatamodule.v7.js"></script>
 <script src="/Scripts/cssummary/ColorModule.v6.js"></script>

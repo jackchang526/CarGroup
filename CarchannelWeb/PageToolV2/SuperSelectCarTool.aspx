@@ -1541,7 +1541,7 @@
                     <li class=""><a href="javascript:;" data-target="params-bodyparts">外部配置</a></li>
                     <li class=""><a href="javascript:;" data-target="params-innerconfig">内部配置</a></li>
                     <li class=""><a href="javascript:;" data-target="params-seatconfig">座椅配置</a></li>
-                    <li class=""><a href="javascript:;" data-target="params-pastime">娱乐通讯</a></li>
+                    <li class=""><a href="javascript:;" data-target="params-pastime">信息娱乐</a></li>
                 </ul>
                 <a style="display: none;" id="close-left-nav" class="close-left-nav" href="javascript:;">关闭浮层</a>
             </div>

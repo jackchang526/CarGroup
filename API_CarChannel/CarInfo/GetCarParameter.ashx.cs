@@ -41,9 +41,9 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 
  			GetPageParam();
             StringBuilder sb = new StringBuilder();
-            sb.Append(" var carCompareJson = [");
+            sb.Append(" var carCompareJson = ");
             sb.Append(GetCarParamData());
-            sb.Append("];");
+            //sb.Append("];");
 
             response.Write(sb.ToString());
 		}

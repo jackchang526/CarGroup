@@ -48,9 +48,9 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 this.GetCarDataAndSerialData();
 
                 sbForApi.Append(carJson);
-                sbForApi.Append("[");
+                //sbForApi.Append("[");
                 sbForApi.Append(GetCarParamData());
-                sbForApi.Append("];");
+                //sbForApi.Append("];");
                 jsContent = sbForApi.ToString();
                 GetSerialOptionalPackageData();
             }

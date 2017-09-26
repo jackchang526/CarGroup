@@ -285,7 +285,7 @@ function bindEvent() {
         }
     });
     //选配包事件
-    bindOptionalEvent();
+   // bindOptionalEvent();
 }
 //选配包弹层
 function bindOptionalEvent() {
@@ -295,42 +295,7 @@ function bindOptionalEvent() {
         $('.pop-optional').hide().removeClass('pop-optional-top pop-optional-bottom').find('ul').hide();
     });
 
-    $('.optional.type1').off("click").on("click", function (e) {        e.stopPropagation();        var data = $(this).attr("data-optional");        if (data == "undefined" || data == "") return;        var fieldValue = data.split(',');
-        var dataJson = [];
-        for (var fieldIndex = 0; fieldIndex < fieldValue.length; fieldIndex++) {
-            var fieldOptional = fieldValue[fieldIndex].split('|');
-            if (fieldOptional.length > 1) {
-                dataJson.push(JSON.parse("{\"text\":\"" + fieldOptional[0] + "\",\"price\":" + fieldOptional[1] + "}"));
-            }
-            else {
-                dataJson.push(JSON.parse("{\"text\":\"" + fieldOptional[0] + "\"}"));
-            }
-        }        //var dataJson = JSON.parse(data);        var h = new Array();        h.push("<ul>");
-        for (var i = 0; i < dataJson.length; i++) {
-            h.push("<li><span class=\"l\">" + dataJson[i].text + "</span>");
-            if (typeof (dataJson[i].price) != "undefined") {
-                h.push("<span class=\"r\">￥" + formatCurrency(dataJson[i].price) + "</span>");
-            }
-            h.push("</li > ");
-        }
-        h.push("</ul>");        var halfScreenHeight = $(window).height() / 2;        var $popOptional = $('.pop-optional');        var thisTop = $(this).offset().top;
-        var thisLeft = $(this).offset().left;        $popOptional.html(h.join(""));        $('body').css('overflow', 'hidden');
-        var popOptionalHeight = $popOptional.height();
-        if (e.clientY < halfScreenHeight) {
-            $popOptional.css({
-                'top': (thisTop + 30),
-                'left': (thisLeft - 100)
-            });
-            $popOptional.addClass('pop-optional-top');
-        } else {
-            $popOptional.css({
-                'top': (thisTop - popOptionalHeight - 15),
-                'left': (thisLeft - 100)
-            });
-            $popOptional.addClass('pop-optional-bottom');
-        }
-        $('.pop-optional-mask').show();
-        $popOptional.show();    });}
+    }
 
 function createEmptyTable() {
     var flag = false;
@@ -1069,7 +1034,7 @@ function fieldMultiValue(arrFieldRow) {
                     for (var optIndex = 0; optIndex < optionalJson.length; optIndex++) {
                         arrTemp.push("<div class=\"optional type2\">");
                         arrTemp.push("<div class=\"l\"><i>○</i>" + optionalJson[optIndex].text + "</div>");
-                        arrTemp.push("<div class=\"r\">" + formatCurrency(optionalJson[0].price) + "元</div>");
+                        arrTemp.push("<div class=\"r\">" + formatCurrency(optionalJson[optIndex].price) + "元</div>");
                         arrTemp.push("</div>");
                     }
                 }
@@ -1578,7 +1543,7 @@ var arrField = [
     { sFieldTitle: "第三排座椅", sType: "fieldPara", sPid: "805", sTrPrefix: "9", sFieldIndex: "12", unit: "", joinCode: "" },
     { sFieldTitle: "座椅放倒方式", sType: "fieldPara", sPid: "482", sTrPrefix: "9", sFieldIndex: "13", unit: "", joinCode: "" },
     { sFieldTitle: "后排杯架", sType: "fieldPara", sPid: "474", sTrPrefix: "9", sFieldIndex: "14", unit: "", joinCode: "" },
-    { sFieldTitle: "后排折叠桌版", sType: "fieldPara", sPid: "1032", sTrPrefix: "9", sFieldIndex: "15", unit: "", joinCode: "" },
+    { sFieldTitle: "后排折叠桌板", sType: "fieldPara", sPid: "1032", sTrPrefix: "9", sFieldIndex: "15", unit: "", joinCode: "" },
 
     { sFieldTitle: "信息娱乐", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-pastime" },
     { sFieldTitle: "中控彩色液晶屏", sType: "fieldMultiValue", sPid: "488", sTrPrefix: "10", sFieldIndex: "0", unit: "", joinCode: "" },

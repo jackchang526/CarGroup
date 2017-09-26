@@ -5943,7 +5943,65 @@ namespace BitAuto.CarChannel.Common
             }
             return dic;
         }
-        
+
+        /// <summary>
+        /// 车型参数模板
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<int, List<string>> GetCarParameterJsonConfigNewV2()
+        {
+            Dictionary<int, List<string>> dic = new Dictionary<int, List<string>>();
+            string cacheKey = "PageBase_GetCarParameterJsonConfigNewV2";
+            object getCarParameterJsonConfig = CacheManager.GetCachedData(cacheKey);
+            if (getCarParameterJsonConfig != null)
+            {
+                dic = (Dictionary<int, List<string>>)getCarParameterJsonConfig;
+            }
+            else
+            {
+                string fileName = Server.MapPath("~") + "\\config\\ParameterForJsonNewV2.xml";
+                if (File.Exists(fileName))
+                {
+                    XmlDocument doc = new XmlDocument();
+                    doc.Load(fileName);
+                    if (doc != null && doc.HasChildNodes)
+                    {
+                        XmlNodeList xnl = doc.SelectNodes("/Param/Group");
+                        if (xnl != null && xnl.Count > 0)
+                        {
+                            int i = 0;
+                            foreach (XmlNode xnCate in xnl)
+                            {
+                                // 大分类
+                                if (xnCate.ChildNodes.Count > 0)
+                                {
+                                    List<string> lp = new List<string>();
+                                    // 分类内项
+                                    foreach (XmlNode xn in xnCate.ChildNodes)
+                                    {
+                                        if (xn.NodeType == XmlNodeType.Element
+                                            && !lp.Contains(xn.Attributes["Value"].Value.ToString()))
+                                        {
+                                            lp.Add(xn.Attributes["Value"].Value.ToString());
+                                        }
+                                    }
+                                    if (!dic.ContainsKey(i))
+                                    {
+                                        dic.Add(i, lp);
+                                    }
+                                }
+                                i++;
+                            }
+                        }
+                    }
+                    CacheDependency cacheDependency = new CacheDependency(fileName);
+                    CacheManager.InsertCache(cacheKey, dic, cacheDependency, DateTime.Now.AddMinutes(WebConfig.CachedDuration));
+                }
+            }
+            return dic;
+        }
+
+
         /// <summary>
         /// 车型参数模板
         /// </summary>

@@ -505,6 +505,7 @@
     <Content Include="config\ParameterForJson.xml" />
     <Content Include="config\ParameterForJsonNew.xml" />
     <Content Include="App_Data\css\GetCarhtml\main.css" />
+    <Content Include="config\ParameterForJsonNewV2.xml" />
     <Content Include="Cooperation\GetCarData.aspx" />
     <Content Include="Cooperation\script\GetCarhtml\main.js" />
     <Content Include="Cooperation\script\GetCarhtml\renderMobileSerialListForBaidu.js" />

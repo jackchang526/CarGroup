@@ -596,11 +596,14 @@ var SelectCarTool = {
 		                more += "208_209_";
                     }
                     //自动空调-前排自动空调;双温区自动空调
-                    else if (key.indexOf("244") > -1) {
+                    if (key.indexOf("244") > -1) {
                         more = more + "245_";
                     }
-                    else if (key.indexOf("246") > -1) {
+                    if (key.indexOf("246") > -1) {
                         more = more + "247_248_";
+                    }
+                    if (key.indexOf("197") > -1) {
+                        mc = mc + "_198";
                     }
 		        }
 		    }

@@ -1264,7 +1264,7 @@ namespace BitAuto.CarChannel.BLL
 				
             StringBuilder sbForApi = new StringBuilder();
             Dictionary<int, Dictionary<string, string>> dicCarParam = GetCarCompareDataWithOptionalByCarIDs(carIdList);
-            Dictionary<int, List<string>> dicTemp = new Common.PageBase().GetCarParameterJsonConfigNew();
+            Dictionary<int, List<string>> dicTemp = new Common.PageBase().GetCarParameterJsonConfigNewV2();
             if (dicTemp != null && dicTemp.Count > 0)
             {
                 int loopCar = 0;

@@ -579,6 +579,9 @@ var conditionObj =
                 if (this.MoreCondition.indexOf("246") > -1 && isApi) {
                     mc = mc + "_247_248";
                 }
+                if (this.MoreCondition.indexOf("197") > -1 && isApi){
+                    mc = mc + "_198";
+                }
                 ////四轮碟刹
                 //if (this.MoreCondition.indexOf("141") > -1 && isApi) {
                 //    mc = mc + "_144_143_145_146_148_149_150";

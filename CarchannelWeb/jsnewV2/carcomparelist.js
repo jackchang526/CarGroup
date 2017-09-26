@@ -1416,7 +1416,7 @@ function fieldMultiValue(arrFieldRow) {
                     for (var optIndex = 0; optIndex < optionalJson.length; optIndex++) {
                         arrTemp.push("<div class=\"optional type2\">");
                         arrTemp.push("<div class=\"l\"><i>○</i>" + optionalJson[optIndex].text + "</div>");
-                        arrTemp.push("<div class=\"r\">" + formatCurrency(optionalJson[0].price) + "元</div>");
+                        arrTemp.push("<div class=\"r\">" + formatCurrency(optionalJson[optIndex].price) + "元</div>");
                         arrTemp.push("</div>");
                     }
                 }
@@ -2886,7 +2886,7 @@ var arrField = [
     { sFieldTitle: "第三排座椅", sType: "fieldPara", sPid: "805", sTrPrefix: "9", sFieldIndex: "12", unit: "", joinCode: "" },
     { sFieldTitle: "座椅放倒方式", sType: "fieldPara", sPid: "482", sTrPrefix: "9", sFieldIndex: "13", unit: "", joinCode: "" },
     { sFieldTitle: "后排杯架", sType: "fieldPara", sPid: "474", sTrPrefix: "9", sFieldIndex: "14", unit: "", joinCode: "" },
-    { sFieldTitle: "后排折叠桌版", sType: "fieldPara", sPid: "1032", sTrPrefix: "9", sFieldIndex: "15", unit: "", joinCode: "" },
+    { sFieldTitle: "后排折叠桌板", sType: "fieldPara", sPid: "1032", sTrPrefix: "9", sFieldIndex: "15", unit: "", joinCode: "" },
 
     { sFieldTitle: "信息娱乐", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-pastime" },
     { sFieldTitle: "中控彩色液晶屏", sType: "fieldMultiValue", sPid: "488", sTrPrefix: "10", sFieldIndex: "0", unit: "", joinCode: "" },

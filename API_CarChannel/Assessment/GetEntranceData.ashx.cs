@@ -122,7 +122,9 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 DynamicPerformanceGroupScore = DynamicPerformanceGroupScore,
                 JsBaseGroupScore = JsBaseGroupScore,
                 YhBaseGroupScore = YhBaseGroupScore,
-                CostBaseGroupScore = CostBaseGroupScore
+                CostBaseGroupScore = CostBaseGroupScore,
+                Url = string.Format("http://pingce.bitauto.com/details/{0}-2.html", EId),
+                MUrl = string.Format("http://pingce.m.yiche.com/details/{0}-2.html", EId)
             };
             var json = JsonConvert.SerializeObject(data);
             context.Response.Write(!string.IsNullOrEmpty(callback) ? string.Format("{0}({1})", callback, json) : json);

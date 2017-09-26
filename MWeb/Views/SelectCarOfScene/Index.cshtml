@@ -17,16 +17,22 @@
     <!--#include file="/ushtml/0000/myiche2016_cube_qingjingxuanche-1184.shtml"-->
 </head>
 <body>
+    @Html.Partial("~/html/TopDownloadLayer.cshtml")
+    @Html.Partial("/html/WTParams.cshtml")
     <div class="mbt-page">
         <!-- header start -->
         <div class="op-nav">
             <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
-
             <div class="tt-name">
                 <a href="http://m.yiche.com/" class="yiche-logo">汽车</a><h1>选车</h1>
             </div>
             <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
         </div>
+        <script type="text/javascript">
+            if (typeof (WtFrom) != "undefined" && WtFrom == "mcfw99") {
+               $(".op-nav").hide();
+           }
+        </script>
         <!-- header end -->
         <div class="brandfilter">
             <!-- 标签切换 start -->

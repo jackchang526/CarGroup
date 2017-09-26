@@ -156,7 +156,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
 			if (dictUCarPrice.ContainsKey(carYear))
 				serialUCarPrice = dictUCarPrice[carYear];
 			//贷款的链接
-			chedaiADLink = "http://www.daikuan.com/www/" + serialSpell + "/?from=yc9";
+			chedaiADLink = "http://fenqi.taoche.com/www/" + serialSpell + "/?from=yc9";
 			// 子品牌车贷广告
 			Dictionary<string, List<LinkADForCs>> dicLinkAD = _serialBLL.GetLinkAD();
 			if (dicLinkAD.ContainsKey("AD_CsSummaryForCheDai")

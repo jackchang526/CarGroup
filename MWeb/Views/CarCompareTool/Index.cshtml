@@ -15,6 +15,7 @@
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/WirelessJsv2/CommonJs.js?v=20130606"></script>
 </head>
 <body>
+    @Html.Partial("~/html/TopDownloadLayer.cshtml")
     <div id="container">
         <!--新加弹出层 start-->
         <div id="master_container" style="z-index: 888888; display: none" class="brandlayer mthead">
@@ -58,6 +59,9 @@
             <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
         </div>
     </div>
+    <!--选装包弹层-->
+    <div class="pop-optional-mask" style="display:none;"></div>
+    <div class="pop-optional" style="display:none;"></div>
     <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery-1.9.1.min.js"></script>
 
@@ -68,16 +72,16 @@
     </script>
 
     <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.js,carchannel/wirelessjsv2/v2/underscore.js,carchannel/wirelessjsv2/v2/model.js,carchannel/wirelessjsv2/v2/rightswipe.js,carchannel/wirelessjsv2/v2/note.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/addcompareV2.js?v=20170105"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/carcomparetoolV2.min.js?v=20170719"></script>
-    @*<script type="text/javascript" src="/js/carcomparetoolV2.js?v=20160713"></script>*@
+    @*<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/carcomparetoolV2.min.js?v=20170719"></script>*@
+    <script type="text/javascript" src="/js/carcomparetoolV2.js?v=20160713"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsStat/CarCompareStatForWireless.js?201412"></script>
     <script type="text/javascript">
-        function initCarInfo(carId) {
-            loadJS.push("http://api.car.bitauto.com/CarInfo/GetCarParameter.ashx?isParamPage=1&carids=" + carId, "utf-8", function () {
-                initPageForCompare();
-            });
-        }
-        initCarInfo('@(Request.QueryString["carIDs"])');
+    function initCarInfo(carId) {
+        loadJS.push("http://test.api.car.bitauto.com/CarInfo/GetCarParameter.ashx?isParamPage=1&carids=" + carId, "utf-8", function () {
+            initPageForCompare();
+        });
+    }
+    initCarInfo('@(Request.QueryString["carIDs"])');
     </script>
 </body>
 </html>

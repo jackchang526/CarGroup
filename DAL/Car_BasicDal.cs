@@ -624,11 +624,62 @@ left join Car_Serial cs on car.Cs_Id=cs.cs_id where car.Car_Id=@carid";
 			return ds;
 		}
 
-		/// <summary>
-		/// 取所有参数ID与英文名对于表
-		/// </summary>
-		/// <returns></returns>
-		public DataSet GetAllParamAliasName()
+        /// <summary>
+        /// 获取车款选装参数
+        /// </summary>
+        /// <param name="carIds"></param>
+        /// <returns></returns>
+        public DataSet GetCarOptionalForCompare(string carIDs)
+        {
+            SqlParameter[] param = {
+                                new SqlParameter("@carids",SqlDbType.Structured)
+                                   };
+            DataSet ds = new DataSet();
+
+            #region modified by chengl Dec.17.2013 改成表值参数传递
+            DataTable dt = new DataTable();
+            if (!string.IsNullOrEmpty(carIDs))
+            {
+                List<int> carList = new List<int>();
+                dt.Columns.Add("CarID", typeof(int));
+                string[] carArray = carIDs.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                if (carArray.Length > 0)
+                {
+                    foreach (string idStr in carArray)
+                    {
+                        int id = 0;
+                        if (int.TryParse(idStr.Trim(), out id))
+                        {
+                            if (id > 0 && !carList.Contains(id))
+                            { carList.Add(id); }
+                        }
+                    }
+                }
+                if (carList.Count > 0)
+                {
+                    foreach (int id in carList)
+                    {
+                        DataRow dr = dt.NewRow();
+                        dr["CarID"] = id;
+                        dt.Rows.Add(dr);
+                    }
+                }
+            }
+            #endregion
+
+            if (dt.Rows.Count > 0)
+            {
+                param[0].Value = dt;
+                ds = BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.AutoStorageConnectionString, CommandType.StoredProcedure, "[Dts_CarOptionalForCompare]", param);
+            }
+            return ds;
+        }
+
+        /// <summary>
+        /// 取所有参数ID与英文名对于表
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetAllParamAliasName()
 		{
 			string sql = "select ParamId,AliasName from dbo.ParamList where isState=1";
 			DataSet ds = new DataSet();

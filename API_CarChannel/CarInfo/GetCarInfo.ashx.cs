@@ -17,6 +17,8 @@ using BitAuto.CarChannelAPI.Web.AppCode;
 using BitAuto.CarChannel.DAL;
 using BitAuto.CarChannel.BLL.Data;
 using System.Data.SqlClient;
+using BitAuto.Utils.Data;
+using Newtonsoft.Json;
 
 namespace BitAuto.CarChannelAPI.Web.CarInfo
 {
@@ -98,9 +100,97 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                 case "getgroupcarlistbyserialid": PageHelper.SetPageCache(30); RenderGroupCarListBySerialId(); break;
                 case "getcarcomparelist": PageHelper.SetPageCache(60); RenderGetCarCompareList(); break;
                 case "getcarcalcinfo": PageHelper.SetPageCache(60); RenderGetCarCalcInfo(); break;
-                case "getcartaxinfo": PageHelper.SetPageCache(60); RenderGetCarTaxInfo(); break;
+                case "getcartaxinfo": PageHelper.SetPageCache(60); RenderGetCarParamInfo(); break;
+                case "getcarparamforpc": PageHelper.SetPageCache(60); RenderGetCarParamInfoForEValuation(); break;
                 default: CommonFunction.EchoXml(response, "<!-- 缺少参数 -->", ""); break;
             }
+        }
+
+        private void RenderGetCarParamInfoForEValuation()
+        {
+            response.ContentType = "application/x-javascript";
+            string result = "{}";
+            string callback = request.QueryString["callback"];
+            int carId = ConvertHelper.GetInteger(request.QueryString["carid"]);
+            if (carId <= 0)
+            {
+                response.Write(!string.IsNullOrEmpty(callback) ? string.Format("{0}({1})", callback, result) : result);
+                return;
+            }
+            string sql = @"WITH    result
+                              AS(SELECT   CarId, [835], [845], [680], [691], [714], [715], [833],
+                                            [898], [818], [811], [812], [813], [702], [800], [703],
+                                            [624], [518], [576], [577], [578], [579], [782], [788],
+                                             [398],[665],[470],[471],[663],[495]
+                                   FROM(SELECT    CarId, ParamId, Pvalue
+                                              FROM      dbo.CarDataBase
+                                              WHERE     CarId = @CarId
+                                            ) AS T1 PIVOT(MAX(Pvalue) FOR ParamId IN( [835],
+                                                                                  [845], [680],
+                                                                                  [691], [714],
+                                                                                  [715], [833],
+                                                                                  [898], [818],
+                                                                                  [811], [812],
+                                                                                  [813], [702],
+                                                                                  [800], [703],
+                                                                                  [624], [518],
+                                                                                  [576], [577],
+                                                                                  [578], [579],
+                                                                                  [782], [788],
+                                                                                   [398],[665],[470],[471],[663],[495])) AS T2
+                                 )
+                        SELECT car.car_ReferPrice,Car_Name,result.*
+                       FROM    dbo.Car_relation car
+                                LEFT JOIN result ON result.CarId = car.Car_Id
+                        WHERE car.IsState = 0 AND car.Car_Id = @CarId";
+            SqlParameter[] _params = {
+                                         new SqlParameter("@CarId",SqlDbType.Int),
+                                     };
+            _params[0].Value = carId;
+            DataSet ds = SqlHelper.ExecuteDataset(WebConfig.AutoStorageConnectionString, CommandType.Text, sql, _params);
+            if (ds != null && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
+            {
+                DataRow dr = ds.Tables[0].Rows[0];
+
+                var obj = new
+                {
+                    CarId = dr["CarId"],
+                    CarName = CommonFunction.GetUnicodeByString(ConvertHelper.GetString(dr["Car_Name"])),
+                    ReferPrice = dr["car_ReferPrice"],
+                    Safe_KneeGasBag = dr["835"],
+                    InStat_BeltBag = dr["845"],
+                    Safe_BsadGasbag = dr["680"],
+                    Safe_FsadGasbag = dr["691"],
+                    UnderPan_TyrePressureWatcher = dr["714"],
+                    UnderPan_ZeroPressureDrive = dr["715"],
+                    InStat_BSeatTuneType = dr["833"],
+                    InStat_blindspotdetection = dr["898"],
+                    InStat_ActiveSafetySystems = dr["818"],
+                    InStat_AutoPark = dr["811"],
+                    InStat_UphillAuxiliary = dr["812"],
+                    InStat_HDC = dr["813"],
+                    UnderPan_RRadarAfter = dr["702"],
+                    UnderPan_PRadarBefore = dr["800"],
+                    UnderPan_RImage = dr["703"],
+                    OutStat_ReMirrorHot = dr["624"],
+                    InStat_Hud = dr["518"],
+                    Oil_FuelCapacity = dr["576"],
+                    Oil_FuelTab = dr["577"],
+                    Oil_FuelType = dr["578"],
+                    Oil_SboxSpace = dr["579"],
+                    Perf_ZongHeYouHao = dr["782"],
+                    Perf_MeasuredFuel = dr["788"],
+                    Car_RepairPolicy = dr["398"],
+                    Perf_SeatNum = dr["665"],
+                    InStat_AirCSystem = dr["470"],
+                    InStat_AirCType =dr["471"],
+                    Perf_MaxSpeed=dr["663"],
+                    InStat_ChildSeatFix= dr["495"]
+                };
+
+                result = JsonConvert.SerializeObject(obj);
+            }
+            response.Write(!string.IsNullOrEmpty(callback) ? string.Format("{0}({1})", callback, result) : result);
         }
 
         /// <summary>
@@ -404,9 +494,9 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 														AND car.cs_id = @SerialId {0} 
 												ORDER BY car.Car_YearType DESC, cei.Engine_Exhaust", (isAllSale ? "" : " AND car.Car_SaleState='在销' "));
 
-                SqlParameter[] _params = { 
-										 new SqlParameter("@SerialId",SqlDbType.Int),
-									 };
+                SqlParameter[] _params = {
+                                         new SqlParameter("@SerialId",SqlDbType.Int),
+                                     };
                 _params[0].Value = csid;
                 DataSet ds = BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sqlGet, _params);
                 if (ds != null && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
@@ -1073,12 +1163,12 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
         /// </summary>
         private void RenderAllCarByYear()
         {
-			bool onlySale = false;
-			string isOnlySale = request.QueryString["isOnlySale"];
-			if (!string.IsNullOrEmpty(isOnlySale) && isOnlySale == "1")
-			{ onlySale = true; }
+            bool onlySale = false;
+            string isOnlySale = request.QueryString["isOnlySale"];
+            if (!string.IsNullOrEmpty(isOnlySale) && isOnlySale == "1")
+            { onlySale = true; }
             int csid = ConvertHelper.GetInteger(request.QueryString["csid"]);
-			DataSet ds = carBll.GetCarListGroupbyYear(csid, onlySale);
+            DataSet ds = carBll.GetCarListGroupbyYear(csid, onlySale);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 string currentCS = "";
@@ -1478,7 +1568,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
         /// <summary>
         /// 车船税购置税减免数据
         /// </summary>
-        private void RenderGetCarTaxInfo()
+        private void RenderGetCarParamInfo()
         {
             int csId = ConvertHelper.GetInteger(request.QueryString["csid"]);
             string sql = string.Format(@"SELECT  car.Car_Id, car.cs_id, cdb.Pvalue AS Engine_Exhaust,

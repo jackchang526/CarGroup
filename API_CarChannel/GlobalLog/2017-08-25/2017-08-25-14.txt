@@ -1,0 +1,36 @@
+[2017/8/25 14:49:41]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2449
+Ref: 
+Error Message: Cannot deserialize string from BsonType Document.
+Stack Trace:    在 MongoDB.Bson.Serialization.Serializers.StringSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.Serializers.EnumerableSerializerBase`1.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/25 14:50:27]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2449
+Ref: 
+Error Message: Cannot deserialize string from BsonType Document.
+Stack Trace:    在 MongoDB.Bson.Serialization.Serializers.StringSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.Serializers.EnumerableSerializerBase`1.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/25 14:50:45]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2449
+Ref: 
+Error Message: Cannot deserialize string from BsonType Document.
+Stack Trace:    在 MongoDB.Bson.Serialization.Serializers.StringSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.Serializers.EnumerableSerializerBase`1.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/25 14:52:06]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2449
+Ref: 
+Error Message: Cannot deserialize string from BsonType Document.
+Stack Trace:    在 MongoDB.Bson.Serialization.Serializers.StringSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.Serializers.EnumerableSerializerBase`1.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+

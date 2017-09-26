@@ -159,6 +159,7 @@
     <Content Include="config\PagerConfig.xml" />
     <Content Include="config\ParameterForJson.xml" />
     <Content Include="config\ParameterForJsonNew.xml" />
+    <Content Include="config\ParameterForJsonNewV2.xml" />
     <Content Include="config\PhotoCompareStruct.xml" />
     <Content Include="config\VR.xml" />
     <Content Include="CsRegionSEOSiteMap.aspx" />
@@ -1024,6 +1025,7 @@
     <Content Include="jsnewV2\jquery.lazyload.min.js" />
     <Content Include="jsnewV2\jquery.qrcode.js" />
     <Content Include="jsnewV2\JsForParameter.js" />
+    <Content Include="jsnewV2\JsForParameterV2.js" />
     <Content Include="jsnewV2\knob.extend.js" />
     <Content Include="jsnewV2\KouBeiCompare.js" />
     <Content Include="jsnewV2\newsViewCount.js" />
@@ -1220,6 +1222,7 @@
     <Content Include="PageToolV2\CarPhotoCompareList.aspx" />
     <Content Include="PageToolV2\SerialCompareForPK.aspx" />
     <Content Include="PageToolV2\SuperSelectCarTool.aspx" />
+    <Content Include="PageToolV2\SuperSelectCarToolV2.aspx" />
     <Content Include="PageTool\CalcAutoCashTool.aspx" />
     <Content Include="PageTool\CalcAutoLoanTool.aspx" />
     <Content Include="PageTool\CalcInsuranceTool.aspx" />
@@ -2994,6 +2997,13 @@
     </Compile>
     <Compile Include="PageToolV2\SuperSelectCarTool.aspx.designer.cs">
       <DependentUpon>SuperSelectCarTool.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageToolV2\SuperSelectCarToolV2.aspx.cs">
+      <DependentUpon>SuperSelectCarToolV2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageToolV2\SuperSelectCarToolV2.aspx.designer.cs">
+      <DependentUpon>SuperSelectCarToolV2.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageTool\CalcAutoCashTool.aspx.cs">
       <DependentUpon>CalcAutoCashTool.aspx</DependentUpon>

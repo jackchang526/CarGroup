@@ -1,0 +1,216 @@
+[2017/8/25 10:06:19]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973&callback=success_jsonpCallback_getEntranceData&_=1503626779798
+Ref: http://car26.bitauto.com/lingdu/?k=o0
+Error Message: 远程主机强迫关闭了一个现有的连接。
+Stack Trace:    在 System.Net.Sockets.Socket.Send(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   在 System.Net.Sockets.NetworkStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+
+[2017/8/25 10:06:25]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973&callback=success_jsonpCallback_getEntranceData&_=1503626784144
+Ref: http://car26.bitauto.com/lingdu/?k=o0
+Error Message: 由于目标计算机积极拒绝，无法连接。 192.168.0.128:27017
+Stack Trace:    在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Net.Sockets.TcpClient.Connect(IPEndPoint remoteEP)
+   在 MongoDB.Driver.Internal.MongoConnection.Open()
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(BsonBuffer buffer, Int32 requestId)
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(MongoRequestMessage message)
+   在 MongoDB.Driver.Operations.CommandOperation`1.Execute(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Ping(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Connect()
+   在 MongoDB.Driver.Internal.DirectMongoServerProxy.Connect(TimeSpan timeout, ReadPreference readPreference)
+
+[2017/8/25 10:07:08]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973&callback=success_jsonpCallback_getEntranceData&_=1503626807110
+Ref: http://car26.bitauto.com/lingdu/?k=o0
+Error Message: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.0.128:27017
+Stack Trace:    在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Net.Sockets.TcpClient.Connect(IPEndPoint remoteEP)
+   在 MongoDB.Driver.Internal.MongoConnection.Open()
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(BsonBuffer buffer, Int32 requestId)
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(MongoRequestMessage message)
+   在 MongoDB.Driver.Operations.CommandOperation`1.Execute(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Ping(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Connect()
+   在 MongoDB.Driver.Internal.DirectMongoServerProxy.Connect(TimeSpan timeout, ReadPreference readPreference)
+
+[2017/8/25 10:08:11]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973&callback=success_jsonpCallback_getEntranceData&_=1503626870222
+Ref: http://car26.bitauto.com/lingdu/?k=o0
+Error Message: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.0.128:27017
+Stack Trace:    在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Net.Sockets.TcpClient.Connect(IPEndPoint remoteEP)
+   在 MongoDB.Driver.Internal.MongoConnection.Open()
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(BsonBuffer buffer, Int32 requestId)
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(MongoRequestMessage message)
+   在 MongoDB.Driver.Operations.CommandOperation`1.Execute(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Ping(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Connect()
+   在 MongoDB.Driver.Internal.DirectMongoServerProxy.Connect(TimeSpan timeout, ReadPreference readPreference)
+
+[2017/8/25 10:08:38]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973&callback=success_jsonpCallback_getEntranceData&_=1503626896932
+Ref: http://car26.bitauto.com/lingdu/?k=o0
+Error Message: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.0.128:27017
+Stack Trace:    在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Net.Sockets.TcpClient.Connect(IPEndPoint remoteEP)
+   在 MongoDB.Driver.Internal.MongoConnection.Open()
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(BsonBuffer buffer, Int32 requestId)
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(MongoRequestMessage message)
+   在 MongoDB.Driver.Operations.CommandOperation`1.Execute(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Ping(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Connect()
+   在 MongoDB.Driver.Internal.DirectMongoServerProxy.Connect(TimeSpan timeout, ReadPreference readPreference)
+
+[2017/8/25 10:10:46]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973&callback=success_jsonpCallback_getEntranceData&_=1503627025442
+Ref: http://car26.bitauto.com/lingdu/?k=o0
+Error Message: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.0.128:27017
+Stack Trace:    在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Net.Sockets.TcpClient.Connect(IPEndPoint remoteEP)
+   在 MongoDB.Driver.Internal.MongoConnection.Open()
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(BsonBuffer buffer, Int32 requestId)
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(MongoRequestMessage message)
+   在 MongoDB.Driver.Operations.CommandOperation`1.Execute(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Ping(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Connect()
+   在 MongoDB.Driver.Internal.DirectMongoServerProxy.Connect(TimeSpan timeout, ReadPreference readPreference)
+
+[2017/8/25 10:11:14]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973&callback=success_jsonpCallback_getEntranceData&_=1503627052584
+Ref: http://car26.bitauto.com/lingdu/?k=o0
+Error Message: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.0.128:27017
+Stack Trace:    在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Net.Sockets.TcpClient.Connect(IPEndPoint remoteEP)
+   在 MongoDB.Driver.Internal.MongoConnection.Open()
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(BsonBuffer buffer, Int32 requestId)
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(MongoRequestMessage message)
+   在 MongoDB.Driver.Operations.CommandOperation`1.Execute(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Ping(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Connect()
+   在 MongoDB.Driver.Internal.DirectMongoServerProxy.Connect(TimeSpan timeout, ReadPreference readPreference)
+
+[2017/8/25 10:11:35]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973&callback=success_jsonpCallback_getEntranceData&_=1503627072400
+Ref: http://car26.bitauto.com/lingdu/?k=o0
+Error Message: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.0.128:27017
+Stack Trace:    在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Net.Sockets.TcpClient.Connect(IPEndPoint remoteEP)
+   在 MongoDB.Driver.Internal.MongoConnection.Open()
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(BsonBuffer buffer, Int32 requestId)
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(MongoRequestMessage message)
+   在 MongoDB.Driver.Operations.CommandOperation`1.Execute(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Ping(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Connect()
+   在 MongoDB.Driver.Internal.DirectMongoServerProxy.Connect(TimeSpan timeout, ReadPreference readPreference)
+
+[2017/8/25 10:12:07]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973&callback=success_jsonpCallback_getEntranceData&_=1503627105909
+Ref: http://car26.bitauto.com/langyi/
+Error Message: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.0.128:27017
+Stack Trace:    在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Net.Sockets.TcpClient.Connect(IPEndPoint remoteEP)
+   在 MongoDB.Driver.Internal.MongoConnection.Open()
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(BsonBuffer buffer, Int32 requestId)
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(MongoRequestMessage message)
+   在 MongoDB.Driver.Operations.CommandOperation`1.Execute(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Ping(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Connect()
+   在 MongoDB.Driver.Internal.DirectMongoServerProxy.Connect(TimeSpan timeout, ReadPreference readPreference)
+
+[2017/8/25 10:12:28]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973
+Ref: 
+Error Message: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.0.128:27017
+Stack Trace:    在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Net.Sockets.TcpClient.Connect(IPEndPoint remoteEP)
+   在 MongoDB.Driver.Internal.MongoConnection.Open()
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(BsonBuffer buffer, Int32 requestId)
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(MongoRequestMessage message)
+   在 MongoDB.Driver.Operations.CommandOperation`1.Execute(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Ping(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Connect()
+   在 MongoDB.Driver.Internal.DirectMongoServerProxy.Connect(TimeSpan timeout, ReadPreference readPreference)
+
+[2017/8/25 10:12:49]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973
+Ref: 
+Error Message: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.0.128:27017
+Stack Trace:    在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Net.Sockets.TcpClient.Connect(IPEndPoint remoteEP)
+   在 MongoDB.Driver.Internal.MongoConnection.Open()
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(BsonBuffer buffer, Int32 requestId)
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(MongoRequestMessage message)
+   在 MongoDB.Driver.Operations.CommandOperation`1.Execute(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Ping(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Connect()
+   在 MongoDB.Driver.Internal.DirectMongoServerProxy.Connect(TimeSpan timeout, ReadPreference readPreference)
+
+[2017/8/25 10:13:19]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973
+Ref: 
+Error Message: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.0.128:27017
+Stack Trace:    在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Net.Sockets.TcpClient.Connect(IPEndPoint remoteEP)
+   在 MongoDB.Driver.Internal.MongoConnection.Open()
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(BsonBuffer buffer, Int32 requestId)
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(MongoRequestMessage message)
+   在 MongoDB.Driver.Operations.CommandOperation`1.Execute(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Ping(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Connect()
+   在 MongoDB.Driver.Internal.DirectMongoServerProxy.Connect(TimeSpan timeout, ReadPreference readPreference)
+
+[2017/8/25 10:14:22]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973
+Ref: 
+Error Message: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.0.128:27017
+Stack Trace:    在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Net.Sockets.TcpClient.Connect(IPEndPoint remoteEP)
+   在 MongoDB.Driver.Internal.MongoConnection.Open()
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(BsonBuffer buffer, Int32 requestId)
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(MongoRequestMessage message)
+   在 MongoDB.Driver.Operations.CommandOperation`1.Execute(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Ping(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Connect()
+   在 MongoDB.Driver.Internal.DirectMongoServerProxy.Connect(TimeSpan timeout, ReadPreference readPreference)
+
+[2017/8/25 10:18:10]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973
+Ref: 
+Error Message: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 192.168.0.128:27017
+Stack Trace:    在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.Net.Sockets.TcpClient.Connect(IPEndPoint remoteEP)
+   在 MongoDB.Driver.Internal.MongoConnection.Open()
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(BsonBuffer buffer, Int32 requestId)
+   在 MongoDB.Driver.Internal.MongoConnection.SendMessage(MongoRequestMessage message)
+   在 MongoDB.Driver.Operations.CommandOperation`1.Execute(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Ping(MongoConnection connection)
+   在 MongoDB.Driver.MongoServerInstance.Connect()
+   在 MongoDB.Driver.Internal.DirectMongoServerProxy.Connect(TimeSpan timeout, ReadPreference readPreference)
+

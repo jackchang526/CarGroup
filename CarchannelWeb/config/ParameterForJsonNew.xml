@@ -76,7 +76,7 @@
     <Item Value="Seating_arrangement" Desc="座位排列" ParamID="972" Unit="" />
     <Item Value="nominal_load_capacity" Desc="额定载重量" ParamID="973" Unit="" />
     <Item Value="maximum_gross_mass" Desc="最大总质量" ParamID="974" Unit="" />
-    
+
     <Item Value="OutStat_SportsAppearanceKit" Desc="运动外观套件" ParamID="793" Unit="" />
     <Item Value="Induction_trunk" Desc="感应行李厢" ParamID="990" Unit="" />
     <Item Value="Body_CalashOCType" Desc="车篷开合方式" ParamID="562" Unit="" />
@@ -170,7 +170,7 @@
     <Item Value="InStat_AIgnitionSys" Desc="无钥匙启动系统" ParamID="469" Unit="" />
     <Item Value="Safe_VATS" Desc="电子防盗系统" ParamID="699" Unit="" />
     <Item Value="Safe_EATS" Desc="发动机防盗系统" ParamID="683" Unit="" />
-    
+
     <Item Value="nokey_into" Desc="无钥匙进入系统" ParamID="952" Unit="" />
   </Group>
   <Group Desc="车轮">
@@ -209,7 +209,7 @@
     <Item Value="InStat_blindspotdetection" Desc="盲点检测" ParamID="898" Unit="" />
     <Item Value="Safe_EDCMSR" Desc="发动机阻力矩控制系统（EDC/MSR）" ParamID="897" Unit="" />
     <Item Value="Safe_CBC" Desc="弯道制动控制系统（CBC）" ParamID="896" Unit="" />
-    
+
     <Item Value="Lane_Departure" Desc="车道偏离预警系统" ParamID="955" Unit="" />
   </Group>
   <Group Desc="门窗/后视镜">
@@ -232,7 +232,7 @@
     <Item Value="OutStat_ReMirrorElecTune" Desc="外后视镜电动调节" ParamID="622" Unit="" />
     <Item Value="OutStat_ReMirrorDazzle" Desc="内后视镜防眩目功能" ParamID="621" Unit="" />
     <Item Value="InStat_FaceMirror" Desc="遮阳板化妆镜" ParamID="512" Unit="" />
-    
+
     <Item Value="Privacy_glass" Desc="隐私玻璃" ParamID="989" Unit="" />
   </Group>
   <Group Desc="灯光">
@@ -253,9 +253,9 @@
     <Item Value="OutStat_Corneringlights" Desc="转向头灯（辅助灯）" ParamID="828" Unit="" />
     <Item Value="OutStat_SideLight" Desc="侧转向灯" ParamID="626" Unit="" />
     <Item Value="OutStat_luggageLight" Desc="行李厢灯" ParamID="618" Unit="" />
-    
+
     <Item Value="choice_FrontLightType" Desc="选配前大灯类型" ParamID="953" Unit="" />
-   </Group>
+  </Group>
   <Group Desc="内部配置">
     <Item Value="SteeringAdjustmentLeftAndRight" Desc="方向盘前后调节" ParamID="799" Unit="" />
     <Item Value="InStat_SteeringAdjustmentUpAndDown" Desc="方向盘上下调节" ParamID="798" Unit="" />
@@ -293,7 +293,7 @@
     <Item Value="InStat_ElectricSeatMemory" Desc="电动座椅记忆" ParamID="803" Unit="" />
     <Item Value="InStat_ChildSeatFix" Desc="儿童安全座椅固定装置" ParamID="495" Unit="" />
     <Item Value="InStat_3rdRowSeats" Desc="第三排座椅" ParamID="805" Unit="" />
-    
+
     <Item Value="Rear_seat_angle_adjustment" Desc="后排座椅角度调节" ParamID="991" Unit="" />
     <Item Value="seat_height_adjustable" Desc="座椅高低调节" ParamID="992" Unit="" />
     <Item Value="choice_SeatMaterial" Desc="选配座椅材料" ParamID="948" Unit="" />
@@ -351,7 +351,7 @@
     <Item Value="Electric_BatteryType" Desc="电池类型" ParamID="875" Unit="" />
     <Item Value="Electric_Powerconsumption" Desc="百公里耗电量" ParamID="868" Unit="kw/100km" />
     <Item Value="Electric_mustMileageconstant" Desc="纯电最高续航里程" ParamID="883" Unit="km" />
-    
+
     <Item Value="chongdianfangshi" Desc="充电方式" ParamID="954" Unit="" />
     <Item Value="Electric_number" Desc="电机数量" ParamID="983" Unit="" />
     <Item Value="Electric_position" Desc="电机位置" ParamID="984" Unit="" />

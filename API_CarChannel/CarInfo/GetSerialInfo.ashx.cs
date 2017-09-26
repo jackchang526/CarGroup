@@ -134,7 +134,8 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                         ShowName = CommonFunction.GetUnicodeByString(serialEntity.ShowName),
                         AllSpell = serialEntity.AllSpell,
                         Price = serialEntity.Price,
-                        Image = Car_SerialBll.GetSerialImageUrl(serialId, 6, false)
+                        ReferPrice = serialEntity.ReferPrice,
+                        Image = Car_SerialBll.GetSerialImageUrl(serialId, 6, true)
                     });
                 }
             }

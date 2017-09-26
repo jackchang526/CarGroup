@@ -1,0 +1,90 @@
+[2017/8/25 9:57:10]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973&callback=success_jsonpCallback_getEntranceData&_=1503626219064
+Ref: http://car26.bitauto.com/lingdu/?k=o0
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.Assessment.GetEntranceData.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetEntranceData.ashx.cs:行号 67
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/25 9:57:32]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.Assessment.GetEntranceData.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetEntranceData.ashx.cs:行号 67
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/25 9:57:34]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.Assessment.GetEntranceData.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetEntranceData.ashx.cs:行号 67
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/25 9:57:35]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.Assessment.GetEntranceData.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetEntranceData.ashx.cs:行号 67
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/25 9:57:35]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.Assessment.GetEntranceData.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetEntranceData.ashx.cs:行号 67
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/25 9:57:36]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.Assessment.GetEntranceData.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetEntranceData.ashx.cs:行号 67
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/25 9:57:36]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.Assessment.GetEntranceData.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetEntranceData.ashx.cs:行号 67
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/25 9:57:36]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.Assessment.GetEntranceData.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetEntranceData.ashx.cs:行号 67
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/25 9:57:37]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.Assessment.GetEntranceData.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetEntranceData.ashx.cs:行号 67
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/25 9:57:37]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=2973
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.Assessment.GetEntranceData.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetEntranceData.ashx.cs:行号 67
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

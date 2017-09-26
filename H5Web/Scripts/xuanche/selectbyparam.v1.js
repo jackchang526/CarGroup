@@ -33,21 +33,18 @@
                 default:
                     if (paramName === "more") {
                         switch (paramValue) {
-                            case "268":
-                                paramValue = paramValue + "_269"; //2-3门
-                                break;
-                            case "270":
-                                paramValue = paramValue + "_271_272"; //4-6门
-                                break;
-                            case "263":
-                                paramValue = paramValue + "_264"; //4-5座
-                                break;
                             case "204":
                                 paramValue = paramValue + "_205_206"; //天窗
                                 break;
-                            case "141":
-                                paramValue = paramValue + "_143_144_145_146_148_149"; //四轮碟刹
+                            case "244":
+                                paramValue = paramValue + "_245"; //前排自动空调
                                 break;
+                            case "246":
+                                paramValue = paramValue + "_247_248"; //后排空调
+                                break;
+                            //case "141":
+                            //    paramValue = paramValue + "_143_144_145_146_148_149"; //四轮碟刹
+                            //    break;
                         }
                     }
                     if (typeof SelectByParam.paramObj[paramName] === "undefined") {

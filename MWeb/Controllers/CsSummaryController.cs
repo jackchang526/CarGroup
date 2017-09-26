@@ -39,7 +39,7 @@ namespace MWeb.Controllers
         protected string nearestYear = string.Empty;//所有停售车款里的最近年份
                                                     //protected int yearCount;
 		//焦点图测试的10个车系
-		private List<int> TestCsIds = new List<int>() { 1879, 2064, 2406, 2408, 2593, 2713, 2714, 2750, 3152, 4502 };
+		//private List<int> TestCsIds = new List<int>() { 1879, 2064, 2406, 2408, 2593, 2713, 2714, 2750, 3152, 4502 };
 
         /// <summary>
         /// 车系为电动车的续航里程区间
@@ -79,13 +79,13 @@ namespace MWeb.Controllers
             MakeSerialToSerialHtml();//看了还看
             GetVrUrl();//获取vr地址
             GetBaoZhiLv();//保值率
-
+            /*
             bool isTestCs = TestCsIds.Contains(serialId);
 			if (isTestCs)
 			{
 				MakeSerialInfoHtmlV2(); //焦点图
 				return View("~/Views/CsSummary/IndexFocus.cshtml");
-			}
+			}*/
 			
 			MakeSerialInfoHtml(); //焦点图
 			return View();
@@ -170,6 +170,14 @@ namespace MWeb.Controllers
                 serialFuelCost = serialSummaryFuelCost; //+ "(综合)";
             }
             ViewData["serialFuelCost"] = serialFuelCost;
+
+            Dictionary<int, string> serialPicUrl = pageBase.GetAllSerialPicURL(true);//白底封面图
+            string whitePicUrl = WebConfig.DefaultCarPic;
+            if (serialPicUrl.ContainsKey(serialId))
+            {
+                whitePicUrl = serialPicUrl[serialId].Replace("_2.","_4.");
+            }
+            ViewData["WhitePicUrl"] = whitePicUrl;
         }
 
         /// <summary>
@@ -898,6 +906,7 @@ namespace MWeb.Controllers
                         focusImgId.Add(dicPicNoneWhite[serialId].FirstOrDefault().Key, _serialImage);
                         focusImg.Add(_serialImage);
                     }
+
                 }
             }
 

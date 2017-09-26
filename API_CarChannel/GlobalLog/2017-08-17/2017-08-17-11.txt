@@ -1,0 +1,33 @@
+[2017/8/17 11:41:22]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetBaoZhiLv.ashx?csid=1765
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.Assessment.GetBaoZhiLv.<>c__DisplayClass0_0.<ProcessRequest>b__1(XElement item) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetBaoZhiLv.ashx.cs:行号 37
+   在 System.Collections.Generic.List`1.ForEach(Action`1 action)
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetBaoZhiLv.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetBaoZhiLv.ashx.cs:行号 34
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/17 11:41:33]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetBaoZhiLv.ashx?csid=1868
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.Assessment.GetBaoZhiLv.<>c__DisplayClass0_0.<ProcessRequest>b__1(XElement item) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetBaoZhiLv.ashx.cs:行号 37
+   在 System.Collections.Generic.List`1.ForEach(Action`1 action)
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetBaoZhiLv.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetBaoZhiLv.ashx.cs:行号 34
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/17 11:43:05]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/GetBaoZhiLv.ashx?csid=1868
+Ref: 
+Error Message: 未将对象引用设置到对象的实例。
+Stack Trace:    在 BitAuto.CarChannelAPI.Web.Assessment.GetBaoZhiLv.<>c__DisplayClass0_0.<ProcessRequest>b__1(XElement item) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetBaoZhiLv.ashx.cs:行号 37
+   在 System.Collections.Generic.List`1.ForEach(Action`1 action)
+   在 BitAuto.CarChannelAPI.Web.Assessment.GetBaoZhiLv.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\GetBaoZhiLv.ashx.cs:行号 34
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

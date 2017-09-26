@@ -75,6 +75,13 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\..\..\packages\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Bson, Version=1.9.2.235, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Mongodb.1.9.2\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\..\..\packages\Mongodb.1.9.2\MongoDB.Driver.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
@@ -116,6 +123,8 @@
     <Compile Include="Interface\SearchLevelAndPrice.cs" />
     <Compile Include="Interface\TreeTagConfig.cs" />
     <Compile Include="JsonHelper.cs" />
+    <Compile Include="MongoDB\ICollectionEntity.cs" />
+    <Compile Include="MongoDB\MongoDBHelper.cs" />
     <Compile Include="NodeCompare.cs" />
     <Compile Include="OldPageBase.cs">
       <SubType>ASPXCodeBehind</SubType>

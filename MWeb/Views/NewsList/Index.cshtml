@@ -1,6 +1,7 @@
 ﻿@{
     Layout = null;
     BitAuto.CarChannel.BLL.Data.SerialEntity serialEntity = ViewData["serialEntity"] as BitAuto.CarChannel.BLL.Data.SerialEntity;
+    string wtmcid = Request["from"];
 }
 
 <!DOCTYPE html>
@@ -13,20 +14,24 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style" />
     <meta content="telephone=no" name="format-detection" />
     <title>@ViewData["PageTitle"]</title>
+    <link rel="canonical" href="http://car.bitauto.com/@(serialEntity.AllSpell)/wenzhang/" />
     <meta name="Keywords" content="@ViewData["PageKeywords"]" />
     <meta name="Description" content="@ViewData["PageDescription"]" />
     <!--#include file="/ushtml/0000/myiche2015_cube_wenzhangpindao-1071.shtml"-->
 </head>
 <body>
-    <div class="op-nav">
-        <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
-        <div class="tt-name">
-            <a href="http://m.yiche.com/" class="yiche-logo">汽车</a><h1>@ViewData["SerialShowName"]</h1>
+    @Html.Partial("~/html/TopDownloadLayer.cshtml")
+    @if (wtmcid != "mcfw99")
+    {
+        <div class="op-nav">
+            <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
+            <div class="tt-name">
+                <a href="http://m.yiche.com/" class="yiche-logo">汽车</a><h1>@ViewData["SerialShowName"]</h1>
+            </div>
+            <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
         </div>
-        <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
-    </div>
+    }
     <div class="op-nav-mark" style="display: none;"></div>
-
     <!-- 互联互通 start -->
     @Html.Raw(ViewData["CsHeadHTML"])
     <!-- 互联互通 end -->
@@ -96,7 +101,7 @@
                         }
                         if (!loading) {
                             loading = true;
-                            jsonp("/handlers/getcsnews.ashx?call=loadNews&ts=20140912&cs=@ViewData["SerialId"]&t=@ViewData["NewsType&size"]=@ViewData["PageSize"]&i=" + (++cp));
+                            jsonp("/handlers/getcsnews.ashx?call=loadNews&ts=20140912&cs=@ViewData["SerialId"]&t=@ViewData["NewsType"]&size=@ViewData["PageSize"]&i=" + (++cp));
                         }
                         $(window).scrollTop(0);
                         return false;

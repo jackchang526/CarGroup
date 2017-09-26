@@ -70,11 +70,11 @@
     </Reference>
     <Reference Include="MongoDB.Bson, Version=1.1.0.4184, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\MongoDB.Bson.dll</HintPath>
+      <HintPath>..\..\..\packages\Mongodb.1.9.2\MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver, Version=1.1.0.4184, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\MongoDB.Driver.dll</HintPath>
+      <HintPath>..\..\..\packages\Mongodb.1.9.2\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -101,6 +101,27 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AppCode\PageHelper.cs" />
+    <Compile Include="Assessment\GetAssessmentInfo.ashx.cs">
+      <DependentUpon>GetAssessmentInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetBaoZhiLv.ashx.cs">
+      <DependentUpon>GetBaoZhiLv.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetEditorInfo.ashx.cs">
+      <DependentUpon>GetEditorInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetEntranceData.ashx.cs">
+      <DependentUpon>GetEntranceData.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetEvaluationInfo.ashx.cs">
+      <DependentUpon>GetEvaluationInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetEvaluationParam.ashx.cs">
+      <DependentUpon>GetEvaluationParam.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\ViewScore.ashx.cs">
+      <DependentUpon>ViewScore.ashx</DependentUpon>
+    </Compile>
     <Compile Include="CarInfo\CarInfoJson.ashx.cs">
       <DependentUpon>CarInfoJson.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -397,10 +418,6 @@
     <Compile Include="Test\TempBsToCs.aspx.designer.cs">
       <DependentUpon>TempBsToCs.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Test\TestForSelectCarToXml.ashx.cs">
-      <DependentUpon>TestForSelectCarToXml.ashx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Test\TestResponse.ashx.cs">
       <DependentUpon>TestResponse.ashx</DependentUpon>
     </Compile>
@@ -488,6 +505,7 @@
     <Content Include="config\ParameterForJson.xml" />
     <Content Include="config\ParameterForJsonNew.xml" />
     <Content Include="App_Data\css\GetCarhtml\main.css" />
+    <Content Include="config\ParameterForJsonNewV2.xml" />
     <Content Include="Cooperation\GetCarData.aspx" />
     <Content Include="Cooperation\script\GetCarhtml\main.js" />
     <Content Include="Cooperation\script\GetCarhtml\renderMobileSerialListForBaidu.js" />
@@ -553,13 +571,19 @@
     <Content Include="config\ParameterConfigurationNew.config" />
     <Content Include="Cooperation\GetSerialData.ashx" />
     <Content Include="CarInfo\GetCarListWithTax.ashx" />
+    <Content Include="Assessment\GetEvaluationInfo.ashx" />
+    <Content Include="Assessment\GetAssessmentInfo.ashx" />
+    <Content Include="Assessment\GetEvaluationParam.ashx" />
+    <Content Include="Assessment\GetBaoZhiLv.ashx" />
+    <Content Include="Assessment\GetEditorInfo.ashx" />
+    <Content Include="Assessment\GetEntranceData.ashx" />
+    <Content Include="Assessment\ViewScore.ashx" />
     <Content Include="config\ParameterConfigurationNewV2.config" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Test\TestForSelectCarToXml.ashx" />
     <Content Include="Test\TestResponse.ashx" />
     <None Include="Web References\cn.ucar.api\CarSourceForBitAuto.disco" />
     <Content Include="Web.Config">

@@ -24,7 +24,7 @@ var anchorFlag = false;
 
 var SuperSelectCarTool = {
     Parameters: new Array()
-    , apiUrl: "http://select.car.yiche.com/selectcartool/searchresult"
+    , apiUrl: "http://select24.car.yiche.com/selectcartool/searchresult"
     , OneLeftScrollFlag: false //滚动菜单是否显示 ，用于 左侧滚动 > 居左距离
     , MenuOffsetTop: 304 //滚动菜单 相对车款头的高度偏移量
 
@@ -397,87 +397,13 @@ var SuperSelectCarTool = {
                     }
                     break;
                 case "more":
-                    //变速杆 单选
-                    if ((conStr > 160 && conStr < 164) || conStr == 1) {
+                    //进气形式
+                    if ((conStr > 99 && conStr < 104) || conStr == 0) {
                         if (element.checked) {
-                            for (var i = 161; i < 164; i++) {
+                            for (var i = 100; i < 104; i++) {
                                 if (i != conStr) {
                                     SuperSelectCarTool.RemoveMoreCondition(conType, i);
                                     SuperSelectCarTool.UpdateParameters(false, 'more_' + i, conType);
-                                }
-                            }
-                            //不限
-                            if (conStr == 1) {
-                                break;
-                            }
-                            SuperSelectCarTool.AddMoreCondition(conType, conStr);
-                        }
-                        else {
-                            if (conStr == 1) {
-                                break;
-                            }
-                            SuperSelectCarTool.RemoveMoreCondition(conType, conStr);
-                        }
-                    }
-                    //车顶 单选+多选
-                    else if ((conStr > 217 && conStr < 221) || conStr == 2) {
-                        if (element.checked) {
-                            for (var i = 218; i < 221; i++) {
-                                if (i != conStr) {
-                                    SuperSelectCarTool.RemoveMoreCondition(conType, i);
-                                    SuperSelectCarTool.UpdateParameters(false, 'more_' + i, conType);
-                                }
-                            }
-                            //敞篷
-                            if (conStr == 220) {
-                                for (var i = 221; i < 224; i++) {
-                                    $('#more_' + i).attr("disabled", false);
-                                }
-                            }
-                            else {
-                                for (var i = 221; i < 224; i++) {
-                                    $('#more_' + i).attr("checked", false);
-                                    $('#more_' + i).attr("disabled", true);
-
-                                    SuperSelectCarTool.UpdateParameters(false, 'more_' + i, conType);
-                                    SuperSelectCarTool.RemoveMoreCondition(conType, i);
-                                }
-                            }
-                            //不限
-                            if (conStr == 2) {
-                                break;
-                            }
-                            SuperSelectCarTool.AddMoreCondition(conType, conStr);
-                        }
-                        else {
-                            if (conStr == 2) {
-                                break;
-                            }
-                            SuperSelectCarTool.RemoveMoreCondition(conType, conStr);
-                        }
-                    }
-                    //进气形式 单选+多选
-                    else if ((conStr > 99 && conStr < 102) || conStr == 0) {
-                        if (element.checked) {
-                            for (var i = 100; i < 102; i++) {
-                                if (i != conStr) {
-                                    SuperSelectCarTool.RemoveMoreCondition(conType, i);
-                                    SuperSelectCarTool.UpdateParameters(false, 'more_' + i, conType);
-                                }
-                            }
-                            //增压
-                            if (conStr == 101) {
-                                for (var i = 102; i < 106; i++) {
-                                    $('#more_' + i).attr("disabled", false);
-                                }
-                            }
-                            else {
-                                for (var i = 102; i < 106; i++) {
-                                    $('#more_' + i).attr("checked", false);
-                                    $('#more_' + i).attr("disabled", true);
-
-                                    SuperSelectCarTool.UpdateParameters(false, 'more_' + i, conType);
-                                    SuperSelectCarTool.RemoveMoreCondition(conType, i);
                                 }
                             }
                             //不限
@@ -492,6 +418,42 @@ var SuperSelectCarTool = {
                             }
                             SuperSelectCarTool.RemoveMoreCondition(conType, conStr);
                         }
+                    }
+                    //智能钥匙
+                    //else if (conStr == 225 || conStr == 226) {
+                    //    if (conStr == 225) {
+                    //        SuperSelectCarTool.RemoveMoreCondition(conType, 226);
+                    //        SuperSelectCarTool.UpdateParameters(false, 'more_' + 226, conType);
+                    //    }
+                    //    else {
+                    //        SuperSelectCarTool.RemoveMoreCondition(conType, 225);
+                    //        SuperSelectCarTool.UpdateParameters(false, 'more_' + 225, conType);
+                    //    }
+                    //    SuperSelectCarTool.AddMoreCondition(conType, conStr);
+                    //}
+                    //车门
+                    else if (conStr == 227 || conStr == 228) {
+                        if (conStr == 227) {
+                            SuperSelectCarTool.RemoveMoreCondition(conType, 228);
+                            SuperSelectCarTool.UpdateParameters(false, 'more_' + 228, conType);
+                        }
+                        else {
+                            SuperSelectCarTool.RemoveMoreCondition(conType, 227);
+                            SuperSelectCarTool.UpdateParametsers(false, 'more_' + 227, conType);
+                        }
+                        SuperSelectCarTool.AddMoreCondition(conType, conStr);
+                    }
+                    //行李箱
+                    else if (conStr == 229 || conStr == 230) {
+                        if (conStr == 229) {
+                            SuperSelectCarTool.RemoveMoreCondition(conType, 230);
+                            SuperSelectCarTool.UpdateParameters(false, 'more_' + 230, conType);
+                        }
+                        else {
+                            SuperSelectCarTool.RemoveMoreCondition(conType, 229);
+                            SuperSelectCarTool.UpdateParameters(false, 'more_' + 229, conType);
+                        }
+                        SuperSelectCarTool.AddMoreCondition(conType, conStr);
                     }
                     else {
                         if (element.checked) {
@@ -543,23 +505,23 @@ var SuperSelectCarTool = {
             $('#d_max').attr("disabled", true);
             $('#btnDisSubmit').attr("disabled", true);
         }
-        else if (deleteId == "more_101") {
-            for (var i = 102; i < 106; i++) {
-                $('#more_' + i).attr("checked", false);
-                $('#more_' + i).attr("disabled", true);
-                SuperSelectCarTool.UpdateParameters(false, 'more_' + i, conType);
-                SuperSelectCarTool.RemoveMoreCondition(conType, i);
-            }
-        }
-        else if (deleteId == "more_220") {
-            for (var i = 221; i < 224; i++) {
-                $('#more_' + i).attr("checked", false);
-                $('#more_' + i).attr("disabled", true);
+        //else if (deleteId == "more_101") {
+        //    for (var i = 102; i < 106; i++) {
+        //        $('#more_' + i).attr("checked", false);
+        //        $('#more_' + i).attr("disabled", true);
+        //        SuperSelectCarTool.UpdateParameters(false, 'more_' + i, conType);
+        //        SuperSelectCarTool.RemoveMoreCondition(conType, i);
+        //    }
+        //}
+        //else if (deleteId == "more_220") {
+        //    for (var i = 221; i < 224; i++) {
+        //        $('#more_' + i).attr("checked", false);
+        //        $('#more_' + i).attr("disabled", true);
 
-                SuperSelectCarTool.UpdateParameters(false, 'more_' + i, conType);
-                SuperSelectCarTool.RemoveMoreCondition(conType, i);
-            }
-        }
+        //        SuperSelectCarTool.UpdateParameters(false, 'more_' + i, conType);
+        //        SuperSelectCarTool.RemoveMoreCondition(conType, i);
+        //    }
+        //}
         GetCarTotalityItem();
         if ($("input[type='checkbox']").is(":checked") || $("input[type='radio']").is(":checked")) {
             $("#nofilterContent").hide();
@@ -658,29 +620,29 @@ var SuperSelectCarTool = {
             $('#btnDisSubmit').attr("disabled", false);
         }
         //进气形式初始化
-        var jinqu = getElementById("more_101");
-        if (jinqu.checked == false) {
-            for (var i = 102; i < 106; i++) {
-                $('#more_' + i).attr("disabled", true);
-            }
-        }
-        else {
-            for (var i = 102; i < 106; i++) {
-                $('#more_' + i).attr("disabled", false);
-            }
-        }
+        //var jinqu = getElementById("more_101");
+        //if (jinqu.checked == false) {
+        //    for (var i = 102; i < 106; i++) {
+        //        $('#more_' + i).attr("disabled", true);
+        //    }
+        //}
+        //else {
+        //    for (var i = 102; i < 106; i++) {
+        //        $('#more_' + i).attr("disabled", false);
+        //    }
+        //}
         //车顶初始化
-        var roof = getElementById("more_220");
-        if (roof.checked == false) {
-            for (var i = 221; i < 224; i++) {
-                $('#more_' + i).attr("disabled", true);
-            }
-        }
-        else {
-            for (var i = 221; i < 224; i++) {
-                $('#more_' + i).attr("disabled", false);
-            }
-        }
+        //var roof = getElementById("more_220");
+        //if (roof.checked == false) {
+        //    for (var i = 221; i < 224; i++) {
+        //        $('#more_' + i).attr("disabled", true);
+        //    }
+        //}
+        //else {
+        //    for (var i = 221; i < 224; i++) {
+        //        $('#more_' + i).attr("disabled", false);
+        //    }
+        //}
     }
     //初始化价格
     , InitPrice: function (priceStr) {

@@ -1,0 +1,33 @@
+[2017/8/22 11:14:46]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2448
+Ref: 
+Error Message: 已添加了具有相同键的项。
+Stack Trace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 BitAuto.CarChannelAPI.Web.Assessment.ViewScore.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\ViewScore.ashx.cs:行号 219
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/22 11:14:50]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2448
+Ref: 
+Error Message: 已添加了具有相同键的项。
+Stack Trace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 BitAuto.CarChannelAPI.Web.Assessment.ViewScore.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\ViewScore.ashx.cs:行号 219
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+[2017/8/22 11:16:40]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2448
+Ref: 
+Error Message: 已添加了具有相同键的项。
+Stack Trace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 BitAuto.CarChannelAPI.Web.Assessment.ViewScore.ProcessRequest(HttpContext context) 位置 D:\TFSRoot2013\CarGroup\Carchannel\Carchannel\API_CarChannel\Assessment\ViewScore.ashx.cs:行号 219
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

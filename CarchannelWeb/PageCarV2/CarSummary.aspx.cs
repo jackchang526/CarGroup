@@ -958,7 +958,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                        { continue; }
                         if (dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value)&& dic[carID][item.Attributes.GetNamedItem("Value").Value] != "待查")
                         {
-                            pvalue = string.Format("{0}{1}", dic[carID][item.Attributes.GetNamedItem("Value").Value].Replace(',',' '), item.Attributes.GetNamedItem("Unit").Value);
+                            pvalue = string.Format("{0}{1}", dic[carID][item.Attributes.GetNamedItem("Value").Value], item.Attributes.GetNamedItem("Unit").Value);
                         }
                     }
 
@@ -1051,14 +1051,36 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                         if (optionalPara.Count <= 1)
                         {
                             var name = optionalPara.Single().Key;
-                            var price = optionalPara.Single().Value;
+                            string price = optionalPara.Single().Value.ToString("N0");
                             if (string.IsNullOrEmpty(pvalue))
                             {
                                 sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + "</div><div class=\"r\">" + price + "元</div></div></div></td>");
                             }
                             else
                             {
-                                sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pvalue + "</div></div><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + "</div><div class=\"r\">" + price + "元</div></div></div></td>");
+                                //单个标配 并且标配值不为无
+                                if (pvalue.IndexOf("-") == -1 && pvalue.IndexOf(",") == -1)
+                                {
+                                    sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pvalue + "</div></div><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + "</div><div class=\"r\">" + price + "元</div></div></div></td>");
+                                }
+                                //多个标配 
+                                else if (pvalue.IndexOf(",") >= 0)
+                                {
+                                    sbTemp.AppendLine("<td><div class=\"info\">");
+                                    string[] valueArray = pvalue.Split(',');
+                                    if (valueArray.Length > 0)
+                                    {
+                                        foreach (string value in valueArray)
+                                        {
+                                            sbTemp.AppendLine("<div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + value + "</div></div>");
+                                        }
+                                    }
+                                    sbTemp.AppendLine("<div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + "</div><div class=\"r\">" + price + "元</div></div></div></td>");
+                                }
+                                else
+                                {
+                                    sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + "</div><div class=\"r\">" + price + "元</div></div></div></td>");
+                                }
                             }
                         }
                         else
@@ -1069,18 +1091,52 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                             }
                             else
                             {
-                                sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pvalue + "</div></div>");
+                                sbTemp.AppendLine("<td><div class=\"info\">");
+                                //单个标配 并且标配值不为无
+                                if (pvalue.IndexOf("-") == -1 && pvalue.IndexOf(",") == -1)
+                                {
+                                    sbTemp.AppendLine("<div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pvalue + "</div></div>");
+                                }
+                                //多个标配
+                                else if (pvalue.IndexOf(",") >= 0)
+                                {
+                                    string[] valueArray = pvalue.Split(',');
+                                    if (valueArray.Length > 0)
+                                    {
+                                        foreach (string value in valueArray)
+                                        {
+                                            sbTemp.AppendLine("<div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + value + "</div></div>");
+                                        }
+                                    }
+                                }
                             }
                             foreach (var para in optionalPara.Keys)
                             {
-                                sbTemp.AppendLine("<div class=\"optional type2\"><div class=\"l\"><i>○</i>" + para + "</div><div class=\"r\">" + optionalPara[para] + "元</div></div>");
+                                sbTemp.AppendLine("<div class=\"optional type2\"><div class=\"l\"><i>○</i>" + para + "</div><div class=\"r\">" + optionalPara[para].ToString("N0") + "元</div></div>");
                             }
                             sbTemp.AppendLine("</div></td>");
                         }
                     }
                     else
                     {
-                        sbTemp.AppendLine("<td><span class=\"info\">" + pvalue + "</span></td>");
+                        //无选配 多个标配
+                        if (pvalue.IndexOf(",") >= 0)
+                        {
+                            sbTemp.AppendLine("<td><div class=\"info\">");
+                            string[] valueArray = pvalue.Split(',');
+                            if (valueArray.Length > 0)
+                            {
+                                foreach (string value in valueArray)
+                                {
+                                    sbTemp.AppendLine("<div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + value + "</div></div>");
+                                }
+                            }
+                            sbTemp.AppendLine("</div></td>");
+                        }
+                        else
+                        {
+                            sbTemp.AppendLine("<td><span class=\"info\">" + pvalue + "</span></td>");
+                        }                        
                     }
                     loopCount++;
                 }

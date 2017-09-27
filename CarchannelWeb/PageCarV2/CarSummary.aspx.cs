@@ -1059,7 +1059,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                             else
                             {
                                 //单个标配 并且标配值不为无
-                                if (pvalue != "-" && pvalue.IndexOf(",") == -1)
+                                if (pvalue != "-" && pvalue.IndexOf(",") == -1 && pvalue != "○")
                                 {
                                     sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pvalue + "</div></div><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + "</div><div class=\"r\">" + price + "元</div></div></div></td>");
                                 }
@@ -1093,7 +1093,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                             {
                                 sbTemp.AppendLine("<td><div class=\"info\">");
                                 //单个标配 并且标配值不为无
-                                if (pvalue != "-" && pvalue.IndexOf(",") == -1)
+                                if (pvalue != "-" && pvalue.IndexOf(",") == -1 && pvalue != "○")
                                 {
                                     sbTemp.AppendLine("<div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pvalue + "</div></div>");
                                 }

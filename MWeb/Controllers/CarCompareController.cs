@@ -266,7 +266,7 @@ namespace MWeb.Controllers
                                                         else
                                                         {
                                                             //单个标配 并且标配值不为无
-                                                            if (pvalue != "-" && pvalue.IndexOf(",") == -1)
+                                                            if (pvalue != "-" && pvalue.IndexOf(",") == -1 && pvalue != "○")
                                                             {
                                                                 listTempClass.Add("<td><div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pvalue + "</div></div><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + "</div><div class=\"r\">" + price + "元</div></div></td>");
                                                             }
@@ -300,7 +300,7 @@ namespace MWeb.Controllers
                                                         {
                                                             listTempClass.Add("<td>");
                                                             //单个标配 并且标配值不为无
-                                                            if (pvalue != "-" && pvalue.IndexOf(",") == -1)
+                                                            if (pvalue != "-" && pvalue.IndexOf(",") == -1 && pvalue != "○")
                                                             {
                                                                 listTempClass.Add("<div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pvalue + "</div></div>");
                                                             }

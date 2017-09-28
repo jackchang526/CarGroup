@@ -76,7 +76,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
         protected string carPingceHtml = string.Empty;//车型详解
         protected string brandOtherSerial = string.Empty;//其他车型
 
-		protected string baoZhiLv = string.Empty;//五年保值率
+        protected string baoZhiLv = string.Empty;//五年保值率
         protected string VRUrl = string.Empty;//vr url
 
         #endregion
@@ -107,12 +107,12 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             MakePhotoListHtml();//图片列表
             GetCNCAPAndENCAPData();//碰撞数据
             MakeRelatedNewHtml();//相关新闻
-			GetBaoZhiLv();//5年保值率
+            GetBaoZhiLv();//5年保值率
             GetVrUrl();//Vr url
             //InitNextSeeNew();//接下来要看 评测和导购
             ucNextToSee.serialId = serialId;
         }
-        
+
         /// <summary>
         /// 获取vr url
         /// </summary>
@@ -129,26 +129,26 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
         /// 五年保值率
         /// </summary>
         protected void GetBaoZhiLv()
-		{
-			Dictionary<int,XmlElement> dic = _serialBLL.GetSeialBaoZhiLv();
+        {
+            Dictionary<int, XmlElement> dic = _serialBLL.GetSeialBaoZhiLv();
             //string[] baoZhiLvLevel = { "weixingche", "xiaoxingche", "jincouxingche", "zhongxingche", "zhongdaxingche", "haohuaxingche", "mpv", "suv", "paoche", "mianbaoche" };
             if (dic != null && dic.ContainsKey(serialId))
-			{
-				XmlElement ele = dic[serialId];
-				if (ele != null)
-				{
-					string levelSpell = BitAuto.CarUtils.Define.CarLevelDefine.GetLevelSpellByName(serialEntity.Level.Name);
+            {
+                XmlElement ele = dic[serialId];
+                if (ele != null)
+                {
+                    string levelSpell = BitAuto.CarUtils.Define.CarLevelDefine.GetLevelSpellByName(serialEntity.Level.Name);
                     string ratio = Math.Round(ConvertHelper.GetDouble(ele.Attributes["ResidualRatio5"].InnerText) * 100, 1).ToString();
                     baoZhiLv = string.Format("<li><span class=\"note\">五年保值率: </span><span class=\"data\"><a class=\"lnk-bzl\" href=\"/{0}/baozhilv/\" target=\"_blank\" data-channelid=\"2.21.2032\">{1}% &gt;</a></span></li>"
                             , levelSpell
                             , ratio);
-				}
-			}
+                }
+            }
             if (string.IsNullOrEmpty(baoZhiLv))
             {
                 baoZhiLv = "<li><span class=\"note\">五年保值率: </span><span class=\"data grey-txt\">暂无</span></li>";
             }
-		}
+        }
 
         protected void MakeBlockHtml()
         {
@@ -509,6 +509,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             int maxPv = 0;
             List<string> saleYearList = new List<string>();
             List<string> noSaleYearList = new List<string>();
+
             foreach (CarInfoForSerialSummaryEntity carInfo in carinfoList)
             {
                 if (carInfo.CarPV > maxPv)
@@ -530,13 +531,13 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 }
             }
             //排除包含在售年款
-			//foreach (string year in saleYearList)
-			//{
-			//	if (noSaleYearList.Contains(year))
-			//	{
-			//		noSaleYearList.Remove(year);
-			//	}
-			//}
+            //foreach (string year in saleYearList)
+            //{
+            //	if (noSaleYearList.Contains(year))
+            //	{
+            //		noSaleYearList.Remove(year);
+            //	}
+            //}
             List<CarInfoForSerialSummaryEntity> carinfoSaleList = carinfoList
                 .FindAll(p => p.SaleState == "在销");
             List<CarInfoForSerialSummaryEntity> carinfoWaitSaleList = carinfoList
@@ -753,7 +754,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 }
                 else
                 {
-					var querySale = info.ToList().GroupBy(p => new { p.Engine_Exhaust, p.Engine_InhaleType, p.Engine_AddPressType, p.Engine_MaxPower, p.Electric_Peakpower }, p => p);
+                    var querySale = info.ToList().GroupBy(p => new { p.Engine_Exhaust, p.Engine_InhaleType, p.Engine_AddPressType, p.Engine_MaxPower, p.Electric_Peakpower }, p => p);
                     foreach (IGrouping<object, CarInfoForSerialSummaryEntity> subInfo in querySale)
                     {
                         var isStopState = subInfo.FirstOrDefault(p => p.ProduceState != "停产");
@@ -936,7 +937,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 carListHtml.Add("</tr>");
 
                 groupIndex++;
-                List<CarInfoForSerialSummaryEntity> carGroupList = info.ToList<CarInfoForSerialSummaryEntity>();//分组后的集合
+                List<CarInfoForSerialSummaryEntity> carGroupList = info.ToList<CarInfoForSerialSummaryEntity>();//分组后的集合                
+
                 foreach (CarInfoForSerialSummaryEntity entity in carGroupList)
                 {
                     string yearType = entity.CarYear.Trim();
@@ -947,6 +949,9 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                     string stopPrd = "";
                     if (entity.ProduceState == "停产")
                         stopPrd = " <span class=\"color-block3\">停产</span>";
+
+                    //新车上市 即将上市 状态
+                    string marketflag = GetMarketFlag(entity);
                     Dictionary<int, string> dictCarParams = _carBLL.GetCarAllParamByCarID(entity.CarID);
                     //add by 2014.05.04 获取电动车参数
                     if (isElectrombile)
@@ -1033,7 +1038,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                     carListHtml.Add(string.Format("<tr  id=\"car_filter_id_{0}\">", entity.CarID));
                     carListHtml.Add(string.Format("<td class=\"txt-left\" id=\"carlist_{0}\">", entity.CarID));
                     carListHtml.Add(string.Format("<a href=\"/{0}/m{1}/\" data-channelid=\"2.21.848\" target=\"_blank\" class=\"txt\">{2} {3}</a><a href=\"/{0}/m{1}/\" data-channelid=\"2.21.848\" target=\"_blank\" class=\"abs-a\"></a> {4}",
-                        serialSpell, entity.CarID, yearType, entity.CarName, fuelTypeStr + hasEnergySubsidy + strTravelTax + parallelImport + stopPrd));
+                        serialSpell, entity.CarID, yearType, entity.CarName, fuelTypeStr + hasEnergySubsidy + strTravelTax + parallelImport + stopPrd + marketflag));
                     carListHtml.Add("</td>");
                     carListHtml.Add("<td>");
                     carListHtml.Add("    <div class=\"w\">");
@@ -1096,7 +1101,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 }
             }
             return string.Concat(carListHtml.ToArray());
-        }
+        }       
 
         /// <summary>
         /// 焦点图片块
@@ -1536,5 +1541,52 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 Response.Redirect("/404error.aspx");
             }
         }
+
+        private string GetMarketFlag(CarInfoForSerialSummaryEntity entity)
+        {
+            string marketflag = "";
+            if (entity.MarketDateTime != DateTime.MinValue)
+            {
+                marketflag = GetTipsByDateTime(entity.MarketDateTime);
+            }
+            else
+            {
+                var picCount = _carBLL.GetSerialCarRellyPicCount(entity.CarID);
+                if (picCount > 0)
+                {
+                    marketflag = "<a href=\"javascript:void(0);\" target=\"_blank\" class=\"color-block\">即将上市</a>";
+                }
+                else
+                {
+                    if (entity.ReferPrice != "")
+                    {
+                        marketflag = "<a href=\"javascript:void(0);\" target=\"_blank\" class=\"color-block\">即将上市</a>";
+                    }
+                }
+            }
+
+            return marketflag;
+        }
+
+        private string GetTipsByDateTime(DateTime dt)
+        {
+            string html = "";
+            int days = GetDaysAboutCurrentDateTime(dt);
+            //过去30天内显示"新上市"，未来30天内显示"即将上市"
+            string tips = (days >= 0 && days <= 30) ? "新上市" : days <= 0 && days >= -30 ? "即将上市" : "";
+            if (!string.IsNullOrEmpty(tips))
+            {
+                html = string.Format("<a href=\"javascript:void(0);\" target=\"_blank\" class=\"color-block\">{0}</a>", tips);
+            }
+            return html;
+        }
+        public int GetDaysAboutCurrentDateTime(DateTime dt)
+        {
+            DateTime currentDateTime = DateTime.Now.Date;
+            int days = (currentDateTime - dt).Days;
+            return days;
+        }
+
+
     }
 }

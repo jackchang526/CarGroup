@@ -88,7 +88,14 @@ namespace MWeb.Controllers
 			}*/
 			
 			MakeSerialInfoHtml(); //焦点图
-			return View();
+
+            #region 综述页新车上市提示 20170920
+
+            GetTab();
+
+            #endregion
+
+            return View();
         }
 
 		/// <summary>
@@ -563,11 +570,11 @@ namespace MWeb.Controllers
                                 : "";
 
                             //平行进口车标签
-							//string parallelImport = "";
-							//if (dictCarParams.ContainsKey(382) && dictCarParams[382] == "平行进口")
-							//{
-							//	parallelImport = "<em>平行进口</em>";
-							//}
+                            //string parallelImport = "";
+                            //if (dictCarParams.ContainsKey(382) && dictCarParams[382] == "平行进口")
+                            //{
+                            //	parallelImport = "<em>平行进口</em>";
+                            //}
 
                             stringBuilder.Append("<li>");
 
@@ -575,12 +582,14 @@ namespace MWeb.Controllers
                                 "<a  id='carlist_" + carInfo.CarID + "' class='car-info' href='{0}' data-channelid=\"27.23.915\">",
                                  "/" + serialEntity.AllSpell + "/m" + carInfo.CarID + "/");
 
-                            stringBuilder.AppendFormat("<h2>{0}</h2>", carFullName);
-							stringBuilder.AppendFormat("<dl><dt>{0}</dt></dl>", carMinPrice);
+                            //新车上市 即将上市 状态
+                            string marketflag = GetMarketFlag(carInfo);
+                            stringBuilder.AppendFormat("<h2>{0}{1}</h2>", carFullName, marketflag);
+                            stringBuilder.AppendFormat("<dl><dt>{0}</dt></dl>", carMinPrice);
 
-							stringBuilder.Append("<div class=\"car-info-bottom\">");//第二行开始
-                            
-                           
+                            stringBuilder.Append("<div class=\"car-info-bottom\">");//第二行开始
+
+
                             //add date :2016-2-3  添加热度
                             int percent = 0;
                             if (maxPv > 0)
@@ -607,16 +616,16 @@ namespace MWeb.Controllers
                                     strTravelTax = "<em>减税</em>";
                                 }
                             }
-							stringBuilder.AppendFormat("<span>{0}</span>", forwardGearNum + carInfo.TransmissionType);
+                            stringBuilder.AppendFormat("<span>{0}</span>", forwardGearNum + carInfo.TransmissionType);
                             stringBuilder.AppendFormat("<div class=\"gzd-box\" style=\"\"><div class=\"tit-box\">热度</div><span class=\"gz-sty\"><i data-pv=\"{0}\" style=\"width:{0}%\"></i></span></div>", percent);
-							stringBuilder.AppendFormat("{0}{1}", strTravelTax, stopPrd);
-							stringBuilder.AppendFormat("<b>指导价:{0}</b>", carInfo.ReferPrice.Trim().Length == 0 ? "暂无" : carInfo.ReferPrice.Trim() + "万");
-							stringBuilder.Append("</div>");//第二行结束
+                            stringBuilder.AppendFormat("{0}{1}", strTravelTax, stopPrd);
+                            stringBuilder.AppendFormat("<b>指导价:{0}</b>", carInfo.ReferPrice.Trim().Length == 0 ? "暂无" : carInfo.ReferPrice.Trim() + "万");
+                            stringBuilder.Append("</div>");//第二行结束
                             stringBuilder.Append("</a>");
 
                             bool maiBtnFlag = false;
-							//if (year != "未上市" && year != "停售" && carInfo.SaleState != "待销" && carInfo.SaleState != "停销")
-							//{ maiBtnFlag = true; }
+                            //if (year != "未上市" && year != "停售" && carInfo.SaleState != "待销" && carInfo.SaleState != "停销")
+                            //{ maiBtnFlag = true; }
                             string ulStyle = "car-btn";
                             if (!maiBtnFlag)
                             {
@@ -670,12 +679,12 @@ namespace MWeb.Controllers
 
             ViewData["PageCount"] = pageCount;
             ViewData["NearestYear"] = nearestYear;
-        }
+        }       
 
-		/// <summary>
-		/// 焦点图测试版本
-		/// </summary>
-		private void MakeSerialInfoHtmlV2()
+        /// <summary>
+        /// 焦点图测试版本
+        /// </summary>
+        private void MakeSerialInfoHtmlV2()
 		{
 			string liFormatter = "<li class=\"swiper-slide\"><a href=\"http://photo.m.yiche.com/picture/{0}/{1}/\" data-channelid=\"{4}\"><img src=\"{2}\">{3}</a></li>";
 			//string summaryInfoStr = "<div class=\"sum-mask\"><div class=\"sum-mask-info\"><h2>{0}</h2><strong>{1}</strong><p><span>{2}</span><span>指导价：{3}</span></p></div><a href=\"javascript:;\" class=\"ico-favorite\" id=\"favstar\" data-channelid=\"27.23.726\"></a></div>";
@@ -1372,5 +1381,165 @@ namespace MWeb.Controllers
             ViewData["keyWords"] = keyWords;
             ViewData["description"] = description;
         }
+
+        public void GetTab()
+        {
+            var showText = "";
+
+            //在销车系下有待销车款
+            if (serialEntity.SaleState == "在销" || serialEntity.SaleState == "停销")
+            {
+                //筛选待销车款
+                IEnumerable<CarInfoForSerialSummaryEntity> newCarList = serialCarList.Where(i => i.SaleState == "待销");
+                //上市车系下有待销车款
+                if (newCarList.Count() > 0)
+                {
+                    //筛选填写了上市时间的待销车款
+                    IEnumerable<CarInfoForSerialSummaryEntity> newCarMarketDateTimeList = newCarList.Where(a => a.MarketDateTime != DateTime.MinValue);
+                    //存在填写了上市时间的待销车款
+                    if (newCarMarketDateTimeList.Count() > 0)
+                    {
+                        CarInfoForSerialSummaryEntity car = newCarMarketDateTimeList.First();//从已经填写的时间中选择最早的时间
+                        showText = "将于" + car.MarketDateTime.ToString("yy年MM月dd日") + "上市";
+                    }
+                    //没有填写上市时间
+                    else
+                    {
+                        //判断车款是否有实拍图或者填写了指导价
+                        int count = 0;
+                        foreach (var item in newCarList)
+                        {
+                            count = carBLL.GetSerialCarRellyPicCount(item.CarID);
+                            //存在实拍图
+                            if (count > 0)
+                            {
+                                showText = "新款即将上市";
+                                break;
+                            }
+                            else
+                            {
+                                //是否有指导价
+                                if (item.ReferPrice != "")
+                                {
+                                    showText = "新款即将上市";
+                                    break;
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+                //新车款上市初期
+                else
+                {
+                    //车款中筛选填写了上市时间的车款
+                    IEnumerable<CarInfoForSerialSummaryEntity> newCarMarketDateTimeList = serialCarList.Where(a => a.MarketDateTime != DateTime.MinValue);
+                    CarInfoForSerialSummaryEntity car = newCarMarketDateTimeList.First();//倒叙排列，取第一个即可
+                    if (car != null)
+                    {
+                        int days = GetDaysAboutCurrentDateTime(car.MarketDateTime);
+                        if (days >= 0 && days <= 30)
+                        {
+                            //只有一个年款    ***新车上市***
+                            if (serialCarList.GroupBy(i => i.CarYear).Count() == 1)
+                            {
+                                showText = "新车上市";
+                            }
+                            //不止一个年款    ***新款上市***
+                            else
+                            {
+                                showText = "新款上市";
+                            }
+                        }
+                    }                    
+                }
+            }
+            //待查 待销(未上市)
+            else
+            {
+                //筛选填写了上市时间的待销车  车系是待销状态，该车系下的车款全部是待销或者停销
+                IEnumerable<CarInfoForSerialSummaryEntity> newCarList = serialCarList.Where(a => a.MarketDateTime != DateTime.MinValue);
+                //存在填写了上市时间的待销车
+                if (newCarList.Count() > 0)
+                {
+                    CarInfoForSerialSummaryEntity car = newCarList.First();//从已经填写的时间中选择最早的时间
+                    showText = "将于" + car.MarketDateTime.ToString("yy年MM月dd日") + "上市";
+                }
+                //没有上市时间，判断有没有实拍图、指导价
+                else
+                {
+                    int count = 0;
+                    foreach (var item in serialCarList)
+                    {
+                        count = carBLL.GetSerialCarRellyPicCount(item.CarID);
+                        if (count > 0)
+                        {
+                            showText = "即将上市";
+                            break;
+                        }
+                        //是否有指导价
+                        else
+                        {
+                            //是否有指导价
+                            if (item.ReferPrice != "")
+                            {
+                                showText = "即将上市";
+                                break;
+                            }
+                        }
+                    }                    
+                }
+            }
+
+            ViewData["showText"] = showText;
+        }
+
+        private string GetMarketFlag(CarInfoForSerialSummaryEntity carInfo)
+        {
+            string marketflag = "";
+            if (carInfo.MarketDateTime != DateTime.MinValue)
+            {
+                marketflag = GetTipsByDateTime(carInfo.MarketDateTime);
+            }
+            else
+            {
+                var picCount = carBLL.GetSerialCarRellyPicCount(carInfo.CarID);
+                if (picCount > 0)
+                {
+                    marketflag = "<em class=\"the-new\">即将上市</em>";
+                }
+                else
+                {
+                    if (carInfo.ReferPrice != "")
+                    {
+                        marketflag = "<em class=\"the-new\">即将上市</em>";
+                    }
+                }
+            }
+
+            return marketflag;
+        }
+
+        private string GetTipsByDateTime(DateTime dt)
+        {
+            string html = "";
+            int days = GetDaysAboutCurrentDateTime(dt);
+            //过去30天内显示"新上市"，未来30天内显示"即将上市"
+            string tips = (days >= 0 && days <= 30) ? "新上市" : days <= 0 && days >= -30 ? "即将上市" : "";
+            if (!string.IsNullOrEmpty(tips))
+            {
+                html = string.Format("<em class=\"the-new\">{0}</em>", tips);
+            }
+            return html;
+        }
+
+        public int GetDaysAboutCurrentDateTime(DateTime dt)
+        {
+            DateTime currentDateTime = DateTime.Now.Date;
+            int days = (currentDateTime - dt).Days;
+            return days;
+        }
+
+
     }
 }

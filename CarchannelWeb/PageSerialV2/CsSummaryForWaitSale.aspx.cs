@@ -910,6 +910,9 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                     string stopPrd = "";
                     if (entity.ProduceState == "停产")
                         stopPrd = " <span class=\"color-block3\">停产</span>";
+
+                    //新车上市 即将上市 状态
+                    string marketflag = GetMarketFlag(entity);
                     Dictionary<int, string> dictCarParams = _carBLL.GetCarAllParamByCarID(entity.CarID);
                     //add by 2014.05.04 获取电动车参数
                     if (isElectrombile)
@@ -996,7 +999,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                     carListHtml.Add(string.Format("<tr  id=\"car_filter_id_{0}\">", entity.CarID));
                     carListHtml.Add("<td class=\"txt-left\">");
                     carListHtml.Add(string.Format("<a  id=\"carlist_{1}\" href=\"/{0}/m{1}/\" data-channelid=\"2.21.848\" target=\"_blank\" class=\"txt\">{2} {3}</a> {4}",
-                        serialSpell, entity.CarID, yearType, entity.CarName, fuelTypeStr + hasEnergySubsidy + strTravelTax + parallelImport + stopPrd));
+                        serialSpell, entity.CarID, yearType, entity.CarName, fuelTypeStr + hasEnergySubsidy + strTravelTax + parallelImport + stopPrd + marketflag));
                     carListHtml.Add(string.Format("<a href=\"/{0}/m{1}/\" target=\"_blank\" class=\"abs-a\" data-channelid=\"2.21.848\"></a>", serialSpell, entity.CarID));
                     carListHtml.Add("</td>");
                     carListHtml.Add("<td>");
@@ -1492,5 +1495,52 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 Response.Redirect("/404error.aspx");
             }
         }
+
+        private string GetMarketFlag(CarInfoForSerialSummaryEntity entity)
+        {
+            string marketflag = "";
+            if (entity.MarketDateTime != null)
+            {
+                marketflag = GetTipsByDateTime(entity.MarketDateTime);
+            }
+            else
+            {
+                var picCount = _carBLL.GetSerialCarRellyPicCount(entity.CarID);
+                if (picCount > 0)
+                {
+                    marketflag = "<a href=\"javascript:void(0);\" target=\"_blank\" class=\"color-block\">即将上市</a>";
+                }
+                else
+                {
+                    if (entity.ReferPrice != "")
+                    {
+                        marketflag = "<a href=\"javascript:void(0);\" target=\"_blank\" class=\"color-block\">即将上市</a>";
+                    }
+                }
+            }
+
+            return marketflag;
+        }
+
+        private string GetTipsByDateTime(DateTime dt)
+        {
+            string html = "";
+            int days = GetDaysAboutCurrentDateTime(dt);
+            //过去30天内显示"新上市"，未来30天内显示"即将上市"
+            string tips = (days >= 0 && days <= 30) ? "新上市" : days <= 0 && days >= -30 ? "即将上市" : "";
+            if (!string.IsNullOrEmpty(tips))
+            {
+                html = string.Format("<a href=\"javascript:void(0);\" target=\"_blank\" class=\"color-block\">{0}</a>", tips);
+            }
+            return html;
+        }
+        public int GetDaysAboutCurrentDateTime(DateTime dt)
+        {
+            DateTime currentDateTime = DateTime.Now.Date;
+            int days = (currentDateTime - dt).Days;
+            return days;
+        }
+
+
     }
 }

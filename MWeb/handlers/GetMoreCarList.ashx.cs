@@ -448,7 +448,9 @@ namespace WirelessWeb.handlers
 							"<a  id='carlist_" + carInfo.CarID + "' class='car-info' href='{0}' data-channelid=\"27.23.915\">",
 							 "/" + _serialEntity.AllSpell + "/m" + carInfo.CarID + "/");
 
-						stringBuilder.AppendFormat("<h2>{0}</h2>", carFullName);
+                        //新车上市 即将上市 状态
+                        string marketflag = GetMarketFlag(carInfo);
+                        stringBuilder.AppendFormat("<h2>{0}{1}</h2>", carFullName, marketflag);
 						
 						stringBuilder.AppendFormat("<dl><dt>{0}</dt></dl>", carMinPrice);
 						stringBuilder.Append("<div class=\"car-info-bottom\">");//第二行开始
@@ -633,5 +635,49 @@ namespace WirelessWeb.handlers
 				return (T)serializer.Deserialize(stream);
 			}
 		}
-	}
+
+        private string GetMarketFlag(CarInfoForSerialSummaryEntity carInfo)
+        {
+            string marketflag = "";
+            if (carInfo.MarketDateTime != DateTime.MinValue)
+            {
+                marketflag = GetTipsByDateTime(carInfo.MarketDateTime);
+            }
+            else
+            {
+                var picCount = _carBLL.GetSerialCarRellyPicCount(carInfo.CarID);
+                if (picCount > 0)
+                {
+                    marketflag = "<em class=\"the-new\">即将上市</em>";
+                }
+                else
+                {
+                    if (carInfo.ReferPrice != "")
+                    {
+                        marketflag = "<em class=\"the-new\">即将上市</em>";
+                    }
+                }
+            }
+
+            return marketflag;
+        }
+        private string GetTipsByDateTime(DateTime dt)
+        {
+            string html = "";
+            int days = GetDaysAboutCurrentDateTime(dt);
+            //过去30天内显示"新上市"，未来30天内显示"即将上市"
+            string tips = (days >= 0 && days <= 30) ? "新上市" : days <= 0 && days >= -30 ? "即将上市" : "";
+            if (!string.IsNullOrEmpty(tips))
+            {
+                html = string.Format("<em class=\"the-new\">{0}</em>", tips);
+            }
+            return html;
+        }
+        public int GetDaysAboutCurrentDateTime(DateTime dt)
+        {
+            DateTime currentDateTime = DateTime.Now.Date;
+            int days = (currentDateTime - dt).Days;
+            return days;
+        }
+    }
 }

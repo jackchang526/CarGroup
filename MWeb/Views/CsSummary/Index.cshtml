@@ -63,7 +63,7 @@
 </head>
 <body>
     @if (wtmcid != "mbdofcl")
-    { 
+    {
         @Html.Partial("~/html/TopDownloadLayer.cshtml")
     }
     <div id="container">
@@ -189,7 +189,14 @@
                 </div>
                 <dl>
                     <dt>
-                        <h2>@(serialEntity.SeoName)</h2>@(Html.Raw(serialEntity.SaleState == "停销" ? "<em>停售</em>" : serialEntity.SaleState == "待销" ? "<em>未上市</em>" : ""))
+                        <h2>@(serialEntity.SeoName)</h2>
+                        @{
+                            if (ViewData["showText"].ToString() != "")
+                            {
+                                <em class="the-new">@ViewData["showText"]</em>
+                            }
+                        }                        
+                        @*@(Html.Raw(serialEntity.SaleState == "停销" ? "<em>停售</em>" : serialEntity.SaleState == "待销" ? "<em>未上市</em>" : ""))*@
                     </dt>
                     <dd>
                         <a href="http://price.m.yiche.com/nb@(serialEntity.Id)/" data-channelid="27.23.952">

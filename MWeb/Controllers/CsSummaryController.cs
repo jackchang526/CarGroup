@@ -1434,24 +1434,27 @@ namespace MWeb.Controllers
                 {
                     //车款中筛选填写了上市时间的车款
                     IEnumerable<CarInfoForSerialSummaryEntity> newCarMarketDateTimeList = serialCarList.Where(a => a.MarketDateTime != DateTime.MinValue);
-                    CarInfoForSerialSummaryEntity car = newCarMarketDateTimeList.First();//倒叙排列，取第一个即可
-                    if (car != null)
+                    if (newCarMarketDateTimeList.Count() > 0)
                     {
-                        int days = GetDaysAboutCurrentDateTime(car.MarketDateTime);
-                        if (days >= 0 && days <= 30)
+                        CarInfoForSerialSummaryEntity car = newCarMarketDateTimeList.First();//倒叙排列，取第一个即可
+                        if (car != null)
                         {
-                            //只有一个年款    ***新车上市***
-                            if (serialCarList.GroupBy(i => i.CarYear).Count() == 1)
+                            int days = GetDaysAboutCurrentDateTime(car.MarketDateTime);
+                            if (days >= 0 && days <= 30)
                             {
-                                showText = "新车上市";
-                            }
-                            //不止一个年款    ***新款上市***
-                            else
-                            {
-                                showText = "新款上市";
+                                //只有一个年款    ***新车上市***
+                                if (serialCarList.GroupBy(i => i.CarYear).Count() == 1)
+                                {
+                                    showText = "新车上市";
+                                }
+                                //不止一个年款    ***新款上市***
+                                else
+                                {
+                                    showText = "新款上市";
+                                }
                             }
                         }
-                    }                    
+                    }                                   
                 }
             }
             //待查 待销(未上市)

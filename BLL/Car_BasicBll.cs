@@ -1841,8 +1841,11 @@ namespace BitAuto.CarChannel.BLL
         {
             int count = 0;
             try
-            {
-                string xmlFile = Path.Combine(WebConfig.DataBlockPath, string.Format(@"Data\PhotoImage\SerialCarReallyPic\{0}.xml", carId));
+            {                
+                var xmlFile =
+                string.Format(Path.Combine(PhotoImageConfig.SavePath, PhotoImageConfig.SerialCarReallyImagePath),
+                    carId);
+
                 XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(xmlFile);
                 if (xmlDoc.HasChildNodes)
                 {

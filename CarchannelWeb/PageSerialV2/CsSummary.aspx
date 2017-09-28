@@ -609,7 +609,7 @@
                                 <h2><a target="_blank" href="http://fenqi.taoche.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><%= serialShowName %>贷款方案</a></h2>
                             </div>
                             <div class="more">
-                                <a href="http://sq.taoche.com/Secretary/Index?from=764" target="_blank">小鑫帮你代</a>
+                                <a href="http://sq.taoche.com/Secretary/Index?from=764" target="_blank">小鑫帮您贷</a>
                                 <a href="http://fenqi.taoche.com?from=765" target="_blank">按预算贷车</a>
                                 <a href="https://sq.taoche.com/calculator/index?source=957&from=766" target="_blank">车贷计算器</a>
                                 <a href="http://shop.daikuan.com/?from=767" target="_blank">金融旗舰店</a>

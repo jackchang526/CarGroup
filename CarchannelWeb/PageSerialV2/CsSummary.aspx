@@ -295,6 +295,7 @@
             }
             var GlobalSummaryConfig = {
                 SerialId:<%= serialId %>,
+                AllSpell:"<%=serialSpell%>",
                 CityId: cityId,
                 CityName: cityName
             };
@@ -379,7 +380,7 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="http://gimg.bitauto.com/js/senseNewFs.js"></script>
+        <script type="text/javascript" src="http://d2.yiche.com/js/senseNewFs.js"></script>
         <%-- <script type="text/javascript">
             GetFocusNewsLast(csSaleState,8);
         </script>--%>
@@ -601,23 +602,138 @@
                         </div>
                         <%--  <div class="row special-layout-17" id="gouche-xscg" style="display: none;" data-channelid="2.21.995">
                         </div>--%>
-                    </div>
-
-                    <div class="layout-2 loan-section" id="gouche-chedai">
+                    </div> 
+                    <div class="layout-2 loan-section">
                         <div class="section-header header2 mb0">
                             <div class="box">
                                 <h2><a target="_blank" href="http://fenqi.taoche.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><%= serialShowName %>贷款方案</a></h2>
                             </div>
-                        </div>
-                        <div class="special-layout-5 type-1" id="gouche-huodong" data-channelid="2.21.1516">
-                        </div>
-                        <div class="special-layout-12" id="gouche-chedaicontent" data-channelid="2.21.820">
+                            <div class="more">
+                                <a href="http://sq.taoche.com/Secretary/Index?from=764" target="_blank">小鑫帮您贷</a>
+                                <a href="http://fenqi.taoche.com?from=765" target="_blank">按预算贷车</a>
+                                <a href="https://sq.taoche.com/calculator/index?source=957&from=766" target="_blank">车贷计算器</a>
+                                <a href="http://shop.daikuan.com/?from=767" target="_blank">金融旗舰店</a>
+                            </div>
+                        </div> 
+                        <div class="special-layout-5 type-1 cd-nav-type">
+                            <div class="cd-box-sty cd-lef-box">
+                                <span>首付比例：</span>
+                                <div id="downpaymentrate" class="tab-link-box">
+                                    <a href="javascript:;" data='0'>0%</a>
+                                    <a href="javascript:;" data='0.1'>10%</a>
+                                    <a href="javascript:;" data='0.2'>20%</a>
+                                    <a href="javascript:;" data='0.3' class="current">30%</a>
+                                    <a href="javascript:;" data='0.4'>40%</a>
+                                    <a href="javascript:;" data='0.5'>50%</a>
+                                    <a href="javascript:;" data='0.6'>60%</a>
+                                    <a href="javascript:;" data='0.7'>70%</a>
+                                </div>
+                            </div>
+                            <div class="cd-box-sty cd-rig-box">
+                                <span>还款期限：</span>
+                                <div id="repaymentperiod" class="tab-link-box">
+                                    <a href="javascript:;" data='12'>12期</a>
+                                    <a href="javascript:;" data='18'>18期</a>
+                                    <a href="javascript:;" data='24'>24期</a>
+                                    <a href="javascript:;" data='36' class="current">36期</a>
+                                    <a href="javascript:;" data='48'>48期</a>
+                                    <a href="javascript:;" data='60'>60期</a>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="special-layout-12">
                         </div>
                         <div class="btn-box1">
-                            <a class="btn btn-default" target="_blank" href="http://fenqi.taoche.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><span class="more">更多贷款方案</span></a>
+                            <a id="dk-morelink" class="btn btn-default" target="_blank" href="http://fenqi.taoche.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><span class="more">更多贷款方案</span></a>
                         </div>
                     </div>
-
+                    <script type="text/javascript">
+                            (function () {
+                                $('#downpaymentrate a').click(function () {
+                                    $('#downpaymentrate a').removeClass('current');
+                                    $(this).addClass('current');
+                                    var rate = $(this).attr('data');
+                                    var period = $('#repaymentperiod').find('.current').attr('data');
+                                    loadSummarizeFinancialProductsHtml(rate, period);
+                                });
+                                $('#repaymentperiod a').click(function () {
+                                    $('#repaymentperiod a').removeClass('current');
+                                    $(this).addClass('current');
+                                    var period = $(this).attr('data');
+                                    var rate = $('#downpaymentrate').find('.current').attr('data');
+                                    loadSummarizeFinancialProductsHtml(rate, period);
+                                }); 
+                                //默认是首富30% 36期
+                                loadSummarizeFinancialProductsHtml('0.3', '36');
+                                //carapi.daikuan.com
+                                function loadSummarizeFinancialProductsHtml(rate, period) {
+                                    var config = {
+                                        CityId: '201',
+                                        SerialId: '2370',
+                                        AllSpell:'langyi'
+                                    }
+                                    if (typeof GlobalSummaryConfig != "undefined") {
+                                        config.CityId = GlobalSummaryConfig.CityId;
+                                        config.SerialId = GlobalSummaryConfig.SerialId;
+                                        config.AllSpell = GlobalSummaryConfig.AllSpell;
+                                    }
+                                    $("#dk-morelink").attr("href", 'http://fenqi.taoche.com/www/' + config.AllSpell +'?from=yc36&downPayment=' + rate + '&repaymentPeriod=' + period);
+                                    $.getJSON(
+                                        "http://carapi.daikuan.com/api/SummarizeFinancialProducts/SearchSummarizeFinancialProducts?cityId=" +
+                                        config.CityId + "&serialId=" + config.SerialId +
+                                        "&pagesize=4&callback=?", {
+                                            downpaymentrate: rate,
+                                            repaymentperiod: period
+                                        },
+                                        function (res) {
+                                            var html = '';
+                                            for (var i = 0; i < res.length; i++) {
+                                                var commonRequirementClass = ''
+                                                if (res[i].CommonRequirement == '严格') {
+                                                    commonRequirementClass = ''
+                                                }
+                                                if (res[i].CommonRequirement == '一般') {
+                                                    commonRequirementClass = ''
+                                                }
+                                                if (res[i].CommonRequirement == '宽松') {
+                                                    commonRequirementClass = 'em'
+                                                }
+                                                html +=
+                                                    `<div class="row inner">
+                                <div class="col-auto left">
+                                    <a class="figure" href="${res[i].PCDetailsUrl}">
+                                        <span class="img">
+                                        <img src="${res[i].CompanyLogoUrl}" alt="">
+                                    </span>
+                                        <h4 class="title">${res[i].PackageName}</h4>
+                                        <p class="info">${res[i].CompanyName}</p>
+                                    </a>
+                                </div>
+                                <div class="col-auto mid">
+                                    <div class="condition ${commonRequirementClass}">
+                                        申请条件：<span class="title">${res[i].CommonRequirement}</span>
+                                    </div>
+                                    <div class="provide">
+                                        所需材料：<span class="title">${res[i].PackageFeatureIcon2}</span>
+                                    </div>
+                                </div>
+                                <div class="col-auto right">
+                                    <div class="price">
+                                        ${res[i].MonthlyPaymentText}<span class="title">/月</span>
+                                    </div>
+                                    <div class="total">
+                                        首付 ${res[i].DownPaymentText}
+                                    </div>
+                                </div>
+                                <a href="${res[i].PCDetailsUrl}" class="btn btn-default">查看详情</a>
+                            </div>`
+                                            }
+                                            $('.special-layout-12').html(html);
+                                        }
+                                    ); 
+                                }
+                            })();
+                    </script>
                     <div class="layout-1 oldcar-section" id="ucarlist">
                     </div>
 
@@ -690,7 +806,7 @@
         (function () {
             GetPromotionNews();
             GetSerialWaiGuanNeiShi();
-            GetCheDai();
+            //GetCheDai();
             GetXiaoliang();
             //getBuyLimit();
             GetVedioNum();

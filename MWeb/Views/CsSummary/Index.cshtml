@@ -34,6 +34,7 @@
         }
         var GlobalSummaryConfig = {
             SerialId: "@(serialEntity.Id)",
+            AllSpell: "@(serialEntity.AllSpell)",
             CityId: cityId,
             CityName: cityName
         };
@@ -54,9 +55,9 @@
             "@@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
             "@@id": "@(Request.Url.ToString())",
             "title": "@(ViewData["title"])",
-            "images": ["@(ViewData["WhitePicUrl"])"],
+            "images": ["@(ViewData["WhitePicUrl"].ToString().Replace("_4.","_3."))"],
             "description":"",
-            "pubDate": "2017-09-11T08:00:01"
+            "pubDate": "@(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"))"
             }
         </script>
     }
@@ -632,6 +633,76 @@
         <script type="text/javascript">
         document.write('<scri' + 'pt src="http://m.h5.qiche4s.cn/priceapiv2/ajax/InitData.ashx?action=cardealerlist&brandid=@(serialEntity.Id)&citycode=' + citycode + '" type="text/javascript"></s' + 'cript>');
         </script>
+        <!-- 贷款 start   -->
+        <div class="tt-first" id="m-tabs-article">
+            <h3>贷款方案</h3>
+        </div>
+        <div class="dk-article-sty">
+            <div class="dk-btn-box">
+                <div class="lef-box">
+                    <a href="javascript:void(0)" data-action="grade1" id="downpayment">首付比例</a>
+                </div>
+                <div class="rig-box">
+                    <a href="javascript:void(0)" data-action="grade2" id="loanperiod">贷款期限</a>
+                </div>
+            </div>
+            <div class="car-card">
+                <ul id="car-card-list"></ul>
+                <a id="dk-morelink" href="http://fenqi.m.taoche.com/www/@serialEntity.AllSpell/?from=yc36" class="btn-more"><i>查看更多</i></a>
+            </div>
+        </div>
+        <!--弹出层 start-->
+        <div class="leftPopup grade grade1" data-back="leftmask2" style="display: none;">
+            <div class="swipeLeft">
+                <div class="loading">
+                    <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                    <p>正在加载...</p>
+                </div>
+            </div>
+        </div>
+        <!--弹出层 end-->
+        <!--公共模板 start-->
+        <script type="text/template" id="gradeTemplate1">
+            <div class="tt-list absolute">
+                <ul class="second-list y2015">
+                    <li><a href="javascript:void(0)" rel="0">0%</a></li>
+                    <li><a href="javascript:void(0)" rel="0.1">10%</a></li>
+                    <li><a href="javascript:void(0)" rel="0.2">20%</a></li>
+                    <li><a href="javascript:void(0)" rel="0.3">30%</a></li>
+                    <li><a href="javascript:void(0)" rel="0.4">40%</a></li>
+                    <li><a href="javascript:void(0)" rel="0.5">50%</a></li>
+                    <li><a href="javascript:void(0)" rel="0.6">60%</a></li>
+                    <li><a href="javascript:void(0)" rel="0.7">70%</a></li>
+                </ul>
+
+            </div>
+        </script>
+        <!--公共模板 end-->
+        <!--弹出层 start-->
+        <div class="leftPopup grade grade2" data-back="leftmask2" style="display: none;">
+            <div class="swipeLeft">
+                <div class="loading">
+                    <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                    <p>正在加载...</p>
+                </div>
+            </div>
+        </div>
+        <!--弹出层 end-->
+        <!--公共模板 start-->
+        <script type="text/template" id="gradeTemplate2">
+            <div class="tt-list absolute">
+                <ul class="second-list y2015">
+                    <li><a href="javascript:void(0)" rel="12">12期</a></li>
+                    <li><a href="javascript:void(0)" rel="18">18期</a></li>
+                    <li><a href="javascript:void(0)" rel="24">24期</a></li>
+                    <li><a href="javascript:void(0)" rel="36">36期</a></li>
+                    <li><a href="javascript:void(0)" rel="48">48期</a></li>
+                    <li><a href="javascript:void(0)" rel="60">60期</a></li>
+                </ul>
+            </div>
+        </script>
+        <!--公共模板 end--> 
+        <!-- 贷款 end   --> 
         <!--通栏3广告-->
         <script type="text/javascript">
             showNewsInsCode('0fdd1bab-745d-42d9-a86b-3dd5e25877b5', '8a05b2f2-6da8-40a7-8296-d005d870b4bb', '279a56d1-93e3-4cbb-9409-517fe7edec5a', 'c588f73d-9446-4cbb-a56f-941a8ddaa54f');
@@ -1004,7 +1075,6 @@
         <script type="text/javascript" src="/js/rightswipe-cityV2.js?v=20160202"></script>
         <script type="text/javascript" src="/js/csSummaryConditionV2.js"></script>*@
     <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/common/swiper-3.2.7.min.js,carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.min.js,carchannel/common/cityjsonv2.js,carchannel/wirelessjsv2/rightswipe-cityv2.js,carchannel/wirelessjsv2/cssummaryconditionV2.min.js?v=20170906"></script>
-
     <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=audio/jplayer/jquery.jplayer.min.js,audio/jplayer/audioJPlayerMobile.js?v=20170105"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>
     <script type="text/javascript">
@@ -1099,6 +1169,92 @@
             });
         }
     </script>
+    <script type="text/javascript">
+        $(function () {
+            /****贷款数据*****/
+            var loanData = {
+                downpaymentRate: 0.3,
+                loanPeriod: 36
+            };
+            console.log($("[data-action=grade1]").length);
+            $body.trigger('publicswipe1', {
+                actionName: '[data-action=grade1]',
+                ds: loanData,
+                templateid: '#gradeTemplate1',
+                fnEnd: function () {
+                    var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    $swipeLeft.find('a[rel="' + loanData.downpaymentRate + '"]').parent().addClass('current');
+
+                    $swipeLeft.find('a').click(function (ev) {
+                        var $click = $(this);
+                        loanData.downpaymentRate = +$click.attr('rel');
+                        getLoanData();
+                        ev.preventDefault();
+                        $back.trigger('close');
+                    })
+                }
+            });
+
+            /****贷款期限*****/
+            $body.trigger('publicswipe1', {
+                actionName: '[data-action=grade2]',
+                ds: loanData,
+                templateid: '#gradeTemplate2',
+                fnEnd: function () {
+                    var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    $swipeLeft.find('a[rel="' + loanData.loanPeriod + '"]').parent().addClass('current');
+
+                    $swipeLeft.find('a').click(function (ev) {
+                        var $click = $(this);
+                        loanData.loanPeriod = +$click.attr('rel');
+                        getLoanData();
+                        ev.preventDefault();
+                        $back.trigger('close');
+                    })
+                }
+            });
+
+            // 渲染贷款列表
+            function renderCardList(list) {
+                var html = ''
+                for (var i = 0; i < list.length; i++) {
+                    var item = list[i]
+                    html += '<li> \
+              <a id="carlist_'+ item.PackageId + '" class="car-info" href="' + item.MDetailsUrl + '"> \
+                 <div class="list-wrap-box"> \
+                     <div class="img-box"> \
+                        <img src="'+ item.CompanyLogoUrl + '" alt="" /> \
+                     </div> \
+                      <h2>'+ item.PackageName + '(' + item.CompanyName + ')</h2> \
+                      <dl><dt><i>'+ item.MonthlyPaymentText.replace('元', '') + '</i>元/月</dt></dl> \
+                      <div class="car-info-bottom"> \
+                        '+ (item.PackageFeatureIcon1 ? '<em>' + item.PackageFeatureIcon1 + '</em>' : '') + ' \
+                        '+ (item.PackageFeatureIcon2 ? '<em>' + item.PackageFeatureIcon2 + '</em>' : '') + ' \
+                        <b>首付:'+ item.DownPaymentText + '</b> \
+                     </div> \
+                 </div> \
+              </a> \
+            </li>'
+                }
+                $('#car-card-list').html(html);
+            }
+            // 渲染贷款标题
+            function renderCardTab(downpaymentRate, loanPeriod) {
+                $('#downpayment').html('首付比例&emsp;' + Math.floor(downpaymentRate * 100) + '%');
+                $('#loanperiod').html('贷款期限&emsp;' + loanPeriod + '期');
+            }
+            // 贷款数据
+            function getLoanData() {
+                $.getJSON('http://carapi.daikuan.com/api/SummarizeFinancialProducts/SearchSummarizeFinancialProducts?callback=?', { downpaymentrate: loanData.downpaymentRate, repaymentperiod: loanData.loanPeriod, cityId: window.GlobalSummaryConfig && window.GlobalSummaryConfig.CityId, serialId: window.GlobalSummaryConfig && window.GlobalSummaryConfig.SerialId, pagesize: 3 }, function (res) {
+                    renderCardList(res);
+                });
+                renderCardTab(loanData.downpaymentRate, loanData.loanPeriod);
+                $("#dk-morelink").attr("href", "http://fenqi.m.taoche.com/www/@serialEntity.AllSpell/?from=yc36&downPayment=" + loanData.downpaymentRate + "&repaymentPeriod=" + loanData.loanPeriod+"")
+            }
+            // 首次获取贷款数据
+            getLoanData();
+        });
+    </script> 
     <!--评论数JS-->
     <!--#include file="/include/pd/2014/common/00001/201506_typls_js_Manual.shtml"-->
 </body>

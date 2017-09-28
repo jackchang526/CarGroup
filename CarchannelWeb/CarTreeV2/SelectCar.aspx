@@ -383,7 +383,7 @@
     <%--<script type="text/javascript" src="http://bglog.bitauto.com/bglogpostlog.js"></script>--%>
 </body>
 </html>
-<script type="text/javascript" src="http://gimg.bitauto.com/js/senseNew.js"></script>
+<script type="text/javascript" src="http://d2.yiche.com/js/senseNew.js"></script>
 <script type="text/javascript">
     //$("#feedbackDiv").before("<li class=\"w4 d11-backtop\"><a href=\"http://survey01.sojump.com/jq/8460070.aspx\"  title=\"\" target=\"_blank\">问卷调查</a></li>");
     $(function(){

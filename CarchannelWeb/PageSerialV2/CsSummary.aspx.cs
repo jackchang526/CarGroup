@@ -1545,41 +1545,45 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
         private string GetMarketFlag(CarInfoForSerialSummaryEntity entity)
         {
             string marketflag = "";
-            if (entity.MarketDateTime != DateTime.MinValue)
+
+            if (entity != null)
             {
-                marketflag = GetTipsByDateTime(entity.MarketDateTime);
-            }
-            else
-            {
-                var picCount = _carBLL.GetSerialCarRellyPicCount(entity.CarID);
-                if (picCount > 0)
+                //int res =DateTime.Compare(entity.MarketDateTime, DateTime.MinValue);
+                if (DateTime.Compare(entity.MarketDateTime, DateTime.MinValue) != 0)
                 {
-                    marketflag = "<a href=\"javascript:void(0);\" target=\"_blank\" class=\"color-block\">即将上市</a>";
-                }
-                else
-                {
-                    if (entity.ReferPrice != "")
+                    int days = GetDaysAboutCurrentDateTime(entity.MarketDateTime);
+                    if (days >= 0 && days <= 30)
+                    {
+                        marketflag = "<a href=\"javascript:void(0);\" target=\"_blank\" class=\"color-block\">新上市</a>";
+                    }
+                    else if (days >= -30 && days < 0)
                     {
                         marketflag = "<a href=\"javascript:void(0);\" target=\"_blank\" class=\"color-block\">即将上市</a>";
                     }
                 }
-            }
+                else
+                {
+                    if (entity.SaleState.Trim() == "待销")
+                    {
+                        var picCount = _carBLL.GetSerialCarRellyPicCount(entity.CarID);
+                        if (picCount > 0)
+                        {
+                            marketflag = "<a href=\"javascript:void(0);\" target=\"_blank\" class=\"color-block\">即将上市</a>";
+                        }
+                        else
+                        {
+                            if (entity.ReferPrice != "")
+                            {
+                                marketflag = "<a href=\"javascript:void(0);\" target=\"_blank\" class=\"color-block\">即将上市</a>";
+                            }
+                        }
+                    }
+                }
+            }           
 
             return marketflag;
         }
-
-        private string GetTipsByDateTime(DateTime dt)
-        {
-            string html = "";
-            int days = GetDaysAboutCurrentDateTime(dt);
-            //过去30天内显示"新上市"，未来30天内显示"即将上市"
-            string tips = (days >= 0 && days <= 30) ? "新上市" : days <= 0 && days >= -30 ? "即将上市" : "";
-            if (!string.IsNullOrEmpty(tips))
-            {
-                html = string.Format("<a href=\"javascript:void(0);\" target=\"_blank\" class=\"color-block\">{0}</a>", tips);
-            }
-            return html;
-        }
+        
         public int GetDaysAboutCurrentDateTime(DateTime dt)
         {
             DateTime currentDateTime = DateTime.Now.Date;

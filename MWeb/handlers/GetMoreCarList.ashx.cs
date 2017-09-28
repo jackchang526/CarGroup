@@ -636,43 +636,46 @@ namespace WirelessWeb.handlers
 			}
 		}
 
-        private string GetMarketFlag(CarInfoForSerialSummaryEntity carInfo)
+        private string GetMarketFlag(CarInfoForSerialSummaryEntity entity)
         {
             string marketflag = "";
-            if (carInfo.MarketDateTime != DateTime.MinValue)
+
+            if (entity != null)
             {
-                marketflag = GetTipsByDateTime(carInfo.MarketDateTime);
-            }
-            else
-            {
-                var picCount = _carBLL.GetSerialCarRellyPicCount(carInfo.CarID);
-                if (picCount > 0)
+                if (DateTime.Compare(entity.MarketDateTime, DateTime.MinValue) != 0)
                 {
-                    marketflag = "<em class=\"the-new\">即将上市</em>";
-                }
-                else
-                {
-                    if (carInfo.ReferPrice != "")
+                    int days = GetDaysAboutCurrentDateTime(entity.MarketDateTime);
+                    if (days >= 0 && days <= 30)
+                    {
+                        marketflag = "<em class=\"the-new\">新上市</em>";
+                    }
+                    else if (days >= -30 && days < 0)
                     {
                         marketflag = "<em class=\"the-new\">即将上市</em>";
                     }
                 }
+                else
+                {
+                    if (entity.SaleState.Trim() == "待销")
+                    {
+                        var picCount = _carBLL.GetSerialCarRellyPicCount(entity.CarID);
+                        if (picCount > 0)
+                        {
+                            marketflag = "<em class=\"the-new\">即将上市</em>";
+                        }
+                        else
+                        {
+                            if (entity.ReferPrice != "")
+                            {
+                                marketflag = "<em class=\"the-new\">即将上市</em>";
+                            }
+                        }
+                    }
+                }
             }
-
             return marketflag;
         }
-        private string GetTipsByDateTime(DateTime dt)
-        {
-            string html = "";
-            int days = GetDaysAboutCurrentDateTime(dt);
-            //过去30天内显示"新上市"，未来30天内显示"即将上市"
-            string tips = (days >= 0 && days <= 30) ? "新上市" : days <= 0 && days >= -30 ? "即将上市" : "";
-            if (!string.IsNullOrEmpty(tips))
-            {
-                html = string.Format("<em class=\"the-new\">{0}</em>", tips);
-            }
-            return html;
-        }
+        
         public int GetDaysAboutCurrentDateTime(DateTime dt)
         {
             DateTime currentDateTime = DateTime.Now.Date;

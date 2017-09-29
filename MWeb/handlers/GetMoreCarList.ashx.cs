@@ -647,11 +647,17 @@ namespace WirelessWeb.handlers
                     int days = GetDaysAboutCurrentDateTime(entity.MarketDateTime);
                     if (days >= 0 && days <= 30)
                     {
-                        marketflag = "<em class=\"the-new\">新上市</em>";
+                        if (entity.SaleState.Trim() == "在销")
+                        {
+                            marketflag = "<em class=\"the-new\">新上市</em>";
+                        }
                     }
                     else if (days >= -30 && days < 0)
                     {
-                        marketflag = "<em class=\"the-new\">即将上市</em>";
+                        if (entity.SaleState == "待销")
+                        {
+                            marketflag = "<em class=\"the-new\">即将上市</em>";
+                        }
                     }
                 }
                 else

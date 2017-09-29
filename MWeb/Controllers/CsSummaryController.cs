@@ -1496,36 +1496,42 @@ namespace MWeb.Controllers
             ViewData["showText"] = showText;
         }
 
-        private string GetMarketFlag(CarInfoForSerialSummaryEntity carInfo)
+        private string GetMarketFlag(CarInfoForSerialSummaryEntity entity)
         {
             string marketflag = "";
 
-            if (carInfo != null)
+            if (entity != null)
             {
-                if (carInfo.MarketDateTime != DateTime.MinValue)
+                if (entity.MarketDateTime != DateTime.MinValue)
                 {
-                    int days = GetDaysAboutCurrentDateTime(carInfo.MarketDateTime);
+                    int days = GetDaysAboutCurrentDateTime(entity.MarketDateTime);
                     if (days >= 0 && days <= 30)
                     {
-                        marketflag = "<em class=\"the-new\">新上市</em>";
+                        if (entity.SaleState.Trim() == "在销")
+                        {
+                            marketflag = "<em class=\"the-new\">新上市</em>";
+                        }                            
                     }
                     else if (days >= -30 && days < 0)
                     {
-                        marketflag = "<em class=\"the-new\">即将上市</em>";
+                        if (entity.SaleState == "待销")
+                        {
+                            marketflag = "<em class=\"the-new\">即将上市</em>";
+                        }                            
                     }
                 }
                 else
                 {
-                    if (carInfo.SaleState == "待销")
+                    if (entity.SaleState.Trim() == "待销")
                     {
-                        var picCount = carBLL.GetSerialCarRellyPicCount(carInfo.CarID);
+                        var picCount = carBLL.GetSerialCarRellyPicCount(entity.CarID);
                         if (picCount > 0)
                         {
                             marketflag = "<em class=\"the-new\">即将上市</em>";
                         }
                         else
                         {
-                            if (carInfo.ReferPrice != "")
+                            if (entity.ReferPrice != "")
                             {
                                 marketflag = "<em class=\"the-new\">即将上市</em>";
                             }

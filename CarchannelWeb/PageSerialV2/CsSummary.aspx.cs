@@ -1556,14 +1556,14 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                     {
                         if (entity.SaleState.Trim() == "在销")
                         {
-                            marketflag = "<a href=\"javascript:void(0);\" target=\"_blank\" class=\"color-block\">新上市</a>";
+                            marketflag = "<a target=\"_blank\" class=\"color-block\">新上市</a>";
                         }                        
                     }
                     else if (days >= -30 && days < 0)
                     {
                         if (entity.SaleState.Trim() == "待销")
                         {
-                            marketflag = "<a href=\"javascript:void(0);\" target=\"_blank\" class=\"color-block\">即将上市</a>";
+                            marketflag = "<a target=\"_blank\" class=\"color-block\">即将上市</a>";
                         }                            
                     }
                 }
@@ -1574,13 +1574,13 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                         var picCount = _carBLL.GetSerialCarRellyPicCount(entity.CarID);
                         if (picCount > 0)
                         {
-                            marketflag = "<a href=\"javascript:void(0);\" target=\"_blank\" class=\"color-block\">即将上市</a>";
+                            marketflag = "<a target=\"_blank\" class=\"color-block\">即将上市</a>";
                         }
                         else
                         {
                             if (entity.ReferPrice != "")
                             {
-                                marketflag = "<a href=\"javascript:void(0);\" target=\"_blank\" class=\"color-block\">即将上市</a>";
+                                marketflag = "<a target=\"_blank\" class=\"color-block\">即将上市</a>";
                             }
                         }
                     }

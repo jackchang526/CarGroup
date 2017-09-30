@@ -182,7 +182,7 @@
     <Item Value="SteeringAdjustmentLeftAndRight" Desc="方向盘前后调节" ParamID="799" Unit="" />
     <Item Value="Steering_Wheel_hot" Desc="方向盘加热" ParamID="956" Unit="" />
     <Item Value="InStat_SteerEtc" Desc="方向盘换挡" ParamID="547" Unit="" />
-    <Item Value="InStat_AirCType" Desc="空调控制方式" ParamID="471" Unit="" />
+    <Item Value="InStat_TemperSubCount" Desc="前排空调" ParamID="839" Unit="" />
     <Item Value="InStat_BAirCSystem" Desc="后排独立空调" ParamID="838" Unit="" />
     <Item Value="xiangfenxitong" Desc="香氛系统" ParamID="1027" Unit="" />
     <Item Value="AirCondition_AirPurification" Desc="空气净化" ParamID="905" Unit="" />
@@ -206,7 +206,7 @@
     <Item Value="InStat_BCarShelf" Desc="后排杯架" ParamID="474" Unit="" />
     <Item Value="houpaizhediezhuoban" Desc="后排折叠桌版" ParamID="1032" Unit="" />
   </Group>
-  <Group Desc="门窗/后视镜">
+  <Group Desc="信息娱乐">
     <Item Value="InStat_CCEscreen" Desc="中控台液晶屏" ParamID="488" Unit="" />
     <Item Value="Liquid_crystal_instrument_panel" Desc="全液晶仪表盘" ParamID="988" Unit="" />
     <Item Value="InStat_ComputerMonitors" Desc="行车电脑显示屏" ParamID="832" Unit="" />

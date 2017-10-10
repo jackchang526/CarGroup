@@ -1593,7 +1593,14 @@ namespace BitAuto.CarChannel.BLL
                         }
                         else
                         {
-                            dic[aliasName] = string.Format("{0},{1}|{2}", dic[aliasName], pvalue, price);
+                            if (dic[aliasName] == "—°≈‰" && pvalue == "—°≈‰")
+                            {
+                                dic[aliasName] = string.Format("{0}|{1}", pvalue, price);
+                            }
+                            else
+                            { 
+                                dic[aliasName] = string.Format("{0},{1}|{2}", dic[aliasName], pvalue, price);
+                            }
                         }
                     }
                 }

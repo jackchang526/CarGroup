@@ -427,7 +427,7 @@
       }
      
 </script>
-<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>
+<script type="text/javascript" src="http://d2.yiche.com/js/sense.js"></script>
 <!--百度热力图,与webtrents对比用，过几天可删（2011-11-29）-->
 <script type="text/javascript">
     var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");

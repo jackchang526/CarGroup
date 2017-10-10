@@ -439,7 +439,7 @@ var SuperSelectCarTool = {
                         }
                         else {
                             SuperSelectCarTool.RemoveMoreCondition(conType, 227);
-                            SuperSelectCarTool.UpdateParametsers(false, 'more_' + 227, conType);
+                            SuperSelectCarTool.UpdateParameters(false, 'more_' + 227, conType);
                         }
                         SuperSelectCarTool.AddMoreCondition(conType, conStr);
                     }

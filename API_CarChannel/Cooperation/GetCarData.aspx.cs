@@ -248,10 +248,14 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
 										on car.Cs_Id=cs.cs_Id
 										where car.IsState=1 and cs.IsState=1 {0}";
 			string whereStr = "";
-			if (!string.IsNullOrEmpty(isGetAllSale) && isGetAllSale == "1")
-			{ }
-			else
-			{ whereStr = "and car.Car_SaleState='在销'"; }
+            if (!string.IsNullOrEmpty(isGetAllSale) && isGetAllSale == "1")
+            { }
+            else if (isGetAllSale == "2")
+            {
+                whereStr = "and car.Car_SaleState='停销'";
+            }
+            else
+            { whereStr = "and car.Car_SaleState='在销'"; }
 			DataSet ds = BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString
 				, CommandType.Text, string.Format(sql, whereStr));
 			if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)

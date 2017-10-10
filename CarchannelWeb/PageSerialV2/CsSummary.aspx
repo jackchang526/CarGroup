@@ -379,7 +379,7 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="http://gimg.bitauto.com/js/senseNewFs.js"></script>
+        <script type="text/javascript" src="http://d2.yiche.com/js/senseNewFs.js"></script>
         <%-- <script type="text/javascript">
             GetFocusNewsLast(csSaleState,8);
         </script>--%>

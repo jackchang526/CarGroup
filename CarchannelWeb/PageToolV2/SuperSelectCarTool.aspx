@@ -679,16 +679,16 @@
                     <dt>前悬架类型</dt>
                     <dd>
                         <ul class="tj_list">
-                            <li>
+                           <%-- <li>
                                 <label>
                                     <input type="checkbox" id="more_137" />扭力梁式非独立悬架
                                 </label>
                             </li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_138" />拖曳臂式半独立悬架
+                                    <input type="checkbox" id="more_138" />拖拽臂式半独立悬架
                                 </label>
-                            </li>
+                            </li>--%>
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_139" />双叉臂式独立悬架
@@ -718,7 +718,7 @@
                             </li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_143" />拖曳臂式半独立悬架
+                                    <input type="checkbox" id="more_143" />拖拽臂式半独立悬架
                                 </label>
                             </li>
                             <li>
@@ -1280,7 +1280,7 @@
                             </li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_238" />左右调整
+                                    <input type="checkbox" id="more_238" />前后调整
                                 </label>
                             </li>
                             <li>
@@ -1420,7 +1420,7 @@
                                     <input type="checkbox" id="more_266" />靠背</label></li>
                              <li>
                                 <label>
-                                    <input type="checkbox" id="more_267" />腰部</label></li>
+                                    <input type="checkbox" id="more_267" />高低</label></li>
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_268" />腰部</label></li>

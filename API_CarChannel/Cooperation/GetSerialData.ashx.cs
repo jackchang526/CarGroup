@@ -155,7 +155,7 @@ ORDER BY CONVERT(INT, cdb2.pvalue) DESC, CONVERT(INT, cdb3.pvalue) DESC,
                                     maxP = 0;
                                 }
                                 jsonString.Add("{");
-                                jsonString.Add(string.Format("\"ID\":\"{0}\",\"ShowName\":\"{1}\",\"MakeDay\":\"{2}\",\"Pic\":\"{3}\",\"CarLevel\":\"{4}\",\"MasterBrandName\":\"{5}\",\"BrandName\":\"{6}\",\"ProducerType\":\"{7}\""
+                                jsonString.Add(string.Format("\"ID\":\"{0}\",\"ShowName\":\"{1}\",\"MakeDay\":\"{2}\",\"Pic\":\"{3}\",\"CarLevel\":\"{4}\",\"MasterBrandName\":\"{5}\",\"BrandName\":\"{6}\",\"ProducerType\":\"{7}\",\"MUrl\":\"{8}\""
                                     , csid
                                     , CommonFunction.GetUnicodeByString(csShowName)
                                     , tempDt.ToString("yyyy-MM-dd")
@@ -164,6 +164,7 @@ ORDER BY CONVERT(INT, cdb2.pvalue) DESC, CONVERT(INT, cdb3.pvalue) DESC,
                                     , masterBrandName
                                     , brandName
                                     , producerType
+                                    , string.Format("http://car.m.yiche.com/{0}/", csAllspell)
                                     ));
 
                                 lastCsID = csid;

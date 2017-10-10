@@ -18,7 +18,7 @@
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <meta content="black" name="apple-mobile-web-app-status-bar-style" />
     <meta content="telephone=no" name="format-detection" />
-    <title>@(ViewData["title"])></title>
+    <title>@(ViewData["title"])</title>
     <meta name="Keywords" content="@(ViewData["keyWords"])" />
     <meta name="Description" content="@(ViewData["description"])" />
     <link rel="canonical" href="http://car.bitauto.com/@(serialEntity.AllSpell)/" />
@@ -57,7 +57,7 @@
             "title": "@(ViewData["title"])",
             "images": ["@(ViewData["WhitePicUrl"].ToString().Replace("_4.","_3."))"],
             "description":"",
-            "pubDate": "@(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"))"
+            "pubDate": "@(DateTime.Now.ToString("yyyy-MM-ddThh:mm:ss"))"
             }
         </script>
     }

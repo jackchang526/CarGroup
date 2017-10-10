@@ -1784,13 +1784,14 @@ namespace BitAuto.CarChannel.BLL
                     }
 
                     //add by sk 2014.3.31 增压方式
+                    //add by sk 2014.3.31 增压方式
                     string addPressType = string.Empty;
-                    if (dictParams.ContainsKey(408))
-                    {
-                        if (dictParams[408] == "" || dictParams[408] == "待查" || dictParams[408] == "无") { }
-                        else
-                            addPressType = dictParams[408];
-                    }
+                    //if (dictParams.ContainsKey(425))
+                    //{
+                    //	if (dictParams[425] == "" || dictParams[425] == "待查" || dictParams[425] == "无") { }
+                    //	else
+                    //		addPressType = dictParams[425];
+                    //}
                     ////马力优先 马力参数 如果没有值 利用千万时计算马力 再没有排最后
                     //int maxPower = 0;
                     //if (dictParams.ContainsKey(791))
@@ -1806,11 +1807,11 @@ namespace BitAuto.CarChannel.BLL
                     var fuelType = dictParams.ContainsKey(578) ? dictParams[578] : string.Empty;
                     int kw = 0;
                     int electrickW = 0;
-                    if (fuelType == "电力")
+                    if (fuelType == "纯电")
                     {
                         kw = dictParams.ContainsKey(870) ? ConvertHelper.GetInteger(dictParams[870]) : 0;
                     }
-                    else if (fuelType == "油电混合动力")
+                    else if (fuelType == "油电混合" || fuelType == "插电混合")
                     {
                         double tempDiankW;
                         if (dictParams.ContainsKey(870) && double.TryParse(dictParams[870], out tempDiankW))

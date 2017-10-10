@@ -94,6 +94,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         list.Add(commonInfoGroup);                        
                     }
                 }
+
                 if (assessmentEntity.BodyAndSpaceGroup != null)
                 {
                     if (assessmentEntity.BodyAndSpaceGroup.Score > 0)
@@ -130,6 +131,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         list.Add(bodyAndSpaceGroup);
                     }
                 }
+
                 if (assessmentEntity.RidingComfortGroup != null)
                 {
                     if (assessmentEntity.RidingComfortGroup.Score > 0)
@@ -172,6 +174,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         list.Add(ridingComfortGroup);
                     }
                 }
+
                 if (assessmentEntity.DynamicPerformanceGroup != null)
                 {
                     if (assessmentEntity.DynamicPerformanceGroup.Score > 0)
@@ -208,6 +211,37 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         list.Add(dynamicPerformanceGroup);
                     }
                 }
+
+                if (assessmentEntity.JsBaseGroup != null)
+                {
+                    if (assessmentEntity.JsBaseGroup.Score > 0)
+                    {
+                        ViewScoreEntity jsBaseGroup = new ViewScoreEntity();
+                        List<ParaKeyValue> ItemList = new List<ParaKeyValue>();
+                        jsBaseGroup.GroupName = assessmentEntity.JsBaseGroup.GroupName;
+                        jsBaseGroup.Score = assessmentEntity.JsBaseGroup.Score;
+                        if (assessmentEntity.JsBaseGroup.JdaEntity != null)
+                        {
+                            ItemList.Add(new ParaKeyValue() { Name = "操控性", Score = assessmentEntity.JsBaseGroup.JdaEntity.ControllabilityScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "动态驾驶感受", Score = assessmentEntity.JsBaseGroup.JdaEntity.DriverSenseScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "抓地力", Score = assessmentEntity.JsBaseGroup.JdaEntity.GripScore });
+                        }
+
+                        if (assessmentEntity.JsBaseGroup.JtsEntity != null)
+                        {
+                            ItemList.Add(new ParaKeyValue() { Name = "转弯直径", Score = assessmentEntity.JsBaseGroup.JtsEntity.TurnDiameterScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "方向盘", Score = assessmentEntity.JsBaseGroup.JtsEntity.SteeringWheelScore });
+                            ItemList.Add(new ParaKeyValue() { Name = "直线行驶稳定性", Score = assessmentEntity.JsBaseGroup.JtsEntity.StraightPerferScore });
+                        }
+                        if (assessmentEntity.JsBaseGroup.JdfEntity != null)
+                        {
+                            ItemList.Add(new ParaKeyValue() { Name = "驾驶乐趣", Score = assessmentEntity.JsBaseGroup.JdfEntity.DriveFunScore });
+                        }
+                        jsBaseGroup.ItemList = ItemList;
+                        list.Add(jsBaseGroup);
+                    }
+                }
+
                 if (assessmentEntity.SafetyGroup != null)
                 {
                     if (assessmentEntity.SafetyGroup.Score > 0)
@@ -239,6 +273,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         list.Add(safetyGroup);
                     }
                 }
+
                 if (assessmentEntity.YhBaseGroup != null)
                 {
                     if (assessmentEntity.YhBaseGroup.Score > 0)
@@ -263,36 +298,8 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         yhBaseGroup.ItemList = ItemList;
                         list.Add(yhBaseGroup);
                     }
-                }
-                if (assessmentEntity.JsBaseGroup != null)
-                {
-                    if (assessmentEntity.JsBaseGroup.Score > 0)
-                    {
-                        ViewScoreEntity jsBaseGroup = new ViewScoreEntity();
-                        List<ParaKeyValue> ItemList = new List<ParaKeyValue>();
-                        jsBaseGroup.GroupName = assessmentEntity.JsBaseGroup.GroupName;
-                        jsBaseGroup.Score = assessmentEntity.JsBaseGroup.Score;
-                        if (assessmentEntity.JsBaseGroup.JdaEntity != null)
-                        {
-                            ItemList.Add(new ParaKeyValue() { Name = "操控性", Score = assessmentEntity.JsBaseGroup.JdaEntity.ControllabilityScore });
-                            ItemList.Add(new ParaKeyValue() { Name = "动态驾驶感受", Score = assessmentEntity.JsBaseGroup.JdaEntity.DriverSenseScore });
-                            ItemList.Add(new ParaKeyValue() { Name = "抓地力", Score = assessmentEntity.JsBaseGroup.JdaEntity.GripScore });
-                        }
+                }                
 
-                        if (assessmentEntity.JsBaseGroup.JtsEntity != null)
-                        {
-                            ItemList.Add(new ParaKeyValue() { Name = "转弯直径", Score = assessmentEntity.JsBaseGroup.JtsEntity.TurnDiameterScore });
-                            ItemList.Add(new ParaKeyValue() { Name = "方向盘", Score = assessmentEntity.JsBaseGroup.JtsEntity.SteeringWheelScore });
-                            ItemList.Add(new ParaKeyValue() { Name = "直线行驶稳定性", Score = assessmentEntity.JsBaseGroup.JtsEntity.StraightPerferScore });
-                        }
-                        if (assessmentEntity.JsBaseGroup.JdfEntity != null)
-                        {
-                            ItemList.Add(new ParaKeyValue() { Name = "驾驶乐趣", Score = assessmentEntity.JsBaseGroup.JdfEntity.DriveFunScore });                            
-                        }
-                        jsBaseGroup.ItemList = ItemList;
-                        list.Add(jsBaseGroup);
-                    }
-                }
                 if (assessmentEntity.CostBaseGroup != null)
                 {
                     if (assessmentEntity.CostBaseGroup.Score > 0)
@@ -323,6 +330,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         list.Add(costBaseGroup);
                     }
                 }
+
                 if (assessmentEntity.GeneralBaseGroup != null)
                 {
                     if (assessmentEntity.GeneralBaseGroup.Score > 0)
@@ -336,6 +344,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         list.Add(generalBaseGroup);
                     }
                 }
+
             }
             var json = JsonConvert.SerializeObject(list);
             context.Response.Write(!string.IsNullOrEmpty(callback) ? string.Format("{0}({1})", callback, json) : json);

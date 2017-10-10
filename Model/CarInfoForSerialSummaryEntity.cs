@@ -79,5 +79,9 @@ namespace BitAuto.CarChannel.Model
         /// 车身形式
         /// </summary>
         public string BodyForm;
+        /// <summary>
+        /// 上市时间
+        /// </summary>
+        public DateTime MarketDateTime;
 	}
 }

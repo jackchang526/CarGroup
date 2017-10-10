@@ -32,7 +32,7 @@ var SelectCarTool = {
     , Country: 0
     , CountryName: { 2: "日系", 4: "德系", 8: "美系", 16: "韩系", 484: "欧系" }
 	, BodyForm: 0				//0不限，1两厢及掀背，2三厢
-	, BodyFormName: { 1: "两厢", 2: "三厢" }
+	, BodyFormName: { 1: "两厢", 2: "三厢",8:"旅行版" }
 	, Type: "car"
 	, Domain: window.location.host
 	, currentId: ""
@@ -209,7 +209,7 @@ var SelectCarTool = {
 			$$("btnDrive").childNodes[0].childNodes[1].innerHTML = "";
 			$$("btnFuel").childNodes[0].childNodes[1].innerHTML = "";
 			$$("btnEnvironment").childNodes[0].childNodes[1].innerHTML = "";
-			$$("btnDoor").childNodes[0].childNodes[1].innerHTML = "";
+			//$$("btnDoor").childNodes[0].childNodes[1].innerHTML = "";
 			$$("btnSeat").childNodes[0].childNodes[1].innerHTML = "";
 			$(".morestyle").removeClass("current");
 
@@ -223,7 +223,7 @@ var SelectCarTool = {
 			if (SelectCarTool.PerfSeatNum != "") {
 				seatNum = SelectCarTool.PerfSeatNum.charAt(0);
 			}
-			$("#doors" + doorNum.toString()).addClass("current");
+			//$("#doors" + doorNum.toString()).addClass("current");
 			$("#seatnum" + seatNum.toString()).addClass("current");
 			$$("m-btn-more").innerHTML = "完成";
 			$("#m-btn-more-clear").removeClass("btn-clear-selected");
@@ -603,7 +603,7 @@ var SelectCarTool = {
                         more = more + "247_248_";
                     }
                     if (key.indexOf("197") > -1) {
-                        mc = mc + "_198";
+                        more = more + "198_";
                     }
 		        }
 		    }

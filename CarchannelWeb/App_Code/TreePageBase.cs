@@ -914,7 +914,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.App_Code
             htmlList.Add("<li id=\"bodyform0\"><a href=\"" + this.GetSearchQueryString("b", "0", path) + "\" data-channelid=\"2.94.580\">不限</a></li>");
             htmlList.Add("<li id=\"bodyform1\"><a href=\"" + this.GetSearchQueryString("b", "1", path) + "\" data-channelid=\"2.94.581\">两厢</a></li>");
             htmlList.Add("<li id=\"bodyform2\"><a href=\"" + this.GetSearchQueryString("b", "2", path) + "\" data-channelid=\"2.94.582\">三厢</a></li>");
-            htmlList.Add("<li id=\"wagon1\"><a href=\"" + this.GetSearchQueryString("b", "8", path) + "\" data-channelid=\"2.94.583\">旅行版</a></li>");
+            htmlList.Add("<li id=\"bodyform8\"><a href=\"" + this.GetSearchQueryString("b", "8", path) + "\" data-channelid=\"2.94.583\">旅行版</a></li>");
             htmlList.Add("</ul>");
             htmlList.Add("</dd>");
             htmlList.Add("</dl>");

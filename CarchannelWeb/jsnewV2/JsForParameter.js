@@ -191,6 +191,8 @@ function reCountLeftNavHeight() {
         $leftTableTh = $('#leftfixed').find(' > table > tbody > tr > th');
     $leftTableTh.each(function (i) {
         this.style.height = $mainTableTh.eq(i).outerHeight() + 'px';
+        //this.style.height = (Math.floor($mainTableTh.eq(i).outerHeight())) + 'px';
+        //$mainTableTh.eq(i).height(this.style.height);
     })
 }
 
@@ -633,19 +635,20 @@ function createPara(arrFieldRow) {
                     //        default: break;
                     //    }
                     //}
-                    if (field.indexOf("有") == 0)
+                    if (field == "有")
                     { field = "<span class=\"songti\">●</span>"; }
                     else if (field.indexOf("选配") == 0)
                     {
                         var fieldInfo = field.split('|');
                         if (fieldInfo.length > 1) {
-                            field = "<span class=\"songti\">○ 选配" + formatCurrency(fieldInfo[1]) + "元</span>";
+                            //field = "<span class=\"songti\">○ 选配" + formatCurrency(fieldInfo[1]) + "元</span>";
+                            field = "<div class=\"optional type2\"><div class=\"l\"><i>○</i>选配</div><div class=\"r\">" + formatCurrency(fieldInfo[1]) + "元</div></div>";
                         }
                         else{
                             field = "<span class=\"songti\">○</span>";
                         }
                     }
-                    else if (field.indexOf("无") == 0)
+                    else if (field == "无")
                     { field = "<span class=\"songti\">-</span>"; }
                     //modified by sk 2014.07.11 ie6 样式问题 空赋值 &nbsp;
                     else if (field == "") field = "&nbsp;";
@@ -932,13 +935,13 @@ function createMulti(arrFieldRow) {
                             else
                             { firstSame = firstSame && false; }
                         }
-                        if (multiField.indexOf("待查") >= 0 || multiField == "") {
+                        if (multiField == "待查" || multiField == "") {
                             isAllunknown = true && isAllunknown;
                         }
                         else {
                             isAllunknown = false;
                         }
-                        if (multiField.indexOf("有") == 0)
+                        if (multiField == "有")
                         { multiField = "<span class=\"songti\">●</span>"; }
                         if (multiField.indexOf("选配") == 0)
                         {
@@ -950,7 +953,7 @@ function createMulti(arrFieldRow) {
                                 multiField = "<span class=\"songti\">○</span>";
                             }
                         }
-                        if (multiField.indexOf("无") == 0 && multiField.length == 1)
+                        if (multiField == "无")
                         { multiField = "<span class=\"songti\">-</span>"; }
 
                         if (pint == 0) {

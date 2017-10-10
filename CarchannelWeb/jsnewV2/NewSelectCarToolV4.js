@@ -83,7 +83,7 @@ var conditionObj =
         , BrandName: { 7: "不限", 8: "德系", 9: "美系", 10: "日韩", 11: "欧系", 12: "日本", 16: "韩国" }//new Array('不限', '自主', '合资', '', '进口', "", "德系", "日韩", "美系", "欧系")
         , CountryName: { 0: "不限", 1: "自主", 2: "合资", 4: "进口" }
         , BodyForm: 0				//0不限，1两厢及掀背，2三厢
-        , BodyFormName: { 1: "两厢", 2: "三厢" }
+        , BodyFormName: { 1: "两厢", 2: "三厢",8 : "旅行版" }
         , toolKey: true				//展开开关
         , showPeizhi: false          //是否显示配置
         , Type: "car"
@@ -598,8 +598,8 @@ var conditionObj =
                 qsArray.push("c=" + this.Country.toString());
             if (this.BodyForm != 0)
                 qsArray.push("b=" + this.BodyForm.toString());
-            if (this.IsWagon && this.IsWagon == 1)
-                qsArray.push("lv=" + this.IsWagon);
+            //if (this.IsWagon && this.IsWagon == 1)
+            //    qsArray.push("lv=" + this.IsWagon);
             if (this.DriveType && this.DriveType > 0)
                 qsArray.push("dt=" + this.DriveType);
             if (this.FuelType && this.FuelType > 0)
@@ -707,10 +707,10 @@ var conditionObj =
                 case "f":
                     valueDes = this.FuelTypeName[valueStr];
                     break;
-                case "lv":
-                    if (valueStr == "1")
-                        valueDes = "旅行版";
-                    break;
+                //case "lv":
+                //    if (valueStr == "1")
+                //        valueDes = "旅行版";
+                //    break;
                 case "bd":
                     if (valueStr != "")
                         valueDes = valueStr + "门";

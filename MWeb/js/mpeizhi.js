@@ -254,17 +254,19 @@ function createPageForCompare(isDelSame) {
     bindEvent();
 
     gotoSubMenu();
-    callbackFunc();
+    setTimeout(function () { callbackFunc() }, 0);
 }
 
 function bindEvent() {
     //控制左侧浮动表格行高同主表行高一致
     var $conTable = $('#conTable').find(' > tbody > tr'),
         $fixTable = $('#fixTable').find(' > tbody > tr');
-    console.log($conTable.length);
+    //console.log($conTable.length);
     $fixTable.each(function (i) {
-        this.style.height = $conTable.eq(i).outerHeight() + 'px';
+        this.style.height = (Math.floor($conTable.eq(i).height())) + 'px';
+        $conTable.eq(i).height(this.style.height);
     });
+
 
     $(".m-btn-duibi-close").on("click", function (e) {
         var index = $(this).data("index");
@@ -285,18 +287,7 @@ function bindEvent() {
             $("#popup-menumask").hide();
         }
     });
-    //选配包事件
-   // bindOptionalEvent();
 }
-//选配包弹层
-function bindOptionalEvent() {
-    $('.pop-optional-mask').off("click").click(function () {
-        $('body').css('overflow', 'auto');
-        $('.pop-optional-mask').hide();
-        $('.pop-optional').hide().removeClass('pop-optional-top pop-optional-bottom').find('ul').hide();
-    });
-
-    }
 
 function createEmptyTable() {
     var flag = false;
@@ -540,25 +531,26 @@ function createPara(arrFieldRow) {
                             for (var icolor = 0; icolor < colorArray.length; icolor++) {
                                 var colorRGB = colorArray[icolor].split(',');
                                 if (colorRGB.length == 2) {
-                                    tempColor.push("<li><span title=\"" + colorRGB[0] + "\" style=\"background:" + colorRGB[1] + "\"></span></li>");
+                                    tempColor.push("<li><a href=\"###\" style=\"background-color:" + colorRGB[1] + "\" class=\"c-" + colorRGB[1].replace("#", "") + "\"></a></li>");
                                 }
                             }
                             tempColor.push("</ul>");
                             field = tempColor.join("");
                         }
                     }
-                    if (field.indexOf("有") == 0)
+                    if (field == "有")
                     { field = "<span class=\"f-bold\">●</span>"; }
                     if (field.indexOf("选配") == 0) {
                         var fieldInfo = field.split('|');
                         if (fieldInfo.length > 1) {
-                            field = "<span class=\"songti\">○ 选配" + formatCurrency(fieldInfo[1]) + "元</span>";
+                            //field = "<span class=\"songti\">○ 选配" + formatCurrency(fieldInfo[1]) + "元</span>";
+                            field = "<div class=\"optional type2\"><div class=\"l\"><i>○</i>选配</div><div class=\"r\">" + formatCurrency(fieldInfo[1]) + "元</div></div>";
                         }
                         else {
                             field = "<span class=\"songti\">○</span>";
                         }
                     }
-                    if (field.indexOf("无") == 0)
+                    if (field == "无")
                     { field = "<span class=\"f-bold\">-</span>"; }
 
                     if (!chkResult.IsSame && ComparePageObject.IsVantage) {
@@ -618,7 +610,10 @@ function createPara(arrFieldRow) {
 				classStr = "";
             //,leftTitleStr = leftTitle.length > 10 ? leftTitle : "<span>" + leftTitle + "</span>"
 
-            if (leftTitle.length > 10 && leftTitle.length < 20) {
+            if (arrFieldRow["sFieldTitle"] == "车身颜色") {
+                classStr = "class=\"h2 color-box\"";
+            }
+            else if (leftTitle.length > 10 && leftTitle.length < 20) {
                 classStr = "class=\"h2\"";
             } else if (leftTitle.length >= 20) {
                 classStr = "class=\"h3\"";
@@ -950,17 +945,15 @@ function createMulti(arrFieldRow) {
             return;
         }
     }
-    if (tempArray.length > 0) {
+    //if (tempArray.length == 0) {
         //ComparePageObject.ArrPageContent.push(tempArray.join(""));
         //when less 对比项小于2个时，填补对比项
         if (num < ComparePageObject.MaxTD) {
-
             ComparePageObject.ArrRightContentHTML.push("<td><div class=\"txt c-box\">&nbsp;</div></td>");
-
         }
         ComparePageObject.ArrRightContentHTML.push("</tr>");
         ComparePageObject.ArrLeftTitleHtml.push("</tr>");
-    }
+    //}
 }
 
 // create multi value param for compare
@@ -1035,7 +1028,13 @@ function fieldMultiValue(arrFieldRow) {
                             arrTemp.push("<div class=\"l\"><i>○</i>&nbsp;</div>");
                         }
                         else {
-                            arrTemp.push("<div class=\"l\"><i>●</i>" + (standardJson[staIndex].text.length > 0 ? standardJson[staIndex].text : "&nbsp;") + "</div>");
+                            //arrTemp.push("<div class=\"l\"><i>●</i>" + (standardJson[staIndex].text.length > 0 ? standardJson[staIndex].text : "&nbsp;") + "</div>");
+                            if (standardJson.length > 1) {
+                                arrTemp.push("<div class=\"l\"><i>●</i>" + (standardJson[staIndex].text.length > 0 ? standardJson[staIndex].text : "&nbsp;") + "</div>");
+                            }
+                            else {
+                                arrTemp.push(standardJson[staIndex].text.length > 0 ? standardJson[staIndex].text : "&nbsp;");
+                            }
                         }
                         arrTemp.push("</div>");
                     }

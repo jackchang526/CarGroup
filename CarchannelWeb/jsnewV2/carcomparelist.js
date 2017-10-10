@@ -914,19 +914,20 @@ function createPara(arrFieldRow) {
                 //        default: break;
                 //    }
                 //}
-                if (field.indexOf("有") == 0)
+                if (field == "有")
                 { field = "<span class=\"songti\">●</span>"; }
                 else if (field.indexOf("选配") == 0)
                 {
                     var fieldInfo = field.split('|');
                     if (fieldInfo.length > 1) {
-                        field = "<span class=\"songti\">○ 选配" + formatCurrency(fieldInfo[1]) + "元</span>";
+                        //field = "<span class=\"songti\">○ 选配" + formatCurrency(fieldInfo[1]) + "元</span>";
+                        field = "<div class=\"optional type2\"><div class=\"l\"><i>○</i>选配</div><div class=\"r\">" + formatCurrency(fieldInfo[1]) + "元</div></div>";
                     }
                     else {
                         field = "<span class=\"songti\">○</span>";
                     }
                 }
-                else if (field.indexOf("无") == 0)
+                else if (field == "无")
                 { field = "<span class=\"songti\">-</span>"; }
                 //modified by sk 2014.07.11 ie6 样式问题 空赋值 &nbsp;
                 else if (field == "") field = "&nbsp;";
@@ -1416,7 +1417,13 @@ function fieldMultiValue(arrFieldRow) {
                             arrTemp.push("<div class=\"l\"><i>○</i>&nbsp;</div>");
                         }
                         else {
-                            arrTemp.push("<div class=\"l\"><i>●</i>" + (standardJson[staIndex].text.length > 0 ? standardJson[staIndex].text : "&nbsp;") + "</div>");
+                            //arrTemp.push("<div class=\"l\"><i>●</i>" + (standardJson[staIndex].text.length > 0 ? standardJson[staIndex].text : "&nbsp;") + "</div>");
+                            if (standardJson.length > 1) {
+                                arrTemp.push("<div class=\"l\"><i>●</i>" + (standardJson[staIndex].text.length > 0 ? standardJson[staIndex].text : "&nbsp;") + "</div>");
+                            }
+                            else {
+                                arrTemp.push(standardJson[staIndex].text.length > 0 ? standardJson[staIndex].text : "&nbsp;");
+                            }
                         }
                         arrTemp.push("</div>");
                     }

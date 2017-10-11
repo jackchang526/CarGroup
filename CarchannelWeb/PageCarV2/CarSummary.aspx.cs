@@ -1048,20 +1048,24 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                     if (item.Attributes.GetNamedItem("Value").Value.IndexOf(",") == -1 && dictOptional.ContainsKey(int.Parse(item.Attributes.GetNamedItem("ParamID").Value)))
                     {
                         var optionalPara = dictOptional[int.Parse(item.Attributes.GetNamedItem("ParamID").Value)];
+                        if (pvalue == "●")
+                        {
+                            pvalue = "";
+                        }
                         if (optionalPara.Count <= 1)
                         {
                             var name = optionalPara.Single().Key;
                             string price = optionalPara.Single().Value.ToString("N0");
                             if (string.IsNullOrEmpty(pvalue))
                             {
-                                sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name  + price + "元</div></div></div></td>");
+                                sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + " " + price + "元</div></div></div></td>");
                             }
                             else
                             {
                                 //单个标配 并且标配值不为无
                                 if (pvalue != "-" && pvalue.IndexOf(",") == -1 && pvalue != "○")
                                 {
-                                    sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pvalue + "</div></div><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name  + price + "元</div></div></div></td>");
+                                    sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pvalue + "</div></div><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + " "+ price + "元</div></div></div></td>");
                                 }
                                 //多个标配 
                                 else if (pvalue.IndexOf(",") >= 0)
@@ -1075,11 +1079,11 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                                             sbTemp.AppendLine("<div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + value + "</div></div>");
                                         }
                                     }
-                                    sbTemp.AppendLine("<div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name  + price + "元</div></div></div></td>");
+                                    sbTemp.AppendLine("<div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + " " + price + "元</div></div></div></td>");
                                 }
                                 else
                                 {
-                                    sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + price + "元</div></div></div></td>");
+                                    sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + " " + price + "元</div></div></div></td>");
                                 }
                             }
                         }
@@ -1112,7 +1116,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                             }
                             foreach (var para in optionalPara.Keys)
                             {
-                                sbTemp.AppendLine("<div class=\"optional type2\"><div class=\"l\"><i>○</i>" + para  + optionalPara[para].ToString("N0") + "元</div></div>");
+                                sbTemp.AppendLine("<div class=\"optional type2\"><div class=\"l\"><i>○</i>" + para + " " + optionalPara[para].ToString("N0") + "元</div></div>");
                             }
                             sbTemp.AppendLine("</div></td>");
                         }

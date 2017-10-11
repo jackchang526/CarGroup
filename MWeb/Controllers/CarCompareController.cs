@@ -226,7 +226,7 @@ namespace MWeb.Controllers
                                                 { pvalue = "●"; }
                                                 if (pvalue.IndexOf("选配") == 0)
                                                 { pvalue = "○"; }
-                                                if (pvalue.IndexOf("无") == 0)
+                                                if (pvalue == "无")
                                                 { pvalue = "-"; }
                                             }
 
@@ -254,6 +254,10 @@ namespace MWeb.Controllers
                                                 if (pid > 0 && dicOptional.ContainsKey(pid))
                                                 {
                                                     var optionalPara = dicOptional[pid];
+                                                    if (pvalue == "●")
+                                                    {
+                                                        pvalue = "";
+                                                    }
                                                     //单个选配
                                                     if (optionalPara.Count <= 1)
                                                     {

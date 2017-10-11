@@ -238,6 +238,7 @@
     <Content Include="js\car.recognition.js" />
     <Content Include="js\CarCalculator.js" />
     <Content Include="js\carcomparetoolV2.js" />
+    <Content Include="js\carcomparetoolV3.js" />
     <Content Include="js\carsum\aboutCarTemp.js" />
     <Content Include="js\carsum\aboutCompare.js" />
     <Content Include="js\carsum\funcGetEsc.js" />
@@ -250,9 +251,11 @@
     <Content Include="js\iscroll-infinite.js" />
     <Content Include="js\model.js" />
     <Content Include="js\mpeizhi.js" />
+    <Content Include="js\mpeizhiv2.js" />
     <Content Include="js\popup.js" />
     <Content Include="js\rightswipe-cityV2.js" />
     <Content Include="js\selectcartoolV2.js" />
+    <Content Include="js\selectcartoolV3.js" />
     <Content Include="js\selectscenecar.js" />
     <Content Include="js\suvchannel\seriallist.js" />
     <Content Include="js\suvchannel\suvdefault.js" />

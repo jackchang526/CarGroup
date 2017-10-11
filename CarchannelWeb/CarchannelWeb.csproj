@@ -1009,6 +1009,7 @@
     <Content Include="jsnewV2\CarChannelBaikeJson.js" />
     <Content Include="jsnewV2\carcompareforminiV3.js" />
     <Content Include="jsnewV2\carcomparelist.js" />
+    <Content Include="jsnewV2\carcomparelistv2.js" />
     <Content Include="jsnewV2\carSelectSimple.js" />
     <Content Include="jsnewV2\circle-progress.min.js" />
     <Content Include="jsnewV2\common.js" />
@@ -1028,6 +1029,7 @@
     <Content Include="jsnewV2\JsForParameterV2.js" />
     <Content Include="jsnewV2\knob.extend.js" />
     <Content Include="jsnewV2\KouBeiCompare.js" />
+    <Content Include="jsnewV2\NewSelectCarToolV5.js" />
     <Content Include="jsnewV2\newsViewCount.js" />
     <Content Include="jsnewV2\photoCompare.js" />
     <Content Include="jsnewV2\pingceyouhui.js" />
@@ -1036,6 +1038,7 @@
     <Content Include="jsnewV2\serialexternalcommon.js" />
     <Content Include="jsnewV2\serialtoseead.js" />
     <Content Include="jsnewV2\superselectcartool.js" />
+    <Content Include="jsnewV2\superselectcartoolv2.js" />
     <Content Include="jsnewV2\taochev2.js" />
     <Content Include="jsnewV2\ucarserialcity.js" />
     <Content Include="jsnew\Added_GoCarTypeAndPrice.js" />

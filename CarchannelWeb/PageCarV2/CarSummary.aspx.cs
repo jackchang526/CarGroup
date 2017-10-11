@@ -1048,6 +1048,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                     if (item.Attributes.GetNamedItem("Value").Value.IndexOf(",") == -1 && dictOptional.ContainsKey(int.Parse(item.Attributes.GetNamedItem("ParamID").Value)))
                     {
                         var optionalPara = dictOptional[int.Parse(item.Attributes.GetNamedItem("ParamID").Value)];
+                        if (pvalue == "●")
+                        {
+                            pvalue = "";
+                        }
                         if (optionalPara.Count <= 1)
                         {
                             var name = optionalPara.Single().Key;

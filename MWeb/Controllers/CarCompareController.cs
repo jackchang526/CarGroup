@@ -254,6 +254,10 @@ namespace MWeb.Controllers
                                                 if (pid > 0 && dicOptional.ContainsKey(pid))
                                                 {
                                                     var optionalPara = dicOptional[pid];
+                                                    if (pvalue == "●")
+                                                    {
+                                                        pvalue = "";
+                                                    }
                                                     //单个选配
                                                     if (optionalPara.Count <= 1)
                                                     {

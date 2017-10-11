@@ -70,7 +70,7 @@ var conditionObj =
         , DriveType: 0	//驱动方式
         , DriveTypeName: { 1: "前驱", 2: "后驱", 252: "四驱", 4: "全时四驱", 8: "分时四驱", 16: "适时四驱", 32: "智能四驱", 64: "四轮驱动", 128: "前置四驱" }
         , FuelType: 0	//燃料类型
-        , FuelTypeName: { 7: "汽油", 8: "柴油", 2: "油电混合", 16: "纯电力", 128: "油气混合",256:"天然气" }
+        , FuelTypeName: { 7: "汽油", 8: "柴油", 2: "油电混合", 16: "纯电力", 128: "油气混合", 256: "天然气" }
         , BodyDoors: ""	//车门数
         , PerfSeatNum: ""	//座位数
         , IsWagon: 0	//是否旅行版
@@ -83,7 +83,7 @@ var conditionObj =
         , BrandName: { 7: "不限", 8: "德系", 9: "美系", 10: "日韩", 11: "欧系", 12: "日本", 16: "韩国" }//new Array('不限', '自主', '合资', '', '进口', "", "德系", "日韩", "美系", "欧系")
         , CountryName: { 0: "不限", 1: "自主", 2: "合资", 4: "进口" }
         , BodyForm: 0				//0不限，1两厢及掀背，2三厢
-        , BodyFormName: { 1: "两厢", 2: "三厢",8 : "旅行版" }
+        , BodyFormName: { 1: "两厢", 2: "三厢", 8: "旅行版" }
         , toolKey: true				//展开开关
         , showPeizhi: false          //是否显示配置
         , Type: "car"
@@ -579,7 +579,7 @@ var conditionObj =
                 if (this.MoreCondition.indexOf("246") > -1 && isApi) {
                     mc = mc + "_247_248";
                 }
-                if (this.MoreCondition.indexOf("197") > -1 && isApi){
+                if (this.MoreCondition.indexOf("197") > -1 && isApi) {
                     mc = mc + "_198";
                 }
                 ////四轮碟刹

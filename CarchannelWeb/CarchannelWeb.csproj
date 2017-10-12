@@ -1225,7 +1225,6 @@
     <Content Include="PageToolV2\CarPhotoCompareList.aspx" />
     <Content Include="PageToolV2\SerialCompareForPK.aspx" />
     <Content Include="PageToolV2\SuperSelectCarTool.aspx" />
-    <Content Include="PageToolV2\SuperSelectCarToolV2.aspx" />
     <Content Include="PageTool\CalcAutoCashTool.aspx" />
     <Content Include="PageTool\CalcAutoLoanTool.aspx" />
     <Content Include="PageTool\CalcInsuranceTool.aspx" />
@@ -3000,13 +2999,6 @@
     </Compile>
     <Compile Include="PageToolV2\SuperSelectCarTool.aspx.designer.cs">
       <DependentUpon>SuperSelectCarTool.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="PageToolV2\SuperSelectCarToolV2.aspx.cs">
-      <DependentUpon>SuperSelectCarToolV2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PageToolV2\SuperSelectCarToolV2.aspx.designer.cs">
-      <DependentUpon>SuperSelectCarToolV2.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageTool\CalcAutoCashTool.aspx.cs">
       <DependentUpon>CalcAutoCashTool.aspx</DependentUpon>

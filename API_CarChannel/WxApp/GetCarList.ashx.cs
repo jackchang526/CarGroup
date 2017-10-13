@@ -92,11 +92,11 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
                             var fuelType = dictParams.ContainsKey(578) ? dictParams[578] : string.Empty;
                             int kw = 0;
                             int electrickW = 0;
-                            if (fuelType == "电力")
+                            if (fuelType == "纯电")
                             {
                                 electrickW = dictParams.ContainsKey(870) ? ConvertHelper.GetInteger(dictParams[870]) : 0;
                             }
-                            else if (fuelType == "油电混合动力")
+                            else if (fuelType == "油电混合" || fuelType == "插电混合")
                             {
                                 double tempDiankW;
                                 if (dictParams.ContainsKey(870) && double.TryParse(dictParams[870], out tempDiankW))
@@ -124,11 +124,11 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
                             //组织json,按相同排量不同功率分组插入到字典中
 
                             string curEnginExhasutAndPower = string.Empty; 
-                            if (fuelType == "电力")
+                            if (fuelType == "纯电")
                             {
                                 curEnginExhasutAndPower = "电动车/"+electrickW+"kw";
                             }
-                            else if (fuelType == "油电混合动力")
+                            else if (fuelType == "油电混合" || fuelType == "插电混合")
                             {
                                 curEnginExhasutAndPower = engine_Exhaust + "/" + kw + "kw-" + electrickW + "kw";
                             }

@@ -40,9 +40,9 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageToolV2
 
 		// 子品牌的按级别 关注指数、销量指数排行
 		protected string serialLevelIndexRank = "";
-		#endregion
-
-		protected void Page_Load(object sender, EventArgs e)
+        #endregion
+        Car_BasicBll carBasicBll = new Car_BasicBll();
+        protected void Page_Load(object sender, EventArgs e)
 		{
 			base.SetPageCache(60);
 			if (!this.IsPostBack)
@@ -196,7 +196,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageToolV2
 				tempCsIDs = tempSb.ToString();
 				if (tempCsIDs != "")
 				{
-					DataSet ds = new Car_BasicBll().GetCarBaseInfoForCompareByCsIDs(tempCsIDs);
+					DataSet ds = carBasicBll.GetCarBaseInfoForCompareByCsIDs(tempCsIDs);
 					if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
 					{
 						int loop = 0;
@@ -274,6 +274,16 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageToolV2
 		/// <returns></returns>
 		private void GetValidCarJsObject()
 		{
+            allCarJsArray = carBasicBll.GetValidCarJsObject(listCarID);
+            if (string.IsNullOrEmpty(allCarJsArray))
+            {
+                allCarJsArray = "var carCompareJson = null;";
+            }
+            else
+            {
+                allCarJsArray = string.Format("var carCompareJson = {0};", allCarJsArray);
+            }
+            /*
 			Car_BasicBll carBasicBll = new Car_BasicBll();
 			// 页面隐藏域输出for SEO
 			List<string> pageHTMLForSEO = new List<string>();
@@ -355,7 +365,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageToolV2
 			{
 				allCarJsArray = "var carCompareJson = null;";
 			}
-		}
+            */
+        }
 
 		/// <summary>
 		/// 取当前子品牌的关注指数、销量指数 不分地区 按级别排名

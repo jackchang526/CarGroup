@@ -164,7 +164,7 @@ ORDER BY CONVERT(INT, cdb2.pvalue) DESC, CONVERT(INT, cdb3.pvalue) DESC,
                                     , masterBrandName
                                     , brandName
                                     , producerType
-                                    , string.Format("http://car.m.yiche.com/{0}/", csAllspell)
+                                    , string.Format("http://car.m.yiche.com/{0}/?WT.mc_id=mbdappcr_qt", csAllspell)
                                     ));
 
                                 lastCsID = csid;

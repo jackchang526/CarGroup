@@ -40,8 +40,10 @@ namespace MWeb.Controllers
 		protected string ChargeTime = string.Empty;//充电时间
 		protected EnumCollection.CarInfoForCarSummary cfcs;
 		protected string EngineAllString = string.Empty;//发动机
-		protected string TransmissionType = string.Empty;//变速箱(档位数)
-		protected string ColorHeader = string.Empty;//车身颜色
+        protected string EngineInhaleTypeString = string.Empty;//进气形式
+        protected string TransmissionType = string.Empty;//变速箱(档位数)
+        protected string EngineElectrombile = string.Empty;//发动机
+        protected string ColorHeader = string.Empty;//车身颜色
 		private List<EnumCollection.CarInfoForSerialSummary> _ls = new List<EnumCollection.CarInfoForSerialSummary>();
 		protected string UcarPrice = string.Empty;//二手车报价
 		protected string KouBeiHtml = string.Empty;//口碑html
@@ -169,13 +171,13 @@ namespace MWeb.Controllers
 			//}
 			Dictionary<int, string> dict = car_Basic.GetCarAllParamByCarID(CarId);
 			//add by 2014.05.04 电动车参数
-			IsElectrombile = dict.ContainsKey(578) && dict[578] == "电力"; //是否是电动车
+			IsElectrombile = dict.ContainsKey(578) && dict[578] == "纯电"; //是否是电动车
 
 			BatteryCapacity = dict.ContainsKey(876) ? dict[876] : "";//电池容量
 			PowerConsumptive100 = dict.ContainsKey(868) ? dict[868] : "";//百公里耗电
 			Mileage = dict.ContainsKey(883) ? dict[883] : "";//续航里程
 			ChargeTime = dict.ContainsKey(879) ? dict[879] : "";//充电时间
-			Exhaust = (dict.ContainsKey(425) && dict[425] == "增压") ? (string.IsNullOrEmpty(cfcs.Engine_Exhaust) ? "" : cfcs.Engine_Exhaust.Replace("L", "T")) : cfcs.Engine_Exhaust;//排量
+			Exhaust = (dict.ContainsKey(425) && dict[425].Contains("增压")) ? (string.IsNullOrEmpty(cfcs.Engine_Exhaust) ? "" : cfcs.Engine_Exhaust.Replace("L", "T")) : cfcs.Engine_Exhaust;//排量
 			//减税 购置税
 			double dEx = 0.0;
 			if (!string.IsNullOrEmpty(cfcs.Engine_Exhaust))
@@ -206,10 +208,13 @@ namespace MWeb.Controllers
 			else
 			{ engineCylinderRank = ""; }
 			string engineCylinderNum = dict.ContainsKey(417) ? dict[417] : "";
-			EngineAllString = engineMaxPower + engineCylinderRank + engineCylinderNum;//发动机
-
-			// 车身颜色
-			string carColors = dict.ContainsKey(598) ? dict[598].Replace("，", ",") : "";
+            string engineHorsepower = dict.ContainsKey(791) ? dict[791] + "ps " : "";
+            string engineInhaleType = dict.ContainsKey(425) ? dict[425] : "";
+            EngineAllString = engineMaxPower + engineHorsepower;//发动机
+            EngineInhaleTypeString = engineInhaleType;
+            EngineElectrombile = dict.ContainsKey(870) ? dict[870] + "kw " : "";
+            // 车身颜色
+            string carColors = dict.ContainsKey(598) ? dict[598].Replace("，", ",") : "";
 			var listColor = new List<string>();
 			if (carColors != "")
 			{
@@ -236,7 +241,9 @@ namespace MWeb.Controllers
 			ViewBag.Exhaust = Exhaust;
 			ViewBag.TaxContent = TaxContent;
 			ViewBag.EngineAllString = EngineAllString;
-			ViewBag.ColorHeader = ColorHeader;
+            ViewBag.EngineInhaleTypeString = EngineInhaleTypeString;
+            ViewBag.EngineElectrombile = EngineElectrombile;
+            ViewBag.ColorHeader = ColorHeader;
 		}
 
 

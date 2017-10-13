@@ -1,20 +1,17 @@
-﻿using System;
-using System.Data;
-using System.Text;
-using System.Xml;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using BitAuto.CarChannel.BLL;
+using BitAuto.CarChannel.BLL.Data;
 using BitAuto.CarChannel.Common;
-using BitAuto.CarChannel.Common.Enum;
 using BitAuto.CarChannel.Common.Cache;
-using BitAuto.CarChannel.BLL;
+using BitAuto.CarChannel.Common.Enum;
 using BitAuto.CarChannel.Model;
 using BitAuto.Utils;
-using BitAuto.CarChannel.BLL.Data;
+using System;
+using System.Collections.Generic;
+using System.Data;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Xml;
 
 namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
 {
@@ -104,6 +101,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
         protected string carPrice = string.Empty;//参考成交价
         //购置税内容
         protected string TaxContent = string.Empty;
+        protected Dictionary<int, Dictionary<string, double>> dictOptional;
+       // protected string carFuelType = ["汽油", "柴油", "纯电动", "油电混合", "插电混合", "客车", "卡车", "天然气"];
         #endregion
 
         private Car_BasicBll basicBll;
@@ -185,7 +184,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 //{ fuelString = "<a href=\"http://car.bitauto.com/" + cbe.Serial.AllSpell.ToLower() + "/youhao/\" target=\"_blank\">" + fuelString + "/100km</a>"; }
 
                 Dictionary<int, string> dict = basicBll.GetCarAllParamByCarID(carID);
-
+                dictOptional = basicBll.GetCarAllParamOptionalByCarID(carID);
                 // 节能补贴 Sep.2.2010 [2012-04-09 样式修改]
                 bool isHasEnergySubsidy = basicBll.CarHasParamEx(carID, 853);
                 //modified by sk 2015.01.30 只显示 第七 八 批 补贴批次
@@ -224,13 +223,13 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                     TaxContent = "购置税75折";
                 }
                 //add by 2014.05.04 电动车参数
-                isElectrombile = dict.ContainsKey(578) && dict[578] == "电力" ? true : false;
+                isElectrombile = dict.ContainsKey(578) && dict[578] == "纯电" ? true : false;
                 batteryCapacity = dict.ContainsKey(876) ? dict[876] : "";
                 powerConsumptive100 = dict.ContainsKey(868) ? dict[868] : "";
                 mileage = dict.ContainsKey(883) ? dict[883] : "";
                 chargeTime = dict.ContainsKey(879) ? dict[879] : "";
                 fastChargeTime = dict.ContainsKey(878) ? dict[878] : "";
-                exhaust = (dict.ContainsKey(425) && dict[425] == "增压") ? cfcs.Engine_Exhaust.Replace("L", "T") : cfcs.Engine_Exhaust;
+                exhaust = (dict.ContainsKey(425) && dict[425].Contains("增压")) ? cfcs.Engine_Exhaust.Replace("L", "T") : cfcs.Engine_Exhaust;
                 //论坛Url
                 // forumUrl = new Car_SerialBll().GetForumUrlBySerialId(cbe.Serial.Id);
                 #endregion
@@ -818,7 +817,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
             else
             {
                 XmlDocument docPC = new XmlDocument();
-                string cache = "CarSummary_ParameterConfigurationNew";
+                string cache = "CarSummary_ParameterConfigurationNewV2";
                 object parameterConfiguration = null;
                 CacheManager.GetCachedData(cache, out parameterConfiguration);
                 if (parameterConfiguration != null)
@@ -827,7 +826,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 }
                 else
                 {
-                    var filePath = System.Web.HttpContext.Current.Server.MapPath("~") + "\\config\\ParameterConfigurationNew.config";
+                    var filePath = System.Web.HttpContext.Current.Server.MapPath("~") + "\\config\\ParameterConfigurationNewV2.config";
                     if (File.Exists(filePath))
                     {
                         docPC.Load(filePath);
@@ -909,7 +908,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 //if (dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value)
                 //	&& dic[carID][item.Attributes.GetNamedItem("Value").Value] != "待查")
                     string pvalue = string.Empty;
-                    //合并参数
+                //合并参数
                     if (item.Attributes.GetNamedItem("Value").Value.IndexOf(",") != -1)
                     {
                         string[] arrKey = item.Attributes.GetNamedItem("Value").Value.Split(',');
@@ -940,23 +939,27 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                         if (you != null && list.Count > 1)
                             list.Remove(you);
                         //进气形式 2个参数 增压 显示 增压方式 不是则显示 进气形式
-                        if (item.Attributes.GetNamedItem("Name").Value == "进气形式")
-                        {
-                            if (list.Count > 1)
-                            {
-                                if (list[0] == "增压")
-                                    list.RemoveAt(0);
-                                else
-                                    list.RemoveAt(1);
-                            }
-                        }
+                        //if (item.Attributes.GetNamedItem("Name").Value == "进气形式")
+                        //{
+                        //    if (list.Count > 1)
+                        //    {
+                        //        if (list[0] == "增压")
+                        //            list.RemoveAt(0);
+                        //        else
+                        //            list.RemoveAt(1);
+                        //    }
+                        //}
                         pvalue = string.Join(" ", list.ToArray());
                     }
                     else
                     {
-                        if (!(dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value)
-                    && dic[carID][item.Attributes.GetNamedItem("Value").Value] != "待查")) continue;
-                        pvalue = string.Format("{0}{1}", dic[carID][item.Attributes.GetNamedItem("Value").Value], item.Attributes.GetNamedItem("Unit").Value);
+                    if (!(dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value))
+                    && !(dictOptional.ContainsKey(int.Parse(item.Attributes.GetNamedItem("ParamID").Value))))
+                       { continue; }
+                        if (dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value)&& dic[carID][item.Attributes.GetNamedItem("Value").Value] != "待查")
+                        {
+                            pvalue = string.Format("{0}{1}", dic[carID][item.Attributes.GetNamedItem("Value").Value], item.Attributes.GetNamedItem("Unit").Value);
+                        }
                     }
 
                     isHasChild = true || isHasChild;
@@ -990,61 +993,157 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                         }
                     }
                     // 进气型式 如果自然吸气直接显示，如果是增压则显示增压方式
-                    if (item.Attributes.GetNamedItem("ParamID").Value == "425"
-                        && pvalue == "增压")
-                    {
-                        if (dic[carID].ContainsKey("CarParams/Engine_AddPressType")
-                    && dic[carID]["CarParams/Engine_AddPressType"] != "待查")
-                        {
-                            pvalueOther = dic[carID]["CarParams/Engine_AddPressType"];
-                            pvalue = pvalue + " " + pvalueOther;
-                        }
-                    }
+                    //if (item.Attributes.GetNamedItem("ParamID").Value == "425"
+                    //    && pvalue == "增压")
+                    //{
+                    //    if (dic[carID].ContainsKey("CarParams/Engine_AddPressType")
+                    //&& dic[carID]["CarParams/Engine_AddPressType"] != "待查")
+                    //    {
+                    //        pvalueOther = dic[carID]["CarParams/Engine_AddPressType"];
+                    //        pvalue = pvalue + " " + pvalueOther;
+                    //    }
+                    //}
                     //解决 变速箱 无极变速 替换成 -
-                    if (item.Attributes.GetNamedItem("Name").Value != "变速箱")
+                    if (item.Attributes.GetNamedItem("Name").Value != "燃油变速箱" )
                     {
                         if (pvalue.IndexOf("有") == 0)
                         { pvalue = "●"; }
                         if (pvalue.IndexOf("选配") == 0)
                         { pvalue = "○"; }
-                        if (pvalue.IndexOf("无") == 0)
-                        { pvalue = "-"; }
-                    }
-                     
-                    //sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + ":</span></td>");
+                        if (pvalue == "无")
+                            { pvalue = "-"; }
+                        }
 
-                    //Note:设页面中2个td为一组，一行有3组，颜色块占1行中的2组,并且补齐1行中的6个td保持行线完整
-                    // 车身颜色呈现特殊化
-                    if (item.Attributes.GetNamedItem("Name").Value == "车身颜色")
+                //sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + ":</span></td>");
+
+                //Note:设页面中2个td为一组，一行有3组，颜色块占1行中的2组,并且补齐1行中的6个td保持行线完整
+                // 车身颜色呈现特殊化
+                if (item.Attributes.GetNamedItem("Name").Value == "车身颜色")
+                {
+                    strColorHtmlBlock = "<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>";
+                    strColorHtmlBlock += "<td colspan=\"3\"><div class=\"focus-color-warp\"><ul id=\"color-listbox\"><!--车身颜色--></ul></div></td>";
+
+                    if (loopCount != 0)
                     {
-                        strColorHtmlBlock="<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>";
-                        strColorHtmlBlock+="<td colspan=\"3\"><div class=\"focus-color-warp\"><ul id=\"color-listbox\"><!--车身颜色--></ul></div></td>";
-
-                        if (loopCount != 0)
+                        if (loopCount % 3 == 2)   //余1组td时，不足以填充颜色块，则补充当前行，并将颜色块移到下一行
                         {
-                            if (loopCount % 3 == 2)   //余1组td时，不足以填充颜色块，则补充当前行，并将颜色块移到下一行
+                            sbTemp.AppendLine("<td></td><td></td></tr><tr>#colorblock#");
+                            loopCount += 3;
+                        }
+                        else   //余0或2组td时，将颜色块直接填充到当前行
+                        {
+                            sbTemp.AppendLine("#colorblock#");
+                            loopCount += 2;
+                        }
+                    }
+                    else   //颜色块占 首行的前两组时
+                    {
+                        sbTemp.AppendLine("#colorblock#");
+                        loopCount += 2;
+                    }
+                }
+                else
+                {
+                    sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>");
+                    if (item.Attributes.GetNamedItem("Value").Value.IndexOf(",") == -1 && dictOptional.ContainsKey(int.Parse(item.Attributes.GetNamedItem("ParamID").Value)))
+                    {
+                        var optionalPara = dictOptional[int.Parse(item.Attributes.GetNamedItem("ParamID").Value)];
+                        if (pvalue == "●")
+                        {
+                            pvalue = "";
+                        }
+                        if (optionalPara.Count <= 1)
+                        {
+                            var name = optionalPara.Single().Key;
+                            string price = optionalPara.Single().Value.ToString("N0");
+                            if (string.IsNullOrEmpty(pvalue))
                             {
-                                sbTemp.AppendLine("<td></td><td></td></tr><tr>#colorblock#");   
-                                loopCount += 3;
+                                sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + " " + price + "元</div></div></div></td>");
                             }
-                            else   //余0或2组td时，将颜色块直接填充到当前行
+                            else
                             {
-                                sbTemp.AppendLine("#colorblock#");
-                                loopCount += 2;
+                                //单个标配 并且标配值不为无
+                                if (pvalue != "-" && pvalue.IndexOf(",") == -1 && pvalue != "○")
+                                {
+                                    sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pvalue + "</div></div><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + " "+ price + "元</div></div></div></td>");
+                                }
+                                //多个标配 
+                                else if (pvalue.IndexOf(",") >= 0)
+                                {
+                                    sbTemp.AppendLine("<td><div class=\"info\">");
+                                    string[] valueArray = pvalue.Split(',');
+                                    if (valueArray.Length > 0)
+                                    {
+                                        foreach (string value in valueArray)
+                                        {
+                                            sbTemp.AppendLine("<div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + value + "</div></div>");
+                                        }
+                                    }
+                                    sbTemp.AppendLine("<div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + " " + price + "元</div></div></div></td>");
+                                }
+                                else
+                                {
+                                    sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + " " + price + "元</div></div></div></td>");
+                                }
                             }
                         }
-                        else   //颜色块占 首行的前两组时
+                        else
                         {
-                            sbTemp.AppendLine("#colorblock#");  
-                            loopCount += 2;
+                            if (string.IsNullOrEmpty(pvalue))
+                            {
+                                sbTemp.AppendLine("<td><div class=\"info\">");
+                            }
+                            else
+                            {
+                                sbTemp.AppendLine("<td><div class=\"info\">");
+                                //单个标配 并且标配值不为无
+                                if (pvalue != "-" && pvalue.IndexOf(",") == -1 && pvalue != "○")
+                                {
+                                    sbTemp.AppendLine("<div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pvalue + "</div></div>");
+                                }
+                                //多个标配
+                                else if (pvalue.IndexOf(",") >= 0)
+                                {
+                                    string[] valueArray = pvalue.Split(',');
+                                    if (valueArray.Length > 0)
+                                    {
+                                        foreach (string value in valueArray)
+                                        {
+                                            sbTemp.AppendLine("<div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + value + "</div></div>");
+                                        }
+                                    }
+                                }
+                            }
+                            foreach (var para in optionalPara.Keys)
+                            {
+                                sbTemp.AppendLine("<div class=\"optional type2\"><div class=\"l\"><i>○</i>" + para + " " + optionalPara[para].ToString("N0") + "元</div></div>");
+                            }
+                            sbTemp.AppendLine("</div></td>");
                         }
                     }
                     else
                     {
-                        sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>");
-                        sbTemp.AppendLine("<td class=\"info\">" + pvalue + "</td>");
-                        loopCount++;
+                        //无选配 多个标配
+                        if (pvalue.IndexOf(",") >= 0)
+                        {
+                            sbTemp.AppendLine("<td><div class=\"info\">");
+                            string[] valueArray = pvalue.Split(',');
+                            if (valueArray.Length > 0)
+                            {
+                                foreach (string value in valueArray)
+                                {
+                                    sbTemp.AppendLine("<div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + value + "</div></div>");
+                                }
+                            }
+                            sbTemp.AppendLine("</div></td>");
+                        }
+                        else
+                        {
+                            sbTemp.AppendLine("<td><span class=\"info\">" + pvalue + "</span></td>");
+                        }                        
                     }
+                    loopCount++;
+                }
             }
             if (loopCount != 0)   //处理一行结尾的tr
             {

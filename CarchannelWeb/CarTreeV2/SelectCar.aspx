@@ -60,8 +60,8 @@
             });
         </script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/newselectcartoolv4.min.js?d=201707041043"></script>
-        <%--<script type="text/javascript" src="/jsnewv2/newselectcartoolv4.js?d=20161228"></script>--%>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/newselectcartoolv5.min.js?d=201710111752"></script>
+        <%--<script type="text/javascript" src="/jsnewv2/newselectcartoolv5.js?d=20161228"></script>--%>
         <div class="col-xs-9">
             <div class="cartype-section-main">
                 <!--面包屑-->

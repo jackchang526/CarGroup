@@ -132,7 +132,7 @@
         for (var i = 0; i < loopCount; i++) {
             var blockJson = arrField[i];
             var itemInfo = self.CreateItemHtml(blockJson.items);
-            self.CreateTitleHtml(blockJson, itemInfo);
+            //self.CreateTitleHtml(blockJson, itemInfo);
         }
         self.TitleHtmlArray.push(" <a href=\"http://car.m.yiche.com/chexingduibi/?carids=" + self.CarId1 + "," + self.CarId2 + "\" class=\"bar-more\">查看详细车型对比>></a>");
 

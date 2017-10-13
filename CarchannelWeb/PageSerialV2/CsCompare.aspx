@@ -160,6 +160,7 @@
        { %>
     <script type="text/javascript">
         <%= jsContent %>
+        <%= packageJsContent %>
     </script>
     <% } %>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/draggable.js"></script>
@@ -167,8 +168,8 @@
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/commons.min.js"></script>
     <%--<script type="text/javascript" src="/jsnewv2/carcompareforminiV3.js?v=20150805"></script>
         <script type="text/javascript" src="/jsnew/carSelectSimpleV3.js"></script>--%>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/JsForParameter.min.js?v=2017062914"></script>
-    <%--<script type="text/javascript" src="/jsnewv2/JsForParameter.js?v=20161219"></script>--%>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/JsForParameterv2.min.js?v=201710111751"></script>
+    <%--<script type="text/javascript" src="/jsnewv2/JsForParameterv2.js?v=20161219"></script>--%>
     <script type="text/javascript">
 			<%= JsTagForYear %>
         ComparePageObject.CarIDAndNames = "<%= carIDAndName %>";

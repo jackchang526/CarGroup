@@ -891,19 +891,12 @@ namespace BitAuto.CarChannel.CarchannelWeb.App_Code
             htmlList.Add("<li id=\"level7\"><a href=\"" + this.GetLevelSearchQueryString("l", "7", path) + "\" stattype=\"mpv\" data-channelid=\"2.161.1675\">MPV</a></li>");
             htmlList.Add("<li id=\"level8\" class=\"last\" style=\"z-index: 1;\"><a href=\"" + this.GetLevelSearchQueryString("l", "8", path) + "\" stattype=\"suv\" class=\"ico-arrow\" data-channelid=\"2.161.1676\">SUV</a>");
             htmlList.Add("<div id=\"suv_popup\" class=\"drop-layer\" style=\"display: none;\">");
-            //htmlList.Add("<div class=\"head-item\">");
             htmlList.Add("<a href=\"" + this.GetLevelSearchQueryString("l", "8", path) + "\"  data-channelid=\"2.161.1676\">SUV</a>");
-            //htmlList.Add("<p>");
             htmlList.Add("<a id=\"level13\" href=\"" + this.GetLevelSearchQueryString("l", "13", path) + "\" data-channelid=\"2.161.1677\">&nbsp;小型SUV</a>");
-            //htmlList.Add("<p id=\"level14\">");
             htmlList.Add("<a id=\"level14\" href=\"" + this.GetLevelSearchQueryString("l", "14", path) + "\" data-channelid=\"2.161.1678\">&nbsp;紧凑型SUV</a>");
-            //htmlList.Add("<p id=\"level15\">");
             htmlList.Add("<a id=\"level15\" href=\"" + this.GetLevelSearchQueryString("l", "15", path) + "\" data-channelid=\"2.161.1679\">&nbsp;中型SUV</a>");
-            //htmlList.Add("<p id=\"level16\">");
             htmlList.Add("<a id=\"level16\" href=\"" + this.GetLevelSearchQueryString("l", "16", path) + "\" data-channelid=\"2.161.1692\">&nbsp;中大型SUV</a>");
-            //htmlList.Add("<p id=\"level17\">");
             htmlList.Add("<a id=\"level17\" href=\"" + this.GetLevelSearchQueryString("l", "17", path) + "\" data-channelid=\"2.161.1681\">&nbsp;全尺寸SUV</a>");
-            //htmlList.Add("</div>");
 
             htmlList.Add("</li>");
             htmlList.Add("<li id=\"level9\"><a href=\"" + this.GetLevelSearchQueryString("l", "9", path) + "\" stattype=\"paoche\" data-channelid=\"2.161.1682\">跑车</a></li>");
@@ -913,17 +906,6 @@ namespace BitAuto.CarChannel.CarchannelWeb.App_Code
             htmlList.Add("</ul>");
             htmlList.Add("</dd>");
             htmlList.Add("</dl>");
-            ////电动车
-            //htmlList.Add("<dl>");
-            //htmlList.Add("<dt>电动车：</dt>");
-            //htmlList.Add("<dd>");
-            //htmlList.Add("<ul>");
-            //htmlList.Add("<li id=\"fueltype_dian_0\"><a href=\"" + this.GetSearchQueryString("f", "0", path) + "\">不限</a></li>");
-            //htmlList.Add("<li id=\"fueltype16\"><a href=\"" + this.GetSearchQueryString("f", "16", path) + "\">纯电动</a></li>");
-            //htmlList.Add("<li id=\"fueltype2\"><a href=\"" + this.GetSearchQueryString("f", "2", path) + "\">油电混合</a></li>");
-            //htmlList.Add("</ul>");
-            //htmlList.Add("</dd>");
-            //htmlList.Add("</dl>");
             //箱式
             htmlList.Add("<dl class=\"w-short\">");
             htmlList.Add("<dt>车身：</dt>");
@@ -932,7 +914,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.App_Code
             htmlList.Add("<li id=\"bodyform0\"><a href=\"" + this.GetSearchQueryString("b", "0", path) + "\" data-channelid=\"2.94.580\">不限</a></li>");
             htmlList.Add("<li id=\"bodyform1\"><a href=\"" + this.GetSearchQueryString("b", "1", path) + "\" data-channelid=\"2.94.581\">两厢</a></li>");
             htmlList.Add("<li id=\"bodyform2\"><a href=\"" + this.GetSearchQueryString("b", "2", path) + "\" data-channelid=\"2.94.582\">三厢</a></li>");
-            htmlList.Add("<li id=\"wagon1\"><a href=\"" + this.GetSearchQueryString("lv", "1", path) + "\" data-channelid=\"2.94.583\">旅行版</a></li>");
+            htmlList.Add("<li id=\"bodyform8\"><a href=\"" + this.GetSearchQueryString("b", "8", path) + "\" data-channelid=\"2.94.583\">旅行版</a></li>");
             htmlList.Add("</ul>");
             htmlList.Add("</dd>");
             htmlList.Add("</dl>");
@@ -945,8 +927,9 @@ namespace BitAuto.CarChannel.CarchannelWeb.App_Code
             htmlList.Add("<li id=\"fueltype7\"><a href=\"" + this.GetSearchQueryString("f", "7", path) + "\" data-channelid=\"2.161.1686\">汽油</a></li>");
             htmlList.Add("<li id=\"fueltype8\"><a href=\"" + this.GetSearchQueryString("f", "8", path) + "\" data-channelid=\"2.161.1687\">柴油</a></li>");
             htmlList.Add("<li id=\"fueltype16\"><a href=\"" + this.GetSearchQueryString("f", "16", path) + "\" data-channelid=\"2.161.1688\">纯电动</a></li>");
+            htmlList.Add("<li id=\"fueltype128\"><a href=\"" + this.GetSearchQueryString("f", "128", path) + "\">插电混合</a></li>");
             htmlList.Add("<li id=\"fueltype2\"><a href=\"" + this.GetSearchQueryString("f", "2", path) + "\" data-channelid=\"2.161.1689\">油电混合</a></li>");
-            htmlList.Add("<li id=\"fueltype4\"><a href=\"" + this.GetSearchQueryString("f", "4", path) + "\" data-channelid=\"2.161.1690\">油气混合</a></li>");
+            htmlList.Add("<li id=\"fueltype256\"><a href=\"" + this.GetSearchQueryString("f", "256", path) + "\">天然气</a></li>");
             htmlList.Add("</ul>");
             htmlList.Add("</dd>");
             htmlList.Add("</dl>");
@@ -988,7 +971,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.App_Code
             htmlList.Add("<li id=\"trans126\" class=\"last\" style=\"z-index:2;\"><a href=\"" + this.GetSearchQueryString("t", "126", path) + "\" class=\"ico-arrow\" stattype=\"trans_at\" data-channelid=\"2.94.603\">自动</a>");
             htmlList.Add("<div id=\"trans_popup\" class=\"drop-layer\" style=\"display:none;\">");
             htmlList.Add("<a href=\"" + this.GetSearchQueryString("t", "126", path) + "\" data-channelid=\"2.94.604\">自动</a>");
-			htmlList.Add("<a id=\"trans32\" href=\"" + this.GetSearchQueryString("t", "32", path) + "\" class=\"cSubItem\" stattype=\"banzidong\" data-channelid=\"2.94.605\">&nbsp;半自动（AMT）</a>");
+			htmlList.Add("<a id=\"trans32\" href=\"" + this.GetSearchQueryString("t", "32", path) + "\" class=\"cSubItem\" stattype=\"banzidong\" data-channelid=\"2.94.605\">&nbsp;机械自动（AMT）</a>");
 			htmlList.Add("<a id=\"trans2\" href=\"" + this.GetSearchQueryString("t", "2", path) + "\" class=\"cSubItem\" stattype=\"zidong\" data-channelid=\"2.94.606\">&nbsp;自动（AT）</a>");
 			htmlList.Add("<a id=\"trans4\" href=\"" + this.GetSearchQueryString("t", "4", path) + "\" class=\"cSubItem\" stattype=\"shouziyiti\" data-channelid=\"2.94.607\">&nbsp;手自一体</a>");
 			htmlList.Add("<a id=\"trans8\" href=\"" + this.GetSearchQueryString("t", "8", path) + "\" class=\"cSubItem\" stattype=\"wujibiansu\" data-channelid=\"2.94.608\">&nbsp;无极变速（CVT）</a>");
@@ -1042,17 +1025,14 @@ namespace BitAuto.CarChannel.CarchannelWeb.App_Code
             htmlList.Add("<dd>");
             htmlList.Add("<ul>");
             htmlList.Add("<li id=\"more_2\" class=\"current\"><a href=\"javascript:;\">不限</a></li>");
-            htmlList.Add("<li id=\"more_126\"><a href=\"javascript:;\">国4</a></li>");
-            htmlList.Add("<li id=\"more_125\"><a href=\"javascript:;\">国5</a></li>");
-            htmlList.Add("<li id=\"more_127\"><a href=\"javascript:;\">京5</a></li>");
-            htmlList.Add("<li id=\"more_123\"><a href=\"javascript:;\">欧4</a></li>");
-            htmlList.Add("<li id=\"more_122\"><a href=\"javascript:;\">欧5</a></li>");
-            htmlList.Add("<li id=\"more_126.123\"><a href=\"javascript:;\">国4/欧4</a></li>");
-            htmlList.Add("<li id=\"more_125.122\"><a href=\"javascript:;\">国5/欧5</a></li>");
+            htmlList.Add("<li id=\"more_120\"><a href=\"javascript:;\">国5</a></li>");
+            htmlList.Add("<li id=\"more_121\"><a href=\"javascript:;\">国4</a></li>");
+            htmlList.Add("<li id=\"more_122\"><a href=\"javascript:;\">国3</a></li>");
             htmlList.Add("</ul>");
             htmlList.Add("</dd>");
             htmlList.Add("</dl>");
             //车门
+            /*
             htmlList.Add("<dl class=\"w-short\">");
             htmlList.Add("<dt>车门数：</dt>");
             htmlList.Add("<dd>");
@@ -1063,17 +1043,19 @@ namespace BitAuto.CarChannel.CarchannelWeb.App_Code
             htmlList.Add("</ul>");
             htmlList.Add("</dd>");
             htmlList.Add("</dl>");
-            htmlList.Add("<dl class=\"w-long\">");
+            */
             //座位
+            htmlList.Add("<dl class=\"dl-level\">");
             htmlList.Add("<dt>座位数：</dt>");
             htmlList.Add("<dd>");
             htmlList.Add("<ul>");
             htmlList.Add("<li id=\"more_1\" class=\"current\"><a href=\"javascript:;\" data-channelid=\"2.94.635\">不限</a></li>");
-            htmlList.Add("<li id=\"more_262\"><a href=\"javascript:;\" data-channelid=\"2.94.636\">2座</a></li>");
-            htmlList.Add("<li id=\"more_263\"><a href=\"javascript:;\" data-channelid=\"2.94.637\">4-5座</a></li>");
-            htmlList.Add("<li id=\"more_265\"><a href=\"javascript:;\" data-channelid=\"2.94.638\">6座</a></li>");
-            htmlList.Add("<li id=\"more_266\"><a href=\"javascript:;\" data-channelid=\"2.94.639\">7座</a></li>");
-            htmlList.Add("<li id=\"more_267\"><a href=\"javascript:;\" data-channelid=\"2.94.640\">7座以上</a></li>");
+            htmlList.Add("<li id=\"more_279\"><a href=\"javascript:;\" data-channelid=\"2.94.636\">2座</a></li>");
+            htmlList.Add("<li id=\"more_280\"><a href=\"javascript:;\" data-channelid=\"2.94.637\">4座</a></li>");
+            htmlList.Add("<li id=\"more_281\"><a href=\"javascript:;\">5座</a></li>");
+            htmlList.Add("<li id=\"more_282\"><a href=\"javascript:;\" data-channelid=\"2.94.638\">6座</a></li>");
+            htmlList.Add("<li id=\"more_283\"><a href=\"javascript:;\" data-channelid=\"2.94.639\">7座</a></li>");
+            htmlList.Add("<li id=\"more_284\"><a href=\"javascript:;\" data-channelid=\"2.94.640\">7座以上</a></li>");
             htmlList.Add("</ul>");
             htmlList.Add("</dd>");
             htmlList.Add("</dl>");
@@ -1082,49 +1064,30 @@ namespace BitAuto.CarChannel.CarchannelWeb.App_Code
             htmlList.Add("<dt>其它：</dt>");
             htmlList.Add("<dd class=\"config-list\">");
             htmlList.Add("<ul>");
-            htmlList.Add("	<li><label><input id=\"more_204\" type=\"checkbox\" data-channelid=\"2.94.641\" />天窗</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_196\" type=\"checkbox\" data-channelid=\"2.94.642\" />GPS导航</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_200\" type=\"checkbox\" data-channelid=\"2.94.643\" />倒车影像</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_180\" type=\"checkbox\" data-channelid=\"2.94.644\" />儿童锁</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_207\" type=\"checkbox\" data-channelid=\"2.94.641\" />天窗</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_197\" type=\"checkbox\" data-channelid=\"2.94.643\" />倒车影像</label></li>");
             htmlList.Add("	<li><label><input id=\"more_101\" type=\"checkbox\" data-channelid=\"2.94.645\" />涡轮增压</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_179\" type=\"checkbox\" data-channelid=\"2.94.646\" />无钥匙启动</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_141\" type=\"checkbox\" data-channelid=\"2.94.647\" />四轮碟刹</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_250\" type=\"checkbox\" data-channelid=\"2.94.648\" />真皮座椅</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_184\" type=\"checkbox\" data-channelid=\"2.94.649\" />ESP</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_224\" type=\"checkbox\" data-channelid=\"2.94.650\" />氙气大灯</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_194\" type=\"checkbox\" data-channelid=\"2.94.651\" />定速巡航</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_274\" type=\"checkbox\" data-channelid=\"2.94.652\" />自动空调</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_177\" type=\"checkbox\" data-channelid=\"2.94.653\" />胎压监测</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_189\" type=\"checkbox\" data-channelid=\"2.94.654\" />自动泊车</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_249\" type=\"checkbox\" data-channelid=\"2.94.655\" />空气净化器</label></li>");
-            //htmlList.Add("	<li><label><input id=\"mcCheck26\" type=\"checkbox\"/>电动窗防夹</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_163\" type=\"checkbox\" data-channelid=\"2.94.656\" />换挡拨片</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_236\" type=\"checkbox\" data-channelid=\"2.94.657\" />电动座椅</label></li>");
-            htmlList.Add("	<li><label><input id=\"more_181\" type=\"checkbox\" data-channelid=\"2.94.658\" />儿童座椅接口</label><a id=\"anchorcarlist\"></a></li>");
-
-            //htmlList.Add("	<li><label><input id=\"mcCheck22\" type=\"checkbox\" onclick=\"GotoPage('m');\"/>5座位以上</label></li>");
-            //htmlList.Add("	<li><label><input id=\"mcCheck12\" type=\"checkbox\" onclick=\"GotoPage('m');\"/>倒车雷达</label></li>");
-            //htmlList.Add("	<li><label><input id=\"mcCheck1\" type=\"checkbox\" onclick=\"GotoPage('m');\"/>四轮驱动</label></li>");
-            //htmlList.Add("	<li><label><input id=\"mcCheck24\" type=\"checkbox\" onclick=\"GotoPage('m');\"/><strong class=\"ico-new\">新能源</strong></label></li>");
-
-
+            htmlList.Add("	<li><label><input id=\"more_226\" type=\"checkbox\" data-channelid=\"2.94.646\" />无钥匙启动</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_192\" type=\"checkbox\" />自动驻车</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_244\" type=\"checkbox\" data-channelid=\"2.94.652\" />自动空调</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_170\" type=\"checkbox\" data-channelid=\"2.94.649\" />ESP</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_242\" type=\"checkbox\" data-channelid=\"2.94.656\" />换挡拨片</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_191\" type=\"checkbox\" data-channelid=\"2.94.654\" />自动泊车</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_287\" type=\"checkbox\" data-channelid=\"2.94.642\" />GPS导航</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_182\" type=\"checkbox\" data-channelid=\"2.94.651\" />定速巡航</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_179\" type=\"checkbox\" data-channelid=\"2.94.653\" />胎压监测</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_184\" type=\"checkbox\" />主动刹车</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_194\" type=\"checkbox\" />上坡辅助</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_201\" type=\"checkbox\" />LED日间行车灯</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_246\" type=\"checkbox\" />后排空调</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_297\" type=\"checkbox\" />发动机启停</label></li>");
+            htmlList.Add("	<li><label><input id=\"more_169\" type=\"checkbox\" />牵引力制动</label></li><a id=\"anchorcarlist\"></a></li>");
             htmlList.Add("</ul>");
             htmlList.Add("</dd>");
             htmlList.Add("</dl>");
-            //htmlList.Add("<dl class=\"tool-info\"><span>如果以上条件不能满足您，请</span> <a href=\"http://www.bitauto.com/feedback/?CategoryType=7\" target=\"_blank\">告知我们&gt;&gt;</a></dl>");
-            //htmlList.Add("<dl class=\"tool-info\"><span>条件太少？，试试</span><a href=\"/gaojixuanche/\" data-action=\"tool-msg\" target=\"_blank\"> 高级选车工具&gt;&gt;</a></dl>");
             htmlList.Add("<dl class=\"tool-info\">");
             htmlList.Add("<p><span>条件太少？试试</span>");
             htmlList.Add("<a href=\"/gaojixuanche/\" target=\"_blank\" data-alert=\"alert\"> 高级选车工具</a></p>");
-            //htmlList.Add("<div id=\"tool-alert\" class=\"alert\" style=\"display:none;\">");
-            //htmlList.Add("<div class=\"content\">");
-            //htmlList.Add("<a id=\"tool-close\" href=\"javascript:;\" class=\"close\"></a>");
-            //htmlList.Add("<span></span>");
-            //htmlList.Add("<em class=\"star\"></em>");
-            //htmlList.Add("</div>");
-            //htmlList.Add("<dl class=\"tool-info\"><span>条件太少？试试</span><a href=\"/gaojixuanche/\" target=\"_blank\"> 高级选车工具&gt;&gt;</a></dl>");
-            //htmlList.Add("<i class=\"back\"></i>");
-            //htmlList.Add("</div>");
             htmlList.Add("</dl>");
             htmlList.Add("<div class=\"clear\"></div>");
             htmlList.Add("</div>");

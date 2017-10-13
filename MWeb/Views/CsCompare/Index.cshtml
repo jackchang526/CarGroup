@@ -107,7 +107,7 @@
             <div class="ico-catalog-arrow"></div>
         </div>
     </div>
-<!--分类 end-->
+    <!--分类 end-->
     <!-- black popup end -->
     <script type="text/javascript">
         var CarCommonBSID = "@(Model.Brand == null ? 0 : Model.Brand.MasterBrandId)"; //大数据组统计用
@@ -127,10 +127,14 @@
     <div class="float-r-box">
         <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
     </div>
+    <!--选装包弹层-->
+    <div class="pop-optional-mask" style="display:none;"></div>
+    <div class="pop-optional" style="display:none;">
+    </div>
 @*<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>*@
     @*<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery-1.9.1.min.js"></script>*@
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/mpeizhi.min.js"></script>
-    @*<script type="text/javascript" src="/js/mpeizhi.js"></script>*@
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/mpeizhiv2.min.js"></script>
+    @*<script type="text/javascript" src="/js/mpeizhiv2.js"></script>*@
     @*<script type="text/javascript" src="/js/v2/iscroll.js"></script>
     <script type="text/javascript" src="/js/v2/underscore.js"></script>
     <script type="text/javascript" src="/js/v2/model.js"></script>
@@ -167,9 +171,10 @@
 
     </script>
     <script type="text/javascript">
-		var serialId=@(Model.Id);
+        var serialId =@(Model.Id);
+        var optionalPackageJson = @(Html.Raw(ViewData["PackageJsContent"]));
         function initCarInfo(carId) {
-            loadJS.push("http://api.car.bitauto.com/CarInfo/GetCarParameter.ashx?isParamPage=1&carids=" + carId, "utf-8", function () {
+            loadJS.push("http://api.car.bitauto.com/CarInfo/GetCarParameter.ashx?v=20171011&isParamPage=1&carids=" + carId, "utf-8", function () {
                 initPageForCompare();
             });
         }

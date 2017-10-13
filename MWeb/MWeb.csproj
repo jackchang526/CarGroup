@@ -194,10 +194,14 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="config\ChangeURL.xml" />
     <Content Include="config\SceneCar.xml" />
-    <Content Include="config\SecondCar.xml" />
+    <Content Include="config\SecondCar.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="config\SUVChannel.xml" />
     <Content Include="config\VR.xml" />
-    <Content Include="config\YaGaoSelectCar.xml" />
+    <Content Include="config\YaGaoSelectCar.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="html\selectCarTemplate.htm" />
     <Content Include="html\selectCarTemplate.html" />
@@ -234,6 +238,7 @@
     <Content Include="js\car.recognition.js" />
     <Content Include="js\CarCalculator.js" />
     <Content Include="js\carcomparetoolV2.js" />
+    <Content Include="js\carcomparetoolV3.js" />
     <Content Include="js\carsum\aboutCarTemp.js" />
     <Content Include="js\carsum\aboutCompare.js" />
     <Content Include="js\carsum\funcGetEsc.js" />
@@ -246,9 +251,11 @@
     <Content Include="js\iscroll-infinite.js" />
     <Content Include="js\model.js" />
     <Content Include="js\mpeizhi.js" />
+    <Content Include="js\mpeizhiv2.js" />
     <Content Include="js\popup.js" />
     <Content Include="js\rightswipe-cityV2.js" />
     <Content Include="js\selectcartoolV2.js" />
+    <Content Include="js\selectcartoolV3.js" />
     <Content Include="js\selectscenecar.js" />
     <Content Include="js\suvchannel\seriallist.js" />
     <Content Include="js\suvchannel\suvdefault.js" />
@@ -288,7 +295,9 @@
     <Content Include="ushtml\block\so\mobile\MobileSug_chexing.shtml" />
     <Content Include="ushtml\block\so\mobile\MobileSug_chexing20130218.shtml" />
     <Content Include="ushtml\block\so\myiche20140620\mSearchBoxBottom.shtml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -391,6 +400,9 @@
     <Content Include="handlers\GetBaoZhiLv.ashx" />
     <Content Include="html\WTParams.cshtml" />
     <Content Include="html\TopDownloadLayer.cshtml" />
+    <Content Include="config\ParameterConfigurationNewV2.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Calc\CalcAutoCash.cshtml" />
     <Content Include="Views\Calc\CalcAutoCashDetail.cshtml" />

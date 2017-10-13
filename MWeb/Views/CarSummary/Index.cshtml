@@ -11,9 +11,9 @@
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <meta content="black" name="apple-mobile-web-app-status-bar-style" />
     <meta content="telephone=no" name="format-detection" />
-    <title>【@(Model.Serial.SeoName+Model.Name)车款综述】_@(Model.Serial.Brand.SeoName)-手机易车网</title>
-    <meta name="Keywords" content="@(Model.Serial.SeoName),@(Model.Serial.SeoName)车款,@(Model.Serial.SeoName)参数,@(Model.Serial.SeoName)配置,@(Model.Serial.Brand.SeoName+Model.Serial.SeoName)" />
-    <meta name="Description" content="@(Model.Serial.SeoName):手机易车网车型频道为您提供全国最新@(Model.Serial.SeoName)报价,权威@(Model.Serial.SeoName)配置,海量@(Model.Serial.SeoName)图片" />
+    <title>【@(Model.Serial.SeoName) @(Model.CarYear)款 @(Model.Name)】报价_图片_配置-手机易车网</title>
+    <meta name="Keywords" content="@(Model.Serial.SeoName) @(Model.CarYear)款 @(Model.Name), @(Model.Serial.SeoName) @(Model.CarYear)款 @(Model.Name)报价, @(Model.Serial.SeoName) @(Model.CarYear)款 @(Model.Name)图片" />
+    <meta name="Description" content="@(Model.Serial.SeoName):手机易车网车型频道为您提供全国最新@(Model.Serial.SeoName) @(Model.CarYear)款 @(Model.Name)报价,权威@(Model.Serial.SeoName)配置,海量@(Model.Serial.SeoName)图片,尽在易车网。" />
     <!--#include file="/ushtml/0000/myiche2015_cube_chekuan-1019.shtml"-->
     <link rel="canonical" href="http://car.bitauto.com/@(Model.Serial.AllSpell)/m@(Model.Id)/" />
     <script type="text/javascript" charset="utf-8" src="http://ip.yiche.com/iplocation/setcookie.ashx"></script>
@@ -104,9 +104,13 @@
 <div class="car-canshu">
     @if (ViewBag.IsElectrombile)
     {
-        <dl>
+        @*<dl>
             <dt class="w5">百公里耗电：</dt>
             <dd>@(string.IsNullOrEmpty(ViewBag.PowerConsumptive100) ? "" : ViewBag.PowerConsumptive100 + "kW")</dd>
+        </dl>*@
+        <dl>
+            <dt class="w5">发电机功率：</dt>
+            <dd>@(ViewBag.EngineElectrombile)</dd>
         </dl>
         <dl>
             <dt class="w4">电池容量：</dt>
@@ -118,7 +122,7 @@
         </dl>
         <dl>
             <dt class="w4">充电时间：</dt>
-            <dd>@(string.IsNullOrEmpty(ViewBag.ChargeTime) ? "" : ViewBag.ChargeTime + "分钟")</dd>
+            <dd>@(string.IsNullOrEmpty(ViewBag.ChargeTime) ? "" : ViewBag.ChargeTime + "小时")</dd>
         </dl>
     }
     else
@@ -127,13 +131,17 @@
             <dt class="w2">排量：</dt>
             <dd>@(ViewBag.Exhaust)</dd>
         </dl>
-        <dl>
+        @*<dl>
             <dt class="w2">油耗：</dt>
             <dd>@(ViewBag.Cfcs.CarSummaryFuelCost == "" ? "暂无" : ViewBag.Cfcs.CarSummaryFuelCost + "/100km")</dd>
-        </dl>
+        </dl>*@
         <dl>
             <dt class="w3">发动机：</dt>
             <dd>@(ViewBag.EngineAllString)</dd>
+        </dl>
+        <dl>
+            <dt class="w4">进气形式：</dt>
+            <dd>@(ViewBag.EngineInhaleTypeString)</dd>
         </dl>
         <dl>
             <dt class="w3">变速箱：</dt>

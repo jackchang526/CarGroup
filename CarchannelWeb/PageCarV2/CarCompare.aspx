@@ -154,6 +154,7 @@
        { %>
     <script type="text/javascript">
         <%= jsContent %>
+        <%= packageJsContent %>
     </script>
     <% } %>
     <script type="text/javascript" language="javascript">
@@ -167,8 +168,8 @@
 
     <%--<script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/jsnew/commons.js,carchannel/jsnew/carcompareforminiV3.min.js,carchannel/jsnew/carSelectSimpleV3.min.js?v=20160120"></script>--%>
      <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/commons.min.js"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/JsForParameter.min.js?v=2017062914"></script>
-    <%--<script type="text/javascript" src="/jsnewv2/JsForParameter.js"></script>--%>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/JsForParameterv2.min.js?v=201710111750"></script>
+    <%--<script type="text/javascript" src="/jsnewv2/JsForParameterV2.js"></script>--%>
     <%--<script type="text/javascript" src="/jsnew/commons.js?v=20150724"></script>
         <script type="text/javascript" src="/jsnew/carcompareforminiV3.js?v=20150733"></script>
         <script type="text/javascript" src="/jsnew/carSelectSimpleV3.js"></script>--%>

@@ -500,10 +500,12 @@
     <Content Include="CarInfo\SerialJsonInfo.aspx" />
     <Content Include="CarInfo\SerialListJson.aspx" />
     <Content Include="config\CooperationConfig.xml" />
+    <Content Include="config\CooperationConfigV2.xml" />
     <Content Include="config\H5SelectSerialList.xml" />
     <Content Include="config\ParameterForJson.xml" />
     <Content Include="config\ParameterForJsonNew.xml" />
     <Content Include="App_Data\css\GetCarhtml\main.css" />
+    <Content Include="config\ParameterForJsonNewV2.xml" />
     <Content Include="Cooperation\GetCarData.aspx" />
     <Content Include="Cooperation\script\GetCarhtml\main.js" />
     <Content Include="Cooperation\script\GetCarhtml\renderMobileSerialListForBaidu.js" />
@@ -576,6 +578,7 @@
     <Content Include="Assessment\GetEditorInfo.ashx" />
     <Content Include="Assessment\GetEntranceData.ashx" />
     <Content Include="Assessment\ViewScore.ashx" />
+    <Content Include="config\ParameterConfigurationNewV2.config" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -1349,7 +1349,7 @@ namespace MWeb.Controllers
                 if (ele != null)
                 {
                     string levelSpell = BitAuto.CarUtils.Define.CarLevelDefine.GetLevelSpellByName(serialEntity.Level.Name);
-                    baoZhiLv = string.Format("<dl class=\"sum-baozhilv\"><dt class=\"w3\">保值率：</dt><dd>{0}% <a href=\"/{1}/baozhilv/\" data-channelid=\"27.23.2041\">排行>></a></dd></dl>"
+                    baoZhiLv = string.Format("<dl class=\"sum-baozhilv\"><dt class=\"w3\">保值率：</dt><dd>{0}% <a href=\"/{1}/baozhilv/\" data-channelid=\"27.23.2041\">排行 ></a></dd></dl>"
                         , Math.Round(ConvertHelper.GetDouble(ele.Attributes["ResidualRatio5"].InnerText) * 100, 1)
                         , levelSpell
                         );
@@ -1400,7 +1400,11 @@ namespace MWeb.Controllers
                     if (newCarMarketDateTimeList.Count() > 0)
                     {
                         CarInfoForSerialSummaryEntity car = newCarMarketDateTimeList.First();//从已经填写的时间中选择最早的时间
-                        showText = "将于" + car.MarketDateTime.ToString("yy年MM月dd日") + "上市";
+                        //排除未上市车填写了过去的上市时间（这种情况属于数据错误，通过程序筛选控制）
+                        if (DateTime.Compare(car.MarketDateTime, DateTime.Now) >= 0)
+                        {
+                            showText = "将于" + car.MarketDateTime.ToString("yy年MM月dd日") + "上市";
+                        }
                     }
                     //没有填写上市时间
                     else
@@ -1465,7 +1469,11 @@ namespace MWeb.Controllers
                 if (newCarList.Count() > 0)
                 {
                     CarInfoForSerialSummaryEntity car = newCarList.First();//从已经填写的时间中选择最早的时间
-                    showText = "将于" + car.MarketDateTime.ToString("yy年MM月dd日") + "上市";
+                    //排除未上市车填写了过去的上市时间（这种情况属于数据错误，通过程序筛选控制）
+                    if (DateTime.Compare(car.MarketDateTime, DateTime.Now) >= 0)
+                    {
+                        showText = "将于" + car.MarketDateTime.ToString("yy年MM月dd日") + "上市";
+                    }                        
                 }
                 //没有上市时间，判断有没有实拍图、指导价
                 else

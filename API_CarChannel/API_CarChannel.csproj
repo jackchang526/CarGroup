@@ -282,6 +282,9 @@
     <Compile Include="CarInfo\SerialXmlInfo.ashx.cs">
       <DependentUpon>SerialXmlInfo.ashx</DependentUpon>
     </Compile>
+    <Compile Include="CarInfo\WriteCarParamCache.ashx.cs">
+      <DependentUpon>WriteCarParamCache.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Cooperation\GetCarData.aspx.cs">
       <DependentUpon>GetCarData.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -579,6 +582,7 @@
     <Content Include="Assessment\GetEntranceData.ashx" />
     <Content Include="Assessment\ViewScore.ashx" />
     <Content Include="config\ParameterConfigurationNewV2.config" />
+    <Content Include="CarInfo\WriteCarParamCache.ashx" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

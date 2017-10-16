@@ -1,4 +1,4 @@
-﻿新版车型频道 web目录结构说明：
+﻿新版车型频道 web目录结构说明11：
 
 last modified by Chengl Oct.30.2012
 last modified by Chengl Nov.16.2012

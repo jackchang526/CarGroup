@@ -48,7 +48,7 @@
     <Item Value="Cargo_height_max" Desc="货箱高" ParamID="969" Unit="mm" />
     <Item Value="cargo_width_max" Desc="货箱宽" ParamID="970" Unit="mm" />
     <Item Value="Inset_TrunkCapacityE" Desc="行李箱扩展容积" ParamID="466" Unit="L" />
-    <Item Value="xinglixang most big" Desc="行李箱最大容积" ParamID="1000" Unit="L" />
+    <Item Value="xinglixiangzuidatuozhanrongji" Desc="行李箱最大容积" ParamID="1000" Unit="L" />
   </Group>
   <Group Desc="动力系统">
     <Item Value="Engine_Exhaust" Desc="排量" ParamID="423" Unit="mL" />

@@ -2734,7 +2734,7 @@ var arrField = [
     { sFieldTitle: "轴距[mm]", sType: "fieldPara", sPid: "592", sTrPrefix: "2", sFieldIndex: "3", unit: "", joinCode: "mm", isVantage: "1", size: "1" },
     { sFieldTitle: "整备质量[kg]", sType: "fieldPara", sPid: "669", sTrPrefix: "2", sFieldIndex: "4", unit: "", joinCode: "kg" },
     { sFieldTitle: "座位数[个]", sType: "fieldPara", sPid: "665", sTrPrefix: "2", sFieldIndex: "5", unit: "", joinCode: "" },
-    { sFieldTitle: "行李箱容积[L]", sType: "fieldMulti", sPid: "465,466,1000", sTrPrefix: "2,2,2", sFieldIndex: "6,19,20", unit: "", joinCode: ",x,x", size: "1" },
+    { sFieldTitle: "行李箱容积[L]", sType: "fieldMulti", sPid: "465,466,1000", sTrPrefix: "2,2,2", sFieldIndex: "6,19,20", unit: "", joinCode: ",-,-", size: "1" },
     { sFieldTitle: "油箱容积[L]", sType: "fieldPara", sPid: "576", sTrPrefix: "2", sFieldIndex: "7", unit: "", joinCode: "", isVantage: "1", size: "1" },
     { sFieldTitle: "前轮胎规格", sType: "fieldPara", sPid: "729", sTrPrefix: "2", sFieldIndex: "8", unit: "", joinCode: "" },
     { sFieldTitle: "后轮胎规格", sType: "fieldPara", sPid: "721", sTrPrefix: "2", sFieldIndex: "9", unit: "", joinCode: "" },

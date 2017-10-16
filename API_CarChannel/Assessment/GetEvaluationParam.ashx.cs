@@ -31,7 +31,9 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 context.Response.Write(!string.IsNullOrEmpty(callback) ? string.Format("{0}({1})", callback, result) : result);
                 return;
             }
-            string sql = @"SELECT [181], [182], [183], [184], [185], [186], [175], [176], [177], [178],
+            string sql = @"SELECT     [259], [260],[261], [262],[263], [264],[265], [266],[267], [268],[269], [270],[271], [272],
+                                      [273], [274],[275], [276],[277], [278],[279], [280],[281], [282],
+        [181], [182], [183], [184], [185], [186], [175], [176], [177], [178],
         [179], [180], [169], [170], [171], [172], [173], [174], [166], [167],
         [168], [11], [14], [1], [2], [3], [4], [57], [58], [59], [60], [61],
         [62], [15], [16], [17], [18], [205], [206], [207], [208], [209], [210],
@@ -47,44 +49,14 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
           SELECT    PropertyId, PropertyValue
           FROM      dbo.StyleStandardPropertyValue
           WHERE     StyleId = @carId
-        ) AS T1 PIVOT( MAX([PropertyValue]) FOR [PropertyId] IN ( [181], [182],
-                                                              [183], [184],
-                                                              [185], [186],
-                                                              [175], [176],
-                                                              [177], [178],
-                                                              [179], [180],
-                                                              [169], [170],
-                                                              [171], [172],
-                                                              [173], [174],
-                                                              [166], [167],
-                                                              [168], [11],
-                                                              [14], [1], [2],
-                                                              [3], [4], [57],
-                                                              [58], [59], [60],
-                                                              [61], [62], [15],
-                                                              [16], [17], [18],
-                                                              [205], [206],
-                                                              [207], [208],
-                                                              [209], [210],
-                                                              [202], [203],
-                                                              [63], [64], [65],
-                                                              [66], [67], [68],
-                                                              [69], [70], [71],
-                                                              [72], [73], [74],
-                                                              [144], [124],
-                                                              [126], [128],
-                                                              [130], [132],
-                                                              [143], [39],
-                                                              [40], [41], [42],
-                                                              [43], [44], [45],
-                                                              [46], [47], [48],
-                                                              [49], [50], [51],
-                                                              [52], [53], [54],
-                                                              [55], [56], [22],
-                                                              [21], [23], [27],
-                                                              [28], [29], [85],
-                                                              [213], [214],
-                                                              [215], [216],
+        ) AS T1 PIVOT( MAX([PropertyValue]) FOR [PropertyId] IN (  
+                                                                [259], [260],[261], [262],[263], [264],[265], [266],[267], [268],[269], [270],[271], [272],
+                                                              [273], [274],[275], [276],[277], [278],[279], [280],[281], [282],
+                                                              [181], [182],[183], [184],[185], [186],[175], [176],[177], [178],[179], [180],[169], [170],[171], [172],
+                                                              [173], [174],[166], [167],[168], [11],[14], [1], [2],[3], [4], [57],[58], [59], [60],[61], [62], [15],[16], [17], [18],
+                                                              [205], [206],[207], [208],[209], [210],[202], [203],[63], [64], [65],[66], [67], [68],[69], [70], [71],[72], [73], [74],
+                                                              [144], [124],[126], [128],[130], [132],[143], [39],[40], [41], [42],[43], [44], [45],[46], [47], [48],[49], [50], [51],
+                                                              [52], [53], [54],[55], [56], [22],[21], [23], [27],[28], [29], [85],[213], [214],[215], [216],
                                                               [217], [257],[258],[255],[254],[80] ) ) AS T2";
             SqlParameter[] _params = {
                                          new SqlParameter("@evaluationId",SqlDbType.Int),
@@ -100,14 +72,40 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 var obj = new
                 {
                     EvaluationId = evaluationId,
-                    TuiQianXiao= dr["181"],
+                    //空气质量参数组
+                    BenGj = dr["259"],  //笨（国际结果）
+                    BenSw = dr["260"],//笨（Iso升温模式结果）
+                    BenQd = dr["261"],//笨（Iso启动模式结果）
+                    JiaBenGj = dr["262"],
+                    JiaBenSw = dr["263"],
+                    JiaBenQd = dr["264"],
+                    YiBenGj = dr["265"],
+                    YiBenSw = dr["266"],
+                    YiBenQd = dr["267"],
+                    ErJiaBenGj = dr["268"],
+                    ErJiaBenSw = dr["269"],
+                    ErJiaBenQd = dr["270"],
+                    BenYiXiGj = dr["271"],
+                    BenYiXiSw = dr["272"],
+                    BenYiXiQd = dr["273"],
+                    JiaQuanGj = dr["274"],
+                    JiaQuanSw = dr["275"],
+                    JiaQuanQd = dr["276"],
+                    YiQuanGj = dr["277"],
+                    YiQuanSw = dr["278"],
+                    YiQuanQd = dr["279"],
+                    BinXiQuanGj = dr["280"],
+                    BinXiQuanSw = dr["281"],
+                    BinXiQuanQd = dr["282"],
+
+                    TuiQianXiao = dr["181"],
                     TuiQianDa = dr["182"],
-                    TuiZhongXiao= dr["183"],
+                    TuiZhongXiao = dr["183"],
                     TuiZhongDa = dr["184"],
                     TuiHouXiao = dr["185"],
                     TuiHouDa = dr["186"],
 
-                    SeatQianXiao= dr["175"],
+                    SeatQianXiao = dr["175"],
                     SeatQianDa = dr["176"],
                     SeatZhongXiao = dr["177"],
                     SeatZhongDa = dr["178"],
@@ -121,12 +119,12 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                     HightHouXiao = dr["173"],
                     HightHouDa = dr["174"],
 
-                    WidthQian = dr["166"],                    
+                    WidthQian = dr["166"],
                     WidthZhong = dr["167"],
                     WidthHou = dr["168"],
 
                     ShacheKong = dr["11"],
-                    ShacheMan= dr["14"],
+                    ShacheMan = dr["14"],
 
 
                     LengShaChe100_1 = dr["1"],
@@ -157,7 +155,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                     HouKeShiFanWei = dr["203"],
 
                     TingZhi = dr["63"],
-                    Qian50= dr["64"],
+                    Qian50 = dr["64"],
                     Qian80 = dr["65"],
                     Qian100 = dr["66"],
                     Qian120 = dr["67"],
@@ -171,9 +169,9 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
 
                     JiaSu400mKm = dr["144"],
 
-                    
-                    
-                    JiaSu0_20= dr["124"],
+
+
+                    JiaSu0_20 = dr["124"],
                     JiaSu0_40 = dr["126"],
                     JiaSu0_60 = dr["128"],
                     JiaSu0_80 = dr["130"],
@@ -199,17 +197,17 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                     Dang9Gaosu = dr["55"],
                     Dang9Zhuansu = dr["56"],
 
-                    
+
                     EspOff = dr["22"],
-                    EspOn1= dr["21"],
+                    EspOn1 = dr["21"],
                     ZuiDaG = dr["23"],
                     EspOn = dr["27"],
                     EspOff1 = dr["28"],
                     ZuiDaG1 = dr["29"],
 
-                    PuSiSaiDao= dr["85"],
+                    PuSiSaiDao = dr["85"],
 
-                    ZhuanWanZhiJingZuo= dr["213"],
+                    ZhuanWanZhiJingZuo = dr["213"],
                     ZhuanWanZhiJingYou = dr["214"],
 
                     FangXiangPanQuanShu = dr["215"],
@@ -218,8 +216,8 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
 
                     DzhuZuoZheBiJiaoDu = dr["257"],
                     DzhuYouZheBiJiaoDu = dr["258"],
-                    BaoYangFeiYong6Nian=dr["255"],
-                    KongTiaoChuFengKouShuLiang= dr["254"],
+                    BaoYangFeiYong6Nian = dr["255"],
+                    KongTiaoChuFengKouShuLiang = dr["254"],
                     ShiJiCeShiYouHao = dr["80"]
                 };
                 result = JsonConvert.SerializeObject(obj);

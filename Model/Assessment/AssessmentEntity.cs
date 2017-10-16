@@ -20,6 +20,10 @@ namespace BitAuto.CarChannel.Model.Assessment
         /// </summary>
         public DateTime CreateDateTime { get; set; }
         /// <summary>
+        /// 更新时间
+        /// </summary>
+        public DateTime UpdateDateTime { get; set; }
+        /// <summary>
         /// 车系ID
         /// </summary>
         public int SerialId { get; set; }

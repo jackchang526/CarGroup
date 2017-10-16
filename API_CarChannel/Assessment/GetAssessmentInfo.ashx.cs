@@ -25,6 +25,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
         /// <param name="context"></param>
         public void ProcessRequest(HttpContext context)
         {
+
             PageHelper.SetPageCache(60);
             context.Response.ContentType = "application/x-javascript";
             string callback = context.Request.QueryString["callback"];
@@ -44,14 +45,28 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
             paraList.Add("CommonInfoGroup");
             if (!string.IsNullOrEmpty(groupname))
             {
-                paraList.Add(groupname);
+                foreach (string item in groupname.Split(','))
+                {
+                    if (item != ""&& !paraList.Contains(item))
+                    {
+                        paraList.Add(item);
+                    }
+                }                          
             }
             //IMongoQuery query = Query.EQ("EvaluationId", EvaluationId);
             IMongoQuery query = Query.And(Query.EQ("EvaluationId", EvaluationId), Query.EQ("Status", 1));
             Dictionary<string, int> sortdic = new Dictionary<string, int>();
             sortdic.Add("CreateDateTime", 0);
             EvaluationBll evaluationBll = new EvaluationBll();
-            AssessmentEntity assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query, paraList.ToArray(), sortdic);
+            AssessmentEntity assessmentEntity = null;
+            try
+            {
+                assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query, paraList.ToArray(), sortdic);
+            }
+            catch (Exception e)
+            {
+                var message = e.Message;
+            }
             if (assessmentEntity != null)
             {
                 CarEntity cbe = (CarEntity)DataManager.GetDataEntity(EntityType.Car, assessmentEntity.CarId);

@@ -62,9 +62,25 @@ namespace BitAuto.CarChannel.Model.Assessment
         /// </summary>
         public string AirQualityGeneralCmt { get; set; }
         /// <summary>
-        /// 空气质量区 图片集
+        /// 图片集（暂停使用该字段）
         /// </summary>
         public List<string> AirQualityPics = new List<string>();
+        /// <summary>
+        /// 空气质量区 亮点小图集合1
+        /// </summary>
+        public IList<CommonImageVideoEntity> AirPointSmallImgs1 { get; set; }
+        /// <summary>
+        /// 空气质量区 亮点小图集合2
+        /// </summary>
+        public IList<CommonImageVideoEntity> AirPointSmallImgs2 { get; set; }
+        /// <summary>
+        /// 空气质量区 亮点大图标题
+        /// </summary>
+        public string AirQualityPointTitle { get; set; }
+        /// <summary>
+        /// 空气质量区 亮点大图集合
+        /// </summary>
+        public IList<CommonImageVideoEntity> AirPointBigImgsUrl { get; set; }
         /// <summary>
         /// 空气质量区 备注内容
         /// </summary>

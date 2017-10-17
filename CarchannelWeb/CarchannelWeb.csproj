@@ -68,7 +68,7 @@
     </Reference>
     <Reference Include="BitAuto.Utils, Version=2.0.7.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\P公用平台\Release\BitAuto.Utils.dll</HintPath>
+      <HintPath>..\..\..\packages\BitAuto.Utils.dll</HintPath>
     </Reference>
     <Reference Include="BitAuto.Web">
       <HintPath>..\DLL\BitAuto.Web.dll</HintPath>

@@ -32,7 +32,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
             int.TryParse(id, out evaluationId);
             string callback = context.Request.QueryString["callback"];
             List<EvaluationEntity> list = evaluationBll.GetByStyleEvaluation(evaluationId);
-            TestBaseEntity testBaseEntity=evaluationBll.GetTestBaseEntityById(evaluationId);
+            TestBaseEntity testBaseEntity = evaluationBll.GetTestBaseEntityById(evaluationId);
             CarEntity cbe = (CarEntity)DataManager.GetDataEntity(EntityType.Car, testBaseEntity.StyleId);
             if (cbe != null)
             {
@@ -47,7 +47,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
             Dictionary<string, List<object>> dataDic = new Dictionary<string, List<object>>();
             foreach (var item in groupList)
             {
-                groupdic.Add("s"+item.Key.ToString(), list.Where(i => i.GroupId == item.Key).Select(j => j.GroupName).First());
+                groupdic.Add("s" + item.Key.ToString(), list.Where(i => i.GroupId == item.Key).Select(j => j.GroupName).First());
                 dataDic.Add("s" + item.Key.ToString(), (from i in list where i.GroupId == item.Key select new { ParaName = i.Name, PropertyId = i.PropertyId, PropertyValue = i.PropertyValue, Unit = i.Unit }).ToList<object>());
             }
             var data = new

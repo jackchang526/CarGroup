@@ -1083,7 +1083,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             //add by 2014.05.04 电动车 参数
             if (maxChargeTime > 0)
             {
-                chargeTimeRange = minChargeTime == maxChargeTime ? string.Format("{0}分钟", minChargeTime) : string.Format("{0}-{1}分钟", minChargeTime, maxChargeTime);
+                chargeTimeRange = minChargeTime == maxChargeTime ? string.Format("{0}小时", minChargeTime) : string.Format("{0}-{1}小时", minChargeTime, maxChargeTime);
             }
             //if (maxFastChargeTime > 0)
             //{

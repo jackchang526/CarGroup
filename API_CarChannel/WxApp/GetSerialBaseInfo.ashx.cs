@@ -64,6 +64,20 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
                     string transmissionType = serialInfo.CsTransmissionType; //变速箱类型
                     string fuelCost = serialInfo.CsSummaryFuelCost; //油耗
 
+                    List<SerialColorEntity> serialColorList;
+                    if (serialInfo.CsSaleState == "停销")
+                    {
+                        serialColorList = _serialBLL.GetNoSaleSerialColors(serialId, serialInfo.ColorList);
+                    }
+                    else
+                    {
+                        serialColorList = _serialBLL.GetProduceSerialColors(serialId);
+                    }
+                    List<SerialColorForSummaryEntity> colorList = _serialBLL.GetSerialColorRGBByCsID(serialId, 0, serialColorList);
+
+                    //排序 有图在前 无图在后 颜色 按色值大小从大到小排序
+                    colorList.Sort(NodeCompare.SerialColorCompare);
+
                     List<CarInfoForSerialSummaryEntity> carinfoList = _carBLL.GetCarInfoForSerialSummaryBySerialId(serialId);
                     //List<CarInfoForSerialSummaryEntity> carinfoSaleList = carinfoList.FindAll(p => p.SaleState == "在销");
                     var fuelTypeList = carinfoList.Where(p => p.Oil_FuelType != "")
@@ -116,12 +130,33 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
                         }
                     }
                     #endregion
+
+                    //同级别热度
+                    int serialUvRank = _serialBLL.GetAllSerialUvRank30Days(serialId);
+                    string serialTotalPV = string.Empty;
+                    if (serialUvRank > 0)
+                    {
+                        serialTotalPV = string.Format("第{0}名", serialUvRank);
+                    }
+
                     //取子品牌白底图
                     Dictionary<int, string> dicPicWhite = GetAllSerialPicURLWhiteBackground();
                     string whitePic = dicPicWhite.ContainsKey(serialId) ? dicPicWhite[serialId] : WebConfig.DefaultCarPic;
                     string jsonResult = string.Empty;
                     jsonResult = "{";
-                    jsonResult += string.Format("\"masterId\":{0},\"brandId\":{1},\"csShowName\":\"{2}\",\"whitePic\":\"{3}\",\"baojiaRange\":\"{4}\",\"producerAndLevel\":\"{5}\",{6}", masterId, brandId, csShowName, whitePic.Replace("_2.jpg", "_6.jpg"), baojiaRange, chanDi + carSerialLevel, oneRowText);
+                    jsonResult += string.Format("\"masterId\":{0},\"brandId\":{1},\"csShowName\":\"{2}\",\"whitePic\":\"{3}\",\"baojiaRange\":\"{4}\",\"producerAndLevel\":\"{5}\",{6},\"referPrice\":\"{7}\",\"color\":\"{8}\",\"saleStates\":\"{9}\",\"level\":\"{10}\",\"rank\":\"{11}\""
+                        , masterId
+                        , brandId
+                        , csShowName
+                        , whitePic.Replace("_2.jpg", "_6.jpg")
+                        , baojiaRange
+                        , chanDi + carSerialLevel
+                        , oneRowText
+                        , serialEntity.ReferPrice
+                        , string.Join("、", colorList.Select(x=>x.ColorRGB))
+                        , serialEntity.SaleState
+                        , serialEntity.Level.Name
+                        , serialTotalPV);
                     jsonResult += "}";
                     CacheManager.InsertCache(cacheKey, jsonResult, WebConfig.CachedDuration);
                     response.Write(jsonResult);
@@ -148,9 +183,9 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
                 Dictionary<int, string> dictCarParams = _carBLL.GetCarAllParamByCarID(entity.CarID);
                 //add by 2014.05.04 获取电动车参数
                 //普通充电时间
-                if (dictCarParams.ContainsKey(879))
+                if (dictCarParams.ContainsKey(878))
                 {
-                    var chargeTime = ConvertHelper.GetInteger(dictCarParams[879]);
+                    var chargeTime = ConvertHelper.GetInteger(dictCarParams[878]);
                     if (minChargeTime == 0 && chargeTime > 0)
                         minChargeTime = chargeTime;
                     if (chargeTime < minChargeTime)
@@ -173,8 +208,8 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
             if (maxChargeTime > 0)
             {
                 chargeTimeRange = minChargeTime == maxChargeTime
-                    ? string.Format("{0}分钟", minChargeTime)
-                    : string.Format("{0}-{1}分钟", minChargeTime, maxChargeTime);
+                    ? string.Format("{0}小时", minChargeTime)
+                    : string.Format("{0}-{1}小时", minChargeTime, maxChargeTime);
             }
             if (maxMileage > 0)
             {

@@ -7627,11 +7627,82 @@ namespace BitAuto.CarChannel.BLL
 			return dic;
 		}
 
-		/// <summary>
-		///  易湃的销量最高的suv车型接口数据
+        /// <summary>
+        /// 车系销量排行榜,按级别分组
+        /// </summary>
+        /// <param name="level"></param>
+        /// <returns></returns>
+        public List<XmlElement> GetSeialSellRank(string level)
+        {
+            Dictionary<string, List<XmlElement>> dic = null;
+            Dictionary<int, XmlElement> items = GetSeialSellRank();
+            if (items != null && items.Count > 0)
+            {
+                dic = new Dictionary<string, List<XmlElement>>();
+                foreach (KeyValuePair<int, XmlElement> ele in items)
+                {
+                    string levelStr = ele.Value.Attributes["Level"].InnerText;
+                    if (dic.ContainsKey(levelStr))
+                    {
+                        dic[levelStr].Add(ele.Value);
+                    }
+                    else
+                    {
+                        List<XmlElement> list = new List<XmlElement>();
+                        list.Add(ele.Value);
+                        dic.Add(levelStr, list);
+                    }
+                }
+            }
+            return dic != null && dic.ContainsKey(level) ? dic[level] : null;
+        }
+
+        /// <summary>
+		/// 车系销量排行榜
 		/// </summary>
 		/// <returns></returns>
-		public Dictionary<int, Dictionary<int, string[]>> GetEPSUVSalesRank()
+		public Dictionary<int, XmlElement> GetSeialSellRank()
+        {
+            string cacheKey = "Car_SerialBll_GetSeialSellRank";
+            object obj = CacheManager.GetCachedData(cacheKey);
+            //List<XmlElement> list = null;
+            Dictionary<int, XmlElement> dic = null;
+            if (obj != null)
+            {
+                dic = (Dictionary<int, XmlElement>)obj;
+            }
+            else
+            {
+                string filePath = Path.Combine(WebConfig.DataBlockPath, @"Data\SerialSet\SerialSaleRank.xml");
+                if (File.Exists(filePath))
+                {
+                    //list = new List<XmlElement>();
+                    dic = new Dictionary<int, XmlElement>();
+                    XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(filePath);
+                    XmlNodeList items = xmlDoc.SelectNodes("/Root/Item");
+                    if (items != null && items.Count > 0)
+                    {
+                        foreach (XmlElement ele in items)
+                        {
+                            //list.Add(ele);
+                            int csId = ConvertHelper.GetInteger(ele.Attributes["CsId"].InnerText);
+                            if (!dic.ContainsKey(csId))
+                            {
+                                dic.Add(csId, ele);
+                            }
+                        }
+                    }
+                    CacheManager.InsertCache(cacheKey, dic, 60*24);
+                }
+            }
+            return dic;
+        }
+
+        /// <summary>
+        ///  易湃的销量最高的suv车型接口数据
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<int, Dictionary<int, string[]>> GetEPSUVSalesRank()
 		{
 			string cacheKey = "Car_SerialBll_GetEPSUVSalesRank";
 			object obj = CacheManager.GetCachedData(cacheKey);

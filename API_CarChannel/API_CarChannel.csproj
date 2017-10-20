@@ -464,6 +464,10 @@
     <Compile Include="WxApp\GetCarParamInfo.ashx.cs">
       <DependentUpon>GetCarParamInfo.ashx</DependentUpon>
     </Compile>
+    <Compile Include="WxApp\GetHotSerial.ashx.cs">
+      <DependentUpon>GetHotSerial.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="WxApp\GetNewCarList.ashx.cs">
       <DependentUpon>GetNewCarList.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -473,6 +477,10 @@
     </Compile>
     <Compile Include="WxApp\GetSerialBaseInfo.ashx.cs">
       <DependentUpon>GetSerialBaseInfo.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WxApp\GetSerialSellRank.ashx.cs">
+      <DependentUpon>GetSerialSellRank.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="zhihuan\GetBrandList.ashx.cs">
@@ -606,6 +614,8 @@
     <Content Include="WxApp\GetCarList.ashx" />
     <Content Include="WxApp\GetNewsList.ashx" />
     <Content Include="WxApp\GetCarParamInfo.ashx" />
+    <Content Include="WxApp\GetHotSerial.ashx" />
+    <Content Include="WxApp\GetSerialSellRank.ashx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

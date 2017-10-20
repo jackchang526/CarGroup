@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SuperSelectCarToolV2.aspx.cs" Inherits="BitAuto.CarChannel.CarchannelWeb.PageToolV2.SuperSelectCarToolV2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SuperSelectCarTool.aspx.cs" Inherits="BitAuto.CarChannel.CarchannelWeb.PageToolV2.SuperSelectCarTool" %>
 
 <% Response.ContentType = "text/html"; %>
 <!DOCTYPE html>
@@ -508,6 +508,11 @@
                                     <input type="checkbox" id="more_107" />化油器
                                 </label>
                             </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" id="more_301" />混合喷射
+                                </label>
+                            </li>
                         </ul>
                     </dd>
                 </dl>
@@ -736,6 +741,11 @@
                                     <input type="checkbox" id="more_146" />麦弗逊独立悬架
                                 </label>
                             </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" id="more_300" />整体桥式非独立悬架
+                                </label>
+                            </li>
                         </ul>
                     </dd>
                 </dl>
@@ -816,7 +826,7 @@
                     </dd>
                 </dl>
                 <dl>
-                    <dt>差速器/差速锁</dt>
+                    <dt>限滑差速器/差速锁</dt>
                     <dd>
                         <ul class="tj_list">
                             <li>
@@ -1285,7 +1295,7 @@
                             </li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_239" />电动上下左右调整
+                                    <input type="checkbox" id="more_239" />电动上下前后
                                 </label>
                             </li>
                             <li>

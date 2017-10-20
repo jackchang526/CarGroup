@@ -1266,3 +1266,5 @@ var eventNames = ['webkit', 'moz', 'o'];
         })
     }
 })(jQuery);
+
+//window.addEventListener('touchmove', function () { });

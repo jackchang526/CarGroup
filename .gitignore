@@ -154,9 +154,7 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
-/CarchannelWeb/log
-/CarchannelWeb/GlobalLog
-/MWeb/GlobalLog
+/log
 applicationhost.config
-/BusinessServiceAPI/GlobalLog/
 /.vs
+/GlobalLog/

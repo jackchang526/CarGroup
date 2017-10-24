@@ -1003,7 +1003,7 @@ namespace MWeb.Controllers
 						}
 						else
 						{
-							backupImg = string.Format("<a href=\"{0}\" data-channelid=\"27.23.723\"  class=\"left-area\"><img alt=\"{3}{4}\" src=\"{1}\">{2}</a>",
+							backupImg = string.Format("<a href=\"{0}\" data-channelid=\"27.23.723\"  class=\"img-box\"><img alt=\"{3}{4}\" src=\"{1}\">{2}</a>",
 								firstTujieNode.Attributes["Link"].Value,
 								firstTujieNode.Attributes["ImageUrl"].Value.Replace("_4.", "_4."),
 								string.IsNullOrEmpty(groupName) ? string.Empty : "<em>" + groupName + "</em>",

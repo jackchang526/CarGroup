@@ -158,3 +158,4 @@ $RECYCLE.BIN/
 applicationhost.config
 /.vs
 /GlobalLog/
+/packages

@@ -853,14 +853,37 @@ namespace MWeb.Controllers
             var focusImgId = new Dictionary<int, string>();
             List<string> focusImg = new List<string>();
             List<SerialFocusImage> imgList = serialBLL.GetSerialFocusImageList(serialEntity.Id);
+            //子品牌幻灯页
+            List<SerialFocusImage> imgSlideList = serialBLL.GetSerialSlideImageList(serialId);
+            List<SerialFocusImage> sourceList = new List<SerialFocusImage>();
             string xmlPicPath = Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, serialId));
             DataSet dsCsPic = pageBase.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialEntity.Id, xmlPicPath, 60);
             Dictionary<int, Dictionary<int, string>> dicPicNoneWhite = pageBase.GetAllSerialPicNoneWhiteBackground();
+            
+            #region 初始化数据源
+            foreach (SerialFocusImage img in imgList)
+            {
+                sourceList.Add(img);
+            }
+            //焦点图不足，补幻灯页
+            foreach (SerialFocusImage imgS in imgSlideList)
+            {
+                if (sourceList.Count > 3)
+                {
+                    break;
+                }
+                //焦点图片排重
+                SerialFocusImage focusImage = imgList.Find(p => p.ImageId == imgS.ImageId);
+                if (focusImage != null)
+                    continue;
+                sourceList.Add(imgS);
+            }
+            #endregion
 
-            if (imgList != null && imgList.Count > 0)
+            if (sourceList != null && sourceList.Count > 0)
             {
                 //大图默认显示焦点图第一张，如果没有焦点图，显示封面图
-                SerialFocusImage image = imgList[0];
+                SerialFocusImage image = sourceList[0];
                 string _serialImage =
                     string.Format(
                         "<a href=\"http://photo.m.yiche.com/picture/{0}/{1}/\" data-channelid=\"27.23.723\" class=\"left-area\"><img alt=\"{4}{5}\" src=\"{2}\">{3}</a>",
@@ -874,10 +897,10 @@ namespace MWeb.Controllers
                     focusImg.Add(_serialImage);
                 }
 
-                //第二张图取子品牌焦点图第3张（完整内饰）
-                if (imgList.Count >= 3)
+                //第二张图取子品牌焦点图第2张（完整内饰）
+                if (sourceList.Count >= 2)
                 {
-                    SerialFocusImage csImg = imgList[2];
+                    SerialFocusImage csImg = sourceList[1];
                     string smallImgUrl = csImg.ImageUrl;
                     if (csImg.ImageId > 0)
                     {
@@ -898,71 +921,63 @@ namespace MWeb.Controllers
                     }
                 }
             }
-            else
-            {
 
-                if (dicPicNoneWhite.ContainsKey(serialId))
-                {
-                    string _serialImage =
-                        string.Format(
-                            "<a href=\"http://photo.m.yiche.com/picture/{0}/{1}/\" data-channelid=\"27.23.723\" class=\"left-area\"><img alt=\"{3}外观\" src=\"{2}\"><em>外观</em></a>"
-                            , serialId
-                            , dicPicNoneWhite[serialId].FirstOrDefault().Key
-                            , dicPicNoneWhite[serialId].FirstOrDefault().Value
-                            , serialEntity.SeoName);
-                    if (!focusImgId.ContainsKey(dicPicNoneWhite[serialId].FirstOrDefault().Key))
-                    {
-                        focusImgId.Add(dicPicNoneWhite[serialId].FirstOrDefault().Key, _serialImage);
-                        focusImg.Add(_serialImage);
-                    }
-
-                }
-            }
 
             DataTable dtC = null;
-            //第三张图取空间分类第1张图
             if (dsCsPic != null && dsCsPic.Tables.Count > 0 && dsCsPic.Tables.Contains("C"))
             {
-                //if (dsCsPic.Tables.Contains("C") && dsCsPic.Tables["C"].Rows.Count > 0)
-                //{
                 dtC = dsCsPic.Tables["C"];
-                //取空间图片第一张图片,与前两张图片不重复
-
-                int speceImageCount = 0;
-                DataRow[] drP8 = dtC.Select("P='8'");
-                foreach (DataRow row in drP8) //空间
-                {
-                    int imgId = row["I"] == DBNull.Value ? 0 : Convert.ToInt32(row["I"]);
-                    string imgUrl = row["U"] == DBNull.Value ? "" : Convert.ToString(row["U"]);
-                    if (imgId == 0 || imgUrl.Length == 0 || focusImgId.ContainsKey(imgId))
-                    {
-                        continue;
-                    }
-                    speceImageCount++;
-                    imgUrl = CommonFunction.GetPublishHashImgUrl(4, imgUrl, imgId);
-                    string picName = Convert.ToString(row["D"]);
-                    string picUlr = "http://photo.m.yiche.com/picture/" + serialId + "/" + imgId + "/";
-                    string thirdImg =
-                        string.Format("<a href=\"{0}\" data-channelid=\"27.23.725\" class=\"img-box\"><img alt=\"{2}空间\" src=\"{1}\"><em>空间</em></a>"
-                        , picUlr
-                        , imgUrl
-                        , serialEntity.SeoName);
-                    if (!focusImgId.ContainsKey(imgId))
-                    {
-                        focusImgId.Add(imgId, thirdImg);
-                        focusImg.Add(thirdImg);
-                    }
-                    break;
-                }
-                //}
             }
-
             if (focusImg.Count < 3)
             {
-                //如果不够3张,则显示焦点图第2张
-                if (imgList.Count >= 2)
+                //第三张,取图解第一张
+                XmlNode firstTujieNode = GetFirstTujieImage(dtC);
+                if (firstTujieNode != null)
                 {
-                    SerialFocusImage csImg = imgList[1];
+                    string groupName = firstTujieNode.Attributes["GroupName"].Value;
+                    string backupImg = string.Empty;
+
+					if (focusImg.Count == 1)
+					{
+						backupImg = string.Format("<a href=\"{0}\" data-channelid=\"27.23.724\" class=\"img-box\"><img alt=\"{3}{4}\" src=\"{1}\">{2}</a>",
+							firstTujieNode.Attributes["Link"].Value,
+							firstTujieNode.Attributes["ImageUrl"].Value.Replace("_4.", "_4."),
+							string.IsNullOrEmpty(groupName) ? string.Empty : "<em>" + groupName + "</em>",
+							serialEntity.SeoName,
+							groupName);
+					}
+					else if (focusImg.Count == 0)
+                    {
+						backupImg = string.Format("<a href=\"{0}\" data-channelid=\"27.23.723\"  class=\"left-area\"><img alt=\"{3}{4}\" src=\"{1}\">{2}</a>",
+							firstTujieNode.Attributes["Link"].Value,
+							firstTujieNode.Attributes["ImageUrl"].Value.Replace("_4.", "_4."),
+							string.IsNullOrEmpty(groupName) ? string.Empty : "<em>" + groupName + "</em>",
+							serialEntity.SeoName,
+							groupName);
+					}
+                    else if (focusImg.Count == 2)
+                    {
+                        backupImg = string.Format("<a href=\"{0}\" data-channelid=\"27.23.725\" class=\"img-box\"><img alt=\"{3}{4}\" src=\"{1}\">{2}</a>",
+                            firstTujieNode.Attributes["Link"].Value,
+                            firstTujieNode.Attributes["ImageUrl"].Value.Replace("_4.", "_4."),
+                            string.IsNullOrEmpty(groupName) ? string.Empty : "<em>" + groupName + "</em>",
+                            serialEntity.SeoName,
+                            groupName);
+                    }
+                    if (!focusImgId.ContainsKey(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value)))
+                    {
+                        focusImgId.Add(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value), backupImg);
+                        focusImg.Add(backupImg);
+                    }
+                }
+                
+            }
+            if (focusImg.Count < 3)
+            {
+                //第三张图取子品牌焦点图以及幻灯页第3张
+                if (sourceList.Count >= 3)
+                {
+                    SerialFocusImage csImg = sourceList[2];
                     string smallImgUrl = csImg.ImageUrl;
                     if (csImg.ImageId > 0)
                     {
@@ -970,56 +985,20 @@ namespace MWeb.Controllers
                     }
                     string secondImg =
                         string.Format(
-                            "<a href=\"http://photo.m.yiche.com/picture/{0}/{3}/\" data-channelid=\"27.23.724\" class=\"img-box\"><img alt=\"{4}{5}\" src=\"{1}\">{2}</a>"
-                            , serialId
-                            , smallImgUrl
-                            , string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<em>" + csImg.GroupName + "</em>"
-                            , csImg.ImageId
-                            , serialEntity.SeoName
-                            , csImg.GroupName);
+                            "<a href=\"http://photo.m.yiche.com/picture/{0}/{3}/\" data-channelid=\"27.23.725\" class=\"img-box\"><img alt=\"{4}{5}\" src=\"{1}\">{2}</a>",
+                            serialId, smallImgUrl,
+                            string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<em>" + csImg.GroupName + "</em>",
+                            csImg.ImageId,
+                            serialEntity.SeoName,
+                            csImg.GroupName);
                     if (!focusImgId.ContainsKey(csImg.ImageId))
                     {
                         focusImgId.Add(csImg.ImageId, secondImg);
                         focusImg.Add(secondImg);
                     }
                 }
-                else
-                {
-                    //如果没有焦点图第2张,取图解第一张
-                    XmlNode firstTujieNode = GetFirstTujieImage(dtC);
-                    if (firstTujieNode != null)
-                    {
-                        string groupName = firstTujieNode.Attributes["GroupName"].Value;
-                        string backupImg = string.Empty;
-
-						if (focusImg.Count > 1)
-						{
-							backupImg = string.Format("<a href=\"{0}\" data-channelid=\"27.23.724\" class=\"img-box\"><img alt=\"{3}{4}\" src=\"{1}\">{2}</a>",
-								firstTujieNode.Attributes["Link"].Value,
-								firstTujieNode.Attributes["ImageUrl"].Value.Replace("_4.", "_4."),
-								string.IsNullOrEmpty(groupName) ? string.Empty : "<em>" + groupName + "</em>",
-								serialEntity.SeoName,
-								groupName);
-						}
-						else
-						{
-							backupImg = string.Format("<a href=\"{0}\" data-channelid=\"27.23.723\"  class=\"img-box\"><img alt=\"{3}{4}\" src=\"{1}\">{2}</a>",
-								firstTujieNode.Attributes["Link"].Value,
-								firstTujieNode.Attributes["ImageUrl"].Value.Replace("_4.", "_4."),
-								string.IsNullOrEmpty(groupName) ? string.Empty : "<em>" + groupName + "</em>",
-								serialEntity.SeoName,
-								groupName);
-						}
-                        
-                        if (!focusImgId.ContainsKey(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value)))
-                        {
-                            focusImgId.Add(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value), backupImg);
-                            focusImg.Add(backupImg);
-                        }
-                    }
-                }
             }
-            ViewData["FocusImgList"] = focusImg;
+                ViewData["FocusImgList"] = focusImg;
             #endregion
         }
 

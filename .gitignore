@@ -159,3 +159,4 @@ applicationhost.config
 /.vs
 GlobalLog/
 /packages
+/CarchannelWeb/log/RewriteURL

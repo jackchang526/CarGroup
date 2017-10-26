@@ -157,6 +157,6 @@ $RECYCLE.BIN/
 /log
 applicationhost.config
 /.vs
-/GlobalLog/
+GlobalLog/
 /packages
 /CarchannelWeb/log/RewriteURL

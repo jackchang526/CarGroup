@@ -74,7 +74,7 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
                         serialColorList = _serialBLL.GetProduceSerialColors(serialId);
                     }
                     List<SerialColorForSummaryEntity> colorList = _serialBLL.GetSerialColorRGBByCsID(serialId, 0, serialColorList);
-
+                    colorList = colorList.Where(x => !string.IsNullOrEmpty(x.ImageUrl)).ToList();
                     //排序 有图在前 无图在后 颜色 按色值大小从大到小排序
                     colorList.Sort(NodeCompare.SerialColorCompare);
 

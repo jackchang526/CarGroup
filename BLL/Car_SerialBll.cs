@@ -7692,7 +7692,7 @@ namespace BitAuto.CarChannel.BLL
                             }
                         }
                     }
-                    CacheManager.InsertCache(cacheKey, dic, 60*24);
+                    CacheManager.InsertCache(cacheKey, dic, 60);
                 }
             }
             return dic;

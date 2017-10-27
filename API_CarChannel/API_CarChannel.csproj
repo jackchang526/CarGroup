@@ -59,8 +59,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\BitAuto.CarUtils.dll</HintPath>
     </Reference>
-    <Reference Include="BitAuto.Utils">
-      <HintPath>..\..\..\..\..\P公用平台\Release\BitAuto.Utils.dll</HintPath>
+    <Reference Include="BitAuto.Utils, Version=2.0.7.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\BitAuto.Utils.dll</HintPath>
     </Reference>
     <Reference Include="blowery.Web.HttpCompress">
       <HintPath>..\DLL\blowery.Web.HttpCompress.dll</HintPath>
@@ -464,6 +465,10 @@
     <Compile Include="WxApp\GetCarParamInfo.ashx.cs">
       <DependentUpon>GetCarParamInfo.ashx</DependentUpon>
     </Compile>
+    <Compile Include="WxApp\GetHotMaster.ashx.cs">
+      <DependentUpon>GetHotMaster.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="WxApp\GetHotSerial.ashx.cs">
       <DependentUpon>GetHotSerial.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -616,6 +621,7 @@
     <Content Include="WxApp\GetCarParamInfo.ashx" />
     <Content Include="WxApp\GetHotSerial.ashx" />
     <Content Include="WxApp\GetSerialSellRank.ashx" />
+    <Content Include="WxApp\GetHotMaster.ashx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

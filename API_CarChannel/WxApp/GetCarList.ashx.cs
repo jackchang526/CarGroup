@@ -92,6 +92,7 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
                             var fuelType = dictParams.ContainsKey(578) ? dictParams[578] : string.Empty;
                             int kw = 0;
                             int electrickW = 0;
+                            string gearNum = string.Empty;
                             if (fuelType == "纯电")
                             {
                                 electrickW = dictParams.ContainsKey(870) ? ConvertHelper.GetInteger(dictParams[870]) : 0;
@@ -118,6 +119,10 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
                                     double.TryParse(dictParams[430], out tempkW);
                                     kw = (int)Math.Round(tempkW);
                                 }
+                                if (dictParams.ContainsKey(724) && ConvertHelper.GetInteger(dictParams[724]) > 0)
+                                {
+                                    gearNum = dictParams[724] + "挡";
+                                }
                             }
                             //kw = kw == 0 ? 9999 : kw;
                             #endregion
@@ -138,9 +143,9 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
                             }
 
                             string singleCarJson = string.Format(
-                                "{{\"CarId\":{0},\"CarName\":\"{1}\",\"Price\":\"{2}\",\"ReferPrice\":\"{3}\",\"TransmissionType\":\"{4}\",\"Engine_Exhaust\":\"{5}\", \"Engine_MaxPower\":\"{6}\",\"Electric_Peakpower\":\"{7}\"}}",
+                                "{{\"CarId\":{0},\"CarName\":\"{1}\",\"Price\":\"{2}\",\"ReferPrice\":\"{3}\",\"TransmissionType\":\"{4}\",\"Engine_Exhaust\":\"{5}\", \"Engine_MaxPower\":\"{6}\",\"Electric_Peakpower\":\"{7}\",\"GearNum\":\"{8}\"}}",
                                 entity.CarID, entity.CarName, carMinPrice, carReferPrice, transmissionType,
-                                engine_Exhaust, kw, electrickW);
+                                engine_Exhaust, kw, electrickW,gearNum);
                             List<string> lsPowerCar = new List<string>();
                             lsPowerCar.Add(singleCarJson);
                             if (dictEngintPowerGroup.ContainsKey(curEnginExhasutAndPower))

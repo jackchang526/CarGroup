@@ -9,5 +9,9 @@ namespace AppApi.Controllers
 {
     public class CarController : BaseController
     {
+        public string Test()
+        {
+            return "hello world!";
+        }
     }
 }

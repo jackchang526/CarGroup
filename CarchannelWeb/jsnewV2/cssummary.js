@@ -453,3 +453,25 @@ function GetFocusNewsLast(csSaleState, totalCount) {
         }
     });
 }
+
+//双11入口
+function Get1111Entrance() {
+    if ($(".bmw-ad-link").length > 0) return;
+    $.ajax({
+        url: "http://api.mai.yiche.com/api/ProductCar/GetCs11?csid=" + GlobalSummaryConfig.SerialId,
+        cache: true,
+        dataType: "jsonp",
+        jsonpCallback: "Get1111EntranceCallback",
+        success: function (data) {
+            if (!data.Success || data.Result == null) {
+                //console.log(data.Msg);
+                return;
+            }
+            var html = [];
+            html.push("<div class=\"bmw-ad-link type-1\">");
+            html.push("<a href=\"" + data.Result.pcUrl + "\" target=\"_blank\" class=\"link\">" + data.Result.propagate + "</a >");
+            html.push("</div>");
+            $("#focus_images").before(html.join(""));
+        }
+    });
+}

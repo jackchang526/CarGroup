@@ -170,9 +170,9 @@
                     <div class="mobile-qrcode">
                         <img src="/favicon.ico" id="qrcodelogo" style="display: none;" />
                         <a href="http://app.yiche.com/yiche/">
-                            <img src="http://image.bitautoimg.com/cargroup/car/huodong-serial.png" /></a>
+                            <img src="http://image.bitautoimg.com/cargroup/car/huodongv2.png" /></a>
                         <%--<a href="<%= wirelessSerialUrl %>?ref=pctowap" target="_blank" id="qrcode"><img src="http://image.bitautoimg.com/cargroup/car/qrimages/<%= serialId %>.png?v=1" /></a>--%>
-                        <em>APP看车领福利</em>
+                        <em>扫我5折</em>
                     </div>
                 </div>
 
@@ -347,9 +347,10 @@
                                 <h2><a href="/<%= serialSpell %>/wenzhang/" target="_blank"><%= serialShowName %>文章</a></h2>
                             </div>
                             <div class="more">
-                                <a href="/<%= serialSpell %>/xinwen/" target="_blank">新闻</a>
-                                <a href="/<%= serialSpell %>/shijia/" target="_blank">试驾</a>
+                                <a href="/<%= serialSpell %>/shijia/" target="_blank">评测</a>
                                 <a href="/<%= serialSpell %>/daogou/" target="_blank">导购</a>
+                                <a href="/<%= serialSpell %>/yongche/" target="_blank">用车</a>
+                                <a href="/<%= serialSpell %>/xinwen/" target="_blank">新闻</a>
                                 <a href="http://www.bitauto.com/zhuanti/daogou/gsqgl/" target="_blank">购车流程</a>
                                 <a href="/<%= serialSpell %>/wenzhang/" target="_blank">更多&gt;&gt;</a>
                             </div>

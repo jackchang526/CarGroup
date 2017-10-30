@@ -9,16 +9,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using BitAuto.CarChannel.Common.Cache;
+using System.Xml;
+using System.IO;
 
 namespace BitAuto.CarChannelAPI.Web.WxApp
 {
     /// <summary>
     /// GetSerialBaseInfo 的摘要说明
     /// </summary>
-    public class GetSerialBaseInfo :PageBase, IHttpHandler
+    public class GetSerialBaseInfo : PageBase, IHttpHandler
     {
         //访问格式：http://api.car.bitauto.com/WxApp/GetSerialBaseInfo.ashx?sid=1765
-        
+
         private int serialId = 0;
         HttpResponse response;
 
@@ -29,8 +31,8 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
         {
             context.Response.ContentType = "application/x-javascript";
             response = context.Response;
-            _serialBLL=new Car_SerialBll();
-            _carBLL=new Car_BasicBll();
+            _serialBLL = new Car_SerialBll();
+            _carBLL = new Car_BasicBll();
             GetPageParam(context);
             GetCsJsonData();
         }
@@ -42,7 +44,7 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
             { }
         }
 
-     
+
         private void GetCsJsonData()
         {
             try
@@ -74,9 +76,27 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
                         serialColorList = _serialBLL.GetProduceSerialColors(serialId);
                     }
                     List<SerialColorForSummaryEntity> colorList = _serialBLL.GetSerialColorRGBByCsID(serialId, 0, serialColorList);
-                    colorList = colorList.Where(x => !string.IsNullOrEmpty(x.ImageUrl)).ToList();
+                    List<SerialColorForSummaryEntity> colorListTemp = new List<SerialColorForSummaryEntity>();
+                    //颜色补充实拍图
+                    string serialColorPath = Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialColorImagePath, serialId));
+                    XmlDocument xmlSerialColor = CommonFunction.ReadXmlFromFile(serialColorPath);
+                    foreach (SerialColorForSummaryEntity color in colorList)
+                    {
+                        string imageUrl = color.ImageUrl;
+
+                        XmlNode colorNode = xmlSerialColor.SelectSingleNode("/CarImageList/CarImage[@ColorName='" + color.ColorName + "']");
+                        if (colorNode != null)
+                        {
+                            imageUrl = string.Format(colorNode.Attributes["ImageUrl"].Value, 3);
+                            color.Link = colorNode.Attributes["Link"].Value;
+                        }
+                        if (!string.IsNullOrEmpty(imageUrl))
+                        {
+                            colorListTemp.Add(color);
+                        }
+                    }
                     //排序 有图在前 无图在后 颜色 按色值大小从大到小排序
-                    colorList.Sort(NodeCompare.SerialColorCompare);
+                    colorListTemp.Sort(NodeCompare.SerialColorCompare);
 
                     List<CarInfoForSerialSummaryEntity> carinfoList = _carBLL.GetCarInfoForSerialSummaryBySerialId(serialId);
                     //List<CarInfoForSerialSummaryEntity> carinfoSaleList = carinfoList.FindAll(p => p.SaleState == "在销");
@@ -153,7 +173,7 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
                         , chanDi + carSerialLevel
                         , oneRowText
                         , serialEntity.ReferPrice
-                        , string.Join("、", colorList.Select(x=>x.ColorRGB))
+                        , string.Join("、", colorListTemp.Select(x => x.ColorRGB))
                         , serialEntity.SaleState
                         , serialEntity.Level.Name
                         , serialTotalPV);
@@ -162,14 +182,14 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
                     response.Write(jsonResult);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 CommonFunction.WriteLog(ex.ToString() + ";StackTrace:" + ex.StackTrace);
             }
         }
 
         private string GetElectricOneRowText(List<CarInfoForSerialSummaryEntity> carinfoList)
-        { 
+        {
             //以下2个参数为电动车数据，用于组织json返回
             string chargeTimeRange = string.Empty; //续航里程
             string mileageRange = string.Empty; //充电时间
@@ -183,9 +203,9 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
                 Dictionary<int, string> dictCarParams = _carBLL.GetCarAllParamByCarID(entity.CarID);
                 //add by 2014.05.04 获取电动车参数
                 //普通充电时间
-                if (dictCarParams.ContainsKey(878))
+                if (dictCarParams.ContainsKey(879))
                 {
-                    var chargeTime = ConvertHelper.GetInteger(dictCarParams[878]);
+                    var chargeTime = ConvertHelper.GetInteger(dictCarParams[879]);
                     if (minChargeTime == 0 && chargeTime > 0)
                         minChargeTime = chargeTime;
                     if (chargeTime < minChargeTime)

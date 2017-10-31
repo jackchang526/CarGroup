@@ -24,6 +24,7 @@ using BitAuto.Utils;
 using BitAuto.CarChannel.BLL.ucar.api;
 using BitAuto.CarUtils.Define;
 using System.Collections;
+using BitAuto.CarChannel.Model.AppModel;
 
 namespace BitAuto.CarChannel.BLL
 {
@@ -8262,6 +8263,23 @@ namespace BitAuto.CarChannel.BLL
             return json.ToString();
         }
         /// <summary>
+        /// 获取车型选配包数据
+        /// </summary>
+        /// <param name="serialId"></param>
+        /// <returns></returns>
+        public List<CarSerialPackageEntity> GetCarSerialPackageEntityListBySerialId(int serialId)
+        {
+            string cacheKey = string.Format(DataCacheKeys.CarSerialPackageKey, serialId);
+            var cacheData = CacheManager.GetCachedData<List<CarSerialPackageEntity>>(cacheKey);
+            if (cacheData == null)
+            {
+                cacheData = csd.GetCarSerialPackageListBySerialId(serialId);
+                if (cacheData != null)
+                    CacheManager.InsertCache(cacheKey, cacheData, 30);
+            }
+            return cacheData;
+        }
+        /// <summary>
         /// 获取子品牌幻灯页列表
         /// </summary>
         /// <param name="serialId"></param>
@@ -8318,5 +8336,6 @@ namespace BitAuto.CarChannel.BLL
             }
             return doc;
         }
+       
     }
 }

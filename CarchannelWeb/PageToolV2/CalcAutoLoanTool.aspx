@@ -75,8 +75,8 @@
                         if (hidCarId && hidCarId.value > 0) {
                             carid = hidCarId.value;
                         }
-                    }
-                    chedaiLink[0].href = "http://fenqi.taoche.com/www/" + ADForCheDai.CsAllSpellArray[csId] + "/m" + carid + "/?from=yc33&leads_source=p031002";
+                    } 
+                    chedaiLink[0].href = "http://sq.taoche.com/yiche/index?from=yc33&leads_source=p031002&serialid=" + csId + "&carid=" + carid + "";
                 }
             }
         }
@@ -1773,8 +1773,10 @@
                         function () { $(this).parent().siblings(".tc-zong").show(); },
                         function () { $(this).parent().siblings(".tc-zong").hide(); }
                     );
-                    $("#loanTJ").attr("href", "http://fenqi.taoche.com/www/" + ADForCheDai.CsAllSpellArray[hidCsId.value] + "?from=yc38").text(hidCsName.value + "贷款推荐");
-                    $("#loanMoreTJ").attr("href", "http://fenqi.taoche.com/www/" + ADForCheDai.CsAllSpellArray[hidCsId.value] + "?from=yc38");
+                    //$("#loanTJ").attr("href", "http://fenqi.taoche.com/www/" + ADForCheDai.CsAllSpellArray[hidCsId.value] + "?from=yc38").text(hidCsName.value + "贷款推荐");
+                    //$("#loanMoreTJ").attr("href", "http://fenqi.taoche.com/www/" + ADForCheDai.CsAllSpellArray[hidCsId.value] + "?from=yc38");
+                    $("#loanTJ").attr("href", "http://sq.taoche.com/yiche/index?from=yc38&serialid=" + hidCsId.value + "").text(hidCsName.value + "贷款推荐");
+                    $("#loanMoreTJ").attr("href", "http://sq.taoche.com/yiche/index?from=yc38&serialid=" + hidCsId.value + "");
                 } else {
                     $("#pc-load").parent().hide();
                 }

@@ -15,17 +15,7 @@ namespace BitAuto.CarChannel.Model
         /// 0-车型ID
         /// </summary>
         public static string CarSerialPackageKey = "car.appapi.carserialpackageentity_{0}";
-        /// <summary>
-        /// 车款信息
-        /// </summary>
-        public static string CarBasicEntityKey = "car.appapi.carbasicentity_{0}";
-
-        /// <summary>
-        /// 是否重新写入参配缓存
-        ///  carids,逗号分开
-        /// </summary>
-        public static string CarParameterTryCacheKey = "car.appapi.carparametertrycache_{0}";
-
+      
         /// <summary>
         /// 参配本地缓存
         /// carids,逗号分开

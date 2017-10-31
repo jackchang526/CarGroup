@@ -14,10 +14,36 @@ namespace AppApi.Controllers
 {
     public class CarController : BaseController
     {
-        public string Test()
+        #region Service
+
+        
+        static Car_BasicBll _carBasicService;
+
+        public static Car_BasicBll CarBasicService
         {
-            return "hello world!";
+            get
+            {
+                if (_carBasicService == null)
+                    _carBasicService = new Car_BasicBll();
+
+                return _carBasicService;
+            }
+            set { _carBasicService = value; }
         }
+        static Car_SerialBll _carSerialService;
+
+        public static Car_SerialBll CarSerialService
+        {
+            get
+            {
+                if (_carSerialService == null)
+                    _carSerialService = new Car_SerialBll();
+
+                return _carSerialService;
+            }
+            set { _carSerialService = value; }
+        }
+        #endregion
         /// <summary>
         /// 选配包
         /// </summary>
@@ -26,7 +52,7 @@ namespace AppApi.Controllers
         [OutputCache(Duration = 300, VaryByParam = "serialId", Location = OutputCacheLocation.Downstream)]
         public ActionResult GetCarSerialPackageEntityListBySerialId(int? serialId)
         {
-            var result = new Car_SerialBll().GetCarSerialPackageEntityListBySerialId(serialId.GetValueOrDefault(0));
+            var result = CarSerialService.GetCarSerialPackageEntityListBySerialId(serialId.GetValueOrDefault(0));
             return AutoJson(new
             {
                 success = true,
@@ -46,7 +72,7 @@ namespace AppApi.Controllers
         [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
         public ActionResult GetCarParameterGroup()
         {
-            var result = new Car_BasicBll().GetCarParameterJsonConfig();
+            var result = CarBasicService.GetCarParameterJsonConfig();
             return AutoJson(new
             {
                 success = true,
@@ -84,8 +110,8 @@ namespace AppApi.Controllers
                     carCount++;
                 }
             }
-            var carService = new Car_BasicBll();
-            var paramList = carService.GetCarParamterListWithWebCacheByCarIds(carList);
+          
+            var paramList = CarBasicService.GetCarParamterListWithWebCacheByCarIds(carList);
             return AutoJson(new
             {
                 success = true,

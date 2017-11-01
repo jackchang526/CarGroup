@@ -44,11 +44,14 @@
     <Item Value="carcheluntaiguige" Desc="轮胎规格" ParamID="1001" Unit="" />
     <Item Value="maximum_gross_mass" Desc="载重质量" ParamID="974" Unit="kg" />
     <Item Value="truck_tire_number" Desc="轮胎数量" ParamID="982" Unit="个" />
-    <Item Value="Cargo_length_max" Desc="货箱长" ParamID="966" Unit="mm" />
-    <Item Value="Cargo_height_max" Desc="货箱高" ParamID="969" Unit="mm" />
-    <Item Value="cargo_width_max" Desc="货箱宽" ParamID="970" Unit="mm" />
+    <Item Value="Cargo_length_max" Desc="货厢长" ParamID="966" Unit="mm" />
+    <Item Value="Cargo_height_max" Desc="货厢高" ParamID="969" Unit="mm" />
+    <Item Value="cargo_width_max" Desc="货厢宽" ParamID="970" Unit="mm" />
     <Item Value="Inset_TrunkCapacityE" Desc="行李箱扩展容积" ParamID="466" Unit="L" />
     <Item Value="xinglixiangzuidatuozhanrongji" Desc="行李箱最大容积" ParamID="1000" Unit="L" />
+    <Item Value="new_energy_subsidies" Name="新能源汽车国家补贴" ParamID="997" Unit="万" />
+    <Item Value="OutSet_MinWheeDiameter" Name="最小转弯直径[m]" ParamID="1039" Unit="" />
+    <Item Value="OutSet_MinGapFromEarth" Name="最小离地间隙[mm]" ParamID="589" Unit="" />
   </Group>
   <Group Desc="动力系统">
     <Item Value="Engine_Exhaust" Desc="排量" ParamID="423" Unit="mL" />
@@ -62,7 +65,7 @@
     <Item Value="Engine_CylinderNum" Desc="汽缸数" ParamID="417" Unit="个" />
     <Item Value="Engine_InhaleType" Desc="进气型式" ParamID="425" Unit="" />
     <Item Value="Oil_SupplyType" Desc="供油方式" ParamID="580" Unit="" />
-    <Item Value="Engine_CompressRat" Desc="压缩比" ParamID="414" Unit="1" />
+    <Item Value="Engine_CompressRat" Desc="压缩比" ParamID="414" Unit="" />
     <Item Value="Oil_FuelTab" Desc="燃油标号" ParamID="577" Unit="" />
     <Item Value="UnderPan_Startandstopsystem" Desc="启停系统" ParamID="894" Unit="" />
     <Item Value="UnderPan_TransmissionType" Desc="燃油变速箱类型" ParamID="712" Unit="" />
@@ -78,13 +81,13 @@
     <Item Value="houdiandongjizuidagonglv" Desc="后电动机最大功率" ParamID="1003" Unit="KW" />
     <Item Value="houdiandongjizuidaniuju" Desc="后电动机最大扭矩" ParamID="1005" Unit="N.m" />
     <Item Value="Electric_Batterycapacity" Desc="电池容量" ParamID="876" Unit="Ah" />
-    <Item Value="Electric_Normalchargingtime" Desc="普通充电时间" ParamID="879" Unit="分钟" />
-    <Item Value="Electric_Fast-chargetime" Desc="快速充电时间" ParamID="878" Unit="分钟" />
+    <Item Value="Electric_Normalchargingtime" Desc="普通充电时间" ParamID="879" Unit="h" />
+    <Item Value="Electric_Fast-chargetime" Desc="快速充电时间" ParamID="878" Unit="h" />
     <Item Value="Electric_Powerconsumption" Desc="耗电量" ParamID="868" Unit="kw/100km" />
     <Item Value="Electric_mustMileageconstant" Desc="最大续航里程" ParamID="883" Unit="km" />
     <Item Value="dianchizuzhibao" Desc="电池组质保" ParamID="1006" Unit="km" />
     <Item Value="diandongbiansuxiangleixing" Desc="电动变速箱类型" ParamID="1007" Unit="km" />
-    <Item Value="xitongzonghegonglv" Desc="系统综合功率" ParamID="1008" Unit="km" />
+    <Item Value="xitongzonghegonglv" Desc="系统综合功率" ParamID="1008" Unit="kW" />
     <Item Value="xitongzongheniuju" Desc="系统综合扭矩" ParamID="1009" Unit="N.m" />
     <Item Value="fadongjimiaoshu" Desc="发动机描述" ParamID="945" Unit="km" />
     <Item Value="kachebiansuxiangmiaoshu" Desc="卡车变速箱描述" ParamID="1011" Unit="km" />
@@ -95,7 +98,7 @@
     <Item Value="Perf_DriveType" Desc="驱动方式" ParamID="655" Unit="" />
     <Item Value="UnderPan_FrontSuspensionType" Desc="前悬挂类型" ParamID="728" Unit="" />
     <Item Value="UnderPan_RearSuspensionType" Desc="后悬挂类型" ParamID="720" Unit="" />
-    <Item Value="UnderPan_SuspensionHeightControl" Desc="可调悬挂" ParamID="708" Unit="" />
+    <Item Value="UnderPan_SuspensionHeightControl" Desc="可调悬架" ParamID="708" Unit="" />
     <Item Value="UnderPan_FrontBrakeType" Desc="前制动类型" ParamID="726" Unit="" />
     <Item Value="UnderPan_RearBrakeType" Desc="后制动类型" ParamID="718" Unit="" />
     <Item Value="UnderPan_ParkingBrake" Desc="手刹类型" ParamID="716" Unit="" />
@@ -108,6 +111,10 @@
     <Item Value="qianqiaoyunxuzaihe" Desc="前桥允许载荷" ParamID="1015" Unit="kg" />
     <Item Value="Back_axle_description" Desc="后桥描述" ParamID="976" Unit="" />
     <Item Value="houqiaoyunxuzaihe" Desc="后桥允许载荷" ParamID="1016" Unit="kg" />
+    <Item Value="OutSet_NearCorner" Name="接近角[°]" ParamID="591" Unit="" />
+    <Item Value="OutSet_AwayCorner" Name="离去角[°]" ParamID="581" Unit="" />
+    <Item Value="Perf_Throughtheangle" Name="通过角[°]" ParamID="890" Unit="" />
+    <Item Value="Perf_MaxPaddleDepth" Name="最大涉水深度[mm]" ParamID="662" Unit="" />
   </Group>
   <Group Desc="安全配置">
     <Item Value="Safe_ABS" Desc="ABS(刹车防抱死制动系统)" ParamID="673" Unit="" />
@@ -124,12 +131,12 @@
     <Item Value="InStat_BeltBag" Desc="安全带气囊" ParamID="845" Unit="" />
     <Item Value="houpaizhongyangqinang" Desc="后排中央气囊" ParamID="1017" Unit="" />
     <Item Value="UnderPan_TyrePressureWatcher" Desc="胎压监测装置" ParamID="714" Unit="" />
-    <Item Value="UnderPan_ZeroPressureDrive" Desc="零压续行(零胎压继续行驶)" ParamID="715" Unit="" />
+    <Item Value="UnderPan_ZeroPressureDrive" Desc="零胎压续行轮胎" ParamID="715" Unit="" />
     <Item Value="InStat_ChildSeatFix" Desc="儿童安全座椅固定装置" ParamID="495" Unit="" />
   </Group>
   <Group Desc="驾驶辅助">
     <Item Value="InStat_SpeedCruise" Desc="定速巡航系统" ParamID="545" Unit="" />
-    <Item Value="InStat_blindspotdetection" Desc="车道保持/并线辅助" ParamID="898" Unit="" />
+    <Item Value="InStat_blindspotdetection" Desc="车道保持" ParamID="898" Unit="" />
     <Item Value="InStat_ActiveSafetySystems" Desc="碰撞报警/主动刹车" ParamID="818" Unit="" />
     <Item Value="pilaotixing" Desc="疲劳提醒" ParamID="1018" Unit="" />
     <Item Value="InStat_AutoParking" Desc="自动泊车入位" ParamID="816" Unit="" />
@@ -144,6 +151,7 @@
     <Item Value="UnderPan_RRadar" Desc="倒车雷达" ParamID="702" Unit="" />
     <Item Value="UnderPan_RImage" Desc="倒车影像" ParamID="703" Unit="" />
     <Item Value="jiashimoshixuanze" Desc="驾驶模式选择" ParamID="1021" Unit="" />
+    <Item Value="InStat_blindspotdetection" Desc="车道保持" ParamID="898" Unit="" />
   </Group>
   <Group Desc="外部配置">
     <Item Value="OutStat_FrontLightType" Desc="前照灯类型" ParamID="614" Unit="" />
@@ -158,7 +166,7 @@
     <Item Value="OutStat_ReMirrorHot" Desc="外后视镜加热功能" ParamID="624" Unit="" />
     <Item Value="OutStat_ReMirrorDazzle" Desc="内后视镜防眩目功能" ParamID="621" Unit="" />
     <Item Value="waihoushijingzidongfangxuanmu" Desc="外后视镜自动防炫目" ParamID="1022" Unit="" />
-    <Item Value="OutStat_UV_InsulatinGlass" Desc="隔热/隐私玻璃" ParamID="796" Unit="" />
+    <Item Value="OutStat_UV_InsulatinGlass" Desc="隐私玻璃" ParamID="796" Unit="" />
     <Item Value="OutStat_SecondRowCurtain" Desc="后排侧遮阳帘" ParamID="797" Unit="" />
     <Item Value="OutStat_BackCurtain" Desc="后窗遮阳帘" ParamID="595" Unit="" />
     <Item Value="OutStat_FBrushSensor" Desc="雨刷传感器" ParamID="606" Unit="" />
@@ -172,6 +180,7 @@
     <Item Value="yuanchengyaokonggongneng" Desc="远程遥控功能" ParamID="1024" Unit="" />
     <Item Value="weiyiraoliuban" Desc="尾翼/扰流板" ParamID="1025" Unit="" />
     <Item Value="OutStat_SportsAppearanceKit" Desc="运动外观套件" ParamID="793" Unit="" />
+    <Item Value="liumeitihoushijing" Name="流媒体后视镜" ParamID="1041" Unit="" />
   </Group>
   <Group Desc="内部配置">
     <Item Value="neishicaizhi" Desc="内饰材质" ParamID="1026" Unit="" />

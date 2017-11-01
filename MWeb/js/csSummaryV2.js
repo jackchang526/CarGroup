@@ -1039,3 +1039,22 @@ function addTrackingCode(serialId) {
     }
 }
 addTrackingCode(GlobalSummaryConfig.SerialId);
+
+//双11入口
+function Get1111Entrance() {
+    $.ajax({
+        url: "http://api.mai.yiche.com/api/ProductCar/GetCs11?csid=" + GlobalSummaryConfig.SerialId,
+        cache: true,
+        dataType: "jsonp",
+        jsonpCallback: "Get1111EntranceCallback",
+        success: function (data) {
+            if (!data.Success || data.Result == null) {
+                //console.log(data.Msg);
+                return;
+            }
+            var html = [];
+            html.push("<a href=\"" + data.Result.mUrl + "\" class=\"shuang11-alink\">" + data.Result.propagate + "</a >");
+            $(".sum-info").before(html.join(""));
+        }
+    });
+}

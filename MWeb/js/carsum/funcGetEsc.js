@@ -114,7 +114,7 @@
                 //按钮统计
                 var global_busbtn_arr = ["1", "8", "0", "6", "5", "7"];
                 var global_busbtn_channelids = { "0": "27.24.126", "1": "27.24.129", "8": "27.24.124", "5": "27.24.128", "6": "27.24.127", "7": "27.24.130" };
-                var global_busbtn_code = { "0": "?leads_source=m003003", "1": "&tracker_u=614_ckzs&leads_source=m003004", "8": "?from=ycm34&leads_source=m003001", "5": "?ref=mchekuanzsmai&leads_source=m003013", "6": "?ref=mchekuanzsgu", "7": "&source=100546&leads_source=m003012" };
+                var global_busbtn_code = { "0": "?leads_source=m003003", "1": "&tracker_u=614_ckzs&leads_source=m003004", "8": "", "5": "?ref=mchekuanzsmai&leads_source=m003013", "6": "?ref=mchekuanzsgu", "7": "&source=100546&leads_source=m003012" };
 
                 $.ajax({
                     url: "http://api.car.bitauto.com/api/GetBusinessService.ashx?date=20160721&action=mcar&cityid=" + cityId + "&serialid=" + serialId + "&carid=" + carId,

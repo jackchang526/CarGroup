@@ -521,10 +521,10 @@ var baoxiaoOrImport = [];
     //按钮统计
     var global_busbtn_arr = ["1", "2", "0", "5", "6"];
     var global_busbtn_channelids = { "0": "27.23.116", "1": "27.23.119", "2": "27.23.114", "5": "27.23.117", "6": "27.23.118" };
-    var global_busbtn_code = { "0": "?leads_source=m002003", "1": "&tracker_u=613_cxzs&leads_source=m002004", "2": "?from=ycm1&leads_source=m002001", "5": "?ref=mchexizsmai&leads_source=m002014", "6": "?ref=mchexizsgu" };
+    var global_busbtn_code = { "0": "?leads_source=m002003", "1": "&tracker_u=613_cxzs&leads_source=m002004", "2": "", "5": "?ref=mchexizsmai&leads_source=m002014", "6": "?ref=mchexizsgu" };
     var global_duibiLevelBtn_style = { "0": "xunjia-btn", "1": "three-item item-xinche", "2": "three-item item-daikuan", "5": "xunjia-btn", "6": "two-item item-ershouche" };
     var global_duibiLevelBtn_channelids = { "0": "27.23.1357", "1": "27.23.1355", "2": "27.23.1356", "5": "27.23.1358", "6": "27.23.1359" };
-    var global_duibiLevelBtn_code = { "0": "?leads_source=m003016", "1": "&tracker_u=611_gddf&leads_source=m003014", "2": "?from=229&leads_source=m003015", "5": "?leads_source=m003017", "6": "?leads_source=m003018" };
+    var global_duibiLevelBtn_code = { "0": "?leads_source=m003016", "1": "&tracker_u=611_gddf&leads_source=m003014", "2": "", "5": "?leads_source=m003017", "6": "?leads_source=m003018" };
     // add by gux 20170425
     if (["4123", "4881", "2608", "1574", "2573", "3987", "2032", "1905", "4847", "1798"].indexOf(CarCommonCSID) != -1) {
         global_busbtn_code["0"] = "?leads_source=m002003&WT.mc_id=nbcjdx";

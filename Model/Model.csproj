@@ -70,6 +70,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppModel\CarParameterEntity.cs" />
+    <Compile Include="AppModel\DataCacheKeys.cs" />
+    <Compile Include="AppModel\ParameterGroupEntity.cs" />
     <Compile Include="Assessment\AssessmentEntity.cs" />
     <Compile Include="Assessment\BodyAndSpaceGroup.cs" />
     <Compile Include="Assessment\CommonImageVideoEntity.cs" />
@@ -88,6 +91,7 @@
     <Compile Include="CarInfoForSerialSummaryEntity.cs" />
     <Compile Include="CarInnerSpaceEntity.cs" />
     <Compile Include="CarJiangJiaNewsSummary.cs" />
+    <Compile Include="CarSerialPackageEntity.cs" />
     <Compile Include="CarSerialPhotoEntity.cs" />
     <Compile Include="Car_BasicEntity.cs" />
     <Compile Include="Car_BrandEntity.cs" />
@@ -155,9 +159,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AppModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -170,9 +170,9 @@
                     <div class="mobile-qrcode">
                         <img src="/favicon.ico" id="qrcodelogo" style="display: none;" />
                         <a href="http://app.yiche.com/yiche/">
-                            <img src="http://image.bitautoimg.com/cargroup/car/huodong-serial.png" /></a>
+                            <img src="http://image.bitautoimg.com/cargroup/car/huodongv2.png" /></a>
                         <%--<a href="<%= wirelessSerialUrl %>?ref=pctowap" target="_blank" id="qrcode"><img src="http://image.bitautoimg.com/cargroup/car/qrimages/<%= serialId %>.png?v=1" /></a>--%>
-                        <em>APP看车领福利</em>
+                        <em>扫我5折</em>
                     </div>
                 </div>
 
@@ -280,7 +280,7 @@
         <!--/焦点图、名片区-->
         <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201707061432"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201711011147"></script>
         <%--<script type="text/javascript" src="/jsnewv2/cssummary.js?v=20170171032"></script>--%>
         <script type="text/javascript">
             var serialId = <%= serialId %> ,
@@ -320,6 +320,7 @@
             InitTeHuiAndAdData();
             GetJiangjiaNews();
             GetHmcJiangJia();
+            Get1111Entrance();
             $("#qrcode img").bind("error", function () {
                 this.style.display = "none";
                 bitLoadScript("http://image.bitautoimg.com/carchannel/jsnewv2/jquery.qrcode.min.js", function () {
@@ -347,9 +348,10 @@
                                 <h2><a href="/<%= serialSpell %>/wenzhang/" target="_blank"><%= serialShowName %>文章</a></h2>
                             </div>
                             <div class="more">
-                                <a href="/<%= serialSpell %>/xinwen/" target="_blank">新闻</a>
-                                <a href="/<%= serialSpell %>/shijia/" target="_blank">试驾</a>
+                                <a href="/<%= serialSpell %>/shijia/" target="_blank">评测</a>
                                 <a href="/<%= serialSpell %>/daogou/" target="_blank">导购</a>
+                                <a href="/<%= serialSpell %>/yongche/" target="_blank">用车</a>
+                                <a href="/<%= serialSpell %>/xinwen/" target="_blank">新闻</a>
                                 <a href="http://www.bitauto.com/zhuanti/daogou/gsqgl/" target="_blank">购车流程</a>
                                 <a href="/<%= serialSpell %>/wenzhang/" target="_blank">更多&gt;&gt;</a>
                             </div>

@@ -811,7 +811,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
             StringBuilder sbTemp = new StringBuilder();
             List<int> listValidCarID = new List<int>();
             listValidCarID.Add(carID);
-            Dictionary<int, Dictionary<string, string>> dic = basicBll.GetCarCompareDataByCarIDs(listValidCarID);
+            Dictionary<int, Dictionary<string, string>> dic = basicBll.GetCarCompareDataWithOptionalByCarIDs(listValidCarID);
             if (!dic.ContainsKey(carID) || dic[carID].Count == 0)
             { return ""; }
             else
@@ -908,8 +908,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 //if (dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value)
                 //	&& dic[carID][item.Attributes.GetNamedItem("Value").Value] != "待查")
                     string pvalue = string.Empty;
-                //合并参数
-                    if (item.Attributes.GetNamedItem("Value").Value.IndexOf(",") != -1)
+                //合并参数 燃油变速箱
+                if (item.Attributes.GetNamedItem("Value").Value.IndexOf(",") != -1)
                     {
                         string[] arrKey = item.Attributes.GetNamedItem("Value").Value.Split(',');
                         string[] arrUnit = item.Attributes.GetNamedItem("Unit").Value.Split(',');
@@ -925,12 +925,6 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                                 var d = ConvertHelper.GetInteger(dic[carID][arrKey[i]]);
                                 if (d <= 0) continue;
                             }
-                            ////CD DVD 
-                            //if (arrParam[i] == "510" || arrParam[i] == "490")
-                            //{
-                            //    if (dic[carID][arrKey[i]].IndexOf("有") != -1)
-                            //        continue;
-                            //}
                             list.Add(string.Format("{0}{1}", dic[carID][arrKey[i]], arrUnit[i]));
                         }
                         if (list.Count <= 0) continue;
@@ -938,27 +932,15 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                         var you = list.Find(p => p.IndexOf("有") != -1);
                         if (you != null && list.Count > 1)
                             list.Remove(you);
-                        //进气形式 2个参数 增压 显示 增压方式 不是则显示 进气形式
-                        //if (item.Attributes.GetNamedItem("Name").Value == "进气形式")
-                        //{
-                        //    if (list.Count > 1)
-                        //    {
-                        //        if (list[0] == "增压")
-                        //            list.RemoveAt(0);
-                        //        else
-                        //            list.RemoveAt(1);
-                        //    }
-                        //}
                         pvalue = string.Join(" ", list.ToArray());
                     }
                     else
                     {
-                    if (!(dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value))
-                    && !(dictOptional.ContainsKey(int.Parse(item.Attributes.GetNamedItem("ParamID").Value))))
+                    if (!(dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value)))
                        { continue; }
                         if (dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value)&& dic[carID][item.Attributes.GetNamedItem("Value").Value] != "待查")
                         {
-                            pvalue = string.Format("{0}{1}", dic[carID][item.Attributes.GetNamedItem("Value").Value], item.Attributes.GetNamedItem("Unit").Value);
+                            pvalue = dic[carID][item.Attributes.GetNamedItem("Value").Value];
                         }
                     }
 
@@ -992,27 +974,6 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                             pvalue = pvalue + " " + pvalueOther;
                         }
                     }
-                    // 进气型式 如果自然吸气直接显示，如果是增压则显示增压方式
-                    //if (item.Attributes.GetNamedItem("ParamID").Value == "425"
-                    //    && pvalue == "增压")
-                    //{
-                    //    if (dic[carID].ContainsKey("CarParams/Engine_AddPressType")
-                    //&& dic[carID]["CarParams/Engine_AddPressType"] != "待查")
-                    //    {
-                    //        pvalueOther = dic[carID]["CarParams/Engine_AddPressType"];
-                    //        pvalue = pvalue + " " + pvalueOther;
-                    //    }
-                    //}
-                    //解决 变速箱 无极变速 替换成 -
-                    if (item.Attributes.GetNamedItem("Name").Value != "燃油变速箱" )
-                    {
-                        if (pvalue.IndexOf("有") == 0)
-                        { pvalue = "●"; }
-                        if (pvalue.IndexOf("选配") == 0)
-                        { pvalue = "○"; }
-                        if (pvalue == "无")
-                            { pvalue = "-"; }
-                        }
 
                 //sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + ":</span></td>");
 
@@ -1045,103 +1006,56 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 else
                 {
                     sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>");
-                    if (item.Attributes.GetNamedItem("Value").Value.IndexOf(",") == -1 && dictOptional.ContainsKey(int.Parse(item.Attributes.GetNamedItem("ParamID").Value)))
+                    if (pvalue.IndexOf(",") == -1)
                     {
-                        var optionalPara = dictOptional[int.Parse(item.Attributes.GetNamedItem("ParamID").Value)];
-                        if (pvalue == "●")
+                        //解决 变速箱 无极变速 替换成 -
+                        if (item.Attributes.GetNamedItem("Name").Value != "燃油变速箱")
                         {
-                            pvalue = "";
+                            if (pvalue.IndexOf("有") == 0)
+                            { pvalue = "●"; }
+                            if (pvalue =="选配")
+                            { pvalue = "○"; }
+                            if (pvalue == "无")
+                            { pvalue = "-"; }
+
+                            pvalue = string.Format("{0}{1}", pvalue, item.Attributes.GetNamedItem("Unit").Value);
                         }
-                        if (optionalPara.Count <= 1)
+                       
+                        if (pvalue.IndexOf("|") == -1)
                         {
-                            var name = optionalPara.Single().Key;
-                            string price = optionalPara.Single().Value.ToString("N0");
-                            if (string.IsNullOrEmpty(pvalue))
-                            {
-                                sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + " " + price + "元</div></div></div></td>");
-                            }
-                            else
-                            {
-                                //单个标配 并且标配值不为无
-                                if (pvalue != "-" && pvalue.IndexOf(",") == -1 && pvalue != "○")
-                                {
-                                    sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pvalue + "</div></div><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + " "+ price + "元</div></div></div></td>");
-                                }
-                                //多个标配 
-                                else if (pvalue.IndexOf(",") >= 0)
-                                {
-                                    sbTemp.AppendLine("<td><div class=\"info\">");
-                                    string[] valueArray = pvalue.Split(',');
-                                    if (valueArray.Length > 0)
-                                    {
-                                        foreach (string value in valueArray)
-                                        {
-                                            sbTemp.AppendLine("<div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + value + "</div></div>");
-                                        }
-                                    }
-                                    sbTemp.AppendLine("<div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + " " + price + "元</div></div></div></td>");
-                                }
-                                else
-                                {
-                                    sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + " " + price + "元</div></div></div></td>");
-                                }
-                            }
+                            sbTemp.AppendLine("<td><span class=\"info\">" + pvalue + "</span></td>");
                         }
                         else
                         {
-                            if (string.IsNullOrEmpty(pvalue))
-                            {
-                                sbTemp.AppendLine("<td><div class=\"info\">");
-                            }
-                            else
-                            {
-                                sbTemp.AppendLine("<td><div class=\"info\">");
-                                //单个标配 并且标配值不为无
-                                if (pvalue != "-" && pvalue.IndexOf(",") == -1 && pvalue != "○")
-                                {
-                                    sbTemp.AppendLine("<div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pvalue + "</div></div>");
-                                }
-                                //多个标配
-                                else if (pvalue.IndexOf(",") >= 0)
-                                {
-                                    string[] valueArray = pvalue.Split(',');
-                                    if (valueArray.Length > 0)
-                                    {
-                                        foreach (string value in valueArray)
-                                        {
-                                            sbTemp.AppendLine("<div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + value + "</div></div>");
-                                        }
-                                    }
-                                }
-                            }
-                            foreach (var para in optionalPara.Keys)
-                            {
-                                sbTemp.AppendLine("<div class=\"optional type2\"><div class=\"l\"><i>○</i>" + para + " " + optionalPara[para].ToString("N0") + "元</div></div>");
-                            }
-                            sbTemp.AppendLine("</div></td>");
+                            var name = pvalue.Split('|')[0];
+                            string price = Convert.ToSingle(pvalue.Split('|')[1]).ToString("N0");
+                            sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + " " + price + "元</div></div></div></td>");
                         }
                     }
                     else
                     {
-                        //无选配 多个标配
-                        if (pvalue.IndexOf(",") >= 0)
+                        var pvalueList = pvalue.Split(',');
+                        sbTemp.AppendLine("<td><div class=\"info\">");
+                        foreach (var pval in pvalueList)
                         {
-                            sbTemp.AppendLine("<td><div class=\"info\">");
-                            string[] valueArray = pvalue.Split(',');
-                            if (valueArray.Length > 0)
+                            if (pval.IndexOf("|") == -1)
                             {
-                                foreach (string value in valueArray)
+                                if (pval != "无")
                                 {
-                                    sbTemp.AppendLine("<div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + value + "</div></div>");
+                                    sbTemp.AppendLine("<div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pval + "</div></div>");
                                 }
                             }
-                            sbTemp.AppendLine("</div></td>");
+                            else
+                            {
+                                var name = pval.Split('|')[0];
+                                string price = Convert.ToSingle(pval.Split('|')[1]).ToString("N0");
+                                sbTemp.AppendLine("<div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + " " + price + "元</div></div>");
+                            }
                         }
-                        else
-                        {
-                            sbTemp.AppendLine("<td><span class=\"info\">" + pvalue + "</span></td>");
-                        }                        
+                        sbTemp.AppendLine("</div></td>");
+
                     }
+                   
                     loopCount++;
                 }
             }

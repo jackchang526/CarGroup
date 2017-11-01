@@ -151,7 +151,7 @@
     <Item Value="UnderPan_RRadar" Desc="倒车雷达" ParamID="702" Unit="" />
     <Item Value="UnderPan_RImage" Desc="倒车影像" ParamID="703" Unit="" />
     <Item Value="jiashimoshixuanze" Desc="驾驶模式选择" ParamID="1021" Unit="" />
-    <Item Value="InStat_blindspotdetection" Desc="车道保持" ParamID="898" Unit="" />
+    <Item Value="bingxianfuzhu" Name="并线辅助" ParamID="1040" Unit=""/>
   </Group>
   <Group Desc="外部配置">
     <Item Value="OutStat_FrontLightType" Desc="前照灯类型" ParamID="614" Unit="" />

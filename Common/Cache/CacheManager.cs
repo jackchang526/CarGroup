@@ -95,13 +95,23 @@ namespace BitAuto.CarChannel.Common.Cache
 			return obj;
 
 		}
-
-		/// <summary>
-		/// 手动移除“一键一值”对应的值
-		/// </summary>
-		/// <param name="strIdentify"></param>
-		/// <returns></returns>
-		public static bool RemoveCachedData(string cacheKey)
+        /// <summary>
+        /// 获取缓存项值
+        /// </summary>
+        /// <typeparam name="T">缓存项类型</typeparam>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static T GetCachedData<T>(string key)
+        {
+            if (HttpContext.Current.Cache[key] == null) return default(T);
+            return (T)HttpContext.Current.Cache[key];
+        }
+        /// <summary>
+        /// 手动移除“一键一值”对应的值
+        /// </summary>
+        /// <param name="strIdentify"></param>
+        /// <returns></returns>
+        public static bool RemoveCachedData(string cacheKey)
 		{
 			//取出值
 			if (HttpContext.Current.Cache.Get(cacheKey) != null)

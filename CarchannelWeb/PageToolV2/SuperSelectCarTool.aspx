@@ -1399,19 +1399,19 @@
                                     <input type="checkbox" id="more_258" />记忆</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_259" />靠背</label></li>
+                                    <input type="checkbox" id="more_259" />靠背调节</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_260" />高低</label></li>
+                                    <input type="checkbox" id="more_260" />高低调节</label></li>
                              <li>
                                 <label>
-                                    <input type="checkbox" id="more_261" />腰部</label></li>
+                                    <input type="checkbox" id="more_261" />腰部调节</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_262" />肩部</label></li>
+                                    <input type="checkbox" id="more_262" />肩部调节</label></li>
                              <li>
                                 <label>
-                                    <input type="checkbox" id="more_263" />腿托</label></li>
+                                    <input type="checkbox" id="more_263" />腿托调节</label></li>
                         </ul>
                     </dd>
                 </dl>
@@ -1427,19 +1427,19 @@
                                     <input type="checkbox" id="more_265" />记忆</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_266" />靠背</label></li>
+                                    <input type="checkbox" id="more_266" />靠背调节</label></li>
                              <li>
                                 <label>
-                                    <input type="checkbox" id="more_267" />高低</label></li>
+                                    <input type="checkbox" id="more_267" />高低调节</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_268" />腰部</label></li>
+                                    <input type="checkbox" id="more_268" />腰部调节</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_269" />肩部</label></li>
+                                    <input type="checkbox" id="more_269" />肩部调节</label></li>
                              <li>
                                 <label>
-                                    <input type="checkbox" id="more_270" />腿托</label></li>
+                                    <input type="checkbox" id="more_270" />腿托调节</label></li>
                         </ul>
                     </dd>
                 </dl>

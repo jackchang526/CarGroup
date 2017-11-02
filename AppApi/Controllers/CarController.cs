@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BitAuto.CarChannel.BLL;
+using BitAuto.CarChannel.Common;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;

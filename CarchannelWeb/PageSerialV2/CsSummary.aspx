@@ -198,7 +198,7 @@
                             <span class="note">贷款</span>
                             <h5><a href="http://fenqi.taoche.com/www/<%= serialSpell %>/?from=yc9&leads_source=p002003" data-channelid="2.21.1521" target="_blank">加载中...</a></h5>
                             <%-- <h5 class="grey-txt">暂无</h5>--%>
-                            <a class="btn btn-default" data-channelid="2.21.100" href="http://fenqi.taoche.com/www/<%= serialSpell %>/?from=yc9&leads_source=p002003" target="_blank">贷款</a>
+                            <a class="btn btn-default" data-channelid="2.21.100" href="http://sq.taoche.com/yiche/index?from=yc9&leads_source=p002003&serialid=<%= serialId %>" target="_blank">贷款</a>
                         </div>
                     </div>
                     <div class="col-xs-3" id="mp-ershouche">
@@ -280,7 +280,7 @@
         <!--/焦点图、名片区-->
         <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201707061432"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201711011147"></script>
         <%--<script type="text/javascript" src="/jsnewv2/cssummary.js?v=20170171032"></script>--%>
         <script type="text/javascript">
             var serialId = <%= serialId %> ,
@@ -320,6 +320,7 @@
             InitTeHuiAndAdData();
             GetJiangjiaNews();
             GetHmcJiangJia();
+            Get1111Entrance();
             $("#qrcode img").bind("error", function () {
                 this.style.display = "none";
                 bitLoadScript("http://image.bitautoimg.com/carchannel/jsnewv2/jquery.qrcode.min.js", function () {

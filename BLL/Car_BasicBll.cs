@@ -18,6 +18,8 @@ using BitAuto.Utils;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
+using BitAuto.CarChannel.Model.AppModel;
+using System.Web.Caching;
 
 namespace BitAuto.CarChannel.BLL
 {
@@ -2114,6 +2116,302 @@ namespace BitAuto.CarChannel.BLL
                 CommonFunction.WriteLog(ex.ToString());
             }            
             return count;
+        }
+        /// <summary>
+        /// 车型参数模板
+        /// </summary>
+        /// <returns></returns>
+        public List<ParameterGroupEntity> GetCarParameterJsonConfig()
+        {
+            List<ParameterGroupEntity> parameterGroup = new List<ParameterGroupEntity>();
+            try
+            {
+                string cacheKey = DataCacheKeys.CarParameterJson;
+                object getCarParameterJsonConfig = CacheManager.GetCachedData(cacheKey);
+                if (getCarParameterJsonConfig != null)
+                {
+                    parameterGroup = getCarParameterJsonConfig as List<ParameterGroupEntity>;
+                }
+                else
+                {
+                    string fileName = System.Web.HttpContext.Current.Server.MapPath("~") + "\\config\\ParameterForJsonNewV2.xml";
+                    if (File.Exists(fileName))
+                    {
+                        XmlDocument doc = new XmlDocument();
+                        doc.Load(fileName);
+                        if (doc != null && doc.HasChildNodes)
+                        {
+                            ParameterGroupEntity parameter;
+                            XmlNodeList xnl = doc.SelectNodes("/Param/Group");
+                            if (xnl != null && xnl.Count > 0)
+                            {
+                                int i = 0;
+                                foreach (XmlNode xnCate in xnl)
+                                {
+
+                                    parameter = new ParameterGroupEntity();
+                                    parameter.GroupID = i;
+                                    parameter.Name = xnCate.Attributes["Desc"].Value.ToString();
+
+
+                                    // 大分类
+                                    if (xnCate.ChildNodes.Count > 0)
+                                    {
+                                        parameter.Fields = new List<ParameterGroupFieldEntity>();
+                                        ParameterGroupFieldEntity field;
+                                        // 分类内项
+                                        foreach (XmlNode xn in xnCate.ChildNodes)
+                                        {
+                                            if (xn.NodeType == XmlNodeType.Element)
+                                            {
+                                                field = new ParameterGroupFieldEntity();
+                                                field.Key = xn.Attributes["Value"].Value.ToString();
+                                                field.ParamID = TypeParse.StrToInt(xn.Attributes["ParamID"].Value, 0);
+                                                field.Unit = xn.Attributes["Unit"].Value.ToString();
+                                                field.Title = xn.Attributes["Desc"].Value.ToString();
+                                                parameter.Fields.Add(field);
+                                            }
+                                        }
+                                    }
+                                    i++;
+                                    parameterGroup.Add(parameter);
+                                }
+                            }
+                        }
+                        CacheDependency cacheDependency = new CacheDependency(fileName);
+                        CacheManager.InsertCache(cacheKey, parameterGroup, cacheDependency, DateTime.Now.AddMinutes(30));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonFunction.WriteLog(string.Format("[message]:{0},[StackTrace]:{1}", ex.Message, ex.StackTrace));
+            }
+            return parameterGroup;
+        }
+
+        /// <summary>
+        /// 生成参数模版字典
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string, ParameterGroupFieldEntity> GetParamDic()
+        {
+            Dictionary<string, ParameterGroupFieldEntity> result = new Dictionary<string, ParameterGroupFieldEntity>();
+            var parameterList = GetCarParameterJsonConfig();
+            foreach (var item in parameterList)
+            {
+                foreach (var field in item.Fields)
+                {
+                    if (!result.ContainsKey(field.Key))
+                    {
+                        result.Add(field.Key, field);
+                    }
+                }
+            }
+            return result;
+        }
+
+        public List<CarParameterListEntity> GetCarParamterListWithWebCacheByCarIds(List<int> carIds)
+        {
+            //return GetCarParamterListByCarIds(carIds);
+            string carParamterKey = string.Format(DataCacheKeys.CarParameterListKey, string.Join("_", carIds));
+            var carParamterList = CacheManager.GetCachedData(carParamterKey);
+            if (carParamterList == null)
+            {
+                List<CarParameterListEntity> newCarParamterList = GetCarParamterListByCarIds(carIds);
+
+                if (newCarParamterList != null && newCarParamterList.Count > 0)
+                {
+                    CacheManager.InsertCache(carParamterKey, newCarParamterList, 5);
+                }
+                return newCarParamterList;
+            }
+
+            return (List<CarParameterListEntity>)carParamterList;
+        }
+
+        public List<CarParameterListEntity> GetCarParamterListByCarIds(List<int> carIds)
+        {
+            /*
+            有  黑点
+            无  —
+            选配  空心圆
+            选配|1000   空心圆 选配  价格
+            文字       文字
+            文字,文字    
+            上下,上下，前后|1000,前后|1000  文字  价格
+             */
+            List<CarParameterListEntity> result = new List<CarParameterListEntity>();
+            Dictionary<int, Dictionary<string, string>> parameterDic = GetCarCompareDataWithOptionalByCarIDs(carIds);
+            var fieldDic = GetParamDic();
+            List<CarParameterEntity> carParameterList;
+            foreach (var group in parameterDic)
+            {
+                carParameterList = new List<CarParameterEntity>();
+                CarParameterEntity p;
+                ParameterGroupFieldEntity field;
+                foreach (var item in group.Value)
+                {
+
+                    if (fieldDic.ContainsKey(item.Key))
+                    {
+                        field = fieldDic[item.Key];
+                        p = new CarParameterEntity();
+                        p.ItemList = new List<ParamItemEntity>();
+                        p.ParamKey = item.Key;
+                        var itemValue = item.Value;
+                        bool isColor = false;
+                        try
+                        {
+                            if (item.Key == "Car_OutStat_BodyColorRGB")
+                            {
+                                isColor = true;
+                                itemValue = itemValue.Replace(",", "$");
+                                itemValue = itemValue.Replace("|", ",");
+                                itemValue = itemValue.Replace("$", "|");
+                            }
+                            #region 单项处理
+                            switch (itemValue)
+                            {
+                                case "有":
+                                    p.ItemList.Add(new ParamItemEntity
+                                    {
+                                        Icon = "●"
+                                    });
+                                    break;
+                                case "无":
+                                    p.ItemList.Add(new ParamItemEntity
+                                    {
+                                        Icon = "-"
+                                    });
+                                    break;
+                                case "选配":
+                                    p.ItemList.Add(new ParamItemEntity
+                                    {
+                                        Icon = "○"
+                                    });
+                                    break;
+
+                                default:
+                                    if (itemValue.Contains("|") && itemValue.Contains(","))
+                                    {
+                                        string[] itemArr = itemValue.Split(new char[] { ',' });
+                                        string[] filedArr;
+                                        foreach (var itemStr in itemArr)
+                                        {
+                                            if (!string.IsNullOrWhiteSpace(itemStr))
+                                            {
+                                                if (itemStr.Contains("|"))
+                                                {
+                                                    filedArr = itemStr.Split(new char[] { '|' });
+                                                    if (filedArr.Length > 1)
+                                                    {
+                                                        p.ItemList.Add(new ParamItemEntity
+                                                        {
+                                                            Icon = "○",
+                                                            Title = filedArr[0],
+                                                            Des = filedArr[1] + (isColor ? "" : "元")
+                                                        });
+                                                    }
+                                                    else
+                                                    {
+                                                        if (itemStr != "无")
+                                                        {
+                                                            p.ItemList.Add(new ParamItemEntity
+                                                            {
+                                                                Icon = "●",
+                                                                Title = itemStr
+                                                            });
+                                                        }
+                                                    }
+
+
+                                                }
+                                                else
+                                                {
+                                                    if (itemStr != "无")
+                                                    {
+                                                        p.ItemList.Add(new ParamItemEntity
+                                                        {
+                                                            Icon = "●",
+                                                            Title = itemStr
+                                                        });
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                    }
+                                    else if (itemValue.Contains(","))
+                                    {
+                                        string[] itemArr = itemValue.Split(new char[] { ',' });
+                                        foreach (var itemStr in itemArr)
+                                        {
+                                            if (!string.IsNullOrWhiteSpace(itemStr))
+                                            {
+                                                if (itemStr != "无")
+                                                {
+                                                    p.ItemList.Add(new ParamItemEntity
+                                                    {
+                                                        Icon = "●",
+                                                        Title = itemStr
+                                                    });
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else if (itemValue.Contains("|"))
+                                    {
+                                        string[] itemArr = itemValue.Split(new char[] { '|' });
+
+                                        if (itemArr.Length > 1)
+                                        {
+                                            p.ItemList.Add(new ParamItemEntity
+                                            {
+                                                Icon = "○",
+                                                Title = itemArr[0],
+                                                Des = itemArr[1] + (isColor ? "" : "元")
+                                            });
+                                        }
+                                        else
+                                        {
+                                            if (itemValue != "无")
+                                            {
+                                                p.ItemList.Add(new ParamItemEntity
+                                                {
+                                                    Icon = "●",
+                                                    Title = itemValue
+                                                });
+                                            }
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        if (!string.IsNullOrWhiteSpace(itemValue))
+                                        {
+                                            p.ItemList.Add(new ParamItemEntity
+                                            {
+                                                Title = itemValue
+                                            });
+                                        }
+                                    }
+                                    break;
+                            }
+                            #endregion
+                            carParameterList.Add(p);
+                        }
+                        catch (Exception ex)
+                        {
+                            var message = string.Format("处理单项错误,carIds:{0},itemValue:{1}", string.Join(",", carIds), itemValue);
+                            CommonFunction.WriteLog(string.Format("[message]:{0},[StackTrace]:{1},[carMessage]:{2}", ex.Message, ex.StackTrace, message));
+                        }
+                    }
+                }
+
+                result.Add(new CarParameterListEntity { CarParameterList = carParameterList, CarId = group.Key });
+            }
+            return result;
         }
     }
 }

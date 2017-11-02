@@ -145,7 +145,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="http://m.daikuan.com/www/@(serialEntity.AllSpell)/?from=8921" data-channelid="27.23.2151">
+                            <a href="http://sq.m.taoche.com/yiche/index?from={from}&leads_source=p002003&serialid=@(serialEntity.Id)" data-channelid="27.23.2151">
                                 <strong>贷款</strong>
                             </a>
                         </li>
@@ -333,7 +333,6 @@
             var serialAllSpell = "@(serialEntity.AllSpell)";
             $("#navFixedJiangJia").attr("href", "http://jiangjia.m.yiche.com/nb" + GlobalSummaryConfig.SerialId + "_c" + GlobalSummaryConfig.CityId + "/");
             $("#btn-business a").first().attr("href", "http://dealer.m.yiche.com/" + GlobalSummaryConfig.CityId + "/" + GlobalSummaryConfig.SerialId +"/2/ ");
-
             function showNewsInsCode(dxc, xxc, mpv, suv) {
                 var adBlockCode = xxc;
                 if (carlevel == '中大型车' || carlevel == '中型车' || carlevel == '跑车' || carlevel == '豪华车') {
@@ -1014,7 +1013,7 @@
 
 
     <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/commonjs.js,carchannel/wirelessjsv2/city348IDMapName.js"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/cssummaryv2.min.js?v=20170824"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/cssummaryv2.min.js?v=201711011654"></script>
     @*<script type="text/javascript" src="/js/cssummaryv2.js?v=20170303"></script>*@
     <script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars"></script>
     <script src="http://image.bitautoimg.com/uimg/wap/js/idangerous.swiper-2.0.min.js"></script>
@@ -1034,6 +1033,7 @@
         var nearestYear = "@(ViewData["NearestYear"])";
         var tabs = document.getElementById("yeartag").getElementsByTagName("li");
         var btnMore = {};
+        Get1111Entrance();
 
         //var CarCompareAdJson = [//车型对比广告
         //    { "csId": 2608, "carId": 0, "adCsId": 2945, "adCarId": 0 }

@@ -1023,7 +1023,14 @@ function callbackGetItem() {
                         var yearType = n.CarYear.length > 0 ? n.CarYear + "款" : "未知年款";
                         var strState = n.ProduceState == "停产" ? " <span class=\"color-block3\">停产</span>" : "";
                         var percent = data.MaxPv > 0 ? (n.CarPV / data.MaxPv * 100.0) : 0;
-                        var gearNum = (n.UnderPan_ForwardGearNum != "" && n.UnderPan_ForwardGearNum != "待查" && n.UnderPan_ForwardGearNum != "无级") ? n.UnderPan_ForwardGearNum + "挡" : "";
+                        //var gearNum = (n.UnderPan_ForwardGearNum != "" && n.UnderPan_ForwardGearNum != "待查" && n.UnderPan_ForwardGearNum != "无级") ? n.UnderPan_ForwardGearNum + "挡" : "";
+                        var transmissionType = "";
+                        if (n.TransmissionType == "CVT无级变速" || n.TransmissionType == "E-CVT无级变速" || n.TransmissionType == "单速变速箱") {
+                            transmissionType = n.TransmissionType;
+                        }
+                        else if (n.TransmissionType != "" && n.UnderPan_ForwardGearNum != "") {
+                            transmissionType = n.UnderPan_ForwardGearNum + "挡 " + n.TransmissionType;
+                        }
                         var referPrice = n.ReferPrice.length > 0 ? n.ReferPrice + "万" : "暂无";
                         content.push("<tr id=\"car_filter_id_" + n.CarID + "\">");
                         content.push("    <td class=\"txt-left\">");
@@ -1034,7 +1041,7 @@ function callbackGetItem() {
                         content.push("        <div class=\"p\" style=\"width: " + percent + "%\"></div>");
                         content.push("    </div>");
                         content.push("    </td>");
-                        content.push("    <td>" + gearNum + n.TransmissionType + "</td>");
+                        content.push("    <td>" + transmissionType + "</td>");
                         content.push("    <td class=\"txt-right\"><span>" + referPrice + "</span><a title=\"购车费用计算\" class=\"car-comparetable-ico-cal\" rel=\"nofollow\" href=\"/gouchejisuanqi/?carid=" + n.CarID + "\" target=\"_blank\"></a>");
                         content.push("    </td>");
                         //取最低报价

@@ -426,23 +426,23 @@ namespace WirelessWeb.handlers
 							}
 						}
 
-						#endregion
+                        #endregion
 
 
-						// 档位个数
-						string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" &&
-												 dictCarParams[724] != "待查")
-							? dictCarParams[724] + "挡"
-							: "";
+                        // 档位个数
+                        //string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" &&
+                        //						 dictCarParams[724] != "待查")
+                        //	? dictCarParams[724] + "挡"
+                        //	: "";
 
-						//平行进口车标签
-						//string parallelImport = "";
-						//if (dictCarParams.ContainsKey(382) && dictCarParams[382] == "平行进口")
-						//{
-						//	parallelImport = "<em>平行进口</em>";
-						//}
-
-						stringBuilder.Append("<li>");
+                        //平行进口车标签
+                        //string parallelImport = "";
+                        //if (dictCarParams.ContainsKey(382) && dictCarParams[382] == "平行进口")
+                        //{
+                        //	parallelImport = "<em>平行进口</em>";
+                        //}
+                        string transmissionType = _carBLL.GetCarTransmissionType(dictCarParams.ContainsKey(724) ? dictCarParams[724] : string.Empty, carInfo.TransmissionType);
+                        stringBuilder.Append("<li>");
 
 						stringBuilder.AppendFormat(
 							"<a  id='carlist_" + carInfo.CarID + "' class='car-info' href='{0}' data-channelid=\"27.23.915\">",
@@ -454,7 +454,7 @@ namespace WirelessWeb.handlers
 						
 						stringBuilder.AppendFormat("<dl><dt>{0}</dt></dl>", carMinPrice);
 						stringBuilder.Append("<div class=\"car-info-bottom\">");//第二行开始
-						stringBuilder.AppendFormat("<span>{0}</span>", forwardGearNum + carInfo.TransmissionType);
+						stringBuilder.AppendFormat("<span>{0}</span>", transmissionType);
 						//add date :2016-2-3  添加热度
 						int percent = 0;
 						if (maxPv > 0)

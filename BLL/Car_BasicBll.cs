@@ -2413,5 +2413,25 @@ namespace BitAuto.CarChannel.BLL
             }
             return result;
         }
+
+        /// <summary>
+        /// 获取车款变数箱显示字符串
+        /// 根据档位个数和变数箱类型判断
+        /// </summary>
+        /// <returns></returns>
+        public string GetCarTransmissionType(string forwardGearNum,string transmissionType)
+        {
+            if (string.IsNullOrWhiteSpace(transmissionType))
+                return string.Empty;
+            if(transmissionType == "CVT无级变速" || transmissionType == "E-CVT无级变速" || transmissionType == "单速变速箱")
+            {
+                return transmissionType;
+            }
+            if (!string.IsNullOrWhiteSpace(forwardGearNum))
+            {
+                return string.Format("{0}挡 {1}",forwardGearNum,transmissionType);
+            }
+            return string.Empty;
+        }
     }
 }

@@ -169,7 +169,7 @@
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/dropdownlistnew.min.js?v=20161201"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/CarChannelBaikeJson.js?v=20161201"></script>
     <!--#include file="/include/special/stat/00001/bglogpostlog_Manual.shtml"-->
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/carcomparelistv2.min.js?v=201710111751"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/carcomparelistv2.min.js?v=201711021427"></script>
     <%--<script type="text/javascript" src="/jsnewv2/carcomparelistv2.js?v=20161201"></script>--%>
     <script type="text/javascript">
         initPageForCompare();

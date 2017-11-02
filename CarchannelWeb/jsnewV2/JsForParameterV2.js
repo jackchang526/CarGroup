@@ -886,10 +886,15 @@ function createMulti(arrFieldRow) {
                         if (ComparePageObject.ArrCarInfo[i].CarInfoArray[prefixArray[pint]].length <= index)
                         { return; }
                         var field = ComparePageObject.ArrCarInfo[i].CarInfoArray[prefixArray[pint]][index] || "";
-                        //档位数 无极变速 不显示
-                        if (pidArray[pint] == "724") {
-                            if (isNaN(field) || parseInt(field) <= 0)
-                                continue;
+                        ////档位数 无极变速 不显示
+                        //if (pidArray[pint] == "724") {
+                        //    if (isNaN(field) || parseInt(field) <= 0)
+                        //        continue;
+                        //}
+                        if (pidArray[pint] == "712") {
+                            if (field == "CVT无级变速" || field == "E-CVT无级变速" || field == "单速变速箱" || field == "") { //这四种情况不显示档位个数
+                                multiField = "";
+                            }
                         }
                         //// modified by chengl May.31.2012
                         //if (pidArray[pint] == "577") {

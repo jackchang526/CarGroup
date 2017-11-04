@@ -8254,7 +8254,7 @@ namespace BitAuto.CarChannel.BLL
                         , dr["cs_id"]
                         , dr["packagename"]
                         , dr["packageprice"]
-                        , dr["packagedescription"]
+                        , ConvertHelper.GetString(dr["packagedescription"]).Trim()
                         , carIds
                         , package.IndexOf(dr) == package.Count - 1 ? "" : ",");
                 }
@@ -8336,6 +8336,6 @@ namespace BitAuto.CarChannel.BLL
             }
             return doc;
         }
-       
+
     }
 }

@@ -34,13 +34,14 @@ namespace BitAuto.CarChannelAPI.Web.Exhibition
 
         public void ProcessRequest(HttpContext context)
         {
-            //OutputCachedPage page = new OutputCachedPage(new OutputCacheParameters
-            //{
-            //    Duration = 60 * 10,
-            //    Location = OutputCacheLocation.Any,
-            //    VaryByParam = "*"
-            //});
-            //page.ProcessRequest(HttpContext.Current);
+            OutputCachedPage page = new OutputCachedPage(new OutputCacheParameters
+            {
+                Duration = 60 * 10,
+                Location = OutputCacheLocation.Any,
+                VaryByParam = "*"
+            });
+            page.ProcessRequest(HttpContext.Current);
+
             context.Response.ContentType = "application/x-javascript";
             response = context.Response;
             request = context.Request;

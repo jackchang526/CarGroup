@@ -31,11 +31,6 @@ namespace BitAuto.CarChannelAPI.Web.AppCode
             {
                 return string.Format("{{\"code\":1,\"msg\":\"OK\",\"data\":\"{0}\"}}", data);
             }
-            /*
-                return string.Format("{{\"code\":1,\"msg\":\"OK\",\"timestamp\":\"{1}\",\"data\":{0}}}", data,DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss fffffff"));
-            else
-                return string.Format("{{\"code\":1,\"msg\":\"OK\",\"timestamp\":\"{1}\",\"data\":\"{0}\"}}", data, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss fffffff"));
-             */
         }
 
         public static string ErrorResult(int code, string msg, string data)

@@ -923,9 +923,26 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                             if (arrParam[i] == "724")
                             {
                                 var d = ConvertHelper.GetInteger(dic[carID][arrKey[i]]);
-                                if (d <= 0) continue;
+                                var t = dic[carID].ContainsKey(arrKey[i + 1]) ? dic[carID][arrKey[i + 1]].Trim() : "";
+                                if (d <= 0 || t == "单速变速箱" || t == "E-CVT无级变速" || t == "CVT无级变速" || t == "")
+                                {
+                                    continue;
+                                }
                             }
-                            list.Add(string.Format("{0}{1}", dic[carID][arrKey[i]], arrUnit[i]));
+                            //变速箱类型 变速箱为空不显示变速箱与挡位
+                            if (arrParam[i] == "712")
+                            {
+                                var t = dic[carID][arrKey[i]];
+                                if (string.IsNullOrEmpty(t))
+                                {
+                                    if (list.Count == 1)
+                                    {
+                                        list.RemoveAt(0);
+                                    }
+                                    continue;
+                                }
+                            }
+                          list.Add(string.Format("{0}{1}", dic[carID][arrKey[i]], arrUnit[i]));
                         }
                         if (list.Count <= 0) continue;
                         //解决2个参数 其中“有” 后面参数有值 替换成 实心圈
@@ -1009,7 +1026,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                     if (pvalue.IndexOf(",") == -1)
                     {
                         //解决 变速箱 无极变速 替换成 -
-                        if (item.Attributes.GetNamedItem("Name").Value != "燃油变速箱")
+                        if (item.Attributes.GetNamedItem("Name").Value != "变速箱类型")
                         {
                             if (pvalue.IndexOf("有") == 0)
                             { pvalue = "●"; }

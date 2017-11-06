@@ -74,7 +74,7 @@ namespace MWeb.Controllers
             string forwardGearNum = (dic.ContainsKey(724) && dic[724] != "无级") ? dic[724] + "档" : "";
             transmissionType = dic.ContainsKey(712) ? forwardGearNum + dic[712] : "暂无";
             //车身颜色
-            string carColors = dic.ContainsKey(598) ? dic[598].Replace("，", ",") : "";
+            string carColors = dicPara[carID].ContainsKey("OutStat_BodyColor") ? dicPara[carID]["OutStat_BodyColor"].Replace("，", ",") : "";
             List<string> listColor = new List<string>();
             if (carColors != "")
             {
@@ -169,11 +169,28 @@ namespace MWeb.Controllers
                                                 //档位数 0 不显示
                                                 if (arrParam[i] == "724")
                                                 {
-                                                    var d = ConvertHelper.GetInteger(dic[paraId]);
-                                                    if (d <= 0) continue;
+                                                    var d = ConvertHelper.GetInteger(dicPara[carID][arrKey[i]]);
+                                                    var t = dicPara[carID].ContainsKey(arrKey[i+1]) ? dicPara[carID][arrKey[i + 1]].Trim():"";
+                                                    if (d <= 0|| t == "单速变速箱" || t == "E-CVT无级变速" || t == "CVT无级变速"|| t =="")
+                                                    {
+                                                        continue;
+                                                    }                                                   
+                                                }
+                                                //变速箱类型 变速箱为空不显示变速箱与挡位
+                                                if (arrParam[i] == "712")
+                                                {
+                                                    var t = dicPara[carID][arrKey[i]];                                                   
+                                                    if (string.IsNullOrEmpty(t))
+                                                    {
+                                                        if (list.Count == 1)
+                                                        {
+                                                            list.RemoveAt(0);
+                                                        }
+                                                        continue;
+                                                    }
                                                 }
 
-                                                list.Add(string.Format("{0}{1}", dic[paraId], arrUnit[i]));
+                                                list.Add(string.Format("{0}{1}", dicPara[carID][arrKey[i]], arrUnit[i]));
                                             }
                                             if (list.Count <= 0) continue;
                                             //解决2个参数 其中“有” 后面参数有值 替换成 实心圈
@@ -198,7 +215,7 @@ namespace MWeb.Controllers
                                                 pvalue = dicPara[carID][xn.Attributes.GetNamedItem("Value").Value];
                                             }
                                         }
-                                        if (dicPara[carID].ContainsKey(xn.Attributes.GetNamedItem("Value").Value))
+                                        if (!string.IsNullOrEmpty(pvalue))
                                         {
                                             isHasChild = true || isHasChild;
                                             listTempClass.Add("<tr>");
@@ -221,7 +238,6 @@ namespace MWeb.Controllers
                                                     pvalue = pvalue + " " + pvalueOther;
                                                 }
                                             }
-
                                             if (isFirstTrTd <= 1)
                                             {
                                                 listTempClass.Add("<th>" + xn.Attributes["Name"].Value + "</th>");
@@ -246,13 +262,13 @@ namespace MWeb.Controllers
                                                 if (pvalue.IndexOf(",") == -1)
                                                 {
                                                     //解决 变速箱 无极变速 替换成 -
-                                                    if (xn.Attributes.GetNamedItem("Name").Value != "燃油变速箱")
+                                                    if (xn.Attributes.GetNamedItem("Name").Value != "变速箱类型")
                                                     {
-                                                        if (pvalue.IndexOf("有") == 0)
+                                                        if (pvalue.Trim() == "有")
                                                         { pvalue = "●"; }
-                                                        if (pvalue == "选配")
+                                                        if (pvalue.Trim() == "选配")
                                                         { pvalue = "○"; }
-                                                        if (pvalue == "无")
+                                                        if (pvalue.Trim() == "无")
                                                         { pvalue = "-"; }
 
                                                         pvalue = string.Format("{0}{1}", pvalue, xn.Attributes.GetNamedItem("Unit").Value);

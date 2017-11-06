@@ -36,7 +36,7 @@ var ComparePageObject = {
     IsIE: (navigator.appName == "Microsoft Internet Explorer"),
     IsChange: false,
     OneLeftScrollFlag: false, //滚动菜单是否显示 ，用于 左侧滚动 > 居左距离
-    MenuOffsetTop: 260, //滚动菜单 相对车款浮动头的高度偏移量
+    MenuOffsetTop: 290, //滚动菜单 相对车款浮动头的高度偏移量
     MenuOffsetLeft: 80//滚动菜单 相对表格 左偏移量
     //DocumentWidthLimit: 1400 //屏幕宽度临界值
 }
@@ -2504,9 +2504,10 @@ $(function () {
     var floatkey;
     //////20110811修改隐藏显示浮动层
     var idmainoffsettop = $("#main_box").offset().top; //id的 offsettop
-    var idmainoffsettop_top = idmainoffsettop + 90 //上浮动层出现top定位
+    var idmainoffsettop_top = idmainoffsettop + 90; //上浮动层出现top定位
     var idleftoffsetheight = $("#tableHead_left").height(); //左侧浮动层出现的top定位
     var idleftwidth = the_lid.width(); //左侧浮动层的宽度
+    var tipheight = $(".td-tips").height();//风险提示高度
     ////////////////屏幕改变大小开始
 
     $(window).resize(function () {
@@ -2632,7 +2633,7 @@ $(function () {
             if (window.XMLHttpRequest) {	//非IE6	
                 the_lid.css({
                     position: "fixed",
-                    top: (idmainoffsettop - scrolls), //+1
+                    top: (idmainoffsettop + tipheight - scrolls), //+1
                     left: 0,
                     display: "block"
                 });

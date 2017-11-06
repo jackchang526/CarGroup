@@ -156,6 +156,8 @@ $RECYCLE.BIN/
 .DS_Store
 /log
 applicationhost.config
+/BusinessServiceAPI/GlobalLog/
+/.vs/Carchannel/v15/sqlite3
 /.vs
 GlobalLog/
 /packages

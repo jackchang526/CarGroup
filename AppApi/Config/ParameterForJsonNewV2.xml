@@ -86,7 +86,7 @@
   <Group Desc="底盘制动">
     <Item Value="Perf_DriveType" Desc="驱动方式" ParamID="655" Unit="" />
     <Item Value="UnderPan_FrontSuspensionType" Desc="前悬架类型" ParamID="728" Unit="" />
-    <Item Value="UnderPan_RearSuspensionType" Desc="前悬架类型" ParamID="720" Unit="" />
+    <Item Value="UnderPan_RearSuspensionType" Desc="后悬架类型" ParamID="720" Unit="" />
     <Item Value="UnderPan_SuspensionHeightControl" Desc="可调悬挂" ParamID="708" Unit="" />
     <Item Value="UnderPan_FrontBrakeType" Desc="前轮制动器类型" ParamID="726" Unit="" />
     <Item Value="UnderPan_RearBrakeType" Desc="后轮制动器类型" ParamID="718" Unit="" />

@@ -32,5 +32,22 @@ namespace BitAuto.CarChannel.BLL
 			CacheManager.InsertCache(catchkey, ds, 60 * 24);
 			return ds;
 		}
-	}
+        /// <summary>
+        /// 获取主品牌故事
+        /// </summary>
+        /// <param name="masterid">主品牌ID</param>
+        /// <returns></returns>
+        public DataSet GetMasterBrandStory(int masterid)
+        {
+            string catchkey = string.Format("Car_MasterBrandBll_GetMasterBrandStory_{0}", masterid);
+            object obj = CacheManager.GetCachedData(catchkey);
+            if (obj != null)
+            {
+                return obj as DataSet;
+            }
+            DataSet ds = _masterBrandDal.GetMasterBrandStory(masterid);
+            CacheManager.InsertCache(catchkey, ds, 60 * 24);
+            return ds;
+        }
+    }
 }

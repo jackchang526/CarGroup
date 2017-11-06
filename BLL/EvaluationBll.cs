@@ -48,6 +48,7 @@ namespace BitAuto.CarChannel.BLL
             DataSet ds = evaluationDal.GetTestBaseEntityById(evaluationId);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
+                List<string> testerList = new List<string>();
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {                    
                     item.ModelName = Convert.ToString(dr["ModelName"].ToString());
@@ -55,7 +56,25 @@ namespace BitAuto.CarChannel.BLL
                     item.StyleName = Convert.ToString(dr["StyleName"].ToString());
                     item.TestTime = Convert.ToDateTime(dr["EvaluatingTime"].ToString());
                     item.Site = Convert.ToString(dr["Site"]).Trim();
-                    item.Tester = Convert.ToString(dr["EditorsName"]).Trim();
+                    //item.Tester = Convert.ToString(dr["EditorsName"]).Trim();
+
+                    //20171106 去掉括号中的部门（马保青）
+                    string[] testArr = Convert.ToString(dr["EditorsName"]).Trim().Split(',', '、', '，');
+                    foreach (string tester in testArr)
+                    {
+                        int index = tester.IndexOf('(');
+                        if (index >= 0)
+                        {
+                            testerList.Add(tester.Substring(0, index));
+                        }
+                        else
+                        {
+                            testerList.Add(tester);
+                        }
+                                       
+                    }
+                    item.Tester = string.Join(",", testerList.ToArray());
+
                     item.EquipmentOperator = Convert.ToString(dr["EquipmentOperator"].ToString());
                     item.Kilometers = Convert.ToInt32(dr["Kilometers"]); 
                     item.WeatherDesc= Convert.ToString(dr["WeatherDesc"].ToString());

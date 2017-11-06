@@ -104,6 +104,7 @@
     <Compile Include="CompareMethod.cs" />
     <Compile Include="Config\FileToMemcacheConfig.cs" />
     <Compile Include="Cryptography.cs" />
+    <Compile Include="DES.cs" />
     <Compile Include="Enum\CommonEnum.cs" />
     <Compile Include="Extensions\DataReaderExtension.cs" />
     <Compile Include="Extensions\DataRowExtension.cs" />

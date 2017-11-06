@@ -564,10 +564,10 @@ namespace MWeb.Controllers
 
 
                             // 档位个数
-                            string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" &&
-                                                     dictCarParams[724] != "待查")
-                                ? dictCarParams[724] + "挡"
-                                : "";
+                            ////string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" &&
+                            //                         dictCarParams[724] != "待查")
+                            //    ? dictCarParams[724] + "挡"
+                            //    : "";
 
                             //平行进口车标签
                             //string parallelImport = "";
@@ -575,6 +575,7 @@ namespace MWeb.Controllers
                             //{
                             //	parallelImport = "<em>平行进口</em>";
                             //}
+                            string transmissionType = carBLL.GetCarTransmissionType(dictCarParams.ContainsKey(724) ? dictCarParams[724] : string.Empty, carInfo.TransmissionType);
 
                             stringBuilder.Append("<li>");
 
@@ -616,7 +617,7 @@ namespace MWeb.Controllers
                                     strTravelTax = "<em>减税</em>";
                                 }
                             }
-                            stringBuilder.AppendFormat("<span>{0}</span>", forwardGearNum + carInfo.TransmissionType);
+                            stringBuilder.AppendFormat("<span>{0}</span>", transmissionType);
                             stringBuilder.AppendFormat("<div class=\"gzd-box\" style=\"\"><div class=\"tit-box\">热度</div><span class=\"gz-sty\"><i data-pv=\"{0}\" style=\"width:{0}%\"></i></span></div>", percent);
                             stringBuilder.AppendFormat("{0}{1}", strTravelTax, stopPrd);
                             stringBuilder.AppendFormat("<b>指导价:{0}</b>", carInfo.ReferPrice.Trim().Length == 0 ? "暂无" : carInfo.ReferPrice.Trim() + "万");

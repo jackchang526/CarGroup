@@ -773,6 +773,11 @@ function createMulti(arrFieldRow) {
                         //        default: break;
                         //    }
                         //}
+                        if (pidArray[pint] == "712") {
+                            if (field == "CVT无级变速" || field == "E-CVT无级变速" || field == "单速变速箱" || field == "") { //这四种情况不显示档位个数
+                                multiField = "";
+                            }
+                        }
                         if (field == "待查")
                         { field = ""; }
                         if (field.length > 0) {

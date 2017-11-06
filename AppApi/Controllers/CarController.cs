@@ -2,6 +2,8 @@
 using BitAuto.CarChannel.Common;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -16,7 +18,22 @@ namespace AppApi.Controllers
     {
         #region Service
 
-        
+        static Car_MasterBrandBll _Car_MasterBrandBll;
+
+        public static Car_MasterBrandBll CarMasterBrandService
+        {
+            get
+            {
+                if (_Car_MasterBrandBll == null)
+                    _Car_MasterBrandBll = new Car_MasterBrandBll();
+
+                return _Car_MasterBrandBll;
+            }
+            set { _Car_MasterBrandBll = value; }
+        }
+
+
+
         static Car_BasicBll _carBasicService;
 
         public static Car_BasicBll CarBasicService
@@ -110,7 +127,7 @@ namespace AppApi.Controllers
                     carCount++;
                 }
             }
-          
+
             var paramList = CarBasicService.GetCarParamterListWithWebCacheByCarIds(carList);
             return AutoJson(new
             {
@@ -124,5 +141,45 @@ namespace AppApi.Controllers
             });
 
         }
+
+
+        #region 主品牌的品牌故事
+
+        /// <summary>
+        /// 获取品牌故事
+        /// </summary>
+        /// <param name="masterid">主品牌id</param>
+        /// <returns></returns>
+        public ActionResult GetMasterBrandStory(int masterid)
+        {
+            //验证
+            var ds = CarMasterBrandService.GetMasterBrandStory(masterid);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return JsonNet(new
+                {
+                    success = false,
+                    status = WebApiResultStatus.未找到数据,
+                    message = "未找到数据",
+                    data = new { }
+                }, JsonRequestBehavior.AllowGet);
+            }
+            return JsonNet(new
+            {
+                success = true,
+                status = WebApiResultStatus.成功,
+                message = "成功",
+                data =
+                    new
+                    {
+                        masterId = ds.Tables[0].Rows[0]["Id"],
+                        masterName = ds.Tables[0].Rows[0]["Name"],
+                        logoMeaning = ds.Tables[0].Rows[0]["LogoMeaning"],
+                        introduction = ds.Tables[0].Rows[0]["Introduction"]
+                    }
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
     }
 }

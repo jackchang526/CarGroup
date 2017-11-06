@@ -1595,7 +1595,7 @@
 
     <%--   <script type="text/javascript" src="/jsnewV2/jquery.pagination.js"></script>--%>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/jquery.pagination.min.js?v=20161215"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/superselectcartoolv2.min.js?v=20170329"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/superselectcartoolv2.min.js?v=201711021427"></script>
     <%--<script type="text/javascript" src="/jsnewV2/superselectcartoolv2.js"></script>--%>
     <script type="text/javascript">
         SuperSelectCarTool.Parameters = <%=configParaHtml%>;

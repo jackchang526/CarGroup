@@ -149,7 +149,7 @@
                                               { %>
                                             <a class="btn" target="_blank" href="http://dealer.bitauto.com/zuidijia/nb<%=cbe.SerialId%>/nc<%=cbe.Id%>/?T=2&amp;leads_source=p003001">询底价</a>
                                    <%--         <a class="btn" target="_blank" href="http://www.huimaiche.com/<%=cbe.Serial.AllSpell%>?carid=<%=cbe.Id%>&amp;tracker_u=609_ckzs&amp;leads_source=p003002">买新车</a>--%>
-                                            <a class="btn" target="_blank" href="http://fenqi.taoche.com/www/<%=cbe.Serial.AllSpell%>/m<%=cbe.Id%>/?from=yc18&amp;leads_source=p003003">贷款</a>
+                                            <a class="btn" target="_blank" href="http://sq.taoche.com/yiche/index?from=yc9&leads_source=p002003&carid=<%= cbe.Id %>">贷款</a>
                                             <a class="btn" target="_blank" href="http://zhihuan.taoche.com/?leads_source=p003004&amp;ref=pc_yc_cxzs_gs_zhihuan&amp;serial=<%=cbe.SerialId%>">置换</a>
                                             <a class="btn" target="_blank" href="http://www.taoche.com/<%=cbe.Serial.AllSpell%>/?leads_source=p003005&ref=pc_yc_cxzs_gs_esc">二手车</a>
                                             <%} %>

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
-
+using System.Linq;
 using BitAuto.CarChannel.Common;
 using BitAuto.Utils;
 using BitAuto.Utils.Data;
 using BitAuto.CarChannel.Common.Cache;
 using System.Data.SqlClient;
+using BitAuto.CarChannel.Model.AppApi;
 
 namespace BitAuto.CarChannel.DAL
 {
@@ -68,6 +69,39 @@ namespace BitAuto.CarChannel.DAL
                                          };
             _params[0].Value = masterid;
             return SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, _params);
+        }
+
+
+
+        public List<CarModelColor> GetCarModelColorByModelId(int modelId, int type)
+        {
+            string sql = @"  	
+                            SELECT colorName AS  Name ,colorRGB AS [Value] 
+                            FROM dbo.Car_SerialColor 
+                            WHERE cs_id=@modelId AND [type]=@type
+                            --ORDER BY autoID,cs_id,colorRGB  
+                        ";
+            var commandParameters = new SqlParameter[]
+            {
+                new SqlParameter("@modelId", SqlDbType.Int) {Value = modelId},
+                new SqlParameter("@type", SqlDbType.Int) {Value = type}
+            };
+            var ds = SqlHelper.ExecuteDataset(WebConfig.AutoStorageConnectionString, CommandType.Text, sql, commandParameters);
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                var res = new List<CarModelColor>();
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    var val = (dr["Value"] == null ? "" : dr["Value"].ToString()).Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault();
+                    res.Add(new CarModelColor()
+                    {
+                        Name = dr["Name"] == null ? "" : dr["Name"].ToString(),
+                        Value = val ?? ""
+                    });
+                }
+                return res;
+            }
+            return null;
         }
 
     }

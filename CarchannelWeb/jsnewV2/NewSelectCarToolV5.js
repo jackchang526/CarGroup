@@ -864,9 +864,11 @@ function DrawUlContent(json) {
             serialSpellArray = new Array();
         //divContentArray.push("<ul>");
         var currentLineCount = 0;
+        var csIdsArr = [];
         $(json.ResList).each(function (index) {
+            csIdsArr.push(json.ResList[index].SerialId);
             serialSpellArray[json.ResList[index].SerialId] = json.ResList[index].AllSpell;
-            divContentArray.push("<div class=\"col-xs-3\">");
+            divContentArray.push("<div class=\"col-xs-3\" data-id=\"" + json.ResList[index].SerialId + "\">");
             divContentArray.push("    <div class=\"img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120\">");
             divContentArray.push("        <div class=\"img\">");
             divContentArray.push("            <a href=\"/" + json.ResList[index].AllSpell + "/\" target=\"_blank\"><img src=\"" + json.ResList[index].ImageUrl.replace("_1.", "_3.") + "\" alt=\"" + json.ResList[index].ShowName + "报价_价格\"/></a>");
@@ -882,7 +884,7 @@ function DrawUlContent(json) {
 
         var divContent = divContentArray.join("");
         $("#divContent").html(divContent);
-
+        typeof GetNewCarText == "function" && GetNewCarText(csIdsArr.join(","));
         //call koubei start
         if (conditionObj.Sort > 4) {
             getKouBeiItem(serialSpellArray);

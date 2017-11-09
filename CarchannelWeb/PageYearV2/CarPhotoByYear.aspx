@@ -136,7 +136,7 @@
         </div>
     </div>
     <!--#include file="~/htmlv2/footer2016.shtml"-->
-    <script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>
+   <%-- <script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>
     <script type="text/javascript">
         //vr
         if (vrImgForBitauto != undefined && vrImgForBitauto.IntiDataForEntry != undefined) {
@@ -146,7 +146,7 @@
                 }
             });
         }
-    </script>
+    </script>--%>
     <!--本站统计代码-->
     <script type="text/javascript" language="javascript" src="http://image.bitautoimg.com/carchannel/jsStat/StatisticJsOldPV.js"></script>
     <script type="text/javascript" language="javascript">

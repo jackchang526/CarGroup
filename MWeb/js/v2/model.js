@@ -3,8 +3,6 @@
 功能:移动端组件封装
 时间:2014.5.5
 */
-
-/*公共方法*/
 //样式查找
 document.deepCss = function (who, css) {
     if (!who || !who.style) return '';
@@ -16,14 +14,14 @@ document.deepCss = function (who, css) {
     }
     var dv = document.defaultView || window;
     return who.style[sty] ||
-    dv.getComputedStyle(who, "").getPropertyValue(css) || '';
+        dv.getComputedStyle(who, "").getPropertyValue(css) || '';
 };
 
 /*接口默认配置 datatype=0 是在销 ，1 是包含停销*/
 var api = {
     imgRoot: 'http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_id_100.png',
     'brand': {
-        url: 'http://api.car.bitauto.com/CarInfo/GetCarDataJson.ashx?action=master', callName: 'businessBrandCallBack', templteName: '#brandTemplate',
+        url: 'http://api.car.bitauto.com/CarInfo/GetCarDataJson.ashx?action=master&123', callName: 'businessBrandCallBack', templteName: '#brandTemplate',
         currentid: ''
     },
     'car': {
@@ -59,8 +57,6 @@ Object.extend = function (destination, source) {
     }
     return destination;
 };
-
-
 
 /*排序*/
 Array.prototype.sortValue || (Array.prototype.sortValue = function (sortby) {
@@ -130,11 +126,171 @@ Array.prototype.remove || (Array.prototype.remove = function (v) {
     }
 });
 
+//时间比较大小
+Date.prototype.compareValue || (Date.prototype.compareValue = function (date2) {
+    var date1 = this;
+    if (date1.getFullYear() > date2.getFullYear()) {
+        return 1;
+    } else if (date1.getFullYear() < date2.getFullYear()) {
+        return -1;
+    }
+
+    if (date1.getDate() > date2.getDate()) {
+        return 1;
+    } else if (date1.getDate() < date2.getDate()) {
+        return -1;
+    }
+
+    if (date1.getDay() > date2.getDay()) {
+        return 1;
+    } else if (date1.getDay() < date2.getDay()) {
+        return -1;
+    }
+
+    if (date1.getHours() > date2.getHours()) {
+        return 1;
+    } else if (date1.getHours() < date2.getHours()) {
+        return -1;
+    }
+
+    if (date1.getMinutes() > date2.getMinutes()) {
+        return 1;
+    } else if (date1.getMinutes() < date2.getMinutes()) {
+        return -1;
+    }
+
+    if (date1.getSeconds() > date2.getSeconds()) {
+        return 1;
+    } else if (date1.getSeconds() < date2.getSeconds()) {
+        return -1;
+    }
+
+    if (date1.getMilliseconds() > date2.getMilliseconds()) {
+        return 1;
+    } else if (date1.getMilliseconds() < date2.getMilliseconds()) {
+        return -1;
+    }
+
+    return 0;
+
+});
+
+/*存储*/
+/*存储封装*/
+function storage(options) {
+    var setting = {
+        expires: 30, //过期时间
+        path: '', //路径
+        domain: '', //域
+        secure: '', //浏览器是否传给服务器
+        type: 'cookie'
+    }
+    options = Object.extend(options, setting);
+    var date = new Date();
+    if (typeof options.expires == 'number') {
+        date.setTime(date.getTime() + options.expires * 24 * 60 * 60 * 1000);//有效期1小时
+    } else {
+        date = options.expires;
+    }
+    this.date = date;
+    this.type = options.type;
+    this.options = options;
+}
+
+storage.prototype.set = function (name, value) {
+    eval('this.set' + this.type).call(this, name, value);
+}
+storage.prototype.get = function (name) {
+    return eval('this.get' + this.type).call(this, name);
+}
+storage.prototype.del = function (name) {
+    eval('this.del' + this.type).call(this, name);
+}
+
+//cookie存储
+storage.prototype.setcookie = function (name, value) {
+    var expires = '; expires=' + this.date.toUTCString();
+    var path = this.options.path ? '; path=' + (this.options.path) : '';
+    var domain = this.options.domain ? '; domain=' + (this.options.domain) : '';
+    var secure = this.options.secure ? '; secure' : '';
+    document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
+}
+
+//获取存储
+storage.prototype.getcookie = function (name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = (cookies[i]).trim();
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+//删除存储
+storage.prototype.delcookie = function (name) {
+    var date = new Date();
+    date.setTime(date.getTime() - 1);
+    var expires = ";expires=" + date.toUTCString();
+    document.cookie = [name, '=', '', expires, this.path, this.domain, this.secure].join('');
+}
+
+
+//localStorage
+storage.prototype.setlocal = function (name, value) {
+    localStorage.setItem(name, [this.date.toUTCString() + '[%%]', value]);
+}
+
+storage.prototype.getlocal = function (name) {
+    var date = new Date();
+    var v = localStorage.getItem(name);
+    if (v) {
+        var spt = v.split('[%%]');
+        var startDate = new Date(spt[0]);
+        if (startDate.compareValue(date) >= 0) {
+            return spt[1];
+        }
+    }
+    return null;
+}
+
+storage.prototype.dellocal = function (name) {
+    localStorage.removeItem(name);
+}
+
+//localStorage
+storage.prototype.setsession = function (name, value) {
+    sessionStorage.setItem(name, [this.date.toUTCString() + '[%%]', value]);
+}
+
+storage.prototype.getsession = function (name) {
+    var date = new Date();
+    var v = sessionStorage.getItem(name);
+    if (v) {
+        var spt = v.split('[%%]');
+        var startDate = new Date(spt[0]);
+        if (startDate.compareValue(date) >= 0) {
+            return spt[1];
+        }
+    }
+    return null;
+}
+
+storage.prototype.delsession = function (name) {
+    sessionStorage.removeItem(name);
+}
+
+
 //屏幕旋转完成事件(横屏:horizontal|竖屏:vertical)
 $.rotateEnd = function (fn) {
     function toResize() {
         var winW = document.documentElement.clientWidth,
-           winH = document.documentElement.clientHeight;
+            winH = document.documentElement.clientHeight;
         setTimeout(function () { fn && fn(winW > winH ? "horizontal" : "vertical"); }, 200);
     };
     $(window).resize(toResize).trigger('resize');
@@ -258,6 +414,26 @@ var eventNames = ['webkit', 'moz', 'o'];
         }).trigger('scroll');
     }
 
+    //节点初始化完成
+    $.fn.onload = function (fnEnd) {
+        var obj = this[0];
+        obj.onload = function () {
+            fnEnd && fnEnd.call(obj);
+            obj.onreadystatechange = null;
+        }
+        obj.onreadystatechange = function (ev) {
+            if (obj.readyState == 'complete') {
+                fnEnd && fnEnd.call(obj);
+                obj.onload = null;
+            }
+        }
+        obj.onerror = function () {
+            fnEnd && fnEnd.call(obj);
+            obj.onreadystatechange = null;
+            obj.onload = null;
+        }
+    }
+
     //触摸屏事件
     $.fn.touches = function (options) {
         var setting = {
@@ -305,6 +481,7 @@ var eventNames = ['webkit', 'moz', 'o'];
         $this.rows = 0;
         var site = [], f1 = 0, otop = 0, t = 0;
         var $first = $this.first();
+
         function to(event, r) {
             var offsetY = options.toOffsetY || 0;
             var site = sections.sortValue(function (i, j) {
@@ -314,8 +491,9 @@ var eventNames = ['webkit', 'moz', 'o'];
                     this[j] = temp;
                 }
             });
+
             var section = $(site).eq(r), pos = section[0].top;
-            //if (pos + offsetY <= 0) { return }
+
             //滚动屏幕
             $("html,body").animate({
                 scrollTop: pos + offsetY
@@ -609,9 +787,11 @@ var eventNames = ['webkit', 'moz', 'o'];
             $leftPopup.rightSwipeAction({
                 clickEnd: function (display) {
                     if (display != 'none') {
+                        isopen = true;
                         var $swipeLeft = $leftPopup.find('.swipeLeft');
                         $leftPopup.show();
-                        setTimeout(function () { $swipeLeft.addClass('swipeLeft-block'); }, 200);
+                        setTimeout(function () { $swipeLeft.addClass('swipeLeft-block'); setTimeout(function () { $this.clicked = false; }, 500); }, 200);
+
                         if ($back.length > 0) {
                             $back.parents('body').css('overflow', 'hidden');
                             function closeEnd(ev, params) {
@@ -623,7 +803,8 @@ var eventNames = ['webkit', 'moz', 'o'];
                                     }, 300);
                                     var $alert = $(options.alert).children().removeClass('swipeLeft-block').end();
                                     $back.parents('body').css('overflow', 'inherit');
-                                    setTimeout(function () { $alert.hide(); options.closeEnd }, 200);
+                                    setTimeout(function () { $alert.hide(); }, 200);
+
                                     options.closeEnd && options.closeEnd.call($swipeLeft, $back);
 
                                 } else {
@@ -637,6 +818,7 @@ var eventNames = ['webkit', 'moz', 'o'];
                                 $back.touches({
                                     touchstart: function () {
                                         $back.trigger('close');
+                                        $back.trigger('closeEnd');
                                     }
                                 });
                             }
@@ -649,6 +831,7 @@ var eventNames = ['webkit', 'moz', 'o'];
                 }
             });
         }
+
         options = Object.extend(options, setting);
         if (this.length == 0) { return; }
         if (!$click) {
@@ -657,7 +840,10 @@ var eventNames = ['webkit', 'moz', 'o'];
                 (function ($this) {
                     $this.isclick = true;
                     $this.click(function (ev) {
+                        if ($this.clicked) { ev.preventDefault(); return; }
+                        $this.clicked = true;
                         options.onBeforeScrollStart.call($this, ev);
+
                         options.isclick && ($this.isclick = options.isclick.call($this));
                         if ($this.isclick == false) {
                             return;
@@ -842,11 +1028,12 @@ var eventNames = ['webkit', 'moz', 'o'];
             url: '',
             templateid: '#modelTemplate',
             jsonpCallback: 'a',
+            paras: null,
             flatFn: function (data) { return data },
             analysis: function (data) {
                 var tp1 = $(options.templateid).html();
                 var template = _.template(tp1);
-                var jb = options.flatFn(data);
+                var jb = options.flatFn(data, options.paras);
                 return template(jb);
             },
             callback: null
@@ -970,11 +1157,11 @@ var eventNames = ['webkit', 'moz', 'o'];
             //低版本浏览器requestAnimationFrame兼容方法
             window.requestAnimationFrame = (function () {
                 return window.requestAnimationFrame ||
-                        window.webkitRequestAnimationFrame ||
-                        window.mozRequestAnimationFrame ||
-                        function (callback) {
-                            window.setTimeout(callback, 1000 / 60);
-                        };
+                    window.webkitRequestAnimationFrame ||
+                    window.mozRequestAnimationFrame ||
+                    function (callback) {
+                        window.setTimeout(callback, 1000 / 60);
+                    };
             })();
 
             exports.position = function () {
@@ -1116,7 +1303,6 @@ var eventNames = ['webkit', 'moz', 'o'];
         function clickEnd($current) {
             var $model = this;
             $model.addClass('swipeModels-block');
-            $model.show();
             options.fnEnd && options.fnEnd.call($model);
         }
 
@@ -1152,7 +1338,7 @@ var eventNames = ['webkit', 'moz', 'o'];
         }
         options = Object.extend(options, setting);
         var $this = this,
-        url = $this.attr('data-url') || options.url;
+            url = $this.attr('data-url') || options.url;
         if (!url) {
             options.end && options.end.call($this);
         } else {
@@ -1195,62 +1381,40 @@ var eventNames = ['webkit', 'moz', 'o'];
             tips[options.tempateName] = false;
         }, options.delay);
     }
-    $.fn.onload = function (fnEnd) {
-        function e($o, end) {
-            var obj = $o[0];
-            obj.onerror = function () {
-                end && end.call($o, 0);
-                obj.onreadystatechange = null;
-            }
 
-            obj.onload = function () {
-                end && end.call($o, 1);
-                obj.onreadystatechange = null;
-            }
-            obj.onreadystatechange = function (ev) {
-                if (obj.readyState == 'complete') {
-                    end && end.call($o, 1);
-                    obj.onload = null;
-                }
-            }
-        }
-
-        if (this.length > 0) {
-            var i = 0;
-            this.each(function (index, curr) {
-                var $this = $(curr);
-                e($this, function () {
-                    i++;
-                    if (i >= this.length) { fnEnd && fnEnd.call($this) }
-                });
-            })
-        } else {
-            e(this, fnEnd);
-        }
-    }
-    //图片加载成功状态
-    $.fn.imgSucceed = function (options) {
+    //弹出层
+    $.fn.model = function (options) {
         var setting = {
-            end: null
+            clickEnd: null
         }
         options = Object.extend(options, setting);
-        var $this = this, index = 1;
-        var imgs = $this.find('img');
-        var len = imgs.length;
-        if (len > 0) {
-            imgs.each(function (index, curr) {
-                var $img = $(curr);
-                $img.onload(function () {
-                    if (index == (len - 1)) {
-                        options.end && options.end.call($this);
+        this.each(function (index, current) {
+            (function ($current) {
+                $current.click(function (ev) {
+                    ev.preventDefault();
+                    var $click = $(this);
+                    $click.$model = $('.' + $click.attr('data-action'));
+                    if ($click.$model.length > 0) {
+                        $click.$mark = $('.' + $click.$model.attr('data-back'));
+
+                        if (!$click.$model.attr('data-init')) {
+                            $click.$mark.on('close', function (ev) {
+                                $click.$model.hide();
+                                $click.$mark.hide();
+                            })
+                            $click.$model.attr('data-init', 'true');
+                        }
+
+                        options.clickEnd && options.clickEnd.call($click);
+
+                        $click.$mark.show();
+                        $click.$model.show();
                     }
-                    index++;
                 })
-            });
-        } else {
-            options.end && options.end.call($this);
-        }
+            })($(current));
+        })
     }
+
     //滚动条横向定位
     $.fn.activeScrollBar = function (options) {
         var setting = {

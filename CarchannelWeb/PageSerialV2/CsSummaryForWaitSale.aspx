@@ -136,7 +136,7 @@
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
 
         <!--#include file="/include/special/stat/00001/bglogpostlog_Manual.shtml"-->
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=20170616"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201711081414"></script>
         <%--<script type="text/javascript" src="/jsnewv2/cssummary.js?v=20161230"></script>--%>
         <script type="text/javascript">
             var serialId = <%= serialId %>;
@@ -163,6 +163,7 @@
             }
 
             GetHmcJiangJia();
+            GetVr();
             //GetFocusNewsLast("<%= serialEntity.SaleState %>",7);
             //GetJiangjiaNews();
             $("#qrcode img").bind("error",function(){
@@ -596,7 +597,7 @@
     </script>
     <script type="text/javascript" src="http://gimg.bitauto.com/resourcefiles/chexing/serialadposition.js?_=<%= DateTime.Now.ToString("yyyyMMddHHmm").Substring(0,11) + "0" %>"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/serialtoseead.min.js"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>
+    <%--<script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>--%>
     <!--/看了还看js-->
     <script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars"></script>
 
@@ -625,13 +626,13 @@
         } catch (err) {
         }
         //vr 
-        if (vrImgForBitauto != undefined && vrImgForBitauto.IntiDataForEntry != undefined) {
+       <%-- if (vrImgForBitauto != undefined && vrImgForBitauto.IntiDataForEntry != undefined) {
             vrImgForBitauto.IntiDataForEntry(<%=serialId%>, function (vrImgs) {
                 if (vrImgs.length > 0) {
                     $(".l-box-sty.col-auto").prepend("<a target=\"_blank\" href=\"" + vrImgs[0].PanoUrl + "\" class=\"zs-vr\">VR看全景</a>");
                 }
             });
-        }
+        }--%>
     </script>
     <% } %>
     <!--/经销商弹层-->

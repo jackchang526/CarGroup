@@ -291,7 +291,6 @@ namespace BitAuto.CarChannelAPI.Web.Exhibition
                 return false;
             }
         }
-
         private sealed class OutputCachedPage : Page
         {
             private OutputCacheParameters _cacheSettings;

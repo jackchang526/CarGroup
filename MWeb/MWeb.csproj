@@ -266,6 +266,7 @@
     <Content Include="js\v2\model.js" />
     <Content Include="js\v2\note.js" />
     <Content Include="js\v2\rightswipe.js" />
+    <Content Include="js\v2\swiper-3.3.1.min.js" />
     <Content Include="js\v2\underscore.js" />
     <Content Include="js\waitcompareV2.js" />
     <Content Include="js\yagao.commons.js" />
@@ -403,6 +404,7 @@
     <Content Include="config\ParameterConfigurationNewV2.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="html\selectMasterBrandTemplate.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Calc\CalcAutoCash.cshtml" />
     <Content Include="Views\Calc\CalcAutoCashDetail.cshtml" />

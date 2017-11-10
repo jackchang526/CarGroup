@@ -180,13 +180,14 @@
         </div>
         <div id="master_container" data-url="/html/selectCarTemplate.htm?v=20151207" class="brandlayer mthead">
         </div>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/jquery.lazyload.min.js"></script>
         @*<script src="/js/v2/iscroll.js?v=2015112415"></script>
         <script src="/js/v2/underscore.js?v=2015112415"></script>
         <script src="/js/v2/model.js?v=2015112415"></script>
         <script src="/js/v2/note.js?v=2015112415"></script>
         <script src="/js/v2/rightswipe.js?v=2015112415"></script>
         <script src="/js/v2/brand.js?v=2015112415"></script>*@
-        <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js?v=20170517"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js?v=201711100907"></script>
         <script type="text/javascript">
             var arrMarkSerial = [], saleYearCount = 0;  //非停销年款
             $(function () {
@@ -282,7 +283,7 @@
                                 }
                                 else if (idx == 1) {    //按品牌查找
                                     //初始化品牌
-                                    $body.trigger('brandinit');
+                                    $body.trigger('brandinit', { init: function () { $("span.brand-logo>img").lazyload({ effect: "fadeIn", threshold: 50 }); } });
                                     //车款点击回调事件
                                     api.model.clickEnd = function(paras) {
                                         api.brand.currentid = paras.masterid;

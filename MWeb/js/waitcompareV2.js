@@ -365,7 +365,7 @@ var WaitCompare = (function (module) {
                                 duibiCarDataIds = historyCookieCar.split('|');
                             }
                             //初始化品牌
-                            $body.trigger('brandinit', { actionName3: '[data-action=duibi-models]', leftmaskalert: '.duibi-alert', leftmaskback: '.leftmask3', carselect: function () { }, masterselect: function () { }, selectmark: function () { } });
+                            $body.trigger('brandinit', { init: function () { $("span.brand-logo>img").lazyload({ effect: "fadeIn", threshold: 50 }); }, actionName3: '[data-action=duibi-models]', leftmaskalert: '.duibi-alert', leftmaskback: '.leftmask3', carselect: function () { }, masterselect: function () { }, selectmark: function () { } });
                             //车款点击回调事件
                             api.model.clickEnd = function (paras) {
                                 var curCarId = $(this).data("id"), curCarName = $(this).data("name");

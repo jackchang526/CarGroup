@@ -14,6 +14,7 @@ using System.Web.UI;
 
 namespace AppApi.Controllers
 {
+    [JsonHandleError] //出错时以Json格式显示
     public class CarController : BaseController
     {
         #region Service

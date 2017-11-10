@@ -181,7 +181,6 @@ namespace AppApi.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-
         /// <summary>
         /// 根据车款编号获取对应车身颜色或内饰颜色
         /// </summary>
@@ -203,9 +202,6 @@ namespace AppApi.Controllers
             //}
             return JsonNet(new { success = true, status = wrs, message = wrs.ToString(), data = new { list = string.Empty } }, JsonRequestBehavior.AllowGet);
         }
-
-
-
 
         /// <summary>
         /// 根据车系编号和颜色类型获取车系颜色 create add by huanggang 2015-07-13
@@ -229,6 +225,12 @@ namespace AppApi.Controllers
             return JsonNet(new { success = true, status = wrs, message = wrs.ToString(), data = string.Empty }, JsonRequestBehavior.AllowGet);
         }
 
+        [OutputCache(Duration = 900, Location = OutputCacheLocation.Downstream)]
+        public ActionResult GetMasterBrandList(bool? allMasterBrand)
+        {
+            var list = CarMasterBrandService.GetCarMasterBrandList(allMasterBrand.GetValueOrDefault());
+            return JsonNet(new { status = 1, message = "ok", data = list }, JsonRequestBehavior.AllowGet);
+        }
 
         #endregion
     }

@@ -65,7 +65,9 @@ var SelectCar = (function (module) {
                             }
                         }
                         //切换标签
-                        $('.brandlist').tag({
+                        var $brandlist = $('.brandlist');
+                        //$brandlist.parents('#master_container').show();
+                        $brandlist.tag({
                             tagName: '.first-tags',
                             fnEnd: function (idx) {
                                 tags.hide();

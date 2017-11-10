@@ -30,6 +30,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,11 +56,13 @@
     <Reference Include="BitAuto.Beyond.Caching.RefreshCache">
       <HintPath>..\..\..\packages\BitAuto.Beyond.Caching.RefreshCache.dll</HintPath>
     </Reference>
-    <Reference Include="BitAuto.CarUtils">
-      <HintPath>..\..\..\Dll\BitAuto.CarUtils.dll</HintPath>
+    <Reference Include="BitAuto.CarUtils, Version=1.2.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\BitAuto.CarUtils.dll</HintPath>
     </Reference>
-    <Reference Include="BitAuto.Utils">
-      <HintPath>..\..\..\..\..\P公用平台\Release\BitAuto.Utils.dll</HintPath>
+    <Reference Include="BitAuto.Utils, Version=2.0.7.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\BitAuto.Utils.dll</HintPath>
     </Reference>
     <Reference Include="blowery.Web.HttpCompress">
       <HintPath>..\DLL\blowery.Web.HttpCompress.dll</HintPath>
@@ -69,15 +72,15 @@
     </Reference>
     <Reference Include="MongoDB.Bson, Version=1.1.0.4184, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Dll\MongoDB.Bson.dll</HintPath>
+      <HintPath>..\..\..\packages\Mongodb.1.9.2\MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver, Version=1.1.0.4184, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Dll\MongoDB.Driver.dll</HintPath>
+      <HintPath>..\..\..\packages\Mongodb.1.9.2\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Dll\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -100,6 +103,28 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AppCode\PageHelper.cs" />
+    <Compile Include="AppCode\ResultUtil.cs" />
+    <Compile Include="Assessment\GetAssessmentInfo.ashx.cs">
+      <DependentUpon>GetAssessmentInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetBaoZhiLv.ashx.cs">
+      <DependentUpon>GetBaoZhiLv.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetEditorInfo.ashx.cs">
+      <DependentUpon>GetEditorInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetEntranceData.ashx.cs">
+      <DependentUpon>GetEntranceData.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetEvaluationInfo.ashx.cs">
+      <DependentUpon>GetEvaluationInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetEvaluationParam.ashx.cs">
+      <DependentUpon>GetEvaluationParam.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\ViewScore.ashx.cs">
+      <DependentUpon>ViewScore.ashx</DependentUpon>
+    </Compile>
     <Compile Include="CarInfo\CarInfoJson.ashx.cs">
       <DependentUpon>CarInfoJson.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -141,6 +166,10 @@
     </Compile>
     <Compile Include="CarInfo\GetCarListMaxFavorable.ashx.cs">
       <DependentUpon>GetCarListMaxFavorable.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\GetCarListWithTax.ashx.cs">
+      <DependentUpon>GetCarListWithTax.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CarInfo\GetCarParameter.ashx.cs">
       <DependentUpon>GetCarParameter.ashx</DependentUpon>
@@ -256,6 +285,9 @@
     <Compile Include="CarInfo\SerialXmlInfo.ashx.cs">
       <DependentUpon>SerialXmlInfo.ashx</DependentUpon>
     </Compile>
+    <Compile Include="CarInfo\WriteCarParamCache.ashx.cs">
+      <DependentUpon>WriteCarParamCache.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Cooperation\GetCarData.aspx.cs">
       <DependentUpon>GetCarData.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -303,9 +335,18 @@
       <DependentUpon>CarExhibitionXml.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Exhibition\GetExhibitionBrand.ashx.cs">
+      <DependentUpon>GetExhibitionBrand.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Exhibition\GetExhibitionLeftTreeJson.ashx.cs">
       <DependentUpon>GetExhibitionLeftTreeJson.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exhibition\GetExhibitionMasterBrand.ashx.cs">
+      <DependentUpon>GetExhibitionMasterBrand.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Exhibition\GetExhibitionSerial.ashx.cs">
+      <DependentUpon>GetExhibitionSerial.ashx</DependentUpon>
     </Compile>
     <Compile Include="ForExternal\GetAllBrandSerialCarInfo.ashx.cs">
       <DependentUpon>GetAllBrandSerialCarInfo.ashx</DependentUpon>
@@ -392,10 +433,6 @@
     <Compile Include="Test\TempBsToCs.aspx.designer.cs">
       <DependentUpon>TempBsToCs.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Test\TestForSelectCarToXml.ashx.cs">
-      <DependentUpon>TestForSelectCarToXml.ashx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Test\TestResponse.ashx.cs">
       <DependentUpon>TestResponse.ashx</DependentUpon>
     </Compile>
@@ -439,6 +476,14 @@
     <Compile Include="WxApp\GetCarParamInfo.ashx.cs">
       <DependentUpon>GetCarParamInfo.ashx</DependentUpon>
     </Compile>
+    <Compile Include="WxApp\GetHotMaster.ashx.cs">
+      <DependentUpon>GetHotMaster.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WxApp\GetHotSerial.ashx.cs">
+      <DependentUpon>GetHotSerial.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="WxApp\GetNewCarList.ashx.cs">
       <DependentUpon>GetNewCarList.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -448,6 +493,10 @@
     </Compile>
     <Compile Include="WxApp\GetSerialBaseInfo.ashx.cs">
       <DependentUpon>GetSerialBaseInfo.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WxApp\GetSerialSellRank.ashx.cs">
+      <DependentUpon>GetSerialSellRank.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="zhihuan\GetBrandList.ashx.cs">
@@ -478,10 +527,12 @@
     <Content Include="CarInfo\SerialJsonInfo.aspx" />
     <Content Include="CarInfo\SerialListJson.aspx" />
     <Content Include="config\CooperationConfig.xml" />
+    <Content Include="config\CooperationConfigV2.xml" />
     <Content Include="config\H5SelectSerialList.xml" />
     <Content Include="config\ParameterForJson.xml" />
     <Content Include="config\ParameterForJsonNew.xml" />
     <Content Include="App_Data\css\GetCarhtml\main.css" />
+    <Content Include="config\ParameterForJsonNewV2.xml" />
     <Content Include="Cooperation\GetCarData.aspx" />
     <Content Include="Cooperation\script\GetCarhtml\main.js" />
     <Content Include="Cooperation\script\GetCarhtml\renderMobileSerialListForBaidu.js" />
@@ -546,12 +597,24 @@
     <Content Include="CarInfo\GetCarPriceComputer.ashx" />
     <Content Include="config\ParameterConfigurationNew.config" />
     <Content Include="Cooperation\GetSerialData.ashx" />
+    <Content Include="CarInfo\GetCarListWithTax.ashx" />
+    <Content Include="Assessment\GetEvaluationInfo.ashx" />
+    <Content Include="Assessment\GetAssessmentInfo.ashx" />
+    <Content Include="Assessment\GetEvaluationParam.ashx" />
+    <Content Include="Assessment\GetBaoZhiLv.ashx" />
+    <Content Include="Assessment\GetEditorInfo.ashx" />
+    <Content Include="Assessment\GetEntranceData.ashx" />
+    <Content Include="Assessment\ViewScore.ashx" />
+    <Content Include="config\ParameterConfigurationNewV2.config" />
+    <Content Include="CarInfo\WriteCarParamCache.ashx" />
+    <Content Include="Exhibition\GetExhibitionBrand.ashx" />
+    <Content Include="Exhibition\GetExhibitionMasterBrand.ashx" />
+    <Content Include="Exhibition\GetExhibitionSerial.ashx" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Test\TestForSelectCarToXml.ashx" />
     <Content Include="Test\TestResponse.ashx" />
     <None Include="Web References\cn.ucar.api\CarSourceForBitAuto.disco" />
     <Content Include="Web.Config">
@@ -570,6 +633,9 @@
     <Content Include="WxApp\GetCarList.ashx" />
     <Content Include="WxApp\GetNewsList.ashx" />
     <Content Include="WxApp\GetCarParamInfo.ashx" />
+    <Content Include="WxApp\GetHotSerial.ashx" />
+    <Content Include="WxApp\GetSerialSellRank.ashx" />
+    <Content Include="WxApp\GetHotMaster.ashx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

@@ -15,7 +15,7 @@
 <!--#include file="~/ushtml/0000/yiche_2016_cube_jisuanqi_style-1268.shtml"-->
 <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
 <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/dropdownlistnew.min.js?v=20161130"></script>
-<script type="text/javascript" src="<%= WebConfig.StaticFileBaseUrl %>jsnewV2/CarCalculator.min.js?v=20170324"></script>
+<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/CarCalculator.min.js?v=20170324"></script>
 <%--浮动JS--%>
 <script type="text/javascript">
     function addEvent(obj, type, fn) {
@@ -75,8 +75,8 @@
                         if (hidCarId && hidCarId.value > 0) {
                             carid = hidCarId.value;
                         }
-                    }
-                    chedaiLink[0].href = "http://www.daikuan.com/www/" + ADForCheDai.CsAllSpellArray[csId] + "/m" + carid + "/?from=yc33&leads_source=p031002";
+                    } 
+                    chedaiLink[0].href = "http://sq.taoche.com/yiche/index?from=yc33&leads_source=p031002&serialid=" + csId + "&carid=" + carid + "";
                 }
             }
         }
@@ -1773,8 +1773,10 @@
                         function () { $(this).parent().siblings(".tc-zong").show(); },
                         function () { $(this).parent().siblings(".tc-zong").hide(); }
                     );
-                    $("#loanTJ").attr("href", "http://www.daikuan.com/www/" + ADForCheDai.CsAllSpellArray[hidCsId.value] + "?from=yc38").text(hidCsName.value + "贷款推荐");
-                    $("#loanMoreTJ").attr("href", "http://www.daikuan.com/www/" + ADForCheDai.CsAllSpellArray[hidCsId.value] + "?from=yc38");
+                    //$("#loanTJ").attr("href", "http://fenqi.taoche.com/www/" + ADForCheDai.CsAllSpellArray[hidCsId.value] + "?from=yc38").text(hidCsName.value + "贷款推荐");
+                    //$("#loanMoreTJ").attr("href", "http://fenqi.taoche.com/www/" + ADForCheDai.CsAllSpellArray[hidCsId.value] + "?from=yc38");
+                    $("#loanTJ").attr("href", "http://sq.taoche.com/yiche/index?from=yc38&serialid=" + hidCsId.value + "").text(hidCsName.value + "贷款推荐");
+                    $("#loanMoreTJ").attr("href", "http://sq.taoche.com/yiche/index?from=yc38&serialid=" + hidCsId.value + "");
                 } else {
                     $("#pc-load").parent().hide();
                 }

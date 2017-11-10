@@ -20,7 +20,7 @@ namespace BitAuto.CarChannel.Common
         private int tickNum = 0;
         public string szConnString = WebConfig.DefaultConnectionString;
         public static string[] CharList = new string[]{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q",
-			"R","S","T","U","V","W","X","Y","Z"};
+            "R","S","T","U","V","W","X","Y","Z"};
 
         public CommonFunction()
         { }
@@ -202,8 +202,8 @@ namespace BitAuto.CarChannel.Common
               @"&(quot|#34);",
               @"&(amp|#38);",
               @"&(lt|#60);",
-              @"&(gt|#62);", 
-              @"&(nbsp|#160);", 
+              @"&(gt|#62);",
+              @"&(nbsp|#160);",
               @"&(iexcl|#161);",
               @"&(cent|#162);",
               @"&(pound|#163);",
@@ -448,13 +448,13 @@ namespace BitAuto.CarChannel.Common
                     using (StreamReader sr = new StreamReader(filePath, Encoding.Default))
                     {
                         content = sr.ReadToEnd();
-                    } 
+                    }
                 }
             }
             catch (Exception ex)
             {
                 WriteLog("读取异常URL：" + filePath + ex.ToString());
-            } 
+            }
             return content;
         }
 
@@ -579,7 +579,7 @@ namespace BitAuto.CarChannel.Common
             var charNav = new StringBuilder();
             charNav.Append("<div style=\"width:100%; height: 45px; overflow:hidden;\">");
             charNav.Append("<div id=\"theid\">");
-             charNav.AppendLine("<ul class=\"list list-gapline sm a-z\">");
+            charNav.AppendLine("<ul class=\"list list-gapline sm a-z\">");
             foreach (string firstChar in CharList)
             {
                 if (charDic.ContainsKey(firstChar))
@@ -656,6 +656,54 @@ namespace BitAuto.CarChannel.Common
                 returnString = "";
             }
             return returnString;
+        }
+        /// <summary>
+        /// 通过Url地址得到内容信息
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="interval"></param>
+        /// <returns></returns>
+        public static string GetContentByUrl(string url, int interval = 60000)
+        {
+            string result = string.Empty;
+            if (string.IsNullOrEmpty(url))
+                return result;
+            HttpWebRequest req = null;
+            HttpWebResponse response = null;
+            Stream responseStream = null;
+            try
+            {
+                req = (HttpWebRequest)WebRequest.Create(url);
+                req.Timeout = interval;
+                using (response = req.GetResponse() as HttpWebResponse)
+                using (responseStream = response.GetResponseStream())
+                {
+                    using (StreamReader reader = new StreamReader(responseStream))
+                    {
+                        result = reader.ReadToEnd();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteLog("url : " + url + "\r\n" + ex.ToString());
+            }
+            finally
+            {
+                if (responseStream != null)
+                {
+                    responseStream.Close();
+                }
+                if (response != null)
+                {
+                    response.Close();
+                }
+                if (req != null)
+                {
+                    req.Abort();
+                }
+            }
+            return result;
         }
 
         /// <summary>
@@ -1003,29 +1051,41 @@ namespace BitAuto.CarChannel.Common
             string filePostfix = "0";
             switch (levelSpell)
             {
-                case "weixingche": filePostfix = "1";
+                case "weixingche":
+                    filePostfix = "1";
                     break;
-                case "xiaoxingche": filePostfix = "2";
+                case "xiaoxingche":
+                    filePostfix = "2";
                     break;
-                case "jincouxingche": filePostfix = "3";
+                case "jincouxingche":
+                    filePostfix = "3";
                     break;
-                case "zhongdaxingche": filePostfix = "4";
+                case "zhongdaxingche":
+                    filePostfix = "4";
                     break;
-                case "zhongxingche": filePostfix = "5";
+                case "zhongxingche":
+                    filePostfix = "5";
                     break;
-                case "haohuaxingche": filePostfix = "6";
+                case "haohuaxingche":
+                    filePostfix = "6";
                     break;
-                case "mpv": filePostfix = "7";
+                case "mpv":
+                    filePostfix = "7";
                     break;
-                case "suv": filePostfix = "8";
+                case "suv":
+                    filePostfix = "8";
                     break;
-                case "paoche": filePostfix = "9";
+                case "paoche":
+                    filePostfix = "9";
                     break;
-                case "qita": filePostfix = "10";
+                case "qita":
+                    filePostfix = "10";
                     break;
-                case "mianbaoche": filePostfix = "11";
+                case "mianbaoche":
+                    filePostfix = "11";
                     break;
-                case "pika": filePostfix = "12";
+                case "pika":
+                    filePostfix = "12";
                     break;
                 default:
                     filePostfix = "0";
@@ -1171,87 +1231,87 @@ namespace BitAuto.CarChannel.Common
             return dic;
         }
 
-		/// <summary>
-		/// 评测标签
-		/// </summary>
-		/// <returns></returns>
-		public static List<EnumCollection.PingCeTag> IntiPingCeTagListInfo()
-		{
-			List<EnumCollection.PingCeTag> list = new List<EnumCollection.PingCeTag>();
-			// 导语
-			EnumCollection.PingCeTag pct1 = new EnumCollection.PingCeTag();
-			pct1.tagName = "导语";
-			pct1.tagRegularExpressions = "(导语：|导语:)";
-			pct1.tagId = 1;
-			list.Add(pct1);
-			// 外观
-			EnumCollection.PingCeTag pct2 = new EnumCollection.PingCeTag();
-			pct2.tagName = "外观";
-			pct2.tagRegularExpressions = "(外观：|外观:)";
-			pct2.tagId = 2;
-			list.Add( pct2);
-			// 内饰
-			EnumCollection.PingCeTag pct3 = new EnumCollection.PingCeTag();
-			pct3.tagName = "内饰";
-			pct3.tagRegularExpressions = "(内饰：|内饰:)";
-			pct3.tagId = 3;
-			list.Add( pct3);
-			// 空间
-			EnumCollection.PingCeTag pct4 = new EnumCollection.PingCeTag();
-			pct4.tagName = "空间";
-			pct4.tagRegularExpressions = "(空间：|空间:)";
-			pct4.tagId = 4;
-			list.Add( pct4);
-			// 视野
-			EnumCollection.PingCeTag pct5 = new EnumCollection.PingCeTag();
-			pct5.tagName = "视野";
-			pct5.tagRegularExpressions = "(视野：|视野:)";
-			pct5.tagId = 5;
-			list.Add( pct5);
-			// 灯光
-			EnumCollection.PingCeTag pct6 = new EnumCollection.PingCeTag();
-			pct6.tagName = "灯光";
-			pct6.tagRegularExpressions = "(灯光：|灯光:)";
-			pct6.tagId = 6;
-			list.Add(pct6);
-			// 动力
-			EnumCollection.PingCeTag pct7 = new EnumCollection.PingCeTag();
-			pct7.tagName = "动力";
-			pct7.tagRegularExpressions = "(动力：|动力:)";
-			pct7.tagId = 7;
-			list.Add(pct7);
-			// 操控
-			EnumCollection.PingCeTag pct8 = new EnumCollection.PingCeTag();
-			pct8.tagName = "操控";
-			pct8.tagRegularExpressions = "(操控：|操控:)";
-			pct8.tagId = 8;
-			list.Add( pct8);
-			// 舒适性
-			EnumCollection.PingCeTag pct9 = new EnumCollection.PingCeTag();
-			pct9.tagName = "舒适性";
-			pct9.tagRegularExpressions = "(舒适性：|舒适：|舒适性:|舒适:)";
-			pct9.tagId = 9;
-			list.Add( pct9);
-			// 油耗
-			EnumCollection.PingCeTag pct10 = new EnumCollection.PingCeTag();
-			pct10.tagName = "油耗";
-			pct10.tagRegularExpressions = "(油耗：|油耗:)";
-			pct10.tagId = 10;
-			list.Add( pct10);
-			// 配置
-			EnumCollection.PingCeTag pct11 = new EnumCollection.PingCeTag();
-			pct11.tagName = "配置";
-			pct11.tagRegularExpressions = "(配置与安全：|配置：|配置与安全:|配置:)";
-			pct11.tagId = 11;
-			list.Add( pct11);
-			// 总结
-			EnumCollection.PingCeTag pct12 = new EnumCollection.PingCeTag();
-			pct12.tagName = "总结";
-			pct12.tagRegularExpressions = "(总结：|总结:)";
-			pct12.tagId = 12;
-			list.Add( pct12);
-			return list;
-		}
+        /// <summary>
+        /// 评测标签
+        /// </summary>
+        /// <returns></returns>
+        public static List<EnumCollection.PingCeTag> IntiPingCeTagListInfo()
+        {
+            List<EnumCollection.PingCeTag> list = new List<EnumCollection.PingCeTag>();
+            // 导语
+            EnumCollection.PingCeTag pct1 = new EnumCollection.PingCeTag();
+            pct1.tagName = "导语";
+            pct1.tagRegularExpressions = "(导语：|导语:)";
+            pct1.tagId = 1;
+            list.Add(pct1);
+            // 外观
+            EnumCollection.PingCeTag pct2 = new EnumCollection.PingCeTag();
+            pct2.tagName = "外观";
+            pct2.tagRegularExpressions = "(外观：|外观:)";
+            pct2.tagId = 2;
+            list.Add(pct2);
+            // 内饰
+            EnumCollection.PingCeTag pct3 = new EnumCollection.PingCeTag();
+            pct3.tagName = "内饰";
+            pct3.tagRegularExpressions = "(内饰：|内饰:)";
+            pct3.tagId = 3;
+            list.Add(pct3);
+            // 空间
+            EnumCollection.PingCeTag pct4 = new EnumCollection.PingCeTag();
+            pct4.tagName = "空间";
+            pct4.tagRegularExpressions = "(空间：|空间:)";
+            pct4.tagId = 4;
+            list.Add(pct4);
+            // 视野
+            EnumCollection.PingCeTag pct5 = new EnumCollection.PingCeTag();
+            pct5.tagName = "视野";
+            pct5.tagRegularExpressions = "(视野：|视野:)";
+            pct5.tagId = 5;
+            list.Add(pct5);
+            // 灯光
+            EnumCollection.PingCeTag pct6 = new EnumCollection.PingCeTag();
+            pct6.tagName = "灯光";
+            pct6.tagRegularExpressions = "(灯光：|灯光:)";
+            pct6.tagId = 6;
+            list.Add(pct6);
+            // 动力
+            EnumCollection.PingCeTag pct7 = new EnumCollection.PingCeTag();
+            pct7.tagName = "动力";
+            pct7.tagRegularExpressions = "(动力：|动力:)";
+            pct7.tagId = 7;
+            list.Add(pct7);
+            // 操控
+            EnumCollection.PingCeTag pct8 = new EnumCollection.PingCeTag();
+            pct8.tagName = "操控";
+            pct8.tagRegularExpressions = "(操控：|操控:)";
+            pct8.tagId = 8;
+            list.Add(pct8);
+            // 舒适性
+            EnumCollection.PingCeTag pct9 = new EnumCollection.PingCeTag();
+            pct9.tagName = "舒适性";
+            pct9.tagRegularExpressions = "(舒适性：|舒适：|舒适性:|舒适:)";
+            pct9.tagId = 9;
+            list.Add(pct9);
+            // 油耗
+            EnumCollection.PingCeTag pct10 = new EnumCollection.PingCeTag();
+            pct10.tagName = "油耗";
+            pct10.tagRegularExpressions = "(油耗：|油耗:)";
+            pct10.tagId = 10;
+            list.Add(pct10);
+            // 配置
+            EnumCollection.PingCeTag pct11 = new EnumCollection.PingCeTag();
+            pct11.tagName = "配置";
+            pct11.tagRegularExpressions = "(配置与安全：|配置：|配置与安全:|配置:)";
+            pct11.tagId = 11;
+            list.Add(pct11);
+            // 总结
+            EnumCollection.PingCeTag pct12 = new EnumCollection.PingCeTag();
+            pct12.tagName = "总结";
+            pct12.tagRegularExpressions = "(总结：|总结:)";
+            pct12.tagId = 12;
+            list.Add(pct12);
+            return list;
+        }
 
         public static void WriteLog(string errStr)
         {
@@ -1661,7 +1721,7 @@ namespace BitAuto.CarChannel.Common
             }
             catch (Exception ex)
             {
-				WriteLog("url : " + url + "\r\n" + ex.ToString());
+                WriteLog("url : " + url + "\r\n" + ex.ToString());
             }
             finally
             {

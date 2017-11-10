@@ -1,0 +1,233 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>拍照识车</title>
+    <meta name="keywords" content="拍照识车" />
+    <meta name="description" content="拍照识车" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <!--#include file="/ushtml/0000/myiche2016_cube_paizhaoshiche-1384.shtml"-->
+</head>
+<body>
+    @Html.Partial("~/html/TopDownloadLayer.cshtml")
+    <!-- header start -->
+    <div class="op-nav">
+        <a href="javascript:void(0);" class="btn-return" id="gobackElm">返回</a>
+        <div class="tt-name">
+            <a href="http://m.yiche.com/" class="yiche-logo">易车</a><h1>拍照识车</h1>
+        </div>
+        <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
+    </div>
+    <div class="op-nav-mark" style="display: none;"></div>
+    <!-- header end -->
+    <!-- 拍照识车 start -->
+    <div id="recg">
+        <div class="zs-big-ball"></div>
+        <div class="zs-small-ball"></div>
+        <div class="shiche-box">
+            <h1>拍照识车</h1>
+            <p>给我一张汽车图，我帮您找出TA是哪辆哦！</p>
+
+            <div id="content" class="shiche-pic">
+                <!--page1-->
+                <div class="ico-sc-car"></div>
+                <div id="face" class="ico-sc-camera"></div>
+
+                <!--page3-->
+                <div class="sc-pic-box-sao" style="display:none;">
+                    <img src="" />
+                    <div class="ami-saomiao"></div>
+                </div>
+
+                <!--page2-->
+                <div class="sc-pic-box" style="display:none;">
+                    <img src="" />
+                </div>
+                <div class="clear" style="display:none;"></div>
+                <div class="ico-sc-up" style="display:none;"></div>
+
+                <strong>拍摄/上传相册中车图</strong>
+                <div class="bd-tl"></div>
+                <div class="bd-tr"></div>
+                <div class="bd-bl"></div>
+                <div class="bd-br"></div>
+                <form action="http://mps219.yiche.com/pic/upload?v=1" method="post">
+                    <input type="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" id="file_upload" name="file" style="z-index:99; margin-top: 5px; opacity: 0; position: absolute; top: 0; left:0; width: 100%; height: 100%;" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!-- 拍照识车 end -->
+
+    <div id="result" style="display:none;">
+        <!-- 拍摄的照片 start -->
+        <div class="user-pic">
+            <span>拍摄的照片：</span>
+            <div class="pic-box">
+                <img id="curImgShoutCut" src="" />
+            </div>
+        </div>
+        <!-- 拍摄的照片 end -->
+
+        <div class="clear"></div>
+
+        <div class="sc-tt-box sc-tt-box-top">
+            <div class="sc-tt"><span>易车大数据猜您拍的是</span></div>
+        </div>
+
+        <!-- 主图 start -->
+        <div id="mainpic" class="sc-car-info">
+            <a target="_blank" href="#"><img src=""></a>
+            <div class="sc-car-con">
+                <div class="sc-car-num">
+                    <em>相似度</em>
+                    <strong>0%</strong>
+                </div>
+                <a target="_blank" href="#" class="sc-car-name">
+                    <dl>
+                        <dt></dt>
+                        <dd></dd>
+                    </dl>
+                </a>
+            </div>
+        </div>
+        <!-- 主图 end -->
+        <!-- 按钮 start -->
+        <a href="#" class="btn-change"><span>换一张照片</span></a>
+        <!-- 按钮 end -->
+
+        <div id="othercartab" class="sc-tt-box">
+            <div class="sc-tt"><span>其他可能相似车型</span></div>
+        </div>
+
+        <!-- 列表 start -->
+        <div class="sc-car-list">
+            <ul></ul>
+        </div>
+        <!-- 列表 end -->
+
+    </div>
+
+    <script src="http://image.bitautoimg.com/uimg/mbt2015/js/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/car.recognition.js?v=20170725" type="text/javascript"></script>
+
+    <!--统计开始-->
+    <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
+    <script type="text/javascript">
+        var ChannelLOGCollector = {
+            area: '201',
+            mainbrand: '',
+            brand: '',
+            serial: '',
+            car: '',
+            product: ''
+        };
+        if (typeof (bit_locationInfo) != "undefined" && typeof (bit_locationInfo.cityId) != "undefined") {
+            ChannelLOGCollector.area = bit_locationInfo.cityId;
+        }
+        if (typeof (CarCommonBSID) != "undefined") {
+            ChannelLOGCollector.mainbrand = CarCommonBSID;
+        }
+        if (typeof (CarCommonCBID) != "undefined") {
+            ChannelLOGCollector.brand = CarCommonCBID;
+        }
+        if (typeof (CarCommonCSID) != "undefined") {
+            ChannelLOGCollector.serial = CarCommonCSID;
+        }
+        if (typeof (CarCommonCarID) != "undefined") {
+            ChannelLOGCollector.car = CarCommonCarID;
+        }
+    </script>
+    <script type="text/javascript">
+        // 统计
+        var XCWebLogCollector = { area: '201' };
+        if (typeof (bit_locationInfo) != "undefined" && typeof (bit_locationInfo.cityId) != "undefined") {
+            XCWebLogCollector.area = bit_locationInfo.cityId;
+        }
+        if (typeof (CarCommonBSID) != "undefined") {
+            XCWebLogCollector.mainbrand = CarCommonBSID;
+        }
+        if (typeof (CarCommonCBID) != "undefined") {
+            XCWebLogCollector.brand = CarCommonCBID;
+        }
+        if (typeof (CarCommonCSID) != "undefined") {
+            XCWebLogCollector.serial = CarCommonCSID;
+        }
+        if (typeof (CarCommonCarID) != "undefined") {
+            XCWebLogCollector.car = CarCommonCarID;
+        }
+    </script>
+    <!--统计代码开始-->
+    <!-- START OF SmartSource Data Collector TAG -->
+    <script src="http://image.bitautoimg.com/bt/webtrends/dcs_tag_wapnew.js?20160602" type="text/javascript"></script>
+    <!-- bitauto stat begin -->
+    <script>
+        var bit_stat_url = "url=" + escape(document.location);
+        if (document.referrer != null) bit_stat_url += "&refer=" + escape(document.referrer)
+        document.write("<img width=0 height=0 style='display:none;' src='http://log.bitauto.com/newsstat/log.aspx?" + bit_stat_url + "'/>");
+    </script>
+    <!-- bitauto stat end -->
+    <!--airui-->
+    <script src="http://img1.bitautoimg.com/stat/iwtToMSite20140218.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://g.yccdn.com"></script>
+    <!--#include file="/include/special/stat/00001/stat_bglog_Manual.shtml"-->
+
+    <script type="text/javascript">
+        (function () {
+            var dc = document.createElement('script'); dc.type = 'text/javascript'; dc.async = true;
+            dc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'js.ctags.cn/dc.js?10';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(dc, s);
+        })();
+    </script>
+    <!--统计代码结束-->
+    <!--统计结束-->
+    <!--返回上一页开始-->
+    <script type="text/javascript" src="//jsinc.baa.bitautotech.com/c/c.js?s=Bitauto.Login.M.Version5&v=20170112.1"></script>
+    <script type="text/javascript">
+        if (document.getElementById("gobackElm") != null) {
+            Bitauto.GoBacker.goBackByElementEvent('gobackElm', 'click');
+        }
+    </script>
+    <!--返回上一页结束-->
+    <!--微信分享开始-->
+    <script type="text/javascript" src="http://admin.bitauto.com/editortest/wangxiao/wx/js/wxshare-o-new.js"></script>
+    <script type="text/javascript">
+        var wxs_js = new weiXinShareJs({
+            title: '易车-拍图识车',
+            keywords: '拍图识车，车图拍摄，汽车图片',
+            desc: '拍图识车、拍摄车图识别车型，随意拍摄车图易车帮你来辨别哦!',
+            imgUrl: 'http://image.bitautoimg.com/uimg/mbt2016/images/sc_wx_share.jpg'
+        });
+    </script>
+    <!--微信分享结束-->
+    <!--通过传入参数判断页面头部标题是否显示开始-->
+    <script type="text/javascript">
+
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+        var ref = GetQueryString("ref");
+        if (ref != null && ref == "ycapph") {
+            $(".op-nav").hide();
+        }
+    </script>
+    <!--通过传入参数判断页面头部标题是否显示结束-->
+    <!--添加app调用函数开始-->
+    <script type="text/javascript">
+        function customizewebcofig() {
+            return "{hideshare: 1}";
+        }
+    </script>
+    <!--添加app调用函数结束-->
+</body>
+</html>

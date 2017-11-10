@@ -246,12 +246,12 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageMasterV2
                         firstNewsRow = newsOrderTable.Rows[0];
                     }
                 }
-                if (firstNewsRow == null)
-                {
-                    firstNewsRow = base.GetTopNewsFirstRow(newsTable, new int[] { 33, 31, 32, 4, 179, 102, 115, 120, 29, 30 });
-                    if (firstNewsRow == null)
-                        firstNewsRow = newsTable.Rows[0];
-                }
+                //if (firstNewsRow == null)
+                //{
+                //    firstNewsRow = base.GetTopNewsFirstRow(newsTable, new int[] { 33, 31, 32, 4, 179, 102, 115, 120, 29, 30 });
+                //    if (firstNewsRow == null)
+                //        firstNewsRow = newsTable.Rows[0];
+                //}
 
                 // 有最新新闻
                 htmlTitle.AppendLine("<div class=\"section-header header2\"><div class=\"box\">");
@@ -266,25 +266,29 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageMasterV2
                 htmlTitle.AppendLine("</div>");
                 htmlTitle.AppendLine("</div>");
 
-                int loop = 0;
-                htmlCode.AppendFormat("<div id=\"data_table_MasterNews_{0}\"  class=\"list-txt list-txt-m list-txt-default\">", loop.ToString());
-                loop++;
+                //int loop = 0;
+                htmlCode.Append("<div id=\"data_table_MasterNews_0\"  class=\"list-txt list-txt-m list-txt-default\">");
+                //loop++;
 
                 htmlCode.AppendLine("<ul>");
                 int i = 0;
+                string newsTitle = string.Empty;
+                string newsUrl = string.Empty;
+                if (firstNewsRow != null)
+                {
+                    newsTitle = firstNewsRow["FaceTitle"].ToString();
+                    newsUrl = firstNewsRow["filepath"].ToString();
+                    //过滤Html标签
+                    newsTitle = CommonFunction.NewsTitleDecode(newsTitle);
 
-                string newsTitle = firstNewsRow["FaceTitle"].ToString();
-                string newsUrl = firstNewsRow["filepath"].ToString();
-                //过滤Html标签
-                newsTitle = CommonFunction.NewsTitleDecode(newsTitle);
+                    ListForNewsTitle.Add(newsTitle);
 
-                ListForNewsTitle.Add(newsTitle);
-
-                htmlCode.AppendFormat("<li><div class=\"txt\"><a href=\"{0}\" target=\"_blank\">{1}</a></div><span>{2}</span></li>"
-                                       , newsUrl
-                                       , newsTitle
-                                       , Convert.ToDateTime(firstNewsRow["publishtime"]).ToString("yyyy-MM-dd"));
-                i++;
+                    htmlCode.AppendFormat("<li><div class=\"txt\"><a href=\"{0}\" target=\"_blank\">{1}</a></div><span>{2}</span></li>"
+                                           , newsUrl
+                                           , newsTitle
+                                           , Convert.ToDateTime(firstNewsRow["publishtime"]).ToString("yyyy-MM-dd"));
+                    i++;
+                }
                 foreach (DataRow newsRow in newsTable.Rows)
                 {
                     if (i >= _maxNewsCount)
@@ -488,26 +492,26 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageMasterV2
             DataSet brandDs = new Car_BrandBll().GetCarSerialPhotoListByBSID(masterId, true);
             if (brandDs != null && brandDs.Tables.Count > 0)
             {
-                if (brandDs.Tables.Count > 4)
-                {
-                    longTitleCss = "title-box-long";
-                }
+                //if (brandDs.Tables.Count > 4)
+                //{
+                //    longTitleCss = "title-box-long";
+                //}
                 // 有品牌
-                htmlTitle.AppendLine("<div class=\"section-header header2 mb0\">");
-                htmlTitle.AppendLine("<div class=\"box\"><h2>" + masterName + "-车型</h2>");
-                //变态逻辑 下不为例 add 2016.09.27
-                if (masterId == 2)
-                {
-                    htmlTitle.AppendLine("<ul id=\"car_MasterSerialList_ul\" class=\"nav\" style=\"width: 590px;height: 24px;overflow: hidden;\">");
-                }
-                else
-                {
-                    htmlTitle.AppendLine("<ul id=\"car_MasterSerialList_ul\" class=\"nav\">");
-                }
+                htmlTitle.AppendLine("<div class=\"section-header header2\">");
+                htmlTitle.AppendLine("<div class=\"box\"><h2>" + masterName + "-车型</h2></div></div>");
+                ////变态逻辑 下不为例 add 2016.09.27
+                //if (masterId == 2)
+                //{
+                //    htmlTitle.AppendLine("<ul id=\"car_MasterSerialList_ul\" class=\"nav\" style=\"width: 590px;height: 24px;overflow: hidden;\">");
+                //}
+                //else
+                //{
+                    htmlTitle.AppendLine("<ul id=\"car_MasterSerialList_ul\" class=\"dealear-nav list\">");
+                //}
                 int loop = 0;
                 if (brandDs.Tables.Count > 1)
                 {
-                    htmlTitle.AppendLine("<li class=\"current\"><a target=\"_blank\" href=\"#\">全部</a></li>");
+                    htmlTitle.AppendLine("<li class=\"current\"><a target=\"_blank\" class=\"btn btn-sm\" href=\"#\">全部</a></li>");
                     loop = 1;
                 }
 
@@ -529,7 +533,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageMasterV2
                     {
                         string brandUrl = "/" + brandSpell + "/";
                         htmlTitle.AppendLine("<li class=\"" + (brandDs.Tables.Count > 1 ? "" : "current") +
-                                             "\"><a target=\"_blank\" href=\"" + brandUrl + "\">" + brandTable.TableName +
+                                             "\"><a target=\"_blank\" class=\"btn btn-sm\" href=\"" + brandUrl + "\">" + brandTable.TableName +
                                              "</a></li>");
                     }
 
@@ -701,7 +705,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageMasterV2
                     htmlCode.AppendLine("</div>");
                 }
                 //htmlCode.Append("</div>");
-                htmlTitle.AppendLine("</ul></div></div>");
+                htmlTitle.AppendLine("</ul>");
                 //if (masterName == "一汽")
                 //{
                 //	htmlTitle.Append("</div>");

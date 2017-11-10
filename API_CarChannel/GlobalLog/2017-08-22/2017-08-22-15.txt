@@ -1,0 +1,88 @@
+[2017/8/22 15:13:27]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2448&callback=h
+Ref: 
+Error Message: Element 'Description' does not match any field or property of class BitAuto.CarChannel.Model.Assessment.ConvenienceEntity.
+Stack Trace:    在 MongoDB.Bson.Serialization.BsonClassMapSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/22 15:13:51]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2448&callback=h
+Ref: 
+Error Message: Element 'Description' does not match any field or property of class BitAuto.CarChannel.Model.Assessment.ConvenienceEntity.
+Stack Trace:    在 MongoDB.Bson.Serialization.BsonClassMapSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/22 15:22:01]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2448&callback=h
+Ref: 
+Error Message: Element 'Description' does not match any field or property of class BitAuto.CarChannel.Model.Assessment.ConvenienceEntity.
+Stack Trace:    在 MongoDB.Bson.Serialization.BsonClassMapSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/22 15:24:40]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2448&callback=h
+Ref: 
+Error Message: Element 'Description' does not match any field or property of class BitAuto.CarChannel.Model.Assessment.ConvenienceEntity.
+Stack Trace:    在 MongoDB.Bson.Serialization.BsonClassMapSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/22 15:31:06]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2448&callback=h
+Ref: 
+Error Message: Element 'Description' does not match any field or property of class BitAuto.CarChannel.Model.Assessment.ConvenienceEntity.
+Stack Trace:    在 MongoDB.Bson.Serialization.BsonClassMapSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/22 15:32:31]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2448&callback=h
+Ref: 
+Error Message: Element 'MainImageUrl' does not match any field or property of class BitAuto.CarChannel.Model.Assessment.CommonInformationEntity.
+Stack Trace:    在 MongoDB.Bson.Serialization.BsonClassMapSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/22 15:33:28]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2448&callback=h
+Ref: 
+Error Message: Element 'MainImageUrl' does not match any field or property of class BitAuto.CarChannel.Model.Assessment.CommonInformationEntity.
+Stack Trace:    在 MongoDB.Bson.Serialization.BsonClassMapSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/22 15:34:36]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2448&callback=h
+Ref: 
+Error Message: Element 'Images' does not match any field or property of class BitAuto.CarChannel.Model.Assessment.MotilityEntity.
+Stack Trace:    在 MongoDB.Bson.Serialization.BsonClassMapSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/22 15:35:51]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2448&callback=h
+Ref: 
+Error Message: Element 'Images' does not match any field or property of class BitAuto.CarChannel.Model.Assessment.MotilityEntity.
+Stack Trace:    在 MongoDB.Bson.Serialization.BsonClassMapSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/22 15:36:22]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2448&callback=h
+Ref: 
+Error Message: Element 'Images' does not match any field or property of class BitAuto.CarChannel.Model.Assessment.MotilityEntity.
+Stack Trace:    在 MongoDB.Bson.Serialization.BsonClassMapSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/22 15:37:09]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2448&callback=h
+Ref: 
+Error Message: Element 'Images' does not match any field or property of class BitAuto.CarChannel.Model.Assessment.MotilityEntity.
+Stack Trace:    在 MongoDB.Bson.Serialization.BsonClassMapSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+

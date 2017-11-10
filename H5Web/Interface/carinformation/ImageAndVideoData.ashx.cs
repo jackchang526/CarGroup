@@ -202,19 +202,18 @@ namespace H5Web.Interface.carinformation
                             if (i == 0)
                             {
                                 stringBuilder.AppendFormat("<a href='{0}' class='pic-wall-re'>",
-                                    videoList[0].ShowPlayUrl);
+                                    videoList[i].ShowPlayUrl);
                                 stringBuilder.Append("                <span class='icon-video'></span>               ");
 
                                 stringBuilder.AppendFormat("<img src='{0}' />",
-                                    videoList[0].ImageLink.Replace("Video", "newsimg-367-w0/Video"));
+                                    videoList[i].ImageLink.Replace("Video", "newsimg-367-w0/Video"));
                                 stringBuilder.Append("            </a>");
                                 stringBuilder.Append("            <span class='pic-video-txt'>");
-                                stringBuilder.AppendFormat("<a href='{0}'>", videoList[0].ShowPlayUrl);
-                                stringBuilder.AppendFormat("<em>{0}</em>", videoList[0].ShortTitle);
+                                stringBuilder.AppendFormat("<a href='{0}'>", videoList[i].ShowPlayUrl);
+                                stringBuilder.AppendFormat("<em>{0}</em>", videoList[i].ShortTitle);
                                 stringBuilder.Append("                </a>");
                                 stringBuilder.Append("            </span>   ");
                             }
-
 
                             if (i == 1)
                             {
@@ -225,14 +224,14 @@ namespace H5Web.Interface.carinformation
                             {
                                 stringBuilder.Append("<div>");
                                 stringBuilder.AppendFormat("<a href='{0}' class='pic-wall-re'>",
-                                    videoList[0].ShowPlayUrl);
+                                    videoList[i].ShowPlayUrl);
                                 stringBuilder.Append("<span class='icon-video'></span>");
                                 stringBuilder.AppendFormat("<img src='{0}' />",
-                                    videoList[0].ImageLink.Replace("Video", "newsimg-367-w0/Video"));
+                                    videoList[i].ImageLink.Replace("Video", "newsimg-367-w0/Video"));
                                 stringBuilder.Append("</a>");
                                 stringBuilder.Append("<span class='pic-video-txt'>");
-                                stringBuilder.AppendFormat("<a href='{0}'>", videoList[0].ShowPlayUrl);
-                                stringBuilder.AppendFormat("<em>{0}</em>", videoList[0].ShortTitle);
+                                stringBuilder.AppendFormat("<a href='{0}'>", videoList[i].ShowPlayUrl);
+                                stringBuilder.AppendFormat("<em>{0}</em>", videoList[i].ShortTitle);
                                 stringBuilder.Append("</a>");
                                 stringBuilder.Append("</span>");
                                 stringBuilder.Append("</div>  ");

@@ -12,12 +12,14 @@
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <meta content="black" name="apple-mobile-web-app-status-bar-style" />
     <meta content="telephone=no" name="format-detection" />
+    <link rel="canonical" href="http://car.bitauto.com/@(Model.Serial.AllSpell)/m@(Model.Id)/peizhi/" />
     <title>【@(Model.Serial.SeoName)@(Model.Serial.Brand.MasterBrand.Name+Model.Serial.Name) 】参数配置表_@(Model.Serial.SeoName)发动机配置-手机易车网</title>
     <meta name="Keywords" content="@(Model.Serial.SeoName)参数,@(Model.Serial.SeoName)配置,@(Model.Serial.Brand.MasterBrand.Name+Model.Serial.Name),@(Model.Serial.SeoName)参数配置表,@(Model.Serial.SeoName)发动机配置,易车网,car.m.yiche.com" />
     <meta name="Description" content="@(Model.Serial.Brand.MasterBrand.Name+Model.Serial.Name)配置,手机易车网@(Model.Serial.Brand.MasterBrand.Name+Model.Serial.Name)配置参数表,包括,@(Model.Serial.SeoName)发动机,@(Model.Serial.SeoName)变速箱,@(Model.Serial.SeoName)车轮,@(Model.Serial.SeoName)灯光等配置参数。" />
     <!--#include file="/ushtml/0000/myiche2015_cube_chekuanpeizhi-1020.shtml"--> 
 </head>
 <body>
+    @Html.Partial("~/html/TopDownloadLayer.cshtml")
     <script type="text/javascript">
         var carlevel = '@Model.Serial.Level.Name';
     </script>
@@ -197,7 +199,13 @@
         </div>
         <!--footer end-->
     </div>
-
+    <!-- 选装弹层 start -->
+    <div class="pop-optional-mask" style="display:none;"></div>
+    <div class="pop-optional" style="display:none;">
+        <!--data-optionID和表格中的选装参数对应输出-->
+        @Html.Raw(ViewBag.CarAllParamPop)
+    </div>
+    <!-- 选装弹层 end -->
     <script type="text/javascript">
 
         $(document).on('touchstart', function (event) {
@@ -234,6 +242,45 @@
             $(".catalog-list").hide();
             $("#popup-menumask").hide();
         });
+        // 选装弹层
+        $(function () {
+            var halfScreenHeight = $(window).height() / 2;
+            $('.optional.type1').click(function (e) {
+                e.stopPropagation();
+                var thisID = $(this).data('optionid');
+                var thisTop = $(this).offset().top;
+                var thisLeft = $(this).offset().left;
+                var $popOptional = $('.pop-optional');
+
+                $('body').css('overflow', 'hidden');
+                $('.pop-optional-mask').show();
+
+                $popOptional.find('ul[data-optionid=' + thisID + ']').show();
+
+                var popOptionalHeight = $popOptional.height();
+                if (e.clientY < halfScreenHeight) {
+                    $popOptional.css({
+                        'top': (thisTop + 30),
+                        'left': (thisLeft - 100)
+                    });
+                    $popOptional.addClass('pop-optional-top');
+                } else {
+                    $popOptional.css({
+                        'top': (thisTop - popOptionalHeight - 15),
+                        'left': (thisLeft - 100)
+                    });
+                    $popOptional.addClass('pop-optional-bottom');
+                }
+
+                $popOptional.show();
+            });
+            $('.pop-optional-mask').click(function () {
+                $('body').css('overflow', 'auto');
+                $('.pop-optional-mask').hide();
+                $('.pop-optional').hide().removeClass('pop-optional-top pop-optional-bottom')
+                    .find('ul').hide();
+            });
+        })
     </script>
 
 
@@ -244,7 +291,7 @@
     <script type="text/javascript" src="/js/v2/note.js"></script>
     <script type="text/javascript" src="/js/v2/brand.js"></script>
     <script type="text/javascript" src="/js/waitcompareV2.js"></script>*@
-    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.js,carchannel/wirelessjsv2/v2/underscore.js,carchannel/wirelessjsv2/v2/model.js,carchannel/wirelessjsv2/v2/rightswipe.js,carchannel/wirelessjsv2/v2/note.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.js?v=20170105"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.js,carchannel/wirelessjsv2/v2/underscore.js,carchannel/wirelessjsv2/v2/model.js,carchannel/wirelessjsv2/v2/rightswipe.js,carchannel/wirelessjsv2/v2/note.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.min.js?v=201707031121"></script>
     <script type="text/javascript">
         $(function () {
             var $body = $('body');
@@ -274,6 +321,7 @@
                 $('.brandlist').height(document.documentElement.clientHeight);
             }
         }
+
     </script>
 
     <script type="text/javascript">

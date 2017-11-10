@@ -386,7 +386,7 @@ namespace BitAuto.CarChannel.Common
                     }
                     sic.CsGuestFuelCost = this.GetSerialDianPingYouHaoByCsID(sic.CsID);
                     // 子品牌业务数量统计
-                    sic.CsAskCount = this.GetSerialAskCountByCsID(sic.CsID);
+                    sic.CsAskCount = 0;// this.GetSerialAskCountByCsID(sic.CsID);
                     sic.CsDianPingCount = this.GetSerialDianPingCountByCsID(sic.CsID);
                     string defaultPic = "";
                     int picCount = 0;
@@ -447,7 +447,8 @@ namespace BitAuto.CarChannel.Common
             CacheManager.GetCachedData(catchkey, out allSErialInfo);
             if (allSErialInfo == null)
             {
-                string sql = " select cs.*,bat.bitautoTestURL,cb.cb_name,csi.Body_Doors,csi.Engine_Exhaust,csi.UnderPan_Num_Type ";
+				string sql = " select  cs.cs_id,cs.cs_name,cs.cs_ShowName,cs.allSpell,cs.cs_Virtues,cs.cs_Defect,cs.CsSaleState,cs.cs_CarLevel,cs.CsBodyForm,cs.cs_Url,";
+				sql += " cs.CsPurpose,bat.bitautoTestURL,cb.cb_name,csi.Body_Doors,csi.Engine_Exhaust,csi.UnderPan_Num_Type,csi.Car_RepairPolicy CsRepairPolicy ";
                 sql += " from dbo.Car_Serial cs ";
                 sql += " left join dbo.Car_Serial_Item csi on cs.cs_id = csi.cs_id ";
                 sql += " left join dbo.Car_Brand cb on cs.cb_id = cb.cb_id ";
@@ -727,12 +728,12 @@ namespace BitAuto.CarChannel.Common
                         }
                         //add by sk 2014.3.31 增压方式
                         string addPressType = string.Empty;
-                        if (dictParams.ContainsKey(408))
-                        {
-                            if (dictParams[408] == "" || dictParams[408] == "待查" || dictParams[408] == "无") { }
-                            else
-                                addPressType = dictParams[408];
-                        }
+                        //if (dictParams.ContainsKey(425))
+                        //{
+                        //    if (dictParams[425] == "" || dictParams[425] == "待查" || dictParams[425] == "无") { }
+                        //    else
+                        //        addPressType = dictParams[425];
+                        //}
                         int kw = 0;
                         if (dictParams.ContainsKey(430))
                         {
@@ -807,12 +808,12 @@ namespace BitAuto.CarChannel.Common
                     }
                     //add by sk 2014.3.31 增压方式
                     string addPressType = string.Empty;
-                    if (dictParams.ContainsKey(408))
-                    {
-                        if (dictParams[408] == "" || dictParams[408] == "待查" || dictParams[408] == "无") { }
-                        else
-                            addPressType = dictParams[408];
-                    }
+                    //if (dictParams.ContainsKey(425))
+                    //{
+                    //    if (dictParams[425] == "" || dictParams[425] == "待查" || dictParams[425] == "无") { }
+                    //    else
+                    //        addPressType = dictParams[425];
+                    //}
                     int kw = 0;
                     if (dictParams.ContainsKey(430))
                     {
@@ -5947,18 +5948,18 @@ namespace BitAuto.CarChannel.Common
         /// 车型参数模板
         /// </summary>
         /// <returns></returns>
-        protected Dictionary<int, Dictionary<string, CarParam>> GetCarParameterJsonConfigDictionary()
+        public Dictionary<int, List<string>> GetCarParameterJsonConfigNewV2()
         {
-            Dictionary<int, Dictionary<string, CarParam>> dic = new Dictionary<int, Dictionary<string, CarParam>>();
-            string cacheKey = "PageBase_GetCarParameterJsonConfigDictionary";
-            object getCarParameterJsonConfigDictionary = CacheManager.GetCachedData(cacheKey);
-            if (getCarParameterJsonConfigDictionary != null)
+            Dictionary<int, List<string>> dic = new Dictionary<int, List<string>>();
+            string cacheKey = "PageBase_GetCarParameterJsonConfigNewV2";
+            object getCarParameterJsonConfig = CacheManager.GetCachedData(cacheKey);
+            if (getCarParameterJsonConfig != null)
             {
-                dic = (Dictionary<int, Dictionary<string, CarParam>>)getCarParameterJsonConfigDictionary;
+                dic = (Dictionary<int, List<string>>)getCarParameterJsonConfig;
             }
             else
             {
-                string fileName = Server.MapPath("~") + "\\config\\ParameterForJson.xml";
+                string fileName = Server.MapPath("~") + "\\config\\ParameterForJsonNewV2.xml";
                 if (File.Exists(fileName))
                 {
                     XmlDocument doc = new XmlDocument();
@@ -5974,24 +5975,19 @@ namespace BitAuto.CarChannel.Common
                                 // 大分类
                                 if (xnCate.ChildNodes.Count > 0)
                                 {
-                                    Dictionary<string, CarParam> dicCp = new Dictionary<string, CarParam>();
+                                    List<string> lp = new List<string>();
                                     // 分类内项
                                     foreach (XmlNode xn in xnCate.ChildNodes)
                                     {
                                         if (xn.NodeType == XmlNodeType.Element
-                                        && !dicCp.ContainsKey(xn.Attributes["Value"].Value.ToString()))
+                                            && !lp.Contains(xn.Attributes["Value"].Value.ToString()))
                                         {
-                                            CarParam cp = new CarParam();
-                                            cp.ParamID = int.Parse(xn.Attributes["ParamID"].Value.ToString());
-                                            cp.ParamName = xn.Attributes["Desc"].Value.ToString();
-                                            cp.AliasName = xn.Attributes["Value"].Value.ToString();
-                                            cp.ModuleDec = xn.Attributes["Unit"].Value.ToString();
-                                            dicCp.Add(xn.Attributes["Value"].Value.ToString(), cp);
+                                            lp.Add(xn.Attributes["Value"].Value.ToString());
                                         }
                                     }
                                     if (!dic.ContainsKey(i))
                                     {
-                                        dic.Add(i, dicCp);
+                                        dic.Add(i, lp);
                                     }
                                 }
                                 i++;
@@ -6004,6 +6000,8 @@ namespace BitAuto.CarChannel.Common
             }
             return dic;
         }
+
+
         /// <summary>
         /// 车型参数模板
         /// </summary>

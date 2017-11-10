@@ -68,7 +68,7 @@
     </Reference>
     <Reference Include="BitAuto.Utils, Version=2.0.7.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\P公用平台\Release\BitAuto.Utils.dll</HintPath>
+      <HintPath>..\..\..\packages\BitAuto.Utils.dll</HintPath>
     </Reference>
     <Reference Include="BitAuto.Web">
       <HintPath>..\DLL\BitAuto.Web.dll</HintPath>
@@ -76,7 +76,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Dll\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PieceDataProviderLib">
       <HintPath>..\DLL\PieceDataProviderLib.dll</HintPath>
@@ -152,14 +152,16 @@
     <Content Include="CarTree\CX_serial.aspx" />
     <Content Include="CarTree\SelectCar.aspx" />
     <Content Include="CarTreeV2\SelectCar.aspx" />
+    <Content Include="config\ChangeURL.xml" />
     <Content Include="config\guideConfig.xml" />
     <Content Include="config\H5SelectSerialList.xml" />
     <Content Include="config\IIS6\IsapiRewrite4.dll" />
-    <Content Include="config\IIS6\IsapiRewrite4.pdb" />
     <Content Include="config\PagerConfig.xml" />
     <Content Include="config\ParameterForJson.xml" />
     <Content Include="config\ParameterForJsonNew.xml" />
+    <Content Include="config\ParameterForJsonNewV2.xml" />
     <Content Include="config\PhotoCompareStruct.xml" />
+    <Content Include="config\VR.xml" />
     <Content Include="CsRegionSEOSiteMap.aspx" />
     <Content Include="css\alen.css" />
     <Content Include="css\alert.css" />
@@ -671,6 +673,7 @@
     <Content Include="include\BAA\BBS\00001\20161031_cxzs_luntan_Manual.shtml" />
     <Content Include="include\BAA\BBS\00001\20170424_cxzs_luntan_new_Manual.shtml" />
     <Content Include="include\debris\ranks\Top10HotNewsPage.shtml" />
+    <Content Include="include\debris\ranks\Top10HotNewsPage_utf8.shtml" />
     <Content Include="include\partner\hezuo_part\00001\201210_hzwz_rmcx_gb2312_Manual.shtml" />
     <Content Include="include\partner\hezuo_part\00001\201210_hzwz_rmcx_Manual.shtml" />
     <Content Include="include\pd\2012\chedai\00001\chedai_chedaizixun_Manual.shtml" />
@@ -1006,6 +1009,7 @@
     <Content Include="jsnewV2\CarChannelBaikeJson.js" />
     <Content Include="jsnewV2\carcompareforminiV3.js" />
     <Content Include="jsnewV2\carcomparelist.js" />
+    <Content Include="jsnewV2\carcomparelistv2.js" />
     <Content Include="jsnewV2\carSelectSimple.js" />
     <Content Include="jsnewV2\circle-progress.min.js" />
     <Content Include="jsnewV2\common.js" />
@@ -1022,8 +1026,10 @@
     <Content Include="jsnewV2\jquery.lazyload.min.js" />
     <Content Include="jsnewV2\jquery.qrcode.js" />
     <Content Include="jsnewV2\JsForParameter.js" />
+    <Content Include="jsnewV2\JsForParameterV2.js" />
     <Content Include="jsnewV2\knob.extend.js" />
     <Content Include="jsnewV2\KouBeiCompare.js" />
+    <Content Include="jsnewV2\NewSelectCarToolV5.js" />
     <Content Include="jsnewV2\newsViewCount.js" />
     <Content Include="jsnewV2\photoCompare.js" />
     <Content Include="jsnewV2\pingceyouhui.js" />
@@ -1032,6 +1038,7 @@
     <Content Include="jsnewV2\serialexternalcommon.js" />
     <Content Include="jsnewV2\serialtoseead.js" />
     <Content Include="jsnewV2\superselectcartool.js" />
+    <Content Include="jsnewV2\superselectcartoolv2.js" />
     <Content Include="jsnewV2\taochev2.js" />
     <Content Include="jsnewV2\ucarserialcity.js" />
     <Content Include="jsnew\Added_GoCarTypeAndPrice.js" />
@@ -1158,6 +1165,7 @@
     <Content Include="jsnew\XuanChe.js" />
     <Content Include="jsnew\yicheSug.js" />
     <Content Include="jsnew\zampdaforcarchannel.js" />
+    <Content Include="PageLevelV2\BaoZhiLvPaiHang.aspx" />
     <Content Include="PageLevelV2\LevelPaihang.aspx" />
     <Content Include="PageListV2\SerialForBrandList.aspx" />
     <Content Include="PageListV2\SerialForCharList.aspx" />
@@ -2572,6 +2580,13 @@
     <Compile Include="Interface\Tree\SelectCarToXml.aspx.designer.cs">
       <DependentUpon>SelectCarToXml.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PageLevelV2\BaoZhiLvPaiHang.aspx.cs">
+      <DependentUpon>BaoZhiLvPaiHang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageLevelV2\BaoZhiLvPaiHang.aspx.designer.cs">
+      <DependentUpon>BaoZhiLvPaiHang.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PageLevelV2\LevelPaihang.aspx.cs">
       <DependentUpon>LevelPaihang.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3219,6 +3234,7 @@
     <Content Include="config\SelectCarParams.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="config\ParameterConfigurationNewV2.config" />
     <None Include="include\special\2010\00001\test1.shtml.bak" />
     <None Include="include\special\2010\00001\test2.shtml.bak" />
     <Content Include="Interface\Level\GetLevelHtmlCode.ashx" />

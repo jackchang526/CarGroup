@@ -1,20 +1,17 @@
-﻿using System;
-using System.Data;
-using System.Text;
-using System.Xml;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using BitAuto.CarChannel.BLL;
+using BitAuto.CarChannel.BLL.Data;
 using BitAuto.CarChannel.Common;
-using BitAuto.CarChannel.Common.Enum;
 using BitAuto.CarChannel.Common.Cache;
-using BitAuto.CarChannel.BLL;
+using BitAuto.CarChannel.Common.Enum;
 using BitAuto.CarChannel.Model;
 using BitAuto.Utils;
-using BitAuto.CarChannel.BLL.Data;
+using System;
+using System.Collections.Generic;
+using System.Data;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Xml;
 
 namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
 {
@@ -104,6 +101,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
         protected string carPrice = string.Empty;//参考成交价
         //购置税内容
         protected string TaxContent = string.Empty;
+        protected Dictionary<int, Dictionary<string, double>> dictOptional;
+       // protected string carFuelType = ["汽油", "柴油", "纯电动", "油电混合", "插电混合", "客车", "卡车", "天然气"];
         #endregion
 
         private Car_BasicBll basicBll;
@@ -185,7 +184,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 //{ fuelString = "<a href=\"http://car.bitauto.com/" + cbe.Serial.AllSpell.ToLower() + "/youhao/\" target=\"_blank\">" + fuelString + "/100km</a>"; }
 
                 Dictionary<int, string> dict = basicBll.GetCarAllParamByCarID(carID);
-
+                dictOptional = basicBll.GetCarAllParamOptionalByCarID(carID);
                 // 节能补贴 Sep.2.2010 [2012-04-09 样式修改]
                 bool isHasEnergySubsidy = basicBll.CarHasParamEx(carID, 853);
                 //modified by sk 2015.01.30 只显示 第七 八 批 补贴批次
@@ -224,13 +223,13 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                     TaxContent = "购置税75折";
                 }
                 //add by 2014.05.04 电动车参数
-                isElectrombile = dict.ContainsKey(578) && dict[578] == "电力" ? true : false;
+                isElectrombile = dict.ContainsKey(578) && dict[578] == "纯电" ? true : false;
                 batteryCapacity = dict.ContainsKey(876) ? dict[876] : "";
                 powerConsumptive100 = dict.ContainsKey(868) ? dict[868] : "";
                 mileage = dict.ContainsKey(883) ? dict[883] : "";
                 chargeTime = dict.ContainsKey(879) ? dict[879] : "";
                 fastChargeTime = dict.ContainsKey(878) ? dict[878] : "";
-                exhaust = (dict.ContainsKey(425) && dict[425] == "增压") ? cfcs.Engine_Exhaust.Replace("L", "T") : cfcs.Engine_Exhaust;
+                exhaust = (dict.ContainsKey(425) && dict[425].Contains("增压")) ? cfcs.Engine_Exhaust.Replace("L", "T") : cfcs.Engine_Exhaust;
                 //论坛Url
                 // forumUrl = new Car_SerialBll().GetForumUrlBySerialId(cbe.Serial.Id);
                 #endregion
@@ -437,7 +436,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 hotCars = hotCarsStr.ToString();
             }
         }
-
+        /*
         /// <summary>
         /// 取车型焦点图
         /// add Jul.6.2011
@@ -499,8 +498,48 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
 
             }
         }
+        */
+        /// <summary>
+        /// 取车型焦点图
+        /// add Jul.6.2011
+        /// </summary>
+        private void GetCarFocusImage()
+        {
+            //XmlDocument doc = basicBll.GetCarDefaultPhoto(cbe.Serial.Id, carID, cbe.CarYear);
+            var photoCountDic = basicBll.GetCarPhotoCount();
+            if (photoCountDic.ContainsKey(carID))
+            {
+                PhotoCount = int.Parse(photoCountDic[carID]);
+            }
+            Dictionary<int, XmlElement> carCoverImg = basicBll.GetCarDefaultPhotoXmlElement();
+            if (carCoverImg != null && carCoverImg.ContainsKey(carID))
+            {
+                XmlElement imageItem = carCoverImg[carID];
+                ImgLink = string.Format("http://photo.bitauto.com/picture/{0}/{1}/"
+                    , cbe.SerialId
+                    , imageItem.Attributes["ImageId"].Value);//imageItem.Attributes["Link"].Value;
+                PicUrl = imageItem.Attributes["ImageUrl"].Value;
+                PicUrl = PicUrl.Replace("_2.", "_4.");
+                CarPicName = string.Format("共{0}张图片", PhotoCount);
+            }
+            else
+            {
+                // 用子品牌焦点图
+                List<SerialFocusImage> imgList = serialBLL.GetSerialFocusImageList(cbe.Serial.Id);
+                if (imgList.Count > 0)
+                {
+                    SerialFocusImage csImg = imgList[0];
+                    PicUrl = string.Format(csImg.ImageUrl, 4);
+                    ImgLink = csImg.TargetUrl;
+                    CarPicName = string.Format("当前车款暂无图片，图片显示为:<br>{0}", csImg.CarName);
+                }
+                else
+                {
+                    PicUrl = WebConfig.DefaultCarPic;
+                }
 
-
+            }
+        }
 
         /// <summary>
         /// 取车型热门对比车型
@@ -772,13 +811,13 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
             StringBuilder sbTemp = new StringBuilder();
             List<int> listValidCarID = new List<int>();
             listValidCarID.Add(carID);
-            Dictionary<int, Dictionary<string, string>> dic = basicBll.GetCarCompareDataByCarIDs(listValidCarID);
+            Dictionary<int, Dictionary<string, string>> dic = basicBll.GetCarCompareDataWithOptionalByCarIDs(listValidCarID);
             if (!dic.ContainsKey(carID) || dic[carID].Count == 0)
             { return ""; }
             else
             {
                 XmlDocument docPC = new XmlDocument();
-                string cache = "CarSummary_ParameterConfigurationNew";
+                string cache = "CarSummary_ParameterConfigurationNewV2";
                 object parameterConfiguration = null;
                 CacheManager.GetCachedData(cache, out parameterConfiguration);
                 if (parameterConfiguration != null)
@@ -787,7 +826,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 }
                 else
                 {
-                    var filePath = System.Web.HttpContext.Current.Server.MapPath("~") + "\\config\\ParameterConfigurationNew.config";
+                    var filePath = System.Web.HttpContext.Current.Server.MapPath("~") + "\\config\\ParameterConfigurationNewV2.config";
                     if (File.Exists(filePath))
                     {
                         docPC.Load(filePath);
@@ -869,8 +908,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 //if (dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value)
                 //	&& dic[carID][item.Attributes.GetNamedItem("Value").Value] != "待查")
                     string pvalue = string.Empty;
-                    //合并参数
-                    if (item.Attributes.GetNamedItem("Value").Value.IndexOf(",") != -1)
+                //合并参数 燃油变速箱
+                if (item.Attributes.GetNamedItem("Value").Value.IndexOf(",") != -1)
                     {
                         string[] arrKey = item.Attributes.GetNamedItem("Value").Value.Split(',');
                         string[] arrUnit = item.Attributes.GetNamedItem("Unit").Value.Split(',');
@@ -884,39 +923,42 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                             if (arrParam[i] == "724")
                             {
                                 var d = ConvertHelper.GetInteger(dic[carID][arrKey[i]]);
-                                if (d <= 0) continue;
+                                var t = dic[carID].ContainsKey(arrKey[i + 1]) ? dic[carID][arrKey[i + 1]].Trim() : "";
+                                if (d <= 0 || t == "单速变速箱" || t == "E-CVT无级变速" || t == "CVT无级变速" || t == "")
+                                {
+                                    continue;
+                                }
                             }
-                            ////CD DVD 
-                            //if (arrParam[i] == "510" || arrParam[i] == "490")
-                            //{
-                            //    if (dic[carID][arrKey[i]].IndexOf("有") != -1)
-                            //        continue;
-                            //}
-                            list.Add(string.Format("{0}{1}", dic[carID][arrKey[i]], arrUnit[i]));
+                            //变速箱类型 变速箱为空不显示变速箱与挡位
+                            if (arrParam[i] == "712")
+                            {
+                                var t = dic[carID][arrKey[i]];
+                                if (string.IsNullOrEmpty(t))
+                                {
+                                    if (list.Count == 1)
+                                    {
+                                        list.RemoveAt(0);
+                                    }
+                                    continue;
+                                }
+                            }
+                          list.Add(string.Format("{0}{1}", dic[carID][arrKey[i]], arrUnit[i]));
                         }
                         if (list.Count <= 0) continue;
                         //解决2个参数 其中“有” 后面参数有值 替换成 实心圈
                         var you = list.Find(p => p.IndexOf("有") != -1);
                         if (you != null && list.Count > 1)
                             list.Remove(you);
-                        //进气形式 2个参数 增压 显示 增压方式 不是则显示 进气形式
-                        if (item.Attributes.GetNamedItem("Name").Value == "进气形式")
-                        {
-                            if (list.Count > 1)
-                            {
-                                if (list[0] == "增压")
-                                    list.RemoveAt(0);
-                                else
-                                    list.RemoveAt(1);
-                            }
-                        }
                         pvalue = string.Join(" ", list.ToArray());
                     }
                     else
                     {
-                        if (!(dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value)
-                    && dic[carID][item.Attributes.GetNamedItem("Value").Value] != "待查")) continue;
-                        pvalue = string.Format("{0}{1}", dic[carID][item.Attributes.GetNamedItem("Value").Value], item.Attributes.GetNamedItem("Unit").Value);
+                    if (!(dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value)))
+                       { continue; }
+                        if (dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value)&& dic[carID][item.Attributes.GetNamedItem("Value").Value] != "待查")
+                        {
+                            pvalue = dic[carID][item.Attributes.GetNamedItem("Value").Value];
+                        }
                     }
 
                     isHasChild = true || isHasChild;
@@ -949,62 +991,90 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                             pvalue = pvalue + " " + pvalueOther;
                         }
                     }
-                    // 进气型式 如果自然吸气直接显示，如果是增压则显示增压方式
-                    if (item.Attributes.GetNamedItem("ParamID").Value == "425"
-                        && pvalue == "增压")
-                    {
-                        if (dic[carID].ContainsKey("CarParams/Engine_AddPressType")
-                    && dic[carID]["CarParams/Engine_AddPressType"] != "待查")
-                        {
-                            pvalueOther = dic[carID]["CarParams/Engine_AddPressType"];
-                            pvalue = pvalue + " " + pvalueOther;
-                        }
-                    }
-                    //解决 变速箱 无极变速 替换成 -
-                    if (item.Attributes.GetNamedItem("Name").Value != "变速箱")
-                    {
-                        if (pvalue.IndexOf("有") == 0)
-                        { pvalue = "●"; }
-                        if (pvalue.IndexOf("选配") == 0)
-                        { pvalue = "○"; }
-                        if (pvalue.IndexOf("无") == 0)
-                        { pvalue = "-"; }
-                    }
-                     
-                    //sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + ":</span></td>");
 
-                    //Note:设页面中2个td为一组，一行有3组，颜色块占1行中的2组,并且补齐1行中的6个td保持行线完整
-                    // 车身颜色呈现特殊化
-                    if (item.Attributes.GetNamedItem("Name").Value == "车身颜色")
-                    {
-                        strColorHtmlBlock="<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>";
-                        strColorHtmlBlock+="<td colspan=\"3\"><div class=\"focus-color-warp\"><ul id=\"color-listbox\"><!--车身颜色--></ul></div></td>";
+                //sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + ":</span></td>");
 
-                        if (loopCount != 0)
+                //Note:设页面中2个td为一组，一行有3组，颜色块占1行中的2组,并且补齐1行中的6个td保持行线完整
+                // 车身颜色呈现特殊化
+                if (item.Attributes.GetNamedItem("Name").Value == "车身颜色")
+                {
+                    strColorHtmlBlock = "<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>";
+                    strColorHtmlBlock += "<td colspan=\"3\"><div class=\"focus-color-warp\"><ul id=\"color-listbox\"><!--车身颜色--></ul></div></td>";
+
+                    if (loopCount != 0)
+                    {
+                        if (loopCount % 3 == 2)   //余1组td时，不足以填充颜色块，则补充当前行，并将颜色块移到下一行
                         {
-                            if (loopCount % 3 == 2)   //余1组td时，不足以填充颜色块，则补充当前行，并将颜色块移到下一行
-                            {
-                                sbTemp.AppendLine("<td></td><td></td></tr><tr>#colorblock#");   
-                                loopCount += 3;
-                            }
-                            else   //余0或2组td时，将颜色块直接填充到当前行
-                            {
-                                sbTemp.AppendLine("#colorblock#");
-                                loopCount += 2;
-                            }
+                            sbTemp.AppendLine("<td></td><td></td></tr><tr>#colorblock#");
+                            loopCount += 3;
                         }
-                        else   //颜色块占 首行的前两组时
+                        else   //余0或2组td时，将颜色块直接填充到当前行
                         {
-                            sbTemp.AppendLine("#colorblock#");  
+                            sbTemp.AppendLine("#colorblock#");
                             loopCount += 2;
+                        }
+                    }
+                    else   //颜色块占 首行的前两组时
+                    {
+                        sbTemp.AppendLine("#colorblock#");
+                        loopCount += 2;
+                    }
+                }
+                else
+                {
+                    sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>");
+                    if (pvalue.IndexOf(",") == -1)
+                    {
+                        //解决 变速箱 无极变速 替换成 -
+                        if (item.Attributes.GetNamedItem("Name").Value != "变速箱类型")
+                        {
+                            if (pvalue.IndexOf("有") == 0)
+                            { pvalue = "●"; }
+                            if (pvalue =="选配")
+                            { pvalue = "○"; }
+                            if (pvalue == "无")
+                            { pvalue = "-"; }
+
+                            pvalue = string.Format("{0}{1}", pvalue, item.Attributes.GetNamedItem("Unit").Value);
+                        }
+                       
+                        if (pvalue.IndexOf("|") == -1)
+                        {
+                            sbTemp.AppendLine("<td><span class=\"info\">" + pvalue + "</span></td>");
+                        }
+                        else
+                        {
+                            var name = pvalue.Split('|')[0];
+                            string price = Convert.ToSingle(pvalue.Split('|')[1]).ToString("N0");
+                            sbTemp.AppendLine("<td><div class=\"info\"><div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + " " + price + "元</div></div></div></td>");
                         }
                     }
                     else
                     {
-                        sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>");
-                        sbTemp.AppendLine("<td class=\"info\">" + pvalue + "</td>");
-                        loopCount++;
+                        var pvalueList = pvalue.Split(',');
+                        sbTemp.AppendLine("<td><div class=\"info\">");
+                        foreach (var pval in pvalueList)
+                        {
+                            if (pval.IndexOf("|") == -1)
+                            {
+                                if (pval != "无")
+                                {
+                                    sbTemp.AppendLine("<div class=\"optional type2 std\"><div class=\"l\"><i>●</i>" + pval + "</div></div>");
+                                }
+                            }
+                            else
+                            {
+                                var name = pval.Split('|')[0];
+                                string price = Convert.ToSingle(pval.Split('|')[1]).ToString("N0");
+                                sbTemp.AppendLine("<div class=\"optional type2\"><div class=\"l\"><i>○</i>" + name + " " + price + "元</div></div>");
+                            }
+                        }
+                        sbTemp.AppendLine("</div></td>");
+
                     }
+                   
+                    loopCount++;
+                }
             }
             if (loopCount != 0)   //处理一行结尾的tr
             {

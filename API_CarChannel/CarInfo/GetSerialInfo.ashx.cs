@@ -54,6 +54,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
     /// add dept=getcsinfoforbbs for 张义刚 迁移car域名接口 http://car.bitauto.com/car/interfaceforbitauto/Serial/AllSerialInfo.aspx?dept=bitautobbs&sale=all
     /// add dept=getpingcebycsid for 王志腾 按车系取评测标签及对应的url
     /// add dept=getallcarspaceinfobycsid for 冯津 车款的关键报告数据接口 按车系id
+    /// add dept=getserialbaseinfobyidjson for 照片识别  车系基本信息数据 按车系id
     /// </summary>
     public class GetSerialInfo : PageBase, IHttpHandler
     {
@@ -108,8 +109,37 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                 case "gethotcsbymasterid": RenderHotSerialInfoByMasterId(); break;
                 case "getpingcebycsid": RenderCsPingceTagByCsID(); break;
                 case "getallcarspaceinfobycsid": RenderAllCarSpaceDataByCsId(); break;
+                case "getserialbaseinfobyidjson": RenderSerialBaseInfoByCsId(); break;
                 default: CommonFunction.EchoXml(response, "<!-- 缺少参数 -->", ""); ; break;
             }
+        }
+
+        /// <summary>
+        /// 根据车系id获取车系基本参数
+        /// </summary>
+        private void RenderSerialBaseInfoByCsId()
+        {
+            response.ContentType = "application/x-javascript";
+            int serialId = ConvertHelper.GetInteger(request.QueryString["csid"]);
+            string callback = request.QueryString["callback"];
+            string result = "{}";
+            if (serialId > 0)
+            {
+                SerialEntity serialEntity = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, serialId);
+                if (serialEntity != null)
+                {
+                    result = JsonConvert.SerializeObject(new
+                    {
+                        Id = serialId,
+                        ShowName = CommonFunction.GetUnicodeByString(serialEntity.ShowName),
+                        AllSpell = serialEntity.AllSpell,
+                        Price = serialEntity.Price,
+                        ReferPrice = serialEntity.ReferPrice,
+                        Image = Car_SerialBll.GetSerialImageUrl(serialId, 6, true)
+                    });
+                }
+            }
+            response.Write(string.Format(!string.IsNullOrEmpty(callback) ? (callback + "({0})") : "{0}", result));
         }
 
         private void RenderCsCityCompareData()
@@ -157,10 +187,10 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 									AND cb.isState = 1
 									AND cmbr.bs_Id = @bsId
 							ORDER BY cs30.UVCount DESC";
-                SqlParameter[] _params = { 
-									 new SqlParameter("@bsId",SqlDbType.Int),
-									 new SqlParameter("@topN",SqlDbType.Int)
-									 };
+                SqlParameter[] _params = {
+                                     new SqlParameter("@bsId",SqlDbType.Int),
+                                     new SqlParameter("@topN",SqlDbType.Int)
+                                     };
                 _params[0].Value = bsId;
                 _params[1].Value = topN;
                 DataSet ds = BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString
@@ -1158,7 +1188,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 
             string sqlGetOilElectricByCarID = @"select paramid,pvalue
 			from CarDataBase
-			where carid=@carID and paramid in (998,782,430,870)";
+			where carid=@carID and paramid in (578,782,430,870)";
             SqlParameter[] _param ={
                                       new SqlParameter("@carID",SqlDbType.Int)
                                   };
@@ -1168,7 +1198,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 															select carid from CarDataBase
 															where 
 															paramid = 578
-															and Pvalue='油电混合动力') t
+															and( Pvalue='油电混合' or Pvalue='插电混合')) t
 															left join Car_relation car on t.CarId=car.Car_Id
 															left join Car_Serial cs on car.Cs_Id=cs.cs_Id
 															left join Car_Serial_30UV cs30 on cs.cs_Id=cs30.cs_id
@@ -1238,9 +1268,9 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                             switch (drCar["paramid"].ToString())
                             {
                                 case "430": GetMinOrMax(drCar["pvalue"].ToString().Trim(), ref minEM, ref maxEM); break;
+                                case "578":  if ((!listNE.Contains(drCar["pvalue"].ToString().Trim()))&& drCar["pvalue"].ToString().Trim().IndexOf("混合")>=0) { listNE.Add(drCar["pvalue"].ToString().Trim()); }; break;
                                 case "782": GetMinOrMax(drCar["pvalue"].ToString().Trim(), ref minPZ, ref maxPZ); break;
                                 case "870": GetMinOrMax(drCar["pvalue"].ToString().Trim(), ref minEP, ref maxEP); break;
-                                case "998": if (!listNE.Contains(drCar["pvalue"].ToString().Trim())) { listNE.Add(drCar["pvalue"].ToString().Trim()); }; break;
                                 default: break;
                             }
                         }
@@ -2571,7 +2601,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
             List<string> countryList = new List<string>();
             switch (bsCountry)
             {
-                case "中国": ; break;
+                case "中国":; break;
                 case "美国": countryList.Add("美系"); break;
                 case "日本": countryList.Add("日系"); break;
                 case "韩国": countryList.Add("韩系"); break;
@@ -2672,6 +2702,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
         {
             int csid = 0;
             int top = 10;
+            bool isShowShiPai = false;
             if (request.QueryString["top"] != null && request.QueryString["top"].ToString() != "")
             {
                 string topCount = request.QueryString["top"].ToString();
@@ -2684,12 +2715,24 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                 if (int.TryParse(csIDstr, out csid))
                 { }
             }
+            if (request.QueryString["showshipai"] != null && request.QueryString["showshipai"].ToString() != "")
+            {
+                isShowShiPai = ConvertHelper.GetInteger(request.QueryString["showshipai"]) == 1;
+            }
             if (top < 0 || top > 10)
             { top = 10; }
 
             if (csid > 0 && top > 0)
             {
-                Dictionary<int, string> dicPicWhite = base.GetAllSerialPicURLWhiteBackground();
+                Dictionary<int, string> dicPicWhite;
+                if (isShowShiPai)
+                {
+                    dicPicWhite = base.GetAllSerialPicURL(true);
+                }
+                else
+                {
+                    dicPicWhite = GetAllSerialPicURLWhiteBackground();
+                }
                 List<EnumCollection.SerialToSerial> listSTS = base.GetSerialToSerialByCsID(csid, top);
                 if (listSTS != null && listSTS.Count > 0)
                 {
@@ -2846,7 +2889,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                         string ssql = "select top 1 * from dbo.Car_SerialColor where type=0 and colorname=@colorname and cs_id=@cs_id";
                         SqlParameter[] _param ={
                                       new SqlParameter("@colorname",SqlDbType.NVarChar,50),
-									  new SqlParameter("@cs_id",SqlDbType.Int)
+                                      new SqlParameter("@cs_id",SqlDbType.Int)
                                   };
                         _param[0].Value = kv.Value[i];
                         _param[1].Value = sid;
@@ -3132,7 +3175,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                 }
             }
             CommonFunction.EchoXml(response, sb.ToString(), "SerialSort");
-        } 
+        }
 
         #region   空间数据for冯津  2016-11-22
         /// <summary>
@@ -3160,9 +3203,9 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                                     AND cri.IsState = 0
                             ORDER BY car.Car_YearType";
             SqlParameter[] parameters =
-	        {
-	            new SqlParameter("@SerialId",SqlDbType.Int), 
-	        };
+            {
+                new SqlParameter("@SerialId",SqlDbType.Int),
+            };
             parameters[0].Value = serialId;
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.AutoStorageConnectionString, CommandType.Text, sql,
                 parameters);
@@ -3238,7 +3281,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
             }
             string json = JsonConvert.SerializeObject(list);
             response.Write(json);
-        } 
+        }
         public string Leval(double number, CommonEnum.CarInnerSpaceType carInnerSpaceType)
         {
             string msg = string.Empty;
@@ -3332,5 +3375,5 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                 return false;
             }
         }
-    } 
+    }
 }

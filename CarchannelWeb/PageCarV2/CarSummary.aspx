@@ -134,7 +134,7 @@
 
                                          <div class="col-xs-4">
                                             <em>贷款购车（30%首付）</em>
-                                            <h5><a class="em" target="_blank" href="http://www.daikuan.com/www/<%=cbe.Serial.AllSpell%>/m<%=cbe.Id%>/?from=yc18&amp;leads_source=p003003">首付<%= priceComputer.LoanFirstDownPayments > 0 ? ((double)(priceComputer.LoanFirstDownPayments + priceComputer.AcquisitionTax + priceComputer.Compulsory + priceComputer.Insurance + priceComputer.VehicleTax + priceComputer.Chepai) / 10000).ToString("F2") + "万元" : "暂无"%></a></h5>
+                                            <h5><a class="em" target="_blank" href="http://fenqi.taoche.com/www/<%=cbe.Serial.AllSpell%>/m<%=cbe.Id%>/?from=yc18&amp;leads_source=p003003">首付<%= priceComputer.LoanFirstDownPayments > 0 ? ((double)(priceComputer.LoanFirstDownPayments + priceComputer.AcquisitionTax + priceComputer.Compulsory + priceComputer.Insurance + priceComputer.VehicleTax + priceComputer.Chepai) / 10000).ToString("F2") + "万元" : "暂无"%></a></h5>
                                         </div>
                                         <%}%>
                                     </div>
@@ -147,10 +147,10 @@
                                             <%}
                                               else if (cbe.SaleState == "在销")
                                               { %>
-                                            <a class="btn" target="_blank" href="http://dealer.bitauto.com/zuidijia/nb<%=cbe.SerialId%>/nc<%=cbe.Id%>/?T=2&amp;leads_source=p003001">询底价</a>
-                                   <%--         <a class="btn" target="_blank" href="http://www.huimaiche.com/<%=cbe.Serial.AllSpell%>?carid=<%=cbe.Id%>&amp;tracker_u=609_ckzs&amp;leads_source=p003002">买新车</a>--%>
-                                            <a class="btn" target="_blank" href="http://www.daikuan.com/www/<%=cbe.Serial.AllSpell%>/m<%=cbe.Id%>/?from=yc18&amp;leads_source=p003003">贷款</a>
-                                            <a class="btn" target="_blank" href="http://zhihuan.taoche.com/?leads_source=p003004&amp;ref=pc_yc_cxzs_gs_zhihuan&amp;serial=<%=cbe.SerialId%>">置换</a>
+                                            <a class="btn" target="_blank" href="http://dealer.bitauto.com/zuidijia/nb<%=cbe.SerialId%>/nc<%=cbe.Id%>/?T=2&leads_source=p003001">询底价</a>
+                                   <%--         <a class="btn" target="_blank" href="http://www.huimaiche.com/<%=cbe.Serial.AllSpell%>?carid=<%=cbe.Id%>&amp;tracker_u=609_ckzs&leads_source=p003002">买新车</a>--%>
+                                            <a class="btn" target="_blank" href="http://sq.taoche.com/yiche/index?carid=<%= cbe.Id %>&from=yc18&leads_source=p003003">贷款</a>
+                                            <a class="btn" target="_blank" href="http://zhihuan.taoche.com/?leads_source=p003004&ref=pc_yc_cxzs_gs_zhihuan&serial=<%=cbe.SerialId%>">置换</a>
                                             <a class="btn" target="_blank" href="http://www.taoche.com/<%=cbe.Serial.AllSpell%>/?leads_source=p003005&ref=pc_yc_cxzs_gs_esc">二手车</a>
                                             <%} %>
                                         </div>

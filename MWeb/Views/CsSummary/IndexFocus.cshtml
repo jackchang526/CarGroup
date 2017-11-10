@@ -1,0 +1,1026 @@
+﻿@using BitAuto.CarChannel.Model;
+@using BitAuto.CarChannel.BLL.Data;
+@using BitAuto.CarChannel.Common.Enum;
+@using BitAuto.Utils;
+@{
+    Layout = null;
+    SerialEntity serialEntity = ViewData["SerialEntity"] as SerialEntity;
+    EnumCollection.SerialInfoCard serialInfoCard = (EnumCollection.SerialInfoCard)ViewData["SerialInfoCard"];
+
+    string wtmcid = ConvertHelper.GetString(ViewData["wtmcid"]);
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>@(ViewData["title"])></title>
+    <meta name="Keywords" content="@(ViewData["keyWords"])" />
+    <meta name="Description" content="@(ViewData["description"])" />
+    <link rel="canonical" href="http://car.m.yiche.com/@(serialEntity.AllSpell)/" />
+    <!--#include file="/ushtml/0000/myiche2016_cube_summary-1154.shtml"-->
+    <script type="text/javascript" charset="utf-8" src="http://ip.yiche.com/iplocation/setcookie.ashx"> </script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        var cityId = 201,
+            cityName = "北京";
+        if (typeof (bit_locationInfo) != "undefined" && typeof (bit_locationInfo.cityId) != "undefined") {
+            cityId = bit_locationInfo.cityId;
+            cityName = bit_locationInfo.cityName;
+        }
+        var GlobalSummaryConfig = {
+            SerialId: "@(serialEntity.Id)",
+            CityId: cityId,
+            CityName: cityName
+        };
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div class="op-nav-out">
+            <div class="op-nav-static op-nav-fixed">
+                <div class="op-nav">
+                    @if(string.IsNullOrWhiteSpace(wtmcid)){
+                        <a id="gobackElm" data-channelid="27.23.690" href="javascript:;" class="btn-return">返回</a>
+                    }
+                    <div class="tt-name">
+                        <a data-channelid="27.23.1032" href="http://m.yiche.com/" class="yiche-logo">汽车</a>
+                        <h1>@(serialEntity.ShowName)</h1>
+                    </div>
+                    <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
+                </div>
+                <div class="op-nav-mark" style="display: none;"></div>
+            </div>
+        </div>
+        <div class="sum-sub-nav" id="m-car-nav">
+            <ul>
+                <li class="current">
+                    <a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/" data-channelid="27.23.713" class="sum-ico-chekuan">
+                        <i></i>
+                        <span>综述</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://price.m.yiche.com/nb@(serialEntity.Id)/" data-channelid="27.23.714" class="sum-ico-baojia">
+                        <i></i>
+                        <span>报价</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/peizhi/" data-channelid="27.23.715" class="sum-ico-canshu">
+                        <i></i>
+                        <span>参数</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://photo.m.yiche.com/serial/@(serialEntity.Id)/" data-channelid="27.23.716" class="sum-ico-tupian">
+                        <i></i>
+                        <span>图片</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://dealer.m.yiche.com/0/@(serialEntity.Id)/2/" data-channelid="27.23.1936" class="sum-ico-jingxiaoshang">
+                        <i></i>
+                        <span>经销商</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/wenzhang/" data-channelid="27.23.717" class="sum-ico-wenzhang">
+                        <i></i>
+                        <span>文章</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/koubei/" data-channelid="27.23.718" class="sum-ico-koubei">
+                        <i></i>
+                        <span>口碑</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/youhao/" data-channelid="27.23.719" class="sum-ico-youhao">
+                        <i></i>
+                        <span>油耗</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@(ViewData["BaaUrl"])" data-channelid="27.23.720" class="sum-ico-luntan">
+                        <i></i>
+                        <span>社区</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://m.taoche.com/@(serialEntity.AllSpell)/?ref=Hlht_esc" data-channelid="27.23.721" class="sum-ico-ershouche">
+                        <i></i>
+                        <span>二手车</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!--nav fixed start-->
+        <div class="car-nav-fixed-box" id="carNavFixed" style="display: none">
+            <div class="car-nav-rel">
+                <div class="car-nav-fixed">
+                    <ul>
+                        <li class="current">
+                            <a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/" data-channelid="27.23.1377">
+                                <strong>综述<s></s></strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://price.m.yiche.com/nb@(serialEntity.Id)/" data-channelid="27.23.1368">
+                                <strong>报价</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/peizhi/" data-channelid="27.23.1369">
+                                <strong>参数</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://photo.m.yiche.com/serial/@(serialEntity.Id)/" data-channelid="27.23.1370">
+                                <strong>图片</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://dealer.m.yiche.com/0/@(serialEntity.Id)/2/" data-channelid="27.23.1935">
+                                <strong>经销商</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/wenzhang/" data-channelid="27.23.1371">
+                                <strong>文章</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/koubei/" data-channelid="27.23.1372">
+                                <strong>口碑</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/youhao/" data-channelid="27.23.1373">
+                                <strong>油耗</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@(ViewData["BaaUrl"])" data-channelid="27.23.1374">
+                                <strong>社区</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://m.taoche.com/@(serialEntity.AllSpell)/?ref=Hlht_esc" data-channelid="27.23.1375">
+                                <strong>二手车</strong>
+                            </a>
+                        </li>
+                        @*<li>
+                                <a href="http://yanghu.m.yiche.com/xuanze/0/@(serialEntity.Id)/?source=cxytab&amp;atype&amp;type=0" data-channelid="27.23.1376">
+                                    <strong>养护</strong>
+                                </a>
+                            </li>*@
+                    </ul>
+                </div>
+                <div class="right-mask"></div>
+            </div>
+        </div>
+        <!--nav fixed end-->
+        <div class="sum-focus">
+            <div class="swiper-container" id="sumFocus">
+                <ul class="swiper-wrapper">
+                   @{
+                      List<string> focusImgList = ViewData["FocusImgList"] as List<string>;
+                      foreach (string str in focusImgList)
+                      { 
+                        @(Html.Raw(str))
+                      }
+                   }
+                </ul>
+                <div class="pagination-num"></div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="sum-info">
+            <div class="car-main">
+                <div class="car-logo">
+                    <a href="http://car.m.yiche.com/@(serialEntity.Brand.MasterBrand.AllSpell)/">
+                        <img src="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_@(serialEntity.Brand.MasterBrand.Id)_100.png">
+                    </a>
+                </div>
+                <dl>
+                    <dt>
+                        <h2>@(serialEntity.SeoName)</h2>@(Html.Raw(serialEntity.SaleState == "停销" ? "<em>停售</em>" : serialEntity.SaleState == "待销" ? "<em>未上市</em>" : ""))
+                    </dt>
+                    <dd>
+                        <a href="http://price.m.yiche.com/nb@(serialEntity.Id)/" data-channelid="27.23.952">
+                            @{
+                                string title = "全国参考价";
+                                string serialPrice = ViewData["serialPrice"].ToString();
+                                string price = string.IsNullOrEmpty(serialPrice) ? "暂无" : serialPrice;
+                                if (serialEntity.SaleState == "停销")
+                                {
+                                    title = "二手价";
+                                    price = ViewData["uCarPriceRange"].ToString();
+                                }
+                                else if (serialEntity.SaleState == "待销")
+                                {
+                                    title = "预售价";
+                                }
+                            }
+                            @Html.Raw(title + "：<strong>" + price + "</strong>")
+                            <i class="dujia" id="dujia" style="display: none">独家</i>
+                        </a>
+                    </dd>
+                </dl>
+                <a href="javascript:void(0);" id="favstar" data-channelid="27.23.726" class="ico-favorite">
+                    <i></i>
+                    关注
+                </a>
+                @if (serialEntity.SaleState != "停销")
+                {
+                    <a href="http://car.h5.yiche.com/@(serialEntity.AllSpell)/" class="ico-laiyiche" data-channelid="27.23.1317"><i></i>来一车</a>
+                }
+            </div>
+            <div class="car-price">
+                <dl class="w">
+                    <dt class="w3">指导价：</dt>
+                    <dd>@(serialEntity.ReferPrice.Replace("万-", "-"))</dd>
+                </dl>
+                <dl>
+                    <dt class="w2">排名：</dt>
+                    <dd>@(ViewData["serialTotalPV"])</dd>
+
+                </dl>
+                <div class="clear"></div>
+
+                @if (BitAuto.Utils.ConvertHelper.GetBoolean(ViewData["isElectrombile"]))
+                {
+                    string mileageRange = ViewData["mileageRange"].ToString();
+                    if (string.IsNullOrEmpty(mileageRange))
+                    {
+                        mileageRange = "暂无";
+                    }
+                    <dl class="w">
+                        <dt class="w3">续航：</dt>
+                        <dd>
+                            @(mileageRange)
+                        </dd>
+                    </dl>
+                }
+                else
+                {
+                    string serialFuelCost = ViewData["serialFuelCost"].ToString();
+                    <dl class="w">
+                        <dt class="w3">油耗：</dt>
+                        <dd>
+                            <a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/youhao/?ref=Hlht_yh" class="" data-channelid="27.23.953">@(serialFuelCost)</a>
+                        </dd>
+                    </dl>
+                }
+
+                <dl>
+                    <dt class="w2">厂商：</dt>
+                    <dd>@(ViewData["ChanDi"])</dd>
+                </dl>
+                <div class="clear"></div>
+                @{
+                    List<SerialColorEntity> SerialColorList = (List<SerialColorEntity>)ViewData["SerialColorList"];
+                    if (SerialColorList.Count > 0)
+                    {
+                        <dl class="line">
+                            <dt class="w3">颜色：</dt>
+                            <dd>
+                                @foreach (var serialColorEntity in SerialColorList)
+                                {
+                                    @Html.Raw("<em style='background: " + serialColorEntity.ColorRGB + "'></em> ");
+                                }
+                            </dd>
+                        </dl>
+                    }
+                }
+            </div>
+            <div class="clear"></div>
+            <div class="sum-btn" id="btn-business"></div>
+        </div>
+        <!-- 易车购车服务 start -->
+        <div class="car-service b-shadow" id="carservice" style="display: none">
+            <div class="tt-first">
+                <h3>易车购车服务</h3>
+                <a href="http://11.m.yiche.com/" class="tt-first-double">11.11购车狂欢节</a>
+                <div class="opt-more opt-more-gray">
+                    <a href="http://gouche.m.yiche.com/sb@(serialEntity.Id)/">更多</a>
+                </div>
+            </div>
+            <ul id="buycar-youhui" class="one-service service-new"></ul>
+        </div>
+        <!-- 易车购车服务 end -->
+        @if (new int[] { 1574, 1610, 1611, 1661, 1699, 1729, 1796, 1811, 1825, 1879, 1909, 1991, 2109, 2364, 2370, 2381, 2406, 2407, 2408, 2593, 2608, 2714, 2731, 2945, 3152, 3379, 3495, 3600, 3655, 3887, 3913, 3920, 3987, 4002, 4149, 4169, 4238, 4279, 4282, 4283, 4418, 4447, 4557, 4616, 4682, 4711, 4853, 4866, 4881, 4936 }.Contains(serialEntity.Id))
+        {
+        <!-- 秒懂车 start -->
+            <a href="http://www.bitauto.com/topics/zttj/mdc/index/@(serialEntity.Id).shtml" class="mdc-box b-shadow" id="secondcar" data-channelid="27.23.1784">
+                <img src="@serialInfoCard.CsDefaultPic">
+                <span>一分钟了解它的优缺点</span>
+            </a>
+        <!-- 秒懂车 end -->
+        }
+        <!-- 推广 start -->
+        <script type="text/javascript">
+            var BitautoCityForAd = GlobalSummaryConfig.CityName;
+            var carlevel = "@(serialEntity.Level.Name)";
+            var uCarLowestPrice = "@(ViewData["uCarLowestPrice"])";//二手车最低价
+            var serialAllSpell = "@(serialEntity.AllSpell)";
+
+            function showNewsInsCode(dxc, xxc, mpv, suv) {
+                var adBlockCode = xxc;
+                if (carlevel == '中大型车' || carlevel == '中型车' || carlevel == '跑车' || carlevel == '豪华车') {
+                    adBlockCode = dxc;
+                } else if (carlevel == '微型车' || carlevel == '小型车' || carlevel == '紧凑型车') {
+                    adBlockCode = xxc;
+                } else if (carlevel == '概念车' || carlevel == 'MPV' || carlevel == '面包车' || carlevel == '皮卡' || carlevel == '其它') {
+                    adBlockCode = mpv;
+                } else if (carlevel == 'SUV') {
+                    adBlockCode = suv;
+                }
+                document.write('<ins id="div_' + adBlockCode + '" type="ad_play" adplay_blockcode="' + adBlockCode + '"></ins>');
+            }
+        </script>
+        <!-- 推广 end -->
+        <!-- 增加车型详解区域 start -->
+        @(Html.Raw(ViewData["CarDetailsViewZoneHtml"]))
+        <!-- 增加车型详解区域 end -->
+        <script type="text/javascript">
+            showNewsInsCode('db07f914-5b83-4921-bf2d-52a8574924b3', '35cae8c1-7ba0-4711-ace5-e2371ec97d6e', 'd215e33f-944e-48c6-ba50-3e272c728631', '85163aab-0294-4054-a82b-cfae3d3106ed');
+        </script>
+
+        <!-- 限时特惠 start -->
+        <div class="prefer-tim b-shadow">
+        </div>
+        <!-- 限时特惠 end -->
+        <!--车款列表 start-->
+        @(Html.Raw(ViewData["CarListHtml"]))
+        <!--车款列表 end-->
+        @if(string.IsNullOrWhiteSpace(wtmcid)){
+            <!-- app下载-->
+            <!--#include file="/include/pd/2016/wap/00001/201606_yidongzhan_appdown_Manual.shtml" -->
+            <!-- app下载-->
+        }
+        <script type="text/javascript">
+            showNewsInsCode('f327fc17-f1ad-4fcd-91d7-03e42c9b72b4', 'f31814e7-225c-4e92-8ea9-c2876315cee0', '20f3b410-22f8-4035-9bf7-3267a88bda6a', '2afe4673-39b3-4bad-9f48-38b0b6cb9513');
+        </script>
+        
+        <!-- 口碑 start -->
+                @(Html.Raw(ViewData["KoubeiImpressionHtml"]))
+        <!-- 口碑 end -->
+        <!-- 编辑评车 start -->
+                <div class="tt-first" id="audio-title" style="display: none;">
+                    <h3>专家说车</h3>
+                </div>
+                <div class="talk-car-box b-shadow" id="audio_list"></div>
+        <!-- 编辑评车 start -->
+        <!--通栏2-->
+        <ins id="div_f53527fc-a2ff-4336-9d38-27a076a98cfb" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="@(serialEntity.Id)" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="f53527fc-a2ff-4336-9d38-27a076a98cfb"> </ins>
+        <!-- 文章 start -->
+                @{
+                string newsPingceHtml = ViewData["NewsPingceHtml"].ToString();
+                string newsDaogouHtml = ViewData["NewsDaogouHtml"].ToString();
+                string serialNews = ViewData["SerialNews"].ToString();
+                bool pingceLiFlag = ConvertHelper.GetBoolean(ViewData["PingceLiFlag"]);
+                bool daogouLiFlag = ConvertHelper.GetBoolean(ViewData["DaogouLiFlag"]);
+                bool isShowNews = !string.IsNullOrWhiteSpace(newsPingceHtml) || !string.IsNullOrWhiteSpace(newsDaogouHtml) || !string.IsNullOrWhiteSpace(serialNews);
+                }
+                <div class="tt-first" id="m-tabs-article" style="@(isShowNews ? "" : "display:none")">
+                    <h3>文章</h3>
+                    <div class="opt-more">
+                        <a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/wenzhang/">更多</a>
+                    </div>
+                </div>
+                <div class="second-tags mgt-10" id="newslistTab" style="@(isShowNews ? "":"display:none")">
+                    <div class="pd15">
+                        <ul>
+                            @if (!string.IsNullOrWhiteSpace(serialNews))
+                            {
+                                <li class="current">
+                                    <a href="#">
+                                        <span>热门</span>
+                                    </a>
+                                </li>
+                            }
+                            @if (!string.IsNullOrEmpty(newsPingceHtml))
+                            {
+                                <li @(string.IsNullOrEmpty(serialNews) ? " class=\"current\"" : "")>
+                                    <a href="#">
+                                        <span>评测</span>
+                                    </a>
+                                </li>
+                            }
+                            @if (!string.IsNullOrEmpty(newsDaogouHtml))
+                            {
+                                <li @(string.IsNullOrEmpty(serialNews) && string.IsNullOrEmpty(newsPingceHtml) ? " class='current'" : "")>
+                                    <a href="#">
+                                        <span>导购</span>
+                                    </a>
+                                </li>
+                            }
+                            <li>
+                                <a href="#">
+                                    <span>行情</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper-container swiper-container-newslist b-shadow" style="@(isShowNews ? "":"display:none")">
+                    <div class="swiper-wrapper">
+                        <!-- 文章 start -->
+                        @if (!string.IsNullOrEmpty(serialNews))
+                        {
+                            <div class="swiper-slide" id="m_article" data-channelid="27.23.732">
+                                @(Html.Raw(serialNews))
+                            </div>
+                        }
+                        <!-- 文章 end -->
+                        @if (!string.IsNullOrEmpty(newsPingceHtml))
+                        {
+                            <div class="swiper-slide" data-channelid="27.23.1341">
+                                <div class="card-news">
+                                    <ul>
+                                        @(Html.Raw(newsPingceHtml))
+                                    </ul>
+                                </div>
+                                @if (pingceLiFlag)
+                                {
+                                    <a href="javascript:;" id="btn-pingce-more" class="btn-more btn-add-more">
+                                        <i>加载更多</i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/pingce/" class="btn-more">
+                                        <i>查看更多</i>
+                                    </a>
+                                }
+                            </div>
+                        }
+
+                        @if (!string.IsNullOrEmpty(newsDaogouHtml))
+                        {
+                            <div class="swiper-slide" data-channelid="27.23.1340">
+                                <div class="card-news">
+                                    <ul>
+                                        @(Html.Raw(newsDaogouHtml))
+                                    </ul>
+                                </div>
+                                @if (daogouLiFlag)
+                                {
+                                    <a href="javascript:;" id="btn-daogou-more" class="btn-more btn-add-more">
+                                        <i>加载更多</i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/daogou/" class="btn-more">
+                                        <i>查看更多</i>
+                                    </a>
+                                }
+                            </div>
+                        }
+                        <!-- 行情 start -->
+                        <div class="swiper-slide">
+                            <div class="card-news">
+                                <div class="hangqing-box">
+                                    <span>当前定位地区：</span>
+                                    <a href="javascript:;" id="m-hangqing-city" data-action="province">北京<i></i></a>
+                                </div>
+                                <div class="yxc-prompt-box mgt90" id="no-hangqingmsg" style="display: none; height: 300px;">
+                                    <div class="yxc-prompt-none"></div>
+                                    <p>暂无降价行情</p>
+                                </div>
+                                <ul id="carnews1" data-channelid="27.23.733"></ul>
+                            </div>
+                        </div>
+                        <!-- 行情 end -->
+                    </div>
+                </div>
+        <!-- 文章 end -->
+                @{
+                List<VideoEntity> videoList = (List<VideoEntity>)ViewData["VideoList"];
+                }
+                @if (videoList != null && videoList.Count > 0)
+                {
+                    <div class="tt-first" data-channelid="27.23.734">
+                        <h3>易车视频</h3>
+                        <div class="opt-more">
+                            <a href="http://v.m.yiche.com/car/serial/@(serialEntity.Id)_0_0.html">更多</a>
+                        </div>
+                    </div>
+                    <div class="video-box b-shadow" id="m_video" data-channelid="27.23.735">
+                        <ul>
+                            @{
+                                var ids = "";
+                                foreach (var videoEntity in videoList)
+                                {
+                                    ids += videoEntity.VideoId + ",";
+                                    var timeSpan = new TimeSpan(0, 0, videoEntity.Duration).ToString("mm\\:ss");
+                                    <li>
+                                        <a href="@(videoEntity.ShowPlayUrl.Replace("v.bitauto.com", "v.m.yiche.com"))">
+                                            <span>
+                                                <img src="@(videoEntity.ImageLink.ToLower().Replace("video", "newsimg_300x168/Video").Replace("video", "newsimg_300x168/Video"))">
+                                                <i></i>
+                                            </span>
+                                            <p>@(videoEntity.ShortTitle)</p>
+                                            <em>
+                                                <i class="play-num" id="viewcount_@(videoEntity.VideoId)">0</i><i class="play-time">@(timeSpan)</i>
+                                            </em>
+                                        </a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                        <input type="hidden" id="ids" value="@(ids.Length > 0 ? ids.Substring(0, ids.Length - 1) : "")" />
+                    </div>
+                                }
+        <!-- 视频 end -->
+        <!-- 论坛热帖 start -->
+        @(Html.Raw(ViewData["ForumNewsHtml"]))
+        <!-- 论坛热帖 end -->
+                               
+        <ins id="div_bec90be3-b648-4cd9-8c33-96c6be62451d" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="@(serialEntity.Id)" adplay_brandname="" adplay_brandtype="" adplay_blockcode="bec90be3-b648-4cd9-8c33-96c6be62451d"> </ins>
+        <a name="a-dealer"></a>
+
+        <script type="text/javascript">
+            var CarCommonBSID = "@(serialEntity.Brand == null ? 0 : serialEntity.Brand.MasterBrandId)"; //大数据组统计用
+            var CarCommonCBID = "@(serialEntity.Brand == null ? 0 : serialEntity.Brand.Id)";
+            var CarCommonCSID = "@(serialEntity.Id.ToString(System.Globalization.CultureInfo.InvariantCulture))";
+            //app下载设置全局变量
+            var global_app_download = false;
+            var citycode = GlobalSummaryConfig.CityId,
+                cityname = GlobalSummaryConfig.CityName;
+            $("#m-hangqing-city").html(cityName + "<i></i>");
+            var csId = GlobalSummaryConfig.SerialId;
+        </script>
+       
+        <script type="text/javascript">
+        document.write('<scri' + 'pt src="http://m.h5.qiche4s.cn/priceapiv2/ajax/InitData.ashx?action=cardealerlist&brandid=@(serialEntity.Id)&citycode=' + citycode + '" type="text/javascript"></s' + 'cript>');
+        </script>
+        <!--通栏3广告-->
+        <script type="text/javascript">
+            showNewsInsCode('0fdd1bab-745d-42d9-a86b-3dd5e25877b5', '8a05b2f2-6da8-40a7-8296-d005d870b4bb', '279a56d1-93e3-4cbb-9409-517fe7edec5a', 'c588f73d-9446-4cbb-a56f-941a8ddaa54f');
+        </script>
+        <!--看了还看 start-->
+        @(Html.Raw(ViewData["SerialToSee"]))
+        <!--看了还看 end-->
+        <!--最近看过 start-->
+        <div class="browse-car  b-shadow" id="more1" data-channelid="27.23.744">
+        </div>
+        <!--最近看过 end-->
+        <!--省份层 start-->
+        <div class="leftmask leftmask6" style="display: none;"></div>
+        <div id="provinceList" class="leftPopup province year" data-back="leftmask6" style="display: none;">
+            <div class="swipeLeft swipeLeft-sub">
+                <div class="loading">
+                    <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" alt="loading..." />
+                    <p>正在加载...</p>
+                </div>
+            </div>
+        </div>
+        <!--省份层 end-->
+        <!--市层 start-->
+        <div id="cityList" class="leftPopup month model2 city" data-back="leftmask6" style="display: none;">
+            <div class="swipeLeft swipeLeft-sub">
+                <div class="loading">
+                    <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" alt="loading..." />
+                    <p>正在加载...</p>
+                </div>
+            </div>
+        </div>
+        <!--市层 end-->
+        <!-- black popup end -->
+        <!--底部通栏-->
+        <ins id="div_b5138df0-cd9b-44a3-b87a-76779e8cb1ea" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="@(serialEntity.Id)" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="b5138df0-cd9b-44a3-b87a-76779e8cb1ea"> </ins>
+        <!--底部通栏-->
+       @if(string.IsNullOrWhiteSpace(wtmcid)){
+        <!--#include file="/include/pd/2016/wap/00001/201606_wap_common_ydyy_Manual.shtml" -->
+       }
+        <!--一级公共模板 start-->
+        <script type="text/template" id="duibibtnTemplate">
+            <div class="y2015-car-01">
+                <div class="slider-box">
+                    <ul class="first-list">
+                        {for(var i =0;i< list.SelectedCars.length;i++){}
+                        <li>
+                            <div class="line-box"><a class='select' href="/m{= list.SelectedCars[i].CarId }/">{=list.SelectedCars[i].CarName }</a><a href="javascript:;" data-carid="{=list.SelectedCars[i].CarId }" class="btn-close"><i></i></a></div>
+                        </li>
+                        {}}
+                        {for(var i =0;i< list.AddLables.Count;i++){}
+                        <li class="add">
+                            <div class="line-box"><a href="javascript:;">添加对比车款</a></div>
+                        </li>
+                        {}}
+                        <li class="alert">最多对比4个车款</li>
+                        <li class="ad-box" id="compareAdBox"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="swipeLeft-header">
+                <a href="###" class="btn-clear">清除</a>
+                <!--btn-clear disable-->
+                <a href="###" class="btn-comparison">开始对比</a>
+                <!--btn-comparison disable-->
+                <div class="clear"></div>
+            </div>
+        </script>
+        <!--一级公共模板 end-->
+        <div class="leftmask duibi-leftmask leftmask2 " style="display: none;"></div>
+        <div class="leftPopup duibicar duibi-leftPopup" data-zindex="777777" data-back="leftmask2" style="display: none;">
+            <div class="swipeLeft">
+                <div class="y2015-car-01">
+                    <ul class="first-list"></ul>
+                </div>
+                <div class="swipeLeft-header">
+                    <a href="###" class="btn-clear">清空</a>
+                    <!--btn-clear disable-->
+                    <a href="###" class="btn-comparison">开始对比</a>
+                    <!--btn-comparison disable-->
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="float-r-box">
+            <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
+        </div>
+        <script type="text/javascript">
+                showNewsInsCode('893f9a91-0f1e-484c-8263-37d815e64d1b', '09dc099f-5b52-4a70-8edd-faa0d7ff4818', '469f45cc-1b72-461c-ba68-0b560c885455', 'cd11763a-ea3e-4315-b054-8baecd23cab8');
+        </script>
+
+
+        <div class="footer15">
+            <!--搜索框-->
+            @Html.Partial("~/html/footersearch.cshtml")
+            <div class="breadcrumb">
+                <div class="breadcrumb-box">
+                    <a href="http://m.yiche.com/">首页</a> &gt; <a href="http://car.m.yiche.com/brandlist/">选车</a> &gt; <a href="http://car.m.yiche.com/brandlist/@(serialEntity.Brand.MasterBrand.AllSpell)/">@(serialEntity.Brand.MasterBrand.Name)</a> &gt; <span>@(serialEntity.ShowName)</span>
+                </div>
+            </div>
+            @Html.Partial("~/html/footerV3.cshtml")
+        </div>
+    </div>
+
+    <!--新加弹出层 start-->
+    <div id="master_container" style="display: none; z-index: 888888;" class="brandlayer mthead">
+        @Html.Partial("~/html/compareCarTemplate.cshtml")
+    </div>
+    <!--新加弹出层 end-->
+    <!--弹出层 start-->
+    <div class="leftmask leftmaskcondition" style="display: none;"></div>
+    <div class="leftPopup stopyear" data-back="leftmaskcondition" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" alt="loading..." />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+    <div class="leftPopup  level" data-back="leftmaskcondition" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" alt="loading..." />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+    <div class="leftPopup bodyform" data-back="leftmaskcondition" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" alt="loading..." />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+    <!--弹出层 end-->
+    <!--loading模板 start -->
+    <div class="template-loading" style="display: none;">
+        <div class="loading">
+            <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" alt="loading..." />
+            <p>正在加载...</p>
+        </div>
+    </div>
+    <!--loading模板 end -->
+    <!--音频模板 start -->
+    <script type="text/lazyT-template" id="template_audios">
+        {#~ D:item:index #}
+        <div class="talk-car jp-audio" id="audio_{#=item.AudioId#}" role="application" aria-label="media player">
+            <div class="jp-jplayer" data-urls="{#=item.PlayLinks.join(',')#}" data-id="audio_{#=item.AudioId#}"></div>
+            <div class="talk-img"><img src="{#=item.AuthorImage#}"></div>
+            <div class="talk-time">
+                <p>{#=item.AuthorName#}{#=item.Introduce#}</p>
+                <div class="talk-v-box jp-type-single">
+                    <div class="talk-arrow"></div>
+                    <div class="jp-progress" data-duration="{#=item.Duration#}">
+                        <div class="talk-outer jp-seek-bar" style="width: 100%;">
+                            <div class="talk-inner jp-play-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="ico-talk-voice"></div>
+                    <div class="jp-controls">
+                        <div class="ico-talk-play"></div>
+                        <button class="jp-play" role="button" tabindex="0" data-channelid="27.23.1365"></button>
+                    </div>
+                    <div class="time-box jp-current-time" role="timer" aria-label="time">00:00</div>
+                    <div class="time-box jp-duration" role="timer" aria-label="duration">{#=item.DurationString#}</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        {#~#}
+    </script>
+    <!--音频模板 end -->
+    <!--公共模板 start-->
+    <script type="text/template" id="commonTemplate">
+        <div class="ap">
+            <ul class="y2015">
+                <li><a href="#" data-value="不限">不限</a></li>
+                { for(var j = 0 ; j < SubItem.length ; j++){ }
+                <li {=(SubItem[j].toString() ==selSubStopYear||SubItem[j].toString() ==selSubLevel||SubItem[j].toString() ==selSubBodyForm)?"class ='current'":" "}><a href="#" data-value="{=SubItem[j].toString().replace('款','')}">{=SubItem[j]}</a></li>
+                {}}
+            </ul>
+        </div>
+    </script>
+    <!--公共模板 end-->
+    <!--省模板start-->
+    <script type="text/template" id="provinceTemplate">
+        <dl class="tt-list">
+            { for(var n in provinces){}
+            <dt><span>{=n}</span></dt>
+            {for(var i=0;i
+            <provinces[n].length;i++){}
+                <dd>
+                    <a href="#" {=provinces[n][i].children ? 'data-action="city"':''} data-id="{=provinces[n][i].id}" class="{=provinces[n][i].children ? '':'nbg'} {=provinces[n][i].id.toString() == current_province.toString()  ? 'current':''}">
+                        <p>{=provinces[n][i].name}</p>
+                    </a>
+                </dd>
+                {}}
+                {}}
+        </dl>
+    </script>
+    <!--省模板end-->
+    <!--市模板start-->
+    <script type="text/template" id="cityTemplate">
+        <div class="ap">
+            <ul class="first-list rp">
+                <li class="root"><a>安徽</a></li>
+                {for(var i=0;i
+                <citys.length;i++){}
+                    <li><a data-id="{=citys[i].id}" class="{= citys[i].id.toString() == current_city.toString()  ? 'current':''}">{=citys[i].name}</a></li>
+                    {}}
+            </ul>
+        </div>
+    </script>
+    <!--市模板end-->
+    <!--loading模板 start -->
+    <div class="template-loading" style="display: none;">
+        <div class="loading">
+            <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" alt="loading..." />
+            <p>正在加载...</p>
+        </div>
+    </div>
+    <!--loading模板 end -->
+    <!-- 正常 end -->
+    <div class="bottom-float" id="bottomFloat" style="display: none">
+        <ul>
+            @if (serialEntity.SaleState == "停销")
+            {
+                <li class="two-item item-duibi" id="itemDuibi">
+                    <a id="compare-pk" data-channelid="27.23.747" href="#compare" data-action="duibicar"><em id="duibiAti"></em>对比<i></i></a>
+                </li>
+            <!--#include file="/include/pd/2016/yipaicms/00001/201701_Mobile_Summary_SCInfoBtn_Manual.shtml"-->
+            }
+            else if (serialEntity.SaleState == "在销")
+            {
+                <li class="three-item item-duibi" id="itemDuibi">
+                    <a id="compare-pk" data-channelid="27.23.747" href="#compare" data-action="duibicar"><em id="duibiAti"></em>对比<i></i></a>
+                </li>
+            <!--#include file="/include/pd/2016/yipaicms/00001/201701_Mobile_Summary_SCInfoBtn_Manual.shtml"-->
+            }
+            else
+            {
+                <li class="three-item item-duibi" id="itemDuibi">
+                    <a id="compare-pk" data-channelid="27.23.747" href="javascript:;" data-action="duibicar"><em id="duibiAti"></em>对比<i></i></a>
+                </li>
+                <li class="three-item item-xinche item-xinche-none">
+                    <a href="javascript:;"><em></em>买新车</a>
+                </li>
+                <li class="three-item item-daikuan item-daikuan-none">
+                    <a href="javascript:;"><em></em>贷款</a>
+                </li>
+            <!--#include file="/include/pd/2016/yipaicms/00001/201701_Mobile_Summary_SCInfoBtn_Manual.shtml"-->
+                <li class="xunjia-btn xunjia-btn-none">
+                    <a href="javascript:;">询底价</a>
+                </li>
+            }
+
+        </ul>
+    </div>
+    <!-- 正常 end -->
+    <!-- 买买买 层 start -->
+    <div class="leftmask leftmask1" style="display: none;"></div>
+    <div class="leftPopup mmm" data-back="leftmask1" style="display: none;">
+        <div class="swipeLeft">
+            <div class="ap">
+                <div class="mmm-none">
+                    <div class="mmm-none-bg"></div>
+                    <p>非常抱歉，暂无优惠信息</p>
+                </div>
+                <div class="mmm-pop b-shadow" id="m-car-bijia" style="display: none" data-channelid="27.23.1335"></div>
+                <div class="mmm-pop b-shadow" id="m-car-zhixiao" style="display: none" data-channelid="27.23.1336"></div>
+                <div class="mmm-pop b-shadow" id="m-car-ych" style="display: none" data-channelid="27.23.1337"></div>
+                <div class="mmm-pop b-shadow" id="m-car-daikuan" style="display: none" data-channelid="27.23.1338"></div>
+                <div class="mmm-pop b-shadow" id="m-car-tuan" style="display: none" data-channelid="27.23.1339"></div>
+            </div>
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 买买买 层 end -->
+    @if (ConvertHelper.GetInteger(ViewData["YearCount"]) > 0)
+    {
+        <script type="text/javascript">
+                // 临时统计方法
+                function statForTempString(objid, str1, str2) {
+                    var _sentImg = new Image(1,
+                        1);
+                    _sentImg.src = "http://carstat.bitauto.com/weblogger/img/c.gif?logtype=temptypestring&objid="
+                        + objid + "&str1=" + encodeURIComponent(str1) + "&str2=" + encodeURIComponent(str2)
+                        + "&" + Math.random();
+                }
+
+                var year = "all";
+                var divNum = 0;
+
+                //还原筛选项的值
+                function resetOptions() {
+                    $("[data-action=level]").removeClass("current").find("span").text("排量");
+                    $("[data-action=bodyform]").removeClass("current").find("span").text("变速箱");
+                    selSubStopYear = '', selSubLevel = '', selSubBodyForm = '';
+                }
+        </script>
+    }
+
+
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/commonjs.js,carchannel/wirelessjsv2/city348IDMapName.js"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/csSummaryV2.min.js?v=20170719"></script>
+    @*<script type="text/javascript" src="/js/csSummaryForFocus.js?v=20170303"></script>*@
+    <script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars"></script>
+    <script src="http://image.bitautoimg.com/uimg/wap/js/idangerous.swiper-2.0.min.js"></script>
+
+    <script type="text/javascript" src="http://js.bitauto.com/dealer/union/script/ads.js"> </script>
+
+    <!-- footer begin -->
+    <script type="text/javascript" src="http://image.bitautoimg.com/uimg/wap/js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="http://log.bitauto.com/easypassweblog/TelCallTracing/script/telcalltracing.js"> </script>
+    <script type="text/javascript">
+        var curSerialId = GlobalSummaryConfig.SerialId;
+        var apiBrandId = "@(serialEntity.BrandId)";
+        var apiSerialId = GlobalSummaryConfig.SerialId;
+        var apiCarId = '';
+
+        var pcount = @(ConvertHelper.GetInteger(ViewData["PageCount"]));
+        var nearestYear = "@(ViewData["NearestYear"])";
+        var tabs = document.getElementById("yeartag").getElementsByTagName("li");
+        var btnMore = {};
+
+        //var CarCompareAdJson = [//车型对比广告
+        //    { "csId": 2608, "carId": 0, "adCsId": 2945, "adCarId": 0 }
+        //    ,{ "csId": 2608, "carId": 0, "adCsId": 0, "adCarId": 119575 }
+        //];
+    </script>
+    @Html.Partial("/html/uploadaladingapp.cshtml")
+
+    <script type="text/javascript">
+        var zamCityId = GlobalSummaryConfig.CityId,
+            modelStr = GlobalSummaryConfig.SerialId + (zamCityId.length >= 4 ? zamCityId.substring(0, 2) : zamCityId.substring(0, 1)) + '-' + zamCityId + '';
+        var zamplus_tag_params = {
+            modelId: modelStr,
+            carId: 0
+        };
+    </script>
+    <script type="text/javascript">
+        var _zampq = [];
+        _zampq.push(["_setAccount", "12"]);
+        (function () {
+            var zp = document.createElement("script");
+            zp.type = "text/javascript";
+            zp.async = true;
+            zp.src = ("https:" == document.location.protocol ? "https://" : "http://") + "cdn.zampda.net/s.js";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(zp, s);
+        })();
+    </script>
+    @*<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/common/swiper-3.2.7.min.js"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/common/cityjsonv2.js"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/WirelessJs/v2/iscroll.js?v=20160118"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/WirelessJs/v2/underscore.js?v=20160118"></script>
+        <script type="text/javascript" src="/Js/v2/model.js?v=20160128"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/WirelessJs/v2/rightswipe.js?v=20160128"></script>
+        <script type="text/javascript" src="/Js/v2/note.js?v=20160118"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/WirelessJs/v2/brand.js?v=20160118"></script>
+
+        <script type="text/javascript" src="/js/waitcompareV2.js"></script>
+        <script type="text/javascript" src="/js/rightswipe-cityV2.js?v=20160202"></script>
+        <script type="text/javascript" src="/js/csSummaryConditionV2.js"></script>*@
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/common/swiper-3.2.7.min.js,carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.min.js,carchannel/common/cityjsonv2.js,carchannel/wirelessjsv2/rightswipe-cityv2.js,carchannel/wirelessjsv2/cssummaryconditionV2.min.js?v=201707051641"></script>
+
+
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=audio/jplayer/jquery.jplayer.min.js,audio/jplayer/audioJPlayerMobile.js?v=20170105"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>
+    <script type="text/javascript">
+        // 焦点图
+        var mySwiperfocus = new Swiper('#sumFocus', {
+            autoHeight: true,
+            pagination : '.pagination-num',
+            onTouchEnd: function(swiper){
+                var sTranWidth = swiper.translate;
+                if(mySwiperfocus.isEnd && (-sTranWidth) > (mySwiperfocus.width*2+65)){
+                    location.href = 'http://photo.m.yiche.com/serial/@(serialEntity.Id)/?cxzs=tupianmore';
+                }
+            }
+        });
+        // 文章切换
+        var swiperNewslist = new Swiper('.swiper-container-newslist', {
+            autoHeight: true,
+            onSlideChangeStart: function () {
+                $("#newslistTab .current").removeClass('current');
+                $("#newslistTab li").eq(swiperNewslist.activeIndex).addClass('current');
+
+                /* 2015-07-01 控制行情城市显示 start*/
+                if (swiperNewslist.activeIndex == 0) {
+                    $("#changecity").hide();
+                } else {
+                    $("#changecity").show();
+                }
+                /*end*/
+            }
+        });
+        $("#newslistTab li").on('touchstart mousedown', function (e) {
+            e.preventDefault();
+            $("#newslistTab .current").removeClass('current');
+            $(this).addClass('current');
+            swiperNewslist.slideTo($(this).index());
+        });
+        $("#newslistTab li").click(function (e) {
+            e.preventDefault();
+        });
+        var tuanFlag = false;
+        $(function() {
+            //音频
+            var audioCreator;
+            $.getJSON("http://api.admin.bitauto.com/audiobase/audio/GetAudioAudioResource?IsCarModel=1&pagesize=5&serialId=" + CarCommonCSID, function(data) { //CarCommonCSID  3701  3777
+                if (data.length > 0) {
+                    $("#audio-title, #audio_list").show();
+                    var audioTemplate = document.getElementById('template_audios').innerHTML;
+                    audioCreator = lazyT.tmpl(audioTemplate);
+                    var audioHtml = audioCreator(data);
+                    $("#audio_list").html(audioHtml);
+                    $(".jp-progress").each(function() {
+                        var maxWidth = $(document).width() - 110;
+                        var duration = $(this).data("duration");
+                        var cssWidth = 150;
+                        if (duration <= 60)cssWidth = 100;
+                        if (duration >= 180)cssWidth = maxWidth;
+                        if (duration > 60 && duration < 180) {
+                            cssWidth = (duration - 60) / 120 * (maxWidth - 100) + 100;
+                        }
+                        $(this).css("width", cssWidth + "px");
+                    });
+                    jp.init({ swfPath: "/js/audio" });
+                }
+            });
+        });
+        // 检查是否为中文
+        function isChn(str) {
+            var reg = /^[\u4E00-\u9FA5]+$/;
+            if (!reg.test(str)) {
+                return false;
+            }
+            return true;
+        }
+        //vr
+        if (vrImgForBitauto != undefined && vrImgForBitauto.IntiDataForEntry != undefined) {
+            vrImgForBitauto.IntiDataForEntry(@(serialEntity.Id), function (vrImgs) {
+                if (vrImgs.length > 0) {
+                    $("#favstar").after("<a target=\"_blank\" href=\"" + vrImgs[0].PanoUrl + "\" class=\"vr-chezhan\"><i></i>VR</a>");
+                }
+            });
+        }
+    </script>
+    <!--评论数JS-->
+    <!--#include file="/include/pd/2014/common/00001/201506_typls_js_Manual.shtml"-->
+</body>
+</html>

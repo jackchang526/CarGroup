@@ -5,9 +5,11 @@ using BitAuto.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Xml;
 
 namespace BitAuto.CarChannel.BLL
 {
@@ -108,5 +110,52 @@ namespace BitAuto.CarChannel.BLL
 			CacheManager.InsertCache(cacheKey, masterbrandDic, WebConfig.CachedDuration);
 			return masterbrandDic;
 		}
+
+        /// <summary>
+        /// 获取所有需要301跳转的车系字典
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string, string> GetAllChangeUrl()
+        {
+            string cacheKey = "Car_M_MVC_ChangeURL";
+            object obj = CacheManager.GetCachedData(cacheKey);
+            if (obj != null)
+            {
+                return (Dictionary<string, string>)obj;
+            }
+            
+            try
+            {
+                string filePath = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~"), @"config\ChangeURL.xml");
+                if (!File.Exists(filePath))
+                {
+                    return null;
+                }
+                XmlDocument xmldoc = new XmlDocument();
+                xmldoc.Load(filePath);
+                if (xmldoc == null)
+                {
+                    return null;
+                }
+                XmlNodeList nodeList = xmldoc.SelectNodes("Params/Item");
+                Dictionary<string, string> dic = new Dictionary<string, string>();
+                foreach (XmlNode node in nodeList)
+                {
+                    string oldSpell = node.Attributes["Old"].Value;
+                    string newSpell = node.Attributes["New"].Value;
+                    if (!dic.ContainsKey(oldSpell))
+                    {
+                        dic.Add(oldSpell, newSpell);
+                    }
+                }
+                CacheManager.InsertCache(cacheKey, dic, 60);
+                return dic;
+            }
+            catch (Exception ex)
+            {
+                CommonFunction.WriteLog(ex.Message + ex.StackTrace);
+            }
+            return null;
+        }
 	}
 }

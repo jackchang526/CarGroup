@@ -1,7 +1,0 @@
-[14:55:35]urlrewritingnet getchangespell error:System.Xml.XmlException: 缺少根元素。
-   在 System.Xml.XmlTextReaderImpl.ThrowWithoutLineInfo(String res)
-   在 System.Xml.XmlTextReaderImpl.ParseDocumentContent()
-   在 System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
-   在 System.Xml.XmlDocument.Load(XmlReader reader)
-   在 System.Xml.XmlDocument.Load(String filename)
-   在 UrlRewritingNet.Web.UrlRewriteModule.GetChangedSpell() 位置 d:\work\A3车型产品研发\新版车型库\Carchannelv2.1\UrlRewritingNet.root\UrlRewritingNet\Source\Web\UrlRewriteModule.cs:行号 735

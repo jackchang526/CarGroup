@@ -8,21 +8,22 @@ using BitAuto.CarChannel.Common.Interface;
 using BitAuto.CarChannel.Model;
 using BitAuto.CarUtils.Define;
 using BitAuto.Utils;
+using System.Data;
 
 namespace BitAuto.CarChannel.CarchannelWeb.PageLevelV2
 {
     public partial class LevelPaihang : PageBase
     {
         protected int LevelId;
-        protected string CityName;
-        private string _citySpell;
-        private int _cityId;
+        //protected string CityName;
+        //private string _citySpell;
+       // private int _cityId;
 
         protected string LevelName = "";
         protected string LevelFullName = "";
         protected string LevelSpell = "";
         protected string LevelNavBarHtml = string.Empty;
-        protected string CityListHtml = string.Empty;
+        //protected string CityListHtml = string.Empty;
         protected string SerialsHtml = string.Empty;
         protected string LevelHtml = string.Empty;
         string[] _cityList;
@@ -31,21 +32,21 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageLevelV2
         {
             SetPageCache(10);
             Getparameters();
-            _cityDic = AutoStorageService.GetCitySpellDic();
-            _cityList = new[] { "beijing", "shanghai", "guangzhou", "shenzhen", "fuzhou", "nanjing", "suzhou", "hangzhou", "ningbo", "hefei", "zhengzhou", "nanchang", "wuhan", "changsha", "chengdu", "chongqing", "kunming", "xian", "lanzhou", "taiyuan", "shijiazhuang", "jinan", "qingdao", "tianjin", "changchun", "shenyang", "dalian", "haerbin", "huhehaote" };
+            //_cityDic = AutoStorageService.GetCitySpellDic();
+            //_cityList = new[] { "beijing", "shanghai", "guangzhou", "shenzhen", "fuzhou", "nanjing", "suzhou", "hangzhou", "ningbo", "hefei", "zhengzhou", "nanchang", "wuhan", "changsha", "chengdu", "chongqing", "kunming", "xian", "lanzhou", "taiyuan", "shijiazhuang", "jinan", "qingdao", "tianjin", "changchun", "shenyang", "dalian", "haerbin", "huhehaote" };
             RenderLevel();
-            RenderCityList();
+            //RenderCityList();
             RenderSerialPaihang();
         }
         private void Getparameters()
         {
             LevelId = ConvertHelper.GetInteger(Request.QueryString["Level"]);
-            _citySpell = Request.QueryString["city"];
-            if (String.IsNullOrEmpty(_citySpell))
-            {
-                CityName = "全国";
-                _citySpell = "";
-            }
+			//_citySpell = Request.QueryString["city"];
+			//if (String.IsNullOrEmpty(_citySpell))
+			//{
+			//	CityName = "全国";
+			//	_citySpell = "";
+			//}
             LevelName = CarLevelDefine.GetLevelNameById(LevelId);
             LevelFullName = LevelName;
             if (LevelName == "紧凑型" || LevelName == "中大型")
@@ -56,7 +57,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageLevelV2
         private void RenderLevel()
         {
             List<string> list = new List<string>();
-            string[] arr = { "微型车", "小型车", "紧凑型车", "中型车", "中大型车", "豪华车", "MPV", "SUV", "跑车", "面包车" };
+            string[] arr = { "微型车", "小型车", "紧凑型车", "中型车", "中大型车", "豪华车", "MPV", "SUV", "跑车", "面包车", "皮卡" };
             for (var i = 0; i < arr.Length; i++)
             {
                 var spell = CarLevelDefine.GetLevelSpellByName(arr[i]);
@@ -69,6 +70,34 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageLevelV2
             }
             LevelHtml = string.Concat(list.ToArray());
         }
+
+
+		private void RenderSerialPaihang()
+		{
+			DataSet ds = new Car_SerialBll().GetLevelSerialByUVAndSaleState(LevelFullName, null);
+			if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count >0)
+			{
+				int counter = 0;
+				StringBuilder htmlCode = new StringBuilder();
+				const string baseUrl = "/";
+				foreach (DataRow dr in ds.Tables[0].Rows)
+				{
+					counter++;
+					string showName = dr["cs_ShowName"].ToString();
+					string spell = dr["csAllSpell"].ToString();
+					if (counter <= 3)
+					{
+						htmlCode.AppendFormat("<li><i class=\"hot\">{0}</i><a class=\"car\" href=\"{1}\" target=\"_blank\">{2}</a></li>", counter, baseUrl + spell + "/", showName);
+					}
+					else
+					{
+						htmlCode.AppendFormat("<li><i>{0}</i><a class=\"car\" href=\"{1}\" target=\"_blank\">{2}</a></li>", counter, baseUrl + spell + "/", showName);
+					}
+				}
+				SerialsHtml = htmlCode.ToString();
+			}
+		}
+		/*
         private void RenderCityList()
         {
             StringBuilder htmlCode = new StringBuilder();
@@ -97,7 +126,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageLevelV2
             }
             CityListHtml = htmlCode.ToString();
         }
-
+		
         private void RenderSerialPaihang()
         {
             StringBuilder htmlCode = new StringBuilder();
@@ -123,5 +152,6 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageLevelV2
             }
             SerialsHtml = htmlCode.ToString();
         }
-    }
+		 * */
+	}
 }

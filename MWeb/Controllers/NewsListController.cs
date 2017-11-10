@@ -104,6 +104,12 @@ namespace MWeb.Controllers
                     _pageDescription = "{0}安全:易车网车型频道为您提供最权威的{1}{0}安全指南、最及时的{1}{0}碰撞安全测试、{0}最新报价、{0}价格、{0}经销商降价信息、网友点评讨论等。";
                     _carNewsType = CarNewsType.anquan;
                     break;
+                case "keji":
+                    _pageTitle = "【{0}科技-{0}科技】_{1}{0}-易车网";
+                    _pageKeywords = "{0}科技,{0}科技,{1}{0}";
+                    _pageDescription = "{0}科技:易车网车型频道为您提供最权威的{1}{0}安全指南、最及时的{1}{0}碰撞安全测试、{0}最新报价、{0}价格、{0}经销商降价信息、网友点评讨论等。";
+                    _carNewsType = CarNewsType.keji;
+                    break;
                 default:
                     _newsType = "xinwen";
                     _pageTitle = "【{0}新闻-{0}上市新闻】_{1}{0}-手机易车网";
@@ -168,9 +174,15 @@ namespace MWeb.Controllers
             Dictionary<CarNewsType, string> titleTag = new Dictionary<CarNewsType, string>();
             titleTag.Add(CarNewsType.wenzhang, "全部");
             titleTag.Add(CarNewsType.pingce, "评测");
-            titleTag.Add(CarNewsType.shijia, "试驾");
+            //titleTag.Add(CarNewsType.shijia, "体验试驾");
+            //titleTag.Add("xinwen", "新闻");
+            //titleTag.Add("hangqing", "行情");
             titleTag.Add(CarNewsType.daogou, "导购");
-            titleTag.Add(CarNewsType.gaizhuang, "改装");
+            titleTag.Add(CarNewsType.yongche, "用车");
+            //titleTag.Add(CarNewsType.gaizhuang, "改装");
+            //titleTag.Add(CarNewsType.anquan, "安全");
+            titleTag.Add(CarNewsType.keji, "科技");
+            titleTag.Add(CarNewsType.wenhua, "文化");
             titleTag.Add(CarNewsType.xinwen, "新闻");
 
             CarNewsBll newsBll = new CarNewsBll();
@@ -221,17 +233,21 @@ namespace MWeb.Controllers
 
             if (_newsType == "wenzhang")
             {
-                List<int> carTypeIdList = new List<int>() 
-				{ 
-                (int)CarNewsType.serialfocus,
-				(int)CarNewsType.shijia,
-				(int)CarNewsType.daogou,
-				(int)CarNewsType.yongche,
-				(int)CarNewsType.gaizhuang,
-				(int)CarNewsType.anquan,
-				(int)CarNewsType.xinwen,
-                (int)CarNewsType.pingce
-				};
+                var carTypeIdList = new List<int>
+                    {
+                        (int)CarNewsType.serialfocus, //add 2016-10-11 by gux,liub
+                        //(int) CarNewsType.shijia,
+                        (int) CarNewsType.pingce,
+                        (int) CarNewsType.daogou,
+                        (int) CarNewsType.yongche,
+                        //(int) CarNewsType.gaizhuang,
+                        //(int) CarNewsType.anquan,
+                        (int) CarNewsType.xinwen,
+                        //(int) CarNewsType.pingce,
+                        //(int) CarNewsType.treepingce,
+                        (int) CarNewsType.keji,
+                        (int) CarNewsType.wenhua
+                    };
                 newsDs = new CarNewsBll().GetSerialNewsAllData(_serialId, carTypeIdList, _pageSize, _pageIndex, ref newsCount);
             }
             else

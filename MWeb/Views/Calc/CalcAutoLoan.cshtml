@@ -16,6 +16,8 @@
         </style>
     </head>
     <body>
+        @Html.Partial("/html/TopDownloadLayer.cshtml")
+        @Html.Partial("/html/WTParams.cshtml")
         <div class="op-nav">
             <a href="javascript:void(0);" class="btn-return" id="gobackElm">返回</a>
             <div class="tt-name">
@@ -23,6 +25,13 @@
             </div>
             <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
         </div>
+        <script type="text/javascript">
+            if (typeof (WtParam) != "undefined" && WtParam == "mbdkgxj") {
+                 $(".op-nav").hide();
+                 $("div[id^='app_download_']").hide();
+                 $("#app_yc_dwonload").hide();
+             }
+        </script>
         <div class="op-nav-mark" style="display:none;"></div>
         <input id="hidCarID" type="hidden" value="@ViewData["CarId"]" />
         <input id="hidCarPrice" type="hidden" value="@ViewData["CarReferPrice"]" />
@@ -266,6 +275,13 @@
                 @Html.Partial("~/html/footersearch.cshtml")
                 @Html.Partial("~/html/footerV3.cshtml")
             </div>
+            <script type="text/javascript">
+                if (typeof (WtParam) != "undefined" && WtParam == "mbdkgxj") {
+                    $(".footer15").hide();
+                    $("div[id^='app_download_']").hide();
+                    $("#app_yc_dwonload").hide();
+                }
+            </script>
             <div class="float-r-box">
                 <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
             </div>

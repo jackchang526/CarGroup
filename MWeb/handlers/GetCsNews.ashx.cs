@@ -64,17 +64,21 @@ namespace MWeb.handlers
             DataSet ds = null;
             if (newsType == "wenzhang")
             {
-                List<int> carTypeIdList = new List<int>() 
-				{ 
-                (int)CarNewsType.serialfocus,
-				(int)CarNewsType.shijia,
-				(int)CarNewsType.daogou,
-				(int)CarNewsType.yongche,
-				(int)CarNewsType.gaizhuang,
-				(int)CarNewsType.anquan,
-				(int)CarNewsType.xinwen,
-                (int)CarNewsType.pingce
-				};
+                var carTypeIdList = new List<int>
+                    {
+                        //(int)CarNewsType.serialfocus, //add 2016-10-11 by gux,liub
+                        //(int) CarNewsType.shijia,
+                        (int) CarNewsType.pingce,
+                        (int) CarNewsType.daogou,
+                        (int) CarNewsType.yongche,
+                        //(int) CarNewsType.gaizhuang,
+                        //(int) CarNewsType.anquan,
+                        (int) CarNewsType.xinwen,
+                        //(int) CarNewsType.pingce,
+                        //(int) CarNewsType.treepingce,
+                        (int) CarNewsType.keji,
+                        (int) CarNewsType.wenhua
+                    };
                 ds = new CarNewsBll().GetSerialNewsAllData(_serialId, carTypeIdList, _pageSize, _pageIndex, ref _newsCount);
             }
             else
@@ -174,6 +178,12 @@ namespace MWeb.handlers
                         break;
                     case "anquan":
                         _carNewsTypeInt = (int)CarNewsType.anquan;
+                        break;
+                    case "keji":
+                        _carNewsTypeInt = (int)CarNewsType.keji;
+                        break;
+                    case "wenhua":
+                        _carNewsTypeInt = (int)CarNewsType.wenhua;
                         break;
                     default:
                         _carNewsTypeInt = (int)CarNewsType.xinwen;

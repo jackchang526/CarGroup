@@ -154,7 +154,15 @@ namespace BitAuto.CarChannel.Common
 		{
 			get { return string.IsNullOrEmpty(nvcConfig["SerialFourthStageImagePath"]) ? "" : nvcConfig["SerialFourthStageImagePath"]; }
 		}
-		private static void LoadConfig()
+        public static string SerialCarReallyImagePath
+        {
+            get { return string.IsNullOrEmpty(nvcConfig["SerialCarReallyImagePath"]) ? "" : nvcConfig["SerialCarReallyImagePath"]; }
+        }
+        public static string SerialSlidePageImagePath
+        {
+            get { return string.IsNullOrEmpty(nvcConfig["SerialSlidePageImagePath"]) ? "" : nvcConfig["SerialSlidePageImagePath"]; }
+        }
+        private static void LoadConfig()
 		{
 			nvcConfig = new NameValueCollection();
 			string cacheLevelKey = "BITA_CAR_PHOTO_CONFIG";

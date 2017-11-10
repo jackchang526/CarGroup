@@ -16,6 +16,8 @@
     <!--#include file="/ushtml/0000/myiche2015_cube_xuanche_style-news-1004.shtml"-->
 </head>
 <body class="bg-fff">
+    @Html.Partial("~/html/TopDownloadLayer.cshtml")
+    @Html.Partial("/html/WTParams.cshtml")
     <!-- header start -->
     <div class="op-nav">
         <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
@@ -24,14 +26,20 @@
         </div>
         <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
     </div>
+    <script type="text/javascript">
+        if (typeof (WtFrom) != "undefined" && WtFrom == "mcfw99") {
+            $(".op-nav").hide();
+        }
+    </script>
+
     <div class="op-nav-mark" style="display: none;"></div>
     <!-- header end -->
     <!-- 标签切换 start -->
     <div class="first-tags">
         <ul>
-            <li id="xc_brand"><a href="/brandlist.html" data-channelid="27.150.1436"><span>按品牌</span></a></li>
-            <li class="current"><a href="#" data-channelid="27.150.1435"><span>按条件</span></a></li>
-            <li id="xc_scene" class="tags-new"><a href="/scenelist.html" data-channelid="27.150.1416"><span>按情景<b><i>NEW<i></i></i></b></span></a></li>
+            <li id="xc_brand"><a href="/brandlist.html" data-channelid="27.160.2194"><span>按品牌</span></a></li>
+            <li class="current"><a href="#" data-channelid="27.160.2195"><span>按条件</span></a></li>
+            <li id="xc_scene" class="tags-new"><a href="/scenelist.html" data-channelid="27.160.2196"><span>按情景<b><i>NEW<i></i></i></b></span></a></li>
         </ul>
     </div>
     <!-- 标签切换 end -->
@@ -182,7 +190,7 @@
                 </a>
             </li>
             <li>
-                <a href="/xuanchegongju/?lv=1">
+                <a href="/xuanchegongju/?b=8">
                     旅行版
                 </a>
             </li>
@@ -238,13 +246,13 @@
         </div>
         <div class="sort sort4 remove-margin-top" id="xc_environmentstandard">
             <ul>
-                <li><a href="/xuanchegongju/?more=126">国4</a></li>
-                <li><a href="/xuanchegongju/?more=125">国5</a></li>
-                <li><a href="/xuanchegongju/?more=127">京5</a></li>
-                <li><a href="/xuanchegongju/?more=123">欧4</a></li>
+                <li><a href="/xuanchegongju/?more=120">国5</a></li>
+                <li><a href="/xuanchegongju/?more=121">国4</a></li>
+                <li><a href="/xuanchegongju/?more=122">国3</a></li>
+                @*<li><a href="/xuanchegongju/?more=123">欧4</a></li>
                 <li><a href="/xuanchegongju/?more=122">欧5</a></li>
                 <li><a href="/xuanchegongju/?more=126_123">国4/欧4</a></li>
-                <li><a href="/xuanchegongju/?more=125_122">国5/欧5</a></li>
+                <li><a href="/xuanchegongju/?more=125_122">国5/欧5</a></li>*@
             </ul>
             <div class="clear"></div>
         </div>
@@ -275,14 +283,15 @@
                 <li><a href="/xuanchegongju/?f=7" data-channelid="27.160.1663">汽油</a></li>
                 <li><a href="/xuanchegongju/?f=8" data-channelid="27.160.1664">柴油</a></li>
                 <li><a href="/xuanchegongju/?f=16" data-channelid="27.160.1665">纯电动</a></li>
-                <li><a href="/xuanchegongju/?f=2" data-channelid="27.160.1666">油电混合</a></li>
-                <li><a href="/xuanchegongju/?f=4" data-channelid="27.160.1667">油气混合</a></li>
+                <li><a href="/xuanchegongju/?f=128" data-channelid="27.160.1666">插电混合</a></li>
+                <li><a href="/xuanchegongju/?f=2" data-channelid="27.160.1667">油电混合</a></li>
+                <li><a href="/xuanchegongju/?f=256">天然气</a></li>
             </ul>
             <div class="clear"></div>
         </div>
         <!--能源 end-->
         <!--车门数 start-->
-        <div class="tt-small mt10">
+        @*<div class="tt-small mt10">
             <span>车门数</span>
         </div>
         <div class="sort sort4 remove-margin-top" id="xc_door">
@@ -291,29 +300,31 @@
                 <li><a href="/xuanchegongju/?more=270">4-6门</a></li>
             </ul>
             <div class="clear"></div>
-        </div>
+        </div>*@
         <!--车门数 end-->
         <!--座位数 start-->
         <div class="tt-small mt10">
             <span>座位数</span>
         </div>
-
         <div class="sort sort5 remove-margin-top" id="xc_seats">
             <ul>
                 <li>
-                    <a href="/xuanchegongju/?more=262">2座</a>
+                    <a href="/xuanchegongju/?more=279">2座</a>
                 </li>
                 <li>
-                    <a href="/xuanchegongju/?more=263">4-5座</a>
+                    <a href="/xuanchegongju/?more=280">4座</a>
                 </li>
                 <li>
-                    <a href="/xuanchegongju/?more=265">6座</a>
+                    <a href="/xuanchegongju/?more=281">5座</a>
                 </li>
                 <li>
-                    <a href="/xuanchegongju/?more=266">7座</a>
+                    <a href="/xuanchegongju/?more=282">6座</a>
                 </li>
                 <li>
-                    <a href="/xuanchegongju/?more=267">7座以上</a>
+                    <a href="/xuanchegongju/?more=283">7座</a>
+                </li>
+                <li>
+                    <a href="/xuanchegongju/?more=284">7座以上</a>
                 </li>
             </ul>
             <div class="clear"></div>
@@ -326,25 +337,24 @@
         </div>
         <div class="sort sort4 remove-margin-top" id="xc_settings">
             <ul>
-                <li><a href="javascript:void(0)" id="mcCheck204">天窗</a></li>
-                <li><a href="javascript:void(0)" id="mcCheck196">GPS导航</a></li>
-                <li><a href="javascript:void(0)" id="mcCheck200">倒车影像</a></li>
-                <li><a href="javascript:void(0)" id="mcCheck180">儿童锁</a></li>
+                <li><a href="javascript:void(0)" id="mcCheck207">天窗</a></li>
+                <li><a href="javascript:void(0)" id="mcCheck197">倒车影像</a></li>
                 <li><a href="javascript:void(0)" id="mcCheck101">涡轮增压</a></li>
-                <li><a href="javascript:void(0)" id="mcCheck179">无钥匙启动</a></li>
-                <li><a href="javascript:void(0)" id="mcCheck141">四轮碟刹</a></li>
-                <li><a href="javascript:void(0)" id="mcCheck250">真皮座椅</a></li>
-                <li><a href="javascript:void(0)" id="mcCheck184">ESP</a></li>
-                <li><a href="javascript:void(0)" id="mcCheck224">氙气大灯</a></li>
-                <li><a href="javascript:void(0)" id="mcCheck194">定速巡航</a></li>
-                <li><a href="javascript:void(0)" id="mcCheck274">自动空调</a></li>
-                <li><a href="javascript:void(0)" id="mcCheck177">胎压监测</a></li>
-                <li><a href="javascript:void(0)" id="mcCheck189">自动泊车</a></li>
-                <li><a href="javascript:void(0)" id="mcCheck249">空气净化器</a></li>
-                <!--<li><a href="javascript:void(0)" id="mcCheck209">电动窗防夹</a></li>-->
-                <li><a href="javascript:void(0)" id="mcCheck163">换档拨片</a></li>
-                <li><a href="javascript:void(0)" id="mcCheck236">电动座椅</a></li>
-                <li><a href="javascript:void(0)" id="mcCheck181">儿童座椅接口</a></li>
+                <li><a href="javascript:void(0)" id="mcCheck226">无钥匙启动</a></li>
+                <li><a href="javascript:void(0)" id="mcCheck192">自动驻车</a></li>
+                <li><a href="javascript:void(0)" id="mcCheck244">自动空调</a></li>
+                <li><a href="javascript:void(0)" id="mcCheck170">ESP</a></li>
+                <li><a href="javascript:void(0)" id="mcCheck242">换档拨片</a></li>
+                <li><a href="javascript:void(0)" id="mcCheck191">自动泊车</a></li>
+                <li><a href="javascript:void(0)" id="mcCheck287">GPS导航</a></li>
+                <li><a href="javascript:void(0)" id="mcCheck182">定速巡航</a></li>
+                <li><a href="javascript:void(0)" id="mcCheck179">胎压监测</a></li>
+                <li><a href="javascript:void(0)" id="mcCheck184">主动刹车</a></li>
+                <li><a href="javascript:void(0)" id="mcCheck194">上坡辅助</a></li>
+                <li><a href="javascript:void(0)" id="mcCheck201">日间行车灯</a></li>
+                <li><a href="javascript:void(0)" id="mcCheck246">后排空调</a></li>
+                <li><a href="javascript:void(0)" id="mcCheck297">发动机启停</a></li>
+                <li><a href="javascript:void(0)" id="mcCheck169">牵引力制动</a></li>
             </ul>
             <div class="clear"></div>
         </div>
@@ -359,7 +369,7 @@
     <!-- 广告 start -->
     <ins id="div_90547610-1f85-4440-bf4c-e4d104c260dd" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="" adplay_brandname="" adplay_brandtype="" adplay_blockcode="90547610-1f85-4440-bf4c-e4d104c260dd"></ins>
     <!-- 广告 end -->
-    <!--#include file="/include/pd/2014/wap/00001/201507_wap_index_ydtj_Manual.shtml" -->
+    <!--#include file="/include/pd/2016/wap/00001/201606_wap_common_ydyy_Manual.shtml" -->
     <!-- wap端新增资源的广告 -->
     <ins id="div_2a05eecc-6416-4c0b-ab7e-018e54388d3a" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="" adplay_brandname="" adplay_brandtype="" adplay_blockcode="2a05eecc-6416-4c0b-ab7e-018e54388d3a"></ins>
     <!--<ins adplay_blockcode="4518731c-308b-4e2c-ab40-fb07fba381e1" adplay_brandtype="" adplay_brandname="" adplay_brandid="" adplay_cityname="" adplay_areaname="" adplay_ip="" type="ad_play" id="div_4518731c-308b-4e2c-ab40-fb07fba381e1">

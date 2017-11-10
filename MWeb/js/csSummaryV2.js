@@ -105,55 +105,55 @@ $(document).ready(function () {
             if ($(content).length == 0) {
                 return;
             }
-            var rurl = "http://api.admin.bitauto.com/news3/v1/news/get?categoryids=625&cityids=" + cityId + "&serialids=" + serialId + "&pagesize=1";
-            $.ajax({
-                url: rurl,
-                dataType: "jsonp",
-                cache: true,
-                jsonpCallback: "getfocusnewsback",
-                success: function (data) {
-                    if (data.News.length == 0) {
-                        return;
-                    }
-                    var h = new Array();
-                    var time = data.News[0].publishTime;
-                    if (time.length >= 10) {
-                        time = time.substr(0, 10);
-                    }
-                    var img = data.News[0].imageCoverUrl;
-                    if (img.length > 0) {
-                        img = img.replace("_3.", "_1.");
-                    }
-                    h.push("<a href=\"" + data.News[0].url + "\" data-channelid=\"27.23.1788\">");
-                    if (img.length > 0) {
-                        h.push("<div class=\"img-box\"><span><img src=\"" + img + "\"></span></div>");
-                    }
-                    h.push("<div class=\"con-box\"><h4>" + data.News[0].title + "</h4><em><span>" + time + "</span><span>" + data.News[0].author + "</span><i class=\"ico-comment huifu comment_0_6583989\">" + data.News[0].pv + "</i></em></div></a>");
+            //var rurl = "http://api.admin.bitauto.com/news3/v1/news/get?categoryids=625&cityids=" + cityId + "&serialids=" + serialId + "&pagesize=1";
+            //$.ajax({
+            //    url: rurl,
+            //    dataType: "jsonp",
+            //    cache: true,
+            //    jsonpCallback: "getfocusnewsback",
+            //    success: function (data) {
+            //        if (data.news.length == 0) {
+            //            return;
+            //        }
+            //        var h = new Array();
+            //        var time = data.news[0].publishTime;
+            //        if (time.length >= 10) {
+            //            time = time.substr(0, 10);
+            //        }
+            //        var img = data.news[0].imageCoverUrl;
+            //        if (img.length > 0) {
+            //            img = img.replace("_3.", "_1.");
+            //        }
+            //        h.push("<a href=\"" + data.news[0].url + "\" data-channelid=\"27.23.1788\">");
+            //        if (img.length > 0) {
+            //            h.push("<div class=\"img-box\"><span><img src=\"" + img + "\"></span></div>");
+            //        }
+            //        h.push("<div class=\"con-box\"><h4>" + data.news[0].title + "</h4><em><span>" + time + "</span><span>" + data.news[0].author + "</span><i class=\"ico-comment huifu comment_0_6583989\">" + data.news[0].pv + "</i></em></div></a>");
 
-                    var newsli = $(content).find("li");
-                    var newscount = $(newsli).length;
-                    if (newscount == 6) {
-                        $(newsli).last().html(h.join(""));
-                    }
-                    else {
-                        if (newscount < 3) {
-                            h.splice(0, 0, "<li" + (img.length > 0 ? "" : " class=\"news-noimg\"") + ">");
-                            h.push("</li>");
-                        }
-                        else {
-                            h.splice(0, 0, "<li style=\"display:none;\" " + (img.length > 0 ? "" : " class=\"news-noimg\"") + ">");
-                            h.push("</li>");
-                        }
-                        $(content).find("ul").append(h.join(""));
-                        if ($(content).find("li").length > 3 && $("#btn-hot-more").length == 0) {
-                            $(content).find(".btn-more").remove();
-                            $(content).append("<a href=\"javascript:void(0);\" id=\"btn-hot-more\" class=\"btn-more btn-add-more\"><i>加载更多</i></a>");
-                            s.init();
-                        }
-                    }
-                    Bglog_InitPostLog();
-                }
-            });
+            //        var newsli = $(content).find("li");
+            //        var newscount = $(newsli).length;
+            //        if (newscount == 6) {
+            //            $(newsli).last().html(h.join(""));
+            //        }
+            //        else {
+            //            if (newscount < 3) {
+            //                h.splice(0, 0, "<li" + (img.length > 0 ? "" : " class=\"news-noimg\"") + ">");
+            //                h.push("</li>");
+            //            }
+            //            else {
+            //                h.splice(0, 0, "<li style=\"display:none;\" " + (img.length > 0 ? "" : " class=\"news-noimg\"") + ">");
+            //                h.push("</li>");
+            //            }
+            //            $(content).find("ul").append(h.join(""));
+            //            if ($(content).find("li").length > 3 && $("#btn-hot-more").length == 0) {
+            //                $(content).find(".btn-more").remove();
+            //                $(content).append("<a href=\"javascript:void(0);\" id=\"btn-hot-more\" class=\"btn-more btn-add-more\"><i>加载更多</i></a>");
+            //                s.init();
+            //            }
+            //        }
+            //        Bglog_InitPostLog();
+            //    }
+            //});
         }
         //初始化页面
         s.init = function () {
@@ -189,9 +189,9 @@ else if (typeof define === 'function' && define.amd) {
     });
 }
 
-$(function () {
-    typeof swiperNewslist.updateAutoHeight == "function" && swiperNewslist.updateAutoHeight();//热点新闻，最后一个异步加载显示惠买车，加载完成，重新计算高度
-});
+//$(function () {
+//    typeof swiperNewslist.updateAutoHeight == "function" && swiperNewslist.updateAutoHeight();//热点新闻，最后一个异步加载显示惠买车，加载完成，重新计算高度
+//});
 
 //加载降价新闻（最新行情）
 
@@ -516,15 +516,15 @@ var baoxiaoOrImport = [];
     });
 
     //统计
-    var channelIDs = { "3": "27.23.115", "9": "27.23.119", "10": "27.23.120", "11": "27.23.121", "12": "27.23.122", "13": "27.23.123", "14": "27.23.994" };
+    var channelIDs = { "3": "27.23.115", "9": "27.23.119", "10": "27.23.120", "11": "27.23.121", "12": "27.23.122", "13": "27.23.123", "14": "27.23.994", "15": "27.23.2178" };
     var urlEndPartCode = { "3": "?ref=mchexizshuan&leads_source=m002002", "9": "&tracker_u=18_ycydcx&leads_source=m002004", "10": "&source=100064&leads_source=m002005", "11": "?ref=mcar1&rfpa_tracker=2_22&leads_source=m002006", "12": "?ref=mchexizska&leads_source=m002007", "14": "?leads_source=m002017" };
     //按钮统计
     var global_busbtn_arr = ["1", "2", "0", "5", "6"];
     var global_busbtn_channelids = { "0": "27.23.116", "1": "27.23.119", "2": "27.23.114", "5": "27.23.117", "6": "27.23.118" };
-    var global_busbtn_code = { "0": "?leads_source=m002003", "1": "&tracker_u=613_cxzs&leads_source=m002004", "2": "?from=ycm1&leads_source=m002001", "5": "?ref=mchexizsmai&leads_source=m002014", "6": "?ref=mchexizsgu" };
+    var global_busbtn_code = { "0": "?leads_source=m002003", "1": "&tracker_u=613_cxzs&leads_source=m002004", "2": "&from=ycm1&leads_source=m002001", "5": "?ref=mchexizsmai&leads_source=m002014", "6": "?ref=mchexizsgu" };
     var global_duibiLevelBtn_style = { "0": "xunjia-btn", "1": "three-item item-xinche", "2": "three-item item-daikuan", "5": "xunjia-btn", "6": "two-item item-ershouche" };
     var global_duibiLevelBtn_channelids = { "0": "27.23.1357", "1": "27.23.1355", "2": "27.23.1356", "5": "27.23.1358", "6": "27.23.1359" };
-    var global_duibiLevelBtn_code = { "0": "?leads_source=m003016", "1": "&tracker_u=611_gddf&leads_source=m003014", "2": "?from=229&leads_source=m003015", "5": "?leads_source=m003017", "6": "?leads_source=m003018" };
+    var global_duibiLevelBtn_code = { "0": "?leads_source=m003016", "1": "&tracker_u=611_gddf&leads_source=m003014", "2": "&from=229&leads_source=m003015", "5": "?leads_source=m003017", "6": "?leads_source=m003018" };
     // add by gux 20170425
     if (["4123", "4881", "2608", "1574", "2573", "3987", "2032", "1905", "4847", "1798"].indexOf(CarCommonCSID) != -1) {
         global_busbtn_code["0"] = "?leads_source=m002003&WT.mc_id=nbcjdx";
@@ -542,8 +542,8 @@ var baoxiaoOrImport = [];
                 var serviceHtml = [],
                     btnHtml = [],
                     duibiLevelBtnHtml = [],
-                    btnCount = 0;
-                btnHtml.push("<ul>");
+                    btnCount = 1;
+                //btnHtml.push("<ul>");
                 $.each(data.Button, function (i, n) {
                     if (i > 2) return;
                     if (global_busbtn_arr.indexOf(n.BusinessId) != -1) {
@@ -553,11 +553,11 @@ var baoxiaoOrImport = [];
                         btnCount++;
                     }
                 });
-                btnHtml.push("</ul>");
+                //btnHtml.push("</ul>");
                 if (btnCount == 2) {
-                    $("#btn-business").html(btnHtml.join('')).addClass("sum-btn-two");
+                    $("#btn-business ul").append(btnHtml.join('')).parent().addClass("sum-btn-two");
                 } else {
-                    $("#btn-business").html(btnHtml.join(''));
+                    $("#btn-business ul").append(btnHtml.join(''));
                 }
                 $("#bottomFloat ul").append(duibiLevelBtnHtml.join(''));
                 if ($("#liSCInfo").length > 0 && $("#bottomFloat .xunjia-btn").length > 0) {
@@ -857,6 +857,7 @@ function callCommonMethod(url, dataType, callBackName, callBackFunc) {
         jsonpCallback: callBackName,
         success: function (data) {
             callBackFunc(data);
+            Bglog_InitPostLog();
         }
     });
 }
@@ -1014,7 +1015,7 @@ var _bindBtnMaiEvent = function () {
                 var html = '';
                 $leftPopup.find('.ap').show();
                 $leftPopup.find('.mmm-none').show();
-                getComparisonBuy(citycode, curCarId, $leftPopup);
+                //getComparisonBuy(citycode, curCarId, $leftPopup);
                 getDirectSell(citycode, curCarId, $leftPopup);
                 getCoupon(citycode, curCarId, $leftPopup);
                 getDaikuan(citycode, curCarId, $leftPopup);
@@ -1038,3 +1039,22 @@ function addTrackingCode(serialId) {
     }
 }
 addTrackingCode(GlobalSummaryConfig.SerialId);
+
+//双11入口
+function Get1111Entrance() {
+    $.ajax({
+        url: "http://api.mai.yiche.com/api/ProductCar/GetCs11?csid=" + GlobalSummaryConfig.SerialId,
+        cache: true,
+        dataType: "jsonp",
+        jsonpCallback: "Get1111EntranceCallback",
+        success: function (data) {
+            if (!data.Success || data.Result == null) {
+                //console.log(data.Msg);
+                return;
+            }
+            var html = [];
+            html.push("<a href=\"" + data.Result.mUrl + "\" class=\"shuang11-alink\">" + data.Result.propagate + "</a >");
+            $(".sum-info").before(html.join(""));
+        }
+    });
+}

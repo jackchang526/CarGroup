@@ -75,5 +75,13 @@ namespace BitAuto.CarChannel.Model
 		/// 是否平行进口
 		/// </summary>
 		public int IsImport;
+        /// <summary>
+        /// 车身形式
+        /// </summary>
+        public string BodyForm;
+        /// <summary>
+        /// 上市时间
+        /// </summary>
+        public DateTime MarketDateTime;
 	}
 }

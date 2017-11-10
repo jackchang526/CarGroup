@@ -1,5 +1,7 @@
-﻿@{
+﻿@using BitAuto.Utils;
+@{
     Layout = null;
+    string wtmcid = Request.QueryString["WT.mc_id"];
 }
 
 <!DOCTYPE html>
@@ -14,9 +16,25 @@
     <title>【@ViewData["_masterName"]】@ViewData["_masterName"]汽车报价_图片_@DateTime.Now.Year@ViewData["_masterName"])新款车型-手机易车网</title>
     <meta name="Keywords" content="@ViewData["_masterName"],@ViewData["_masterName"]汽车,@ViewData["_masterName"]汽车报价,@ViewData["_masterName"]新款车型,手机易车网,car.m.yiche.com" />
     <meta name="Description" content="@ViewData["_masterName"]:易车提供最新 @ViewData["_masterName"]汽车报价,@ViewData["_masterName"]汽车图片,@ViewData["_masterName"]汽车新闻,视频,口碑,问答,二手车等,@ViewData["_masterName"]在线询价、低价买车尽在手机易车网" />
+    <link rel="canonical" href="http://car.bitauto.com/@ViewData["_masterUrlSpell"]/" />
     <!--#include file="/ushtml/0000/myiche2016_cube_pinpaiye-1161.shtml"-->
+    @if (wtmcid == "mbdofcl")
+    {
+        <script src="//msite.baidu.com/sdk/c.js?appid=1569705116260104"></script> 
+        <script type="application/ld+json">
+            {
+            "@@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
+            "@@id": "@(Request.Url.ToString())",
+            "title": "【@ViewData["_masterName"]】@ViewData["_masterName"]汽车报价_图片_@DateTime.Now.Year@ViewData["_masterName"])新款车型-手机易车网",
+            "images": ["http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_@(ViewData["_masterId"])_100.png"],
+            "description":"",
+            "pubDate": "@(DateTime.Now.ToString("yyyy-MM-ddThh:mm:ss"))"
+            }
+        </script>
+    }
 </head>
 <body>
+    @Html.Partial("~/html/TopDownloadLayer.cshtml")
     <div class="mbt-page">
         <!-- header start -->
         <div class="op-nav">

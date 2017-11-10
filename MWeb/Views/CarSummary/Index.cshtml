@@ -11,13 +11,15 @@
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <meta content="black" name="apple-mobile-web-app-status-bar-style" />
     <meta content="telephone=no" name="format-detection" />
-    <title>【@(Model.Serial.SeoName+Model.Name)车款综述】_@(Model.Serial.Brand.SeoName)-手机易车网</title>
-    <meta name="Keywords" content="@(Model.Serial.SeoName),@(Model.Serial.SeoName)车款,@(Model.Serial.SeoName)参数,@(Model.Serial.SeoName)配置,@(Model.Serial.Brand.SeoName+Model.Serial.SeoName)" />
-    <meta name="Description" content="@(Model.Serial.SeoName):手机易车网车型频道为您提供全国最新@(Model.Serial.SeoName)报价,权威@(Model.Serial.SeoName)配置,海量@(Model.Serial.SeoName)图片" />
+    <title>【@(Model.Serial.SeoName) @(Model.CarYear)款 @(Model.Name)】报价_图片_配置-手机易车网</title>
+    <meta name="Keywords" content="@(Model.Serial.SeoName) @(Model.CarYear)款 @(Model.Name), @(Model.Serial.SeoName) @(Model.CarYear)款 @(Model.Name)报价, @(Model.Serial.SeoName) @(Model.CarYear)款 @(Model.Name)图片" />
+    <meta name="Description" content="@(Model.Serial.SeoName):手机易车网车型频道为您提供全国最新@(Model.Serial.SeoName) @(Model.CarYear)款 @(Model.Name)报价,权威@(Model.Serial.SeoName)配置,海量@(Model.Serial.SeoName)图片,尽在易车网。" />
     <!--#include file="/ushtml/0000/myiche2015_cube_chekuan-1019.shtml"-->
+    <link rel="canonical" href="http://car.bitauto.com/@(Model.Serial.AllSpell)/m@(Model.Id)/" />
     <script type="text/javascript" charset="utf-8" src="http://ip.yiche.com/iplocation/setcookie.ashx"></script>
 </head>
 <body>
+    @Html.Partial("~/html/TopDownloadLayer.cshtml")
 <div id="container">
 <!-- header start -->
 <div class="op-nav">
@@ -102,9 +104,13 @@
 <div class="car-canshu">
     @if (ViewBag.IsElectrombile)
     {
-        <dl>
+        @*<dl>
             <dt class="w5">百公里耗电：</dt>
             <dd>@(string.IsNullOrEmpty(ViewBag.PowerConsumptive100) ? "" : ViewBag.PowerConsumptive100 + "kW")</dd>
+        </dl>*@
+        <dl>
+            <dt class="w5">发电机功率：</dt>
+            <dd>@(ViewBag.EngineElectrombile)</dd>
         </dl>
         <dl>
             <dt class="w4">电池容量：</dt>
@@ -116,7 +122,7 @@
         </dl>
         <dl>
             <dt class="w4">充电时间：</dt>
-            <dd>@(string.IsNullOrEmpty(ViewBag.ChargeTime) ? "" : ViewBag.ChargeTime + "分钟")</dd>
+            <dd>@(string.IsNullOrEmpty(ViewBag.ChargeTime) ? "" : ViewBag.ChargeTime + "小时")</dd>
         </dl>
     }
     else
@@ -125,13 +131,17 @@
             <dt class="w2">排量：</dt>
             <dd>@(ViewBag.Exhaust)</dd>
         </dl>
-        <dl>
+        @*<dl>
             <dt class="w2">油耗：</dt>
             <dd>@(ViewBag.Cfcs.CarSummaryFuelCost == "" ? "暂无" : ViewBag.Cfcs.CarSummaryFuelCost + "/100km")</dd>
-        </dl>
+        </dl>*@
         <dl>
             <dt class="w3">发动机：</dt>
             <dd>@(ViewBag.EngineAllString)</dd>
+        </dl>
+        <dl>
+            <dt class="w4">进气形式：</dt>
+            <dd>@(ViewBag.EngineInhaleTypeString)</dd>
         </dl>
         <dl>
             <dt class="w3">变速箱：</dt>
@@ -177,7 +187,8 @@
     var CarCommonCSID = "@(Model.Serial == null ? 0 : Model.Serial.Id)";
     var CarCommonCarID = "@(Model.Id)";
 </script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/carsum/funcGetEsc.js?v=20170525"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/carsum/funcGetEsc.js?v=201711011654"></script>
+    @*<script type="text/javascript" src="/js/carsum/funcGetEsc.js?v=20170525"></script>*@
 <script type="text/javascript">
     showNewsInsCode('d5b63897-b9fe-4de8-a5ee-ea4f0ab97d56', '058f9880-76ca-4a3a-bfa4-9d355e1f7395', '81c5ea90-e1d3-44ea-a957-36beea9ec7aa', 'cd6edaab-a803-41a9-8b49-a699cc632537');
 </script>
@@ -332,7 +343,7 @@
 <script src="http://image.bitautoimg.com/uimg/wap/js/jquery-1.8.0.min.js" type="text/javascript"></script>
 <script src="http://image.bitautoimg.com/uimg/wap/js/idangerous.swiper-2.0.min.js"></script>
 
-    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.js,carchannel/wirelessjsv2/v2/underscore.js,carchannel/wirelessjsv2/v2/model.js,carchannel/wirelessjsv2/v2/rightswipe.js,carchannel/wirelessjsv2/v2/note.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.js,carchannel/wirelessjsv2/rightswipe-cityv2.js?v=20170105"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.js,carchannel/wirelessjsv2/v2/underscore.js,carchannel/wirelessjsv2/v2/model.js,carchannel/wirelessjsv2/v2/rightswipe.js,carchannel/wirelessjsv2/v2/note.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.min.js,carchannel/wirelessjsv2/rightswipe-cityv2.js?v=201707031118"></script>
 
     @*<script type="text/javascript" src="/js/v2/iscroll.js"></script>
     <script type="text/javascript" src="/js/v2/underscore.js"></script>
@@ -396,7 +407,8 @@
     var apiSerialId = '@(Model.SerialId)';
     var apiCarId = '@(Model.Id)';
 </script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/carsum/aboutCompare.js"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/carsum/aboutCompare.min.js?v=20170906"></script>
+    @*<script type="text/javascript" src="/js/carsum/aboutCompare.js"></script>*@
     <script type="text/javascript">
         var  zamCityId= (typeof bit_locationInfo !="undefined")?bit_locationInfo.cityId:"201",
 			modelStr = '@(Model.SerialId)-' + (zamCityId.length >= 4 ? zamCityId.substring(0, 2) : zamCityId.substring(0, 1)) + '-' + zamCityId + '';

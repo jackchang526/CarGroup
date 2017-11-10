@@ -23,7 +23,7 @@
         'page8/:query': "other",
         'page9/:query': "other",
         'page10/:query': "other",
-        'page11/:query': "other",
+        //'page11/:query': "other",
         'page12/:query': "other",
         'page13/:query': "other",
         'page14/:query': "other"
@@ -41,7 +41,7 @@ var pageAction = {
     'page8': _.once(user.youhuigouche),
     'page9': _.once(user.jingxiaoshang),
     'page10': _.once(user.baoxian),
-    'page11': _.once(user.yanghu),
+    //'page11': _.once(user.yanghu),
     'page12': _.once(user.kanlehaikan),
     'page14': _.once(user.ershouche)
 };
@@ -121,9 +121,9 @@ router.on("route:page10", function() {
     preLoad("page10");
 });
 
-router.on("route:page11", function() {
-    preLoad("page11");
-});
+//router.on("route:page11", function() {
+//    preLoad("page11");
+//});
 
 router.on("route:page12", function() {
     preLoad("page12");

@@ -291,7 +291,7 @@
 <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/serialtoseead.min.js?v=20161228"></script>
 <%--<script src="/jsnewV2/serialtoseead.js?v=20151211" type="text/javascript" ></script>--%>
 <script src="http://image.bitautoimg.com/carchannel/jsnewv2/ucarserialcity.min.js?v=20161228" type="text/javascript"></script>
-<script src="http://image.bitautoimg.com/carchannel/jsnewv2/pingceyouhui.min.js?v=2016122917" type="text/javascript"></script>
+<%--<script src="http://image.bitautoimg.com/carchannel/jsnewv2/pingceyouhui.min.js?v=2016122917" type="text/javascript"></script>--%>
 <%--<script src="/jsnewV2/pingceyouhui.js?v=20151211" type="text/javascript" ></script>--%>
      
 <script type="text/javascript">
@@ -336,7 +336,7 @@
 
     //if("<%= currentPageIndex %>" == "100"){
     //$(function(){ //优惠
-    PingceYouhui.Init(CarCommonCSID, cityId, <%= currentPageIndex %>, "<%= BaseUrl %>");
+    //PingceYouhui.Init(CarCommonCSID, cityId, <%= currentPageIndex %>, "<%= BaseUrl %>");
     //});
     //}
 
@@ -368,7 +368,7 @@
     var adplay_BrandName = ''; //品牌
     var adplay_BlockCode = '820925db-53c1-4bf8-89d2-198f4c599f4e'; //广告块编号
 </script>
-<script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>
+<script type="text/javascript" src="http://d2.yiche.com/js/sense.js"></script>
 <% if (csID == 2370 || csID == 2608 || csID == 3398 || csID == 3023 || csID == 2388)
    { %>
     <!--百度热力图-->

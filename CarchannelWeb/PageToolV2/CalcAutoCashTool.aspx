@@ -15,7 +15,7 @@ Inherits="BitAuto.CarChannel.CarchannelWeb.PageToolV2.CalcAutoCashTool" %>
 <!--#include file="~/ushtml/0000/yiche_2016_cube_jisuanqi_style-1268.shtml"-->
 <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
 <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/dropdownlistnew.min.js?v=20161130"></script>
-<script type="text/javascript" src="<%= WebConfig.StaticFileBaseUrl %>jsnewV2/CarCalculator.min.js?v=20170324"></script>
+<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/CarCalculator.min.js?v=20170324"></script>
 <%--浮动JS--%>
 <script type="text/javascript">
     function addEvent(obj, type, fn) {
@@ -75,8 +75,8 @@ Inherits="BitAuto.CarChannel.CarchannelWeb.PageToolV2.CalcAutoCashTool" %>
                         if (hidCarId && hidCarId.value > 0) {
                             carid = hidCarId.value;
                         }
-                    }
-                    chedaiLink[0].href = "http://www.daikuan.com/www/" + ADForCheDai.CsAllSpellArray[csId] + "/m" + carid + "/?from=yc6&leads_source=p031001";
+                    } 
+                    chedaiLink[0].href = "http://sq.taoche.com/yiche/index?from=yc6&leads_source=p031001&serialid=" + csId + "&carid=" + carid+"";
                 }
             }
         }

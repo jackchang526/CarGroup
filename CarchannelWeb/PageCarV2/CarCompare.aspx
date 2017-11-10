@@ -112,10 +112,9 @@
     <!--page start-->
     <div class="container config-section summary" id="box">
         <div class="config-section-main">
-
-            <div class="section-header header2">
-                <div class="box">
-                    <h2>参数配置</h2>
+            <div class="td-tips">
+                <div class="ts-box">
+                    以下数据仅供参考，不构成任何买卖协议，实际情况以店内销售车辆为准。如果发现信息有误，<a target="_blank" href="http://www.bitauto.com/feedback/">欢迎您及时指正！</a>
                 </div>
             </div>
 
@@ -140,11 +139,7 @@
                     </div>
                     <!-- 左侧浮动层 end -->
                     <%} %>
-                    <div class="td-tips">
-                        <div class="ts-box">
-                            以上参数配置信息仅供参考，实际请以店内销售车辆为准。如果发现信息有误，<a target="_blank" href="http://www.bitauto.com/feedback/">欢迎您及时指正！</a>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 
@@ -154,6 +149,7 @@
        { %>
     <script type="text/javascript">
         <%= jsContent %>
+        <%= packageJsContent %>
     </script>
     <% } %>
     <script type="text/javascript" language="javascript">
@@ -167,8 +163,8 @@
 
     <%--<script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/jsnew/commons.js,carchannel/jsnew/carcompareforminiV3.min.js,carchannel/jsnew/carSelectSimpleV3.min.js?v=20160120"></script>--%>
      <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/commons.min.js"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/JsForParameter.min.js?v=20170518"></script>
-    <%--<script type="text/javascript" src="/jsnewv2/JsForParameter.js"></script>--%>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/JsForParameterv2.min.js?v=201711021425"></script>
+    <%--<script type="text/javascript" src="/jsnewv2/JsForParameterV2.js"></script>--%>
     <%--<script type="text/javascript" src="/jsnew/commons.js?v=20150724"></script>
         <script type="text/javascript" src="/jsnew/carcompareforminiV3.js?v=20150733"></script>
         <script type="text/javascript" src="/jsnew/carSelectSimpleV3.js"></script>--%>

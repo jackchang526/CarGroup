@@ -10,6 +10,7 @@ using BitAuto.CarChannel.Common;
 using System.Text;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
+using MongoDB.Bson;
 
 namespace BitAuto.CarChannelAPI.Web.Mai
 {
@@ -102,11 +103,15 @@ namespace BitAuto.CarChannelAPI.Web.Mai
 			List<string> resultList = new List<string>();
 			if (serialId > 0 && cityId > 0 && WebConfig.MongoDBForCarConnectionString != "")
 			{
+
+                List<BsonValue> list = new List<BsonValue>();
+                list.Add(BsonValue.Create(cityId));
+
 				IMongoQuery query = Query.And(
 					// 子品牌ID
 					Query.EQ("Cs_Id", serialId)
 					// 城市ID
-					, Query.In("CityList", cityId)
+					, Query.In("CityList", list)
 					// 上架时间小于等于当前时间，mongoDB内是UTC时间
 					, Query.LTE("UpTime", DateTime.Now)
 					, Query.GTE("DownTime", DateTime.Now)

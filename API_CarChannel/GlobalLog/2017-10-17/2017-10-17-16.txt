@@ -1,0 +1,11 @@
+[2017/10/17 16:22:56]  
+IP: 127.0.0.1
+Error in: http://test.api.car.bitauto.com/wxapp/gethotserial.ashx?num=3
+Ref: 
+Error Message: 请求在此上下文中不可用
+Stack Trace:    在 System.Web.UI.Page.get_Request()
+   在 BitAuto.CarChannelAPI.Web.WxApp.GetHotSerial.GetParam() 位置 E:\GitCode\cargroup\CarChannel\CarChannel\API_CarChannel\WxApp\GetHotSerial.ashx.cs:行号 56
+   在 BitAuto.CarChannelAPI.Web.WxApp.GetHotSerial.ProcessRequest(HttpContext context) 位置 E:\GitCode\cargroup\CarChannel\CarChannel\API_CarChannel\WxApp\GetHotSerial.ashx.cs:行号 25
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+

@@ -95,6 +95,13 @@ namespace MWeb
 			   defaults: new { controller = "SelectCar", action = "Level", id = UrlParameter.Optional },
 			   constraints: new { level = @"(weixingche|xiaoxingche|jincouxingche|zhongxingche|zhongdaxingche|haohuaxingche|mpv|suv|paoche|mianbaoche|pika|qita)" }
 		   );
+            //保值率
+            routes.MapRoute(
+                name:"baozhilv",
+                url:"{level}/baozhilv/",
+                defaults:new { Controller = "BaoZhiLv", action="Index",id = UrlParameter.Optional },
+                constraints: new { level = @"(weixingche|xiaoxingche|jincouxingche|zhongxingche|zhongdaxingche|haohuaxingche|mpv|suv|paoche|mianbaoche|pika|qita)" }
+                );
 
             //suv
             routes.MapRoute(
@@ -127,7 +134,7 @@ namespace MWeb
                name: "newslist",
                url: "{allspell}/{newstags}",
                defaults: new { controller = "NewsList", action = "Index", id = UrlParameter.Optional },
-               constraints: new { allspell = new SerialAllSpellConstraint(), newstags = @"(wenzhang|xinwen|daogou|hangqing|yongche|shijia|pingce|gaizhuang|anquan)" }
+               constraints: new { allspell = new SerialAllSpellConstraint(), newstags = @"(wenzhang|xinwen|daogou|hangqing|yongche|shijia|pingce|gaizhuang|anquan|keji|wenhua)" }
            );
             //车系配置
             routes.MapRoute(

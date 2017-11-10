@@ -22,10 +22,10 @@ namespace MWeb.Controllers
         /// </summary>
         /// <param name="re">seo 参数 判断 是否直接输出</param>
         /// <returns></returns>
-        [OutputCache(Duration = 1800,  Location = OutputCacheLocation.Downstream, VaryByParam = "*")]
+        [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream, VaryByParam = "*")]
         public ActionResult Index(string re)
         {
-            rePara = re;            
+            rePara = re;
             ViewBag.brandListHtml = MakeMasterBrand();
             ViewBag.letterListHtml = MakeCharNav(charNav);
             ViewBag.re = rePara;
@@ -85,17 +85,19 @@ namespace MWeb.Controllers
                 //seo 直接跳转
                 if (rePara == "true")
                 {
-                    sb.Insert(sb.Length - 11, string.Format("<li id=\"char_nav_{2}\"><a href=\"/brandlist/{2}/\"> <span class=\"brand-logo m_{0}_b\"></span><span class=\"brand-name\">{1}</span></a></li>",
+                    sb.Insert(sb.Length - 11, string.Format("<li id=\"char_nav_{2}\"><a href=\"/brandlist/{2}/\"> <span class=\"brand-logo\"><img {3}=\"http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_{0}_100.png\" /></span><span class=\"brand-name\">{1}</span></a></li>",
                         mbId,
                         mbName,
-                        masterSpell));
+                        masterSpell,
+                        i > 10 ? "data-original" : "src"));
                 }
                 else
                 {
-                    sb.Insert(sb.Length - 11, string.Format("<li id=\"char_nav_{2}\"><a data-id=\"{0}\" href=\"javascript:void(0);\" data-action=\"car\"> <span class=\"brand-logo m_{0}_b\"></span><span class=\"brand-name\">{1}</span></a></li>",
+                    sb.Insert(sb.Length - 11, string.Format("<li id=\"char_nav_{2}\"><a data-id=\"{0}\" href=\"javascript:void(0);\" data-action=\"car\"> <span class=\"brand-logo\"><img {3}=\"http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_{0}_100.png\" /></span><span class=\"brand-name\">{1}</span></a></li>",
                        mbId,
                        mbName,
-                       masterSpell));
+                       masterSpell,
+                       i > 10 ? "data-original" : "src"));
                 }
             }
             return sb.ToString();

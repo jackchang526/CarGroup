@@ -237,14 +237,14 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageBrandV2
                         firstNewsRow = newsOrderTable.Rows[0];
                     }
                 }
-                if (firstNewsRow == null)
-                {
-                    firstNewsRow = base.GetTopNewsFirstRow(newsTable, new int[] { 33, 31, 32, 4, 179, 102, 115, 120, 29, 30 });
-                    if (firstNewsRow == null)
-                    {
-                        firstNewsRow = newsTable.Rows[0];
-                    }
-                }
+                //if (firstNewsRow == null)
+                //{
+                //    firstNewsRow = base.GetTopNewsFirstRow(newsTable, new int[] { 33, 31, 32, 4, 179, 102, 115, 120, 29, 30 });
+                //    if (firstNewsRow == null)
+                //    {
+                //        firstNewsRow = newsTable.Rows[0];
+                //    }
+                //}
                 // 有最新新闻
                 htmlTitle.AppendLine("<div class=\"section-header header2\"><div class=\"box\">");
                 htmlTitle.AppendFormat("<h2><a href=\"/{0}/xinwen/\" target=\"_blank\">{1}-新闻</a></h2>", brandSpell, brandName);
@@ -258,19 +258,22 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageBrandV2
                 htmlTitle.AppendLine("</div>");
                 htmlTitle.AppendLine("</div>");
 
-                int loop = 0;
-                htmlCode.AppendFormat("<div id=\"data_table_BrandNews_{0}\" class=\"list-txt list-txt-m list-txt-default\">", loop.ToString());
-                loop++;
+                htmlCode.Append("<div id=\"data_table_BrandNews_0\" class=\"list-txt list-txt-m list-txt-default\">");
                 htmlCode.AppendLine("<ul>");
                 int i = 0;
-                string newsTitle = CommonFunction.NewsTitleDecode(firstNewsRow["FaceTitle"].ToString());
-                ListForNewsTitle.Add(newsTitle);
+                string newsTitle = string.Empty;
+                string newsUrl = string.Empty;
+                if (firstNewsRow != null)
+                {
+                    newsTitle = CommonFunction.NewsTitleDecode(firstNewsRow["FaceTitle"].ToString());
+                    ListForNewsTitle.Add(newsTitle);
 
-                string newsUrl = firstNewsRow["filepath"].ToString();
-                htmlCode.AppendFormat("<li><div class=\"txt\"><a href=\"{0}\" target=\"_blank\">{1}</a></div><span>{2}</span></li>"
-                                       , newsUrl, newsTitle, Convert.ToDateTime(firstNewsRow["publishtime"]).ToString("yyyy-MM-dd"));
+                    newsUrl = firstNewsRow["filepath"].ToString();
+                    htmlCode.AppendFormat("<li><div class=\"txt\"><a href=\"{0}\" target=\"_blank\">{1}</a></div><span>{2}</span></li>"
+                                           , newsUrl, newsTitle, Convert.ToDateTime(firstNewsRow["publishtime"]).ToString("yyyy-MM-dd"));
 
-                i++;
+                    i++;
+                }
                 foreach (DataRow newsRow in newsTable.Rows)
                 {
                     if (i >= _maxNewsCount)

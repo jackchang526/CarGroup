@@ -1,0 +1,36 @@
+[2017/8/29 18:00:43]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2455
+Ref: 
+Error Message: Truncation resulted in data loss.
+Stack Trace:    在 MongoDB.Bson.Serialization.Options.RepresentationSerializationOptions.ToSingle(Double value)
+   在 MongoDB.Bson.Serialization.Serializers.SingleSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/29 18:01:54]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2455
+Ref: 
+Error Message: Truncation resulted in data loss.
+Stack Trace:    在 MongoDB.Bson.Serialization.Options.RepresentationSerializationOptions.ToSingle(Double value)
+   在 MongoDB.Bson.Serialization.Serializers.SingleSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/29 18:02:08]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2455
+Ref: 
+Error Message: Truncation resulted in data loss.
+Stack Trace:    在 MongoDB.Bson.Serialization.Options.RepresentationSerializationOptions.ToSingle(Double value)
+   在 MongoDB.Bson.Serialization.Serializers.SingleSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+
+[2017/8/29 18:07:37]  
+IP: 127.0.0.1
+Error in: http://api26.car.bitauto.com/Assessment/ViewScore.ashx?evaluationId=2455
+Ref: 
+Error Message: Truncation resulted in data loss.
+Stack Trace:    在 MongoDB.Bson.Serialization.Options.RepresentationSerializationOptions.ToSingle(Double value)
+   在 MongoDB.Bson.Serialization.Serializers.SingleSerializer.Deserialize(BsonReader bsonReader, Type nominalType, Type actualType, IBsonSerializationOptions options)
+   在 MongoDB.Bson.Serialization.BsonClassMapSerializer.DeserializeMemberValue(BsonReader bsonReader, BsonMemberMap memberMap)
+

@@ -29,15 +29,20 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
 
         #region private Member for api
         private string carJson = " var carCompareJson = ";
+        private string packageJson = "var optionalPackageJson = ";
         private List<int> listCarID = new List<int>();
         private Dictionary<int, Dictionary<string, string>> dicCarParam = new Dictionary<int, Dictionary<string, string>>();
-        private int topCount = 40;
+        //private int topCount = 40;
         private Dictionary<int, string> dicParamIDToName = new Dictionary<int, string>();
         private StringBuilder sbForApi = new StringBuilder();
         protected string jsContent = "";
+        protected string packageJsContent = string.Empty;
         // 参数模板
-        private Dictionary<int, List<string>> dicTemp = null;
+        //private Dictionary<int, List<string>> dicTemp = null;
         #endregion
+
+        Car_BasicBll carBasicBll = new Car_BasicBll();
+        Car_SerialBll carSerialBll = new Car_SerialBll();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -53,6 +58,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 sbForApi.Append(GetCarParamData());
                 //sbForApi.Append("];");
                 jsContent = sbForApi.ToString();
+
+                this.GetSerialOptionalPackageData();
             }
         }
 
@@ -144,7 +151,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                         //add by 2015.02.01 排量增加 T
                         Dictionary<int, string> dictCarAllParams = new Car_BasicBll().GetCarAllParamByCarID(carId);
                         var exhaust = dt.Rows[i]["Engine_Exhaust"].ToString().Trim();
-                        if (dictCarAllParams.ContainsKey(425) && dictCarAllParams[425] == "增压")
+                        if (dictCarAllParams.ContainsKey(425) && dictCarAllParams[425].Contains("增压"))
                         {
                             exhaust = exhaust.Replace("L", "T");
                         }
@@ -177,71 +184,15 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
         /// </summary>
         private string GetCarParamData()
         {
-            return new Car_BasicBll().GetValidCarJsObject(listCarID);
-            /*
-			if (listCarID.Count > 0)
-			{
+            return carBasicBll.GetValidCarJsObject(listCarID);
+        }
 
-				dicCarParam = (new Car_BasicBll()).GetCarCompareDataByCarIDs(listCarID);
-
-				#region 生成车型详细参数js数组
-				// 生成车型详细参数js数组
-				if (dicCarParam.Count > 0)
-				{
-					dicTemp = base.GetCarParameterJsonConfigNew();
-					if (dicTemp != null && dicTemp.Count > 0)
-					{
-						int loopCar = 0;
-						foreach (KeyValuePair<int, Dictionary<string, string>> kvpCar in dicCarParam)
-						{
-							if (loopCar > 0)
-							{ sbForApi.Append(","); }
-
-							sbForApi.Append("[");
-							// 循环模板
-							foreach (KeyValuePair<int, List<string>> kvpTemp in dicTemp)
-							{
-								if (kvpTemp.Key == 0)
-								{
-									// 基本数据
-									sbForApi.Append("[\"" + kvpCar.Value["Car_ID"] + "\"");
-									sbForApi.Append(",\"" + kvpCar.Value["Car_Name"].Replace("\"", "'") + "\"");
-									foreach (string param in kvpTemp.Value)
-									{
-										if (kvpCar.Value.ContainsKey(param))
-										{ sbForApi.Append(",\"" + kvpCar.Value[param].Replace("\"", "'") + "\""); }
-										else
-										{ sbForApi.Append(",\"\""); }
-									}
-									sbForApi.Append("]");
-								}
-								else
-								{
-									// 扩展数据
-									sbForApi.Append(",[");
-									int loop = 0;
-									foreach (string param in kvpTemp.Value)
-									{
-										if (loop > 0)
-										{ sbForApi.Append(","); }
-										if (kvpCar.Value.ContainsKey(param))
-										{ sbForApi.Append("\"" + kvpCar.Value[param].Replace("\"", "'") + "\""); }
-										else
-										{ sbForApi.Append("\"\""); }
-										loop++;
-									}
-									sbForApi.Append("]");
-								}
-							}
-							sbForApi.Append("]");
-
-							loopCar++;
-						}
-					}
-				}
-				#endregion
-			}
-			 *  * */
+        /// <summary>
+        /// 获取车系选配包json
+        /// </summary>
+        private void GetSerialOptionalPackageData()
+        {
+            packageJsContent = packageJson + carSerialBll.GetSerialOptionalPackageJson(csID);
         }
         #endregion
 

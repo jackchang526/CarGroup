@@ -13,6 +13,7 @@ namespace BitAuto.CarChannel.Model
 		private string m_imgName;
 		private string m_imgUrl;
 		private string m_targetUrl;
+        private string m_carName;
 
 		public string GroupName { get; set; }
 
@@ -53,6 +54,15 @@ namespace BitAuto.CarChannel.Model
 			get { return m_targetUrl; }
 			set { m_targetUrl = value; }
 		}
+
+        /// <summary>
+        /// 车款名称
+        /// </summary>
+        public string CarName
+        {
+            get { return m_carName; }
+            set { m_carName = value; }
+        }
 
 	}
 }

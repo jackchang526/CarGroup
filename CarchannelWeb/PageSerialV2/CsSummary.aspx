@@ -7,10 +7,10 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>【<%=serialSeoName %>】最新<%=serialSeoName %>报价_参数_图片_<%=serialEntity.Brand.MasterBrand.Name+serialName %>论坛-易车网</title>
+    <title>【<%=serialSeoName %>】最新<%=serialSeoName %>报价_参数_图片_<%=serialEntity.Brand.MasterBrand.Name+serialName %>社区-易车网</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="renderer" content="webkit" />
-    <meta name="Keywords" content="<%=serialSeoName%>,<%= serialSeoName%>报价,<%= serialSeoName%>价格,<%= serialSeoName%>参数,<%= serialSeoName%>论坛,易车网,car.bitauto.com" />
+    <meta name="Keywords" content="<%=serialSeoName%>,<%= serialSeoName%>报价,<%= serialSeoName%>价格,<%= serialSeoName%>参数,<%= serialSeoName%>社区,易车网,car.bitauto.com" />
     <meta name="Description" content="<%= serialEntity.Brand.MasterBrand.Name + serialName%>,易车提供全国官方4S店<%= serialSeoName%>报价,最新<%= serialEntity.Brand.MasterBrand.Name + serialName%>降价优惠信息。以及<%= serialSeoName%>报价,<%= serialSeoName%>图片,<%= serialSeoName%>在线询价服务,低价买车尽在易车网 " />
     <meta http-equiv="mobile-agent" content="format=html5; url=http://car.m.yiche.com/<%=serialSpell %>/" />
     <link rel="alternate" media="only screen and (max-width: 640px)" href=" http://car.m.yiche.com/<%=serialSpell %>/" />
@@ -79,8 +79,12 @@
         <!--焦点图、名片区-->
         <div class="row card-head-box">
             <div class="l-box-sty col-auto">
+                <%if (!string.IsNullOrEmpty(VRUrl))
+                    {%>
+                <a href="<%= VRUrl %>" target="_blank" class="zs-vr">VR看全景</a>
+                <%} %>
                 <% if (serialEntity.Brand.MasterBrandId == 3)
-                   { %>
+                    { %>
                 <div class="bmw-ad-link">
                     <a href="http://c.ctags.cn/sy6/cu7/pc3/mt1?http://bmw.yiche.com/?rfpa_tracker=1_3_1" target="_blank" class="link">这里有关于宝马的一切 &gt;</a>
                 </div>
@@ -95,11 +99,11 @@
                         <li>
                             <div class="lowest-price">
                                 <% if (serialPrice == "未上市" || serialPrice == "暂无报价" || serialPrice == "停售")
-                                   { %>
+                                    { %>
                                 <h2 class="not-onsale"><%= serialPrice %></h2>
                                 <%}
-                                   else
-                                   { %>
+                                    else
+                                    { %>
                                 <h2>
                                     <span class="note">全国参考价：</span><a href="http://car.bitauto.com/<%=serialSpell %>/baojia/" data-channelid="2.21.853" target="_blank" class="price"><%= serialPrice %></a>
                                     <a href="http://dealer.bitauto.com/<%=serialSpell %>/" target="_blank" id="mp-dealer" data-channelid="2.21.1526" class="local-agents"></a>
@@ -119,7 +123,7 @@
                             <div class="info">
                                 <ul class="list list-gapline sm">
                                     <% if (isElectrombile)
-                                       {%>
+                                        {%>
                                     <li>
                                         <span class="note">续航里程: </span><span class="data<%= string.IsNullOrWhiteSpace(mileageRange) ? " grey-txt":"" %>"><%=string.IsNullOrWhiteSpace(mileageRange) ?"暂无":mileageRange %></span>
                                     </li>
@@ -129,37 +133,33 @@
                                     <%--<li>
                                         <span class="note">快充时间: </span><span class="data"><%=fastChargeTimeRange%></span>
                                     </li>--%>
-                                    <li>
-                                        <span class="note">保修: </span><span class="data<%= string.IsNullOrWhiteSpace(serialInfo.SerialRepairPolicy) ? " grey-txt":"" %>" title="<%= serialInfo.SerialRepairPolicy %>"><%= serialInfo.SerialRepairPolicy.Length > 8 ? serialInfo.SerialRepairPolicy.Substring(0,8) : string.IsNullOrWhiteSpace(serialInfo.SerialRepairPolicy) ? "暂无": serialInfo.SerialRepairPolicy %></span>
-                                    </li>
+                                    <%= baoZhiLv %>
                                     <%}
-                                       else
-                                       { %>
+                                        else
+                                        { %>
                                     <li>
                                         <span class="note">排量: </span><% if (serialInfo.CsSaleState == "停销")
-                                                                         { %>
+                                                                          { %>
                                         <span class="data<%=string.IsNullOrWhiteSpace(serialNoSaleDisplacement)?" grey-txt":"" %>" title="<%= serialNoSaleDisplacementalt %>"><%= string.IsNullOrWhiteSpace(serialNoSaleDisplacement) ? "暂无":serialNoSaleDisplacement %></span>
                                         <% }
-                                                                         else
-                                                                         { %>
+                                            else
+                                            { %>
                                         <span class="data<%=string.IsNullOrWhiteSpace(serialSaleDisplacementalt)?" grey-txt":"" %>" title="<%= serialSaleDisplacementalt %>"><%= string.IsNullOrWhiteSpace(serialSaleDisplacement)?"暂无":serialSaleDisplacement %></span>
                                         <% } %>
                                     </li>
                                     <li>
                                         <span class="note">变速箱: </span><span class="data<%=string.IsNullOrWhiteSpace(serialTransmission)?" grey-txt":"" %>"><%=string.IsNullOrWhiteSpace(serialTransmission) ? "暂无":serialTransmission%></span>
                                     </li>
-                                    <li>
-                                        <span class="note">保修: </span><span class="data<%=string.IsNullOrWhiteSpace(serialInfo.SerialRepairPolicy)?" grey-txt":"" %>" title="<%= serialInfo.SerialRepairPolicy %>"><%=serialInfo.SerialRepairPolicy.Length > 8 ? serialInfo.SerialRepairPolicy.Substring(0,8) : string.IsNullOrWhiteSpace(serialInfo.SerialRepairPolicy) ? "暂无": serialInfo.SerialRepairPolicy%></span>
-                                    </li>
+                                    <%= baoZhiLv %>
                                     <li>
                                         <span class="note">油耗: </span>
                                         <% if (string.IsNullOrWhiteSpace(serialInfo.CsSummaryFuelCost))
-                                           { %>
+                                            { %>
                                         <span class="data grey-txt">暂无</span>
                                         <%}
-                                           else
-                                           { %>
-                                        <a class="data" data-channelid="2.21.855" target="_blank" href="http://car.bitauto.com/<%= serialSpell %>/youhao/"><%=serialInfo.CsSummaryFuelCost%></a>
+                                            else
+                                            { %>
+                                        <a class="data" data-channelid="2.21.855" target="_blank" href="http://car.bitauto.com/<%= serialSpell %>/youhao/"><%=serialInfo.CsSummaryFuelCost%> &gt;</a>
                                         <%} %>
                                     </li>
                                     <%} %>
@@ -169,14 +169,16 @@
                     </ul>
                     <div class="mobile-qrcode">
                         <img src="/favicon.ico" id="qrcodelogo" style="display: none;" />
-                        <a href="<%= wirelessSerialUrl %>?ref=pctowap" target="_blank" id="qrcode"><img src="http://image.bitautoimg.com/cargroup/car/qrimages/<%= serialId %>.png?v=1" /></a>
-                        <em>手机看车</em>
+                        <a href="http://app.yiche.com/yiche/">
+                            <img src="http://image.bitautoimg.com/cargroup/car/huodongv2.png" /></a>
+                        <%--<a href="<%= wirelessSerialUrl %>?ref=pctowap" target="_blank" id="qrcode"><img src="http://image.bitautoimg.com/cargroup/car/qrimages/<%= serialId %>.png?v=1" /></a>--%>
+                        <em>扫我5折</em>
                     </div>
                 </div>
 
                 <div class="row mid" id="mp-buttons">
                     <% if (serialInfo.CsSaleState != "停销")
-                       { %>
+                        { %>
                     <div class="col-xs-3" id="mp-jiangjia">
                         <div class="inner">
                             <span class="note">降价优惠</span>
@@ -194,9 +196,9 @@
                     <div class="col-xs-3" id="mp-daikuan" downpayment="<%= serialMinPrice > 0 ? Math.Round(serialMinPrice*0.3,2) : 0 %>">
                         <div class="inner">
                             <span class="note">贷款</span>
-                            <h5><a href="http://www.daikuan.com/www/<%= serialSpell %>/?from=yc9&leads_source=p002003" data-channelid="2.21.1521" target="_blank">加载中...</a></h5>
+                            <h5><a href="http://fenqi.taoche.com/www/<%= serialSpell %>/?from=yc9&leads_source=p002003" data-channelid="2.21.1521" target="_blank">加载中...</a></h5>
                             <%-- <h5 class="grey-txt">暂无</h5>--%>
-                            <a class="btn btn-default" data-channelid="2.21.100" href="http://www.daikuan.com/www/<%= serialSpell %>/?from=yc9&leads_source=p002003" target="_blank">贷款</a>
+                            <a class="btn btn-default" data-channelid="2.21.100" href="http://sq.taoche.com/yiche/index?from=yc9&leads_source=p002003&serialid=<%= serialId %>" target="_blank">贷款</a>
                         </div>
                     </div>
                     <div class="col-xs-3" id="mp-ershouche">
@@ -207,8 +209,8 @@
                         </div>
                     </div>
                     <%}
-                       else
-                       { %>
+                        else
+                        { %>
                     <div class="col-xs-3" id="mp-ershouche">
                         <div class="inner">
                             <span class="note">二手车</span>
@@ -241,7 +243,7 @@
                     </div>
                     <div class="row bottom-list">
                         <%if (serialId != 3843)
-                          { %>
+                            { %>
                         <div class="col-xs-6">
                             <ul class="list">
                                 <li>
@@ -278,7 +280,7 @@
         <!--/焦点图、名片区-->
         <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201705311545"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201711011147"></script>
         <%--<script type="text/javascript" src="/jsnewv2/cssummary.js?v=20170171032"></script>--%>
         <script type="text/javascript">
             var serialId = <%= serialId %> ,
@@ -293,6 +295,7 @@
             }
             var GlobalSummaryConfig = {
                 SerialId:<%= serialId %>,
+                AllSpell:"<%=serialSpell%>",
                 CityId: cityId,
                 CityName: cityName
             };
@@ -308,7 +311,7 @@
                     s.src = url; document.getElementsByTagName("head")[0].appendChild(s);
                 };
             }
-            
+
             if (csSaleState != "停销") {
                 GetDealerData("<%= serialSpell %>");
             }
@@ -317,7 +320,8 @@
             InitTeHuiAndAdData();
             GetJiangjiaNews();
             GetHmcJiangJia();
-            $("#qrcode img").bind("error",function(){
+            Get1111Entrance();
+            $("#qrcode img").bind("error", function () {
                 this.style.display = "none";
                 bitLoadScript("http://image.bitautoimg.com/carchannel/jsnewv2/jquery.qrcode.min.js", function () {
                     $('#qrcode').qrcode({ render: "canvas", size: 90, ecLevel: "H", mode: 4, image: $("#qrcodelogo")[0], text: $("#qrcode").attr("href") });
@@ -331,7 +335,7 @@
             }
             bitLoadScript("http://img1.bitauto.com/bt/cmtad/advV1.js?v=20170330", function () {
                 try {
-                    AdvObject.GetAdvByCityIdAndSerialId(<%= serialId %>,cityId);
+                    AdvObject.GetAdvByCityIdAndSerialId(<%= serialId %>, cityId);
                 } catch (e) { }
             }, "utf-8");
         </script>
@@ -344,9 +348,10 @@
                                 <h2><a href="/<%= serialSpell %>/wenzhang/" target="_blank"><%= serialShowName %>文章</a></h2>
                             </div>
                             <div class="more">
-                                <a href="/<%= serialSpell %>/xinwen/" target="_blank">新闻</a>
-                                <a href="/<%= serialSpell %>/shijia/" target="_blank">试驾</a>
+                                <a href="/<%= serialSpell %>/shijia/" target="_blank">评测</a>
                                 <a href="/<%= serialSpell %>/daogou/" target="_blank">导购</a>
+                                <a href="/<%= serialSpell %>/yongche/" target="_blank">用车</a>
+                                <a href="/<%= serialSpell %>/xinwen/" target="_blank">新闻</a>
                                 <a href="http://www.bitauto.com/zhuanti/daogou/gsqgl/" target="_blank">购车流程</a>
                                 <a href="/<%= serialSpell %>/wenzhang/" target="_blank">更多&gt;&gt;</a>
                             </div>
@@ -365,11 +370,11 @@
             <div class="col-xs-3">
                 <div class="section-right">
                     <%if (!string.IsNullOrEmpty(koubeiReportHtml))
-                      { %>
+                        { %>
                     <%=koubeiReportHtml %>
                     <%}
-                      else
-                      { %>
+                        else
+                        { %>
                     <div class="layout-1">
                         <!--#include file="/include/pd/2014/koubei/00001/201703_PCzhan_chexingzongshuyezhanweitu_Manual.shtml"-->
                     </div>
@@ -377,14 +382,14 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="http://gimg.bitauto.com/js/senseNewFs.js"></script>
-        <script type="text/javascript">
+        <script type="text/javascript" src="http://d2.yiche.com/js/senseNewFs.js"></script>
+        <%-- <script type="text/javascript">
             GetFocusNewsLast(csSaleState,8);
-        </script>
+        </script>--%>
         <div class="row section-layout">
             <div class="col-xs-9">
                 <div class="section-main">
-                    <div class="row col3-adv-1 layout-1">
+                    <div class="row col3-adv-1 layout-1" style="margin-top: -20px; margin-bottom: 30px;">
                         <div class="special-layout-3 ad-tag-box">
                             <cite class="ad-tag2" style="right: 5px; top: 5px;"></cite>
                             <ins id="div_084b9793-2721-4aa1-91d1-c61273417454" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="084b9793-2721-4aa1-91d1-c61273417454"></ins>
@@ -411,11 +416,11 @@
                                 <div class="box">
                                     <h2><a href="<%=baaUrl %>" target="_blank">
                                         <% if (isHaveBaa)
-                                           { %>
-                                        <%=serialSeoName %>论坛</a>
+                                            { %>
+                                        <%=serialShowName %>社区</a>
                                         <%}
-                                           else
-                                           { %>
+                                            else
+                                            { %>
                                         <%= "社区精华推荐" %>
                                         <%} %>
                                         </a></h2>
@@ -425,16 +430,16 @@
                                 </div>
                             </div>
                             <% if (isHaveBaa)
-                               { %>
+                                { %>
                             <%= bbsNewsHtml %>
                             <%}
-                               else
-                               { %>
+                                else
+                                { %>
                             <div class="list-txt list-txt-m list-txt-default list-txt-style2 type-1">
                                 <ul>
                                     <li class="no-link">
                                         <div class="txt">
-                                            <a>暂无<%= serialShowName %>论坛，为您推荐以下内容：</a>
+                                            <a>暂无<%= serialShowName %>社区，为您推荐以下内容：</a>
                                         </div>
                                     </li>
                                     <%= bbsNewsHtml %>
@@ -444,7 +449,7 @@
                         </div>
                     </div>
                     <%= serialHeaderJs%>
-                    <div class="layout-1">
+                    <div class="layout-1" style="margin-top: -20px; margin-bottom: 30px;">
                         <script type="text/javascript">
                             var pageCarLevel ='<%=serialEntity.Level.Name%>';
                             function showNewsInsCode(dxc, xxc, mpv, suv) {
@@ -470,57 +475,57 @@
 
                     <div class="layout-1">
                         <%if (isElectrombile)
-                          { %>
+                            { %>
                         <ins id="div_2bb1b2cb-71f3-40e6-9e0a-c041133c5bfe" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="" adplay_brandname="" adplay_brandtype="" adplay_blockcode="2bb1b2cb-71f3-40e6-9e0a-c041133c5bfe"></ins>
                         <%}
-                          else if (serialEntity.Level.Name == "紧凑型车")
-                          {%>
+                            else if (serialEntity.Level.Name == "紧凑型车")
+                            {%>
                         <ins id="div_fc718ffd-e00f-499c-be58-54f7dde02556" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="" adplay_brandname="" adplay_brandtype="" adplay_blockcode="fc718ffd-e00f-499c-be58-54f7dde02556"></ins>
                         <%}
-                          else if (serialEntity.Level.Name == "面包车")
-                          {%>
+                            else if (serialEntity.Level.Name == "面包车")
+                            {%>
                         <ins id="div_9ff50cb9-76d8-4054-9aec-c46d38c07ae2" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="" adplay_brandname="" adplay_brandtype="" adplay_blockcode="9ff50cb9-76d8-4054-9aec-c46d38c07ae2"></ins>
                         <%}
-                          else if (serialEntity.Level.Name == "SUV")
-                          {%>
+                            else if (serialEntity.Level.Name == "SUV")
+                            {%>
                         <ins id="div_ea1bb82e-5ed2-4531-b960-8d354d3a011f" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="" adplay_brandname="" adplay_brandtype="" adplay_blockcode="ea1bb82e-5ed2-4531-b960-8d354d3a011f"></ins>
                         <%}
-                          else if (serialEntity.Level.Name == "中型车")
-                          {%>
+                            else if (serialEntity.Level.Name == "中型车")
+                            {%>
                         <ins id="div_1a1c2052-cf6f-4a94-970c-f2a4847a3e80" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="" adplay_brandname="" adplay_brandtype="" adplay_blockcode="1a1c2052-cf6f-4a94-970c-f2a4847a3e80"></ins>
                         <%}
-                          else if (serialEntity.Level.Name == "微型车")
-                          {%>
+                            else if (serialEntity.Level.Name == "微型车")
+                            {%>
                         <ins id="div_d3734235-3fbe-47fc-99ea-57669cedadf5" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="" adplay_brandname="" adplay_brandtype="" adplay_blockcode="d3734235-3fbe-47fc-99ea-57669cedadf5"></ins>
                         <%}
-                          else if (serialEntity.Level.Name == "小型车")
-                          {%>
+                            else if (serialEntity.Level.Name == "小型车")
+                            {%>
                         <ins id="div_94042601-39b4-4161-892a-b0608e589e6e" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="" adplay_brandname="" adplay_brandtype="" adplay_blockcode="94042601-39b4-4161-892a-b0608e589e6e"></ins>
                         <%}
-                          else if (serialEntity.Level.Name == "豪华车")
-                          {%>
+                            else if (serialEntity.Level.Name == "豪华车")
+                            {%>
                         <ins id="div_569fe415-15f5-4ad2-9028-a49dce5186f9" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="" adplay_brandname="" adplay_brandtype="" adplay_blockcode="569fe415-15f5-4ad2-9028-a49dce5186f9"></ins>
                         <%}
-                          else if (serialEntity.Level.Name == "MPV")
-                          {%>
+                            else if (serialEntity.Level.Name == "MPV")
+                            {%>
                         <ins id="div_952ce0ee-507f-4f26-8f11-ce6c06812a49" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="" adplay_brandname="" adplay_brandtype="" adplay_blockcode="952ce0ee-507f-4f26-8f11-ce6c06812a49"></ins>
                         <%}
-                          else if (serialEntity.Level.Name == "跑车")
-                          {%>
+                            else if (serialEntity.Level.Name == "跑车")
+                            {%>
                         <ins id="div_abe53914-1717-427b-9251-b207798ebdca" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="" adplay_brandname="" adplay_brandtype="" adplay_blockcode="abe53914-1717-427b-9251-b207798ebdca"></ins>
                         <%}
-                          else if (serialEntity.Level.Name == "中大型车")
-                          {%>
+                            else if (serialEntity.Level.Name == "中大型车")
+                            {%>
                         <ins id="div_be5865ff-b854-438d-9863-d54af38d21a7" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="" adplay_brandname="" adplay_brandtype="" adplay_blockcode="be5865ff-b854-438d-9863-d54af38d21a7"></ins>
                         <%}
-                          else if (serialEntity.Level.Name == "皮卡")
-                          {%>
+                            else if (serialEntity.Level.Name == "皮卡")
+                            {%>
                         <ins id="div_2bb1b2cb-71f3-40e6-9e0a-c041133c5bfe" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="" adplay_brandname="" adplay_brandtype="" adplay_blockcode="2bb1b2cb-71f3-40e6-9e0a-c041133c5bfe"></ins>
                         <%} %>
                     </div>
 
                     <% if (!string.IsNullOrWhiteSpace(photoListHtml))
-                       { %>
+                        { %>
                     <div class="layout-2 picture-section">
                         <%= photoListHtml %>
                         <div class="row special-layout-4" id="serialWaiGuanNeiShi">
@@ -588,34 +593,151 @@
                     </div>
                     <%= koubeiDianpingHtml %>
                     <!--经销商开始-->
+                    <script src="http://img1.bitauto.com/bt/Price/CsReviewPrice/js/CsPriceReview.min.js"></script>
                     <script type="text/javascript">
-                        document.write("<ins id=\"ep_union_137\" partner=\"1\" version=\"\" isupdate=\"1\" type=\"1\" city_type=\"1\" city_id=\"" + cityId + "\" city_name=\"0\" car_type=\"2\" brandid=\"0\" serialid=\"" + serialId + "\" carid=\"0\"></ins>");
+                            //document.write("<ins id=\"ep_union_137\" partner=\"1\" version=\"\" isupdate=\"1\" type=\"1\" city_type=\"1\" city_id=\"" + cityId + "\" city_name=\"0\" car_type=\"2\" brandid=\"0\" serialid=\"" + serialId + "\" carid=\"0\"></ins>");
+                            document.write("<div class=\"layout-2 sales-agent-section\" id=\"dealerlist\" dataReviewPagecsid=\""+serialId+"\" dataReviewPagecityid=\""+cityId+"\"></div>");
                     </script>
                     <!--/经销商开始-->
                     <div class="layout-1">
-                        <div class="row special-layout-17" id="gouche-hmc" style="display: none;" data-channelid="2.21.104">
-                        </div>
+                        <%--<div class="row special-layout-17" id="gouche-hmc" style="display: none;" data-channelid="2.21.104">
+                        </div>--%>
                         <div class="row special-layout-17" id="gouche-ych" style="display: none;" data-channelid="2.21.106">
                         </div>
                         <%--  <div class="row special-layout-17" id="gouche-xscg" style="display: none;" data-channelid="2.21.995">
                         </div>--%>
-                    </div>
-
-                    <div class="layout-2 loan-section" id="gouche-chedai">
+                    </div> 
+                    <div class="layout-2 loan-section">
                         <div class="section-header header2 mb0">
                             <div class="box">
-                                <h2><a target="_blank" href="http://www.daikuan.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><%= serialShowName %>贷款方案</a></h2>
+                                <h2><a target="_blank" href="http://fenqi.taoche.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><%= serialShowName %>贷款方案</a></h2>
                             </div>
-                        </div>
-                        <div class="special-layout-5 type-1" id="gouche-huodong" data-channelid="2.21.1516">
-                        </div>
-                        <div class="special-layout-12" id="gouche-chedaicontent" data-channelid="2.21.820">
+                            <div class="more">
+                                <a href="http://sq.taoche.com/Secretary/Index?from=764" target="_blank">小鑫帮您贷</a>
+                                <a href="http://fenqi.taoche.com?from=765" target="_blank">按预算贷车</a>
+                                <a href="https://sq.taoche.com/calculator/index?source=957&from=766" target="_blank">车贷计算器</a>
+                                <a href="http://shop.daikuan.com/?from=767" target="_blank">金融旗舰店</a>
+                            </div>
+                        </div> 
+                        <div class="special-layout-5 type-1 cd-nav-type">
+                            <div class="cd-box-sty cd-lef-box">
+                                <span>首付比例：</span>
+                                <div id="downpaymentrate" class="tab-link-box">
+                                    <a href="javascript:;" data='0'>0%</a>
+                                    <a href="javascript:;" data='0.1'>10%</a>
+                                    <a href="javascript:;" data='0.2'>20%</a>
+                                    <a href="javascript:;" data='0.3' class="current">30%</a>
+                                    <a href="javascript:;" data='0.4'>40%</a>
+                                    <a href="javascript:;" data='0.5'>50%</a>
+                                    <a href="javascript:;" data='0.6'>60%</a>
+                                    <a href="javascript:;" data='0.7'>70%</a>
+                                </div>
+                            </div>
+                            <div class="cd-box-sty cd-rig-box">
+                                <span>还款期限：</span>
+                                <div id="repaymentperiod" class="tab-link-box">
+                                    <a href="javascript:;" data='12'>12期</a>
+                                    <a href="javascript:;" data='18'>18期</a>
+                                    <a href="javascript:;" data='24'>24期</a>
+                                    <a href="javascript:;" data='36' class="current">36期</a>
+                                    <a href="javascript:;" data='48'>48期</a>
+                                    <a href="javascript:;" data='60'>60期</a>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="special-layout-12">
                         </div>
                         <div class="btn-box1">
-                            <a class="btn btn-default" target="_blank" href="http://www.daikuan.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><span class="more">更多贷款方案</span></a>
+                            <a id="dk-morelink" class="btn btn-default" target="_blank" href="http://fenqi.taoche.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><span class="more">更多贷款方案</span></a>
                         </div>
                     </div>
-
+                    <script type="text/javascript">
+                            (function () {
+                                $('#downpaymentrate a').click(function () {
+                                    $('#downpaymentrate a').removeClass('current');
+                                    $(this).addClass('current');
+                                    var rate = $(this).attr('data');
+                                    var period = $('#repaymentperiod').find('.current').attr('data');
+                                    loadSummarizeFinancialProductsHtml(rate, period);
+                                });
+                                $('#repaymentperiod a').click(function () {
+                                    $('#repaymentperiod a').removeClass('current');
+                                    $(this).addClass('current');
+                                    var period = $(this).attr('data');
+                                    var rate = $('#downpaymentrate').find('.current').attr('data');
+                                    loadSummarizeFinancialProductsHtml(rate, period);
+                                }); 
+                                //默认是首富30% 36期
+                                loadSummarizeFinancialProductsHtml('0.3', '36');
+                                //carapi.daikuan.com
+                                function loadSummarizeFinancialProductsHtml(rate, period) {
+                                    var config = {
+                                        CityId: '201',
+                                        SerialId: '2370',
+                                        AllSpell:'langyi'
+                                    }
+                                    if (typeof GlobalSummaryConfig != "undefined") {
+                                        config.CityId = GlobalSummaryConfig.CityId;
+                                        config.SerialId = GlobalSummaryConfig.SerialId;
+                                        config.AllSpell = GlobalSummaryConfig.AllSpell;
+                                    }
+                                    $("#dk-morelink").attr("href", 'http://fenqi.taoche.com/www/' + config.AllSpell +'?from=yc36&downPayment=' + rate + '&repaymentPeriod=' + period);
+                                    $.getJSON(
+                                        "http://carapi.daikuan.com/api/SummarizeFinancialProducts/SearchSummarizeFinancialProducts?cityId=" +
+                                        config.CityId + "&serialId=" + config.SerialId +
+                                        "&pagesize=4&callback=?", {
+                                            downpaymentrate: rate,
+                                            repaymentperiod: period
+                                        },
+                                        function (res) {
+                                            var html = '';
+                                            for (var i = 0; i < res.length; i++) {
+                                                var commonRequirementClass = ''
+                                                if (res[i].CommonRequirement == '严格') {
+                                                    commonRequirementClass = ''
+                                                }
+                                                if (res[i].CommonRequirement == '一般') {
+                                                    commonRequirementClass = ''
+                                                }
+                                                if (res[i].CommonRequirement == '宽松') {
+                                                    commonRequirementClass = 'em'
+                                                }
+                                                html +=
+                                                    `<div class="row inner">
+                                <div class="col-auto left">
+                                    <a class="figure" href="${res[i].PCDetailsUrl}">
+                                        <span class="img">
+                                        <img src="${res[i].CompanyLogoUrl}" alt="">
+                                    </span>
+                                        <h4 class="title">${res[i].PackageName}</h4>
+                                        <p class="info">${res[i].CompanyName}</p>
+                                    </a>
+                                </div>
+                                <div class="col-auto mid">
+                                    <div class="condition ${commonRequirementClass}">
+                                        申请条件：<span class="title">${res[i].CommonRequirement}</span>
+                                    </div>
+                                    <div class="provide">
+                                        所需材料：<span class="title">${res[i].PackageFeatureIcon2}</span>
+                                    </div>
+                                </div>
+                                <div class="col-auto right">
+                                    <div class="price">
+                                        ${res[i].MonthlyPaymentText}<span class="title">/月</span>
+                                    </div>
+                                    <div class="total">
+                                        首付 ${res[i].DownPaymentText}
+                                    </div>
+                                </div>
+                                <a href="${res[i].PCDetailsUrl}" class="btn btn-default">查看详情</a>
+                            </div>`
+                                            }
+                                            $('.special-layout-12').html(html);
+                                        }
+                                    ); 
+                                }
+                            })();
+                    </script>
                     <div class="layout-1 oldcar-section" id="ucarlist">
                     </div>
 
@@ -632,7 +754,7 @@
             </div>
             <div class="col-xs-3">
                 <div class="section-right">
-                    <div class="special-layout-3 sm layout-1 ad-tag-box">
+                    <div class="special-layout-3 sm layout-1 ad-tag-box" style="margin-top: -20px; margin-bottom: 30px;">
                         <cite class="ad-tag2" style="right: 5px; top: 5px;"></cite>
                         <ins id="div_2ed120ed-a613-4a43-84a2-3b7b5d0d8304" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="2ed120ed-a613-4a43-84a2-3b7b5d0d8304"></ins>
                     </div>
@@ -676,19 +798,21 @@
             </div>
         </div>
     </div>
+    <!--浮层广告 add 20171019-->
+    <ins id="div_d0d818d0-743a-42cf-8b71-5f9e25b09dea" data-type="ad_play" data-adplay_IP="" data-adplay_AreaName="" data-adplay_CityName="" data-adplay_BrandID="<%= serialId %>" data-adplay_BrandName="" data-adplay_BrandType="" data-adplay_BlockCode="d0d818d0-743a-42cf-8b71-5f9e25b09dea"> </ins>
     <!--页底浮层广告-->
     <ins id="div_c62213b4-2900-4ed8-967d-3f3866014dc5" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="c62213b4-2900-4ed8-967d-3f3866014dc5"></ins>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryrest.min.js?v=20170531"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryrest.min.js?v=20170906"></script>
     <%--<script type="text/javascript" src="/jsnewv2/cssummaryrest.js?v=20161230"></script>--%>
     <script type="text/javascript">
-        var CarCommonBSID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.MasterBrandId %>"; //大数据组统计用
-        var CarCommonCBID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.Id %>";
+                        var CarCommonBSID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.MasterBrandId %>"; //大数据组统计用
+                        var CarCommonCBID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.Id %>";
         var CarCommonCSID = "<%=serialId %>";
         var CarFilterData = <%=string.IsNullOrEmpty(carListFilterData)?"null":carListFilterData %>;
         (function () {
             GetPromotionNews();
             GetSerialWaiGuanNeiShi();
-            GetCheDai();
+            //GetCheDai();
             GetXiaoliang();
             //getBuyLimit();
             GetVedioNum();
@@ -746,11 +870,82 @@
             }, "utf-8");    </script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/newsViewCount.min.js?v=20161228"></script>
     <script type="text/javascript" charset="utf-8" src="http://img4.bitautoimg.com/uimg/car/js/tabs_20140512_4.js"></script>
+    <script type="text/javascript">
+        var loadPingce = function () {
+            var pingceurl = "http://pingce.bitauto.com";
+            $.ajax({
+                type: "GET",
+                url: "http://api.car.bitauto.com/Assessment/GetEntranceData.ashx?csid=<%= serialId %>",
+                dataType: "jsonp",
+                cache: true,
+                jsonpCallback: "success_jsonpCallback_getEntranceData",
+                success: function (data) {
+                    if (data.EvaluationId > 0) {
+                        var htmlArr = [];
+                        htmlArr.push("    <div class='col-auto left'>");
+                        htmlArr.push("        <a data-channelid='2.21.2152' target='_blank' href='" + pingceurl+"/details/" + data.EvaluationId + "-2.html'>");
+                        htmlArr.push("            <div class='figure'>");
+                        htmlArr.push("                <img src='" + data.ImageUrl.replace("cargroup", "newsimg_150_w0_1/cargroup") + "' alt=''>");
+                        htmlArr.push("            </div>");
+                        htmlArr.push("            <div class='caption'>");
+                        htmlArr.push("                <span class='title'>总体得分</span>");
+                        htmlArr.push("                <h4>" + data.TotalScore + "<i> 分</i></h4>");
+                        htmlArr.push("            </div>");
+                        htmlArr.push("        </a>");
+                        htmlArr.push("        <div class='bottom'>");
+                        //htmlArr.push("            <a target='_blank' href=''>同级别排名第128位&gt;&gt;</a>");
+                        htmlArr.push("        </div>");
+                        htmlArr.push("    </div>");
+                        htmlArr.push("    <div class='col-auto right'>");
+                        htmlArr.push("        <span class='t-flag'>超级评测</span>");
+                        htmlArr.push("        <h3><a data-channelid='2.21.2153' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-2.html'>" + unescape(data.CarName.replace(/\\/g, "%")) + "</a></h3>");
+                        htmlArr.push("        <div class='info'><span class='view'> </span><span class='comment'> </span>");
+                        htmlArr.push("        </div>");
+                        htmlArr.push("        <ul class='list list-gapline sm'>");
+                        htmlArr.push("            <li>");
+                        htmlArr.push("                <a data-channelid='2.21.2154' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-2.html'>空间 " + data.BodyAndSpaceGroupScore + "分</a>");
+                        htmlArr.push("            </li>");
+                        htmlArr.push("            <li>");
+                        htmlArr.push("                <a data-channelid='2.21.2155' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-4.html'>舒适 " + data.RidingComfortGroupScore + "分</a>");
+                        htmlArr.push("            </li>");
+                        htmlArr.push("            <li>");
+                        htmlArr.push("                <a data-channelid='2.21.2156' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-5.html'>动力 " + data.DynamicPerformanceGroupScore + "分</a>");
+                        htmlArr.push("            </li>");
+                        htmlArr.push("            <li>");
+                        htmlArr.push("                <a data-channelid='2.21.2157' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-6.html'>驾驶 " + data.JsBaseGroupScore + "分</a>");
+                        htmlArr.push("            </li>");
+                        htmlArr.push("            <li>");
+                        htmlArr.push("                <a data-channelid='2.21.2158' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-3.html'>安全 " + data.SafetyGroupScore + "分</a>");
+                        htmlArr.push("            </li>");
+                        htmlArr.push("            <li>");
+                        htmlArr.push("                <a data-channelid='2.21.2159' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-7.html'>油耗 " + data.YhBaseGroupScore + "分</a>");
+                        htmlArr.push("            </li>");
+                        htmlArr.push("            <li>");
+                        htmlArr.push("                <a data-channelid='2.21.2160' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-8.html'>费用 " + data.CostBaseGroupScore + "分</a>");
+                        htmlArr.push("            </li>");
+                        htmlArr.push("            <li>");
+                        htmlArr.push("                <a data-channelid='2.21.2161' target='_blank' href='" + pingceurl + "/details/" + data.EvaluationId + "-2.html'>更多&gt;&gt;</a>");
+                        htmlArr.push("            </li>");
+                        htmlArr.push("        </ul>");
+                        htmlArr.push("        <div class='bottom'>");
+                        htmlArr.push("            易车出品");
+                        htmlArr.push("        </div>");
+                        htmlArr.push("    </div>");                    
+                        $("#pingce_left_top").addClass("super-test").html(htmlArr.join(""));
+                    }
+                },
+                complete: function () {
+
+                }
+            });
+        }
+        loadPingce();
+    </script>
 
     <!--看了还看js-->
     <script type="text/javascript">
         <%= serialToSeeJson %>
-    </script>
+</script>
     <script type="text/javascript" src="http://gimg.bitauto.com/resourcefiles/chexing/serialadposition.js?_=<%= DateTime.Now.ToString("yyyyMMddHHmm").Substring(0,11) + "0" %>"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/serialtoseead.min.js"></script>
     <!--/看了还看js-->
@@ -758,7 +953,7 @@
     <script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>
     <script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars"></script>
     <%if (serialEntity.Level != null && serialEntity.Level.Name != "概念车")
-      {%>
+        {%>
     <!-- baa 浏览过的车型-->
     <script type="text/javascript">
         //登录 车型关注
@@ -786,9 +981,10 @@
         //vr
         if (vrImgForBitauto != undefined && vrImgForBitauto.IntiDataForEntry != undefined) {
             vrImgForBitauto.IntiDataForEntry(<%=serialId%>, function (vrImgs) {
-                if (vrImgs.length > 0) { 
-                    $(".l-box-sty.col-auto").prepend("<a target=\"_blank\" href=\"" + vrImgs[0].PanoUrl+"\" class=\"zs-vr\">VR看全景</a>");
-                }});
+                if (vrImgs.length > 0) {
+                    $(".l-box-sty.col-auto").prepend("<a target=\"_blank\" href=\"" + vrImgs[0].PanoUrl + "\" class=\"zs-vr\">VR看全景</a>");
+                }
+            });
         }
     </script>
     <%} %>
@@ -898,7 +1094,7 @@
 
     <script type="text/javascript" src="http://js.bitauto.com/dealer/union/script/ads.js"></script>
     <%if (serialId == 2921 || serialId == 3999 || serialId == 2593 || serialId == 2382 || serialId == 2573 || serialId == 2837 || serialId == 2070 || serialId == 3395 || serialId == 2855 || serialId == 1994)
-      { %>
+        { %>
     <script>
         var _hmt = _hmt || [];
         (function () {

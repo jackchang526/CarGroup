@@ -27,14 +27,16 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
 
         #region private Member for api
         private string carJson = " var carCompareJson = ";
+        private string packageJson = "var optionalPackageJson = ";
         private List<int> listCarID = new List<int>();
         private Dictionary<int, Dictionary<string, string>> dicCarParam = new Dictionary<int, Dictionary<string, string>>();
-        private int topCount = 40;
         private Dictionary<int, string> dicParamIDToName = new Dictionary<int, string>();
         private StringBuilder sbForApi = new StringBuilder();
         protected string jsContent = "";
+        protected string packageJsContent = string.Empty;
         // 参数模板
         private Dictionary<int, List<string>> dicTemp = null;
+        Car_SerialBll carSerialBll = new Car_SerialBll();
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -46,10 +48,11 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 this.GetCarDataAndSerialData();
 
                 sbForApi.Append(carJson);
-                sbForApi.Append("[");
-                GetCarParamData();
-                sbForApi.Append("];");
+                //sbForApi.Append("[");
+                sbForApi.Append(GetCarParamData());
+                //sbForApi.Append("];");
                 jsContent = sbForApi.ToString();
+                GetSerialOptionalPackageData();
             }
         }
 
@@ -109,7 +112,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                                 int carId = Convert.ToInt32(dr["car_id"]);
                                 Dictionary<int, string> dictCarAllParams = new Car_BasicBll().GetCarAllParamByCarID(carId);
                                 var exhaust = dr["Engine_Exhaust"].ToString().Trim();
-                                if (dictCarAllParams.ContainsKey(425) && dictCarAllParams[425] == "增压")
+                                if (dictCarAllParams.ContainsKey(425) && dictCarAllParams[425].Contains("增压"))
                                 {
                                     exhaust = exhaust.Replace("L", "T");
                                 }
@@ -183,8 +186,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
         /// <summary>
         /// 取车型详细参数
         /// </summary>
-        private void GetCarParamData()
+        private string GetCarParamData()
         {
+            return (new Car_BasicBll()).GetValidCarJsObject(listCarID);
+            /*
             if (listCarID.Count > 0)
             {
                 dicCarParam = (new Car_BasicBll()).GetCarCompareDataByCarIDs(listCarID);
@@ -227,6 +232,9 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                                     int loop = 0;
                                     foreach (string param in kvpTemp.Value)
                                     {
+                                        if (param == "InStat_MultiFuncsSteer")
+                                        {
+                                        }
                                         if (loop > 0)
                                         { sbForApi.Append(","); }
                                         if (kvpCar.Value.ContainsKey(param))
@@ -247,9 +255,15 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 #endregion
 
             }
-
+            */
         }
-
+        /// <summary>
+        /// 获取车系选配包json
+        /// </summary>
+        private void GetSerialOptionalPackageData()
+        {
+            packageJsContent = packageJson + carSerialBll.GetSerialOptionalPackageJson(cbe.SerialId);
+        }
         #endregion
     }
 }

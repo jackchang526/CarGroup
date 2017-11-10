@@ -47,15 +47,14 @@
   <ItemGroup>
     <Reference Include="BitAuto.CarUtils, Version=1.2.0.3, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Dll\BitAuto.CarUtils.dll</HintPath>
+      <HintPath>..\..\..\packages\BitAuto.CarUtils.dll</HintPath>
     </Reference>
     <Reference Include="BitAuto.Utils, Version=2.0.7.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\P公用平台\Release\BitAuto.Utils.dll</HintPath>
+      <HintPath>..\..\..\packages\BitAuto.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="LocalFileReadModule, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Dll\LocalFileReadModule.dll</HintPath>
+    <Reference Include="LocalFileReadModule">
+      <HintPath>..\..\..\packages\LocalFileReadModule.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -130,6 +129,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BaoZhiLvController.cs" />
     <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\CalcController.cs" />
     <Compile Include="Controllers\CarCompareController.cs" />
@@ -142,6 +142,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\NewsListController.cs" />
+    <Compile Include="Controllers\RecognitionController.cs" />
     <Compile Include="Controllers\SelectBrandController.cs" />
     <Compile Include="Controllers\SelectCarController.cs" />
     <Compile Include="Controllers\SelectCarOfSceneController.cs" />
@@ -153,6 +154,9 @@
     <Compile Include="Filters\ExceptionFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="handlers\GetBaoZhiLv.ashx.cs">
+      <DependentUpon>GetBaoZhiLv.ashx</DependentUpon>
     </Compile>
     <Compile Include="handlers\GetCarInfoForCalcTools.ashx.cs">
       <DependentUpon>GetCarInfoForCalcTools.ashx</DependentUpon>
@@ -188,10 +192,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="config\ChangeURL.xml" />
     <Content Include="config\SceneCar.xml" />
-    <Content Include="config\SecondCar.xml" />
+    <Content Include="config\SecondCar.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="config\SUVChannel.xml" />
-    <Content Include="config\YaGaoSelectCar.xml" />
+    <Content Include="config\VR.xml" />
+    <Content Include="config\YaGaoSelectCar.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="html\selectCarTemplate.htm" />
     <Content Include="html\selectCarTemplate.html" />
@@ -216,15 +226,19 @@
     <Content Include="include\pd\2016\wap\00001\201703_wap_cxjg_jcx_Manual.shtml" />
     <Content Include="include\pd\2016\wap\00001\201703_wap_cxjg_mpv_Manual.shtml" />
     <Content Include="include\pd\2016\wap\00001\201703_wap_cxjg_suv_Manual.shtml" />
+    <Content Include="include\pd\2016\wap\00001\201708_wap_common_top_downloadLayer_Manual.shtml" />
     <Content Include="include\pd\2016\yipaicms\00001\201701_Mobile_Summary_SCInfoBtn_Manual.shtml" />
+    <Content Include="include\special\testprice\00001\2017_car_stat_test_Manual.shtml" />
     <Content Include="include\special\stat\00001\bglogpostlog_Manual.shtml" />
     <Content Include="include\special\stat\00001\stat_bglog_Manual.shtml" />
     <Content Include="js\addcompareV2.js" />
     <Content Include="js\ajax.js" />
     <Content Include="js\brand.js" />
     <Content Include="js\calcautocashdetailv1.js" />
+    <Content Include="js\car.recognition.js" />
     <Content Include="js\CarCalculator.js" />
     <Content Include="js\carcomparetoolV2.js" />
+    <Content Include="js\carcomparetoolV3.js" />
     <Content Include="js\carsum\aboutCarTemp.js" />
     <Content Include="js\carsum\aboutCompare.js" />
     <Content Include="js\carsum\funcGetEsc.js" />
@@ -233,12 +247,15 @@
     <Content Include="js\CommonJs.js" />
     <Content Include="js\csSummaryConditionV2.js" />
     <Content Include="js\csSummaryV2.js" />
+    <Content Include="js\csSummaryForFocus.js" />
     <Content Include="js\iscroll-infinite.js" />
     <Content Include="js\model.js" />
     <Content Include="js\mpeizhi.js" />
+    <Content Include="js\mpeizhiv2.js" />
     <Content Include="js\popup.js" />
     <Content Include="js\rightswipe-cityV2.js" />
     <Content Include="js\selectcartoolV2.js" />
+    <Content Include="js\selectcartoolV3.js" />
     <Content Include="js\selectscenecar.js" />
     <Content Include="js\suvchannel\seriallist.js" />
     <Content Include="js\suvchannel\suvdefault.js" />
@@ -265,10 +282,12 @@
     <Content Include="ushtml\0000\myiche2015_cube_xuanche_style-news-1004.shtml" />
     <Content Include="ushtml\0000\myiche2016_cube_canshupeizhijianhua-1335.shtml" />
     <Content Include="ushtml\0000\myiche2016_cube_daogouxiangqing-1187.shtml" />
+    <Content Include="ushtml\0000\myiche2016_cube_paizhaoshiche-1384.shtml" />
     <Content Include="ushtml\0000\myiche2016_cube_pindaoye-1181.shtml" />
     <Content Include="ushtml\0000\myiche2016_cube_pinpaiye-1161.shtml" />
     <Content Include="ushtml\0000\myiche2016_cube_qingjingxuanche-1184.shtml" />
     <Content Include="ushtml\0000\myiche2016_cube_summary-1154.shtml" />
+    <Content Include="ushtml\0000\yiche_2016_cube_bozhilv-1390.shtml" />
     <Content Include="ushtml\0000\yiche_2016_cube_peizhiye_part-1261.shtml" />
     <Content Include="ushtml\0000\yidongzhan_chedai-644.shtml" />
     <Content Include="ushtml\block\so\mobile\MobileSugBottom_chexing.shtml" />
@@ -276,7 +295,9 @@
     <Content Include="ushtml\block\so\mobile\MobileSug_chexing.shtml" />
     <Content Include="ushtml\block\so\mobile\MobileSug_chexing20130218.shtml" />
     <Content Include="ushtml\block\so\myiche20140620\mSearchBoxBottom.shtml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -376,6 +397,12 @@
     <Content Include="html\Web.config" />
     <Content Include="handlers\YaGaoSelectCar.ashx" />
     <Content Include="handlers\GetSecondCar.ashx" />
+    <Content Include="handlers\GetBaoZhiLv.ashx" />
+    <Content Include="html\WTParams.cshtml" />
+    <Content Include="html\TopDownloadLayer.cshtml" />
+    <Content Include="config\ParameterConfigurationNewV2.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Calc\CalcAutoCash.cshtml" />
     <Content Include="Views\Calc\CalcAutoCashDetail.cshtml" />
@@ -385,6 +412,9 @@
     <Content Include="Views\Calc\CalcInsuranceDetail.cshtml" />
     <Content Include="Views\YaGaoSelectCar\Index.cshtml" />
     <Content Include="Views\SelectBrand\Index.cshtml" />
+    <Content Include="Views\CsSummary\IndexFocus.cshtml" />
+    <Content Include="Views\Recognition\Index.cshtml" />
+    <Content Include="Views\BaoZhiLv\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

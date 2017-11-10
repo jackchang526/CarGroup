@@ -122,7 +122,7 @@
 <script type="text/javascript" src="/Scripts/carcompare/radialIndicator.min.v1.js"></script>
 <script type="text/javascript" src="/Scripts/carcompare/radiaindicator.extend.v1.js"></script>
 <script type="text/javascript" src="/Scripts/carcompare/carcompare.v1.js"></script>--%>
-<script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/h5/js/carcompare/countUp.min.v1.js,carchannel/h5/js/carcompare/model.v1.js,carchannel/h5/js/carcompare/radialIndicator.min.v1.js,carchannel/h5/js/carcompare/radiaindicator.extend.v1.js,carchannel/h5/js/carcompare/carcompare.v1.js?v=20160722"></script>
+<script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/h5/js/carcompare/countUp.min.v1.js,carchannel/h5/js/carcompare/model.v1.js,carchannel/h5/js/carcompare/radialIndicator.min.v1.js,carchannel/h5/js/carcompare/radiaindicator.extend.v1.js,carchannel/h5/js/carcompare/carcompare.v1.min.js?v=20170620"></script>
 <script type="text/javascript">
     $(function() {
         var $flex = $('.flex'), $flexblock = $('.flex-block');

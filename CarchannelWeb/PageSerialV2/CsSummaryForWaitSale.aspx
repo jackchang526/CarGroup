@@ -6,10 +6,10 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>【<%=serialSeoName %>】最新<%=serialSeoName %>报价_参数_图片_<%=serialEntity.Brand.MasterBrand.Name+serialName %>论坛-易车网</title>
+    <title>【<%=serialSeoName %>】最新<%=serialSeoName %>报价_参数_图片_<%=serialEntity.Brand.MasterBrand.Name+serialName %>社区-易车网</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="renderer" content="webkit" />
-    <meta name="Keywords" content="<%=serialSeoName%>,<%= serialSeoName%>报价,<%= serialSeoName%>价格,<%= serialSeoName%>参数,<%= serialSeoName%>论坛,易车网,car.bitauto.com" />
+    <meta name="Keywords" content="<%=serialSeoName%>,<%= serialSeoName%>报价,<%= serialSeoName%>价格,<%= serialSeoName%>参数,<%= serialSeoName%>社区,易车网,car.bitauto.com" />
     <meta name="Description" content="<%= serialEntity.Brand.MasterBrand.Name + serialName%>,易车提供全国官方4S店<%= serialSeoName%>报价,最新<%= serialEntity.Brand.MasterBrand.Name + serialName%>降价优惠信息。以及<%= serialSeoName%>报价,<%= serialSeoName%>图片,<%= serialSeoName%>在线询价服务,低价买车尽在易车网 " />
     <meta http-equiv="mobile-agent" content="format=html5; url=http://car.m.yiche.com/<%=serialSpell %>/" />
     <link rel="alternate" media="only screen and (max-width: 640px)" href=" http://car.m.yiche.com/<%=serialSpell %>/" />
@@ -77,6 +77,10 @@
         <!--焦点图、名片区-->
         <div class="row card-head-box">
             <div class="l-box-sty col-auto">
+                <%if (!string.IsNullOrEmpty(VRUrl))
+                    {%>
+                        <a href="<%= VRUrl %>" target="_blank" class="zs-vr">VR看全景</a>
+                    <%} %>
                 <% if (serialEntity.Brand.MasterBrandId == 3)
                    { %>
                 <div class="bmw-ad-link">
@@ -106,8 +110,9 @@
                     </ul>
                     <div class="mobile-qrcode">
                         <img src="/favicon.ico" id="qrcodelogo" style="display: none;" />
-                        <a href="<%= wirelessSerialUrl %>?ref=pctowap" target="_blank" id="qrcode"><img src="http://image.bitautoimg.com/cargroup/car/qrimages/<%= serialId %>.png?v=1" /></a>
-                        <em>手机看车</em>
+                        <a href="http://app.yiche.com/yiche/"><img src="http://image.bitautoimg.com/cargroup/car/huodongv2.png" /></a>
+                        <%--<a href="<%= wirelessSerialUrl %>?ref=pctowap" target="_blank" id="qrcode"><img src="http://image.bitautoimg.com/cargroup/car/qrimages/<%= serialId %>.png?v=1" /></a>--%>
+                        <em>扫我5折</em>
                     </div>
                 </div>
 
@@ -131,7 +136,7 @@
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
 
         <!--#include file="/include/special/stat/00001/bglogpostlog_Manual.shtml"-->
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201705311545"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=20170616"></script>
         <%--<script type="text/javascript" src="/jsnewv2/cssummary.js?v=20161230"></script>--%>
         <script type="text/javascript">
             var serialId = <%= serialId %>;
@@ -158,7 +163,7 @@
             }
 
             GetHmcJiangJia();
-            GetFocusNewsLast("<%= serialEntity.SaleState %>",7);
+            //GetFocusNewsLast("<%= serialEntity.SaleState %>",7);
             //GetJiangjiaNews();
             $("#qrcode img").bind("error",function(){
                 this.style.display = "none";
@@ -178,13 +183,13 @@
                 }catch(e){}
             }, "utf-8");
         </script>
-        <script type="text/javascript" src="http://gimg.bitauto.com/js/senseNewFs.js"></script>
+        <script type="text/javascript" src="http://d2.yiche.com/js/senseNewFs.js"></script>
         <!--文章-->
         <div class="row section-layout layout-1">
             <div class="col-xs-9">
                 <div class="section-main">
 
-                    <div class="row col3-adv-1 layout-1">
+                    <div class="row col3-adv-1 layout-1" style="margin-top: -20px;margin-bottom: 30px;">
                         <div class="special-layout-3 ad-tag-box">
                             <cite class="ad-tag2" style="right: 5px; top: 5px;"></cite>
                             <ins id="div_084b9793-2721-4aa1-91d1-c61273417454" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="084b9793-2721-4aa1-91d1-c61273417454"></ins>
@@ -211,7 +216,7 @@
                                 <div class="box">
                                     <h2><a href="<%=baaUrl %>" target="_blank">
                                         <% if(isHaveBaa){ %>
-                                        <%=serialSeoName %>论坛</a>
+                                        <%=serialSeoName %>社区</a>
                                         <%}else{ %>
                                         <%= "社区精华推荐" %>
                                         <%} %>
@@ -232,7 +237,7 @@
                                 <ul>
                                     <li class="no-link">
                                         <div class="txt">
-                                            <a>暂无<%= serialShowName %>论坛，为您推荐以下内容：</a>
+                                            <a>暂无<%= serialShowName %>社区，为您推荐以下内容：</a>
                                         </div>
                                     </li>
                                     <%= bbsNewsHtml %>
@@ -242,7 +247,7 @@
                         </div>
                     </div>
                     <%= serialHeaderJs%>
-                    <div class="layout-1">
+                    <div class="layout-1" style="margin-top: -20px;margin-bottom: 30px;">
                         <script type="text/javascript">
                             var pageCarLevel='<%=serialEntity.Level.Name%>';
                             function showNewsInsCode(dxc, xxc, mpv, suv) {
@@ -386,14 +391,15 @@
                         </script>
                     </div>
                     <%= koubeiDianpingHtml %>
-
+                    <script src="http://img1.bitauto.com/bt/Price/CsReviewPrice/js/CsPriceReview.min.js"></script>
                     <script type="text/javascript">
-                        document.write("<ins id=\"ep_union_137\" partner=\"1\" version=\"\" isupdate=\"1\" type=\"1\" city_type=\"1\" city_id=\""+cityId +"\" city_name=\"0\" car_type=\"2\" brandid=\"0\" serialid=\""+serialId+"\" carid=\"0\" data-channelid=\"2.21.819\"></ins>");
+                            //document.write("<ins id=\"ep_union_137\" partner=\"1\" version=\"\" isupdate=\"1\" type=\"1\" city_type=\"1\" city_id=\"" + cityId + "\" city_name=\"0\" car_type=\"2\" brandid=\"0\" serialid=\"" + serialId + "\" carid=\"0\" data-channelid=\"2.21.819\"></ins>");
+                            document.write("<div class=\"layout-2 sales-agent-section\" id=\"dealerlist\" dataReviewPagecsid=\"" + serialId + "\" dataReviewPagecityid=\"" + cityId + "\" data-channelid=\"2.21.819\"></div>");
                     </script>
 
                     <div class="layout-1">
-                        <div class="row special-layout-17" id="gouche-hmc" style="display: none;" data-channelid="2.21.104">
-                        </div>
+                       <%-- <div class="row special-layout-17" id="gouche-hmc" style="display: none;" data-channelid="2.21.104">
+                        </div>--%>
                         <div class="row special-layout-17" id="gouche-ych" style="display: none;" data-channelid="2.21.106">
                         </div>
                         <%-- <div class="row special-layout-17" id="gouche-xscg" style="display: none;" data-channelid="2.21.995">
@@ -404,7 +410,7 @@
 
                         <div class="section-header header2 mb0">
                             <div class="box">
-                                <h2><a target="_blank" href="http://www.daikuan.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><%= serialShowName %>贷款方案</a></h2>
+                                <h2><a target="_blank" href="http://fenqi.taoche.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><%= serialShowName %>贷款方案</a></h2>
                             </div>
                         </div>
 
@@ -413,7 +419,7 @@
                         <div class="special-layout-12" id="gouche-chedaicontent">
                         </div>
                         <div class="btn-box1">
-                            <a class="btn btn-default" target="_blank" href="http://www.daikuan.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><span class="more">更多贷款方案</span></a>
+                            <a class="btn btn-default" target="_blank" href="http://fenqi.taoche.com/www/<%= serialSpell %>?from=yc36" data-channelid="2.21.1601"><span class="more">更多贷款方案</span></a>
                         </div>
 
                     </div>
@@ -438,7 +444,7 @@
             <div class="col-xs-3">
                 <div class="section-right">
                     <%= koubeiReportHtml %>
-                    <div class="special-layout-3 sm layout-1 ad-tag-box">
+                    <div class="special-layout-3 sm layout-1 ad-tag-box" style="margin-top: -20px;margin-bottom: 30px;">
                         <cite class="ad-tag2" style="right: 5px; top: 5px;"></cite>
                         <ins id="div_2ed120ed-a613-4a43-84a2-3b7b5d0d8304" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="2ed120ed-a613-4a43-84a2-3b7b5d0d8304"></ins>
                     </div>
@@ -478,9 +484,11 @@
         </div>
         <!--/文章-->
     </div>
+    <!--浮层广告 add 20171019-->
+    <ins id="div_d0d818d0-743a-42cf-8b71-5f9e25b09dea" data-type="ad_play" data-adplay_IP="" data-adplay_AreaName="" data-adplay_CityName="" data-adplay_BrandID="<%= serialId %>" data-adplay_BrandName="" data-adplay_BrandType="" data-adplay_BlockCode="d0d818d0-743a-42cf-8b71-5f9e25b09dea"> </ins>
     <!--页底浮层广告-->
     <ins id="div_c62213b4-2900-4ed8-967d-3f3866014dc5" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="c62213b4-2900-4ed8-967d-3f3866014dc5"></ins>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryrest.min.js?v=20170531"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryrest.min.js?v=20170719"></script>
     <%--<script type="text/javascript" src="/jsnewv2/cssummaryrest.js?v=20170109"></script>--%>
     <script type="text/javascript">
         var CarCommonBSID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.MasterBrandId %>"; //大数据组统计用

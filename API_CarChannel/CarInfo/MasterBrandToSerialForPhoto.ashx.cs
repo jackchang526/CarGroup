@@ -177,7 +177,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 									   , key.MasterId
 									   , key.MasterName.Trim()
 									   , key.AllSpell.ToLower()
-									   , key.Spell
+									   , key.Spell.ToUpper()
 									   , ""));
 			}
 			//contentlist.RemoveAt(0);

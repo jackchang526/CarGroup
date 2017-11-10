@@ -96,7 +96,7 @@
                                   <a href="/<%=_SerialSpell %>/" target="_blank">频道</a>
                                 <a href="/<%=_SerialSpell %>/peizhi/" target="_blank">参数</a>  <a href="/<%=_SerialSpell %>/tupian/"
                                     target="_blank">图片</a>  <a href="/<%=_SerialSpell %>/baojia/" target="_blank">报价</a>
-                                 <a href="/<%=_SerialSpell %>/jiangjia/" target="_blank">降价</a> <a href="http://www.daikuan.com/china/serial/<%=_SerialSpell%>/?from=2155" target="_blank">贷款</a>  <a href="/<%=_SerialSpell %>/koubei/"
+                                 <a href="/<%=_SerialSpell %>/jiangjia/" target="_blank">降价</a> <a href="http://fenqi.taoche.com/www/<%=_SerialSpell%>/?from=2155" target="_blank">贷款</a>  <a href="/<%=_SerialSpell %>/koubei/"
                                     target="_blank">口碑</a>  
                                  <a href="<%=baaUrl %>" target="_blank">论坛</a>  <%--<a href="http://www.taoche.com/<%=_SerialSpell %>/" target="_blank">二手车</a>--%>
                             </div>
@@ -147,8 +147,8 @@
                                     <div class="btn-group">
                                     <a id="car_zixun" href="http://dealer.bitauto.com/zuidijia/nb<%=_SerialId %>/?T=1&leads_source=p015001" target="_blank" class="btn" data-channelid="2.22.108">询底价</a>
                                     <a id="divDemandCsBut" class="btn" style="display: none;" href="#" data-channelid="">特卖</a>
-                                     <%=shijiaOrHuimaiche%>
-                                    <a id="car_chedai" href="http://chedai.bitauto.com/<%=_SerialSpell %>/chedai/?from=yc9&leads_source=p015003" class="btn" target="_blank" data-channelid="2.22.110">贷款</a>
+                                    <%-- <%=shijiaOrHuimaiche%>--%>
+                                    <a id="car_chedai" href="http://fenqi.taoche.com/www/<%=_SerialSpell %>/?from=yc9&leads_source=p015003" class="btn" target="_blank" data-channelid="2.22.110">贷款</a>
                                     <a id="btnZhihuan" href="http://maiche.taoche.com/zhihuan/?serial=<%=_SerialId %>&leads_source=p015004&ref=chexisxhuan" class="btn" target="_blank" data-channelid="2.22.111">置换</a>
                                     <a href="http://www.taoche.com/<%=_SerialSpell %>/?ref=chexizsmai&leads_source=p015005" class="btn" target="_blank" data-channelid="2.22.112">二手车</a>
                                 </div>
@@ -201,7 +201,7 @@
 				}
                 })();
             </script>
-			<script type="text/javascript" src="http://gimg.bitauto.com/js/senseNew.js"></script>
+			<script type="text/javascript" src="http://d2.yiche.com/js/senseNew.js"></script>
 		    </div>
              <!--#include file="~/htmlV2/rightbar.shtml"-->
              <!--#include file="~/htmlV2/treefooter2016.shtml"-->

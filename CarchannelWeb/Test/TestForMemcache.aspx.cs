@@ -16,10 +16,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.Test
 			string key = this.Request.QueryString["key"];
 			if (!string.IsNullOrEmpty(key))
 			{
-				object obj = MemCache.GetMemCacheByKey(key);
+				object obj = MemCache.GetMultipleMemCacheByKey(new List<string>() { key });
 				if (obj != null)
 				{
-					Response.Write(obj.ToString());
+					Response.Write(key + ":" + obj.ToString());
 				}
 			}
 		}

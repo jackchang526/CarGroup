@@ -64,11 +64,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\BitAuto.Utils.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Bson">
-      <HintPath>..\..\..\packages\MongoDB.Bson.dll</HintPath>
+    <Reference Include="MongoDB.Bson, Version=1.1.0.4184, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Mongodb.1.9.2\MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver">
-      <HintPath>..\..\..\packages\MongoDB.Driver.dll</HintPath>
+      <HintPath>..\..\..\packages\Mongodb.1.9.2\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -114,6 +115,7 @@
     <Compile Include="Data\MasterBrandEntity.cs" />
     <Compile Include="Data\ProducerEntity.cs" />
     <Compile Include="Data\SerialEntity.cs" />
+    <Compile Include="EvaluationBll.cs" />
     <Compile Include="MVCRouteBll.cs" />
     <Compile Include="SerialFourthStageBll.cs" />
     <Compile Include="HangQingTree.cs" />
@@ -337,6 +339,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\partner.replacecarService\replacecarservice.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AppBLL\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

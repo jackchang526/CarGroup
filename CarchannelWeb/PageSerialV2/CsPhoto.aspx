@@ -164,7 +164,7 @@
         var adplay_BrandName = ''; //品牌
         var adplay_BlockCode = '820925db-53c1-4bf8-89d2-198f4c599f4e'; //广告块编号
     </script>
-    <script type="text/javascript" src="http://gimg.bitauto.com/js/sense.js"></script>
+    <script type="text/javascript" src="http://d2.yiche.com/js/sense.js"></script>
     <!--#include file="~/htmlv2/footer2016.shtml"-->
 
      <script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>

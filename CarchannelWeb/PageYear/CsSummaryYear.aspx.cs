@@ -1169,63 +1169,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYear
 			serialTransmission = String.Join("　", transList.ToArray());
 
 		}
-
-		/// <summary>
-		/// 生成子品牌焦点图片处的代码
-		/// </summary>
-		private void MakeSerialFocus()
-		{
-			//获取数据
-			//StringBuilder htmlCode = new StringBuilder();
-			//DataSet ds = new Car_SerialBll().GetSerialFocusImage(serialId);
-			//string bigImageCode = "";
-			//string smallImageCode = "";
-			//string imageLibUrl = "http://photo.bitauto.com/picture/" + serialId + "/";
-			//OldPageBase oldPb = new OldPageBase();
-			//if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-			//{
-			//    for (int i = 0; i < 3 && i < ds.Tables[0].Rows.Count; i++)
-			//    {
-			//        DataRow row = ds.Tables[0].Rows[i];
-			//        int imgId = Convert.ToInt32(row["SiteImageId"]);
-			//        string imgUrl = Convert.ToString(row["SiteImageUrl"]);
-			//        string bigUrl = oldPb.GetPublishImage(4, imgUrl, imgId);
-			//        string smallUrl = oldPb.GetPublishImage(5, imgUrl, imgId);
-			//        if (i == 0)
-			//        {
-			//            bigImageCode += "<div id=\"focusBigImg_" + i + "\" style=\"display: block;\"><a href=\"" + imageLibUrl + imgId + "/\" target=\"_blank\"><img alt=\"" + serialShowName + "\" src=\"" + bigUrl + "\" width=\"300\" height=\"199\"></a> </div>";
-			//            smallImageCode += "<li id=\"focusSmallImg_" + i + "\" class=\"current\"><a href=\"" + imageLibUrl + imgId + "/\" target=\"_blank\"><img alt=\"" + serialShowName + "\" src=\"" + smallUrl + "\"></a></li>";
-			//        }
-			//        else
-			//        {
-			//            bigImageCode += "<div id=\"focusBigImg_" + i + "\" style=\"display: none;\"><a href=\"" + imageLibUrl + imgId + "/\" target=\"_blank\"><img alt=\"" + serialShowName + "\" src=\"" + bigUrl + "\" width=\"300\" height=\"199\"></a> </div>";
-			//            smallImageCode += "<li id=\"focusSmallImg_" + i + "\"><a href=\"" + imageLibUrl + imgId + "/\" target=\"_blank\"><img alt=\"" + serialShowName + "\" src=\"" + smallUrl + "\"></a></li>";
-			//        }
-			//    }
-			//}
-			//else
-			//{
-			//    bigImageCode += "<div id=\"focusBigImg_0\" style=\"display: block;\"><img src=\"" + WebConfig.DefaultCarPic + "\" width=\"300\" height=\"199\"></div>";
-			//    smallImageCode += "<li id=\"focusSmallImg_0\" class=\"current\"><img src=\"" + WebConfig.DefaultCarPic + "\"></li>";
-			//}
-			//htmlCode.AppendLine("<div class=\"focus_pics\" >");
-			//htmlCode.AppendLine("<div class=\"lantern_pic\" id=\"lantern_pic\">");
-			////三张大图
-			//htmlCode.AppendLine(bigImageCode);
-			//htmlCode.AppendLine("</div>");
-			////三张小图
-			//htmlCode.AppendLine("<ul id=\"lantern_list\" class=\"lantern_list\">");
-			//htmlCode.AppendLine(smallImageCode);
-			//htmlCode.AppendLine("</ul>");
-			//htmlCode.AppendLine("</div>");
-			//CsPicJiaodian = htmlCode.ToString();
-
-			// old modified by chengl Apr.8.2011
-			// CsPicJiaodian = new Car_SerialBll().MakeSerialFocusImageNew(serialId, serialShowName);
-
-			// new serial year focus image
-			CsPicJiaodian = new Car_SerialBll().MakeSerialYearFocusImageNew(serialId, carYear, serialShowName);
-		}
+        
 
 		private void MakeSerialFocusV2()
 		{

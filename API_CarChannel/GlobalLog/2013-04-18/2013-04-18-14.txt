@@ -1,7 +1,0 @@
-[2013/4/18 14:37:17]  
-IP: 127.0.0.1
-Error in: http://api.car.bitauto.com/Exhibition/GetExhibitionLeftTreeJson.ashx?tagtype=chexing&eid=117
-Error Message: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 59.151.102.223:80
-Stack Trace:    在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
-   在 System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
-

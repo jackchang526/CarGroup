@@ -105,13 +105,13 @@ namespace BitAuto.CarChannel.CarchannelWeb.AjaxNew
                 }
             }
             //排除包含在售年款
-            foreach (string year in saleYearList)
-            {
-                if (noSaleYearList.Contains(year))
-                {
-                    noSaleYearList.Remove(year);
-                }
-            }
+			//foreach (string year in saleYearList)
+			//{
+			//	if (noSaleYearList.Contains(year))
+			//	{
+			//		noSaleYearList.Remove(year);
+			//	}
+			//}
             List<CarInfoForSerialSummaryEntity> carinfoNoSaleList = carinfoList
                 .FindAll(p => p.SaleState == "停销");
 
@@ -122,7 +122,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.AjaxNew
             List<string> noSaleExhaustList = tempList.Where(p => p.Engine_Exhaust.EndsWith("L"))
                                                               .Select(
                                                                   p =>
-																  p.Engine_InhaleType == "增压"
+																  p.Engine_InhaleType.IndexOf("增压") >= 0
                                                                       ? p.Engine_Exhaust.Replace("L", "T")
                                                                       : p.Engine_Exhaust)
                                                               .GroupBy(p => p)
@@ -140,13 +140,13 @@ namespace BitAuto.CarChannel.CarchannelWeb.AjaxNew
                     serialNoSaleDisplacement = string.Concat(noSaleExhaustList[0], " ", noSaleExhaustList[1]
                                                              , "..."
                                                              , noSaleExhaustList[noSaleExhaustList.Count - 1],
-                                                             fuelTypeListForNoSeal.Contains("电力") ? " 电动" : "");
+                                                             fuelTypeListForNoSeal.Contains("纯电") ? " 电动" : "");
                 }
                 else
                     serialNoSaleDisplacement = string.Join(" ", noSaleExhaustList.ToArray()) +
-                                               (fuelTypeListForNoSeal.Contains("电力") ? " 电动" : "");
+                                               (fuelTypeListForNoSeal.Contains("纯电") ? " 电动" : "");
                 serialNoSaleDisplacementalt = string.Join(" ", noSaleExhaustList.ToArray()) +
-                                              (fuelTypeListForNoSeal.Contains("电力") ? " 电动" : "");
+                                              (fuelTypeListForNoSeal.Contains("纯电") ? " 电动" : "");
             }
 
             #endregion

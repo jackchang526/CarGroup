@@ -94,7 +94,8 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 					case "mcskoubei": html = base.GetCommonNavigation("MCsKouBei", csID); break;
 					case "mcsyouhao": html = base.GetCommonNavigation("MCsYouHao", csID); break;
 					case "mcsdealer": html = base.GetCommonNavigation("MCsDealer", csID); break;
-					default: ; break;
+                    case "mcsvideo": html = base.GetCommonNavigation("MCsVideo", csID); break;
+                    default: ; break;
 				}
 			}
 		}

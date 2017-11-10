@@ -64,7 +64,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 		protected string chargeTimeRange = string.Empty;
 		protected string fastChargeTimeRange = string.Empty;
 		protected string mileageRange = string.Empty;
-		protected string shijiaOrHuimaiche = string.Empty;
+		//protected string shijiaOrHuimaiche = string.Empty;
 
 
 		public CX_serial()
@@ -168,11 +168,11 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 			var arrTrans = sic.CsTransmissionType.Split('、');
 			serialTransmission = arrTrans.Length > 0 ? string.Join(" ", arrTrans) : "暂无";
 			//惠买车 低价
-			Dictionary<int, string> dicHuiMaiChe = _serialBLL.GetEPHuiMaiCheAllCsUrl();
-			if (dicHuiMaiChe != null && dicHuiMaiChe.ContainsKey(_SerialId))
-			{
-                shijiaOrHuimaiche = string.Format("<a class=\"btn\" href=\"{0}?tracker_u=77_cxsxcx&leads_source=p015002\" data-channelid=\"2.22.109\" target=\"_blank\">买新车</a>", dicHuiMaiChe[_SerialId]);
-			}
+			//Dictionary<int, string> dicHuiMaiChe = _serialBLL.GetEPHuiMaiCheAllCsUrl();
+			//if (dicHuiMaiChe != null && dicHuiMaiChe.ContainsKey(_SerialId))
+			//{
+			//	shijiaOrHuimaiche = string.Format("<a class=\"btn\" href=\"{0}?tracker_u=77_cxsxcx&leads_source=p015002\" data-channelid=\"2.22.109\" target=\"_blank\">买新车</a>", dicHuiMaiChe[_SerialId]);
+			//}
 		}
 		/// <summary>
 		/// 得到子品牌描述
@@ -539,10 +539,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 			var fuelTypeList = carinfoSaleList.Where(p => p.Oil_FuelType != "")
 											  .GroupBy(p => p.Oil_FuelType)
 											  .Select(g => g.Key).ToList();
-			isElectrombile = fuelTypeList.Count == 1 && fuelTypeList[0] == "电力" ? true : false;
+			isElectrombile = fuelTypeList.Count == 1 && fuelTypeList[0] == "纯电" ? true : false;
 			//add by 2014.03.18 在销车款 排量输出
  			var exhaustList = carinfoSaleList.Where(p => p.Engine_Exhaust.EndsWith("L"))
-				.Select(p => p.Engine_InhaleType == "增压" ? p.Engine_Exhaust.Replace("L", "T") : p.Engine_Exhaust)
+				.Select(p => p.Engine_InhaleType.IndexOf("增压") >= 0 ? p.Engine_Exhaust.Replace("L", "T") : p.Engine_Exhaust)
 											.GroupBy(p => p)
 											.Select(group => group.Key).ToList();
             //停销车款 排量输出
@@ -552,7 +552,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
             List<string> noSaleExhaustList = tempList.Where(p => p.Engine_Exhaust.EndsWith("L"))
                                                               .Select(
                                                                   p =>
-																  p.Engine_InhaleType == "增压"
+																  p.Engine_InhaleType.IndexOf("增压") >= 0
                                                                       ? p.Engine_Exhaust.Replace("L", "T")
                                                                       : p.Engine_Exhaust)
                                                               .GroupBy(p => p)
@@ -571,13 +571,13 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
                         serialSaleDisplacement = string.Concat(noSaleExhaustList[0], " ", noSaleExhaustList[1]
                                                                  , "..."
                                                                  , noSaleExhaustList[noSaleExhaustList.Count - 1],
-                                                                 fuelTypeListForNoSeal.Contains("电力") ? " 电动" : "");
+                                                                 fuelTypeListForNoSeal.Contains("纯电") ? " 电动" : "");
                     }
                     else
                         serialSaleDisplacement = string.Join(" ", noSaleExhaustList.ToArray()) +
-                                                   (fuelTypeListForNoSeal.Contains("电力") ? " 电动" : "");
+                                                   (fuelTypeListForNoSeal.Contains("纯电") ? " 电动" : "");
                     serialSaleDisplacementalt = string.Join(" ", noSaleExhaustList.ToArray()) +
-                                                  (fuelTypeListForNoSeal.Contains("电力") ? " 电动" : "");
+                                                  (fuelTypeListForNoSeal.Contains("纯电") ? " 电动" : "");
                 }
             }
             else
@@ -590,10 +590,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
                     {
                         serialSaleDisplacement = string.Concat(exhaustList[0], " ", exhaustList[1]
                             , "..."
-                            , exhaustList[exhaustList.Count - 1], fuelTypeList.Contains("电力") ? " 电动" : "");
+                            , exhaustList[exhaustList.Count - 1], fuelTypeList.Contains("纯电") ? " 电动" : "");
                     }
                     else
-                        serialSaleDisplacement = string.Join(" ", exhaustList.ToArray()) + (fuelTypeList.Contains("电力") ? " 电动" : "");
+                        serialSaleDisplacement = string.Join(" ", exhaustList.ToArray()) + (fuelTypeList.Contains("纯电") ? " 电动" : "");
                     serialSaleDisplacementalt = string.Join(" ", exhaustList.ToArray());
                 }
             }
@@ -646,10 +646,38 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 		/// <returns></returns>
 		private string GetCarListHtml(List<CarInfoForSerialSummaryEntity> carList, int maxPv)
 		{
-			List<string> carListHtml = new List<string>();
+            var listGroupNew = new List<IGrouping<object, CarInfoForSerialSummaryEntity>>();
+            var listGroupOff = new List<IGrouping<object, CarInfoForSerialSummaryEntity>>();
+            var listGroupImport = new List<IGrouping<object, CarInfoForSerialSummaryEntity>>();
+
+            var importGroup = carList.GroupBy(p => new { p.IsImport }, p => p);
+            foreach (IGrouping<object, CarInfoForSerialSummaryEntity> info in importGroup)
+            {
+                var key = CommonFunction.Cast(info.Key, new { IsImport = 0 });
+                if (key.IsImport == 1)
+                {
+                    listGroupImport.Add(info);
+                }
+                else
+                {
+                    var querySale = info.ToList().GroupBy(p => new { p.Engine_Exhaust, p.Engine_InhaleType, p.Engine_AddPressType, p.Engine_MaxPower, p.Electric_Peakpower }, p => p);
+                    foreach (IGrouping<object, CarInfoForSerialSummaryEntity> subInfo in querySale)
+                    {
+                        var isStopState = subInfo.FirstOrDefault(p => p.ProduceState != "停产");
+                        if (isStopState != null)
+                            listGroupNew.Add(subInfo);
+                        else
+                            listGroupOff.Add(subInfo);
+                    }
+                }
+            }
+            listGroupNew.AddRange(listGroupOff);
+            listGroupNew.AddRange(listGroupImport);
+
+            List<string> carListHtml = new List<string>();
 			//if (carList.Count == 0)
 			//    carListHtml.Add("<tr>暂无车款！</tr>");
-			var querySale = carList.GroupBy(p => new { p.Engine_Exhaust, p.Engine_InhaleType, p.Engine_AddPressType, p.Engine_MaxPower, p.Electric_Peakpower }, p => p);
+			//var querySale = carList.GroupBy(p => new { p.Engine_Exhaust, p.Engine_InhaleType, p.Engine_AddPressType, p.Engine_MaxPower, p.Electric_Peakpower }, p => p);
 			int groupIndex = 0;
 
 			int minChargeTime = 0;
@@ -658,32 +686,45 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 			int maxFastChargeTime = 0;
 			int minMileage = 0;
 			int maxMileage = 0;
-			foreach (IGrouping<object, CarInfoForSerialSummaryEntity> info in querySale)
+			foreach (IGrouping<object, CarInfoForSerialSummaryEntity> info in listGroupNew)
 			{
-				var key = CommonFunction.Cast(info.Key, new { Engine_Exhaust = "", Engine_InhaleType = "", Engine_AddPressType = "", Engine_MaxPower = 0, Electric_Peakpower = 0 });
-				string strMaxPowerAndInhaleType = string.Empty;
-				string maxPower = key.Engine_MaxPower == 9999 ? "" : key.Engine_MaxPower + "kW";
-				string inhaleType = key.Engine_InhaleType;
-				if (!string.IsNullOrEmpty(maxPower) || !string.IsNullOrEmpty(inhaleType))
-				{
-					if (inhaleType == "增压")
-					{
-						inhaleType = string.IsNullOrEmpty(key.Engine_AddPressType) ? inhaleType : key.Engine_AddPressType;
-					}
-					if (key.Electric_Peakpower > 0)
-					{
-						maxPower = string.Format("发动机：{0}，发电机：{1}", maxPower, key.Electric_Peakpower + "kW");
-					}
-					strMaxPowerAndInhaleType = string.Format("{0}{1}", maxPower, " " + inhaleType);
-				}
+                string strMaxPowerAndInhaleType = string.Empty;
+                string maxPower = string.Empty;
+                string inhaleType = string.Empty;
+                string exhaust = string.Empty;
+                if (groupIndex == listGroupNew.Count - 1 && listGroupImport.Any())
+                {
+                    exhaust = "平行进口车";
+                }
+                else
+                {
+                    var key = CommonFunction.Cast(info.Key, new { Engine_Exhaust = "", Engine_InhaleType = "", Engine_AddPressType = "", Engine_MaxPower = 0, Electric_Peakpower = 0 });
+
+                    maxPower = key.Engine_MaxPower == 9999 ? "" : key.Engine_MaxPower + "kW";
+                    inhaleType = key.Engine_InhaleType;
+                    exhaust = key.Engine_Exhaust.Replace("L", "升");
+                    if (!string.IsNullOrEmpty(maxPower) || !string.IsNullOrEmpty(inhaleType))
+                    {
+                        if (inhaleType == "增压")
+                        {
+                            inhaleType = string.IsNullOrEmpty(key.Engine_AddPressType) ? inhaleType : key.Engine_AddPressType;
+                        }
+                        if (key.Electric_Peakpower > 0)
+                        {
+                            maxPower = string.Format("发动机：{0}，发电机：{1}", maxPower, key.Electric_Peakpower + "kW");
+                        }
+                        strMaxPowerAndInhaleType = string.Format("<b>/</b>{0}{1}", maxPower, " " + inhaleType);
+                    }
+                }
 
 				//if (groupIndex == 0)
 				//{
 				carListHtml.Add("<tr class=\"table-tit\">");
 				carListHtml.Add("    <th class=\"first-item\">");
-                carListHtml.Add(string.Format("<strong>{0}</strong><b>/</b>{1}",//key.Engine_Exhaust.Replace("L", "升"),
-					key.Engine_Exhaust,strMaxPowerAndInhaleType));
-				carListHtml.Add("    </th>");
+                carListHtml.Add(string.Format("<strong>{0}</strong> {1}",
+                    exhaust,
+                    strMaxPowerAndInhaleType));
+                carListHtml.Add("    </th>");
 				carListHtml.Add("    <th>关注度</th>");
 				carListHtml.Add("    <th>变速箱</th>");
                 carListHtml.Add("    <th class=\"txt-right txt-right-padding\">指导价</th>");
@@ -808,10 +849,11 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 					carListHtml.Add(string.Format("<div class=\"p\" style=\"width: {0}%\"></div>", percent));
 					carListHtml.Add("    </div>");
 					carListHtml.Add("</td>");
-					// 档位个数
-					string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" && dictCarParams[724] != "待查") ? dictCarParams[724] + "挡" : "";
+                    // 档位个数
+                    //string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" && dictCarParams[724] != "待查") ? dictCarParams[724] + "挡" : "";
+                    string transmissionType = _carBLL.GetCarTransmissionType(dictCarParams.ContainsKey(724) ? dictCarParams[724] : string.Empty, entity.TransmissionType);
 
-					carListHtml.Add(string.Format("<td>{0}</td>", forwardGearNum + entity.TransmissionType));
+                    carListHtml.Add(string.Format("<td>{0}</td>", transmissionType));
 					carListHtml.Add(string.Format("<td class=\"txt-right\"><span>{0}</span><a title=\"购车费用计算\" class=\"car-comparetable-ico-cal\" rel=\"nofollow\" href=\"/gouchejisuanqi/?carid={1}\" target=\"_blank\"></a></td>", string.IsNullOrEmpty(entity.ReferPrice) ? "暂无" : entity.ReferPrice + "万", entity.CarID));
 					if (entity.CarPriceRange.Trim().Length == 0)
                         carListHtml.Add(string.Format("<td class=\"txt-right\"><span>{0}</span></td>", "暂无报价"));

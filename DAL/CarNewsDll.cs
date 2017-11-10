@@ -21,6 +21,63 @@ namespace BitAuto.CarChannel.DAL
     /// </summary>
     public class CarNewsDll
     {
+
+        #region 增加新闻数量 add by sk 20117-07-05
+
+
+        public int GetSerialNewsCount(int serialId, int[] CategoryIdList)
+        {
+            int result = 0;
+            if (serialId <= 0 || !CategoryIdList.Any())
+            {
+                return result;
+            }
+
+            string sql = @"SELECT  COUNT(1)
+                            FROM    dbo.Car_SerialNewsV2 sn WITH ( NOLOCK ) 
+			                            INNER JOIN func_splitid_clustered(@CategoryId,',') c ON c.c1 =sn.CategoryId
+                            WHERE   sn.SerialId = @SerialId
+                                    AND sn.CopyRight = 0";
+
+            SqlParameter[] param = {
+                new SqlParameter("@SerialId",SqlDbType.Int),
+                new SqlParameter("@CategoryId",SqlDbType.VarChar)
+            };
+
+            param[0].Value = serialId;
+            param[1].Value = string.Join(",", CategoryIdList);
+            return ConvertHelper.GetInteger(SqlHelper.ExecuteScalar(WebConfig.CarDataUpdateConnectionString, CommandType.Text, sql, param));
+        }
+
+
+
+        public int GetNewsCount(int[] serialIdList, int[] CategoryIdList)
+        {
+            int result = 0;
+            if (!serialIdList.Any() || !CategoryIdList.Any())
+            {
+                return result;
+            }
+
+            string sql = @"SELECT  COUNT(1)
+                            FROM    dbo.Car_SerialNewsV2 sn
+                                    INNER JOIN dbo.func_splitid_clustered(@SerialIds, ',') st ON sn.SerialId = st.c1
+                                    INNER JOIN dbo.func_splitid_clustered(@CategoryIds, ',') ct ON sn.CategoryId = ct.c1
+                            WHERE   sn.CopyRight = 0";
+
+            SqlParameter[] param = {
+                new SqlParameter("@SerialIds",SqlDbType.VarChar),
+                new SqlParameter("@CategoryIds",SqlDbType.VarChar)
+            };
+
+            param[0].Value = string.Join(",", serialIdList);
+            param[1].Value = string.Join(",", CategoryIdList);
+            return ConvertHelper.GetInteger(SqlHelper.ExecuteScalar(WebConfig.CarDataUpdateConnectionString, CommandType.Text, sql, param));
+        }
+
+        #endregion
+
+
         /// <summary>
         /// 获取厂商新闻列表
         /// </summary>
@@ -36,7 +93,7 @@ namespace BitAuto.CarChannel.DAL
                 new SqlParameter("@PageSize",pageSize),
                 new SqlParameter("@PageIndex",pageIndex),
                 new SqlParameter("@ProducerId",producerId),
-				new SqlParameter("@CarNewsTypeId",carNewsTypeId),
+                new SqlParameter("@CarNewsTypeId",carNewsTypeId),
                 outRowCount
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.StoredProcedure, "[dbo].[GetProducerNewsForPage]", param);
@@ -54,7 +111,7 @@ namespace BitAuto.CarChannel.DAL
             SqlParameter[] param = new SqlParameter[]{
                 new SqlParameter("@Top",top),
                 new SqlParameter("@ProducerId",producerId),
-				new SqlParameter("@CarNewsTypeId",carNewsTypeId)
+                new SqlParameter("@CarNewsTypeId",carNewsTypeId)
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text,
 @"SELECT TOP (@Top) CmsNewsId, CategoryId, Title, FilePath, PublishTime, SerialId
@@ -67,13 +124,13 @@ WHERE ProducerId=@ProducerId AND CarNewsTypeId=@CarNewsTypeId ORDER BY PublishTi
         /// </summary>
         public DataSet GetMasterBrandNews(int masterBrandId, int[] arrCategoryIds, int pageSize, int pageIndex, ref int recordCount)
         {
-            SqlParameter[] param = { 
-									   new SqlParameter("@PageSize",SqlDbType.Int),
-								   new SqlParameter("@PageIndex",SqlDbType.Int),
-								   new SqlParameter("@SerialIds",SqlDbType.VarChar),
-								   new SqlParameter("@CategoryIds",SqlDbType.VarChar),
-								   new SqlParameter("@RecordCount",SqlDbType.Int)
-								   };
+            SqlParameter[] param = {
+                                       new SqlParameter("@PageSize",SqlDbType.Int),
+                                   new SqlParameter("@PageIndex",SqlDbType.Int),
+                                   new SqlParameter("@SerialIds",SqlDbType.VarChar),
+                                   new SqlParameter("@CategoryIds",SqlDbType.VarChar),
+                                   new SqlParameter("@RecordCount",SqlDbType.Int)
+                                   };
             int[] arrSerialIds = GetSerialIdByMaster(masterBrandId);
             param[0].Value = pageSize;
             param[1].Value = pageIndex;
@@ -95,9 +152,9 @@ WHERE ProducerId=@ProducerId AND CarNewsTypeId=@CarNewsTypeId ORDER BY PublishTi
             string sql = @"SELECT CmsCategoryId
 							FROM    [dbo].[CarNewsTypeDef]
 							WHERE   CarNewsTypeId = @CarNewsTypeId";
-            SqlParameter[] param = { 
-									   new SqlParameter("@CarNewsTypeId",SqlDbType.Int)
-								   };
+            SqlParameter[] param = {
+                                       new SqlParameter("@CarNewsTypeId",SqlDbType.Int)
+                                   };
 
             param[0].Value = carNewsType;
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text, sql, param);
@@ -120,9 +177,9 @@ WHERE ProducerId=@ProducerId AND CarNewsTypeId=@CarNewsTypeId ORDER BY PublishTi
             {
                 return cacheObj as int[];
             }
-            SqlParameter[] param = { 
-									  new SqlParameter("@CarNewsTypeIdList",SqlDbType.Structured)
-								   };
+            SqlParameter[] param = {
+                                      new SqlParameter("@CarNewsTypeIdList",SqlDbType.Structured)
+                                   };
             DataTable dt = new DataTable();
             dt.Columns.Add(new DataColumn("Id", Type.GetType("System.Int32")));
             carNewsTypeIdList.ForEach(id =>
@@ -161,9 +218,9 @@ WHERE ProducerId=@ProducerId AND CarNewsTypeId=@CarNewsTypeId ORDER BY PublishTi
 									LEFT JOIN dbo.Car_MasterBrand cmb ON cmbr.bs_Id = cmb.bs_Id
 							WHERE   cs.IsState = 1
 									AND cmb.bs_Id = @MasterId";
-            SqlParameter[] param = { 
-									   new SqlParameter("@MasterId",SqlDbType.Int)
-								   };
+            SqlParameter[] param = {
+                                       new SqlParameter("@MasterId",SqlDbType.Int)
+                                   };
 
             param[0].Value = masterId;
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, param);
@@ -189,9 +246,9 @@ WHERE ProducerId=@ProducerId AND CarNewsTypeId=@CarNewsTypeId ORDER BY PublishTi
 
             string sql = @"SELECT  cs.cs_Id FROM    dbo.Car_Serial cs	LEFT JOIN dbo.Car_Brand cb ON cs.cb_Id = cb.cb_Id
 							WHERE   cs.IsState = 1 AND cb.cb_Id = @BrandId";
-            SqlParameter[] param = { 
-									   new SqlParameter("@BrandId",SqlDbType.Int)
-								   };
+            SqlParameter[] param = {
+                                       new SqlParameter("@BrandId",SqlDbType.Int)
+                                   };
 
             param[0].Value = brandId;
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, param);
@@ -216,9 +273,9 @@ WHERE ProducerId=@ProducerId AND CarNewsTypeId=@CarNewsTypeId ORDER BY PublishTi
             }
 
             string sql = @"SELECT  CS_ID  FROM CAR_SERIAL WHERE CS_CARLEVEL=@LevelName AND ISSTATE=1";
-            SqlParameter[] param = { 
-									   new SqlParameter("@LevelName",SqlDbType.NVarChar)
-								   };
+            SqlParameter[] param = {
+                                       new SqlParameter("@LevelName",SqlDbType.NVarChar)
+                                   };
 
             param[0].Value = levelName;
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, param);
@@ -274,7 +331,7 @@ WHERE ProducerId=@ProducerId AND CarNewsTypeId=@CarNewsTypeId ORDER BY PublishTi
             SqlParameter[] param = new SqlParameter[]{
                 new SqlParameter("@Top",top),
                 new SqlParameter("@MasterBrandId",masterBrandId),
-				new SqlParameter("@CarNewsTypeId",carNewsTypeId)
+                new SqlParameter("@CarNewsTypeId",carNewsTypeId)
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text,
 @"SELECT TOP (@Top) CmsNewsId,CategoryId,Title,FilePath,PublishTime,SerialId 
@@ -332,12 +389,12 @@ ORDER BY PublishTime DESC", param);
             SqlParameter[] param = new SqlParameter[]{
                 new SqlParameter("@Top",top),
                 new SqlParameter("@SerialIds",arrSerialIds == null ? "" : string.Join(",", arrSerialIds)),
-				new SqlParameter("@CategoryIds",arrCategoryIds==null?"": string.Join(",", arrCategoryIds)),
+                new SqlParameter("@CategoryIds",arrCategoryIds==null?"": string.Join(",", arrCategoryIds)),
                  new SqlParameter("@MasterBrandId",masterBrandId),
-				new SqlParameter("@BlockType",newsBlockOrderTypeId),
-				new SqlParameter("@NowTime",DateTime.Now.Date),
-				new SqlParameter("@StartOrder",1),
-				new SqlParameter("@EndOrder",6),
+                new SqlParameter("@BlockType",newsBlockOrderTypeId),
+                new SqlParameter("@NowTime",DateTime.Now.Date),
+                new SqlParameter("@StartOrder",1),
+                new SqlParameter("@EndOrder",6),
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text,
 @"SELECT TOP ( @Top ) n.NewsId AS CmsNewsId,  n.Title, n.ShortTitle AS FaceTitle, n.Summary AS Content,  n.ImageConverUrl AS Picture,
@@ -347,7 +404,7 @@ ORDER BY PublishTime DESC", param);
                         INNER JOIN dbo.func_splitid_clustered(@SerialIds, ',') st ON sn.SerialId = st.c1
                         INNER JOIN dbo.func_splitid_clustered(@CategoryIds,
                                                               ',') ct ON sn.CategoryId = ct.c1
-                where (sn.CopyRight between 0 and 1) and sn.ZbEditor=1
+                where sn.CopyRight = 0
                 ORDER BY sn.PublishTime DESC
 
 SELECT TOP (@EndOrder) CmsNewsId, Title, FaceTitle, FilePath, PublishTime, CategoryId, OrderNumber 
@@ -372,7 +429,7 @@ ORDER BY OrderNumber ASC
                 new SqlParameter("@PageSize",pageSize),
                 new SqlParameter("@PageIndex",pageIndex),
                 new SqlParameter("@MasterBrandId",masterBrandId),
-				new SqlParameter("@CarNewsTypeId",carNewsTypeId),
+                new SqlParameter("@CarNewsTypeId",carNewsTypeId),
                 outRowCount
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.StoredProcedure, "[dbo].[GetMasterBrandNewsAllDataForPage]", param);
@@ -389,7 +446,7 @@ ORDER BY OrderNumber ASC
             SqlParameter[] param = new SqlParameter[]{
                 new SqlParameter("@Top",top),
                 new SqlParameter("@MasterBrandId",masterBrandId),
-				new SqlParameter("@CarNewsTypeId",carNewsTypeId)
+                new SqlParameter("@CarNewsTypeId",carNewsTypeId)
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text,
 @" SELECT TOP (@Top) mbn.CategoryId,mbn.SerialId, mbn.PublishTime,mbn.CmsNewsId
@@ -415,7 +472,7 @@ ORDER BY OrderNumber ASC
                 new SqlParameter("@PageSize",pageSize),
                 new SqlParameter("@PageIndex",pageIndex),
                 new SqlParameter("@BrandId",brandId),
-				new SqlParameter("@CarNewsTypeId",carNewsTypeId),
+                new SqlParameter("@CarNewsTypeId",carNewsTypeId),
                 outRowCount
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.StoredProcedure, "[dbo].[GetBrandNewsForPage]", param);
@@ -434,7 +491,7 @@ ORDER BY OrderNumber ASC
                 new SqlParameter("@PageSize",pageSize),
                 new SqlParameter("@PageIndex",pageIndex),
                 new SqlParameter("@BrandId",brandId),
-				new SqlParameter("@CarNewsTypeIdList",SqlDbType.Structured),
+                new SqlParameter("@CarNewsTypeIdList",SqlDbType.Structured),
                 outRowCount
             };
 
@@ -468,13 +525,13 @@ ORDER BY OrderNumber ASC
         {
             if (brandId <= 0 || pageSize <= 0 || pageIndex <= 0) { rowCount = 0; return null; }
 
-            SqlParameter[] param = { 
-									   new SqlParameter("@PageSize",SqlDbType.Int),
-								   new SqlParameter("@PageIndex",SqlDbType.Int),
-								   new SqlParameter("@SerialIds",SqlDbType.VarChar),
-								   new SqlParameter("@CategoryIds",SqlDbType.VarChar),
-								   new SqlParameter("@RecordCount",SqlDbType.Int)
-								   };
+            SqlParameter[] param = {
+                                       new SqlParameter("@PageSize",SqlDbType.Int),
+                                   new SqlParameter("@PageIndex",SqlDbType.Int),
+                                   new SqlParameter("@SerialIds",SqlDbType.VarChar),
+                                   new SqlParameter("@CategoryIds",SqlDbType.VarChar),
+                                   new SqlParameter("@RecordCount",SqlDbType.Int)
+                                   };
             int[] arrSerialIds = GetSerialIdByBrand(brandId);
             param[0].Value = pageSize;
             param[1].Value = pageIndex;
@@ -495,7 +552,7 @@ ORDER BY OrderNumber ASC
             SqlParameter[] param = new SqlParameter[]{
                 new SqlParameter("@Top",top),
                 new SqlParameter("@BrandId",brandId),
-				new SqlParameter("@CarNewsTypeId",carNewsTypeId)
+                new SqlParameter("@CarNewsTypeId",carNewsTypeId)
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text,
                 @" SELECT TOP (@Top) CmsNewsId,CategoryId,Title,FilePath,PublishTime,SerialId 
@@ -552,13 +609,13 @@ ORDER BY OrderNumber ASC
             SqlParameter[] param = new SqlParameter[]{
                 new SqlParameter("@Top",top),
                 new SqlParameter("@BrandId",brandId),
-			    new SqlParameter("@SerialIds",arrSerialIds == null ? "" : string.Join(",", arrSerialIds)),
-				new SqlParameter("@CategoryIds",arrCategoryIds == null ? "" :string.Join(",", arrCategoryIds)),
+                new SqlParameter("@SerialIds",arrSerialIds == null ? "" : string.Join(",", arrSerialIds)),
+                new SqlParameter("@CategoryIds",arrCategoryIds == null ? "" :string.Join(",", arrCategoryIds)),
 
-				new SqlParameter("@BlockType",newsBlockOrderTypeId),
-				new SqlParameter("@NowTime",DateTime.Now.Date),
-				new SqlParameter("@StartOrder",1),
-				new SqlParameter("@EndOrder",6),
+                new SqlParameter("@BlockType",newsBlockOrderTypeId),
+                new SqlParameter("@NowTime",DateTime.Now.Date),
+                new SqlParameter("@StartOrder",1),
+                new SqlParameter("@EndOrder",6),
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text,  //,bn.Title
                 @"SELECT TOP ( @Top ) n.NewsId AS CmsNewsId,  n.Title, n.ShortTitle AS FaceTitle, n.Summary AS Content,  n.ImageConverUrl AS Picture,
@@ -568,7 +625,7 @@ ORDER BY OrderNumber ASC
                         INNER JOIN dbo.func_splitid_clustered(@SerialIds, ',') st ON sn.SerialId = st.c1
                         INNER JOIN dbo.func_splitid_clustered(@CategoryIds,
                                                               ',') ct ON sn.CategoryId = ct.c1
-                where (sn.CopyRight between 0 and 1) and sn.ZbEditor=1
+                where sn.CopyRight = 0
                 ORDER BY sn.PublishTime DESC
 
 SELECT TOP (@EndOrder) CmsNewsId, Title, FaceTitle, FilePath, PublishTime, CategoryId, OrderNumber 
@@ -593,7 +650,7 @@ ORDER BY OrderNumber ASC"
                 new SqlParameter("@PageSize",pageSize),
                 new SqlParameter("@PageIndex",pageIndex),
                 new SqlParameter("@BrandId",brandId),
-				new SqlParameter("@CarNewsTypeId",carNewsTypeId),
+                new SqlParameter("@CarNewsTypeId",carNewsTypeId),
                 outRowCount
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.StoredProcedure, "[dbo].[GetBrandNewsAllDataForPage]", param);
@@ -610,7 +667,7 @@ ORDER BY OrderNumber ASC"
             SqlParameter[] param = new SqlParameter[]{
                 new SqlParameter("@Top",top),
                 new SqlParameter("@BrandId",brandId),
-				new SqlParameter("@CarNewsTypeId",carNewsTypeId)
+                new SqlParameter("@CarNewsTypeId",carNewsTypeId)
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text,
 @" SELECT TOP (@Top) mbn.CategoryId,mbn.SerialId, mbn.PublishTime,mbn.CmsNewsId
@@ -636,7 +693,7 @@ ORDER BY OrderNumber ASC"
                 new SqlParameter("@PageSize",pageSize),
                 new SqlParameter("@PageIndex",pageIndex),
                 new SqlParameter("@LevelId",levelId),
-				new SqlParameter("@CarNewsTypeId",carNewsTypeId),
+                new SqlParameter("@CarNewsTypeId",carNewsTypeId),
                 outRowCount
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.StoredProcedure, "[dbo].[GetLevelNewsForPage]", param);
@@ -653,7 +710,7 @@ ORDER BY OrderNumber ASC"
             SqlParameter[] param = new SqlParameter[]{
                 new SqlParameter("@Top",top),
                 new SqlParameter("@LevelId",levelId),
-				new SqlParameter("@CarNewsTypeId",carNewsTypeId)
+                new SqlParameter("@CarNewsTypeId",carNewsTypeId)
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text,
                 @" SELECT TOP (@Top) CmsNewsId,CategoryId,Title,FilePath,PublishTime,SerialId 
@@ -665,23 +722,23 @@ ORDER BY OrderNumber ASC"
         /// <summary>
         /// 获取级别新闻列表old
         /// </summary>
-//        public DataSet GetLevelNewsWithComment(int levelId, int carNewsTypeId, int top)
-//        {
-//            if (levelId <= 0 || carNewsTypeId <= 0 || top <= 0) return null; 
+        //        public DataSet GetLevelNewsWithComment(int levelId, int carNewsTypeId, int top)
+        //        {
+        //            if (levelId <= 0 || carNewsTypeId <= 0 || top <= 0) return null; 
 
-//            SqlParameter[] param = new SqlParameter[]{
-//                new SqlParameter("@Top",top),
-//                new SqlParameter("@LevelId",levelId),
-//                new SqlParameter("@CarNewsTypeId",carNewsTypeId)
-//            };
-//            DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text,
-//                @" SELECT TOP (@Top) ln.CmsNewsId,ln.CategoryId,ln.Title,ln.FilePath,ln.PublishTime,ln.SerialId,n.Picture,n.FaceTitle,n.Duration,n.Author,n.CommentNum,n.SourceName,n.[Content],n.EditorName,n.EditorId,n.SourceUrl,n.FirstPicUrl 
-//                     FROM LevelNews as ln
-//                     INNER JOIN News n ON n.ID = ln.CarNewsId
-//                     WHERE LevelId=@LevelId AND CarNewsTypeId=@CarNewsTypeId AND n.CreativeType =0
-//                     ORDER BY PublishTime DESC", param);
-//            return ds;
-//        }
+        //            SqlParameter[] param = new SqlParameter[]{
+        //                new SqlParameter("@Top",top),
+        //                new SqlParameter("@LevelId",levelId),
+        //                new SqlParameter("@CarNewsTypeId",carNewsTypeId)
+        //            };
+        //            DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text,
+        //                @" SELECT TOP (@Top) ln.CmsNewsId,ln.CategoryId,ln.Title,ln.FilePath,ln.PublishTime,ln.SerialId,n.Picture,n.FaceTitle,n.Duration,n.Author,n.CommentNum,n.SourceName,n.[Content],n.EditorName,n.EditorId,n.SourceUrl,n.FirstPicUrl 
+        //                     FROM LevelNews as ln
+        //                     INNER JOIN News n ON n.ID = ln.CarNewsId
+        //                     WHERE LevelId=@LevelId AND CarNewsTypeId=@CarNewsTypeId AND n.CreativeType =0
+        //                     ORDER BY PublishTime DESC", param);
+        //            return ds;
+        //        }
         /// <summary>
         /// 获取级别新闻列表new 
         /// </summary>
@@ -743,14 +800,14 @@ ORDER BY OrderNumber ASC"
                         INNER JOIN dbo.Car_NewsV2 n ON sn.CarNewsId = n.Id
                         INNER JOIN dbo.func_splitid_clustered(@SerialIds, ',') st ON sn.SerialId = st.c1
                         INNER JOIN dbo.func_splitid_clustered(@CategoryIds, ',') ct ON sn.CategoryId = ct.c1
-                where (sn.CopyRight between 0 and 1) and sn.ZbEditor=1
+                where sn.CopyRight = 0
                 ORDER BY sn.PublishTime DESC";
 
-            SqlParameter[] param = { 
-									   new SqlParameter("@Top",SqlDbType.Int),
-								   new SqlParameter("@SerialIds",SqlDbType.VarChar),
-								   new SqlParameter("@CategoryIds",SqlDbType.VarChar)
-								   };
+            SqlParameter[] param = {
+                                       new SqlParameter("@Top",SqlDbType.Int),
+                                   new SqlParameter("@SerialIds",SqlDbType.VarChar),
+                                   new SqlParameter("@CategoryIds",SqlDbType.VarChar)
+                                   };
             int[] arrSerialIds = GetSerialIdByCarLevel("SUV");
             param[0].Value = top;
             param[1].Value = arrSerialIds == null ? "" : string.Join(",", arrSerialIds);
@@ -767,11 +824,11 @@ ORDER BY OrderNumber ASC"
             if (serialId < 1 || cityId < 0 || top < 1) return null;
 
             SqlParameter[] param = new SqlParameter[]{
-				new SqlParameter("@SerialId", serialId), 
-				new SqlParameter("@CityId", cityId), 
+                new SqlParameter("@SerialId", serialId),
+                new SqlParameter("@CityId", cityId), 
 				// new SqlParameter("@CarNewsTypeId", (int)CarNewsType.hangqing),
 				new SqlParameter("@Top", top)
-			};
+            };
 
             //            return SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text,
             //@"SELECT TOP(@Top) n.CmsNewsId,n.Title, n.FaceTitle,n.FilePath,n.PublishTime
@@ -801,15 +858,15 @@ order by publishtime desc", param);
                 SqlParameter[] param = null;
                 if (year > 0)
                 {
-                    selectSql = "SELECT COUNT(1) FROM Car_SerialNewsV2 sn INNER JOIN dbo.func_splitid_clustered(@CategoryIds,',') ct ON sn.CategoryId = ct.c1 WHERE sn.SerialId = @SerialId  and sn.CopyRight in (0,1) and sn.ZbEditor=1 AND YearType=@Year";
-                    param = new SqlParameter[] { 
-                        new SqlParameter("@CategoryIds",arrCategoryIds==null?"":string.Join(",", arrCategoryIds)), 
+                    selectSql = "SELECT COUNT(1) FROM Car_SerialNewsV2 sn INNER JOIN dbo.func_splitid_clustered(@CategoryIds,',') ct ON sn.CategoryId = ct.c1 WHERE sn.SerialId = @SerialId  and sn.CopyRight = 0 AND YearType=@Year";
+                    param = new SqlParameter[] {
+                        new SqlParameter("@CategoryIds",arrCategoryIds==null?"":string.Join(",", arrCategoryIds)),
                         new SqlParameter("@SerialId", serialId), new SqlParameter("@Year", year) };
                 }
                 else
                 {
-                    selectSql = "SELECT COUNT(1) FROM Car_SerialNewsV2 sn INNER JOIN dbo.func_splitid_clustered(@CategoryIds,',') ct ON sn.CategoryId = ct.c1 WHERE sn.SerialId = @SerialId  and sn.CopyRight in (0,1) and sn.ZbEditor=1";
-                    param = new SqlParameter[] { 
+                    selectSql = "SELECT COUNT(1) FROM Car_SerialNewsV2 sn INNER JOIN dbo.func_splitid_clustered(@CategoryIds,',') ct ON sn.CategoryId = ct.c1 WHERE sn.SerialId = @SerialId  and sn.CopyRight = 0";
+                    param = new SqlParameter[] {
                         new SqlParameter("@CategoryIds",arrCategoryIds==null?"": string.Join(",", arrCategoryIds)),
                         new SqlParameter("@SerialId", serialId) };
                 }
@@ -850,7 +907,7 @@ order by publishtime desc", param);
             SqlParameter[] param = new SqlParameter[]{
                 new SqlParameter("@Top",top),
                 new SqlParameter("@SerialId",serialId),
-				new SqlParameter("@CategoryIds",arrCategoryIds==null?"": string.Join(",",arrCategoryIds))
+                new SqlParameter("@CategoryIds",arrCategoryIds==null?"": string.Join(",",arrCategoryIds))
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text,
                 @" SELECT TOP ( @Top )  n.NewsId AS CmsNewsId,n.CategoryId,sn.CarId, n.Title, n.Url AS FilePath,n.PublishTime,n.ImageConverUrl AS Picture,
@@ -858,7 +915,7 @@ order by publishtime desc", param);
                         FROM    dbo.Car_SerialNewsV2 sn
                         INNER JOIN dbo.Car_NewsV2 n ON sn.CarNewsId = n.Id
                         INNER JOIN dbo.func_splitid_clustered(@CategoryIds,',') ct ON sn.CategoryId = ct.c1
-                WHERE   sn.SerialId = @SerialId and  sn.CopyRight in (0,1) and sn.ZbEditor=1 
+                WHERE   sn.SerialId = @SerialId and  sn.CopyRight = 0 
                 ORDER BY sn.PublishTime DESC", param);
             return ds;
         }
@@ -878,7 +935,7 @@ order by publishtime desc", param);
                 @" SELECT TOP ( @Top )  n.NewsId AS CmsNewsId,n.Title, n.Url AS FilePath,n.ShortTitle AS FaceTitle
                         FROM    dbo.Car_SerialNewsV2 sn
                         INNER JOIN dbo.Car_NewsV2 n ON sn.CarNewsId = n.Id
-                   WHERE   sn.SerialId = @SerialId and  sn.CopyRight in (0,1) and sn.ZbEditor=1 
+                   WHERE   sn.SerialId = @SerialId and  sn.CopyRight = 0 
                    ORDER BY sn.PublishTime DESC", param);
             return ds;
         }
@@ -948,18 +1005,18 @@ order by publishtime desc", param);
         {
             if (serialId <= 0 || carNewsTypeId <= 0 || pageSize <= 0 || pageIndex <= 0) { rowCount = 0; return null; }
 
-            SqlParameter[] param = { 
-									   new SqlParameter("@PageSize",SqlDbType.Int),
-								   new SqlParameter("@PageIndex",SqlDbType.Int),
-								   new SqlParameter("@SerialId",SqlDbType.VarChar),
-								   new SqlParameter("@CategoryIds",SqlDbType.VarChar),
-								   new SqlParameter("@RecordCount",SqlDbType.Int)
-								   };
+            SqlParameter[] param = {
+                                       new SqlParameter("@PageSize",SqlDbType.Int),
+                                   new SqlParameter("@PageIndex",SqlDbType.Int),
+                                   new SqlParameter("@SerialId",SqlDbType.VarChar),
+                                   new SqlParameter("@CategoryIds",SqlDbType.VarChar),
+                                   new SqlParameter("@RecordCount",SqlDbType.Int)
+                                   };
             int[] arrCategoryIds = GetCarNewsType(carNewsTypeId);
             param[0].Value = pageSize;
             param[1].Value = pageIndex;
             param[2].Value = serialId;
-            param[3].Value =arrCategoryIds==null?"":string.Join(",", arrCategoryIds);
+            param[3].Value = arrCategoryIds == null ? "" : string.Join(",", arrCategoryIds);
             param[4].Direction = ParameterDirection.Output;
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.StoredProcedure, "[dbo].[SP_CarNewsV2_GetSerialNewsForPage]", param);
             rowCount = ConvertHelper.GetInteger(param[4].Value);
@@ -978,17 +1035,17 @@ order by publishtime desc", param);
         {
             if (serialId <= 0 || arrCategoryIds.Length <= 0 || pageSize <= 0 || pageIndex <= 0) { rowCount = 0; return null; }
 
-            SqlParameter[] param = { 
-									   new SqlParameter("@PageSize",SqlDbType.Int),
-								   new SqlParameter("@PageIndex",SqlDbType.Int),
-								   new SqlParameter("@SerialId",SqlDbType.VarChar),
-								   new SqlParameter("@CategoryIds",SqlDbType.VarChar),
-								   new SqlParameter("@RecordCount",SqlDbType.Int)
-								   };
+            SqlParameter[] param = {
+                                       new SqlParameter("@PageSize",SqlDbType.Int),
+                                   new SqlParameter("@PageIndex",SqlDbType.Int),
+                                   new SqlParameter("@SerialId",SqlDbType.VarChar),
+                                   new SqlParameter("@CategoryIds",SqlDbType.VarChar),
+                                   new SqlParameter("@RecordCount",SqlDbType.Int)
+                                   };
             param[0].Value = pageSize;
             param[1].Value = pageIndex;
             param[2].Value = serialId;
-            param[3].Value =arrCategoryIds==null?"": string.Join(",", arrCategoryIds);
+            param[3].Value = arrCategoryIds == null ? "" : string.Join(",", arrCategoryIds);
             param[4].Direction = ParameterDirection.Output;
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.StoredProcedure, "[dbo].[SP_CarNewsV2_GetSerialNewsForPage]", param);
             rowCount = ConvertHelper.GetInteger(param[4].Value);
@@ -1032,7 +1089,7 @@ order by publishtime desc", param);
             SqlParameter[] param = new SqlParameter[]{
                 new SqlParameter("@Top",top),
                 new SqlParameter("@SerialId",serialId),
-				new SqlParameter("@CategoryIds",arrCategoryIds==null?"": string.Join(",", arrCategoryIds))
+                new SqlParameter("@CategoryIds",arrCategoryIds==null?"": string.Join(",", arrCategoryIds))
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text,
 @" SELECT TOP (@Top) n.NewsId AS CmsNewsId,sn.CategoryId,sn.CarId,  n.Title, n.ShortTitle AS FaceTitle, n.Summary AS Content,  n.ImageConverUrl AS Picture,
@@ -1040,7 +1097,7 @@ order by publishtime desc", param);
                 FROM    dbo.Car_SerialNewsV2 sn
                         INNER JOIN dbo.Car_NewsV2 n ON sn.CarNewsId = n.Id
                         INNER JOIN dbo.func_splitid_clustered(@CategoryIds,',') ct ON sn.CategoryId = ct.c1
-                where  sn.SerialId = @SerialId and sn.CopyRight in(0,1) and sn.ZbEditor=1
+                where  sn.SerialId = @SerialId and sn.CopyRight = 0
                 ORDER BY sn.PublishTime DESC  ", param);
             return ds;
         }
@@ -1059,8 +1116,8 @@ order by publishtime desc", param);
                 new SqlParameter("@PageSize",pageSize),
                 new SqlParameter("@PageIndex",pageIndex),
                 new SqlParameter("@SerialId",serialId),
-				new SqlParameter("@CarYear",year),
-				new SqlParameter("@CarNewsTypeId",carNewsTypeId),
+                new SqlParameter("@CarYear",year),
+                new SqlParameter("@CarNewsTypeId",carNewsTypeId),
                 outRowCount
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.StoredProcedure, "[dbo].[GetSerialYearNewsAllDataForPage]", param);
@@ -1089,8 +1146,8 @@ order by publishtime desc", param);
                 new SqlParameter("@PageSize",pageSize),
                 new SqlParameter("@PageIndex",pageIndex),
                 new SqlParameter("@SerialId",serialId),
-				new SqlParameter("@CarYear",year),
-				new SqlParameter("@CarNewsTypeIdList",SqlDbType.Structured),
+                new SqlParameter("@CarYear",year),
+                new SqlParameter("@CarNewsTypeIdList",SqlDbType.Structured),
                 outRowCount
             };
             DataTable dt = new DataTable();
@@ -1124,19 +1181,19 @@ order by publishtime desc", param);
             rowCount = 0;
             if (serialId < 1 || year < 1 || pageSize < 1 || pageIndex < 1) return null;
 
-            SqlParameter[] param = { 
-									   new SqlParameter("@PageSize",SqlDbType.Int),
-								   new SqlParameter("@PageIndex",SqlDbType.Int),
-								   new SqlParameter("@SerialId",SqlDbType.VarChar),
-								   new SqlParameter("@CategoryIds",SqlDbType.VarChar),
+            SqlParameter[] param = {
+                                       new SqlParameter("@PageSize",SqlDbType.Int),
+                                   new SqlParameter("@PageIndex",SqlDbType.Int),
+                                   new SqlParameter("@SerialId",SqlDbType.VarChar),
+                                   new SqlParameter("@CategoryIds",SqlDbType.VarChar),
                                     new SqlParameter("@YearType",SqlDbType.Int),
-								   new SqlParameter("@RecordCount",SqlDbType.Int)
-								   };
+                                   new SqlParameter("@RecordCount",SqlDbType.Int)
+                                   };
 
             param[0].Value = pageSize;
             param[1].Value = pageIndex;
             param[2].Value = serialId;
-            param[3].Value =arrCategoryIds==null?"": string.Join(",", arrCategoryIds);
+            param[3].Value = arrCategoryIds == null ? "" : string.Join(",", arrCategoryIds);
             param[4].Value = year;
             param[5].Direction = ParameterDirection.Output;
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.StoredProcedure, "[dbo].[SP_CarNewsV2_GetSerialYearNewsForPage]", param);
@@ -1154,8 +1211,8 @@ order by publishtime desc", param);
             SqlParameter[] param = new SqlParameter[]{
                 new SqlParameter("@Top",top),
                 new SqlParameter("@SerialId",serialId),
-				new SqlParameter("@CarYear",year),
-				new SqlParameter("@CategoryIds",arrCategoryIds==null?"": string.Join(",",arrCategoryIds))
+                new SqlParameter("@CarYear",year),
+                new SqlParameter("@CategoryIds",arrCategoryIds==null?"": string.Join(",",arrCategoryIds))
             };
 
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text,
@@ -1164,7 +1221,7 @@ order by publishtime desc", param);
                         FROM    dbo.Car_SerialNewsV2 sn
                         INNER JOIN dbo.Car_NewsV2 n ON sn.CarNewsId = n.Id
                         INNER JOIN dbo.func_splitid_clustered(@CategoryIds,',') ct ON sn.CategoryId = ct.c1
-                WHERE   sn.SerialId = @SerialId and  sn.CopyRight in (0,1) and sn.ZbEditor=1 AND sn.YearType=@CarYear 
+                WHERE   sn.SerialId = @SerialId and  sn.CopyRight = 0 AND sn.YearType=@CarYear 
                 ORDER BY sn.PublishTime DESC", param);
             return ds;
         }
@@ -1183,8 +1240,8 @@ order by publishtime desc", param);
                 new SqlParameter("@PageSize",pageSize),
                 new SqlParameter("@PageIndex",pageIndex),
                 new SqlParameter("@SerialId",serialId),
-				new SqlParameter("@RelateCityId",cityId),
-				new SqlParameter("@CarNewsTypeId",(int)CarNewsType.hangqing),
+                new SqlParameter("@RelateCityId",cityId),
+                new SqlParameter("@CarNewsTypeId",(int)CarNewsType.hangqing),
                 outRowCount
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.StoredProcedure, "[dbo].[GetSerialCityNewsAllDataForPage]", param);
@@ -1206,8 +1263,8 @@ order by publishtime desc", param);
                 new SqlParameter("@PageSize",pageSize),
                 new SqlParameter("@PageIndex",pageIndex),
                 new SqlParameter("@SerialId",serialId),
-				new SqlParameter("@RelateProvinceId",provinceId),
-				new SqlParameter("@CarNewsTypeId",(int)CarNewsType.hangqing),
+                new SqlParameter("@RelateProvinceId",provinceId),
+                new SqlParameter("@CarNewsTypeId",(int)CarNewsType.hangqing),
                 outRowCount
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.StoredProcedure, "[dbo].[GetSerialProvinceNewsAllDataForPage]", param);
@@ -1246,8 +1303,8 @@ order by publishtime desc", param);
             SqlParameter[] param = new SqlParameter[]{
                 new SqlParameter("@PageSize",pageSize),
                 new SqlParameter("@PageIndex",pageIndex),
-				new SqlParameter("@RelateProvinceId",provinceId),
-				new SqlParameter("@CarNewsTypeId",(int)CarNewsType.hangqing),
+                new SqlParameter("@RelateProvinceId",provinceId),
+                new SqlParameter("@CarNewsTypeId",(int)CarNewsType.hangqing),
                 outRowCount
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.StoredProcedure, "[dbo].[GetProvinceNewsAllDataForPage]", param);
@@ -1268,8 +1325,8 @@ order by publishtime desc", param);
             SqlParameter[] param = new SqlParameter[]{
                 new SqlParameter("@PageSize",pageSize),
                 new SqlParameter("@PageIndex",pageIndex),
-				new SqlParameter("@RelateCityId",cityId),
-				new SqlParameter("@CarNewsTypeId",(int)CarNewsType.hangqing),
+                new SqlParameter("@RelateCityId",cityId),
+                new SqlParameter("@CarNewsTypeId",(int)CarNewsType.hangqing),
                 outRowCount
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.StoredProcedure, "[dbo].[GetCityNewsAllDataForPage]", param);
@@ -1300,11 +1357,11 @@ order by publishtime desc", param);
         public DataSet GetBrandZhiHuanNews(int brandId, int cityId, int top)
         {
             SqlParameter[] param = new SqlParameter[4]{
-				new SqlParameter("@top",top),
-				new SqlParameter("@brandId", brandId),
-				new SqlParameter("@cityId", cityId),
-				new SqlParameter("@carNewsType", ((int)CarNewsType.zhihuan))
-			};
+                new SqlParameter("@top",top),
+                new SqlParameter("@brandId", brandId),
+                new SqlParameter("@cityId", cityId),
+                new SqlParameter("@carNewsType", ((int)CarNewsType.zhihuan))
+            };
 
             return SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.StoredProcedure, @"GetBrandZhiHuanTopNews", param);
         }
@@ -1333,8 +1390,8 @@ order by publishtime desc", param);
                 new SqlParameter("@PageSize",pageSize),
                 new SqlParameter("@PageIndex",pageIndex),
                 new SqlParameter("@SerialId",serialId),
-				new SqlParameter("@RelateCityId",cityId),
-				new SqlParameter("@CarNewsTypeId",(int)CarNewsType.zhihuan),
+                new SqlParameter("@RelateCityId",cityId),
+                new SqlParameter("@CarNewsTypeId",(int)CarNewsType.zhihuan),
                 outRowCount
             };
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.StoredProcedure, "[dbo].[GetSerialCityZhiHuanNewsAllDataForPage]", param);
@@ -1347,11 +1404,11 @@ order by publishtime desc", param);
             if (serialId < 1 || cityId < 0 || top < 1) return null;
 
             SqlParameter[] param = new SqlParameter[]{
-				new SqlParameter("@SerialId", serialId), 
-				new SqlParameter("@CityId", cityId), 
-				new SqlParameter("@CarNewsTypeId", (int)CarNewsType.zhihuan),
-				new SqlParameter("@Top", top)
-			};
+                new SqlParameter("@SerialId", serialId),
+                new SqlParameter("@CityId", cityId),
+                new SqlParameter("@CarNewsTypeId", (int)CarNewsType.zhihuan),
+                new SqlParameter("@Top", top)
+            };
 
             return SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text,
 @"SELECT TOP(@Top) n.CmsNewsId,n.Title, n.FaceTitle,n.FilePath,n.PublishTime
@@ -1369,10 +1426,10 @@ ORDER BY sn.PublishTime DESC", param);
             if (brandId < 1 || cityId < 0 || top < 1) return null;
 
             SqlParameter[] param = new SqlParameter[]{
-				new SqlParameter("@BrandId", brandId), 
-				new SqlParameter("@CityId", cityId), 
-				new SqlParameter("@Top", top)
-			};
+                new SqlParameter("@BrandId", brandId),
+                new SqlParameter("@CityId", cityId),
+                new SqlParameter("@Top", top)
+            };
 
             return SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text,
 @"SELECT TOP(@Top) NewsId,NewsTitle,NewsUrl,PublishTime FROM [DealerReplaceNews] WHERE BrandId=@BrandId AND CityId=@CityId ORDER BY PublishTime DESC", param);
@@ -1430,11 +1487,11 @@ ORDER BY sn.PublishTime DESC", param);
             if (sqlParams == null)
             {
                 sqlParams = new SqlParameter[]{
-					new SqlParameter("@SerialId", SqlDbType.Int,4),
-					new SqlParameter("@CityId", SqlDbType.Int,4),
-					new SqlParameter("@Top", SqlDbType.Int,4),
-					new SqlParameter("@Type", SqlDbType.SmallInt, 2)
-				};
+                    new SqlParameter("@SerialId", SqlDbType.Int,4),
+                    new SqlParameter("@CityId", SqlDbType.Int,4),
+                    new SqlParameter("@Top", SqlDbType.Int,4),
+                    new SqlParameter("@Type", SqlDbType.SmallInt, 2)
+                };
                 SqlHelperParameterCache.CacheParameterSet(WebConfig.CarDataUpdateConnectionString, spName, sqlParams);
             }
             sqlParams[0].Value = serialId;
@@ -1457,11 +1514,11 @@ ORDER BY sn.PublishTime DESC", param);
             if (sqlParams == null)
             {
                 sqlParams = new SqlParameter[]{
-					new SqlParameter("@BrandId", SqlDbType.Int,4),
-					new SqlParameter("@CityId", SqlDbType.Int,4),
-					new SqlParameter("@Top", SqlDbType.Int,4),
-					new SqlParameter("@Type", SqlDbType.SmallInt, 2)
-				};
+                    new SqlParameter("@BrandId", SqlDbType.Int,4),
+                    new SqlParameter("@CityId", SqlDbType.Int,4),
+                    new SqlParameter("@Top", SqlDbType.Int,4),
+                    new SqlParameter("@Type", SqlDbType.SmallInt, 2)
+                };
                 SqlHelperParameterCache.CacheParameterSet(WebConfig.CarDataUpdateConnectionString, spName, sqlParams);
             }
             sqlParams[0].Value = brandId;
@@ -1484,11 +1541,11 @@ ORDER BY sn.PublishTime DESC", param);
             if (sqlParams == null)
             {
                 sqlParams = new SqlParameter[]{
-					new SqlParameter("@MasterId", SqlDbType.Int,4),
-					new SqlParameter("@CityId", SqlDbType.Int,4),
-					new SqlParameter("@Top", SqlDbType.Int,4),
-					new SqlParameter("@Type", SqlDbType.SmallInt, 2)
-				};
+                    new SqlParameter("@MasterId", SqlDbType.Int,4),
+                    new SqlParameter("@CityId", SqlDbType.Int,4),
+                    new SqlParameter("@Top", SqlDbType.Int,4),
+                    new SqlParameter("@Type", SqlDbType.SmallInt, 2)
+                };
                 SqlHelperParameterCache.CacheParameterSet(WebConfig.CarDataUpdateConnectionString, spName, sqlParams);
             }
             sqlParams[0].Value = masterId;
@@ -1525,7 +1582,7 @@ ORDER BY sn.PublishTime DESC", param);
             SqlParameter[] serialParams = SqlHelperParameterCache.GetCachedParameterSet(WebConfig.CarDataUpdateConnectionString, sqlTxt);
             if (serialParams == null)
             {
-                serialParams = new SqlParameter[] { 
+                serialParams = new SqlParameter[] {
                     new SqlParameter("@SerialId", SqlDbType.Int, 4),
                     new SqlParameter("@CityId", SqlDbType.Int, 4)
                 };
@@ -1577,8 +1634,8 @@ ORDER BY sn.PublishTime DESC", param);
         public DataSet GetDealerPriceByCsIDAndCityID(int top, int csid, int cityid)
         {
             string spName = "VendorPrice_GetByCsIDAndCityID";
-            SqlParameter[] param = new SqlParameter[] { 
-					new SqlParameter("@Top", SqlDbType.Int, 4),
+            SqlParameter[] param = new SqlParameter[] {
+                    new SqlParameter("@Top", SqlDbType.Int, 4),
                     new SqlParameter("@CsID", SqlDbType.Int, 4),
                     new SqlParameter("@CityID", SqlDbType.Int, 4)
                 };
@@ -1629,12 +1686,12 @@ ORDER BY sn.PublishTime DESC", param);
             {
                 CarNewsType type = types[j];
                 int[] curArrCategoryIds = GetCarNewsType((int)type);
-                parameters[i] = new SqlParameter("@" + type.ToString(), SqlDbType.VarChar) { Value =(curArrCategoryIds==null?"": string.Join(",", curArrCategoryIds)) };
+                parameters[i] = new SqlParameter("@" + type.ToString(), SqlDbType.VarChar) { Value = (curArrCategoryIds == null ? "" : string.Join(",", curArrCategoryIds)) };
                 sqls[j] = string.Format(@" SELECT top(@Top) {0} as CarNewsTypeId, n.Title,n.ShortTitle AS FaceTitle,n.Url AS FilePath,sn.CarNewsId,sn.PublishTime
                         FROM    dbo.Car_SerialNewsV2 sn
                         INNER JOIN dbo.Car_NewsV2 n ON sn.CarNewsId = n.Id
                         INNER JOIN dbo.func_splitid_clustered(@{2},',') ct ON sn.CategoryId = ct.c1
-                WHERE   sn.SerialId = @SerialId and  sn.CopyRight in (0,1) and sn.ZbEditor=1
+                WHERE   sn.SerialId = @SerialId and  sn.CopyRight = 0
                  {1}"
                     , (int)type, (j < types.Count - 1 ? " union all " : string.Empty), type.ToString());
             }
@@ -1669,8 +1726,8 @@ ORDER BY sn.PublishTime DESC", param);
             int[] arrCmsCategoryIds = GetCarNewsType(categoryId);
             SqlParameter[] _params = new SqlParameter[]{
                 new SqlParameter("@SerialId", SqlDbType.Int)  ,
-				new SqlParameter("@CategoryIds", SqlDbType.VarChar) ,
-				 new SqlParameter("@TopN", SqlDbType.Int) 
+                new SqlParameter("@CategoryIds", SqlDbType.VarChar) ,
+                 new SqlParameter("@TopN", SqlDbType.Int)
             };
             _params[0].Value = serialId;
             _params[1].Value = string.Join(",", arrCmsCategoryIds);
@@ -1690,8 +1747,8 @@ ORDER BY sn.PublishTime DESC", param);
             int[] arrCmsCategoryIds = GetCarNewsType(categoryId);
             SqlParameter[] _params = new SqlParameter[]{
                 new SqlParameter("@SerialIds", SqlDbType.VarChar)  ,
-				new SqlParameter("@CategoryIds", SqlDbType.VarChar) ,
-				 new SqlParameter("@TopN", SqlDbType.Int) 
+                new SqlParameter("@CategoryIds", SqlDbType.VarChar) ,
+                 new SqlParameter("@TopN", SqlDbType.Int)
             };
 
             _params[0].Value = string.Join(",", serialIdArray);

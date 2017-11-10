@@ -426,33 +426,35 @@ namespace WirelessWeb.handlers
 							}
 						}
 
-						#endregion
+                        #endregion
 
 
-						// 档位个数
-						string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" &&
-												 dictCarParams[724] != "待查")
-							? dictCarParams[724] + "挡"
-							: "";
+                        // 档位个数
+                        //string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" &&
+                        //						 dictCarParams[724] != "待查")
+                        //	? dictCarParams[724] + "挡"
+                        //	: "";
 
-						//平行进口车标签
-						//string parallelImport = "";
-						//if (dictCarParams.ContainsKey(382) && dictCarParams[382] == "平行进口")
-						//{
-						//	parallelImport = "<em>平行进口</em>";
-						//}
-
-						stringBuilder.Append("<li>");
+                        //平行进口车标签
+                        //string parallelImport = "";
+                        //if (dictCarParams.ContainsKey(382) && dictCarParams[382] == "平行进口")
+                        //{
+                        //	parallelImport = "<em>平行进口</em>";
+                        //}
+                        string transmissionType = _carBLL.GetCarTransmissionType(dictCarParams.ContainsKey(724) ? dictCarParams[724] : string.Empty, carInfo.TransmissionType);
+                        stringBuilder.Append("<li>");
 
 						stringBuilder.AppendFormat(
 							"<a  id='carlist_" + carInfo.CarID + "' class='car-info' href='{0}' data-channelid=\"27.23.915\">",
 							 "/" + _serialEntity.AllSpell + "/m" + carInfo.CarID + "/");
 
-						stringBuilder.AppendFormat("<h2>{0}</h2>", carFullName);
+                        //新车上市 即将上市 状态
+                        string marketflag = GetMarketFlag(carInfo);
+                        stringBuilder.AppendFormat("<h2>{0}{1}</h2>", carFullName, marketflag);
 						
 						stringBuilder.AppendFormat("<dl><dt>{0}</dt></dl>", carMinPrice);
 						stringBuilder.Append("<div class=\"car-info-bottom\">");//第二行开始
-						stringBuilder.AppendFormat("<span>{0}</span>", forwardGearNum + carInfo.TransmissionType);
+						stringBuilder.AppendFormat("<span>{0}</span>", transmissionType);
 						//add date :2016-2-3  添加热度
 						int percent = 0;
 						if (maxPv > 0)
@@ -486,10 +488,10 @@ namespace WirelessWeb.handlers
 
 						stringBuilder.Append("</a>");
 						bool maiBtnFlag = false;
-						if (year != "unlisted" && year != "nosalelist" && carInfo.SaleState != "待销" && carInfo.SaleState != "停销")
-						{
-							maiBtnFlag = true;
-						}
+						//if (year != "unlisted" && year != "nosalelist" && carInfo.SaleState != "待销" && carInfo.SaleState != "停销")
+						//{
+						//	maiBtnFlag = true;
+						//}
 						string ulStyle = "car-btn";
 						if (!maiBtnFlag)
 						{
@@ -507,9 +509,9 @@ namespace WirelessWeb.handlers
 							carInfo.CarID, "");
 						if (year != "unlisted" && year != "nosalelist" && carInfo.SaleState != "待销" && carInfo.SaleState != "停销")
 						{
-							stringBuilder.AppendFormat(
-								   "<li><a data-car=\"{0}\" href='javascript:void(0)' class=\"btn-mmm\"  data-action=\"mmm\" data-channelid=\"27.23.1321\">买买买</a></li>",
-								   carInfo.CarID);
+							//stringBuilder.AppendFormat(
+							//	   "<li><a data-car=\"{0}\" href='javascript:void(0)' class=\"btn-mmm\"  data-action=\"mmm\" data-channelid=\"27.23.1321\">买买买</a></li>",
+							//	   carInfo.CarID);
 						}
 						if (carInfo.SaleState != "停销")
 						{
@@ -633,5 +635,58 @@ namespace WirelessWeb.handlers
 				return (T)serializer.Deserialize(stream);
 			}
 		}
-	}
+
+        private string GetMarketFlag(CarInfoForSerialSummaryEntity entity)
+        {
+            string marketflag = "";
+
+            if (entity != null)
+            {
+                if (DateTime.Compare(entity.MarketDateTime, DateTime.MinValue) != 0)
+                {
+                    int days = GetDaysAboutCurrentDateTime(entity.MarketDateTime);
+                    if (days >= 0 && days <= 30)
+                    {
+                        if (entity.SaleState.Trim() == "在销")
+                        {
+                            marketflag = "<em class=\"the-new\">新上市</em>";
+                        }
+                    }
+                    else if (days >= -30 && days < 0)
+                    {
+                        if (entity.SaleState == "待销")
+                        {
+                            marketflag = "<em class=\"the-new\">即将上市</em>";
+                        }
+                    }
+                }
+                else
+                {
+                    if (entity.SaleState.Trim() == "待销")
+                    {
+                        var picCount = _carBLL.GetSerialCarRellyPicCount(entity.CarID);
+                        if (picCount > 0)
+                        {
+                            marketflag = "<em class=\"the-new\">即将上市</em>";
+                        }
+                        else
+                        {
+                            if (entity.ReferPrice != "")
+                            {
+                                marketflag = "<em class=\"the-new\">即将上市</em>";
+                            }
+                        }
+                    }
+                }
+            }
+            return marketflag;
+        }
+        
+        public int GetDaysAboutCurrentDateTime(DateTime dt)
+        {
+            DateTime currentDateTime = DateTime.Now.Date;
+            int days = (currentDateTime - dt).Days;
+            return days;
+        }
+    }
 }

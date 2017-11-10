@@ -274,7 +274,9 @@ var WaitCompare = (function (module) {
                 $body.animate({ scrollTop: 0 }, 30);
                 var tags = $('.tag', $body);
                 //切换标签
-                $('.brandlist').tag({
+                var $brandlist = $('.brandlist');
+                var $duibimask = $brandlist.parents('#master_container').parent().find('.duibi-leftmask');
+                $brandlist.tag({
                     tagName: '.first-tags',
                     fnEnd: function (idx) {
                         tags.hide();
@@ -312,7 +314,9 @@ var WaitCompare = (function (module) {
                                     $(this).find(".pic-txt-h li:not(li[class]) a").on("click", function () {
                                         var curCarId = $(this).data("id"), curCarName = $(this).data("name");
                                         defaults.selectCarIdFunc(curCarId, curCarName);
+                                        
                                         $model.trigger('closeWindow');
+                                        $duibimask.trigger('close');
                                     });
 
                                     //年款收缩与展开
@@ -365,7 +369,7 @@ var WaitCompare = (function (module) {
                                 duibiCarDataIds = historyCookieCar.split('|');
                             }
                             //初始化品牌
-                            $body.trigger('brandinit', { actionName3: '[data-action=duibi-models]', leftmaskalert: '.duibi-alert', leftmaskback: '.leftmask3', carselect: function () { }, masterselect: function () { }, selectmark: function () { } });
+                            $body.trigger('brandinit', { init: function () { $("span.brand-logo>img").lazyload({ effect: "fadeIn", threshold: 50 }); }, actionName3: '[data-action=duibi-models]', leftmaskalert: '.duibi-alert', leftmaskback: '.leftmask3', carselect: function () { }, masterselect: function () { }, selectmark: function () { } });
                             //车款点击回调事件
                             api.model.clickEnd = function (paras) {
                                 var curCarId = $(this).data("id"), curCarName = $(this).data("name");
@@ -377,7 +381,7 @@ var WaitCompare = (function (module) {
                                 //关闭浮层
                                 $back.trigger('close');
                                 $model.trigger('closeWindow');
-
+                                $duibimask.trigger('close');
                             }
                             $body.css('overflow', 'initial');
                             _commonSlider($model, $body);
@@ -387,6 +391,7 @@ var WaitCompare = (function (module) {
 
                             initHistory();
                             _commonSlider($model, $body);
+                            $duibimask.trigger('close');
                         }
                         else { }
 

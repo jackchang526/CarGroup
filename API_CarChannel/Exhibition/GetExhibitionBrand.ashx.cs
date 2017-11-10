@@ -206,12 +206,10 @@ namespace BitAuto.CarChannelAPI.Web.Exhibition
                     } 
                     if (string.IsNullOrEmpty(imageUrl))
                     {
-                        imageUrl = WebConfig.DefaultCarPic;
-                        //imageUrl = GetSerialCoverImage(serialId);
+                        continue; 
                     }
                       
-                    // 车系标签
-                    //List<string> tags = new List<string>();
+                    // 车系标签 
                     string tag = "";
                     if (sEleme.HasChildNodes)
                     {
@@ -234,7 +232,6 @@ namespace BitAuto.CarChannelAPI.Web.Exhibition
                         }
                     }
 
-                    //xEleme.SetAttribute("LogoUrl", "http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/55/m_" + xEleme.GetAttribute("ID") + "_55.png");
                     serialList.Add(string.Format("{{\"SerialId\":{0},\"SerialName\":\"{1}\",\"Allspell\":\"{2}\",\"ImageUrl\":\"{3}\",\"Price\":\"{4}\"}}",
                         serialId,
                         name,

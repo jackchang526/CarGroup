@@ -55,7 +55,7 @@ namespace MWeb.Controllers
             pageBase = new PageBase();
         }
 
-        [OutputCache(Duration = 1800, Location = OutputCacheLocation.Downstream)]
+        [OutputCache(Duration = 600, Location = OutputCacheLocation.Downstream)]
         public ActionResult Index(int id)
         {
             serialId = id;

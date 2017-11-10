@@ -71,8 +71,12 @@ namespace BitAuto.CarChannel.DAL
             return SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, _params);
         }
 
-
-
+        /// <summary>
+        /// 根据车系编号和颜色类型获取车系颜色 
+        /// </summary>
+        /// <param name="modelId">车系编号</param>
+        /// <param name="type">颜色类型</param>
+        /// <returns></returns>
         public List<CarModelColor> GetCarModelColorByModelId(int modelId, int type)
         {
             string sql = @"  	
@@ -103,6 +107,52 @@ namespace BitAuto.CarChannel.DAL
             }
             return null;
         }
+
+
+
+        /// <summary>
+        /// 获取主品牌列表
+        /// </summary>
+        /// <returns></returns>
+        public List<CarMasterBrandEntity> GetCarMasterBrandList()
+        {
+            var sql = @"      
+  	                SELECT mb.bs_Id as Id,mb.bs_Name as Name,mb.Spell,mb.[Weight],IsState AS saleStatus
+	                FROM car_masterbrand mb WITH(NOLOCK)
+	                WHERE mb.IsState=1 AND mb.IsLock=0
+	                ORDER BY  SUBSTRING(Spell,1,1)   ASC,mb.[Weight] desc ,Spell ASC
+                        ";
+
+            List<CarMasterBrandEntity> result = new List<CarMasterBrandEntity>();
+            var table =
+                SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql).Tables[0];
+            if (table != null)
+            {
+                CarMasterBrandEntity entity = null;
+                foreach (DataRow row in table.Rows)
+                {
+                    if (DBNull.Value.Equals(row["saleStatus"])) //没有找到在销车型
+                    {
+                        continue;
+                    }
+                    entity = new CarMasterBrandEntity();
+                    entity.MasterID = Convert.ToInt32(row["id"]);
+                    entity.Name = row["Name"].ToString();
+                    entity.Weight = BitAuto.Utils.ConvertHelper.GetInteger(row["Weight"]);
+                    entity.Initial = DBNull.Value.Equals(row["Spell"])
+                        ? ""
+                        : row["Spell"].ToString()[0].ToString().ToUpper();
+                    entity.LogoUrl =
+                        string.Format(
+                            "http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_{0}_100.png",
+                            entity.MasterID); //"http://image.bitautoimg.com/wap/car/{0}/" + entity.MasterID + ".png";
+                    entity.SaleStatus = Convert.ToInt32(row["saleStatus"]);
+                    result.Add(entity);
+                }
+            }
+            return result;
+        }
+
 
     }
 }

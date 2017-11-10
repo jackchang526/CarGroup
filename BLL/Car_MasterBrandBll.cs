@@ -68,5 +68,28 @@ namespace BitAuto.CarChannel.BLL
             CacheManager.InsertCache(catchkey, ds, 60 * 24);
             return ds;
         }
+
+        /// <summary>
+        /// 获取主品牌列表
+        /// </summary>
+        /// <param name="allMasterBrand">是否是所有主品牌(旗下停销车型)</param>
+        /// <returns></returns>
+        public List<CarMasterBrandEntity> GetCarMasterBrandList(bool allMasterBrand)
+        {
+
+            string cacheKey = "ycapp.carmasterbrandlist";
+            var getCarMasterBrandList = (List<CarMasterBrandEntity>)CacheManager.GetCachedData(cacheKey);
+            if (getCarMasterBrandList == null)
+            {
+                getCarMasterBrandList = _masterBrandDal.GetCarMasterBrandList();
+                CacheManager.InsertCache(cacheKey, getCarMasterBrandList, 60 * 24);
+            }
+            if (!allMasterBrand)
+            {
+                getCarMasterBrandList.RemoveAll(l => l.SaleStatus < 0);
+            }
+            return getCarMasterBrandList;
+        }
+
     }
 }

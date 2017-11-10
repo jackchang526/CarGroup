@@ -951,7 +951,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                         stopPrd = " <span class=\"color-block3\">停产</span>";
 
                     //新车上市 即将上市 状态
-                    string marketflag = GetMarketFlag(entity);
+                    string marketflag = _serialBLL.GetCarMarketText(entity.CarID, entity.SaleState, entity.MarketDateTime, entity.ReferPrice);//GetMarketFlag(entity);
                     Dictionary<int, string> dictCarParams = _carBLL.GetCarAllParamByCarID(entity.CarID);
                     //add by 2014.05.04 获取电动车参数
                     if (isElectrombile)

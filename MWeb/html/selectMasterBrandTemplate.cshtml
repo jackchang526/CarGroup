@@ -27,8 +27,8 @@
         <div class="clear"></div>
         <div class="first-tags">
             <ul>
-                <li class="current"><a href="#"><span>在销</span></a></li>
-                <li><a href="#"><span>停销</span></a></li>
+                <li class="current"><a href="#"><span>在售</span></a></li>
+                <li><a href="#"><span>停售</span></a></li>
             </ul>
         </div>
     </div>
@@ -57,7 +57,7 @@
                                                 <img src="{= list[i].Child[j].ImageUrl}" alt="" />
                                             </div>
                                             <div class="c-box">
-                                                <h4>{= list[i].Child[j].SerialName }</h4>
+                                                <h4>{= list[i].Child[j].SerialName }{if(list[i].Child[j].Market != ""){}<em class="the-new">{=list[i].Child[j].Market}</em>{}}</h4>
                                                 <p><strong>{= list[i].Child[j].Price}</strong></p>
                                             </div>
                                         </a>
@@ -72,7 +72,7 @@
                             {}}
                             {if(sellCount == 0){}
                             <div class="txt-hint">
-                                没有在销车系
+                                没有在售车系
                             </div>
                             {}}
                         </div>
@@ -117,7 +117,7 @@
                             {}}
                             {if(salesCount == 0){}
                             <div class="txt-hint">
-                                没有停销车系
+                                没有停售车系
                             </div>
                             {}}
                         </div>

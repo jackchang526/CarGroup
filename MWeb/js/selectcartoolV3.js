@@ -885,6 +885,7 @@ function rightSwipe2($body, $click, curAction) {
 }
 function DrawUlContent(result,sort) {
     var h = [];
+    var csIdArr = [];
     if(result.ResList.length >0)
     { 
         h.push("<div class=\"tt-first y2015\">");
@@ -899,16 +900,18 @@ function DrawUlContent(result,sort) {
         h.push("<div class=\"buy-car\">");
         h.push("<ul>");
         $(result.ResList).each(function (index) {
+            
             var serialUrl = "/" + result.ResList[index].AllSpell + "/";
             var shortName = result.ResList[index].ShowName.toString().replace("(进口)", "");
             var curSerialId = result.ResList[index].SerialId;
             var imageUrl = result.ResList[index].ImageUrl.toString().replace("_1.", "_6.");
             var priceRange = result.ResList[index].PriceRange;
-            var isAdvertise = result.ResList[index].Pos==undefined?false:true;
+            var isAdvertise = result.ResList[index].Pos == undefined ? false : true;
+            csIdArr.push(curSerialId);
             if (curSerialId == 1568) {
                 shortName = "索纳塔八";
             }            
-            h.push("<li>");
+            h.push("<li data-id=\"" + curSerialId + "\">");
             h.push("<a href=\"" + serialUrl + "\" class=\"car\"><div class=\"img-box\"><img src=\"" + imageUrl + "\" />");
             if (isAdvertise)   //设置“特价”标签
                 h.push("<i class=\"recommend\"></i>");
@@ -927,8 +930,43 @@ function DrawUlContent(result,sort) {
         h.push("<a class=\"btn-one btn-gray\" style=\"border-top:1px solid #f2f2f2\" href=\"javascript:location.href=document.referrer\">返回</a></div>");
     }
     $(".searchResult").html(h.join(''));
+    if (csIdArr.length > 0) {
+        GetNewCarText(csIdArr.join(","));
+    }
     //$(function () { addCarListManual(); });
 }
+
+function GetNewCarText(serialIds) {
+    if (serialIds == "") return;
+    var toUrl = "http://api44.car.bitauto.com/carinfo/GetCarIntoMarketText.ashx";
+    $.ajax({
+        url: toUrl,
+        cache: true,
+        data: { csids: serialIds, isshowdate: 0, type: "serial" },
+        dataType: 'jsonp',
+        jsonpCallback: "GetNewCarTextCallback",
+        success: function (data) {
+            if (typeof data == "undefined" || data.length == 0) return;
+            var container = $(".searchResult");
+            for (var i = 0; i < data.length; i++) {
+                var imgObj = $(container).find("li[data-id='" + data[i].csid + "'] div.img-box img");
+                if (imgObj.length > 0) {
+                    if (data[i].text == "即将上市") {
+                        $(imgObj).after("<i class=\"ico-shangshi ico-shangshi-blue\">" + data[i].text + "</i>");
+                    }
+                    else {
+                        $(imgObj).after("<i class=\"ico-shangshi\">" + data[i].text + "</i>");
+                    }
+                }
+                //var serialObj = $(".pic-txt-9060 ul li a[data-id='" + data[i].csid + "'] h4");
+                //if ($(serialObj).length > 0) {
+                //    $(serialObj).append("<em class=\"the-new\">" + data[i].text + "</em>");
+                //}
+            }
+        }
+    });
+}
+
 //广告
 function GetAdPosition(json) {
     for (var j = 0; j < listSerialAD.length; j++) {

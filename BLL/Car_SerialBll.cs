@@ -8253,7 +8253,7 @@ namespace BitAuto.CarChannel.BLL
                         , dr["autoid"]
                         , dr["cs_id"]
                         , dr["packagename"]
-                        , dr["packageprice"]
+                        , ConvertHelper.GetString(dr["packageprice"]).Trim()
                         , ConvertHelper.GetString(dr["packagedescription"]).Trim()
                         , carIds
                         , package.IndexOf(dr) == package.Count - 1 ? "" : ",");

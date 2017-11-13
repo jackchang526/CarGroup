@@ -57,7 +57,7 @@
                                                 <img src="{= list[i].Child[j].ImageUrl}" alt="" />
                                             </div>
                                             <div class="c-box">
-                                                <h4>{= list[i].Child[j].SerialName }{if(list[i].Child[j].Market != ""){}<em class="the-new">{=list[i].Child[j].Market}</em>{}}</h4>
+                                                <h4>{= list[i].Child[j].SerialName }{if(list[i].Child[j].Market == "即将上市"){}<em class="jijiangshangshi">{=list[i].Child[j].Market}</em>{}else if(list[i].Child[j].Market != ""){}<em class="the-new">{=list[i].Child[j].Market}</em>{}}</h4>
                                                 <p><strong>{= list[i].Child[j].Price}</strong></p>
                                             </div>
                                         </a>

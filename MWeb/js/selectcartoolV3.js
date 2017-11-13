@@ -938,7 +938,7 @@ function DrawUlContent(result,sort) {
 
 function GetNewCarText(serialIds) {
     if (serialIds == "") return;
-    var toUrl = "http://api44.car.bitauto.com/carinfo/GetCarIntoMarketText.ashx";
+    var toUrl = "http://api.car.bitauto.com/carinfo/GetCarIntoMarketText.ashx";
     $.ajax({
         url: toUrl,
         cache: true,

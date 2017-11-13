@@ -60,9 +60,10 @@
             });
         </script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-        <script type="text/javascript" src="/jsnewv2/selectcarcommon.js"></script>
-        <%--<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/newselectcartoolv5.min.js?d=201711021424"></script>--%>
-        <script type="text/javascript" src="/jsnewv2/newselectcartoolv5.js?d=20161228"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/selectcarcommon.min.js?d=201711131107"></script>
+        <%--<script type="text/javascript" src="/jsnewv2/selectcarcommon.js"></script>--%>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/newselectcartoolv5.min.js?d=201711131107"></script>
+        <%--<script type="text/javascript" src="/jsnewv2/newselectcartoolv5.js?d=20161228"></script>--%>
         <div class="col-xs-9">
             <div class="cartype-section-main">
                 <!--面包屑-->

@@ -1189,9 +1189,11 @@ function DrawUlContent(json) {
         //初始化车款列表        
         var divContentArray = new Array();
         var currentLineCount = 0;
+        var csIdsArr = [];
         $(json.ResList).each(function (index) {
             var x = index % 5 + 1;
-            divContentArray.push("<div class=\"col-auto\"><div class=\"img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120\">");
+            csIdsArr.push(json.ResList[index].SerialId);
+            divContentArray.push("<div class=\"col-auto\" data-id=\"" + json.ResList[index].SerialId + "\"><div class=\"img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120\">");
             divContentArray.push("<div class=\"img\"><a href=\"/" + json.ResList[index].AllSpell + "/\" target=\"_blank\">");
             divContentArray.push("<img src=\"" + json.ResList[index].ImageUrl.replace("_1", "_3") + "\" alt=\"" + json.ResList[index].ShowName + "报价_价格\"/>");
             divContentArray.push("</a></div>");
@@ -1226,6 +1228,7 @@ function DrawUlContent(json) {
         });
         var divContent = divContentArray.join("");
         $("#divContent").html(divContent);
+        typeof GetNewCarText == "function" && GetNewCarText(csIdsArr.join(","));
         InitPageControl(json.Count);
         InitCarItem();
     }

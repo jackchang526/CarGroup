@@ -91,7 +91,8 @@ namespace MWeb.Controllers
 
             #region 综述页新车上市提示 20170920
 
-            GetTab();
+            //GetTab();
+            ViewData["showText"] = serialBLL.GetNewSerialIntoMarketText(serialId, true);
 
             #endregion
 
@@ -584,7 +585,11 @@ namespace MWeb.Controllers
                                  "/" + serialEntity.AllSpell + "/m" + carInfo.CarID + "/");
 
                             //新车上市 即将上市 状态
-                            string marketflag = GetMarketFlag(carInfo);
+                            string marketflag = serialBLL.GetCarMarketText(carInfo.CarID, carInfo.SaleState, carInfo.MarketDateTime, carInfo.ReferPrice);//GetMarketFlag(carInfo);
+                            if (!string.IsNullOrEmpty(marketflag))
+                            {
+                                marketflag = string.Format("<em class=\"the-new\">{0}</em>", marketflag);
+                            }
                             stringBuilder.AppendFormat("<h2>{0}{1}</h2>", carFullName, marketflag);
                             stringBuilder.AppendFormat("<dl><dt>{0}</dt></dl>", carMinPrice);
 
@@ -1362,6 +1367,8 @@ namespace MWeb.Controllers
             ViewData["description"] = description;
         }
 
+        /*
+
         public void GetTab()
         {
             var showText = "";
@@ -1537,6 +1544,6 @@ namespace MWeb.Controllers
             return days;
         }
 
-
+    */
     }
 }

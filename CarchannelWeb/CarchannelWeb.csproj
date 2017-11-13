@@ -1034,6 +1034,7 @@
     <Content Include="jsnewV2\photoCompare.js" />
     <Content Include="jsnewV2\pingceyouhui.js" />
     <Content Include="jsnewV2\rightbarcarcompare.js" />
+    <Content Include="jsnewV2\selectcarcommon.js" />
     <Content Include="jsnewV2\serialcompareforpk.js" />
     <Content Include="jsnewV2\serialexternalcommon.js" />
     <Content Include="jsnewV2\serialtoseead.js" />

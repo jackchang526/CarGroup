@@ -9,6 +9,7 @@ using BitAuto.CarChannel.Common;
 using System.Text;
 using System.Collections;
 using BitAuto.Utils;
+using BitAuto.CarChannel.Model.AppApi;
 
 namespace BitAuto.CarChannel.DAL
 {
@@ -1577,6 +1578,41 @@ FROM    dbo.Car_Serial_30UV uv
                 }
             }
             return result;
+        }
+
+
+        /// <summary>
+        /// 获取车款属性
+        /// </summary>
+        /// <param name="styleId"></param>
+        /// <returns></returns>
+        public CarStyleInfo GetStyleInfoById(int styleId)
+        {
+            var sql = @"
+                    SELECT TOP 1 [Car_Name],[Car_YearType],[Cs_Id],
+				   carSerialName=
+				   (
+						SELECT TOP 1 [cs_Name] FROM [dbo].[Car_Serial] WITH(NOLOCK) WHERE IsState=1 AND  [cs_Id]=[dbo].[Car_Basic].Cs_Id
+				   )
+					FROM [dbo].[Car_Basic] WITH(NOLOCK)
+					WHERE [IsState]=1
+					AND [Car_Id]=@Id
+                    ";
+            SqlParameter[] parms =
+            {
+                new SqlParameter("@Id", styleId )
+            };
+            var dataTable = SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, parms).Tables[0];
+            CarStyleInfo csi = null;
+            if (dataTable != null && dataTable.Rows.Count > 0)
+            {
+                csi = new CarStyleInfo();
+                csi.Name = dataTable.Rows[0]["Car_Name"] + "";
+                csi.Year = TypeParse.StrToInt(dataTable.Rows[0]["Car_YearType"] + "", 0);
+                csi.ModelId = TypeParse.StrToInt(dataTable.Rows[0]["Cs_Id"] + "", 0);
+                csi.CarSerialName = dataTable.Rows[0]["carSerialName"] + "";
+            }
+            return csi;
         }
     }
 }

@@ -91,5 +91,16 @@ namespace BitAuto.CarChannel.BLL
             return getCarMasterBrandList;
         }
 
+        /// <summary>
+        /// 根据车款编号和颜色类型获取车款颜色 
+        /// </summary>
+        /// <param name="styleId">车款编号</param>
+        /// <param name="type">颜色类型 0车身颜色 1内饰颜色</param>
+        /// <returns></returns>
+        public List<CarModelColor> GetCarStyleColorById(int styleId, int type)
+        {
+            return _masterBrandDal.GetCarStyleColorById(styleId, type);
+        }
+
     }
 }

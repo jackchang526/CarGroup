@@ -108,8 +108,6 @@ namespace BitAuto.CarChannel.DAL
             return null;
         }
 
-
-
         /// <summary>
         /// 获取主品牌列表
         /// </summary>
@@ -153,6 +151,58 @@ namespace BitAuto.CarChannel.DAL
             return result;
         }
 
+
+        /// <summary>
+        /// 根据车款编号和颜色类型获取车款颜色 
+        /// </summary>
+        /// <param name="carStyleId">车款编号</param>
+        /// <param name="type">颜色类型 0车身颜色 1内饰颜色</param>
+        /// <returns></returns>
+        public List<CarModelColor> GetCarStyleColorById(int carStyleId, int type)
+        {
+            var sql = @"
+                        SELECT top 1 Pvalue as color
+                        FROM CarDataBase WITH(NOLOCK)
+                        WHERE ParamId = @ParamId and carid=@carstyleId ;
+
+                        SELECT colorName AS  Name ,colorRGB AS [Value] 
+                        FROM dbo.Car_SerialColor  WITH(NOLOCK)
+                        WHERE [type]=@type
+                        AND cs_id=
+                        (
+	                        SELECT Cs_Id	                        FROM Car_relation WITH(NOLOCK)	                        WHERE isstate=0	                        AND Car_Id=@carstyleId
+                        )  
+                        ";
+            var commandParameters = new SqlParameter[]
+            {
+                new SqlParameter("@carstyleId", SqlDbType.Int) {Value = carStyleId},
+                new SqlParameter("@type", SqlDbType.Int) {Value = type},
+                new SqlParameter("@ParamId", SqlDbType.Int) {Value = type.Equals(0)?598:801}
+            };
+            var ds = SqlHelper.ExecuteDataset(WebConfig.AutoStorageConnectionString, CommandType.Text, sql, commandParameters);
+            if (ds != null && ds.Tables.Count >= 2)
+            {
+                var color = ds.Tables[0].Rows[0]["color"] == null ? "" : ds.Tables[0].Rows[0]["color"].ToString();
+                if (string.IsNullOrWhiteSpace(color))
+                    return null;
+                var res = new List<CarModelColor>();
+                var colorArr = color.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (DataRow dr in ds.Tables[1].Rows)
+                {
+                    var name = dr["Name"] == null ? "" : dr["Name"].ToString();
+                    var isEitsts = (from c in colorArr where c.Equals(name) select c).FirstOrDefault();
+                    if (!string.IsNullOrWhiteSpace(name) && isEitsts != null)
+                    {
+                        var val = (dr["Value"] == null ? "" : dr["Value"].ToString()).Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault();
+                        res.Add(new CarModelColor() { Name = name, Value = val ?? "" });
+                    }
+                }
+                return res;
+
+            }
+            return null;
+        }
 
     }
 }

@@ -1,5 +1,7 @@
 ﻿using BitAuto.CarChannel.BLL;
 using BitAuto.CarChannel.Common;
+using BitAuto.CarChannel.Common.Interface;
+using BitAuto.CarChannel.Model.AppApi;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -194,17 +196,17 @@ namespace AppApi.Controllers
             if (carStyleId == null || (type != 0 && type != 1))
                 return JsonNet(new { success = false, status = wrs, message = wrs.ToString(), data = new { list = string.Empty } }, JsonRequestBehavior.AllowGet);
             wrs = WebApiResultStatus.成功;
-            //var data = CarService.GetCarStyleColorById(carStyleId.Value, type.Value);
-            //if (data != null && data.Count > 0)
-            //{
-            //    var showData = (from c in data select new { c.Name, c.Value }).ToList();
-            //    return JsonNet(new { success = true, status = wrs, message = wrs.ToString(), data = new { list = showData } }, JsonRequestBehavior.AllowGet);
-            //}
+            var data = CarMasterBrandService.GetCarStyleColorById(carStyleId.Value, type.Value);
+            if (data != null && data.Count > 0)
+            {
+                var showData = (from c in data select new { c.Name, c.Value }).ToList();
+                return JsonNet(new { success = true, status = wrs, message = wrs.ToString(), data = new { list = showData } }, JsonRequestBehavior.AllowGet);
+            }
             return JsonNet(new { success = true, status = wrs, message = wrs.ToString(), data = new { list = string.Empty } }, JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>
-        /// 根据车系编号和颜色类型获取车系颜色 create add by huanggang 2015-07-13
+        /// 根据车系编号和颜色类型获取车系颜色
         /// </summary>
         /// <param name="modelColor">颜色类型</param>
         /// <returns></returns>
@@ -225,11 +227,75 @@ namespace AppApi.Controllers
             return JsonNet(new { success = true, status = wrs, message = wrs.ToString(), data = string.Empty }, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        ///  获取主品牌列表接口
+        /// </summary>
+        /// <param name="allMasterBrand">是否返回全部主品牌(包含停销)</param>
+        /// <returns></returns>
         [OutputCache(Duration = 900, Location = OutputCacheLocation.Downstream)]
         public ActionResult GetMasterBrandList(bool? allMasterBrand)
         {
             var list = CarMasterBrandService.GetCarMasterBrandList(allMasterBrand.GetValueOrDefault());
             return JsonNet(new { status = 1, message = "ok", data = list }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        /// <summary>
+        /// 获取车型属性
+        /// </summary>
+        /// <param name="carId"></param>
+        /// <returns></returns>
+        [OutputCache(Duration = 960, Location = OutputCacheLocation.Downstream)]
+        public ActionResult GetCarStyleById(int carId)
+        {
+            var car = CarSerialService.GetStyleInfoById(carId);
+            if (car != null)
+            {
+                var urlDic = CarSerialImgUrlService.GetImageUrlDicNew();
+                var carImage = string.Empty;
+                if (urlDic != null && urlDic.Count > 0 && urlDic.ContainsKey(car.ModelId))
+                {
+                    if (urlDic[car.ModelId].GetAttribute("ImageUrl2").ToString().Trim() != "")
+                    {
+                        // 有新封面
+                        carImage = urlDic[car.ModelId].GetAttribute("ImageUrl2").ToString().Trim();
+                    }
+                    else
+                    {
+                        // 没有新封面
+                        if (urlDic[car.ModelId].GetAttribute("ImageUrl").ToString().Trim() != "")
+                        {
+                            carImage = urlDic[car.ModelId].GetAttribute("ImageUrl").ToString().Trim();
+                        }
+                        else
+                        {
+                            carImage = WebConfig.DefaultCarPic;
+                        }
+                    }
+                }
+                return JsonNet(new
+                {
+                    status = WebApiResultStatus.成功,
+                    message = "OK",
+                    data = new
+                    {
+                        carId = carId,
+                        carName = car.Name,
+                        carImage = carImage,
+                        carYear = car.Year,
+                        carSerialId = car.ModelId,
+                        carSerialName = car.CarSerialName
+                    }
+                }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return JsonNet(new
+                {
+                    status = WebApiResultStatus.未找到数据,
+                    message = "OK",
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         #endregion

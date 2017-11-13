@@ -72,6 +72,8 @@
   <ItemGroup>
     <Compile Include="AppApi\CarMasterBrandEntity.cs" />
     <Compile Include="AppApi\CarModelColor.cs" />
+    <Compile Include="AppApi\CarSerialExt.cs" />
+    <Compile Include="AppApi\CarStyleInfo.cs" />
     <Compile Include="AppModel\CarParameterEntity.cs" />
     <Compile Include="AppModel\DataCacheKeys.cs" />
     <Compile Include="AppModel\ParameterGroupEntity.cs" />

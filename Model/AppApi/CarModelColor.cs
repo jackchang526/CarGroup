@@ -5,6 +5,7 @@ using System.Text;
 
 namespace BitAuto.CarChannel.Model.AppApi
 {
+    [Serializable]
     /// <summary>
     /// 车系颜色
     /// </summary>

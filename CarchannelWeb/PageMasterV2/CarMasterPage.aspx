@@ -374,16 +374,24 @@
 <script type="text/javascript">
       //获取视频播放数
       var $videos = $("div[data-videoid]");
-      var videoArr = [];
+      var videoArr = [],
+          fvideoArr = [];
       $.each($videos, function (index,item) {
           var curVideoId = $(item).attr("data-videoid");
-          videoArr.push(curVideoId);
+          if ($(item).attr("data-type") == "vf") {
+              fvideoArr.push(curVideoId);
+          }
+          else {
+              videoArr.push(curVideoId);
+          }
       })
-      var videoStr=videoArr.join(",");
+      var videoStr = videoArr.join(",");
+      var fvideoStr = fvideoArr.join(",");
       $.ajax({
-          url: "http://api.admin.bitauto.com/videoforum/Promotion/GetVideoByVideoIds?vIds=" + videoStr,
+          url: "http://api.admin.bitauto.com/videoforum/Promotion/GetVideoByVideoIds?vIds=" + videoStr + "&vfids=" + fvideoStr,
           dataType: "jsonp",
           jsonpCallback: "getvedionumcallback",
+          cache:true,
           success: function (data) {
               if (data && data.length > 0)
               {

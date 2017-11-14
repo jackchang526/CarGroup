@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
-
+using System.Linq;
 using BitAuto.CarChannel.Common;
 using BitAuto.Utils;
 using BitAuto.Utils.Data;
 using BitAuto.CarChannel.Common.Cache;
 using System.Data.SqlClient;
+using BitAuto.CarChannel.Model.AppApi;
 
 namespace BitAuto.CarChannel.DAL
 {
@@ -69,6 +70,89 @@ namespace BitAuto.CarChannel.DAL
             _params[0].Value = masterid;
             return SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, _params);
         }
+
+        /// <summary>
+        /// 根据车系编号和颜色类型获取车系颜色 
+        /// </summary>
+        /// <param name="modelId">车系编号</param>
+        /// <param name="type">颜色类型</param>
+        /// <returns></returns>
+        public List<CarModelColor> GetCarModelColorByModelId(int modelId, int type)
+        {
+            string sql = @"  	
+                            SELECT colorName AS  Name ,colorRGB AS [Value] 
+                            FROM dbo.Car_SerialColor 
+                            WHERE cs_id=@modelId AND [type]=@type
+                            --ORDER BY autoID,cs_id,colorRGB  
+                        ";
+            var commandParameters = new SqlParameter[]
+            {
+                new SqlParameter("@modelId", SqlDbType.Int) {Value = modelId},
+                new SqlParameter("@type", SqlDbType.Int) {Value = type}
+            };
+            var ds = SqlHelper.ExecuteDataset(WebConfig.AutoStorageConnectionString, CommandType.Text, sql, commandParameters);
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                var res = new List<CarModelColor>();
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    var val = (dr["Value"] == null ? "" : dr["Value"].ToString()).Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault();
+                    res.Add(new CarModelColor()
+                    {
+                        Name = dr["Name"] == null ? "" : dr["Name"].ToString(),
+                        Value = val ?? ""
+                    });
+                }
+                return res;
+            }
+            return null;
+        }
+
+
+
+        /// <summary>
+        /// 获取主品牌列表
+        /// </summary>
+        /// <returns></returns>
+        public List<CarMasterBrandEntity> GetCarMasterBrandList()
+        {
+            var sql = @"      
+  	                SELECT mb.bs_Id as Id,mb.bs_Name as Name,mb.Spell,mb.[Weight],IsState AS saleStatus
+	                FROM car_masterbrand mb WITH(NOLOCK)
+	                WHERE mb.IsState=1 AND mb.IsLock=0
+	                ORDER BY  SUBSTRING(Spell,1,1)   ASC,mb.[Weight] desc ,Spell ASC
+                        ";
+
+            List<CarMasterBrandEntity> result = new List<CarMasterBrandEntity>();
+            var table =
+                SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql).Tables[0];
+            if (table != null)
+            {
+                CarMasterBrandEntity entity = null;
+                foreach (DataRow row in table.Rows)
+                {
+                    if (DBNull.Value.Equals(row["saleStatus"])) //没有找到在销车型
+                    {
+                        continue;
+                    }
+                    entity = new CarMasterBrandEntity();
+                    entity.MasterID = Convert.ToInt32(row["id"]);
+                    entity.Name = row["Name"].ToString();
+                    entity.Weight = BitAuto.Utils.ConvertHelper.GetInteger(row["Weight"]);
+                    entity.Initial = DBNull.Value.Equals(row["Spell"])
+                        ? ""
+                        : row["Spell"].ToString()[0].ToString().ToUpper();
+                    entity.LogoUrl =
+                        string.Format(
+                            "http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_{0}_100.png",
+                            entity.MasterID); //"http://image.bitautoimg.com/wap/car/{0}/" + entity.MasterID + ".png";
+                    entity.SaleStatus = Convert.ToInt32(row["saleStatus"]);
+                    result.Add(entity);
+                }
+            }
+            return result;
+        }
+
 
     }
 }

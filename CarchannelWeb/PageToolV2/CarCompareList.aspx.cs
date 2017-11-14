@@ -44,7 +44,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageToolV2
         Car_BasicBll carBasicBll = new Car_BasicBll();
         protected void Page_Load(object sender, EventArgs e)
 		{
-			base.SetPageCache(60);
+			base.SetPageCache(30);
 			if (!this.IsPostBack)
 			{
 				this.GetPageParam();

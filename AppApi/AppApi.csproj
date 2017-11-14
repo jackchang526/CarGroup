@@ -118,6 +118,7 @@
     <Compile Include="App_Start\BaseController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\JsonHandleErrorAttribute.cs" />
     <Compile Include="App_Start\JsonNetResult.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -169,6 +170,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\AppSettings.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\PhotoImage.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\ParameterConfigurationNewV2.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\Debug.pubxml" />
+    <None Include="Properties\PublishProfiles\Publish.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

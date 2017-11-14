@@ -952,6 +952,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
 
                     //新车上市 即将上市 状态
                     string marketflag = _serialBLL.GetCarMarketText(entity.CarID, entity.SaleState, entity.MarketDateTime, entity.ReferPrice);//GetMarketFlag(entity);
+                    if (!string.IsNullOrEmpty(marketflag))
+                    {
+                        marketflag = string.Format("<a target=\"_blank\" class=\"color-block\">{0}</a>", marketflag);
+                    }
                     Dictionary<int, string> dictCarParams = _carBLL.GetCarAllParamByCarID(entity.CarID);
                     //add by 2014.05.04 获取电动车参数
                     if (isElectrombile)
@@ -1556,7 +1560,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 Response.Redirect("/404error.aspx");
             }
         }
-
+        /*
         private string GetMarketFlag(CarInfoForSerialSummaryEntity entity)
         {
             string marketflag = "";
@@ -1612,6 +1616,6 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             return days;
         }
 
-
+    */
     }
 }

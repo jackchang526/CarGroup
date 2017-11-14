@@ -174,6 +174,13 @@
   <ItemGroup>
     <Content Include="Config\PhotoImage.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\ParameterConfigurationNewV2.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\Debug.pubxml" />
+    <None Include="Properties\PublishProfiles\Publish.pubxml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

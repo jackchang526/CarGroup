@@ -64,7 +64,7 @@
 <!--车型模板 start-->
 <script type="text/template" id="carTemplate">
     <div class="choose-car-name-close bybrand_list">
-        <div class="brand-logo-none-border m_9_b"></div>
+        <div class="brand-logo-none-border"><img /></div>
         <span class="brand-name"></span>
         <!-- <a href="#" class="choose-car-btn-close">关闭</a> -->
     </div>
@@ -138,6 +138,7 @@
 
 <!--品牌列表模板 start-->
 <script type="text/template" id="brandTemplate">
+    { var number = 0; }
     { for(var n in MsterList){ }
     <div class="tt-small phone-title" data-key="{=n}">
         <span>{=n}</span>
@@ -147,7 +148,8 @@
             {for(var i=0;i< MsterList[n].length;i++){}
             <li {=MsterList[n][i].MasterId.toString() ==api.brand.currentid.toString() ? "class='current'":""}>
                 <a href="#" data-action="car" data-id="{=MsterList[n][i].MasterId}">
-                    <span class="brand-logo m_{=MsterList[n][i].MasterId}_b"></span>
+                    <span class="brand-logo">
+                    <img {=number++ < 15 ? 'src': 'data-original'}="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_{=MsterList[n][i].MasterId}_100.png"/></span>
                     <span class="brand-name">{=MsterList[n][i].MasterName}</span>
                 </a>
             </li>

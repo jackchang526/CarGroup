@@ -20,6 +20,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using BitAuto.CarChannel.Model.AppModel;
 using System.Web.Caching;
+using System.Configuration;
 
 namespace BitAuto.CarChannel.BLL
 {
@@ -27,6 +28,7 @@ namespace BitAuto.CarChannel.BLL
     {
         private static readonly Car_BasicDal cbd = new Car_BasicDal();
         private static readonly CarInfoDal cid = new CarInfoDal();
+        static string parameterConfigPath = ConfigurationManager.AppSettings["ParameterConfigPath"];
 
         public Car_BasicBll()
         { }
@@ -2126,6 +2128,8 @@ namespace BitAuto.CarChannel.BLL
             List<ParameterGroupEntity> parameterGroup = new List<ParameterGroupEntity>();
             try
             {
+
+
                 string cacheKey = DataCacheKeys.CarParameterJson;
                 object getCarParameterJsonConfig = CacheManager.GetCachedData(cacheKey);
                 if (getCarParameterJsonConfig != null)
@@ -2134,7 +2138,7 @@ namespace BitAuto.CarChannel.BLL
                 }
                 else
                 {
-                    string fileName = System.Web.HttpContext.Current.Server.MapPath("~") + "\\config\\ParameterForJsonNewV2.xml";
+                    string fileName = parameterConfigPath;
                     if (File.Exists(fileName))
                     {
                         XmlDocument doc = new XmlDocument();
@@ -2142,7 +2146,7 @@ namespace BitAuto.CarChannel.BLL
                         if (doc != null && doc.HasChildNodes)
                         {
                             ParameterGroupEntity parameter;
-                            XmlNodeList xnl = doc.SelectNodes("/Param/Group");
+                            XmlNodeList xnl = doc.SelectNodes("/ParameterConfigurationList/Parameter/ParameterList");
                             if (xnl != null && xnl.Count > 0)
                             {
                                 int i = 0;
@@ -2151,7 +2155,7 @@ namespace BitAuto.CarChannel.BLL
 
                                     parameter = new ParameterGroupEntity();
                                     parameter.GroupID = i;
-                                    parameter.Name = xnCate.Attributes["Desc"].Value.ToString();
+                                    parameter.Name = xnCate.Attributes["Name"].Value.ToString();
 
 
                                     // 大分类
@@ -2168,7 +2172,7 @@ namespace BitAuto.CarChannel.BLL
                                                 field.Key = xn.Attributes["Value"].Value.ToString();
                                                 field.ParamID = TypeParse.StrToInt(xn.Attributes["ParamID"].Value, 0);
                                                 field.Unit = xn.Attributes["Unit"].Value.ToString();
-                                                field.Title = xn.Attributes["Desc"].Value.ToString();
+                                                field.Title = xn.Attributes["Name"].Value.ToString();
                                                 parameter.Fields.Add(field);
                                             }
                                         }
@@ -2179,13 +2183,13 @@ namespace BitAuto.CarChannel.BLL
                             }
                         }
                         CacheDependency cacheDependency = new CacheDependency(fileName);
-                        CacheManager.InsertCache(cacheKey, parameterGroup, cacheDependency, DateTime.Now.AddMinutes(30));
+                        CacheManager.InsertCache(cacheKey, parameterGroup, cacheDependency, DateTime.Now.AddMinutes(10));
                     }
                 }
             }
             catch (Exception ex)
             {
-                CommonFunction.WriteLog(string.Format("[message]:{0},[StackTrace]:{1}", ex.Message, ex.StackTrace));
+                CommonFunction.WriteLog("解析分组ParameterConfigurationNewV2.config错误");
             }
             return parameterGroup;
         }

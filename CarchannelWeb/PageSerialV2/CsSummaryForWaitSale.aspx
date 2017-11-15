@@ -110,9 +110,9 @@
                     </ul>
                     <div class="mobile-qrcode">
                         <img src="/favicon.ico" id="qrcodelogo" style="display: none;" />
-                        <a href="http://app.yiche.com/yiche/"><img src="http://image.bitautoimg.com/cargroup/car/huodongv2.png" /></a>
+                        <a href="http://app.yiche.com/yiche/"><img src="http://image.bitautoimg.com/cargroup/car/20171111.png" /></a>
                         <%--<a href="<%= wirelessSerialUrl %>?ref=pctowap" target="_blank" id="qrcode"><img src="http://image.bitautoimg.com/cargroup/car/qrimages/<%= serialId %>.png?v=1" /></a>--%>
-                        <em>扫我5折</em>
+                        <em>11.11抢兑</em>
                     </div>
                 </div>
 
@@ -489,7 +489,7 @@
     <ins id="div_d0d818d0-743a-42cf-8b71-5f9e25b09dea" data-type="ad_play" data-adplay_IP="" data-adplay_AreaName="" data-adplay_CityName="" data-adplay_BrandID="<%= serialId %>" data-adplay_BrandName="" data-adplay_BrandType="" data-adplay_BlockCode="d0d818d0-743a-42cf-8b71-5f9e25b09dea"> </ins>
     <!--页底浮层广告-->
     <ins id="div_c62213b4-2900-4ed8-967d-3f3866014dc5" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="c62213b4-2900-4ed8-967d-3f3866014dc5"></ins>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryrest.min.js?v=20170719"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryrest.min.js?v=201711141901"></script>
     <%--<script type="text/javascript" src="/jsnewv2/cssummaryrest.js?v=20170109"></script>--%>
     <script type="text/javascript">
         var CarCommonBSID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.MasterBrandId %>"; //大数据组统计用

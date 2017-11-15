@@ -14,6 +14,7 @@ using System.Web.UI;
 
 namespace AppApi.Controllers
 {
+    [JsonHandleError] //出错时以Json格式显示
     public class CarController : BaseController
     {
         #region Service
@@ -143,7 +144,7 @@ namespace AppApi.Controllers
         }
 
 
-        #region 主品牌的品牌故事
+        #region zhangzhiyang work zone
 
         /// <summary>
         /// 获取品牌故事
@@ -158,26 +159,77 @@ namespace AppApi.Controllers
             {
                 return JsonNet(new
                 {
-                    success = false,
-                    status = WebApiResultStatus.未找到数据,
-                    message = "未找到数据",
-                    data = new { }
+                    success = true,
+                    status = WebApiResultStatus.成功,
+                    message = "成功",
+                    data =
+                            new
+                            {
+                                masterId = ds.Tables[0].Rows[0]["Id"],
+                                masterName = ds.Tables[0].Rows[0]["Name"],
+                                logoMeaning = ds.Tables[0].Rows[0]["LogoMeaning"],
+                                introduction = ds.Tables[0].Rows[0]["Introduction"]
+                            }
                 }, JsonRequestBehavior.AllowGet);
             }
             return JsonNet(new
             {
-                success = true,
-                status = WebApiResultStatus.成功,
-                message = "成功",
-                data =
-                    new
-                    {
-                        masterId = ds.Tables[0].Rows[0]["Id"],
-                        masterName = ds.Tables[0].Rows[0]["Name"],
-                        logoMeaning = ds.Tables[0].Rows[0]["LogoMeaning"],
-                        introduction = ds.Tables[0].Rows[0]["Introduction"]
-                    }
+                success = false,
+                status = WebApiResultStatus.未找到数据,
+                message = "未找到数据",
+                data = new { }
             }, JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// 根据车款编号获取对应车身颜色或内饰颜色
+        /// </summary>
+        /// <param name="carStyleId">车款编号</param>
+        /// <param name="type">0车身颜色 1内饰颜色</param>
+        /// <returns></returns>
+        public ActionResult GetCarStyleColorById(int? carStyleId, int? type)
+        {
+            var wrs = WebApiResultStatus.参数错误;
+            type = type.GetValueOrDefault(0);
+            if (carStyleId == null || (type != 0 && type != 1))
+                return JsonNet(new { success = false, status = wrs, message = wrs.ToString(), data = new { list = string.Empty } }, JsonRequestBehavior.AllowGet);
+            wrs = WebApiResultStatus.成功;
+            //var data = CarService.GetCarStyleColorById(carStyleId.Value, type.Value);
+            //if (data != null && data.Count > 0)
+            //{
+            //    var showData = (from c in data select new { c.Name, c.Value }).ToList();
+            //    return JsonNet(new { success = true, status = wrs, message = wrs.ToString(), data = new { list = showData } }, JsonRequestBehavior.AllowGet);
+            //}
+            return JsonNet(new { success = true, status = wrs, message = wrs.ToString(), data = new { list = string.Empty } }, JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// 根据车系编号和颜色类型获取车系颜色 create add by huanggang 2015-07-13
+        /// </summary>
+        /// <param name="modelColor">颜色类型</param>
+        /// <returns></returns>
+        public ActionResult GetCarModelColorByModelId(int ModelId, int ColorType = 0)
+        {
+            var wrs = WebApiResultStatus.参数错误;
+            if (ColorType < 0 || ModelId <= 0)
+            {
+                return JsonNet(new { success = false, status = wrs, message = wrs.ToString(), data = string.Empty }, JsonRequestBehavior.AllowGet);
+            }
+            wrs = WebApiResultStatus.成功;
+            var data = CarMasterBrandService.GetCarModelColorByModelId(ModelId, ColorType);
+            if (data != null && data.Count > 0)
+            {
+                var showData = (from c in data select new { c.Name, c.Value }).ToList();
+                return JsonNet(new { success = true, status = wrs, message = wrs.ToString(), data = showData }, JsonRequestBehavior.AllowGet);
+            }
+            return JsonNet(new { success = true, status = wrs, message = wrs.ToString(), data = string.Empty }, JsonRequestBehavior.AllowGet);
+        }
+
+        [OutputCache(Duration = 900, Location = OutputCacheLocation.Downstream)]
+        public ActionResult GetMasterBrandList(bool? allMasterBrand)
+        {
+            var list = CarMasterBrandService.GetCarMasterBrandList(allMasterBrand.GetValueOrDefault());
+            return JsonNet(new { status = 1, message = "ok", data = list }, JsonRequestBehavior.AllowGet);
         }
 
         #endregion

@@ -5706,7 +5706,7 @@ namespace BitAuto.CarChannel.BLL
                             int count = 0;
                             foreach (var item in newCarList)
                             {
-                                XmlDocument xmlDoc = CommonFunction.ReadXml(Path.Combine(PhotoImageConfig.SavePath, string.Format(@"SerialCarReallyPic\{0}.xml", item.CarID)));
+                                XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(Path.Combine(PhotoImageConfig.SavePath, string.Format(@"SerialCarReallyPic\{0}.xml", item.CarID)));
                                 
                                 if (xmlDoc != null && xmlDoc.HasChildNodes)
                                 {
@@ -5793,7 +5793,7 @@ namespace BitAuto.CarChannel.BLL
                     int count = 0;
                     foreach (var item in carList)
                     {
-                        XmlDocument xmlDoc = CommonFunction.ReadXml(Path.Combine(PhotoImageConfig.SavePath, string.Format(@"SerialCarReallyPic\{0}.xml", item.CarID)));
+                        XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(Path.Combine(PhotoImageConfig.SavePath, string.Format(@"SerialCarReallyPic\{0}.xml", item.CarID)));
                         if (xmlDoc != null && xmlDoc.HasChildNodes)
                         {
                             XmlNode node = xmlDoc.SelectSingleNode("//Data//Total");

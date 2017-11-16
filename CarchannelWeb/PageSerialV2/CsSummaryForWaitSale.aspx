@@ -639,6 +639,8 @@
     <!--#include file="~/include/pd/2016/yipaicms/00001/201701_Summary_SCInfoPopup_Manual.shtml"-->
     <!--#include file="~/htmlv2/rightbar.shtml"-->
     <!--#include file="~/htmlv2/footer2016.shtml"-->
+    <!--底浮三贞广告-->
+    <!--#include file="~/include/pd/2016/App/00001/ad_zongshu_difu_Manual.shtml"-->
     <!--本站统计代码-->
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsStat/StatisticJsOldPV.js"></script>
     <script type="text/javascript">

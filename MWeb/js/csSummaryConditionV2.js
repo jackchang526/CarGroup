@@ -380,8 +380,6 @@ var tuangouParam = 'mediaid=2&locationid=1&cmdId=' + GlobalSummaryConfig.SerialI
 //行情
 mCsSummaryV2.loadNewsHangqingV2(GlobalSummaryConfig.SerialId, "@(serialEntity.ShowName)", citycode, 4);
 mCsSummaryV2.loadSubsidy(GlobalSummaryConfig.SerialId, citycode);
-//特卖
-getDemandAndJiangJia(GlobalSummaryConfig.SerialId, "@(serialEntity.ShowName)", bit_locationInfo.cityId);
 $(function () {
     // 浏览过的车型
     Bitauto && Bitauto.Login && Bitauto.Login.onComplatedHandlers && Bitauto.Login.onComplatedHandlers.push(function (loginResult) {

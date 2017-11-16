@@ -5582,6 +5582,46 @@ namespace BitAuto.CarChannel.BLL
             }
             return dic;
         }
+
+        /// <summary>
+        /// 取车款上市时间
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<int, string> GetAllCarMarkDay()
+        {
+            Dictionary<int, string> dic = new Dictionary<int, string>();
+            string cacheKey = "Car_SerialBll_GetAllCarMarkDay";
+            object getAllCarMarkDay = CacheManager.GetCachedData(cacheKey);
+            if (getAllCarMarkDay != null)
+            {
+                dic = (Dictionary<int, string>)getAllCarMarkDay;
+            }
+            else
+            {
+                // 所有车型的上市时间
+                DataSet ds = new Car_SerialDal().GetAllSerialMarkData();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        int carId = 0, year = 0, month = 0, day = 0;
+                        if (int.TryParse(dr["car_id"].ToString(), out carId)
+                            && int.TryParse(dr["mdyear"].ToString(), out year)
+                            && int.TryParse(dr["mdmonth"].ToString(), out month)
+                            && int.TryParse(dr["mdday"].ToString(), out day))
+                        {
+                            if (carId > 0 && year > 0 && month > 0 && day > 0 && !dic.ContainsKey(carId))
+                            {
+                                dic.Add(carId, year + "-" + month + "-" + day);
+                            }
+                        }
+                    }
+                }
+                CacheManager.InsertCache(cacheKey, dic, WebConfig.CachedDuration);
+            }
+            return dic;
+        }
+
         /// <summary>
         /// 获取所有待销子品牌车型上市时间
         /// </summary>
@@ -5619,6 +5659,241 @@ namespace BitAuto.CarChannel.BLL
             return dict;
         }
 
+        /// <summary>
+        /// 获取新车上市文本
+        /// </summary>
+        /// <param name="dr"></param>
+        /// <param name="csid"></param>
+        /// <returns></returns>
+        public string GetNewSerialIntoMarketText(int csId,bool isShowDate = true)
+        {
+            string cacheKey = "Car_SerialBll_GetNewCarIntoMarketText_" + csId + "_" + isShowDate;
+            object cacheValue = CacheManager.GetCachedData(cacheKey);
+            if (cacheValue != null)
+            {
+                return cacheValue.ToString();
+            }
+
+            string showText = string.Empty;
+            SerialEntity se = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, csId);
+            Dictionary<int, string> carIntoMarketTimeDic = GetAllSerialMarkDay();
+            List<CarInfoForSerialSummaryEntity> carList = new Car_BasicBll().GetCarInfoForSerialSummaryBySerialId(csId);
+            carList = carList.OrderByDescending(x => x.MarketDateTime).ThenByDescending(x => x.CarID).ToList();
+            if (se.SaleState.Trim() == "在销" || se.SaleState.Trim() == "停销")
+            {
+                var newCarList = carList.Where(x => x.SaleState == "待销");
+                if (newCarList.Count() > 0)
+                {
+                    var newCarMarketDateTimeList = newCarList.Where(a => DateTime.Compare(a.MarketDateTime, DateTime.MinValue) != 0);
+                    //存在填写了上市时间的待销车款
+                    if (newCarMarketDateTimeList.Count() > 0)
+                    {
+                        CarInfoForSerialSummaryEntity car = newCarMarketDateTimeList.First();//从已经填写的时间中选择最早的时间
+                        //排除未上市车填写了过去的上市时间（这种情况属于数据错误，通过程序筛选控制）
+                        if (DateTime.Compare(car.MarketDateTime, DateTime.Now) >= 0)
+                        {
+                            if (isShowDate)
+                            {
+                                showText = "将于" + car.MarketDateTime.ToString("yy年MM月dd日") + "上市";
+                            }
+                            else
+                            {
+                                showText = "即将上市";
+                            }
+                        }
+                        else
+                        {
+                            //判断车款是否有实拍图
+                            int count = 0;
+                            foreach (var item in newCarList)
+                            {
+                                XmlDocument xmlDoc = CommonFunction.ReadXml(Path.Combine(PhotoImageConfig.SavePath, string.Format(@"SerialCarReallyPic\{0}.xml", item.CarID)));
+                                
+                                if (xmlDoc != null && xmlDoc.HasChildNodes)
+                                {
+                                    XmlNode node = xmlDoc.SelectSingleNode("//Data//Total");
+                                    var countStr = node.InnerText;
+                                    int.TryParse(countStr, out count);
+                                    if (count > 0)
+                                    {
+                                        showText = "新款即将上市";
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        //是否有指导价
+                                        if (item.ReferPrice != "")
+                                        {
+                                            showText = "新款即将上市";
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    var newCarMarketDateTimeList = carList.Where(a => DateTime.Compare(a.MarketDateTime, DateTime.MinValue) != 0);
+                    if (newCarMarketDateTimeList.Count() > 0)
+                    {
+                        var car = newCarMarketDateTimeList.First();//倒叙排列，取第一个即可
+                        var carOld = carList.Last();
+                        if (car != null)
+                        {
+                            int days = (DateTime.Now - car.MarketDateTime).Days;
+                            int daysOld = -1;
+                            if (carOld != null)
+                            {
+                                daysOld = (DateTime.Now - carOld.MarketDateTime).Days;
+                            }
+                            if (days >= 0 && days <= 30)
+                            {
+                                //只有一个年款    ***新车上市***
+                                if (carList.GroupBy(i => i.CarYear).Count() == 1 && daysOld >= 0 && daysOld <= 30)
+                                {
+                                    showText = "新车上市";
+                                }
+                                //不止一个年款    ***新款上市***
+                                else
+                                {
+                                    showText = "新款上市";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            //待查 待销(未上市)
+            else
+            {
+                //筛选填写了上市时间的待销车
+                var newCarList = carList.Where(a => DateTime.Compare(a.MarketDateTime, DateTime.MinValue) != 0);
+                //存在填写了上市时间的待销车
+                if (newCarList.Count() > 0)
+                {
+                    var car = carList.First();//从已经填写的时间中选择最早的时间
+                    //排除未上市车填写了过去的上市时间（这种情况属于数据错误，通过程序筛选控制）
+                    if (DateTime.Compare(car.MarketDateTime, DateTime.Now) >= 0)
+                    {
+                        if (isShowDate)
+                        {
+                            showText = "将于" + car.MarketDateTime.ToString("yy年MM月dd日") + "上市";
+                        }
+                        else
+                        {
+                            showText = "即将上市";
+                        }
+                    }
+                }
+                //没有上市时间，判断有没有实拍图、指导价
+                else
+                {
+                    //查找实拍图
+                    int count = 0;
+                    foreach (var item in carList)
+                    {
+                        XmlDocument xmlDoc = CommonFunction.ReadXml(Path.Combine(PhotoImageConfig.SavePath, string.Format(@"SerialCarReallyPic\{0}.xml", item.CarID)));
+                        if (xmlDoc != null && xmlDoc.HasChildNodes)
+                        {
+                            XmlNode node = xmlDoc.SelectSingleNode("//Data//Total");
+                            var countStr = node.InnerText;
+                            int.TryParse(countStr, out count);
+                            if (count > 0)
+                            {
+                                showText = "即将上市";
+                                break;
+                            }
+                            //是否有指导价
+                            else
+                            {
+                                //是否有指导价
+                                if (item.ReferPrice != "")
+                                {
+                                    showText = "即将上市";
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            CacheManager.InsertCache(cacheKey, showText, WebConfig.CachedDuration);
+            return showText;
+        }
+
+        /// <summary>
+        /// 获取新上市车款文本
+        /// </summary>
+        /// <returns></returns>
+        public string GetCarMarketText(int carId)
+        {
+            if (carId == 0) return string.Empty;
+            CarEntity car = (CarEntity)DataManager.GetDataEntity(EntityType.Car, carId);
+            if (car == null) return string.Empty;
+            Dictionary<int, string> carMarketDic = GetAllCarMarkDay();
+            DateTime marketDate = DateTime.MinValue;
+            if (carMarketDic.ContainsKey(carId))
+            {
+                DateTime.TryParse(carMarketDic[carId], out marketDate);
+            }
+            return GetCarMarketText(carId, car.SaleState, marketDate, car.ReferPrice.ToString());
+        }
+
+        /// <summary>
+        /// 获取新上市车款文本
+        /// </summary>
+        /// <param name="carId">车款id</param>
+        /// <param name="saleSate">销售状态</param>
+        /// <param name="marketDate">上市时间</param>
+        /// <param name="referPrice">指导价</param>
+        /// <returns></returns>
+        public string GetCarMarketText(int carId,string saleSate,DateTime marketDate,string referPrice)
+        {
+            string marketflag = string.Empty;
+
+            if (carId == 0) return marketflag;
+            
+            //int res =DateTime.Compare(entity.MarketDateTime, DateTime.MinValue);
+            if (DateTime.Compare(marketDate, DateTime.MinValue) != 0)
+            {
+                int days = (DateTime.Now - marketDate).Days;// GetDaysAboutCurrentDateTime(entity.MarketDateTime);
+                if (days >= 0 && days <= 30)
+                {
+                    if (saleSate.Trim() == "在销")
+                    {
+                        marketflag = "新上市";
+                    }
+                }
+                else if (days >= -30 && days < 0)
+                {
+                    if (saleSate.Trim() == "待销")
+                    {
+                        marketflag = "即将上市";
+                    }
+                }
+            }
+            else
+            {
+                if (saleSate.Trim() == "待销")
+                {
+                    var picCount = new Car_BasicBll().GetSerialCarRellyPicCount(carId);
+                    if (picCount > 0)
+                    {
+                        marketflag = "即将上市";
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(referPrice))
+                        {
+                            marketflag = "即将上市";
+                        }
+                    }
+                }
+            }
+            return marketflag;
+        }
         #endregion
 
         #region 子品牌厂商指导价
@@ -8254,8 +8529,8 @@ namespace BitAuto.CarChannel.BLL
                         , dr["autoid"]
                         , dr["cs_id"]
                         , dr["packagename"]
-                        , dr["packageprice"]
-                        , ConvertHelper.GetString(dr["packagedescription"]).Trim()
+                        , ConvertHelper.GetString(dr["packageprice"]).Trim()
+                        , ConvertHelper.GetString(dr["packagedescription"]).Trim().Replace("\r\n","")
                         , carIds
                         , package.IndexOf(dr) == package.Count - 1 ? "" : ",");
                 }

@@ -41,7 +41,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            SetPageCache(60);
+            SetPageCache(30);
             if (!this.IsPostBack)
             {
                 this.CheckParam();

@@ -762,6 +762,11 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 					if (entity.ProduceState == "停产")
                         stopPrd = "<span class=\"color-block3\">停产</span>";
 					Dictionary<int, string> dictCarParams = _carBLL.GetCarAllParamByCarID(entity.CarID);
+                    string marketText = _serialBLL.GetCarMarketText(entity.CarID, entity.SaleState, entity.MarketDateTime, entity.ReferPrice);
+                    if (!string.IsNullOrEmpty(marketText))
+                    {
+                        marketText = string.Format("<a target=\"_blank\" class=\"color-block\">{0}</a>", marketText);
+                    }
 					//add by 2014.05.04 获取电动车参数
 					if (isElectrombile)
 					{
@@ -841,7 +846,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 					//string strBest = "<a href=\"#\" class=\"ico-tuijian\">推荐</a>";
                     carListHtml.Add(string.Format("<tr id=\"car_filter_id_{0}\">", entity.CarID));
                     carListHtml.Add(string.Format("<td class=\"txt-left\" id=\"carlist_{1}\"><a href=\"/{0}/m{1}/\" target=\"_blank\">{2} {3}</a> {4}</td>",
-						_SerialSpell, entity.CarID, yearType, entity.CarName, strTravelTax + hasEnergySubsidy + stopPrd));
+						_SerialSpell, entity.CarID, yearType, entity.CarName, strTravelTax + hasEnergySubsidy + stopPrd + marketText));
 					carListHtml.Add("<td>");
 					carListHtml.Add("<div class=\"w\">");
 					//计算百分比

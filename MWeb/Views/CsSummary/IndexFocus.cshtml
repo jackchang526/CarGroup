@@ -939,7 +939,7 @@
 
 
     <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=audio/jplayer/jquery.jplayer.min.js,audio/jplayer/audioJPlayerMobile.js?v=20170105"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>
+    @*<script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>*@
     <script type="text/javascript">
         // 焦点图
         var mySwiperfocus = new Swiper('#sumFocus', {
@@ -1012,13 +1012,13 @@
             return true;
         }
         //vr
-        if (vrImgForBitauto != undefined && vrImgForBitauto.IntiDataForEntry != undefined) {
+        @*if (vrImgForBitauto != undefined && vrImgForBitauto.IntiDataForEntry != undefined) {
             vrImgForBitauto.IntiDataForEntry(@(serialEntity.Id), function (vrImgs) {
                 if (vrImgs.length > 0) {
                     $("#favstar").after("<a target=\"_blank\" href=\"" + vrImgs[0].PanoUrl + "\" class=\"vr-chezhan\"><i></i>VR</a>");
                 }
             });
-        }
+        }*@
     </script>
     <!--评论数JS-->
     <!--#include file="/include/pd/2014/common/00001/201506_typls_js_Manual.shtml"-->

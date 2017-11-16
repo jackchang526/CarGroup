@@ -102,6 +102,7 @@
             </div>
             <script type="text/javascript">
                 var carName = $("#select_carname").text();
+                var SerialName="@ViewData["SerialName"]";
                 //手机大屏小屏判断
                 var screenWidth = $(window).width();
                 var layerClassName;
@@ -471,6 +472,7 @@
         </div>
         <div id="master_container" data-url="/html/selectCarTemplate.htm?v=20151207" class="brandlayer">
         </div>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/jquery.lazyload.min.js"></script>
         <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/iscroll-infinite.js?v=201508031842"></script>
         <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/popup.js?v=201508031842"></script>
         <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/CarCalculator.js?v=20170111"></script>
@@ -1157,7 +1159,7 @@
         <script src="/js/v2/note.js?v=2015112415"></script>
         <script src="/js/v2/rightswipe.js?v=2015112415"></script>
         <script src="/js/v2/brand.js?v=2015112415"></script>*@
-        <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js?v=20170517"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js?v=201711100907"></script>
         <script type="text/javascript">
             var arrMarkSerial = [], saleYearCount = 0;  //非停销年款
             $(function () {
@@ -1252,7 +1254,7 @@
                                 }
                                 else if (idx == 1) {    //按品牌查找
                                     //初始化品牌
-                                    $body.trigger('brandinit');
+                                    $body.trigger('brandinit', { init: function () { $("span.brand-logo>img").lazyload({ effect: "fadeIn", threshold: 50 }); } });
                                     //车款点击回调事件
                                     api.model.clickEnd = function(paras) {
                                         api.brand.currentid = paras.masterid;
@@ -1272,6 +1274,7 @@
                         $model.find('.btn-return').click(function() {
                             $model.trigger('close');
                         });
+
                     }
                 });
             });

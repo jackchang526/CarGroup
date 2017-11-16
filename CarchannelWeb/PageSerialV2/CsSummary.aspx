@@ -170,9 +170,9 @@
                     <div class="mobile-qrcode">
                         <img src="/favicon.ico" id="qrcodelogo" style="display: none;" />
                         <a href="http://app.yiche.com/yiche/">
-                            <img src="http://image.bitautoimg.com/cargroup/car/huodongv2.png" /></a>
+                            <img src="http://image.bitautoimg.com/cargroup/car/20171111.png" /></a>
                         <%--<a href="<%= wirelessSerialUrl %>?ref=pctowap" target="_blank" id="qrcode"><img src="http://image.bitautoimg.com/cargroup/car/qrimages/<%= serialId %>.png?v=1" /></a>--%>
-                        <em>扫我5折</em>
+                        <em>11.11抢兑</em>
                     </div>
                 </div>
 
@@ -280,7 +280,7 @@
         <!--/焦点图、名片区-->
         <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201711011147"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201711081414"></script>
         <%--<script type="text/javascript" src="/jsnewv2/cssummary.js?v=20170171032"></script>--%>
         <script type="text/javascript">
             var serialId = <%= serialId %> ,
@@ -321,6 +321,7 @@
             GetJiangjiaNews();
             GetHmcJiangJia();
             Get1111Entrance();
+            GetVr();
             $("#qrcode img").bind("error", function () {
                 this.style.display = "none";
                 bitLoadScript("http://image.bitautoimg.com/carchannel/jsnewv2/jquery.qrcode.min.js", function () {
@@ -802,7 +803,7 @@
     <ins id="div_d0d818d0-743a-42cf-8b71-5f9e25b09dea" data-type="ad_play" data-adplay_IP="" data-adplay_AreaName="" data-adplay_CityName="" data-adplay_BrandID="<%= serialId %>" data-adplay_BrandName="" data-adplay_BrandType="" data-adplay_BlockCode="d0d818d0-743a-42cf-8b71-5f9e25b09dea"> </ins>
     <!--页底浮层广告-->
     <ins id="div_c62213b4-2900-4ed8-967d-3f3866014dc5" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="c62213b4-2900-4ed8-967d-3f3866014dc5"></ins>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryrest.min.js?v=20170906"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryrest.min.js?v=201711141901"></script>
     <%--<script type="text/javascript" src="/jsnewv2/cssummaryrest.js?v=20161230"></script>--%>
     <script type="text/javascript">
                         var CarCommonBSID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.MasterBrandId %>"; //大数据组统计用
@@ -945,12 +946,12 @@
     <!--看了还看js-->
     <script type="text/javascript">
         <%= serialToSeeJson %>
-</script>
+    </script>
     <script type="text/javascript" src="http://gimg.bitauto.com/resourcefiles/chexing/serialadposition.js?_=<%= DateTime.Now.ToString("yyyyMMddHHmm").Substring(0,11) + "0" %>"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/serialtoseead.min.js"></script>
     <!--/看了还看js-->
     <!--#include file="/include/special/stat/00001/bglogpostlog_Manual.shtml"-->
-    <script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>
+    <%--<script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>--%>
     <script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars"></script>
     <%if (serialEntity.Level != null && serialEntity.Level.Name != "概念车")
         {%>
@@ -979,13 +980,13 @@
         catch (err)
         { }
         //vr
-        if (vrImgForBitauto != undefined && vrImgForBitauto.IntiDataForEntry != undefined) {
+        <%--if (vrImgForBitauto != undefined && vrImgForBitauto.IntiDataForEntry != undefined) {
             vrImgForBitauto.IntiDataForEntry(<%=serialId%>, function (vrImgs) {
                 if (vrImgs.length > 0) {
                     $(".l-box-sty.col-auto").prepend("<a target=\"_blank\" href=\"" + vrImgs[0].PanoUrl + "\" class=\"zs-vr\">VR看全景</a>");
                 }
             });
-        }
+        }--%>
     </script>
     <%} %>
     <!--/经销商弹层-->

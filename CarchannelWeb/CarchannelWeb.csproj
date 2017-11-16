@@ -753,6 +753,7 @@
     <Content Include="include\pd\2016\00001\20170118_zongshu_likewhatcar_Manual.shtml" />
     <Content Include="include\pd\2016\car\00001\20161009_cxzs_luntan_Manual.shtml" />
     <Content Include="include\pd\2016\car\00001\20161110_zongshu_likewhatcar_Manual.shtml" />
+    <Content Include="include\pd\2016\car\00001\ad_difu_Manual.shtml" />
     <Content Include="include\pd\2016\common\00001\201612_ej_nav_common_gb2312_Manual.shtml" />
     <Content Include="include\pd\2016\common\00001\201611_common_search_Manual.shtml" />
     <Content Include="include\pd\2016\common\00001\201607_common_search_Manual.shtml" />
@@ -1034,6 +1035,7 @@
     <Content Include="jsnewV2\photoCompare.js" />
     <Content Include="jsnewV2\pingceyouhui.js" />
     <Content Include="jsnewV2\rightbarcarcompare.js" />
+    <Content Include="jsnewV2\selectcarcommon.js" />
     <Content Include="jsnewV2\serialcompareforpk.js" />
     <Content Include="jsnewV2\serialexternalcommon.js" />
     <Content Include="jsnewV2\serialtoseead.js" />

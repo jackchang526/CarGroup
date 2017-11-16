@@ -306,9 +306,29 @@ function GetSerialWaiGuanNeiShi() {
 
 //视频播放次数和回复数
 function GetVedioNum() {
-    if (typeof vedioIds != "undefined" && vedioIds.length > 0) {
+    var vfids = "",
+        vids = "",
+        vfidsArr = [],
+        vidsArr = [];
+
+    var vidsObjs = $("#car-videobox div[data-type='v']");
+    var vfidsObjs = $("#car-videobox div[data-type='vf']");
+    if ($(vidsObjs).length > 0) {
+        for (var i = 0; i < $(vidsObjs).length; i++) {
+            vidsArr.push($(vidsObjs[i]).attr("data-id"));
+        }
+        vids = vidsArr.join(",");
+    }
+    if ($(vfidsObjs).length > 0) {
+        for (var i = 0; i < $(vfidsObjs).length; i++) {
+            vfidsArr.push($(vfidsObjs[i]).attr("data-id"));
+        }
+        vfids = vfidsArr.join(",");
+    }
+
+    if (vids.length > 0 || vfids.length > 0) {
         $.ajax({
-            url: "http://api.admin.bitauto.com/videoforum/Promotion/GetVideoByVideoIds?vIds=" + vedioIds, dataType: "jsonp", cache: true, jsonpCallback: "getvedionumcallback", success: function (data) {
+            url: "http://api.admin.bitauto.com/videoforum/Promotion/GetVideoByVideoIds?vIds=" + vids + "&vfids=" + vfids, dataType: "jsonp", cache: true, jsonpCallback: "getvedionumcallback", success: function (data) {
                 if (data.length > 0) {
                     for (var i = 0; i < data.length; i++) {
                         $("#car-videobox div[data-id='" + data[i].VideoId + "'] .play").html(data[i].FormatPlayCount);

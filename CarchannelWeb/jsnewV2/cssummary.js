@@ -475,3 +475,19 @@ function Get1111Entrance() {
         }
     });
 }
+
+function GetVr() {
+    if ($("#focus_images").siblings("zs-vr") > 0) return;
+    $.ajax({
+        url: "http://webapi.photo.bitauto.com/photoApi/api/v1/Pano/GetAlbumList?ModelId=" + GlobalSummaryConfig.SerialId,
+        cache: true,
+        dataType: "jsonp",
+        jsonpCallback: "GetVrCallback",
+        success: function (data) {
+            if (data.Code != 0 || data.Data.Total == 0) {
+                return;
+            }
+            $("#focus_images").parent().prepend("<a href=\"" + data.Data.DataList[0].Url + "\" target=\"_blank\" class=\"zs-vr\">VR看全景</a>");
+        }
+    });
+}

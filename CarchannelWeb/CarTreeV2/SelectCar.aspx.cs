@@ -55,7 +55,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            base.SetPageCache(60 * 4);
+            base.SetPageCache(30);
             //NavbarHtml = base.GetTreeNavBarHtml("search", "chexing", 0);
 
             GetParameters();

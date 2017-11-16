@@ -153,6 +153,10 @@
       <DependentUpon>GetCarInfo.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="CarInfo\GetCarIntoMarketText.ashx.cs">
+      <DependentUpon>GetCarIntoMarketText.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="CarInfo\GetCarList.ashx.cs">
       <DependentUpon>GetCarList.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -610,6 +614,7 @@
     <Content Include="Exhibition\GetExhibitionBrand.ashx" />
     <Content Include="Exhibition\GetExhibitionMasterBrand.ashx" />
     <Content Include="Exhibition\GetExhibitionSerial.ashx" />
+    <Content Include="CarInfo\GetCarIntoMarketText.ashx" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

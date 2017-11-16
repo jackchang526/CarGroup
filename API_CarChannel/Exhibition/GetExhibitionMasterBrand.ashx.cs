@@ -59,7 +59,7 @@ namespace BitAuto.CarChannelAPI.Web.Exhibition
             GetPageParam();
             if (this._type == "withbrand")
             {
-                InitExhibitionDataForWithBrand(); 
+                InitExhibitionDataForWithBrand();
                 GenerateDataWithCodeAndSerial();
             }
             else
@@ -87,13 +87,14 @@ namespace BitAuto.CarChannelAPI.Web.Exhibition
             this._callback = ConvertHelper.GetString(request.QueryString["callback"]);
             this._type = ConvertHelper.GetString(request.QueryString["type"]);
         }
-         
+
         /// <summary>
         /// 初始化数据
         /// </summary>
         private void InitExhibitionData()
         {
             this._ExhibitionXmlDoc = _ExhibitionBLL.GetMasterExhibitionXmlById(_ExhibitionID);
+            this._AlbumXmlDoc = _AlbumBLL.GetCommonAlbumRelationData(this._ExhibitionID);
         }
 
         /// <summary>
@@ -219,6 +220,8 @@ namespace BitAuto.CarChannelAPI.Web.Exhibition
                 var sNodes = node.SelectNodes("Brand/Serial[@NC=1]");
                 if (sNodes != null && sNodes.Count > 0)
                 {
+                    if (!CheackImageExist(node))
+                        continue;
                     int masterId = ConvertHelper.GetInteger(node.Attributes["ID"].Value);
                     list.Add(string.Format("{{\"MasterId\":{0},\"MasterName\":\"{1}\",\"AllSpell\":\"{2}\"}}",
                         node.Attributes["ID"].Value,
@@ -263,6 +266,51 @@ namespace BitAuto.CarChannelAPI.Web.Exhibition
             }
             return string.Format("{{\"CharList\":{{{0}}}, \"MsterList\": {{{1}}}}}", codeStr.ToString().Substring(0, codeStr.Length - 1), string.Join(",", listMaster.ToArray()));
         }
+
+        private bool CheackImageExist(XmlNode xEleme)
+        {
+            XmlNodeList sNodeList = xEleme.SelectNodes("Brand/Serial[@NC=1]");
+            if (sNodeList == null || sNodeList.Count < 1)
+            {
+                return false;
+            }
+            int count = 0;
+            foreach (XmlElement sEleme in sNodeList)
+            {
+                if (!sEleme.HasAttribute("ID"))
+                    continue;
+                if (!sEleme.HasAttribute("NC"))
+                    continue;
+                int serialId = ConvertHelper.GetInteger(sEleme.Attributes["ID"].Value);
+                 
+                if (sEleme.Attributes["NC"] != null)
+                {
+                    var nodeAlbumSerial = _AlbumXmlDoc.SelectSingleNode("/Data/NewCar/Master/Serial[@Id=" + serialId + "]");
+
+                    if (nodeAlbumSerial != null && nodeAlbumSerial.Attributes["Count"] != null && nodeAlbumSerial.Attributes["Count"].Value != "0")
+                    { }
+                    else
+                    {
+                        continue;
+                    }
+
+                    if (nodeAlbumSerial.Attributes["ImageUrl"] == null || string.IsNullOrEmpty(nodeAlbumSerial.Attributes["ImageUrl"].Value))
+                    {
+                        continue;
+                    }
+                }
+                count++;
+            }
+            if (count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
         #endregion
 
@@ -433,7 +481,7 @@ namespace BitAuto.CarChannelAPI.Web.Exhibition
                     //    continue;
                     //    //targetUrl = string.Format("http://car.m.yiche.com/{0}/", allspell);//GetSerialCoverImage(serialId);
                     //}
-                     
+
                     //xEleme.SetAttribute("LogoUrl", "http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/55/m_" + xEleme.GetAttribute("ID") + "_55.png");
                     //serialList.Add(string.Format("{{\"SerialId\":{0},\"SerialName\":\"{1}\",\"Allspell\":\"{2}\",\"ImageUrl\":\"{3}\",\"Tag\":\"{4}\",\"CsSaleState\":\"{5}\",\"targetUrl\":\"{6}\"}}",
                     //    serialId,

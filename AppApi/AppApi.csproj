@@ -118,6 +118,7 @@
     <Compile Include="App_Start\BaseController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IDictionaryExtension.cs" />
     <Compile Include="App_Start\JsonHandleErrorAttribute.cs" />
     <Compile Include="App_Start\JsonNetResult.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />

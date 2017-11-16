@@ -1745,13 +1745,17 @@ namespace BitAuto.CarChannel.BLL
         /// 获取车款列表 根据子品牌Id
         /// </summary>
         /// <param name="serialId"></param>
+        /// <param name="nocache">是否从缓存出数据</param>
         /// <returns></returns>
-        public List<CarInfoForSerialSummaryEntity> GetCarInfoForSerialSummaryBySerialId(int serialId)
+        public List<CarInfoForSerialSummaryEntity> GetCarInfoForSerialSummaryBySerialId(int serialId, bool nocache = false)
         {
             string cacheKey = string.Format("Car_CarInfoForSerialSummary_{0}", serialId);
-            object allCarInfoForSerialSummary = CacheManager.GetCachedData(cacheKey);
-            if (allCarInfoForSerialSummary != null)
-                return (List<CarInfoForSerialSummaryEntity>)allCarInfoForSerialSummary;
+            if (!nocache)
+            {
+                object allCarInfoForSerialSummary = CacheManager.GetCachedData(cacheKey);
+                if (allCarInfoForSerialSummary != null)
+                    return (List<CarInfoForSerialSummaryEntity>)allCarInfoForSerialSummary;
+            }
             List<CarInfoForSerialSummaryEntity> carInfoList = new List<CarInfoForSerialSummaryEntity>();
             DataSet ds = cbd.GetAllCarInfoForSerialSummary(serialId);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -1881,7 +1885,7 @@ namespace BitAuto.CarChannel.BLL
                     });
                 }
             }
-            CacheManager.InsertCache(cacheKey, carInfoList, 30);
+            CacheManager.InsertCache(cacheKey, carInfoList, 10);
             return carInfoList;
         }
 

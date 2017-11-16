@@ -61,7 +61,7 @@ namespace BitAuto.CarChannel.DAL
 		public static DataSet GetVideoBySerialIdAndCategoryId(int serialId, List<int> CategoryIdList, int top)
 		{
 			string sql = string.Format(@"SELECT {0}
-												v.VideoId,ShortTitle,v.ImageLink,v.ShowPlayUrl
+												v.VideoId,ShortTitle,v.ImageLink,v.ShowPlayUrl,v.Source
 										FROM    dbo.Car_VideoToSerialV2 vs
 												LEFT JOIN dbo.Car_VideosV2 v ON vs.Id = v.Id
 										WHERE   v.CategoryId IN ({1}) AND vs.SerialId=@SerialId
@@ -79,7 +79,7 @@ namespace BitAuto.CarChannel.DAL
 
 		public static DataSet GetVideoBySerialId(int serialId, int top = 5)
 		{
-			string sql = string.Format(@"SELECT {0} v.VideoId,ShortTitle,v.ImageLink,v.ShowPlayUrl,v.Duration
+			string sql = string.Format(@"SELECT {0} v.VideoId,ShortTitle,v.ImageLink,v.ShowPlayUrl,v.Duration,v.Source
 											FROM    [dbo].[Car_VideoToSerialV2] vs
 													LEFT JOIN dbo.Car_VideosV2 v ON vs.Id = v.Id
 											WHERE   vs.SerialId = @SerialId
@@ -98,7 +98,7 @@ namespace BitAuto.CarChannel.DAL
 		/// <param name="videoId"></param>
 		/// <returns></returns>
 		public static DataSet GetVideoById(int videoId) {
-			string sql = @"SELECT [Title], [ShortTitle], [ImageLink], [ShowPlayUrl], [Duration]
+			string sql = @"SELECT [Title], [ShortTitle], [ImageLink], [ShowPlayUrl], [Duration], [Source]
 				FROM    [dbo].[Car_VideosV2]
 				WHERE   VideoId = @VideoId";
 			SqlParameter[] _params ={

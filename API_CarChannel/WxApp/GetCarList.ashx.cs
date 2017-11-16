@@ -90,7 +90,7 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
 
                             //组织json,按相同排量不同功率分组插入到字典中
 
-                            string curEnginExhasutAndPower = string.Empty; 
+                            string curEnginExhasutAndPower = string.Empty;
                             if (entity.Oil_FuelType == "纯电")
                             {
                                 curEnginExhasutAndPower = "电动车/"+ entity.Electric_Peakpower + "kw";
@@ -101,12 +101,12 @@ namespace BitAuto.CarChannelAPI.Web.WxApp
                             }
                             else
                             {
-                                curEnginExhasutAndPower = entity.Engine_MaxPower == 0 ? engine_Exhaust : engine_Exhaust + "/" + entity.Engine_MaxPower + "kw";
+                                curEnginExhasutAndPower = entity.Engine_MaxPower == 9999 ? engine_Exhaust : engine_Exhaust + "/" + entity.Engine_MaxPower + "kw";
                             }
 
                             string singleCarJson = string.Format(
                                 "{{\"CarId\":{0},\"CarName\":\"{1}\",\"Price\":\"{2}\",\"ReferPrice\":\"{3}\",\"TransmissionType\":\"{4}\",\"Engine_Exhaust\":\"{5}\", \"Engine_MaxPower\":\"{6}\",\"Electric_Peakpower\":\"{7}\",\"GearNum\":\"{8}\"}}",
-                                entity.CarID, entity.CarName, carMinPrice, carReferPrice, transmissionType,
+                                entity.CarID, entity.CarName, carMinPrice.Replace("万",""), carReferPrice, transmissionType,
                                 engine_Exhaust, entity.Engine_MaxPower, entity.Electric_Peakpower, string.IsNullOrEmpty(entity.UnderPan_ForwardGearNum) ?"": entity.UnderPan_ForwardGearNum + "挡");
                             List<string> lsPowerCar = new List<string>();
                             lsPowerCar.Add(singleCarJson);

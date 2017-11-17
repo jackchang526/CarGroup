@@ -1586,7 +1586,7 @@ FROM    dbo.Car_Serial_30UV uv
         /// </summary>
         /// <param name="styleId"></param>
         /// <returns></returns>
-        public CarStyleInfo GetStyleInfoById(int styleId)
+        public CarStyleInfoEntity GetStyleInfoById(int styleId)
         {
             var sql = @"
                     SELECT TOP 1 [Car_Name],[Car_YearType],[Cs_Id],
@@ -1603,10 +1603,10 @@ FROM    dbo.Car_Serial_30UV uv
                 new SqlParameter("@Id", styleId )
             };
             var dataTable = SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, parms).Tables[0];
-            CarStyleInfo csi = null;
+            CarStyleInfoEntity csi = null;
             if (dataTable != null && dataTable.Rows.Count > 0)
             {
-                csi = new CarStyleInfo();
+                csi = new CarStyleInfoEntity();
                 csi.Name = dataTable.Rows[0]["Car_Name"] + "";
                 csi.Year = TypeParse.StrToInt(dataTable.Rows[0]["Car_YearType"] + "", 0);
                 csi.ModelId = TypeParse.StrToInt(dataTable.Rows[0]["Cs_Id"] + "", 0);

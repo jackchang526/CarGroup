@@ -77,7 +77,7 @@ namespace BitAuto.CarChannel.DAL
         /// <param name="modelId">车系编号</param>
         /// <param name="type">颜色类型</param>
         /// <returns></returns>
-        public List<CarModelColor> GetCarModelColorByModelId(int modelId, int type)
+        public List<CarModelColorEntity> GetCarModelColorByModelId(int modelId, int type)
         {
             string sql = @"  	
                             SELECT colorName AS  Name ,colorRGB AS [Value] 
@@ -93,11 +93,11 @@ namespace BitAuto.CarChannel.DAL
             var ds = SqlHelper.ExecuteDataset(WebConfig.AutoStorageConnectionString, CommandType.Text, sql, commandParameters);
             if (ds != null && ds.Tables.Count > 0)
             {
-                var res = new List<CarModelColor>();
+                var res = new List<CarModelColorEntity>();
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
                     var val = (dr["Value"] == null ? "" : dr["Value"].ToString()).Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault();
-                    res.Add(new CarModelColor()
+                    res.Add(new CarModelColorEntity()
                     {
                         Name = dr["Name"] == null ? "" : dr["Name"].ToString(),
                         Value = val ?? ""
@@ -158,7 +158,7 @@ namespace BitAuto.CarChannel.DAL
         /// <param name="carStyleId">车款编号</param>
         /// <param name="type">颜色类型 0车身颜色 1内饰颜色</param>
         /// <returns></returns>
-        public List<CarModelColor> GetCarStyleColorById(int carStyleId, int type)
+        public List<CarModelColorEntity> GetCarStyleColorById(int carStyleId, int type)
         {
             var sql = @"
                         SELECT top 1 Pvalue as color
@@ -185,7 +185,7 @@ namespace BitAuto.CarChannel.DAL
                 var color = ds.Tables[0].Rows[0]["color"] == null ? "" : ds.Tables[0].Rows[0]["color"].ToString();
                 if (string.IsNullOrWhiteSpace(color))
                     return null;
-                var res = new List<CarModelColor>();
+                var res = new List<CarModelColorEntity>();
                 var colorArr = color.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
                 foreach (DataRow dr in ds.Tables[1].Rows)
@@ -195,7 +195,7 @@ namespace BitAuto.CarChannel.DAL
                     if (!string.IsNullOrWhiteSpace(name) && isEitsts != null)
                     {
                         var val = (dr["Value"] == null ? "" : dr["Value"].ToString()).Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault();
-                        res.Add(new CarModelColor() { Name = name, Value = val ?? "" });
+                        res.Add(new CarModelColorEntity() { Name = name, Value = val ?? "" });
                     }
                 }
                 return res;

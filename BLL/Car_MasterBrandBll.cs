@@ -56,13 +56,13 @@ namespace BitAuto.CarChannel.BLL
         /// <param name="modelId">车系编号</param>
         /// <param name="type">颜色类型</param>
         /// <returns></returns>
-        public List<CarModelColor> GetCarModelColorByModelId(int modelId, int type)
+        public List<CarModelColorEntity> GetCarModelColorByModelId(int modelId, int type)
         {
             string catchkey = string.Format("Car_MasterBrandBll_GetCarModelColorByModelId_{0}_{1}", modelId, type);
             object obj = CacheManager.GetCachedData(catchkey);
             if (obj != null)
             {
-                return obj as List<CarModelColor>;
+                return obj as List<CarModelColorEntity>;
             }
             var ds = _masterBrandDal.GetCarModelColorByModelId(modelId, type);
             CacheManager.InsertCache(catchkey, ds, 60 * 24);
@@ -97,7 +97,7 @@ namespace BitAuto.CarChannel.BLL
         /// <param name="styleId">车款编号</param>
         /// <param name="type">颜色类型 0车身颜色 1内饰颜色</param>
         /// <returns></returns>
-        public List<CarModelColor> GetCarStyleColorById(int styleId, int type)
+        public List<CarModelColorEntity> GetCarStyleColorById(int styleId, int type)
         {
             return _masterBrandDal.GetCarStyleColorById(styleId, type);
         }

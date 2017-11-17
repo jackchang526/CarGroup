@@ -6,7 +6,7 @@ using System.Text;
 namespace BitAuto.CarChannel.Model.AppApi
 {
     [Serializable]
-    public class CarStyleInfo
+    public class CarStyleInfoEntity
     {
         /// <summary>
         /// 车款Id

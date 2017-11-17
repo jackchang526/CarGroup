@@ -150,16 +150,16 @@ namespace AppApi.Controllers
             /// <param name="serialId"></param>
             /// <returns></returns>
         [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
-        public ActionResult GetCarListByCSIdAndCityId(int? csid, int? cityId)
+        public ActionResult GetCarListByCSIdAndCityId(int? csid, int? cityId,bool? includeStopSale=false)
         {
 
             List<string> carSaleList = new List<string>();
             List<string> carNoSaleList = new List<string>();
             List<string> carWaitSaleList = new List<string>();
 
-            var carinfoList = CarBasicService.GetCarInfoForSerialSummaryBySerialId(csid.GetValueOrDefault(0));
+            var CarGroupList = CarBasicService.GetCarGroupBySerialIdAndCSID(cityId.GetValueOrDefault(0), csid.GetValueOrDefault(0),includeStopSale.GetValueOrDefault(false));
 
-
+            var carlist = CarBasicService.GetCarListForSerialSummaryBySerialId(csid.GetValueOrDefault(0), includeStopSale.GetValueOrDefault(false));
 
             return AutoJson(new
             {
@@ -168,7 +168,8 @@ namespace AppApi.Controllers
                 message = "ok",
                 data = new
                 {
-                    ParamList = carinfoList
+                    CarGroupList = CarGroupList,
+                    carlist= carlist
                 }
             });
         }

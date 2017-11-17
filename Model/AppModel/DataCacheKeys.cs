@@ -31,5 +31,12 @@ namespace BitAuto.CarChannel.Model
         /// 参配分组模版
         /// </summary>
         public static string CarParameterJson = "car.appapi.carparameterjson";
+        /// <summary>
+        /// 车款分组列表
+        /// 0-车型id
+        /// 1-城市id
+        /// 2-是否保护停销
+        /// </summary>
+        public static string CarGroupListByserialIdAndCityId= "car.appapi.cargrouplist_{0}_{1}_{2}";
     }
 }

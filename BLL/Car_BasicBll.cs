@@ -2192,7 +2192,7 @@ namespace BitAuto.CarChannel.BLL
             }
             catch (Exception ex)
             {
-                CommonFunction.WriteLog(string.Format("解析分组ParameterConfigurationNewV2.config错误,Message:{0},StackTrace:{1}", ex.Message,ex.StackTrace));
+                CommonFunction.WriteLog(string.Format("解析分组ParameterConfigurationNewV2.config错误,Message:{0},StackTrace:{1}", ex.Message, ex.StackTrace));
             }
             return parameterGroup;
         }
@@ -2496,6 +2496,71 @@ namespace BitAuto.CarChannel.BLL
                 }
             }
             return result;
+        }
+
+        public List<CarGroupEntity> GetCarGroupBySerialIdAndCSID(int cityId, int serialId, bool includeStopSale)
+        {
+
+            var cacheKey = string.Format(DataCacheKeys.CarGroupListByserialIdAndCityId, serialId, cityId, includeStopSale);
+            List<CarGroupEntity> carGroupList = CacheManager.GetCachedData<List<CarGroupEntity>>(cacheKey);
+            if (carGroupList == null)
+            {
+                carGroupList = new List<CarGroupEntity>();
+                Dictionary<string, CarGroupEntity> carGroupDic = new Dictionary<string, CarGroupEntity>();
+                var carList = GetCarListForSerialSummaryBySerialId(serialId, includeStopSale);
+                var serialBll = new Car_SerialBll();
+                List<int> carIds = new List<int>();
+                foreach (var item in carList)
+                {
+                    string groupKey = item.Engine_Exhaust + "/" + item.Engine_MaxPower;
+                    if (!carGroupDic.ContainsKey(groupKey))
+                    {
+                        carGroupDic.Add(groupKey, new CarGroupEntity
+                        {
+                            Name = groupKey + " " + item.Engine_InhaleType,
+                            CarList = new List<CarInfoEntity>()
+                        });
+                    }
+                    carIds.Add(item.CarID);
+                    var carParams = GetCarParamValue(item.CarID, 895);
+                    carGroupDic[groupKey].CarList.Add(new CarInfoEntity
+                    {
+                        CarId = item.CarID,
+                        Name = item.CarName,
+                        Year = item.CarYear,
+                        IsSupport = item.IsImport == 1,
+                        MinPrice = item.CarPriceRange,
+                        ReferPrice = item.ReferPrice,
+                        Trans = item.TransmissionType,
+                        SaleState = item.SaleState,
+                        NewSaleStatus = serialBll.GetCarMarketText(item.CarID, item.SaleState, item.MarketDateTime, item.ReferPrice),
+                        SupportType = 0,
+                        ImportType = item.IsImport == 1 ? "平行进口车" : "",
+                        CarPV = item.CarPV,
+                        IsTax = false,//
+                        TaxRelief = "",//
+                        TimeToMarket = item.MarketDateTime.ToString(),
+                        IsHaveImage = false///
+                    });
+                }
+
+                var carTaxDic = GetSubTaxByCarIds(carIds);
+                foreach (var carGroup in carGroupDic.Values)
+                {
+                    foreach (var car in carGroup.CarList)
+                    {
+                        car.IsTax = carTaxDic.ContainsKey(car.CarId) && (carTaxDic[car.CarId] == "减税" || carTaxDic[car.CarId] == "免税");
+                        car.TaxRelief = carTaxDic.ContainsKey(car.CarId) ? carTaxDic[car.CarId] : "";
+                    }
+                    carGroupList.Add(carGroup);
+                }
+
+                if (carGroupList != null)
+                {
+                    CacheManager.InsertCache(cacheKey, carGroupList, 5);
+                }
+            }
+            return carGroupList;
         }
     }
 }

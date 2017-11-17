@@ -9,7 +9,7 @@ namespace BitAuto.CarChannel.Model.AppApi
     /// <summary>
     /// 车系颜色
     /// </summary>
-    public class CarModelColor
+    public class CarModelColorEntity
     {
         public int OrderId { get; set; }
 

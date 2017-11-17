@@ -6,7 +6,7 @@ using System.Text;
 namespace BitAuto.CarChannel.Model.AppApi
 {
     [Serializable]
-    public class CarSerialExt
+    public class CarSerialExtEntity
     {
         //Id, Name, CoverImageId, CoverImageUrl, WhiteCoverUrl, ImageCount, MinPrice, MaxPrice, DealerCount, PriceCount
         public int Id { get; set; }

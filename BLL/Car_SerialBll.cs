@@ -8618,12 +8618,12 @@ namespace BitAuto.CarChannel.BLL
         /// </summary>
         /// <param name="styleId"></param>
         /// <returns></returns>
-        public CarStyleInfo GetStyleInfoById(int styleId)
+        public CarStyleInfoEntity GetStyleInfoById(int styleId)
         {
 
             var cacheKey = string.Format("ycapp.carstyleinfo_{0}", styleId);
 
-            var result = CacheManager.GetCachedData<CarStyleInfo>(cacheKey);
+            var result = CacheManager.GetCachedData<CarStyleInfoEntity>(cacheKey);
             if (result == null)
             {
                 result = csd.GetStyleInfoById(styleId);

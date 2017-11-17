@@ -2090,7 +2090,7 @@ namespace BitAuto.CarChannel.BLL
                 {
                     if (!dictCarTaxTag.ContainsKey(carId))
                     {
-                        dictCarTaxTag.Add(carId, "减税");
+                        dictCarTaxTag.Add(carId, "购置税75折");
                     }
                 }
             }
@@ -2517,50 +2517,81 @@ namespace BitAuto.CarChannel.BLL
                     {
                         carGroupDic.Add(groupKey, new CarGroupEntity
                         {
-                            Name = groupKey + " " + item.Engine_InhaleType,
+                            Name = groupKey + "kw " + item.Engine_InhaleType,
                             CarList = new List<CarInfoEntity>()
                         });
                     }
                     carIds.Add(item.CarID);
+                    var taxreief = GetTax(item.CarID, item.SaleState, item.Engine_Exhaust);
                     var newStatus = serialBll.GetCarMarketText(item.CarID, item.SaleState, item.MarketDateTime, item.ReferPrice);
                     carGroupDic[groupKey].CarList.Add(new CarInfoEntity
                     {
                         CarId = item.CarID,
                         Name = item.CarName,
-                        Year =TypeParse.StrToInt(item.CarYear,2000),
+                        Year = TypeParse.StrToInt(item.CarYear, 2000),
                         IsSupport = item.IsImport == 1,
                         MinPrice = item.CarPriceRange,
                         ReferPrice = item.ReferPrice,
                         Trans = item.TransmissionType,
                         SaleState = item.SaleState,
-                        NewSaleStatus = string.IsNullOrWhiteSpace(newStatus)? item.SaleState: newStatus,
+                        NewSaleStatus = string.IsNullOrWhiteSpace(newStatus) ? item.SaleState : newStatus,
                         SupportType = 0,
                         ImportType = item.IsImport == 1 ? "平行进口车" : "",
                         CarPV = item.CarPV,
-                        IsTax = false,//
-                        TaxRelief = "",//
+                        IsTax =(!string.IsNullOrWhiteSpace(taxreief)),//
+                        TaxRelief = taxreief,//
                         TimeToMarket = item.MarketDateTime.ToString(),
                         IsHaveImage = false///
                     });
                 }
-
-                var carTaxDic = GetSubTaxByCarIds(carIds);
                 foreach (var carGroup in carGroupDic.Values)
                 {
-                    foreach (var car in carGroup.CarList)
-                    {
-                        car.IsTax = carTaxDic.ContainsKey(car.CarId) && (carTaxDic[car.CarId] == "减税" || carTaxDic[car.CarId] == "免税");
-                        car.TaxRelief = carTaxDic.ContainsKey(car.CarId) ? carTaxDic[car.CarId] : "";
-                    }
                     carGroupList.Add(carGroup);
                 }
-
                 if (carGroupList != null)
                 {
                     CacheManager.InsertCache(cacheKey, carGroupList, 5);
                 }
             }
             return carGroupList;
+        }
+
+        /// <summary>
+        /// 获取车款购置税
+        /// </summary>
+        /// <param name="carId"></param>
+        /// <param name="saleState"></param>
+        /// <param name="exhaust"></param>
+        /// <returns></returns>
+        public string GetTax(int carId, string saleState, string exhaust)
+        {
+            Dictionary<int, string> dictCarParams = GetCarAllParamByCarID(carId);
+
+            string strTravelTax = string.Empty;
+            var dex = TypeParse.StrToFloat(exhaust.ToUpper().Replace("L", ""), 0);
+
+            if (saleState == "在销")
+            {
+                if (dictCarParams.ContainsKey(987) && (dictCarParams[987] == "第1批" || dictCarParams[987] == "第2批" || dictCarParams[987] == "第3批" || dictCarParams[987] == "第4批" || dictCarParams[987] == "第5批" || dictCarParams[987] == "第6批") && dictCarParams.ContainsKey(986))
+                {
+                    if (dictCarParams[986].ToString() == "减半")
+                    {
+                        strTravelTax = "购置税减半";
+
+                    }
+                    else if (dictCarParams[986].ToString() == "免征")
+                    {
+                        strTravelTax = "免征购置税";
+
+                    }
+                }
+                else if (dex > 0 && dex <= 1.6)
+                {
+                    strTravelTax = "购置税75折";
+
+                }
+            }
+            return strTravelTax;
         }
     }
 }

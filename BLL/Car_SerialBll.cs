@@ -5690,7 +5690,7 @@ namespace BitAuto.CarChannel.BLL
                     {
                         CarInfoForSerialSummaryEntity car = newCarMarketDateTimeList.First();//从已经填写的时间中选择最早的时间
                         //排除未上市车填写了过去的上市时间（这种情况属于数据错误，通过程序筛选控制）
-                        if (DateTime.Compare(car.MarketDateTime, DateTime.Now) >= 0)
+                        if (DateTime.Compare(car.MarketDateTime, DateTime.Now.Date) >= 0)
                         {
                             if (isShowDate)
                             {
@@ -5707,7 +5707,7 @@ namespace BitAuto.CarChannel.BLL
                             int count = 0;
                             foreach (var item in newCarList)
                             {
-                                XmlDocument xmlDoc = CommonFunction.ReadXml(Path.Combine(PhotoImageConfig.SavePath, string.Format(@"SerialCarReallyPic\{0}.xml", item.CarID)));
+                                XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(Path.Combine(PhotoImageConfig.SavePath, string.Format(@"SerialCarReallyPic\{0}.xml", item.CarID)));
                                 
                                 if (xmlDoc != null && xmlDoc.HasChildNodes)
                                 {
@@ -5775,7 +5775,7 @@ namespace BitAuto.CarChannel.BLL
                 {
                     var car = carList.First();//从已经填写的时间中选择最早的时间
                     //排除未上市车填写了过去的上市时间（这种情况属于数据错误，通过程序筛选控制）
-                    if (DateTime.Compare(car.MarketDateTime, DateTime.Now) >= 0)
+                    if (DateTime.Compare(car.MarketDateTime, DateTime.Now.Date) >= 0)
                     {
                         if (isShowDate)
                         {
@@ -5794,7 +5794,7 @@ namespace BitAuto.CarChannel.BLL
                     int count = 0;
                     foreach (var item in carList)
                     {
-                        XmlDocument xmlDoc = CommonFunction.ReadXml(Path.Combine(PhotoImageConfig.SavePath, string.Format(@"SerialCarReallyPic\{0}.xml", item.CarID)));
+                        XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(Path.Combine(PhotoImageConfig.SavePath, string.Format(@"SerialCarReallyPic\{0}.xml", item.CarID)));
                         if (xmlDoc != null && xmlDoc.HasChildNodes)
                         {
                             XmlNode node = xmlDoc.SelectSingleNode("//Data//Total");
@@ -5858,7 +5858,7 @@ namespace BitAuto.CarChannel.BLL
             //int res =DateTime.Compare(entity.MarketDateTime, DateTime.MinValue);
             if (DateTime.Compare(marketDate, DateTime.MinValue) != 0)
             {
-                int days = (DateTime.Now - marketDate).Days;// GetDaysAboutCurrentDateTime(entity.MarketDateTime);
+                int days = (DateTime.Now.Date - marketDate).Days;// GetDaysAboutCurrentDateTime(entity.MarketDateTime);
                 if (days >= 0 && days <= 30)
                 {
                     if (saleSate.Trim() == "在销")

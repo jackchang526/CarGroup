@@ -75,12 +75,13 @@ namespace BitAuto.CarChannel.BLL
 				var ds = VideoDal.GetVideoBySerialIdAndCategoryId(serialId, categoryIdList, top);
 				foreach (DataRow dr in ds.Tables[0].Rows)
 				{
-					list.Add(new VideoEntity()
-					{
-						VideoId = ConvertHelper.GetInteger(dr["VideoId"]),
-						ShortTitle = dr["ShortTitle"].ToString(),
-						ImageLink = dr["ImageLink"].ToString(),
-						ShowPlayUrl = dr["ShowPlayUrl"].ToString()
+                    list.Add(new VideoEntity()
+                    {
+                        VideoId = ConvertHelper.GetInteger(dr["VideoId"]),
+                        ShortTitle = dr["ShortTitle"].ToString(),
+                        ImageLink = dr["ImageLink"].ToString(),
+                        ShowPlayUrl = dr["ShowPlayUrl"].ToString(),
+                        Source = ConvertHelper.GetInteger(dr["Source"])
 					});
 				}
 			}
@@ -111,7 +112,8 @@ namespace BitAuto.CarChannel.BLL
 						ShortTitle = dr["ShortTitle"].ToString(),
 						ImageLink = dr["ImageLink"].ToString(),
 						ShowPlayUrl = dr["ShowPlayUrl"].ToString(),
-						Duration = ConvertHelper.GetInteger(dr["Duration"])
+						Duration = ConvertHelper.GetInteger(dr["Duration"]),
+                        Source = ConvertHelper.GetInteger(dr["Source"])
 					});
 				}
 			}
@@ -194,6 +196,7 @@ namespace BitAuto.CarChannel.BLL
 								entity.ImageLink = dr["ImageLink"].ToString();
 								entity.ShowPlayUrl = dr["ShowPlayUrl"].ToString();
 								entity.Duration = ConvertHelper.GetInteger(dr["Duration"]);
+                                entity.Source = ConvertHelper.GetInteger(dr["Source"]);
 								loop++;
 								if (loop > top) break;
 								list.Add(entity);

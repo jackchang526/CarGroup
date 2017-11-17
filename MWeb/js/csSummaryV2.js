@@ -423,50 +423,6 @@ function goSummary() {
 //	}
 //}
 
-var firstShowDemandLink = false;
-// 特卖
-
-function getDemandAndJiangJia(serialId, serialSpell, cityId) {
-    $.ajax({
-        url: 'http://api.car.bitauto.com/mai/GetSerialDemand.ashx?serialId=' + serialId + '&cityid=' + cityId,
-        async: false,
-        cache: true,
-        dataType: "jsonp",
-        jsonpCallback: "newDemandCallback",
-        success:
-        function (data) {
-            var hasDemand = false;
-            if (typeof data != 'undefined' && data != null
-                && typeof data.DealerCount != 'undefined' && data.DealerCount != null && data.DealerCount > 0) {
-                hasDemand = true;
-            }
-            if (hasDemand) {
-                var cityName = "北京";
-                if (typeof cityIDMapName != 'undefined' && cityIDMapName != null && typeof cityIDMapName[cityId] != "undefined") {
-                    cityName = cityIDMapName[cityId];
-                }
-                var citySpell = "beijing";
-                if (typeof cityIDMapSpell != 'undefined' && cityIDMapSpell != null && typeof cityIDMapSpell[cityId] != "undefined") {
-                    citySpell = cityIDMapSpell[cityId];
-                }
-                // 导航限时抢购
-                //导航 第1次显示，再不变化
-                if (!firstShowDemandLink) {
-                    //			            $("#liDemand").html("<a href=\"http://mai.m.yiche.com/detail-" + serialId + ".html?leads_source=21101&city=" + citySpell + "\">特卖</a>");
-                    //			            $("#liDemand").show();
-                    //去掉车型特卖
-                    //			            if (typeof data.CarList != 'undefined' && data.CarList != null) {
-                    //			                $.each(data.CarList, function (i, n) {
-                    //			                    $("em[id^='carlist_" +  n.CarID + "']").show();
-                    //			                });
-                    //			            }
-                }
-                firstShowDemandLink = true;
-            }
-        }
-    });
-}
-
 var baoxiaoOrImport = [];
 
 (function () {
@@ -476,44 +432,44 @@ var baoxiaoOrImport = [];
         cityAllSpell = bit_locationInfo.engName;
     }
 
-    //商城接口（包销） songcl 2015-06-30
-    $.ajax({
-        url: "http://api.car.bitauto.com/mai/GetSerialParallelAndSell.ashx?serialId=" + CarCommonCSID + "&cityid=" + citycode,
-        async: false,
-        dataType: "jsonp",
-        jsonpCallback: "baseinfo",
-        cache: true,
-        success: function (data) {
-            var arrBaoxiao = [];
-            var arrPingXingImport = [];
-            //包销车或者平行进口车
-            if (data.CarList.length > 0) {
-                baoxiaoOrImport = [];
-                for (var k in data.CarList) {
-                    baoxiaoOrImport.push(data.CarList[k].CarId);
-                    if (data.CarList[k].CarType == 0) {
-                        arrBaoxiao.push(data.CarList[k].CarId);
-                    }
-                    if (data.CarList[k].CarType == 1) {
-                        arrPingXingImport.push(data.CarList[k].CarId);
-                    }
-                    //$("a[id^='car_filter_id_" + data.CarList[k].CarId + "']").attr("href", "http://m.yichemall.com/car/Detail/Index?carId=" + data.CarList[k].CarId + "&source=myc-zs-loan-01");
-                    $("a[id^='car_filterzuidi_id_" + data.CarList[k].CarId + "']").attr("href", "http://m.yichemall.com/car/Detail/Index?carId=" + data.CarList[k].CarId + "&source=100064&leads_source=m002016").html("直销特卖");
-                }
+    //商城接口（包销） songcl 2015-06-30  业务取消
+    //$.ajax({
+    //    url: "http://api.car.bitauto.com/mai/GetSerialParallelAndSell.ashx?serialId=" + CarCommonCSID + "&cityid=" + citycode,
+    //    async: false,
+    //    dataType: "jsonp",
+    //    jsonpCallback: "baseinfo",
+    //    cache: true,
+    //    success: function (data) {
+    //        var arrBaoxiao = [];
+    //        var arrPingXingImport = [];
+    //        //包销车或者平行进口车
+    //        if (data.CarList.length > 0) {
+    //            baoxiaoOrImport = [];
+    //            for (var k in data.CarList) {
+    //                baoxiaoOrImport.push(data.CarList[k].CarId);
+    //                if (data.CarList[k].CarType == 0) {
+    //                    arrBaoxiao.push(data.CarList[k].CarId);
+    //                }
+    //                if (data.CarList[k].CarType == 1) {
+    //                    arrPingXingImport.push(data.CarList[k].CarId);
+    //                }
+    //                //$("a[id^='car_filter_id_" + data.CarList[k].CarId + "']").attr("href", "http://m.yichemall.com/car/Detail/Index?carId=" + data.CarList[k].CarId + "&source=myc-zs-loan-01");
+    //                $("a[id^='car_filterzuidi_id_" + data.CarList[k].CarId + "']").attr("href", "http://m.yichemall.com/car/Detail/Index?carId=" + data.CarList[k].CarId + "&source=100064&leads_source=m002016").html("直销特卖");
+    //            }
 
-                if (arrBaoxiao.length > 0) {
-                    //$("#dujia").show();
-                    //$("#baoxiaoche").show();
-                    ////试驾
-                    ////getShiJiaData();
-                } else {
-                    //$("#feibaoxiaoche").show();
-                }
-            } else {
-                //$("#feibaoxiaoche").show();
-            }
-        }
-    });
+    //            if (arrBaoxiao.length > 0) {
+    //                //$("#dujia").show();
+    //                //$("#baoxiaoche").show();
+    //                ////试驾
+    //                ////getShiJiaData();
+    //            } else {
+    //                //$("#feibaoxiaoche").show();
+    //            }
+    //        } else {
+    //            //$("#feibaoxiaoche").show();
+    //        }
+    //    }
+    //});
 
     //统计
     var channelIDs = { "3": "27.23.115", "9": "27.23.119", "10": "27.23.120", "11": "27.23.121", "12": "27.23.122", "13": "27.23.123", "14": "27.23.994", "15": "27.23.2178" };
@@ -764,22 +720,35 @@ function FocusCar(obj) {
 
 $(function () {
     Bitauto && Bitauto.Login && Bitauto.Login.onComplatedHandlers && Bitauto.Login.onComplatedHandlers.add("memory once", initLoginFavCar);
-
-    var ids = $("#ids").val();
-    if ($("#ids").length > 0 && ids.length > 0) {
-        $.ajax({
-            url: "http://v.bitauto.com/vbase/CacheManager/GetVideoTotalVisitCommentCountByIds?ids=" + ids,
-            async: false,
+    var mvideo = $("#m_video .play-num");
+    var vidArr = [],
+        vfidArr = [],
+        length = $(mvideo).length;
+    if (length == 0) {
+        return;
+    }
+    for (var i = 0; i < length; i++) {
+        if ($(mvideo[i]).attr("type") == "vf") {
+            vfidArr.push($(mvideo[i]).attr("id"));
+        }
+        else {
+            vidArr.push($(mvideo[i]).attr("id"));
+        }
+    }
+    //var ids = $("#ids").val();
+    //if ($("#ids").length > 0 && ids.length > 0) {
+    $.ajax({
+        url: "http://api.admin.bitauto.com/videoforum/Promotion/GetVideoByVideoIds?vIds=" + vidArr.join(",") + "&vfids=" + vfidArr.join(","),
             dataType: "jsonp",
             jsonpCallback: "successHandler",
             cache: true,
             success: function (data) {
                 $(data).each(function (index, item) {
-                    $("#viewcount_" + item.VideoId).html(item.TotalVisit);
+                    $("#m_video .play-num[id='" + item.VideoId + "']").html(item.FormatPlayCount);
                 });
             }
         });
-    }
+    //}
 
     // 底部浮动层
     var curSerialSaleState = "@(serialEntity.SaleState)";//

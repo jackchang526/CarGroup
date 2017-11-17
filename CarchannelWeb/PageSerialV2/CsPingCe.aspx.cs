@@ -912,7 +912,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             return string.Format("<a href='{0}' target='_blank'>{1}</a> ", editer.UserBlogUrl, editer.UserName);
         }
 
-        protected string VideoIds = "";
+        //protected string VideoIds = "";
         /// <summary>
         ///     获取子品牌视频
         /// </summary>
@@ -943,8 +943,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
 
             foreach (var entity in videoList)
             {
-                VideoIds += entity.VideoId + ",";
-                sb.AppendFormat("<div class=\"img-info-layout img-info-layout-video img-info-layout-14079\" data-id=\"{0}\">", entity.VideoId);
+                //VideoIds += entity.VideoId + ",";
+                sb.AppendFormat("<div class=\"img-info-layout img-info-layout-video img-info-layout-14079\" data-type=\"{1}\" data-id=\"{0}\">", entity.VideoId, entity.Source == 1 ? "vf" : "v");
                 sb.Append("    <div class=\"img\">");
                 sb.AppendFormat(
                     "<a target=\"_blank\" href=\"{0}\"><i class=\"bg-ico-sty play-btn\"></i><img src = \"{1}\"></a>",

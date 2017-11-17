@@ -992,6 +992,8 @@
     <!--/经销商弹层-->
     <!--#include file="~/include/pd/2016/yipaicms/00001/201701_Summary_SCInfoPopup_Manual.shtml"-->
     <!--#include file="~/htmlv2/rightbar.shtml"-->
+    <!--底浮三贞广告-->
+    <!--#include file="~/include/pd/2016/App/00001/ad_zongshu_difu_Manual.shtml"-->
     <%--<script type="text/javascript">
         (function(global) {
             var config =global.SidebarConfig||{};

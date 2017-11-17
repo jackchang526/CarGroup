@@ -2155,7 +2155,7 @@ namespace BitAuto.CarChannel.BLL
 
                                     parameter = new ParameterGroupEntity();
                                     parameter.GroupID = i;
-                                    parameter.Name = xnCate.Attributes["Name"].Value.ToString();
+                                    parameter.Name = xnCate.Attributes["Name"].Value;
 
 
                                     // 大分类
@@ -2169,10 +2169,10 @@ namespace BitAuto.CarChannel.BLL
                                             if (xn.NodeType == XmlNodeType.Element)
                                             {
                                                 field = new ParameterGroupFieldEntity();
-                                                field.Key = xn.Attributes["Value"].Value.ToString();
+                                                field.Key = xn.Attributes["Value"].Value;
                                                 field.ParamID = TypeParse.StrToInt(xn.Attributes["ParamID"].Value, 0);
-                                                field.Unit = xn.Attributes["Unit"].Value.ToString();
-                                                field.Title = xn.Attributes["Name"].Value.ToString();
+                                                field.Unit = xn.Attributes["Unit"].Value;
+                                                field.Title = xn.Attributes["Name"].Value;
                                                 parameter.Fields.Add(field);
                                             }
                                         }
@@ -2182,14 +2182,13 @@ namespace BitAuto.CarChannel.BLL
                                 }
                             }
                         }
-                        CacheDependency cacheDependency = new CacheDependency(fileName);
-                        CacheManager.InsertCache(cacheKey, parameterGroup, cacheDependency, DateTime.Now.AddMinutes(10));
+                        CacheManager.InsertCache(cacheKey, parameterGroup, 10);
                     }
                 }
             }
             catch (Exception ex)
             {
-                CommonFunction.WriteLog("解析分组ParameterConfigurationNewV2.config错误");
+                CommonFunction.WriteLog(string.Format("解析分组ParameterConfigurationNewV2.config错误,Message:{0},StackTrace:{1}", ex.Message,ex.StackTrace));
             }
             return parameterGroup;
         }

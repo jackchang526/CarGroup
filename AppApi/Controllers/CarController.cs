@@ -143,7 +143,38 @@ namespace AppApi.Controllers
                 }
             });
 
+        }   /// <summary>
+            /// 车型参数
+            /// </summary>
+            /// <param name="serialId"></param>
+            /// <returns></returns>
+        [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
+        public ActionResult GetCarListByCSIdAndCityId(int? csid, int? cityId)
+        {
+
+            List<string> carSaleList = new List<string>();
+            List<string> carNoSaleList = new List<string>();
+            List<string> carWaitSaleList = new List<string>();
+
+            var carinfoList = CarBasicService.GetCarInfoForSerialSummaryBySerialId(csid.GetValueOrDefault(0));
+
+
+
+            return AutoJson(new
+            {
+                success = true,
+                status = WebApiResultStatus.成功,
+                message = "ok",
+                data = new
+                {
+                    ParamList = carinfoList
+                }
+            });
         }
+
+
+
+
 
 
         #region zhangzhiyang work zone

@@ -2522,12 +2522,11 @@ namespace BitAuto.CarChannel.BLL
                         });
                     }
                     carIds.Add(item.CarID);
-                    var carParams = GetCarParamValue(item.CarID, 895);
                     carGroupDic[groupKey].CarList.Add(new CarInfoEntity
                     {
                         CarId = item.CarID,
                         Name = item.CarName,
-                        Year = item.CarYear,
+                        Year =TypeParse.StrToInt(item.CarYear,2000),
                         IsSupport = item.IsImport == 1,
                         MinPrice = item.CarPriceRange,
                         ReferPrice = item.ReferPrice,

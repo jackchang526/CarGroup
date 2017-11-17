@@ -28,7 +28,7 @@ namespace BitAuto.CarChannel.Model.AppModel
         /// 车型名称
         /// </summary>
         public string Name { get; set; }
-        public string Year { get; set; }
+        public int Year { get; set; }
         /// <summary>
         /// 是否商城在销
         /// </summary>

@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.UI;
+using YiChe.Core.Extensions;
 
 namespace AppApi.Controllers
 {
@@ -329,6 +330,103 @@ namespace AppApi.Controllers
             }
         }
 
+
+        /// <summary>
+        /// 获取车型名片
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
+        public ActionResult GetCarStylePropertyById(int? id)
+        {
+            Dictionary<string, string> carProperty = CarSerialService.GetCarStylePropertyById(id.GetValueOrDefault(0));
+            if (carProperty.Keys.Count == 0)
+            {
+                return JsonNet(new { success = false, status = 0, message = "未找到数据", data = "" }, JsonRequestBehavior.AllowGet);
+            }
+
+            var taxPer = carProperty.GetValueOrDefault("traveltax");
+            var travePerTax = 1.0;
+            var tax = "无";
+            switch (taxPer)
+            {
+                case "免征":
+                    tax = "免征";
+                    travePerTax = 0;
+                    break;
+                case "减半":
+                    tax = "75折";
+                    travePerTax = 0.75;
+                    break;
+                case "待查":
+                    tax = "待查";
+                    travePerTax = 1.0;
+                    break;
+                default:
+                    tax = "无";
+                    travePerTax = 1.0;
+                    break;
+            }
+            int taxrelief = TypeParse.StrToInt(carProperty.GetValueOrDefault("taxrelief"), 0);
+            string strExhaust = carProperty.GetValueOrDefault("exhaustforfloat");
+            float floatExhaust = 0;
+            double purchasetax = 0.0854700854700855;
+            if (float.TryParse(strExhaust, out floatExhaust))
+            {
+                if (floatExhaust > 0 && floatExhaust <= (float)1.6)
+                {
+                    purchasetax = 0.064102564102564125;
+                }
+            }
+
+            if (taxrelief == 2)
+            {
+                purchasetax = 0;
+            }
+
+            var result = new
+            {
+                carID = id,
+                isGuoChan = carProperty.GetValueOrDefault("isGuoChan"),
+                engine = carProperty.GetValueOrDefault("engine"),
+                exhaustforfloat = strExhaust,
+                traveltax = tax,
+                seatNum = carProperty.GetValueOrDefault("seatNum"),
+                purchasetax = purchasetax,
+                fuelType = TransferFuelType(carProperty.GetValueOrDefault("fuelType")),
+                travePerTax = travePerTax
+            };
+            return JsonNet(new { success = true, status = 1, message = "成功", data = result }, JsonRequestBehavior.AllowGet);
+        }
+
+        private string TransferFuelType(string fuelType)
+        {
+            var newFuelType = string.Empty;
+            switch (fuelType)
+            {
+                case "汽油":
+                    newFuelType = "0";
+                    break;
+                case "柴油":
+                    newFuelType = "1";
+                    break;
+                case "纯电":
+                    newFuelType = "2";
+                    break;
+                case "油电混合":
+                    newFuelType = "3";
+                    break;
+                case "插电混合":
+                    newFuelType = "4";
+                    break;
+                case "天然气":
+                    newFuelType = "5";
+                    break;
+            }
+            return newFuelType;
+        }
+
         #endregion
     }
+
 }

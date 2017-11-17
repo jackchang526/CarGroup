@@ -8636,5 +8636,16 @@ namespace BitAuto.CarChannel.BLL
             return result;
         }
 
+
+        /// <summary>
+        /// 	根据车款ID获取相关信息
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public Dictionary<string, string> GetCarStylePropertyById(int id)
+        {
+            return csd.GetCarStylePropertyById(id);
+        }
+
     }
 }

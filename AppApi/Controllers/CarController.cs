@@ -159,7 +159,7 @@ namespace AppApi.Controllers
 
             var CarGroupList = CarBasicService.GetCarGroupBySerialIdAndCSID(cityId.GetValueOrDefault(0), csid.GetValueOrDefault(0),includeStopSale.GetValueOrDefault(false));
 
-            var carlist = CarBasicService.GetCarListForSerialSummaryBySerialId(csid.GetValueOrDefault(0), includeStopSale.GetValueOrDefault(false));
+            //var carlist = CarBasicService.GetCarListForSerialSummaryBySerialId(csid.GetValueOrDefault(0), includeStopSale.GetValueOrDefault(false));
 
             return AutoJson(new
             {
@@ -168,8 +168,7 @@ namespace AppApi.Controllers
                 message = "ok",
                 data = new
                 {
-                    CarGroupList = CarGroupList,
-                    carlist= carlist
+                    CarGroupList = CarGroupList
                 }
             });
         }

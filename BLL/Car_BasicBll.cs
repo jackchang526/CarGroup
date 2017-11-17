@@ -2522,6 +2522,7 @@ namespace BitAuto.CarChannel.BLL
                         });
                     }
                     carIds.Add(item.CarID);
+                    var newStatus = serialBll.GetCarMarketText(item.CarID, item.SaleState, item.MarketDateTime, item.ReferPrice);
                     carGroupDic[groupKey].CarList.Add(new CarInfoEntity
                     {
                         CarId = item.CarID,
@@ -2532,7 +2533,7 @@ namespace BitAuto.CarChannel.BLL
                         ReferPrice = item.ReferPrice,
                         Trans = item.TransmissionType,
                         SaleState = item.SaleState,
-                        NewSaleStatus = serialBll.GetCarMarketText(item.CarID, item.SaleState, item.MarketDateTime, item.ReferPrice),
+                        NewSaleStatus = string.IsNullOrWhiteSpace(newStatus)? item.SaleState: newStatus,
                         SupportType = 0,
                         ImportType = item.IsImport == 1 ? "平行进口车" : "",
                         CarPV = item.CarPV,

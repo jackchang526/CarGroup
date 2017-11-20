@@ -2127,14 +2127,14 @@ namespace BitAuto.CarChannel.BLL
         /// 车型参数模板
         /// </summary>
         /// <returns></returns>
-        public List<ParameterGroupEntity> GetCarParameterJsonConfig(bool isVersion86)
+        public List<ParameterGroupEntity> GetCarParameterJsonConfig(bool isVersion87)
         {
             List<ParameterGroupEntity> parameterGroup = new List<ParameterGroupEntity>();
             try
             {
 
 
-                string cacheKey = string.Format(DataCacheKeys.CarParameterJson, isVersion86);
+                string cacheKey = string.Format(DataCacheKeys.CarParameterJson, isVersion87);
                 object getCarParameterJsonConfig = CacheManager.GetCachedData(cacheKey);
                 if (getCarParameterJsonConfig != null)
                 {
@@ -2142,7 +2142,7 @@ namespace BitAuto.CarChannel.BLL
                 }
                 else
                 {
-                    if (isVersion86)
+                    if (isVersion87)
                     {
                         string fileName = parameterConfigPath;
                         if (File.Exists(fileName))
@@ -2253,10 +2253,10 @@ namespace BitAuto.CarChannel.BLL
         /// 生成参数模版字典
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string, ParameterGroupFieldEntity> GetParamDic(bool isVersion86)
+        public Dictionary<string, ParameterGroupFieldEntity> GetParamDic(bool isVersion87)
         {
             Dictionary<string, ParameterGroupFieldEntity> result = new Dictionary<string, ParameterGroupFieldEntity>();
-            var parameterList = GetCarParameterJsonConfig(isVersion86);
+            var parameterList = GetCarParameterJsonConfig(isVersion87);
             foreach (var item in parameterList)
             {
                 foreach (var field in item.Fields)
@@ -2270,14 +2270,14 @@ namespace BitAuto.CarChannel.BLL
             return result;
         }
 
-        public List<CarParameterListEntity> GetCarParamterListWithWebCacheByCarIds(List<int> carIds, bool isVersion86)
+        public List<CarParameterListEntity> GetCarParamterListWithWebCacheByCarIds(List<int> carIds, bool isVersion87)
         {
             //return GetCarParamterListByCarIds(carIds);
-            string carParamterKey = string.Format(DataCacheKeys.CarParameterListKey, isVersion86, string.Join("_", carIds));
+            string carParamterKey = string.Format(DataCacheKeys.CarParameterListKey, isVersion87, string.Join("_", carIds));
             var carParamterList = CacheManager.GetCachedData(carParamterKey);
             if (carParamterList == null)
             {
-                List<CarParameterListEntity> newCarParamterList = GetCarParamterListByCarIds(carIds, isVersion86);
+                List<CarParameterListEntity> newCarParamterList = GetCarParamterListByCarIds(carIds, isVersion87);
 
                 if (newCarParamterList != null && newCarParamterList.Count > 0)
                 {
@@ -2289,7 +2289,7 @@ namespace BitAuto.CarChannel.BLL
             return (List<CarParameterListEntity>)carParamterList;
         }
 
-        public List<CarParameterListEntity> GetCarParamterListByCarIds(List<int> carIds, bool isVersion86)
+        public List<CarParameterListEntity> GetCarParamterListByCarIds(List<int> carIds, bool isVersion87)
         {
             /*
             有  黑点
@@ -2302,7 +2302,7 @@ namespace BitAuto.CarChannel.BLL
              */
             List<CarParameterListEntity> result = new List<CarParameterListEntity>();
             Dictionary<int, Dictionary<string, string>> parameterDic = GetCarCompareDataWithOptionalByCarIDs(carIds);
-            var fieldDic = GetParamDic(isVersion86);
+            var fieldDic = GetParamDic(isVersion87);
             List<CarParameterEntity> carParameterList;
             foreach (var group in parameterDic)
             {

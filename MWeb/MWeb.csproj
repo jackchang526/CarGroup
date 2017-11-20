@@ -255,6 +255,7 @@
     <Content Include="js\model.js" />
     <Content Include="js\mpeizhi.js" />
     <Content Include="js\mpeizhiv2.js" />
+    <Content Include="js\paowuxian.js" />
     <Content Include="js\popup.js" />
     <Content Include="js\rightswipe-cityV2.js" />
     <Content Include="js\selectcartoolV2.js" />

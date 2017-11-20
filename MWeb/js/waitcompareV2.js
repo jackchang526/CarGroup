@@ -1,4 +1,5 @@
-﻿Array.prototype.indexOf = function (value) {
+﻿//依赖文件paowuxian.js
+Array.prototype.indexOf = function (value) {
     for (var i = 0, l = this.length; i < l; i++)
         if (this[i] == value) return i;
     return -1;
@@ -27,13 +28,15 @@ var arrMarkSerial = [], saleYearCount = 0,
     currentDuibiCarId;  //从对比页面传入的车款值
 var WaitCompare = (function (module) {
     var self = module,
-		arrSelectCarId = [],  //已经选择过的车款
+        arrSelectCarId = [],  //已经选择过的车款
+        eleShopCart = document.querySelector("#duibiAti"),//已选择加对比的车的数量
+        eleFlyElement = document.querySelector("#flyItem"),//抛物线效果div
         defaults = {
             count: 4,
             duibiCookieName: "m_comparecarlist",
-            duibiLocalName:"car_m_localcomaprelist",
+            duibiLocalName: "car_m_localcomaprelist",
             historyCookieName: "m_historycomparecarlist",
-            historyLocalName:"car_m_localhistorycomparelist",
+            historyLocalName: "car_m_localhistorycomparelist",
             url: "/handlers/getcarinfoforcompare.ashx?carid=",  //http://car.m.yiche.com/handlers/getcarinfoforcompare.ashx?carid=114462
             selector: "a[id^='car-compare']",//绑定所有点击事件
             oneSelector: "#car-compare-",//绑定单个点击事件
@@ -76,6 +79,21 @@ var WaitCompare = (function (module) {
                 var $addElem = $(defaults.oneSelector + id);
                 self.updateHistoryCars(id);  //添加到历史记录缓存
                 self.addCompareCar(id, name, $addElem);
+            },
+            myParabola: function () {//抛物线效果
+                var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+                    scrollTop = document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+                eleFlyElement.style.left = event.clientX + scrollLeft + "px";
+                eleFlyElement.style.top = event.clientY + scrollTop + "px";
+                eleFlyElement.style.visibility = "visible";
+                funParabola(eleFlyElement, eleShopCart, {
+                    speed: 200,
+                    curvature: 0.003,
+                    complete: function () {
+                        eleFlyElement.style.visibility = "hidden";
+                    }
+                }).position().move();
             }
         };
     //添加对比
@@ -95,6 +113,7 @@ var WaitCompare = (function (module) {
             alert("添加车款已经存在");
             return;
         }
+        
         arrCarId.push(id);
         //CookieHelper.setCookie(defaults.duibiCookieName, arrCarId.join('|'));
         LocalStorageData.setData(defaults.duibiLocalName, arrCarId.join('|'));
@@ -106,11 +125,12 @@ var WaitCompare = (function (module) {
         });
         drawDuibiBtnUI();
         self.updateCount();
+        //加对比效果
+        defaults.myParabola();
         if (defaults.selectedFunc && defaults.selectedFunc instanceof Function) {
             defaults.selectedFunc(id);
         }
         CarCompareAd.initAd(compareData);
-
     };
     //清空对比
     module.clearCompareCarAll = function () {

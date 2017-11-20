@@ -141,6 +141,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="TypeParse.cs" />
+    <Compile Include="VersionHelper.cs" />
     <Compile Include="Web References\cn.com.baa.api\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

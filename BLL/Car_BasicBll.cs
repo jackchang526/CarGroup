@@ -2127,14 +2127,14 @@ namespace BitAuto.CarChannel.BLL
         /// 车型参数模板
         /// </summary>
         /// <returns></returns>
-        public List<ParameterGroupEntity> GetCarParameterJsonConfig()
+        public List<ParameterGroupEntity> GetCarParameterJsonConfig(bool isVersion86)
         {
             List<ParameterGroupEntity> parameterGroup = new List<ParameterGroupEntity>();
             try
             {
 
 
-                string cacheKey = DataCacheKeys.CarParameterJson;
+                string cacheKey = string.Format(DataCacheKeys.CarParameterJson, isVersion86);
                 object getCarParameterJsonConfig = CacheManager.GetCachedData(cacheKey);
                 if (getCarParameterJsonConfig != null)
                 {
@@ -2142,52 +2142,104 @@ namespace BitAuto.CarChannel.BLL
                 }
                 else
                 {
-                    string fileName = parameterConfigPath;
-                    if (File.Exists(fileName))
+                    if (isVersion86)
                     {
-                        XmlDocument doc = new XmlDocument();
-                        doc.Load(fileName);
-                        if (doc != null && doc.HasChildNodes)
+                        string fileName = parameterConfigPath;
+                        if (File.Exists(fileName))
                         {
-                            ParameterGroupEntity parameter;
-                            XmlNodeList xnl = doc.SelectNodes("/ParameterConfigurationList/Parameter/ParameterList");
-                            if (xnl != null && xnl.Count > 0)
+                            XmlDocument doc = new XmlDocument();
+                            doc.Load(fileName);
+                            if (doc != null && doc.HasChildNodes)
                             {
-                                int i = 0;
-                                foreach (XmlNode xnCate in xnl)
+                                ParameterGroupEntity parameter;
+                                XmlNodeList xnl = doc.SelectNodes("/ParameterConfigurationList/Parameter/ParameterList");
+                                if (xnl != null && xnl.Count > 0)
                                 {
-
-                                    parameter = new ParameterGroupEntity();
-                                    parameter.GroupID = i;
-                                    parameter.Name = xnCate.Attributes["Name"].Value;
-
-
-                                    // 大分类
-                                    if (xnCate.ChildNodes.Count > 0)
+                                    int i = 0;
+                                    foreach (XmlNode xnCate in xnl)
                                     {
-                                        parameter.Fields = new List<ParameterGroupFieldEntity>();
-                                        ParameterGroupFieldEntity field;
-                                        // 分类内项
-                                        foreach (XmlNode xn in xnCate.ChildNodes)
+
+                                        parameter = new ParameterGroupEntity();
+                                        parameter.GroupID = i;
+                                        parameter.Name = xnCate.Attributes["Name"].Value;
+
+
+                                        // 大分类
+                                        if (xnCate.ChildNodes.Count > 0)
                                         {
-                                            if (xn.NodeType == XmlNodeType.Element)
+                                            parameter.Fields = new List<ParameterGroupFieldEntity>();
+                                            ParameterGroupFieldEntity field;
+                                            // 分类内项
+                                            foreach (XmlNode xn in xnCate.ChildNodes)
                                             {
-                                                field = new ParameterGroupFieldEntity();
-                                                field.Key = xn.Attributes["Value"].Value;
-                                                field.ParamID = TypeParse.StrToInt(xn.Attributes["ParamID"].Value, 0);
-                                                field.Unit = xn.Attributes["Unit"].Value;
-                                                field.Title = xn.Attributes["Name"].Value;
-                                                parameter.Fields.Add(field);
+                                                if (xn.NodeType == XmlNodeType.Element)
+                                                {
+                                                    field = new ParameterGroupFieldEntity();
+                                                    field.Key = xn.Attributes["Value"].Value;
+                                                    field.ParamID = TypeParse.StrToInt(xn.Attributes["ParamID"].Value, 0);
+                                                    field.Unit = xn.Attributes["Unit"].Value;
+                                                    field.Title = xn.Attributes["Name"].Value;
+                                                    parameter.Fields.Add(field);
+                                                }
                                             }
                                         }
+                                        i++;
+                                        parameterGroup.Add(parameter);
                                     }
-                                    i++;
-                                    parameterGroup.Add(parameter);
+                                }
+                            }
+                           
+                        }
+                    }
+                    else
+                    {
+                        string fileName = System.Web.HttpContext.Current.Server.MapPath("~") + "\\config\\ParameterForJsonNewV2.xml";
+                        if (File.Exists(fileName))
+                        {
+                            XmlDocument doc = new XmlDocument();
+                            doc.Load(fileName);
+                            if (doc != null && doc.HasChildNodes)
+                            {
+                                ParameterGroupEntity parameter;
+                                XmlNodeList xnl = doc.SelectNodes("/Param/Group");
+                                if (xnl != null && xnl.Count > 0)
+                                {
+                                    int i = 0;
+                                    foreach (XmlNode xnCate in xnl)
+                                    {
+
+                                        parameter = new ParameterGroupEntity();
+                                        parameter.GroupID = i;
+                                        parameter.Name = xnCate.Attributes["Desc"].Value.ToString();
+
+
+                                        // 大分类
+                                        if (xnCate.ChildNodes.Count > 0)
+                                        {
+                                            parameter.Fields = new List<ParameterGroupFieldEntity>();
+                                            ParameterGroupFieldEntity field;
+                                            // 分类内项
+                                            foreach (XmlNode xn in xnCate.ChildNodes)
+                                            {
+                                                if (xn.NodeType == XmlNodeType.Element)
+                                                {
+                                                    field = new ParameterGroupFieldEntity();
+                                                    field.Key = xn.Attributes["Value"].Value.ToString();
+                                                    field.ParamID = TypeParse.StrToInt(xn.Attributes["ParamID"].Value, 0);
+                                                    field.Unit = xn.Attributes["Unit"].Value.ToString();
+                                                    field.Title = xn.Attributes["Desc"].Value.ToString();
+                                                    parameter.Fields.Add(field);
+                                                }
+                                            }
+                                        }
+                                        i++;
+                                        parameterGroup.Add(parameter);
+                                    }
                                 }
                             }
                         }
-                        CacheManager.InsertCache(cacheKey, parameterGroup, 10);
                     }
+                    CacheManager.InsertCache(cacheKey, parameterGroup, 10);
                 }
             }
             catch (Exception ex)
@@ -2201,10 +2253,10 @@ namespace BitAuto.CarChannel.BLL
         /// 生成参数模版字典
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string, ParameterGroupFieldEntity> GetParamDic()
+        public Dictionary<string, ParameterGroupFieldEntity> GetParamDic(bool isVersion86)
         {
             Dictionary<string, ParameterGroupFieldEntity> result = new Dictionary<string, ParameterGroupFieldEntity>();
-            var parameterList = GetCarParameterJsonConfig();
+            var parameterList = GetCarParameterJsonConfig(isVersion86);
             foreach (var item in parameterList)
             {
                 foreach (var field in item.Fields)
@@ -2218,14 +2270,14 @@ namespace BitAuto.CarChannel.BLL
             return result;
         }
 
-        public List<CarParameterListEntity> GetCarParamterListWithWebCacheByCarIds(List<int> carIds)
+        public List<CarParameterListEntity> GetCarParamterListWithWebCacheByCarIds(List<int> carIds, bool isVersion86)
         {
             //return GetCarParamterListByCarIds(carIds);
-            string carParamterKey = string.Format(DataCacheKeys.CarParameterListKey, string.Join("_", carIds));
+            string carParamterKey = string.Format(DataCacheKeys.CarParameterListKey, isVersion86, string.Join("_", carIds));
             var carParamterList = CacheManager.GetCachedData(carParamterKey);
             if (carParamterList == null)
             {
-                List<CarParameterListEntity> newCarParamterList = GetCarParamterListByCarIds(carIds);
+                List<CarParameterListEntity> newCarParamterList = GetCarParamterListByCarIds(carIds, isVersion86);
 
                 if (newCarParamterList != null && newCarParamterList.Count > 0)
                 {
@@ -2237,7 +2289,7 @@ namespace BitAuto.CarChannel.BLL
             return (List<CarParameterListEntity>)carParamterList;
         }
 
-        public List<CarParameterListEntity> GetCarParamterListByCarIds(List<int> carIds)
+        public List<CarParameterListEntity> GetCarParamterListByCarIds(List<int> carIds, bool isVersion86)
         {
             /*
             有  黑点
@@ -2250,7 +2302,7 @@ namespace BitAuto.CarChannel.BLL
              */
             List<CarParameterListEntity> result = new List<CarParameterListEntity>();
             Dictionary<int, Dictionary<string, string>> parameterDic = GetCarCompareDataWithOptionalByCarIDs(carIds);
-            var fieldDic = GetParamDic();
+            var fieldDic = GetParamDic(isVersion86);
             List<CarParameterEntity> carParameterList;
             foreach (var group in parameterDic)
             {
@@ -2538,7 +2590,7 @@ namespace BitAuto.CarChannel.BLL
                         SupportType = 0,
                         ImportType = item.IsImport == 1 ? "平行进口车" : "",
                         CarPV = item.CarPV,
-                        IsTax =(!string.IsNullOrWhiteSpace(taxreief)),//
+                        IsTax = (!string.IsNullOrWhiteSpace(taxreief)),//
                         TaxRelief = taxreief,//
                         TimeToMarket = item.MarketDateTime.ToString(),
                         IsHaveImage = false///

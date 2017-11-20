@@ -20,6 +20,7 @@ namespace AppApi.Controllers
     [JsonHandleError] //出错时以Json格式显示
     public class CarController : BaseController
     {
+        bool isVersion86 = VersionHelper.CompareVersion("8.6") >= 0;
         #region Service
 
         static Car_MasterBrandBll _Car_MasterBrandBll;
@@ -93,7 +94,8 @@ namespace AppApi.Controllers
         [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
         public ActionResult GetCarParameterGroup()
         {
-            var result = CarBasicService.GetCarParameterJsonConfig();
+
+            var result = CarBasicService.GetCarParameterJsonConfig(isVersion86);
             return AutoJson(new
             {
                 success = true,
@@ -132,7 +134,7 @@ namespace AppApi.Controllers
                 }
             }
 
-            var paramList = CarBasicService.GetCarParamterListWithWebCacheByCarIds(carList);
+            var paramList = CarBasicService.GetCarParamterListWithWebCacheByCarIds(carList, isVersion86);
             return AutoJson(new
             {
                 success = true,

@@ -101,7 +101,6 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
         protected string carPrice = string.Empty;//参考成交价
         //购置税内容
         protected string TaxContent = string.Empty;
-        protected Dictionary<int, Dictionary<string, double>> dictOptional;
        // protected string carFuelType = ["汽油", "柴油", "纯电动", "油电混合", "插电混合", "客车", "卡车", "天然气"];
         #endregion
 
@@ -184,7 +183,6 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 //{ fuelString = "<a href=\"http://car.bitauto.com/" + cbe.Serial.AllSpell.ToLower() + "/youhao/\" target=\"_blank\">" + fuelString + "/100km</a>"; }
 
                 Dictionary<int, string> dict = basicBll.GetCarAllParamByCarID(carID);
-                dictOptional = basicBll.GetCarAllParamOptionalByCarID(carID);
                 // 节能补贴 Sep.2.2010 [2012-04-09 样式修改]
                 bool isHasEnergySubsidy = basicBll.CarHasParamEx(carID, 853);
                 //modified by sk 2015.01.30 只显示 第七 八 批 补贴批次
@@ -624,79 +622,44 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
         /// </summary>
         private void GetCarAllParam()
         {
-            Dictionary<int, string> dic = basicBll.GetCarAllParamByCarID(carID);
-            if (dic != null && dic.Count > 0)
-            {
-                // 长宽高
-                string OutSet_Length = dic.ContainsKey(588) ? dic[588] : "暂无";
-                string OutSet_Width = dic.ContainsKey(593) ? dic[593] : "暂无";
-                string OutSet_Height = dic.ContainsKey(586) ? dic[586] : "暂无";
-                LengthWidthHeight = OutSet_Length + "/" + OutSet_Width + "/" + OutSet_Height;
+            carConfigData = GetCarConfigurationForCarSummary(carID, carFullName, cbe.Serial.AllSpell);
+            //Dictionary<int, string> dic = basicBll.GetCarAllParamByCarID(carID);
+            //if (dic != null && dic.Count > 0)
+            //{
+            //    // 车身颜色
+            //    string carColors = dic.ContainsKey(598) ? dic[598].Replace("，", ",") : "";
+            //    List<string> listColor = new List<string>();
+            //    if (carColors != "")
+            //    {
+            //        string[] colorArray = carColors.Split(',');
+            //        if (colorArray.Length > 0)
+            //        {
+            //            foreach (string color in colorArray)
+            //            {
+            //                if (!listColor.Contains(color))
+            //                { listColor.Add(color); }
+            //            }
+            //        }
+            //    }
 
-                // 燃油标号
-                string srcOil_FuelTab = (dic.ContainsKey(577) && dic[577] != "待查") ? dic[577] : "";
-                var Oil_FuelTab = string.Empty;
-                //// modified by chengl May.31.2012
-                //switch (srcOil_FuelTab)
-                //{
-                //    case "90号": Oil_FuelTab = "(北京89号)"; break;
-                //    case "93号": Oil_FuelTab = "(北京92号)"; break;
-                //    case "97号": Oil_FuelTab = "(北京95号)"; break;
-                //    default: break;
-                //}
-                // modified by chengl Oct.11.2013
-                string Oil_FuelType = (dic.ContainsKey(578) && dic[578] != "待查") ? dic[578] : "";
-                Oil_FuelTabType = (Oil_FuelType == "" ? "" : Oil_FuelType + "") + srcOil_FuelTab + "<i>" + Oil_FuelTab + "</i>";
+            //    // 车型详细参数配置
+                
 
-                // 车门数 乘员人数 车身型式
-                string Body_Doors = dic.ContainsKey(563) ? (dic[563] != "待查" ? dic[563] + "门" : "") : "";
-                string Perf_SeatNum = dic.ContainsKey(665) ? dic[665] + "座" : "";
-                string Body_Type = dic.ContainsKey(574) ? dic[574] : "";
-                DoorsSeatNumType = Body_Doors + Perf_SeatNum + Body_Type;
-
-                // 最大功率—功率值 气缸排列型式 汽缸数
-                string Engine_MaxPower = dic.ContainsKey(430) ? dic[430] + "kw " : "";
-                string Engine_CylinderRank = dic.ContainsKey(418) ? dic[418] : "";
-                if (Engine_CylinderRank.StartsWith("L") || Engine_CylinderRank.StartsWith("V") || Engine_CylinderRank.StartsWith("B") || Engine_CylinderRank.StartsWith("W"))
-                { Engine_CylinderRank = Engine_CylinderRank.Substring(0, 1); }
-                else
-                { Engine_CylinderRank = ""; }
-                string Engine_CylinderNum = dic.ContainsKey(417) ? dic[417] : "";
-                EngineAllString = Engine_MaxPower + Engine_CylinderRank + Engine_CylinderNum;
-                // 车身颜色
-                string carColors = dic.ContainsKey(598) ? dic[598].Replace("，", ",") : "";
-                List<string> listColor = new List<string>();
-                if (carColors != "")
-                {
-                    string[] colorArray = carColors.Split(',');
-                    if (colorArray.Length > 0)
-                    {
-                        foreach (string color in colorArray)
-                        {
-                            if (!listColor.Contains(color))
-                            { listColor.Add(color); }
-                        }
-                    }
-                }
-
-                // 车型详细参数配置
-                carConfigData = GetCarConfigurationForCarSummary(carID, carFullName, cbe.Serial.AllSpell);
-
-                string topRGBHTML = "";
-                string topRGBTitle = "";
+            //    string topRGBHTML = "";
+            //    string topRGBTitle = "";
                 //new Car_SerialBll().GetCarColorRGBByCsID(cbe.Serial.Id, cbe.CarYear, 1, 13, "top", listColor, out topRGBHTML, out topRGBTitle);
                 //OutStat_BodyColor = "<span class=\"c\">" + topRGBHTML + "</span>";
                 //卡片区颜色块
-                MakeSerialYearColorHtml(listColor);
+                //MakeSerialYearColorHtml(listColor);
 
                 //if (topRGBHTML.Length > 0)
                 //{
-                serialBLL.GetCarColorRGBByCsIDFor1200(cbe.Serial.Id, cbe.CarYear, 1, 20, "bottom", listColor, out topRGBHTML, out topRGBTitle);
-                carConfigData = carConfigData.Replace("#colorblock#", strColorHtmlBlock);
-                carConfigData = carConfigData.Replace("<!--车身颜色-->", topRGBHTML);
+                //serialBLL.GetCarColorRGBByCsIDFor1200(cbe.Serial.Id, cbe.CarYear, 1, 20, "bottom", listColor, out topRGBHTML, out topRGBTitle);
+               // carConfigData = carConfigData.Replace("#colorblock#", strColorHtmlBlock);
+               // carConfigData = carConfigData.Replace("<!--车身颜色-->", topRGBHTML);
                 //}
 
-            }
+            //}
         }
 
         protected string ColorImageUrl = string.Empty;
@@ -909,49 +872,63 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 //	&& dic[carID][item.Attributes.GetNamedItem("Value").Value] != "待查")
                     string pvalue = string.Empty;
                 //合并参数 燃油变速箱
-                if (item.Attributes.GetNamedItem("Value").Value.IndexOf(",") != -1)
+                if (parameterList.Attributes.GetNamedItem("Name").Value == "基本信息" && (item.Attributes.GetNamedItem("ParamID").Value == "724" || item.Attributes.GetNamedItem("ParamID").Value == "712"))
+                {
+                    if (item.Attributes.GetNamedItem("ParamID").Value == "724")
                     {
-                        string[] arrKey = item.Attributes.GetNamedItem("Value").Value.Split(',');
-                        string[] arrUnit = item.Attributes.GetNamedItem("Unit").Value.Split(',');
-                        string[] arrParam = item.Attributes.GetNamedItem("ParamID").Value.Split(',');
-                        List<string> list = new List<string>();
-                        for (var i = 0; i < arrKey.Length; i++)
-                        {
-                            if (!(dic[carID].ContainsKey(arrKey[i]) && dic[carID][arrKey[i]] != "待查"))
-                                continue;
-                            //档位数 0 不显示
-                            if (arrParam[i] == "724")
-                            {
-                                var d = ConvertHelper.GetInteger(dic[carID][arrKey[i]]);
-                                var t = dic[carID].ContainsKey(arrKey[i + 1]) ? dic[carID][arrKey[i + 1]].Trim() : "";
-                                if (d <= 0 || t == "单速变速箱" || t == "E-CVT无级变速" || t == "CVT无级变速" || t == "")
-                                {
-                                    continue;
-                                }
-                            }
-                            //变速箱类型 变速箱为空不显示变速箱与挡位
-                            if (arrParam[i] == "712")
-                            {
-                                var t = dic[carID][arrKey[i]];
-                                if (string.IsNullOrEmpty(t))
-                                {
-                                    if (list.Count == 1)
-                                    {
-                                        list.RemoveAt(0);
-                                    }
-                                    continue;
-                                }
-                            }
-                          list.Add(string.Format("{0}{1}", dic[carID][arrKey[i]], arrUnit[i]));
-                        }
-                        if (list.Count <= 0) continue;
-                        //解决2个参数 其中“有” 后面参数有值 替换成 实心圈
-                        var you = list.Find(p => p.IndexOf("有") != -1);
-                        if (you != null && list.Count > 1)
-                            list.Remove(you);
-                        pvalue = string.Join(" ", list.ToArray());
+                        continue;
                     }
-                    else
+                    string[] arrKey = new string[2];
+                    string[] arrUnit = new string[2];
+                    string[] arrParam = new string[2];                    
+                    if (item.PreviousSibling.NodeType == XmlNodeType.Element && item.PreviousSibling != null)
+                    {
+                        arrKey[0] = item.PreviousSibling.Attributes.GetNamedItem("Value").Value;
+                        arrUnit[0] = item.PreviousSibling.Attributes.GetNamedItem("Unit").Value;
+                        arrParam[0] = item.PreviousSibling.Attributes.GetNamedItem("ParamID").Value;
+                    }
+                    arrKey[1] = item.Attributes.GetNamedItem("Value").Value;
+                    arrUnit[1] = item.Attributes.GetNamedItem("Unit").Value;
+                    arrParam[1] = item.Attributes.GetNamedItem("ParamID").Value;
+
+                    List<string> list = new List<string>();
+                    for (var i = 0; i < arrKey.Length; i++)
+                    {
+                        if (!(dic[carID].ContainsKey(arrKey[i]) && dic[carID][arrKey[i]] != "待查"))
+                            continue;
+                        //档位数 0 不显示
+                        if (arrParam[i] == "724")
+                        {
+                            var d = ConvertHelper.GetInteger(dic[carID][arrKey[i]]);
+                            var t = dic[carID].ContainsKey(arrKey[i + 1]) ? dic[carID][arrKey[i + 1]].Trim() : "";
+                            if (d <= 0 || t == "单速变速箱" || t == "E-CVT无级变速" || t == "CVT无级变速" || t == "")
+                            {
+                                continue;
+                            }
+                        }
+                        //变速箱类型 变速箱为空不显示变速箱与挡位
+                        if (arrParam[i] == "712")
+                        {
+                            var t = dic[carID][arrKey[i]];
+                            if (string.IsNullOrEmpty(t))
+                            {
+                                if (list.Count == 1)
+                                {
+                                    list.RemoveAt(0);
+                                }
+                                continue;
+                            }
+                        }
+                        list.Add(string.Format("{0}{1}", dic[carID][arrKey[i]], arrUnit[i]));
+                    }
+                    if (list.Count <= 0) continue;
+                    //解决2个参数 其中“有” 后面参数有值 替换成 实心圈
+                    var you = list.Find(p => p.IndexOf("有") != -1);
+                    if (you != null && list.Count > 1)
+                        list.Remove(you);
+                    pvalue = string.Join(" ", list.ToArray());
+                }
+                else
                     {
                     if (!(dic[carID].ContainsKey(item.Attributes.GetNamedItem("Value").Value)))
                        { continue; }
@@ -999,7 +976,18 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 if (item.Attributes.GetNamedItem("Name").Value == "车身颜色")
                 {
                     strColorHtmlBlock = "<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>";
-                    strColorHtmlBlock += "<td colspan=\"3\"><div class=\"focus-color-warp\"><ul id=\"color-listbox\"><!--车身颜色--></ul></div></td>";
+                    strColorHtmlBlock += "<td colspan=\"3\"><div class=\"focus-color-warp\"><ul id=\"color-listbox\">";
+                    var pvalueColorList = pvalue.Split('|');
+                    foreach (var color in pvalueColorList)
+                    {
+                        if (color.IndexOf(",") != -1)
+                        {                          
+                            string colorRGB = color.Split(',')[1];
+                            var title = color.Split(',')[0];
+                            strColorHtmlBlock += "<li><a href=\"javascript:void(0);\" title=\"" + title.Trim() + "\"><span style=\"background:" + colorRGB.Trim() + "\"></span></a></li>";
+                        }                       
+                    }
+                    strColorHtmlBlock += "</ul></div></td>";
 
                     if (loopCount != 0)
                     {
@@ -1019,14 +1007,18 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                         sbTemp.AppendLine("#colorblock#");
                         loopCount += 2;
                     }
+                    if (pvalueColorList.Length > 0)
+                    {
+                        sbTemp.Replace("#colorblock#", strColorHtmlBlock);
+                    }                    
                 }
                 else
                 {
                     sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>");
                     if (pvalue.IndexOf(",") == -1)
                     {
-                        //解决 变速箱 无极变速 替换成 -
-                        if (item.Attributes.GetNamedItem("Name").Value != "变速箱类型")
+                        //解决 变速箱挡位合并 单位的问题
+                        if (item.Attributes.GetNamedItem("ParamID").Value != "712")
                         {
                             if (pvalue.IndexOf("有") == 0)
                             { pvalue = "●"; }

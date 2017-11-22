@@ -2549,7 +2549,13 @@ namespace BitAuto.CarChannel.BLL
             }
             return result;
         }
-
+        /// <summary>
+        /// 根据车型和城市回去车款列表
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <param name="serialId"></param>
+        /// <param name="includeStopSale"></param>
+        /// <returns></returns>
         public List<CarGroupEntity> GetCarGroupBySerialIdAndCSID(int cityId, int serialId, bool includeStopSale)
         {
 

@@ -146,23 +146,16 @@ namespace AppApi.Controllers
                 }
             });
 
-        }   /// <summary>
-            /// 车型参数
-            /// </summary>
-            /// <param name="serialId"></param>
-            /// <returns></returns>
+        }
+        /// <summary>
+        /// 根据车型id和城市id获取车款列表
+        /// </summary>
+        /// <param name="serialId"></param>
+        /// <returns></returns>
         [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
-        public ActionResult GetCarListByCSIdAndCityId(int? csid, int? cityId,bool? includeStopSale=false)
+        public ActionResult GetCarListByCSIdAndCityId(int? csid, int? cityId, bool? includeStopSale = false)
         {
-
-            List<string> carSaleList = new List<string>();
-            List<string> carNoSaleList = new List<string>();
-            List<string> carWaitSaleList = new List<string>();
-
-            var CarGroupList = CarBasicService.GetCarGroupBySerialIdAndCSID(cityId.GetValueOrDefault(0), csid.GetValueOrDefault(0),includeStopSale.GetValueOrDefault(false));
-
-            //var carlist = CarBasicService.GetCarListForSerialSummaryBySerialId(csid.GetValueOrDefault(0), includeStopSale.GetValueOrDefault(false));
-
+            var CarGroupList = CarBasicService.GetCarGroupBySerialIdAndCSID(cityId.GetValueOrDefault(0), csid.GetValueOrDefault(0), includeStopSale.GetValueOrDefault(false));
             return AutoJson(new
             {
                 success = true,
@@ -175,8 +168,28 @@ namespace AppApi.Controllers
             });
         }
 
+        /// <summary>
+        /// 获取车型名片
+        /// </summary>
+        /// <param name="csID"></param>
+        /// <returns></returns>
+        [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
+        public ActionResult GetSerialInfo(int? csID, int? cityId)
+        {
 
 
+
+            return AutoJson(new
+            {
+                success = true,
+                status = WebApiResultStatus.成功,
+                message = "ok",
+                data = new
+                {
+                    //CarGroupList = CarGroupList
+                }
+            });
+        }
 
 
 

@@ -74,24 +74,25 @@ namespace MWeb.Controllers
             string forwardGearNum = (dic.ContainsKey(724) && dic[724] != "无级") ? dic[724] + "档" : "";
             transmissionType = dic.ContainsKey(712) ? forwardGearNum + dic[712] : "暂无";
             //车身颜色
-            string carColors = dicPara[carID].ContainsKey("OutStat_BodyColor") ? dicPara[carID]["OutStat_BodyColor"].Replace("，", ",") : "";
-            List<string> listColor = new List<string>();
-            if (carColors != "")
-            {
-                string[] colorArray = carColors.Split(',');
-                if (colorArray.Length > 0)
-                {
-                    foreach (string color in colorArray)
-                    {
-                        if (!listColor.Contains(color))
-                        {
-                            listColor.Add(color);
-                        }
-                    }
-                }
-            }
+            string carColors = dicPara[carID].ContainsKey("Car_OutStat_BodyColorRGB") ? dicPara[carID]["Car_OutStat_BodyColorRGB"].Replace("，", ",") : "";
             //车型车身颜色 色块
-            string carColorHTML = GetCarColor(listColor);
+            string carColorHTML = GetCarColor(carColors);
+            //List<string> listColor = new List<string>();
+            //if (carColors != "")
+            //{
+            //    string[] colorArray = carColors.Split(',');
+            //    if (colorArray.Length > 0)
+            //    {
+            //        foreach (string color in colorArray)
+            //        {
+            //            if (!listColor.Contains(color))
+            //            {
+            //                listColor.Add(color);
+            //            }
+            //        }
+            //    }
+            //}
+
 
             XmlDocument docPC = new XmlDocument();
             string cache = "CarSummary_ParameterConfigurationNewV2";
@@ -154,11 +155,24 @@ namespace MWeb.Controllers
                                         string pvalue = string.Empty;
                                         int pid = 0;
                                         //合并参数
-                                        if (xn.Attributes.GetNamedItem("Value").Value.IndexOf(",") != -1)
+                                        if (xnClass.Attributes["Name"].Value == "基本信息" && (xn.Attributes.GetNamedItem("ParamID").Value == "724" || xn.Attributes.GetNamedItem("ParamID").Value == "712"))
                                         {
-                                            string[] arrKey = xn.Attributes.GetNamedItem("Value").Value.Split(',');
-                                            string[] arrUnit = xn.Attributes.GetNamedItem("Unit").Value.Split(',');
-                                            string[] arrParam = xn.Attributes.GetNamedItem("ParamID").Value.Split(',');
+                                            if (xn.Attributes.GetNamedItem("ParamID").Value == "724")
+                                            {
+                                                continue;
+                                            }
+                                            string[] arrKey = new string[2];
+                                            string[] arrUnit = new string[2];
+                                            string[] arrParam = new string[2];
+                                            if (xn.PreviousSibling.NodeType == XmlNodeType.Element && xn.PreviousSibling != null)
+                                            {
+                                                arrKey[0] = xn.PreviousSibling.Attributes.GetNamedItem("Value").Value;
+                                                arrUnit[0] = xn.PreviousSibling.Attributes.GetNamedItem("Unit").Value;
+                                                arrParam[0] = xn.PreviousSibling.Attributes.GetNamedItem("ParamID").Value;
+                                            }
+                                            arrKey[1] = xn.Attributes.GetNamedItem("Value").Value;
+                                            arrUnit[1] = xn.Attributes.GetNamedItem("Unit").Value;
+                                            arrParam[1] = xn.Attributes.GetNamedItem("ParamID").Value;
                                             List<string> list = new List<string>();
                                             for (var i = 0; i < arrParam.Length; i++)
                                             {
@@ -363,22 +377,18 @@ namespace MWeb.Controllers
         /// </summary>
         /// <param name="listNameColor"></param>
         /// <returns></returns>
-        private string GetCarColor(List<string> listNameColor)
+        private string GetCarColor(string listNameColor)
         {
-            StringBuilder sb = new StringBuilder();
             string colorHTML = "";
             List<string> listColorHTML = new List<string>();
-            DataSet dsAllCsColor = new Car_SerialBll().GetAllSerialColorRGB();
-            DataRow[] drs = dsAllCsColor.Tables[0].Select(" cs_id='" + ce.Serial.Id.ToString() + "' ");
-            if (drs != null && drs.Length > 0)
+            var pvalueColorList = listNameColor.Split('|');
+            foreach (var color in pvalueColorList)
             {
-                foreach (DataRow dr in drs)
+                if (color.IndexOf(",") != -1)
                 {
-                    if (dr["colorName"].ToString().Trim() != ""
-                        && listNameColor.Contains(dr["colorName"].ToString().Trim()))
-                    {
-                        listColorHTML.Add("<li><span style=\"background:" + dr["colorRGB"].ToString().Trim() + "\"></span></li>");
-                    }
+                    string colorRGB = color.Split(',')[1];
+                    var title = color.Split(',')[0];
+                    listColorHTML.Add("<li><span style=\"background:" + colorRGB.Trim() + "\"></span></li>");
                 }
             }
             if (listColorHTML.Count > 0)

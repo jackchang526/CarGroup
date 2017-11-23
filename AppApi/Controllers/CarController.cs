@@ -1,5 +1,7 @@
 ﻿using BitAuto.CarChannel.BLL;
 using BitAuto.CarChannel.Common;
+using BitAuto.CarChannel.Common.Interface;
+using BitAuto.CarChannel.Model.AppApi;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,12 +13,14 @@ using System.Text.RegularExpressions;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.UI;
+using YiChe.Core.Extensions;
 
 namespace AppApi.Controllers
 {
     [JsonHandleError] //出错时以Json格式显示
     public class CarController : BaseController
     {
+        bool isVersion87 = VersionHelper.CompareVersion("8.7") >= 0;
         #region Service
 
         static Car_MasterBrandBll _Car_MasterBrandBll;
@@ -88,9 +92,10 @@ namespace AppApi.Controllers
         /// <param name="serialId"></param>
         /// <returns></returns>
         [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
-        public ActionResult GetCarParameterGroup()
+        public ActionResult GetCarParameterGroup(string version)
         {
-            var result = CarBasicService.GetCarParameterJsonConfig();
+
+            var result = CarBasicService.GetCarParameterJsonConfig(isVersion87);
             return AutoJson(new
             {
                 success = true,
@@ -108,7 +113,7 @@ namespace AppApi.Controllers
         /// <param name="serialId"></param>
         /// <returns></returns>
         [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
-        public ActionResult GetCarStylePropertys(string carIds)
+        public ActionResult GetCarStylePropertys(string carIds, string version)
         {
             if (string.IsNullOrWhiteSpace(carIds) || (!Regex.IsMatch(carIds, @"([,0-9]*)")))
             {
@@ -129,7 +134,7 @@ namespace AppApi.Controllers
                 }
             }
 
-            var paramList = CarBasicService.GetCarParamterListWithWebCacheByCarIds(carList);
+            var paramList = CarBasicService.GetCarParamterListWithWebCacheByCarIds(carList, isVersion87);
             return AutoJson(new
             {
                 success = true,
@@ -142,6 +147,50 @@ namespace AppApi.Controllers
             });
 
         }
+        /// <summary>
+        /// 根据车型id和城市id获取车款列表
+        /// </summary>
+        /// <param name="serialId"></param>
+        /// <returns></returns>
+        [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
+        public ActionResult GetCarListByCSIdAndCityId(int? csid, int? cityId, bool? includeStopSale = false)
+        {
+            var CarGroupList = CarBasicService.GetCarGroupBySerialIdAndCSID(cityId.GetValueOrDefault(0), csid.GetValueOrDefault(0), includeStopSale.GetValueOrDefault(false));
+            return AutoJson(new
+            {
+                success = true,
+                status = WebApiResultStatus.成功,
+                message = "ok",
+                data = new
+                {
+                    CarGroupList = CarGroupList
+                }
+            });
+        }
+
+        /// <summary>
+        /// 获取车型名片
+        /// </summary>
+        /// <param name="csID"></param>
+        /// <returns></returns>
+        [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
+        public ActionResult GetSerialInfo(int? csID, int? cityId)
+        {
+
+
+
+            return AutoJson(new
+            {
+                success = true,
+                status = WebApiResultStatus.成功,
+                message = "ok",
+                data = new
+                {
+                    //CarGroupList = CarGroupList
+                }
+            });
+        }
+
 
 
         #region zhangzhiyang work zone
@@ -194,17 +243,17 @@ namespace AppApi.Controllers
             if (carStyleId == null || (type != 0 && type != 1))
                 return JsonNet(new { success = false, status = wrs, message = wrs.ToString(), data = new { list = string.Empty } }, JsonRequestBehavior.AllowGet);
             wrs = WebApiResultStatus.成功;
-            //var data = CarService.GetCarStyleColorById(carStyleId.Value, type.Value);
-            //if (data != null && data.Count > 0)
-            //{
-            //    var showData = (from c in data select new { c.Name, c.Value }).ToList();
-            //    return JsonNet(new { success = true, status = wrs, message = wrs.ToString(), data = new { list = showData } }, JsonRequestBehavior.AllowGet);
-            //}
+            var data = CarMasterBrandService.GetCarStyleColorById(carStyleId.Value, type.Value);
+            if (data != null && data.Count > 0)
+            {
+                var showData = (from c in data select new { c.Name, c.Value }).ToList();
+                return JsonNet(new { success = true, status = wrs, message = wrs.ToString(), data = new { list = showData } }, JsonRequestBehavior.AllowGet);
+            }
             return JsonNet(new { success = true, status = wrs, message = wrs.ToString(), data = new { list = string.Empty } }, JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>
-        /// 根据车系编号和颜色类型获取车系颜色 create add by huanggang 2015-07-13
+        /// 根据车系编号和颜色类型获取车系颜色
         /// </summary>
         /// <param name="modelColor">颜色类型</param>
         /// <returns></returns>
@@ -225,6 +274,11 @@ namespace AppApi.Controllers
             return JsonNet(new { success = true, status = wrs, message = wrs.ToString(), data = string.Empty }, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        ///  获取主品牌列表接口
+        /// </summary>
+        /// <param name="allMasterBrand">是否返回全部主品牌(包含停销)</param>
+        /// <returns></returns>
         [OutputCache(Duration = 900, Location = OutputCacheLocation.Downstream)]
         public ActionResult GetMasterBrandList(bool? allMasterBrand)
         {
@@ -232,6 +286,162 @@ namespace AppApi.Controllers
             return JsonNet(new { status = 1, message = "ok", data = list }, JsonRequestBehavior.AllowGet);
         }
 
+
+        /// <summary>
+        /// 获取车型属性
+        /// </summary>
+        /// <param name="carId"></param>
+        /// <returns></returns>
+        [OutputCache(Duration = 960, Location = OutputCacheLocation.Downstream)]
+        public ActionResult GetCarStyleById(int carId)
+        {
+            var car = CarSerialService.GetStyleInfoById(carId);
+            if (car != null)
+            {
+                var urlDic = CarSerialImgUrlService.GetImageUrlDicNew();
+                var carImage = string.Empty;
+                if (urlDic != null && urlDic.Count > 0 && urlDic.ContainsKey(car.ModelId))
+                {
+                    if (urlDic[car.ModelId].GetAttribute("ImageUrl2").ToString().Trim() != "")
+                    {
+                        // 有新封面
+                        carImage = urlDic[car.ModelId].GetAttribute("ImageUrl2").ToString().Trim();
+                    }
+                    else
+                    {
+                        // 没有新封面
+                        if (urlDic[car.ModelId].GetAttribute("ImageUrl").ToString().Trim() != "")
+                        {
+                            carImage = urlDic[car.ModelId].GetAttribute("ImageUrl").ToString().Trim();
+                        }
+                        else
+                        {
+                            carImage = WebConfig.DefaultCarPic;
+                        }
+                    }
+                }
+                return JsonNet(new
+                {
+                    status = WebApiResultStatus.成功,
+                    message = "OK",
+                    data = new
+                    {
+                        carId = carId,
+                        carName = car.Name,
+                        carImage = carImage,
+                        carYear = car.Year,
+                        carSerialId = car.ModelId,
+                        carSerialName = car.CarSerialName
+                    }
+                }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return JsonNet(new
+                {
+                    status = WebApiResultStatus.未找到数据,
+                    message = "OK",
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
+        /// <summary>
+        /// 获取车型名片
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
+        public ActionResult GetCarStylePropertyById(int? id)
+        {
+            Dictionary<string, string> carProperty = CarSerialService.GetCarStylePropertyById(id.GetValueOrDefault(0));
+            if (carProperty.Keys.Count == 0)
+            {
+                return JsonNet(new { success = false, status = 0, message = "未找到数据", data = "" }, JsonRequestBehavior.AllowGet);
+            }
+
+            var taxPer = carProperty.GetValueOrDefault("traveltax");
+            var travePerTax = 1.0;
+            var tax = "无";
+            switch (taxPer)
+            {
+                case "免征":
+                    tax = "免征";
+                    travePerTax = 0;
+                    break;
+                case "减半":
+                    tax = "75折";
+                    travePerTax = 0.75;
+                    break;
+                case "待查":
+                    tax = "待查";
+                    travePerTax = 1.0;
+                    break;
+                default:
+                    tax = "无";
+                    travePerTax = 1.0;
+                    break;
+            }
+            int taxrelief = TypeParse.StrToInt(carProperty.GetValueOrDefault("taxrelief"), 0);
+            string strExhaust = carProperty.GetValueOrDefault("exhaustforfloat");
+            float floatExhaust = 0;
+            double purchasetax = 0.0854700854700855;
+            if (float.TryParse(strExhaust, out floatExhaust))
+            {
+                if (floatExhaust > 0 && floatExhaust <= (float)1.6)
+                {
+                    purchasetax = 0.064102564102564125;
+                }
+            }
+
+            if (taxrelief == 2)
+            {
+                purchasetax = 0;
+            }
+
+            var result = new
+            {
+                carID = id,
+                isGuoChan = carProperty.GetValueOrDefault("isGuoChan"),
+                engine = carProperty.GetValueOrDefault("engine"),
+                exhaustforfloat = strExhaust,
+                traveltax = tax,
+                seatNum = carProperty.GetValueOrDefault("seatNum"),
+                purchasetax = purchasetax,
+                fuelType = TransferFuelType(carProperty.GetValueOrDefault("fuelType")),
+                travePerTax = travePerTax
+            };
+            return JsonNet(new { success = true, status = 1, message = "成功", data = result }, JsonRequestBehavior.AllowGet);
+        }
+
+        private string TransferFuelType(string fuelType)
+        {
+            var newFuelType = string.Empty;
+            switch (fuelType)
+            {
+                case "汽油":
+                    newFuelType = "0";
+                    break;
+                case "柴油":
+                    newFuelType = "1";
+                    break;
+                case "纯电":
+                    newFuelType = "2";
+                    break;
+                case "油电混合":
+                    newFuelType = "3";
+                    break;
+                case "插电混合":
+                    newFuelType = "4";
+                    break;
+                case "天然气":
+                    newFuelType = "5";
+                    break;
+            }
+            return newFuelType;
+        }
+
         #endregion
     }
+
 }

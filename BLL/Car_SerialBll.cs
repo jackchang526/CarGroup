@@ -25,6 +25,7 @@ using BitAuto.CarChannel.BLL.ucar.api;
 using BitAuto.CarUtils.Define;
 using System.Collections;
 using BitAuto.CarChannel.Model.AppModel;
+using BitAuto.CarChannel.Model.AppApi;
 
 namespace BitAuto.CarChannel.BLL
 {
@@ -8611,5 +8612,40 @@ namespace BitAuto.CarChannel.BLL
             }
             return doc;
         }
+
+        /// <summary>
+        /// 获取车款属性
+        /// </summary>
+        /// <param name="styleId"></param>
+        /// <returns></returns>
+        public CarStyleInfoEntity GetStyleInfoById(int styleId)
+        {
+
+            var cacheKey = string.Format("ycapp.carstyleinfo_{0}", styleId);
+
+            var result = CacheManager.GetCachedData<CarStyleInfoEntity>(cacheKey);
+            if (result == null)
+            {
+                result = csd.GetStyleInfoById(styleId);
+                if (result != null)
+                {
+                    CacheManager.InsertCache(cacheKey, result, 10);
+                }
+
+            }
+            return result;
+        }
+
+
+        /// <summary>
+        /// 	根据车款ID获取相关信息
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public Dictionary<string, string> GetCarStylePropertyById(int id)
+        {
+            return csd.GetCarStylePropertyById(id);
+        }
+
     }
 }

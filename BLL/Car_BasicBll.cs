@@ -2090,7 +2090,7 @@ namespace BitAuto.CarChannel.BLL
                 {
                     if (!dictCarTaxTag.ContainsKey(carId))
                     {
-                        dictCarTaxTag.Add(carId, "减税");
+                        dictCarTaxTag.Add(carId, "购置税75折");
                     }
                 }
             }
@@ -2127,14 +2127,14 @@ namespace BitAuto.CarChannel.BLL
         /// 车型参数模板
         /// </summary>
         /// <returns></returns>
-        public List<ParameterGroupEntity> GetCarParameterJsonConfig()
+        public List<ParameterGroupEntity> GetCarParameterJsonConfig(bool isVersion87)
         {
             List<ParameterGroupEntity> parameterGroup = new List<ParameterGroupEntity>();
             try
             {
 
 
-                string cacheKey = DataCacheKeys.CarParameterJson;
+                string cacheKey = string.Format(DataCacheKeys.CarParameterJson, isVersion87);
                 object getCarParameterJsonConfig = CacheManager.GetCachedData(cacheKey);
                 if (getCarParameterJsonConfig != null)
                 {
@@ -2142,58 +2142,109 @@ namespace BitAuto.CarChannel.BLL
                 }
                 else
                 {
-                    string fileName = parameterConfigPath;
-                    if (File.Exists(fileName))
+                    if (isVersion87)
                     {
-                        XmlDocument doc = new XmlDocument();
-                        doc.Load(fileName);
-                        if (doc != null && doc.HasChildNodes)
+                        string fileName = parameterConfigPath;
+                        if (File.Exists(fileName))
                         {
-                            ParameterGroupEntity parameter;
-                            XmlNodeList xnl = doc.SelectNodes("/ParameterConfigurationList/Parameter/ParameterList");
-                            if (xnl != null && xnl.Count > 0)
+                            XmlDocument doc = new XmlDocument();
+                            doc.Load(fileName);
+                            if (doc != null && doc.HasChildNodes)
                             {
-                                int i = 0;
-                                foreach (XmlNode xnCate in xnl)
+                                ParameterGroupEntity parameter;
+                                XmlNodeList xnl = doc.SelectNodes("/ParameterConfigurationList/Parameter/ParameterList");
+                                if (xnl != null && xnl.Count > 0)
                                 {
-
-                                    parameter = new ParameterGroupEntity();
-                                    parameter.GroupID = i;
-                                    parameter.Name = xnCate.Attributes["Name"].Value.ToString();
-
-
-                                    // 大分类
-                                    if (xnCate.ChildNodes.Count > 0)
+                                    int i = 0;
+                                    foreach (XmlNode xnCate in xnl)
                                     {
-                                        parameter.Fields = new List<ParameterGroupFieldEntity>();
-                                        ParameterGroupFieldEntity field;
-                                        // 分类内项
-                                        foreach (XmlNode xn in xnCate.ChildNodes)
+
+                                        parameter = new ParameterGroupEntity();
+                                        parameter.GroupID = i;
+                                        parameter.Name = xnCate.Attributes["Name"].Value;
+
+
+                                        // 大分类
+                                        if (xnCate.ChildNodes.Count > 0)
                                         {
-                                            if (xn.NodeType == XmlNodeType.Element)
+                                            parameter.Fields = new List<ParameterGroupFieldEntity>();
+                                            ParameterGroupFieldEntity field;
+                                            // 分类内项
+                                            foreach (XmlNode xn in xnCate.ChildNodes)
                                             {
-                                                field = new ParameterGroupFieldEntity();
-                                                field.Key = xn.Attributes["Value"].Value.ToString();
-                                                field.ParamID = TypeParse.StrToInt(xn.Attributes["ParamID"].Value, 0);
-                                                field.Unit = xn.Attributes["Unit"].Value.ToString();
-                                                field.Title = xn.Attributes["Name"].Value.ToString();
-                                                parameter.Fields.Add(field);
+                                                if (xn.NodeType == XmlNodeType.Element)
+                                                {
+                                                    field = new ParameterGroupFieldEntity();
+                                                    field.Key = xn.Attributes["Value"].Value;
+                                                    field.ParamID = TypeParse.StrToInt(xn.Attributes["ParamID"].Value, 0);
+                                                    field.Unit = xn.Attributes["Unit"].Value;
+                                                    field.Title = xn.Attributes["Name"].Value;
+                                                    parameter.Fields.Add(field);
+                                                }
                                             }
                                         }
+                                        i++;
+                                        parameterGroup.Add(parameter);
                                     }
-                                    i++;
-                                    parameterGroup.Add(parameter);
+                                }
+                            }
+                           
+                        }
+                    }
+                    else
+                    {
+                        string fileName = System.Web.HttpContext.Current.Server.MapPath("~") + "\\config\\ParameterForJsonNewV2.xml";
+                        if (File.Exists(fileName))
+                        {
+                            XmlDocument doc = new XmlDocument();
+                            doc.Load(fileName);
+                            if (doc != null && doc.HasChildNodes)
+                            {
+                                ParameterGroupEntity parameter;
+                                XmlNodeList xnl = doc.SelectNodes("/Param/Group");
+                                if (xnl != null && xnl.Count > 0)
+                                {
+                                    int i = 0;
+                                    foreach (XmlNode xnCate in xnl)
+                                    {
+
+                                        parameter = new ParameterGroupEntity();
+                                        parameter.GroupID = i;
+                                        parameter.Name = xnCate.Attributes["Desc"].Value.ToString();
+
+
+                                        // 大分类
+                                        if (xnCate.ChildNodes.Count > 0)
+                                        {
+                                            parameter.Fields = new List<ParameterGroupFieldEntity>();
+                                            ParameterGroupFieldEntity field;
+                                            // 分类内项
+                                            foreach (XmlNode xn in xnCate.ChildNodes)
+                                            {
+                                                if (xn.NodeType == XmlNodeType.Element)
+                                                {
+                                                    field = new ParameterGroupFieldEntity();
+                                                    field.Key = xn.Attributes["Value"].Value.ToString();
+                                                    field.ParamID = TypeParse.StrToInt(xn.Attributes["ParamID"].Value, 0);
+                                                    field.Unit = xn.Attributes["Unit"].Value.ToString();
+                                                    field.Title = xn.Attributes["Desc"].Value.ToString();
+                                                    parameter.Fields.Add(field);
+                                                }
+                                            }
+                                        }
+                                        i++;
+                                        parameterGroup.Add(parameter);
+                                    }
                                 }
                             }
                         }
-                        CacheDependency cacheDependency = new CacheDependency(fileName);
-                        CacheManager.InsertCache(cacheKey, parameterGroup, cacheDependency, DateTime.Now.AddMinutes(10));
                     }
+                    CacheManager.InsertCache(cacheKey, parameterGroup, 10);
                 }
             }
             catch (Exception ex)
             {
-                CommonFunction.WriteLog("解析分组ParameterConfigurationNewV2.config错误");
+                CommonFunction.WriteLog(string.Format("解析分组ParameterConfigurationNewV2.config错误,Message:{0},StackTrace:{1}", ex.Message, ex.StackTrace));
             }
             return parameterGroup;
         }
@@ -2202,10 +2253,10 @@ namespace BitAuto.CarChannel.BLL
         /// 生成参数模版字典
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string, ParameterGroupFieldEntity> GetParamDic()
+        public Dictionary<string, ParameterGroupFieldEntity> GetParamDic(bool isVersion87)
         {
             Dictionary<string, ParameterGroupFieldEntity> result = new Dictionary<string, ParameterGroupFieldEntity>();
-            var parameterList = GetCarParameterJsonConfig();
+            var parameterList = GetCarParameterJsonConfig(isVersion87);
             foreach (var item in parameterList)
             {
                 foreach (var field in item.Fields)
@@ -2219,14 +2270,14 @@ namespace BitAuto.CarChannel.BLL
             return result;
         }
 
-        public List<CarParameterListEntity> GetCarParamterListWithWebCacheByCarIds(List<int> carIds)
+        public List<CarParameterListEntity> GetCarParamterListWithWebCacheByCarIds(List<int> carIds, bool isVersion87)
         {
             //return GetCarParamterListByCarIds(carIds);
-            string carParamterKey = string.Format(DataCacheKeys.CarParameterListKey, string.Join("_", carIds));
+            string carParamterKey = string.Format(DataCacheKeys.CarParameterListKey, isVersion87, string.Join("_", carIds));
             var carParamterList = CacheManager.GetCachedData(carParamterKey);
             if (carParamterList == null)
             {
-                List<CarParameterListEntity> newCarParamterList = GetCarParamterListByCarIds(carIds);
+                List<CarParameterListEntity> newCarParamterList = GetCarParamterListByCarIds(carIds, isVersion87);
 
                 if (newCarParamterList != null && newCarParamterList.Count > 0)
                 {
@@ -2238,7 +2289,7 @@ namespace BitAuto.CarChannel.BLL
             return (List<CarParameterListEntity>)carParamterList;
         }
 
-        public List<CarParameterListEntity> GetCarParamterListByCarIds(List<int> carIds)
+        public List<CarParameterListEntity> GetCarParamterListByCarIds(List<int> carIds, bool isVersion87)
         {
             /*
             有  黑点
@@ -2251,7 +2302,7 @@ namespace BitAuto.CarChannel.BLL
              */
             List<CarParameterListEntity> result = new List<CarParameterListEntity>();
             Dictionary<int, Dictionary<string, string>> parameterDic = GetCarCompareDataWithOptionalByCarIDs(carIds);
-            var fieldDic = GetParamDic();
+            var fieldDic = GetParamDic(isVersion87);
             List<CarParameterEntity> carParameterList;
             foreach (var group in parameterDic)
             {
@@ -2497,6 +2548,108 @@ namespace BitAuto.CarChannel.BLL
                 }
             }
             return result;
+        }
+        /// <summary>
+        /// 根据车型和城市回去车款列表
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <param name="serialId"></param>
+        /// <param name="includeStopSale"></param>
+        /// <returns></returns>
+        public List<CarGroupEntity> GetCarGroupBySerialIdAndCSID(int cityId, int serialId, bool includeStopSale)
+        {
+
+            var cacheKey = string.Format(DataCacheKeys.CarGroupListByserialIdAndCityId, serialId, cityId, includeStopSale);
+            List<CarGroupEntity> carGroupList = CacheManager.GetCachedData<List<CarGroupEntity>>(cacheKey);
+            if (carGroupList == null)
+            {
+                carGroupList = new List<CarGroupEntity>();
+                Dictionary<string, CarGroupEntity> carGroupDic = new Dictionary<string, CarGroupEntity>();
+                var carList = GetCarListForSerialSummaryBySerialId(serialId, includeStopSale);
+                var serialBll = new Car_SerialBll();
+                List<int> carIds = new List<int>();
+                foreach (var item in carList)
+                {
+                    string groupKey = item.Engine_Exhaust + "/" + item.Engine_MaxPower;
+                    if (!carGroupDic.ContainsKey(groupKey))
+                    {
+                        carGroupDic.Add(groupKey, new CarGroupEntity
+                        {
+                            Name = groupKey + "kw " + item.Engine_InhaleType,
+                            CarList = new List<CarInfoEntity>()
+                        });
+                    }
+                    carIds.Add(item.CarID);
+                    var taxreief = GetTax(item.CarID, item.SaleState, item.Engine_Exhaust);
+                    var newStatus = serialBll.GetCarMarketText(item.CarID, item.SaleState, item.MarketDateTime, item.ReferPrice);
+                    carGroupDic[groupKey].CarList.Add(new CarInfoEntity
+                    {
+                        CarId = item.CarID,
+                        Name = item.CarName,
+                        Year = TypeParse.StrToInt(item.CarYear, 2000),
+                        IsSupport = item.IsImport == 1,
+                        MinPrice = item.CarPriceRange,
+                        ReferPrice = item.ReferPrice,
+                        Trans = item.TransmissionType,
+                        SaleState = item.SaleState,
+                        NewSaleStatus = string.IsNullOrWhiteSpace(newStatus) ? item.SaleState : newStatus,
+                        SupportType = 0,
+                        ImportType = item.IsImport == 1 ? "平行进口车" : "",
+                        CarPV = item.CarPV,
+                        IsTax = (!string.IsNullOrWhiteSpace(taxreief)),//
+                        TaxRelief = taxreief,//
+                        TimeToMarket = item.MarketDateTime.ToString(),
+                        IsHaveImage = false///
+                    });
+                }
+                foreach (var carGroup in carGroupDic.Values)
+                {
+                    carGroupList.Add(carGroup);
+                }
+                if (carGroupList != null)
+                {
+                    CacheManager.InsertCache(cacheKey, carGroupList, 5);
+                }
+            }
+            return carGroupList;
+        }
+
+        /// <summary>
+        /// 获取车款购置税
+        /// </summary>
+        /// <param name="carId"></param>
+        /// <param name="saleState"></param>
+        /// <param name="exhaust"></param>
+        /// <returns></returns>
+        public string GetTax(int carId, string saleState, string exhaust)
+        {
+            Dictionary<int, string> dictCarParams = GetCarAllParamByCarID(carId);
+
+            string strTravelTax = string.Empty;
+            var dex = TypeParse.StrToFloat(exhaust.ToUpper().Replace("L", ""), 0);
+
+            if (saleState == "在销")
+            {
+                if (dictCarParams.ContainsKey(987) && (dictCarParams[987] == "第1批" || dictCarParams[987] == "第2批" || dictCarParams[987] == "第3批" || dictCarParams[987] == "第4批" || dictCarParams[987] == "第5批" || dictCarParams[987] == "第6批") && dictCarParams.ContainsKey(986))
+                {
+                    if (dictCarParams[986].ToString() == "减半")
+                    {
+                        strTravelTax = "购置税减半";
+
+                    }
+                    else if (dictCarParams[986].ToString() == "免征")
+                    {
+                        strTravelTax = "免征购置税";
+
+                    }
+                }
+                else if (dex > 0 && dex <= 1.6)
+                {
+                    strTravelTax = "购置税75折";
+
+                }
+            }
+            return strTravelTax;
         }
     }
 }

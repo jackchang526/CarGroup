@@ -29,8 +29,6 @@ var arrMarkSerial = [], saleYearCount = 0,
 var WaitCompare = (function (module) {
     var self = module,
         arrSelectCarId = [],  //已经选择过的车款
-        eleShopCart = document.querySelector("#duibiAti"),//已选择加对比的车的数量
-        eleFlyElement = document.querySelector("#flyItem"),//抛物线效果div
         defaults = {
             count: 4,
             duibiCookieName: "m_comparecarlist",
@@ -51,7 +49,7 @@ var WaitCompare = (function (module) {
             selectedFunc: function (carId) {
                 //已添加的样式修改
                 //$(defaults.oneSelector + carId).html("已加入").off("click").closest("li").addClass("btn-gray");
-                $("a[id^='car-compare-" + carId + "']").html("已加入").off("click").closest("li").addClass("btn-gray");
+                $("a[id^='car-compare-" + carId + "']").html("已加入").off("click").parent().addClass("btn-gray");
             },
             delFunc: function (carId) {
                 //删除对比的调整
@@ -81,19 +79,24 @@ var WaitCompare = (function (module) {
                 self.addCompareCar(id, name, $addElem);
             },
             myParabola: function () {//抛物线效果
-                var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft || 0,
-                    scrollTop = document.documentElement.scrollTop || document.body.scrollTop || 0;
+                var thisX = $(event.target).offset().left, // 获取当前btn位置
+                    thisY = $(event.target).offset().top,
+                    endX = $('.float-r-pk').offset().left, // 获取对比球位置
+                    endY = $('.float-r-pk').offset().top,
+                    thisWidth = $(event.target).width(); // 获取当前btn宽度
+                // 飞行元素位置
+                $('.add-duibi-box').css({
+                    top: thisY + 9,
+                    left: thisX + (thisWidth / 2) - 30,
+                    opacity: 0.6,
+                    zindex:100000000
+                });
 
-                eleFlyElement.style.left = event.clientX + scrollLeft + "px";
-                eleFlyElement.style.top = event.clientY + scrollTop + "px";
-                eleFlyElement.style.visibility = "visible";
-                funParabola(eleFlyElement, eleShopCart, {
-                    speed: 200,
-                    curvature: 0.003,
-                    complete: function () {
-                        eleFlyElement.style.visibility = "hidden";
-                    }
-                }).position().move();
+                // 飞行动画
+                $('.add-duibi-box').show().animate(
+                    { left: endX - 5, top: endY + 10, opacity: 0 }, 500, function () {
+                        $('.add-duibi-box').hide();
+                    });
             }
         };
     //添加对比
@@ -124,7 +127,7 @@ var WaitCompare = (function (module) {
             CarName: name
         });
         drawDuibiBtnUI();
-        self.updateCount();
+        self.updateCount(true);
         //加对比效果
         defaults.myParabola();
         if (defaults.selectedFunc && defaults.selectedFunc instanceof Function) {
@@ -137,7 +140,7 @@ var WaitCompare = (function (module) {
         LocalStorageData.clearData(defaults.duibiLocalName);
         compareData = [];
         drawDuibiBtnUI(compareData);
-        self.updateCount();
+        self.updateCount(true);
         //rightSwipe();
         if (defaults.clearFunc && defaults.clearFunc instanceof Function) {
             defaults.clearFunc();
@@ -165,7 +168,7 @@ var WaitCompare = (function (module) {
         compareData = newCompareData;
         drawDuibiBtnUI();
         
-        self.updateCount();
+        self.updateCount(true);
         if (defaults.delFunc && defaults.delFunc instanceof Function) {
             defaults.delFunc(carId);
         }
@@ -231,7 +234,7 @@ var WaitCompare = (function (module) {
         }
     };
     //更新pk数量
-    module.updateCount = function () {
+    module.updateCount = function (isanimation) {
         var count = 0;
         var cookieCar = LocalStorageData.getData(defaults.duibiLocalName);// CookieHelper.getCookie(defaults.duibiCookieName),
            arrCarId = [];
@@ -239,7 +242,18 @@ var WaitCompare = (function (module) {
             arrCarId = cookieCar.split('|');
             count = arrCarId.length;
         }
-        $("#compare-pk i").html(count);
+        if (isanimation) {
+            $('#duibiAti').addClass('float-pk-ati');
+            setTimeout(function () {
+                $('#duibiAti').removeClass('float-pk-ati');
+            }, 1000);
+            setTimeout(function () {
+                $("#compare-pk i").html(count);
+            }, 500);
+        }
+        else {
+            $("#compare-pk i").html(count);
+        }
     };
     module.updateHistoryCars = function (curNewCarId) {
         var historyCookieCar = CookieHelper.getCookie(defaults.historyCookieName);
@@ -292,6 +306,7 @@ var WaitCompare = (function (module) {
                 var curSerialId = defaults.serialid;//
                 var $model = this;
                 $body.animate({ scrollTop: 0 }, 30);
+                //$("#master_container").scrollTop = 0;
                 var tags = $('.tag', $body);
                 //切换标签
                 var $brandlist = $('.brandlist');
@@ -408,8 +423,8 @@ var WaitCompare = (function (module) {
                         }
                         else if (idx == 2) //历史记录
                         {
-
                             initHistory();
+                            $body.css('overflow', 'initial');
                             _commonSlider($model, $body);
                             $duibimask.trigger('close');
                         }
@@ -435,8 +450,8 @@ var WaitCompare = (function (module) {
             })
         })
         if (compareData.length <= 0) {
-            $(".btn-comparison").off("click").addClass("disable");
-            $(".btn-clear").off("click").addClass("disable");
+            $(".duibicar .btn-comparison").off("click").addClass("disable");
+            $(".duibicar .btn-clear").off("click").addClass("disable");
         } else {
             $(".btn-comparison").off("click").removeClass("disable").on("click", function (e) {
                 e.preventDefault();
@@ -461,7 +476,10 @@ var WaitCompare = (function (module) {
     }
     var _commonResetBody = function ($body) {
         $body[0].style.cssText = '';
-        $body.find("#container")[0].style.cssText = '';
+        var container = $body.find("#container");
+        if ($(container).length > 0) {
+            $body.find("#container")[0].style.cssText = '';
+        }
     }
     //头部自适应
     var _headerSlider = function () {

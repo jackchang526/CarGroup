@@ -40,6 +40,12 @@
     @Html.Raw(ViewBag.CsHeadHTML)
     <!-- 互联互通 end -->
     <div class="m-tool-compare y2015">
+        <div class="spl-config-screen" style="display:none;">
+            <h6>车款筛选</h6>
+            <div class="screen-trigger" id="screenTrigger" data-action="screenCar">
+                车款、排量、驱动方式等
+            </div>
+        </div>
         <div class="config-up-note">
             <p class="note">数据仅供参考，不构成买卖协议，实际以店内销售车辆为准。</p>
         </div>
@@ -50,8 +56,8 @@
         </div>
     </div>
     <!--车款层 start-->
-    <div class="leftmask mark leftmask3" style="display: none;"></div>
-    <div id="popupCar" class="leftPopup car-model models original" data-back="leftmask3" style="display: none" data-key="model">
+    <div class="leftmask mark leftmask5" style="display: none;"></div>
+    <div id="popupCar" class="leftPopup car-model models original" data-back="leftmask5" style="display: none" data-key="model">
         <div class="swipeLeft swipeLeft-sub">
             <div class="loading">
                 <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
@@ -117,32 +123,67 @@
         var CarCommonCBID = "@(Model.Brand == null ? 0 : Model.Brand.Id)";
         var CarCommonCSID = "@(Model.Id)";
      </script>
-        <div class="footer15">
-            <!--搜索框-->
-            @Html.Partial("~/html/footersearch.cshtml")
-            <div class="breadcrumb">
-                <div class="breadcrumb-box">
-                    <a href="http://m.yiche.com/">首页</a> &gt; <a href="http://car.m.yiche.com/brandlist/">选车</a> &gt; <a href="http://car.m.yiche.com/brandlist/@(Model.Brand.MasterBrand.AllSpell)/">@(Model.Brand.MasterBrand.Name)</a> &gt; <a href="http://car.m.yiche.com/@(Model.AllSpell)/">@(Model.Name)</a> &gt; <span>参数</span>
+    <div class="footer15">
+        <!--搜索框-->
+        @Html.Partial("~/html/footersearch.cshtml")
+        <div class="breadcrumb">
+            <div class="breadcrumb-box">
+                <a href="http://m.yiche.com/">首页</a> &gt; <a href="http://car.m.yiche.com/brandlist/">选车</a> &gt; <a href="http://car.m.yiche.com/brandlist/@(Model.Brand.MasterBrand.AllSpell)/">@(Model.Brand.MasterBrand.Name)</a> &gt; <a href="http://car.m.yiche.com/@(Model.AllSpell)/">@(Model.Name)</a> &gt; <span>参数</span>
             </div>
         </div>
         @Html.Partial("~/html/footerV3.cshtml")
     </div>
+    @Html.Partial("~/html/DuibiLayerTemplate.cshtml")
     <div class="float-r-box">
+        <div class="float-r-blue" id="compare-pk" data-action="duibicar" data-channelid="27.23.747">
+            <span class="float-r-pk"></span>
+            <em>对比</em>
+            <i id="duibiAti" class="">0</i>
+        </div>
         <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
     </div>
     <!--选装包弹层-->
     <div class="pop-optional-mask" style="display:none;"></div>
     <div class="pop-optional" style="display:none;">
     </div>
-@*<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>*@
-    @*<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery-1.9.1.min.js"></script>*@
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/mpeizhiv2.min.js?v=201711021428"></script>
-    @*<script type="text/javascript" src="/js/mpeizhiv2.js"></script>*@
-    @*<script type="text/javascript" src="/js/v2/iscroll.js"></script>
-    <script type="text/javascript" src="/js/v2/underscore.js"></script>
-    <script type="text/javascript" src="/js/v2/model.js"></script>
-    <script type="text/javascript" src="/js/v2/rightswipe.js"></script>*@
-    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.js,carchannel/wirelessjsv2/v2/underscore.js,carchannel/wirelessjsv2/v2/model.js,carchannel/wirelessjsv2/v2/rightswipe.js?v=20170105"></script>
+
+    <!--车款筛选 start-->
+    <div class="leftmask leftmask4" style="display: none;"></div>
+    <div class="leftPopup screenCar" id="screenCar" data-back="leftmask4" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                <p>正在加载...</p>
+            </div>
+            <div class="carscreen-sum"></div>
+            <div class="swipeLeft-header" style="display: block;">
+                <a href="javascript:;" class="btn-clear">清除</a>
+                <!--btn-clear disable-->
+                <a href="javascript:;" class="btn-comparison">完成</a>
+                <!--btn-comparison disable-->
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <!--加对比弹出层 start-->
+    <div id="master_container" style="z-index: 888888;" class="brandlayer mthead">
+        @Html.Partial("~/html/compareCarTemplate.cshtml")
+    </div>
+    <!--加对比弹出层 end-->
+    <!--车款筛选 end-->
+    <script type="text/javascript" src="/js/waitcompareV2.js"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/jquery.lazyload.min.js"></script>
+    @*<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/mpeizhiv2.min.js?v=201711021428"></script>*@
+    <script type="text/javascript" src="/js/mpeizhiv2.js"></script>
+
+    <script type="text/javascript" src="/js/v2/iscroll.js?v=20171109"></script>
+    <script type="text/javascript" src="/Js/v2/underscore.js?v=20171109"></script>
+    <script type="text/javascript" src="/Js/v2/model.js?v=20160128"></script>
+    <script type="text/javascript" src="/js/v2/rightswipe.js?v=20171109"></script>
+    <script type="text/javascript" src="/Js/v2/note.js?v=20160118"></script>
+    <script type="text/javascript" src="/js/v2/brand.js?v=20171109"></script>
+
+    @*<script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.js,carchannel/wirelessjsv2/v2/underscore.js,carchannel/wirelessjsv2/v2/model.js,carchannel/wirelessjsv2/v2/rightswipe.js?v=20170105"></script>*@
     <!--车款模板 end-->
     <script type="text/javascript">
         $(function () {
@@ -175,19 +216,31 @@
     </script>
     <script type="text/javascript">
         var serialId =@(Model.Id);
+        var apiBrandId = "@(Model.BrandId)";
+        var apiSerialId = @(Model.Id);
+        var apiCarId = '';
         var optionalPackageJson = @(Html.Raw(ViewData["PackageJsContent"]));
+        var MaxCarCount = 30;
+        @(Html.Raw(ViewBag.SelectJson))
         function initCarInfo(carId) {
-            loadJS.push("http://api.car.bitauto.com/CarInfo/GetCarParameter.ashx?v=20171011&isParamPage=1&carids=" + carId, "utf-8", function () {
+            if (carId != "") {
+                loadJS.push("http://api.car.bitauto.com/CarInfo/GetCarParameter.ashx?v=20171011&isParamPage=1&carids=" + carId, "utf-8", function () {
+                    initPageForCompare();
+                });
+            }
+            else {
+                carCompareJson = [];
                 initPageForCompare();
-            });
+            }
         }
         var carIds = '@(ViewBag.CarIds)';
         var carArray = [];
         if (carIds.indexOf(",") != -1) {
             carArray = carIds.split(",");
         }else{carArray.push(carIds);}
-        var topCarIds = carArray.length >=3 ? carArray.slice(0,3).join(",") : topCarIds = carArray.join(",");
+        var topCarIds = carArray.length >= MaxCarCount ? carArray.slice(0, MaxCarCount).join(",") : topCarIds = carArray.join(",");
         initCarInfo(topCarIds);
+        ConditionSelectCar.InitHtml();
     </script>
 
     <script type="text/javascript">

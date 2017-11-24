@@ -18,7 +18,7 @@
     @Html.Partial("~/html/TopDownloadLayer.cshtml")
     <div id="container">
         <!--新加弹出层 start-->
-        <div id="master_container" style="z-index: 888888; display: none" class="brandlayer mthead">
+        <div id="master_container" style="z-index: 888888;" class="brandlayer mthead">
             @Html.Partial("/html/compareCarTemplate.cshtml")
         </div>
 
@@ -86,9 +86,14 @@
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsStat/CarCompareStatForWireless.js?201412"></script>
     <script type="text/javascript">
         function initCarInfo(carId) {
-            loadJS.push("http://api.car.bitauto.com/CarInfo/GetCarParameter.ashx?v=20171011&isParamPage=1&carids=" + carId, "utf-8", function () {
+            if (carId == "") {
                 initPageForCompare();
-            });
+            }
+            else {
+                loadJS.push("http://api.car.bitauto.com/CarInfo/GetCarParameter.ashx?v=20171011&isParamPage=1&carids=" + carId, "utf-8", function () {
+                    initPageForCompare();
+                });
+            }
         }
         initCarInfo('@(Request.QueryString["carIDs"])');
     </script>

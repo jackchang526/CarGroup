@@ -228,7 +228,7 @@
                         string VrUrl = ViewData["VRUrl"].ToString();
                         if (!string.IsNullOrWhiteSpace(VrUrl))
                         {
-                            <a href="@(VrUrl)" class="vr-chezhan">
+                            <a href="@(VrUrl)" data-channelid="27.23.2214" class="vr-chezhan">
                                 <i></i>
                                 VR
                             </a>
@@ -743,52 +743,6 @@
             <!--#include file="/include/pd/2016/wap/00001/201606_wap_common_ydyy_Manual.shtml" -->
         }
 
-        <!--一级公共模板 start-->
-        <script type="text/template" id="duibibtnTemplate">
-            <div class="y2015-car-01">
-                <div class="slider-box">
-                    <ul class="first-list">
-                        {for(var i =0;i< list.SelectedCars.length;i++){}
-                        <li>
-                            <div class="line-box"><a class='select' href="/m{= list.SelectedCars[i].CarId }/">{=list.SelectedCars[i].CarName }</a><a href="javascript:;" data-carid="{=list.SelectedCars[i].CarId }" class="btn-close"><i></i></a></div>
-                        </li>
-                        {}}
-                        {for(var i =0;i< list.AddLables.Count;i++){}
-                        <li class="add">
-                            <div class="line-box"><a href="javascript:;">添加对比车款</a></div>
-                        </li>
-                        {}}
-                        <li class="alert">最多对比4个车款</li>
-                        <li class="ad-box" id="compareAdBox"></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="swipeLeft-header">
-                <a href="###" class="btn-clear">清除</a>
-                <!--btn-clear disable-->
-                <a href="###" class="btn-comparison">开始对比</a>
-                <!--btn-comparison disable-->
-                <div class="clear"></div>
-            </div>
-        </script>
-        <!--一级公共模板 end-->
-        <div class="leftmask duibi-leftmask leftmask2 " style="display: none;"></div>
-        <div class="leftPopup duibicar duibi-leftPopup" data-zindex="777777" data-back="leftmask2" style="display: none;">
-            <div class="swipeLeft">
-                <div class="y2015-car-01">
-                    <ul class="first-list"></ul>
-                </div>
-                <div class="swipeLeft-header">
-                    <a href="###" class="btn-clear">清空</a>
-                    <!--btn-clear disable-->
-                    <a href="###" class="btn-comparison">开始对比</a>
-                    <!--btn-comparison disable-->
-                    <div class="clear"></div>
-                </div>
-            </div>
-        </div>
-        <!--加对比效果-->
-        <div id="flyItem" style="width:10px;height:10px;border-radius:50%;background:#F05550; position:absolute; top:0; bottom:0; z-index:999; visibility:hidden;"></div>
         <div class="float-r-box">
             <div class="float-r-blue" id="compare-pk" data-action="duibicar" data-channelid="27.23.747" >
                 <span class="float-r-pk"></span>
@@ -801,7 +755,7 @@
             showNewsInsCode('893f9a91-0f1e-484c-8263-37d815e64d1b', '09dc099f-5b52-4a70-8edd-faa0d7ff4818', '469f45cc-1b72-461c-ba68-0b560c885455', 'cd11763a-ea3e-4315-b054-8baecd23cab8');
         </script>
 
-
+        @Html.Partial("~/html/DuibiLayerTemplate.cshtml")
         <div class="footer15">
             <!--搜索框-->
             @Html.Partial("~/html/footersearch.cshtml")
@@ -1063,7 +1017,6 @@
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/common/swiper-3.2.7.min.js"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/jquery.lazyload.min.js"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/common/cityjsonv2.js"></script>
-    <script type="text/javascript" src="/js/paowuxian.js"></script>
 
     <script type="text/javascript" src="/js/v2/iscroll.js?v=20171109"></script>
     <script type="text/javascript" src="/Js/v2/underscore.js?v=20171109"></script>

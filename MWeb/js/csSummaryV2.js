@@ -1039,7 +1039,7 @@ function GetVr() {
             if (data.Code != 0 || data.Data.Total == 0) {
                 return;
             }
-            $("#favstar").before("<a href=\"" + data.Data.DataList[0].Url + "\" class=\"vr-chezhan\"><i></i>VR</a>");
+            $("#favstar").before("<a href=\"" + data.Data.DataList[0].Url + "\"  data-channelid=\"27.23.2214\" class=\"vr-chezhan\"><i></i>VR</a>");
         }
     });
 }

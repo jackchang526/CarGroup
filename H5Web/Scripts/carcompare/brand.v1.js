@@ -49,6 +49,9 @@ $(function () {
                 $body.trigger('rightswipe3', { model_hide: options.model_hide, selected: options.selected, actionName1: options.actionName1, actionName2: options.actionName2, actionNameModel: options.actionName3, back: options.leftmaskback, alert: options.leftmaskalert, masterselect: options.masterselect, carselect: options.carselect, selectmark: options.selectmark });
                 //自适应页脚
                 $body.footer({ footer: '.footer-box' });
+
+                //图片加载
+                $("span.brand-logo>img").lazyload({ effect: "fadeIn", threshold: 50 });
             }
         })
     })

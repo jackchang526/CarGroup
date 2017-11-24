@@ -487,7 +487,7 @@ function GetVr() {
             if (data.Code != 0 || data.Data.Total == 0) {
                 return;
             }
-            $("#focus_images").parent().prepend("<a href=\"" + data.Data.DataList[0].Url + "\" target=\"_blank\" class=\"zs-vr\">VR看全景</a>");
+            $("#focus_images").parent().prepend("<a href=\"" + data.Data.DataList[0].Url + "\"  data-channelid=\"2.21.2213\" target=\"_blank\" class=\"zs-vr\">VR看全景</a>");
         }
     });
 }

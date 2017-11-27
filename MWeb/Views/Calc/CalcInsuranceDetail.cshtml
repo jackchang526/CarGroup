@@ -32,6 +32,19 @@
             $(".op-nav").hide();
             $("div[id^='app_download_']").hide();
             $("#app_yc_dwonload").hide();
+        } else if(typeof(WtParam) != "undefined" && WtParam == "mxmacg_qt") {
+            // add by hepw 20171123 for 小米合作 
+            // 1. 顶部悬浮
+            $("div[id^='app_download_']").hide();
+            $("#app_yc_dwonload").hide();
+            // 2. 公共头
+            $(".op-nav").hide();
+            // 颜色修改
+            var link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.type = "text/css";
+            link.href = "http://image.bitautoimg.com/uimg/css/00053/myiche2015_jsq_mi-20171124174525-1505.css";
+            document.getElementsByTagName("head")[0].appendChild(link);
         }
     </script>
 
@@ -287,11 +300,30 @@
                 $(".footer15").hide();
                 $("div[id^='app_download_']").hide();
                 $("#app_yc_dwonload").hide();
+            }else if(typeof(WtParam) != "undefined" && WtParam == "mxmacg_qt") {
+                // add by hepw 20171123 for 小米合作 
+                // 1. 顶部悬浮
+                $("div[id^='app_download_']").hide();
+                $("#app_yc_dwonload").hide();
+                // 2. 公共头
+                $(".op-nav").hide();
+                // 3. 公共底
+                $(".footer15").hide(); 
+                // 6. 车险计算通栏
+                $(".jsq-dk-jiange").hide();
             }
         </script>
         <div class="float-r-box">
             <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
         </div>
+        <script type="text/javascript">
+            if (typeof (WtParam) != "undefined" && WtParam == "mxmacg_qt") {
+                // add by hepw 20171123 for 小米合作
+                // 有奖调研
+                $(".float-r-box").hide();
+                $("#ycfd").hide();
+            }
+        </script> 
         <!--footer end-->
     </div>
     <div id="master_container" data-url="/html/selectCarTemplate.htm?v=20151207" class="brandlayer">

@@ -272,45 +272,47 @@
 <!--loading模板 end -->
 <!--车型模板 start-->
 <script type="text/template" id="carTemplate">
-    <div class="choose-car-name-close bybrand_list">
-        <div class="brand-logo-none-border"><img /></div>
-        <span class="brand-name"></span>
-        <!-- <a href="#" class="choose-car-btn-close">关闭</a> -->
+    <div class="tt-list absolute">
+        <div class="choose-car-name-close bybrand_list">
+            <div class="brand-logo-none-border"><img /></div>
+            <span class="brand-name"></span>
+            <!-- <a href="#" class="choose-car-btn-close">关闭</a> -->
+        </div>
+        <div class="clear"></div>
+        { for(var i = 0 ; i < list.length ; i++){ }
+                        <!-- 车款列表 start -->
+        {if(list[i].Child.length > 0){ }
+        <div class="tt-small">
+            <span>{= list[i].BrandName }</span>
+        </div>
+        {}}
+        <!-- 图文混排横向 start -->
+        <div class="pic-txt-h pic-txt-9060">
+            <ul>
+                { for(var j = 0 ; j < list[i].Child.length ; j++){ 
+                    var url = (typeof ly != "undefined" && ly != null && ly === "xxj"?("http://dealer.h5.yiche.com/searchOrder/" + list[i].Child[j].SerialId.toString() + "/0/?leads_source=H001005&" + par):("/"+list[i].Child[j].Allspell+"/?h5from=brand&" + par));}
+                            <li {= list[i].Child[j].SerialId.toString() == (api.car.currentid.toString()) ? 'class="current"':''}>
+                                <div class="imgbox-2">                            
+                                    <a class="l-content" data-action="models" data-id="{= list[i].Child[j].SerialId}" data-allspell="{= list[i].Child[j].Allspell}"  href="{= url}">
+                                        <div class="img-box">
+                                            <img src="{= list[i].Child[j].ImageUrl}" />
+                                        </div>
+                                        <div class="c-box">
+                                            <h4>{= list[i].Child[j].SerialName }</h4>
+                                            <p><strong>{= list[i].Child[j].Price }</strong></p>
+                                        </div>
+                                    </a>
+                                    {if(list[i].Child[j].ad){}
+                                       <a class="r-content {= list[i].Child[j].ad.className}" href="{=list[i].Child[j].ad.href}"></a>
+                                    {}}
+                                </div>
+                            </li>
+                {}}
+            </ul>
+        </div>
+        <!-- 图文混排横向 end -->
+        {}}
     </div>
-    <div class="clear"></div>
-    { for(var i = 0 ; i < list.length ; i++){ }
-                    <!-- 车款列表 start -->
-    {if(list[i].Child.length > 0){ }
-    <div class="tt-small">
-        <span>{= list[i].BrandName }</span>
-    </div>
-    {}}
-    <!-- 图文混排横向 start -->
-    <div class="pic-txt-h pic-txt-9060">
-        <ul>
-            { for(var j = 0 ; j < list[i].Child.length ; j++){ 
-                var url = (typeof ly != "undefined" && ly != null && ly === "xxj"?("http://dealer.h5.yiche.com/searchOrder/" + list[i].Child[j].SerialId.toString() + "/0/?leads_source=H001005&" + par):("/"+list[i].Child[j].Allspell+"/?h5from=brand&" + par));}
-                        <li {= list[i].Child[j].SerialId.toString() == (api.car.currentid.toString()) ? 'class="current"':''}>
-                            <div class="imgbox-2">                            
-                                <a class="l-content" data-action="models" data-id="{= list[i].Child[j].SerialId}" data-allspell="{= list[i].Child[j].Allspell}"  href="{= url}">
-                                    <div class="img-box">
-                                        <img src="{= list[i].Child[j].ImageUrl}" />
-                                    </div>
-                                    <div class="c-box">
-                                        <h4>{= list[i].Child[j].SerialName }</h4>
-                                        <p><strong>{= list[i].Child[j].Price }</strong></p>
-                                    </div>
-                                </a>
-                                {if(list[i].Child[j].ad){}
-                                   <a class="r-content {= list[i].Child[j].ad.className}" href="{=list[i].Child[j].ad.href}"></a>
-                                {}}
-                            </div>
-                        </li>
-            {}}
-        </ul>
-    </div>
-    <!-- 图文混排横向 end -->
-    {}}
 </script>
 <!--车型模板 end-->
 <!--品牌列表模板 start-->

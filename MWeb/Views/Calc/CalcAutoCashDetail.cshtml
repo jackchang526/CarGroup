@@ -15,7 +15,7 @@
         #master_container {
             background-color: #fff;
         }
-    </style>    
+    </style>
 </head>
 <body>
     @Html.Partial("/html/TopDownloadLayer.cshtml")
@@ -32,6 +32,19 @@
             $(".op-nav").hide();
             $("div[id^='app_download_']").hide();
             $("#app_yc_dwonload").hide();
+        } else if(typeof(WtParam) != "undefined" && WtParam == "mxmacg_qt") {
+            // add in 20171123 for 小米合作
+            // 1. 顶部悬浮
+            $("div[id^='app_download_']").hide();
+            $("#app_yc_dwonload").hide();
+            // 2. 公共头
+            $(".op-nav").hide();
+            // 颜色修改
+            var link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.type = "text/css";
+            link.href = "http://image.bitautoimg.com/uimg/css/00053/myiche2015_jsq_mi-20171124174525-1505.css";
+            document.getElementsByTagName("head")[0].appendChild(link);
         }
     </script>
     <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/calcautocashdetailv1.js?v=201711100907"></script>
@@ -313,12 +326,29 @@
                 $(".footer15").hide();
                 $("div[id^='app_download_']").hide();
                 $("#app_yc_dwonload").hide();
+            } else if(typeof(WtParam) != "undefined" && WtParam == "mxmacg_qt") {
+                // add by hepw 20171123 for 小米合作
+                // 1. 顶部悬浮
+                $("div[id^='app_download_']").hide();
+                $("#app_yc_dwonload").hide();
+                // 2. 公共头
+                $(".op-nav").hide();
+                // 3. 公共底
+                $(".footer15").hide();
             }
         </script>
 
         <div class="float-r-box">
             <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
         </div>
+        <script type="text/javascript">
+            if (typeof (WtParam) != "undefined" && WtParam == "mxmacg_qt") {
+                // add by hepw 20171123 for 小米合作
+                // 有奖调研
+                $(".float-r-box").hide();
+                $("#ycfd").hide();
+            }
+        </script> 
         <!--footer end-->
     </div>
     <div id="master_container" data-url="/html/selectCarTemplate.htm?v=20151207" class="brandlayer mthead"></div>
@@ -835,99 +865,99 @@
     </script>
 
     <script type="text/javascript">
-        //选择车款
-        //function selectCarId(carId) {
-        //    location.href = "/gouchejisuanqi/?carid=" + carId;
-        //}
-        //function calcAutoCashAll() {
-        //    if ($('#hidCarPrice').val() != "0") {
-        //        shangPai = 500;
-        //        $("#shangPai").html("500");
-        //    } else {
-        //        shangPai = 0;
-        //        $("#shangPai").html("0");
-        //    }
-        //    //购置税
-        //    calcAcquisitionTax();
-        //    //车船使用税
-        //    CalculateVehicleAndVesselTax();
-        //    //交强险
-        //    calcCompulsory();
-        //    //第三责任险
-        //    calcTPL();
-        //    //车辆损失险
-        //    calcCarDamage();
-        //    //不计免赔特约险
-        //    calcAbatement();
-        //    //全车盗抢险
-        //    calcCarTheft();
-        //    //玻璃单独破碎险
-        //    calcBreakageOfGlass();
-        //    //自燃损失险
-        //    calcSelfignite();
-        //    //涉水险/发动机特别损失险
-        //    calcCarEngineDamage();
-        //    //车身划痕险
-        //    calcCarDamageDW();
-        //    //司机座位责任险
-        //    calcLimitofDriver();
-        //    //乘客座位责任险
-        //    calcLimitofPassenger();
-        //    //必要花费小计
-        //    calcEssentialCost();
-        //    //商业保险小计
-        //    calcCommonTotal();
-        //    //计算总价
-        //    calcTotal();
-        //}
+            //选择车款
+            //function selectCarId(carId) {
+            //    location.href = "/gouchejisuanqi/?carid=" + carId;
+            //}
+            //function calcAutoCashAll() {
+            //    if ($('#hidCarPrice').val() != "0") {
+            //        shangPai = 500;
+            //        $("#shangPai").html("500");
+            //    } else {
+            //        shangPai = 0;
+            //        $("#shangPai").html("0");
+            //    }
+            //    //购置税
+            //    calcAcquisitionTax();
+            //    //车船使用税
+            //    CalculateVehicleAndVesselTax();
+            //    //交强险
+            //    calcCompulsory();
+            //    //第三责任险
+            //    calcTPL();
+            //    //车辆损失险
+            //    calcCarDamage();
+            //    //不计免赔特约险
+            //    calcAbatement();
+            //    //全车盗抢险
+            //    calcCarTheft();
+            //    //玻璃单独破碎险
+            //    calcBreakageOfGlass();
+            //    //自燃损失险
+            //    calcSelfignite();
+            //    //涉水险/发动机特别损失险
+            //    calcCarEngineDamage();
+            //    //车身划痕险
+            //    calcCarDamageDW();
+            //    //司机座位责任险
+            //    calcLimitofDriver();
+            //    //乘客座位责任险
+            //    calcLimitofPassenger();
+            //    //必要花费小计
+            //    calcEssentialCost();
+            //    //商业保险小计
+            //    calcCommonTotal();
+            //    //计算总价
+            //    calcTotal();
+            //}
 
-        $("#diSanZheXDl dd").attr("class", "");
-        $("#diSanZheXDl dd").eq(2).attr("class", "current");
+            $("#diSanZheXDl dd").attr("class", "");
+            $("#diSanZheXDl dd").eq(2).attr("class", "current");
 
-        $("#cheShenXDl dd").attr("class", "");
-        $("#cheShenXDl dd").eq(1).attr("class", "current");
+            $("#cheShenXDl dd").attr("class", "");
+            $("#cheShenXDl dd").eq(1).attr("class", "current");
 
-        $("#siJiXDl dd").attr("class", "");
-        $("#siJiXDl dd").eq(1).attr("class", "current");
+            $("#siJiXDl dd").attr("class", "");
+            $("#siJiXDl dd").eq(1).attr("class", "current");
 
-        $("#chengKeXDl dd").attr("class", "");
-        $("#chengKeXDl dd").eq(1).attr("class", "current");
+            $("#chengKeXDl dd").attr("class", "");
+            $("#chengKeXDl dd").eq(1).attr("class", "current");
 
-        var carid = getQueryString("carid");
-        var carPrice = getQueryString("carprice");
-        if (carid) {
-            if (carPrice) {
+            var carid = getQueryString("carid");
+            var carPrice = getQueryString("carprice");
+            if (carid) {
+                if (carPrice) {
+                    $("#hidCarPrice").val(carPrice);
+                    $("#luochePrice1").html(formatCurrency(carPrice));
+                    $("#luochePrice2").attr("value", carPrice);
+                    setCalcToolUrl("caridAndPrice", $("#hidCarID").val());
+                } else {
+                    $("#luochePrice1").html(formatCurrency($("#hidCarPrice").val()));
+                    $("#luochePrice2").attr("value", $("#hidCarPrice").val());
+                    setCalcToolUrl("carid", $("#hidCarID").val());
+                }
+                GetCarInfo(carid);
+            } else {
                 $("#hidCarPrice").val(carPrice);
                 $("#luochePrice1").html(formatCurrency(carPrice));
                 $("#luochePrice2").attr("value", carPrice);
-                setCalcToolUrl("caridAndPrice", $("#hidCarID").val());
-            } else {
-                $("#luochePrice1").html(formatCurrency($("#hidCarPrice").val()));
-                $("#luochePrice2").attr("value", $("#hidCarPrice").val());
-                setCalcToolUrl("carid", $("#hidCarID").val());
+                $("#zuoWeiSDl dd").attr("class", "");
+                $("#zuoWeiSDl dd").eq(0).attr("class", "current");
+                $("#boLiXDl dd").attr("class", "");
+                $("#boLiXDl dd").eq(0).attr("class", "current");
+                $("#cheChuanDl dd").attr("class", "");
+                $("#cheChuanDl dd").eq(1).attr("class", "current");
+                setCalcToolUrl("carPrice", carPrice);
             }
-            GetCarInfo(carid);
-        } else {
-            $("#hidCarPrice").val(carPrice);
-            $("#luochePrice1").html(formatCurrency(carPrice));
-            $("#luochePrice2").attr("value", carPrice);
-            $("#zuoWeiSDl dd").attr("class", "");
-            $("#zuoWeiSDl dd").eq(0).attr("class", "current");
-            $("#boLiXDl dd").attr("class", "");
-            $("#boLiXDl dd").eq(0).attr("class", "current");
-            $("#cheChuanDl dd").attr("class", "");
-            $("#cheChuanDl dd").eq(1).attr("class", "current");
-            setCalcToolUrl("carPrice", carPrice);
-        }
-        calcAutoCashAll();
+            calcAutoCashAll();
     </script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/jquery.lazyload.min.js"></script>
     @*<script src="/js/v2/iscroll.js?v=2015112415"></script>
-    <script src="/js/v2/underscore.js?v=2015112415"></script>
-    <script src="/js/v2/model.js?v=2015112415"></script>
-    <script src="/js/v2/note.js?v=2015112415"></script>
-    <script src="/js/v2/rightswipe.js?v=2015112415"></script>
-    <script src="/js/v2/brand.js?v=2015112415"></script>*@
+        <script src="/js/v2/underscore.js?v=2015112415"></script>
+        <script src="/js/v2/model.js?v=2015112415"></script>
+        <script src="/js/v2/note.js?v=2015112415"></script>
+        <script src="/js/v2/rightswipe.js?v=2015112415"></script>
+        <script src="/js/v2/brand.js?v=2015112415"></script>*@
     <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js?v=201711100907"></script>
     <script type="text/javascript">
         api.brand.currentid = @ViewData["CarBrandId"]; //品牌
@@ -1083,7 +1113,7 @@
                 }, 300);
             });
         }*@
-</script>
+    </script>
 </body>
 </html>
 <!--#include file="/include/special/stat/00001/bglogpostlog_Manual.shtml"-->

@@ -1,5 +1,6 @@
 ﻿using BitAuto.CarChannel.BLL;
 using BitAuto.CarChannel.Common;
+using BitAuto.CarChannel.Common.Enum;
 using BitAuto.CarChannel.Common.Interface;
 using BitAuto.CarChannel.Model.AppApi;
 using System;
@@ -74,6 +75,10 @@ namespace AppApi.Controllers
         [OutputCache(Duration = 300, VaryByParam = "serialId", Location = OutputCacheLocation.Downstream)]
         public ActionResult GetCarSerialPackageEntityListBySerialId(int? serialId)
         {
+            if (serialId.GetValueOrDefault(0) < 1)
+            {
+                return JsonNet(new { success = true, status = 0, message = "参数错误", data = "" }, JsonRequestBehavior.AllowGet);
+            }
             var result = CarSerialService.GetCarSerialPackageEntityListBySerialId(serialId.GetValueOrDefault(0));
             return AutoJson(new
             {
@@ -155,6 +160,10 @@ namespace AppApi.Controllers
         [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
         public ActionResult GetCarListByCSIdAndCityId(int? csid, int? cityId, bool? includeStopSale = false)
         {
+            if (csid.GetValueOrDefault(0) < 1 || cityId.GetValueOrDefault(0) < 1)
+            {
+                return JsonNet(new { success = true, status = 0, message = "参数错误", data = "" }, JsonRequestBehavior.AllowGet);
+            }
             var CarGroupList = CarBasicService.GetCarGroupBySerialIdAndCSID(cityId.GetValueOrDefault(0), csid.GetValueOrDefault(0), includeStopSale.GetValueOrDefault(false));
             return AutoJson(new
             {
@@ -174,9 +183,39 @@ namespace AppApi.Controllers
         /// <param name="csID"></param>
         /// <returns></returns>
         [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
-        public ActionResult GetSerialInfo(int? csID, int? cityId)
+        public ActionResult GetSerialInfo(int? csId, int? cityId)
         {
+            if (csId.GetValueOrDefault(0) < 1 || cityId.GetValueOrDefault(0) < 1)
+            {
+                return JsonNet(new { success = true, status = 0, message = "参数错误", data = "" }, JsonRequestBehavior.AllowGet);
+            }
+            var serialInfo = CarSerialService.GetSerialInfoCard(csId.GetValueOrDefault(0));
 
+            var result = new
+            {
+                csID = serialInfo.CsID,
+                csName = serialInfo.CsShowName,//车型名称
+                masterd = serialInfo,//大品牌logo
+                //guidePriceRange = serialInfo.CsPriceRange,//参考价区间 
+                referencePriceRange = serialInfo.CsPriceRange, //指导价区间
+                //converImg = serialInfo.CoverImageUrl,
+                //coverImg = serialExt == null ? "" : serialExt.CoverImageUrl,
+                //whiteCoverImg = serialExt == null ? "" : serialExt.WhiteCoverUrl,
+                imgCount = serialInfo.CsPicCount,//图片数量
+                oil = serialInfo.CsSummaryFuelCost,// serialInfo.MinOil.ToString("F1") == "0.0" || serialInfo.MaxOil.ToString("F1") == "0.0" ? "暂无" : serialInfo.MinOil.ToString("F1") + "-" + serialInfo.MaxOil.ToString("F1") + "L",//参考油耗（在销车款的 综合工况油耗的最低和最高 ）
+                //country = serialInfo.CountryName,//国别
+                carType = serialInfo.CsLevel,//车型
+                shareUrl = string.Format("http://car.h5.yiche.com/{0}/?WT.mc_id=nbycapp", serialInfo.CsAllSpell),//分享地址 子品牌全拼
+                //serialLink = string.Format("http://m.yichemall.com/car/detail/index?modelId={0}&source=ycapp-tmall-1", serialInfo.Id),
+                //forumId = forumId,
+                //brandId = serialInfo.MakeId,//主品牌
+                saleStatus = serialInfo.CsSaleState,
+                //firstCarTimeToMarket = serialInfo.MinTimeToMarket,
+                //lastCarTimeToMarket = serialInfo.MaxTimeToMarket,
+                //lastCarTimeToMarketText = serialInfo,
+                //isHaveImage = isHaveImage,
+                newSaleStatus = CarSerialService.GetNewSerialIntoMarketText(serialInfo.CsID, true)
+            };
 
 
             return AutoJson(new
@@ -191,7 +230,51 @@ namespace AppApi.Controllers
             });
         }
 
+        /// <summary>
+        /// 网友还看过那些车
+        /// </summary>
+        /// <param name="csID">子品牌</param>
+        /// <returns></returns>
+        [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
+        public ActionResult GetSerialListForUser(int? csID)
+        {
+            var serialList = new PageBase().GetSerialToSerialByCsID(csID.GetValueOrDefault(), 6, 3);
+            var result = new List<object>();
+            if (serialList != null && serialList.Count > 0)
+            {
 
+                foreach (EnumCollection.SerialToSerial serialToSerial in serialList)
+                {
+                    string saleState = string.Empty;
+                    if (string.IsNullOrWhiteSpace(serialToSerial.ToCsPriceRange))
+                    {
+                        if (!string.IsNullOrEmpty(serialToSerial.ToCsSaleState) && "待销" == serialToSerial.ToCsSaleState)
+                        {
+                            saleState = "未上市";
+                        }
+                        else
+                        {
+                            saleState = "暂无报价";
+                        }
+                    }
+                    else
+                    {
+                        saleState = serialToSerial.ToCsPriceRange;
+                    }
+                    result.Add(new
+                    {
+                        CSId = serialToSerial.ToCsID,
+                        Name = serialToSerial.ToCsShowName,
+                        ShowName = serialToSerial.ToCsShowName,
+                        Pic = serialToSerial.ToCsPic,
+                        PriceRange = saleState,
+                        AllSpell = serialToSerial.ToCsAllSpell
+                    });
+                }
+
+            }
+            return JsonNet(new { success = true, data = result }, JsonRequestBehavior.AllowGet);
+        }
 
         #region zhangzhiyang work zone
 

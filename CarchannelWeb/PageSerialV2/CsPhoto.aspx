@@ -136,8 +136,8 @@
             <div class="layout-2">
                 <%--<script type="text/javascript" id="zp_script_95" src="http://mcc.chinauma.net/static/scripts/p.js?id=95&w=220&h=220&sl=1&delay=5"
 					zp_type="1"></script>--%>
-                <script type="text/javascript" id="zp_script_243" src="http://mcc.chinauma.net/static/scripts/p.js?id=243&w=240&h=220&sl=1&delay=5"
-                    zp_type="1"></script>
+               <%-- <script type="text/javascript" id="zp_script_243" src="http://mcc.chinauma.net/static/scripts/p.js?id=243&w=240&h=220&sl=1&delay=5"
+                    zp_type="1"></script>--%>
             </div>
             <!--百度推广-->
             <%--<div class="layout-2">

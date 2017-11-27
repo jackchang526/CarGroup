@@ -2279,6 +2279,7 @@ namespace BitAuto.CarChannel.BLL
             {
                 List<CarParameterListEntity> newCarParamterList = GetCarParamterListByCarIds(carIds, isVersion87);
 
+                CommonFunction.WriteLog(string.Format("[isVersion87]:{0},[carParamterKey]:{1},[json]:{2}", isVersion87, carParamterKey, JsonHelper.Serialize(newCarParamterList)));
                 if (newCarParamterList != null && newCarParamterList.Count > 0)
                 {
                     CacheManager.InsertCache(carParamterKey, newCarParamterList, 5);

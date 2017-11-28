@@ -75,38 +75,7 @@
     </div>
     <!--loading模板 end -->
     <!--车款模板 start-->
-    <script type="text/template" id="modelTemplate">
-        { for(var n in CarList){ }
-        {var iszx = arrMark[n.replace('s', '')]}
-        <div class="tt-small" {= !iszx?'data-slider="pic-txt-h"':''}>
-            <span>
-                {= n.replace('s','')+'款' }
-                {if(!iszx){}
-                <em>[停售]</em>
-                {}}
-            </span>
-            {if(!iszx){}
-            <i></i>
-            {}}
-        </div>
-
-        <!-- 图文混排横向 start -->
-        <div class="pic-txt-h pic-txt-9060 tone {=iszx||salesYearCount ==0?'open':''}">
-            {salesYearCount++;}
-            <ul>
-                {for(var i=0;i < CarList[n].length;i++){}
-                <li {= CarList[n][i].CarId.toString() ==(api.model.currentid.toString()) ? 'class="current"':''}>
-                    <a href="#" data-id="{= CarList[n][i].CarId}">
-                        <h4>{= CarList[n][i].CarName} {=CarList[n][i].SaleState =="在销"?"":(CarList[n][i].SaleState=="待销"?"[未上市]":"[停售]")}</h4>
-                        <p><strong>{= CarList[n][i].ReferPrice.toString() == "" ? "暂无":CarList[n][i].ReferPrice+'万'}</strong></p>
-                    </a>
-                </li>
-                {}}
-            </ul>
-        </div>
-        {}}
-        {salesYearCount=0;}
-    </script>
+    
     <!--分类 start-->
     <div class="float-catalog-mask" id="popup-menumask" style="display:none"></div>
     <div class="float-catalog" id="popup-menu" data-action="cact">

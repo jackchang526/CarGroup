@@ -8530,7 +8530,7 @@ namespace BitAuto.CarChannel.BLL
                         , dr["cs_id"]
                         , dr["packagename"]
                         , ConvertHelper.GetString(dr["packageprice"]).Trim()
-                        , ConvertHelper.GetString(dr["packagedescription"]).Trim().Replace("\r\n","")
+                        , StringHelper.SqlFilter(ConvertHelper.GetString(dr["packagedescription"]).Trim().Replace("\r\n","").Replace("\"","£¢"))
                         , carIds
                         , package.IndexOf(dr) == package.Count - 1 ? "" : ",");
                 }

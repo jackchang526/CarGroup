@@ -434,7 +434,7 @@ namespace AppApi.Controllers
 
 
         /// <summary>
-        /// 获取车型名片
+        /// 根据车款ID获取相关属性
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -597,7 +597,11 @@ namespace AppApi.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-
+        /// <summary>
+        /// 根据车型ID获取图片数量
+        /// </summary>
+        /// <param name="csID"></param>
+        /// <returns></returns>
         private int GetSerialPicAndCountByCsID(int csID)
         {
             int csCount = 0;

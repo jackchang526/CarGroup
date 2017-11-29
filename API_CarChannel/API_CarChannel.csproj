@@ -122,6 +122,15 @@
     <Compile Include="Assessment\GetEvaluationParam.ashx.cs">
       <DependentUpon>GetEvaluationParam.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Assessment\GetEvaluationSimpleRank.ashx.cs">
+      <DependentUpon>GetEvaluationSimpleRank.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetEvaluationTopRank.ashx.cs">
+      <DependentUpon>GetEvaluationTopRank.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetExistReportEvaluationId.ashx.cs">
+      <DependentUpon>GetExistReportEvaluationId.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Assessment\ViewScore.ashx.cs">
       <DependentUpon>ViewScore.ashx</DependentUpon>
     </Compile>
@@ -615,6 +624,9 @@
     <Content Include="Exhibition\GetExhibitionMasterBrand.ashx" />
     <Content Include="Exhibition\GetExhibitionSerial.ashx" />
     <Content Include="CarInfo\GetCarIntoMarketText.ashx" />
+    <Content Include="Assessment\GetEvaluationSimpleRank.ashx" />
+    <Content Include="Assessment\GetEvaluationTopRank.ashx" />
+    <Content Include="Assessment\GetExistReportEvaluationId.ashx" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

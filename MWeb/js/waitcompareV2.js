@@ -453,11 +453,11 @@ var WaitCompare = (function (module) {
             $(".duibicar .btn-comparison").off("click").addClass("disable");
             $(".duibicar .btn-clear").off("click").addClass("disable");
         } else {
-            $(".btn-comparison").off("click").removeClass("disable").on("click", function (e) {
+            $(".duibicar .btn-comparison").off("click").removeClass("disable").on("click", function (e) {
                 e.preventDefault();
                 self.submitCompare();
             });
-            $(".btn-clear").off("click").removeClass("disable").on("click", function (e) {
+            $(".duibicar .btn-clear").off("click").removeClass("disable").on("click", function (e) {
                 e.preventDefault();
                 self.clearCompareCarAll();
             });

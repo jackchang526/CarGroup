@@ -163,7 +163,7 @@ namespace MWeb.Controllers
                 {
                     seatNum = carParams[carId]["Perf_SeatNum"];
                 }
-                if (carParams[carId].ContainsKey("Engine_InhaleType"))
+                if (carParams[carId].ContainsKey("Perf_DriveType"))
                 {
                     driveType = carParams[carId]["Perf_DriveType"];
                     if (driveType.IndexOf("前轮") > -1)

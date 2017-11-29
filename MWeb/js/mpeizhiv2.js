@@ -14,7 +14,7 @@ var ComparePageObject = {
     ArrSelectExhaust: new Array(),
     ArrSelectTransmission: new Array(),
     IsNeedFirstColor: false,
-    MaxTD: 4,
+    MaxTD: 30,
     CarListForSelect: new Array(),
     CurrentCarID: 0,
     CarIDAndNames: "",
@@ -371,7 +371,7 @@ function createPic() {
                     var csShowName = ComparePageObject.ArrCarInfo[i].CarInfoArray[0][5];
                     var carRefPrice = ComparePageObject.ArrCarInfo[i].CarInfoArray[1][0];
                     var carFullName = csShowName + (carYear.length > 0 ? (" " + carYear + "款") : "") + " " + carName;
-                    tempArray.push("<a data-channelid=\"27.158.1615\" class=\"duibi-box\" href=\"###\" data-action=\"models\" data-car=\"" + carid + "\" data-id=\"" + serialId + "\" data-index=\"" + i + "\">");
+                    tempArray.push("<a data-channelid=\"27.158.1615\" class=\"duibi-box\" href=\"###\" data-car=\"" + carid + "\" data-id=\"" + serialId + "\" data-index=\"" + i + "\">");
                     tempArray.push("<h4>" + (carYear == "" ? "" : " " + carYear + "款 ") + carName + "</h4>");
                     tempArray.push("<em>" + carRefPrice + "</em>");
                     tempArray.push("</a>");
@@ -1706,6 +1706,7 @@ var ConditionSelectCar = {
     container: "screenCar",
     title: { "EngineExhaust": "排量", "YearType": "年款", "BodyType": "车身形式", "TransmissionType": "变速箱", "DriveType": "驱动类型", "FuelType": "燃料类型" },
     isShowSelect: false,
+    //validCarArray : [],
     InitHtml: function () {
         var self = this;
         if ($("#screenCar .spl-screen1").length == 0) {
@@ -1758,8 +1759,10 @@ var ConditionSelectCar = {
             ev.preventDefault();
             var carIdArray = carArray;//carArray页面变量
             var carIdArray = self.GetCarByCondition();
-            initCarInfo(carIdArray.length >= MaxCarCount ? carIdArray.slice(0, MaxCarCount).join(",") : carIdArray.join(","));
+            ComparePageObject.arrCarIds = carIdArray.length >= MaxCarCount ? carIdArray.slice(0, MaxCarCount) : carIdArray;
+            initCarInfo(ComparePageObject.arrCarIds.join(","));
             $(".leftmask4").trigger("close");
+            duibiCarDataIds = ComparePageObject.arrCarIds;
         });
     },
     GetCarByCondition: function () {

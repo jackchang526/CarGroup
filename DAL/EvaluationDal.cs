@@ -1,8 +1,10 @@
 ﻿using BitAuto.CarChannel.Common;
 using BitAuto.CarChannel.Common.MongoDB;
 using BitAuto.Utils.Data;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -86,5 +88,6 @@ namespace BitAuto.CarChannel.DAL
             }
             return MongoDBHelper.GetOne<T>(query, fields, sort);
         }
+   
     }
 }

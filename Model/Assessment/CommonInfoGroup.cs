@@ -73,5 +73,10 @@ namespace BitAuto.CarChannel.Model.Assessment
         /// 直播回放
         /// </summary>
         public string LiveUrl { get; set; }
+
+        /// <summary>
+        /// 自定义评测报告标题
+        /// </summary>
+        public string Title { get; set; }
     }
 }

@@ -1,12 +1,16 @@
-﻿using BitAuto.CarChannel.Common.MongoDB;
+﻿using BitAuto.CarChannel.Common;
+using BitAuto.CarChannel.Common.MongoDB;
 using BitAuto.CarChannel.DAL;
 using BitAuto.CarChannel.Model;
+using BitAuto.Utils;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 
 namespace BitAuto.CarChannel.BLL
 {
@@ -103,6 +107,30 @@ namespace BitAuto.CarChannel.BLL
         {
             EvaluationDal evaluationDal = new EvaluationDal();
             return evaluationDal.GetOne<T>(query,fields,sortdic);
-        }        
+        }
+
+        public List<int> GetExistReportEvaluationId()
+        {
+            List<int> list = new List<int>();
+            string xmlFile = Path.Combine(WebConfig.DataBlockPath, @"Data\ExistReportEvaluationIdList\EvaluationIdList.xml");
+            try
+            {
+                if (File.Exists(xmlFile))
+                {
+                    XDocument doc = XDocument.Load(xmlFile);
+                    var query = from p in doc.Element("Root").Element("EvaluationIdList").Elements("Item") select p;
+                    query.ToList().ForEach(item =>
+                    {
+                        int evaluationId = ConvertHelper.GetInteger(item.Attribute("EvaluationId").Value);
+                        list.Add(evaluationId);
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                CommonFunction.WriteLog(e.ToString());
+            }
+            return list;
+        }
     }
 }

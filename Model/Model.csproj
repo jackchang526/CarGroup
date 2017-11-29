@@ -111,6 +111,8 @@
     <Compile Include="CNCAPEntity.cs" />
     <Compile Include="DaoGouEntity.cs" />
     <Compile Include="EvaluationEntity.cs" />
+    <Compile Include="EvaluationRank.cs" />
+    <Compile Include="EvaluationTopRank.cs" />
     <Compile Include="LoanPackage.cs" />
     <Compile Include="DealerInfo.cs" />
     <Compile Include="Editer.cs" />

@@ -594,7 +594,7 @@
                     </div>
                     <%= koubeiDianpingHtml %>
                     <!--经销商开始-->
-                    <script src="http://img1.bitauto.com/bt/Price/CsReviewPrice/js/CsPriceReview.min.js"></script>
+                    <script src="http://img1.bitauto.com/bt/Price/CsReviewPrice/js/CsPriceReview.min.js?v=20171128"></script>
                     <script type="text/javascript">
                             //document.write("<ins id=\"ep_union_137\" partner=\"1\" version=\"\" isupdate=\"1\" type=\"1\" city_type=\"1\" city_id=\"" + cityId + "\" city_name=\"0\" car_type=\"2\" brandid=\"0\" serialid=\"" + serialId + "\" carid=\"0\"></ins>");
                             document.write("<div class=\"layout-2 sales-agent-section\" id=\"dealerlist\" dataReviewPagecsid=\""+serialId+"\" dataReviewPagecityid=\""+cityId+"\"></div>");

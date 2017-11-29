@@ -547,15 +547,6 @@ namespace AppApi.Controllers
                 return JsonNet(new { status = (int)WebApiResultStatus.参数错误, message = "参数有误" }, JsonRequestBehavior.AllowGet);
             }
             var list = CarSerialService.GetCarBrandAndSerial(query.MasterId, query.AllSerial);
-            //foreach (var brand in list)
-            //{
-            //    foreach (var serial in brand.SerialList)
-            //    {
-            //        var isHaveImage = serial.SaleStatus == 0 ? GetGroupImagesCount(serial.SerialId, null) : false;
-            //        serial.IsHaveImage = isHaveImage;
-            //        serial.NewSaleStatus = GetModelSaleStatus(serial.MinTimeToMarket, serial.MaxTimeToMarket, isHaveImage, serial.SaleStatus, serial.MarketPrice);
-            //    }
-            //}
             return JsonNet(new { status = 1, message = "ok", data = list }, JsonRequestBehavior.AllowGet);
         }
 

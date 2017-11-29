@@ -70,11 +70,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppApi\CarBrandEntity.cs" />
     <Compile Include="AppApi\CarMasterBrandEntity.cs" />
     <Compile Include="AppApi\CarModelColorEntity.cs" />
     <Compile Include="AppApi\CarSerialExtEntity.cs" />
     <Compile Include="AppApi\CarStyleInfoEntity.cs" />
-	<Compile Include="AppModel\CarGroupEntity.cs" />
+    <Compile Include="AppApi\SerialListQueryEntity.cs" />
+    <Compile Include="AppModel\CarGroupEntity.cs" />
     <Compile Include="AppModel\CarParameterEntity.cs" />
     <Compile Include="AppModel\DataCacheKeys.cs" />
     <Compile Include="AppModel\ParameterGroupEntity.cs" />

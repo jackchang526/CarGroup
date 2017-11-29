@@ -1,12 +1,15 @@
 ﻿using BitAuto.CarChannel.BLL;
 using BitAuto.CarChannel.Common;
+using BitAuto.CarChannel.Common.Cache;
 using BitAuto.CarChannel.Common.Enum;
 using BitAuto.CarChannel.Common.Interface;
 using BitAuto.CarChannel.Model.AppApi;
+using BitAuto.Utils;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -14,6 +17,7 @@ using System.Text.RegularExpressions;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.UI;
+using System.Xml;
 using YiChe.Core.Extensions;
 
 namespace AppApi.Controllers
@@ -497,6 +501,12 @@ namespace AppApi.Controllers
             return JsonNet(new { success = true, status = 1, message = "成功", data = result }, JsonRequestBehavior.AllowGet);
         }
 
+
+        /// <summary>
+        /// 转换枚举名字
+        /// </summary>
+        /// <param name="fuelType"></param>
+        /// <returns></returns>
         private string TransferFuelType(string fuelType)
         {
             var newFuelType = string.Empty;
@@ -522,6 +532,109 @@ namespace AppApi.Controllers
                     break;
             }
             return newFuelType;
+        }
+
+        /// <summary>
+        /// 获取车型列表接口
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [OutputCache(Duration = 900, Location = OutputCacheLocation.Downstream)]
+        public ActionResult GetSerialList(SerialListQueryEntity query)
+        {
+            if (query.MasterId <= 0)
+            {
+                return JsonNet(new { status = (int)WebApiResultStatus.参数错误, message = "参数有误" }, JsonRequestBehavior.AllowGet);
+            }
+            var list = CarSerialService.GetCarBrandAndSerial(query.MasterId, query.AllSerial);
+            //foreach (var brand in list)
+            //{
+            //    foreach (var serial in brand.SerialList)
+            //    {
+            //        var isHaveImage = serial.SaleStatus == 0 ? GetGroupImagesCount(serial.SerialId, null) : false;
+            //        serial.IsHaveImage = isHaveImage;
+            //        serial.NewSaleStatus = GetModelSaleStatus(serial.MinTimeToMarket, serial.MaxTimeToMarket, isHaveImage, serial.SaleStatus, serial.MarketPrice);
+            //    }
+            //}
+            return JsonNet(new { status = 1, message = "ok", data = list }, JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// 获取车型列表接口（带车型图片数量）
+        /// </summary>
+        /// <param name="masterId"></param>
+        /// <param name="allSerial"></param>
+        /// <returns></returns>
+        [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
+        public ActionResult GetSerialListWithImage(int masterId, bool? allSerial)
+        {
+            if (masterId <= 0)
+            {
+                return JsonNet(new { status = (int)WebApiResultStatus.参数错误, message = "参数有误" }, JsonRequestBehavior.AllowGet);
+            }
+            var list = CarSerialService.GetCarBrandAndSerial(masterId, allSerial.GetValueOrDefault(false));
+
+            List<int> serialIds = new List<int>();
+            foreach (var brand in list)
+            {
+                serialIds.AddRange(brand.SerialList.Select(x => x.SerialId));
+            }
+            var ids = serialIds.Select(x => x).Distinct();
+            Dictionary<int, int> imageCounts = new Dictionary<int, int>();
+            foreach (var item in ids)
+            {
+                imageCounts.Add(item, GetSerialPicAndCountByCsID(item));
+            }
+            return JsonNet(new
+            {
+                status = 1,
+                message = "ok",
+                data = new
+                {
+                    brands = list,
+                    images = imageCounts
+                }
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        private int GetSerialPicAndCountByCsID(int csID)
+        {
+            int csCount = 0;
+            var imgDoc = this.GetAllSerialConverImgAndCount();
+            if (imgDoc != null)
+            {
+                XmlNode imgNode = imgDoc.SelectSingleNode("/SerialList/Serial[@SerialId='" + csID + "']");
+                if (imgNode != null)
+                {
+                    csCount = ConvertHelper.GetInteger(imgNode.Attributes["ImageCount"].Value);
+                }
+            }
+            return csCount;
+        }
+
+
+        /// <summary>
+        /// 车系封面图及图片数量
+        /// </summary>
+        /// <returns></returns>
+        private XmlDocument GetAllSerialConverImgAndCount()
+        {
+            string cacheKey = "Car_GetAllSerialConverImgAndCount";
+            object allSerialPicAndCount = null;
+            CacheManager.GetCachedData(cacheKey, out allSerialPicAndCount);
+            if (allSerialPicAndCount == null)
+            {
+                XmlDocument xmlDoc = new XmlDocument();
+                string photoDataPath = Path.Combine(PhotoImageConfig.SavePath, PhotoImageConfig.SerialCoverImageAndCountPath);
+                xmlDoc.Load(photoDataPath);
+                CacheManager.InsertCache(cacheKey, xmlDoc, 60);
+                return xmlDoc;
+            }
+            else
+            {
+                return allSerialPicAndCount as XmlDocument;
+            }
         }
 
         #endregion

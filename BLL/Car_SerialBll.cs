@@ -5665,7 +5665,7 @@ namespace BitAuto.CarChannel.BLL
         /// <param name="dr"></param>
         /// <param name="csid"></param>
         /// <returns></returns>
-        public string GetNewSerialIntoMarketText(int csId,bool isShowDate = true)
+        public string GetNewSerialIntoMarketText(int csId, bool isShowDate = true)
         {
             string cacheKey = "Car_SerialBll_GetNewCarIntoMarketText_" + csId + "_" + isShowDate;
             object cacheValue = CacheManager.GetCachedData(cacheKey);
@@ -5708,7 +5708,7 @@ namespace BitAuto.CarChannel.BLL
                             foreach (var item in newCarList)
                             {
                                 XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(Path.Combine(PhotoImageConfig.SavePath, string.Format(@"SerialCarReallyPic\{0}.xml", item.CarID)));
-                                
+
                                 if (xmlDoc != null && xmlDoc.HasChildNodes)
                                 {
                                     XmlNode node = xmlDoc.SelectSingleNode("//Data//Total");
@@ -5849,12 +5849,12 @@ namespace BitAuto.CarChannel.BLL
         /// <param name="marketDate">上市时间</param>
         /// <param name="referPrice">指导价</param>
         /// <returns></returns>
-        public string GetCarMarketText(int carId,string saleSate,DateTime marketDate,string referPrice)
+        public string GetCarMarketText(int carId, string saleSate, DateTime marketDate, string referPrice)
         {
             string marketflag = string.Empty;
 
             if (carId == 0) return marketflag;
-            
+
             //int res =DateTime.Compare(entity.MarketDateTime, DateTime.MinValue);
             if (DateTime.Compare(marketDate, DateTime.MinValue) != 0)
             {
@@ -8530,7 +8530,7 @@ namespace BitAuto.CarChannel.BLL
                         , dr["cs_id"]
                         , dr["packagename"]
                         , ConvertHelper.GetString(dr["packageprice"]).Trim()
-                        , ConvertHelper.GetString(dr["packagedescription"]).Trim().Replace("\r\n","")
+                        , ConvertHelper.GetString(dr["packagedescription"]).Trim().Replace("\r\n", "")
                         , carIds
                         , package.IndexOf(dr) == package.Count - 1 ? "" : ",");
                 }
@@ -8645,6 +8645,207 @@ namespace BitAuto.CarChannel.BLL
         public Dictionary<string, string> GetCarStylePropertyById(int id)
         {
             return csd.GetCarStylePropertyById(id);
+        }
+
+        /// <summary>
+        /// 转换销售状态枚举类型
+        /// </summary>
+        /// <param name="CsSaleState"></param>
+        /// <returns></returns>
+        private int SwitchSaleStatus(string CsSaleState)
+        {
+            var stateInt = 2;
+            switch (CsSaleState)
+            {
+                case "停销":
+                    stateInt = -1;
+                    break;
+                case "待销":
+                    stateInt = 0;
+                    break;
+                case "在销":
+                    stateInt = 1;
+                    break;
+                case "待查":
+                    stateInt = 2;
+                    break;
+                default:
+                    stateInt = 2;
+                    break;
+            }
+            return stateInt;
+        }
+
+        private int SwitchNewSaleStatus(string CsSaleState)
+        {
+            var stateInt = 2;
+            switch (CsSaleState)
+            {
+                case "停销":
+                    stateInt = -1;
+                    break;
+                case "待销":
+                    stateInt = 0;
+                    break;
+                case "在销":
+                    stateInt = 1;
+                    break;
+                case "待查":
+                    stateInt = 2;
+                    break;
+                case "即将上市":
+                    stateInt = 100;
+                    break;
+                case "新车上市":
+                    stateInt = 101;
+                    break;
+                case "新款上市":
+                    stateInt = 102;
+                    break;
+                default:
+                    stateInt = 2;
+                    break;
+            }
+            return stateInt;
+        }
+
+        /// <summary>
+        /// 根据车型ID获取封面图
+        /// </summary>
+        /// <param name="serialId">车型ID</param>
+        /// <returns></returns>
+        private string GetImageUrlBySid(int serialId)
+        {
+            Dictionary<int, XmlElement> urlDic = CarSerialImgUrlService.GetImageUrlDicNew();
+            string imgUrl = "";
+            if (urlDic.ContainsKey(serialId))
+            {
+                // modified by chengl Jan.4.2010
+                if (urlDic[serialId].GetAttribute("ImageUrl2").ToString().Trim() != "")
+                {
+                    // 有新封面
+                    imgUrl = urlDic[serialId].GetAttribute("ImageUrl2").ToString().Trim();
+                }
+                else
+                {
+                    // 没有新封面
+                    if (urlDic[serialId].GetAttribute("ImageUrl").ToString().Trim() != "")
+                    {
+                        imgUrl = urlDic[serialId].GetAttribute("ImageUrl").ToString().Trim();
+                    }
+                    else
+                    {
+                        imgUrl = WebConfig.DefaultCarPic;
+                    }
+                }
+            }
+            else
+                imgUrl = WebConfig.DefaultCarPic;
+            return imgUrl;
+        }
+
+        // -1:停销、0:待销、1:在销、2:待查
+        /// <summary>
+        /// 根据主品牌id获取品牌和车型
+        /// </summary>
+        /// <param name="masterBrandId">主品牌id</param>
+        /// <param name="allSerial">是否是所有车型(包括停销)</param>
+        /// <returns></returns>
+        public List<CarBrandEntity> GetCarBrandAndSerial(int masterBrandId, bool allSerial)
+        {
+            if (masterBrandId <= 0)
+            {
+                return new List<CarBrandEntity>();
+            }
+            var cacheKey = string.Format("ycapp.carbrandseriallist_{0}", masterBrandId);
+            var list = CacheManager.GetCachedData<List<CarBrandEntity>>(cacheKey);
+            if (list == null)
+            {
+                //获取数据xml
+                XmlDocument serialXml = AutoStorageService.GetAllAutoXml();
+                if (serialXml != null)
+                {
+                    XmlNode _BrandNode = serialXml.SelectSingleNode(string.Format("Params/MasterBrand[@ID={0}]", masterBrandId.ToString()));
+                    if (_BrandNode != null)
+                    {
+                        XmlNodeList brands = _BrandNode.SelectNodes("Brand");
+                        if (brands.Count > 0)
+                        {
+                            list = new List<CarBrandEntity>();
+                            foreach (XmlNode brand in brands)
+                            {
+                                var serialList = new List<CarSerialEntity>();
+                                var serials = brand.ChildNodes;
+                                foreach (XmlNode serial in serials)
+                                {
+                                    serialList.Add(new CarSerialEntity
+                                    {
+                                        SerialId = ConvertHelper.GetInteger(serial.Attributes["ID"].Value),
+                                        serialName = ConvertHelper.GetString(serial.Attributes["ShowName"].Value),
+                                        CoverImageUrl = GetImageUrlBySid(ConvertHelper.GetInteger(serial.Attributes["ID"].Value)),
+                                        UV = ConvertHelper.GetInteger(serial.Attributes["CsPV"].Value),
+                                        SaleStatus = SwitchSaleStatus(ConvertHelper.GetString(serial.Attributes["CsSaleState"].Value)),
+                                        NewSaleStatus = SwitchNewSaleStatus(ConvertHelper.GetString(serial.Attributes["CsSaleState"].Value)),
+                                        MinPrice = ConvertHelper.GetDecimal(serial.Attributes["MinP"].Value),
+                                        MaxPrice = ConvertHelper.GetDecimal(serial.Attributes["MaxP"].Value),
+                                        Spell = ConvertHelper.GetString(serial.Attributes["Spell"].Value),
+                                        Weight = ConvertHelper.GetInteger(serial.Attributes["Weight"].Value)
+                                    });
+                                }
+                                list.Add(new CarBrandEntity
+                                {
+                                    BrandId = ConvertHelper.GetInteger(brand.Attributes["ID"].Value),
+                                    BrandName = ConvertHelper.GetString(brand.Attributes["Name"].Value),
+                                    Foreign = !ConvertHelper.GetString(brand.Attributes["Country"].Value).Equals("国产"),
+                                    Weight = ConvertHelper.GetInteger(brand.Attributes["Weight"].Value),
+                                    Spell = ConvertHelper.GetString(brand.Attributes["Spell"].Value),
+                                    SerialList = serialList.OrderByDescending(x => x.SaleStatus).ThenBy(x => x.Weight).ThenBy(x => x.Spell).ToList()
+                                });
+                            }
+                            list = list.OrderByDescending(x => x.Weight).ThenBy(x => x.Spell).ToList();
+                        }
+                    }
+                }
+
+                foreach (var brand in list)
+                {
+                    foreach (var serial in brand.SerialList)
+                    {
+                        if (serial.SaleStatus == 1)
+                        {
+                            if (serial.MinPrice == 0 && serial.MaxPrice == 0)
+                            {
+                                serial.DealerPrice = "暂无报价";
+                            }
+                            else if (serial.MinPrice == 0)
+                            {
+                                serial.DealerPrice = string.Format("{0}万", serial.MaxPrice > 1000 ? serial.MaxPrice.ToString("F0") : serial.MaxPrice.ToString("F2"));
+                            }
+                            else
+                            {
+                                serial.DealerPrice = string.Format("{0}-{1}万", serial.MinPrice > 1000 ? serial.MinPrice.ToString("F0") : serial.MinPrice.ToString("F2"), serial.MaxPrice > 1000 ? serial.MaxPrice.ToString("F0") : serial.MaxPrice.ToString("F2"));
+                            }
+                        }
+                        else if (serial.SaleStatus == 0)
+                        {
+                            serial.DealerPrice = "未上市";
+                        }
+                        else if (serial.SaleStatus == -1)
+                        {
+                            serial.DealerPrice = "停销";
+                        }
+                    }
+                }
+                CacheManager.InsertCache(cacheKey, list, 30);//缓存30分钟
+            }
+            if (!allSerial)
+            {
+                list.ForEach(l =>
+                {
+                    l.SerialList.RemoveAll(s => s.SaleStatus < 0); //移除停销车型
+                });
+            }
+            return list;
         }
 
     }

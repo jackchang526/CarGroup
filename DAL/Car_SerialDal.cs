@@ -1689,6 +1689,5 @@ FROM    dbo.Car_Serial_30UV uv
             return result;
         }
 
-
     }
 }

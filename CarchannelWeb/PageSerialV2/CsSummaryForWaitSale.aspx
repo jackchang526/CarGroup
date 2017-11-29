@@ -79,7 +79,7 @@
             <div class="l-box-sty col-auto">
                 <%if (!string.IsNullOrEmpty(VRUrl))
                     {%>
-                        <a href="<%= VRUrl %>" target="_blank" class="zs-vr">VR看全景</a>
+                        <a href="<%= VRUrl %>" data-channelid="2.21.2213" target="_blank" class="zs-vr">VR看全景</a>
                     <%} %>
                 <% if (serialEntity.Brand.MasterBrandId == 3)
                    { %>
@@ -110,9 +110,9 @@
                     </ul>
                     <div class="mobile-qrcode">
                         <img src="/favicon.ico" id="qrcodelogo" style="display: none;" />
-                        <a href="http://app.yiche.com/yiche/"><img src="http://image.bitautoimg.com/cargroup/car/20171111.png" /></a>
+                        <a href="http://app.yiche.com/yiche/"><img src="http://image.bitautoimg.com/cargroup/car/30Wfuel.png" /></a>
                         <%--<a href="<%= wirelessSerialUrl %>?ref=pctowap" target="_blank" id="qrcode"><img src="http://image.bitautoimg.com/cargroup/car/qrimages/<%= serialId %>.png?v=1" /></a>--%>
-                        <em>11.11抢兑</em>
+                        <em>抢30万升油</em>
                     </div>
                 </div>
 
@@ -136,7 +136,7 @@
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
 
         <!--#include file="/include/special/stat/00001/bglogpostlog_Manual.shtml"-->
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201711081414"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201711241325"></script>
         <%--<script type="text/javascript" src="/jsnewv2/cssummary.js?v=20161230"></script>--%>
         <script type="text/javascript">
             var serialId = <%= serialId %>;
@@ -392,7 +392,7 @@
                         </script>
                     </div>
                     <%= koubeiDianpingHtml %>
-                    <script src="http://img1.bitauto.com/bt/Price/CsReviewPrice/js/CsPriceReview.min.js"></script>
+                    <script src="http://img1.bitauto.com/bt/Price/CsReviewPrice/js/CsPriceReview.min.js?v=20171128"></script>
                     <script type="text/javascript">
                             //document.write("<ins id=\"ep_union_137\" partner=\"1\" version=\"\" isupdate=\"1\" type=\"1\" city_type=\"1\" city_id=\"" + cityId + "\" city_name=\"0\" car_type=\"2\" brandid=\"0\" serialid=\"" + serialId + "\" carid=\"0\" data-channelid=\"2.21.819\"></ins>");
                             document.write("<div class=\"layout-2 sales-agent-section\" id=\"dealerlist\" dataReviewPagecsid=\"" + serialId + "\" dataReviewPagecityid=\"" + cityId + "\" data-channelid=\"2.21.819\"></div>");

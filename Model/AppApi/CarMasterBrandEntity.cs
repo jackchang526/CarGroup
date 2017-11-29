@@ -5,6 +5,7 @@ using System.Text;
 
 namespace BitAuto.CarChannel.Model.AppApi
 {
+    [Serializable]
     public class CarMasterBrandEntity
     {
         /// <summary>

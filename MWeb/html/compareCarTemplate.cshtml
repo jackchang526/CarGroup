@@ -109,7 +109,7 @@
     </div>
     { for(var n in CarList){ }
     {var iszx = arrMark[n.replace('s', '')]}
-    <div class="tt-small" {=!iszx ? "data-slider='pic-txt-h'":""}>
+    <div class="tt-small" {=!iszx ? "data-slider='pic-txt-h'" :""}>
         <span>
             {= n.replace('s','') }款
             {if(!iszx){}
@@ -129,10 +129,10 @@
             { for(var j=0;j < duibiCarDataIds.length;j++){  }
             {if(duibiCarDataIds[j]==curCarId) isAdded=true;}
             {}}
-            <li {=CarList[n][i].CarId.toString()==currentDuibiCarId?"class='current'":(isAdded?"class='none'":"")}>
+            <li {=CarList[n][i].CarId.toString() ==currentDuibiCarId?"class ='current' ":(isAdded?" class='none' ":" ")}>
                 <a href="javascript:void(0)" data-id="{= CarList[n][i].CarId}" data-name="{= SerialName}{=CarList[n][i].Year==''?'':(' '+CarList[n][i].Year+'款')} {=CarList[n][i].CarName}">
-                <h4>{=isAdded?(currentDuibiCarId==CarList[n][i].CarId?"[当前]":"[已添加]"):""}{= CarList[n][i].CarName} {=CarList[n][i].SaleState =="在销"?"":(CarList[n][i].SaleState=="待销"?"[未上市]":"[停售]")}</h4>
-                <p><strong>{=CarList[n][i].ReferPrice==""?"暂无":CarList[n][i].ReferPrice+"万"}</strong></p>
+                    <h4>{=isAdded?(currentDuibiCarId==CarList[n][i].CarId?"[当前]":"[已添加]"):""}{= CarList[n][i].CarName} {=CarList[n][i].SaleState =="在销"?"":(CarList[n][i].SaleState=="待销"?"[未上市]":"[停售]")}</h4>
+                    <p><strong>{=CarList[n][i].ReferPrice==""?"暂无":CarList[n][i].ReferPrice+"万"}</strong></p>
                 </a>
             </li>
             {}}
@@ -188,7 +188,7 @@
     <div class="box">
         <ul>
             {for(var i=0;i< MsterList[n].length;i++){}
-            <li {=MsterList[n][i].MasterId.toString() ==api.brand.currentid.toString() ? "class='current'":""}>
+            <li {=MsterList[n][i].MasterId.toString() ==api.brand.currentid.toString() ? "class='current'" :""}>
                 <a href="#" data-action="car" data-id="{=MsterList[n][i].MasterId}">
                     <span class="brand-logo">
                         <img {=number++ < 15 ? 'src': 'data-original'}="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_{=MsterList[n][i].MasterId}_100.png"/>
@@ -219,12 +219,12 @@
     <input type="hidden" id="curSerialName" value="{=SerialName}" />
     { for(var n in CarList){ }
     {var iszx=arrMarkSerial[n.replace('s','')]}
-    <div class="tt-small min-small" {=!iszx?'style ="border-bottom:1px solid #E9E9E9"':'' } {=!iszx ? 'data-slider="pic-txt-hh"':''}>
+    <div class="tt-small min-small" {=!iszx?'style ="border-bottom:1px solid #E9E9E9" ':'' } {=!iszx ? ' data-slider="pic-txt-hh" ':''}>
         <span>
             {= n.replace('s','') }款
-         {if(!iszx){}
-        <em>[停售]</em>
-        {}}
+            {if(!iszx){}
+            <em>[停售]</em>
+            {}}
         </span>
         {if(!iszx){}
         <i></i>

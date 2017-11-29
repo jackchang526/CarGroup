@@ -252,10 +252,10 @@
                          </div>
                      </div>
 
-                     <div class="layout-1">
+                     <%--<div class="layout-1">
                          <script type="text/javascript" id="zp_script_246" src="http://mcc.chinauma.net/static/scripts/p.js?id=246&w=240&h=220&sl=1&delay=5"
                              zp_type="1"></script>
-                     </div>
+                     </div>--%>
                  </div>
             </div>
         </div>

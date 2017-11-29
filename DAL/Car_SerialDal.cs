@@ -9,6 +9,7 @@ using BitAuto.CarChannel.Common;
 using System.Text;
 using System.Collections;
 using BitAuto.Utils;
+using BitAuto.CarChannel.Model.AppApi;
 
 namespace BitAuto.CarChannel.DAL
 {
@@ -1578,5 +1579,116 @@ FROM    dbo.Car_Serial_30UV uv
             }
             return result;
         }
+
+
+        /// <summary>
+        /// 获取车款属性
+        /// </summary>
+        /// <param name="styleId"></param>
+        /// <returns></returns>
+        public CarStyleInfoEntity GetStyleInfoById(int styleId)
+        {
+            var sql = @"
+                    SELECT TOP 1 [Car_Name],[Car_YearType],[Cs_Id],
+				   carSerialName=
+				   (
+						SELECT TOP 1 [cs_Name] FROM [dbo].[Car_Serial] WITH(NOLOCK) WHERE IsState=1 AND  [cs_Id]=[dbo].[Car_Basic].Cs_Id
+				   )
+					FROM [dbo].[Car_Basic] WITH(NOLOCK)
+					WHERE [IsState]=1
+					AND [Car_Id]=@Id
+                    ";
+            SqlParameter[] parms =
+            {
+                new SqlParameter("@Id", styleId )
+            };
+            var dataTable = SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, parms).Tables[0];
+            CarStyleInfoEntity csi = null;
+            if (dataTable != null && dataTable.Rows.Count > 0)
+            {
+                csi = new CarStyleInfoEntity();
+                csi.Name = dataTable.Rows[0]["Car_Name"] + "";
+                csi.Year = TypeParse.StrToInt(dataTable.Rows[0]["Car_YearType"] + "", 0);
+                csi.ModelId = TypeParse.StrToInt(dataTable.Rows[0]["Cs_Id"] + "", 0);
+                csi.CarSerialName = dataTable.Rows[0]["carSerialName"] + "";
+            }
+            return csi;
+        }
+
+
+
+        /// <summary>
+        /// 	根据车款ID获取相关信息
+        /// </summary>
+        /// <param name="Id">车款ID</param>
+        /// <returns></returns>
+        public Dictionary<string, string> GetCarStylePropertyById(int id)
+        {
+            var sql = @"
+                            SELECT [ParamId] AS PropertyId
+                                  ,[Pvalue] AS value
+                              FROM [dbo].[CarDataBase] WITH(NOLOCK) 
+                              WHERE [ParamId]  in(423,785,895,665,986,578,782,883) 
+                              AND [CarId]=@id
+
+
+                             SELECT [cb_country] AS CountryId 
+                             FROM [dbo].[Car_Brand] WITH(NOLOCK) 
+                             WHERE [cb_Id]=
+                             (
+	                            SELECT [cb_Id] FROM [dbo].[Car_Serial]  WITH(NOLOCK) WHERE [cs_Id]=
+	                            (
+		                            SELECT [Cs_Id] FROM [dbo].[Car_relation] WITH(NOLOCK) WHERE [Car_Id]=@id
+	                            )
+                             )
+                            ";
+            var commandParameters = new SqlParameter[]
+            {
+                new SqlParameter("@id", id)
+            };
+            Dictionary<string, string> result = new Dictionary<string, string>();
+            var ds = SqlHelper.ExecuteDataset(WebConfig.AutoStorageConnectionString, CommandType.Text, sql, commandParameters);
+            var dtp = ds.Tables[0];
+            foreach (DataRow item in dtp.Rows)
+            {
+                var pro = TypeParse.StrToInt(item["PropertyId"], 0);
+                switch (pro)
+                {
+                    case 423:
+                        result.Add("engine", item["value"] == null ? "" : item["value"].ToString());
+                        break;
+                    case 665:
+                        result.Add("seatNum", item["value"] == null ? "" : item["value"].ToString());
+                        break;
+                    case 785:
+                        result.Add("exhaustforfloat", item["value"] == null ? "" : item["value"].ToString());
+                        break;
+                    case 895:
+                        result.Add("traveltax", item["value"] == null ? "" : item["value"].ToString());
+                        break;
+                    case 986:
+                        result.Add("taxrelief", item["value"] == null ? "" : item["value"].ToString());
+                        break;
+                    case 578:
+                        result.Add("fuelType", item["value"] == null ? "" : item["value"].ToString());
+                        break;
+                    case 782:
+                        result.Add("zongHeYouHao", item["value"] == null ? "" : item["value"].ToString());
+                        break;
+                    case 883:
+                        result.Add("mustMileageconstant", item["value"] == null ? "" : item["value"].ToString());
+                        break;
+                }
+            }
+            var dtc = ds.Tables[1];
+            if (dtc.Rows.Count > 0)
+            {
+                result.Add("isGuoChan", TypeParse.StrToInt(dtc.Rows[0]["CountryId"], 0) == 90 ? "True" : "False");
+            }
+
+            return result;
+        }
+
+
     }
 }

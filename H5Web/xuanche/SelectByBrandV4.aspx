@@ -272,49 +272,52 @@
 <!--loading模板 end -->
 <!--车型模板 start-->
 <script type="text/template" id="carTemplate">
-    <div class="choose-car-name-close bybrand_list">
-        <div class="brand-logo-none-border m_9_b"></div>
-        <span class="brand-name"></span>
-        <!-- <a href="#" class="choose-car-btn-close">关闭</a> -->
+    <div class="tt-list absolute">
+        <div class="choose-car-name-close bybrand_list">
+            <div class="brand-logo-none-border"><img /></div>
+            <span class="brand-name"></span>
+            <!-- <a href="#" class="choose-car-btn-close">关闭</a> -->
+        </div>
+        <div class="clear"></div>
+        { for(var i = 0 ; i < list.length ; i++){ }
+                        <!-- 车款列表 start -->
+        {if(list[i].Child.length > 0){ }
+        <div class="tt-small">
+            <span>{= list[i].BrandName }</span>
+        </div>
+        {}}
+        <!-- 图文混排横向 start -->
+        <div class="pic-txt-h pic-txt-9060">
+            <ul>
+                { for(var j = 0 ; j < list[i].Child.length ; j++){ 
+                    var url = (typeof ly != "undefined" && ly != null && ly === "xxj"?("http://dealer.h5.yiche.com/searchOrder/" + list[i].Child[j].SerialId.toString() + "/0/?leads_source=H001005&" + par):("/"+list[i].Child[j].Allspell+"/?h5from=brand&" + par));}
+                            <li {= list[i].Child[j].SerialId.toString() == (api.car.currentid.toString()) ? 'class="current"':''}>
+                                <div class="imgbox-2">                            
+                                    <a class="l-content" data-action="models" data-id="{= list[i].Child[j].SerialId}" data-allspell="{= list[i].Child[j].Allspell}"  href="{= url}">
+                                        <div class="img-box">
+                                            <img src="{= list[i].Child[j].ImageUrl}" />
+                                        </div>
+                                        <div class="c-box">
+                                            <h4>{= list[i].Child[j].SerialName }</h4>
+                                            <p><strong>{= list[i].Child[j].Price }</strong></p>
+                                        </div>
+                                    </a>
+                                    {if(list[i].Child[j].ad){}
+                                       <a class="r-content {= list[i].Child[j].ad.className}" href="{=list[i].Child[j].ad.href}"></a>
+                                    {}}
+                                </div>
+                            </li>
+                {}}
+            </ul>
+        </div>
+        <!-- 图文混排横向 end -->
+        {}}
     </div>
-    <div class="clear"></div>
-    { for(var i = 0 ; i < list.length ; i++){ }
-                    <!-- 车款列表 start -->
-    {if(list[i].Child.length > 0){ }
-    <div class="tt-small">
-        <span>{= list[i].BrandName }</span>
-    </div>
-    {}}
-    <!-- 图文混排横向 start -->
-    <div class="pic-txt-h pic-txt-9060">
-        <ul>
-            { for(var j = 0 ; j < list[i].Child.length ; j++){ 
-                var url = (typeof ly != "undefined" && ly != null && ly === "xxj"?("http://dealer.h5.yiche.com/searchOrder/" + list[i].Child[j].SerialId.toString() + "/0/?leads_source=H001005&" + par):("/"+list[i].Child[j].Allspell+"/?h5from=brand&" + par));}
-                        <li {= list[i].Child[j].SerialId.toString() == (api.car.currentid.toString()) ? 'class="current"':''}>
-                            <div class="imgbox-2">                            
-                                <a class="l-content" data-action="models" data-id="{= list[i].Child[j].SerialId}" data-allspell="{= list[i].Child[j].Allspell}"  href="{= url}">
-                                    <div class="img-box">
-                                        <img src="{= list[i].Child[j].ImageUrl}" />
-                                    </div>
-                                    <div class="c-box">
-                                        <h4>{= list[i].Child[j].SerialName }</h4>
-                                        <p><strong>{= list[i].Child[j].Price }</strong></p>
-                                    </div>
-                                </a>
-                                {if(list[i].Child[j].ad){}
-                                   <a class="r-content {= list[i].Child[j].ad.className}" href="{=list[i].Child[j].ad.href}"></a>
-                                {}}
-                            </div>
-                        </li>
-            {}}
-        </ul>
-    </div>
-    <!-- 图文混排横向 end -->
-    {}}
 </script>
 <!--车型模板 end-->
 <!--品牌列表模板 start-->
 <script type="text/template" id="brandTemplate">
+     { var number = 0; }
     { for(var n in MsterList){ }
         <div class="tt-small phone-title" data-key="{=n}">
             <span>{=n}</span>
@@ -324,7 +327,9 @@
             {for(var i=0;i< MsterList[n].length;i++){}
                 <li {=MsterList[n][i].MasterId.toString() == api.brand.currentid.toString() ? "class='current'":""}>
                     <a href="javascript:void(0)" data-action="car" data-id="{=MsterList[n][i].MasterId}">
-                        <span class="brand-logo m_{=MsterList[n][i].MasterId}_b"></span>
+                        <span class="brand-logo">
+                            <img {=number++ < 15 ? 'src': 'data-original'}="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_{=MsterList[n][i].MasterId}_100.png"/>
+                        </span>
                         <span class="brand-name">{=MsterList[n][i].MasterName}</span>
                     </a>
                 </li>
@@ -394,28 +399,32 @@
     })(window.__zp_tag_params);
 </script>--%>
 
+<%--    <script type="text/javascript" src="/scripts/carcompare/model.v1.js"></script>
+    <script type="text/javascript" src="/scripts/carcompare/rightswipe.v1.js"></script>
+    <script type="text/javascript" src="/scripts/carcompare/brand.v1.js"></script>--%>
+
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/jquery.lazyload.min.js"></script>
+    
 <script type="text/javascript" src="http://image.bitautoimg.com/uimg/mbt2015/js/iscroll20160224.js?20151117"></script>
 <script type="text/javascript" src="http://image.bitautoimg.com/uimg/mbt2015/js/underscore.js?20151117"></script>
-<script src="http://image.bitautoimg.com/uimg/mbt2015/js/model20160224.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://image.bitautoimg.com/uimg/mbt2015/js/model.v1.js"></script>
+
 <script type="text/javascript" src="http://image.bitautoimg.com/uimg/mbt2015/js/note20160224.js?20151117"></script>
 
-<%--<script type="text/javascript" src="http://image.bitautoimg.com/uimg/mbt2015/js/rightswipe20160224.js?20151117"></script>--%>
-<script type="text/javascript" src="http://image.bitautoimg.com/uimg/mbt2015/js/rightswipe20160606.js?20160606"></script>
-<%--<script type="text/javascript" src="http://192.168.0.10:8888/m/20150514移动站改版/js/rightswipe3.js"></script>--%>
-
-<%--<script type="text/javascript" src="http://image.bitautoimg.com/uimg/mbt2015/js/brand20160224.js?20151117"></script>--%>
-<script type="text/javascript" src="http://image.bitautoimg.com/uimg/mbt2015/js/brand20160606.js?20160606"></script>
-<%--<script type="text/javascript" src="http://192.168.0.10:8888/m/20150514移动站改版/js/brand.js"></script>--%>
+<script type="text/javascript" src="http://image.bitautoimg.com/uimg/mbt2015/js/rightswipe.v1.js?20160606"></script>
+<script type="text/javascript" src="http://image.bitautoimg.com/uimg/mbt2015/js/brand.v1.js?20160606"></script>
 
 <script type="text/javascript">
     $(function () {
         /*接口默认配置 datatype=0 是在销 ，1 是包含停销*/
         api = {
+            imgRoot: 'http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_id_100.png',
             'brand': {
                 url: 'http://api.car.bitauto.com/CarInfo/GetCarDataJson.ashx?action=master',
                 callName: 'businessBrandCallBack',
                 templteName: '#brandTemplate',
-                currentid: ''
+                currentid: '',
+                clickEnd: function () {  }
             },
             'car': {
                 url: 'http://api.car.bitauto.com/CarInfo/GetCarDataJson.ashx?action=serial&pid={0}&datatype=0',
@@ -457,6 +466,7 @@
                 return { list: data }
             },
             fnEnd1: function () {
+
                 //var $swipeLeft = this;
                 //var list = $($swipeLeft).find("li a");
                 //$.each(list, function (index, item) {
@@ -501,6 +511,8 @@
             //关闭浮层
             $back.trigger('close');
         };
+
+
 
         /*关闭广告浮层*/
         $body.find('.ad-flex-footer .close').click(function (ev) {

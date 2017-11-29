@@ -12,5 +12,7 @@ namespace BitAuto.CarChannel.Model
 		public string ImageLink { get; set; }
  		public string ShowPlayUrl { get; set; }
 		public int Duration { get; set; }
+        //视频来源，1是社区，0是视频库
+        public int Source { get; set; }
 	}
 }

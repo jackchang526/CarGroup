@@ -340,21 +340,31 @@
     //});
     //}
 
-    var vedioIds = "<%=VideoIds%>";
+    
     //视频播放次数和回复数
     function GetVedioNum() {
-        if (typeof vedioIds != "undefined" && vedioIds.length > 0) {
-            $.ajax({
-                url: "http://api.admin.bitauto.com/videoforum/Promotion/GetVideoByVideoIds?vIds=" + vedioIds, dataType: "jsonp", cache: true, jsonpCallback: "getvedionumcallback", success: function (data) {
-                    if (data.length > 0) {
-                        for (var i = 0; i < data.length; i++) {
-                            $("#car-videobox div[data-id='" + data[i].VideoId + "'] .play").html(data[i].FormatPlayCount);
-                            $("#car-videobox div[data-id='" + data[i].VideoId + "'] .comment").html(data[i].ReplyCount);
-                        }
+        var videoObj = $("#car-videobox .img-info-layout");
+        if ($(videoObj).length == 0) return;
+        var vidArr = [],
+            vfidArr = [];
+        for (var i = 0; i < $(videoObj).length; i++){
+            if ($(videoObj[i]).attr("data-type") == "vf") {
+                vfidArr.push($(videoObj[i]).attr("data-id"));
+            }
+            else {
+                vidArr.push($(videoObj[i]).attr("data-id"));
+            }
+        }
+        $.ajax({
+            url: "http://api.admin.bitauto.com/videoforum/Promotion/GetVideoByVideoIds?vIds=" + vidArr.join(",") + "&vfids=" + vfidArr.join(","), dataType: "jsonp", cache: true, jsonpCallback: "getvedionumcallback", success: function (data) {
+                if (data.length > 0) {
+                    for (var i = 0; i < data.length; i++) {
+                        $("#car-videobox div[data-id='" + data[i].VideoId + "'] .play").html(data[i].FormatPlayCount);
+                        $("#car-videobox div[data-id='" + data[i].VideoId + "'] .comment").html(data[i].ReplyCount);
                     }
                 }
-            });
-        }
+            }
+        });
     }
     $(function() {
         GetVedioNum();

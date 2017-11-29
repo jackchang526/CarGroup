@@ -18,48 +18,18 @@ if (tempVarjz != null) {
 
 var CsSumamryCallBack = function() {
     return {
-        callBackMall: function(data) {
-            var hasBaoXiao = false;
-            if (!!data && data.CarList.length > 0) {
-                var list = data.CarList;
-                var item = list[0];
-                var html = [];
-                for (var loop = 0; loop < list.length; loop++) {
-                    if (list[loop].CarType == 0) {
-                        hasBaoXiao = true;
-                        break;
-                    }
+        HuiMaiChe: function() {
+            var cityId = !!bit_locationInfo ? bit_locationInfo.cityId : 0;
+            $.ajax({
+                type: "get",
+                url: "http://www.huimaiche.com/api/GetCarSerialPrice.ashx",
+                cache: true,
+                dataType: "jsonp",
+                data: { cityId: cityId, csid: summary.serialId },
+                jsonpCallback: "CsSumamryCallBack.callBackHuiMaiChe",
+                success: function() {
                 }
-            }
-            if (hasBaoXiao) {
-                html.push("<div class=\"sale2\">");
-                html.push("<h6>易车商城:厂商直销价</h6>");
-                html.push("<p>易车独家一口价，别无分号！</p>");
-                html.push("<p>厂商直销价：<span class=\"sale_high\">" + item.Price + "万起</span></p>");
-                html.push("</div>");
-                if (WTmc_id && WTmc_id != "") {
-                    html.push("<button><a href=\"http://m.yichemall.com/car/Detail/index?modelId=" + data.CsId + "&source=myc-h5-mall-01&WT.mc_id=" + WTmc_id + "\">立即购买</a></button>");
-                } else if (WTmc_jz && WTmc_jz != "") {
-                    html.push("<button><a href=\"http://m.yichemall.com/car/Detail/index?modelId=" + data.CsId + "&source=myc-h5-mall-01&WT.mc_jz=" + WTmc_jz + "\">立即购买</a></button>");
-                } else {
-                    html.push("<button><a href=\"http://m.yichemall.com/car/Detail/index?modelId=" + data.CsId + "&source=myc-h5-mall-01\">立即购买</a></button>");
-                }
-                html.push("<div class=\"sale2-line\"></div>");
-                $("#youhuidiv").prepend(html.join(""));
-                // $("#priceinfowrapper").html(html.join('')).attr("class", "mall");
-            } else {
-                var cityId = !!bit_locationInfo ? bit_locationInfo.cityId : 0;
-                $.ajax({
-                    type: "get",
-                    url: "http://www.huimaiche.com/api/GetCarSerialPrice.ashx",
-                    cache: true,
-                    dataType: "jsonp",
-                    data: { cityId: cityId, csid: summary.serialId },
-                    jsonpCallback: "CsSumamryCallBack.callBackHuiMaiChe",
-                    success: function() {
-                    }
-                });
-            }
+            });
         },
         callBackHuiMaiChe: function(data) {
             if (!!data) {
@@ -141,19 +111,20 @@ var csSummary = function(params) {
 
     // $("#gouchelink").attr("href", "http://gouche.m.yiche.com/home/YiShuBang/?csId=" + summary.serialId + "&cityId=" + bit_locationInfo.cityId);
     //汽车优惠信息
-    (function() {
-        var cityId = !!bit_locationInfo ? bit_locationInfo.cityId : 0;
-        $.ajax({
-            type: "get",
-            url: "http://api.car.bitauto.com/Mai/GetSerialParallelAndSell.ashx",
-            cache: true,
-            dataType: "jsonp",
-            data: { cityId: cityId, serialId: defaults.serialId },
-            jsonpCallback: "CsSumamryCallBack.callBackMall",
-            success: function() {
-            }
-        });
-    }());
+    //(function() {
+    //    var cityId = !!bit_locationInfo ? bit_locationInfo.cityId : 0;
+    //    $.ajax({
+    //        type: "get",
+    //        url: "http://api.car.bitauto.com/Mai/GetSerialParallelAndSell.ashx",
+    //        cache: true,
+    //        dataType: "jsonp",
+    //        data: { cityId: cityId, serialId: defaults.serialId },
+    //        jsonpCallback: "CsSumamryCallBack.callBackMall",
+    //        success: function() {
+    //        }
+    //    });
+    //}());
+    CsSumamryCallBack.HuiMaiChe();
     (function($) {
         //X向滚动
         $.fn.dragX = function(options) {

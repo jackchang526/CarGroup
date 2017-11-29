@@ -751,8 +751,10 @@
     <Content Include="include\pd\2014\suv\00001\201609_SUV_zsk_Manual.shtml" />
     <Content Include="include\pd\2014\suv\00001\201501_suv_zsk_Manual.shtml" />
     <Content Include="include\pd\2016\00001\20170118_zongshu_likewhatcar_Manual.shtml" />
+    <Content Include="include\pd\2016\App\00001\ad_zongshu_difu_Manual.shtml" />
     <Content Include="include\pd\2016\car\00001\20161009_cxzs_luntan_Manual.shtml" />
     <Content Include="include\pd\2016\car\00001\20161110_zongshu_likewhatcar_Manual.shtml" />
+    <Content Include="include\pd\2016\car\00001\ad_difu_Manual.shtml" />
     <Content Include="include\pd\2016\common\00001\201612_ej_nav_common_gb2312_Manual.shtml" />
     <Content Include="include\pd\2016\common\00001\201611_common_search_Manual.shtml" />
     <Content Include="include\pd\2016\common\00001\201607_common_search_Manual.shtml" />

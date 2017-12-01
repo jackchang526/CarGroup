@@ -108,7 +108,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             MakePhotoListHtml();//图片列表
             GetCNCAPAndENCAPData();//碰撞数据
             MakeRelatedNewHtml();//相关新闻
-            GetVrUrl(); //VR
+            //GetVrUrl(); //VR
             //InitNextSeeNew();//接下来要看 评测和导购
             ucNextToSee.serialId = serialId;
         }

@@ -77,7 +77,7 @@ namespace MWeb.Controllers
             GetVideo();//视频
             MakeForumNewsHtml();//论坛
             MakeSerialToSerialHtml();//看了还看
-            GetVrUrl();//获取vr地址
+            //GetVrUrl();//获取vr地址
             GetBaoZhiLv();//保值率
             /*
             bool isTestCs = TestCsIds.Contains(serialId);
@@ -1306,19 +1306,19 @@ namespace MWeb.Controllers
             ViewData["SerialColorList"] = SerialColorList;
         }
 
-        /// <summary>
-        /// 获取vr url
-        /// </summary>
-        private void GetVrUrl()
-        {
-            Dictionary<int, string> vrDic = serialBLL.GetSerialVRUrl();
-            string VRUrl = string.Empty;
-            if (vrDic != null && vrDic.ContainsKey(serialId))
-            {
-                 VRUrl = vrDic[serialId];
-            }
-            ViewData["VRUrl"] = VRUrl;
-        }
+        ///// <summary>
+        ///// 获取vr url
+        ///// </summary>
+        //private void GetVrUrl()
+        //{
+        //    Dictionary<int, string> vrDic = serialBLL.GetSerialVRUrl();
+        //    string VRUrl = string.Empty;
+        //    if (vrDic != null && vrDic.ContainsKey(serialId))
+        //    {
+        //         VRUrl = vrDic[serialId];
+        //    }
+        //    ViewData["VRUrl"] = VRUrl;
+        //}
 
         /// <summary>
         /// 五年保值率

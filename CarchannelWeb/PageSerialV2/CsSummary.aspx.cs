@@ -108,7 +108,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             GetCNCAPAndENCAPData();//碰撞数据
             MakeRelatedNewHtml();//相关新闻
             GetBaoZhiLv();//5年保值率
-            GetVrUrl();//Vr url
+            //GetVrUrl();//Vr url
             //InitNextSeeNew();//接下来要看 评测和导购
             ucNextToSee.serialId = serialId;
         }

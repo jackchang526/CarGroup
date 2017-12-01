@@ -1029,7 +1029,6 @@ function Get1111Entrance() {
 }
 //vr入口
 function GetVr() {
-    if ($("#favstar").siblings("vr-chezhan") > 0) return;
     $.ajax({
         url: "http://webapi.photo.bitauto.com/photoApi/api/v1/Pano/GetAlbumList?ModelId=" + GlobalSummaryConfig.SerialId,
         cache: true,
@@ -1039,7 +1038,11 @@ function GetVr() {
             if (data.Code != 0 || data.Data.Total == 0) {
                 return;
             }
-            $("#favstar").before("<a href=\"" + data.Data.DataList[0].Url + "\" data-channelid=\"27.23.2214\" class=\"vr-chezhan\"><i></i>VR</a>");
+            var container = $(".sum-car-img .right-area");
+            if ($(container).length == 0) return;
+            //var imgUrl = $(container).find("img").attr("src");
+            $(container).find("a").first().remove();
+            $(container).prepend("<a href=\"" + data.Data.DataList[0].Url + "\" data-channelid=\"27.23.2214\" class=\"img-box\"><span class=\"spl360-kanche\"></span><img src=\"" + data.Data.DataList[0].PhotoUrl + "\" /><em>全景</em></a>");
         }
     });
 }

@@ -2507,7 +2507,7 @@ $(function () {
     var idmainoffsettop_top = idmainoffsettop + 90; //上浮动层出现top定位
     var idleftoffsetheight = $("#tableHead_left").height(); //左侧浮动层出现的top定位
     var idleftwidth = the_lid.width(); //左侧浮动层的宽度
-    var tipheight = $(".td-tips").height();//风险提示高度
+    var tipheight = $(".td-tips").height() + parseFloat($(".td-tips").css("margin-bottom").replace("px"));//风险提示高度
     ////////////////屏幕改变大小开始
 
     $(window).resize(function () {

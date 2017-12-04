@@ -1,8 +1,10 @@
 ﻿using BitAuto.CarChannel.BLL;
+using BitAuto.CarChannel.BLL.Data;
 using BitAuto.CarChannel.Common;
 using BitAuto.CarChannel.Common.Cache;
 using BitAuto.CarChannel.Common.Enum;
 using BitAuto.CarChannel.Common.Interface;
+using BitAuto.CarChannel.Model;
 using BitAuto.CarChannel.Model.AppApi;
 using BitAuto.Utils;
 using System;
@@ -194,23 +196,92 @@ namespace AppApi.Controllers
                 return JsonNet(new { success = true, status = 0, message = "参数错误", data = "" }, JsonRequestBehavior.AllowGet);
             }
             var serialInfo = CarSerialService.GetSerialInfoCard(csId.GetValueOrDefault(0));
+            //图库接口本地化更改
+            string xmlPicPath = System.IO.Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, serialInfo.CsID));
+            // 此 Cache 将通用于图片页和车型综述页
+            DataSet dsCsPic = CarSerialService.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialInfo.CsID, xmlPicPath, 60);
+            int picCount = 0;
+            if (dsCsPic != null && dsCsPic.Tables.Count > 0 && dsCsPic.Tables.Contains("A"))
+            {
+                picCount = dsCsPic.Tables["A"].AsEnumerable().Sum(row => ConvertHelper.GetInteger(row["N"]));
+            }
+            string coverImg = string.Empty;
+            //子品牌焦点图
+            List<SerialFocusImage> imgList = CarSerialService.GetSerialFocusImageList(serialInfo.CsID);
+            if (imgList.Count == 0)
+            {
+                //子品牌幻灯页
+                List<SerialFocusImage> imgSlideList = CarSerialService.GetSerialSlideImageList(serialInfo.CsID);
+
+                imgList.AddRange(imgSlideList);
+                if (imgList.Count == 0)
+                {
+                    //取图解第一张
+                    XmlNode firstTujieNode = CarSerialService.GetFirstTujieImage(dsCsPic, serialInfo.CsID);
+                    if (firstTujieNode != null)
+                    {
+                        coverImg = firstTujieNode.Attributes["ImageUrl"].Value;
+                    }
+                }
+                else
+                {
+                    if (imgList[0] != null && imgList[0].ImageUrl != null)
+                    {
+                        coverImg = imgList[0].ImageUrl.Replace("_4.", "_3.");
+                    }
+                }
+            }
+            var serialEntity= (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, serialInfo.CsID);
+            var tempCarList = serialEntity.CarList;//车型列表
+            string noSaleLastReferPrice =string.Empty;
+            if (tempCarList.Any())
+            {
+                var noSaleCarList = tempCarList.Where(s => s.SaleState == "停销").ToList();
+                if (noSaleCarList.Any())
+                {
+                    var lastYear = noSaleCarList.Select(s => s.CarYear).Max();//从车型列表中获取最新年款
+                    var lastList = noSaleCarList.Where(s => s.CarYear == lastYear).ToList();//筛选最新年款数据
+                    if (lastList.Any())
+                    {
+                        var priceList = lastList.Select(s => s.ReferPrice).ToList();//得到最新年款的价格集合
+
+                        if (priceList.Any())
+                        {
+                            var min = priceList.Min();
+                            var max = priceList.Max();
+
+                            if (min == 0 && max == 0)
+                            {
+                                noSaleLastReferPrice = "暂无";
+                            }
+                            else
+                            {
+                                noSaleLastReferPrice = min == max ? string.Format("{0}万", min) : string.Format("{0}-{1}万", min, max);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    noSaleLastReferPrice = "暂无";
+                }
+            }
+
 
             var result = new
             {
                 csID = serialInfo.CsID,
                 csName = serialInfo.CsShowName,//车型名称
                 masterd = serialInfo,//大品牌logo
-                //guidePriceRange = serialInfo.CsPriceRange,//参考价区间 
-                referencePriceRange = serialInfo.CsPriceRange, //指导价区间
-                //converImg = serialInfo.CoverImageUrl,
-                //coverImg = serialExt == null ? "" : serialExt.CoverImageUrl,
-                //whiteCoverImg = serialExt == null ? "" : serialExt.WhiteCoverUrl,
-                imgCount = serialInfo.CsPicCount,//图片数量
+                guidePriceRange = serialInfo.CsPriceRange,//参考价区间 
+                referencePriceRange = noSaleLastReferPrice, //指导价区间
+                coverImg = coverImg,// serialExt == null ? "" : serialExt.CoverImageUrl,
+                imgCount = picCount,//图片数量
                 oil = serialInfo.CsSummaryFuelCost,// serialInfo.MinOil.ToString("F1") == "0.0" || serialInfo.MaxOil.ToString("F1") == "0.0" ? "暂无" : serialInfo.MinOil.ToString("F1") + "-" + serialInfo.MaxOil.ToString("F1") + "L",//参考油耗（在销车款的 综合工况油耗的最低和最高 ）
                 //country = serialInfo.CountryName,//国别
                 carType = serialInfo.CsLevel,//车型
                 shareUrl = string.Format("http://car.h5.yiche.com/{0}/?WT.mc_id=nbycapp", serialInfo.CsAllSpell),//分享地址 子品牌全拼
-                //serialLink = string.Format("http://m.yichemall.com/car/detail/index?modelId={0}&source=ycapp-tmall-1", serialInfo.Id),
+                serialLink = string.Format("http://m.yichemall.com/car/detail/index?modelId={0}&source=ycapp-tmall-1", serialInfo.CsID),
                 //forumId = forumId,
                 //brandId = serialInfo.MakeId,//主品牌
                 saleStatus = serialInfo.CsSaleState,

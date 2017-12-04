@@ -21,6 +21,8 @@ using MongoDB.Bson.Serialization;
 using BitAuto.CarChannel.Model.AppModel;
 using System.Web.Caching;
 using System.Configuration;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace BitAuto.CarChannel.BLL
 {
@@ -29,6 +31,23 @@ namespace BitAuto.CarChannel.BLL
         private static readonly Car_BasicDal cbd = new Car_BasicDal();
         private static readonly CarInfoDal cid = new CarInfoDal();
         static string parameterConfigPath = ConfigurationManager.AppSettings["ParameterConfigPath"];
+        /// <summary>
+        /// 获取车型参考价接口
+        /// </summary>
+        static string ReferPriceByCityCS_Api= ConfigurationManager.AppSettings["YiPai_ReferPriceByCityCS_API"];
+
+        static string ReferPriceByCityCar_Api = ConfigurationManager.AppSettings["YiPai_ReferPriceByCityCar_API"];
+
+        /// <summary>
+        /// 销售顾问Token
+        /// </summary>
+        static string VendorSalesToken= ConfigurationManager.AppSettings["VendorSalesToken"];
+
+        /// <summary>
+        /// 销售顾问MD5
+        /// </summary>
+        static string VendorSalesMD5= ConfigurationManager.AppSettings["VendorSalesMD5"];
+         
 
         public Car_BasicBll()
         { }
@@ -2651,5 +2670,80 @@ namespace BitAuto.CarChannel.BLL
             }
             return strTravelTax;
         }
+        #region 报价
+        /// <summary>
+        /// 获取车款报价
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <param name="carIdList"></param>
+        /// <returns></returns>
+        public Dictionary<int, SalePriceInfoEntity> GetReferPriceDicByCarIds(int cityId, List<int> carIdList)
+        {
+            if (cityId == 0 || carIdList.Count == 0)
+                return new Dictionary<int, SalePriceInfoEntity>();
+            var param = JsonConvert.SerializeObject(new { CityId = cityId, CarIds = string.Join(",", carIdList) });
+            return GetReferPriceDic(ReferPriceByCityCar_Api, cityId, param);
+        }
+        /// <summary>
+        /// 获取车型报价
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <param name="serviceIdList"></param>
+        /// <returns></returns>
+        public Dictionary<int, SalePriceInfoEntity> GetReferPriceDicByServiceIds(int cityId, List<int> serviceIdList)
+        {
+            if (cityId == 0 || serviceIdList.Count == 0)
+                return new Dictionary<int, SalePriceInfoEntity>();
+            var param = JsonConvert.SerializeObject(new { CityId = cityId, CSIds = string.Join(",", serviceIdList) });
+            return GetReferPriceDic(ReferPriceByCityCS_Api, cityId, param);
+        }
+
+
+
+        private Dictionary<int, SalePriceInfoEntity> GetReferPriceDic(string apiUrl, int cityId, string param)
+        {
+            Dictionary<int, SalePriceInfoEntity> result = new Dictionary<int, SalePriceInfoEntity>();
+            WebApiData wabapi = new WebApiData();
+            try
+            {
+                var jsonResult = wabapi.GetRequestJson(string.Format("{0}/{1}/{2}", apiUrl, VendorSalesToken, VendorSalesMD5), "POST", param, null, 1000, "application/json;charset=UTF-8");
+                MakeReferPrice(result, jsonResult.Value<JArray>(), cityId);
+            }
+            catch (Exception ex)
+            {
+                CommonFunction.WriteLog(string.Format("获取车型价格超时，数据：{0},message:{1},StackTrace:{2}", param, ex.Message, ex.StackTrace));
+                //throw ex;
+            }
+            return result;
+        }
+        private void MakeReferPrice(Dictionary<int, SalePriceInfoEntity> dic, JArray data, int cityId)
+        {
+            if (data != null)
+            {
+                SalePriceInfoEntity salePrice;
+                foreach (var item in data)
+                {
+                    if (item != null)
+                    {
+                        try
+                        {
+                            salePrice = new SalePriceInfoEntity();
+                            salePrice.MinReferPrice = item.Value<float>("MinReferPrice");
+                            salePrice.MinReferPrice = item.Value<float>("MaxReferPrice");
+                            salePrice.Id = item.Value<int>("Id");
+                            salePrice.ReturnType = item.Value<int>("ReturnType");
+                            salePrice.CityId = cityId;
+                            dic.Add(salePrice.Id, salePrice);
+                        }
+                        catch (Exception exception)
+                        {
+                            CommonFunction.WriteLog(string.Format("获取报价信息错误,数据：{0},message:{1},StackTrace:{2}", item, exception.Message, exception.StackTrace));
+                        }
+                    }
+                }
+            }
+        }
+
+        #endregion
     }
 }

@@ -320,7 +320,7 @@
             InitTeHuiAndAdData();
             GetJiangjiaNews();
             GetHmcJiangJia();
-            Get1111Entrance();
+            //Get1111Entrance();
             GetVr();
             $("#qrcode img").bind("error", function () {
                 this.style.display = "none";

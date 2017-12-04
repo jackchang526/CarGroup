@@ -24,10 +24,25 @@ namespace BitAuto.CarChannel.Common
         /// <returns></returns>
         public JObject GetRequestJson(string url, string method, string data = null, Encoding encoding = null, int timeOut = 60000, string contentType = "application/x-www-form-urlencoded;charset=UTF-8")
         {
+            string result = GetRequestString(url,method,data,encoding,timeOut,contentType);
+            JObject obj = !string.IsNullOrWhiteSpace(result) ? JsonHelper.Deserialize<JObject>(result) : null;
+            return obj;
+        }
+        /// <summary>
+        /// 获取HttpWebRequest数据
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="method"></param>
+        /// <param name="data"></param>
+        /// <param name="encoding"></param>
+        /// <param name="timeOut"></param>
+        /// <param name="contentType"></param>
+        /// <returns></returns>
+        public string GetRequestString(string url, string method, string data = null, Encoding encoding = null, int timeOut = 60000, string contentType = "application/x-www-form-urlencoded;charset=UTF-8")
+        {
             HttpWebRequest request = null;
             HttpWebResponse response = null;
             string strAdd = string.Empty;
-             
             try
             {
                 // System.GC.Collect();
@@ -36,8 +51,6 @@ namespace BitAuto.CarChannel.Common
                 {
                     ServicePointManager.DefaultConnectionLimit = 1024;
                 } //设置最大连接数为1024
-                 
-
                 request = (HttpWebRequest)WebRequest.Create(url);
                 request.Method = "POST";
 
@@ -52,8 +65,6 @@ namespace BitAuto.CarChannel.Common
                 request.KeepAlive = false;
                 request.ServicePoint.Expect100Continue = false;
                 response = (HttpWebResponse)request.GetResponse();
-         
-              
                 Encoding encodingT = Encoding.UTF8;
                 using (Stream streamReceiveT = response.GetResponseStream())
                 {
@@ -62,7 +73,6 @@ namespace BitAuto.CarChannel.Common
                         strAdd = streamReaderT.ReadToEnd();
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -80,8 +90,7 @@ namespace BitAuto.CarChannel.Common
                     request.Abort();
                 }
             }
-            JObject obj = !string.IsNullOrWhiteSpace(strAdd) ? JObject.Parse(strAdd) : null;
-            return obj;
+            return strAdd;
         }
     }
 }

@@ -34,20 +34,20 @@ namespace BitAuto.CarChannel.BLL
         /// <summary>
         /// 获取车型参考价接口
         /// </summary>
-        static string ReferPriceByCityCS_Api= ConfigurationManager.AppSettings["YiPai_ReferPriceByCityCS_API"];
+        static string ReferPriceByCityCS_Api = ConfigurationManager.AppSettings["YiPai_ReferPriceByCityCS_API"];
 
         static string ReferPriceByCityCar_Api = ConfigurationManager.AppSettings["YiPai_ReferPriceByCityCar_API"];
 
         /// <summary>
         /// 销售顾问Token
         /// </summary>
-        static string VendorSalesToken= ConfigurationManager.AppSettings["VendorSalesToken"];
+        static string VendorSalesToken = ConfigurationManager.AppSettings["VendorSalesToken"];
 
         /// <summary>
         /// 销售顾问MD5
         /// </summary>
-        static string VendorSalesMD5= ConfigurationManager.AppSettings["VendorSalesMD5"];
-         
+        static string VendorSalesMD5 = ConfigurationManager.AppSettings["VendorSalesMD5"];
+
 
         public Car_BasicBll()
         { }
@@ -2207,7 +2207,7 @@ namespace BitAuto.CarChannel.BLL
                                     }
                                 }
                             }
-                           
+
                         }
                     }
                     else
@@ -2706,8 +2706,17 @@ namespace BitAuto.CarChannel.BLL
             WebApiData wabapi = new WebApiData();
             try
             {
-                var jsonResult = wabapi.GetRequestJson(string.Format("{0}/{1}/{2}", apiUrl, VendorSalesToken, VendorSalesMD5), "POST", param, null, 1000, "application/json;charset=UTF-8");
-                MakeReferPrice(result, jsonResult.Value<JArray>(), cityId);
+                var jsonResult = wabapi.GetRequestString(string.Format("{0}/{1}/{2}", apiUrl, VendorSalesToken, VendorSalesMD5), "POST", param, null, 6000, "application/json;charset=UTF-8");
+
+                var salePriceList = JsonConvert.DeserializeObject<List<SalePriceInfoEntity>>(jsonResult);
+                if (salePriceList != null)
+                {
+                    foreach (var salePrice in salePriceList)
+                    {
+                        salePrice.CityId = cityId;
+                        result.Add(salePrice.Id, salePrice);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -2716,34 +2725,7 @@ namespace BitAuto.CarChannel.BLL
             }
             return result;
         }
-        private void MakeReferPrice(Dictionary<int, SalePriceInfoEntity> dic, JArray data, int cityId)
-        {
-            if (data != null)
-            {
-                SalePriceInfoEntity salePrice;
-                foreach (var item in data)
-                {
-                    if (item != null)
-                    {
-                        try
-                        {
-                            salePrice = new SalePriceInfoEntity();
-                            salePrice.MinReferPrice = item.Value<float>("MinReferPrice");
-                            salePrice.MinReferPrice = item.Value<float>("MaxReferPrice");
-                            salePrice.Id = item.Value<int>("Id");
-                            salePrice.ReturnType = item.Value<int>("ReturnType");
-                            salePrice.CityId = cityId;
-                            dic.Add(salePrice.Id, salePrice);
-                        }
-                        catch (Exception exception)
-                        {
-                            CommonFunction.WriteLog(string.Format("获取报价信息错误,数据：{0},message:{1},StackTrace:{2}", item, exception.Message, exception.StackTrace));
-                        }
-                    }
-                }
-            }
-        }
-
+      
         #endregion
     }
 }

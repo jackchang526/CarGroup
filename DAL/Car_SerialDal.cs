@@ -1711,7 +1711,7 @@ FROM    dbo.Car_Serial_30UV uv
 
                 serialCountry.SerialID = TypeParse.StrToInt(dataTable.Rows[0]["cs_Id"], 0);
                 serialCountry.MasterID = TypeParse.StrToInt(dataTable.Rows[0]["bs_Id"], 0);
-                serialCountry.Country = dataTable.Rows[0]["carSerialName"].ToString();
+                serialCountry.Country = dataTable.Rows[0]["cb_Country"].ToString();
             }
             return serialCountry;
         }

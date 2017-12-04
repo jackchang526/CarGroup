@@ -6,6 +6,7 @@ using BitAuto.CarChannel.Common.Enum;
 using BitAuto.CarChannel.Common.Interface;
 using BitAuto.CarChannel.Model;
 using BitAuto.CarChannel.Model.AppApi;
+using BitAuto.CarChannel.Model.AppModel;
 using BitAuto.Utils;
 using System;
 using System.Collections.Generic;
@@ -195,6 +196,9 @@ namespace AppApi.Controllers
             {
                 return JsonNet(new { success = true, status = 0, message = "参数错误", data = "" }, JsonRequestBehavior.AllowGet);
             }
+
+
+
             var serialInfo = CarSerialService.GetSerialInfoCard(csId.GetValueOrDefault(0));
             //图库接口本地化更改
             string xmlPicPath = System.IO.Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, serialInfo.CsID));
@@ -266,19 +270,19 @@ namespace AppApi.Controllers
                     noSaleLastReferPrice = "暂无";
                 }
             }
-
-
+            var serialCountry = CarSerialService.GetSerialCountryById(serialInfo.CsID);
+            var serialPriceDic = CarBasicService.GetReferPriceDicByServiceIds(cityId.GetValueOrDefault(0), new List<int> { serialInfo.CsID });
             var result = new
             {
                 csID = serialInfo.CsID,
                 csName = serialInfo.CsShowName,//车型名称
-                masterd = serialInfo,//大品牌logo
-                guidePriceRange = serialInfo.CsPriceRange,//参考价区间 
+                masterd = serialCountry == null ? 0 : serialCountry.MasterID,//大品牌logo
+                guidePriceRange = GetSerialReferPrice(serialPriceDic, serialInfo.CsID, serialInfo.CsPriceRange),//参考价区间 
                 referencePriceRange = noSaleLastReferPrice, //指导价区间
                 coverImg = coverImg,// serialExt == null ? "" : serialExt.CoverImageUrl,
                 imgCount = picCount,//图片数量
                 oil = serialInfo.CsSummaryFuelCost,// serialInfo.MinOil.ToString("F1") == "0.0" || serialInfo.MaxOil.ToString("F1") == "0.0" ? "暂无" : serialInfo.MinOil.ToString("F1") + "-" + serialInfo.MaxOil.ToString("F1") + "L",//参考油耗（在销车款的 综合工况油耗的最低和最高 ）
-                //country = serialInfo.CountryName,//国别
+                country = serialCountry == null ? "" : serialCountry.Country,// serialInfo.CountryName,//国别
                 carType = serialInfo.CsLevel,//车型
                 shareUrl = string.Format("http://car.h5.yiche.com/{0}/?WT.mc_id=nbycapp", serialInfo.CsAllSpell),//分享地址 子品牌全拼
                 serialLink = string.Format("http://m.yichemall.com/car/detail/index?modelId={0}&source=ycapp-tmall-1", serialInfo.CsID),
@@ -704,6 +708,10 @@ namespace AppApi.Controllers
         }
 
         #endregion
+        private string GetSerialReferPrice(Dictionary<int, SalePriceInfoEntity> priceDic, int csId, string referPrice)
+        {
+            return (priceDic.ContainsKey(csId) && priceDic[csId] != null && priceDic[csId].MinReferPrice > 0 && priceDic[csId].MaxReferPrice > 0) ? priceDic[csId].MinReferPrice + "-" + priceDic[csId].MaxReferPrice + "万" : referPrice;
+        }
     }
 
 }

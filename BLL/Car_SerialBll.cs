@@ -8908,5 +8908,21 @@ namespace BitAuto.CarChannel.BLL
             return (XmlNode)element;
         }
         #endregion
+        /// <summary>
+        /// 获取车型国别和主品牌id
+        /// </summary>
+        /// <param name="styleId"></param>
+        /// <returns></returns>
+        public SerialCountryEntity GetSerialCountryById(int serialId)
+        {
+            string cacheKey = string.Format(DataCacheKeys.SerialCountry, serialId);
+            var result = CacheManager.GetCachedData<SerialCountryEntity>(cacheKey);
+            if (result == null)
+            {
+                result = csd.GetSerialCountryById(serialId);
+                CacheManager.InsertCache(cacheKey, result, 60 * 25);
+            }
+            return result;
+        }
     }
 }

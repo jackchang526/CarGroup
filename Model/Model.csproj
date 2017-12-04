@@ -84,6 +84,7 @@
     <Compile Include="AppModel\DataCacheKeys.cs" />
     <Compile Include="AppModel\ParameterGroupEntity.cs" />
     <Compile Include="AppModel\SalePriceInfoEntity.cs" />
+    <Compile Include="AppModel\SerialCountryEntity.cs" />
     <Compile Include="Assessment\AssessmentEntity.cs" />
     <Compile Include="Assessment\BodyAndSpaceGroup.cs" />
     <Compile Include="Assessment\CommonImageVideoEntity.cs" />

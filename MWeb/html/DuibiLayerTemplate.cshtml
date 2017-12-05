@@ -1,0 +1,47 @@
+﻿<!--一级公共模板 start-->
+<script type="text/template" id="duibibtnTemplate">
+    <div class="y2015-car-01">
+        <div class="slider-box">
+            <ul class="first-list">
+                {for(var i =0;i< list.SelectedCars.length;i++){}
+                <li>
+                    <div class="line-box"><a class='select' href="/m{= list.SelectedCars[i].CarId }/">{=list.SelectedCars[i].CarName }</a><a href="javascript:;" data-carid="{=list.SelectedCars[i].CarId }" class="btn-close"><i></i></a></div>
+                </li>
+                {}}
+                {for(var i =0;i< list.AddLables.Count;i++){}
+                <li class="add">
+                    <div class="line-box"><a href="javascript:;">添加对比车款</a></div>
+                </li>
+                {}}
+                <li class="alert">最多对比4个车款</li>
+                <li class="ad-box" id="compareAdBox"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="swipeLeft-header">
+        <a href="###" class="btn-clear">清除</a>
+        <!--btn-clear disable-->
+        <a href="###" class="btn-comparison">开始对比</a>
+        <!--btn-comparison disable-->
+        <div class="clear"></div>
+    </div>
+</script>
+<!--一级公共模板 end-->
+<div class="leftmask duibi-leftmask leftmask2 " style="display: none;"></div>
+<div class="leftPopup duibicar duibi-leftPopup" data-zindex="777777" data-back="leftmask2" style="display: none;">
+    <div class="swipeLeft">
+        <div class="y2015-car-01">
+            <ul class="first-list"></ul>
+        </div>
+        <div class="swipeLeft-header">
+            <a href="###" class="btn-clear">清空</a>
+            <!--btn-clear disable-->
+            <a href="###" class="btn-comparison">开始对比</a>
+            <!--btn-comparison disable-->
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<!--加对比效果, // 创建飞行元素-->
+<div class="add-duibi-box"></div>
+

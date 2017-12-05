@@ -488,7 +488,7 @@ $(function () {
                     }
                     else if (idx == 1) {    //按品牌查找
                         //初始化品牌
-                        $body.trigger('brandinit');
+                        $body.trigger('brandinit', { init: function () { $("span.brand-logo>img").lazyload({ effect: "fadeIn", threshold: 50 }); } });
                         //车款点击回调事件
                         api.model.clickEnd = function (paras) {
                             api.brand.currentid = paras.masterid;

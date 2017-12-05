@@ -108,7 +108,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             MakePhotoListHtml();//图片列表
             GetCNCAPAndENCAPData();//碰撞数据
             MakeRelatedNewHtml();//相关新闻
-            GetVrUrl(); //VR
+            //GetVrUrl(); //VR
             //InitNextSeeNew();//接下来要看 评测和导购
             ucNextToSee.serialId = serialId;
         }
@@ -912,7 +912,11 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                         stopPrd = " <span class=\"color-block3\">停产</span>";
 
                     //新车上市 即将上市 状态
-                    string marketflag = GetMarketFlag(entity);
+                    string marketflag = _serialBLL.GetCarMarketText(entity.CarID, entity.SaleState, entity.MarketDateTime, entity.ReferPrice);//GetMarketFlag(entity);
+                    if (!string.IsNullOrEmpty(marketflag))
+                    {
+                        marketflag = string.Format("<a target=\"_blank\" class=\"color-block\">{0}</a>", marketflag);
+                    }
                     Dictionary<int, string> dictCarParams = _carBLL.GetCarAllParamByCarID(entity.CarID);
                     //add by 2014.05.04 获取电动车参数
                     if (isElectrombile)
@@ -1509,7 +1513,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 Response.Redirect("/404error.aspx");
             }
         }
-
+        /*
         private string GetMarketFlag(CarInfoForSerialSummaryEntity entity)
         {
             string marketflag = "";
@@ -1563,7 +1567,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             int days = (currentDateTime - dt).Days;
             return days;
         }
-
+        */
 
     }
 }

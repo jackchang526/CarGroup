@@ -20,7 +20,7 @@ namespace BitAuto.CarChannel.Model
         /// 参配本地缓存
         /// carids,逗号分开
         /// </summary>
-        public static string CarParameterListKey = "car.appapi.carparameterlist_{0}";
+        public static string CarParameterListKey = "car.appapi.carparameterlist_{0}_{1}";
         /// <summary>
         /// 参配Memcached
         /// carids,逗号分开
@@ -30,6 +30,13 @@ namespace BitAuto.CarChannel.Model
         /// <summary>
         /// 参配分组模版
         /// </summary>
-        public static string CarParameterJson = "car.appapi.carparameterjson";
+        public static string CarParameterJson = "car.appapi.carparameterjson_{0}";
+        /// <summary>
+        /// 车款分组列表
+        /// 0-车型id
+        /// 1-城市id
+        /// 2-是否保护停销
+        /// </summary>
+        public static string CarGroupListByserialIdAndCityId= "car.appapi.cargrouplist_{0}_{1}_{2}";
     }
 }

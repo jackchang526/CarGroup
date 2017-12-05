@@ -55,7 +55,7 @@ namespace MWeb.Controllers
             pageBase = new PageBase();
         }
 
-        [OutputCache(Duration = 1800, Location = OutputCacheLocation.Downstream)]
+        [OutputCache(Duration = 600, Location = OutputCacheLocation.Downstream)]
         public ActionResult Index(int id)
         {
             serialId = id;
@@ -77,7 +77,7 @@ namespace MWeb.Controllers
             GetVideo();//视频
             MakeForumNewsHtml();//论坛
             MakeSerialToSerialHtml();//看了还看
-            GetVrUrl();//获取vr地址
+            //GetVrUrl();//获取vr地址
             GetBaoZhiLv();//保值率
             /*
             bool isTestCs = TestCsIds.Contains(serialId);
@@ -91,7 +91,8 @@ namespace MWeb.Controllers
 
             #region 综述页新车上市提示 20170920
 
-            GetTab();
+            //GetTab();
+            ViewData["showText"] = serialBLL.GetNewSerialIntoMarketText(serialId, true);
 
             #endregion
 
@@ -564,10 +565,10 @@ namespace MWeb.Controllers
 
 
                             // 档位个数
-                            string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" &&
-                                                     dictCarParams[724] != "待查")
-                                ? dictCarParams[724] + "挡"
-                                : "";
+                            ////string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" &&
+                            //                         dictCarParams[724] != "待查")
+                            //    ? dictCarParams[724] + "挡"
+                            //    : "";
 
                             //平行进口车标签
                             //string parallelImport = "";
@@ -575,6 +576,7 @@ namespace MWeb.Controllers
                             //{
                             //	parallelImport = "<em>平行进口</em>";
                             //}
+                            string transmissionType = carBLL.GetCarTransmissionType(dictCarParams.ContainsKey(724) ? dictCarParams[724] : string.Empty, carInfo.TransmissionType);
 
                             stringBuilder.Append("<li>");
 
@@ -583,7 +585,11 @@ namespace MWeb.Controllers
                                  "/" + serialEntity.AllSpell + "/m" + carInfo.CarID + "/");
 
                             //新车上市 即将上市 状态
-                            string marketflag = GetMarketFlag(carInfo);
+                            string marketflag = serialBLL.GetCarMarketText(carInfo.CarID, carInfo.SaleState, carInfo.MarketDateTime, carInfo.ReferPrice);//GetMarketFlag(carInfo);
+                            if (!string.IsNullOrEmpty(marketflag))
+                            {
+                                marketflag = string.Format("<em class=\"the-new\">{0}</em>", marketflag);
+                            }
                             stringBuilder.AppendFormat("<h2>{0}{1}</h2>", carFullName, marketflag);
                             stringBuilder.AppendFormat("<dl><dt>{0}</dt></dl>", carMinPrice);
 
@@ -616,7 +622,7 @@ namespace MWeb.Controllers
                                     strTravelTax = "<em>减税</em>";
                                 }
                             }
-                            stringBuilder.AppendFormat("<span>{0}</span>", forwardGearNum + carInfo.TransmissionType);
+                            stringBuilder.AppendFormat("<span>{0}</span>", transmissionType);
                             stringBuilder.AppendFormat("<div class=\"gzd-box\" style=\"\"><div class=\"tit-box\">热度</div><span class=\"gz-sty\"><i data-pv=\"{0}\" style=\"width:{0}%\"></i></span></div>", percent);
                             stringBuilder.AppendFormat("{0}{1}", strTravelTax, stopPrd);
                             stringBuilder.AppendFormat("<b>指导价:{0}</b>", carInfo.ReferPrice.Trim().Length == 0 ? "暂无" : carInfo.ReferPrice.Trim() + "万");
@@ -1300,19 +1306,19 @@ namespace MWeb.Controllers
             ViewData["SerialColorList"] = SerialColorList;
         }
 
-        /// <summary>
-        /// 获取vr url
-        /// </summary>
-        private void GetVrUrl()
-        {
-            Dictionary<int, string> vrDic = serialBLL.GetSerialVRUrl();
-            string VRUrl = string.Empty;
-            if (vrDic != null && vrDic.ContainsKey(serialId))
-            {
-                 VRUrl = vrDic[serialId];
-            }
-            ViewData["VRUrl"] = VRUrl;
-        }
+        ///// <summary>
+        ///// 获取vr url
+        ///// </summary>
+        //private void GetVrUrl()
+        //{
+        //    Dictionary<int, string> vrDic = serialBLL.GetSerialVRUrl();
+        //    string VRUrl = string.Empty;
+        //    if (vrDic != null && vrDic.ContainsKey(serialId))
+        //    {
+        //         VRUrl = vrDic[serialId];
+        //    }
+        //    ViewData["VRUrl"] = VRUrl;
+        //}
 
         /// <summary>
         /// 五年保值率
@@ -1360,6 +1366,8 @@ namespace MWeb.Controllers
             ViewData["keyWords"] = keyWords;
             ViewData["description"] = description;
         }
+
+        /*
 
         public void GetTab()
         {
@@ -1536,6 +1544,6 @@ namespace MWeb.Controllers
             return days;
         }
 
-
+    */
     }
 }

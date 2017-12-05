@@ -30,6 +30,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -102,6 +103,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AppCode\PageHelper.cs" />
+    <Compile Include="AppCode\ResultUtil.cs" />
     <Compile Include="Assessment\GetAssessmentInfo.ashx.cs">
       <DependentUpon>GetAssessmentInfo.ashx</DependentUpon>
     </Compile>
@@ -122,6 +124,15 @@
     </Compile>
     <Compile Include="Assessment\GetEvaluationParam.ashx.cs">
       <DependentUpon>GetEvaluationParam.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetEvaluationSimpleRank.ashx.cs">
+      <DependentUpon>GetEvaluationSimpleRank.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetEvaluationTopRank.ashx.cs">
+      <DependentUpon>GetEvaluationTopRank.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetExistReportEvaluationId.ashx.cs">
+      <DependentUpon>GetExistReportEvaluationId.ashx</DependentUpon>
     </Compile>
     <Compile Include="Assessment\ViewScore.ashx.cs">
       <DependentUpon>ViewScore.ashx</DependentUpon>
@@ -152,6 +163,10 @@
     </Compile>
     <Compile Include="CarInfo\GetCarInfo.ashx.cs">
       <DependentUpon>GetCarInfo.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\GetCarIntoMarketText.ashx.cs">
+      <DependentUpon>GetCarIntoMarketText.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CarInfo\GetCarList.ashx.cs">
@@ -336,9 +351,18 @@
       <DependentUpon>CarExhibitionXml.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Exhibition\GetExhibitionBrand.ashx.cs">
+      <DependentUpon>GetExhibitionBrand.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Exhibition\GetExhibitionLeftTreeJson.ashx.cs">
       <DependentUpon>GetExhibitionLeftTreeJson.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exhibition\GetExhibitionMasterBrand.ashx.cs">
+      <DependentUpon>GetExhibitionMasterBrand.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Exhibition\GetExhibitionSerial.ashx.cs">
+      <DependentUpon>GetExhibitionSerial.ashx</DependentUpon>
     </Compile>
     <Compile Include="ForExternal\GetAllBrandSerialCarInfo.ashx.cs">
       <DependentUpon>GetAllBrandSerialCarInfo.ashx</DependentUpon>
@@ -467,6 +491,9 @@
     </Compile>
     <Compile Include="WxApp\GetCarParamInfo.ashx.cs">
       <DependentUpon>GetCarParamInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="WxApp\GetCarParamList.ashx.cs">
+      <DependentUpon>GetCarParamList.ashx</DependentUpon>
     </Compile>
     <Compile Include="WxApp\GetHotMaster.ashx.cs">
       <DependentUpon>GetHotMaster.ashx</DependentUpon>
@@ -599,6 +626,13 @@
     <Content Include="Assessment\ViewScore.ashx" />
     <Content Include="config\ParameterConfigurationNewV2.config" />
     <Content Include="CarInfo\WriteCarParamCache.ashx" />
+    <Content Include="Exhibition\GetExhibitionBrand.ashx" />
+    <Content Include="Exhibition\GetExhibitionMasterBrand.ashx" />
+    <Content Include="Exhibition\GetExhibitionSerial.ashx" />
+    <Content Include="CarInfo\GetCarIntoMarketText.ashx" />
+    <Content Include="Assessment\GetEvaluationSimpleRank.ashx" />
+    <Content Include="Assessment\GetEvaluationTopRank.ashx" />
+    <Content Include="Assessment\GetExistReportEvaluationId.ashx" />
     <Content Include="Assessment\GetEvalInfoForAppNews.ashx" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
@@ -626,6 +660,7 @@
     <Content Include="WxApp\GetHotSerial.ashx" />
     <Content Include="WxApp\GetSerialSellRank.ashx" />
     <Content Include="WxApp\GetHotMaster.ashx" />
+    <Content Include="WxApp\GetCarParamList.ashx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

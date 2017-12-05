@@ -70,6 +70,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppApi\CarMasterBrandEntity.cs" />
+    <Compile Include="AppApi\CarModelColorEntity.cs" />
+    <Compile Include="AppApi\CarSerialExtEntity.cs" />
+    <Compile Include="AppApi\CarStyleInfoEntity.cs" />
+	<Compile Include="AppModel\CarGroupEntity.cs" />
     <Compile Include="AppModel\CarParameterEntity.cs" />
     <Compile Include="AppModel\DataCacheKeys.cs" />
     <Compile Include="AppModel\ParameterGroupEntity.cs" />
@@ -106,6 +111,8 @@
     <Compile Include="CNCAPEntity.cs" />
     <Compile Include="DaoGouEntity.cs" />
     <Compile Include="EvaluationEntity.cs" />
+    <Compile Include="EvaluationRank.cs" />
+    <Compile Include="EvaluationTopRank.cs" />
     <Compile Include="LoanPackage.cs" />
     <Compile Include="DealerInfo.cs" />
     <Compile Include="Editer.cs" />

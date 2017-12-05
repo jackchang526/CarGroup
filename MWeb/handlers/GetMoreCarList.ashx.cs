@@ -23,6 +23,7 @@ namespace WirelessWeb.handlers
 	public class GetMoreCarList : IHttpHandler
 	{
 		private Car_BasicBll _carBLL;
+        private Car_SerialBll _serialBll;
 		private List<CarInfoForSerialSummaryEntity> _serialCarList;
 		private SerialEntity _serialEntity;
 		private int _serialId;
@@ -126,7 +127,8 @@ namespace WirelessWeb.handlers
 		private void InitSerialInfo()
 		{
 			_carBLL = new Car_BasicBll();
-			_serialCarList = _carBLL.GetCarInfoForSerialSummaryBySerialId(_serialId);
+            _serialBll = new Car_SerialBll();
+            _serialCarList = _carBLL.GetCarInfoForSerialSummaryBySerialId(_serialId);
 			_serialCarList.Sort(NodeCompare.CompareCarByExhaustAndPowerAndInhaleType);
 		}
 		/// <summary>
@@ -426,35 +428,39 @@ namespace WirelessWeb.handlers
 							}
 						}
 
-						#endregion
+                        #endregion
 
 
-						// 档位个数
-						string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" &&
-												 dictCarParams[724] != "待查")
-							? dictCarParams[724] + "挡"
-							: "";
+                        // 档位个数
+                        //string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" &&
+                        //						 dictCarParams[724] != "待查")
+                        //	? dictCarParams[724] + "挡"
+                        //	: "";
 
-						//平行进口车标签
-						//string parallelImport = "";
-						//if (dictCarParams.ContainsKey(382) && dictCarParams[382] == "平行进口")
-						//{
-						//	parallelImport = "<em>平行进口</em>";
-						//}
-
-						stringBuilder.Append("<li>");
+                        //平行进口车标签
+                        //string parallelImport = "";
+                        //if (dictCarParams.ContainsKey(382) && dictCarParams[382] == "平行进口")
+                        //{
+                        //	parallelImport = "<em>平行进口</em>";
+                        //}
+                        string transmissionType = _carBLL.GetCarTransmissionType(dictCarParams.ContainsKey(724) ? dictCarParams[724] : string.Empty, carInfo.TransmissionType);
+                        stringBuilder.Append("<li>");
 
 						stringBuilder.AppendFormat(
 							"<a  id='carlist_" + carInfo.CarID + "' class='car-info' href='{0}' data-channelid=\"27.23.915\">",
 							 "/" + _serialEntity.AllSpell + "/m" + carInfo.CarID + "/");
 
                         //新车上市 即将上市 状态
-                        string marketflag = GetMarketFlag(carInfo);
+                        string marketflag = _serialBll.GetCarMarketText(carInfo.CarID, carInfo.SaleState, carInfo.MarketDateTime, carInfo.ReferPrice);//GetMarketFlag(carInfo);
+                        if (!string.IsNullOrEmpty(marketflag))
+                        {
+                            marketflag = string.Format("<em class=\"the-new\">{0}</em>",marketflag);
+                        }
                         stringBuilder.AppendFormat("<h2>{0}{1}</h2>", carFullName, marketflag);
 						
 						stringBuilder.AppendFormat("<dl><dt>{0}</dt></dl>", carMinPrice);
 						stringBuilder.Append("<div class=\"car-info-bottom\">");//第二行开始
-						stringBuilder.AppendFormat("<span>{0}</span>", forwardGearNum + carInfo.TransmissionType);
+						stringBuilder.AppendFormat("<span>{0}</span>", transmissionType);
 						//add date :2016-2-3  添加热度
 						int percent = 0;
 						if (maxPv > 0)
@@ -635,7 +641,7 @@ namespace WirelessWeb.handlers
 				return (T)serializer.Deserialize(stream);
 			}
 		}
-
+        /*
         private string GetMarketFlag(CarInfoForSerialSummaryEntity entity)
         {
             string marketflag = "";
@@ -688,5 +694,6 @@ namespace WirelessWeb.handlers
             int days = (currentDateTime - dt).Days;
             return days;
         }
+        */
     }
 }

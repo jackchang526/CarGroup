@@ -14,7 +14,7 @@ var ComparePageObject = {
     ArrSelectExhaust: new Array(),
     ArrSelectTransmission: new Array(),
     IsNeedFirstColor: false,
-    MaxTD: 4,
+    MaxTD: 30,
     CarListForSelect: new Array(),
     CurrentCarID: 0,
     CarIDAndNames: "",
@@ -287,6 +287,25 @@ function bindEvent() {
             $("#popup-menumask").hide();
         }
     });
+
+    //车款配置弹层
+    var $body = $('body');
+    $('#screenTrigger').click(function (ev) {
+        ev.preventDefault();
+        var $this = $(this);
+        $body.trigger('fristSwipeOne', {
+            swipeLeftChildren: '.spl-screen1',
+            $swipe: $("#screenCar"),
+            $click: $this, //点击对象
+            fnEnd: function () {
+                //层打开后回调
+            },
+            closeEnd: function () {
+                //关闭层回调
+            }
+        });
+    })
+    WaitCompare.initCompreData({ serialid: serialId});
 }
 
 function createEmptyTable() {
@@ -351,7 +370,8 @@ function createPic() {
                     var carYear = ComparePageObject.ArrCarInfo[i].CarInfoArray[0][7];
                     var csShowName = ComparePageObject.ArrCarInfo[i].CarInfoArray[0][5];
                     var carRefPrice = ComparePageObject.ArrCarInfo[i].CarInfoArray[1][0];
-                    tempArray.push("<a data-channelid=\"27.158.1615\" class=\"duibi-box\" href=\"###\" data-action=\"models\" data-car=\"" + carid + "\" data-id=\"" + serialId + "\" data-index=\"" + i + "\">");
+                    var carFullName = csShowName + (carYear.length > 0 ? (" " + carYear + "款") : "") + " " + carName;
+                    tempArray.push("<a data-channelid=\"27.158.1615\" class=\"duibi-box\" href=\"###\" data-car=\"" + carid + "\" data-id=\"" + serialId + "\" data-index=\"" + i + "\">");
                     tempArray.push("<h4>" + (carYear == "" ? "" : " " + carYear + "款 ") + carName + "</h4>");
                     tempArray.push("<em>" + carRefPrice + "</em>");
                     tempArray.push("</a>");
@@ -366,7 +386,8 @@ function createPic() {
                 catch (err)
                 { }
                 tempArray.push("        <div class=\"m-btn-duibi-close\"  data-channelid=\"27.158.1614\" data_cyslogclickflag=\"27.158.1614\" onclick=\"BglogPostLog('27.158.1614',this);\" data-index=\"" + i + "\"></div>");
-                tempArray.push("        <i class=\"star\"></i>");
+                //tempArray.push("        <i class=\"star\"></i>");
+                tempArray.push("        <a class=\"spl-addcmp btnDuibi\" id=\"car-compare-" + carid + "\" data-id=\"" + carid + "\" data-name=\"" + carFullName + "\">对比</a>");
                 tempArray.push("    </div>");
                 tempArray.push("</td>");
             }
@@ -538,6 +559,9 @@ function createPara(arrFieldRow) {
                             field = tempColor.join("");
                         }
                     }
+                    else if (arrFieldRow["sFieldTitle"] == "压缩比" && field != "&nbsp;" && field != "") {
+                        field += ":1";
+                    }
                     if (field == "有")
                     { field = "<span class=\"f-bold\">●</span>"; }
                     if (field.indexOf("选配") == 0) {
@@ -567,15 +591,16 @@ function createPara(arrFieldRow) {
                             arrTemp.push(field);
                     }
                     else {
-                        if (arrFieldRow["sFieldTitle"] == "压缩比" && field != "") {
-                            field += "";
-                        }
+                        //if (arrFieldRow["sFieldTitle"] == "压缩比" && field != "") {
+                        //    field += ":1";
+                        //}
                         arrTemp.push(field);
                     }
                     if (arrFieldRow["sFieldTitle"] == "厂家指导价" && field != "无" && field != "待查") {
                         arrTemp.push("<a class=\"m-ico-calculator\" title=\"购车费用计算\" href=\"http://car.m.yiche.com/gouchejisuanqi/?carid=" + ComparePageObject.AllCarJson[i][0][0] + "\"></a>");
                         //arrTemp.push("<a data-channelid=\"27.158.1635\" href=\"http://gouche.m.yiche.com/sb" + ComparePageObject.AllCarJson[i][0][3] + "/m" + ComparePageObject.AllCarJson[i][0][0] + "/\" class=\"low-price\">找低价</a>");
                     }
+                    
                 }
                 catch (err) {
                     arrTemp.push("-");
@@ -773,6 +798,11 @@ function createMulti(arrFieldRow) {
                         //        default: break;
                         //    }
                         //}
+                        if (pidArray[pint] == "712") {
+                            if (field == "CVT无级变速" || field == "E-CVT无级变速" || field == "单速变速箱" || field == "") { //这四种情况不显示档位个数
+                                multiField = "";
+                            }
+                        }
                         if (field == "待查")
                         { field = ""; }
                         if (field.length > 0) {
@@ -1051,7 +1081,7 @@ function fieldMultiValue(arrFieldRow) {
             }
         }
     }
-    arrTemp.push("<td></td>");
+    //arrTemp.push("<td></td>");
     if (!isAllunknown) {
         // Is Need Show The Bar
         if (ComparePageObject.ArrTempBarHTML.length > 0) {
@@ -1393,17 +1423,22 @@ var arrField = [
     { sFieldTitle: "后轮胎规格", sType: "fieldPara", sPid: "721", sTrPrefix: "2", sFieldIndex: "9", unit: "", joinCode: "" },
     { sFieldTitle: "备胎", sType: "fieldPara", sPid: "707", sTrPrefix: "2", sFieldIndex: "10", unit: "", joinCode: "" },
     { sFieldTitle: "保修政策", sType: "fieldPara", sPid: "398", sTrPrefix: "2", sFieldIndex: "11", unit: "", joinCode: "" },
+
+    { sFieldTitle: "新能源汽车国家补贴[万]", sType: "fieldPara", sPid: "997", sTrPrefix: "2", sFieldIndex: "21", unit: "", joinCode: "" },
+    { sFieldTitle: "最小转弯直径[m]", sType: "fieldPara", sPid: "1039", sTrPrefix: "2", sFieldIndex: "22", unit: "", joinCode: "" },
+    { sFieldTitle: "最小离地间隙[mm]", sType: "fieldPara", sPid: "589", sTrPrefix: "2", sFieldIndex: "23", unit: "", joinCode: "" },
+
     { sFieldTitle: "满载质量[kg]", sType: "fieldPara", sPid: "668", sTrPrefix: "2", sFieldIndex: "12", unit: "", joinCode: "" },
     { sFieldTitle: "轮胎规格", sType: "fieldPara", sPid: "1001", sTrPrefix: "2", sFieldIndex: "13", unit: "", joinCode: "" },
     { sFieldTitle: "载重质量[kg]", sType: "fieldPara", sPid: "974", sTrPrefix: "2", sFieldIndex: "14", unit: "", joinCode: "" },
     { sFieldTitle: "轮胎个数", sType: "fieldPara", sPid: "982", sTrPrefix: "2", sFieldIndex: "15", unit: "", joinCode: "" },
-    { sFieldTitle: "货箱长×宽×高[mm]", sType: "fieldMulti", sPid: "966,969,970", sTrPrefix: "2,2,2", sFieldIndex: "16,17,18", unit: ",,", joinCode: ",x,x", isVantage: "1", size: "1" },
+    { sFieldTitle: "货厢长×宽×高[mm]", sType: "fieldMulti", sPid: "966,969,970", sTrPrefix: "2,2,2", sFieldIndex: "16,17,18", unit: ",,", joinCode: ",x,x", isVantage: "1", size: "1" },
     { sFieldTitle: "车身颜色", sType: "fieldPara", sPid: "598", sTrPrefix: "0", sFieldIndex: "13", unit: "", joinCode: "" },
 
     { sFieldTitle: "动力系统", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-carengine" },
     { sFieldTitle: "排气量", sType: "fieldMulti", sPid: "423,785", sTrPrefix: "3,3", sFieldIndex: "0,1", unit: ",L", joinCode: ",mL " }, /*1987ml 2.0L*/
     { sFieldTitle: "最大功率[kW]", sType: "fieldPara", sPid: "430", sTrPrefix: "3", sFieldIndex: "2", unit: "", joinCode: "", isVantage: "1", size: "1" },
-    { sFieldTitle: "马力[Ps]", sType: "fieldPara", sPid: "791", sTrPrefix: "3", sFieldIndex: "3", unit: "", joinCode: "", isVantage: "1", size: "1" },
+    { sFieldTitle: "最大马力[Ps]", sType: "fieldPara", sPid: "791", sTrPrefix: "3", sFieldIndex: "3", unit: "", joinCode: "", isVantage: "1", size: "1" },
     { sFieldTitle: "最大功率转速[rpm]", sType: "fieldPara", sPid: "433", sTrPrefix: "3", sFieldIndex: "4", unit: "", joinCode: "", isVantage: "1", size: "1" },
     { sFieldTitle: "最大扭矩[N.m]", sType: "fieldPara", sPid: "429", sTrPrefix: "3", sFieldIndex: "5", unit: "", joinCode: "" },
     { sFieldTitle: "最大扭矩转速[rpm]", sType: "fieldPara", sPid: "432", sTrPrefix: "3", sFieldIndex: "6", unit: "", joinCode: "", isVantage: "1", size: "1" },
@@ -1443,12 +1478,18 @@ var arrField = [
     { sFieldTitle: "驱动方式", sType: "fieldPara", sPid: "655", sTrPrefix: "4", sFieldIndex: "0", unit: "", joinCode: "" },
     { sFieldTitle: "前悬架类型", sType: "fieldPara", sPid: "728", sTrPrefix: "4", sFieldIndex: "1", unit: "", joinCode: "" },
     { sFieldTitle: "后悬架类型", sType: "fieldPara", sPid: "720", sTrPrefix: "4", sFieldIndex: "2", unit: "", joinCode: "" },
-    { sFieldTitle: "可调悬挂", sType: "fieldPara", sPid: "708", sTrPrefix: "4", sFieldIndex: "3", unit: "", joinCode: "" },
+    { sFieldTitle: "可调悬架", sType: "fieldPara", sPid: "708", sTrPrefix: "4", sFieldIndex: "3", unit: "", joinCode: "" },
     { sFieldTitle: "前轮制动器类型", sType: "fieldPara", sPid: "726", sTrPrefix: "4", sFieldIndex: "4", unit: "", joinCode: "" },
     { sFieldTitle: "后轮制动器类型", sType: "fieldPara", sPid: "718", sTrPrefix: "4", sFieldIndex: "5", unit: "", joinCode: "" },
     { sFieldTitle: "驻车制动类型", sType: "fieldPara", sPid: "716", sTrPrefix: "4", sFieldIndex: "6", unit: "", joinCode: "" },
     { sFieldTitle: "车体结构", sType: "fieldPara", sPid: "572", sTrPrefix: "4", sFieldIndex: "7", unit: "", joinCode: "" },
     { sFieldTitle: "限滑差速器/差速锁", sType: "fieldMultiValue", sPid: "733", sTrPrefix: "4", sFieldIndex: "8", unit: "", joinCode: "" },
+
+    { sFieldTitle: "接近角[°]", sType: "fieldPara", sPid: "591", sTrPrefix: "4", sFieldIndex: "16", unit: "", joinCode: "" },
+    { sFieldTitle: "离去角[°]", sType: "fieldPara", sPid: "581", sTrPrefix: "4", sFieldIndex: "17", unit: "", joinCode: "" },
+    { sFieldTitle: "通过角[°]", sType: "fieldPara", sPid: "890", sTrPrefix: "4", sFieldIndex: "18", unit: "", joinCode: "" },
+    { sFieldTitle: "最大涉水深度[mm]", sType: "fieldPara", sPid: "662", sTrPrefix: "4", sFieldIndex: "19", unit: "", joinCode: "" },
+
     { sFieldTitle: "客车前悬架类型", sType: "fieldPara", sPid: "1012", sTrPrefix: "4", sFieldIndex: "9", unit: "", joinCode: "" },
     { sFieldTitle: "客车后悬架类型", sType: "fieldPara", sPid: "1013", sTrPrefix: "4", sFieldIndex: "10", unit: "", joinCode: "" },
     { sFieldTitle: "卡车驱动形式", sType: "fieldPara", sPid: "1014", sTrPrefix: "4", sFieldIndex: "11", unit: "", joinCode: "" },
@@ -1472,12 +1513,13 @@ var arrField = [
     { sFieldTitle: "安全带气囊", sType: "fieldPara", sPid: "845", sTrPrefix: "5", sFieldIndex: "11", unit: "", joinCode: "" },
     { sFieldTitle: "后排中央气囊", sType: "fieldPara", sPid: "1017", sTrPrefix: "5", sFieldIndex: "12", unit: "", joinCode: "" },
     { sFieldTitle: "胎压监测", sType: "fieldPara", sPid: "714", sTrPrefix: "5", sFieldIndex: "13", unit: "", joinCode: "" },
-    { sFieldTitle: "零胎压续航轮胎", sType: "fieldPara", sPid: "715", sTrPrefix: "5", sFieldIndex: "14", unit: "", joinCode: "" },
+    { sFieldTitle: "零胎压续行轮胎", sType: "fieldPara", sPid: "715", sTrPrefix: "5", sFieldIndex: "14", unit: "", joinCode: "" },
     { sFieldTitle: "后排儿童座椅接口(ISO FIX/LATCH)", sType: "fieldPara", sPid: "495", sTrPrefix: "5", sFieldIndex: "15", unit: "", joinCode: "" },
 
     { sFieldTitle: "驾驶辅助", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-drivingassistance" },
     { sFieldTitle: "定速巡航", sType: "fieldMultiValue", sPid: "545", sTrPrefix: "6", sFieldIndex: "0", unit: "", joinCode: "" },
     { sFieldTitle: "车道保持", sType: "fieldPara", sTrPrefix: "6", sPid: "898", sFieldIndex: "1", unit: "", joinCode: "" },
+    { sFieldTitle: "并线辅助", sType: "fieldPara", sTrPrefix: "6", sPid: "1040", sFieldIndex: "16", unit: "", joinCode: "" },
     { sFieldTitle: "碰撞报警/主动刹车", sType: "fieldPara", sTrPrefix: "6", sPid: "818", sFieldIndex: "2", unit: "", joinCode: "" },
     { sFieldTitle: "疲劳提醒", sType: "fieldPara", sPid: "1018", sTrPrefix: "6", sFieldIndex: "3", unit: "", joinCode: "" },
     { sFieldTitle: "自动泊车", sType: "fieldPara", sPid: "816", sTrPrefix: "6", sFieldIndex: "4", unit: "", joinCode: "" },
@@ -1505,8 +1547,11 @@ var arrField = [
     { sFieldTitle: "外后视镜电动调节", sType: "fieldMultiValue", sPid: "622", sTrPrefix: "7", sFieldIndex: "8", unit: "", joinCode: "" },
     { sFieldTitle: "外后视镜加热", sType: "fieldPara", sPid: "624", sTrPrefix: "7", sFieldIndex: "9", unit: "", joinCode: "" },
     { sFieldTitle: "内后视镜自动防眩目", sType: "fieldPara", sPid: "621", sTrPrefix: "7", sFieldIndex: "10", unit: "", joinCode: "" },
+
+    { sFieldTitle: "流媒体后视镜", sType: "fieldPara", sPid: "1041", sTrPrefix: "7", sFieldIndex: "26", unit: "", joinCode: "" },
+
     { sFieldTitle: "外后视镜自动防眩目", sType: "fieldPara", sPid: "1022", sTrPrefix: "7", sFieldIndex: "11", unit: "", joinCode: "" },
-    { sFieldTitle: "隔热/隐私玻璃", sType: "fieldPara", sPid: "796", sTrPrefix: "7", sFieldIndex: "12", unit: "", joinCode: "" },
+    { sFieldTitle: "隐私玻璃", sType: "fieldPara", sPid: "796", sTrPrefix: "7", sFieldIndex: "12", unit: "", joinCode: "" },
     { sFieldTitle: "后排侧遮阳帘", sType: "fieldPara", sPid: "797", sTrPrefix: "7", sFieldIndex: "13", unit: "", joinCode: "" },
     { sFieldTitle: "后遮阳帘", sType: "fieldPara", sPid: "595", sTrPrefix: "7", sFieldIndex: "14", unit: "", joinCode: "" },
     { sFieldTitle: "前雨刷器", sType: "fieldMultiValue", sPid: "606", sTrPrefix: "7", sFieldIndex: "15", unit: "", joinCode: "" },
@@ -1656,6 +1701,90 @@ function selectCar(serialId, curentIndex) {
 //	if (top > 40)
 //		$("#popMenu").show();
 //});
+//按条件选择车款
+var ConditionSelectCar = {
+    container: "screenCar",
+    title: { "EngineExhaust": "排量", "YearType": "年款", "BodyType": "车身形式", "TransmissionType": "变速箱", "DriveType": "驱动类型", "FuelType": "燃料类型" },
+    isShowSelect: false,
+    //validCarArray : [],
+    InitHtml: function () {
+        var self = this;
+        if ($("#screenCar .spl-screen1").length == 0) {
+            $("#screenCar .carscreen-sum").html("共筛选出有<em>" + carArray.length + "</em>个车款，最多只显示前" + MaxCarCount + "个");
+            var h = [];
+            h.push("<div class=\"spl-screen1\"><div><ul class=\"ss-1st\">")
+            for (var key in self.title) {
+                if (SelectJson[key] != "undefined") {
+                    var tempH = [],
+                        length = 0;
+                    for (var item in SelectJson[key]) {
+                        tempH.push("<li class=\"sl-2nd\" key=\"" + item + "\">" + item + "</li>");
+                        length++;
+                    }
+                    if (length <= 1) continue;
+                    h.push("<li class=\"sl-1st\"><h6 class=\"sl-title\">" + self.title[key] + "</h6><ul class=\"ss-2nd\" key=\"" + key + "\">");
+                    h.push(tempH.join(""));
+                    self.isShowSelect = true;
+                    h.push("</ul></li >");
+                }
+            }
+            h.push("</ul></div></div>");
+
+            if (self.isShowSelect) {
+                $("#screenCar .swipeLeft").prepend(h.join("")).find(".loading").remove();
+                $(".spl-config-screen").show();
+                self.InitEvent();
+            }
+        }
+    },
+    InitEvent: function () {
+        var self = this;
+        $("#screenCar .ss-2nd .sl-2nd").click(function () {
+            if ($(this).hasClass("current")) {
+                $(this).removeClass("current");
+            }
+            else {
+                $(this).addClass("current");
+                $(this).siblings().removeClass("current");
+            }
+            self.SetSelectCount();
+            self.GetCarByCondition();
+        });
+        $("#screenCar .btn-clear").click(function () {
+            $("#screenCar .ss-2nd .sl-2nd").removeClass("current");
+            self.SetSelectCount();
+            self.GetCarByCondition();
+        });
+        $("#screenCar .btn-comparison").click(function (ev) {
+            ev.preventDefault();
+            var carIdArray = carArray;//carArray页面变量
+            var carIdArray = self.GetCarByCondition();
+            ComparePageObject.arrCarIds = carIdArray.length >= MaxCarCount ? carIdArray.slice(0, MaxCarCount) : carIdArray;
+            initCarInfo(ComparePageObject.arrCarIds.join(","));
+            $(".leftmask4").trigger("close");
+            duibiCarDataIds = ComparePageObject.arrCarIds;
+        });
+    },
+    GetCarByCondition: function () {
+        var carIdArray = carArray;//carArray页面变量
+        $("#screenCar .ss-2nd .sl-2nd.current").each(function () {
+            var item = $(this).attr("key");
+            var key = $(this).parent().attr("key");
+            carIdArray = carIdArray.intersect(SelectJson[key][item]);
+        });
+        $("#screenCar .carscreen-sum em").html(carIdArray.length);
+        return carIdArray;
+    },
+    SetSelectCount: function () {
+        var count = $("#screenCar .ss-2nd .sl-2nd.current").length;
+        if (count > 0) {
+            $("#screenCar .btn-comparison").html("完成(" + count + ")");
+        }
+        else {
+            $("#screenCar .btn-comparison").html("完成");
+        }
+    }
+}
 
 function gotoSubMenu() {
     $("#popup-menulist a").each(function (i, n) {
@@ -1938,14 +2067,14 @@ function callbackFunc() {
      {
          selectmark: function () { },
          fnEnd: function (paras) {
-             for (var i = 0; i < ComparePageObject.arrCarIds.length; i++) {
-                 if ($('[data-id=' + ComparePageObject.arrCarIds[i] + ']') && ComparePageObject.arrCarIds[i] != paras.carobj.attr("data-car")) {
-                     $('[data-id=' + ComparePageObject.arrCarIds[i] + ']').parent()[0].className = 'none';
-                 }
-                 if ($('[data-id=' + ComparePageObject.arrCarIds[i] + ']') && ComparePageObject.arrCarIds[i] == paras.carobj.attr("data-car")) {
-                     $('[data-id=' + ComparePageObject.arrCarIds[i] + ']').parent()[0].className = 'current';
-                 }
-             }
+             //for (var i = 0; i < ComparePageObject.arrCarIds.length; i++) {
+             //    if ($('[data-id=' + ComparePageObject.arrCarIds[i] + ']') && ComparePageObject.arrCarIds[i] != paras.carobj.attr("data-car")) {
+             //        $('[data-id=' + ComparePageObject.arrCarIds[i] + ']').parent()[0].className = 'none';
+             //    }
+             //    if ($('[data-id=' + ComparePageObject.arrCarIds[i] + ']') && ComparePageObject.arrCarIds[i] == paras.carobj.attr("data-car")) {
+             //        $('[data-id=' + ComparePageObject.arrCarIds[i] + ']').parent()[0].className = 'current';
+             //    }
+             //}
          }
      });
 }
@@ -1971,4 +2100,12 @@ Array.prototype.contains = function (item) {
         }
     }
     return false;
+}
+//数组求交集
+Array.prototype.intersect = function (arr) {
+    if (Object.prototype.toString.call(this) === "[object Array]" && Object.prototype.toString.call(arr) === "[object Array]") {
+        return this.filter(function (v) {
+            return arr.indexOf(v) !== -1
+        });
+    }
 }

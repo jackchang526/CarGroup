@@ -201,7 +201,11 @@ namespace BitAuto.CarChannelAPI.Web.Exhibition
 				SerialNodeStr sns = new SerialNodeStr();
 				StringBuilder _tmpSb = new StringBuilder(4);
 				_tmpSb.Append("<Serial>");
-				_tmpSb.AppendFormat("<Name>{0}</Name>", node.Attributes["Name"].Value);
+                // edit by hepw 20171106 广州车展2107 增加车系ID节点和车系全拼,主品牌全拼待定
+                _tmpSb.AppendFormat("<Id>{0}</Id>", node.Attributes["ID"].Value);
+                //_tmpSb.AppendFormat("<MasterAllSpell>{0}</MasterAllSpell>", node.ParentNode.ParentNode.Attributes["AllSpell"].Value.ToString());
+                _tmpSb.AppendFormat("<SerialAllSpell>{0}</SerialAllSpell>", node.Attributes["AllSpell"].Value);
+                _tmpSb.AppendFormat("<Name>{0}</Name>", node.Attributes["Name"].Value);
 				_tmpSb.AppendFormat("<ImgUrl>{0}</ImgUrl>", serialImageUrl);
 				_tmpSb.AppendFormat("<ImgCount>{0}</ImgCount>", imageCount);
 				_tmpSb.AppendFormat("<TargetUrl>{0}</TargetUrl>", (type == 1 ? serialMUrl : serialUrl));

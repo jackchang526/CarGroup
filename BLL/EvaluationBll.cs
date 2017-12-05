@@ -1,12 +1,16 @@
-﻿using BitAuto.CarChannel.Common.MongoDB;
+﻿using BitAuto.CarChannel.Common;
+using BitAuto.CarChannel.Common.MongoDB;
 using BitAuto.CarChannel.DAL;
 using BitAuto.CarChannel.Model;
+using BitAuto.Utils;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 
 namespace BitAuto.CarChannel.BLL
 {
@@ -48,6 +52,7 @@ namespace BitAuto.CarChannel.BLL
             DataSet ds = evaluationDal.GetTestBaseEntityById(evaluationId);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
+                List<string> testerList = new List<string>();
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {                    
                     item.ModelName = Convert.ToString(dr["ModelName"].ToString());
@@ -55,7 +60,25 @@ namespace BitAuto.CarChannel.BLL
                     item.StyleName = Convert.ToString(dr["StyleName"].ToString());
                     item.TestTime = Convert.ToDateTime(dr["EvaluatingTime"].ToString());
                     item.Site = Convert.ToString(dr["Site"]).Trim();
-                    item.Tester = Convert.ToString(dr["EditorsName"]).Trim();
+                    //item.Tester = Convert.ToString(dr["EditorsName"]).Trim();
+
+                    //20171106 去掉括号中的部门（马保青）
+                    string[] testArr = Convert.ToString(dr["EditorsName"]).Trim().Split(',', '、', '，');
+                    foreach (string tester in testArr)
+                    {
+                        int index = tester.IndexOf('(');
+                        if (index >= 0)
+                        {
+                            testerList.Add(tester.Substring(0, index));
+                        }
+                        else
+                        {
+                            testerList.Add(tester);
+                        }
+                                       
+                    }
+                    item.Tester = string.Join(",", testerList.ToArray());
+
                     item.EquipmentOperator = Convert.ToString(dr["EquipmentOperator"].ToString());
                     item.Kilometers = Convert.ToInt32(dr["Kilometers"]); 
                     item.WeatherDesc= Convert.ToString(dr["WeatherDesc"].ToString());
@@ -84,6 +107,30 @@ namespace BitAuto.CarChannel.BLL
         {
             EvaluationDal evaluationDal = new EvaluationDal();
             return evaluationDal.GetOne<T>(query,fields,sortdic);
-        }        
+        }
+
+        public List<int> GetExistReportEvaluationId()
+        {
+            List<int> list = new List<int>();
+            string xmlFile = Path.Combine(WebConfig.DataBlockPath, @"Data\ExistReportEvaluationIdList\EvaluationIdList.xml");
+            try
+            {
+                if (File.Exists(xmlFile))
+                {
+                    XDocument doc = XDocument.Load(xmlFile);
+                    var query = from p in doc.Element("Root").Element("EvaluationIdList").Elements("Item") select p;
+                    query.ToList().ForEach(item =>
+                    {
+                        int evaluationId = ConvertHelper.GetInteger(item.Attribute("EvaluationId").Value);
+                        list.Add(evaluationId);
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                CommonFunction.WriteLog(e.ToString());
+            }
+            return list;
+        }
     }
 }

@@ -56,6 +56,9 @@
     <Reference Include="LocalFileReadModule">
       <HintPath>..\..\..\packages\LocalFileReadModule.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\packages\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -252,6 +255,7 @@
     <Content Include="js\model.js" />
     <Content Include="js\mpeizhi.js" />
     <Content Include="js\mpeizhiv2.js" />
+    <Content Include="js\paowuxian.js" />
     <Content Include="js\popup.js" />
     <Content Include="js\rightswipe-cityV2.js" />
     <Content Include="js\selectcartoolV2.js" />
@@ -266,6 +270,7 @@
     <Content Include="js\v2\model.js" />
     <Content Include="js\v2\note.js" />
     <Content Include="js\v2\rightswipe.js" />
+    <Content Include="js\v2\swiper-3.3.1.min.js" />
     <Content Include="js\v2\underscore.js" />
     <Content Include="js\waitcompareV2.js" />
     <Content Include="js\yagao.commons.js" />
@@ -403,6 +408,8 @@
     <Content Include="config\ParameterConfigurationNewV2.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="html\selectMasterBrandTemplate.cshtml" />
+    <Content Include="html\DuibiLayerTemplate.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Calc\CalcAutoCash.cshtml" />
     <Content Include="Views\Calc\CalcAutoCashDetail.cshtml" />

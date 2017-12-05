@@ -79,10 +79,10 @@
         <!--焦点图、名片区-->
         <div class="row card-head-box">
             <div class="l-box-sty col-auto">
-                <%if (!string.IsNullOrEmpty(VRUrl))
+               <%-- <%if (!string.IsNullOrEmpty(VRUrl))
                     {%>
-                <a href="<%= VRUrl %>" target="_blank" class="zs-vr">VR看全景</a>
-                <%} %>
+                <a href="<%= VRUrl %>" data-channelid="2.21.2213" target="_blank" class="zs-vr">VR看全景</a>
+                <%} %>--%>
                 <% if (serialEntity.Brand.MasterBrandId == 3)
                     { %>
                 <div class="bmw-ad-link">
@@ -170,9 +170,9 @@
                     <div class="mobile-qrcode">
                         <img src="/favicon.ico" id="qrcodelogo" style="display: none;" />
                         <a href="http://app.yiche.com/yiche/">
-                            <img src="http://image.bitautoimg.com/cargroup/car/huodong-serial.png" /></a>
+                            <img src="http://image.bitautoimg.com/cargroup/car/30Wfuel.png" /></a>
                         <%--<a href="<%= wirelessSerialUrl %>?ref=pctowap" target="_blank" id="qrcode"><img src="http://image.bitautoimg.com/cargroup/car/qrimages/<%= serialId %>.png?v=1" /></a>--%>
-                        <em>APP看车领福利</em>
+                        <em>抢30万升油</em>
                     </div>
                 </div>
 
@@ -198,7 +198,7 @@
                             <span class="note">贷款</span>
                             <h5><a href="http://fenqi.taoche.com/www/<%= serialSpell %>/?from=yc9&leads_source=p002003" data-channelid="2.21.1521" target="_blank">加载中...</a></h5>
                             <%-- <h5 class="grey-txt">暂无</h5>--%>
-                            <a class="btn btn-default" data-channelid="2.21.100" href="http://fenqi.taoche.com/www/<%= serialSpell %>/?from=yc9&leads_source=p002003" target="_blank">贷款</a>
+                            <a class="btn btn-default" data-channelid="2.21.100" href="http://sq.taoche.com/yiche/index?from=yc9&leads_source=p002003&serialid=<%= serialId %>" target="_blank">贷款</a>
                         </div>
                     </div>
                     <div class="col-xs-3" id="mp-ershouche">
@@ -280,7 +280,7 @@
         <!--/焦点图、名片区-->
         <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201707061432"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201711241325"></script>
         <%--<script type="text/javascript" src="/jsnewv2/cssummary.js?v=20170171032"></script>--%>
         <script type="text/javascript">
             var serialId = <%= serialId %> ,
@@ -320,6 +320,8 @@
             InitTeHuiAndAdData();
             GetJiangjiaNews();
             GetHmcJiangJia();
+            //Get1111Entrance();
+            GetVr();
             $("#qrcode img").bind("error", function () {
                 this.style.display = "none";
                 bitLoadScript("http://image.bitautoimg.com/carchannel/jsnewv2/jquery.qrcode.min.js", function () {
@@ -347,9 +349,10 @@
                                 <h2><a href="/<%= serialSpell %>/wenzhang/" target="_blank"><%= serialShowName %>文章</a></h2>
                             </div>
                             <div class="more">
-                                <a href="/<%= serialSpell %>/xinwen/" target="_blank">新闻</a>
-                                <a href="/<%= serialSpell %>/shijia/" target="_blank">试驾</a>
+                                <a href="/<%= serialSpell %>/shijia/" target="_blank">评测</a>
                                 <a href="/<%= serialSpell %>/daogou/" target="_blank">导购</a>
+                                <a href="/<%= serialSpell %>/yongche/" target="_blank">用车</a>
+                                <a href="/<%= serialSpell %>/xinwen/" target="_blank">新闻</a>
                                 <a href="http://www.bitauto.com/zhuanti/daogou/gsqgl/" target="_blank">购车流程</a>
                                 <a href="/<%= serialSpell %>/wenzhang/" target="_blank">更多&gt;&gt;</a>
                             </div>
@@ -591,7 +594,7 @@
                     </div>
                     <%= koubeiDianpingHtml %>
                     <!--经销商开始-->
-                    <script src="http://img1.bitauto.com/bt/Price/CsReviewPrice/js/CsPriceReview.min.js"></script>
+                    <script src="http://img1.bitauto.com/bt/Price/CsReviewPrice/js/CsPriceReview.min.js?v=20171128"></script>
                     <script type="text/javascript">
                             //document.write("<ins id=\"ep_union_137\" partner=\"1\" version=\"\" isupdate=\"1\" type=\"1\" city_type=\"1\" city_id=\"" + cityId + "\" city_name=\"0\" car_type=\"2\" brandid=\"0\" serialid=\"" + serialId + "\" carid=\"0\"></ins>");
                             document.write("<div class=\"layout-2 sales-agent-section\" id=\"dealerlist\" dataReviewPagecsid=\""+serialId+"\" dataReviewPagecityid=\""+cityId+"\"></div>");
@@ -800,7 +803,7 @@
     <ins id="div_d0d818d0-743a-42cf-8b71-5f9e25b09dea" data-type="ad_play" data-adplay_IP="" data-adplay_AreaName="" data-adplay_CityName="" data-adplay_BrandID="<%= serialId %>" data-adplay_BrandName="" data-adplay_BrandType="" data-adplay_BlockCode="d0d818d0-743a-42cf-8b71-5f9e25b09dea"> </ins>
     <!--页底浮层广告-->
     <ins id="div_c62213b4-2900-4ed8-967d-3f3866014dc5" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="c62213b4-2900-4ed8-967d-3f3866014dc5"></ins>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryrest.min.js?v=20170906"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryrest.min.js?v=201711141901"></script>
     <%--<script type="text/javascript" src="/jsnewv2/cssummaryrest.js?v=20161230"></script>--%>
     <script type="text/javascript">
                         var CarCommonBSID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.MasterBrandId %>"; //大数据组统计用
@@ -943,12 +946,12 @@
     <!--看了还看js-->
     <script type="text/javascript">
         <%= serialToSeeJson %>
-</script>
+    </script>
     <script type="text/javascript" src="http://gimg.bitauto.com/resourcefiles/chexing/serialadposition.js?_=<%= DateTime.Now.ToString("yyyyMMddHHmm").Substring(0,11) + "0" %>"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/serialtoseead.min.js"></script>
     <!--/看了还看js-->
     <!--#include file="/include/special/stat/00001/bglogpostlog_Manual.shtml"-->
-    <script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>
+    <%--<script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>--%>
     <script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars"></script>
     <%if (serialEntity.Level != null && serialEntity.Level.Name != "概念车")
         {%>
@@ -977,18 +980,20 @@
         catch (err)
         { }
         //vr
-        if (vrImgForBitauto != undefined && vrImgForBitauto.IntiDataForEntry != undefined) {
+        <%--if (vrImgForBitauto != undefined && vrImgForBitauto.IntiDataForEntry != undefined) {
             vrImgForBitauto.IntiDataForEntry(<%=serialId%>, function (vrImgs) {
                 if (vrImgs.length > 0) {
                     $(".l-box-sty.col-auto").prepend("<a target=\"_blank\" href=\"" + vrImgs[0].PanoUrl + "\" class=\"zs-vr\">VR看全景</a>");
                 }
             });
-        }
+        }--%>
     </script>
     <%} %>
     <!--/经销商弹层-->
     <!--#include file="~/include/pd/2016/yipaicms/00001/201701_Summary_SCInfoPopup_Manual.shtml"-->
     <!--#include file="~/htmlv2/rightbar.shtml"-->
+    <!--底浮三贞广告-->
+    <!--#include file="~/include/pd/2016/App/00001/ad_zongshu_difu_Manual.shtml"-->
     <%--<script type="text/javascript">
         (function(global) {
             var config =global.SidebarConfig||{};

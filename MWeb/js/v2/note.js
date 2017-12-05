@@ -1,19 +1,23 @@
-﻿$(function () {
+﻿/*模拟电话本组件*/
+$(function () {
     //模拟电话本
     var $body = $('body');
-
-
     $body.on('note', function (ev, paras) {
         var setting = {
             noteTouchStart: null,
-            noteTouchEnd: null
+            noteTouchEnd: null,
+            getRoot: function () {
+                return this;
+            },
+            space: 0.8
         }
         var options = Object.extend(paras, setting);
-        var $navs = $body.find('.fixed-nav'),
-        as = $navs.find('a'),
-        $alert = $body.find('.alert'),
-        $header = $body.find('.flex-header'),
-        $headerLi = $header.find('span');
+        var $root = options.getRoot.call($body);
+        var $navs = $root.find('.fixed-nav'),
+            as = $navs.find('a'),
+            $alert = $root.find('.alert'),
+            $header = $root.find('.flex-header'),
+            $headerLi = $header.find('span');
         //竖屏显示横屏隐藏
         $.rotateEnd(function (v) {
             switch (v) {
@@ -26,34 +30,33 @@
             }
         })
 
-        var rows = $('.phone-title', $body);
+        var rows = $('.phone-title', $root);
         var arr = [];
+
         for (var i = 0; i < rows.length; i++) {
             arr.push(rows[i].getAttribute('data-key'));
         }
         var $frist = rows.eq(0),
             istouch = false;
-
         //算高度居中
         var $rowsbox = $navs.find('.rows-box'),
             rowsA = $rowsbox.find('a');
         var height = rowsA.length * rowsA.height();
         $rowsbox.height(height);
         $navs.height(height);
-        var clientHeight = document.documentElement.clientHeight;
+        var clientHeight = document.documentElement.clientHeight < document.body.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight;
         //自适应右侧导航
-
-        clientHeight = document.documentElement.clientHeight;
         var $navli = $navs.find('li');
-        var h = rowsA.height() * ((clientHeight / $navs.height()) * 0.8);
+        var h = rowsA.height() * ((clientHeight / $navs.height()) * options.space);
         $navli.height(h);
         height = rowsA.length * h;
-        $navs.height(height);
+        $navs.height(h);
+
         $navs[0].style.top = clientHeight / 2 - height / 2 + 'px';
+
         //导航插件
         rows.navigate({
             speed: 100,
-            toOffsetY: 0,
             init: function () {
                 var $navigate = this;
                 $navs.gesture({
@@ -61,8 +64,8 @@
                     top: 0,
                     init: function () {
                         var $gesture = this;
-                        if (!$alert.attr('init')) {
-                            $alert.attr('init', 'true');
+                        if (!$root.attr('init')) {
+                            $root.attr('init', 'true');
                             $navs.touches({
                                 touchstart: function (ev) {
                                     ev.preventDefault();
@@ -79,10 +82,12 @@
                                     options.noteTouchEnd && options.noteTouchEnd.call($gesture);
                                 }
                             })
+
                             $frist.on('select', function (event, idx) {
                                 as.removeClass('current');
                                 as.eq(idx).addClass('current');
                             })
+
                             $navs.css('opacity', 1);
                         }
                     },
@@ -107,24 +112,34 @@
                     if (k == '#') { k = '推荐' }
                     if (rows.eq(idx + 1)[0].offsetTop - currentTOP >= 0 && rows.eq(idx + 1)[0].offsetTop - currentTOP <= 30) {
                         $header.css('top', rows.eq(idx + 1)[0].offsetTop - currentTOP - 30);
-
                     } else if (rows.eq(idx)[0].offsetTop - currentTOP <= 40 && rows.eq(idx)[0].offsetTop - currentTOP >= 0) {
                         $header.css('top', -(30 - (rows.eq(idx)[0].offsetTop - currentTOP)));
                     } else {
                         $header.css('top', 0);
                     }
-                    if (rows.eq(idx + 1)[0].offsetTop - currentTOP < 270) {
-                        $headerLi.html(k);
-                    }
-                }
-                if (currentTOP > rows.eq(1)[0].offsetTop) {
+                    //if (rows.eq(idx + 1)[0].offsetTop - currentTOP < 270) {
+                    //    $headerLi.html(k);
+                    //}
 
-                    $header.show();
+                    $headerLi.html(k);
+                }
+
+            },
+            scrollTo: function () {
+                var currentTOP = $(window).scrollTop();
+                //$('.first-tags').html(currentTOP + ',' + rows.eq(2)[0].offsetTop);
+                if (currentTOP >= rows.eq(1)[0].offsetTop + 30) {
+                    {
+                        $header.css('visibility', 'visible');
+                    }
+
                 } else {
-                    $header.hide();
+                    $header.css('visibility', 'hidden');
                 }
             }
         });
         $navs.show();
-    });
-});
+
+    })
+
+})

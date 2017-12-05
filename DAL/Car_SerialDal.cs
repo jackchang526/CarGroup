@@ -10,6 +10,7 @@ using System.Text;
 using System.Collections;
 using BitAuto.Utils;
 using BitAuto.CarChannel.Model.AppApi;
+using BitAuto.CarChannel.Model.AppModel;
 
 namespace BitAuto.CarChannel.DAL
 {
@@ -1688,6 +1689,31 @@ FROM    dbo.Car_Serial_30UV uv
 
             return result;
         }
+        /// <summary>
+        /// 获取车型国别和主品牌id
+        /// </summary>
+        /// <param name="styleId"></param>
+        /// <returns></returns>
+        public SerialCountryEntity GetSerialCountryById(int serialId)
+        {
+            var sql = @"SELECT [cs_Id], cb.cb_Country,cm.bs_Id 
+	                          FROM [Car_Serial] cs  inner join [Car_Brand] cb on cs.cb_Id=cb.cb_Id inner join [Car_MasterBrand_Rel] cm on cb.cb_Id=cm.cb_Id
+	                          where cs.cs_id=@Id
+                    ";
+            SqlParameter[] parms =
+            {
+                new SqlParameter("@Id", serialId )
+            };
+            var dataTable = SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, parms).Tables[0];
+            SerialCountryEntity serialCountry = new SerialCountryEntity();
+            if (dataTable != null && dataTable.Rows.Count > 0)
+            {
 
+                serialCountry.SerialID = TypeParse.StrToInt(dataTable.Rows[0]["cs_Id"], 0);
+                serialCountry.MasterID = TypeParse.StrToInt(dataTable.Rows[0]["bs_Id"], 0);
+                serialCountry.Country = dataTable.Rows[0]["cb_Country"].ToString();
+            }
+            return serialCountry;
+        }
     }
 }

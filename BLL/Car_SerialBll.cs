@@ -8847,6 +8847,82 @@ namespace BitAuto.CarChannel.BLL
             }
             return list;
         }
+        #region 获取图片
+        /// <summary>
+        /// 取xml Document对象，返回DataSet
+        /// </summary>
+        /// <param name="cacheName">缓存名</param>
+        /// <param name="xmlURL">xml 接口地址</param>
+        /// <param name="cacheTimeHour">缓存时间(分钟)</param>
+        /// <returns></returns>
+        public DataSet GetXMLDocToDataSetByURLForCache(string cacheName, string xmlURL, int cacheTimeMin)
+        {
+            object obj = CacheManager.GetCachedData(cacheName);
+            if (obj != null)
+            {
+                return (DataSet)obj;
+            }
+            DataSet ds = new DataSet();
+            try
+            {
+                ds.ReadXml(xmlURL);
+                CacheManager.InsertCache(cacheName, ds, cacheTimeMin);
+            }
+            catch (Exception ex)
+            {
+                CommonFunction.WriteLog("PageBase.GetXMLDocToDataSetByURLForCache:" + ex.Message);
+            }
+            return ds;
+        }
 
+        /// <summary>
+        /// 取第一张图解
+        /// </summary>
+        /// <param name="dsCsPic"></param>
+        public XmlNode GetFirstTujieImage(DataSet dsCsPic,int serialId)
+        {
+            XmlElement element = null;
+            XmlDocument xmlDoc = new XmlDocument();
+            //取图解第一张
+            if (dsCsPic != null && dsCsPic.Tables.Count > 0 && dsCsPic.Tables.Contains("C") && dsCsPic.Tables["C"].Rows.Count > 0)
+            {
+                var rows = dsCsPic.Tables["C"].Rows.Cast<DataRow>();
+                DataRow row = rows.FirstOrDefault(dr => ConvertHelper.GetInteger(dr["P"]) == 12); //dt.Select("P='" + cateId + "'");
+                if (row != null)
+                {
+                    int imgId = row["I"] == DBNull.Value ? 0 : Convert.ToInt32(row["I"]);
+                    string imgUrl = row["U"] == DBNull.Value ? "" : Convert.ToString(row["U"]);
+                    if (imgId == 0 || imgUrl.Length == 0)
+                        imgUrl = WebConfig.DefaultCarPic;
+                    else
+                        imgUrl = CommonFunction.GetPublishHashImgUrl(4, imgUrl, imgId);
+                    string picUrl = "http://photo.bitauto.com/picture/" + serialId + "/" + imgId + "/";
+                    element = xmlDoc.CreateElement("CarImage");
+                    element.SetAttribute("ImageId", imgId.ToString());
+                    element.SetAttribute("ImageUrl", imgUrl);
+                    element.SetAttribute("GroupName", "图解");
+                    element.SetAttribute("ImageName", "图解");
+                    element.SetAttribute("Link", picUrl);
+                }
+            }
+            return (XmlNode)element;
+        }
+        #endregion
+        /// <summary>
+        /// 获取车型国别和主品牌id
+        /// </summary>
+        /// <param name="styleId"></param>
+        /// <returns></returns>
+        public SerialCountryEntity GetSerialCountryById(int serialId)
+        {
+            string cacheKey = string.Format(DataCacheKeys.SerialCountry, serialId);
+            var result = CacheManager.GetCachedData<SerialCountryEntity>(cacheKey);
+            if (result == null)
+            {
+                result = csd.GetSerialCountryById(serialId);
+                CacheManager.InsertCache(cacheKey, result, 60 * 25);
+            }
+            return result;
+        }
     }
 }

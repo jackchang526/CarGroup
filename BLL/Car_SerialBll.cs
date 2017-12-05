@@ -8847,6 +8847,70 @@ namespace BitAuto.CarChannel.BLL
             }
             return list;
         }
+
+        /// <summary>
+        /// 获取最新车
+        /// </summary>
+        /// <returns></returns>
+        public List<TopNewCarEntity> GetTopNewCar(int showNewCarNum = 10)
+        {
+            Dictionary<int, string> dict = GetAllSerialMarkDay();
+            List<KeyValuePair<int, string>> list = new List<KeyValuePair<int, string>>(dict);
+            List<KeyValuePair<int, string>> sublist = new List<KeyValuePair<int, string>>();
+            foreach (KeyValuePair<int, string> key in list)
+            {
+                if (CommonFunction.DateDiff("d", ConvertHelper.GetDateTime(key.Value), DateTime.Now) >= 0)
+                {
+                    sublist.Add(key);
+                }
+            }
+            var newcarlist = new List<TopNewCarEntity>();
+            for (int i = 0; i < sublist.Count; i++)
+            {
+                int serialId = sublist[i].Key;
+                if (serialId <= 0) break;
+                string imgUrl = GetSerialImageUrl(serialId);
+                if (string.Equals(imgUrl, WebConfig.DefaultCarPic))
+                { continue; }
+                if (i >= showNewCarNum) break;
+                string priceRange = new PageBase().GetSerialPriceRangeByID(Convert.ToInt32(serialId));
+                Car_SerialEntity cs = Get_Car_SerialByCsID(serialId);
+                if (cs == null || cs.Cs_Id <= 0)
+                { continue; }
+                string levelName = cs.Cs_CarLevel;
+                switch (levelName)
+                {
+                    case "紧凑型车":
+                        levelName = "紧凑型";
+                        break;
+                    case "中大型车":
+                        levelName = "中大型";
+                        break;
+                }
+                if (string.IsNullOrEmpty(levelName))
+                {
+                    levelName = "紧凑型";
+                }
+                if (priceRange.Trim().Length == 0)
+                {
+                    priceRange = "暂无报价";
+                }
+                var serialEntity = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, serialId);
+                newcarlist.Add(new TopNewCarEntity
+                {
+                    ID = cs.Cs_Id,
+                    ShowName = cs.Cs_ShowName,
+                    Img = imgUrl,
+                    Price = priceRange,
+                    Level = levelName,
+                    AllSpell = cs.Cb_AllSpell,
+                    MasterBrandId = serialEntity.Brand.MasterBrandId
+                });
+            }
+            return newcarlist;
+        }
+
+
         #region 获取图片
         /// <summary>
         /// 取xml Document对象，返回DataSet
@@ -8879,7 +8943,7 @@ namespace BitAuto.CarChannel.BLL
         /// 取第一张图解
         /// </summary>
         /// <param name="dsCsPic"></param>
-        public XmlNode GetFirstTujieImage(DataSet dsCsPic,int serialId)
+        public XmlNode GetFirstTujieImage(DataSet dsCsPic, int serialId)
         {
             XmlElement element = null;
             XmlDocument xmlDoc = new XmlDocument();

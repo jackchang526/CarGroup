@@ -79,7 +79,6 @@
     <Compile Include="AppApi\CarSerialExtEntity.cs" />
     <Compile Include="AppApi\CarStyleInfoEntity.cs" />
     <Compile Include="AppApi\SerialListQueryEntity.cs" />
-    <Compile Include="AppApi\TopNewCarEntity.cs" />
     <Compile Include="AppModel\CarGroupEntity.cs" />
     <Compile Include="AppModel\CarParameterEntity.cs" />
     <Compile Include="AppModel\DataCacheKeys.cs" />

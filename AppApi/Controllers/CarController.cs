@@ -3,7 +3,6 @@ using BitAuto.CarChannel.Common;
 using BitAuto.CarChannel.Common.Cache;
 using BitAuto.CarChannel.Common.Enum;
 using BitAuto.CarChannel.Common.Interface;
-using BitAuto.CarChannel.Model;
 using BitAuto.CarChannel.Model.AppApi;
 using BitAuto.Utils;
 using System;
@@ -632,36 +631,6 @@ namespace AppApi.Controllers
                 return allSerialPicAndCount as XmlDocument;
             }
         }
-
-        /// <summary>
-        /// 最新车型
-        /// </summary>
-        /// <param name="csID">子品牌</param>
-        /// <returns></returns>
-        [OutputCache(Duration = 1800)]
-        public ActionResult GetSerialInfoForNew()
-        {
-            var result = new List<object>();
-            var list = CarSerialService.GetTopNewCar();
-            foreach (var item in list)
-            {
-                result.Add(new
-                {
-                    CSId = ConvertHelper.GetInteger(item.ID),
-                    MasterBrandId = item.MasterBrandId,
-                    ShowName = item.ShowName,
-                    Img = item.Img.Replace("_2.", "_3."),
-                    Price = item.Price.Replace("-", "万-"),
-                    Level = item.Level,
-                    AllSpell = item.AllSpell
-
-                });
-
-            }
-            return JsonNet(new { success = true, status = 1, message = "成功", data = result }, JsonRequestBehavior.AllowGet);
-        }
-
-
 
         #endregion
     }

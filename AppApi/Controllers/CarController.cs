@@ -202,9 +202,6 @@ namespace AppApi.Controllers
             var result = CacheManager.GetCachedData(cacheKey);
             if (result == null)
             {
-
-
-
                 var serialInfo = CarSerialService.GetSerialInfoCard(csId.GetValueOrDefault(0));
                 //图库接口本地化更改
                 string xmlPicPath = System.IO.Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, serialInfo.CsID));

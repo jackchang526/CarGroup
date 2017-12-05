@@ -2585,14 +2585,15 @@ namespace BitAuto.CarChannel.BLL
                 carGroupList = new List<CarGroupEntity>();
                 Dictionary<string, CarGroupEntity> carGroupDic = new Dictionary<string, CarGroupEntity>();
                 var carList = GetCarListForSerialSummaryBySerialId(serialId, includeStopSale);
-                var serialBll = new Car_SerialBll();
                 List<int> carIds = new List<int>();
                 foreach (var item in carList)
                 {
                     carIds.Add(item.CarID);
                 }
+                if (carIds.Count == 0)
+                    return null;
+                var serialBll = new Car_SerialBll();
                 var carPriceDic = GetReferPriceDicByCarIds(cityId, carIds);
-
                 foreach (var item in carList)
                 {
                     string groupKey = item.Engine_Exhaust + "/" + item.Engine_MaxPower;

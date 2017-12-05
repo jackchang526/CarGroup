@@ -2589,6 +2589,12 @@ namespace BitAuto.CarChannel.BLL
                 List<int> carIds = new List<int>();
                 foreach (var item in carList)
                 {
+                    carIds.Add(item.CarID);
+                }
+                var carPriceDic = GetReferPriceDicByCarIds(cityId, carIds);
+
+                foreach (var item in carList)
+                {
                     string groupKey = item.Engine_Exhaust + "/" + item.Engine_MaxPower;
                     if (!carGroupDic.ContainsKey(groupKey))
                     {
@@ -2598,7 +2604,7 @@ namespace BitAuto.CarChannel.BLL
                             CarList = new List<CarInfoEntity>()
                         });
                     }
-                    carIds.Add(item.CarID);
+
                     var taxreief = GetTax(item.CarID, item.SaleState, item.Engine_Exhaust);
                     var newStatus = serialBll.GetCarMarketText(item.CarID, item.SaleState, item.MarketDateTime, item.ReferPrice);
                     carGroupDic[groupKey].CarList.Add(new CarInfoEntity
@@ -2607,7 +2613,7 @@ namespace BitAuto.CarChannel.BLL
                         Name = item.CarName,
                         Year = TypeParse.StrToInt(item.CarYear, 2000),
                         IsSupport = item.IsImport == 1,
-                        MinPrice = item.CarPriceRange,
+                        MinPrice = carPriceDic.ContainsKey(item.CarID) && carPriceDic[item.CarID] != null && carPriceDic[item.CarID].MinReferPrice > 0 ? carPriceDic[item.CarID].MinReferPrice.ToString("N2") + "Íò" : item.CarPriceRange,
                         ReferPrice = item.ReferPrice,
                         Trans = item.TransmissionType,
                         SaleState = item.SaleState,
@@ -2725,7 +2731,7 @@ namespace BitAuto.CarChannel.BLL
             }
             return result;
         }
-      
+
         #endregion
     }
 }

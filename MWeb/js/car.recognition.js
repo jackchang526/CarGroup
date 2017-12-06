@@ -4,6 +4,15 @@ $(function () {
     var checkApi = "http://car.m.yiche.com/recognition/api?img=" //图片识别接口
     var selectApi = "http://api.car.bitauto.com/carinfo/getserialinfo.ashx?dept=getserialbaseinfobyidjson&csid=" //车型数据接口
 
+    // add by hepw 20171206 为支持https
+    if ('https:' == document.location.protocol)
+    {
+        var uploadApi = "https://mps.yiche.com/pic/upload?v=1" //图片上传接口
+        var checkApiLocal = "https://mps219.yiche.com/url/?callback=funtest&transformurl="; // 本地图片识别接口
+        var checkApi = "https://car.m.yiche.com/recognition/api?img=" //图片识别接口
+        var selectApi = "https://ngcar.yiche.com/carapi/carinfo/getserialinfo.ashx?dept=getserialbaseinfobyidjson&csid=" //车型数据接口
+    }
+
     var curImgShoutCut = ""; //当前识别的图片的缩略图
     var orientation; //当前图片方向
     var recognitionCount = 0; //当前识别出的车型
@@ -291,6 +300,9 @@ $(function () {
                 console.log(data);
                 togglePage("recg");
                 curImgShoutCut = data.url.replace("cargroup", "newsimg-180-w0/cargroup");
+                if ('https:' == document.location.protocol) {
+                    curImgShoutCut = curImgShoutCut.replace("http:", "https:");
+                }
                 //console.log(curImgShoutCut);
                 recognition(data.url);
                 //recognitionLocal(data.url);
@@ -447,6 +459,9 @@ $(function () {
         }
         if (data != null && data.length > 0) {
             RequestFirstCarModelData(data, 0);
+        } else {
+            showErrorMsg("fail");
+            InitStatus();
         }
     }
 
@@ -584,7 +599,11 @@ $(function () {
         // 右上角小图
         $("#curImgShoutCut").attr("src", curImgShoutCut);
         $("#mainpic a").attr("href", "http://car.m.yiche.com/" + data.AllSpell);
-        $("#mainpic a img").attr("src", data.Image.replace("_6.", "_8."));
+        if ('https:' == document.location.protocol) {
+            $("#mainpic a img").attr("src", data.Image.replace("http:", "https:").replace("_6.", "_8."));
+        } else {
+            $("#mainpic a img").attr("src", data.Image.replace("_6.", "_8."));
+        }
         $("#mainpic .sc-car-con .sc-car-num strong").text(parseInt(model.prob * 100) + '%');
         $("#mainpic .sc-car-con a dl dt").text(eval("'" + data.ShowName + "'"));
         $("#mainpic .sc-car-con a dl dd").text(data.Price);
@@ -598,7 +617,11 @@ $(function () {
         var li = '';
         li += '<li>';
         li += '     <a target="_blank" href="http://car.m.yiche.com/' + data.AllSpell + '">';
-        li += '         <img src="' + data.Image + '">';
+        if ('https:' == document.location.protocol) {
+            li += '         <img src="' + data.Image.replace("http:", "https:") + '">';
+        } else {
+            li += '         <img src="' + data.Image + '">';
+        }
         li += '         <dl>';
         li += '             <dt>' + eval("'" + data.ShowName + "'") + '</dt>';
         li += '             <dd>' + data.Price + '</dd>';

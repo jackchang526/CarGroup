@@ -58,11 +58,8 @@ namespace BitAuto.CarChannel.Model.AppApi
 
         [JsonProperty("weight")]
         public int Weight { get; set; }
-        [JsonProperty("maxTimeToMarket")]
         public DateTime MaxTimeToMarket { get; set; }
-        [JsonProperty("minTimeToMarket")]
         public DateTime MinTimeToMarket { get; set; }
-        [JsonProperty("isHaveImage")]
         public bool IsHaveImage { get; set; }
 
         public string Spell { get; set; }

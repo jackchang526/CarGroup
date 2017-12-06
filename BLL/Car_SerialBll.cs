@@ -8786,8 +8786,8 @@ namespace BitAuto.CarChannel.BLL
                                         UV = ConvertHelper.GetInteger(serial.Attributes["CsPV"].Value),
                                         SaleStatus = SwitchSaleStatus(ConvertHelper.GetString(serial.Attributes["CsSaleState"].Value)),
                                         NewSaleStatus = SwitchNewSaleStatus(ConvertHelper.GetString(serial.Attributes["CsSaleState"].Value)),
-                                        MinPrice = ConvertHelper.GetDecimal(serial.Attributes["MinP"].Value),
-                                        MaxPrice = ConvertHelper.GetDecimal(serial.Attributes["MaxP"].Value),
+                                        MinPrice = ConvertHelper.GetDecimal(serial.Attributes["MinRP"].Value),
+                                        MaxPrice = ConvertHelper.GetDecimal(serial.Attributes["MaxRP"].Value),
                                         Spell = ConvertHelper.GetString(serial.Attributes["Spell"].Value),
                                         Weight = ConvertHelper.GetInteger(serial.Attributes["Weight"].Value)
                                     });

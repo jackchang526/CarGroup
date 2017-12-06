@@ -7,8 +7,11 @@ $(function () {
     var uploadApi = curprotocol+"//mps.yiche.com/pic/upload?v=1" //图片上传接口
     var checkApiLocal = curprotocol +"//mps219.yiche.com/url/?callback=funtest&transformurl="; // 本地图片识别接口
     var checkApi = curprotocol +"//car.m.yiche.com/recognition/api?img=" //图片识别接口
-    var selectApi = curprotocol +"//api.car.bitauto.com/carinfo/getserialinfo.ashx?dept=getserialbaseinfobyidjson&csid=" //车型数据接口
-  
+    var selectApi = "http://api.car.bitauto.com/carinfo/getserialinfo.ashx?dept=getserialbaseinfobyidjson&csid=" //车型数据接口
+    if ('https:' == document.location.protocol) {
+        selectApi = "https://ngcar.yiche.com/carapi/carinfo/getserialinfo.ashx?dept=getserialbaseinfobyidjson&csid=2370";
+    }
+    
     var curImgShoutCut = ""; //当前识别的图片的缩略图
     var orientation; //当前图片方向
     var recognitionCount = 0; //当前识别出的车型

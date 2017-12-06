@@ -97,7 +97,7 @@ $(function () {
             getImgData(e.target.result, orientation, file, function (canvas) {
 
                 var f_size = file.size
-                console.log("f_size:" + f_size);
+                ///console.log("f_size:" + f_size);
                 /*将转换后的图片下载到本地*/
                 /*
                 var imgUri = data; // 获取生成的图片的url
@@ -126,14 +126,14 @@ $(function () {
                 */
 
                 blob = dataURLtoBlob(data);
-                console.log("blob8:" + blob.size);
+                ///console.log("blob8:" + blob.size);
 
                 if (blob.size >= 1024 * 300) {
                     data = canvas.toDataURL("image/jpeg", .75)
                     blob = dataURLtoBlob(data);
                     console.log("blob75:" + blob.size);
                 }
-                console.log("图片压缩后：" + (blob.size / 1024) + "K");
+                ///console.log("图片压缩后：" + (blob.size / 1024) + "K");
                 if (blob.size < minImageSize) {
                     ////alert("blob0:" + blob.size);
                     //data = canvas.toDataURL("image/jpeg", 1);
@@ -296,7 +296,7 @@ $(function () {
             },
             success: function (data) {
                 var resultdata = new FormData();
-                console.log(data);
+                ///console.log(data);
                 togglePage("recg");
                 curImgShoutCut = data.url.replace("cargroup", "newsimg-180-w0/cargroup");
                 if ('https:' == document.location.protocol) {
@@ -424,7 +424,7 @@ $(function () {
             beforeSend: function () {
             },
             success: function (data) {
-                console.log(data);
+                ///console.log(data);
                 if (data.msg === "OK") {
                     //ProcessRecog(data.result.model.data);
                     ProcessRecogNew(data.result.model.data);
@@ -467,6 +467,12 @@ $(function () {
 
     // 异步请求车型数据 idx参数是为区分当前是第几辆车，因为第一辆车要特殊处理
     function RequestFirstCarModelData(model, idx) {
+        if (idx >= 5)
+        {
+            showErrorMsg("fail");
+            InitStatus();
+            return;
+        }
         if (isEmptyObject(model[idx])) //当前为空直接跳到下一个
         {
             idx++;
@@ -502,7 +508,7 @@ $(function () {
                         return;
                     }
                 }
-                console.log(car);
+                ///console.log(car);
                 //console.log(model);
                 showMainPic(car, model[idx - 1]);
                 ProcessCarModelDataList(model, idx);
@@ -571,7 +577,7 @@ $(function () {
                 if (isEmptyObject(car)) {
                     return;
                 }
-                console.log(car);
+                ///console.log(car);
                 //console.log(model);
                 showListPic(car, model);
             },

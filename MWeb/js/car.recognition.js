@@ -9,7 +9,7 @@ $(function () {
     var checkApi = curprotocol +"//car.m.yiche.com/recognition/api?img=" //图片识别接口
     var selectApi = "http://api.car.bitauto.com/carinfo/getserialinfo.ashx?dept=getserialbaseinfobyidjson&csid=" //车型数据接口
     if ('https:' == document.location.protocol) {
-        selectApi = "https://ngcar.yiche.com/carapi/carinfo/getserialinfo.ashx?dept=getserialbaseinfobyidjson&csid=2370";
+        selectApi = "https://ngcar.yiche.com/carapi/carinfo/getserialinfo.ashx?dept=getserialbaseinfobyidjson&csid=";
     }
     
     var curImgShoutCut = ""; //当前识别的图片的缩略图

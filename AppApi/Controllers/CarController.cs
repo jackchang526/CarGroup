@@ -347,7 +347,7 @@ namespace AppApi.Controllers
                 }
 
             }
-            return JsonNet(new { success = true, data = result }, JsonRequestBehavior.AllowGet);
+            return AutoJson(new { success = true, status = WebApiResultStatus.成功, data = result }, JsonRequestBehavior.AllowGet);
         }
 
         #region zhangzhiyang work zone

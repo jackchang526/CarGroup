@@ -2710,10 +2710,10 @@ namespace BitAuto.CarChannel.BLL
         private Dictionary<int, SalePriceInfoEntity> GetReferPriceDic(string apiUrl, int cityId, string param)
         {
             Dictionary<int, SalePriceInfoEntity> result = new Dictionary<int, SalePriceInfoEntity>();
-            WebApiData wabapi = new WebApiData();
             try
             {
-                var jsonResult = wabapi.GetRequestString(string.Format("{0}/{1}/{2}", apiUrl, VendorSalesToken, VendorSalesMD5), "POST", param, null, 6000, "application/json;charset=UTF-8");
+                WebApiData wabapi = new WebApiData();
+                var jsonResult = wabapi.GetRequestString(string.Format("{0}/{1}/{2}", apiUrl, VendorSalesToken, VendorSalesMD5), "POST", param, null, 1000, "application/json;charset=UTF-8");
 
                 var salePriceList = JsonConvert.DeserializeObject<List<SalePriceInfoEntity>>(jsonResult);
                 if (salePriceList != null)

@@ -115,7 +115,7 @@ namespace BitAuto.CarChannel.DAL
         public List<CarMasterBrandEntity> GetCarMasterBrandList()
         {
             var sql = @"      
-  	                SELECT mb.bs_Id as Id,mb.bs_Name as Name,mb.Spell,mb.[Weight],IsState AS saleStatus
+  	                SELECT mb.bs_Id as Id,mb.bs_Name as Name,mb.Spell,mb.[Weight] 
 	                FROM car_masterbrand mb WITH(NOLOCK)
 	                WHERE mb.IsState=1 AND mb.IsLock=0
 	                ORDER BY  SUBSTRING(Spell,1,1)   ASC,mb.[Weight] desc ,Spell ASC
@@ -129,14 +129,10 @@ namespace BitAuto.CarChannel.DAL
                 CarMasterBrandEntity entity = null;
                 foreach (DataRow row in table.Rows)
                 {
-                    if (DBNull.Value.Equals(row["saleStatus"])) //没有找到在销车型
-                    {
-                        continue;
-                    }
                     entity = new CarMasterBrandEntity();
-                    entity.MasterID = Convert.ToInt32(row["id"]);
+                    entity.MasterID = ConvertHelper.GetInteger(row["id"]);
                     entity.Name = row["Name"].ToString();
-                    entity.Weight = BitAuto.Utils.ConvertHelper.GetInteger(row["Weight"]);
+                    entity.Weight = ConvertHelper.GetInteger(row["Weight"]);
                     entity.Initial = DBNull.Value.Equals(row["Spell"])
                         ? ""
                         : row["Spell"].ToString()[0].ToString().ToUpper();
@@ -144,13 +140,41 @@ namespace BitAuto.CarChannel.DAL
                         string.Format(
                             "http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_{0}_100.png",
                             entity.MasterID); //"http://image.bitautoimg.com/wap/car/{0}/" + entity.MasterID + ".png";
-                    entity.SaleStatus = Convert.ToInt32(row["saleStatus"]);
                     result.Add(entity);
                 }
             }
             return result;
         }
 
+        /// <summary>
+        /// 获取所有主品牌的销售状态
+        /// </summary>
+        /// <returns></returns>
+        public List<MasterBrandSaleState> GetAllMasterBrandSaleState()
+        {
+            var list = new List<MasterBrandSaleState>();
+            var sql = @"      
+                      SELECT [dbo].[Car_MasterBrand].bs_Id,CbSaleState
+	                      FROM [dbo].[Car_MasterBrand] WITH(NOLOCK)
+	                      LEFT JOIN [dbo].[Car_MasterBrand_Rel] WITH(NOLOCK) ON [Car_MasterBrand_Rel].bs_Id=[dbo].[Car_MasterBrand].bs_Id
+	                      LEFT JOIN [dbo].[Car_Brand] WITH(NOLOCK) ON [dbo].[Car_Brand].cb_Id= [dbo].[Car_MasterBrand_Rel].cb_Id
+	                      WHERE [dbo].[Car_MasterBrand].[IsState]=1  AND [dbo].[Car_Brand].IsState=1 
+                        ";
+            var table =
+                SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql).Tables[0];
+            if (table != null)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    list.Add(new MasterBrandSaleState
+                    {
+                        bs_Id = ConvertHelper.GetInteger(row["bs_Id"]),
+                        CbSaleState = ConvertHelper.GetString((row["CbSaleState"] + string.Empty).Trim())
+                    });
+                }
+            }
+            return list;
+        }
 
         /// <summary>
         /// 根据车款编号和颜色类型获取车款颜色 

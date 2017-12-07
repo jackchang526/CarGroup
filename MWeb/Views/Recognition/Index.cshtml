@@ -200,12 +200,15 @@
     <!--微信分享开始-->
     <script type="text/javascript" src="//image.bitautoimg.com/uimg/2016/common/js/wxshare-o.min.js"></script>
     <script type="text/javascript">
-        var wxs_js = new weiXinShareJs({
-            title: '易车-拍图识车',
-            keywords: '拍图识车，车图拍摄，汽车图片',
-            desc: '拍图识车、拍摄车图识别车型，随意拍摄车图易车帮你来辨别哦!',
-            imgUrl: ('https:' == document.location.protocol ? "https:" : "http:") + '//image.bitautoimg.com/uimg/mbt2016/images/sc_wx_share.jpg'
-        });
+        if ('https:' == document.location.protocol) {
+        } else {
+            var wxs_js = new weiXinShareJs({
+                title: '易车-拍图识车',
+                keywords: '拍图识车，车图拍摄，汽车图片',
+                desc: '拍图识车、拍摄车图识别车型，随意拍摄车图易车帮你来辨别哦!',
+                imgUrl: 'http://image.bitautoimg.com/uimg/mbt2016/images/sc_wx_share.jpg'
+            });
+        }
     </script>
     <!--微信分享结束-->
     <!--通过传入参数判断页面头部标题是否显示开始-->

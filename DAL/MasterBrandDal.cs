@@ -133,13 +133,8 @@ namespace BitAuto.CarChannel.DAL
                     entity.MasterID = ConvertHelper.GetInteger(row["id"]);
                     entity.Name = row["Name"].ToString();
                     entity.Weight = ConvertHelper.GetInteger(row["Weight"]);
-                    entity.Initial = DBNull.Value.Equals(row["Spell"])
-                        ? ""
-                        : row["Spell"].ToString()[0].ToString().ToUpper();
-                    entity.LogoUrl =
-                        string.Format(
-                            "http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_{0}_100.png",
-                            entity.MasterID); //"http://image.bitautoimg.com/wap/car/{0}/" + entity.MasterID + ".png";
+                    entity.Initial = DBNull.Value.Equals(row["Spell"]) ? "" : row["Spell"].ToString()[0].ToString().ToUpper();
+                    entity.LogoUrl = string.Format("http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_{0}_100.png", entity.MasterID);
                     result.Add(entity);
                 }
             }
@@ -206,7 +201,7 @@ namespace BitAuto.CarChannel.DAL
             var ds = SqlHelper.ExecuteDataset(WebConfig.AutoStorageConnectionString, CommandType.Text, sql, commandParameters);
             if (ds != null && ds.Tables.Count >= 2)
             {
-                var color = ds.Tables[0].Rows[0]["color"] == null ? "" : ds.Tables[0].Rows[0]["color"].ToString();
+                var color = ds.Tables[0].Rows.Count > 0 ? ds.Tables[0].Rows[0]["color"] == null ? "" : ds.Tables[0].Rows[0]["color"].ToString() : "";
                 if (string.IsNullOrWhiteSpace(color))
                     return null;
                 var res = new List<CarModelColorEntity>();

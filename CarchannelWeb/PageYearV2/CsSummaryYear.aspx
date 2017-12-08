@@ -66,7 +66,7 @@
                                     <div class="top">
                                         <%if (!isNoSaleYear)
                                           { %>
-                                        <h5>参考成交价：<a href="/<%= serialSpell %>/baojia/" target="_blank"><em><%=minPriceRange %></em></a>
+                                        <h5 id="cs-area-price" >参考成交价：<a href="/<%= serialSpell %>/baojia/" target="_blank"><em><%=minPriceRange %></em></a>
                                              <% if (taxContent != "" && cse.Cs_SaleState == "在销")
                                                 { %>
                                                 <a title="<%=taxContent %>" href="http://news.bitauto.com/sum/20170105/1406774416.html" target="_blank"  class="ico-shangchengtehui"><%= taxContent %></a> </h5>
@@ -236,13 +236,16 @@
 
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/serialexternalcommon.min.js?v=2016122815"></script>
+    <script type="text/javascript" src="/jsnewv2/getareaprice.js?v=20170111243"></script>
     <script language="javascript" type="text/javascript" defer="defer">
+        GetSerialTreeAreaPriceRange(<%=serialId %>);
     	getDirectSell(<%=serialId %>,'<%=serialSpell %>',bit_locationInfo.cityId,'yc-cxzs-year-1');
         getDemandAndJiangJia(<%=serialId %>,'<%=serialSpell %>',bit_locationInfo.cityId);
     	<%= JsTagForYear %>
     	var CarCommonBSID = <%=serialBaseInfo.MasterbrandId%>;
     	var CarCommonCBID = <%=cse.Cb_Id%>;
-    	var CarCommonCSID = <%=serialId%>;
+        var CarCommonCSID = <%=serialId%>;
+        GetCarAreaPriceRange();
     </script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/ucarserialcity.min.js?v=2016122815"></script>
     <script type="text/javascript">

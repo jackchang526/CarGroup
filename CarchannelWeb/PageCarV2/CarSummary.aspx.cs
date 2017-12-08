@@ -372,7 +372,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 else
                 {
                     string priceUrl = "http://car.bitauto.com/" + cbe.Serial.AllSpell.ToLower() + "/m" + carID + "/baojia/";
-                    carPrice = "<a target=\"_blank\" href=\"" + priceUrl + "\"><em>" + cfcs.CarPriceRange.Replace("万", "") + "万</em></a>";
+                    carPrice = "<a target=\"_blank\" href=\"" + priceUrl + "\"><em id=\"car-area-price\">" + cfcs.CarPriceRange.Replace("万", "") + "万</em></a>";
                 }
             }
         }
@@ -1146,7 +1146,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                         htmlCode.AppendFormat("<li class=\"name no-wrap\"><a target=\"_blank\" href=\"/{0}/\">{1}</a></li>",
                             sts.ToCsAllSpell.ToString().ToLower(),
                             csName);
-                    htmlCode.AppendFormat("<li class=\"price\"><a href=\"{1}\">{0}</a></li>", sts.ToCsSaleState == "待销" ? "未上市" : (sts.ToCsPriceRange.ToString().Length > 0 ? StringHelper.SubString(sts.ToCsPriceRange.ToString(), 14, false) : "暂无报价"), sts.ToCsAllSpell.ToString().ToLower());
+                    htmlCode.AppendFormat("<li class=\"price\"><a href=\"{1}\">{0}</a></li>", sts.ToCsSaleState == "待销" ? "未上市" : (sts.ToCsPriceRange.ToString().Length > 0 ? StringHelper.SubString(sts.ToCsPriceRange.ToString(), 14, false) : "暂无指导价"), sts.ToCsAllSpell.ToString().ToLower());
                     htmlCode.AppendLine("</ul>");
                     htmlCode.AppendFormat("</div>");
                 }
@@ -1191,7 +1191,9 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 {
                     continue;
                 }
-                string priceRang = base.GetSerialPriceRangeByID(entity.SerialId);
+                //string priceRang = base.GetSerialPriceRangeByID(entity.SerialId);
+                //价格取指导价
+                string priceRang = base.GetSerialReferPriceByID(entity.SerialId);
                 if (entity.SaleState == "待销")
                 {
                     IsExitsUrl = false;

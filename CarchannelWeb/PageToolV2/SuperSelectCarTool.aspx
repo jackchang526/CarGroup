@@ -1592,13 +1592,14 @@
         </div>
     </div>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-
+    <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
     <%--   <script type="text/javascript" src="/jsnewV2/jquery.pagination.js"></script>--%>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/jquery.pagination.min.js?v=20161215"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/selectcarcommon.min.js?d=201711131107"></script>
     <%--<script type="text/javascript" src="/jsnewV2/selectcarcommon.js"></script>--%>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/superselectcartoolv2.min.js?v=201711131107"></script>
-    <%--<script type="text/javascript" src="/jsnewV2/superselectcartoolv2.js"></script>--%>
+<%--    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/superselectcartoolv2.min.js?v=201711131107"></script>--%>
+    <script type="text/javascript" src="/jsnewV2/getareaprice.js?v=20170111243"></script>
+    <script type="text/javascript" src="/jsnewV2/superselectcartoolv2.js"></script>
     <script type="text/javascript">
         SuperSelectCarTool.Parameters = <%=configParaHtml%>;
         SuperSelectCarTool.initPageCondition();

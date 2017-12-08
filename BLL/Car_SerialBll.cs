@@ -798,9 +798,10 @@ namespace BitAuto.CarChannel.BLL
 				htmlCode.Append("<a href=\"http://photo.bitauto.com/serial/" + serialId + "\" target=\"_blank\">图片</a>");
 				htmlCode.AppendLine("<a href=\"" + GetForumUrlBySerialId(Convert.ToInt32(serialId)) + "\" target=\"_blank\">论坛</a></div>");
 				*/
-                string priceRange = new PageBase().GetSerialPriceRangeByID(Convert.ToInt32(serialId));
+                //改为指导价
+                string priceRange = new PageBase().GetSerialReferPriceByID(Convert.ToInt32(serialId));
                 if (priceRange.Trim().Length == 0)
-                    htmlCode.Add("<div class=\"bj\">暂无报价</div>");
+                    htmlCode.Add("<div class=\"bj\">暂无指导价</div>");
                 else
                     htmlCode.Add("<div class=\"bj\">" + priceRange + "</div>");
                 htmlCode.Add("</li>");
@@ -3034,8 +3035,8 @@ namespace BitAuto.CarChannel.BLL
                 string serialSpell = serialNode.GetAttribute("AllSpell").ToLower();
                 string serialUrl = "/" + serialSpell + "/";
                 string levelUrl = string.Format("/{0}/", CarLevelDefine.GetLevelSpellByName(serialLevel));
-
-                string priceRange = new PageBase().GetSerialPriceRangeByID(Convert.ToInt32(serialId));
+                //修改报价为指导价
+                string priceRange = new PageBase().GetSerialReferPriceByID(Convert.ToInt32(serialId));
 
                 htmlList.Add("<div class=\"col-xs-3\">");
                 htmlList.Add("<div class=\"img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120\">");
@@ -3046,7 +3047,7 @@ namespace BitAuto.CarChannel.BLL
                 htmlList.Add("<li class=\"name\"><a href=\"" + serialUrl + "\" target=\"_blank\">" + serialName + "</a></li>");
                 if (priceRange.Trim().Length == 0)
                 {
-                    htmlList.Add("<li class=\"price\"><a href=\"" + serialUrl + "\" target=\"_blank\">暂无报价</a></li>");
+                    htmlList.Add("<li class=\"price\"><a href=\"" + serialUrl + "\" target=\"_blank\">暂无指导价</a></li>");
                 }
                 else
                 {
@@ -8427,7 +8428,7 @@ namespace BitAuto.CarChannel.BLL
                         }
                         else
                         {
-                            saleState = "暂无报价";
+                            saleState = "暂无指导价";
                         }
                     }
                     else

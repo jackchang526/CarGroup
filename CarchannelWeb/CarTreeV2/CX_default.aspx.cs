@@ -229,7 +229,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 					string imgUrl = Car_SerialBll.GetSerialImageUrl(serialId).Replace("_2.", "_3.");
 					if (string.Equals(imgUrl, WebConfig.DefaultCarPic)) { showNewCarNum++; continue; }
 					if (i >= showNewCarNum) break;
-					string priceRange = new PageBase().GetSerialPriceRangeByID(Convert.ToInt32(serialId));
+                    //改为指导价
+					string priceRange = new PageBase().GetSerialReferPriceByID(Convert.ToInt32(serialId));
 					Car_SerialEntity cs = serialBll.Get_Car_SerialByCsID(serialId);
 					string levelName = cs.Cs_CarLevel;
 					switch (levelName)
@@ -248,7 +249,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 					string levelUrl = string.Format("/{0}/", CarLevelDefine.GetLevelSpellByName(levelName));
 
                     if (priceRange.Trim().Length == 0)
-                        priceRange = "暂无报价";
+                        priceRange = "暂无指导价";
 
                    newCarType.Append("<div class=\"col-xs-3\">");
                    newCarType.Append("<div class=\"img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120\">");

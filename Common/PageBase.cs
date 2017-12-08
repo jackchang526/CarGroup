@@ -4449,7 +4449,9 @@ namespace BitAuto.CarChannel.Common
                         if (defaultPic.Trim().Length == 0)
                             defaultPic = WebConfig.DefaultCarPic;
                         sts.ToCsPic = defaultPic.Replace("_2.", "_5.");
-                        sts.ToCsPriceRange = this.GetSerialPriceRangeByID(sts.ToCsID);
+                        //改为指导价
+                        //sts.ToCsPriceRange = this.GetSerialPriceRangeByID(sts.ToCsID);
+                        sts.ToCsPriceRange = this.GetSerialReferPriceByID(sts.ToCsID);
                         lsts.Add(sts);
                         loopCount++;
                     }
@@ -4459,7 +4461,7 @@ namespace BitAuto.CarChannel.Common
         }
 
         /// <summary>
-        /// 取子品牌的还关注
+        /// 取子品牌的还关注 报价变指导价
         /// </summary>
         /// <param name="csID">子品牌ID</param>
         /// <param name="top">取条数</param>
@@ -4491,7 +4493,8 @@ namespace BitAuto.CarChannel.Common
                         if (defaultPic.Trim().Length == 0)
                             defaultPic = WebConfig.DefaultCarPic;
                         sts.ToCsPic = defaultPic.Replace("_2.", string.Format("_{0}.", size));
-                        sts.ToCsPriceRange = this.GetSerialPriceRangeByID(sts.ToCsID);
+                        //sts.ToCsPriceRange = this.GetSerialPriceRangeByID(sts.ToCsID);
+                        sts.ToCsPriceRange = this.GetSerialReferPriceByID(sts.ToCsID);
                         lsts.Add(sts);
                         loopCount++;
                     }
@@ -6201,6 +6204,91 @@ namespace BitAuto.CarChannel.Common
             }
             return dic;
         }
-
+        /// <summary>
+        /// 取所有子品牌指导价区间字典
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<int, string> GetAllCsReferPriceRange()
+        {
+            Dictionary<int, string> dic = new Dictionary<int, string>();
+            string catchkey = "PageBase_GetAllCsReferPriceRange";
+            object getAllCsReferPriceRange = null;
+            CacheManager.GetCachedData(catchkey, out getAllCsReferPriceRange);
+            if (getAllCsReferPriceRange == null)
+            {
+                DataSet ds = GetAllSerialReferPrice();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        try
+                        {
+                            int Id = int.Parse(dr["cs_id"].ToString());
+                            string referPrice = dr["ReferPriceRange"].ToString();
+                            if (!dic.ContainsKey(Id))
+                            {
+                                dic.Add(Id, (string.IsNullOrEmpty(referPrice) ? "" : string.Format("{0}万", referPrice)));
+                            }
+                        }
+                        catch
+                        { }
+                    }
+                }
+                CacheManager.InsertCache(catchkey, dic, WebConfig.CachedDuration);
+            }
+            else
+            {
+                dic = (Dictionary<int, string>)getAllCsReferPriceRange;
+            }
+            return dic;
+        }
+        /// <summary>
+        /// 取所有子品牌指导价
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetAllSerialReferPrice()
+        {           
+            string catchkey = "AllCsReferPriceRange";
+            object allCsReferPriceRange = null;
+            DataSet ds = new DataSet();
+            CacheManager.GetCachedData(catchkey, out allCsReferPriceRange);
+            if (allCsReferPriceRange == null)
+            {
+                string sql = " select cs.cs_id,csi.ReferPriceRange";
+                sql += " from dbo.Car_Serial cs ";
+                sql += " left join dbo.Car_Serial_Item csi on cs.cs_id = csi.cs_id ";
+                sql += " where cs.isState=1 ";
+                try
+                {
+                    ds = BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql);
+                    CacheManager.InsertCache(catchkey, ds, 60);
+                }
+                catch
+                { }               
+            }
+            else
+            {
+                ds = (DataSet)allCsReferPriceRange;
+            }
+            return ds;
+        }
+        /// <summary>
+        /// 获取子品牌指导价
+        /// </summary>
+        /// <param name="csID"></param>
+        /// <returns></returns>
+        public string GetSerialReferPriceByID(int csID)
+        {
+            string result = "暂无指导价";
+            Dictionary<int, string> dic = GetAllCsReferPriceRange();
+            if (dic != null && dic.Count > 0)
+            {
+                if (dic.ContainsKey(csID))
+                {
+                    result = dic[csID];
+                }
+            }
+            return result;
+        }
     }
 }

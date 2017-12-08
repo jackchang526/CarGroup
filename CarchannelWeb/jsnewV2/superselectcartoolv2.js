@@ -24,7 +24,7 @@ var anchorFlag = false;
 
 var SuperSelectCarTool = {
     Parameters: new Array()
-    , apiUrl: "http://select.car.yiche.com/selectcartool/searchresult"
+    , apiUrl: "http://select24.car.yiche.com/selectcartool/searchresult"
     , OneLeftScrollFlag: false //滚动菜单是否显示 ，用于 左侧滚动 > 居左距离
     , MenuOffsetTop: 304 //滚动菜单 相对车款头的高度偏移量
 
@@ -1205,7 +1205,7 @@ function DrawUlContent(json) {
             divContentArray.push("<div class=\"drop-layer\" style=\"display:none\"><span class=\"close\"></span>");
             //固定头start
             divContentArray.push("<div class=\"list-table\" style=\"position: absolute; left:0; top:0; z-index: 1;\">");
-            divContentArray.push("<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">");
+            divContentArray.push("<table id=\"compare_wait\" width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">");
             divContentArray.push("<colgroup><col width=\"40%\"><col width=\"11%\"><col width=\"13%\"><col width=\"10%\"><col width=\"11%\"><col width=\"16%\"></colgroup>");
             divContentArray.push("<tbody>");
             divContentArray.push("<tr class=\"table-tit\">");
@@ -1214,7 +1214,8 @@ function DrawUlContent(json) {
             divContentArray.push("<th>变速箱</th>");
             divContentArray.push("<th class=\"txt-right\">指导价</th>");
             divContentArray.push("<th class=\"txt-right\">参考最低价</th>");
-            divContentArray.push("<th><div class=\"doubt\"  onmouseover=\"javascript:$(this).children('.prompt-layer').show();return false;\" onmouseout=\"javascript:$(this).children('.prompt-layer').hide();return false;\"><div class=\"prompt-layer\" style=\"display:none\">全国参考最低价</div></div></th>");
+            //divContentArray.push("<th><div class=\"doubt\"  onmouseover=\"javascript:$(this).children('.prompt-layer').show();return false;\" onmouseout=\"javascript:$(this).children('.prompt-layer').hide();return false;\"><div class=\"prompt-layer\" style=\"display:none\">全国参考最低价</div></div></th>");
+            divContentArray.push("<th></th>");
             divContentArray.push("</tr>");
             divContentArray.push("</tbody>");
             divContentArray.push("</table>");
@@ -1564,7 +1565,7 @@ function InitCarItem() {
                     if (data.CarList.length <= 0) { $("#carlist_loading").html("暂无车型数据"); return; }
                     var content = [];
 
-                    content.push("<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">");
+                    content.push("<table id=\"compare_sale\" width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">");
                     content.push("<colgroup><col width=\"40%\"><col width=\"11%\"><col width=\"13%\"><col width=\"10%\"><col width=\"11%\"><col width=\"16%\"></colgroup>");
                     content.push("<tbody>");
                     content.push("<tr class=\"table-tit\" style=\"visibility: hidden;\">");
@@ -1578,10 +1579,10 @@ function InitCarItem() {
 
                     $.each(data.CarList, function (i, n) {
                         if (i % 2 == 0) {
-                            content.push("<tr>");
+                            content.push("<tr id=\"car_filter_id_" + n.CarID + "\">");
                         }
                         else {
-                            content.push("<tr class=\"hover-bg-color\">");
+                            content.push("<tr class=\"hover-bg-color\" id=\"car_filter_id_" + n.CarID + "\">");
                         }
                         content.push("<td class=\"txt-left\">");
                         var yearType = n.CarYear.length > 0 ? n.CarYear + "款" : "未知年款";
@@ -1628,6 +1629,8 @@ function InitCarItem() {
                     // 对比浮动框 初始
                     initCompareButton();
                     //initCarListHover();
+                    //区域报价
+                    GetCarAreaPriceRangeForSelect(carIds);
                 }
             });
         }

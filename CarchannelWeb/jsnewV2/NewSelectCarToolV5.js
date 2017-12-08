@@ -90,7 +90,7 @@ var conditionObj =
         , Domain: window.location.host
         , PriceTimer: 0
         //, FuelConsumption: ""
-        , apiUrl: "http://select.car.yiche.com/selectcartool/searchresult"
+        , apiUrl: "http://select24.car.yiche.com/selectcartool/searchresult"
         , Page: 1
         //初始化页面显示
         , InitPageCondition: function () {
@@ -969,11 +969,12 @@ function callbackGetItem() {
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     //alert("textStatus: " + textStatus);
                 },
+                
                 success: function (data) {
                     if (data.CarList.length <= 0) { $("#carlist_loading").html("暂无车型数据"); return; }
                     var content = [], title = [];
                     title.push("<div class=\"list-table\" style=\"position: absolute; left: 0; top: 0; z-index: 1;\">");
-                    title.push("    <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\">");
+                    title.push("    <table id=\"compare_wait\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\">");
                     title.push("        <colgroup>");
                     title.push("            <col width=\"39%\">");
                     title.push("            <col width=\"11%\">");
@@ -989,11 +990,12 @@ function callbackGetItem() {
                     title.push("                <th>变速箱</th>");
                     title.push("                <th class=\"txt-right txt-right-padding\">指导价</th>");
                     title.push("                <th class=\"txt-right\">参考最低价</th>");
-                    title.push("                <th>");
-                    title.push("                    <div class=\"doubt\">");
-                    title.push("                        <div class=\"prompt-layer\" style=\"display:none;\">全国参考最低价</div>");
-                    title.push("                    </div>");
-                    title.push("                </th>");
+                    //title.push("                <th>");
+                    //title.push("                    <div class=\"doubt\">");
+                    //title.push("                        <div class=\"prompt-layer\" style=\"display:none;\">全国参考最低价</div>");
+                    //title.push("                    </div>");
+                    //title.push("                </th>");
+                    title.push("                <th></th>");
                     title.push("            </tr>");
                     title.push("         </tbody>");
                     title.push("    </table>");
@@ -1003,7 +1005,7 @@ function callbackGetItem() {
                     content.push(title.join(""));
                     content.push("<span class=\"close\"></span>");
                     content.push("<div class=\"list-table scroll-table\">");
-                    content.push("    <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\">");
+                    content.push("    <table id=\"compare_sale\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\">");
                     content.push("        <colgroup>");
                     content.push("            <col width=\"39%\">");
                     content.push("            <col width=\"11%\">");
@@ -1071,9 +1073,9 @@ function callbackGetItem() {
                         });
                         $(self).parent().addClass("active").append(content.join('')).hide().slideDown(200);
                     }
-
-                    initCarListEvent();
-                    typeof InitCompareEvent == "function" && InitCompareEvent();
+                    initCarListEvent();                  
+                    typeof InitCompareEvent == "function" && InitCompareEvent(); 
+                    GetCarAreaPriceRangeForSelect(carIds);
                 }
             });
         }

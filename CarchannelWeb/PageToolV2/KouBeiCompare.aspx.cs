@@ -683,7 +683,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageToolV2
                     string imgUrl = Car_SerialBll.GetSerialImageUrl(csId).Replace("_2.", "_3.");
                     string allSpell = row["allSpell"].ToString();
                     string showName = row["cs_ShowName"].ToString();
-                    string priceRange = new PageBase().GetSerialPriceRangeByID(Convert.ToInt32(csId));
+                    //改为指导价
+                    string priceRange = new PageBase().GetSerialReferPriceByID(Convert.ToInt32(csId));
                     sb.Append("    <div class=\"img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120\">");
                     sb.Append("        <div class=\"img\">");
                     sb.AppendFormat("      <a target=\"_blank\" href=\"/{0}/\">", allSpell);

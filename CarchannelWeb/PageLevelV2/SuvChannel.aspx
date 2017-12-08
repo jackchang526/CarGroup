@@ -135,12 +135,14 @@
                     </ul>
                 </div>
             </div>
+             <!--热门SUV-->
             <div class="suv-list-box" id="data_box1_0">
                 <%=suvHotHtml%>
             </div>
-            <!--#include file="~/include/pd/2014/suv/00001/201609_SUV_CitySUV_Manual.shtml"-->
-            <!--#include file="~/include/pd/2014/suv/00001/201609_SUV_yueyesuv_Manual.shtml"-->
-            <!--热门SUV-->
+            <!--城市SUV-->
+            <div class="suv-list-box" id="data_box1_1" style="display: none;">             </div>
+            <!--越野SUV-->
+            <div class="suv-list-box" id="data_box1_2" style="display: none;">             </div>           
             <!--SUV知识库-->
             <div class="section-header header2">
                 <div class="box">
@@ -282,7 +284,55 @@
             }
             PageAreaStatistics.init(arr.join());
         });
-
+        function GetSearchResult(apiQueryString,id) {
+            var url = "http://select24.car.yiche.com/selectcartool/searchresult";
+            if (apiQueryString.length > 0) {
+                url += "?" + apiQueryString + "&v=20171207";
+            }
+            $.ajax({
+                url: url,
+                dataType: "jsonp",
+                //jsonpCallback: "SuvSelectCarCallback",
+                cache: true,
+                success: function (json) {
+                    var result = json;
+                    DrawSuvContent(result,id);
+                }
+            });
+        }
+        function DrawSuvContent(json,id) {
+            if (json.ResList.length != "0") {
+                //初始化车款列表        
+                var divContentArray = new Array(),
+                    serialSpellArray = new Array();
+                divContentArray.push("<ul>");
+                var currentLineCount = 0;
+                var csIdsArr = [];
+                $(json.ResList).each(function (index) {
+                    csIdsArr.push(json.ResList[index].SerialId);
+                    serialSpellArray[json.ResList[index].SerialId] = json.ResList[index].AllSpell;
+                    divContentArray.push("<li>");
+                    divContentArray.push("    <div class=\"img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120\">");
+                    divContentArray.push("        <div class=\"img\">");
+                    divContentArray.push("            <a href=\"/" + json.ResList[index].AllSpell + "/\" target=\"_blank\"><img src=\"" + json.ResList[index].ImageUrl.replace("_1.", "_3.") + "\" alt=\"" + json.ResList[index].ShowName + "报价_价格\"/></a>");
+                    divContentArray.push("    </div>");
+                    divContentArray.push("    <ul class=\"p-list\">");
+                    divContentArray.push("        <li class=\"name\"><a href=\"/" + json.ResList[index].AllSpell + "/\" target=\"_blank\">" + json.ResList[index].ShowName + "</a></li>");
+                    divContentArray.push("        <li class=\"price\"><a href=\"/" + json.ResList[index].AllSpell + "/baojia/\"  target=\"_blank\">" + json.ResList[index].PriceRange + "</a></li>");
+                    divContentArray.push("    </ul>");
+                    divContentArray.push("</div>");
+                    divContentArray.push("</div>");
+                    divContentArray.push("</li>");
+                });
+                divContentArray.push("</ul>");
+                var divContent = divContentArray.join("");
+                $("#" + id).html(divContent);
+            }
+        }
+        //城市suv
+        GetSearchResult("l=8&more=135_192&page=1&pagesize=8", "data_box1_1");
+        //越野suv
+        GetSearchResult("l=8&more=136&page=1&pagesize=8", "data_box1_2");
     </script>
 	<!--评论数JS-->
 	<!--#include file="/include/pd/2014/common/00001/201506_typls_js_Manual.shtml"-->

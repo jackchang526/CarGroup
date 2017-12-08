@@ -581,9 +581,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageMasterV2
 
                         if (sellState == "在销")
                         {
-                            priceRange = base.GetSerialPriceRangeByID(serialId);
+                            //改为指导价
+                            priceRange = base.GetSerialReferPriceByID(serialId);
                             if (priceRange.Trim().Length == 0)
-                                priceRange = "<small>暂无报价</small>";
+                                priceRange = "<small>暂无指导价</small>";
                         }
                         else if (sellState == "待销")
                         {
@@ -612,7 +613,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageMasterV2
                         # region
                         if (sellState == "在销")
                         {
-                            if (priceRange == "暂无报价")
+                            if (priceRange == "暂无指导价")
                             {
                                 noPriceHtml += serialNodeCode.ToString();
                                 if (brandDs.Tables.Count > 1)
@@ -1112,7 +1113,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageMasterV2
                     { defaultPic = WebConfig.DefaultCarPic; }
                     sb.AppendLine("<img width=\"90\" height=\"60\" src=\"" + defaultPic.Replace("_2.", "_5.") + "\" alt=\"" + sfi.CsShowName + "\">");
                     sb.AppendLine("</a><a target=\"_blank\" href=\"/" + sfi.CsAllSpell + "/\">" + sfi.CsShowName + "</a>");
-                    sb.AppendLine("<div>" + GetSerialPriceRangeByID(sfi.CsID) + "</div>");
+                    sb.AppendLine("<div>" + base.GetSerialReferPriceByID(sfi.CsID) + "</div>");
                     sb.AppendLine("</li>");
                     loop++;
                 }

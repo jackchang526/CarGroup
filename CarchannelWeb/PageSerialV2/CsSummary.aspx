@@ -105,7 +105,7 @@
                                     else
                                     { %>
                                 <h2>
-                                    <span class="note">全国参考价：</span><a href="http://car.bitauto.com/<%=serialSpell %>/baojia/" data-channelid="2.21.853" target="_blank" class="price"><%= serialPrice %></a>
+                                    <span class="note" id="cs-area-name">全国参考价：</span><a href="http://car.bitauto.com/<%=serialSpell %>/baojia/" data-channelid="2.21.853" target="_blank" class="price" id="cs-area-price"><%= serialPrice %></a>
                                     <a href="http://dealer.bitauto.com/<%=serialSpell %>/" target="_blank" id="mp-dealer" data-channelid="2.21.1526" class="local-agents"></a>
                                 </h2>
                                 <%} %>
@@ -282,6 +282,7 @@
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201711241325"></script>
         <%--<script type="text/javascript" src="/jsnewv2/cssummary.js?v=20170171032"></script>--%>
+        <script type="text/javascript" src="/jsnewv2/getareaprice.js?v=20170111243"></script>
         <script type="text/javascript">
             var serialId = <%= serialId %> ,
                 priceRang = '<%=serialPrice%>',
@@ -316,6 +317,7 @@
                 GetDealerData("<%= serialSpell %>");
             }
             GetErShouCheMinPrice();
+            GetSerialAreaPriceRange();
             GetDownPayment();
             InitTeHuiAndAdData();
             GetJiangjiaNews();
@@ -819,6 +821,7 @@
             GetVedioNum();
             //searchEscByTypeRequest("<%=serialSpell %>");
             searchEsc("<%=serialSpell %>");
+            GetCarAreaPriceRange();
         })();
         //焦点颜色图src设置
         $("div[id^='focuscolor_'] img").each(function (i, n) {

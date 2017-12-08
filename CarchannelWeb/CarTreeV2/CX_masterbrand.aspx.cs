@@ -137,7 +137,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 			}
 
 			// 子品牌报价区间
-			Dictionary<int, string> dicCsPrice = base.GetAllCsPriceRange();
+			//Dictionary<int, string> dicCsPrice = base.GetAllCsPriceRange();
 			// 子品牌封面
 			Dictionary<int, string> dicCsPhoto = base.GetAllSerialPicURL(true);
 
@@ -266,7 +266,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 							string imgUrl = dicCsPhoto.ContainsKey(serialId) ? dicCsPhoto[serialId].Replace("_2.", "_3.") : WebConfig.DefaultCarPic;
 							// string csLevel = ConvertHelper.GetString(dr["cslevel"]);
 							string sellState = ConvertHelper.GetString(dr["CsSaleState"]);
-                            string priceRang = dicCsPrice.ContainsKey(serialId) ? dicCsPrice[serialId] : "暂无报价";
+                            //改为指导价
+                            string priceRang = base.GetSerialReferPriceByID(serialId);
 							string subsidiesString = "";
 							string bestCarStr = "";
                             string newCarIntoMarcket = carSerialBll.GetNewSerialIntoMarketText(serialId, false);
@@ -316,7 +317,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
                             }
                             else if (priceRang.Trim().Length == 0 && sellState.Trim() == "在销")
                             {
-                                priceRang = "暂无报价";
+                                priceRang = "暂无指导价";
                             }
 							#endregion
 
@@ -328,7 +329,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 							{
 								_SerialCount++;
 							}
-                            if (sellState.Trim() == "停销" || sellState.Trim() == "待销"||priceRang == "暂无报价")
+                            if (sellState.Trim() == "停销" || sellState.Trim() == "待销"||priceRang == "暂无指导价")
                             {
                                 sbTempList.AppendLine("<div class=\"col-xs-3\"><div class=\"img-info-layout-vertical img-info-layout-vertical-180120 inverse icon-none no-reduce\">");
                                 sbTempList.AppendLine(string.Format(
@@ -336,7 +337,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
                                    , csSpell, serialId, imgUrl, csShowName, newCarIntoMarcket));
                                 sbTempList.AppendLine(string.Format("<ul class=\"p-list\"><li class=\"name\"><a href=\"/{0}/\" title=\"{1}\" target=\"_blank\" id=\"m{2}\">{1}</a></li><li class=\"price\"><a href=\"/{0}/\" class=\"price-reduction\" title=\"{1}\" target=\"_blank\">{3}</a></li></ul>"
                                     , csSpell, csShowName, serialId, priceRang, subsidiesString, bestCarStr,
-                                   priceRang == "暂无报价" ? " huizi" : ""));
+                                   priceRang == "暂无指导价" ? " huizi" : ""));
                                 sbTempList.AppendLine("</div></div>");
                             }
                             else
@@ -347,7 +348,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
                                     , csSpell, serialId, imgUrl, csShowName, newCarIntoMarcket));
                                 sbCsList.AppendLine(string.Format("<ul class=\"p-list\"><li class=\"name\"><a href=\"/{0}/\" title=\"{1}\" target=\"_blank\" id=\"m{2}\">{1}</a><li><li class=\"price\"><a href=\"/{0}/\" title=\"{1}\" target=\"_blank\" id=\"m{2}\">{3}</a></li></ul>"
                                     , csSpell, csShowName, serialId, priceRang, subsidiesString, bestCarStr,
-                                   priceRang == "暂无报价" ? " huizi" : ""));
+                                   priceRang == "暂无指导价" ? " huizi" : ""));
                                 sbCsList.AppendLine("</li>");
                                 sbCsList.AppendLine("</div></div>");
                             }

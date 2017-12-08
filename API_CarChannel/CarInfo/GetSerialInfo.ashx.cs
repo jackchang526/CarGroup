@@ -2790,7 +2790,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                 if (string.Equals(imgUrl, WebConfig.DefaultCarPic))
                 { continue; }
                 if (i >= showNewCarNum) break;
-                string priceRange = new PageBase().GetSerialPriceRangeByID(Convert.ToInt32(serialId));
+                string priceRange = new PageBase().GetSerialReferPriceByID(Convert.ToInt32(serialId));
                 Car_SerialEntity cs = csb.Get_Car_SerialByCsID(serialId);
                 if (cs == null || cs.Cs_Id <= 0)
                 { continue; }

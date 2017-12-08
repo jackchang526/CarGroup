@@ -8761,6 +8761,7 @@ namespace BitAuto.CarChannel.BLL
             var list = CacheManager.GetCachedData<List<CarBrandEntity>>(cacheKey);
             if (list == null)
             {
+                list = new List<CarBrandEntity>();
                 //获取数据xml
                 XmlDocument serialXml = AutoStorageService.GetAllAutoXml();
                 if (serialXml != null)
@@ -8771,7 +8772,6 @@ namespace BitAuto.CarChannel.BLL
                         XmlNodeList brands = _BrandNode.SelectNodes("Brand");
                         if (brands.Count > 0)
                         {
-                            list = new List<CarBrandEntity>();
                             foreach (XmlNode brand in brands)
                             {
                                 var serialList = new List<CarSerialEntity>();

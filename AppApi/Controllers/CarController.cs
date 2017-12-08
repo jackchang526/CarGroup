@@ -312,40 +312,47 @@ namespace AppApi.Controllers
         [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
         public ActionResult GetSerialListForUser(int? csID)
         {
-            var serialList = new PageBase().GetSerialToSerialByCsID(csID.GetValueOrDefault(), 6, 3);
-            var result = new List<object>();
-            if (serialList != null && serialList.Count > 0)
+            string cacheKey = string.Format(DataCacheKeys.SerialInfoForUser, csID.GetValueOrDefault(0));
+            var result = CacheManager.GetCachedData<List<object>>(cacheKey); ;
+            if (result == null)
             {
+                result = new List<object>();
+                var serialList = new PageBase().GetSerialToSerialByCsID(csID.GetValueOrDefault(), 6, 3);
 
-                foreach (EnumCollection.SerialToSerial serialToSerial in serialList)
+                if (serialList != null && serialList.Count > 0)
                 {
-                    string saleState = string.Empty;
-                    if (string.IsNullOrWhiteSpace(serialToSerial.ToCsPriceRange))
+
+                    foreach (EnumCollection.SerialToSerial serialToSerial in serialList)
                     {
-                        if (!string.IsNullOrEmpty(serialToSerial.ToCsSaleState) && "待销" == serialToSerial.ToCsSaleState)
+                        string saleState = string.Empty;
+                        if (string.IsNullOrWhiteSpace(serialToSerial.ToCsPriceRange))
                         {
-                            saleState = "未上市";
+                            if (!string.IsNullOrEmpty(serialToSerial.ToCsSaleState) && "待销" == serialToSerial.ToCsSaleState)
+                            {
+                                saleState = "未上市";
+                            }
+                            else
+                            {
+                                saleState = "暂无报价";
+                            }
                         }
                         else
                         {
-                            saleState = "暂无报价";
+                            saleState = serialToSerial.ToCsPriceRange;
                         }
+                        result.Add(new
+                        {
+                            CSId = serialToSerial.ToCsID,
+                            Name = serialToSerial.ToCsShowName,
+                            ShowName = serialToSerial.ToCsShowName,
+                            Pic = serialToSerial.ToCsPic,
+                            PriceRange = saleState,
+                            AllSpell = serialToSerial.ToCsAllSpell
+                        });
                     }
-                    else
-                    {
-                        saleState = serialToSerial.ToCsPriceRange;
-                    }
-                    result.Add(new
-                    {
-                        CSId = serialToSerial.ToCsID,
-                        Name = serialToSerial.ToCsShowName,
-                        ShowName = serialToSerial.ToCsShowName,
-                        Pic = serialToSerial.ToCsPic,
-                        PriceRange = saleState,
-                        AllSpell = serialToSerial.ToCsAllSpell
-                    });
-                }
 
+                }
+                CacheManager.InsertCache(cacheKey, result, 6);
             }
             return AutoJson(new { success = true, status = WebApiResultStatus.成功, data = result }, JsonRequestBehavior.AllowGet);
         }

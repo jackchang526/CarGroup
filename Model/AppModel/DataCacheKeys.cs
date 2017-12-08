@@ -49,5 +49,11 @@ namespace BitAuto.CarChannel.Model
         /// 地方报价
         /// </summary>
         public static string SerialInfo= "car.appapi.serialinfo_{0}_{1}";
+
+        /// <summary>
+        ///浏览 车型推荐
+        /// </summary>
+        public static string SerialInfoForUser = "car.appapi.serialinfoforuser_{0}";
+      
     }
 }

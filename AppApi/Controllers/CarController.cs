@@ -629,7 +629,7 @@ namespace AppApi.Controllers
         /// <param name="masterId"></param>
         /// <param name="allSerial"></param>
         /// <returns></returns>
-        [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
+        //[OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
         public ActionResult GetSerialListWithImage(int masterId, bool? allSerial)
         {
             if (masterId <= 0)
@@ -637,17 +637,24 @@ namespace AppApi.Controllers
                 return JsonNet(new { status = (int)WebApiResultStatus.参数错误, message = "参数有误" }, JsonRequestBehavior.AllowGet);
             }
             var list = CarSerialService.GetCarBrandAndSerial(masterId, allSerial.GetValueOrDefault(false));
-
-            List<int> serialIds = new List<int>();
-            foreach (var brand in list)
-            {
-                serialIds.AddRange(brand.SerialList.Select(x => x.SerialId));
-            }
-            var ids = serialIds.Select(x => x).Distinct();
             Dictionary<int, int> imageCounts = new Dictionary<int, int>();
-            foreach (var item in ids)
+            if (list != null && list.Any())
             {
-                imageCounts.Add(item, GetSerialPicAndCountByCsID(item));
+                List<int> serialIds = new List<int>();
+                foreach (var brand in list)
+                {
+                    serialIds.AddRange(brand.SerialList.Select(x => x.SerialId));
+                }
+                var ids = serialIds.Select(x => x).Distinct();
+
+                foreach (var item in ids)
+                {
+                    imageCounts.Add(item, GetSerialPicAndCountByCsID(item));
+                }
+            }
+            else
+            {
+                list = new List<CarBrandEntity>();
             }
             return JsonNet(new
             {

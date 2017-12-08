@@ -8806,44 +8806,46 @@ namespace BitAuto.CarChannel.BLL
                         }
                     }
                 }
-
-                foreach (var brand in list)
+                if (list != null && list.Any())
                 {
-                    foreach (var serial in brand.SerialList)
+                    foreach (var brand in list)
                     {
-                        if (serial.SaleStatus == 1)
+                        foreach (var serial in brand.SerialList)
                         {
-                            if (serial.MinPrice == 0 && serial.MaxPrice == 0)
+                            if (serial.SaleStatus == 1)
                             {
-                                serial.DealerPrice = "暂无报价";
+                                if (serial.MinPrice == 0 && serial.MaxPrice == 0)
+                                {
+                                    serial.DealerPrice = "暂无报价";
+                                }
+                                else if (serial.MinPrice == 0)
+                                {
+                                    serial.DealerPrice = string.Format("{0}万", serial.MaxPrice > 1000 ? serial.MaxPrice.ToString("F0") : serial.MaxPrice.ToString("F2"));
+                                }
+                                else
+                                {
+                                    serial.DealerPrice = string.Format("{0}-{1}万", serial.MinPrice > 1000 ? serial.MinPrice.ToString("F0") : serial.MinPrice.ToString("F2"), serial.MaxPrice > 1000 ? serial.MaxPrice.ToString("F0") : serial.MaxPrice.ToString("F2"));
+                                }
                             }
-                            else if (serial.MinPrice == 0)
+                            else if (serial.SaleStatus == 0)
                             {
-                                serial.DealerPrice = string.Format("{0}万", serial.MaxPrice > 1000 ? serial.MaxPrice.ToString("F0") : serial.MaxPrice.ToString("F2"));
+                                serial.DealerPrice = "未上市";
                             }
-                            else
+                            else if (serial.SaleStatus == -1)
                             {
-                                serial.DealerPrice = string.Format("{0}-{1}万", serial.MinPrice > 1000 ? serial.MinPrice.ToString("F0") : serial.MinPrice.ToString("F2"), serial.MaxPrice > 1000 ? serial.MaxPrice.ToString("F0") : serial.MaxPrice.ToString("F2"));
+                                serial.DealerPrice = "停销";
                             }
-                        }
-                        else if (serial.SaleStatus == 0)
-                        {
-                            serial.DealerPrice = "未上市";
-                        }
-                        else if (serial.SaleStatus == -1)
-                        {
-                            serial.DealerPrice = "停销";
                         }
                     }
+                    CacheManager.InsertCache(cacheKey, list, 30);//缓存30分钟
+                    if (!allSerial)
+                    {
+                        list.ForEach(l =>
+                        {
+                            l.SerialList.RemoveAll(s => s.SaleStatus < 0); //移除停销车型
+                        });
+                    }
                 }
-                CacheManager.InsertCache(cacheKey, list, 30);//缓存30分钟
-            }
-            if (!allSerial)
-            {
-                list.ForEach(l =>
-                {
-                    l.SerialList.RemoveAll(s => s.SaleStatus < 0); //移除停销车型
-                });
             }
             return list;
         }

@@ -110,7 +110,10 @@ namespace BitAuto.CarChannel.BLL
             if (getCarMasterBrandList == null)
             {
                 getCarMasterBrandList = _masterBrandDal.GetCarStyleColorById(styleId, type);
-                CacheManager.InsertCache(cacheKey, getCarMasterBrandList, 60 * 24);
+                if (getCarMasterBrandList != null)
+                {
+                    CacheManager.InsertCache(cacheKey, getCarMasterBrandList, 60 * 24);
+                }
             }
             return getCarMasterBrandList;
         }

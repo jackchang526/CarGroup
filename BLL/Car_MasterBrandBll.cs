@@ -105,7 +105,17 @@ namespace BitAuto.CarChannel.BLL
         /// <returns></returns>
         public List<CarModelColorEntity> GetCarStyleColorById(int styleId, int type)
         {
-            return _masterBrandDal.GetCarStyleColorById(styleId, type);
+            string cacheKey = "ycapp.getcarstylecolorbyid";
+            var getCarMasterBrandList = (List<CarModelColorEntity>)CacheManager.GetCachedData(cacheKey);
+            if (getCarMasterBrandList == null)
+            {
+                getCarMasterBrandList = _masterBrandDal.GetCarStyleColorById(styleId, type);
+                if (getCarMasterBrandList != null)
+                {
+                    CacheManager.InsertCache(cacheKey, getCarMasterBrandList, 60 * 24);
+                }
+            }
+            return getCarMasterBrandList;
         }
 
         /// <summary>

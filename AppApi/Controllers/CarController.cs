@@ -364,6 +364,7 @@ namespace AppApi.Controllers
         /// </summary>
         /// <param name="masterid">主品牌id</param>
         /// <returns></returns>
+        [OutputCache(Duration = 1800, Location = OutputCacheLocation.Downstream)]
         public ActionResult GetMasterBrandStory(int masterid)
         {
             //验证
@@ -400,6 +401,7 @@ namespace AppApi.Controllers
         /// <param name="carStyleId">车款编号</param>
         /// <param name="type">0车身颜色 1内饰颜色</param>
         /// <returns></returns>
+        [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
         public ActionResult GetCarStyleColorById(int? carStyleId, int? type)
         {
             var wrs = WebApiResultStatus.参数错误;
@@ -421,6 +423,7 @@ namespace AppApi.Controllers
         /// </summary>
         /// <param name="modelColor">颜色类型</param>
         /// <returns></returns>
+        [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
         public ActionResult GetCarModelColorByModelId(int ModelId, int ColorType = 0)
         {
             var wrs = WebApiResultStatus.参数错误;

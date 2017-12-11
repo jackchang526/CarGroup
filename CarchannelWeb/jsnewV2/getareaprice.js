@@ -191,12 +191,16 @@ function GetStyleAreaPriceRange(cityId, styleId, cityName) {
                 }
                 if (data[0].ReturnType == 1) {
                     $("#car-area-price").html(result);
+                    $("#car-area-priceitem").parent().next().children(":eq(0)").html(result);
                     if (typeof cityName != "undefined" && cityName != "") {
                         $("#car-area-price").parent().parent().parent().html($("#car-area-price").parent().parent().parent().html().replace("全国", cityName));
+                        $("#car-area-priceitem").html($("#car-area-priceitem").html().replace("商家报价", cityName + "参考价"));
                     }
                 }
                 else if (data[0].ReturnType == 2) {
                     $("#car-area-price").html(result);
+                    $("#car-area-priceitem").parent().next().children(":eq(0)").html(result);
+                    $("#car-area-priceitem").html($("#car-area-priceitem").html().replace("商家报价", "全国参考价"));
                 }
             }
         }

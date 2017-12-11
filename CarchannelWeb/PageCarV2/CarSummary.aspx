@@ -96,14 +96,14 @@
                                     <div class="mid row">
                                         <div class="col-xs-4">
                                             <em><%=cbe.SaleState=="待销"?"预售价":"厂商指导价" %></em>
-                                            <h5><%= cfcs.ReferPrice == "" ? "暂无" : cfcs.ReferPrice + "万元"%></h5>
+                                            <h5><%= cfcs.ReferPrice == "" ? "暂无" : cfcs.ReferPrice + "万"%></h5>
                                         </div>
                                         <%if (cbe.SaleState.Trim() != "停销")
                                           {%>
                                         <div class="col-xs-4">
                                             <em id="quanKuan">全款购车（供参考）</em>
                                             <h5 class="calc-title">
-                                                <a class="em"><%=cfcs.CarTotalPrice == "" ? "暂无" : cfcs.CarTotalPrice + "元"%></a>
+                                                <a class="em"><%=cfcs.CarTotalPrice == "" ? "暂无" : cfcs.CarTotalPrice + ""%></a>
                                                 <a href="/gouchejisuanqi/?carid=<%= carID.ToString() %>" class="calculator" target="_blank"></a>
                                             </h5>
                                            <%if (!string.IsNullOrEmpty(cfcs.CarTotalPrice.ToString().Trim()))
@@ -120,7 +120,8 @@
                                             <!--弹层 end-->
                                             <%}%>
                                             <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
-                                               <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712110"></script>
+                                            <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=2017121116"></script>
+                                            <%--<script type="text/javascript" src="/jsnewV2/getareaprice.js?v=2017121"></script>--%>
                                             <script type="text/javascript">                     
                                                 (function() {
                                                     $("#quanKuan").mouseover(function() {
@@ -137,7 +138,7 @@
 
                                          <div class="col-xs-4">
                                             <em>贷款购车（30%首付）</em>
-                                            <h5><a class="em" target="_blank" href="http://fenqi.taoche.com/www/<%=cbe.Serial.AllSpell%>/m<%=cbe.Id%>/?from=yc18&amp;leads_source=p003003">首付<%= priceComputer.LoanFirstDownPayments > 0 ? ((double)(priceComputer.LoanFirstDownPayments + priceComputer.AcquisitionTax + priceComputer.Compulsory + priceComputer.Insurance + priceComputer.VehicleTax + priceComputer.Chepai) / 10000).ToString("F2") + "万元" : "暂无"%></a></h5>
+                                            <h5><a class="em" target="_blank" href="http://fenqi.taoche.com/www/<%=cbe.Serial.AllSpell%>/m<%=cbe.Id%>/?from=yc18&amp;leads_source=p003003">首付<%= priceComputer.LoanFirstDownPayments > 0 ? ((double)(priceComputer.LoanFirstDownPayments + priceComputer.AcquisitionTax + priceComputer.Compulsory + priceComputer.Insurance + priceComputer.VehicleTax + priceComputer.Chepai) / 10000).ToString("F2") + "万" : "暂无"%></a></h5>
                                         </div>
                                         <%}%>
                                     </div>

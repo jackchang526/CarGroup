@@ -1502,6 +1502,14 @@ namespace BitAuto.CarChannel.BLL
             userFuel = (userFuel == "无" ? "" : userFuel);
             // 车型报价区间
             string carPriceRange = dicCarPrice.ContainsKey(carID) ? dicCarPrice[carID] : "无";
+            if (!string.IsNullOrEmpty(carPriceRange) && carPriceRange != "")
+            {
+                string[] carPriceArray = carPriceRange.Split('-');
+                if(carPriceArray.Length > 1)
+                {
+                    carPriceRange = string.Concat(carPriceArray[0].Replace("万","") , "-" , carPriceArray[1]);
+                }
+            }
             // 车型图片 先检查车型是否有封面，再检查子品牌封面
             string carPic = WebConfig.DefaultCarPic;
             if (dicCarPhoto.ContainsKey(carID))

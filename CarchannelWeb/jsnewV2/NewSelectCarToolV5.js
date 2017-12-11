@@ -90,7 +90,7 @@ var conditionObj =
         , Domain: window.location.host
         , PriceTimer: 0
         //, FuelConsumption: ""
-        , apiUrl: "http://select24.car.yiche.com/selectcartool/searchresult"
+        , apiUrl: "http://select.car.yiche.com/selectcartool/searchresult"
         , Page: 1
         //初始化页面显示
         , InitPageCondition: function () {

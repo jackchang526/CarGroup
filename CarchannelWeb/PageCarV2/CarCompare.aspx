@@ -163,9 +163,10 @@
         <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
     <%--<script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/jsnew/commons.js,carchannel/jsnew/carcompareforminiV3.min.js,carchannel/jsnew/carSelectSimpleV3.min.js?v=20160120"></script>--%>
      <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/commons.min.js"></script>
-<%--    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/JsForParameterv2.min.js?v=201711021425"></script>--%>
-     <script type="text/javascript" src="/jsnewv2/getareaprice.js?v=2017120401"></script>
-    <script type="text/javascript" src="/jsnewv2/JsForParameterv2.js?v=2017120401"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712110"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/JsForParameterv2.min.js?v=201712110"></script>
+        
+   <%-- <script type="text/javascript" src="/jsnewv2/JsForParameterv2.js?v=2017120401"></script>--%>
     <%--<script type="text/javascript" src="/jsnew/commons.js?v=20150724"></script>
         <script type="text/javascript" src="/jsnew/carcompareforminiV3.js?v=20150733"></script>
         <script type="text/javascript" src="/jsnew/carSelectSimpleV3.js"></script>--%>

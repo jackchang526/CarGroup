@@ -285,7 +285,7 @@
             PageAreaStatistics.init(arr.join());
         });
         function GetSearchResult(apiQueryString,id) {
-            var url = "http://select24.car.yiche.com/selectcartool/searchresult";
+            var url = "http://select.car.yiche.com/selectcartool/searchresult";
             if (apiQueryString.length > 0) {
                 url += "?" + apiQueryString + "&v=20171207";
             }

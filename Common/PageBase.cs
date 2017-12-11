@@ -6279,7 +6279,7 @@ namespace BitAuto.CarChannel.Common
         /// <returns></returns>
         public string GetSerialReferPriceByID(int csID)
         {
-            string result = "暂无指导价";
+            string result = String.Empty;
             Dictionary<int, string> dic = GetAllCsReferPriceRange();
             if (dic != null && dic.Count > 0)
             {

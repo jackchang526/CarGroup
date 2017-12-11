@@ -24,7 +24,7 @@ var anchorFlag = false;
 
 var SuperSelectCarTool = {
     Parameters: new Array()
-    , apiUrl: "http://select24.car.yiche.com/selectcartool/searchresult"
+    , apiUrl: "http://select.car.yiche.com/selectcartool/searchresult"
     , OneLeftScrollFlag: false //滚动菜单是否显示 ，用于 左侧滚动 > 居左距离
     , MenuOffsetTop: 304 //滚动菜单 相对车款头的高度偏移量
 

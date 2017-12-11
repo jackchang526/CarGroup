@@ -2812,7 +2812,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                 //string levelUrl = "/" + ((EnumCollection.SerialAllLevelSpellEnum)levelId).ToString() + "/";
                 string levelUrl = string.Format("/{0}/", CarLevelDefine.GetLevelSpellByName(levelName));
                 if (priceRange.Trim().Length == 0)
-                    priceRange = "暂无报价";
+                    priceRange = "暂无指导价";
                 sb.AppendLine("<Cs>");
                 sb.AppendLine(string.Format("<ID>{0}</ID>", cs.Cs_Id));
                 sb.AppendLine(string.Format("<ShowName>{0}</ShowName>", System.Security.SecurityElement.Escape(cs.Cs_ShowName)));

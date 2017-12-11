@@ -510,17 +510,22 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 PhotoCount = int.Parse(photoCountDic[carID]);
             }
             Dictionary<int, XmlElement> carCoverImg = basicBll.GetCarDefaultPhotoXmlElement();
+            int imageId = 0;
             if (carCoverImg != null && carCoverImg.ContainsKey(carID))
             {
                 XmlElement imageItem = carCoverImg[carID];
-                ImgLink = string.Format("http://photo.bitauto.com/picture/{0}/{1}/"
-                    , cbe.SerialId
-                    , imageItem.Attributes["ImageId"].Value);//imageItem.Attributes["Link"].Value;
-                PicUrl = imageItem.Attributes["ImageUrl"].Value;
-                PicUrl = PicUrl.Replace("_2.", "_4.");
-                CarPicName = string.Format("共{0}张图片", PhotoCount);
+                imageId = ConvertHelper.GetInteger(imageItem.Attributes["ImageId"].Value);
+                if (imageId > 0)
+                {
+                    ImgLink = string.Format("http://photo.bitauto.com/picture/{0}/{1}/"
+                        , cbe.SerialId
+                        , imageItem.Attributes["ImageId"].Value);//imageItem.Attributes["Link"].Value;
+                    PicUrl = imageItem.Attributes["ImageUrl"].Value;
+                    PicUrl = PicUrl.Replace("_2.", "_4.");
+                    CarPicName = string.Format("共{0}张图片", PhotoCount);
+                }
             }
-            else
+            if (imageId == 0)
             {
                 // 用子品牌焦点图
                 List<SerialFocusImage> imgList = serialBLL.GetSerialFocusImageList(cbe.Serial.Id);

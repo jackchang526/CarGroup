@@ -297,6 +297,7 @@ function bindEvent() {
             swipeLeftChildren: '.spl-screen1',
             $swipe: $("#screenCar"),
             $click: $this, //点击对象
+            ph:110,
             fnEnd: function () {
                 //层打开后回调
             },

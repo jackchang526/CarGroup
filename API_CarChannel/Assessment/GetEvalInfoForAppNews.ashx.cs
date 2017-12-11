@@ -20,7 +20,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
     {
 
         /// <summary>
-        /// 为易车app新闻要闻提供的评测库（包含评测报告mongo）数据接口
+        /// 为易车app新闻要闻提供的评测库（包含评测报告mongo）数据接口,参数evaluationId ,status
         /// </summary>
         /// <param name="context"></param>
         public void ProcessRequest(HttpContext context)
@@ -52,6 +52,8 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
             int EvaluationId = 0;
             string evaluationId = context.Request.QueryString["evaluationId"];
             int.TryParse(evaluationId, out EvaluationId);
+            string strStatu =context.Request.QueryString["status"];
+            int.TryParse(strStatu, out status);
 
             List<string> paraList = new List<string>();
             paraList.Add("CreateDateTime");

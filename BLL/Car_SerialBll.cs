@@ -8761,6 +8761,7 @@ namespace BitAuto.CarChannel.BLL
             var list = CacheManager.GetCachedData<List<CarBrandEntity>>(cacheKey);
             if (list == null)
             {
+                list = new List<CarBrandEntity>();
                 //获取数据xml
                 XmlDocument serialXml = AutoStorageService.GetAllAutoXml();
                 if (serialXml != null)
@@ -8771,7 +8772,6 @@ namespace BitAuto.CarChannel.BLL
                         XmlNodeList brands = _BrandNode.SelectNodes("Brand");
                         if (brands.Count > 0)
                         {
-                            list = new List<CarBrandEntity>();
                             foreach (XmlNode brand in brands)
                             {
                                 var serialList = new List<CarSerialEntity>();
@@ -8806,46 +8806,139 @@ namespace BitAuto.CarChannel.BLL
                         }
                     }
                 }
-
-                foreach (var brand in list)
+                if (list != null && list.Any())
                 {
-                    foreach (var serial in brand.SerialList)
+                    foreach (var brand in list)
                     {
-                        if (serial.SaleStatus == 1)
+                        foreach (var serial in brand.SerialList)
                         {
-                            if (serial.MinPrice == 0 && serial.MaxPrice == 0)
+                            if (serial.SaleStatus == 1)
                             {
-                                serial.DealerPrice = "暂无报价";
+                                if (serial.MinPrice == 0 && serial.MaxPrice == 0)
+                                {
+                                    serial.DealerPrice = "暂无报价";
+                                }
+                                else if (serial.MinPrice == 0)
+                                {
+                                    serial.DealerPrice = string.Format("{0}万", serial.MaxPrice > 1000 ? serial.MaxPrice.ToString("F0") : serial.MaxPrice.ToString("F2"));
+                                }
+                                else
+                                {
+                                    serial.DealerPrice = string.Format("{0}-{1}万", serial.MinPrice > 1000 ? serial.MinPrice.ToString("F0") : serial.MinPrice.ToString("F2"), serial.MaxPrice > 1000 ? serial.MaxPrice.ToString("F0") : serial.MaxPrice.ToString("F2"));
+                                }
                             }
-                            else if (serial.MinPrice == 0)
+                            else if (serial.SaleStatus == 0)
                             {
-                                serial.DealerPrice = string.Format("{0}万", serial.MaxPrice > 1000 ? serial.MaxPrice.ToString("F0") : serial.MaxPrice.ToString("F2"));
+                                serial.DealerPrice = "未上市";
                             }
-                            else
+                            else if (serial.SaleStatus == -1)
                             {
-                                serial.DealerPrice = string.Format("{0}-{1}万", serial.MinPrice > 1000 ? serial.MinPrice.ToString("F0") : serial.MinPrice.ToString("F2"), serial.MaxPrice > 1000 ? serial.MaxPrice.ToString("F0") : serial.MaxPrice.ToString("F2"));
+                                serial.DealerPrice = "停销";
                             }
-                        }
-                        else if (serial.SaleStatus == 0)
-                        {
-                            serial.DealerPrice = "未上市";
-                        }
-                        else if (serial.SaleStatus == -1)
-                        {
-                            serial.DealerPrice = "停销";
                         }
                     }
+                    CacheManager.InsertCache(cacheKey, list, 30);//缓存30分钟
+                    if (!allSerial)
+                    {
+                        list.ForEach(l =>
+                        {
+                            l.SerialList.RemoveAll(s => s.SaleStatus < 0); //移除停销车型
+                        });
+                    }
                 }
-                CacheManager.InsertCache(cacheKey, list, 30);//缓存30分钟
-            }
-            if (!allSerial)
-            {
-                list.ForEach(l =>
-                {
-                    l.SerialList.RemoveAll(s => s.SaleStatus < 0); //移除停销车型
-                });
             }
             return list;
+        }
+
+        /// <summary>
+        /// 获取车型图片数量
+        /// </summary>
+        /// <param name="masterId"></param>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public Dictionary<int, int> GetSerialListImagesCount(int masterId, List<CarBrandEntity> list)
+        {
+            string cacheKey = string.Format("car_getseriallistimagescount_{0}", masterId);
+            object allSerialPicAndCount = null;
+            CacheManager.GetCachedData(cacheKey, out allSerialPicAndCount);
+            if (allSerialPicAndCount == null)
+            {
+                Dictionary<int, int> imageCounts = new Dictionary<int, int>();
+                if (list != null && list.Any())
+                {
+                    List<int> serialIds = new List<int>();
+                    foreach (var brand in list)
+                    {
+                        serialIds.AddRange(brand.SerialList.Select(x => x.SerialId));
+                    }
+                    var ids = serialIds.Select(x => x).Distinct();
+                    foreach (var item in ids)
+                    {
+                        imageCounts.Add(item, GetSerialPicAndCountByCsID(item));
+                    }
+                    CacheManager.InsertCache(cacheKey, imageCounts, 10);
+                }
+                return imageCounts;
+            }
+            else
+            {
+                return allSerialPicAndCount as Dictionary<int, int>;
+            }
+        }
+
+        /// <summary>
+        /// 根据车型ID获取图片数量
+        /// </summary>
+        /// <param name="csID"></param>
+        /// <returns></returns>
+        private int GetSerialPicAndCountByCsID(int csID)
+        {
+            int csCount = 0;
+            string cacheKey = string.Format("Car_AppApi_GetSerialPicAndCountByCsID_{0}", csID);
+            object allSerialPicAndCount = null;
+            CacheManager.GetCachedData(cacheKey, out allSerialPicAndCount);
+            if (allSerialPicAndCount == null)
+            {
+                var imgDoc = this.GetAllSerialConverImgAndCount();
+                if (imgDoc != null)
+                {
+                    XmlNode imgNode = imgDoc.SelectSingleNode("/SerialList/Serial[@SerialId='" + csID + "']");
+                    if (imgNode != null)
+                    {
+                        csCount = ConvertHelper.GetInteger(imgNode.Attributes["ImageCount"].Value);
+                    }
+                }
+                CacheManager.InsertCache(cacheKey, csCount, 10);
+                return csCount;
+            }
+            else
+            {
+                return int.Parse(allSerialPicAndCount + string.Empty);
+            }
+        }
+
+
+        /// <summary>
+        /// 车系封面图及图片数量
+        /// </summary>
+        /// <returns></returns>
+        private XmlDocument GetAllSerialConverImgAndCount()
+        {
+            string cacheKey = "Car_GetAllSerialConverImgAndCount";
+            object allSerialPicAndCount = null;
+            CacheManager.GetCachedData(cacheKey, out allSerialPicAndCount);
+            if (allSerialPicAndCount == null)
+            {
+                XmlDocument xmlDoc = new XmlDocument();
+                string photoDataPath = Path.Combine(PhotoImageConfig.SavePath, PhotoImageConfig.SerialCoverImageAndCountPath);
+                xmlDoc.Load(photoDataPath);
+                CacheManager.InsertCache(cacheKey, xmlDoc, 60);
+                return xmlDoc;
+            }
+            else
+            {
+                return allSerialPicAndCount as XmlDocument;
+            }
         }
 
         /// <summary>

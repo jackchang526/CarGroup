@@ -644,25 +644,7 @@ namespace AppApi.Controllers
                 return JsonNet(new { status = (int)WebApiResultStatus.参数错误, message = "参数有误" }, JsonRequestBehavior.AllowGet);
             }
             var list = CarSerialService.GetCarBrandAndSerial(masterId, allSerial.GetValueOrDefault(false));
-            Dictionary<int, int> imageCounts = new Dictionary<int, int>();
-            if (list != null && list.Any())
-            {
-                List<int> serialIds = new List<int>();
-                foreach (var brand in list)
-                {
-                    serialIds.AddRange(brand.SerialList.Select(x => x.SerialId));
-                }
-                var ids = serialIds.Select(x => x).Distinct();
-
-                foreach (var item in ids)
-                {
-                    imageCounts.Add(item, GetSerialPicAndCountByCsID(item));
-                }
-            }
-            else
-            {
-                list = new List<CarBrandEntity>();
-            }
+            Dictionary<int, int> imageCounts = GetSerialListImagesCount(masterId, list);
             return JsonNet(new
             {
                 status = 1,
@@ -676,6 +658,42 @@ namespace AppApi.Controllers
         }
 
         /// <summary>
+        /// 获取车型图片数量
+        /// </summary>
+        /// <param name="masterId"></param>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        private Dictionary<int, int> GetSerialListImagesCount(int masterId, List<CarBrandEntity> list)
+        {
+            string cacheKey = string.Format("car_getseriallistimagescount_{0}", masterId);
+            object allSerialPicAndCount = null;
+            CacheManager.GetCachedData(cacheKey, out allSerialPicAndCount);
+            if (allSerialPicAndCount == null)
+            {
+                Dictionary<int, int> imageCounts = new Dictionary<int, int>();
+                if (list != null && list.Any())
+                {
+                    List<int> serialIds = new List<int>();
+                    foreach (var brand in list)
+                    {
+                        serialIds.AddRange(brand.SerialList.Select(x => x.SerialId));
+                    }
+                    var ids = serialIds.Select(x => x).Distinct();
+                    foreach (var item in ids)
+                    {
+                        imageCounts.Add(item, GetSerialPicAndCountByCsID(item));
+                    }
+                    CacheManager.InsertCache(cacheKey, imageCounts, 60);
+                }
+                return imageCounts;
+            }
+            else
+            {
+                return allSerialPicAndCount as Dictionary<int, int>;
+            }
+        }
+
+        /// <summary>
         /// 根据车型ID获取图片数量
         /// </summary>
         /// <param name="csID"></param>
@@ -683,16 +701,26 @@ namespace AppApi.Controllers
         private int GetSerialPicAndCountByCsID(int csID)
         {
             int csCount = 0;
-            var imgDoc = this.GetAllSerialConverImgAndCount();
-            if (imgDoc != null)
+            string cacheKey = "Car_GetSerialPicAndCountByCsID_{0}";
+            object allSerialPicAndCount = null;
+            CacheManager.GetCachedData(cacheKey, out allSerialPicAndCount);
+            if (allSerialPicAndCount == null)
             {
-                XmlNode imgNode = imgDoc.SelectSingleNode("/SerialList/Serial[@SerialId='" + csID + "']");
-                if (imgNode != null)
+                var imgDoc = this.GetAllSerialConverImgAndCount();
+                if (imgDoc != null)
                 {
-                    csCount = ConvertHelper.GetInteger(imgNode.Attributes["ImageCount"].Value);
+                    XmlNode imgNode = imgDoc.SelectSingleNode("/SerialList/Serial[@SerialId='" + csID + "']");
+                    if (imgNode != null)
+                    {
+                        csCount = ConvertHelper.GetInteger(imgNode.Attributes["ImageCount"].Value);
+                    }
                 }
+                return csCount;
             }
-            return csCount;
+            else
+            {
+                return int.Parse(allSerialPicAndCount + string.Empty);
+            }
         }
 
 

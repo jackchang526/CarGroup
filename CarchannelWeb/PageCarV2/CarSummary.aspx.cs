@@ -1019,7 +1019,14 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 }
                 else
                 {
-                    sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>");
+                    if (item.Attributes.GetNamedItem("Name").Value == "商家报价")
+                    {
+                        sbTemp.AppendLine("<td><span class=\"title\" id=\"car-area-priceitem\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>");
+                    }
+                    else
+                    {
+                        sbTemp.AppendLine("<td><span class=\"title\">" + item.Attributes.GetNamedItem("Name").Value + "：</span></td>");
+                    }
                     if (pvalue.IndexOf(",") == -1)
                     {
                         //解决 变速箱挡位合并 单位的问题

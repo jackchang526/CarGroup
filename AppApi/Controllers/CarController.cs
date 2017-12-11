@@ -636,7 +636,7 @@ namespace AppApi.Controllers
         /// <param name="masterId"></param>
         /// <param name="allSerial"></param>
         /// <returns></returns>
-        //[OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
+        [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
         public ActionResult GetSerialListWithImage(int masterId, bool? allSerial)
         {
             if (masterId <= 0)

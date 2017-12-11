@@ -190,7 +190,7 @@ function SetSeeToSee() {
             if (price != null && price.length > 0) {
                 resultStr += "<li class=\"price\"><a target=\"_blank\" href=\"" + url + "\">" + price + "</a></li>";
             } else {
-                resultStr += "<li class=\"price\"><a target=\"_blank\" href=\"" + url + "\">暂无报价</a></li>";
+                resultStr += "<li class=\"price\"><a target=\"_blank\" href=\"" + url + "\">暂无指导价</a></li>";
             }
             resultStr += "</div>";
         }

@@ -11,8 +11,10 @@
     <!--[if lt IE 9]>
     <script src="http://img1.bitautoimg.com/uimg/2016/yiche/js/html5shiv.min.js"></script>
     <script src="http://img1.bitautoimg.com/uimg/2016/yiche/js/Respond.min.js"></script>
-    <![endif]-->     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="renderer" content="webkit" />    <meta name="Keywords" content="<%= serialSeoName%>,<%= serialSeoName%>报价,<%= serialSeoName%>价格,<%= serialSeoName%>油耗,<%= serialSeoName%>图片,易车网,car.bitauto.com" />
+    <![endif]-->
+     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit" />
+    <meta name="Keywords" content="<%= serialSeoName%>,<%= serialSeoName%>报价,<%= serialSeoName%>价格,<%= serialSeoName%>油耗,<%= serialSeoName%>图片,易车网,car.bitauto.com" />
     <meta name="Description" content="易车提供<%= serialSeoName%>最新报价,<%= serialSeoName%>图片, <%= serialSeoName%>油耗,查<%= serialSeoName%>最新价格,就上易车网" />
     <link rel="canonical" href="http://car.bitauto.com/<%=serialSpell %>/<%=carYear.ToString()%>/" />
     <!--#include file="~/ushtml/0000/yiche_2016_cube_chexingzongshu_style-1264.shtml"-->
@@ -66,7 +68,7 @@
                                     <div class="top">
                                         <%if (!isNoSaleYear)
                                           { %>
-                                        <h5>参考成交价：<a href="/<%= serialSpell %>/baojia/" target="_blank"><em><%=minPriceRange %></em></a>
+                                        <h5 id="cs-area-price" >参考成交价：<a href="/<%= serialSpell %>/baojia/" target="_blank"><em><%=minPriceRange %></em></a>
                                              <% if (taxContent != "" && cse.Cs_SaleState == "在销")
                                                 { %>
                                                 <a title="<%=taxContent %>" href="http://news.bitauto.com/sum/20170105/1406774416.html" target="_blank"  class="ico-shangchengtehui"><%= taxContent %></a> </h5>
@@ -236,13 +238,16 @@
 
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/serialexternalcommon.min.js?v=2016122815"></script>
+       <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712110"></script>
     <script language="javascript" type="text/javascript" defer="defer">
+        GetSerialTreeAreaPriceRange(<%=serialId %>);
     	getDirectSell(<%=serialId %>,'<%=serialSpell %>',bit_locationInfo.cityId,'yc-cxzs-year-1');
         getDemandAndJiangJia(<%=serialId %>,'<%=serialSpell %>',bit_locationInfo.cityId);
     	<%= JsTagForYear %>
     	var CarCommonBSID = <%=serialBaseInfo.MasterbrandId%>;
     	var CarCommonCBID = <%=cse.Cb_Id%>;
-    	var CarCommonCSID = <%=serialId%>;
+        var CarCommonCSID = <%=serialId%>;
+        GetCarAreaPriceRange();
     </script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/ucarserialcity.min.js?v=2016122815"></script>
     <script type="text/javascript">

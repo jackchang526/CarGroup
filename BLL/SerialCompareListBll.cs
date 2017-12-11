@@ -37,12 +37,13 @@ namespace BitAuto.CarChannel.BLL
                         SerialShowName = ConvertHelper.GetString(dr["csShowName"]).Trim(),
                         SerialAllSpell = ConvertHelper.GetString(dr["allspell"]),
                         SerialImageUrl = Car_SerialBll.GetSerialImageUrl(serialId),
-                        SerialPriceRange = pagebase.GetSerialPriceRangeByID(serialId),
+                        //改为指导价
+                        SerialPriceRange = pagebase.GetSerialReferPriceByID(serialId),
                         ToSerialId = toSerialId,
                         ToSerialShowName = ConvertHelper.GetString(dr["tocsShowName"]).Trim(),
                         ToSerialAllSpell = ConvertHelper.GetString(dr["toallspell"]),
                         ToSerialImageUrl = Car_SerialBll.GetSerialImageUrl(toSerialId),
-                        ToSerialPriceRange = pagebase.GetSerialPriceRangeByID(toSerialId),
+                        ToSerialPriceRange = pagebase.GetSerialReferPriceByID(toSerialId),
                         CompareCount = ConvertHelper.GetInteger(dr["CompareCount"])
                     });
                 }

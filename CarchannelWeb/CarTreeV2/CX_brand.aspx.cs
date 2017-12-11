@@ -126,7 +126,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 			}
 
 			// 子品牌报价区间
-			Dictionary<int, string> dicCsPrice = base.GetAllCsPriceRange();
+			//Dictionary<int, string> dicCsPrice = base.GetAllCsPriceRange();
 
 			// 子品牌封面
 			Dictionary<int, string> dicCsPhoto = base.GetAllSerialPicURL(true);
@@ -249,8 +249,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 						string imgUrl = dicCsPhoto.ContainsKey(serialId) ? dicCsPhoto[serialId].Replace("_2.", "_3.") : WebConfig.DefaultCarPic;
 						// string csLevel = ConvertHelper.GetString(dr["cslevel"]);
 						string sellState = ConvertHelper.GetString(dr["CsSaleState"]);
-						string priceRang = dicCsPrice.ContainsKey(serialId) ? dicCsPrice[serialId] : "";
-						string subsidiesString = "";
+						//string priceRang = dicCsPrice.ContainsKey(serialId) ? dicCsPrice[serialId] : "";
+                        //改为指导价
+                        string priceRang = base.GetSerialReferPriceByID(serialId);
+                        string subsidiesString = "";
 						string bestCarStr = "";
 
 						// 新10佳车 add by chengl Dec.5.2013
@@ -292,7 +294,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
                         }
                         else if (priceRang.Trim().Length == 0 && sellState.Trim() == "在销")
 						{
-							priceRang = "暂无报价";
+							priceRang = "暂无指导价";
 						}
 						#endregion
 

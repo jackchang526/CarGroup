@@ -106,7 +106,7 @@
                                 <a href="/<%=_SerialSpell %>/" target="_blank"><img src="<%=serialImageUrl %>" alt="" /></a>
                             </div>
                             <div class="desc">
-                                <div class="top"><h5>
+                                <div class="top"><h5 id="cs-area-price">
                                     <%if (!(sic.CsPriceRange == "未上市" || sic.CsPriceRange == "停售" || string.IsNullOrEmpty(sic.CsPriceRange) || sic.CsPriceRange == "暂无报价"))
                                       { %>
 							            参考成交价：<a href="http://price.bitauto.com/brand.aspx?newbrandId=<%=_SerialId %>"
@@ -166,12 +166,14 @@
             <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
             <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/serialexternalcommon.min.js?v=2016122817"></script>
               <%--  <script type="text/javascript" src="/jsnewV2/serialexternalcommon.js"></script>--%>
-               
+            <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712110"></script>
+              
 			<script type="text/javascript">
+                GetSerialTreeAreaPriceRange(<%=_SerialId %>);
 				//直销
 				getDirectSell(<%=_SerialId %>,'<%=_SerialSpell %>',bit_locationInfo.cityId,'yc-car-tree-1');
 				//getDemandAndJiangJia(<%=_SerialId %>,'<%=_SerialSpell %>',bit_locationInfo.cityId);
-				
+                GetCarAreaPriceRange();
 			    $(function () {
 			        var timer=null;
 				    $("#pop_nosale").hover(

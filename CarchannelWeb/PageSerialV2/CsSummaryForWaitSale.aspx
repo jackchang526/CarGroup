@@ -491,6 +491,7 @@
     <ins id="div_c62213b4-2900-4ed8-967d-3f3866014dc5" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="c62213b4-2900-4ed8-967d-3f3866014dc5"></ins>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryrest.min.js?v=201711141901"></script>
     <%--<script type="text/javascript" src="/jsnewv2/cssummaryrest.js?v=20170109"></script>--%>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712110"></script>
     <script type="text/javascript">
         var CarCommonBSID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.MasterBrandId %>"; //大数据组统计用
         var CarCommonCBID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.Id %>";
@@ -501,6 +502,7 @@
             GetVedioNum();
             GetSerialWaiGuanNeiShi();
             GetCheDai();
+            GetCarAreaPriceRange();
         })();
         //焦点颜色图src设置
         $("div[id^='focuscolor_'] img").each(function(i,n){

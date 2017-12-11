@@ -19,8 +19,9 @@ namespace BitAuto.CarChannel.Model
         /// <summary>
         /// 参配本地缓存
         /// carids,逗号分开
+        /// cityid
         /// </summary>
-        public static string CarParameterListKey = "car.appapi.carparameterlist_{0}_{1}";
+        public static string CarParameterListKey = "car.appapi.carparameterlist_{0}_{1}_{2}";
         /// <summary>
         /// 参配Memcached
         /// carids,逗号分开

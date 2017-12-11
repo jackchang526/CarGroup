@@ -125,7 +125,7 @@ namespace AppApi.Controllers
         /// <param name="serialId"></param>
         /// <returns></returns>
         [OutputCache(Duration = 300, Location = OutputCacheLocation.Downstream)]
-        public ActionResult GetCarStylePropertys(string carIds, string version)
+        public ActionResult GetCarStylePropertys(string carIds,int? cityId, string version)
         {
             if (string.IsNullOrWhiteSpace(carIds) || (!Regex.IsMatch(carIds, @"([,0-9]*)")))
             {
@@ -146,7 +146,7 @@ namespace AppApi.Controllers
                 }
             }
 
-            var paramList = CarBasicService.GetCarParamterListWithWebCacheByCarIds(carList, isVersion87);
+            var paramList = CarBasicService.GetCarParamterListWithWebCacheByCarIds(carList, isVersion87, cityId.GetValueOrDefault(0));
             return AutoJson(new
             {
                 success = true,

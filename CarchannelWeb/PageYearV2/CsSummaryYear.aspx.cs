@@ -360,7 +360,14 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
 				//根据车型列表获取年款信息
 				GetSerialYearInfoByCarList(currentYearCarList);
 				sb.AppendFormat("<div class=\"list-table\">", 0);
-				sb.Append("<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\">");
+                if (!isNoSaleYear)
+                {
+                    sb.Append("<table id=\"compare_sale\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\">");
+                }
+                else
+                {
+                    sb.Append("<table id=\"compare_nosale\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\">");
+                }
 				sb.Append("<colgroup><col width=\"40%\"><col width=\"8%\"><col width=\"11%\"><col width=\"10%\"><col width=\"11%\"><col width=\"20%\"></colgroup>");
                 sb.Append("<tbody>");
 				sb.Append(GetCarListHtml(currentYearCarList, maxPv));
@@ -483,7 +490,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
 				}
 
                 //start 处理不同排量对应的头行
-                carListHtml.Add(string.Format("<tr id=\"car_filter_gid_{0}\" class=\"{1}\">", groupIndex, groupIndex == 0 ? "" : "table-tit"));
+                carListHtml.Add(string.Format("<tr id=\"car_filter_gid_{0}\" class=\"table-tit\">", groupIndex));
                 if (!isNoSaleYear)
                 {
                     carListHtml.Add(string.Format("<th class=\"first-item\"><strong>{0}</strong> {1}</th>",
@@ -493,7 +500,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
                     carListHtml.Add("<th>变速箱</th>");
                     carListHtml.Add("<th class=\"txt-right txt-right-padding\">指导价</th>");
                     carListHtml.Add("<th class=\"txt-right\">参考最低价</th>");
-                    carListHtml.Add("<th><div class=\"doubt\" onmouseover=\"javascript:$(this).children('.prompt-layer').show();return false;\" onmouseout=\"javascript:$(this).children('.prompt-layer').hide();return false;\"><div class=\"prompt-layer\" style=\"display:none\">全国参考最低价</div></div></th>");
+                    carListHtml.Add("<th>&nbsp;</th>");
+                    //carListHtml.Add("<th><div class=\"doubt\" onmouseover=\"javascript:$(this).children('.prompt-layer').show();return false;\" onmouseout=\"javascript:$(this).children('.prompt-layer').hide();return false;\"><div class=\"prompt-layer\" style=\"display:none\">全国参考最低价</div></div></th>");
                 }
                 else
                 {
@@ -1059,7 +1067,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
 						htmlCode.AppendFormat("<li class=\"name no-wrap\"><a target=\"_blank\" href=\"/{0}/\">{1}</a></li>",
 							sts.ToCsAllSpell.ToString().ToLower(),
 							csName);
-					htmlCode.AppendFormat("<li class=\"price\"><a href=\"{1}\">{0}</a></li>",sts.ToCsSaleState=="待销"?"未上市": (sts.ToCsPriceRange.ToString().Length>0?StringHelper.SubString(sts.ToCsPriceRange.ToString(), 14, false):"暂无报价"),sts.ToCsAllSpell.ToString().ToLower());
+					htmlCode.AppendFormat("<li class=\"price\"><a href=\"{1}\">{0}</a></li>",sts.ToCsSaleState=="待销"?"未上市": (sts.ToCsPriceRange.ToString().Length>0?StringHelper.SubString(sts.ToCsPriceRange.ToString(), 14, false):"暂无指导价"),sts.ToCsAllSpell.ToString().ToLower());
 					htmlCode.AppendFormat("</ul>");
                     htmlCode.AppendFormat("</div>");
 				}
@@ -1135,7 +1143,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
                 {
                     continue;
                 }
-                string priceRang = base.GetSerialPriceRangeByID(entity.SerialId);
+                string priceRang = base.GetSerialReferPriceByID(entity.SerialId);
                 if (entity.SaleState == "待销")
                 {
                     IsExitsUrl = false;
@@ -1144,7 +1152,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
                 else if (priceRang.Trim().Length == 0)
                 {
                     IsExitsUrl = false;
-                    priceRang = "暂无报价";
+                    priceRang = "暂无指导价";
                 }
                 if (IsExitsUrl)
                 {

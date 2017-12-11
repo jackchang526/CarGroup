@@ -372,7 +372,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 else
                 {
                     string priceUrl = "http://car.bitauto.com/" + cbe.Serial.AllSpell.ToLower() + "/m" + carID + "/baojia/";
-                    carPrice = "<a target=\"_blank\" href=\"" + priceUrl + "\"><em>" + cfcs.CarPriceRange.Replace("万", "") + "万</em></a>";
+                    carPrice = "<a target=\"_blank\" href=\"" + priceUrl + "\"><em id=\"car-area-price\">" + cfcs.CarPriceRange.Replace("万", "") + "万</em></a>";
                 }
             }
         }
@@ -510,17 +510,22 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 PhotoCount = int.Parse(photoCountDic[carID]);
             }
             Dictionary<int, XmlElement> carCoverImg = basicBll.GetCarDefaultPhotoXmlElement();
+            int imageId = 0;
             if (carCoverImg != null && carCoverImg.ContainsKey(carID))
             {
                 XmlElement imageItem = carCoverImg[carID];
-                ImgLink = string.Format("http://photo.bitauto.com/picture/{0}/{1}/"
-                    , cbe.SerialId
-                    , imageItem.Attributes["ImageId"].Value);//imageItem.Attributes["Link"].Value;
-                PicUrl = imageItem.Attributes["ImageUrl"].Value;
-                PicUrl = PicUrl.Replace("_2.", "_4.");
-                CarPicName = string.Format("共{0}张图片", PhotoCount);
+                imageId = ConvertHelper.GetInteger(imageItem.Attributes["ImageId"].Value);
+                if (imageId > 0)
+                {
+                    ImgLink = string.Format("http://photo.bitauto.com/picture/{0}/{1}/"
+                        , cbe.SerialId
+                        , imageItem.Attributes["ImageId"].Value);//imageItem.Attributes["Link"].Value;
+                    PicUrl = imageItem.Attributes["ImageUrl"].Value;
+                    PicUrl = PicUrl.Replace("_2.", "_4.");
+                    CarPicName = string.Format("共{0}张图片", PhotoCount);
+                }
             }
-            else
+            if (imageId == 0)
             {
                 // 用子品牌焦点图
                 List<SerialFocusImage> imgList = serialBLL.GetSerialFocusImageList(cbe.Serial.Id);
@@ -1146,7 +1151,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                         htmlCode.AppendFormat("<li class=\"name no-wrap\"><a target=\"_blank\" href=\"/{0}/\">{1}</a></li>",
                             sts.ToCsAllSpell.ToString().ToLower(),
                             csName);
-                    htmlCode.AppendFormat("<li class=\"price\"><a href=\"{1}\">{0}</a></li>", sts.ToCsSaleState == "待销" ? "未上市" : (sts.ToCsPriceRange.ToString().Length > 0 ? StringHelper.SubString(sts.ToCsPriceRange.ToString(), 14, false) : "暂无报价"), sts.ToCsAllSpell.ToString().ToLower());
+                    htmlCode.AppendFormat("<li class=\"price\"><a href=\"{1}\">{0}</a></li>", sts.ToCsSaleState == "待销" ? "未上市" : (sts.ToCsPriceRange.ToString().Length > 0 ? StringHelper.SubString(sts.ToCsPriceRange.ToString(), 14, false) : "暂无指导价"), sts.ToCsAllSpell.ToString().ToLower());
                     htmlCode.AppendLine("</ul>");
                     htmlCode.AppendFormat("</div>");
                 }
@@ -1191,7 +1196,9 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                 {
                     continue;
                 }
-                string priceRang = base.GetSerialPriceRangeByID(entity.SerialId);
+                //string priceRang = base.GetSerialPriceRangeByID(entity.SerialId);
+                //价格取指导价
+                string priceRang = base.GetSerialReferPriceByID(entity.SerialId);
                 if (entity.SaleState == "待销")
                 {
                     IsExitsUrl = false;

@@ -63,39 +63,41 @@
 <!--loading模板 end -->
 <!--车型模板 start-->
 <script type="text/template" id="carTemplate">
-    <div class="choose-car-name-close bybrand_list">
-        <div class="brand-logo-none-border"><img /></div>
-        <span class="brand-name"></span>
-        <!-- <a href="#" class="choose-car-btn-close">关闭</a> -->
+    <div class="tt-list absolute">
+        <div class="choose-car-name-close bybrand_list">
+            <div class="brand-logo-none-border"><img /></div>
+            <span class="brand-name"></span>
+            <!-- <a href="#" class="choose-car-btn-close">关闭</a> -->
+        </div>
+        <div class="clear"></div>
+        { for(var i = 0 ; i < list.length ; i++){ }
+        <!-- 车款列表 start -->
+        {if(list[i].Child.length > 0){ }
+        <div class="tt-small">
+            <span>{= list[i].BrandName }</span>
+        </div>
+        {}}
+        <!-- 图文混排横向 start -->
+        <div class="pic-txt-h pic-txt-9060">
+            <ul>
+                { for(var j = 0 ; j < list[i].Child.length ; j++){ }
+                <li {=list[i].Child[j].SerialId.toString() ==(api.car.currentid.toString()) ? 'class="current"':''}>
+                    <a class="imgbox-2" data-action="models" data-id="{= list[i].Child[j].SerialId}" href="#">
+                        <div class="img-box">
+                            <img src="{= list[i].Child[j].ImageUrl}" />
+                        </div>
+                        <div class="c-box">
+                            <h4>{= list[i].Child[j].SerialName }</h4>
+                            <p><strong>{=list[i].Child[j].CsSaleState=="停销"?"停售":list[i].Child[j].Price}</strong></p>
+                        </div>
+                    </a>
+                </li>
+                {}}
+            </ul>
+        </div>
+        <!-- 图文混排横向 end -->
+        {}}
     </div>
-    <div class="clear"></div>
-    { for(var i = 0 ; i < list.length ; i++){ }
-    <!-- 车款列表 start -->
-    {if(list[i].Child.length > 0){ }
-    <div class="tt-small">
-        <span>{= list[i].BrandName }</span>
-    </div>
-    {}}
-    <!-- 图文混排横向 start -->
-    <div class="pic-txt-h pic-txt-9060">
-        <ul>
-            { for(var j = 0 ; j < list[i].Child.length ; j++){ }
-            <li {=list[i].Child[j].SerialId.toString() ==(api.car.currentid.toString()) ? 'class="current"':''}>
-                <a class="imgbox-2" data-action="models" data-id="{= list[i].Child[j].SerialId}" href="#">
-                    <div class="img-box">
-                        <img src="{= list[i].Child[j].ImageUrl}" />
-                    </div>
-                    <div class="c-box">
-                        <h4>{= list[i].Child[j].SerialName }</h4>
-                        <p><strong>{=list[i].Child[j].CsSaleState=="停销"?"停售":list[i].Child[j].Price}</strong></p>
-                    </div>
-                </a>
-            </li>
-            {}}
-        </ul>
-    </div>
-    <!-- 图文混排横向 end -->
-    {}}
 </script>
 <!--车型模板 end-->
 

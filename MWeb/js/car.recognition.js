@@ -1,9 +1,17 @@
 $(function () {
-    var uploadApi = "http://mps.yiche.com/pic/upload?v=1" //图片上传接口
-    var checkApiLocal = "http://mps219.yiche.com/url/?callback=funtest&transformurl="; // 本地图片识别接口
-    var checkApi = "http://car.m.yiche.com/recognition/api?img=" //图片识别接口
+    // edit by hepw 20171206 为支持https
+    var curprotocol = "http:";
+    if ('https:' == document.location.protocol) {
+        curprotocol = "https:";
+    }
+    var uploadApi = curprotocol+"//mps.yiche.com/pic/upload?v=1" //图片上传接口
+    var checkApiLocal = curprotocol +"//mps219.yiche.com/url/?callback=funtest&transformurl="; // 本地图片识别接口
+    var checkApi = curprotocol +"//car.m.yiche.com/recognition/api?img=" //图片识别接口
     var selectApi = "http://api.car.bitauto.com/carinfo/getserialinfo.ashx?dept=getserialbaseinfobyidjson&csid=" //车型数据接口
-
+    if ('https:' == document.location.protocol) {
+        selectApi = "https://ngcar.yiche.com/carapi/carinfo/getserialinfo.ashx?dept=getserialbaseinfobyidjson&csid=";
+    }
+    
     var curImgShoutCut = ""; //当前识别的图片的缩略图
     var orientation; //当前图片方向
     var recognitionCount = 0; //当前识别出的车型
@@ -89,7 +97,7 @@ $(function () {
             getImgData(e.target.result, orientation, file, function (canvas) {
 
                 var f_size = file.size
-                console.log("f_size:" + f_size);
+                ///console.log("f_size:" + f_size);
                 /*将转换后的图片下载到本地*/
                 /*
                 var imgUri = data; // 获取生成的图片的url
@@ -118,14 +126,14 @@ $(function () {
                 */
 
                 blob = dataURLtoBlob(data);
-                console.log("blob8:" + blob.size);
+                ///console.log("blob8:" + blob.size);
 
                 if (blob.size >= 1024 * 300) {
                     data = canvas.toDataURL("image/jpeg", .75)
                     blob = dataURLtoBlob(data);
                     console.log("blob75:" + blob.size);
                 }
-                console.log("图片压缩后：" + (blob.size / 1024) + "K");
+                ///console.log("图片压缩后：" + (blob.size / 1024) + "K");
                 if (blob.size < minImageSize) {
                     ////alert("blob0:" + blob.size);
                     //data = canvas.toDataURL("image/jpeg", 1);
@@ -288,9 +296,12 @@ $(function () {
             },
             success: function (data) {
                 var resultdata = new FormData();
-                console.log(data);
+                ///console.log(data);
                 togglePage("recg");
                 curImgShoutCut = data.url.replace("cargroup", "newsimg-180-w0/cargroup");
+                if ('https:' == document.location.protocol) {
+                    curImgShoutCut = curImgShoutCut.replace("http:", "https:");
+                }
                 //console.log(curImgShoutCut);
                 recognition(data.url);
                 //recognitionLocal(data.url);
@@ -413,7 +424,7 @@ $(function () {
             beforeSend: function () {
             },
             success: function (data) {
-                console.log(data);
+                ///console.log(data);
                 if (data.msg === "OK") {
                     //ProcessRecog(data.result.model.data);
                     ProcessRecogNew(data.result.model.data);
@@ -447,12 +458,21 @@ $(function () {
         }
         if (data != null && data.length > 0) {
             RequestFirstCarModelData(data, 0);
+        } else {
+            showErrorMsg("fail");
+            InitStatus();
         }
     }
 
 
     // 异步请求车型数据 idx参数是为区分当前是第几辆车，因为第一辆车要特殊处理
     function RequestFirstCarModelData(model, idx) {
+        if (idx >= 5)
+        {
+            showErrorMsg("fail");
+            InitStatus();
+            return;
+        }
         if (isEmptyObject(model[idx])) //当前为空直接跳到下一个
         {
             idx++;
@@ -488,7 +508,7 @@ $(function () {
                         return;
                     }
                 }
-                console.log(car);
+                ///console.log(car);
                 //console.log(model);
                 showMainPic(car, model[idx - 1]);
                 ProcessCarModelDataList(model, idx);
@@ -557,7 +577,7 @@ $(function () {
                 if (isEmptyObject(car)) {
                     return;
                 }
-                console.log(car);
+                ///console.log(car);
                 //console.log(model);
                 showListPic(car, model);
             },
@@ -584,7 +604,11 @@ $(function () {
         // 右上角小图
         $("#curImgShoutCut").attr("src", curImgShoutCut);
         $("#mainpic a").attr("href", "http://car.m.yiche.com/" + data.AllSpell);
-        $("#mainpic a img").attr("src", data.Image.replace("_6.", "_8."));
+        if ('https:' == document.location.protocol) {
+            $("#mainpic a img").attr("src", data.Image.replace("http:", "https:").replace("_6.", "_8."));
+        } else {
+            $("#mainpic a img").attr("src", data.Image.replace("_6.", "_8."));
+        }
         $("#mainpic .sc-car-con .sc-car-num strong").text(parseInt(model.prob * 100) + '%');
         $("#mainpic .sc-car-con a dl dt").text(eval("'" + data.ShowName + "'"));
         $("#mainpic .sc-car-con a dl dd").text(data.Price);
@@ -598,7 +622,11 @@ $(function () {
         var li = '';
         li += '<li>';
         li += '     <a target="_blank" href="http://car.m.yiche.com/' + data.AllSpell + '">';
-        li += '         <img src="' + data.Image + '">';
+        if ('https:' == document.location.protocol) {
+            li += '         <img src="' + data.Image.replace("http:", "https:") + '">';
+        } else {
+            li += '         <img src="' + data.Image + '">';
+        }
         li += '         <dl>';
         li += '             <dt>' + eval("'" + data.ShowName + "'") + '</dt>';
         li += '             <dd>' + data.Price + '</dd>';

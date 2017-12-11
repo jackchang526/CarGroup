@@ -119,7 +119,9 @@
                                             </div>
                                             <!--弹层 end-->
                                             <%}%>
-                                            <script type="text/javascript">
+                                            <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
+                                               <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712110"></script>
+                                            <script type="text/javascript">                     
                                                 (function() {
                                                     $("#quanKuan").mouseover(function() {
                                                         $("#loanLayer").show();
@@ -129,6 +131,7 @@
                                                         }
                                                     });
                                                 })();
+                                                GetStyleAreaPriceRange(bit_locationInfo.cityId, <%= carID.ToString() %>, bit_locationInfo.cityName);
                                             </script>
                                         </div>
 
@@ -252,7 +255,7 @@
                          </div>
                      </div>
 
-                     <%--<div class="layout-1">
+                    <%--<div class="layout-1">
                          <script type="text/javascript" id="zp_script_246" src="http://mcc.chinauma.net/static/scripts/p.js?id=246&w=240&h=220&sl=1&delay=5"
                              zp_type="1"></script>
                      </div>--%>
@@ -337,6 +340,7 @@
 </script>
 
 <script src="http://image.bitautoimg.com/carchannel/jsnewV2/ucarserialcity.min.js?v=2016122815" type="text/javascript"></script>
+
 <script type="text/javascript">
     (function(){
         var timer;
@@ -353,8 +357,8 @@
 		    else{
 		        showUCar(<%=cbe.Serial.Id %>, cityId,'<%=cbe.Serial.AllSpell %>','<%=cbe.Serial.ShowName.Replace("(进口)", "").Replace("（进口）", "")%>',getUCarForBottom,undefined,undefined,undefined,'chekuan'); 
 		    } --%>
-		}
-
+        }
+       
         //补贴
         $.ajax({
             url: "http://cdn.partner.bitauto.com/NewEnergyCar/CarSubsidy.ashx?op=getcscarsunsidy&csid=" + CarCommonCSID + "&cityid=" + cityId,

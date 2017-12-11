@@ -1023,6 +1023,7 @@
     <Content Include="jsnewV2\draggable.js" />
     <Content Include="jsnewV2\dropdownlistnew.js" />
     <Content Include="jsnewV2\excanvas.js" />
+    <Content Include="jsnewV2\getareaprice.js" />
     <Content Include="jsnewV2\jquery.autoslider.js" />
     <Content Include="jsnewV2\jquery.knob.js" />
     <Content Include="jsnewV2\jquery.lazyload.min.js" />

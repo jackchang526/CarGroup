@@ -1046,3 +1046,19 @@ function GetVr() {
         }
     });
 }
+
+//vr入口
+function GetVrV2() {
+    $.ajax({
+        url: "http://webapi.photo.bitauto.com/photoApi/api/v1/Pano/GetAlbumList?ModelId=" + GlobalSummaryConfig.SerialId,
+        cache: true,
+        dataType: "jsonp",
+        jsonpCallback: "GetVrCallback",
+        success: function (data) {
+            if (data.Code != 0 || data.Data.Total == 0) {
+                return;
+            }
+            $("#favstar").before("<a href=\"" + data.Data.DataList[0].Url + "\" data-channelid=\"27.23.2214\" class=\"vr-chezhan\"><i></i>VR</a>");
+        }
+    });
+}

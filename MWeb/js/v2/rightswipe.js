@@ -153,7 +153,8 @@ $body.on('rightswipe3', function (ev, paras) {
                 $swiper.find('.swipeLeft-box').each(function (index, current) {
                     (function ($swipeLeft) {
                         $.rotateEnd(function () {
-                            $swipeLeft.height(document.documentElement.clientHeight - $content.prev().height());
+                            var clientHeight = window.innerHeight || document.documentElement.clientHeight;
+                            $swipeLeft.height(clientHeight - $content.prev().height());
                             $swipeLeft.iScroll({ snap: options.snap });
                         });
 
@@ -689,6 +690,7 @@ $body.on('fristSwipeOne', function (ev, options) {
         $swipe: null,
         swipeLeftChildren: '.y2015-car-02',
         snap: 'li',
+        ph: 50,//底部按钮高度
         setIsCroll: function () {
             var $swipeLeft = this,
                 $leftPopup = $swipeLeft.parent();
@@ -698,7 +700,8 @@ $body.on('fristSwipeOne', function (ev, options) {
             $swipeLeft.touches({ touchmove: function (ev) { ev.preventDefault(); } });
             var $y2015 = $swipeLeft.find(options.swipeLeftChildren);
             var $cbox = $y2015.children(0);
-            $cbox.height(document.documentElement.clientHeight - 50);
+            var innerh = window.innerHeight || document.documentElement.clientHeight;
+            $cbox.height(innerh - options.ph);
 
             $cbox.iScroll({ snap: options.snap });
 

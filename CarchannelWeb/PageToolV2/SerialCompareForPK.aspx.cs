@@ -309,7 +309,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageToolV2
                 }
                 else
                 {
-                    userCompareStrList.Add(string.Format("<li class=\"price\"><a href=\"#\">暂无报价</a></li>"));
+                    userCompareStrList.Add(string.Format("<li class=\"price\"><a href=\"#\">暂无指导价</a></li>"));
                 }
                 userCompareStrList.Add("</ul></div>");
                 userCompareStrList.Add("<div class=\"img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120 fr\">");
@@ -323,7 +323,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageToolV2
                 }
                 else
                 {
-                    userCompareStrList.Add(string.Format("<li class=\"price\"><a href=\"#\">暂无报价</a></li>"));
+                    userCompareStrList.Add(string.Format("<li class=\"price\"><a href=\"#\">暂无指导价</a></li>"));
                 }
                 userCompareStrList.Add("</ul></div>");
                 userCompareStrList.Add("<div class=\"vs-small\"></div></div>");
@@ -335,10 +335,11 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageToolV2
 
         private SerialCompareEntity GetSerialCompareEntity(SerialEntity serialEntity, Car_SerialBaseEntity baseEntity)
         {
-            var priceR = new PageBase().GetSerialPriceRangeByID(baseEntity.SerialId);
+            //改为指导价
+            var priceR = new PageBase().GetSerialReferPriceByID(baseEntity.SerialId);
             if (string.IsNullOrEmpty(priceR))
             {
-                priceR = "暂无报价";
+                priceR = "暂无指导价";
             }
 
             SerialCompareEntity serialCompareEntity = new SerialCompareEntity();
@@ -346,7 +347,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageToolV2
             {
                 serialCompareEntity.SerialIdL = serialEntity.Id;
                 serialCompareEntity.SerialnameL = serialEntity.ShowName;
-                serialCompareEntity.PriceL = serialEntity.Price;
+                serialCompareEntity.PriceL = serialEntity.ReferPrice;
                 serialCompareEntity.AllSpellL = serialEntity.AllSpell;
                 serialCompareEntity.ImageUrlL = Car_SerialBll.GetSerialImageUrl(serialEntity.Id);
             }
@@ -388,7 +389,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageToolV2
                 }
                 else
                 {
-                    hotStrList.Add(string.Format("<li class=\"price\"><a href=\"#\">暂无报价</a></li>"));
+                    hotStrList.Add(string.Format("<li class=\"price\"><a href=\"#\">暂无指导价</a></li>"));
                 }
                 hotStrList.Add("</ul></div>");
 
@@ -403,7 +404,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageToolV2
                 }
                 else
                 {
-                    hotStrList.Add(string.Format("<li class=\"price\"><a href=\"#\">暂无报价</a></li>"));
+                    hotStrList.Add(string.Format("<li class=\"price\"><a href=\"#\">暂无指导价</a></li>"));
                 }
 
                 hotStrList.Add("</ul></div>");

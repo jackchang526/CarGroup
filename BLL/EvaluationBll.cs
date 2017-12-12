@@ -39,7 +39,7 @@ namespace BitAuto.CarChannel.BLL
                     item.Name = Convert.ToString(dr["Name"]).Trim();
                     item.PropertyId = Convert.ToInt32(dr["PropertyId"].ToString());
                     item.PropertyValue = Convert.ToString(dr["PropertyValue"]).Trim();
-                    item.Unit= Convert.ToString(dr["Unit"]).Trim();
+                    item.Unit = Convert.ToString(dr["Unit"]).Trim();
                     list.Add(item);
                 }
             }
@@ -54,7 +54,7 @@ namespace BitAuto.CarChannel.BLL
             {
                 List<string> testerList = new List<string>();
                 foreach (DataRow dr in ds.Tables[0].Rows)
-                {                    
+                {
                     item.ModelName = Convert.ToString(dr["ModelName"].ToString());
                     item.Year = Convert.ToString(dr["Year"].ToString());
                     item.StyleName = Convert.ToString(dr["StyleName"].ToString());
@@ -75,16 +75,16 @@ namespace BitAuto.CarChannel.BLL
                         {
                             testerList.Add(tester);
                         }
-                                       
+
                     }
                     item.Tester = string.Join(",", testerList.ToArray());
 
                     item.EquipmentOperator = Convert.ToString(dr["EquipmentOperator"].ToString());
-                    item.Kilometers = Convert.ToInt32(dr["Kilometers"]); 
-                    item.WeatherDesc= Convert.ToString(dr["WeatherDesc"].ToString());
-                    item.Weather = Convert.ToString(dr["Weather"].ToString());  
-                    item.StyleId= Convert.ToInt32(dr["StyleId"]);
-                    item.Wind= Convert.ToString(dr["Wind"].ToString());
+                    item.Kilometers = Convert.ToInt32(dr["Kilometers"]);
+                    item.WeatherDesc = Convert.ToString(dr["WeatherDesc"].ToString());
+                    item.Weather = Convert.ToString(dr["Weather"].ToString());
+                    item.StyleId = Convert.ToInt32(dr["StyleId"]);
+                    item.Wind = Convert.ToString(dr["Wind"].ToString());
                     item.Temperature = Convert.ToString(dr["Temperature"].ToString());
                     break;//只获取一条数据
                 }
@@ -103,10 +103,10 @@ namespace BitAuto.CarChannel.BLL
         /// <param name="query"></param>
         /// <param name="fields"></param>
         /// <returns></returns>
-        public T GetOne<T>(IMongoQuery query, string[] fields,Dictionary<string,int> sortdic=null)
+        public T GetOne<T>(IMongoQuery query, string[] fields, Dictionary<string, int> sortdic = null)
         {
             EvaluationDal evaluationDal = new EvaluationDal();
-            return evaluationDal.GetOne<T>(query,fields,sortdic);
+            return evaluationDal.GetOne<T>(query, fields, sortdic);
         }
 
         public List<int> GetExistReportEvaluationId()
@@ -131,6 +131,18 @@ namespace BitAuto.CarChannel.BLL
                 CommonFunction.WriteLog(e.ToString());
             }
             return list;
+        }
+
+        public List<T> GetPingCeAllList<T>(IMongoQuery query, int top, Dictionary<string, int> sortdic = null, params string[] fields)
+        {
+            EvaluationDal evaluationDal = new EvaluationDal();
+            return evaluationDal.GetPingCeAllList<T>(query, top,sortdic, fields);
+        }
+
+        public List<T> GetPingCeList<T>(IMongoQuery query, int index, int pageCount, out int total, Dictionary<string, int> sortdic = null, params string[] fields)
+        {
+            EvaluationDal evaluationDal = new EvaluationDal();
+            return evaluationDal.GetPingCeList<T>(query, index, pageCount,out total, sortdic, fields);
         }
     }
 }

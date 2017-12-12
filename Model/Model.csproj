@@ -74,7 +74,7 @@
     <Compile Include="AppApi\CarModelColorEntity.cs" />
     <Compile Include="AppApi\CarSerialExtEntity.cs" />
     <Compile Include="AppApi\CarStyleInfoEntity.cs" />
-	<Compile Include="AppModel\CarGroupEntity.cs" />
+    <Compile Include="AppModel\CarGroupEntity.cs" />
     <Compile Include="AppModel\CarParameterEntity.cs" />
     <Compile Include="AppModel\DataCacheKeys.cs" />
     <Compile Include="AppModel\ParameterGroupEntity.cs" />
@@ -113,6 +113,7 @@
     <Compile Include="EvaluationEntity.cs" />
     <Compile Include="EvaluationRank.cs" />
     <Compile Include="EvaluationTopRank.cs" />
+    <Compile Include="GroupScore.cs" />
     <Compile Include="LoanPackage.cs" />
     <Compile Include="DealerInfo.cs" />
     <Compile Include="Editer.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="News.cs" />
     <Compile Include="NewsCategory.cs" />
     <Compile Include="NewsForSerialSummaryEntity.cs" />
+    <Compile Include="PingCeEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuesionInfo.cs" />
     <Compile Include="SelectCarParameters.cs" />

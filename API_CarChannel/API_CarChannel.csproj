@@ -131,6 +131,15 @@
     <Compile Include="Assessment\GetExistReportEvaluationId.ashx.cs">
       <DependentUpon>GetExistReportEvaluationId.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Assessment\GetPingCeList.ashx.cs">
+      <DependentUpon>GetPingCeList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetPingCeTopM.ashx.cs">
+      <DependentUpon>GetPingCeTopM.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetPingCeTopPc.ashx.cs">
+      <DependentUpon>GetPingCeTopPc.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Assessment\ViewScore.ashx.cs">
       <DependentUpon>ViewScore.ashx</DependentUpon>
     </Compile>
@@ -541,6 +550,7 @@
     <Content Include="CarInfo\SerialListJson.aspx" />
     <Content Include="config\CooperationConfig.xml" />
     <Content Include="config\CooperationConfigV2.xml" />
+    <Content Include="config\EvaluationScore.xml" />
     <Content Include="config\H5SelectSerialList.xml" />
     <Content Include="config\ParameterForJson.xml" />
     <Content Include="config\ParameterForJsonNew.xml" />
@@ -627,6 +637,9 @@
     <Content Include="Assessment\GetEvaluationSimpleRank.ashx" />
     <Content Include="Assessment\GetEvaluationTopRank.ashx" />
     <Content Include="Assessment\GetExistReportEvaluationId.ashx" />
+    <Content Include="Assessment\GetPingCeTopPc.ashx" />
+    <Content Include="Assessment\GetPingCeTopM.ashx" />
+    <Content Include="Assessment\GetPingCeList.ashx" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

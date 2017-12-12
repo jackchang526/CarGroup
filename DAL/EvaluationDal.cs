@@ -1,5 +1,6 @@
 ﻿using BitAuto.CarChannel.Common;
 using BitAuto.CarChannel.Common.MongoDB;
+using BitAuto.CarChannel.Model;
 using BitAuto.Utils.Data;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -58,7 +59,7 @@ namespace BitAuto.CarChannel.DAL
                                         };
             parameters[0].Value = evaluationId;
             DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarsEvaluationDataConnectionString, CommandType.Text, sql, parameters);
-            return ds;            
+            return ds;
         }
 
         public T GetOne<T>(IMongoQuery query)
@@ -68,12 +69,9 @@ namespace BitAuto.CarChannel.DAL
 
         public T GetOne<T>(IMongoQuery query, string[] fields, Dictionary<string, int> sortdic = null)
         {
-            //IMongoSortBy sort = null;
             SortByBuilder sort = null;
-            if (sortdic!=null&&sortdic.Count > 0)
+            if (sortdic != null && sortdic.Count > 0)
             {
-                List<string> asclist = new List<string>();
-                List<string> desclist = new List<string>();
                 foreach (string key in sortdic.Keys)
                 {
                     if (sortdic[key] > 0)
@@ -87,7 +85,47 @@ namespace BitAuto.CarChannel.DAL
                 }
             }
             return MongoDBHelper.GetOne<T>(query, fields, sort);
+        }        
+
+        public List<T> GetPingCeAllList<T>(IMongoQuery query, int top, Dictionary<string, int> sortdic = null, params string[] fields)
+        {
+            SortByBuilder sort = null;
+            if (sortdic != null && sortdic.Count > 0)
+            {
+                foreach (string key in sortdic.Keys)
+                {
+                    if (sortdic[key] > 0)
+                    {
+                        sort = sort == null ? SortBy.Ascending(key) : sort.Ascending(key);
+                    }
+                    else
+                    {
+                        sort = sort == null ? SortBy.Descending(key) : sort.Descending(key);
+                    }
+                }
+            }
+            return MongoDBHelper.GetAll<T>(query, top, sort, fields);
         }
-   
+
+        public List<T> GetPingCeList<T>(IMongoQuery query, int index, int pageSize, out int total, Dictionary<string, int> sortdic = null, params string[] fields)
+        {
+            SortByBuilder sort = null;
+            if (sortdic != null && sortdic.Count > 0)
+            {
+                foreach (string key in sortdic.Keys)
+                {
+                    if (sortdic[key] > 0)
+                    {
+                        sort = sort == null ? SortBy.Ascending(key) : sort.Ascending(key);
+                    }
+                    else
+                    {
+                        sort = sort == null ? SortBy.Descending(key) : sort.Descending(key);
+                    }
+                }
+            }
+            return MongoDBHelper.GetAll<T>(query, index, pageSize, out total, sort, fields);
+        }
+
     }
 }

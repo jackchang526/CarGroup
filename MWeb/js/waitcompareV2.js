@@ -303,6 +303,7 @@ var WaitCompare = (function (module) {
         api.model.currentid = apiCarId;//车款
         $(".first-list .add a:not(.select)").rightSwipeAnimation({
             fnEnd: function () {
+                $("#master_container").show();
                 var curSerialId = defaults.serialid;//
                 var $model = this;
                 $body.animate({ scrollTop: 0 }, 30);
@@ -351,7 +352,9 @@ var WaitCompare = (function (module) {
                                         defaults.selectCarIdFunc(curCarId, curCarName);
                                         
                                         $model.trigger('closeWindow');
-                                        $duibimask.trigger('close');
+                                        //$duibimask.trigger('close');
+                                        console.log(222);
+                                        $("#master_container").hide();
                                     });
 
                                     //年款收缩与展开
@@ -416,7 +419,8 @@ var WaitCompare = (function (module) {
                                 //关闭浮层
                                 $back.trigger('close');
                                 $model.trigger('closeWindow');
-                                $duibimask.trigger('close');
+                                //$duibimask.trigger('close');
+                                $("#master_container").hide();
                             }
                             $body.css('overflow', 'initial');
                             _commonSlider($model, $body);
@@ -426,13 +430,14 @@ var WaitCompare = (function (module) {
                             initHistory();
                             $body.css('overflow', 'initial');
                             _commonSlider($model, $body);
-                            $duibimask.trigger('close');
+                            //$duibimask.trigger('close');
                         }
                         else { }
 
                         $model.find('.btn-return').click(function (ev) {
                             ev.preventDefault();
                             $model.trigger('closeWindow');
+                            $("#master_container").hide();
                         })
 
                     }
@@ -591,6 +596,7 @@ var WaitCompare = (function (module) {
                     var curCarId = $(this).data("id"), curCarName = $(this).data("name");
                     defaults.selectCarIdFunc(curCarId, curCarName);
                     $(this).trigger('closeWindow');
+                    $("#master_container").hide();
                 });
             });
         } else {

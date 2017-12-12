@@ -1229,7 +1229,7 @@ function createPrice(arrFieldRow) {
 					if (arrFieldRow["sFieldTitle"] == "商家报价") {
 						var minPrice = field;
 						if (field.indexOf("-") != -1) {
-							minPrice = field.substring(0, field.indexOf("-"));
+							minPrice = field.substring(0, field.indexOf("-")) + "万";
 						}
 						tempArray.push("<span class=\"cRed\">" + minPrice + "&nbsp;</span>");
 						tempArray.push("<a class=\"m-btn-xunjia\" href=\"http://price.m.yiche.com/zuidijia/nc" + ComparePageObject.ArrCarInfo[i].CarInfoArray[0][0] + "/?leads_source=m010001\"> 询价</a>");

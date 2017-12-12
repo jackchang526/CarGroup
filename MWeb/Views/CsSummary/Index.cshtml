@@ -707,7 +707,7 @@
             showNewsInsCode('0fdd1bab-745d-42d9-a86b-3dd5e25877b5', '8a05b2f2-6da8-40a7-8296-d005d870b4bb', '279a56d1-93e3-4cbb-9409-517fe7edec5a', 'c588f73d-9446-4cbb-a56f-941a8ddaa54f');
         </script>
         <!--看了还看 start-->
-        @(Html.Raw(ViewData["SerialToSee"]))
+        @(Html.Raw(ViewData["CsHotCompareCars"]))
         <!--看了还看 end-->
         <!--最近看过 start-->
         <div class="browse-car  b-shadow" id="more1" data-channelid="27.23.744">
@@ -769,7 +769,7 @@
     </div>
 
     <!--新加弹出层 start-->
-    <div id="master_container" style="z-index: 888888;" class="brandlayer mthead">
+    <div id="master_container" style="z-index: 888888;display:none;" class="brandlayer mthead">
         @Html.Partial("~/html/compareCarTemplate.cshtml")
     </div>
     <!--新加弹出层 end-->
@@ -1028,7 +1028,7 @@
     <script type="text/javascript" src="/js/waitcompareV2.js"></script>
     <script type="text/javascript" src="/js/rightswipe-cityV2.js?v=20160202"></script>
     <script type="text/javascript" src="/js/csSummaryConditionV2.js"></script>*@
-    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/common/swiper-3.2.7.min.js,carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.min.js,carchannel/common/cityjsonv2.js,carchannel/wirelessjsv2/rightswipe-cityv2.js,carchannel/wirelessjsv2/cssummaryconditionV2.min.js?v=201711291603"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/common/swiper-3.2.7.min.js,carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.min.js,carchannel/common/cityjsonv2.js,carchannel/wirelessjsv2/rightswipe-cityv2.js,carchannel/wirelessjsv2/cssummaryconditionV2.min.js?v=201712121500"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=audio/jplayer/jquery.jplayer.min.js,audio/jplayer/audioJPlayerMobile.js?v=20170105"></script>
     @*<script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>*@
     <script type="text/javascript">

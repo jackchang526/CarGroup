@@ -1176,7 +1176,7 @@ namespace MWeb.Controllers
                     htmlCode.AppendFormat("<img src='{0}' alt=\"{1}\" />", sts.ToCsPic.ToString(CultureInfo.InvariantCulture).Replace("_5.", "_3."), csName);
                     htmlCode.AppendFormat("<strong>{0}</strong>", csName);
                     htmlCode.AppendFormat("<p>{0}</p>",
-                        string.IsNullOrEmpty(sts.ToCsPriceRange) ? "暂无报价" : sts.ToCsPriceRange);
+                        string.IsNullOrEmpty(sts.ToCsPriceRange) ? "暂无指导价" : sts.ToCsPriceRange);
                     htmlCode.Append("</a>");
                     htmlCode.Append("</li>");
                 }

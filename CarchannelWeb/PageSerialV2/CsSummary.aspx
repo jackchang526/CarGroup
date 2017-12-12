@@ -321,7 +321,7 @@
             GetDownPayment();
             InitTeHuiAndAdData();
             GetJiangjiaNews();
-            GetHmcJiangJia();
+            //GetHmcJiangJia();
             //Get1111Entrance();
             GetVr();
             $("#qrcode img").bind("error", function () {

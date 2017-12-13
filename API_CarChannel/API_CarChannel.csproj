@@ -211,6 +211,10 @@
       <DependentUpon>GetProducerInfo.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="CarInfo\GetSalesRankingForPage.ashx.cs">
+      <DependentUpon>GetSalesRankingForPage.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="CarInfo\GetSerialInfo.ashx.cs">
       <DependentUpon>GetSerialInfo.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -627,6 +631,7 @@
     <Content Include="Assessment\GetEvaluationSimpleRank.ashx" />
     <Content Include="Assessment\GetEvaluationTopRank.ashx" />
     <Content Include="Assessment\GetExistReportEvaluationId.ashx" />
+    <Content Include="CarInfo\GetSalesRankingForPage.ashx" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

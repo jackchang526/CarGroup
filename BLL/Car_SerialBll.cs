@@ -5665,7 +5665,7 @@ namespace BitAuto.CarChannel.BLL
         /// <param name="dr"></param>
         /// <param name="csid"></param>
         /// <returns></returns>
-        public string GetNewSerialIntoMarketText(int csId,bool isShowDate = true)
+        public string GetNewSerialIntoMarketText(int csId, bool isShowDate = true)
         {
             string cacheKey = "Car_SerialBll_GetNewCarIntoMarketText_" + csId + "_" + isShowDate;
             object cacheValue = CacheManager.GetCachedData(cacheKey);
@@ -5708,7 +5708,7 @@ namespace BitAuto.CarChannel.BLL
                             foreach (var item in newCarList)
                             {
                                 XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(Path.Combine(PhotoImageConfig.SavePath, string.Format(@"SerialCarReallyPic\{0}.xml", item.CarID)));
-                                
+
                                 if (xmlDoc != null && xmlDoc.HasChildNodes)
                                 {
                                     XmlNode node = xmlDoc.SelectSingleNode("//Data//Total");
@@ -5849,12 +5849,12 @@ namespace BitAuto.CarChannel.BLL
         /// <param name="marketDate">上市时间</param>
         /// <param name="referPrice">指导价</param>
         /// <returns></returns>
-        public string GetCarMarketText(int carId,string saleSate,DateTime marketDate,string referPrice)
+        public string GetCarMarketText(int carId, string saleSate, DateTime marketDate, string referPrice)
         {
             string marketflag = string.Empty;
 
             if (carId == 0) return marketflag;
-            
+
             //int res =DateTime.Compare(entity.MarketDateTime, DateTime.MinValue);
             if (DateTime.Compare(marketDate, DateTime.MinValue) != 0)
             {
@@ -7933,6 +7933,48 @@ namespace BitAuto.CarChannel.BLL
             return dic != null && dic.ContainsKey(level) ? dic[level] : null;
         }
 
+        public List<XmlElement> GetSerialSellRankForPage(string level, int startIndex, int pageSize, out int allCount)
+        {
+            List<XmlElement> dic = null;
+            Dictionary<int, XmlElement> items = GetSeialSellRank();
+            var l = items.Where(item => item.Value.Attributes["Level"].InnerText == level).ToList();
+            allCount = l.Count;
+            //int startIndex = (pageIndex - 1) * pageSize;
+            if (allCount > startIndex)
+            {
+                dic = new List<XmlElement>();
+            }
+            else {
+                return null;
+            }
+            l.Skip(startIndex).Take(pageSize).ToList().ForEach(item => { dic.Add(item.Value); });
+            /*
+            int startIndex = (pageIndex - 1) * pageSize;
+            int endIndex = pageIndex * pageSize;
+            int curIndex = 0;
+            if (items != null && items.Count > 0)
+            {
+                dic = new List<XmlElement>();
+                foreach (KeyValuePair<int, XmlElement> ele in items)
+                {
+                    string levelStr = ele.Value.Attributes["Level"].InnerText;
+                    if (levelStr == level)
+                    {
+                        curIndex++;
+                        if (curIndex > endIndex) {
+                            break;
+                        }
+                        if (curIndex > startIndex)
+                        {
+                            dic.Add(ele.Value);
+                        }
+                    }
+                }
+            }
+            */
+            return dic;
+        }
+
         /// <summary>
 		/// 车系销量排行榜
 		/// </summary>
@@ -8530,7 +8572,7 @@ namespace BitAuto.CarChannel.BLL
                         , dr["cs_id"]
                         , dr["packagename"]
                         , ConvertHelper.GetString(dr["packageprice"]).Trim()
-                        , StringHelper.SqlFilter(ConvertHelper.GetString(dr["packagedescription"]).Trim().Replace("\r\n","").Replace("\"","＂"))
+                        , StringHelper.SqlFilter(ConvertHelper.GetString(dr["packagedescription"]).Trim().Replace("\r\n", "").Replace("\"", "＂"))
                         , carIds
                         , package.IndexOf(dr) == package.Count - 1 ? "" : ",");
                 }

@@ -42,13 +42,6 @@ function GetSerialAreaPriceRange() {
         }
     });
 }
-//根据区域报价设置默认首付
-function SetDefaultDownPaymentHidden(price) {
-    if (price > 0) {
-        var pri = price * 0.3;
-        $("#mp-daikuan").attr("downPayment", pri.toFixed(2));
-    }   
-}
 //车款列表设置区域报价
 function GetCarAreaPriceList(ids) {
     var cityId;
@@ -62,9 +55,11 @@ function GetCarAreaPriceList(ids) {
         url: "http://frontapi.easypass.cn/ReferPriceAPI/GetReferPriceByCityCarFront/" + cityId + "/" + ids + "",
         cache: true,
         dataType: "jsonp",
+        jsonpCallback: "GetCarAreaPriceListCallback",
         success: function (data) {
             if (data != null && typeof data != "undefined" && data.length > 0) {
                 var isLocal = false;
+                var div = GetTargetDiv();
                 for (var i = 0; i < data.length; i++) {
                     var minPrice = parseFloat(data[i].MinReferPrice);
                     if (minPrice <= 0) {
@@ -76,27 +71,13 @@ function GetCarAreaPriceList(ids) {
                     else {
                         minPrice = minPrice.toFixed(2);
                     }
-                    minPrice = minPrice + "万";        
-                    if (data[i].ReturnType == 1) { isLocal = true; }
-                    if ($("#car_filter_id_" + data[i].Id).children(":eq(4)").length > 0) {
-                        $("#car_filter_id_" + data[i].Id).children(":eq(4)").find("a").html(minPrice);
+                    minPrice = minPrice + "万";  
+                    
+                    if (typeof (div) != "undefined" && div != null){
+                        if (div.find("#carlist_" + data[i].Id).children(":eq(1)").length > 0) {
+                            div.find("#carlist_" + data[i].Id).children(":eq(1)").children(":eq(0)").html(minPrice);
+                        }
                     }                   
-                }
-                if (isLocal == true) {
-                    if ($("#compare_sale tr.table-tit").length > 0) {
-                        GetGroupPriceDec($("#compare_sale tr.table-tit"), "本地参考价");
-                    }
-                    if ($("#compare_wait tr.table-tit").length > 0) {
-                        GetGroupPriceDec($("#compare_wait tr.table-tit"), "本地参考价");
-                    }
-                }
-                else{
-                    if ($("#compare_sale tr.table-tit").length > 0) {
-                        GetGroupPriceDec($("#compare_sale tr.table-tit"), "全国参考价");
-                    }
-                    if ($("#compare_wait tr.table-tit").length > 0) {
-                        GetGroupPriceDec($("#compare_wait tr.table-tit"), "全国参考价");
-                    }
                 }
             }
         }
@@ -124,21 +105,29 @@ function GetCarAreaPriceRange() {
 //获取车款ID
 function GetStyleIds() {
     var ids = new Array();
-    $("#compare_sale tr[id ^= 'car_filter_id_']").each(function (i) {
+    var div = GetTargetDiv();
+    if (typeof (div) != "undefined" && div != null)
+        div.find("a[id ^= 'carlist']").each(function (i) {
         if (typeof (this.id) != "undefined" && this.id) {
-            var id = this.id.replace("car_filter_id_", "");
-            ids.push(id);
-        }       
-    })
-    $("#compare_wait tr[id ^= 'car_filter_id_']").each(function (i) {
-        if (typeof (this.id) != "undefined" && this.id) {
-            var id = this.id.replace("car_filter_id_", "");
+            var id = this.id.replace("carlist_", "");
             ids.push(id);
         }
-    })
+    });
+      
     return ids;
 }
-//车款ID分组
+//获取当前年款内容块
+function GetTargetDiv()
+{
+    var $targetDiv;
+    $("#yeartag li").each(function (k, item) {
+        if ($(item).attr("id") != "nosalelist" && $(item).attr("class") == "current")    //当前TAB 非停售车款
+        {
+            $targetDiv = $("#yearDiv" + k);
+        }
+    });
+    return $targetDiv;    
+}
 function GroupIds(array, subGroupLength) {
     var index = 0;
     var newArray = [];

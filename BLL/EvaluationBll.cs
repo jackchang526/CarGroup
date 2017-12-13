@@ -144,5 +144,17 @@ namespace BitAuto.CarChannel.BLL
             EvaluationDal evaluationDal = new EvaluationDal();
             return evaluationDal.GetPingCeList<T>(query, index, pageCount,out total, sortdic, fields);
         }
+
+        /// <summary>
+        /// 根据MogonDB中的评测ID列表获取评测数据
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public Dictionary<int, PingCeEntity> GetEvaluationDate(List<int> list)
+        {
+            EvaluationDal evaluationDal = new EvaluationDal();            
+            return evaluationDal.GetEvaluationDate(list);
+        }
+
     }
 }

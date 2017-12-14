@@ -148,7 +148,7 @@ ORDER BY CONVERT(INT, cdb2.pvalue) DESC, CONVERT(INT, cdb3.pvalue) DESC,
                                 {
                                     // 已有数据 补价格区间
                                     jsonString.Add(string.Format(",\"Price\":\"{0}\""
-                                        ,base.GetSerialPriceRangeByID(csid) //CommonFunction.GetUnicodeByString(GetPriceStr(minP, maxP))
+                                        ,base.GetSerialPriceRangeByID(lastCsID) //CommonFunction.GetUnicodeByString(GetPriceStr(minP, maxP))
                                         ));
                                     jsonString.Add("},");
                                     minP = 0;

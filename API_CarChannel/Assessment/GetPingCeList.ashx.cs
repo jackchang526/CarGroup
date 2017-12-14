@@ -420,7 +420,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                     {
                         string[] arr = k.Split('-').ToArray();
                         double percent = currentScore / groupScore.Score;
-                        if (currentScore >= ConvertHelper.GetDouble(arr[0]) && currentScore < ConvertHelper.GetDouble(arr[1]))
+                        if (percent >= ConvertHelper.GetDouble(arr[0]) && percent < ConvertHelper.GetDouble(arr[1]))
                         {
                             tempdic.Add(item, new { Score= groupScore.Score, ScoreDesc=groupScore.ScoreDesc[k], CurrentScore= currentScore,Percent= percent });
                             break;

@@ -3,6 +3,7 @@ using BitAuto.CarChannel.Common;
 using BitAuto.CarChannel.Common.Cache;
 using BitAuto.CarChannel.Model;
 using BitAuto.CarChannel.Model.Assessment;
+using BitAuto.CarChannelAPI.Web.AppCode;
 using BitAuto.Utils;
 using BitAuto.Utils.Data;
 using MongoDB.Driver;

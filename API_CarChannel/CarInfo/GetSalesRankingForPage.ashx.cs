@@ -23,10 +23,10 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
         private string levelName = string.Empty;
         private int pageIndex = 1;
         private int pageSize = 10;
-        private string result = "{{\"list\":[{0}]}}";
+        private string callback = string.Empty; 
         private string item = "{{\"csId\":{0},\"showName\":\"{1}\",\"priceRange\":\"{2}\",\"sellNum\":\"{3}\",\"imgUrl\":\"{4}\",\"rank\":{5}}}{6}";
         public void ProcessRequest(HttpContext context)
-        {
+        { 
             base.SetPageCache(60);
             context.Response.ContentType = "application/x-javascript";
             GetParam(context);
@@ -37,7 +37,14 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
         {
             if (levelId == 0 || string.IsNullOrEmpty(levelName))
             {
-                context.Response.Write(ResultUtil.ErrorResult(-1, "参数错误", ""));
+                if (string.IsNullOrEmpty(callback))
+                {
+                    context.Response.Write(ResultUtil.ErrorResult(-1, "参数错误", ""));
+                }
+                else
+                {
+                    context.Response.Write(ResultUtil.CallBackResult(callback,ResultUtil.ErrorResult(-1, "参数错误", "")));
+                }
                 return;
             }
             int allCcount = 0;
@@ -45,7 +52,15 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
             List<XmlElement> sellRankList = new Car_SerialBll().GetSerialSellRankForPage(levelName, startIndex, pageSize, out allCcount);
             if (sellRankList == null || sellRankList.Count == 0)
             {
-                context.Response.Write(ResultUtil.ErrorResult(0, "没有符合要求的数据", ""));
+                if (string.IsNullOrEmpty(callback))
+                {
+                    context.Response.Write(ResultUtil.ErrorResult(0, "没有符合要求的数据", ""));
+                }
+                else
+                {
+                    context.Response.Write(ResultUtil.CallBackResult(callback, ResultUtil.ErrorResult(0, "没有符合要求的数据", "")));
+                }
+                
                 return;
             }
             StringBuilder sb = new StringBuilder();
@@ -65,13 +80,21 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                     , index
                     , index == endIndex ? "" : ",");
             }
-            context.Response.Write(ResultUtil.SuccessResult(ResultUtil.PageFormat(pageIndex, pageSize, allCcount, string.Format("[{0}]", sb.ToString()))));
+            if (string.IsNullOrEmpty(callback))
+            {
+                context.Response.Write(ResultUtil.SuccessResult(ResultUtil.PageFormat(pageIndex, pageSize, allCcount, string.Format("[{0}]", sb.ToString()))));
+            }
+            else
+            {
+                context.Response.Write(ResultUtil.CallBackResult(callback, ResultUtil.SuccessResult(ResultUtil.PageFormat(pageIndex, pageSize, allCcount, string.Format("[{0}]", sb.ToString())))));
+            }
         }
 
         private void GetParam(HttpContext context)
         {
             levelId = ConvertHelper.GetInteger(context.Request["level"]);
             levelName = CarLevelDefine.GetLevelNameById(this.levelId);
+            this.callback = ConvertHelper.GetString(context.Request["callback"]);
             pageIndex = ConvertHelper.GetInteger(context.Request["pageindex"]);
             if (pageIndex == 0)
             {

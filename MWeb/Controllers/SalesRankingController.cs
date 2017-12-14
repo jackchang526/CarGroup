@@ -11,7 +11,7 @@ namespace MWeb.Controllers
     {
         //
         // GET: /SalesRanking/ 
-        [OutputCache(Duration = 600, Location = OutputCacheLocation.Downstream)]
+        //[OutputCache(Duration = 600, Location = OutputCacheLocation.Downstream)]
         public ActionResult Index()
         {
             return View();

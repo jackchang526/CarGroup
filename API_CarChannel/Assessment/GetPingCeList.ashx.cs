@@ -369,8 +369,8 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 {
                     string maxKey = orderDic.First().Key;
                     string minKey = orderDic.Last().Key;
-                    double max = dic[maxKey];
-                    double min = dic[minKey];
+                    double max = percentDic[maxKey];
+                    double min = percentDic[minKey];
 
                     if (list != null)
                     {

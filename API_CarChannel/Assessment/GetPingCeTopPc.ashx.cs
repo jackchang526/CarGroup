@@ -27,7 +27,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
     {
         public void ProcessRequest(HttpContext context)
         {
-            //PageHelper.SetPageCache(60);
+            PageHelper.SetPageCache(60);
 
             context.Response.ContentType = "application/x-javascript";
             string callback = context.Request.QueryString["callback"];

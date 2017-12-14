@@ -103,22 +103,6 @@
         <Item  Range="较差">油耗及环保不好</Item>
       </CommonDesc>
     </Item>
-
-    <Item>
-      <GroupName>CostBaseGroup</GroupName>
-      <Score>100</Score>
-      <ScoreDesc>
-        <Item  Range="0.85-1">优秀</Item>
-        <Item  Range="0.75-0.85">良好</Item>
-        <Item  Range="0.6-0.75">一般</Item>
-        <Item  Range="0-0.6">较差</Item>
-      </ScoreDesc>
-      <CommonDesc>
-        <Item  Range="优秀"></Item>
-        <Item  Range="良好"></Item>
-        <Item  Range="一般"></Item>
-        <Item  Range="较差"></Item>
-      </CommonDesc>
-    </Item>
+   
   </Group>
 </Root>

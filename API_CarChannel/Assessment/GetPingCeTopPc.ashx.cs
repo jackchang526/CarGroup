@@ -195,11 +195,11 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 {
                     if (assessmentEntity.CommonInfoGroup.Score > 0)
                     {
-                        tempDic.Add("CommonInfoGroup", assessmentEntity.CommonInfoGroup.Score);
-                        if (assessmentEntity.CommonInfoGroup.CommonInformationEntity != null)
-                        {
-                            //处理逻辑
-                        }
+                        //tempDic.Add("CommonInfoGroup", assessmentEntity.CommonInfoGroup.Score);
+                        //if (assessmentEntity.CommonInfoGroup.CommonInformationEntity != null)
+                        //{
+
+                        //}
                     }
                 }
 
@@ -365,7 +365,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 {
                     if (assessmentEntity.CostBaseGroup.Score > 0)
                     {
-                        tempDic.Add("CostBaseGroup", assessmentEntity.CostBaseGroup.Score);
+                        //tempDic.Add("CostBaseGroup", assessmentEntity.CostBaseGroup.Score);
                         //if (assessmentEntity.CostBaseGroup.CpEntity != null)
                         //{
 

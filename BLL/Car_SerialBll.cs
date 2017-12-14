@@ -7944,34 +7944,11 @@ namespace BitAuto.CarChannel.BLL
             {
                 dic = new List<XmlElement>();
             }
-            else {
+            else
+            {
                 return null;
             }
             l.Skip(startIndex).Take(pageSize).ToList().ForEach(item => { dic.Add(item.Value); });
-            /*
-            int startIndex = (pageIndex - 1) * pageSize;
-            int endIndex = pageIndex * pageSize;
-            int curIndex = 0;
-            if (items != null && items.Count > 0)
-            {
-                dic = new List<XmlElement>();
-                foreach (KeyValuePair<int, XmlElement> ele in items)
-                {
-                    string levelStr = ele.Value.Attributes["Level"].InnerText;
-                    if (levelStr == level)
-                    {
-                        curIndex++;
-                        if (curIndex > endIndex) {
-                            break;
-                        }
-                        if (curIndex > startIndex)
-                        {
-                            dic.Add(ele.Value);
-                        }
-                    }
-                }
-            }
-            */
             return dic;
         }
 
@@ -8015,6 +7992,38 @@ namespace BitAuto.CarChannel.BLL
             }
             return dic;
         }
+
+
+        /// <summary>
+        /// 车系销量排行榜
+        /// </summary>
+        /// <returns></returns>
+        public string GetSeialSellRankMonth()
+        {
+            string cacheKey = "Car_SerialBll_GetSeialSellRankMonth";
+            object obj = CacheManager.GetCachedData(cacheKey);
+            if (obj != null)
+            {
+                return (string)obj;
+            }
+            else
+            {
+                string filePath = Path.Combine(WebConfig.DataBlockPath, @"Data\SerialSet\SerialSaleRank.xml");
+                string month = "";
+                if (File.Exists(filePath))
+                {
+                    XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(filePath);
+                    XmlNode item = xmlDoc.SelectSingleNode("/Root");
+                    if (item != null)
+                    {
+                        month = item.Attributes["Month"].InnerText;
+                    }
+                    CacheManager.InsertCache(cacheKey, month, 60);
+                }
+                return month;
+            }
+        }
+
         /// <summary>
         ///  易湃的销量最高的suv车型接口数据
         /// </summary>

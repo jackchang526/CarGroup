@@ -23,10 +23,10 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
         private string levelName = string.Empty;
         private int pageIndex = 1;
         private int pageSize = 10;
-        private string callback = string.Empty; 
+        private string callback = string.Empty;
         private string item = "{{\"csId\":{0},\"showName\":\"{1}\",\"priceRange\":\"{2}\",\"sellNum\":\"{3}\",\"imgUrl\":\"{4}\",\"rank\":{5}}}{6}";
         public void ProcessRequest(HttpContext context)
-        { 
+        {
             base.SetPageCache(60);
             context.Response.ContentType = "application/x-javascript";
             GetParam(context);
@@ -43,13 +43,15 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                 }
                 else
                 {
-                    context.Response.Write(ResultUtil.CallBackResult(callback,ResultUtil.ErrorResult(-1, "参数错误", "")));
+                    context.Response.Write(ResultUtil.CallBackResult(callback, ResultUtil.ErrorResult(-1, "参数错误", "")));
                 }
                 return;
             }
             int allCcount = 0;
             int startIndex = (pageIndex - 1) * pageSize;
-            List<XmlElement> sellRankList = new Car_SerialBll().GetSerialSellRankForPage(levelName, startIndex, pageSize, out allCcount);
+            string month = "";
+            var carSerialBll = new Car_SerialBll();
+            List<XmlElement> sellRankList = carSerialBll.GetSerialSellRankForPage(levelName, startIndex, pageSize, out allCcount);
             if (sellRankList == null || sellRankList.Count == 0)
             {
                 if (string.IsNullOrEmpty(callback))
@@ -59,8 +61,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                 else
                 {
                     context.Response.Write(ResultUtil.CallBackResult(callback, ResultUtil.ErrorResult(0, "没有符合要求的数据", "")));
-                }
-                
+                } 
                 return;
             }
             StringBuilder sb = new StringBuilder();
@@ -68,6 +69,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
             if (endIndex > allCcount)
                 endIndex = allCcount;
             int index = startIndex;
+            month = carSerialBll.GetSeialSellRankMonth();
             foreach (XmlElement ele in sellRankList)
             {
                 index++;
@@ -81,13 +83,19 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                     , index == endIndex ? "" : ",");
             }
             if (string.IsNullOrEmpty(callback))
-            {
-                context.Response.Write(ResultUtil.SuccessResult(ResultUtil.PageFormat(pageIndex, pageSize, allCcount, string.Format("[{0}]", sb.ToString()))));
+            { 
+                context.Response.Write(ResultUtil.SuccessResult(ResultDateFormat(month, ResultUtil.PageFormat(pageIndex, pageSize, allCcount, string.Format("[{0}]", sb.ToString())))));
             }
             else
             {
-                context.Response.Write(ResultUtil.CallBackResult(callback, ResultUtil.SuccessResult(ResultUtil.PageFormat(pageIndex, pageSize, allCcount, string.Format("[{0}]", sb.ToString())))));
+                context.Response.Write(ResultUtil.CallBackResult(callback, ResultUtil.SuccessResult(ResultDateFormat(month, ResultUtil.PageFormat(pageIndex, pageSize, allCcount, string.Format("[{0}]", sb.ToString()))))));
             }
+        }
+
+
+        public static string ResultDateFormat(string month, string page)
+        {
+            return string.Format("{{\"month\":\"{0}\",\"page\":{1}}}", month, page);
         }
 
         private void GetParam(HttpContext context)

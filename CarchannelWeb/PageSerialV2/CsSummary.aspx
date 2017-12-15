@@ -280,15 +280,15 @@
         <!--/焦点图、名片区-->
         <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201712150948"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201712150953"></script>
         <%--<script type="text/javascript" src="/jsnewv2/cssummary.js?v=20170171032"></script>--%>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712110"></script>
         <script type="text/javascript">
             var serialId = <%= serialId %> ,
                 priceRang = '<%=serialPrice%>',
                 cityId = 201,
-                cityName = "北京";
-            citySpell = "beijing";
+                cityName = "北京",
+                citySpell = "beijing";
             csSaleState = "<%= serialInfo.CsSaleState  %>",
                 serialSpell = "<%= serialSpell  %>";
             if (typeof (bit_locationInfo) != "undefined") {
@@ -324,7 +324,7 @@
             GetDownPayment();
             InitTeHuiAndAdData();
             GetJiangjiaNews();
-            GetHmcJiangJia();
+            //GetHmcJiangJia();
             //Get1111Entrance();
             GetVr();
             $("#qrcode img").bind("error", function () {

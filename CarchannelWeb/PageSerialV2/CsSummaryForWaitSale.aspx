@@ -162,7 +162,7 @@
                 };
             }
 
-            GetHmcJiangJia();
+            //GetHmcJiangJia();
             GetVr();
             //GetFocusNewsLast("<%= serialEntity.SaleState %>",7);
             //GetJiangjiaNews();

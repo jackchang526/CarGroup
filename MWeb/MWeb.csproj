@@ -263,6 +263,7 @@
     <Content Include="js\selectcartoolV2.js" />
     <Content Include="js\selectcartoolV3.js" />
     <Content Include="js\selectscenecar.js" />
+    <Content Include="js\recentlyseen.js" />
     <Content Include="js\serial.salesranking.js" />
     <Content Include="js\suvchannel\seriallist.js" />
     <Content Include="js\suvchannel\suvdefault.js" />

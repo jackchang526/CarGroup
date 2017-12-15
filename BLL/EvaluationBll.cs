@@ -158,7 +158,6 @@ namespace BitAuto.CarChannel.BLL
             return evaluationDal.GetEvaluationDate(list);
         }
 
-
         /// <summary>
         /// 获取评测是否完成的状态及每组的评分
         /// </summary>
@@ -175,7 +174,7 @@ namespace BitAuto.CarChannel.BLL
                 {
                     if (assessmentEntity.CommonInfoGroup.Score > 0)
                     {
-                        //tempDic.Add("CommonInfoGroup", assessmentEntity.CommonInfoGroup.Score);
+                        tempDic.Add("CommonInfoGroup", assessmentEntity.CommonInfoGroup.Score);
                         //if (assessmentEntity.CommonInfoGroup.CommonInformationEntity != null)
                         //{
 
@@ -324,22 +323,18 @@ namespace BitAuto.CarChannel.BLL
                 {
                     if (assessmentEntity.YhBaseGroup.Score > 0)
                     {
+                        tempDic.Add("YhBaseGroup", assessmentEntity.YhBaseGroup.Score);
                         //if (assessmentEntity.YhBaseGroup.YgEntity != null)
                         //{
                         //}
-                        bool isOk = true;
                         if (assessmentEntity.YhBaseGroup.YaEntity != null)
                         {
                             if (assessmentEntity.YhBaseGroup.YaEntity.AirQualityScore == 0 && string.IsNullOrWhiteSpace(assessmentEntity.YhBaseGroup.YaEntity.AirQualityGeneralCmt))
                             {
                                 finished = false;//"测试中"
-                                isOk = false;
                             }
                         }
-                        if (isOk)
-                        {
-                            tempDic.Add("YhBaseGroup", assessmentEntity.YhBaseGroup.Score);
-                        }
+                        
                     }
                 }
 
@@ -347,7 +342,7 @@ namespace BitAuto.CarChannel.BLL
                 {
                     if (assessmentEntity.CostBaseGroup.Score > 0)
                     {
-                        //tempDic.Add("CostBaseGroup", assessmentEntity.CostBaseGroup.Score);
+                        tempDic.Add("CostBaseGroup", assessmentEntity.CostBaseGroup.Score);
                         //if (assessmentEntity.CostBaseGroup.CpEntity != null)
                         //{
 
@@ -374,7 +369,6 @@ namespace BitAuto.CarChannel.BLL
                         tempDic.Add("GeneralBaseGroup", assessmentEntity.GeneralBaseGroup.Score);
                     }
                 }
-
             }
             dic = tempDic;
             return finished;
@@ -390,10 +384,25 @@ namespace BitAuto.CarChannel.BLL
         {
             try
             {
+                //参与最好最坏标签的组
+                List<string> target = new List<string>
+                {
+                    "BodyAndSpaceGroup",
+                    "RidingComfortGroup",
+                    "DynamicPerformanceGroup",
+                    "JsBaseGroup",
+                    "SafetyGroup"
+                };
+                //如果空气质量评测完成，油耗参与最好最坏标签显示
+                if (pingCeTopPcEntity.Finished)
+                {
+                    target.Add("YhBaseGroup");
+                }
+
                 Dictionary<string, double> percentDic = new Dictionary<string, double>();
                 foreach (GroupScore item in list)
                 {
-                    if (dic.Keys.Contains(item.GroupName))
+                    if (dic.Keys.Contains(item.GroupName)&&target.Contains(item.GroupName))
                     {
                         percentDic.Add(item.GroupName, dic[item.GroupName] / item.Score);
                     }
@@ -419,6 +428,7 @@ namespace BitAuto.CarChannel.BLL
                             if (max >= ConvertHelper.GetDouble(arr[0]) && max < ConvertHelper.GetDouble(arr[1]))
                             {
                                 pingCeTopPcEntity.GoodDiscription = max_GroupScore.CommonDesc[item.Value];
+                                pingCeTopPcEntity.GoodGroup = GetGroupIdByName(maxKey);
                             }
                         }
 
@@ -429,6 +439,7 @@ namespace BitAuto.CarChannel.BLL
                             if (min >= ConvertHelper.GetDouble(arr[0]) && min < ConvertHelper.GetDouble(arr[1]))
                             {
                                 pingCeTopPcEntity.BadDiscription = min_GroupScore.CommonDesc[item.Value];
+                                pingCeTopPcEntity.BadGroup = GetGroupIdByName(minKey);
                             }
                         }
                     }
@@ -438,26 +449,23 @@ namespace BitAuto.CarChannel.BLL
             {
                 CommonFunction.WriteLog(ex.ToString());
             }
-
-
         }
 
         public void SetScoreDes(Dictionary<string, double> dic, PingCeEntity pingCeTopPcEntity, List<GroupScore> list)
         {
             Dictionary<string, object> tempdic = new Dictionary<string, object>();
-            foreach (var item in dic.Keys)
+            foreach (GroupScore item in list)
             {
-                double currentScore = dic[item];
-                GroupScore groupScore = list.First(i => i.GroupName == item);
-                if (groupScore != null)
+                if (dic.Keys.Contains(item.GroupName))
                 {
-                    foreach (var k in groupScore.ScoreDesc.Keys)
+                    double currentScore = dic[item.GroupName];
+                    foreach (var k in item.ScoreDesc.Keys)
                     {
                         string[] arr = k.Split('-').ToArray();
-                        double percent = currentScore / groupScore.Score;
+                        double percent = currentScore / item.Score;
                         if (percent >= ConvertHelper.GetDouble(arr[0]) && percent < ConvertHelper.GetDouble(arr[1]))
                         {
-                            tempdic.Add(item, new { Score = groupScore.Score, ScoreDesc = groupScore.ScoreDesc[k], CurrentScore = currentScore, Percent = percent });
+                            tempdic.Add(item.GroupName, new { Score = item.Score, ScoreDesc = item.ScoreDesc[k], CurrentScore = currentScore, Percent = percent });
                             break;
                         }
                     }
@@ -524,6 +532,24 @@ namespace BitAuto.CarChannel.BLL
                 CommonFunction.WriteLog(ex.ToString());
             }
             return list;
+        }
+
+        private int GetGroupIdByName(string groupName)
+        {
+            //该字典根据评测后台项目中定义的枚举整理
+            Dictionary<string, int> dic = new Dictionary<string, int>
+            {
+                { "CommonInfoGroup", 1 },
+                { "BodyAndSpaceGroup", 2 },
+                { "SafetyGroup", 3 },
+                { "RidingComfortGroup", 4 },
+                { "DynamicPerformanceGroup", 5 },
+                { "JsBaseGroup", 6 },
+                { "YhBaseGroup", 7 },
+                { "CostBaseGroup", 1 },
+                { "GeneralBaseGroup", 1 }
+            };
+            return dic[groupName];
         }
     }
 }

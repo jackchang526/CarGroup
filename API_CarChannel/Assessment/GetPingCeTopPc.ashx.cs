@@ -109,7 +109,9 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         StyleName = entity.StyleName,
                         FuelType = entity.FuelType,
                         GoodDiscription = entity.GoodDiscription,
+                        GoodGroup= entity.GoodGroup,
                         BadDiscription = entity.BadDiscription,
+                        BadGroup=entity.BadGroup,
                         Finished = entity.Finished
                     }
                     );

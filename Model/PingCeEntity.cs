@@ -39,10 +39,19 @@ namespace BitAuto.CarChannel.Model
         /// 优势描述
         /// </summary>
         public string GoodDiscription { get; set; }
+
+        /// <summary>
+        /// 优势组ID
+        /// </summary>
+        public int GoodGroup { get; set; }
         /// <summary>
         /// 劣势描述
         /// </summary>
         public string BadDiscription { get; set; }
+        /// <summary>
+        /// 劣势组ID
+        /// </summary>
+        public int BadGroup { get; set; }
         /// <summary>
         /// 检查是否完成
         /// </summary>

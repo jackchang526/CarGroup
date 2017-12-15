@@ -283,7 +283,7 @@
         })
     </script>
 
-
+    <script type="text/javascript" src="/js/getareaprice.js?v=20170525"></script>
     @*<script type="text/javascript" src="/js/v2/iscroll.js"></script>
     <script type="text/javascript" src="/js/v2/underscore.js"></script>
     <script type="text/javascript" src="/js/v2/model.js"></script>
@@ -334,7 +334,7 @@
         };
         $(function(){
             WaitCompare.initCompreData(compareConfig);
-        });
+        });      
     </script>
 
     <script type="text/javascript">
@@ -344,6 +344,7 @@
             modelId:modelStr,
             carId:@Model.Id
             };
+        GetStyleAreaPriceRange( @Model.Id, true);
     </script>
     <script type="text/javascript">
         var _zampq = [];

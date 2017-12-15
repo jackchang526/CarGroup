@@ -112,8 +112,7 @@ function GetStyleIds() {
             var id = this.id.replace("carlist_", "");
             ids.push(id);
         }
-    });
-      
+    });     
     return ids;
 }
 //获取当前年款内容块
@@ -138,8 +137,13 @@ function GroupIds(array, subGroupLength) {
 }
 
 //卡片区 车款区域报价
-function GetStyleAreaPriceRange(cityId, styleId, cityName) {
-    if (typeof cityId == "undefined"|| cityId == null || cityId == "") {
+function GetStyleAreaPriceRange(styleId,isPeizhi) {
+    var cityId, cityName;
+    if (typeof (bit_locationInfo) != "undefined") {
+        cityId = bit_locationInfo.cityId;
+        cityName = bit_locationInfo.cityName;
+    }
+    if (typeof cityId == "undefined" || cityId == null || cityId == "") {
         return;
     }
     if (typeof styleId == "undefined" ||styleId == null || styleId == "" || styleId <= 0) {
@@ -177,17 +181,25 @@ function GetStyleAreaPriceRange(cityId, styleId, cityName) {
                     result = minPrice + "-" + maxPrice + "万";
                 }
                 if (data[0].ReturnType == 1) {
-                    $("#car-area-price").html(result);
-                    $("#car-area-priceitem").parent().next().children(":eq(0)").html(result);
-                    if (typeof cityName != "undefined" && cityName != "") {
-                        $("#car-area-price").parent().parent().parent().html($("#car-area-price").parent().parent().parent().html().replace("全国", cityName));
-                        $("#car-area-priceitem").html($("#car-area-priceitem").html().replace("商家报价", cityName + "参考价"));
+                    if (isPeizhi) {
+                        $("#car-area-priceitem").eq(0).html($("#car-area-priceitem").eq(0).html().replace("商家报价", cityName + "参考价"));
+                        $("#car-area-priceitem").next().eq(0).html(result);
+                    }
+                    else {
+                        $("#car-area-price").html(result);
+                        if (typeof cityName != "undefined" && cityName != "") {
+                            $("#car-area-name").html($("#car-area-name").html().replace("全国", cityName));
+                        }
                     }
                 }
                 else if (data[0].ReturnType == 2) {
-                    $("#car-area-price").html(result);
-                    $("#car-area-priceitem").parent().next().children(":eq(0)").html(result);
-                    $("#car-area-priceitem").html($("#car-area-priceitem").html().replace("商家报价", "全国参考价"));
+                    if (isPeizhi) {
+                        $("#car-area-priceitem").eq(0).html($("#car-area-priceitem").eq(0).html().replace("商家报价", cityName + "全国参考价"));  
+                        $("#car-area-priceitem").next().eq(0).html(result);
+                    }
+                    else {
+                        $("#car-area-price").html(result);
+                    }
                 }
             }
         }
@@ -255,14 +267,14 @@ function GetSerialTreeAreaPriceRange(csId) {
 }
 
 //车系参数配置页
-function GetCarAreaPriceCallBack(carIds) {
+function GetCarAreaPriceForCSCompare(carIds) {
     var result = GroupIds(carIds, 30);
     for (var i = 0; i < result.length; i++) {
         var ids = result[i].join(',');
-        GetCarAreaPriceListCallBack(ids);
+        GetCarAreaPriceListForCSCompare(ids);
     }
 }
-function GetCarAreaPriceListCallBack(ids) {
+function GetCarAreaPriceListForCSCompare(ids) {
     var cityId, cityName;
     if (typeof (bit_locationInfo) != "undefined") {
         cityId = bit_locationInfo.cityId;
@@ -278,14 +290,13 @@ function GetCarAreaPriceListCallBack(ids) {
         url: "http://frontapi.easypass.cn/ReferPriceAPI/GetReferPriceByCityCarFront/" + cityId + "/" + ids + "",
         cache: true,
         dataType: "jsonp",
+        jsonpCallback: "GetCarAreaPriceListForCSCompareCallback",
         success: function (data) {
             if (data != null && typeof data != "undefined" && data.length > 0) {
                 var isLocal = false;
                 for (var i = 0; i < data.length; i++) {
-                    var result;
                     var minPrice = parseFloat(data[i].MinReferPrice);
-                    var maxPrice = parseFloat(data[i].MaxReferPrice);
-                    if (minPrice <= 0 && maxPrice <= 0) {
+                    if (minPrice <= 0) {
                         continue;
                     }
                     if (minPrice >= 100) {
@@ -294,54 +305,17 @@ function GetCarAreaPriceListCallBack(ids) {
                     else {
                         minPrice = minPrice.toFixed(2);
                     }
-                    if (maxPrice >= 100) {
-                        maxPrice = maxPrice.toFixed(0);
-                    }
-                    else {
-                        maxPrice = maxPrice.toFixed(2);
-                    }
-                    if (minPrice == maxPrice) {
-                        result = minPrice + "万";
-                    }
-                    else {
-                        result = minPrice + "-" + maxPrice + "万";
-                    }
+                    minPrice = minPrice + "万"; 
                     if (data[i].ReturnType == 1) { isLocal = true; }
-                    if ($("#car_aera_" + data[i].Id).children(":eq(0)").length > 0) {
-                        $("#car_aera_" + data[i].Id).children(":eq(0)").find("a").html(result);
-                    }
+                    $("#car_aera_" + data[i].Id).html(minPrice);
                 }
                 if (isLocal == true) {
-                    if ($("#car_aera_" + data[0].Id).parent().parent().find("th").length > 0) {
-                        $("#car_aera_" + data[0].Id).parent().parent().find("th > a").eq(0).html($("#car_aera_" + data[0].Id).parent().parent().find("th > a").eq(0).html().replace("商家报价", cityName + "参考价"));
-                        $("#car_aera_name").eq(0).html($("#car_aera_name").eq(0).html().replace("商家报价", cityName + "参考价"));
-                    }
+                    $("#car_aera_name").eq(0).html($("#car_aera_name").eq(0).html().replace("商家报价", cityName + "参考价"));                   
                 }
                 else {
-                    if ($("#car_aera_" + data[0].Id).parent().parent().find("th").length > 0) {
-                        $("#car_aera_" + data[0].Id).parent().parent().find("th > a").eq(0).html($("#car_aera_" + data[0].Id).parent().parent().find("th > a").eq(0).html().replace("商家报价", "全国参考价"));
-                        $("#car_aera_name").eq(0).html($("#car_aera_name").eq(0).html().replace("商家报价", "全国参考价"));
-                    }
+                    $("#car_aera_name").eq(0).html($("#car_aera_name").eq(0).html().replace("商家报价", "全国参考价"));
                 }
             }
         }
     });
 }
-//选车工具获取区域报价方法
-function GetCarAreaPriceRangeForSelect(carIds) {
-    var ids = carIds.split(',');
-    if (ids == null || ids == "") {
-        return;
-    }
-    for (var i = 0; i < ids.length; i++) {
-        if (ids[i] == "") {
-            ids.remove(ids[i]);
-        }
-    }
-    var result = GroupIds(ids, 30);
-    for (var i = 0; i < result.length; i++) {
-        var ids = result[i].join(',');
-        GetCarAreaPriceList(ids);
-    }
-}
-Array.prototype.remove = function (b) { var a = this.indexOf(b); if (a >= 0) { this.splice(a, 1); return true; } return false; };

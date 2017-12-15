@@ -163,7 +163,6 @@ var CsSummaryCondition = function () {
                 }
                 $targetDiv.append(doc);
                 _bindLoadMoreEvent(rqString, $targetDiv);
-                GetCarAreaPriceRange();
             })
         });
     }
@@ -210,7 +209,6 @@ var CsSummaryCondition = function () {
                     }
                     resetOptions();
                     //selSubStopYear = '', selSubLevel = '', selSubBodyForm = '';
-                    GetCarAreaPriceRange();
                     _bindLoadMoreEvent(reqStr, $targetDiv);
                 })
             })
@@ -254,6 +252,8 @@ var CsSummaryCondition = function () {
                 //_bindJoinDuibiInit();
                 Bglog_InitPostLog();
                 mCsSummaryV2.loadSubsidy(_serialId, citycode);
+                //取区域报价
+                GetCarAreaPriceRange();
             },
             error: function (a, b, c) {
                 console.log("error2");

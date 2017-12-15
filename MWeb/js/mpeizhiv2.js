@@ -255,6 +255,14 @@ function createPageForCompare(isDelSame) {
 
     gotoSubMenu();
     setTimeout(function () { callbackFunc() }, 0);
+    //区域报价回调方法
+    if (ComparePageObject.ValidCount > 0) {
+        var arrCarId = new Array();
+        for (var i = 0; i < ComparePageObject.ValidCount; i++) {
+            arrCarId.push(ComparePageObject.ArrCarInfo[i].CarID);
+        }
+        GetCarAreaPriceForCSCompare(arrCarId);
+    }
 }
 
 function bindEvent() {
@@ -1228,7 +1236,7 @@ function createPrice(arrFieldRow) {
                         if (field.indexOf("-") != -1) {
                             minPrice = field.substring(0, field.indexOf("-")) + "万";
                         }
-                        tempArray.push("<span class=\"cRed\">" + minPrice + "</span>");
+                        tempArray.push("<span class=\"cRed\" id=\"car_aera_" + ComparePageObject.ArrCarInfo[i].CarID + "\">" + minPrice + "</span>");
                         tempArray.push("<a class=\"m-btn-xunjia\" href=\"http://price.m.yiche.com/zuidijia/nc" + ComparePageObject.ArrCarInfo[i].CarInfoArray[0][0] + "/?leads_source=m009001\">询价</a>");
                     }
                     else if (arrFieldRow["sFieldTitle"] == "降价优惠") {
@@ -1260,7 +1268,12 @@ function createPrice(arrFieldRow) {
         }
 
         ComparePageObject.ArrLeftTitleHtml.push("<tr>");
-        ComparePageObject.ArrLeftTitleHtml.push("<th><span>" + arrFieldRow["sFieldTitle"] + "</span></th>");
+        if (arrFieldRow["sFieldTitle"] == "商家报价") {
+            ComparePageObject.ArrLeftTitleHtml.push("<th><span id=\"car_aera_name\">" + arrFieldRow["sFieldTitle"] + "</span></th>");
+        }
+        else {
+            ComparePageObject.ArrLeftTitleHtml.push("<th><span>" + arrFieldRow["sFieldTitle"] + "</span></th>");
+        }
 
         ComparePageObject.ArrRightContentHTML.push("<tr id=\"tr" + arrFieldRow["sTrPrefix"] + "_" + arrFieldRow["sFieldIndex"] + "\">");
         ComparePageObject.ArrRightContentHTML.push(tempArray.join(""));

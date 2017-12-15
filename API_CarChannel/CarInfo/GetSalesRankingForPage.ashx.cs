@@ -24,7 +24,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
         private int pageIndex = 1;
         private int pageSize = 10;
         private string callback = string.Empty;
-        private string item = "{{\"csId\":{0},\"showName\":\"{1}\",\"priceRange\":\"{2}\",\"sellNum\":\"{3}\",\"imgUrl\":\"{4}\",\"rank\":{5}}}{6}";
+        private string item = "{{\"csId\":{0},\"showName\":\"{1}\",\"allSpell\":\"{7}\",\"priceRange\":\"{2}\",\"sellNum\":\"{3}\",\"imgUrl\":\"{4}\",\"rank\":{5}}}{6}";
         public void ProcessRequest(HttpContext context)
         {
             base.SetPageCache(60);
@@ -80,7 +80,8 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                     , ele.GetAttribute("SellNum")
                     , ele.GetAttribute("ImgUrl")
                     , index
-                    , index == endIndex ? "" : ",");
+                    , index == endIndex ? "" : ","
+                    , ele.GetAttribute("AllSpell"));
             }
             if (string.IsNullOrEmpty(callback))
             { 

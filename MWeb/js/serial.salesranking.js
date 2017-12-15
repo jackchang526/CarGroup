@@ -91,7 +91,9 @@ function RequestData(index) {
                     var len = data.data.page.data.length;
                     for (var i = 0; i < len; i++) {
                         var dd = data.data.page.data[i];
-                        html += '<li><div class="left">';
+                         
+
+                        html += ('<li><a class="imgbox-2" href="/' + dd.allSpell + '/" data-id="' + dd.csId +'"><div class="left">');
                         html += '    <div class="rank-number"><span>' + dd.rank + '</span></div>';
                         html += ('        <img class="car-img" src="' + dd.imgUrl + '"alt="">');
                         html += '         <div class="info-box">';
@@ -99,7 +101,7 @@ function RequestData(index) {
                         html += ('            <div class="price">' + dd.priceRange + '</div>');
                         html += ('            <div class="type">全球销量：' + dd.sellNum + '辆</div>');
                         html += '        </div>';
-                        html += '</div></li>';
+                        html += '</div></a></li>';
                     }
                     $("#level_rank_list_" + index + " .load-box").before(html);
                     swiperNewslist.update();

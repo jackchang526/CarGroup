@@ -148,7 +148,7 @@ ORDER BY CONVERT(INT, cdb2.pvalue) DESC, CONVERT(INT, cdb3.pvalue) DESC,
                                 {
                                     // 已有数据 补价格区间
                                     jsonString.Add(string.Format(",\"Price\":\"{0}\""
-                                        , CommonFunction.GetUnicodeByString(GetPriceStr(minP, maxP))
+                                        ,base.GetSerialPriceRangeByID(lastCsID) //CommonFunction.GetUnicodeByString(GetPriceStr(minP, maxP))
                                         ));
                                     jsonString.Add("},");
                                     minP = 0;
@@ -170,17 +170,17 @@ ORDER BY CONVERT(INT, cdb2.pvalue) DESC, CONVERT(INT, cdb3.pvalue) DESC,
                                 lastCsID = csid;
                                 lastDT = tempDt;
                             }
-                            decimal referPrice = 0;
-                            if (decimal.TryParse(dr["car_ReferPrice"].ToString().Trim(), out referPrice))
-                            {
-                                if (referPrice > maxP || maxP == 0)
-                                { maxP = referPrice; }
-                                if (referPrice < minP || minP == 0)
-                                { minP = referPrice; }
-                            }
+                            //decimal referPrice = 0;
+                            //if (decimal.TryParse(dr["car_ReferPrice"].ToString().Trim(), out referPrice))
+                            //{
+                            //    if (referPrice > maxP || maxP == 0)
+                            //    { maxP = referPrice; }
+                            //    if (referPrice < minP || minP == 0)
+                            //    { minP = referPrice; }
+                            //}
                         }
                         jsonString.Add(string.Format(",\"Price\":\"{0}\""
-                            , CommonFunction.GetUnicodeByString(GetPriceStr(minP, maxP))
+                            , base.GetSerialPriceRangeByID(lastCsID)//CommonFunction.GetUnicodeByString(GetPriceStr(minP, maxP))
                             ));
                         jsonString.Add("}");
                         jsonString.Add("]");

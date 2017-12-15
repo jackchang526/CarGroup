@@ -87,26 +87,26 @@ function FocusCar(obj) {
 
 //名片区-经销商数量
 function GetDealerData(serialSpell) {
-	$.ajax({
-		url: "http://cdn.partner.bitauto.com/CarSerialPriceInfo/Handler/GetCsPriceCommon.ashx?action=GetMaxFavorAndDealerCount&brandId=" + serialId + "&cityId=" + cityId,
-		cache: true,
-		dataType: "jsonp",
-		jsonpCallback: "GetDealerDataCallback",
-		success: function (data) {
-			if (typeof data != "undefined" && data.length > 0) {
-				if (data[0].DealerCount > 0) {
-					$("#mp-dealer").html("（" + data[0].DealerCount + "家本地经销商）");
-				}
-				var favorablePrice = parseFloat(data[0].MaxFavorablePrice);
-				if (favorablePrice > 0) {
-				    $("#mp-jiangjia .desc a").html("直降" + favorablePrice.toFixed(2) + "万>>");
-				}
-				else {
-					$("#mp-jiangjia .desc").addClass("grey-txt").html("暂无");
-				}
-			}
-		}
-	});
+    $.ajax({
+        url: "http://cdn.partner.bitauto.com/CarSerialPriceInfo/Handler/GetCsPriceCommon.ashx?action=GetMaxFavorAndDealerCount&brandId=" + serialId + "&cityId=" + cityId,
+        cache: true,
+        dataType: "jsonp",
+        jsonpCallback: "GetDealerDataCallback",
+        success: function (data) {
+            if (typeof data != "undefined" && data.length > 0) {
+                if (data[0].DealerCount > 0) {
+                    $("#mp-dealer").html("（" + data[0].DealerCount + "家本地经销商）").attr("href", "http://dealer.bitauto.com/" + GlobalSummaryConfig.CitySpell + "/" + serialSpell + "/");
+                }
+                var favorablePrice = parseFloat(data[0].MaxFavorablePrice);
+                if (favorablePrice > 0) {
+                    $("#mp-jiangjia .desc a").html("直降" + favorablePrice.toFixed(2) + "万>>");
+                }
+                else {
+                    $("#mp-jiangjia .desc").addClass("grey-txt").html("暂无");
+                }
+            }
+        }
+    });
 }
 //名片区-二手车
 function GetErShouCheMinPrice() {

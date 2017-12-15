@@ -362,6 +362,9 @@
         <!--车款列表 start-->
         @(Html.Raw(ViewData["CarListHtml"]))
         <!--车款列表 end-->
+        <!--找相似 start-->
+        @(Html.Raw(ViewData["CsHotCompareCars"]))
+        <!--找相似 end-->
         <!-- app下载-->
         @if (string.IsNullOrWhiteSpace(wtmcid))
         {
@@ -706,9 +709,6 @@
         <script type="text/javascript">
             showNewsInsCode('0fdd1bab-745d-42d9-a86b-3dd5e25877b5', '8a05b2f2-6da8-40a7-8296-d005d870b4bb', '279a56d1-93e3-4cbb-9409-517fe7edec5a', 'c588f73d-9446-4cbb-a56f-941a8ddaa54f');
         </script>
-        <!--看了还看 start-->
-        @(Html.Raw(ViewData["CsHotCompareCars"]))
-        <!--看了还看 end-->
         <!--最近看过 start-->
         <div class="browse-car  b-shadow" id="more1" data-channelid="27.23.744">
         </div>

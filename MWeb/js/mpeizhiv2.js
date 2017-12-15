@@ -36,7 +36,7 @@ var ArrChannelNo = {
     "params-carinfo": "27.158.1620", "params-carbody": "27.158.1621", "params-carengine": "27.158.1622", "params-transmission": "27.158.1623",
     "params-bottomstop": "27.158.1624", "params-safeconfig": "27.158.1625", "params-wheel": "27.158.1626", "params-drivingassistance": "27.158.1627",
     "params-doorswindow": "27.158.1628", "params-lights": "27.158.1629", "params-innerconfig": "27.158.1630", "params-chair": "27.158.1631",
-    "params-pastime": "27.158.1632", "params-air": "27.158.1633","params-optional":""
+    "params-pastime": "27.158.1632", "params-air": "27.158.1633", "params-optional": ""
 };
 
 // 车型对比信息
@@ -297,7 +297,7 @@ function bindEvent() {
             swipeLeftChildren: '.spl-screen1',
             $swipe: $("#screenCar"),
             $click: $this, //点击对象
-            ph:110,
+            ph: 110,
             fnEnd: function () {
                 //层打开后回调
             },
@@ -306,7 +306,7 @@ function bindEvent() {
             }
         });
     })
-    WaitCompare.initCompreData({ serialid: serialId});
+    WaitCompare.initCompreData({ serialid: serialId });
 }
 
 function createEmptyTable() {
@@ -328,7 +328,7 @@ function createEmptyTable() {
                 //ComparePageObject.ArrRightContentHTML.push("<td name=\"td0\">&nbsp;</td>");
                 ////}
                 var leftTitle = arrFieldRow["sFieldTitle"],
-				classStr = "";
+                    classStr = "";
 
                 if (leftTitle.length > 10 && leftTitle.length < 20) {
                     classStr = "class=\"h2\"";
@@ -404,7 +404,7 @@ function createPic() {
     ComparePageObject.ArrPageContent.push("                 <thead>");
     ComparePageObject.ArrPageContent.push("                     <tr>");
     ComparePageObject.ArrPageContent.push("                         <td>");
-                                                        //统计那边只支持a标签加data-channelid 可以直接统计到，如果换作非a标签加统计则需要手动加上data_cyslogclickflag="统计编号" onclick="BglogPostLog('统计编号',this);"  
+    //统计那边只支持a标签加data-channelid 可以直接统计到，如果换作非a标签加统计则需要手动加上data_cyslogclickflag="统计编号" onclick="BglogPostLog('统计编号',this);"  
     ComparePageObject.ArrPageContent.push("                             <div class=\"checkbox-box\" data-channelid=\"27.158.1617\"  data_cyslogclickflag=\"27.158.1617\" onclick=\"BglogPostLog('27.158.1617',this);\">");
     ComparePageObject.ArrPageContent.push("                                 <label>");
     ComparePageObject.ArrPageContent.push("                                     <div class=\"checkbox-normal " + (ComparePageObject.IsVantage ? "checked" : "") + "\">");
@@ -601,7 +601,7 @@ function createPara(arrFieldRow) {
                         arrTemp.push("<a class=\"m-ico-calculator\" title=\"购车费用计算\" href=\"http://car.m.yiche.com/gouchejisuanqi/?carid=" + ComparePageObject.AllCarJson[i][0][0] + "\"></a>");
                         //arrTemp.push("<a data-channelid=\"27.158.1635\" href=\"http://gouche.m.yiche.com/sb" + ComparePageObject.AllCarJson[i][0][3] + "/m" + ComparePageObject.AllCarJson[i][0][0] + "/\" class=\"low-price\">找低价</a>");
                     }
-                    
+
                 }
                 catch (err) {
                     arrTemp.push("-");
@@ -633,7 +633,7 @@ function createPara(arrFieldRow) {
                 ComparePageObject.ArrTempLeftNavHTML.length = 0;
             }
             var leftTitle = arrFieldRow["sFieldTitle"] + (unit != "" && unit.indexOf(",") == -1 ? "(" + unit + ")" : ""),
-				classStr = "";
+                classStr = "";
             //,leftTitleStr = leftTitle.length > 10 ? leftTitle : "<span>" + leftTitle + "</span>"
 
             if (arrFieldRow["sFieldTitle"] == "车身颜色") {
@@ -823,9 +823,9 @@ function createMulti(arrFieldRow) {
                             // field += unitArray[pint];
                             multiField = (multiField.length > 0 ? (multiField + joinCodeArray[pint]) : "") + field;
 
-                        	//add by sk 2016.01.08 以下参数有值 直接显示 忽略第二个参数
+                            //add by sk 2016.01.08 以下参数有值 直接显示 忽略第二个参数
                             if (pidArray[pint] == "509" || pidArray[pint] == "489" | pidArray[pint] == "555" || pidArray[pint] == "808") {
-                            	break;
+                                break;
                             }
                         }
                         if (arrSame.length < 1) {
@@ -845,8 +845,7 @@ function createMulti(arrFieldRow) {
                         }
                         if (multiField.indexOf("有") >= 0)
                         { multiField = "<span class=\"songti f-bold\">●</span>"; }
-                        if (multiField.indexOf("选配") >= 0 && multiField.indexOf("●") < 0)
-                        {
+                        if (multiField.indexOf("选配") >= 0 && multiField.indexOf("●") < 0) {
                             var fieldInfo = multiField.split('|');
                             if (fieldInfo.length > 1) {
                                 multiField = "<span class=\"songti\">○ 选配" + formatCurrency(fieldInfo[1]) + "元</span>";
@@ -954,7 +953,7 @@ function createMulti(arrFieldRow) {
             ComparePageObject.ArrTempLeftNavHTML.length = 0;
 
             var leftTitle = arrFieldRow["sFieldTitle"],
-			classStr = "";
+                classStr = "";
             //,leftTitleStr = leftTitle.length > 10 ? leftTitle : "<span>" + leftTitle + "</span>"
 
             if (leftTitle.length > 10 && leftTitle.length < 20) {
@@ -977,13 +976,13 @@ function createMulti(arrFieldRow) {
         }
     }
     //if (tempArray.length == 0) {
-        //ComparePageObject.ArrPageContent.push(tempArray.join(""));
-        //when less 对比项小于2个时，填补对比项
-        if (num < ComparePageObject.MaxTD) {
-            ComparePageObject.ArrRightContentHTML.push("<td><div class=\"txt c-box\">&nbsp;</div></td>");
-        }
-        ComparePageObject.ArrRightContentHTML.push("</tr>");
-        ComparePageObject.ArrLeftTitleHtml.push("</tr>");
+    //ComparePageObject.ArrPageContent.push(tempArray.join(""));
+    //when less 对比项小于2个时，填补对比项
+    if (num < ComparePageObject.MaxTD) {
+        ComparePageObject.ArrRightContentHTML.push("<td><div class=\"txt c-box\">&nbsp;</div></td>");
+    }
+    ComparePageObject.ArrRightContentHTML.push("</tr>");
+    ComparePageObject.ArrLeftTitleHtml.push("</tr>");
     //}
 }
 
@@ -1125,7 +1124,7 @@ function createOptional(arrFieldRow) {
     }
     var arrTitleTemp = new Array(),
         arrContentTemp = new Array();
-        //isShow = false;
+    //isShow = false;
     for (var opt = 0; opt < optionalPackageJson.length; opt++) {
         var showCarCount = 0;
         //isShow = false;
@@ -1149,20 +1148,20 @@ function createOptional(arrFieldRow) {
         arrTitleTemp.push("<tr class=\"optional-h\"><th>" + optionalPackageJson[opt].name + "</th></tr><tr style=\"display: none;\"></tr>");
     }
     //if (isShow) {
-        if (ComparePageObject.ArrTempBarHTML.length > 0) {
-            ComparePageObject.ArrLeftTitleHtml.push(ComparePageObject.ArrTempBarHTML.join(""));
-            ComparePageObject.ArrTempBarHTML.length = 0;
+    if (ComparePageObject.ArrTempBarHTML.length > 0) {
+        ComparePageObject.ArrLeftTitleHtml.push(ComparePageObject.ArrTempBarHTML.join(""));
+        ComparePageObject.ArrTempBarHTML.length = 0;
 
-            ComparePageObject.ArrRightContentHTML.push("<tr class=\"h25\"><td colspan=\"4\">&nbsp;</td></tr>");
-        }
-        //添加左侧菜单
-        ComparePageObject.ArrLeftNavHTML.push(ComparePageObject.ArrTempLeftNavHTML.join(''));
-        ComparePageObject.ArrTempLeftNavHTML.length = 0;
+        ComparePageObject.ArrRightContentHTML.push("<tr class=\"h25\"><td colspan=\"4\">&nbsp;</td></tr>");
+    }
+    //添加左侧菜单
+    ComparePageObject.ArrLeftNavHTML.push(ComparePageObject.ArrTempLeftNavHTML.join(''));
+    ComparePageObject.ArrTempLeftNavHTML.length = 0;
 
-        ComparePageObject.ArrLeftTitleHtml.push(arrTitleTemp.join(""));
+    ComparePageObject.ArrLeftTitleHtml.push(arrTitleTemp.join(""));
 
-        ComparePageObject.ArrRightContentHTML.push(arrContentTemp.join(""));
-   // }
+    ComparePageObject.ArrRightContentHTML.push(arrContentTemp.join(""));
+    // }
 }
 
 
@@ -1183,7 +1182,7 @@ function createBar(arrFieldRow) {
         fileldTitle = arrOneTitle.join("<em class=\"half\"></em>")
     }
 
-    ComparePageObject.ArrTempLeftNavHTML.push("<li><a data-channelid=\""+ArrChannelNo[arrFieldRow["scrollId"]]+"\" data-target=\"" + arrFieldRow["scrollId"] + "\" href=\"javascript:;\" ><span>" + fileldTitle + "</span></a></li>");
+    ComparePageObject.ArrTempLeftNavHTML.push("<li><a data-channelid=\"" + ArrChannelNo[arrFieldRow["scrollId"]] + "\" data-target=\"" + arrFieldRow["scrollId"] + "\" href=\"javascript:;\" ><span>" + fileldTitle + "</span></a></li>");
 
     if (arrFieldRow["sFieldTitle"] == "基本信息") return;
 
@@ -1195,7 +1194,7 @@ function createBar(arrFieldRow) {
     //    ComparePageObject.ArrTempBarHTML.push("<h3><span>" + arrFieldRow["sFieldTitle"] + "</span></h3><div class=\"r-txt r-diff\" data-width=\"160\" >●标配&nbsp;&nbsp;○选配&nbsp;&nbsp;-无 <em id = \"bar_" + (ComparePageObject.DiffList.length + 1) + "\"></em>");
     //}
     //else {
-        ComparePageObject.ArrTempBarHTML.push("<h3><span>" + arrFieldRow["sFieldTitle"] + "</span></h3><div class=\"r-txt r-diff\" id = \"bar_" + (ComparePageObject.DiffList.length + 1) + "\"></div>");
+    ComparePageObject.ArrTempBarHTML.push("<h3><span>" + arrFieldRow["sFieldTitle"] + "</span></h3><div class=\"r-txt r-diff\" id = \"bar_" + (ComparePageObject.DiffList.length + 1) + "\"></div>");
     //}
     ComparePageObject.ArrTempBarHTML.push("</td>");
     ComparePageObject.ArrTempBarHTML.push("</tr>");
@@ -1706,6 +1705,7 @@ function selectCar(serialId, curentIndex) {
 var ConditionSelectCar = {
     container: "screenCar",
     title: { "EngineExhaust": "排量", "YearType": "年款", "BodyType": "车身形式", "TransmissionType": "变速箱", "DriveType": "驱动类型", "FuelType": "燃料类型" },
+    unit: { "YearType": "款" },
     isShowSelect: false,
     //validCarArray : [],
     InitHtml: function () {
@@ -1719,7 +1719,7 @@ var ConditionSelectCar = {
                     var tempH = [],
                         length = 0;
                     for (var item in SelectJson[key]) {
-                        tempH.push("<li class=\"sl-2nd\" key=\"" + item + "\">" + item + "</li>");
+                        tempH.push("<li class=\"sl-2nd\" key=\"" + item + "\" unit=\"" + (typeof self.unit[key] == "undefined" ? '' : self.unit[key]) + "\">" + item + "</li>");
                         length++;
                     }
                     if (length <= 1) continue;
@@ -1763,8 +1763,22 @@ var ConditionSelectCar = {
             ComparePageObject.arrCarIds = carIdArray.length >= MaxCarCount ? carIdArray.slice(0, MaxCarCount) : carIdArray;
             initCarInfo(ComparePageObject.arrCarIds.join(","));
             $(".leftmask4").trigger("close");
+            self.SetSelectText();
             duibiCarDataIds = ComparePageObject.arrCarIds;
         });
+    },
+    SetSelectText: function () {
+        var selectedLi = $("#screenCar .ss-2nd li.current");
+        if ($(selectedLi).length > 0) {
+            var html = [];
+            $(selectedLi).each(function (i, item) {
+                html.push($(item).attr("key") + $(item).attr("unit"))
+            });
+            $("#screenTrigger").html("已选条件：" + html.join("、"));
+        }
+        else {
+            $("#screenTrigger").html("车款、排量、驱动方式等");
+        }
     },
     GetCarByCondition: function () {
         var carIdArray = carArray;//carArray页面变量
@@ -1790,9 +1804,9 @@ var ConditionSelectCar = {
 function gotoSubMenu() {
     $("#popup-menulist a").each(function (i, n) {
         var id = $(this).data("target"),
-			tit = $(this).text(),
-			top = $("#" + id).offset().top,
-			headerHeight = $(".flex").height();
+            tit = $(this).text(),
+            top = $("#" + id).offset().top,
+            headerHeight = $(".flex").height();
         $(this).on("click", function (e) {
             e.preventDefault();
             $("html,body").animate({ scrollTop: (top - headerHeight + 34) }, 300, function () {
@@ -1818,9 +1832,9 @@ function callbackFunc() {
     //浮动层
     (function ($root) {
         var $flex = $root.find('.flex'),
-			$header = $flex.find('.section-tt table'),
-			$headerLi = $header.find('span'),
-			$append = $root.find('.flex-append');
+            $header = $flex.find('.section-tt table'),
+            $headerLi = $header.find('span'),
+            $append = $root.find('.flex-append');
         var flexTop = $flex[0].offsetTop, flexHeight = $flex.height();
 
         var rows = $('.phone-title', $root);
@@ -2065,19 +2079,19 @@ function callbackFunc() {
     $(document.body).footer({ footer: '.footer-box' });
     var $body = $('body');
     $body.trigger('rightswipe1',
-     {
-         selectmark: function () { },
-         fnEnd: function (paras) {
-             //for (var i = 0; i < ComparePageObject.arrCarIds.length; i++) {
-             //    if ($('[data-id=' + ComparePageObject.arrCarIds[i] + ']') && ComparePageObject.arrCarIds[i] != paras.carobj.attr("data-car")) {
-             //        $('[data-id=' + ComparePageObject.arrCarIds[i] + ']').parent()[0].className = 'none';
-             //    }
-             //    if ($('[data-id=' + ComparePageObject.arrCarIds[i] + ']') && ComparePageObject.arrCarIds[i] == paras.carobj.attr("data-car")) {
-             //        $('[data-id=' + ComparePageObject.arrCarIds[i] + ']').parent()[0].className = 'current';
-             //    }
-             //}
-         }
-     });
+        {
+            selectmark: function () { },
+            fnEnd: function (paras) {
+                //for (var i = 0; i < ComparePageObject.arrCarIds.length; i++) {
+                //    if ($('[data-id=' + ComparePageObject.arrCarIds[i] + ']') && ComparePageObject.arrCarIds[i] != paras.carobj.attr("data-car")) {
+                //        $('[data-id=' + ComparePageObject.arrCarIds[i] + ']').parent()[0].className = 'none';
+                //    }
+                //    if ($('[data-id=' + ComparePageObject.arrCarIds[i] + ']') && ComparePageObject.arrCarIds[i] == paras.carobj.attr("data-car")) {
+                //        $('[data-id=' + ComparePageObject.arrCarIds[i] + ']').parent()[0].className = 'current';
+                //    }
+                //}
+            }
+        });
 }
 //6701->6,701
 function formatCurrency(num) {

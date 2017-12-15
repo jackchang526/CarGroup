@@ -94,8 +94,8 @@ function GetDealerData(serialSpell) {
 		jsonpCallback: "GetDealerDataCallback",
 		success: function (data) {
 			if (typeof data != "undefined" && data.length > 0) {
-				if (data[0].DealerCount > 0) {
-					$("#mp-dealer").html("（" + data[0].DealerCount + "家本地经销商）");
+                if (data[0].DealerCount > 0) {
+                    $("#mp-dealer").html("（" + data[0].DealerCount + "家本地经销商）").attr("href", "http://dealer.bitauto.com/" + GlobalSummaryConfig.CitySpell + "/" + serialSpell + "/");
 				}
 				var favorablePrice = parseFloat(data[0].MaxFavorablePrice);
 				if (favorablePrice > 0) {

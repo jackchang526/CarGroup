@@ -139,7 +139,7 @@ namespace BitAuto.CarChannel.DAL
                 List<T> list= MongoDBHelper.GetAll<T>(query, index, pageSize, out total, sort, fields);
                 CacheManager.InsertCache(obj_key, list, WebConfig.CachedDuration);
                 CacheManager.InsertCache(total_key, total, WebConfig.CachedDuration);
-                return null;
+                return list;
             }            
         }
 

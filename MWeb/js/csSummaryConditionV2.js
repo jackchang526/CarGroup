@@ -163,6 +163,7 @@ var CsSummaryCondition = function () {
                 }
                 $targetDiv.append(doc);
                 _bindLoadMoreEvent(rqString, $targetDiv);
+                GetCarAreaPriceRange();
             })
         });
     }
@@ -209,7 +210,7 @@ var CsSummaryCondition = function () {
                     }
                     resetOptions();
                     //selSubStopYear = '', selSubLevel = '', selSubBodyForm = '';
-
+                    GetCarAreaPriceRange();
                     _bindLoadMoreEvent(reqStr, $targetDiv);
                 })
             })

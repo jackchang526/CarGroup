@@ -735,7 +735,7 @@
                                         首付 ${res[i].DownPaymentText}
                                     </div>
                                 </div>
-                                <a href="${res[i].PCDetailsUrl}" class="btn btn-default">查看详情</a>
+                                <a href="${res[i].PCDetailsUrl}" target=\"_blank\" class="btn btn-default">查看详情</a>
                             </div>`
                                             }
                                             $('.special-layout-12').html(html);

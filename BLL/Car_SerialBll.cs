@@ -5679,6 +5679,10 @@ namespace BitAuto.CarChannel.BLL
             SerialEntity se = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, csId);
             Dictionary<int, string> carIntoMarketTimeDic = GetAllSerialMarkDay();
             List<CarInfoForSerialSummaryEntity> carList = new Car_BasicBll().GetCarInfoForSerialSummaryBySerialId(csId);
+            if (carList == null || carList.Count == 0)
+            {
+                return string.Empty;
+            }
             carList = carList.OrderByDescending(x => x.MarketDateTime).ThenByDescending(x => x.CarID).ToList();
             if (se.SaleState.Trim() == "ÔÚÏú" || se.SaleState.Trim() == "Í£Ïú")
             {

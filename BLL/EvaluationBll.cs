@@ -424,22 +424,28 @@ namespace BitAuto.CarChannel.BLL
                         foreach (var item in max_GroupScore.ScoreDesc)
                         {
                             string[] arr = item.Key.Split('-').ToArray();
-
-                            if (max >= ConvertHelper.GetDouble(arr[0]) && max < ConvertHelper.GetDouble(arr[1]))
+                            pingCeTopPcEntity.GoodGroup = GetGroupIdByName(maxKey);
+                            if (max >= ConvertHelper.GetDouble(arr[0]) && max <= ConvertHelper.GetDouble(arr[1]))
                             {
                                 pingCeTopPcEntity.GoodDiscription = max_GroupScore.CommonDesc[item.Value];
-                                pingCeTopPcEntity.GoodGroup = GetGroupIdByName(maxKey);
+                            }
+                            else
+                            {
+                                pingCeTopPcEntity.GoodDiscription = "";
                             }
                         }
 
                         foreach (var item in min_GroupScore.ScoreDesc)
                         {
                             string[] arr = item.Key.Split('-').ToArray();
-
+                            pingCeTopPcEntity.BadGroup = GetGroupIdByName(minKey);
                             if (min >= ConvertHelper.GetDouble(arr[0]) && min < ConvertHelper.GetDouble(arr[1]))
                             {
-                                pingCeTopPcEntity.BadDiscription = min_GroupScore.CommonDesc[item.Value];
-                                pingCeTopPcEntity.BadGroup = GetGroupIdByName(minKey);
+                                pingCeTopPcEntity.BadDiscription = min_GroupScore.CommonDesc[item.Value];                                
+                            }
+                            else
+                            {
+                                pingCeTopPcEntity.BadDiscription = "";
                             }
                         }
                     }

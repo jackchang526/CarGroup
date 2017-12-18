@@ -145,6 +145,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
+    <Compile Include="Controllers\NewCarController.cs" />
     <Compile Include="Controllers\NewsListController.cs" />
     <Compile Include="Controllers\RecognitionController.cs" />
     <Compile Include="Controllers\SalesRankingController.cs" />
@@ -281,6 +282,7 @@
     <Content Include="js\yagao.commons.js" />
     <Content Include="js\yagao.selectcar.js" />
     <Content Include="ushtml\0000\2016-xiaobaixuanche-life_style-1149.shtml" />
+    <Content Include="ushtml\0000\20171201_m_newCarSell-1485.shtml" />
     <Content Include="ushtml\0000\20171201_m_salesRanking-1484.shtml" />
     <Content Include="ushtml\0000\myiche2014_cube_xuanchepage-759.shtml" />
     <Content Include="ushtml\0000\myiche2015_cube_brand_style-996.shtml" />
@@ -429,6 +431,7 @@
     <Content Include="Views\Recognition\Index.cshtml" />
     <Content Include="Views\BaoZhiLv\Index.cshtml" />
     <Content Include="Views\SalesRanking\Index.cshtml" />
+    <Content Include="Views\NewCar\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -28,16 +28,25 @@ Bitauto.Login.onComplatedHandlers.push(function (loginRes) {
             contentType: "application/json",
             success: function (data) {
                 if (data != null) {
-                    var html = "<dt>猜你喜欢：</dt>";
+                    var html = "";
                     for (var i = 0; i < cars.length; i++) {
-                        html += ('<dd><a href="http://car.m.yiche.com/' + data[cars[i]].allSpell + '/">' + data[cars[i]].showName+'</a></dd>'); 
-                    } 
-                    $(".browse-car dl").html(html);
-                    $(".browse-car").show();
+                        if (data[cars[i]] != undefined && data[cars[i]] != null) {
+                            html += ('<dd><a href="http://car.m.yiche.com/' + data[cars[i]].allSpell + '/">' + data[cars[i]].showName + '</a></dd>');
+                        }
+                    }
+                    if (html.length > 0) {
+                        $(".browse-car dl").html("<dt>最近看过：</dt>" + html);
+                        $(".browse-car").show();
+                    } else {
+                        $(".browse-car").hide();
+                    }
+                } else {
+                    $(".browse-car").hide();
                 }
             },
             error: function (msg) { 
                 console.log(msg);
+                $(".browse-car").hide();
             }
         });
     });

@@ -428,11 +428,7 @@ namespace BitAuto.CarChannel.BLL
                             if (max >= ConvertHelper.GetDouble(arr[0]) && max <= ConvertHelper.GetDouble(arr[1]))
                             {
                                 pingCeTopPcEntity.GoodDiscription = max_GroupScore.CommonDesc[item.Value];
-                            }
-                            else
-                            {
-                                pingCeTopPcEntity.GoodDiscription = "";
-                            }
+                            }                            
                         }
 
                         foreach (var item in min_GroupScore.ScoreDesc)
@@ -442,11 +438,7 @@ namespace BitAuto.CarChannel.BLL
                             if (min >= ConvertHelper.GetDouble(arr[0]) && min < ConvertHelper.GetDouble(arr[1]))
                             {
                                 pingCeTopPcEntity.BadDiscription = min_GroupScore.CommonDesc[item.Value];                                
-                            }
-                            else
-                            {
-                                pingCeTopPcEntity.BadDiscription = "";
-                            }
+                            }                            
                         }
                     }
                 }

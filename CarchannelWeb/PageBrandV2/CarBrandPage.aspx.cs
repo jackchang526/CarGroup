@@ -519,9 +519,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageBrandV2
                     //}
                     if (serialEntry.SaleState == "在销")
                     {
-                        serialEntry.SaleState = base.GetSerialPriceRangeByID(serialEntry.SerialId);
+                        //改为指导价
+                        serialEntry.SaleState = base.GetSerialReferPriceByID(serialEntry.SerialId);
                         if (serialEntry.SaleState.Trim().Length == 0)
-                            serialEntry.SaleState = "<small>暂无报价</small>";
+                            serialEntry.SaleState = "<small>暂无指导价</small>";
                         else
                         {
                             // serialEntry.SaleState = "<a href=\"/" + serialEntry.CS_AllSpell + "/baojia/\" target=\"_blank\" rel=\"nofollow\">" + serialEntry.SaleState + "</a>";

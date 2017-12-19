@@ -79,10 +79,10 @@
         <!--焦点图、名片区-->
         <div class="row card-head-box">
             <div class="l-box-sty col-auto">
-                <%if (!string.IsNullOrEmpty(VRUrl))
+               <%-- <%if (!string.IsNullOrEmpty(VRUrl))
                     {%>
                 <a href="<%= VRUrl %>" data-channelid="2.21.2213" target="_blank" class="zs-vr">VR看全景</a>
-                <%} %>
+                <%} %>--%>
                 <% if (serialEntity.Brand.MasterBrandId == 3)
                     { %>
                 <div class="bmw-ad-link">
@@ -105,7 +105,7 @@
                                     else
                                     { %>
                                 <h2>
-                                    <span class="note">全国参考价：</span><a href="http://car.bitauto.com/<%=serialSpell %>/baojia/" data-channelid="2.21.853" target="_blank" class="price"><%= serialPrice %></a>
+                                    <span class="note" id="cs-area-name">全国参考价：</span><a href="http://car.bitauto.com/<%=serialSpell %>/baojia/" data-channelid="2.21.853" target="_blank" class="price" id="cs-area-price"><%= serialPrice %></a>
                                     <a href="http://dealer.bitauto.com/<%=serialSpell %>/" target="_blank" id="mp-dealer" data-channelid="2.21.1526" class="local-agents"></a>
                                 </h2>
                                 <%} %>
@@ -280,24 +280,28 @@
         <!--/焦点图、名片区-->
         <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201711241325"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201712151353"></script>
         <%--<script type="text/javascript" src="/jsnewv2/cssummary.js?v=20170171032"></script>--%>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712110"></script>
         <script type="text/javascript">
             var serialId = <%= serialId %> ,
                 priceRang = '<%=serialPrice%>',
                 cityId = 201,
-                cityName = "北京";
+                cityName = "北京",
+                citySpell = "beijing";
             csSaleState = "<%= serialInfo.CsSaleState  %>",
                 serialSpell = "<%= serialSpell  %>";
             if (typeof (bit_locationInfo) != "undefined") {
                 cityId = bit_locationInfo.cityId;
                 cityName = bit_locationInfo.cityName;
+                citySpell = bit_locationInfo.engName;
             }
             var GlobalSummaryConfig = {
                 SerialId:<%= serialId %>,
                 AllSpell:"<%=serialSpell%>",
                 CityId: cityId,
-                CityName: cityName
+                CityName: cityName,
+                CitySpell: citySpell
             };
 
             if (document.getElementById('carYearList_all'))
@@ -316,11 +320,12 @@
                 GetDealerData("<%= serialSpell %>");
             }
             GetErShouCheMinPrice();
+            GetSerialAreaPriceRange();
             GetDownPayment();
             InitTeHuiAndAdData();
             GetJiangjiaNews();
-            GetHmcJiangJia();
-            Get1111Entrance();
+            //GetHmcJiangJia();
+            //Get1111Entrance();
             GetVr();
             $("#qrcode img").bind("error", function () {
                 this.style.display = "none";
@@ -594,7 +599,7 @@
                     </div>
                     <%= koubeiDianpingHtml %>
                     <!--经销商开始-->
-                    <script src="http://img1.bitauto.com/bt/Price/CsReviewPrice/js/CsPriceReview.min.js"></script>
+                    <script src="http://img1.bitauto.com/bt/Price/CsReviewPrice/js/CsPriceReview.min.js?v=20171128"></script>
                     <script type="text/javascript">
                             //document.write("<ins id=\"ep_union_137\" partner=\"1\" version=\"\" isupdate=\"1\" type=\"1\" city_type=\"1\" city_id=\"" + cityId + "\" city_name=\"0\" car_type=\"2\" brandid=\"0\" serialid=\"" + serialId + "\" carid=\"0\"></ins>");
                             document.write("<div class=\"layout-2 sales-agent-section\" id=\"dealerlist\" dataReviewPagecsid=\""+serialId+"\" dataReviewPagecityid=\""+cityId+"\"></div>");
@@ -730,7 +735,7 @@
                                         首付 ${res[i].DownPaymentText}
                                     </div>
                                 </div>
-                                <a href="${res[i].PCDetailsUrl}" class="btn btn-default">查看详情</a>
+                                <a href="${res[i].PCDetailsUrl}" target=\"_blank\" class="btn btn-default">查看详情</a>
                             </div>`
                                             }
                                             $('.special-layout-12').html(html);
@@ -819,6 +824,7 @@
             GetVedioNum();
             //searchEscByTypeRequest("<%=serialSpell %>");
             searchEsc("<%=serialSpell %>");
+            GetCarAreaPriceRange();
         })();
         //焦点颜色图src设置
         $("div[id^='focuscolor_'] img").each(function (i, n) {
@@ -1002,6 +1008,7 @@
         })(window);
     </script>--%>
     <!--#include file="~/htmlv2/footer2016.shtml"-->
+    <!--#include file="~/htmlV2/CommonBodyBottom.shtml"-->
     <!--本站统计代码-->
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsStat/StatisticJsOldPV.js"></script>
     <script type="text/javascript">

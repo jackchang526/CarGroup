@@ -729,9 +729,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 				carListHtml.Add("    <th>变速箱</th>");
                 carListHtml.Add("    <th class=\"txt-right txt-right-padding\">指导价</th>");
                 carListHtml.Add("    <th class=\"txt-right\">参考最低价</th>");
-                carListHtml.Add("    <th><div class=\"doubt\" onmouseover=\"javascript:$(this).children('.prompt-layer').show();return false;\" onmouseout=\"javascript:$(this).children('.prompt-layer').hide();return false;\">");
-                carListHtml.Add("    <div class=\"prompt-layer\" style=\"display:none\">全国参考最低价</div></div></th>");
-				carListHtml.Add("</tr>");
+                carListHtml.Add("    <th></th>");
+                //carListHtml.Add("    <th><div class=\"doubt\" onmouseover=\"javascript:$(this).children('.prompt-layer').show();return false;\" onmouseout=\"javascript:$(this).children('.prompt-layer').hide();return false;\">");
+                //carListHtml.Add("    <div class=\"prompt-layer\" style=\"display:none\">全国参考最低价</div></div></th>");
+                carListHtml.Add("</tr>");
 				//}
 				//else
 				//{

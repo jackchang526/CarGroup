@@ -53,7 +53,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.UserControls
 							sts.ToCsAllSpell.ToString().ToLower(),
 							csName);
 					var priceRange = StringHelper.SubString(sts.ToCsPriceRange.ToString(), 14, false);
-					htmlCode.AppendFormat("<p><span>{0}</span></p>", string.IsNullOrEmpty(priceRange) ? "暂无报价" : priceRange);
+					htmlCode.AppendFormat("<p><span>{0}</span></p>", string.IsNullOrEmpty(priceRange) ? "暂无指导价" : priceRange);
 					htmlCode.AppendFormat("</li>");
 				}
 			}

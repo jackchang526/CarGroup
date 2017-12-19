@@ -108,7 +108,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             GetCNCAPAndENCAPData();//碰撞数据
             MakeRelatedNewHtml();//相关新闻
             GetBaoZhiLv();//5年保值率
-            GetVrUrl();//Vr url
+            //GetVrUrl();//Vr url
             //InitNextSeeNew();//接下来要看 评测和导购
             ucNextToSee.serialId = serialId;
         }
@@ -932,8 +932,9 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 carListHtml.Add("    <th>变速箱</th>");
                 carListHtml.Add("    <th class=\"txt-right txt-right-padding\">" + (waitStateFlag ? "预售价" : "指导价") + "</th>");
                 carListHtml.Add("    <th class=\"txt-right\">参考最低价</th>");
-                carListHtml.Add("    <th><div class=\"doubt\" onmouseover=\"javascript:$(this).children('.prompt-layer').show();return false;\" onmouseout=\"javascript:$(this).children('.prompt-layer').hide();return false;\">");
-                carListHtml.Add("    <div class=\"prompt-layer\"  style=\"display:none;\">全国参考最低价</div></div></th>");
+                carListHtml.Add("    <th></th>");
+                //carListHtml.Add("    <th><div class=\"doubt\" onmouseover=\"javascript:$(this).children('.prompt-layer').show();return false;\" onmouseout=\"javascript:$(this).children('.prompt-layer').hide();return false;\">");
+                //carListHtml.Add("    <div class=\"prompt-layer\"  style=\"display:none;\">全国参考最低价</div></div></th>");
                 carListHtml.Add("</tr>");
 
                 groupIndex++;

@@ -172,14 +172,15 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageToolV2
 
                     #region 网友点评
 
-                    var commonhtmlBll = new CommonHtmlBll();
-                    WangYouDianPingL = commonhtmlBll.GetCommonHtmlByBlockId(SerialIdL, CommonHtmlEnum.TypeEnum.Serial,
-                        CommonHtmlEnum.TagIdEnum.KouBeiDuiBi,
-                        CommonHtmlEnum.BlockIdEnum.WangYouDianPing);
-                    WangYouDianPingR = commonhtmlBll.GetCommonHtmlByBlockId(SerialIdR, CommonHtmlEnum.TypeEnum.Serial,
-                        CommonHtmlEnum.TagIdEnum.KouBeiDuiBi,
-                        CommonHtmlEnum.BlockIdEnum.WangYouDianPing);
-
+                    //var commonhtmlBll = new CommonHtmlBll();
+                    //WangYouDianPingL = commonhtmlBll.GetCommonHtmlByBlockId(SerialIdL, CommonHtmlEnum.TypeEnum.Serial,
+                    //    CommonHtmlEnum.TagIdEnum.KouBeiDuiBi,
+                    //    CommonHtmlEnum.BlockIdEnum.WangYouDianPing);
+                    //WangYouDianPingR = commonhtmlBll.GetCommonHtmlByBlockId(SerialIdR, CommonHtmlEnum.TypeEnum.Serial,
+                    //    CommonHtmlEnum.TagIdEnum.KouBeiDuiBi,
+                    //    CommonHtmlEnum.BlockIdEnum.WangYouDianPing);
+                    WangYouDianPingL = GetCarJingpinKoubei(CarEntityL, dicParams);
+                    WangYouDianPingR = GetCarJingpinKoubei(CarEntityR, dicParams);
 
                     //KoubeiReportL = commonhtmlBll.GetCommonHtmlByBlockId(SerialIdL, CommonHtmlEnum.TypeEnum.Serial,
                     //    CommonHtmlEnum.TagIdEnum.KouBeiDuiBi,
@@ -682,7 +683,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageToolV2
                     string imgUrl = Car_SerialBll.GetSerialImageUrl(csId).Replace("_2.", "_3.");
                     string allSpell = row["allSpell"].ToString();
                     string showName = row["cs_ShowName"].ToString();
-                    string priceRange = new PageBase().GetSerialPriceRangeByID(Convert.ToInt32(csId));
+                    //改为指导价
+                    string priceRange = new PageBase().GetSerialReferPriceByID(Convert.ToInt32(csId));
                     sb.Append("    <div class=\"img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120\">");
                     sb.Append("        <div class=\"img\">");
                     sb.AppendFormat("      <a target=\"_blank\" href=\"/{0}/\">", allSpell);
@@ -702,6 +704,76 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageToolV2
                 sb.Append("</div>");
             }
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// 获取车款精品口碑
+        /// </summary>
+        /// <param name="carId"></param>
+        /// <returns></returns>
+        private string GetCarJingpinKoubei(CarEntity car,Dictionary<int,Dictionary<string,string>> dicParams)
+        {
+            int carId = car.Id;
+            string filePath = Path.Combine(WebConfig.DataBlockPath, string.Format("Data\\koubei\\JingPin\\Car\\{0}.xml", carId));
+            XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(filePath);
+            if (xmlDoc == null || !xmlDoc.HasChildNodes) return string.Empty;
+            XmlNodeList itemList = xmlDoc.SelectNodes("DataList/Item");
+            if (itemList.Count > 0)
+            {
+                var topicCount = ConvertHelper.GetInteger(xmlDoc.SelectSingleNode("DataList").Attributes["DataCount"].Value);
+                double sum = 0;// (ConvertHelper.GetDouble(AverageRating) / 5) * 100;
+                if (dicParams.ContainsKey(carId) && dicParams[carId] != null && dicParams[carId]["Koubei"] != "")
+                {
+                    sum = (ConvertHelper.GetDouble(dicParams[carId]["Koubei"]) / 5) * 100;
+                }
+                StringBuilder sbHtml = new StringBuilder();
+                int topicLoop = 0;
+                foreach (XmlNode item in itemList)
+                {
+                    topicLoop++;
+                    if (topicLoop > 2) break;
+                    var id = item.SelectSingleNode("TopicId").InnerText;
+                    var contents = item.SelectSingleNode("Content").InnerText;
+                    var userId = ConvertHelper.GetInteger(item.SelectSingleNode("UserId").InnerText);
+                    var userType = ConvertHelper.GetInteger(item.SelectSingleNode("UserType").InnerText);
+                    var userName = item.SelectSingleNode("UserName").InnerText;
+                    var url = item.SelectSingleNode("KouBeiUrl").InnerText;
+                    string userImage = "http://pic.baa.bitautotech.com/newavatar/60.jpg";
+                    string userUrl = "#";
+                    if (userType == 0 && userId > 0)
+                    {
+                        userImage = item.SelectSingleNode("HeadUrl").InnerText;
+                        userUrl = "http://i.qichetong.com/u" + userId + "/";
+                    }
+
+                    sbHtml.Append("<div class=\"list-box\">");
+                    sbHtml.Append("<div class=\"head\">");
+                    sbHtml.Append("<div class=\"head-pic\">");
+                    sbHtml.AppendFormat("<a href=\"{0}\" target=\"_blank\"><img src=\"{1}\"></a>", userUrl,
+                        userImage);
+                    sbHtml.Append("</div>");
+                    sbHtml.AppendFormat("<p class=\"user-name\"><a href=\"{0}\" target=\"_blank\">{1}</a></p>",
+                        userUrl, userName);
+                    sbHtml.Append("<div class=\"start2-box inline-b\">");
+                    sbHtml.AppendFormat("<div class=\"start\"><em style=\"width: {0}%;\"></em></div>", sum);
+                    sbHtml.Append("</div>");
+                    sbHtml.Append("</div>");
+                    sbHtml.AppendFormat(
+                        "	<p class=\"txt\">{0}&nbsp;&nbsp;<a href=\"{1}\" target=\"_blank\">查看更多</a></p>",
+                        StringHelper.SubString(contents, 120, true), url);
+                    sbHtml.Append("</div>");
+                }
+                if (topicCount >= 2)
+                {
+                    sbHtml.AppendFormat("<p class=\"more\"><a href=\"{0}\" target=\"_blank\">查看更多点评</a></p>",
+                        string.Format("http://car.bitauto.com/{0}/koubei/gengduo/{1}-{2}-0-0-0-0-0-0-0-0-0--1-10.html"
+                        ,car.Serial.AllSpell
+                        ,car.Serial.Id
+                        ,carId));
+                }
+                return sbHtml.ToString();
+            }
+            return string.Empty;
         }
     }
 }

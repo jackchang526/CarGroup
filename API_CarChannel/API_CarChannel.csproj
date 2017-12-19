@@ -116,6 +116,9 @@
     <Compile Include="Assessment\GetEntranceData.ashx.cs">
       <DependentUpon>GetEntranceData.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Assessment\GetEvalInfoForAppNews.ashx.cs">
+      <DependentUpon>GetEvalInfoForAppNews.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Assessment\GetEvaluationInfo.ashx.cs">
       <DependentUpon>GetEvaluationInfo.ashx</DependentUpon>
     </Compile>
@@ -498,6 +501,9 @@
     <Compile Include="WxApp\GetCarParamInfo.ashx.cs">
       <DependentUpon>GetCarParamInfo.ashx</DependentUpon>
     </Compile>
+    <Compile Include="WxApp\GetCarParamList.ashx.cs">
+      <DependentUpon>GetCarParamList.ashx</DependentUpon>
+    </Compile>
     <Compile Include="WxApp\GetHotMaster.ashx.cs">
       <DependentUpon>GetHotMaster.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -666,6 +672,7 @@
     <Content Include="WxApp\GetHotSerial.ashx" />
     <Content Include="WxApp\GetSerialSellRank.ashx" />
     <Content Include="WxApp\GetHotMaster.ashx" />
+    <Content Include="WxApp\GetCarParamList.ashx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

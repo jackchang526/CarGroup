@@ -166,6 +166,14 @@ function createPageForCompare(isDelSame) {
     setLevelAD();
     //
     setSpecialAD();
+    //区域报价回调方法
+    if (ComparePageObject.ValidCount > 0) {
+        var arrCarId = new Array();
+        for (var i = 0; i < ComparePageObject.ValidCount; i++) {
+            arrCarId.push(allCarInfo[i].Key);
+        }
+        GetCarAreaPriceCallBack(arrCarId);
+    }
 }
 
 //计算左侧浮动导航高度
@@ -1480,7 +1488,12 @@ function fieldMultiValue(arrFieldRow) {
 
 // create price for compare
 function createPrice(arrFieldRow) {
-    ComparePageObject.FloatLeft.push("<tr><th>" + checkBaikeForTitle(arrFieldRow) + "</th></tr>");
+    if (arrFieldRow["sFieldTitle"] == "商家报价") {
+        ComparePageObject.FloatLeft.push("<tr><th id=\"car_aera_name\">" + checkBaikeForTitle(arrFieldRow) + "</th></tr>");
+    }
+    else {
+        ComparePageObject.FloatLeft.push("<tr><th>" + checkBaikeForTitle(arrFieldRow) + "</th></tr>");
+    }
     ComparePageObject.ArrPageContent.push("<tr>");
     ComparePageObject.ArrPageContent.push("<th>" + checkBaikeForTitle(arrFieldRow) + "</th>");
     var isShowLoop = 0;
@@ -1504,7 +1517,7 @@ function createPrice(arrFieldRow) {
                         arrTemp = field.split('-');
                     if (arrTemp.length > 1)
                         fieldTemp = arrTemp[0].replace("万", "") + "-" + arrTemp[1];
-                    ComparePageObject.ArrPageContent.push("<div class=\"xunjia\">");
+                    ComparePageObject.ArrPageContent.push("<div class=\"xunjia\" id=\"car_aera_" + ComparePageObject.AllCarJson[i][0][0]+ "\">");
                     ComparePageObject.ArrPageContent.push("<span class=\"cRed\"><a target=\"_blank\" href=\"http://price.bitauto.com/car.aspx?newcarid=" + ComparePageObject.AllCarJson[i][0][0] + "&citycode=0\">" + fieldTemp + "</a></span>");
                     ComparePageObject.ArrPageContent.push("<div class=\"button_gray button_43_20\"><a target=\"_blank\" href=\"http://dealer.bitauto.com/zuidijia/nb" + (ComparePageObject.AllCarJson[i][0][3] || "") + "/nc" + ComparePageObject.AllCarJson[i][0][0] + "/?leads_source=p046001\">询价</a></div>");
                     ComparePageObject.ArrPageContent.push("</div>");
@@ -2507,7 +2520,7 @@ $(function () {
     var idmainoffsettop_top = idmainoffsettop + 90; //上浮动层出现top定位
     var idleftoffsetheight = $("#tableHead_left").height(); //左侧浮动层出现的top定位
     var idleftwidth = the_lid.width(); //左侧浮动层的宽度
-    var tipheight = $(".td-tips").height();//风险提示高度
+    var tipheight = $(".td-tips").height() + parseFloat($(".td-tips").css("margin-bottom").replace("px"));//风险提示高度
     ////////////////屏幕改变大小开始
 
     $(window).resize(function () {

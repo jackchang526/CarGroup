@@ -1010,26 +1010,45 @@ function addTrackingCode(serialId) {
 addTrackingCode(GlobalSummaryConfig.SerialId);
 
 //双11入口
-function Get1111Entrance() {
+//function Get1111Entrance() {
+//    $.ajax({
+//        url: "http://api.mai.yiche.com/api/ProductCar/GetCs11?csid=" + GlobalSummaryConfig.SerialId,
+//        cache: true,
+//        dataType: "jsonp",
+//        jsonpCallback: "Get1111EntranceCallback",
+//        success: function (data) {
+//            if (!data.Success || data.Result == null) {
+//                //console.log(data.Msg);
+//                return;
+//            }
+//            var html = [];
+//            html.push("<a href=\"" + data.Result.mUrl + "\" class=\"shuang11-alink\">" + data.Result.propagate + "</a >");
+//            $(".sum-info").before(html.join(""));
+//        }
+//    });
+//}
+//vr入口
+function GetVr() {
     $.ajax({
-        url: "http://api.mai.yiche.com/api/ProductCar/GetCs11?csid=" + GlobalSummaryConfig.SerialId,
+        url: "http://webapi.photo.bitauto.com/photoApi/api/v1/Pano/GetAlbumList?ModelId=" + GlobalSummaryConfig.SerialId,
         cache: true,
         dataType: "jsonp",
-        jsonpCallback: "Get1111EntranceCallback",
+        jsonpCallback: "GetVrCallback",
         success: function (data) {
-            if (!data.Success || data.Result == null) {
-                //console.log(data.Msg);
+            if (data.Code != 0 || data.Data.Total == 0) {
                 return;
             }
-            var html = [];
-            html.push("<a href=\"" + data.Result.mUrl + "\" class=\"shuang11-alink\">" + data.Result.propagate + "</a >");
-            $(".sum-info").before(html.join(""));
+            var container = $(".sum-car-img .right-area");
+            if ($(container).length == 0) return;
+            //var imgUrl = $(container).find("img").attr("src");
+            $(container).find("a").first().remove();
+            $(container).prepend("<a href=\"" + data.Data.DataList[0].Url + "\" data-channelid=\"27.23.2214\" class=\"img-box\"><span class=\"spl360-kanche\"></span><img src=\"" + data.Data.DataList[0].PhotoUrl + "\" /><em>全景</em></a>");
         }
     });
 }
+
 //vr入口
-function GetVr() {
-    if ($("#favstar").siblings("vr-chezhan") > 0) return;
+function GetVrV2() {
     $.ajax({
         url: "http://webapi.photo.bitauto.com/photoApi/api/v1/Pano/GetAlbumList?ModelId=" + GlobalSummaryConfig.SerialId,
         cache: true,

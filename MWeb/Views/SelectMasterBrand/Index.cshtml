@@ -201,8 +201,11 @@
         </div>
         @Html.Partial("~/html/footerV3.cshtml")
     </div>
-    <div class="float-r-box">
-        <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
-    </div>
+    @if (WTmc_id != "mxmllqic_qt")
+    {
+        <div class="float-r-box">
+            <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
+        </div>
+    }
 </body>
 </html>

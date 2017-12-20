@@ -244,6 +244,9 @@
 </div>--%>
 <div class="fixed-nav">
 </div>
+<!--公共底-->
+<!--#include file="/inc/footer.html"-->
+<!--/公共底-->
 <ins id="div_217711bf-cad0-4360-ac95-b640b4592dff" type="ad_play" adplay_IP="" adplay_AreaName="" adplay_CityName="" adplay_BrandID="" adplay_BrandName="" adplay_BrandType="" adplay_BlockCode="217711bf-cad0-4360-ac95-b640b4592dff"> </ins>
 <script type="text/javascript">
     if (ad != null && ad === "0") {

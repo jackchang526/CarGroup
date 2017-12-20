@@ -646,6 +646,7 @@
     <Content Include="Assessment\GetPingCeTopPc.ashx" />
     <Content Include="Assessment\GetPingCeTopM.ashx" />
     <Content Include="Assessment\GetPingCeList.ashx" />
+    <Content Include="Assessment\GetEvalInfoForAppNews.ashx" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -1,6 +1,5 @@
 ﻿using BitAuto.CarChannel.Common;
 using BitAuto.CarChannel.Common.Cache;
-using BitAuto.CarChannel.Common.MongoDB;
 using BitAuto.CarChannel.DAL;
 using BitAuto.CarChannel.Model;
 using BitAuto.CarChannel.Model.Assessment;
@@ -11,7 +10,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 
 namespace BitAuto.CarChannel.BLL
@@ -416,11 +414,39 @@ namespace BitAuto.CarChannel.BLL
                     double max = percentDic[maxKey];
                     double min = percentDic[minKey];
 
+                    var maxArr = percentDic.Where(i => i.Value == max);
+                    var minArr = percentDic.Where(i => i.Value == min);
+
+                    int maxCount = maxArr.Count();
+                    if (maxCount > 1)//是否有并列第一
+                    {
+                        foreach (var item in target)
+                        {
+                            var aa = maxArr.Where(i => i.Key == item);
+                            if (aa.Count() > 0)
+                            {
+                                maxKey = item;
+                                break;
+                            }
+                        }
+                    }
+                    int minCount = minArr.Count();
+                    if (minCount > 1)//是否有并列倒是第一
+                    {
+                        foreach (var item in target)
+                        {
+                            var aa = minArr.Where(i => i.Key == item);
+                            if (aa.Count() > 0)
+                            {
+                                minKey = item;
+                                break;
+                            }
+                        }
+                    }
+
                     if (list != null)
                     {
-                        GroupScore max_GroupScore = list.First(i => i.GroupName == maxKey);
-                        GroupScore min_GroupScore = list.First(i => i.GroupName == minKey);
-
+                        GroupScore max_GroupScore = list.First(i => i.GroupName == maxKey);                       
                         foreach (var item in max_GroupScore.ScoreDesc)
                         {
                             string[] arr = item.Key.Split('-').ToArray();
@@ -431,11 +457,12 @@ namespace BitAuto.CarChannel.BLL
                             }                            
                         }
 
+                        GroupScore min_GroupScore = list.First(i => i.GroupName == minKey);
                         foreach (var item in min_GroupScore.ScoreDesc)
                         {
                             string[] arr = item.Key.Split('-').ToArray();
                             pingCeTopPcEntity.BadGroup = GetGroupIdByName(minKey);
-                            if (min >= ConvertHelper.GetDouble(arr[0]) && min < ConvertHelper.GetDouble(arr[1]))
+                            if (min >= ConvertHelper.GetDouble(arr[0]) && min <= ConvertHelper.GetDouble(arr[1]))
                             {
                                 pingCeTopPcEntity.BadDiscription = min_GroupScore.CommonDesc[item.Value];                                
                             }                            
@@ -461,7 +488,7 @@ namespace BitAuto.CarChannel.BLL
                     {
                         string[] arr = k.Split('-').ToArray();
                         double percent = currentScore / item.Score;
-                        if (percent >= ConvertHelper.GetDouble(arr[0]) && percent < ConvertHelper.GetDouble(arr[1]))
+                        if (percent >= ConvertHelper.GetDouble(arr[0]) && percent <= ConvertHelper.GetDouble(arr[1]))
                         {
                             tempdic.Add(item.GroupName, new { Score = item.Score, ScoreDesc = item.ScoreDesc[k], CurrentScore = currentScore, Percent = percent });
                             break;

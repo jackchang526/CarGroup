@@ -1,6 +1,5 @@
 ﻿using BitAuto.CarChannel.Common;
 using BitAuto.CarChannel.Common.Cache;
-using BitAuto.CarChannel.Common.MongoDB;
 using BitAuto.CarChannel.DAL;
 using BitAuto.CarChannel.Model;
 using BitAuto.CarChannel.Model.Assessment;
@@ -11,7 +10,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 
 namespace BitAuto.CarChannel.BLL

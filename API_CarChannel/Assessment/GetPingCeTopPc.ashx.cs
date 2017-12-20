@@ -1,22 +1,14 @@
 ﻿using BitAuto.CarChannel.BLL;
-using BitAuto.CarChannel.Common;
-using BitAuto.CarChannel.Common.Cache;
 using BitAuto.CarChannel.Model;
 using BitAuto.CarChannel.Model.Assessment;
 using BitAuto.CarChannelAPI.Web.AppCode;
-using BitAuto.Utils;
-using BitAuto.Utils.Data;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.IO;
 using System.Linq;
 using System.Web;
-using System.Xml.Linq;
 
 namespace BitAuto.CarChannelAPI.Web.Assessment
 {

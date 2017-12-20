@@ -50,6 +50,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\P公用平台\Release\BitAuto.Utils.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Newtonsoft.Json.dll</HintPath>
@@ -97,8 +101,10 @@
     <Content Include="include\pd\2016\h5\00001\201611_thefour_discovery_activity_Manual.shtml" />
     <Content Include="include\pd\2016\h5\00001\201611_thefour_discovery_news_Manual.shtml" />
     <Content Include="include\pd\2016\h5\00001\201611_thefour_discovery_video_Manual.shtml" />
+    <Content Include="include\pd\2016\h5\00001\201712_disiji_shouye_yedi_Manual.shtml" />
     <Content Include="include\special\stat\00001\bglogpostlog_Manual.shtml" />
     <Content Include="inc\compareCarTemplate.html" />
+    <Content Include="inc\footer.html" />
     <Content Include="inc\HomepageHotBrand.htm" />
     <Content Include="inc\search.v1.shtml" />
     <Content Include="inc\search.v2.shtml" />
@@ -140,6 +146,7 @@
     <Content Include="Interface\cooperation\CarDataSerial.ashx" />
     <Content Include="ushtml\0000\4th_2015-2_activity_style-1257.shtml" />
     <Content Include="zhuanti\ZTDiscovery.aspx" />
+    <Content Include="packages.config" />
     <None Include="Scripts\plugs\jquery\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\plugs\backbone\backbone.amd.js" />
     <Content Include="Scripts\plugs\backbone\backbone.js" />

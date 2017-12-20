@@ -47,7 +47,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 "EvaluationId",
                 "Score",
                 "CommonInfoGroup.CommonInformationEntity.Title",
-                "CommonInfoGroup.CommonInformationEntity.ImageUrl",
+                "CommonInfoGroup.CommonInformationEntity.MainImageUrl",
                 "BodyAndSpaceGroup.Score",
                 "RidingComfortGroup.Score",
                 "DynamicPerformanceGroup.Score",
@@ -69,7 +69,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 bool Finished = true;
                 if (item.CommonInfoGroup != null && item.CommonInfoGroup.CommonInformationEntity != null)
                 {
-                    ImageUrl = item.CommonInfoGroup.CommonInformationEntity.ImageUrl;
+                    ImageUrl = item.CommonInfoGroup.CommonInformationEntity.MainImageUrl;
                     Title = item.CommonInfoGroup.CommonInformationEntity.Title;
                 }
                 if (dic.ContainsKey(item.EvaluationId))

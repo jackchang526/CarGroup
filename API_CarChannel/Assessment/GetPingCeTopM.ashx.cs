@@ -31,7 +31,17 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
 
             context.Response.ContentType = "application/x-javascript";
             string callback = context.Request.QueryString["callback"];
-            int top = 6;//ConvertHelper.GetInteger(context.Request.QueryString["top"]);
+            int top = 6;
+            string tempTop = context.Request.QueryString["top"];
+            int iTop = 0;
+            if (!string.IsNullOrWhiteSpace(tempTop))
+            {
+                int.TryParse(tempTop, out iTop);
+                if (iTop > 0)
+                {
+                    top = iTop;
+                }
+            }
 
             string result = "{}";
             string message = "成功";

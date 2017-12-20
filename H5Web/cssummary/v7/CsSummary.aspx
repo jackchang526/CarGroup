@@ -237,7 +237,7 @@
     <p>厂商指导价：<%= BaseSerialEntity.SaleState == "停销" ? "暂无" : BaseSerialEntity.ReferPrice %></p>
     <%--<p class="txt"><a href="#">易车补贴：4S议价后立减6500元></a></p>--%>
     <p class="txt icon-hui">
-        <ins id="div_12f616ba-172e-4419-9445-dc47b6d7a2d6" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="<%= SerialId %>" adplay_brandname="" adplay_brandtype="" adplay_blockcode="12f616ba-172e-4419-9445-dc47b6d7a2d6" style="text-decoration: none"></ins>
+        <%--<ins id="div_12f616ba-172e-4419-9445-dc47b6d7a2d6" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="<%= SerialId %>" adplay_brandname="" adplay_brandtype="" adplay_blockcode="12f616ba-172e-4419-9445-dc47b6d7a2d6" style="text-decoration: none"></ins>--%>
     </p>
 </div>
 <!--固定层结束-->
@@ -601,7 +601,7 @@
 <script src="http://image.bitautoimg.com/carchannel/h5/js/plugs/underscore/underscore.js"></script>
 <script src="http://image.bitautoimg.com/carchannel/h5/js/plugs/backbone/backbone.js"></script>
 
-<script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/h5/js/cssummary/userdatamodule.v7.js,carchannel/h5/js/cssummary/ColorModule.v6.js,carchannel/h5/js/cssummary/fullpagemodule.v7.js,carchannel/h5/js/cssummary/userroutersetting.v7.js?201709201146"></script>
+<script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/h5/js/cssummary/userdatamodule.v7.js,carchannel/h5/js/cssummary/ColorModule.v6.js,carchannel/h5/js/cssummary/fullpagemodule.v7.js,carchannel/h5/js/cssummary/userroutersetting.v7.js?201712201546"></script>
 
 <%--<script src="/Scripts/cssummary/userdatamodule.v7.js"></script>
 <script src="/Scripts/cssummary/ColorModule.v6.js"></script>
@@ -690,29 +690,29 @@
     }
 </script>
 <!--文章页（第一帧）信息流（第4条）-->
-<script type="text/javascript">
+<%--<script type="text/javascript">
     showNewsInsCode('07bdf8d9-56ed-46c3-90d1-76f83ddb1ceb', 'c4926a1b-d58b-4d9e-acea-96b13a22c54b', '97386d39-9ab7-495a-bc55-29f9b79a4a74', '6760b344-9455-45d2-b8b3-20337510bdfb');
-</script>
+</script>--%>
 <!--文章页（第二帧）信息流（第3条）-->
-<script type="text/javascript">
+<%--<script type="text/javascript">
     showNewsInsCode('3345655b-89b3-46ba-a760-a27c1d365978', 'c3134d73-41d3-4424-ba7b-391d5dd8febe', '4935c605-d771-43d8-9bd5-ee5af118cc50', '8e4a5453-dc8d-41dd-8cff-fd66d64db689');
-</script>
+</script>--%>
 <!--文章页（第二帧）通栏广告-->
-<script type="text/javascript">
+<%--<script type="text/javascript">
     showNewsInsCode('b19f03d5-1981-49f8-9483-0557ddccad1a', 'f6eddf27-e231-4eab-ae59-89023915b4a0', '0b749f3a-2d22-4ebd-aeb4-6b11910547f8', '5203b234-ea46-4a60-b709-8d690b562bde');
-</script>
+</script>--%>
 <!--车型图片页底部通栏-->
-<script type="text/javascript">
+<%--<script type="text/javascript">
     showNewsInsCode('cee3f43e-f9a3-45fc-bd68-f8b5579648b8', '5ea2640f-91cb-4037-9d3e-f4ccbb97ee54', 'd37f78af-2f63-40ad-b9d7-5f706d567d85', '1b8a4e51-f9c4-403b-954c-196cf3439194');
-</script>
+</script>--%>
 <!--优惠购车页促销广告-->
-<script type="text/javascript">
+<%--<script type="text/javascript">
     showNewsInsCode('b8b469ed-3f9e-4fdc-a071-da063376531b', '16f27dc1-e4d2-4ef5-9c2a-59af2c218d37', 'e33c5435-2c95-449a-a2bf-cae50f75c024', '31a56d4b-db9f-45d2-9fec-02c77c97bbce');
-</script>
+</script>--%>
 <!--经销商页底部通栏-->
-<script type="text/javascript">
+<%--<script type="text/javascript">
     showNewsInsCode('ceb34ed5-6167-4ec2-9580-ce4ff147737f', 'f5441702-4e8b-49fe-bb2c-e685727aacfb', '40417e40-9d50-42af-ae6b-b50439f2fe99', '15e8def7-8738-4360-a85e-e0bcc69eec84');
-</script>
+</script>--%>
 
 <!--第一条广告-->
 <%--<ins id="div_29e5455f-c705-4489-bdd8-f24f9607267a" style="display: none; text-decoration: none" type="ad_play" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="<%= BaseSerialEntity.Id %>" adplay_brandname="" adplay_brandtype="" adplay_blockcode="29e5455f-c705-4489-bdd8-f24f9607267a"></ins>--%>

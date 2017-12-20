@@ -1689,6 +1689,39 @@ FROM    dbo.Car_Serial_30UV uv
             return result;
         }
 
-
+        /// <summary>
+        /// 获取车系级别，如果有二级级别取二级级别
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<int, string> GetAllSerialLevelsWithSecondLevel()
+        { 
+            var sql = @"SELECT cs.cs_Id,cs.cs_Name,CASE WHEN cs.cs_CarLevel = 'SUV' THEN CASE cs.ModelLevelSecond
+                                                                        WHEN 1 THEN '小型SUV'
+                                                                        WHEN 2 THEN '紧凑型SUV'
+                                                                        WHEN 3 THEN '中型SUV'
+                                                                        WHEN 4 THEN '中大型SUV'
+                                                                        WHEN 5 THEN '大型SUV'
+                                                                        ELSE 'SUV'
+                                                                      END
+                                     ELSE cs.cs_CarLevel
+                                END carlevel
+                          from Car_Serial cs
+                          where  isstate=1";
+            var ds = SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql);
+            Dictionary<int, string> result = new Dictionary<int, string>();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0] != null)
+            {
+                var dtp = ds.Tables[0];
+                foreach (DataRow item in dtp.Rows)
+                {
+                    int csId = TypeParse.StrToInt(item["cs_Id"], 0);
+                    if (csId != 0 && !result.ContainsKey(csId))
+                    {
+                        result.Add(csId, item["carlevel"] == DBNull.Value ? "" : item["carlevel"].ToString());
+                    }
+                }
+            }
+            return result;
+        }
     }
 }

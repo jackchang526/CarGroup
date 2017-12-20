@@ -74,7 +74,7 @@
     <Compile Include="AppApi\CarModelColorEntity.cs" />
     <Compile Include="AppApi\CarSerialExtEntity.cs" />
     <Compile Include="AppApi\CarStyleInfoEntity.cs" />
-	<Compile Include="AppModel\CarGroupEntity.cs" />
+    <Compile Include="AppModel\CarGroupEntity.cs" />
     <Compile Include="AppModel\CarParameterEntity.cs" />
     <Compile Include="AppModel\DataCacheKeys.cs" />
     <Compile Include="AppModel\ParameterGroupEntity.cs" />
@@ -123,6 +123,8 @@
     <Compile Include="Model_Exhibtion.cs" />
     <Compile Include="Model_Pavilion.cs" />
     <Compile Include="NameObject.cs" />
+    <Compile Include="NewCarIntoMarketEntity.cs" />
+    <Compile Include="NewCarIntoMarketVMEntity.cs" />
     <Compile Include="News.cs" />
     <Compile Include="NewsCategory.cs" />
     <Compile Include="NewsForSerialSummaryEntity.cs" />

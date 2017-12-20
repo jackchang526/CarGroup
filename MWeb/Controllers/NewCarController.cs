@@ -11,6 +11,7 @@ namespace MWeb.Controllers
         //
         // GET: /NewCar/
 
+        //[OutputCache(Duration = 600, Location = OutputCacheLocation.Downstream)]
         public ActionResult Index()
         {
             return View();

@@ -8698,5 +8698,25 @@ namespace BitAuto.CarChannel.BLL
             return csd.GetCarStylePropertyById(id);
         }
 
+        /// <summary>
+        /// 获取车系级别，如果有二级级别取二级级别
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<int, string> GetAllSerialLevelsWithSecondLevel()
+        {
+            string cacheKey = "Car_SerialBll_GetAllSerialLevelsWithSecondLevel";
+            object obj = CacheManager.GetCachedData(cacheKey);
+            if (obj != null)
+            {
+                return (Dictionary<int, string>)obj;
+            }
+            else
+            {
+                Dictionary<int, string> levelDic = null;
+                levelDic = csd.GetAllSerialLevelsWithSecondLevel();
+                CacheManager.InsertCache(cacheKey, levelDic, WebConfig.CachedDuration);
+                return levelDic;
+            }
+        }
     }
 }

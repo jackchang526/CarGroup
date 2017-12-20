@@ -97,6 +97,7 @@
     <Compile Include="ExhibitionAttributeDAL.cs" />
     <Compile Include="InsuranceLoanDal.cs" />
     <Compile Include="MasterBrandDal.cs" />
+    <Compile Include="NewCarIntoMarketDal.cs" />
     <Compile Include="NewsEditer.cs" />
     <Compile Include="PavilionDAL.cs" />
     <Compile Include="ProduceAndSellDataDal.cs" />

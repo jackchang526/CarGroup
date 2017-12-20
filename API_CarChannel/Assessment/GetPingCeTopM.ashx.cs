@@ -1,10 +1,12 @@
 ﻿using BitAuto.CarChannel.BLL;
+using BitAuto.CarChannel.Common;
 using BitAuto.CarChannel.Model;
 using BitAuto.CarChannel.Model.Assessment;
 using BitAuto.CarChannelAPI.Web.AppCode;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -23,25 +25,26 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
 
             context.Response.ContentType = "application/x-javascript";
             string callback = context.Request.QueryString["callback"];
-            int top = 6;
-            string tempTop = context.Request.QueryString["top"];
-            int iTop = 0;
-            if (!string.IsNullOrWhiteSpace(tempTop))
-            {
-                int.TryParse(tempTop, out iTop);
-                if (iTop > 0)
-                {
-                    top = iTop;
-                }
-            }
-
             string result = "{}";
             string message = "成功";
             int status = 1;
-            List<object> list = new List<object>();
-            EvaluationBll evaluationBll = new EvaluationBll();
-            IMongoQuery query = Query.EQ("Status", 1);
-            List<string> paraList = new List<string>
+            try
+            {
+                int top = 6;
+                string tempTop = context.Request.QueryString["top"];
+                int iTop = 0;
+                if (!string.IsNullOrWhiteSpace(tempTop))
+                {
+                    int.TryParse(tempTop, out iTop);
+                    if (iTop > 0)
+                    {
+                        top = iTop;
+                    }
+                }
+                List<object> list = new List<object>();
+                EvaluationBll evaluationBll = new EvaluationBll();
+                IMongoQuery query = Query.EQ("Status", 1);
+                List<string> paraList = new List<string>
             {
                 "CreateDateTime",
                 "CarId",
@@ -60,50 +63,57 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 "CostBaseGroup.Score",
                 "GeneralBaseGroupl.Score"
             };
-            Dictionary<string, int> sortdic = new Dictionary<string, int>();
-            sortdic.Add("CreateDateTime", 0);
-            List<AssessmentEntity> pingCeAllList = evaluationBll.GetPingCeAllList<AssessmentEntity>(query, top, sortdic, paraList.ToArray());
-            List<int> evaluationIdList = (from item in pingCeAllList select item.EvaluationId).ToList();
-            Dictionary<int, PingCeEntity> dic = evaluationBll.GetEvaluationDate(evaluationIdList);
-            foreach (AssessmentEntity item in pingCeAllList)
-            {
-                string ImageUrl = "", Title = "", FuelType = "";
-                bool Finished = true;
-                if (item.CommonInfoGroup != null && item.CommonInfoGroup.CommonInformationEntity != null)
+                Dictionary<string, int> sortdic = new Dictionary<string, int>();
+                sortdic.Add("CreateDateTime", 0);
+                List<AssessmentEntity> pingCeAllList = evaluationBll.GetPingCeAllList<AssessmentEntity>(query, top, sortdic, paraList.ToArray());
+                List<int> evaluationIdList = (from item in pingCeAllList select item.EvaluationId).ToList();
+                Dictionary<int, PingCeEntity> dic = evaluationBll.GetEvaluationDate(evaluationIdList);
+                foreach (AssessmentEntity item in pingCeAllList)
                 {
-                    ImageUrl = item.CommonInfoGroup.CommonInformationEntity.MainImageUrl;
-                    Title = item.CommonInfoGroup.CommonInformationEntity.Title;
-                }
-                if (dic.ContainsKey(item.EvaluationId))
-                {
-                    PingCeEntity temp = dic[item.EvaluationId];
-                    FuelType = temp.FuelType;
-                }
-                Dictionary<string, double> dicGroupScore = null;
-                Finished = evaluationBll.GetFinishedStatusAndGroupScore(item, out dicGroupScore);
-                list.Add(
-                    new
+                    string ImageUrl = "", Title = "", FuelType = "";
+                    bool Finished = true;
+                    if (item.CommonInfoGroup != null && item.CommonInfoGroup.CommonInformationEntity != null)
                     {
-                        Score = item.Score,
-                        EvaluationId = item.EvaluationId,
-                        ImageUrl = ImageUrl,
-                        Title = Title,
-                        FuelType = FuelType,
-                        Finished = Finished
+                        ImageUrl = item.CommonInfoGroup.CommonInformationEntity.MainImageUrl;
+                        Title = item.CommonInfoGroup.CommonInformationEntity.Title;
                     }
-                    );
+                    if (dic.ContainsKey(item.EvaluationId))
+                    {
+                        PingCeEntity temp = dic[item.EvaluationId];
+                        FuelType = temp.FuelType;
+                    }
+                    Dictionary<string, double> dicGroupScore = null;
+                    Finished = evaluationBll.GetFinishedStatusAndGroupScore(item, out dicGroupScore);
+                    list.Add(
+                        new
+                        {
+                            Score = item.Score,
+                            EvaluationId = item.EvaluationId,
+                            ImageUrl = ImageUrl,
+                            Title = Title,
+                            FuelType = FuelType,
+                            Finished = Finished
+                        }
+                        );
+                }
+                var obj = new
+                {
+                    status = status,
+                    message = message,
+                    data = list
+                };
+                result = JsonConvert.SerializeObject(obj);
+            }
+            catch (Exception ex)
+            {
+                message = ex.Message;
+                status = 0;
+                CommonFunction.WriteLog(ex.ToString());
             }
 
-            var obj = new
-            {
-                status = status,
-                message = message,
-                data = list
-            };
-            result = JsonConvert.SerializeObject(obj);
             context.Response.Write(!string.IsNullOrEmpty(callback) ? string.Format("{0}({1})", callback, result) : result);
         }
-       
+
         public bool IsReusable
         {
             get

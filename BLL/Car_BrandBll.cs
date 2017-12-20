@@ -1001,7 +1001,8 @@ namespace BitAuto.CarChannel.BLL
                 {
                     continue;
                 }
-                string priceRange = pageBase.GetSerialPriceRangeByID(entity.SerialId);
+                //价格取指导价
+                string priceRange = pageBase.GetSerialReferPriceByID(entity.SerialId);
                 if (entity.SaleState == "待销")
                 {
                     IsExitsUrl = false;
@@ -1010,7 +1011,7 @@ namespace BitAuto.CarChannel.BLL
                 else if (priceRange.Trim().Length == 0)
                 {
                     IsExitsUrl = false;
-                    priceRange = "暂无报价";
+                    priceRange = "暂无指导价";
                 }
                 if (IsExitsUrl)
                 {

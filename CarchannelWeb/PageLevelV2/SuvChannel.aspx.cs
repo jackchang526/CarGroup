@@ -181,10 +181,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageLevelV2
 				serialName = Convert.ToString(row["cs_ShowName"]);
 				string serialSpell = Convert.ToString(row["csAllSpell"]);
 				string serialUrl = "/" + serialSpell + "/";
-
-				string priceRange = new PageBase().GetSerialPriceRangeByID(serialId);
+                //改为指导价
+				string priceRange = new PageBase().GetSerialReferPriceByID(serialId);
 				if (priceRange.Trim().Length == 0)
-					priceRange = "暂无报价";
+					priceRange = "暂无指导价";
                 htmlCode.Append("<li>");
                 htmlCode.Append("<div class=\"img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120\">");
                 htmlCode.AppendFormat("<div class=\"img\"><a href=\"{0}\" target=\"_blank\"><img src=\"{1}\"/></a></div>", serialUrl, imgUrl.Replace("_2.", "_6."));

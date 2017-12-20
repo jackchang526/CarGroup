@@ -254,11 +254,26 @@ namespace MWeb.Controllers
                                             }
                                             if (isFirstTrTd <= 1)
                                             {
-                                                listTempClass.Add("<th>" + xn.Attributes["Name"].Value + "</th>");
+                                                if (xn.Attributes.GetNamedItem("Name").Value == "商家报价")
+                                                {
+                                                    listTempClass.Add("<th id=\"car-area-priceitem\">" + xn.Attributes["Name"].Value + "</th>");
+                                                }
+                                                else
+                                                {
+                                                    listTempClass.Add("<th>" + xn.Attributes["Name"].Value + "</th>");
+                                                }
                                             }
                                             else
                                             {
-                                                listTempClass.Add("<th>");
+                                                if (xn.Attributes.GetNamedItem("Name").Value == "商家报价")
+                                                {
+                                                    listTempClass.Add("<th id=\"car-area-priceitem\">");
+                                                }
+                                                else
+                                                {
+                                                    listTempClass.Add("<th>");
+                                                }
+                                                
                                                 if (pid == 598)
                                                 {
                                                     // 车身颜色

@@ -200,7 +200,7 @@
                         @*@(Html.Raw(serialEntity.SaleState == "停销" ? "<em>停售</em>" : serialEntity.SaleState == "待销" ? "<em>未上市</em>" : ""))*@
                     </dt>
                     <dd>
-                        <a href="http://price.m.yiche.com/nb@(serialEntity.Id)/" data-channelid="27.23.952">
+                        <a href="http://price.m.yiche.com/nb@(serialEntity.Id)/" data-channelid="27.23.952" id="cs-area-name">
                             @{
                                 string title = "全国参考价";
                                 string serialPrice = ViewData["serialPrice"].ToString();
@@ -215,7 +215,7 @@
                                     title = "预售价";
                                 }
                             }
-                            @Html.Raw(title + "：<strong>" + price + "</strong>")
+                            @Html.Raw(title + "：<strong id=\"cs-area-price\">" + price + "</strong>")
                             <i class="dujia" id="dujia" style="display: none">独家</i>
                         </a>
                     </dd>
@@ -224,7 +224,7 @@
                     <i></i>
                     关注
                 </a>
-                @{
+                @*@{
                         string VrUrl = ViewData["VRUrl"].ToString();
                         if (!string.IsNullOrWhiteSpace(VrUrl))
                         {
@@ -233,7 +233,7 @@
                                 VR
                             </a>
                         }
-                    }
+                    }*@
 
                 @if (serialEntity.SaleState != "停销")
                 {
@@ -359,9 +359,13 @@
         <div class="prefer-tim b-shadow">
         </div>
         <!-- 限时特惠 end -->
+        <!--找相似 start-->
+        @(Html.Raw(ViewData["CsHotCompareCars"]))
+        <!--找相似 end-->
         <!--车款列表 start-->
         @(Html.Raw(ViewData["CarListHtml"]))
         <!--车款列表 end-->
+
         <!-- app下载-->
         @if (string.IsNullOrWhiteSpace(wtmcid))
         {
@@ -706,9 +710,6 @@
         <script type="text/javascript">
             showNewsInsCode('0fdd1bab-745d-42d9-a86b-3dd5e25877b5', '8a05b2f2-6da8-40a7-8296-d005d870b4bb', '279a56d1-93e3-4cbb-9409-517fe7edec5a', 'c588f73d-9446-4cbb-a56f-941a8ddaa54f');
         </script>
-        <!--看了还看 start-->
-        @(Html.Raw(ViewData["SerialToSee"]))
-        <!--看了还看 end-->
         <!--最近看过 start-->
         <div class="browse-car  b-shadow" id="more1" data-channelid="27.23.744">
         </div>
@@ -743,59 +744,19 @@
             <!--#include file="/include/pd/2016/wap/00001/201606_wap_common_ydyy_Manual.shtml" -->
         }
 
-        <!--一级公共模板 start-->
-        <script type="text/template" id="duibibtnTemplate">
-            <div class="y2015-car-01">
-                <div class="slider-box">
-                    <ul class="first-list">
-                        {for(var i =0;i< list.SelectedCars.length;i++){}
-                        <li>
-                            <div class="line-box"><a class='select' href="/m{= list.SelectedCars[i].CarId }/">{=list.SelectedCars[i].CarName }</a><a href="javascript:;" data-carid="{=list.SelectedCars[i].CarId }" class="btn-close"><i></i></a></div>
-                        </li>
-                        {}}
-                        {for(var i =0;i< list.AddLables.Count;i++){}
-                        <li class="add">
-                            <div class="line-box"><a href="javascript:;">添加对比车款</a></div>
-                        </li>
-                        {}}
-                        <li class="alert">最多对比4个车款</li>
-                        <li class="ad-box" id="compareAdBox"></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="swipeLeft-header">
-                <a href="###" class="btn-clear">清除</a>
-                <!--btn-clear disable-->
-                <a href="###" class="btn-comparison">开始对比</a>
-                <!--btn-comparison disable-->
-                <div class="clear"></div>
-            </div>
-        </script>
-        <!--一级公共模板 end-->
-        <div class="leftmask duibi-leftmask leftmask2 " style="display: none;"></div>
-        <div class="leftPopup duibicar duibi-leftPopup" data-zindex="777777" data-back="leftmask2" style="display: none;">
-            <div class="swipeLeft">
-                <div class="y2015-car-01">
-                    <ul class="first-list"></ul>
-                </div>
-                <div class="swipeLeft-header">
-                    <a href="###" class="btn-clear">清空</a>
-                    <!--btn-clear disable-->
-                    <a href="###" class="btn-comparison">开始对比</a>
-                    <!--btn-comparison disable-->
-                    <div class="clear"></div>
-                </div>
-            </div>
-        </div>
-
         <div class="float-r-box">
+            <div class="float-r-blue" id="compare-pk" data-action="duibicar" data-channelid="27.23.747" >
+                <span class="float-r-pk"></span>
+                <em>对比</em>
+                <i id="duibiAti" class="">0</i>
+            </div>
             <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
         </div>
         <script type="text/javascript">
             showNewsInsCode('893f9a91-0f1e-484c-8263-37d815e64d1b', '09dc099f-5b52-4a70-8edd-faa0d7ff4818', '469f45cc-1b72-461c-ba68-0b560c885455', 'cd11763a-ea3e-4315-b054-8baecd23cab8');
         </script>
 
-
+        @Html.Partial("~/html/DuibiLayerTemplate.cshtml")
         <div class="footer15">
             <!--搜索框-->
             @Html.Partial("~/html/footersearch.cshtml")
@@ -809,7 +770,7 @@
     </div>
 
     <!--新加弹出层 start-->
-    <div id="master_container" style="z-index: 888888;" class="brandlayer mthead">
+    <div id="master_container" style="z-index: 888888;display:none;" class="brandlayer mthead">
         @Html.Partial("~/html/compareCarTemplate.cshtml")
     </div>
     <!--新加弹出层 end-->
@@ -930,18 +891,9 @@
     <!-- 正常 end -->
     <div class="bottom-float" id="bottomFloat" style="display: none">
         <ul>
-            @if (serialEntity.SaleState == "停销")
+            @if (serialEntity.SaleState == "停销" || serialEntity.SaleState == "在销")
             {
-                <li class="two-item item-duibi" id="itemDuibi">
-                    <a id="compare-pk" data-channelid="27.23.747" href="#compare" data-action="duibicar"><em id="duibiAti"></em>对比<i></i></a>
-                </li>
-            <!--#include file="/include/pd/2016/yipaicms/00001/201701_Mobile_Summary_SCInfoBtn_Manual.shtml"-->
-            }
-            else if (serialEntity.SaleState == "在销")
-            {
-                <li class="three-item item-duibi" id="itemDuibi">
-                    <a id="compare-pk" data-channelid="27.23.747" href="#compare" data-action="duibicar"><em id="duibiAti"></em>对比<i></i></a>
-                </li>
+
             <!--#include file="/include/pd/2016/yipaicms/00001/201701_Mobile_Summary_SCInfoBtn_Manual.shtml"-->
             }
             else
@@ -955,7 +907,7 @@
                 <li class="three-item item-daikuan item-daikuan-none">
                     <a href="javascript:;"><em></em>贷款</a>
                 </li>
-            <!--#include file="/include/pd/2016/yipaicms/00001/201701_Mobile_Summary_SCInfoBtn_Manual.shtml"-->
+                <!--#include file="/include/pd/2016/yipaicms/00001/201701_Mobile_Summary_SCInfoBtn_Manual.shtml"-->
                 <li class="xunjia-btn xunjia-btn-none">
                     <a href="javascript:;">询底价</a>
                 </li>
@@ -1013,11 +965,11 @@
 
 
     <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/commonjs.js,carchannel/wirelessjsv2/city348IDMapName.js"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/cssummaryv2.min.js?v=201711241325"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/cssummaryv2.min.js?v=201712111430"></script>
     @*<script type="text/javascript" src="/js/cssummaryv2.js?v=20170303"></script>*@
     <script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars"></script>
     <script src="http://image.bitautoimg.com/uimg/wap/js/idangerous.swiper-2.0.min.js"></script>
-
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/getareaprice.min.js?v=20171218150"></script>
     <script type="text/javascript" src="http://js.bitauto.com/dealer/union/script/ads.js"> </script>
 
     <!-- footer begin -->
@@ -1033,8 +985,13 @@
         var nearestYear = "@(ViewData["NearestYear"])";
         var tabs = document.getElementById("yeartag").getElementsByTagName("li");
         var btnMore = {};
-        Get1111Entrance();
+        //Get1111Entrance();
         GetVr();
+        var saleState = "@(serialEntity.SaleState)";
+        if (saleState == "在销")
+        {
+            GetSerialAreaPriceRange();
+        }
 
         //var CarCompareAdJson = [//车型对比广告
         //    { "csId": 2608, "carId": 0, "adCsId": 2945, "adCarId": 0 }
@@ -1066,6 +1023,7 @@
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/common/swiper-3.2.7.min.js"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/jquery.lazyload.min.js"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/common/cityjsonv2.js"></script>
+
     @*<script type="text/javascript" src="/js/v2/iscroll.js?v=20171109"></script>
     <script type="text/javascript" src="/Js/v2/underscore.js?v=20171109"></script>
     <script type="text/javascript" src="/Js/v2/model.js?v=20160128"></script>
@@ -1076,10 +1034,12 @@
     <script type="text/javascript" src="/js/waitcompareV2.js"></script>
     <script type="text/javascript" src="/js/rightswipe-cityV2.js?v=20160202"></script>
     <script type="text/javascript" src="/js/csSummaryConditionV2.js"></script>*@
-    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/common/swiper-3.2.7.min.js,carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.min.js,carchannel/common/cityjsonv2.js,carchannel/wirelessjsv2/rightswipe-cityv2.js,carchannel/wirelessjsv2/cssummaryconditionV2.min.js?v=201711161127"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/common/swiper-3.2.7.min.js,carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.min.js,carchannel/common/cityjsonv2.js,carchannel/wirelessjsv2/rightswipe-cityv2.js,carchannel/wirelessjsv2/cssummaryconditionV2.min.js?v=20171218150"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=audio/jplayer/jquery.jplayer.min.js,audio/jplayer/audioJPlayerMobile.js?v=20170105"></script>
     @*<script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>*@
     <script type="text/javascript">
+        //区域报价
+        GetCarAreaPriceRange();
         // 文章切换
         var swiperNewslist = new Swiper('.swiper-container-newslist', {
             autoHeight: true,

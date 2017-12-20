@@ -14,7 +14,7 @@ var ComparePageObject = {
     ArrSelectExhaust: new Array(),
     ArrSelectTransmission: new Array(),
     IsNeedFirstColor: false,
-    MaxTD: 4,
+    MaxTD: 30,
     CarListForSelect: new Array(),
     CurrentCarID: 0,
     CarIDAndNames: "",
@@ -36,7 +36,7 @@ var ArrChannelNo = {
     "params-carinfo": "27.158.1620", "params-carbody": "27.158.1621", "params-carengine": "27.158.1622", "params-transmission": "27.158.1623",
     "params-bottomstop": "27.158.1624", "params-safeconfig": "27.158.1625", "params-wheel": "27.158.1626", "params-drivingassistance": "27.158.1627",
     "params-doorswindow": "27.158.1628", "params-lights": "27.158.1629", "params-innerconfig": "27.158.1630", "params-chair": "27.158.1631",
-    "params-pastime": "27.158.1632", "params-air": "27.158.1633","params-optional":""
+    "params-pastime": "27.158.1632", "params-air": "27.158.1633", "params-optional": ""
 };
 
 // 车型对比信息
@@ -255,6 +255,14 @@ function createPageForCompare(isDelSame) {
 
     gotoSubMenu();
     setTimeout(function () { callbackFunc() }, 0);
+    //区域报价回调方法
+    if (ComparePageObject.ValidCount > 0) {
+        var arrCarId = new Array();
+        for (var i = 0; i < ComparePageObject.ValidCount; i++) {
+            arrCarId.push(ComparePageObject.ArrCarInfo[i].CarID);
+        }
+        GetCarAreaPriceForCSCompare(arrCarId);
+    }
 }
 
 function bindEvent() {
@@ -287,6 +295,26 @@ function bindEvent() {
             $("#popup-menumask").hide();
         }
     });
+
+    //车款配置弹层
+    var $body = $('body');
+    $('#screenTrigger').click(function (ev) {
+        ev.preventDefault();
+        var $this = $(this);
+        $body.trigger('fristSwipeOne', {
+            swipeLeftChildren: '.spl-screen1',
+            $swipe: $("#screenCar"),
+            $click: $this, //点击对象
+            ph: 110,
+            fnEnd: function () {
+                //层打开后回调
+            },
+            closeEnd: function () {
+                //关闭层回调
+            }
+        });
+    })
+    WaitCompare.initCompreData({ serialid: serialId });
 }
 
 function createEmptyTable() {
@@ -308,7 +336,7 @@ function createEmptyTable() {
                 //ComparePageObject.ArrRightContentHTML.push("<td name=\"td0\">&nbsp;</td>");
                 ////}
                 var leftTitle = arrFieldRow["sFieldTitle"],
-				classStr = "";
+                    classStr = "";
 
                 if (leftTitle.length > 10 && leftTitle.length < 20) {
                     classStr = "class=\"h2\"";
@@ -351,7 +379,8 @@ function createPic() {
                     var carYear = ComparePageObject.ArrCarInfo[i].CarInfoArray[0][7];
                     var csShowName = ComparePageObject.ArrCarInfo[i].CarInfoArray[0][5];
                     var carRefPrice = ComparePageObject.ArrCarInfo[i].CarInfoArray[1][0];
-                    tempArray.push("<a data-channelid=\"27.158.1615\" class=\"duibi-box\" href=\"###\" data-action=\"models\" data-car=\"" + carid + "\" data-id=\"" + serialId + "\" data-index=\"" + i + "\">");
+                    var carFullName = csShowName + (carYear.length > 0 ? (" " + carYear + "款") : "") + " " + carName;
+                    tempArray.push("<a data-channelid=\"27.158.1615\" class=\"duibi-box\" href=\"###\" data-car=\"" + carid + "\" data-id=\"" + serialId + "\" data-index=\"" + i + "\">");
                     tempArray.push("<h4>" + (carYear == "" ? "" : " " + carYear + "款 ") + carName + "</h4>");
                     tempArray.push("<em>" + carRefPrice + "</em>");
                     tempArray.push("</a>");
@@ -366,7 +395,8 @@ function createPic() {
                 catch (err)
                 { }
                 tempArray.push("        <div class=\"m-btn-duibi-close\"  data-channelid=\"27.158.1614\" data_cyslogclickflag=\"27.158.1614\" onclick=\"BglogPostLog('27.158.1614',this);\" data-index=\"" + i + "\"></div>");
-                tempArray.push("        <i class=\"star\"></i>");
+                //tempArray.push("        <i class=\"star\"></i>");
+                tempArray.push("        <a class=\"spl-addcmp btnDuibi\" id=\"car-compare-" + carid + "\" data-id=\"" + carid + "\" data-name=\"" + carFullName + "\">对比</a>");
                 tempArray.push("    </div>");
                 tempArray.push("</td>");
             }
@@ -382,7 +412,7 @@ function createPic() {
     ComparePageObject.ArrPageContent.push("                 <thead>");
     ComparePageObject.ArrPageContent.push("                     <tr>");
     ComparePageObject.ArrPageContent.push("                         <td>");
-                                                        //统计那边只支持a标签加data-channelid 可以直接统计到，如果换作非a标签加统计则需要手动加上data_cyslogclickflag="统计编号" onclick="BglogPostLog('统计编号',this);"  
+    //统计那边只支持a标签加data-channelid 可以直接统计到，如果换作非a标签加统计则需要手动加上data_cyslogclickflag="统计编号" onclick="BglogPostLog('统计编号',this);"  
     ComparePageObject.ArrPageContent.push("                             <div class=\"checkbox-box\" data-channelid=\"27.158.1617\"  data_cyslogclickflag=\"27.158.1617\" onclick=\"BglogPostLog('27.158.1617',this);\">");
     ComparePageObject.ArrPageContent.push("                                 <label>");
     ComparePageObject.ArrPageContent.push("                                     <div class=\"checkbox-normal " + (ComparePageObject.IsVantage ? "checked" : "") + "\">");
@@ -538,6 +568,9 @@ function createPara(arrFieldRow) {
                             field = tempColor.join("");
                         }
                     }
+                    else if (arrFieldRow["sFieldTitle"] == "压缩比" && field != "&nbsp;" && field != "") {
+                        field += ":1";
+                    }
                     if (field == "有")
                     { field = "<span class=\"f-bold\">●</span>"; }
                     if (field.indexOf("选配") == 0) {
@@ -567,15 +600,16 @@ function createPara(arrFieldRow) {
                             arrTemp.push(field);
                     }
                     else {
-                        if (arrFieldRow["sFieldTitle"] == "压缩比" && field != "") {
-                            field += "";
-                        }
+                        //if (arrFieldRow["sFieldTitle"] == "压缩比" && field != "") {
+                        //    field += ":1";
+                        //}
                         arrTemp.push(field);
                     }
                     if (arrFieldRow["sFieldTitle"] == "厂家指导价" && field != "无" && field != "待查") {
                         arrTemp.push("<a class=\"m-ico-calculator\" title=\"购车费用计算\" href=\"http://car.m.yiche.com/gouchejisuanqi/?carid=" + ComparePageObject.AllCarJson[i][0][0] + "\"></a>");
                         //arrTemp.push("<a data-channelid=\"27.158.1635\" href=\"http://gouche.m.yiche.com/sb" + ComparePageObject.AllCarJson[i][0][3] + "/m" + ComparePageObject.AllCarJson[i][0][0] + "/\" class=\"low-price\">找低价</a>");
                     }
+
                 }
                 catch (err) {
                     arrTemp.push("-");
@@ -607,7 +641,7 @@ function createPara(arrFieldRow) {
                 ComparePageObject.ArrTempLeftNavHTML.length = 0;
             }
             var leftTitle = arrFieldRow["sFieldTitle"] + (unit != "" && unit.indexOf(",") == -1 ? "(" + unit + ")" : ""),
-				classStr = "";
+                classStr = "";
             //,leftTitleStr = leftTitle.length > 10 ? leftTitle : "<span>" + leftTitle + "</span>"
 
             if (arrFieldRow["sFieldTitle"] == "车身颜色") {
@@ -797,9 +831,9 @@ function createMulti(arrFieldRow) {
                             // field += unitArray[pint];
                             multiField = (multiField.length > 0 ? (multiField + joinCodeArray[pint]) : "") + field;
 
-                        	//add by sk 2016.01.08 以下参数有值 直接显示 忽略第二个参数
+                            //add by sk 2016.01.08 以下参数有值 直接显示 忽略第二个参数
                             if (pidArray[pint] == "509" || pidArray[pint] == "489" | pidArray[pint] == "555" || pidArray[pint] == "808") {
-                            	break;
+                                break;
                             }
                         }
                         if (arrSame.length < 1) {
@@ -819,8 +853,7 @@ function createMulti(arrFieldRow) {
                         }
                         if (multiField.indexOf("有") >= 0)
                         { multiField = "<span class=\"songti f-bold\">●</span>"; }
-                        if (multiField.indexOf("选配") >= 0 && multiField.indexOf("●") < 0)
-                        {
+                        if (multiField.indexOf("选配") >= 0 && multiField.indexOf("●") < 0) {
                             var fieldInfo = multiField.split('|');
                             if (fieldInfo.length > 1) {
                                 multiField = "<span class=\"songti\">○ 选配" + formatCurrency(fieldInfo[1]) + "元</span>";
@@ -928,7 +961,7 @@ function createMulti(arrFieldRow) {
             ComparePageObject.ArrTempLeftNavHTML.length = 0;
 
             var leftTitle = arrFieldRow["sFieldTitle"],
-			classStr = "";
+                classStr = "";
             //,leftTitleStr = leftTitle.length > 10 ? leftTitle : "<span>" + leftTitle + "</span>"
 
             if (leftTitle.length > 10 && leftTitle.length < 20) {
@@ -951,13 +984,13 @@ function createMulti(arrFieldRow) {
         }
     }
     //if (tempArray.length == 0) {
-        //ComparePageObject.ArrPageContent.push(tempArray.join(""));
-        //when less 对比项小于2个时，填补对比项
-        if (num < ComparePageObject.MaxTD) {
-            ComparePageObject.ArrRightContentHTML.push("<td><div class=\"txt c-box\">&nbsp;</div></td>");
-        }
-        ComparePageObject.ArrRightContentHTML.push("</tr>");
-        ComparePageObject.ArrLeftTitleHtml.push("</tr>");
+    //ComparePageObject.ArrPageContent.push(tempArray.join(""));
+    //when less 对比项小于2个时，填补对比项
+    if (num < ComparePageObject.MaxTD) {
+        ComparePageObject.ArrRightContentHTML.push("<td><div class=\"txt c-box\">&nbsp;</div></td>");
+    }
+    ComparePageObject.ArrRightContentHTML.push("</tr>");
+    ComparePageObject.ArrLeftTitleHtml.push("</tr>");
     //}
 }
 
@@ -1056,7 +1089,7 @@ function fieldMultiValue(arrFieldRow) {
             }
         }
     }
-    arrTemp.push("<td></td>");
+    //arrTemp.push("<td></td>");
     if (!isAllunknown) {
         // Is Need Show The Bar
         if (ComparePageObject.ArrTempBarHTML.length > 0) {
@@ -1099,7 +1132,7 @@ function createOptional(arrFieldRow) {
     }
     var arrTitleTemp = new Array(),
         arrContentTemp = new Array();
-        //isShow = false;
+    //isShow = false;
     for (var opt = 0; opt < optionalPackageJson.length; opt++) {
         var showCarCount = 0;
         //isShow = false;
@@ -1123,20 +1156,20 @@ function createOptional(arrFieldRow) {
         arrTitleTemp.push("<tr class=\"optional-h\"><th>" + optionalPackageJson[opt].name + "</th></tr><tr style=\"display: none;\"></tr>");
     }
     //if (isShow) {
-        if (ComparePageObject.ArrTempBarHTML.length > 0) {
-            ComparePageObject.ArrLeftTitleHtml.push(ComparePageObject.ArrTempBarHTML.join(""));
-            ComparePageObject.ArrTempBarHTML.length = 0;
+    if (ComparePageObject.ArrTempBarHTML.length > 0) {
+        ComparePageObject.ArrLeftTitleHtml.push(ComparePageObject.ArrTempBarHTML.join(""));
+        ComparePageObject.ArrTempBarHTML.length = 0;
 
-            ComparePageObject.ArrRightContentHTML.push("<tr class=\"h25\"><td colspan=\"4\">&nbsp;</td></tr>");
-        }
-        //添加左侧菜单
-        ComparePageObject.ArrLeftNavHTML.push(ComparePageObject.ArrTempLeftNavHTML.join(''));
-        ComparePageObject.ArrTempLeftNavHTML.length = 0;
+        ComparePageObject.ArrRightContentHTML.push("<tr class=\"h25\"><td colspan=\"4\">&nbsp;</td></tr>");
+    }
+    //添加左侧菜单
+    ComparePageObject.ArrLeftNavHTML.push(ComparePageObject.ArrTempLeftNavHTML.join(''));
+    ComparePageObject.ArrTempLeftNavHTML.length = 0;
 
-        ComparePageObject.ArrLeftTitleHtml.push(arrTitleTemp.join(""));
+    ComparePageObject.ArrLeftTitleHtml.push(arrTitleTemp.join(""));
 
-        ComparePageObject.ArrRightContentHTML.push(arrContentTemp.join(""));
-   // }
+    ComparePageObject.ArrRightContentHTML.push(arrContentTemp.join(""));
+    // }
 }
 
 
@@ -1157,7 +1190,7 @@ function createBar(arrFieldRow) {
         fileldTitle = arrOneTitle.join("<em class=\"half\"></em>")
     }
 
-    ComparePageObject.ArrTempLeftNavHTML.push("<li><a data-channelid=\""+ArrChannelNo[arrFieldRow["scrollId"]]+"\" data-target=\"" + arrFieldRow["scrollId"] + "\" href=\"javascript:;\" ><span>" + fileldTitle + "</span></a></li>");
+    ComparePageObject.ArrTempLeftNavHTML.push("<li><a data-channelid=\"" + ArrChannelNo[arrFieldRow["scrollId"]] + "\" data-target=\"" + arrFieldRow["scrollId"] + "\" href=\"javascript:;\" ><span>" + fileldTitle + "</span></a></li>");
 
     if (arrFieldRow["sFieldTitle"] == "基本信息") return;
 
@@ -1169,7 +1202,7 @@ function createBar(arrFieldRow) {
     //    ComparePageObject.ArrTempBarHTML.push("<h3><span>" + arrFieldRow["sFieldTitle"] + "</span></h3><div class=\"r-txt r-diff\" data-width=\"160\" >●标配&nbsp;&nbsp;○选配&nbsp;&nbsp;-无 <em id = \"bar_" + (ComparePageObject.DiffList.length + 1) + "\"></em>");
     //}
     //else {
-        ComparePageObject.ArrTempBarHTML.push("<h3><span>" + arrFieldRow["sFieldTitle"] + "</span></h3><div class=\"r-txt r-diff\" id = \"bar_" + (ComparePageObject.DiffList.length + 1) + "\"></div>");
+    ComparePageObject.ArrTempBarHTML.push("<h3><span>" + arrFieldRow["sFieldTitle"] + "</span></h3><div class=\"r-txt r-diff\" id = \"bar_" + (ComparePageObject.DiffList.length + 1) + "\"></div>");
     //}
     ComparePageObject.ArrTempBarHTML.push("</td>");
     ComparePageObject.ArrTempBarHTML.push("</tr>");
@@ -1200,9 +1233,9 @@ function createPrice(arrFieldRow) {
                     if (arrFieldRow["sFieldTitle"] == "商家报价") {
                         var minPrice = field;
                         if (field.indexOf("-") != -1) {
-                            minPrice = field.substring(0, field.indexOf("-"));
+                            minPrice = field.substring(0, field.indexOf("-")) + "万";
                         }
-                        tempArray.push("<span class=\"cRed\">" + minPrice + "&nbsp;</span>");
+                        tempArray.push("<span class=\"cRed\" id=\"car_aera_" + ComparePageObject.ArrCarInfo[i].CarID + "\">" + minPrice + "</span>");
                         tempArray.push("<a class=\"m-btn-xunjia\" href=\"http://price.m.yiche.com/zuidijia/nc" + ComparePageObject.ArrCarInfo[i].CarInfoArray[0][0] + "/?leads_source=m009001\">询价</a>");
                     }
                     else if (arrFieldRow["sFieldTitle"] == "降价优惠") {
@@ -1234,7 +1267,12 @@ function createPrice(arrFieldRow) {
         }
 
         ComparePageObject.ArrLeftTitleHtml.push("<tr>");
-        ComparePageObject.ArrLeftTitleHtml.push("<th><span>" + arrFieldRow["sFieldTitle"] + "</span></th>");
+        if (arrFieldRow["sFieldTitle"] == "商家报价") {
+            ComparePageObject.ArrLeftTitleHtml.push("<th><span id=\"car_aera_name\">" + arrFieldRow["sFieldTitle"] + "</span></th>");
+        }
+        else {
+            ComparePageObject.ArrLeftTitleHtml.push("<th><span>" + arrFieldRow["sFieldTitle"] + "</span></th>");
+        }
 
         ComparePageObject.ArrRightContentHTML.push("<tr id=\"tr" + arrFieldRow["sTrPrefix"] + "_" + arrFieldRow["sFieldIndex"] + "\">");
         ComparePageObject.ArrRightContentHTML.push(tempArray.join(""));
@@ -1572,7 +1610,7 @@ var arrField = [
     { sFieldTitle: "第三排座椅", sType: "fieldPara", sPid: "805", sTrPrefix: "9", sFieldIndex: "12", unit: "", joinCode: "" },
     { sFieldTitle: "座椅放倒方式", sType: "fieldMultiValue", sPid: "482", sTrPrefix: "9", sFieldIndex: "13", unit: "", joinCode: "" },
     { sFieldTitle: "后排杯架", sType: "fieldPara", sPid: "474", sTrPrefix: "9", sFieldIndex: "14", unit: "", joinCode: "" },
-    { sFieldTitle: "后排折叠桌板", sType: "fiel1006dPara", sPid: "1032", sTrPrefix: "9", sFieldIndex: "15", unit: "", joinCode: "" },
+    { sFieldTitle: "后排折叠桌板", sType: "fieldPara", sPid: "1032", sTrPrefix: "9", sFieldIndex: "15", unit: "", joinCode: "" },
 
     { sFieldTitle: "信息娱乐", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-pastime" },
     { sFieldTitle: "中控彩色液晶屏", sType: "fieldMultiValue", sPid: "488", sTrPrefix: "10", sFieldIndex: "0", unit: "", joinCode: "" },
@@ -1676,13 +1714,112 @@ function selectCar(serialId, curentIndex) {
 //	if (top > 40)
 //		$("#popMenu").show();
 //});
+//按条件选择车款
+var ConditionSelectCar = {
+    container: "screenCar",
+    title: { "EngineExhaust": "排量", "YearType": "年款", "BodyType": "车身形式", "TransmissionType": "变速箱", "DriveType": "驱动类型", "FuelType": "燃料类型" },
+    unit: { "YearType": "款" },
+    isShowSelect: false,
+    //validCarArray : [],
+    InitHtml: function () {
+        var self = this;
+        if ($("#screenCar .spl-screen1").length == 0) {
+            $("#screenCar .carscreen-sum").html("共筛选出有<em>" + carArray.length + "</em>个车款，最多只显示前" + MaxCarCount + "个");
+            var h = [];
+            h.push("<div class=\"spl-screen1\"><div><ul class=\"ss-1st\">")
+            for (var key in self.title) {
+                if (SelectJson[key] != "undefined") {
+                    var tempH = [],
+                        length = 0;
+                    for (var item in SelectJson[key]) {
+                        tempH.push("<li class=\"sl-2nd\" key=\"" + item + "\" unit=\"" + (typeof self.unit[key] == "undefined" ? '' : self.unit[key]) + "\">" + item + "</li>");
+                        length++;
+                    }
+                    if (length <= 1) continue;
+                    h.push("<li class=\"sl-1st\"><h6 class=\"sl-title\">" + self.title[key] + "</h6><ul class=\"ss-2nd\" key=\"" + key + "\">");
+                    h.push(tempH.join(""));
+                    self.isShowSelect = true;
+                    h.push("</ul></li >");
+                }
+            }
+            h.push("</ul></div></div>");
+
+            if (self.isShowSelect) {
+                $("#screenCar .swipeLeft").prepend(h.join("")).find(".loading").remove();
+                $(".spl-config-screen").show();
+                self.InitEvent();
+            }
+        }
+    },
+    InitEvent: function () {
+        var self = this;
+        $("#screenCar .ss-2nd .sl-2nd").click(function () {
+            if ($(this).hasClass("current")) {
+                $(this).removeClass("current");
+            }
+            else {
+                $(this).addClass("current");
+                $(this).siblings().removeClass("current");
+            }
+            self.SetSelectCount();
+            self.GetCarByCondition();
+        });
+        $("#screenCar .btn-clear").click(function () {
+            $("#screenCar .ss-2nd .sl-2nd").removeClass("current");
+            self.SetSelectCount();
+            self.GetCarByCondition();
+        });
+        $("#screenCar .btn-comparison").click(function (ev) {
+            ev.preventDefault();
+            var carIdArray = carArray;//carArray页面变量
+            var carIdArray = self.GetCarByCondition();
+            ComparePageObject.arrCarIds = carIdArray.length >= MaxCarCount ? carIdArray.slice(0, MaxCarCount) : carIdArray;
+            initCarInfo(ComparePageObject.arrCarIds.join(","));
+            $(".leftmask4").trigger("close");
+            self.SetSelectText();
+            duibiCarDataIds = ComparePageObject.arrCarIds;
+        });
+    },
+    SetSelectText: function () {
+        var selectedLi = $("#screenCar .ss-2nd li.current");
+        if ($(selectedLi).length > 0) {
+            var html = [];
+            $(selectedLi).each(function (i, item) {
+                html.push($(item).attr("key") + $(item).attr("unit"))
+            });
+            $("#screenTrigger").html("已选条件：" + html.join("、"));
+        }
+        else {
+            $("#screenTrigger").html("车款、排量、驱动方式等");
+        }
+    },
+    GetCarByCondition: function () {
+        var carIdArray = carArray;//carArray页面变量
+        $("#screenCar .ss-2nd .sl-2nd.current").each(function () {
+            var item = $(this).attr("key");
+            var key = $(this).parent().attr("key");
+            carIdArray = carIdArray.intersect(SelectJson[key][item]);
+        });
+        $("#screenCar .carscreen-sum em").html(carIdArray.length);
+        return carIdArray;
+    },
+    SetSelectCount: function () {
+        var count = $("#screenCar .ss-2nd .sl-2nd.current").length;
+        if (count > 0) {
+            $("#screenCar .btn-comparison").html("完成(" + count + ")");
+        }
+        else {
+            $("#screenCar .btn-comparison").html("完成");
+        }
+    }
+}
 
 function gotoSubMenu() {
     $("#popup-menulist a").each(function (i, n) {
         var id = $(this).data("target"),
-			tit = $(this).text(),
-			top = $("#" + id).offset().top,
-			headerHeight = $(".flex").height();
+            tit = $(this).text(),
+            top = $("#" + id).offset().top,
+            headerHeight = $(".flex").height();
         $(this).on("click", function (e) {
             e.preventDefault();
             $("html,body").animate({ scrollTop: (top - headerHeight + 34) }, 300, function () {
@@ -1708,9 +1845,9 @@ function callbackFunc() {
     //浮动层
     (function ($root) {
         var $flex = $root.find('.flex'),
-			$header = $flex.find('.section-tt table'),
-			$headerLi = $header.find('span'),
-			$append = $root.find('.flex-append');
+            $header = $flex.find('.section-tt table'),
+            $headerLi = $header.find('span'),
+            $append = $root.find('.flex-append');
         var flexTop = $flex[0].offsetTop, flexHeight = $flex.height();
 
         var rows = $('.phone-title', $root);
@@ -1955,19 +2092,19 @@ function callbackFunc() {
     $(document.body).footer({ footer: '.footer-box' });
     var $body = $('body');
     $body.trigger('rightswipe1',
-     {
-         selectmark: function () { },
-         fnEnd: function (paras) {
-             for (var i = 0; i < ComparePageObject.arrCarIds.length; i++) {
-                 if ($('[data-id=' + ComparePageObject.arrCarIds[i] + ']') && ComparePageObject.arrCarIds[i] != paras.carobj.attr("data-car")) {
-                     $('[data-id=' + ComparePageObject.arrCarIds[i] + ']').parent()[0].className = 'none';
-                 }
-                 if ($('[data-id=' + ComparePageObject.arrCarIds[i] + ']') && ComparePageObject.arrCarIds[i] == paras.carobj.attr("data-car")) {
-                     $('[data-id=' + ComparePageObject.arrCarIds[i] + ']').parent()[0].className = 'current';
-                 }
-             }
-         }
-     });
+        {
+            selectmark: function () { },
+            fnEnd: function (paras) {
+                //for (var i = 0; i < ComparePageObject.arrCarIds.length; i++) {
+                //    if ($('[data-id=' + ComparePageObject.arrCarIds[i] + ']') && ComparePageObject.arrCarIds[i] != paras.carobj.attr("data-car")) {
+                //        $('[data-id=' + ComparePageObject.arrCarIds[i] + ']').parent()[0].className = 'none';
+                //    }
+                //    if ($('[data-id=' + ComparePageObject.arrCarIds[i] + ']') && ComparePageObject.arrCarIds[i] == paras.carobj.attr("data-car")) {
+                //        $('[data-id=' + ComparePageObject.arrCarIds[i] + ']').parent()[0].className = 'current';
+                //    }
+                //}
+            }
+        });
 }
 //6701->6,701
 function formatCurrency(num) {
@@ -1991,4 +2128,12 @@ Array.prototype.contains = function (item) {
         }
     }
     return false;
+}
+//数组求交集
+Array.prototype.intersect = function (arr) {
+    if (Object.prototype.toString.call(this) === "[object Array]" && Object.prototype.toString.call(arr) === "[object Array]") {
+        return this.filter(function (v) {
+            return arr.indexOf(v) !== -1
+        });
+    }
 }

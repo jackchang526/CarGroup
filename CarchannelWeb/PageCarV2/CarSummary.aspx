@@ -96,14 +96,14 @@
                                     <div class="mid row">
                                         <div class="col-xs-4">
                                             <em><%=cbe.SaleState=="待销"?"预售价":"厂商指导价" %></em>
-                                            <h5><%= cfcs.ReferPrice == "" ? "暂无" : cfcs.ReferPrice + "万元"%></h5>
+                                            <h5><%= cfcs.ReferPrice == "" ? "暂无" : cfcs.ReferPrice + "万"%></h5>
                                         </div>
                                         <%if (cbe.SaleState.Trim() != "停销")
                                           {%>
                                         <div class="col-xs-4">
                                             <em id="quanKuan">全款购车（供参考）</em>
                                             <h5 class="calc-title">
-                                                <a class="em"><%=cfcs.CarTotalPrice == "" ? "暂无" : cfcs.CarTotalPrice + "元"%></a>
+                                                <a class="em"><%=cfcs.CarTotalPrice == "" ? "暂无" : cfcs.CarTotalPrice + ""%></a>
                                                 <a href="/gouchejisuanqi/?carid=<%= carID.ToString() %>" class="calculator" target="_blank"></a>
                                             </h5>
                                            <%if (!string.IsNullOrEmpty(cfcs.CarTotalPrice.ToString().Trim()))
@@ -119,7 +119,10 @@
                                             </div>
                                             <!--弹层 end-->
                                             <%}%>
-                                            <script type="text/javascript">
+                                            <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
+                                            <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=2017121116"></script>
+                                            <%--<script type="text/javascript" src="/jsnewV2/getareaprice.js?v=2017121"></script>--%>
+                                            <script type="text/javascript">                     
                                                 (function() {
                                                     $("#quanKuan").mouseover(function() {
                                                         $("#loanLayer").show();
@@ -129,12 +132,13 @@
                                                         }
                                                     });
                                                 })();
+                                                GetStyleAreaPriceRange(bit_locationInfo.cityId, <%= carID.ToString() %>, bit_locationInfo.cityName);
                                             </script>
                                         </div>
 
                                          <div class="col-xs-4">
                                             <em>贷款购车（30%首付）</em>
-                                            <h5><a class="em" target="_blank" href="http://fenqi.taoche.com/www/<%=cbe.Serial.AllSpell%>/m<%=cbe.Id%>/?from=yc18&amp;leads_source=p003003">首付<%= priceComputer.LoanFirstDownPayments > 0 ? ((double)(priceComputer.LoanFirstDownPayments + priceComputer.AcquisitionTax + priceComputer.Compulsory + priceComputer.Insurance + priceComputer.VehicleTax + priceComputer.Chepai) / 10000).ToString("F2") + "万元" : "暂无"%></a></h5>
+                                            <h5><a class="em" target="_blank" href="http://fenqi.taoche.com/www/<%=cbe.Serial.AllSpell%>/m<%=cbe.Id%>/?from=yc18&amp;leads_source=p003003">首付<%= priceComputer.LoanFirstDownPayments > 0 ? ((double)(priceComputer.LoanFirstDownPayments + priceComputer.AcquisitionTax + priceComputer.Compulsory + priceComputer.Insurance + priceComputer.VehicleTax + priceComputer.Chepai) / 10000).ToString("F2") + "万" : "暂无"%></a></h5>
                                         </div>
                                         <%}%>
                                     </div>
@@ -252,10 +256,10 @@
                          </div>
                      </div>
 
-                     <div class="layout-1">
+                    <%--<div class="layout-1">
                          <script type="text/javascript" id="zp_script_246" src="http://mcc.chinauma.net/static/scripts/p.js?id=246&w=240&h=220&sl=1&delay=5"
                              zp_type="1"></script>
-                     </div>
+                     </div>--%>
                  </div>
             </div>
         </div>
@@ -337,6 +341,7 @@
 </script>
 
 <script src="http://image.bitautoimg.com/carchannel/jsnewV2/ucarserialcity.min.js?v=2016122815" type="text/javascript"></script>
+
 <script type="text/javascript">
     (function(){
         var timer;
@@ -353,8 +358,8 @@
 		    else{
 		        showUCar(<%=cbe.Serial.Id %>, cityId,'<%=cbe.Serial.AllSpell %>','<%=cbe.Serial.ShowName.Replace("(进口)", "").Replace("（进口）", "")%>',getUCarForBottom,undefined,undefined,undefined,'chekuan'); 
 		    } --%>
-		}
-
+        }
+       
         //补贴
         $.ajax({
             url: "http://cdn.partner.bitauto.com/NewEnergyCar/CarSubsidy.ashx?op=getcscarsunsidy&csid=" + CarCommonCSID + "&cityid=" + cityId,

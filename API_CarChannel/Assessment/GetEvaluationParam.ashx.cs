@@ -68,7 +68,8 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
             if (ds != null && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
             {
                 DataRow dr = ds.Tables[0].Rows[0];
-
+                var espOff = (dr["22"] != null && dr["22"].ToString() != "")?Math.Round(ConvertHelper.GetDouble(dr["22"]),1): dr["22"];
+                var espOn = (dr["27"] != null && dr["27"].ToString() != "") ? Math.Round(ConvertHelper.GetDouble(dr["27"]), 1) : dr["27"];                
                 var obj = new
                 {
                     EvaluationId = evaluationId,
@@ -198,10 +199,10 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                     Dang9Zhuansu = dr["56"],
 
 
-                    EspOff = dr["22"],
+                    EspOff = espOff,
                     EspOn1 = dr["21"],
                     ZuiDaG = dr["23"],
-                    EspOn = dr["27"],
+                    EspOn = espOn,
                     EspOff1 = dr["28"],
                     ZuiDaG1 = dr["29"],
 

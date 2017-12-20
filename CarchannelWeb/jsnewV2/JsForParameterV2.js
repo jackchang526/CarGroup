@@ -184,6 +184,15 @@ function createPageForCompare(isDelSame) {
     //购车服务回调方法
     //goucheCallback();
     reCountLeftNavHeight();
+    //区域报价回调方法
+    if (ComparePageObject.ValidCount > 0) {
+        var arrCarId = new Array();
+        for (var i = 0; i < ComparePageObject.ValidCount; i++) {
+            arrCarId.push(ComparePageObject.ArrCarInfo[i].CarID);          
+        }
+        GetCarAreaPriceCallBack(arrCarId);
+    }
+
 }
 //计算左侧浮动导航高度
 function reCountLeftNavHeight() {
@@ -535,7 +544,7 @@ function createPrice(arrFieldRow) {
                             arrTemp = field.split('-');
                         if (arrTemp.length > 1)
                             fieldTemp = arrTemp[0].replace("万", "") + "-" + arrTemp[1];
-                        ComparePageObject.ArrPageContent.push("<div class=\"xunjia\">");
+                        ComparePageObject.ArrPageContent.push("<div class=\"xunjia\" id=\"car_aera_"+ ComparePageObject.ArrCarInfo[i].CarID + "\">");
                         ComparePageObject.ArrPageContent.push("<span class=\"cRed\"><a target=\"_blank\" href=\"http://price.bitauto.com/car.aspx?newcarid=" + ComparePageObject.ArrCarInfo[i].CarID + "&citycode=0&leads_source=p042003\">" + fieldTemp + "</a></span>");
                         ComparePageObject.ArrPageContent.push("<div class=\"button_gray button_43_20\"><a target=\"_blank\" href=\"http://dealer.bitauto.com/zuidijia/nb" + (ComparePageObject.ArrCarInfo[i].CarInfoArray[0][3] || "") + "/nc" + ComparePageObject.ArrCarInfo[i].CarID + "/?leads_source=p042001\">询价</a></div>");
                         ComparePageObject.ArrPageContent.push("</div>");
@@ -558,7 +567,12 @@ function createPrice(arrFieldRow) {
             ComparePageObject.ArrPageContent.push("</td>");
         }
     }
-    ComparePageObject.FloatLeft.push("<tr><th>" + arrFieldRow["sFieldTitle"] + "</th></tr>");
+    if (arrFieldRow["sFieldTitle"] == "商家报价") {
+        ComparePageObject.FloatLeft.push("<tr><th id=\"car_aera_name\">" + arrFieldRow["sFieldTitle"] + "</th></tr>");
+    }
+    else {
+        ComparePageObject.FloatLeft.push("<tr><th>" + arrFieldRow["sFieldTitle"] + "</th></tr>");
+    }
     ComparePageObject.ArrPageContent.push("</tr>");
 }
 
@@ -2286,7 +2300,7 @@ var arrField = [
     { sFieldTitle: "第三排座椅", sType: "fieldPara", sPid: "805", sTrPrefix: "9", sFieldIndex: "12", unit: "", joinCode: "" },
     { sFieldTitle: "座椅放倒方式", sType: "fieldMultiValue", sPid: "482", sTrPrefix: "9", sFieldIndex: "13", unit: "", joinCode: "" },
     { sFieldTitle: "后排杯架", sType: "fieldPara", sPid: "474", sTrPrefix: "9", sFieldIndex: "14", unit: "", joinCode: "" },
-    { sFieldTitle: "后排折叠桌板", sType: "fiel1006dPara", sPid: "1032", sTrPrefix: "9", sFieldIndex: "15", unit: "", joinCode: "" },
+    { sFieldTitle: "后排折叠桌板", sType: "fieldPara", sPid: "1032", sTrPrefix: "9", sFieldIndex: "15", unit: "", joinCode: "" },
 
     { sFieldTitle: "信息娱乐", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-pastime" },
     { sFieldTitle: "中控彩色液晶屏", sType: "fieldMultiValue", sPid: "488", sTrPrefix: "10", sFieldIndex: "0", unit: "", joinCode: "" },

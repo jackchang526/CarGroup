@@ -76,8 +76,9 @@ namespace MWeb.Controllers
             InitNewsData();//新闻
             GetVideo();//视频
             MakeForumNewsHtml();//论坛
-            MakeSerialToSerialHtml();//看了还看
-            GetVrUrl();//获取vr地址
+            //MakeSerialToSerialHtml();//看了还看
+            GetSerialHotCompareCars();//找相似
+            //GetVrUrl();//获取vr地址
             GetBaoZhiLv();//保值率
             /*
             bool isTestCs = TestCsIds.Contains(serialId);
@@ -1149,7 +1150,52 @@ namespace MWeb.Controllers
         }
 
         /// <summary>
-        ///     子品牌还关注
+        /// 综合对比
+        /// </summary>
+        /// <returns></returns>
+        private void GetSerialHotCompareCars()
+        {
+            StringBuilder sb = new StringBuilder();
+            //List<EnumCollection.SerialHotCompareData> lshcd = base.GetSerialHotCompareByCsID(serialId, 6);
+            Dictionary<string, List<Car_SerialBaseEntity>> carSerialBaseList = serialBLL.GetSerialCityCompareList(serialId, null);
+            if (carSerialBaseList != null && carSerialBaseList.ContainsKey("全国"))
+            {
+                var dicAllCsPic = pageBase.GetAllSerialPicURL(true);
+                List<Car_SerialBaseEntity> serialBaseEntityList = carSerialBaseList["全国"];
+
+                var htmlCode = new StringBuilder();
+                htmlCode.Append("<div class='tt-first' id='m-tabs-kankan'>");
+                htmlCode.Append("<h3>找相似</h3>");
+                htmlCode.Append("</div>");
+                htmlCode.Append("<div class='swiper-container-kankan swiper-container'><div class='swiper-wrapper'>");
+                htmlCode.Append("<div class='swiper-slide'>");
+                htmlCode.Append("<div class='car-list3' data-channelid=\"27.23.743\">");
+                htmlCode.Append("<ul>");
+                foreach (Car_SerialBaseEntity carSerial in serialBaseEntityList)
+                {
+                    string imgUrl = dicAllCsPic.ContainsKey(carSerial.SerialId) ? dicAllCsPic[carSerial.SerialId].Replace("_2.jpg", "_3.jpg") : WebConfig.DefaultCarPic;
+                    string referPrice = pageBase.GetSerialReferPriceByID(carSerial.SerialId);
+                    if (string.IsNullOrEmpty(referPrice))
+                    {
+                        referPrice = "暂无指导价";
+                    }
+                    htmlCode.Append("<li>");
+                    htmlCode.AppendFormat("<a href='/{0}/'>", carSerial.SerialNameSpell);
+                    htmlCode.AppendFormat("<img src='{0}'/>", imgUrl);
+                    htmlCode.AppendFormat("<strong>{0}</strong>", carSerial.SerialShowName);
+                    htmlCode.AppendFormat("<p>{0}</p>", referPrice);
+                    htmlCode.Append("</a>");
+                    htmlCode.Append("</li>");
+                }
+                htmlCode.Append("</ul>");
+                htmlCode.Append("</div></div>");
+                htmlCode.Append("</div></div>");
+                ViewData["CsHotCompareCars"] = htmlCode.ToString();// htmlCode.Insert(0, htmlTagCode).ToString();
+            }
+        }
+
+        /// <summary>
+        /// 子品牌还关注
         /// </summary>
         /// <returns></returns>
         private void MakeSerialToSerialHtml()
@@ -1176,7 +1222,7 @@ namespace MWeb.Controllers
                     htmlCode.AppendFormat("<img src='{0}' alt=\"{1}\" />", sts.ToCsPic.ToString(CultureInfo.InvariantCulture).Replace("_5.", "_3."), csName);
                     htmlCode.AppendFormat("<strong>{0}</strong>", csName);
                     htmlCode.AppendFormat("<p>{0}</p>",
-                        string.IsNullOrEmpty(sts.ToCsPriceRange) ? "暂无报价" : sts.ToCsPriceRange);
+                        string.IsNullOrEmpty(sts.ToCsPriceRange) ? "暂无指导价" : sts.ToCsPriceRange);
                     htmlCode.Append("</a>");
                     htmlCode.Append("</li>");
                 }
@@ -1306,19 +1352,19 @@ namespace MWeb.Controllers
             ViewData["SerialColorList"] = SerialColorList;
         }
 
-        /// <summary>
-        /// 获取vr url
-        /// </summary>
-        private void GetVrUrl()
-        {
-            Dictionary<int, string> vrDic = serialBLL.GetSerialVRUrl();
-            string VRUrl = string.Empty;
-            if (vrDic != null && vrDic.ContainsKey(serialId))
-            {
-                 VRUrl = vrDic[serialId];
-            }
-            ViewData["VRUrl"] = VRUrl;
-        }
+        ///// <summary>
+        ///// 获取vr url
+        ///// </summary>
+        //private void GetVrUrl()
+        //{
+        //    Dictionary<int, string> vrDic = serialBLL.GetSerialVRUrl();
+        //    string VRUrl = string.Empty;
+        //    if (vrDic != null && vrDic.ContainsKey(serialId))
+        //    {
+        //         VRUrl = vrDic[serialId];
+        //    }
+        //    ViewData["VRUrl"] = VRUrl;
+        //}
 
         /// <summary>
         /// 五年保值率

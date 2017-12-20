@@ -1,7 +1,8 @@
-﻿var cityId = 201, cityAllSpell = 'beijing';
+﻿var cityId = 201, cityAllSpell = 'beijing', cityName;
 if (bit_locationInfo && bit_locationInfo.cityId) {
     cityId = bit_locationInfo.cityId;
     cityAllSpell = bit_locationInfo.engName;
+    cityName = bit_locationInfo.cityName;
 }
 
 //价格区
@@ -9,23 +10,24 @@ if ($("#hidCarType").val() == "停销") {
     var erShouCheHtml = [];
     erShouCheHtml.push("<li>二手车报价：");
     erShouCheHtml.push("<a href=\"http://yiche.taoche.com/buycar/b-" + serialAllSpell + "/?page=1&carid=" + carId + "\"><strong>" + ucarPrice + "</strong></a>");
-    erShouCheHtml.push("<em>(指导价" + (referPrice > 0 ? referPrice + "万元" : "暂无") + ")</em></li>");
+    erShouCheHtml.push("<em>(指导价" + (referPrice > 0 ? referPrice + "万" : "暂无") + ")</em></li>");
     erShouCheHtml.push("<li>");
     $("#ulJiaGeInfo").html(erShouCheHtml.join(""));
     $("#erShouCheDiv").show();
 } else {
     var contentHtml = [];
     
-    contentHtml.push("<li><i>全国参考价：</i>");
-    contentHtml.push("<a data-channelid=\"27.24.1329\" href=\"/" + serialAllSpell + "/m" + carId + "/baojia/\">" + (cankaoPrice == "暂无" ? "暂无" : "<strong>" + cankaoPrice + "元</strong>") + "</a>");
+    contentHtml.push("<li><i id=\"car-area-name\">全国参考价：</i>");
+    contentHtml.push("<a data-channelid=\"27.24.1329\" href=\"/" + serialAllSpell + "/m" + carId + "/baojia/\">" + (cankaoPrice == "暂无" ? "暂无" : "<strong id=\"car-area-price\">" + cankaoPrice + "</strong>") + "</a>");
    
-    contentHtml.push("<em>(指导价" + (referPrice > 0 ? referPrice + "万元" : "暂无") + ")</em></li>");
-    contentHtml.push("<li>全款：<span>" + (totalPay == "暂无" ? totalPay : "约" + totalPay) + "</span> <em>(仅供参考)</em><a href=\"/gouchejisuanqi/?carid=" + carId + "\" data-channelid=\"27.24.1330\" class=\"m-ico-calculator\"></a></li>");
-    contentHtml.push("<li>贷款：<span>首付" + loanDownPay + "，月供" + monthPay + "</span> <em>(36期)</em></li>");
+    contentHtml.push("<em>(指导价" + (referPrice > 0 ? referPrice + "万" : "暂无") + ")</em></li>");
+    contentHtml.push("<li>全款：<span>" + (totalPay == "暂无" ? totalPay : "约" + totalPay.replace("元", "")) + "</span> <em>(仅供参考)</em><a href=\"/gouchejisuanqi/?carid=" + carId + "\" data-channelid=\"27.24.1330\" class=\"m-ico-calculator\"></a></li>");
+    contentHtml.push("<li>贷款：<span>首付" + loanDownPay.replace("元", "") + "，月供" + monthPay + "</span> <em>(36期)</em></li>");
     if (taxContent != "" && serialSaleState == "在销") {
         contentHtml.push("<li><em class=\"m-ico-jianshui\">减税</em>" + taxContent + "</li>");
     }
     $("#ulJiaGeInfo").html(contentHtml.join(""));
+    GetStyleAreaPriceRange(carId, false);
     if (serialSaleState == "待销") { //车系的销售状态cssalestate=“待销”时，车款为“未上市”状态;未上市不显示按钮
         
     } else {

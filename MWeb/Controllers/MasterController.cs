@@ -112,6 +112,7 @@ namespace MWeb.Controllers
 
         private string GetSerialHtml(DataTable brandTable)
         {
+            PageBase pageBase = new PageBase();
             StringBuilder serialList = new StringBuilder();
 			//StringBuilder htmlAllwaitSaleHtml = new StringBuilder();
 			//StringBuilder htmlAllnoPriceHtml = new StringBuilder();
@@ -153,10 +154,10 @@ namespace MWeb.Controllers
                 const string liStr = "<li><a href=\"/{0}/\"><span><img src=\"{1}\" alt=\"{2}\"/></span><p>{2}</p><b>{3}</b></a></li>";
                 if (sellState == "在销")
                 {
-                    priceRange = GetSerialPriceRangeByID(serialId);
+                    priceRange = pageBase.GetSerialReferPriceByID(serialId);
                     if (priceRange.Trim().Length == 0)
                     {
-                        priceRange = "暂无报价";
+                        priceRange = "暂无指导价";
 						serialList.AppendFormat(liStr, csSpell, imgUrl, csShowName, priceRange);
                     }
                     else

@@ -116,11 +116,32 @@
     <Compile Include="Assessment\GetEntranceData.ashx.cs">
       <DependentUpon>GetEntranceData.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Assessment\GetEvalInfoForAppNews.ashx.cs">
+      <DependentUpon>GetEvalInfoForAppNews.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Assessment\GetEvaluationInfo.ashx.cs">
       <DependentUpon>GetEvaluationInfo.ashx</DependentUpon>
     </Compile>
     <Compile Include="Assessment\GetEvaluationParam.ashx.cs">
       <DependentUpon>GetEvaluationParam.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetEvaluationSimpleRank.ashx.cs">
+      <DependentUpon>GetEvaluationSimpleRank.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetEvaluationTopRank.ashx.cs">
+      <DependentUpon>GetEvaluationTopRank.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetExistReportEvaluationId.ashx.cs">
+      <DependentUpon>GetExistReportEvaluationId.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetPingCeList.ashx.cs">
+      <DependentUpon>GetPingCeList.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetPingCeTopM.ashx.cs">
+      <DependentUpon>GetPingCeTopM.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetPingCeTopPc.ashx.cs">
+      <DependentUpon>GetPingCeTopPc.ashx</DependentUpon>
     </Compile>
     <Compile Include="Assessment\ViewScore.ashx.cs">
       <DependentUpon>ViewScore.ashx</DependentUpon>
@@ -480,6 +501,9 @@
     <Compile Include="WxApp\GetCarParamInfo.ashx.cs">
       <DependentUpon>GetCarParamInfo.ashx</DependentUpon>
     </Compile>
+    <Compile Include="WxApp\GetCarParamList.ashx.cs">
+      <DependentUpon>GetCarParamList.ashx</DependentUpon>
+    </Compile>
     <Compile Include="WxApp\GetHotMaster.ashx.cs">
       <DependentUpon>GetHotMaster.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -532,6 +556,7 @@
     <Content Include="CarInfo\SerialListJson.aspx" />
     <Content Include="config\CooperationConfig.xml" />
     <Content Include="config\CooperationConfigV2.xml" />
+    <Content Include="config\EvaluationScore.xml" />
     <Content Include="config\H5SelectSerialList.xml" />
     <Content Include="config\ParameterForJson.xml" />
     <Content Include="config\ParameterForJsonNew.xml" />
@@ -615,6 +640,13 @@
     <Content Include="Exhibition\GetExhibitionMasterBrand.ashx" />
     <Content Include="Exhibition\GetExhibitionSerial.ashx" />
     <Content Include="CarInfo\GetCarIntoMarketText.ashx" />
+    <Content Include="Assessment\GetEvaluationSimpleRank.ashx" />
+    <Content Include="Assessment\GetEvaluationTopRank.ashx" />
+    <Content Include="Assessment\GetExistReportEvaluationId.ashx" />
+    <Content Include="Assessment\GetPingCeTopPc.ashx" />
+    <Content Include="Assessment\GetPingCeTopM.ashx" />
+    <Content Include="Assessment\GetPingCeList.ashx" />
+    <Content Include="Assessment\GetEvalInfoForAppNews.ashx" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -641,6 +673,7 @@
     <Content Include="WxApp\GetHotSerial.ashx" />
     <Content Include="WxApp\GetSerialSellRank.ashx" />
     <Content Include="WxApp\GetHotMaster.ashx" />
+    <Content Include="WxApp\GetCarParamList.ashx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

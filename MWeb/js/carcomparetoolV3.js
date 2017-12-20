@@ -248,7 +248,15 @@ function createPageForCompare(isDelSame) {
 	bindEvent();
 
 	gotoSubMenu();
-	callbackFunc();
+    callbackFunc();
+    //区域报价回调方法
+    if (ComparePageObject.ValidCount > 0) {
+        var arrCarId = new Array();
+        for (var i = 0; i < ComparePageObject.ValidCount; i++) {
+            arrCarId.push(ComparePageObject.ArrCarInfo[i].CarID);
+        }
+        GetCarAreaPriceForCSCompare(arrCarId);
+    }
 }
 
 function bindEvent() {
@@ -1229,9 +1237,9 @@ function createPrice(arrFieldRow) {
 					if (arrFieldRow["sFieldTitle"] == "商家报价") {
 						var minPrice = field;
 						if (field.indexOf("-") != -1) {
-							minPrice = field.substring(0, field.indexOf("-"));
+							minPrice = field.substring(0, field.indexOf("-")) + "万";
 						}
-						tempArray.push("<span class=\"cRed\">" + minPrice + "&nbsp;</span>");
+                        tempArray.push("<span class=\"cRed\" id=\"car_aera_" + ComparePageObject.ArrCarInfo[i].CarID + "\">" + minPrice + "&nbsp;</span>");
 						tempArray.push("<a class=\"m-btn-xunjia\" href=\"http://price.m.yiche.com/zuidijia/nc" + ComparePageObject.ArrCarInfo[i].CarInfoArray[0][0] + "/?leads_source=m010001\"> 询价</a>");
 					}
 					else if (arrFieldRow["sFieldTitle"] == "降价优惠") {
@@ -1261,8 +1269,13 @@ function createPrice(arrFieldRow) {
 			ComparePageObject.ArrTempLeftNavHTML.length = 0;
 		}
 
-		ComparePageObject.ArrLeftTitleHtml.push("<tr>");
-		ComparePageObject.ArrLeftTitleHtml.push("<th><span>" + arrFieldRow["sFieldTitle"] + "</span></th>");
+        ComparePageObject.ArrLeftTitleHtml.push("<tr>");
+        if (arrFieldRow["sFieldTitle"] == "商家报价") {
+            ComparePageObject.ArrLeftTitleHtml.push("<th><span id=\"car_aera_name\">" + arrFieldRow["sFieldTitle"] + "</span></th>");
+        }
+        else {
+            ComparePageObject.ArrLeftTitleHtml.push("<th><span>" + arrFieldRow["sFieldTitle"] + "</span></th>");
+        }
 
 		ComparePageObject.ArrRightContentHTML.push("<tr id=\"tr" + arrFieldRow["sTrPrefix"] + "_" + arrFieldRow["sFieldIndex"] + "\">");
 		ComparePageObject.ArrRightContentHTML.push(tempArray.join(""));
@@ -1623,7 +1636,7 @@ var arrField = [
     { sFieldTitle: "第三排座椅", sType: "fieldPara", sPid: "805", sTrPrefix: "9", sFieldIndex: "12", unit: "", joinCode: "" },
     { sFieldTitle: "座椅放倒方式", sType: "fieldMultiValue", sPid: "482", sTrPrefix: "9", sFieldIndex: "13", unit: "", joinCode: "" },
     { sFieldTitle: "后排杯架", sType: "fieldPara", sPid: "474", sTrPrefix: "9", sFieldIndex: "14", unit: "", joinCode: "" },
-    { sFieldTitle: "后排折叠桌板", sType: "fiel1006dPara", sPid: "1032", sTrPrefix: "9", sFieldIndex: "15", unit: "", joinCode: "" },
+    { sFieldTitle: "后排折叠桌板", sType: "fieldPara", sPid: "1032", sTrPrefix: "9", sFieldIndex: "15", unit: "", joinCode: "" },
 
     { sFieldTitle: "信息娱乐", sType: "bar", sPid: "", sFieldIndex: "", unit: "", joinCode: "", scrollId: "params-pastime" },
     { sFieldTitle: "中控彩色液晶屏", sType: "fieldMultiValue", sPid: "488", sTrPrefix: "10", sFieldIndex: "0", unit: "", joinCode: "" },

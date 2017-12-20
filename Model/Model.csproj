@@ -120,6 +120,9 @@
     <Compile Include="CNCAPEntity.cs" />
     <Compile Include="DaoGouEntity.cs" />
     <Compile Include="EvaluationEntity.cs" />
+    <Compile Include="EvaluationRank.cs" />
+    <Compile Include="EvaluationTopRank.cs" />
+    <Compile Include="GroupScore.cs" />
     <Compile Include="LoanPackage.cs" />
     <Compile Include="DealerInfo.cs" />
     <Compile Include="Editer.cs" />
@@ -133,6 +136,7 @@
     <Compile Include="News.cs" />
     <Compile Include="NewsCategory.cs" />
     <Compile Include="NewsForSerialSummaryEntity.cs" />
+    <Compile Include="PingCeEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuesionInfo.cs" />
     <Compile Include="SelectCarParameters.cs" />

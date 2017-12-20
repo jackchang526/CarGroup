@@ -1,4 +1,5 @@
-﻿Array.prototype.indexOf = function (value) {
+﻿//依赖文件paowuxian.js
+Array.prototype.indexOf = function (value) {
     for (var i = 0, l = this.length; i < l; i++)
         if (this[i] == value) return i;
     return -1;
@@ -27,13 +28,13 @@ var arrMarkSerial = [], saleYearCount = 0,
     currentDuibiCarId;  //从对比页面传入的车款值
 var WaitCompare = (function (module) {
     var self = module,
-		arrSelectCarId = [],  //已经选择过的车款
+        arrSelectCarId = [],  //已经选择过的车款
         defaults = {
             count: 4,
             duibiCookieName: "m_comparecarlist",
-            duibiLocalName:"car_m_localcomaprelist",
+            duibiLocalName: "car_m_localcomaprelist",
             historyCookieName: "m_historycomparecarlist",
-            historyLocalName:"car_m_localhistorycomparelist",
+            historyLocalName: "car_m_localhistorycomparelist",
             url: "/handlers/getcarinfoforcompare.ashx?carid=",  //http://car.m.yiche.com/handlers/getcarinfoforcompare.ashx?carid=114462
             selector: "a[id^='car-compare']",//绑定所有点击事件
             oneSelector: "#car-compare-",//绑定单个点击事件
@@ -48,7 +49,7 @@ var WaitCompare = (function (module) {
             selectedFunc: function (carId) {
                 //已添加的样式修改
                 //$(defaults.oneSelector + carId).html("已加入").off("click").closest("li").addClass("btn-gray");
-                $("a[id^='car-compare-" + carId + "']").html("已加入").off("click").closest("li").addClass("btn-gray");
+                $("a[id^='car-compare-" + carId + "']").html("已加入").off("click").parent().addClass("btn-gray");
             },
             delFunc: function (carId) {
                 //删除对比的调整
@@ -76,6 +77,26 @@ var WaitCompare = (function (module) {
                 var $addElem = $(defaults.oneSelector + id);
                 self.updateHistoryCars(id);  //添加到历史记录缓存
                 self.addCompareCar(id, name, $addElem);
+            },
+            myParabola: function () {//抛物线效果
+                var thisX = $(event.target).offset().left, // 获取当前btn位置
+                    thisY = $(event.target).offset().top,
+                    endX = $('.float-r-pk').offset().left, // 获取对比球位置
+                    endY = $('.float-r-pk').offset().top,
+                    thisWidth = $(event.target).width(); // 获取当前btn宽度
+                // 飞行元素位置
+                $('.add-duibi-box').css({
+                    top: thisY + 9,
+                    left: thisX + (thisWidth / 2) - 30,
+                    opacity: 0.6,
+                    zindex:100000000
+                });
+
+                // 飞行动画
+                $('.add-duibi-box').show().animate(
+                    { left: endX - 5, top: endY + 10, opacity: 0 }, 500, function () {
+                        $('.add-duibi-box').hide();
+                    });
             }
         };
     //添加对比
@@ -95,6 +116,7 @@ var WaitCompare = (function (module) {
             alert("添加车款已经存在");
             return;
         }
+        
         arrCarId.push(id);
         //CookieHelper.setCookie(defaults.duibiCookieName, arrCarId.join('|'));
         LocalStorageData.setData(defaults.duibiLocalName, arrCarId.join('|'));
@@ -105,19 +127,20 @@ var WaitCompare = (function (module) {
             CarName: name
         });
         drawDuibiBtnUI();
-        self.updateCount();
+        self.updateCount(true);
+        //加对比效果
+        defaults.myParabola();
         if (defaults.selectedFunc && defaults.selectedFunc instanceof Function) {
             defaults.selectedFunc(id);
         }
         CarCompareAd.initAd(compareData);
-
     };
     //清空对比
     module.clearCompareCarAll = function () {
         LocalStorageData.clearData(defaults.duibiLocalName);
         compareData = [];
         drawDuibiBtnUI(compareData);
-        self.updateCount();
+        self.updateCount(true);
         //rightSwipe();
         if (defaults.clearFunc && defaults.clearFunc instanceof Function) {
             defaults.clearFunc();
@@ -145,7 +168,7 @@ var WaitCompare = (function (module) {
         compareData = newCompareData;
         drawDuibiBtnUI();
         
-        self.updateCount();
+        self.updateCount(true);
         if (defaults.delFunc && defaults.delFunc instanceof Function) {
             defaults.delFunc(carId);
         }
@@ -211,7 +234,7 @@ var WaitCompare = (function (module) {
         }
     };
     //更新pk数量
-    module.updateCount = function () {
+    module.updateCount = function (isanimation) {
         var count = 0;
         var cookieCar = LocalStorageData.getData(defaults.duibiLocalName);// CookieHelper.getCookie(defaults.duibiCookieName),
            arrCarId = [];
@@ -219,7 +242,18 @@ var WaitCompare = (function (module) {
             arrCarId = cookieCar.split('|');
             count = arrCarId.length;
         }
-        $("#compare-pk i").html(count);
+        if (isanimation) {
+            $('#duibiAti').addClass('float-pk-ati');
+            setTimeout(function () {
+                $('#duibiAti').removeClass('float-pk-ati');
+            }, 1000);
+            setTimeout(function () {
+                $("#compare-pk i").html(count);
+            }, 500);
+        }
+        else {
+            $("#compare-pk i").html(count);
+        }
     };
     module.updateHistoryCars = function (curNewCarId) {
         var historyCookieCar = CookieHelper.getCookie(defaults.historyCookieName);
@@ -269,9 +303,11 @@ var WaitCompare = (function (module) {
         api.model.currentid = apiCarId;//车款
         $(".first-list .add a:not(.select)").rightSwipeAnimation({
             fnEnd: function () {
+                $("#master_container").show();
                 var curSerialId = defaults.serialid;//
                 var $model = this;
                 $body.animate({ scrollTop: 0 }, 30);
+                //$("#master_container").scrollTop = 0;
                 var tags = $('.tag', $body);
                 //切换标签
                 var $brandlist = $('.brandlist');
@@ -316,7 +352,9 @@ var WaitCompare = (function (module) {
                                         defaults.selectCarIdFunc(curCarId, curCarName);
                                         
                                         $model.trigger('closeWindow');
-                                        $duibimask.trigger('close');
+                                        //$duibimask.trigger('close');
+                                        console.log(222);
+                                        $("#master_container").hide();
                                     });
 
                                     //年款收缩与展开
@@ -381,23 +419,25 @@ var WaitCompare = (function (module) {
                                 //关闭浮层
                                 $back.trigger('close');
                                 $model.trigger('closeWindow');
-                                $duibimask.trigger('close');
+                                //$duibimask.trigger('close');
+                                $("#master_container").hide();
                             }
                             $body.css('overflow', 'initial');
                             _commonSlider($model, $body);
                         }
                         else if (idx == 2) //历史记录
                         {
-
                             initHistory();
+                            $body.css('overflow', 'initial');
                             _commonSlider($model, $body);
-                            $duibimask.trigger('close');
+                            //$duibimask.trigger('close');
                         }
                         else { }
 
                         $model.find('.btn-return').click(function (ev) {
                             ev.preventDefault();
                             $model.trigger('closeWindow');
+                            $("#master_container").hide();
                         })
 
                     }
@@ -415,14 +455,14 @@ var WaitCompare = (function (module) {
             })
         })
         if (compareData.length <= 0) {
-            $(".btn-comparison").off("click").addClass("disable");
-            $(".btn-clear").off("click").addClass("disable");
+            $(".duibicar .btn-comparison").off("click").addClass("disable");
+            $(".duibicar .btn-clear").off("click").addClass("disable");
         } else {
-            $(".btn-comparison").off("click").removeClass("disable").on("click", function (e) {
+            $(".duibicar .btn-comparison").off("click").removeClass("disable").on("click", function (e) {
                 e.preventDefault();
                 self.submitCompare();
             });
-            $(".btn-clear").off("click").removeClass("disable").on("click", function (e) {
+            $(".duibicar .btn-clear").off("click").removeClass("disable").on("click", function (e) {
                 e.preventDefault();
                 self.clearCompareCarAll();
             });
@@ -441,7 +481,10 @@ var WaitCompare = (function (module) {
     }
     var _commonResetBody = function ($body) {
         $body[0].style.cssText = '';
-        $body.find("#container")[0].style.cssText = '';
+        var container = $body.find("#container");
+        if ($(container).length > 0) {
+            $body.find("#container")[0].style.cssText = '';
+        }
     }
     //头部自适应
     var _headerSlider = function () {
@@ -553,6 +596,7 @@ var WaitCompare = (function (module) {
                     var curCarId = $(this).data("id"), curCarName = $(this).data("name");
                     defaults.selectCarIdFunc(curCarId, curCarName);
                     $(this).trigger('closeWindow');
+                    $("#master_container").hide();
                 });
             });
         } else {

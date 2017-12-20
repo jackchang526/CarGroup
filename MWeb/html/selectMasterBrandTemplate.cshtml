@@ -95,7 +95,7 @@
                                     { for(var j = 0 ; j < list[i].Child.length ; j++){}
                                     {if(list[i].Child[j].CsSaleState == '停销'){}
                                     <li {= list[i].Child[j].SerialId.toString() ==(api.car.currentid.toString()) ? 'class="current"' :''}>
-                                        <a class="imgbox-2" data-action="models" data-id="{=list[i].Child[j].SerialId}" href="#">
+                                        <a class="imgbox-2" data-id="{=list[i].Child[j].SerialId}" href="/{= list[i].Child[j].Allspell}/">
                                             <div class="img-box">
                                                 <img src="{=list[i].Child[j].ImageUrl}" />
                                             </div>

@@ -736,11 +736,11 @@
                                     <input type="checkbox" id="more_145" />多连杆式独立悬架
                                 </label>
                             </li>
-                            <li>
+                           <%-- <li>
                                 <label>
                                     <input type="checkbox" id="more_146" />麦弗逊独立悬架
                                 </label>
-                            </li>
+                            </li>--%>
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_300" />整体桥式非独立悬架
@@ -967,11 +967,11 @@
                                     <input type="checkbox" id="more_182" />定速巡航
                                 </label>
                             </li>
-                            <li>
+                            <%--<li>
                                 <label>
                                     <input type="checkbox" id="more_183" />ACC自适应巡航
                                 </label>
-                            </li>
+                            </li>--%>
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_184" />
@@ -1047,11 +1047,11 @@
                                     <input type="checkbox" id="more_196" />车后倒车雷达
                                 </label>
                             </li>
-                            <li>
+                           <%-- <li>
                                 <label>
                                     <input type="checkbox" id="more_197" />倒车影像
                                 </label>
-                            </li>
+                            </li>--%>
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_198" />360全景影像
@@ -1394,9 +1394,9 @@
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_257" />电动调节</label></li>
-                            <li>
+                            <%--<li>
                                 <label>
-                                    <input type="checkbox" id="more_258" />记忆</label></li>
+                                    <input type="checkbox" id="more_258" />记忆</label></li>--%>
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_259" />靠背调节</label></li>
@@ -1422,9 +1422,9 @@
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_264" />电动调节</label></li>
-                            <li>
+                           <%-- <li>
                                 <label>
-                                    <input type="checkbox" id="more_265" />记忆</label></li>
+                                    <input type="checkbox" id="more_265" />记忆</label></li>--%>
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_266" />靠背调节</label></li>
@@ -1592,13 +1592,15 @@
         </div>
     </div>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-
+    <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
     <%--   <script type="text/javascript" src="/jsnewV2/jquery.pagination.js"></script>--%>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/jquery.pagination.min.js?v=20161215"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/selectcarcommon.min.js?d=201711131107"></script>
     <%--<script type="text/javascript" src="/jsnewV2/selectcarcommon.js"></script>--%>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/superselectcartoolv2.min.js?v=201711131107"></script>
-    <%--<script type="text/javascript" src="/jsnewV2/superselectcartoolv2.js"></script>--%>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712110"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/superselectcartoolv2.min.js?v=201712110"></script>
+  <%--  <script type="text/javascript" src="/jsnewV2/getareaprice.js?v=20170111243"></script>
+    <script type="text/javascript" src="/jsnewV2/superselectcartoolv2.js"></script>--%>
     <script type="text/javascript">
         SuperSelectCarTool.Parameters = <%=configParaHtml%>;
         SuperSelectCarTool.initPageCondition();

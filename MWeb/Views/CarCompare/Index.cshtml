@@ -283,7 +283,7 @@
         })
     </script>
 
-
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/getareaprice.min.js?v=20171218150"></script>
     @*<script type="text/javascript" src="/js/v2/iscroll.js"></script>
     <script type="text/javascript" src="/js/v2/underscore.js"></script>
     <script type="text/javascript" src="/js/v2/model.js"></script>
@@ -291,7 +291,7 @@
     <script type="text/javascript" src="/js/v2/note.js"></script>
     <script type="text/javascript" src="/js/v2/brand.js"></script>
     <script type="text/javascript" src="/js/waitcompareV2.js"></script>*@
-    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.js,carchannel/wirelessjsv2/v2/underscore.js,carchannel/wirelessjsv2/v2/model.js,carchannel/wirelessjsv2/v2/rightswipe.js,carchannel/wirelessjsv2/v2/note.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.min.js?v=201707031121"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.js,carchannel/wirelessjsv2/v2/underscore.js,carchannel/wirelessjsv2/v2/model.js,carchannel/wirelessjsv2/v2/rightswipe.js,carchannel/wirelessjsv2/v2/note.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.min.js?v=201712121500"></script>
     <script type="text/javascript">
         $(function () {
             var $body = $('body');
@@ -334,7 +334,7 @@
         };
         $(function(){
             WaitCompare.initCompreData(compareConfig);
-        });
+        });      
     </script>
 
     <script type="text/javascript">
@@ -344,6 +344,7 @@
             modelId:modelStr,
             carId:@Model.Id
             };
+        GetStyleAreaPriceRange( @Model.Id, true);
     </script>
     <script type="text/javascript">
         var _zampq = [];

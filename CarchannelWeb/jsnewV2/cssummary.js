@@ -87,26 +87,26 @@ function FocusCar(obj) {
 
 //名片区-经销商数量
 function GetDealerData(serialSpell) {
-	$.ajax({
-		url: "http://cdn.partner.bitauto.com/CarSerialPriceInfo/Handler/GetCsPriceCommon.ashx?action=GetMaxFavorAndDealerCount&brandId=" + serialId + "&cityId=" + cityId,
-		cache: true,
-		dataType: "jsonp",
-		jsonpCallback: "GetDealerDataCallback",
-		success: function (data) {
-			if (typeof data != "undefined" && data.length > 0) {
-				if (data[0].DealerCount > 0) {
-					$("#mp-dealer").html("（" + data[0].DealerCount + "家本地经销商）");
-				}
-				var favorablePrice = parseFloat(data[0].MaxFavorablePrice);
-				if (favorablePrice > 0) {
-				    $("#mp-jiangjia .desc a").html("直降" + favorablePrice.toFixed(2) + "万>>");
-				}
-				else {
-					$("#mp-jiangjia .desc").addClass("grey-txt").html("暂无");
-				}
-			}
-		}
-	});
+    $.ajax({
+        url: "http://cdn.partner.bitauto.com/CarSerialPriceInfo/Handler/GetCsPriceCommon.ashx?v=1&action=GetMaxFavorAndDealerCount&brandId=" + serialId + "&cityId=" + cityId,
+        cache: true,
+        dataType: "jsonp",
+        jsonpCallback: "GetDealerDataCallback",
+        success: function (data) {
+            if (typeof data != "undefined" && data.length > 0) {
+                if (data[0].DealerCount > 0) {
+                    $("#mp-dealer").html("（" + data[0].DealerCount + "家本地经销商）").attr("href", data[0].dealerurl);
+                }
+                var favorablePrice = parseFloat(data[0].MaxFavorablePrice);
+                if (favorablePrice > 0) {
+                    $("#mp-jiangjia .desc a").html("直降" + favorablePrice.toFixed(2) + "万>>");
+                }
+                else {
+                    $("#mp-jiangjia .desc").addClass("grey-txt").html("暂无");
+                }
+            }
+        }
+    });
 }
 //名片区-二手车
 function GetErShouCheMinPrice() {
@@ -455,26 +455,26 @@ function GetFocusNewsLast(csSaleState, totalCount) {
 }
 
 //双11入口
-function Get1111Entrance() {
-    if ($(".bmw-ad-link").length > 0) return;
-    $.ajax({
-        url: "http://api.mai.yiche.com/api/ProductCar/GetCs11?csid=" + GlobalSummaryConfig.SerialId,
-        cache: true,
-        dataType: "jsonp",
-        jsonpCallback: "Get1111EntranceCallback",
-        success: function (data) {
-            if (!data.Success || data.Result == null) {
-                //console.log(data.Msg);
-                return;
-            }
-            var html = [];
-            html.push("<div class=\"bmw-ad-link type-1\">");
-            html.push("<a href=\"" + data.Result.pcUrl + "\" target=\"_blank\" class=\"link\">" + data.Result.propagate + "</a >");
-            html.push("</div>");
-            $("#focus_images").before(html.join(""));
-        }
-    });
-}
+//function Get1111Entrance() {
+//    if ($(".bmw-ad-link").length > 0) return;
+//    $.ajax({
+//        url: "http://api.mai.yiche.com/api/ProductCar/GetCs11?csid=" + GlobalSummaryConfig.SerialId,
+//        cache: true,
+//        dataType: "jsonp",
+//        jsonpCallback: "Get1111EntranceCallback",
+//        success: function (data) {
+//            if (!data.Success || data.Result == null) {
+//                //console.log(data.Msg);
+//                return;
+//            }
+//            var html = [];
+//            html.push("<div class=\"bmw-ad-link type-1\">");
+//            html.push("<a href=\"" + data.Result.pcUrl + "\" target=\"_blank\" class=\"link\">" + data.Result.propagate + "</a >");
+//            html.push("</div>");
+//            $("#focus_images").before(html.join(""));
+//        }
+//    });
+//}
 
 function GetVr() {
     if ($("#focus_images").siblings("zs-vr") > 0) return;

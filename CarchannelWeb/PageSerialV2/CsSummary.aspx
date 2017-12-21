@@ -50,39 +50,10 @@
     <!--header start-->
     <%= serialHeaderHtml%>
     <!--/公共头部结束-->
-    <!--通栏广告块-->
-    <div class="top-col6-190" data-channelid="2.21.1524" style="display: none;">
-        <div class="container">
-            <div class="row col6-190-box">
-                <div class="figure-box w190-h120 col-auto">
-                    <ins id="div_040b5cb9-85ab-485f-a32b-5bfad0b9d891" data-type="ad_play_fs" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="040b5cb9-85ab-485f-a32b-5bfad0b9d891"></ins>
-                </div>
-                <div class="figure-box w190-h120 col-auto">
-                    <ins id="div_ae976a77-d988-46a4-8032-05997aa0a591" data-type="ad_play_fs" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="ae976a77-d988-46a4-8032-05997aa0a591"></ins>
-                </div>
-                <div class="figure-box w190-h120 col-auto">
-                    <ins id="div_9957c7cc-f9ae-431e-bfc6-270e006a285e" data-type="ad_play_fs" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="9957c7cc-f9ae-431e-bfc6-270e006a285e"></ins>
-                </div>
-                <div class="figure-box w190-h120 col-auto">
-                    <ins id="div_38796f7a-f21c-4644-93f4-527a483011c4" data-type="ad_play_fs" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="38796f7a-f21c-4644-93f4-527a483011c4"></ins>
-                </div>
-                <div class="figure-box w190-h120 col-auto">
-                    <ins id="div_6fd6682f-3f99-4439-bd1a-346b128f017d" data-type="ad_play_fs" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="6fd6682f-3f99-4439-bd1a-346b128f017d"></ins>
-                </div>
-                <div id="cmtadDiv" class="figure-box w190-h120 col-auto">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--/通栏广告块-->
     <div class="container cartype-section summary">
         <!--焦点图、名片区-->
         <div class="row card-head-box">
             <div class="l-box-sty col-auto">
-               <%-- <%if (!string.IsNullOrEmpty(VRUrl))
-                    {%>
-                <a href="<%= VRUrl %>" data-channelid="2.21.2213" target="_blank" class="zs-vr">VR看全景</a>
-                <%} %>--%>
                 <% if (serialEntity.Brand.MasterBrandId == 3)
                     { %>
                 <div class="bmw-ad-link">
@@ -109,7 +80,7 @@
                                     <a href="http://dealer.bitauto.com/<%=serialSpell %>/" target="_blank" id="mp-dealer" data-channelid="2.21.1526" class="local-agents"></a>
                                 </h2>
                                 <%} %>
-                                <a class="btn btn-secondary2 btn-sm" href="javascript:;" data-channelid="2.21.799" id="favstar">+ 关注</a>
+                                <a class="btn btn-secondary2 btn-xs" href="javascript:;" data-channelid="2.21.799" id="favstar">+ 关注</a>
                             </div>
                         </li>
                         <li>
@@ -121,7 +92,7 @@
                         </li>
                         <li>
                             <div class="info">
-                                <ul class="list list-gapline sm">
+                                <ul class="list list-justified">
                                     <% if (isElectrombile)
                                         {%>
                                     <li>
@@ -167,13 +138,6 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="mobile-qrcode">
-                        <img src="/favicon.ico" id="qrcodelogo" style="display: none;" />
-                        <a href="http://app.yiche.com/yiche/">
-                            <img src="http://image.bitautoimg.com/cargroup/car/30Wfuel.png" /></a>
-                        <%--<a href="<%= wirelessSerialUrl %>?ref=pctowap" target="_blank" id="qrcode"><img src="http://image.bitautoimg.com/cargroup/car/qrimages/<%= serialId %>.png?v=1" /></a>--%>
-                        <em>抢30万升油</em>
-                    </div>
                 </div>
 
                 <div class="row mid" id="mp-buttons">
@@ -186,13 +150,11 @@
                             <a class="btn btn-primary" target="_blank" data-channelid="2.21.98" href="http://dealer.bitauto.com/zuidijia/nb<%= serialId %>/?T=1&leads_source=p002001">询底价</a>
                         </div>
                     </div>
-                    <div class="col-xs-3" id="mp-qianggou" style="display: none;">
+                    <%--<div class="col-xs-3" id="mp-qianggou" style="display: none;">
                         <div class="inner">
                             <span class="note">厂商活动</span>
-                            <%--<h5><a id="mp-qianggou-savemoney" target="_blank" data-channelid="2.21.1520" href="http://www.huimaiche.com/<%= serialSpell %>/?tracker_u=11_yccx&leads_source=p002002">加载中...</a></h5>
-                            <a class="btn btn-default" target="_blank" data-channelid="2.21.99" href="http://www.huimaiche.com/<%= serialSpell %>/?tracker_u=11_yccx&leads_source=p002002">立即抢购</a>--%>
                         </div>
-                    </div>
+                    </div>--%>
                     <div class="col-xs-3" id="mp-daikuan" downpayment="<%= serialMinPrice > 0 ? Math.Round(serialMinPrice*0.3,2) : 0 %>">
                         <div class="inner">
                             <span class="note">贷款</span>

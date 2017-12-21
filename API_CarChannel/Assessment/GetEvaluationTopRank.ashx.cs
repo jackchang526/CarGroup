@@ -216,12 +216,12 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                                 ,ROW_NUMBER() OVER( PARTITION BY se.StyleId ORDER BY CAST(sv.PropertyValue AS FLOAT) {0}) Num
                                 ,se.Id AS EvaluationId										
                                 FROM [dbo].[StylePropertyValue] AS sv  
-                       LEFT JOIN [dbo].[StyleEvaluation] AS se ON sv.EvaluationId = se.Id and sv.PropertyId = @propertyId			   
+                       INNER JOIN [dbo].[StyleEvaluation] AS se ON sv.EvaluationId = se.Id and sv.PropertyId = @propertyId			   
                                 WHERE se.[Status]=2
                             )	
                          ,resall AS 
                       (						
-                        SELECT TOP 5 
+                        SELECT
                          res.StyleId 
                          ,PropertyValue
                          ,PropertyId
@@ -229,7 +229,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                          ,Num
                         FROM result1 res WHERE Num=1			
                       )
-                      SELECT 
+                      SELECT TOP 5 
                       rall.StyleId
                       ,PropertyValue
                       ,PropertyId

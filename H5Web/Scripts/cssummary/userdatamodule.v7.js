@@ -234,7 +234,7 @@
                 //最后一页去掉向下箭头
                 if (Config.auchors[Config.auchors.length - 1] === name) {
                     $("div[data-anchor='" + name + "']").find(".arrow_down").hide();
-                }
+                }   
             },
             complete: function () {
                 if (typeof tele != "undefined" && tele != null && tele != "") {
@@ -246,6 +246,8 @@
                 if (typeof getSubsidy != "undefined" && getSubsidy instanceof Function) {
                     getSubsidy(Config.serialId, bit_locationInfo.cityId);
                 }
+                //取区域报价
+                GetCarAreaPriceRange();
             }
         });
     },

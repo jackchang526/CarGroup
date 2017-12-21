@@ -90,50 +90,50 @@
 
                 obj["listgroup"] = listgroup;
                 $("#pingcetmp20160413").tmpl(obj).appendTo("div[data-anchor='" + name + "']");
-                if (obj["isCustomization"] === false) {
+                //if (obj["isCustomization"] === false) {
 
-                    switch (Config.carlevel) {
-                        case "中大型车":
-                        case "中型车":
-                        case "跑车":
-                        case "豪华车":
-                            $("#div_07bdf8d9-56ed-46c3-90d1-76f83ddb1ceb").appendTo("#adfirst").show();
-                            $("#div_3345655b-89b3-46ba-a760-a27c1d365978").appendTo("#adsecond").show();
-                            $("#div_b19f03d5-1981-49f8-9483-0557ddccad1a").appendTo("#adthird").show();
-                            break;
-                        case "微型车":
-                        case "小型车":
-                        case "紧凑型车":
-                            $("#div_c4926a1b-d58b-4d9e-acea-96b13a22c54b").appendTo("#adfirst").show();
-                            $("#div_c3134d73-41d3-4424-ba7b-391d5dd8febe").appendTo("#adsecond").show();
-                            $("#div_f6eddf27-e231-4eab-ae59-89023915b4a0").appendTo("#adthird").show();
-                            break;
-                        case "概念车":
-                        case "MPV":
-                        case "面包车":
-                        case "皮卡":
-                        case "其它":
-                            $("#div_97386d39-9ab7-495a-bc55-29f9b79a4a74").appendTo("#adfirst").show();
-                            $("#div_4935c605-d771-43d8-9bd5-ee5af118cc50").appendTo("#adsecond").show();
-                            $("#div_0b749f3a-2d22-4ebd-aeb4-6b11910547f8").appendTo("#adthird").show();
-                            break;
-                        case "SUV":
-                            $("#div_6760b344-9455-45d2-b8b3-20337510bdfb").appendTo("#adfirst").show();
-                            $("#div_8e4a5453-dc8d-41dd-8cff-fd66d64db689").appendTo("#adsecond").show();
-                            $("#div_5203b234-ea46-4a60-b709-8d690b562bde").appendTo("#adthird").show();
-                            break;
-                    }
+                //    switch (Config.carlevel) {
+                //        case "中大型车":
+                //        case "中型车":
+                //        case "跑车":
+                //        case "豪华车":
+                //            $("#div_07bdf8d9-56ed-46c3-90d1-76f83ddb1ceb").appendTo("#adfirst").show();
+                //            $("#div_3345655b-89b3-46ba-a760-a27c1d365978").appendTo("#adsecond").show();
+                //            $("#div_b19f03d5-1981-49f8-9483-0557ddccad1a").appendTo("#adthird").show();
+                //            break;
+                //        case "微型车":
+                //        case "小型车":
+                //        case "紧凑型车":
+                //            $("#div_c4926a1b-d58b-4d9e-acea-96b13a22c54b").appendTo("#adfirst").show();
+                //            $("#div_c3134d73-41d3-4424-ba7b-391d5dd8febe").appendTo("#adsecond").show();
+                //            $("#div_f6eddf27-e231-4eab-ae59-89023915b4a0").appendTo("#adthird").show();
+                //            break;
+                //        case "概念车":
+                //        case "MPV":
+                //        case "面包车":
+                //        case "皮卡":
+                //        case "其它":
+                //            $("#div_97386d39-9ab7-495a-bc55-29f9b79a4a74").appendTo("#adfirst").show();
+                //            $("#div_4935c605-d771-43d8-9bd5-ee5af118cc50").appendTo("#adsecond").show();
+                //            $("#div_0b749f3a-2d22-4ebd-aeb4-6b11910547f8").appendTo("#adthird").show();
+                //            break;
+                //        case "SUV":
+                //            $("#div_6760b344-9455-45d2-b8b3-20337510bdfb").appendTo("#adfirst").show();
+                //            $("#div_8e4a5453-dc8d-41dd-8cff-fd66d64db689").appendTo("#adsecond").show();
+                //            $("#div_5203b234-ea46-4a60-b709-8d690b562bde").appendTo("#adthird").show();
+                //            break;
+                //    }
 
 
-                    //非定制版加广告
+                //    //非定制版加广告
 
-                    //$("#div_29e5455f-c705-4489-bdd8-f24f9607267a").appendTo("#adfirst").show();
+                //    //$("#div_29e5455f-c705-4489-bdd8-f24f9607267a").appendTo("#adfirst").show();
 
-                    //$("#div_5f3c0f43-0ff7-488d-9575-ca8712bd7727").appendTo("#adsecond").show();
+                //    //$("#div_5f3c0f43-0ff7-488d-9575-ca8712bd7727").appendTo("#adsecond").show();
 
-                    //$("#div_4d63ae1f-37bc-49e8-81c3-dd2fd040389a").appendTo("#adthird").show();
+                //    //$("#div_4d63ae1f-37bc-49e8-81c3-dd2fd040389a").appendTo("#adthird").show();
 
-                }
+                //}
             } else {
                 $("#nodatatmpl").tmpl({ title: "评测导购" }).appendTo("div[data-anchor='" + name + "']");
             }
@@ -316,29 +316,29 @@
         //});
 
         //商城
-        $.ajax({
-            type: "GET",
-            url: "http://api.yichemall.com/forth/car/get?csId=" + Config.serialId + "&cityId=" + bit_locationInfo.cityId,
-            async: true,
-            cache: true,
-            dataType: "jsonp",
-            timeout: Config.timeout, //超时时间设置，单位毫秒
-            jsonpCallback: "shangcheng",
-            success: function (data) {
-                if (typeof data["Price"] != "undefined" && typeof data["Description"] != "undefined" && typeof data["Url"] != "undefined") {
-                    existCount++;
-                    var yicheshangcheng = {};
-                    yicheshangcheng.Price = data["Price"];
-                    yicheshangcheng.Description = data["Description"];
-                    yicheshangcheng.Url = data["Url"];
+        //$.ajax({
+        //    type: "GET",
+        //    url: "http://api.yichemall.com/forth/car/get?csId=" + Config.serialId + "&cityId=" + bit_locationInfo.cityId,
+        //    async: true,
+        //    cache: true,
+        //    dataType: "jsonp",
+        //    timeout: Config.timeout, //超时时间设置，单位毫秒
+        //    jsonpCallback: "shangcheng",
+        //    success: function (data) {
+        //        if (typeof data["Price"] != "undefined" && typeof data["Description"] != "undefined" && typeof data["Url"] != "undefined") {
+        //            existCount++;
+        //            var yicheshangcheng = {};
+        //            yicheshangcheng.Price = data["Price"];
+        //            yicheshangcheng.Description = data["Description"];
+        //            yicheshangcheng.Url = data["Url"];
 
-                    yhgc.yicheshangcheng = yicheshangcheng;
-                }
-            },
-            complete: function () {
-                youhuiCount++;
-            }
-        });
+        //            yhgc.yicheshangcheng = yicheshangcheng;
+        //        }
+        //    },
+        //    complete: function () {
+        //        youhuiCount++;
+        //    }
+        //});
 
         //易车惠
         $.ajax({
@@ -405,7 +405,7 @@
         });
 
         var timeFun = setInterval(function () {
-            if (youhuiCount === 3) {
+            if (youhuiCount === 2) {
                 clearInterval(timeFun);
                 yhgc.existCount = existCount;
                 yhgc.isAd = Config.isAd;

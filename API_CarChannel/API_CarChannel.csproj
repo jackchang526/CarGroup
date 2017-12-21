@@ -145,8 +145,8 @@
     <Compile Include="CarInfo\CarPriceListByCarIDAndCityID.aspx.designer.cs">
       <DependentUpon>CarPriceListByCarIDAndCityID.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CarInfo\GeNewCarList.ashx.cs">
-      <DependentUpon>GeNewCarList.ashx</DependentUpon>
+    <Compile Include="CarInfo\GetNewCarList.ashx.cs">
+      <DependentUpon>GetNewCarList.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CarInfo\GetAllCarInfo.ashx.cs">
@@ -636,7 +636,7 @@
     <Content Include="Assessment\GetEvaluationTopRank.ashx" />
     <Content Include="Assessment\GetExistReportEvaluationId.ashx" />
     <Content Include="CarInfo\GetSalesRankingForPage.ashx" />
-    <Content Include="CarInfo\GeNewCarList.ashx" />
+    <Content Include="CarInfo\GetNewCarList.ashx" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

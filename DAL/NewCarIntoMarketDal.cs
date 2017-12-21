@@ -22,7 +22,7 @@ namespace BitAuto.CarChannel.DAL
                 sqlStr = "SELECT [CsId],[Type],[YearType],[MarketDay] FROM [NewCarIntoMarket] WHERE [Type] = 1 OR [Type] = 2 ORDER BY MarketDay DESC,CsId";
             }
             else {
-                sqlStr = "SELECT [CsId],[Type],[YearType],[MarketDay] FROM [NewCarIntoMarket] WHERE [Type] = 3 OR [Type] = 4 ORDER BY MarketDay,CsId";
+                sqlStr = "SELECT [CsId],[Type],[YearType],[MarketDay] FROM [NewCarIntoMarket] WHERE [Type] = 3 OR [Type] = 4 ORDER BY  case when MarketDay is null then '9999-12-31' else MarketDay end ,CsId";
             }
 
             IList<Model.NewCarIntoMarketEntity> Obj = new List<Model.NewCarIntoMarketEntity>();

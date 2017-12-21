@@ -138,13 +138,13 @@
                 console.log("正在加载-" + index);
                 return;
             }
-            var newCarListUrl = "http://api174.car.bitauto.com/CarInfo/GeNewCarList.ashx?type=" + titles[index].id + "&pageindex=" + (titles[index].index + 1) + "&pagesize=" + titles[index].size;
+            var newCarListUrl = "http://api174.car.bitauto.com/CarInfo/GetNewCarList.ashx?type=" + titles[index].id + "&pageindex=" + (titles[index].index + 1) + "&pagesize=" + titles[index].size;
             titles[index].loading = true;
             //$("#level_rank_list_" + index + " .load-box").show();
             $.ajax({
                 type: "get",
                 url: newCarListUrl,
-                cache: true,
+                cache: false,
                 dataType: 'jsonp',
                 jsonp: "callback",
                 jsonpCallback: "newCarListCallBack",
@@ -179,7 +179,7 @@
                                 html += '        </div>';
                                 if (index == 1 && dd.MarketDay != "") {
                                     var marketDay = new Date(dd.MarketDay);
-                                    html += '            <div class="right"><div class="time">' + marketDay.getMonth() + '月' + marketDay.getDay() + '日上市</div></div>';
+                                    html += '            <div class="right"><div class="time">' + (marketDay.getMonth() + 1) + '月' + marketDay.getDate() + '日上市</div></div>';
                                 }
 
                                 html += '</a></li>';

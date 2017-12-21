@@ -13,7 +13,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
     /// <summary>
     /// GeNewCarList 的摘要说明
     /// </summary>
-    public class GeNewCarList : PageBase, IHttpHandler
+    public class GetNewCarList : PageBase, IHttpHandler
     {
         private int pageIndex = 1;
         private int pageSize = 10;
@@ -33,7 +33,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
             NewCarIntoMarketBll bll = new NewCarIntoMarketBll();
             string jsonList = "";
             int allCount = 0;
-            var list = bll.GetNewCarIntoMarketList(type == 0 ? false : true);
+            var list = bll.GetNewCarIntoMarketList(type == 0 ? true : false);
             allCount = list.Count;
             jsonList = Newtonsoft.Json.JsonConvert.SerializeObject(list.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList());
 

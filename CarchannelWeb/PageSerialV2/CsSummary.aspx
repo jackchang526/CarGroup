@@ -1008,6 +1008,7 @@
         })(window);
     </script>--%>
     <!--#include file="~/htmlv2/footer2016.shtml"-->
+    <!--#include file="~/htmlV2/CommonBodyBottom.shtml"-->
     <!--本站统计代码-->
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsStat/StatisticJsOldPV.js"></script>
     <script type="text/javascript">

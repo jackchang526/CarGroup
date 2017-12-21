@@ -87,10 +87,10 @@
                         </li>
                         {{/each}}
                 {{/if}}                
-                {{if isCustomization==false}}
+               <%-- {{if isCustomization==false}}
                 <li id="adsecond"></li>
                 <li class="con_list_ul_ad" id="adthird"></li>
-                {{/if}}
+                {{/if}}--%>
             </ul>
         </div>
         <!--内容容器结束-->

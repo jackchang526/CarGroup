@@ -96,13 +96,10 @@
     </div>
     <!-- 品牌列表 start -->
     <div class="brand-list bybrand_list">
-        <div class="tt-small phone-title" data-key="#">
+        <%--<div class="tt-small phone-title" data-key="#">
             <span>推荐车型</span>
         </div>
         <div class="carlist-3c">
-            <%--<ul>
-                <!--#include file="~/inc/HomepageHotBrand.htm"-->
-            </ul>--%>
 
             <ins style="display: none" id="div_82cde721-4780-4526-9b56-b3a5d7837199" type="ad_play" adplay_IP="" adplay_AreaName="" adplay_CityName="" adplay_BrandID="" adplay_BrandName="" adplay_BrandType="" adplay_BlockCode="82cde721-4780-4526-9b56-b3a5d7837199"> </ins>
 
@@ -142,7 +139,7 @@
                 $(".carlist-3c").remove();
                 $("#div_217711bf-cad0-4360-ac95-b640b4592dff").remove();
             }
-        </script>
+        </script>--%>
         <!-- 热门品牌 start-->
         <div class="tt-small phone-title" data-key="#">
             <span>热门品牌</span>
@@ -244,7 +241,10 @@
 </div>--%>
 <div class="fixed-nav">
 </div>
-<ins id="div_217711bf-cad0-4360-ac95-b640b4592dff" type="ad_play" adplay_IP="" adplay_AreaName="" adplay_CityName="" adplay_BrandID="" adplay_BrandName="" adplay_BrandType="" adplay_BlockCode="217711bf-cad0-4360-ac95-b640b4592dff"> </ins>
+<!--公共底-->
+<!--#include file="/inc/footer.html"-->
+<!--/公共底-->
+<%--<ins id="div_217711bf-cad0-4360-ac95-b640b4592dff" type="ad_play" adplay_IP="" adplay_AreaName="" adplay_CityName="" adplay_BrandID="" adplay_BrandName="" adplay_BrandType="" adplay_BlockCode="217711bf-cad0-4360-ac95-b640b4592dff"> </ins>--%>
 <script type="text/javascript">
     if (ad != null && ad === "0") {
         $("#div_217711bf-cad0-4360-ac95-b640b4592dff").remove();

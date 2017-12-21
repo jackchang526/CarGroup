@@ -50,7 +50,7 @@ namespace BitAuto.CarChannel.Common.MongoDB
             return result;
         }
 
-        public static T GetOne<T>(IMongoQuery query, string[] fields, IMongoSortBy sortBy=null)
+        public static T GetOne<T>(IMongoQuery query, string[] fields, IMongoSortBy sortBy = null)
         {
             FieldsDocument fd = new FieldsDocument();
             if (fields.Length > 0)
@@ -92,7 +92,7 @@ namespace BitAuto.CarChannel.Common.MongoDB
         /// <param name="sortBy">排序用的。调用示例：SortBy.Descending("Title") 或者 SortBy.Descending("Title").Ascending("Author")等等</param>
         /// <param name="fields">只返回所需要的字段的数据。调用示例："Title" 或者 new string[] { "Title", "Author" }等等</param>
         /// <returns></returns>
-        
+
         #region 获取指定字段
 
         public static MongoCursor<BsonDocument> GetFields(IMongoQuery query, string[] fields, IMongoSortBy sortBy = null)
@@ -118,6 +118,91 @@ namespace BitAuto.CarChannel.Common.MongoDB
         }
 
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="query"></param>
+        /// <param name="top"></param>
+        /// <param name="sortBy"></param>
+        /// <param name="fields"></param>
+        /// <returns></returns>
+        public static List<T> GetAll<T>(IMongoQuery query,int top, IMongoSortBy sortBy, params string[] fields)
+        {
+            if (string.IsNullOrEmpty(connectionString_Default) || string.IsNullOrEmpty(database_Default))
+            { return null; }
+            MongoClient client = new MongoClient(connectionString_Default);
+            MongoServer server = client.GetServer();
+            MongoDatabase database = server.GetDatabase(database_Default);
+            List<T> result = new List<T>();
+            using (server.RequestStart(database))
+            {
+                MongoCollection<BsonDocument> myCollection = database.GetCollection<BsonDocument>(datatable_Default);
+                MongoCursor<T> myCursor;
+                if (null == query)
+                {
+                    myCursor = myCollection.FindAllAs<T>();
+                }
+                else
+                {
+                    myCursor = myCollection.FindAs<T>(query);
+                }
+                if (null != sortBy)
+                {
+                    myCursor.SetSortOrder(sortBy);
+                }
+                if (null != fields)
+                {
+                    myCursor.SetFields(fields);
+                }
+                foreach (T entity in myCursor.SetLimit(top))
+                {
+                    result.Add(entity);
+                }
+            }
+            return result;
+        }
+
+        public static List<T> GetAll<T>(IMongoQuery query, int index,int pageSize, out int total, IMongoSortBy sortBy, params string[] fields)
+        {
+            if (string.IsNullOrEmpty(connectionString_Default) || string.IsNullOrEmpty(database_Default))
+            {
+                total = 0;
+                return null;
+            }
+            MongoClient client = new MongoClient(connectionString_Default);
+            MongoServer server = client.GetServer();
+            MongoDatabase database = server.GetDatabase(database_Default);
+            List<T> result = new List<T>();
+            using (server.RequestStart(database))
+            {
+                MongoCollection<BsonDocument> myCollection = database.GetCollection<BsonDocument>(datatable_Default);
+                MongoCursor<T> myCursor;
+                if (null == query)
+                {
+                    myCursor = myCollection.FindAllAs<T>();
+                }
+                else
+                {
+                    myCursor = myCollection.FindAs<T>(query);
+                }
+                if (null != sortBy)
+                {
+                    myCursor.SetSortOrder(sortBy);
+                }
+                if (null != fields)
+                {
+                    myCursor.SetFields(fields);
+                }                
+                foreach (T entity in myCursor.SetSkip((index - 1) * pageSize).SetLimit(pageSize))
+                {
+                    result.Add(entity);
+                }
+                total = (int)myCursor.Count();
+            }
+            return result;
+        }
     }
 
 }

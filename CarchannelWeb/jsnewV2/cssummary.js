@@ -82,8 +82,19 @@ function FocusCar(obj) {
 			}
 			$("#color-listbox").animate({ "left": leftV }, 300);
 		});
-	}
+    }
 })();
+
+$(function () {//右侧边栏在页面底部，等页面加载完成才能注册事件
+    //降价切换城市
+    if (window.rightSideBar != "undefined" && window.rightSideBar.footerModules != "undefiend") {
+        $("#mp-jiangjianews .ch-cur-city").click(function (ev) {
+            ev.stopPropagation();
+            var sideBar = window.rightSideBar;
+            sideBar.changeCurrentModule(sideBar.footerModules.location);
+        });
+    }
+});
 
 //名片区-经销商数量
 function GetDealerData(serialSpell) {
@@ -99,7 +110,7 @@ function GetDealerData(serialSpell) {
                 }
                 var favorablePrice = parseFloat(data[0].MaxFavorablePrice);
                 if (favorablePrice > 0) {
-                    $("#mp-jiangjia .desc a").html("直降" + favorablePrice.toFixed(2) + "万>>");
+                    $("#mp-jiangjia .desc a").html("直降" + favorablePrice.toFixed(2) + "万>");
                 }
                 else {
                     $("#mp-jiangjia .desc").addClass("grey-txt").html("暂无");
@@ -122,7 +133,7 @@ function GetErShouCheMinPrice() {
 					$("#mp-ershouche-minprice").parent().addClass("grey-txt").html("暂无");
 				}
 				else {
-					$("#mp-ershouche-minprice").html(parseFloat(data.MinPrice) + "万起>>");
+					$("#mp-ershouche-minprice").html(parseFloat(data.MinPrice) + "万起>");
 					$("#mp-ershouche a").attr("href", data.CarListUrl + "?ref=pc_yc_zs_gs_esc&leads_source=p002020");
 				}
 			}
@@ -169,6 +180,8 @@ function GetJiangjiaNews() {
     if (priceRang == "未上市") {
         return;
     }
+    var mpjiangjia = $("#mp-jiangjianews");
+    $(mpjiangjia).find(".cur-city").html(GlobalSummaryConfig.CityName);
 	$.ajax({
 		url: "http://m.h5.qiche4s.cn/jiangjiaapi/GetPromtionNews.ashx?op=carlist&count=4&csid=" + serialId + "&cid=" + cityId,
 		cache: true,
@@ -201,19 +214,19 @@ function GetJiangjiaNews() {
 					    youhuiStr = vendorPrice + "万";
 					    className = "price-reduction type2";
 					    youhuiUrl = obj.zuidijiaUrl;
-					}
-				    h.push(" <li class=\"col-xs-6\"><a href=\"" + obj.href + "?leads_source=p002005\" target=\"_blank\" class=\"txt\">" + obj.CarName + "</a><a target=\"_blank\" href=\"" + youhuiUrl + "\" class=\"" + className + "\">" + youhuiStr + "</a></li>");
-				}
-			}
-			var cityHtml = "<li class=\"current\"><a target=\"_blank\" href=\"http://car.bitauto.com/" + serialSpell + "/jiangjia/c" + cityId + "/?leads_source=p002005#\">" + cityName + "</a></li>";
-			if (count > 0) {
-				$("#mp-jiangjianews").html(h.join(""));
-				cityHtml += "<li><a href=\"http://car.bitauto.com/" + serialSpell + "/jiangjia/c" + cityId + "/?leads_source=p002005#\" target=\"_blank\">更多降价&gt;&gt;</a></li>";
-			}
-			else {
-				$("#mp-jiangjianews").html("<li class=\"col-xs-6\"><a class=\"txt\"  style=\"color: #333;\">本地暂无降价信息</a></li>");
-			}
-			$("#mp-jiangjiacity").html(cityHtml);
+                    }
+                    h.push("<li>");
+                    h.push("<a href=\"" + obj.href + "?leads_source=p002005\" target=\"_blank\" class=\"txt\">" + obj.CarName + "</a>");
+                    h.push("<a target=\"_blank\" href=\"" + youhuiUrl + "\" class=\"" + className + "\">" + youhuiStr + "</a>");
+                    h.push("<a class=\"btn btn-primary btn-xs\" href=\"http://dealer.bitauto.com/zuidijia/nb" + serialId + "/nc" + obj.carId + "/?T=2&leads_source=p002011\" target=\"_blank\">询价</a>");
+                    h.push("</li>");
+                }
+                $(mpjiangjia).find(".cont ul").html(h.join(""));
+                $(mpjiangjia).find(".spl-22").html("<a href=\"http://car.bitauto.com/" + serialSpell + "/jiangjia/c" + cityId + "/?leads_source=p002005#\" target=\"_blank\">更多降价</a>").show();
+            }
+            else {
+                $(mpjiangjia).find(".cont ul").html("<li>本地暂无降价信息</li>")
+            }
 		}
 	});
 }
@@ -235,7 +248,7 @@ function GetDownPayment() {
                 else {
                     downPayment = downPayment.toFixed(2);
                 }
-                $("#mp-daikuan h5 a").attr("href", data.PcListUrl).html("首付" + downPayment + "万起>>");
+                $("#mp-daikuan h5 a").attr("href", data.PcListUrl).html("首付" + downPayment + "万起>");
             }
             else {
                 SetDefaultDownPayment();
@@ -250,7 +263,7 @@ function GetDownPayment() {
 function SetDefaultDownPayment() {
     var downPayment = $("#mp-daikuan").attr("downPayment");
     if (parseFloat(downPayment) > 0) {
-        $("#mp-daikuan h5 a").html("首付" + downPayment + "万起>>");
+        $("#mp-daikuan h5 a").html("首付" + downPayment + "万起>");
     }
     else {
         $("#mp-daikuan h5").html("暂无").addClass("grey-txt");

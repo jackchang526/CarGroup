@@ -1294,7 +1294,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                             firstTujieNode.Attributes["Link"].Value,
                              firstTujieNode.Attributes["ImageUrl"].Value,
                             firstTujieNode.Attributes["ImageName"].Value,
-                            string.IsNullOrEmpty(groupName) ? string.Empty : "<i>" + groupName + "</i>",
+                            string.IsNullOrEmpty(groupName) ? string.Empty : "<i>" + groupName + ">></i>",
                             channelId);
                         hasTujie = true;
                         resultCount++;
@@ -1307,7 +1307,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                     string imgUrl = videoList[0].ImageLink;
                     imgUrl = imgUrl.Replace("/bitauto/", "/newsimg-150-w0-1-q50/bitauto/");
                     imgUrl = imgUrl.Replace("/Video/", "/newsimg-150-w0-1-q50/Video/");
-                    sb.AppendFormat("<div data-channelid=\"2.21.{3}\" class=\"img-link img-current col-auto\"><a href=\"{0}\" target=\"_blank\"><i>视频</i><em></em><img src=\"{1}\" title=\"{2}\" alt=\"{2}\" width=\"140\" height=\"93\" /></a></div>",
+                    sb.AppendFormat("<div data-channelid=\"2.21.{3}\" class=\"img-link img-current col-auto\"><a href=\"{0}\" target=\"_blank\"><i>视频>></i><em></em><img src=\"{1}\" title=\"{2}\" alt=\"{2}\" width=\"140\" height=\"93\" /></a></div>",
                         videoList[0].ShowPlayUrl, imgUrl, videoList[0].ShortTitle,channelId);
                     resultCount++;
                     continue;
@@ -1325,7 +1325,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                         csImg.TargetUrl,
                         smallImgUrl,
                         csImg.ImageName,
-                        string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<i>" + csImg.GroupName + "</i>",
+                        string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<i>" + csImg.GroupName + ">></i>",
                         channelId);
                     resultCount++;
                 }

@@ -62,7 +62,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         {
                             EvaluationTopRank er = new EvaluationTopRank();
                             er.StyleId = ConvertHelper.GetInteger(dr["StyleId"]);
-                            er.PropertyValue = ConvertHelper.GetDouble(dr["PropertyValue"]);
+                            er.PropertyValue = Math.Round(ConvertHelper.GetDouble(dr["PropertyValue"]),1);
                             er.EvaluationId = ConvertHelper.GetInteger(dr["EvaluationId"]);
                             //er.PropertyId = ConvertHelper.GetInteger(dr["PropertyId"]);
                             er.StyleName = dr["StyleName"].ToString();

@@ -48,39 +48,10 @@
     <!--header start-->
     <%= serialHeaderHtml%>
     <!--/公共头部结束-->
-    <!--通栏广告块-->
-    <div class="top-col6-190" data-channelid="2.21.1524" style="display: none;">
-        <div class="container">
-            <div class="row col6-190-box">
-                <div class="figure-box w190-h120 col-auto">
-                    <ins id="div_040b5cb9-85ab-485f-a32b-5bfad0b9d891" data-type="ad_play_fs" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="040b5cb9-85ab-485f-a32b-5bfad0b9d891"></ins>
-                </div>
-                <div class="figure-box w190-h120 col-auto">
-                    <ins id="div_ae976a77-d988-46a4-8032-05997aa0a591" data-type="ad_play_fs" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="ae976a77-d988-46a4-8032-05997aa0a591"></ins>
-                </div>
-                <div class="figure-box w190-h120 col-auto">
-                    <ins id="div_9957c7cc-f9ae-431e-bfc6-270e006a285e" data-type="ad_play_fs" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="9957c7cc-f9ae-431e-bfc6-270e006a285e"></ins>
-                </div>
-                <div class="figure-box w190-h120 col-auto">
-                    <ins id="div_38796f7a-f21c-4644-93f4-527a483011c4" data-type="ad_play_fs" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="38796f7a-f21c-4644-93f4-527a483011c4"></ins>
-                </div>
-                <div class="figure-box w190-h120 col-auto">
-                    <ins id="div_6fd6682f-3f99-4439-bd1a-346b128f017d" data-type="ad_play_fs" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="6fd6682f-3f99-4439-bd1a-346b128f017d"></ins>
-                </div>
-                <div id="cmtadDiv" class="figure-box w190-h120 col-auto">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--/通栏广告块-->
     <div class="container cartype-section summary">
         <!--焦点图、名片区-->
         <div class="row card-head-box">
             <div class="l-box-sty col-auto">
-               <%-- <%if (!string.IsNullOrEmpty(VRUrl))
-                    {%>
-                        <a href="<%= VRUrl %>" data-channelid="2.21.2213" target="_blank" class="zs-vr">VR看全景</a>
-                    <%} %>--%>
                 <% if (serialEntity.Brand.MasterBrandId == 3)
                    { %>
                 <div class="bmw-ad-link">
@@ -92,7 +63,6 @@
                 <!--焦点图结束-->
             </div>
             <div class="r-box-sty col-auto">
-
                 <div class="top">
                     <ul>
                         <li>
@@ -108,18 +78,10 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="mobile-qrcode">
-                        <img src="/favicon.ico" id="qrcodelogo" style="display: none;" />
-                        <a href="http://app.yiche.com/yiche/"><img src="http://image.bitautoimg.com/cargroup/car/30Wfuel.png" /></a>
-                        <%--<a href="<%= wirelessSerialUrl %>?ref=pctowap" target="_blank" id="qrcode"><img src="http://image.bitautoimg.com/cargroup/car/qrimages/<%= serialId %>.png?v=1" /></a>--%>
-                        <em>抢30万升油</em>
-                    </div>
                 </div>
-
                 <div class="row mid will-sale" data-channelid="2.21.804">
                     <%= waitFocusNewsHtml %>
                 </div>
-
                 <div class="bottom will-sale">
                     <div class="row bottom-list" id="mp-jiangjianews">
                         <ul class="list">
@@ -134,7 +96,6 @@
         <!--/焦点图、名片区-->
         <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-
         <!--#include file="/include/special/stat/00001/bglogpostlog_Manual.shtml"-->
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201711241325"></script>
         <%--<script type="text/javascript" src="/jsnewv2/cssummary.js?v=20161230"></script>--%>
@@ -162,27 +123,7 @@
                 };
             }
 
-            //GetHmcJiangJia();
             GetVr();
-            //GetFocusNewsLast("<%= serialEntity.SaleState %>",7);
-            //GetJiangjiaNews();
-            $("#qrcode img").bind("error",function(){
-                this.style.display = "none";
-                bitLoadScript("http://image.bitautoimg.com/carchannel/jsnewv2/jquery.qrcode.min.js", function () {
-                    $('#qrcode').qrcode({ render: "canvas", size: 90, ecLevel: "H", mode: 4, image: $("#qrcodelogo")[0], text: $("#qrcode").attr("href") });
-                }, "utf-8");
-            });
-            //通栏广告 显示
-            function showTopLineAd(id,isAd) {
-                if (isAd === true) {
-                    $(".top-col6-190").show();
-                }
-            }
-            bitLoadScript("http://img1.bitauto.com/bt/cmtad/advV1.js?v=20170330", function () {
-                try{ 
-                    AdvObject.GetAdvByCityIdAndSerialId(<%= serialId %>,cityId);
-                }catch(e){}
-            }, "utf-8");
         </script>
         <script type="text/javascript" src="http://d2.yiche.com/js/senseNewFs.js"></script>
         <!--文章-->

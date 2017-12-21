@@ -23,7 +23,6 @@
     <!--#include file="~/ushtml/0000/yiche_2016_cube_chexingzongshu_style-1264.shtml"-->
 </head>
 <body>
-
     <!--公共头部开始-->
     <span id="yicheAnchor" style="display: block; height: 0; width: 0; line-height: 0; font-size: 0"></span>
     <div class="bt_pageBox">
@@ -65,6 +64,12 @@
                         <!--焦点图开始-->
                         <%=focusImagesHtml%>
                         <!--焦点图结束-->
+                         <%if (serialId != 3843)
+                             { %>
+                        <div class="spl-21">
+                            <p><span class="tit">置换：</span><a href="http://zhihuan.taoche.com/?ref=chexizshuan&leads_source=p002004&serial=<%= serialId %>" target="_blank" data-channelid="2.21.101">周期短 时间快</a></p>
+                        </div>
+                        <%} %>
                     </div>
                     <div class="r-box-sty col-auto">
                         <div class="top">
@@ -215,74 +220,6 @@
                     </div>
                 </div>
                 <!--/焦点图、名片区-->
-                <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
-                <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-                <%--<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201712151353"></script>--%>
-                <script type="text/javascript" src="/jsnewv2/cssummary.js?v=20170171032"></script>
-                <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712110"></script>
-                <script type="text/javascript">
-                    var serialId = <%= serialId %> ,
-                        priceRang = '<%=serialPrice%>',
-                        cityId = 201,
-                        cityName = "北京",
-                        citySpell = "beijing";
-                    csSaleState = "<%= serialInfo.CsSaleState  %>",
-                        serialSpell = "<%= serialSpell  %>";
-                    if (typeof (bit_locationInfo) != "undefined") {
-                        cityId = bit_locationInfo.cityId;
-                        cityName = bit_locationInfo.cityName;
-                        citySpell = bit_locationInfo.engName;
-                    }
-                    var GlobalSummaryConfig = {
-                        SerialId:<%= serialId %>,
-                AllSpell:"<%=serialSpell%>",
-                    CityId: cityId,
-                    CityName: cityName,
-                    CitySpell: citySpell
-                    };
-
-                    if (document.getElementById('carYearList_all'))
-                    { document.getElementById('carYearList_all').className = 'current'; }
-
-                    if (typeof (bitLoadScript) == "undefined") {
-                        bitLoadScript = function (url, callback, charset) {
-                            var s = document.createElement("script"); s.type = "text/javascript"; if (charset) s.charset = charset;
-                            if (s.readyState) { s.onreadystatechange = function () { if (s.readyState == "loaded" || s.readyState == "complete") { s.onreadystatechange = null; if (callback) callback(); } }; }
-                            else { s.onload = function () { if (callback) callback(); }; }
-                            s.src = url; document.getElementsByTagName("head")[0].appendChild(s);
-                        };
-                    }
-
-                    if (csSaleState != "停销") {
-                        GetDealerData("<%= serialSpell %>");
-                    }
-                    GetErShouCheMinPrice();
-                    GetSerialAreaPriceRange();
-                    GetDownPayment();
-                    InitTeHuiAndAdData();
-                    GetJiangjiaNews();
-                    //GetHmcJiangJia();
-                    //Get1111Entrance();
-                    GetVr();
-                    $("#qrcode img").bind("error", function () {
-                        this.style.display = "none";
-                        bitLoadScript("http://image.bitautoimg.com/carchannel/jsnewv2/jquery.qrcode.min.js", function () {
-                            $('#qrcode').qrcode({ render: "canvas", size: 90, ecLevel: "H", mode: 4, image: $("#qrcodelogo")[0], text: $("#qrcode").attr("href") });
-                        }, "utf-8");
-                    });
-                    //通栏广告 显示
-                    function showTopLineAd(id, isAd) {
-                        if (isAd === true) {
-                            $(".top-col6-190").show();
-                        }
-                    }
-                    bitLoadScript("http://img1.bitauto.com/bt/cmtad/advV1.js?v=20170330", function () {
-                        try {
-                            AdvObject.GetAdvByCityIdAndSerialId(<%= serialId %>, cityId);
-                        } catch (e) { }
-                    }, "utf-8");
-                </script>
-
                 <div class="section-main">
                     <div class="article-section layout-1">
                         <div class="section-header header2" data-channelid="2.21.802">
@@ -308,7 +245,97 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="section-right">
+                    <div class="spl-23adv">
+                        <div class="ad-mb20">
+                            <img src="http://temp.im/300x120" alt="广告1">
+                        </div>
+                        <div class="ad-mb20">
+                            <img src="http://temp.im/300x120" alt="广告2">
+                        </div>
+                        <div class="ad-mb20">
+                            <img src="http://temp.im/300x120" alt="广告3">
+                        </div>
+                    </div>
+                    <%if (!string.IsNullOrEmpty(koubeiReportHtml))
+                        { %>
+                    <%=koubeiReportHtml %>
+                    <%}
+                        else
+                        { %>
+                    <div class="layout-1">
+                        <!--#include file="/include/pd/2014/koubei/00001/201703_PCzhan_chexingzongshuyezhanweitu_Manual.shtml"-->
+                    </div>
+                    <%} %>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
+        <%--<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201712151353"></script>--%>
+        <script type="text/javascript" src="/jsnewv2/cssummary.js?v=20170171032"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712110"></script>
+        <script type="text/javascript">
+            var serialId = <%= serialId %> ,
+                priceRang = '<%=serialPrice%>',
+                cityId = 201,
+                cityName = "北京",
+                citySpell = "beijing",
+                csSaleState = "<%= serialInfo.CsSaleState  %>",
+                serialSpell = "<%= serialSpell  %>";
+            if (typeof (bit_locationInfo) != "undefined") {
+                cityId = bit_locationInfo.cityId;
+                cityName = bit_locationInfo.cityName;
+                citySpell = bit_locationInfo.engName;
+            }
+            var GlobalSummaryConfig = {
+                SerialId:<%= serialId %>,
+                AllSpell:"<%=serialSpell%>",
+                CityId: cityId,
+                CityName: cityName,
+                CitySpell: citySpell
+            };
 
+            if (document.getElementById('carYearList_all'))
+            { document.getElementById('carYearList_all').className = 'current'; }
+
+            if (typeof (bitLoadScript) == "undefined") {
+                bitLoadScript = function (url, callback, charset) {
+                    var s = document.createElement("script"); s.type = "text/javascript"; if (charset) s.charset = charset;
+                    if (s.readyState) { s.onreadystatechange = function () { if (s.readyState == "loaded" || s.readyState == "complete") { s.onreadystatechange = null; if (callback) callback(); } }; }
+                    else { s.onload = function () { if (callback) callback(); }; }
+                    s.src = url; document.getElementsByTagName("head")[0].appendChild(s);
+                };
+            }
+
+            if (csSaleState != "停销") {
+                GetDealerData("<%= serialSpell %>");
+            }
+            GetErShouCheMinPrice();
+            GetSerialAreaPriceRange();
+            GetDownPayment();
+            InitTeHuiAndAdData();
+            GetJiangjiaNews();
+            //GetHmcJiangJia();
+            //Get1111Entrance();
+            GetVr();
+            //通栏广告 显示
+            //function showTopLineAd(id, isAd) {
+            //    if (isAd === true) {
+            //        $(".top-col6-190").show();
+            //    }
+            //}
+           <%-- bitLoadScript("http://img1.bitauto.com/bt/cmtad/advV1.js?v=20170330", function () {
+                try {
+                    AdvObject.GetAdvByCityIdAndSerialId(<%= serialId %>, cityId);
+                } catch (e) { }
+            }, "utf-8");--%>
+        </script>
+
+        <div class="row section-layout">
+            <div class="col-xs-9">
                 <script type="text/javascript" src="http://d2.yiche.com/js/senseNewFs.js"></script>
                 <div class="section-main">
                     <div class="row col3-adv-1 layout-1" style="margin-top: -20px; margin-bottom: 30px;">
@@ -676,20 +703,6 @@
             </div>
             <div class="col-xs-3">
                 <div class="section-right">
-                    <%if (!string.IsNullOrEmpty(koubeiReportHtml))
-                        { %>
-                    <%=koubeiReportHtml %>
-                    <%}
-                        else
-                        { %>
-                    <div class="layout-1">
-                        <!--#include file="/include/pd/2014/koubei/00001/201703_PCzhan_chexingzongshuyezhanweitu_Manual.shtml"-->
-                    </div>
-                    <%} %>
-                </div>
-                <%--  </div>
-            <div class="col-xs-3">--%>
-                <div class="section-right">
                     <div class="special-layout-3 sm layout-1 ad-tag-box" style="margin-top: -20px; margin-bottom: 30px;">
                         <cite class="ad-tag2" style="right: 5px; top: 5px;"></cite>
                         <ins id="div_2ed120ed-a613-4a43-84a2-3b7b5d0d8304" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="<%= serialId %>" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="2ed120ed-a613-4a43-84a2-3b7b5d0d8304"></ins>
@@ -743,8 +756,8 @@
     <script type="text/javascript">
                             var CarCommonBSID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.MasterBrandId %>"; //大数据组统计用
                             var CarCommonCBID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.Id %>";
-        var CarCommonCSID = "<%=serialId %>";
-        var CarFilterData = <%=string.IsNullOrEmpty(carListFilterData)?"null":carListFilterData %>;
+                            var CarCommonCSID = "<%=serialId %>";
+                            var CarFilterData = <%=string.IsNullOrEmpty(carListFilterData)?"null":carListFilterData %>;
         (function () {
             GetPromotionNews();
             GetSerialWaiGuanNeiShi();

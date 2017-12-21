@@ -301,9 +301,10 @@ function InitTeHuiAndAdData() {
                     url = obj.PcUrl + (obj.PcUrl.substring(lastIndex).indexOf("?") > -1 ? "&" : "?") + "ref=car1&rfpa_tracker=1_7&leads_source=p002008";
 
 				//名片区
-				if (typeof obj.Slogan != "undefined" && obj.Slogan != null && obj.Slogan != "") {
-					$("#mp-qianggou .note").append("<h5><a target=\"_blank\" data-channelid=\"2.21.1520\" href=\"" + url + "\">" + obj.Slogan + "</a></h5><a class=\"btn btn-default\" target=\"_blank\" data-channelid=\"2.21.99\" href=\"" + url + "\">立即抢购</a>");
-					$("#mp-qianggou").show();
+                if (typeof obj.Slogan != "undefined" && obj.Slogan != null && obj.Slogan != "") {
+                    $("#factory-price").append("<a target=\"_blank\" data-channelid=\"2.21.1520\" href=\"" + url + "\" class=\"youhui\">" + obj.Slogan + "</a></h5>");
+					//$("#mp-qianggou .note").append("<h5><a target=\"_blank\" data-channelid=\"2.21.1520\" href=\"" + url + "\">" + obj.Slogan + "</a></h5><a class=\"btn btn-default\" target=\"_blank\" data-channelid=\"2.21.99\" href=\"" + url + "\">立即抢购</a>");
+					//$("#mp-qianggou").show();
 				}
 				var xianshitehui = setInterval(function () {
 					if ($("#gouche-ych").length > 0) {

@@ -68,7 +68,7 @@
         <Item  Range="优秀">舒适性不错</Item>
         <Item  Range="良好">舒适性好</Item>
         <Item  Range="一般">舒适性一般</Item>
-        <Item  Range="较差"> 舒适性差</Item>
+        <Item  Range="较差">舒适性不好</Item>
       </CommonDesc>
     </Item>
     
@@ -85,7 +85,7 @@
         <Item  Range="优秀">动力表现优秀</Item>
         <Item  Range="良好">动力表现良好</Item>
         <Item  Range="一般">动力表现一般</Item>
-        <Item  Range="较差">动力表现差</Item>
+        <Item  Range="较差">动力表现不好</Item>
       </CommonDesc>
     </Item>
     
@@ -102,7 +102,7 @@
         <Item  Range="优秀">驾驶体验不错</Item>
         <Item  Range="良好">驾驶体验好</Item>
         <Item  Range="一般">驾驶体验一般</Item>
-        <Item  Range="较差">驾驶体验差</Item>
+        <Item  Range="较差">驾驶体验不好</Item>
       </CommonDesc>
     </Item>  
     

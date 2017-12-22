@@ -136,6 +136,7 @@
     <Content Include="Scripts\carcompare\model.v1.js" />
     <Content Include="Scripts\cssummary\userdatamodule.v7.js" />
     <Content Include="Scripts\cssummary\userroutersetting.v7.js" />
+    <Content Include="Scripts\getareaprice.js" />
     <Content Include="Scripts\h5_cssummary.js" />
     <Content Include="handlers\GetNewsListFilter.ashx" />
     <Content Include="Interface\carinformation\ImageAndVideoData.ashx" />

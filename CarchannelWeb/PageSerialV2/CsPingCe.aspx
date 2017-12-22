@@ -287,7 +287,7 @@
     var serialId = "<%= csID %>";
     <%= serialToSeeJson %>;
 </script>
-<script type="text/javascript" src="http://gimg.bitauto.com/resourcefiles/chexing/serialadposition.js?_=<%= DateTime.Now.ToString("yyyyMMddHHmm").Substring(0, 11) + "0" %>"></script>
+<script type="text/javascript" src="http://d2.yiche.com/js/serialadposition.js?_=<%= DateTime.Now.ToString("yyyyMMddHHmm").Substring(0, 11) + "0" %>"></script>
 <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/serialtoseead.min.js?v=20161228"></script>
 <%--<script src="/jsnewV2/serialtoseead.js?v=20151211" type="text/javascript" ></script>--%>
 <script src="http://image.bitautoimg.com/carchannel/jsnewv2/ucarserialcity.min.js?v=20161228" type="text/javascript"></script>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace YiChe.Core.Extensions
+namespace AppApi.Car.Extensions
 {
     public static class IDictionaryExtension
     {

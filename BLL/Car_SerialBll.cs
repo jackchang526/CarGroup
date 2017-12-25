@@ -5666,7 +5666,7 @@ namespace BitAuto.CarChannel.BLL
         /// <param name="dr"></param>
         /// <param name="csid"></param>
         /// <returns></returns>
-        public string GetNewSerialIntoMarketText(int csId,bool isShowDate = true)
+        public string GetNewSerialIntoMarketText(int csId, bool isShowDate = true)
         {
             string cacheKey = "Car_SerialBll_GetNewCarIntoMarketText_" + csId + "_" + isShowDate;
             object cacheValue = CacheManager.GetCachedData(cacheKey);
@@ -5713,7 +5713,7 @@ namespace BitAuto.CarChannel.BLL
                             foreach (var item in newCarList)
                             {
                                 XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(Path.Combine(PhotoImageConfig.SavePath, string.Format(@"SerialCarReallyPic\{0}.xml", item.CarID)));
-                                
+
                                 if (xmlDoc != null && xmlDoc.HasChildNodes)
                                 {
                                     XmlNode node = xmlDoc.SelectSingleNode("//Data//Total");
@@ -5854,12 +5854,12 @@ namespace BitAuto.CarChannel.BLL
         /// <param name="marketDate">上市时间</param>
         /// <param name="referPrice">指导价</param>
         /// <returns></returns>
-        public string GetCarMarketText(int carId,string saleSate,DateTime marketDate,string referPrice)
+        public string GetCarMarketText(int carId, string saleSate, DateTime marketDate, string referPrice)
         {
             string marketflag = string.Empty;
 
             if (carId == 0) return marketflag;
-            
+
             //int res =DateTime.Compare(entity.MarketDateTime, DateTime.MinValue);
             if (DateTime.Compare(marketDate, DateTime.MinValue) != 0)
             {
@@ -8652,5 +8652,439 @@ namespace BitAuto.CarChannel.BLL
             return csd.GetCarStylePropertyById(id);
         }
 
+        /// <summary>
+        /// 转换销售状态枚举类型
+        /// </summary>
+        /// <param name="CsSaleState"></param>
+        /// <returns></returns>
+        private int SwitchSaleStatus(string CsSaleState)
+        {
+            var stateInt = 2;
+            switch (CsSaleState)
+            {
+                case "停销":
+                    stateInt = -1;
+                    break;
+                case "待销":
+                    stateInt = 0;
+                    break;
+                case "在销":
+                    stateInt = 1;
+                    break;
+                case "待查":
+                    stateInt = 2;
+                    break;
+                default:
+                    stateInt = 2;
+                    break;
+            }
+            return stateInt;
+        }
+
+        private int SwitchNewSaleStatus(string CsSaleState)
+        {
+            var stateInt = 2;
+            switch (CsSaleState)
+            {
+                case "停销":
+                    stateInt = -1;
+                    break;
+                case "待销":
+                    stateInt = 0;
+                    break;
+                case "在销":
+                    stateInt = 1;
+                    break;
+                case "待查":
+                    stateInt = 2;
+                    break;
+                case "即将上市":
+                    stateInt = 100;
+                    break;
+                case "新车上市":
+                    stateInt = 101;
+                    break;
+                case "新款上市":
+                    stateInt = 102;
+                    break;
+                default:
+                    stateInt = 2;
+                    break;
+            }
+            return stateInt;
+        }
+
+        /// <summary>
+        /// 根据车型ID获取封面图
+        /// </summary>
+        /// <param name="serialId">车型ID</param>
+        /// <returns></returns>
+        private string GetImageUrlBySid(int serialId)
+        {
+            Dictionary<int, XmlElement> urlDic = CarSerialImgUrlService.GetImageUrlDicNew();
+            string imgUrl = "";
+            if (urlDic.ContainsKey(serialId))
+            {
+                // modified by chengl Jan.4.2010
+                if (urlDic[serialId].GetAttribute("ImageUrl2").ToString().Trim() != "")
+                {
+                    // 有新封面
+                    imgUrl = urlDic[serialId].GetAttribute("ImageUrl2").ToString().Trim();
+                }
+                else
+                {
+                    // 没有新封面
+                    if (urlDic[serialId].GetAttribute("ImageUrl").ToString().Trim() != "")
+                    {
+                        imgUrl = urlDic[serialId].GetAttribute("ImageUrl").ToString().Trim();
+                    }
+                    else
+                    {
+                        imgUrl = WebConfig.DefaultCarPic;
+                    }
+                }
+            }
+            else
+                imgUrl = WebConfig.DefaultCarPic;
+            return imgUrl;
+        }
+
+        // -1:停销、0:待销、1:在销、2:待查
+        /// <summary>
+        /// 根据主品牌id获取品牌和车型
+        /// </summary>
+        /// <param name="masterBrandId">主品牌id</param>
+        /// <param name="allSerial">是否是所有车型(包括停销)</param>
+        /// <returns></returns>
+        public List<CarBrandEntity> GetCarBrandAndSerial(int masterBrandId, bool allSerial)
+        {
+            if (masterBrandId <= 0)
+            {
+                return new List<CarBrandEntity>();
+            }
+            var cacheKey = string.Format("ycapp.carbrandseriallist_{0}", masterBrandId);
+            var list = CacheManager.GetCachedData<List<CarBrandEntity>>(cacheKey);
+            if (list == null)
+            {
+                list = new List<CarBrandEntity>();
+                //获取数据xml
+                XmlDocument serialXml = AutoStorageService.GetAllAutoXml();
+                if (serialXml != null)
+                {
+                    XmlNode _BrandNode = serialXml.SelectSingleNode(string.Format("Params/MasterBrand[@ID={0}]", masterBrandId.ToString()));
+                    if (_BrandNode != null)
+                    {
+                        XmlNodeList brands = _BrandNode.SelectNodes("Brand");
+                        if (brands.Count > 0)
+                        {
+                            foreach (XmlNode brand in brands)
+                            {
+                                var serialList = new List<CarSerialEntity>();
+                                var serials = brand.ChildNodes;
+                                foreach (XmlNode serial in serials)
+                                {
+                                    serialList.Add(new CarSerialEntity
+                                    {
+                                        SerialId = ConvertHelper.GetInteger(serial.Attributes["ID"].Value),
+                                        serialName = ConvertHelper.GetString(serial.Attributes["ShowName"].Value),
+                                        CoverImageUrl = GetImageUrlBySid(ConvertHelper.GetInteger(serial.Attributes["ID"].Value)),
+                                        UV = ConvertHelper.GetInteger(serial.Attributes["CsPV"].Value),
+                                        SaleStatus = SwitchSaleStatus(ConvertHelper.GetString(serial.Attributes["CsSaleState"].Value)),
+                                        NewSaleStatus = SwitchNewSaleStatus(ConvertHelper.GetString(serial.Attributes["CsSaleState"].Value)),
+                                        MinPrice = ConvertHelper.GetDecimal(serial.Attributes["MinRP"].Value),
+                                        MaxPrice = ConvertHelper.GetDecimal(serial.Attributes["MaxRP"].Value),
+                                        Spell = ConvertHelper.GetString(serial.Attributes["Spell"].Value),
+                                        Weight = ConvertHelper.GetInteger(serial.Attributes["Weight"].Value)
+                                    });
+                                }
+                                list.Add(new CarBrandEntity
+                                {
+                                    BrandId = ConvertHelper.GetInteger(brand.Attributes["ID"].Value),
+                                    BrandName = ConvertHelper.GetString(brand.Attributes["Name"].Value),
+                                    Foreign = !ConvertHelper.GetString(brand.Attributes["Country"].Value).Equals("国产"),
+                                    Weight = ConvertHelper.GetInteger(brand.Attributes["Weight"].Value),
+                                    Spell = ConvertHelper.GetString(brand.Attributes["Spell"].Value),
+                                    SerialList = serialList.OrderByDescending(x => x.SaleStatus).ThenBy(x => x.Weight).ThenBy(x => x.Spell).ToList()
+                                });
+                            }
+                            list = list.OrderByDescending(x => x.Weight).ThenBy(x => x.Spell).ToList();
+                        }
+                    }
+                }
+                if (list != null && list.Any())
+                {
+                    foreach (var brand in list)
+                    {
+                        foreach (var serial in brand.SerialList)
+                        {
+                            if (serial.SaleStatus == 1)
+                            {
+                                if (serial.MinPrice == 0 && serial.MaxPrice == 0)
+                                {
+                                    serial.DealerPrice = "暂无报价";
+                                }
+                                else if (serial.MinPrice == 0)
+                                {
+                                    serial.DealerPrice = string.Format("{0}万", serial.MaxPrice > 1000 ? serial.MaxPrice.ToString("F0") : serial.MaxPrice.ToString("F2"));
+                                }
+                                else
+                                {
+                                    serial.DealerPrice = string.Format("{0}-{1}万", serial.MinPrice > 1000 ? serial.MinPrice.ToString("F0") : serial.MinPrice.ToString("F2"), serial.MaxPrice > 1000 ? serial.MaxPrice.ToString("F0") : serial.MaxPrice.ToString("F2"));
+                                }
+                            }
+                            else if (serial.SaleStatus == 0)
+                            {
+                                serial.DealerPrice = "未上市";
+                            }
+                            else if (serial.SaleStatus == -1)
+                            {
+                                serial.DealerPrice = "停销";
+                            }
+                        }
+                    }
+                    CacheManager.InsertCache(cacheKey, list, 30);//缓存30分钟
+                    if (!allSerial)
+                    {
+                        list.ForEach(l =>
+                        {
+                            l.SerialList.RemoveAll(s => s.SaleStatus < 0); //移除停销车型
+                        });
+                    }
+                }
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// 获取车型图片数量
+        /// </summary>
+        /// <param name="masterId"></param>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public Dictionary<int, int> GetSerialListImagesCount(int masterId, List<CarBrandEntity> list)
+        {
+            string cacheKey = string.Format("car_getseriallistimagescount_{0}", masterId);
+            object allSerialPicAndCount = null;
+            CacheManager.GetCachedData(cacheKey, out allSerialPicAndCount);
+            if (allSerialPicAndCount == null)
+            {
+                Dictionary<int, int> imageCounts = new Dictionary<int, int>();
+                if (list != null && list.Any())
+                {
+                    List<int> serialIds = new List<int>();
+                    foreach (var brand in list)
+                    {
+                        serialIds.AddRange(brand.SerialList.Select(x => x.SerialId));
+                    }
+                    var ids = serialIds.Select(x => x).Distinct();
+                    foreach (var item in ids)
+                    {
+                        imageCounts.Add(item, GetSerialPicAndCountByCsID(item));
+                    }
+                    CacheManager.InsertCache(cacheKey, imageCounts, 10);
+                }
+                return imageCounts;
+            }
+            else
+            {
+                return allSerialPicAndCount as Dictionary<int, int>;
+            }
+        }
+
+        /// <summary>
+        /// 根据车型ID获取图片数量
+        /// </summary>
+        /// <param name="csID"></param>
+        /// <returns></returns>
+        private int GetSerialPicAndCountByCsID(int csID)
+        {
+            int csCount = 0;
+            string cacheKey = string.Format("Car_AppApi_GetSerialPicAndCountByCsID_{0}", csID);
+            object allSerialPicAndCount = null;
+            CacheManager.GetCachedData(cacheKey, out allSerialPicAndCount);
+            if (allSerialPicAndCount == null)
+            {
+                var imgDoc = this.GetAllSerialConverImgAndCount();
+                if (imgDoc != null)
+                {
+                    XmlNode imgNode = imgDoc.SelectSingleNode("/SerialList/Serial[@SerialId='" + csID + "']");
+                    if (imgNode != null)
+                    {
+                        csCount = ConvertHelper.GetInteger(imgNode.Attributes["ImageCount"].Value);
+                    }
+                }
+                CacheManager.InsertCache(cacheKey, csCount, 10);
+                return csCount;
+            }
+            else
+            {
+                return int.Parse(allSerialPicAndCount + string.Empty);
+            }
+        }
+
+
+        /// <summary>
+        /// 车系封面图及图片数量
+        /// </summary>
+        /// <returns></returns>
+        private XmlDocument GetAllSerialConverImgAndCount()
+        {
+            string cacheKey = "Car_GetAllSerialConverImgAndCount";
+            object allSerialPicAndCount = null;
+            CacheManager.GetCachedData(cacheKey, out allSerialPicAndCount);
+            if (allSerialPicAndCount == null)
+            {
+                XmlDocument xmlDoc = new XmlDocument();
+                string photoDataPath = Path.Combine(PhotoImageConfig.SavePath, PhotoImageConfig.SerialCoverImageAndCountPath);
+                xmlDoc.Load(photoDataPath);
+                CacheManager.InsertCache(cacheKey, xmlDoc, 60);
+                return xmlDoc;
+            }
+            else
+            {
+                return allSerialPicAndCount as XmlDocument;
+            }
+        }
+
+        /// <summary>
+        /// 获取最新车
+        /// </summary>
+        /// <returns></returns>
+        public List<TopNewCarEntity> GetTopNewCar(int showNewCarNum = 10)
+        {
+            Dictionary<int, string> dict = GetAllSerialMarkDay();
+            List<KeyValuePair<int, string>> list = new List<KeyValuePair<int, string>>(dict);
+            List<KeyValuePair<int, string>> sublist = new List<KeyValuePair<int, string>>();
+            foreach (KeyValuePair<int, string> key in list)
+            {
+                if (CommonFunction.DateDiff("d", ConvertHelper.GetDateTime(key.Value), DateTime.Now) >= 0)
+                {
+                    sublist.Add(key);
+                }
+            }
+            var newcarlist = new List<TopNewCarEntity>();
+            for (int i = 0; i < sublist.Count; i++)
+            {
+                int serialId = sublist[i].Key;
+                if (serialId <= 0) break;
+                string imgUrl = GetSerialImageUrl(serialId);
+                if (string.Equals(imgUrl, WebConfig.DefaultCarPic))
+                { continue; }
+                if (i >= showNewCarNum) break;
+                string priceRange = new PageBase().GetSerialPriceRangeByID(Convert.ToInt32(serialId));
+                Car_SerialEntity cs = Get_Car_SerialByCsID(serialId);
+                if (cs == null || cs.Cs_Id <= 0)
+                { continue; }
+                string levelName = cs.Cs_CarLevel;
+                switch (levelName)
+                {
+                    case "紧凑型车":
+                        levelName = "紧凑型";
+                        break;
+                    case "中大型车":
+                        levelName = "中大型";
+                        break;
+                }
+                if (string.IsNullOrEmpty(levelName))
+                {
+                    levelName = "紧凑型";
+                }
+                if (priceRange.Trim().Length == 0)
+                {
+                    priceRange = "暂无报价";
+                }
+                var serialEntity = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, serialId);
+                newcarlist.Add(new TopNewCarEntity
+                {
+                    ID = cs.Cs_Id,
+                    ShowName = cs.Cs_ShowName,
+                    Img = imgUrl,
+                    Price = priceRange,
+                    Level = levelName,
+                    AllSpell = cs.Cb_AllSpell,
+                    MasterBrandId = serialEntity.Brand.MasterBrandId
+                });
+            }
+            return newcarlist;
+        }
+
+
+        #region 获取图片
+        /// <summary>
+        /// 取xml Document对象，返回DataSet
+        /// </summary>
+        /// <param name="cacheName">缓存名</param>
+        /// <param name="xmlURL">xml 接口地址</param>
+        /// <param name="cacheTimeHour">缓存时间(分钟)</param>
+        /// <returns></returns>
+        public DataSet GetXMLDocToDataSetByURLForCache(string cacheName, string xmlURL, int cacheTimeMin)
+        {
+            object obj = CacheManager.GetCachedData(cacheName);
+            if (obj != null)
+            {
+                return (DataSet)obj;
+            }
+            DataSet ds = new DataSet();
+            try
+            {
+                ds.ReadXml(xmlURL);
+                CacheManager.InsertCache(cacheName, ds, cacheTimeMin);
+            }
+            catch (Exception ex)
+            {
+                CommonFunction.WriteLog("PageBase.GetXMLDocToDataSetByURLForCache:" + ex.Message);
+            }
+            return ds;
+        }
+
+        /// <summary>
+        /// 取第一张图解
+        /// </summary>
+        /// <param name="dsCsPic"></param>
+        public XmlNode GetFirstTujieImage(DataSet dsCsPic, int serialId)
+        {
+            XmlElement element = null;
+            XmlDocument xmlDoc = new XmlDocument();
+            //取图解第一张
+            if (dsCsPic != null && dsCsPic.Tables.Count > 0 && dsCsPic.Tables.Contains("C") && dsCsPic.Tables["C"].Rows.Count > 0)
+            {
+                var rows = dsCsPic.Tables["C"].Rows.Cast<DataRow>();
+                DataRow row = rows.FirstOrDefault(dr => ConvertHelper.GetInteger(dr["P"]) == 12); //dt.Select("P='" + cateId + "'");
+                if (row != null)
+                {
+                    int imgId = row["I"] == DBNull.Value ? 0 : Convert.ToInt32(row["I"]);
+                    string imgUrl = row["U"] == DBNull.Value ? "" : Convert.ToString(row["U"]);
+                    if (imgId == 0 || imgUrl.Length == 0)
+                        imgUrl = WebConfig.DefaultCarPic;
+                    else
+                        imgUrl = CommonFunction.GetPublishHashImgUrl(4, imgUrl, imgId);
+                    string picUrl = "http://photo.bitauto.com/picture/" + serialId + "/" + imgId + "/";
+                    element = xmlDoc.CreateElement("CarImage");
+                    element.SetAttribute("ImageId", imgId.ToString());
+                    element.SetAttribute("ImageUrl", imgUrl);
+                    element.SetAttribute("GroupName", "图解");
+                    element.SetAttribute("ImageName", "图解");
+                    element.SetAttribute("Link", picUrl);
+                }
+            }
+            return (XmlNode)element;
+        }
+        #endregion
+        /// <summary>
+        /// 获取车型国别和主品牌id
+        /// </summary>
+        /// <param name="styleId"></param>
+        /// <returns></returns>
+        public SerialCountryEntity GetSerialCountryById(int serialId)
+        {
+            string cacheKey = string.Format(DataCacheKeys.SerialCountry, serialId);
+            var result = CacheManager.GetCachedData<SerialCountryEntity>(cacheKey);
+            if (result == null)
+            {
+                result = csd.GetSerialCountryById(serialId);
+                CacheManager.InsertCache(cacheKey, result, 60 * 25);
+            }
+            return result;
+        }
     }
 }

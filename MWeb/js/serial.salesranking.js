@@ -74,13 +74,14 @@ function RequestData(index) {
     var saleRankingUrl = "http://api174.car.bitauto.com/CarInfo/GetSalesRankingForPage.ashx?level=" + titles[index].id + "&pageindex=" + (titles[index].index + 1) + "&pagesize=" + titles[index].size;
     titles[index].loading = true;
     $("#level_rank_list_" + index + " .load-box").show();
+    var cb = "SaleRankingCallBack" + index;
     $.ajax({
         type: "get",
         url: saleRankingUrl,
         cache: true,
         dataType: 'jsonp',
         jsonp: "callback",
-        jsonpCallback: "SaleRankingCallBack",
+        jsonpCallback: cb,
         timeout: 3000,
         contentType: "application/json",
         success: function (data) {

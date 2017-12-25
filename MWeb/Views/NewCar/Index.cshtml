@@ -126,28 +126,31 @@
             RequestData(index);
         }
 
-        function RequestData(index) {
-            if (index == undefined)
+        function RequestData(idx) {
+            console.log(idx);
+            var curindex = idx;
+            if (curindex == undefined)
             {
                 return;
             }
-            if (!titles[index].hasNext) {
+            if (!titles[curindex].hasNext) {
                 return;
             }
-            if (titles[index].loading) {
-                console.log("正在加载-" + index);
+            if (titles[curindex].loading) {
+                console.log("正在加载-" + curindex);
                 return;
             }
-            var newCarListUrl = "http://api174.car.bitauto.com/CarInfo/GetNewCarList.ashx?type=" + titles[index].id + "&pageindex=" + (titles[index].index + 1) + "&pagesize=" + titles[index].size;
-            titles[index].loading = true;
-            //$("#level_rank_list_" + index + " .load-box").show();
+            var newCarListUrl = "http://api174.car.bitauto.com/CarInfo/GetNewCarList.ashx?type=" + titles[curindex].id + "&pageindex=" + (titles[curindex].index + 1) + "&pagesize=" + titles[curindex].size;
+            titles[curindex].loading = true;
+            var cb = "newCarListCallBack" + curindex;
+            //$("#level_rank_list_" + curindex + " .load-box").show();
             $.ajax({
                 type: "get",
                 url: newCarListUrl,
                 cache: false,
                 dataType: 'jsonp',
                 jsonp: "callback",
-                jsonpCallback: "newCarListCallBack",
+                jsonpCallback: cb,
                 timeout: 3000,
                 contentType: "application/json",
                 success: function (data) {
@@ -165,9 +168,9 @@
                                 html += '                <div class="info-box">';
                                 html += '                    <div class="title">';
                                 html += '                       <div class="text">' + dd.CsName + '</div>';
-                                if (index == 0 && dd.Type == 3) {
+                                if (curindex == 0 && dd.Type == 3) {
                                     html += '                       <div class="tag">' + dd.YearType + '款</div>';
-                                } else if (index == 0 && dd.Type == 4) {
+                                } else if (curindex == 0 && dd.Type == 4) {
                                     html += '                       <div class="tag">全新车型</div>';
                                 }
 
@@ -177,7 +180,7 @@
                                 html += '                    <div class="type">' + dd.Level +'</div>';
                                 html += '                </div>';
                                 html += '        </div>';
-                                if (index == 1 && dd.MarketDay != "") {
+                                if (curindex == 1 && dd.MarketDay != "") {
                                     var marketDay = new Date(dd.MarketDay);
                                     html += '            <div class="right"><div class="time">' + (marketDay.getMonth() + 1) + '月' + marketDay.getDate() + '日上市</div></div>';
                                 }
@@ -185,30 +188,30 @@
                                 html += '</a></li>';
                                  
                             }
-                            $("#newscar_list_" + index + " .load-box").before(html);
+                            $("#newscar_list_" + curindex + " .load-box").before(html);
                             swiperNewslist.update();
 
-                            titles[index].index++;
-                            titles[index].total = data.data.total;
+                            titles[curindex].index++;
+                            titles[curindex].total = data.data.total;
                             if (data.data.data.length < data.data.size) {
-                                titles[index].hasNext = false;
+                                titles[curindex].hasNext = false;
                             } else {
-                                titles[index].hasNext = true;
+                                titles[curindex].hasNext = true;
                             }
                         } else {
-                            titles[index].hasNext = false;
+                            titles[curindex].hasNext = false;
                         }
                     } else if (data && data.code == 0) {
-                        titles[index].hasNext = false;
+                        titles[curindex].hasNext = false;
                     }
                     console.log(data);
-                    console.log(titles[index].hasNext);
-                    titles[index].loading = false;
-                    $("#newscar_list_" + index + " .load-box").hide();
+                    console.log(titles[curindex].hasNext);
+                    titles[curindex].loading = false;
+                    $("#newscar_list_" + curindex + " .load-box").hide();
                 },
                 error: function (msg) {
-                    titles[index].loading = false;
-                    $("#newscar_list_" + index + " .load-box").hide();
+                    titles[curindex].loading = false;
+                    $("#newscar_list_" + curindex + " .load-box").hide();
                     console.log(msg);
                 }
             });

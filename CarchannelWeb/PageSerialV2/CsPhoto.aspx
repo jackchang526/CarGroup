@@ -126,7 +126,7 @@
                 //        },null]
                 //};
             </script>
-            <script type="text/javascript" src="http://gimg.bitauto.com/resourcefiles/chexing/serialadposition.js?_=<%= DateTime.Now.ToString("yyyyMMddHHmm").Substring(0,11) + "0" %>"></script>
+            <script type="text/javascript" src="http://d2.yiche.com/js/serialadposition.js?_=<%= DateTime.Now.ToString("yyyyMMddHHmm").Substring(0,11) + "0" %>"></script>
             <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/serialtoseead.min.js"></script>
             <div class="layout-2">
                 <ins id="div_a9e57a09-3485-4fbe-a755-59d7e52ce486" type="ad_play" adplay_ip="" adplay_areaname=""

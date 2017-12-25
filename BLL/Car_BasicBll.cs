@@ -356,7 +356,10 @@ namespace BitAuto.CarChannel.BLL
                                         string imgUrl = xn.Attributes["ImageUrl"].Value;
                                         if (subfix != 2)
                                             imgUrl = imgUrl.Replace("_2.", string.Format("_{0}.", subfix));
-                                        dic.Add(carid, imgUrl);
+                                        if (!string.IsNullOrEmpty(imgUrl))
+                                        {
+                                            dic.Add(carid, imgUrl);
+                                        }
                                     }
                                 }
                             }

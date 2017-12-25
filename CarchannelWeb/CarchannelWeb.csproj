@@ -29,6 +29,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -61,10 +62,10 @@
     </Reference>
     <Reference Include="BitAuto.CarUtils, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Dll\BitAuto.CarUtils.dll</HintPath>
+      <HintPath>..\..\..\packages\BitAuto.CarUtils.dll</HintPath>
     </Reference>
     <Reference Include="BitAuto.Controls">
-      <HintPath>..\..\..\..\..\P公用平台\Release\BitAuto.Controls.dll</HintPath>
+      <HintPath>..\..\..\packages\BitAuto.Controls.dll</HintPath>
     </Reference>
     <Reference Include="BitAuto.Utils, Version=2.0.7.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

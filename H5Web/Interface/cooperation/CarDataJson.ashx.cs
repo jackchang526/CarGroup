@@ -240,12 +240,12 @@ namespace H5Web.Interface.cooperation
                             {
                                 continue;
                             }
-
-                            var priceRange = new PageBase().GetSerialPriceRangeByID(serialId).Trim();
+                            //改成指导价
+                            var priceRange = new PageBase().GetSerialReferPriceByID(serialId).Trim();
                             if (csSaleState.Trim() == "待销")
                                 priceRange = "未上市";
                             if (string.IsNullOrEmpty(priceRange))
-                                priceRange = "暂无报价";
+                                priceRange = "暂无指导价";
 
                             var imgUrl = Car_SerialBll.GetSerialImageUrl(serialId).Replace("_2.", "_1.");
                             if (csSaleState.Trim() == "停销" && imgUrl.IndexOf("150-100.gif") > 0)
@@ -361,7 +361,8 @@ namespace H5Web.Interface.cooperation
                             var showName = serialNode.GetAttribute("ShowName");
                             var serialLevel = serialNode.GetAttribute("CsLevel");
                             var serialSpell = serialNode.GetAttribute("AllSpell").ToLower();
-                            var priceRange = GetSerialPriceRangeByID(serialId);
+                            //改成指导价
+                            var priceRange = GetSerialReferPriceByID(serialId);
                             var imgUrl = Car_SerialBll.GetSerialImageUrl(serialId).Replace("_2.", "_1.");
 
                             if (_level > 0)

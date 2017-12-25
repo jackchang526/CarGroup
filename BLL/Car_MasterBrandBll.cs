@@ -76,12 +76,18 @@ namespace BitAuto.CarChannel.BLL
         /// <returns></returns>
         public List<CarMasterBrandEntity> GetCarMasterBrandList(bool allMasterBrand)
         {
-
             string cacheKey = "ycapp.carmasterbrandlist";
             var getCarMasterBrandList = (List<CarMasterBrandEntity>)CacheManager.GetCachedData(cacheKey);
             if (getCarMasterBrandList == null)
             {
                 getCarMasterBrandList = _masterBrandDal.GetCarMasterBrandList();
+                if (getCarMasterBrandList != null && getCarMasterBrandList.Count > 0)
+                {
+                    getCarMasterBrandList.ForEach(x =>
+                    {
+                        x.SaleStatus = GetMasterBrandSaleStateById(x.MasterID);
+                    });
+                }
                 CacheManager.InsertCache(cacheKey, getCarMasterBrandList, 60 * 24);
             }
             if (!allMasterBrand)
@@ -99,7 +105,54 @@ namespace BitAuto.CarChannel.BLL
         /// <returns></returns>
         public List<CarModelColorEntity> GetCarStyleColorById(int styleId, int type)
         {
-            return _masterBrandDal.GetCarStyleColorById(styleId, type);
+            string cacheKey = "ycapp.getcarstylecolorbyid";
+            var getCarMasterBrandList = (List<CarModelColorEntity>)CacheManager.GetCachedData(cacheKey);
+            if (getCarMasterBrandList == null)
+            {
+                getCarMasterBrandList = _masterBrandDal.GetCarStyleColorById(styleId, type);
+                if (getCarMasterBrandList != null)
+                {
+                    CacheManager.InsertCache(cacheKey, getCarMasterBrandList, 60 * 24);
+                }
+            }
+            return getCarMasterBrandList;
+        }
+
+        /// <summary>
+        /// 根据主品牌ID获取销售状态
+        /// </summary>
+        /// <param name="masterid"></param>
+        /// <returns></returns>
+        public int GetMasterBrandSaleStateById(int masterid)
+        {
+            int salestate = 2;
+            string cacheKey = "ycapp.gemasterbrandsalestatebyId";
+            var getCarMasterBrandList = (List<MasterBrandSaleState>)CacheManager.GetCachedData(cacheKey);
+            if (getCarMasterBrandList == null)
+            {
+                getCarMasterBrandList = _masterBrandDal.GetAllMasterBrandSaleState();
+                CacheManager.InsertCache(cacheKey, getCarMasterBrandList, 60 * 24);
+            }
+            if (getCarMasterBrandList.Any())
+            {
+                if (getCarMasterBrandList.Exists(x => x.bs_Id == masterid && x.CbSaleState == "在销"))
+                {
+                    salestate = 1;
+                }
+                else if (getCarMasterBrandList.Exists(x => x.bs_Id == masterid && x.CbSaleState == "待销"))
+                {
+                    salestate = 0;
+                }
+                else if (getCarMasterBrandList.Exists(x => x.bs_Id == masterid && x.CbSaleState == "停销"))
+                {
+                    salestate = -1;
+                }
+                else if (getCarMasterBrandList.Exists(x => x.bs_Id == masterid && x.CbSaleState == "待查"))
+                {
+                    salestate = 2;
+                }
+            }
+            return salestate;
         }
 
     }

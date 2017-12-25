@@ -896,7 +896,7 @@
     <script type="text/javascript">
         <%= serialToSeeJson %>
 </script>
-    <script type="text/javascript" src="http://gimg.bitauto.com/resourcefiles/chexing/serialadposition.js?_=<%= DateTime.Now.ToString("yyyyMMddHHmm").Substring(0,11) + "0" %>"></script>
+    <script type="text/javascript" src="http://d2.yiche.com/js/serialadposition.js?_=<%= DateTime.Now.ToString("yyyyMMddHHmm").Substring(0,11) + "0" %>"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/serialtoseead.min.js"></script>
     <!--/看了还看js-->
     <!--#include file="/include/special/stat/00001/bglogpostlog_Manual.shtml"-->

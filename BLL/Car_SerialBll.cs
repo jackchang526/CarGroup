@@ -1100,7 +1100,7 @@ namespace BitAuto.CarChannel.BLL
                     imgList.Add(csImg);
                 }
 
-                CacheManager.InsertCache(cacheKey, imgList, 30);
+                CacheManager.InsertCache(cacheKey, imgList, 10);
             }
 
             return imgList;
@@ -8590,7 +8590,7 @@ namespace BitAuto.CarChannel.BLL
                     imgList.Add(csImg);
                 }
 
-                CacheManager.InsertCache(cacheKey, imgList, 30);
+                CacheManager.InsertCache(cacheKey, imgList, 10);
             }
 
             return imgList;

@@ -348,11 +348,11 @@
             $("#btn-business a").first().attr("href", "http://dealer.m.yiche.com/" + GlobalSummaryConfig.CityId + "/" + GlobalSummaryConfig.SerialId +"/2/ ");
             function showNewsInsCode(dxc, xxc, mpv, suv) {
                 var adBlockCode = xxc;
-                if (carlevel == '中大型车' || carlevel == '中型车' || carlevel == '跑车' || carlevel == '豪华车') {
+                if (carlevel == '中大型车' || carlevel == '中型车' || carlevel == '豪华车') {
                     adBlockCode = dxc;
                 } else if (carlevel == '微型车' || carlevel == '小型车' || carlevel == '紧凑型车') {
                     adBlockCode = xxc;
-                } else if (carlevel == '概念车' || carlevel == 'MPV' || carlevel == '面包车' || carlevel == '皮卡' || carlevel == '其它') {
+                } else if (carlevel == '概念车' || carlevel == 'MPV' || carlevel == '面包车' || carlevel == '皮卡' || carlevel == '卡车' || carlevel == '跑车' || carlevel == '客车' || carlevel == '其它') {
                     adBlockCode = mpv;
                 } else if (carlevel == 'SUV') {
                     adBlockCode = suv;

@@ -187,10 +187,10 @@
                 <div class="section-right">
                     <div class="spl-23adv">
                         <div class="ad-mb20">
-                            <img src="http://temp.im/300x120" alt="广告1">
+                            <ins id="div_e98982f8-2749-472e-819a-619722586516" data-type="ad_play" data-adplay_ip='' data-adplay_areaname='' data-adplay_cityname='' data-adplay_brandid='<%= serialId %>' data-adplay_brandname='' data-adplay_brandtype='' data-adplay_blockcode="e98982f8-2749-472e-819a-619722586516"> </ins>
                         </div>
                         <div class="ad-mb20">
-                            <img src="http://temp.im/300x120" alt="广告2">
+                            <ins id="div_ff3f172d-bf5a-465b-a15b-32e5d3b81837" data-type="ad_play" data-adplay_ip='' data-adplay_areaname='' data-adplay_cityname='' data-adplay_brandid='' data-adplay_brandname='<%= serialId %>' data-adplay_brandtype='' data-adplay_blockcode="ff3f172d-bf5a-465b-a15b-32e5d3b81837"> </ins>
                         </div>
                         <div class="ad-mb20">
                             <img src="http://temp.im/300x120" alt="广告3">

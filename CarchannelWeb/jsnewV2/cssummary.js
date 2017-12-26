@@ -195,29 +195,29 @@ function GetJiangjiaNews() {
 					var obj = data.data[jiangjiaCount];
 
 				    var youhuiStr = "",
-                        youhuiUrl= "",
+                        //youhuiUrl= "",
 					    className = "";
 				    if (obj.IsJJ == 1) { //降价
 				        if (obj.showtype == 1) {
-				            youhuiStr = "直降" + obj.FavorablePrice + "万";
+				            youhuiStr = obj.FavorablePrice + "万";
 				            className = "price-reduction";
-				            youhuiUrl = obj.zuidijiaUrl;
+				            //youhuiUrl = obj.zuidijiaUrl;
 				        }
 				        else { //送礼包
 				            youhuiStr = "送礼包";
 				            className = "price-reduction type1";
-				            youhuiUrl = obj.href;
+				            //youhuiUrl = obj.href;
 				        }
 					}
 					else{ //报价
 					    var vendorPrice = parseFloat(obj.vendorPrice).toFixed(2);
 					    youhuiStr = vendorPrice + "万";
 					    className = "price-reduction type2";
-					    youhuiUrl = obj.zuidijiaUrl;
+					    //youhuiUrl = obj.zuidijiaUrl;
                     }
                     h.push("<li>");
                     h.push("<a href=\"" + obj.href + "?leads_source=p002005\" target=\"_blank\" class=\"txt\">" + obj.CarName + "</a>");
-                    h.push("<a target=\"_blank\" href=\"" + youhuiUrl + "\" class=\"" + className + "\">" + youhuiStr + "</a>");
+                    h.push("<a target=\"_blank\" href=\"" + obj.href + "\" class=\"" + className + "\">" + youhuiStr + "</a>");
                     h.push("<a class=\"btn btn-primary btn-xs\" href=\"http://dealer.bitauto.com/zuidijia/nb" + serialId + "/nc" + obj.carId + "/?T=2&leads_source=p002011\" target=\"_blank\">询价</a>");
                     h.push("</li>");
                 }

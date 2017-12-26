@@ -40,7 +40,7 @@
     <!--保值率导航 start-->
     <div class="second-tags-scroll-box">
         <div class="pd15">
-            <div class="second-tags-scroll"  data-type="scrollBar">
+            <div class="second-tags-scroll" data-type="scrollBar">
                 <ul>
                     @(Html.Raw(ViewData["LevelHtml"]))
                 </ul>
@@ -65,7 +65,8 @@
     <script type="text/javascript">
 
         //滑动横向定位
-        $('[data-type=scrollBar]').activeScrollBar();
+        $('[data-type=scrollBar]').activeScrollBar();
+
         var levelSpell = "@(ViewData["LevelSpell"])";
         /*默认值*/
         Object.extend = function (destination, source) {
@@ -175,13 +176,14 @@
         }
         var backurl = "http://m.yiche.com/";
         var refer = document.referrer;
-        if (refer != null && refer != "undefined")
-        {
+        if (refer != null && refer != "undefined") {
             backurl = refer;
         }
         if (typeof (backurl) != "undefined") {
             Bitauto.GoBacker.setDefaultURL(backurl);
         }
     </script>
+    <!--app下载-->
+    <script type="text/javascript">    var global_yicheBottomLayerType = 'chexing';</script>
 </body>
 </html>

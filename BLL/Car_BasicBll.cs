@@ -21,6 +21,8 @@ using MongoDB.Bson.Serialization;
 using BitAuto.CarChannel.Model.AppModel;
 using System.Web.Caching;
 using System.Configuration;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace BitAuto.CarChannel.BLL
 {
@@ -29,6 +31,23 @@ namespace BitAuto.CarChannel.BLL
         private static readonly Car_BasicDal cbd = new Car_BasicDal();
         private static readonly CarInfoDal cid = new CarInfoDal();
         static string parameterConfigPath = ConfigurationManager.AppSettings["ParameterConfigPath"];
+        /// <summary>
+        /// 获取车型参考价接口
+        /// </summary>
+        static string ReferPriceByCityCS_Api = ConfigurationManager.AppSettings["YiPai_ReferPriceByCityCS_API"];
+
+        static string ReferPriceByCityCar_Api = ConfigurationManager.AppSettings["YiPai_ReferPriceByCityCar_API"];
+
+        /// <summary>
+        /// 销售顾问Token
+        /// </summary>
+        static string VendorSalesToken = ConfigurationManager.AppSettings["VendorSalesToken"];
+
+        /// <summary>
+        /// 销售顾问MD5
+        /// </summary>
+        static string VendorSalesMD5 = ConfigurationManager.AppSettings["VendorSalesMD5"];
+
 
         public Car_BasicBll()
         { }
@@ -2199,7 +2218,7 @@ namespace BitAuto.CarChannel.BLL
                                     }
                                 }
                             }
-                           
+
                         }
                     }
                     else
@@ -2281,14 +2300,14 @@ namespace BitAuto.CarChannel.BLL
             return result;
         }
 
-        public List<CarParameterListEntity> GetCarParamterListWithWebCacheByCarIds(List<int> carIds, bool isVersion87)
+        public List<CarParameterListEntity> GetCarParamterListWithWebCacheByCarIds(List<int> carIds, bool isVersion87, int? cityid = 0)
         {
             //return GetCarParamterListByCarIds(carIds);
-            string carParamterKey = string.Format(DataCacheKeys.CarParameterListKey, isVersion87, string.Join("_", carIds));
+            string carParamterKey = string.Format(DataCacheKeys.CarParameterListKey, isVersion87, string.Join("_", carIds), cityid.GetValueOrDefault(0));
             var carParamterList = CacheManager.GetCachedData(carParamterKey);
             if (carParamterList == null)
             {
-                List<CarParameterListEntity> newCarParamterList = GetCarParamterListByCarIds(carIds, isVersion87);
+                List<CarParameterListEntity> newCarParamterList = GetCarParamterListByCarIds(carIds, isVersion87, cityid);
 
                 if (newCarParamterList != null && newCarParamterList.Count > 0)
                 {
@@ -2300,7 +2319,7 @@ namespace BitAuto.CarChannel.BLL
             return (List<CarParameterListEntity>)carParamterList;
         }
 
-        public List<CarParameterListEntity> GetCarParamterListByCarIds(List<int> carIds, bool isVersion87)
+        public List<CarParameterListEntity> GetCarParamterListByCarIds(List<int> carIds, bool isVersion87, int? cityid = 0)
         {
             /*
             有  黑点
@@ -2311,6 +2330,10 @@ namespace BitAuto.CarChannel.BLL
             文字,文字    
             上下,上下，前后|1000,前后|1000  文字  价格
              */
+
+
+            var carPriceDic = GetReferPriceDicByCarIds(cityid.GetValueOrDefault(0), carIds);
+
             List<CarParameterListEntity> result = new List<CarParameterListEntity>();
             Dictionary<int, Dictionary<string, string>> parameterDic = GetCarCompareDataWithOptionalByCarIDs(carIds);
             var fieldDic = GetParamDic(isVersion87);
@@ -2322,7 +2345,6 @@ namespace BitAuto.CarChannel.BLL
                 ParameterGroupFieldEntity field;
                 foreach (var item in group.Value)
                 {
-
                     if (fieldDic.ContainsKey(item.Key))
                     {
                         field = fieldDic[item.Key];
@@ -2333,6 +2355,12 @@ namespace BitAuto.CarChannel.BLL
                         bool isColor = false;
                         try
                         {
+                            if (item.Key == "AveragePrice"&& cityid.GetValueOrDefault(0)>0)
+                            {
+                                itemValue = (carPriceDic.ContainsKey(group.Key) && carPriceDic[group.Key] != null && carPriceDic[group.Key].MinReferPrice > 0 && carPriceDic[group.Key].MaxReferPrice > 0) ? carPriceDic[group.Key].MinReferPrice + "-" + carPriceDic[group.Key].MaxReferPrice + "万" : itemValue;
+
+                            }
+
                             if (item.Key == "Car_OutStat_BodyColorRGB")
                             {
                                 isColor = true;
@@ -2340,6 +2368,7 @@ namespace BitAuto.CarChannel.BLL
                                 itemValue = itemValue.Replace("|", ",");
                                 itemValue = itemValue.Replace("$", "|");
                             }
+
                             #region 单项处理
                             switch (itemValue)
                             {
@@ -2477,6 +2506,7 @@ namespace BitAuto.CarChannel.BLL
                             CommonFunction.WriteLog(string.Format("[message]:{0},[StackTrace]:{1},[carMessage]:{2}", ex.Message, ex.StackTrace, message));
                         }
                     }
+
                 }
 
                 result.Add(new CarParameterListEntity { CarParameterList = carParameterList, CarId = group.Key });
@@ -2577,8 +2607,15 @@ namespace BitAuto.CarChannel.BLL
                 carGroupList = new List<CarGroupEntity>();
                 Dictionary<string, CarGroupEntity> carGroupDic = new Dictionary<string, CarGroupEntity>();
                 var carList = GetCarListForSerialSummaryBySerialId(serialId, includeStopSale);
-                var serialBll = new Car_SerialBll();
                 List<int> carIds = new List<int>();
+                foreach (var item in carList)
+                {
+                    carIds.Add(item.CarID);
+                }
+                if (carIds.Count == 0)
+                    return null;
+                var serialBll = new Car_SerialBll();
+                var carPriceDic = GetReferPriceDicByCarIds(cityId, carIds);
                 foreach (var item in carList)
                 {
                     string groupKey = item.Engine_Exhaust + "/" + item.Engine_MaxPower;
@@ -2590,7 +2627,7 @@ namespace BitAuto.CarChannel.BLL
                             CarList = new List<CarInfoEntity>()
                         });
                     }
-                    carIds.Add(item.CarID);
+
                     var taxreief = GetTax(item.CarID, item.SaleState, item.Engine_Exhaust);
                     var newStatus = serialBll.GetCarMarketText(item.CarID, item.SaleState, item.MarketDateTime, item.ReferPrice);
                     carGroupDic[groupKey].CarList.Add(new CarInfoEntity
@@ -2599,7 +2636,7 @@ namespace BitAuto.CarChannel.BLL
                         Name = item.CarName,
                         Year = TypeParse.StrToInt(item.CarYear, 2000),
                         IsSupport = item.IsImport == 1,
-                        MinPrice = item.CarPriceRange,
+                        MinPrice = carPriceDic.ContainsKey(item.CarID) && carPriceDic[item.CarID] != null && carPriceDic[item.CarID].MinReferPrice > 0 ? carPriceDic[item.CarID].MinReferPrice.ToString("N2") + "万" : item.CarPriceRange,
                         ReferPrice = item.ReferPrice,
                         Trans = item.TransmissionType,
                         SaleState = item.SaleState,
@@ -2662,5 +2699,62 @@ namespace BitAuto.CarChannel.BLL
             }
             return strTravelTax;
         }
+        #region 报价
+        /// <summary>
+        /// 获取车款报价
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <param name="carIdList"></param>
+        /// <returns></returns>
+        public Dictionary<int, SalePriceInfoEntity> GetReferPriceDicByCarIds(int cityId, List<int> carIdList)
+        {
+            if (cityId == 0 || carIdList.Count == 0)
+                return new Dictionary<int, SalePriceInfoEntity>();
+            var param = JsonConvert.SerializeObject(new { CityId = cityId, CarIds = string.Join(",", carIdList) });
+            return GetReferPriceDic(ReferPriceByCityCar_Api, cityId, param);
+        }
+        /// <summary>
+        /// 获取车型报价
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <param name="serviceIdList"></param>
+        /// <returns></returns>
+        public Dictionary<int, SalePriceInfoEntity> GetReferPriceDicByServiceIds(int cityId, List<int> serviceIdList)
+        {
+            if (cityId == 0 || serviceIdList.Count == 0)
+                return new Dictionary<int, SalePriceInfoEntity>();
+            var param = JsonConvert.SerializeObject(new { CityId = cityId, CSIds = string.Join(",", serviceIdList) });
+            return GetReferPriceDic(ReferPriceByCityCS_Api, cityId, param);
+        }
+
+
+
+        private Dictionary<int, SalePriceInfoEntity> GetReferPriceDic(string apiUrl, int cityId, string param)
+        {
+            Dictionary<int, SalePriceInfoEntity> result = new Dictionary<int, SalePriceInfoEntity>();
+            try
+            {
+                WebApiData wabapi = new WebApiData();
+                var jsonResult = wabapi.GetRequestString(string.Format("{0}/{1}/{2}", apiUrl, VendorSalesToken, VendorSalesMD5), "POST", param, null, 1000, "application/json;charset=UTF-8");
+
+                var salePriceList = JsonConvert.DeserializeObject<List<SalePriceInfoEntity>>(jsonResult);
+                if (salePriceList != null)
+                {
+                    foreach (var salePrice in salePriceList)
+                    {
+                        salePrice.CityId = cityId;
+                        result.Add(salePrice.Id, salePrice);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonFunction.WriteLog(string.Format("获取车型价格超时，数据：{0},message:{1},StackTrace:{2}", param, ex.Message, ex.StackTrace));
+                //throw ex;
+            }
+            return result;
+        }
+
+        #endregion
     }
 }

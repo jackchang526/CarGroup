@@ -841,7 +841,7 @@
             <ul class="y2015">
                 <li><a href="#" data-value="不限">不限</a></li>
                 { for(var j = 0 ; j < SubItem.length ; j++){ }
-                <li {=(SubItem[j].toString() ==selSubStopYear||SubItem[j].toString() ==selSubLevel||SubItem[j].toString() ==selSubBodyForm)?"class ='current'":""}><a href="#" data-value="{=SubItem[j].toString().replace('款','')}">{=SubItem[j]}</a></li>
+                <li {=(SubItem[j].toString() ==selSubStopYear||SubItem[j].toString() ==selSubLevel||SubItem[j].toString() ==selSubBodyForm)?"class ='current' ":" "}><a href="#" data-value="{=SubItem[j].toString().replace('款','')}">{=SubItem[j]}</a></li>
                 {}}
             </ul>
         </div>
@@ -966,7 +966,8 @@
     <script type="text/javascript" src="/js/cssummaryv2.js?v=20170303"></script>
     <script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars"></script>
     <script src="http://image.bitautoimg.com/uimg/wap/js/idangerous.swiper-2.0.min.js"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/getareaprice.min.js?v=20171218150"></script>
+    @*<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/getareaprice.min.js?v=20171218150"></script>*@
+    <script type="text/javascript" src="/js/getareaprice.js?v=20170303"></script>
     <script type="text/javascript" src="http://js.bitauto.com/dealer/union/script/ads.js"></script>
 
     <!-- footer begin -->

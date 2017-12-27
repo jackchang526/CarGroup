@@ -209,7 +209,6 @@ var CsSummaryCondition = function () {
                     }
                     resetOptions();
                     //selSubStopYear = '', selSubLevel = '', selSubBodyForm = '';
-
                     _bindLoadMoreEvent(reqStr, $targetDiv);
                 })
             })
@@ -248,11 +247,27 @@ var CsSummaryCondition = function () {
                 //});
                 //二手车统计结束
                 var compareConfig = {
-                    serialid: CarCommonCSID
+                    serialid: CarCommonCSID,
+                    delFunc: function (carId) {
+                        $("a[id^='car-compare-" + carId + "']").html("<span>对比</span>").parent().removeClass("btn-gray");
+                        $("a[id^='car-compare-" + carId + "']").off("click.addCompare").on("click.addCompare", function () {
+                            var carId = $(this).data("id"), carName = $(this).data("name");
+                            WaitCompare.addCompareCar(carId, carName, $(this));
+                        });
+                    },
+                    clearFunc: function () {
+                        //清空对比数据
+                        $("a[id^='car-compare']").off("click.addCompare").html("<span>对比</span>").on("click.addCompare", function () {
+                            var carId = $(this).data("id"), carName = $(this).data("name");
+                            WaitCompare.addCompareCar(carId, carName, $(this));
+                        }).parent().removeClass("btn-gray");
+                    }
                 };                WaitCompare.initCompreData(compareConfig);
                 //_bindJoinDuibiInit();
                 Bglog_InitPostLog();
                 mCsSummaryV2.loadSubsidy(_serialId, citycode);
+                //取区域报价
+                GetCarAreaPriceRange();
             },
             error: function (a, b, c) {
                 console.log("error2");
@@ -316,7 +331,21 @@ var CsSummaryCondition = function () {
 };
 var csCondition = new CsSummaryCondition();
 var compareConfig = {
-    serialid: CarCommonCSID
+    serialid: CarCommonCSID,
+    delFunc: function (carId) {
+        $("a[id^='car-compare-" + carId + "']").html("<span>对比</span>").parent().removeClass("btn-gray");
+        $("a[id^='car-compare-" + carId + "']").off("click.addCompare").on("click.addCompare", function () {
+            var carId = $(this).data("id"), carName = $(this).data("name");
+            WaitCompare.addCompareCar(carId, carName, $(this));
+        });
+    },
+    clearFunc: function () {
+        //清空对比数据
+        $("a[id^='car-compare']").off("click.addCompare").html("<span>对比</span>").on("click.addCompare", function () {
+            var carId = $(this).data("id"), carName = $(this).data("name");
+            WaitCompare.addCompareCar(carId, carName, $(this));
+        }).parent().removeClass("btn-gray");
+    }
 };
 $(function () {
     WaitCompare.initCompreData(compareConfig);
@@ -380,8 +409,6 @@ var tuangouParam = 'mediaid=2&locationid=1&cmdId=' + GlobalSummaryConfig.SerialI
 //行情
 mCsSummaryV2.loadNewsHangqingV2(GlobalSummaryConfig.SerialId, "@(serialEntity.ShowName)", citycode, 4);
 mCsSummaryV2.loadSubsidy(GlobalSummaryConfig.SerialId, citycode);
-//特卖
-getDemandAndJiangJia(GlobalSummaryConfig.SerialId, "@(serialEntity.ShowName)", bit_locationInfo.cityId);
 $(function () {
     // 浏览过的车型
     Bitauto && Bitauto.Login && Bitauto.Login.onComplatedHandlers && Bitauto.Login.onComplatedHandlers.push(function (loginResult) {

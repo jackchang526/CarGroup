@@ -3,8 +3,6 @@
 功能:移动端组件封装
 时间:2014.5.5
 */
-
-/*公共方法*/
 //样式查找
 document.deepCss = function (who, css) {
     if (!who || !who.style) return '';
@@ -16,17 +14,18 @@ document.deepCss = function (who, css) {
     }
     var dv = document.defaultView || window;
     return who.style[sty] ||
-    dv.getComputedStyle(who, "").getPropertyValue(css) || '';
+        dv.getComputedStyle(who, "").getPropertyValue(css) || '';
 };
 
 /*接口默认配置 datatype=0 是在销 ，1 是包含停销*/
 var api = {
+    imgRoot: 'http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_id_100.png',
     'brand': {
         url: 'http://api.car.bitauto.com/CarInfo/GetCarDataJson.ashx?action=master&datatype=0', callName: 'businessBrandCallBack', templteName: '#brandTemplate',
         currentid: ''
     },
     'car': {
-        url: 'http://api.car.bitauto.com/CarInfo/GetCarDataJson.ashx?action=serial&pid={0}&datatype=0', callName: 'businessCarCallBack', templteName: '#carTemplate',
+        url: 'http://api.car.bitauto.com/CarInfo/GetCarDataJson.ashx?v=1&action=serial&pid={0}&datatype=0', callName: 'businessCarCallBack', templteName: '#carTemplate',
         currentid: '',
         clickEnd: null
     },
@@ -291,7 +290,7 @@ storage.prototype.delsession = function (name) {
 $.rotateEnd = function (fn) {
     function toResize() {
         var winW = document.documentElement.clientWidth,
-           winH = document.documentElement.clientHeight;
+            winH = document.documentElement.clientHeight;
         setTimeout(function () { fn && fn(winW > winH ? "horizontal" : "vertical"); }, 200);
     };
     $(window).resize(toResize).trigger('resize');
@@ -482,7 +481,8 @@ var eventNames = ['webkit', 'moz', 'o'];
         $this.rows = 0;
         var site = [], f1 = 0, otop = 0, t = 0;
         var $first = $this.first();
-        $first.on('to', function (event, r) {
+
+        function to(event, r) {
             var offsetY = options.toOffsetY || 0;
             var site = sections.sortValue(function (i, j) {
                 if (this[i].top > this[j].top) {
@@ -498,8 +498,9 @@ var eventNames = ['webkit', 'moz', 'o'];
             $("html,body").animate({
                 scrollTop: pos + offsetY
             }, options.speed);
+        }
+        $first.off().on('to', to);
 
-        })
         var winh = document.body.clientHeight > document.documentElement.clientHeight ? document.documentElement.clientHeight != 0 ? document.documentElement.clientHeight : document.body.clientHeight : document.body.clientHeight,
             scrollh = document.body.scrollHeight > document.documentElement.scrollHeight ? document.documentElement.scrollHeight != 0 ? document.documentElement.scrollHeight : document.body.scrollHeight : document.body.scrollHeight;
 
@@ -616,7 +617,8 @@ var eventNames = ['webkit', 'moz', 'o'];
         var items = this.find(options.items);
         var itemH = items.eq(0).height();
         var $this = this, otop = 0, okey = '', timeout = 0, secs = [];
-        $this.on('compareTop', function (event, ev) {
+
+        function compareTop(event, ev) {
             var isdelay = ev.type != 'touchstart';
             if (!isdelay) {
                 secs.length = 0;
@@ -672,7 +674,9 @@ var eventNames = ['webkit', 'moz', 'o'];
                 okey = key;
             }
             otop = currentTOP;
-        })
+        }
+        $this.off().on('compareTop', compareTop);
+
         options.init && options.init.call($this);
     }
 
@@ -786,7 +790,8 @@ var eventNames = ['webkit', 'moz', 'o'];
                         isopen = true;
                         var $swipeLeft = $leftPopup.find('.swipeLeft');
                         $leftPopup.show();
-                        setTimeout(function () { $swipeLeft.addClass('swipeLeft-block'); }, 200);
+                        setTimeout(function () { $swipeLeft.addClass('swipeLeft-block'); setTimeout(function () { $this.clicked = false; }, 500); }, 200);
+
                         if ($back.length > 0) {
                             $back.parents('body').css('overflow', 'hidden');
                             function closeEnd(ev, params) {
@@ -813,6 +818,7 @@ var eventNames = ['webkit', 'moz', 'o'];
                                 $back.touches({
                                     touchstart: function () {
                                         $back.trigger('close');
+                                        $back.trigger('closeEnd');
                                     }
                                 });
                             }
@@ -834,7 +840,10 @@ var eventNames = ['webkit', 'moz', 'o'];
                 (function ($this) {
                     $this.isclick = true;
                     $this.click(function (ev) {
+                        if ($this.clicked) { ev.preventDefault(); return; }
+                        $this.clicked = true;
                         options.onBeforeScrollStart.call($this, ev);
+
                         options.isclick && ($this.isclick = options.isclick.call($this));
                         if ($this.isclick == false) {
                             return;
@@ -895,7 +904,6 @@ var eventNames = ['webkit', 'moz', 'o'];
             $tag_board.on('selectTag', function (event, idx) {
                 var $current = $(tagli[idx]);
                 if ($temp_tag == $current) return;
-                
                 if ($temp_tag && $temp_tag.length > 0) {
                     $temp_tag.removeClass(options.tag_select);
                 }
@@ -1020,11 +1028,12 @@ var eventNames = ['webkit', 'moz', 'o'];
             url: '',
             templateid: '#modelTemplate',
             jsonpCallback: 'a',
+            paras: null,
             flatFn: function (data) { return data },
             analysis: function (data) {
                 var tp1 = $(options.templateid).html();
                 var template = _.template(tp1);
-                var jb = options.flatFn(data);
+                var jb = options.flatFn(data, options.paras);
                 return template(jb);
             },
             callback: null
@@ -1148,11 +1157,11 @@ var eventNames = ['webkit', 'moz', 'o'];
             //低版本浏览器requestAnimationFrame兼容方法
             window.requestAnimationFrame = (function () {
                 return window.requestAnimationFrame ||
-                        window.webkitRequestAnimationFrame ||
-                        window.mozRequestAnimationFrame ||
-                        function (callback) {
-                            window.setTimeout(callback, 1000 / 60);
-                        };
+                    window.webkitRequestAnimationFrame ||
+                    window.mozRequestAnimationFrame ||
+                    function (callback) {
+                        window.setTimeout(callback, 1000 / 60);
+                    };
             })();
 
             exports.position = function () {
@@ -1294,7 +1303,7 @@ var eventNames = ['webkit', 'moz', 'o'];
         function clickEnd($current) {
             var $model = this;
             $model.addClass('swipeModels-block');
-            options.fnEnd && options.fnEnd.call($model, $current);
+            options.fnEnd && options.fnEnd.call($model);
         }
 
         $model.on('closeWindow', function (ev) {
@@ -1329,7 +1338,7 @@ var eventNames = ['webkit', 'moz', 'o'];
         }
         options = Object.extend(options, setting);
         var $this = this,
-        url = $this.attr('data-url') || options.url;
+            url = $this.attr('data-url') || options.url;
         if (!url) {
             options.end && options.end.call($this);
         } else {
@@ -1405,5 +1414,21 @@ var eventNames = ['webkit', 'moz', 'o'];
             })($(current));
         })
     }
+
+    //滚动条横向定位
+    $.fn.activeScrollBar = function (options) {
+        var setting = {
+            activeName: '.current'
+        }
+        options = Object.extend(options, setting);
+        this.each(function (index, current) {
+            (function ($o) {
+                var $current = $o.find(options.activeName);
+                if ($current == "undefined" || $current.length == 0) return;
+                $o.animate({ scrollLeft: $current[0].offsetLeft - $current[0].offsetWidth }, 30);
+            })($(current));
+        })
+    }
 })(jQuery);
+
 window.addEventListener('touchmove', function () { });

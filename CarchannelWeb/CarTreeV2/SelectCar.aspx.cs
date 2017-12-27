@@ -55,7 +55,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            base.SetPageCache(60 * 4);
+            base.SetPageCache(30);
             //NavbarHtml = base.GetTreeNavBarHtml("search", "chexing", 0);
 
             GetParameters();
@@ -335,7 +335,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
                     string shortName = serialName.Replace("(进口)", "");
                     string serialSpell = serialNode.GetAttribute("AllSpell").ToLower();
                     string serialUrl = "http://car.bitauto.com/" + serialSpell + "/";
-                    string priceRange = new PageBase().GetSerialPriceRangeByID(Convert.ToInt32(serialId));
+                    //改为指导价
+                    string priceRange = new PageBase().GetSerialReferPriceByID(Convert.ToInt32(serialId));
 
                     //htmlCode.Append("<a href=\"" + serialUrl + "\" target=\"_blank\">");
                     //htmlCode.AppendLine("<img src=\"" + imgUrl + "\" alt=\"" + serialName + "\" /></a>");
@@ -355,7 +356,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
                     htmlCode.Append("        <ul class=\"p-list\">");
                     htmlCode.Append("            <li class=\"name\"><a href=\"" + serialUrl + "\" target=\"_blank\">" + shortName + "</a></li>");
                     if (priceRange.Trim().Length == 0)
-                        htmlCode.Append("            <li class=\"price\"><a href=\"" + serialUrl + "\" target=\"_blank\">暂无报价</a></li>");
+                        htmlCode.Append("            <li class=\"price\"><a href=\"" + serialUrl + "\" target=\"_blank\">暂无指导价</a></li>");
                     else
                         htmlCode.Append("            <li class=\"price\"><a href=\"" + serialUrl + "\" target=\"_blank\">" + priceRange + "</a></li>");
                     htmlCode.Append("        </ul>");

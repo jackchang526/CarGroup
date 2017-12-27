@@ -912,7 +912,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             return string.Format("<a href='{0}' target='_blank'>{1}</a> ", editer.UserBlogUrl, editer.UserName);
         }
 
-        protected string VideoIds = "";
+        //protected string VideoIds = "";
         /// <summary>
         ///     获取子品牌视频
         /// </summary>
@@ -943,8 +943,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
 
             foreach (var entity in videoList)
             {
-                VideoIds += entity.VideoId + ",";
-                sb.AppendFormat("<div class=\"img-info-layout img-info-layout-video img-info-layout-14079\" data-id=\"{0}\">", entity.VideoId);
+                //VideoIds += entity.VideoId + ",";
+                sb.AppendFormat("<div class=\"img-info-layout img-info-layout-video img-info-layout-14079\" data-type=\"{1}\" data-id=\"{0}\">", entity.VideoId, entity.Source == 1 ? "vf" : "v");
                 sb.Append("    <div class=\"img\">");
                 sb.AppendFormat(
                     "<a target=\"_blank\" href=\"{0}\"><i class=\"bg-ico-sty play-btn\"></i><img src = \"{1}\"></a>",
@@ -997,7 +997,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 {
                     continue;
                 }
-                var priceRang = GetSerialPriceRangeByID(entity.SerialId);
+                //改为指导价
+                var priceRang = GetSerialReferPriceByID(entity.SerialId);
                 if (entity.SaleState == "待销")
                 {
                     IsExitsUrl = false;
@@ -1006,7 +1007,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 else if (priceRang.Trim().Length == 0)
                 {
                     IsExitsUrl = false;
-                    priceRang = "暂无报价";
+                    priceRang = "暂无指导价";
                 }
                 if (IsExitsUrl)
                 {

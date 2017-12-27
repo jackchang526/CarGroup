@@ -1,0 +1,31 @@
+﻿<div class="adv-carsum-type1" id="advCarsumType1" style="display:none;">
+    <div class="main">
+        <div class="main-img"></div>
+        <div class="qrcode">
+            <p>扫描二维码下载</p>
+        </div>
+        <div class="close"></div>
+    </div>
+</div>
+<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cooikehelper.min.js?v=201612151617"></script>
+<script type="text/javascript">
+    var imgArr = [{"img":"http://image.bitautoimg.com/2016/pc1200/chexingye/adv-20171113-1.png","qr":"http://image.bitautoimg.com/cargroup/car/20171111.png","channelId":"2.21.2206"},
+    {"img":"http://image.bitautoimg.com/2016/pc1200/chexingye/adv-20171113-2.png","qr":"http://image.bitautoimg.com/cargroup/car/20171111.png","channelId":"2.21.2205"},
+    {"img":"http://image.bitautoimg.com/2016/pc1200/chexingye/adv-20171113-3.png","qr":"http://image.bitautoimg.com/cargroup/car/20171111.png","channelId":"2.21.2204"}];
+    //$(function(){
+        var cookierName = "carCssummaryAdCookier";
+        var cookierTime = 1000*2*3600;//2个小时
+        var cookier = CookieHelper.GetCookie(cookierName);
+        if(cookier == null || new Date().getTime() - parseInt(cookier) > cookierTime){
+            var random = Math.floor(Math.random()*10000)%imgArr.length;
+            $("#advCarsumType1 .main-img").html("<img class=\"img\" src=\""+imgArr[random].img+"\" />");
+            $("#advCarsumType1 .qrcode p").before("<img class=\"qr-img\" src=\""+imgArr[random].qr+"\">");
+            BglogPostLog(imgArr[random].channelId,$("#advCarsumType1"));
+            $("#advCarsumType1").show();
+        }
+        $("#advCarsumType1 .close").click(function(){
+            $("#advCarsumType1").hide();
+            CookieHelper.SetCookie(cookierName,new Date().getTime());
+        });
+    //});
+</script>

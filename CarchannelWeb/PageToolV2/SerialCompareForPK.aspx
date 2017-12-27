@@ -437,8 +437,8 @@
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/dropdownlistnew.min.js?v=2016113015"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/jquery.autoslider.min.js?v=2016113015"></script>
-
-    <script src="http://image.bitautoimg.com/carchannel/jsnewv2/serialcompareforpk.min.js?v=2016120115" type="text/javascript"></script>
+     <%--<script src="/jsnewv2/serialcompareforpk.js?v=2016120115" type="text/javascript"></script>--%>
+    <script src="http://image.bitautoimg.com/carchannel/jsnewv2/serialcompareforpk.min.js?v=201712110" type="text/javascript"></script>
     <script type="text/javascript">
         (function () {
             //if (window.navigator.userAgent.indexOf("Chrome") !== -1) {

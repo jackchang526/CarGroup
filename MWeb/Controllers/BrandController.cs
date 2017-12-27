@@ -107,12 +107,12 @@ namespace MWeb.Controllers
                 string priceRange = sellState;
                 string serialUrl = "/" + csSpell + "/";
 
-                if (sellState == "在销")                {
-                    
-                    priceRange = pageBase.GetSerialPriceRangeByID(serialId);
+                if (sellState == "在销")
+                {                    
+                    priceRange = pageBase.GetSerialReferPriceByID(serialId);
                     if (priceRange.Trim().Length == 0)
                     {
-                        priceRange = "暂无报价";
+                        priceRange = "暂无指导价";
                         htmlAllnoPriceHtml.AppendFormat(liStr, csSpell, imgUrl, csShowName, priceRange);
                     }
                     else

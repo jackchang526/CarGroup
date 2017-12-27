@@ -82,6 +82,10 @@
     <Reference Include="MongoDB.Driver">
       <HintPath>..\..\..\packages\Mongodb.1.9.2\MongoDB.Driver.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
@@ -104,6 +108,7 @@
     <Compile Include="CompareMethod.cs" />
     <Compile Include="Config\FileToMemcacheConfig.cs" />
     <Compile Include="Cryptography.cs" />
+    <Compile Include="DES.cs" />
     <Compile Include="Enum\CommonEnum.cs" />
     <Compile Include="Extensions\DataReaderExtension.cs" />
     <Compile Include="Extensions\DataRowExtension.cs" />
@@ -139,6 +144,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="TypeParse.cs" />
+    <Compile Include="VersionHelper.cs" />
     <Compile Include="Web References\cn.com.baa.api\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -174,6 +181,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="WebApiData.cs" />
     <Compile Include="WebConfig.cs" />
     <Compile Include="Extensions\XAttributeExtension.cs" />
     <Compile Include="Extensions\XElementExtension.cs" />

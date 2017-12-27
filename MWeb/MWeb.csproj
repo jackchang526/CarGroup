@@ -56,6 +56,9 @@
     <Reference Include="LocalFileReadModule">
       <HintPath>..\..\..\packages\LocalFileReadModule.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\packages\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -248,10 +251,12 @@
     <Content Include="js\csSummaryConditionV2.js" />
     <Content Include="js\csSummaryV2.js" />
     <Content Include="js\csSummaryForFocus.js" />
+    <Content Include="js\getareaprice.js" />
     <Content Include="js\iscroll-infinite.js" />
     <Content Include="js\model.js" />
     <Content Include="js\mpeizhi.js" />
     <Content Include="js\mpeizhiv2.js" />
+    <Content Include="js\paowuxian.js" />
     <Content Include="js\popup.js" />
     <Content Include="js\rightswipe-cityV2.js" />
     <Content Include="js\selectcartoolV2.js" />
@@ -266,6 +271,7 @@
     <Content Include="js\v2\model.js" />
     <Content Include="js\v2\note.js" />
     <Content Include="js\v2\rightswipe.js" />
+    <Content Include="js\v2\swiper-3.3.1.min.js" />
     <Content Include="js\v2\underscore.js" />
     <Content Include="js\waitcompareV2.js" />
     <Content Include="js\yagao.commons.js" />
@@ -287,6 +293,7 @@
     <Content Include="ushtml\0000\myiche2016_cube_pinpaiye-1161.shtml" />
     <Content Include="ushtml\0000\myiche2016_cube_qingjingxuanche-1184.shtml" />
     <Content Include="ushtml\0000\myiche2016_cube_summary-1154.shtml" />
+    <Content Include="ushtml\0000\myiche2016_cube_summaryA-1514.shtml" />
     <Content Include="ushtml\0000\yiche_2016_cube_bozhilv-1390.shtml" />
     <Content Include="ushtml\0000\yiche_2016_cube_peizhiye_part-1261.shtml" />
     <Content Include="ushtml\0000\yidongzhan_chedai-644.shtml" />
@@ -403,6 +410,8 @@
     <Content Include="config\ParameterConfigurationNewV2.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="html\selectMasterBrandTemplate.cshtml" />
+    <Content Include="html\DuibiLayerTemplate.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Calc\CalcAutoCash.cshtml" />
     <Content Include="Views\Calc\CalcAutoCashDetail.cshtml" />

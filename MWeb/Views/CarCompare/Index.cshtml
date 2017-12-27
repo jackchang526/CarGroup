@@ -283,7 +283,7 @@
         })
     </script>
 
-
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/getareaprice.min.js?v=20171218150"></script>
     @*<script type="text/javascript" src="/js/v2/iscroll.js"></script>
     <script type="text/javascript" src="/js/v2/underscore.js"></script>
     <script type="text/javascript" src="/js/v2/model.js"></script>
@@ -291,7 +291,7 @@
     <script type="text/javascript" src="/js/v2/note.js"></script>
     <script type="text/javascript" src="/js/v2/brand.js"></script>
     <script type="text/javascript" src="/js/waitcompareV2.js"></script>*@
-    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.js,carchannel/wirelessjsv2/v2/underscore.js,carchannel/wirelessjsv2/v2/model.js,carchannel/wirelessjsv2/v2/rightswipe.js,carchannel/wirelessjsv2/v2/note.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.min.js?v=201707031121"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.js,carchannel/wirelessjsv2/v2/underscore.js,carchannel/wirelessjsv2/v2/model.js,carchannel/wirelessjsv2/v2/rightswipe.js,carchannel/wirelessjsv2/v2/note.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.min.js?v=201712121500"></script>
     <script type="text/javascript">
         $(function () {
             var $body = $('body');
@@ -334,47 +334,9 @@
         };
         $(function(){
             WaitCompare.initCompreData(compareConfig);
-        });
+        });      
     </script>
 
-    <script type="text/javascript">
-        var citySpell = "beijing",cityId=201;
-        if (typeof bit_locationInfo != 'undefined' && bit_locationInfo != null && typeof bit_locationInfo.engName != "undefined")
-        { citySpell = bit_locationInfo.engName; cityId = bit_locationInfo.cityId;}
-        function getDemand(serialId, serialSpell, cityId) {
-            $.ajax({ url: 'http://api.car.bitauto.com/mai/GetSerialDemand.ashx?serialId=' + serialId + '&cityid=' + cityId
-			, async: false, cache: true, dataType: "jsonp", jsonpCallback: "newDemandCallback", success:
-			function (data) {
-			    var hasDemand = false;
-			    if (typeof data != 'undefined' && data != null
-				&& typeof data.DealerCount != 'undefined' && data.DealerCount != null && data.DealerCount > 0)
-			    { hasDemand = true; }
-			    if (hasDemand) {
-			        var cityName = "北京";
-			        if (typeof cityIDMapName != 'undefined' && cityIDMapName != null && typeof cityIDMapName[cityId] != "undefined")
-			        { cityName = cityIDMapName[cityId]; }
-			        var citySpell = "beijing";
-			        if (typeof cityIDMapSpell != 'undefined' && cityIDMapSpell != null && typeof cityIDMapSpell[cityId] != "undefined")
-			        { citySpell = cityIDMapSpell[cityId]; }
-
-			        //添加车型特卖
-			        var carId =@(Model.Id);
-			        if (typeof data.CarList != 'undefined' && data.CarList != null) {
-			            $.each(data.CarList, function (i, n) {
-			                if ( n.CarID ==carId)
-			                {
-			                    $("#liDemand").html("<a href=\"http://mai.m.yiche.com/detail-@(Model.SerialId).html?leads_source=21102&city=" + citySpell + "#@(Model.Id)\">特卖</a>");
-			                }
-			            });
-			        }
-
-			    }
-			}
-            });
-        }
-        getDemand(@(Model.SerialId),'@(Model.Serial.AllSpell)',bit_locationInfo.cityId);
-  
-    </script>
     <script type="text/javascript">
         var  zamCityId= (typeof bit_locationInfo !="undefined")?bit_locationInfo.cityId:"201",
 			modelStr = '@(Model.SerialId)-' + (zamCityId.length >= 4 ? zamCityId.substring(0, 2) : zamCityId.substring(0, 1)) + '-' + zamCityId + '';
@@ -382,6 +344,7 @@
             modelId:modelStr,
             carId:@Model.Id
             };
+        GetStyleAreaPriceRange( @Model.Id, true);
     </script>
     <script type="text/javascript">
         var _zampq = [];

@@ -29,6 +29,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -61,14 +62,14 @@
     </Reference>
     <Reference Include="BitAuto.CarUtils, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Dll\BitAuto.CarUtils.dll</HintPath>
+      <HintPath>..\..\..\packages\BitAuto.CarUtils.dll</HintPath>
     </Reference>
     <Reference Include="BitAuto.Controls">
-      <HintPath>..\..\..\..\..\P公用平台\Release\BitAuto.Controls.dll</HintPath>
+      <HintPath>..\..\..\packages\BitAuto.Controls.dll</HintPath>
     </Reference>
     <Reference Include="BitAuto.Utils, Version=2.0.7.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\P公用平台\Release\BitAuto.Utils.dll</HintPath>
+      <HintPath>..\..\..\packages\BitAuto.Utils.dll</HintPath>
     </Reference>
     <Reference Include="BitAuto.Web">
       <HintPath>..\DLL\BitAuto.Web.dll</HintPath>
@@ -751,8 +752,10 @@
     <Content Include="include\pd\2014\suv\00001\201609_SUV_zsk_Manual.shtml" />
     <Content Include="include\pd\2014\suv\00001\201501_suv_zsk_Manual.shtml" />
     <Content Include="include\pd\2016\00001\20170118_zongshu_likewhatcar_Manual.shtml" />
+    <Content Include="include\pd\2016\App\00001\ad_zongshu_difu_Manual.shtml" />
     <Content Include="include\pd\2016\car\00001\20161009_cxzs_luntan_Manual.shtml" />
     <Content Include="include\pd\2016\car\00001\20161110_zongshu_likewhatcar_Manual.shtml" />
+    <Content Include="include\pd\2016\car\00001\ad_difu_Manual.shtml" />
     <Content Include="include\pd\2016\common\00001\201612_ej_nav_common_gb2312_Manual.shtml" />
     <Content Include="include\pd\2016\common\00001\201611_common_search_Manual.shtml" />
     <Content Include="include\pd\2016\common\00001\201607_common_search_Manual.shtml" />
@@ -1021,6 +1024,7 @@
     <Content Include="jsnewV2\draggable.js" />
     <Content Include="jsnewV2\dropdownlistnew.js" />
     <Content Include="jsnewV2\excanvas.js" />
+    <Content Include="jsnewV2\getareaprice.js" />
     <Content Include="jsnewV2\jquery.autoslider.js" />
     <Content Include="jsnewV2\jquery.knob.js" />
     <Content Include="jsnewV2\jquery.lazyload.min.js" />
@@ -1034,6 +1038,7 @@
     <Content Include="jsnewV2\photoCompare.js" />
     <Content Include="jsnewV2\pingceyouhui.js" />
     <Content Include="jsnewV2\rightbarcarcompare.js" />
+    <Content Include="jsnewV2\selectcarcommon.js" />
     <Content Include="jsnewV2\serialcompareforpk.js" />
     <Content Include="jsnewV2\serialexternalcommon.js" />
     <Content Include="jsnewV2\serialtoseead.js" />

@@ -108,7 +108,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             GetCNCAPAndENCAPData();//碰撞数据
             MakeRelatedNewHtml();//相关新闻
             GetBaoZhiLv();//5年保值率
-            GetVrUrl();//Vr url
+            //GetVrUrl();//Vr url
             //InitNextSeeNew();//接下来要看 评测和导购
             ucNextToSee.serialId = serialId;
         }
@@ -932,8 +932,9 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 carListHtml.Add("    <th>变速箱</th>");
                 carListHtml.Add("    <th class=\"txt-right txt-right-padding\">" + (waitStateFlag ? "预售价" : "指导价") + "</th>");
                 carListHtml.Add("    <th class=\"txt-right\">参考最低价</th>");
-                carListHtml.Add("    <th><div class=\"doubt\" onmouseover=\"javascript:$(this).children('.prompt-layer').show();return false;\" onmouseout=\"javascript:$(this).children('.prompt-layer').hide();return false;\">");
-                carListHtml.Add("    <div class=\"prompt-layer\"  style=\"display:none;\">全国参考最低价</div></div></th>");
+                carListHtml.Add("    <th></th>");
+                //carListHtml.Add("    <th><div class=\"doubt\" onmouseover=\"javascript:$(this).children('.prompt-layer').show();return false;\" onmouseout=\"javascript:$(this).children('.prompt-layer').hide();return false;\">");
+                //carListHtml.Add("    <div class=\"prompt-layer\"  style=\"display:none;\">全国参考最低价</div></div></th>");
                 carListHtml.Add("</tr>");
 
                 groupIndex++;
@@ -951,7 +952,11 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                         stopPrd = " <span class=\"color-block3\">停产</span>";
 
                     //新车上市 即将上市 状态
-                    string marketflag = GetMarketFlag(entity);
+                    string marketflag = _serialBLL.GetCarMarketText(entity.CarID, entity.SaleState, entity.MarketDateTime, entity.ReferPrice);//GetMarketFlag(entity);
+                    if (!string.IsNullOrEmpty(marketflag))
+                    {
+                        marketflag = string.Format("<a target=\"_blank\" class=\"color-block\">{0}</a>", marketflag);
+                    }
                     Dictionary<int, string> dictCarParams = _carBLL.GetCarAllParamByCarID(entity.CarID);
                     //add by 2014.05.04 获取电动车参数
                     if (isElectrombile)
@@ -1050,9 +1055,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                     carListHtml.Add("    </div>");
                     carListHtml.Add("</td>");
                     // 档位个数
-                    string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" && dictCarParams[724] != "待查") ? dictCarParams[724] + "挡" : "";
+                    //string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" && dictCarParams[724] != "待查") ? dictCarParams[724] + "挡" : "";
+                    string transmissionType = _carBLL.GetCarTransmissionType(dictCarParams.ContainsKey(724) ? dictCarParams[724] : string.Empty, entity.TransmissionType);
 
-                    carListHtml.Add(string.Format("<td>{0}</td>", string.IsNullOrWhiteSpace(forwardGearNum + entity.TransmissionType) ? "暂无" : forwardGearNum + entity.TransmissionType));
+                    carListHtml.Add(string.Format("<td>{0}</td>", transmissionType));
                     carListHtml.Add(string.Format("<td class=\"txt-right overflow-visible\"><span>{0}</span><a carid=\"{1}\" data-channelid=\"2.21.852\" class=\"car-comparetable-ico-cal\" rel=\"nofollow\" href=\"/gouchejisuanqi/?carid={1}\" target=\"_blank\"{2}></a></td>"
                         , string.IsNullOrEmpty(entity.ReferPrice) ? "暂无" : entity.ReferPrice + "万"
                         , entity.CarID
@@ -1083,7 +1089,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             //add by 2014.05.04 电动车 参数
             if (maxChargeTime > 0)
             {
-                chargeTimeRange = minChargeTime == maxChargeTime ? string.Format("{0}分钟", minChargeTime) : string.Format("{0}-{1}分钟", minChargeTime, maxChargeTime);
+                chargeTimeRange = minChargeTime == maxChargeTime ? string.Format("{0}小时", minChargeTime) : string.Format("{0}-{1}小时", minChargeTime, maxChargeTime);
             }
             //if (maxFastChargeTime > 0)
             //{
@@ -1112,6 +1118,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             #region 焦点图 大图 颜色
             //子品牌焦点图
             List<SerialFocusImage> imgList = _serialBLL.GetSerialFocusImageList(serialId);
+            //子品牌幻灯页
+            List<SerialFocusImage> imgSlideList = _serialBLL.GetSerialSlideImageList(serialId);
+            List<SerialFocusImage> sourceList = new List<SerialFocusImage>();
+            int resultCount = 0;
             List<SerialColorEntity> serialColorList;
             if (serialInfo.CsSaleState == "停销")
             {
@@ -1128,16 +1138,41 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             List<string> smallImages = new List<string>();
             sb.Append("<div class=\"img-box focus-img-pos\" id=\"focus_images\" data-channelid=\"2.21.794\">");
 
-            List<string> bigImage = new List<string>();
-            //大图 默认第一张 焦点图第一张 没有焦点图 白底图
+            List<string> bigImage = new List<string>();           
             int picCount = 0;
             if (dsCsPic != null && dsCsPic.Tables.Count > 0 && dsCsPic.Tables.Contains("A"))
             {
                 picCount = dsCsPic.Tables["A"].AsEnumerable().Sum(row => ConvertHelper.GetInteger(row["N"]));
             }
-            if (imgList.Count > 0)
+            #region 初始化数据源
+            foreach (SerialFocusImage img in imgList)
             {
-                SerialFocusImage csImg = imgList[0];
+                sourceList.Add(img);
+            }
+            //焦点图不足，补幻灯页
+            foreach (SerialFocusImage imgS in imgSlideList)
+            {    
+                if(sourceList.Count > 4)
+                {
+                    break;
+                }
+                //焦点图片排重
+                SerialFocusImage focusImage = imgList.Find(p => p.ImageId == imgS.ImageId);
+                if (focusImage != null)
+                    continue;
+                sourceList.Add(imgS);
+            }
+            //取图解第一张
+            XmlNode firstTujieNode = this.GetFirstTujieImage(dsCsPic);
+            List<int> categoryIdList = new List<int>() { 30, 100, 101 };
+            List<VideoEntity> videoList = VideoBll.GetVideoBySerialIdAndCategoryId(serialId, categoryIdList, 1);
+            #endregion
+            //大图 默认第一张 焦点图第一张 没有焦点图 幻灯图
+            bool showTujie = false;
+            bool showShipin = false;
+            if (sourceList.Count > 0)
+            {
+                SerialFocusImage csImg = sourceList[0];
                 string firstFocusImage = csImg.ImageUrl;
                 if (csImg.ImageId > 0)
                 {
@@ -1153,18 +1188,41 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                                     picCount,
                                     "http://photo.bitauto.com/serial/" + serialId)
                                     : string.Empty));
+                resultCount++;
             }
             else
             {
-                //白底封面图
-                string serialWhiteImageUrl = Car_SerialBll.GetSerialImageUrl(serialId, "6");
-                bigImage.Insert(0, string.Format("{2}<div id=\"focus_image_first\" style=\"display:block\"><a href=\"http://photo.bitauto.com/serial/{1}/\" target=\"_blank\"><img src=\"{0}\" alt=\"\" /></a></div>",
-                    serialWhiteImageUrl,
-                    serialId,
-                    picCount > 0 ? (string.Format("<a target=\"_blank\" href=\"{1}\" class=\"img-link\">共{0}张图片&gt;&gt;</a>",
-                            picCount,
-                            "http://photo.bitauto.com/serial/" + serialId))
-                            : string.Empty));
+                //大图无图片 补图解 无图解 补视频
+                if (firstTujieNode != null)
+                {
+                    bigImage.Insert(0, string.Format("{2}<div id=\"focus_image_first\" style=\"display:block\"><a href=\"{0}\" target =\"_blank\"><img src=\"{1}\" alt=\"\" /></a></div>",
+                        firstTujieNode.Attributes["Link"].Value,
+                        firstTujieNode.Attributes["ImageUrl"].Value,
+                        picCount > 0 ? (string.Format("<a target=\"_blank\" href=\"{1}\" class=\"img-link\">共{0}张图片&gt;&gt;</a>",
+                                picCount,
+                                "http://photo.bitauto.com/serial/" + serialId))
+                                : string.Empty));
+                    showTujie = true;
+                    resultCount++;
+                }
+                else
+                {
+                    if (videoList.Count > 0)
+                    {
+                        string imgUrl = videoList[0].ImageLink;
+                        imgUrl = imgUrl.Replace("/bitauto/", "/newsimg-150-w0-1-q50/bitauto/");
+                        imgUrl = imgUrl.Replace("/Video/", "/newsimg-150-w0-1-q50/Video/");
+                        bigImage.Insert(0, string.Format("{2}<div id=\"focus_image_first\" style=\"display:block\"><a href=\"{0}\" target =\"_blank\"><img src=\"{1}\" alt=\"\" /></a></div>",
+                       videoList[0].ShowPlayUrl,
+                       imgUrl,
+                       picCount > 0 ? (string.Format("<a target=\"_blank\" href=\"{1}\" class=\"img-link\">共{0}张图片&gt;&gt;</a>",
+                               picCount,
+                               "http://photo.bitauto.com/serial/" + serialId))
+                               : string.Empty));
+                        showShipin = true;
+                        resultCount++;
+                    }
+                }
             }
             if (colorList.Count > 0)
             {
@@ -1220,95 +1278,57 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
 
             #endregion
             sb.Append("<div class=\"row img-list\">");
-            #region 焦点图片 下面 前2张 小图
-            for (int i = imgList.Count - 1; i >= 1; i--)
+           
+            #region 焦点图片 下面3张小图 ;第二张有图解展示图解，第三张有视频展示视频
+            bool hasTujie = false;
+            for (int i = 1; i < 4; i++)
             {
+                int channelId = 794 + resultCount;
                 //第二张图 有图解显示图解
-                if (i == 1 && true)
-                {
-                    //取图解第一张
-                    XmlNode firstTujieNode = this.GetFirstTujieImage(dsCsPic);
+                if (i == 2 && showTujie == false)
+                {                  
                     if (firstTujieNode != null)
                     {
                         string groupName = firstTujieNode.Attributes["GroupName"].Value;
-                        sb.AppendFormat("<div data-channelid=\"2.21.796\" class=\"img-link col-auto\"><a href=\"{0}\" target=\"_blank\">{3}<img src=\"{1}\" title=\"{2}\" alt=\"{2}\" width=\"140\" height=\"93\" /></a></div>",
+                        sb.AppendFormat("<div data-channelid=\"2.21.{4}\" class=\"img-link col-auto\"><a href=\"{0}\" target=\"_blank\">{3}<img src=\"{1}\" title=\"{2}\" alt=\"{2}\" width=\"140\" height=\"93\" /></a></div>",
                             firstTujieNode.Attributes["Link"].Value,
                              firstTujieNode.Attributes["ImageUrl"].Value,
                             firstTujieNode.Attributes["ImageName"].Value,
-                            string.IsNullOrEmpty(groupName) ? string.Empty : "<i>" + groupName + "</i>");
+                            string.IsNullOrEmpty(groupName) ? string.Empty : "<i>" + groupName + "</i>",
+                            channelId);
+                        hasTujie = true;
+                        resultCount++;
                         continue;
                     }
                 }
-                SerialFocusImage csImg = imgList[i];
-                string smallImgUrl = csImg.ImageUrl;
-                if (csImg.ImageId > 0)
+                //第三张图 有视频展示视频
+                if (i == 3 && videoList.Count > 0 && showShipin == false)
                 {
-                    smallImgUrl = String.Format(smallImgUrl, 4);
+                    string imgUrl = videoList[0].ImageLink;
+                    imgUrl = imgUrl.Replace("/bitauto/", "/newsimg-150-w0-1-q50/bitauto/");
+                    imgUrl = imgUrl.Replace("/Video/", "/newsimg-150-w0-1-q50/Video/");
+                    sb.AppendFormat("<div data-channelid=\"2.21.{3}\" class=\"img-link img-current col-auto\"><a href=\"{0}\" target=\"_blank\"><i>视频</i><em></em><img src=\"{1}\" title=\"{2}\" alt=\"{2}\" width=\"140\" height=\"93\" /></a></div>",
+                        videoList[0].ShowPlayUrl, imgUrl, videoList[0].ShortTitle,channelId);
+                    resultCount++;
+                    continue;
                 }
-                sb.AppendFormat("<div data-channelid=\"2.21.795\" class=\"img-link col-auto\"><a href=\"{0}\" target=\"_blank\">{3}<img src=\"{1}\" title=\"{2}\" alt=\"{2}\" width=\"140\" height=\"93\" /></a></div>",
-                    csImg.TargetUrl,
-                    smallImgUrl,
-                    csImg.ImageName,
-                    string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<i>" + csImg.GroupName + "</i>");
-            }
-            #endregion
-            #region 最后一张图 视频 及补图逻辑
-            List<int> categoryIdList = new List<int>() { 30, 100, 101 };
-            List<VideoEntity> videoList = VideoBll.GetVideoBySerialIdAndCategoryId(serialId, categoryIdList, 1);
-            if (videoList.Count > 0)
-            {
-                string imgUrl = videoList[0].ImageLink;
-                imgUrl = imgUrl.Replace("/bitauto/", "/newsimg-150-w0-1-q50/bitauto/");
-                imgUrl = imgUrl.Replace("/Video/", "/newsimg-150-w0-1-q50/Video/");
-                sb.AppendFormat("<div data-channelid=\"2.21.797\" class=\"img-link img-current col-auto\"><a href=\"{0}\" target=\"_blank\"><i>视频</i><em></em><img src=\"{1}\" title=\"{2}\" alt=\"{2}\" width=\"140\" height=\"93\" /></a></div>",
-                    videoList[0].ShowPlayUrl, imgUrl, videoList[0].ShortTitle);
-            }
-            else
-            {
-                #region 补空间第一张
-                if (dsCsPic != null && dsCsPic.Tables.Count > 0 && dsCsPic.Tables.Contains("A"))
+                if (sourceList.Count > i || (hasTujie && sourceList.Count == 3))
                 {
-                    if (dsCsPic.Tables.Contains("C") && dsCsPic.Tables["C"].Rows.Count > 0)
-                    {
-                        //取空间图片第一张图片
-                        int speceImageCount = 0;
-                        foreach (DataRow row in dsCsPic.Tables["C"].Select("P='8'"))//空间
-                        {
-                            int imgId = row["I"] == DBNull.Value ? 0 : Convert.ToInt32(row["I"]);
-                            string imgUrl = row["U"] == DBNull.Value ? "" : Convert.ToString(row["U"]);
-                            if (imgId == 0 || imgUrl.Length == 0)
-                                continue;
-                            speceImageCount++;
-                            imgUrl = CommonFunction.GetPublishHashImgUrl(4, imgUrl, imgId);
-                            string picName = Convert.ToString(row["D"]);
-                            string picUlr = "http://photo.bitauto.com/picture/" + serialId + "/" + imgId + "/";
-                            sb.AppendFormat("<div data-channelid=\"2.21.797\" class=\"img-link img-current col-auto\"><a href=\"{0}\" target=\"_blank\"><i>{2}</i><img src=\"{1}\" title=\"{2}\" alt=\"{2}\" width=\"140\" height=\"93\" /></a></div>", picUlr, imgUrl, "空间");
-                            break;
-                        }
-                        //空间第一张图片没有，用其他图片补一张且与焦点图片不重复
-                        if (speceImageCount <= 0)
-                        {
-                            foreach (DataRow row in dsCsPic.Tables["C"].Rows)//空间
-                            {
-                                int imgId = row["I"] == DBNull.Value ? 0 : Convert.ToInt32(row["I"]);
-                                string imgUrl = row["U"] == DBNull.Value ? "" : Convert.ToString(row["U"]);
-                                if (imgId == 0 || imgUrl.Length == 0)
-                                    continue;
-                                //焦点图片排重
-                                SerialFocusImage focusImage = imgList.Find(p => p.ImageId == imgId);
-                                if (focusImage != null)
-                                    continue;
-                                imgUrl = CommonFunction.GetPublishHashImgUrl(4, imgUrl, imgId);
 
-                                string picName = Convert.ToString(row["D"]);
-                                string picUlr = "http://photo.bitauto.com/picture/" + serialId + "/" + imgId + "/";
-                                sb.AppendFormat("<div data-channelid=\"2.21.797\" class=\"img-link img-current col-auto\"><a href=\"{0}\" target=\"_blank\"><img src=\"{1}\" title=\"{2}\" alt=\"{2}\" width=\"140\" height=\"93\" /></a></div>", picUlr, imgUrl, serialShowName + "图片");
-                                break;
-                            }
-                        }
+                    SerialFocusImage csImg = hasTujie == true ? sourceList[i - 1] : sourceList[i];
+                    string smallImgUrl = csImg.ImageUrl;
+                    if (csImg.ImageId > 0)
+                    {
+                        smallImgUrl = String.Format(smallImgUrl, 4);
                     }
+                    sb.AppendFormat("<div data-channelid=\"2.21.{4}\" class=\"img-link col-auto\"><a href=\"{0}\" target=\"_blank\">{3}<img src=\"{1}\" title=\"{2}\" alt=\"{2}\" width=\"140\" height=\"93\" /></a></div>",
+                        csImg.TargetUrl,
+                        smallImgUrl,
+                        csImg.ImageName,
+                        string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<i>" + csImg.GroupName + "</i>",
+                        channelId);
+                    resultCount++;
                 }
-                #endregion
             }
             #endregion
             sb.Append("</div>");
@@ -1541,7 +1561,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 Response.Redirect("/404error.aspx");
             }
         }
-
+        /*
         private string GetMarketFlag(CarInfoForSerialSummaryEntity entity)
         {
             string marketflag = "";
@@ -1597,6 +1617,6 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             return days;
         }
 
-
+    */
     }
 }

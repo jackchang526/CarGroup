@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SuperSelectCarToolV2.aspx.cs" Inherits="BitAuto.CarChannel.CarchannelWeb.PageToolV2.SuperSelectCarToolV2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SuperSelectCarTool.aspx.cs" Inherits="BitAuto.CarChannel.CarchannelWeb.PageToolV2.SuperSelectCarTool" %>
 
 <% Response.ContentType = "text/html"; %>
 <!DOCTYPE html>
@@ -508,6 +508,11 @@
                                     <input type="checkbox" id="more_107" />化油器
                                 </label>
                             </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" id="more_301" />混合喷射
+                                </label>
+                            </li>
                         </ul>
                     </dd>
                 </dl>
@@ -731,9 +736,14 @@
                                     <input type="checkbox" id="more_145" />多连杆式独立悬架
                                 </label>
                             </li>
-                            <li>
+                           <%-- <li>
                                 <label>
                                     <input type="checkbox" id="more_146" />麦弗逊独立悬架
+                                </label>
+                            </li>--%>
+                            <li>
+                                <label>
+                                    <input type="checkbox" id="more_300" />整体桥式非独立悬架
                                 </label>
                             </li>
                         </ul>
@@ -816,7 +826,7 @@
                     </dd>
                 </dl>
                 <dl>
-                    <dt>差速器/差速锁</dt>
+                    <dt>限滑差速器/差速锁</dt>
                     <dd>
                         <ul class="tj_list">
                             <li>
@@ -957,11 +967,11 @@
                                     <input type="checkbox" id="more_182" />定速巡航
                                 </label>
                             </li>
-                            <li>
+                            <%--<li>
                                 <label>
                                     <input type="checkbox" id="more_183" />ACC自适应巡航
                                 </label>
-                            </li>
+                            </li>--%>
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_184" />
@@ -1037,11 +1047,11 @@
                                     <input type="checkbox" id="more_196" />车后倒车雷达
                                 </label>
                             </li>
-                            <li>
+                           <%-- <li>
                                 <label>
                                     <input type="checkbox" id="more_197" />倒车影像
                                 </label>
-                            </li>
+                            </li>--%>
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_198" />360全景影像
@@ -1285,7 +1295,7 @@
                             </li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_239" />电动上下左右调整
+                                    <input type="checkbox" id="more_239" />电动上下前后
                                 </label>
                             </li>
                             <li>
@@ -1384,24 +1394,24 @@
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_257" />电动调节</label></li>
+                            <%--<li>
+                                <label>
+                                    <input type="checkbox" id="more_258" />记忆</label></li>--%>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_258" />记忆</label></li>
+                                    <input type="checkbox" id="more_259" />靠背调节</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_259" />靠背</label></li>
-                            <li>
-                                <label>
-                                    <input type="checkbox" id="more_260" />高低</label></li>
+                                    <input type="checkbox" id="more_260" />高低调节</label></li>
                              <li>
                                 <label>
-                                    <input type="checkbox" id="more_261" />腰部</label></li>
+                                    <input type="checkbox" id="more_261" />腰部调节</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_262" />肩部</label></li>
+                                    <input type="checkbox" id="more_262" />肩部调节</label></li>
                              <li>
                                 <label>
-                                    <input type="checkbox" id="more_263" />腿托</label></li>
+                                    <input type="checkbox" id="more_263" />腿托调节</label></li>
                         </ul>
                     </dd>
                 </dl>
@@ -1412,24 +1422,24 @@
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_264" />电动调节</label></li>
+                           <%-- <li>
+                                <label>
+                                    <input type="checkbox" id="more_265" />记忆</label></li>--%>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_265" />记忆</label></li>
-                            <li>
-                                <label>
-                                    <input type="checkbox" id="more_266" />靠背</label></li>
+                                    <input type="checkbox" id="more_266" />靠背调节</label></li>
                              <li>
                                 <label>
-                                    <input type="checkbox" id="more_267" />高低</label></li>
+                                    <input type="checkbox" id="more_267" />高低调节</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_268" />腰部</label></li>
+                                    <input type="checkbox" id="more_268" />腰部调节</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_269" />肩部</label></li>
+                                    <input type="checkbox" id="more_269" />肩部调节</label></li>
                              <li>
                                 <label>
-                                    <input type="checkbox" id="more_270" />腿托</label></li>
+                                    <input type="checkbox" id="more_270" />腿托调节</label></li>
                         </ul>
                     </dd>
                 </dl>
@@ -1510,10 +1520,10 @@
                         <ul class="tj_list">
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_291" />CARPLAY</label></li>
+                                    <input type="checkbox" id="more_291" />Carplay</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_292" />ANDROID</label></li>
+                                    <input type="checkbox" id="more_292" />Android</label></li>
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_293" />手机无线充电</label></li>
@@ -1522,7 +1532,7 @@
                                     <input type="checkbox" id="more_294" />蓝牙</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_295" />WIFI</label></li>
+                                    <input type="checkbox" id="more_295" />Wifi</label></li>
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_296" />220V电源</label></li>
@@ -1582,11 +1592,15 @@
         </div>
     </div>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-
+    <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
     <%--   <script type="text/javascript" src="/jsnewV2/jquery.pagination.js"></script>--%>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/jquery.pagination.min.js?v=20161215"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/superselectcartoolv2.min.js?v=20170329"></script>
-    <%--<script type="text/javascript" src="/jsnewV2/superselectcartoolv2.js"></script>--%>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/selectcarcommon.min.js?d=201711131107"></script>
+    <%--<script type="text/javascript" src="/jsnewV2/selectcarcommon.js"></script>--%>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712110"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/superselectcartoolv2.min.js?v=201712110"></script>
+  <%--  <script type="text/javascript" src="/jsnewV2/getareaprice.js?v=20170111243"></script>
+    <script type="text/javascript" src="/jsnewV2/superselectcartoolv2.js"></script>--%>
     <script type="text/javascript">
         SuperSelectCarTool.Parameters = <%=configParaHtml%>;
         SuperSelectCarTool.initPageCondition();

@@ -14,7 +14,7 @@ namespace BitAuto.CarChannel.Model.Assessment
     public class AssessmentEntity
     {
         //public ObjectId _id { get; set; }
-        
+
         /// <summary>
         /// 创建时间
         /// </summary>

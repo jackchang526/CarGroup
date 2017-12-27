@@ -32,6 +32,19 @@
             $(".op-nav").hide();
             $("div[id^='app_download_']").hide();
             $("#app_yc_dwonload").hide();
+        } else if(typeof(WtParam) != "undefined" && WtParam == "mxmacg_qt") {
+            // add by hepw 20171123 for 小米合作 
+            // 1. 顶部悬浮
+            $("div[id^='app_download_']").hide();
+            $("#app_yc_dwonload").hide();
+            // 2. 公共头
+            $(".op-nav").hide();
+            // 颜色修改
+            var link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.type = "text/css";
+            link.href = "http://image.bitautoimg.com/uimg/css/00053/myiche2015_jsq_mi-20171127173450-1505.css";
+            document.getElementsByTagName("head")[0].appendChild(link);
         }
     </script>
 
@@ -287,11 +300,30 @@
                 $(".footer15").hide();
                 $("div[id^='app_download_']").hide();
                 $("#app_yc_dwonload").hide();
+            }else if(typeof(WtParam) != "undefined" && WtParam == "mxmacg_qt") {
+                // add by hepw 20171123 for 小米合作 
+                // 1. 顶部悬浮
+                $("div[id^='app_download_']").hide();
+                $("#app_yc_dwonload").hide();
+                // 2. 公共头
+                $(".op-nav").hide();
+                // 3. 公共底
+                $(".footer15").hide(); 
+                // 6. 车险计算通栏
+                $(".jsq-dk-jiange").hide();
             }
         </script>
         <div class="float-r-box">
             <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
         </div>
+        <script type="text/javascript">
+            if (typeof (WtParam) != "undefined" && WtParam == "mxmacg_qt") {
+                // add by hepw 20171123 for 小米合作
+                // 有奖调研
+                $(".float-r-box").hide();
+                $("#ycfd").hide();
+            }
+        </script> 
         <!--footer end-->
     </div>
     <div id="master_container" data-url="/html/selectCarTemplate.htm?v=20151207" class="brandlayer">
@@ -911,13 +943,14 @@
 
         calcInsuranceAll();
     </script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/jquery.lazyload.min.js"></script>
     @*<script src="/js/v2/iscroll.js?v=2015112415"></script>
     <script src="/js/v2/underscore.js?v=2015112415"></script>
     <script src="/js/v2/model.js?v=2015112415"></script>
     <script src="/js/v2/note.js?v=2015112415"></script>
     <script src="/js/v2/rightswipe.js?v=2015112415"></script>
     <script src="/js/v2/brand.js?v=2015112415"></script>*@
-    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js?v=20170517"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js?v=201711100907"></script>
     <script type="text/javascript">
         var arrMarkSerial = [], saleYearCount = 0;  //非停销年款
         $(function () {
@@ -1014,7 +1047,7 @@
                             }
                             else if (idx == 1) {    //按品牌查找
                                 //初始化品牌
-                                $body.trigger('brandinit');
+                                $body.trigger('brandinit', { init: function () { $("span.brand-logo>img").lazyload({ effect: "fadeIn", threshold: 50 }); } });
                                 //车款点击回调事件
                                 api.model.clickEnd = function(paras) {
                                     api.brand.currentid = paras.masterid;
@@ -1037,6 +1070,7 @@
                     $model.find('.btn-return').click(function() {
                         $model.trigger('close');
                     });
+
                 }
             });
         });

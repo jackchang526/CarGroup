@@ -18,11 +18,13 @@ namespace MWeb.Controllers
         // GET: /SelectBrand/
 		private Car_BrandBll carBrandBll = null;
 		private PageBase pageBase = null;
+        private Car_SerialBll carSerialBll = null;
 		private bool isValidMasterBrand = true;
 
 		public SelectBrandController()
 		{
 			carBrandBll = new Car_BrandBll();
+            carSerialBll = new Car_SerialBll();
 			pageBase = new PageBase();
 		}
 		/// <summary>
@@ -98,7 +100,7 @@ namespace MWeb.Controllers
 			//StringBuilder htmlAllnoPriceHtml = new StringBuilder();
 			//StringBuilder htmlAllwaitCheckHtml = new StringBuilder();
 			//StringBuilder htmlAllstopSaleHtml = new StringBuilder();
-			string formatHtml = "<li><a href=\"/{0}/\"><img src=\"{1}\"/><h4>{2}</h4><p><strong>{3}</strong></p></a></li>";
+			string formatHtml = "<li><a href=\"/{0}/\"><img src=\"{1}\"/><h4>{2}{4}</h4><p><strong>{3}</strong></p></a></li>";
 			serialList.Append("<ul>");
 
 			foreach (DataRow row in brandTable.Rows)
@@ -125,39 +127,45 @@ namespace MWeb.Controllers
 				string csSpell = ConvertHelper.GetString(row["csspell"]).Trim().ToLower();
 				string priceRange = sellState;
 				string serialUrl = "/" + csSpell + "/";
+                string marketText = string.Empty;// carSerialBll.GetNewSerialIntoMarketText(serialId, false);
+                if (!string.IsNullOrEmpty(marketText))
+                {
+                    marketText = string.Format("<em class=\"{1}\">{0}</em>", marketText, marketText == "即将上市" ? "jijiangshangshi" : "the-new");
+                }
 
-				if (sellState == "在销")
+                if (sellState == "在销")
 				{
 					//priceRange = pageBase.GetSerialPriceRangeByID(serialId);
 					priceRange = row["ReferPriceRange"].ToString();
 					if (priceRange.Trim().Length == 0)
 					{
 						priceRange = "暂无指导价";
-						serialList.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange);
+						//serialList.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange, marketText);
 					}
 					else
 					{
 						priceRange = priceRange + "万";
-						serialList.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange);
+						//serialList.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange, marketText);
 					}
 				}
 				else if (sellState == "待销")
 				{
 					priceRange = "未上市";
-					serialList.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange);
+					//serialList.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange, marketText);
 				}
 				else if (sellState == "待查")
 				{
 					priceRange = "暂无指导价";
-					serialList.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange);
+					//serialList.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange, marketText);
 				}
 				else
 				{
 					// 停销
 					priceRange = "停售";
-					serialList.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange);
+					//serialList.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange, marketText);
 				}
-			}
+                serialList.AppendFormat(formatHtml, csSpell, imgUrl, csShowName, priceRange, marketText);
+            }
 			//serialList.Append(htmlAllnoPriceHtml.ToString());
 			//serialList.Append(htmlAllwaitSaleHtml.ToString());
 			//serialList.Append(htmlAllwaitCheckHtml.ToString());//待查

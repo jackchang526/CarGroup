@@ -1,19 +1,15 @@
-﻿
-
-    <!--<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/公共控件.css">
-    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/头部控件.css">
-    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/底部控件.css">
-    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/广告.css">
-    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/swiper3.css">
-    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/2015选车工具.css">
-    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/2015车型对比.css">
-    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/2015选车.css">
-    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/选车页面.css">
-    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/车型大全.css">
-    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/车型全部品牌logo_4040片断.css">
-    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/公共控件旧.css">
-    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/综述页.css">
-<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/综述页概念版.css">-->
-
-<link rel="stylesheet" type="text/css" href="//image.bitautoimg.com/uimg/css/00052/myiche2016_cube_summary_style-20170927141944-1176.css" media="all" />
-
+﻿<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/公共控件.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/头部控件.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/底部控件.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/广告.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/swiper3.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/2015选车工具.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/2015车型对比.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/2015选车.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/选车页面.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/车型大全.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/车型全部品牌logo_4040片断.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/公共控件旧.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/综述页.css">
+<link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/卡片A.css">
+<!--<link rel="stylesheet" type="text/css" href="//image.bitautoimg.com/uimg/css/00053/myiche2016_cube_summary_style-20171201110751-1176.css" media="all" />-->

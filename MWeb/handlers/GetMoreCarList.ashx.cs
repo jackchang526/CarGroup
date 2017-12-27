@@ -23,6 +23,7 @@ namespace WirelessWeb.handlers
 	public class GetMoreCarList : IHttpHandler
 	{
 		private Car_BasicBll _carBLL;
+        private Car_SerialBll _serialBll;
 		private List<CarInfoForSerialSummaryEntity> _serialCarList;
 		private SerialEntity _serialEntity;
 		private int _serialId;
@@ -126,7 +127,8 @@ namespace WirelessWeb.handlers
 		private void InitSerialInfo()
 		{
 			_carBLL = new Car_BasicBll();
-			_serialCarList = _carBLL.GetCarInfoForSerialSummaryBySerialId(_serialId);
+            _serialBll = new Car_SerialBll();
+            _serialCarList = _carBLL.GetCarInfoForSerialSummaryBySerialId(_serialId);
 			_serialCarList.Sort(NodeCompare.CompareCarByExhaustAndPowerAndInhaleType);
 		}
 		/// <summary>
@@ -387,18 +389,19 @@ namespace WirelessWeb.handlers
 						string carPriceRange = carInfo.CarPriceRange.Trim();
 						if (carInfo.SaleState == "待销")//顾晓 确认的逻辑 （待销的车款没有价格，全部显示未上市） 2015-07-09
 						{
-							carMinPrice = "未上市";
+							carMinPrice = "<dt class=\"the-noprice\">未上市</dt>";
 						}
 						else if (carInfo.CarPriceRange.Trim().Length == 0)
 						{
-							carMinPrice = "暂无报价";
-						}
-						else
+							carMinPrice = "<dt class=\"the-noprice\">暂无报价</dt>";
+                            //class="the-upcoming"
+                        }
+                        else
 						{
 							if (carPriceRange.IndexOf('-') != -1)
-								carMinPrice = carPriceRange.Substring(0, carPriceRange.IndexOf('-')); //+ "万"
+								carMinPrice = "<dt>"+ carPriceRange.Substring(0, carPriceRange.IndexOf('-'))+"</dt>"; //+ "万"
 							else
-								carMinPrice = carPriceRange;
+								carMinPrice = "<dt class=\"the-noprice\">" + carPriceRange + "</dt>";
 						}
 
 						Dictionary<int, string> dictCarParams = _carBLL.GetCarAllParamByCarID(carInfo.CarID);
@@ -426,35 +429,39 @@ namespace WirelessWeb.handlers
 							}
 						}
 
-						#endregion
+                        #endregion
 
 
-						// 档位个数
-						string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" &&
-												 dictCarParams[724] != "待查")
-							? dictCarParams[724] + "挡"
-							: "";
+                        // 档位个数
+                        //string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" &&
+                        //						 dictCarParams[724] != "待查")
+                        //	? dictCarParams[724] + "挡"
+                        //	: "";
 
-						//平行进口车标签
-						//string parallelImport = "";
-						//if (dictCarParams.ContainsKey(382) && dictCarParams[382] == "平行进口")
-						//{
-						//	parallelImport = "<em>平行进口</em>";
-						//}
-
-						stringBuilder.Append("<li>");
+                        //平行进口车标签
+                        //string parallelImport = "";
+                        //if (dictCarParams.ContainsKey(382) && dictCarParams[382] == "平行进口")
+                        //{
+                        //	parallelImport = "<em>平行进口</em>";
+                        //}
+                        string transmissionType = _carBLL.GetCarTransmissionType(dictCarParams.ContainsKey(724) ? dictCarParams[724] : string.Empty, carInfo.TransmissionType);
+                        stringBuilder.Append("<li>");
 
 						stringBuilder.AppendFormat(
 							"<a  id='carlist_" + carInfo.CarID + "' class='car-info' href='{0}' data-channelid=\"27.23.915\">",
 							 "/" + _serialEntity.AllSpell + "/m" + carInfo.CarID + "/");
 
                         //新车上市 即将上市 状态
-                        string marketflag = GetMarketFlag(carInfo);
+                        string marketflag = _serialBll.GetCarMarketText(carInfo.CarID, carInfo.SaleState, carInfo.MarketDateTime, carInfo.ReferPrice);//GetMarketFlag(carInfo);
+                        if (!string.IsNullOrEmpty(marketflag))
+                        {
+                            marketflag = string.Format("<em class=\"the-new\">{0}</em>",marketflag);
+                        }
                         stringBuilder.AppendFormat("<h2>{0}{1}</h2>", carFullName, marketflag);
 						
-						stringBuilder.AppendFormat("<dl><dt>{0}</dt></dl>", carMinPrice);
+						stringBuilder.AppendFormat("<dl>{0}</dl>", carMinPrice);
 						stringBuilder.Append("<div class=\"car-info-bottom\">");//第二行开始
-						stringBuilder.AppendFormat("<span>{0}</span>", forwardGearNum + carInfo.TransmissionType);
+						stringBuilder.AppendFormat("<span>{0}</span>", transmissionType);
 						//add date :2016-2-3  添加热度
 						int percent = 0;
 						if (maxPv > 0)
@@ -502,11 +509,11 @@ namespace WirelessWeb.handlers
 						//	"<li><a href=\"http://car.m.yiche.com/chexingduibi/?carIDs={0}\">加入对比</a></li>",
 						//	carInfo.CarID);
 						stringBuilder.AppendFormat(
-							"<li><a id=\"car-compare-{0}\" href=\"javascript:;\" class=\"btnDuibi\" data-action=\"car\" data-id=\"{0}\" data-name=\"{1} {2}\" data-channelid=\"27.23.910\">加对比</a></li>",
-							carInfo.CarID, _serialShowName, carInfo.CarName);
+                             "<li class='btn-duibi'><a id=\"car-compare-{0}\" href=\"#compare\"  data-action=\"car\" data-id=\"{0}\" data-name=\"{1} {2}\" data-channelid=\"27.23.910\"><span>对比</span></a></li>",
+                            carInfo.CarID, _serialShowName, carInfo.CarName);
 						stringBuilder.AppendFormat(
-							"<li><a id = \"car_filter_id_{0}_{1}\" href='/gouchejisuanqi/?carID={0}' data-channelid=\"27.23.911\">计算器</a></li>",
-							carInfo.CarID, "");
+                            "<li class='btn-calculator'><a id = \"car_filter_id_{0}_{1}\" href='/gouchejisuanqi/?carID={0}' data-channelid=\"27.23.911\"><span>计算器</span></a></li>",
+                            carInfo.CarID, "");
 						if (year != "unlisted" && year != "nosalelist" && carInfo.SaleState != "待销" && carInfo.SaleState != "停销")
 						{
 							//stringBuilder.AppendFormat(
@@ -518,7 +525,7 @@ namespace WirelessWeb.handlers
 							//add by gux 20170425
 							string wtQuery = new int[] { 4123, 4881, 2608, 1574, 2573, 3987, 2032, 1905, 4847, 1798 }.Contains(_serialId) ? "&WT.mc_id=nbclx" : string.Empty;
 							stringBuilder.AppendFormat(
-							"<li class=\"btn-org\"><a id =\"car_filterzuidi_id_{0}_{1}\" href=\"http://price.m.yiche.com/zuidijia/nc{0}/?t=yichemobiletest2&leads_source=20018" + wtQuery + "\" data-channelid=\"27.23.912\">询底价</a></li>",
+                            "<li class=\"btn-xundijia btn-one-color\"><a id =\"car_filterzuidi_id_{0}_{1}\" href=\"http://price.m.yiche.com/zuidijia/nc{0}/?t=yichemobiletest2&leads_source=20018" + wtQuery + "\" data-channelid=\"27.23.912\">询底价</a></li>",
 							carInfo.CarID, "");
 						}
 						else
@@ -635,7 +642,7 @@ namespace WirelessWeb.handlers
 				return (T)serializer.Deserialize(stream);
 			}
 		}
-
+        /*
         private string GetMarketFlag(CarInfoForSerialSummaryEntity entity)
         {
             string marketflag = "";
@@ -688,5 +695,6 @@ namespace WirelessWeb.handlers
             int days = (currentDateTime - dt).Days;
             return days;
         }
+        */
     }
 }

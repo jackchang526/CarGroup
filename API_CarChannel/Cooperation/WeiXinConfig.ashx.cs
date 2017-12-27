@@ -55,13 +55,20 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
 		private void GetParam()
 		{
 			callback = BitAuto.Utils.ConvertHelper.GetString(request.QueryString["callback"]);
-			if (!string.IsNullOrEmpty(request.QueryString["url"])
-				&& request.QueryString["url"].IndexOf("yiche.com") > 0
-				&& request.QueryString["url"].IndexOf("yiche.com") < 50)
-			{
-				urlForSha1 = request.QueryString["url"].ToString();
-			}
-		}
+
+            var share_url = request.QueryString["url"];
+            var index = share_url.IndexOf("yiche.com");
+
+            if (index < 0)
+            {
+                index= share_url.IndexOf("autoreport.cn");
+            }
+
+            if (!string.IsNullOrEmpty(share_url) && index > 0 && index < 50)
+            {
+                urlForSha1 = request.QueryString["url"].ToString();
+            }
+        }
 
 		/// <summary>
 		/// 生成 wx.config timestamp，nonceStr，signature

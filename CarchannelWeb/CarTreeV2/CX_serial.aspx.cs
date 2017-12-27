@@ -729,9 +729,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 				carListHtml.Add("    <th>变速箱</th>");
                 carListHtml.Add("    <th class=\"txt-right txt-right-padding\">指导价</th>");
                 carListHtml.Add("    <th class=\"txt-right\">参考最低价</th>");
-                carListHtml.Add("    <th><div class=\"doubt\" onmouseover=\"javascript:$(this).children('.prompt-layer').show();return false;\" onmouseout=\"javascript:$(this).children('.prompt-layer').hide();return false;\">");
-                carListHtml.Add("    <div class=\"prompt-layer\" style=\"display:none\">全国参考最低价</div></div></th>");
-				carListHtml.Add("</tr>");
+                carListHtml.Add("    <th></th>");
+                //carListHtml.Add("    <th><div class=\"doubt\" onmouseover=\"javascript:$(this).children('.prompt-layer').show();return false;\" onmouseout=\"javascript:$(this).children('.prompt-layer').hide();return false;\">");
+                //carListHtml.Add("    <div class=\"prompt-layer\" style=\"display:none\">全国参考最低价</div></div></th>");
+                carListHtml.Add("</tr>");
 				//}
 				//else
 				//{
@@ -762,6 +763,11 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 					if (entity.ProduceState == "停产")
                         stopPrd = "<span class=\"color-block3\">停产</span>";
 					Dictionary<int, string> dictCarParams = _carBLL.GetCarAllParamByCarID(entity.CarID);
+                    string marketText = _serialBLL.GetCarMarketText(entity.CarID, entity.SaleState, entity.MarketDateTime, entity.ReferPrice);
+                    if (!string.IsNullOrEmpty(marketText))
+                    {
+                        marketText = string.Format("<a target=\"_blank\" class=\"color-block\">{0}</a>", marketText);
+                    }
 					//add by 2014.05.04 获取电动车参数
 					if (isElectrombile)
 					{
@@ -841,7 +847,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 					//string strBest = "<a href=\"#\" class=\"ico-tuijian\">推荐</a>";
                     carListHtml.Add(string.Format("<tr id=\"car_filter_id_{0}\">", entity.CarID));
                     carListHtml.Add(string.Format("<td class=\"txt-left\" id=\"carlist_{1}\"><a href=\"/{0}/m{1}/\" target=\"_blank\">{2} {3}</a> {4}</td>",
-						_SerialSpell, entity.CarID, yearType, entity.CarName, strTravelTax + hasEnergySubsidy + stopPrd));
+						_SerialSpell, entity.CarID, yearType, entity.CarName, strTravelTax + hasEnergySubsidy + stopPrd + marketText));
 					carListHtml.Add("<td>");
 					carListHtml.Add("<div class=\"w\">");
 					//计算百分比
@@ -849,10 +855,11 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 					carListHtml.Add(string.Format("<div class=\"p\" style=\"width: {0}%\"></div>", percent));
 					carListHtml.Add("    </div>");
 					carListHtml.Add("</td>");
-					// 档位个数
-					string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" && dictCarParams[724] != "待查") ? dictCarParams[724] + "挡" : "";
+                    // 档位个数
+                    //string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" && dictCarParams[724] != "待查") ? dictCarParams[724] + "挡" : "";
+                    string transmissionType = _carBLL.GetCarTransmissionType(dictCarParams.ContainsKey(724) ? dictCarParams[724] : string.Empty, entity.TransmissionType);
 
-					carListHtml.Add(string.Format("<td>{0}</td>", forwardGearNum + entity.TransmissionType));
+                    carListHtml.Add(string.Format("<td>{0}</td>", transmissionType));
 					carListHtml.Add(string.Format("<td class=\"txt-right\"><span>{0}</span><a title=\"购车费用计算\" class=\"car-comparetable-ico-cal\" rel=\"nofollow\" href=\"/gouchejisuanqi/?carid={1}\" target=\"_blank\"></a></td>", string.IsNullOrEmpty(entity.ReferPrice) ? "暂无" : entity.ReferPrice + "万", entity.CarID));
 					if (entity.CarPriceRange.Trim().Length == 0)
                         carListHtml.Add(string.Format("<td class=\"txt-right\"><span>{0}</span></td>", "暂无报价"));

@@ -75,8 +75,8 @@ Inherits="BitAuto.CarChannel.CarchannelWeb.PageToolV2.CalcAutoCashTool" %>
                         if (hidCarId && hidCarId.value > 0) {
                             carid = hidCarId.value;
                         }
-                    }
-                    chedaiLink[0].href = "http://fenqi.taoche.com/www/" + ADForCheDai.CsAllSpellArray[csId] + "/m" + carid + "/?from=yc6&leads_source=p031001";
+                    } 
+                    chedaiLink[0].href = "http://sq.taoche.com/yiche/index?from=yc6&leads_source=p031001&serialid=" + csId + "&carid=" + carid+"";
                 }
             }
         }

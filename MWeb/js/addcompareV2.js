@@ -65,7 +65,9 @@ var SelectCar = (function (module) {
                             }
                         }
                         //切换标签
-                        $('.brandlist').tag({
+                        var $brandlist = $('.brandlist');
+                        //$brandlist.parents('#master_container').show();
+                        $brandlist.tag({
                             tagName: '.first-tags',
                             fnEnd: function (idx) {
                                 tags.hide();
@@ -173,7 +175,7 @@ var SelectCar = (function (module) {
                                     //已选择车款
                                     duibiCarDataIds = options.arrCarId;
                                     //初始化品牌
-                                    $body.trigger('brandinit', { actionName3: '[data-action=duibi-models]', leftmaskalert: '.duibi-alert', leftmaskback: '.leftmask3', carselect: function () { }, masterselect: function () { }, selectmark: function () { } });
+                                    $body.trigger('brandinit', { init: function () { $("span.brand-logo>img").lazyload({ effect: "fadeIn", threshold: 50 }) }, actionName3: '[data-action=duibi-models]', leftmaskalert: '.duibi-alert', leftmaskback: '.leftmask3', carselect: function () { }, masterselect: function () { }, selectmark: function () { } });
 
                                     //车款点击回调事件
                                     api.model.clickEnd = function (paras) {

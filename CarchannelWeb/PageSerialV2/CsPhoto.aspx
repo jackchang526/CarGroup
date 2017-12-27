@@ -126,7 +126,7 @@
                 //        },null]
                 //};
             </script>
-            <script type="text/javascript" src="http://gimg.bitauto.com/resourcefiles/chexing/serialadposition.js?_=<%= DateTime.Now.ToString("yyyyMMddHHmm").Substring(0,11) + "0" %>"></script>
+            <script type="text/javascript" src="http://d2.yiche.com/js/serialadposition.js?_=<%= DateTime.Now.ToString("yyyyMMddHHmm").Substring(0,11) + "0" %>"></script>
             <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/serialtoseead.min.js"></script>
             <div class="layout-2">
                 <ins id="div_a9e57a09-3485-4fbe-a755-59d7e52ce486" type="ad_play" adplay_ip="" adplay_areaname=""
@@ -136,8 +136,8 @@
             <div class="layout-2">
                 <%--<script type="text/javascript" id="zp_script_95" src="http://mcc.chinauma.net/static/scripts/p.js?id=95&w=220&h=220&sl=1&delay=5"
 					zp_type="1"></script>--%>
-                <script type="text/javascript" id="zp_script_243" src="http://mcc.chinauma.net/static/scripts/p.js?id=243&w=240&h=220&sl=1&delay=5"
-                    zp_type="1"></script>
+               <%-- <script type="text/javascript" id="zp_script_243" src="http://mcc.chinauma.net/static/scripts/p.js?id=243&w=240&h=220&sl=1&delay=5"
+                    zp_type="1"></script>--%>
             </div>
             <!--百度推广-->
             <%--<div class="layout-2">
@@ -167,7 +167,7 @@
     <script type="text/javascript" src="http://d2.yiche.com/js/sense.js"></script>
     <!--#include file="~/htmlv2/footer2016.shtml"-->
 
-     <script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>
+   <%--  <script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>
     <script type="text/javascript">
         //vr
         if (vrImgForBitauto != undefined && vrImgForBitauto.IntiDataForEntry != undefined) {
@@ -177,7 +177,7 @@
                 }
             });
         }
-    </script>
+    </script>--%>
 
     <!--本站统计代码-->
     <script type="text/javascript" language="javascript" src="http://image.bitautoimg.com/carchannel/jsStat/StatisticJsOldPV.js"></script>

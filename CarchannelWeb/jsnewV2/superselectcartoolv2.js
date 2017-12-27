@@ -1189,9 +1189,11 @@ function DrawUlContent(json) {
         //初始化车款列表        
         var divContentArray = new Array();
         var currentLineCount = 0;
+        var csIdsArr = [];
         $(json.ResList).each(function (index) {
             var x = index % 5 + 1;
-            divContentArray.push("<div class=\"col-auto\"><div class=\"img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120\">");
+            csIdsArr.push(json.ResList[index].SerialId);
+            divContentArray.push("<div class=\"col-auto\" data-id=\"" + json.ResList[index].SerialId + "\"><div class=\"img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120\">");
             divContentArray.push("<div class=\"img\"><a href=\"/" + json.ResList[index].AllSpell + "/\" target=\"_blank\">");
             divContentArray.push("<img src=\"" + json.ResList[index].ImageUrl.replace("_1", "_3") + "\" alt=\"" + json.ResList[index].ShowName + "报价_价格\"/>");
             divContentArray.push("</a></div>");
@@ -1203,7 +1205,7 @@ function DrawUlContent(json) {
             divContentArray.push("<div class=\"drop-layer\" style=\"display:none\"><span class=\"close\"></span>");
             //固定头start
             divContentArray.push("<div class=\"list-table\" style=\"position: absolute; left:0; top:0; z-index: 1;\">");
-            divContentArray.push("<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">");
+            divContentArray.push("<table id=\"compare_wait\" width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">");
             divContentArray.push("<colgroup><col width=\"40%\"><col width=\"11%\"><col width=\"13%\"><col width=\"10%\"><col width=\"11%\"><col width=\"16%\"></colgroup>");
             divContentArray.push("<tbody>");
             divContentArray.push("<tr class=\"table-tit\">");
@@ -1212,7 +1214,8 @@ function DrawUlContent(json) {
             divContentArray.push("<th>变速箱</th>");
             divContentArray.push("<th class=\"txt-right\">指导价</th>");
             divContentArray.push("<th class=\"txt-right\">参考最低价</th>");
-            divContentArray.push("<th><div class=\"doubt\"  onmouseover=\"javascript:$(this).children('.prompt-layer').show();return false;\" onmouseout=\"javascript:$(this).children('.prompt-layer').hide();return false;\"><div class=\"prompt-layer\" style=\"display:none\">全国参考最低价</div></div></th>");
+            //divContentArray.push("<th><div class=\"doubt\"  onmouseover=\"javascript:$(this).children('.prompt-layer').show();return false;\" onmouseout=\"javascript:$(this).children('.prompt-layer').hide();return false;\"><div class=\"prompt-layer\" style=\"display:none\">全国参考最低价</div></div></th>");
+            divContentArray.push("<th></th>");
             divContentArray.push("</tr>");
             divContentArray.push("</tbody>");
             divContentArray.push("</table>");
@@ -1226,6 +1229,7 @@ function DrawUlContent(json) {
         });
         var divContent = divContentArray.join("");
         $("#divContent").html(divContent);
+        typeof GetNewCarText == "function" && GetNewCarText(csIdsArr.join(","));
         InitPageControl(json.Count);
         InitCarItem();
     }
@@ -1561,7 +1565,7 @@ function InitCarItem() {
                     if (data.CarList.length <= 0) { $("#carlist_loading").html("暂无车型数据"); return; }
                     var content = [];
 
-                    content.push("<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">");
+                    content.push("<table id=\"compare_sale\" width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">");
                     content.push("<colgroup><col width=\"40%\"><col width=\"11%\"><col width=\"13%\"><col width=\"10%\"><col width=\"11%\"><col width=\"16%\"></colgroup>");
                     content.push("<tbody>");
                     content.push("<tr class=\"table-tit\" style=\"visibility: hidden;\">");
@@ -1575,10 +1579,10 @@ function InitCarItem() {
 
                     $.each(data.CarList, function (i, n) {
                         if (i % 2 == 0) {
-                            content.push("<tr>");
+                            content.push("<tr id=\"car_filter_id_" + n.CarID + "\">");
                         }
                         else {
-                            content.push("<tr class=\"hover-bg-color\">");
+                            content.push("<tr class=\"hover-bg-color\" id=\"car_filter_id_" + n.CarID + "\">");
                         }
                         content.push("<td class=\"txt-left\">");
                         var yearType = n.CarYear.length > 0 ? n.CarYear + "款" : "未知年款";
@@ -1589,8 +1593,15 @@ function InitCarItem() {
                         var percent = data.MaxPv > 0 ? (n.CarPV / data.MaxPv * 100.0) : 0;
                         content.push("<div class=\"w\"><div class=\"p\" style=\"width:" + percent + "%\"></div></div>");
                         content.push("</td>");
-                        var gearNum = (n.UnderPan_ForwardGearNum != "" && n.UnderPan_ForwardGearNum != "待查" && n.UnderPan_ForwardGearNum != "无级") ? n.UnderPan_ForwardGearNum + "挡" : ""
-                        content.push("<td>" + gearNum + n.TransmissionType + "</td>");
+                        //var gearNum = (n.UnderPan_ForwardGearNum != "" && n.UnderPan_ForwardGearNum != "待查" && n.UnderPan_ForwardGearNum != "无级") ? n.UnderPan_ForwardGearNum + "挡" : ""
+                        var transmissionType = "";
+                        if (n.TransmissionType == "CVT无级变速" || n.TransmissionType == "E-CVT无级变速" || n.TransmissionType == "单速变速箱") {
+                            transmissionType = n.TransmissionType;
+                        }
+                        else if (n.TransmissionType != "" && n.UnderPan_ForwardGearNum != "") {
+                            transmissionType = n.UnderPan_ForwardGearNum + "挡 " + n.TransmissionType;
+                        }
+                        content.push("<td>" + transmissionType + "</td>");
                         content.push("<td class=\"txt-right\"><span>" + n.ReferPrice + "万</span><a title=\"购车费用计算\" class=\"car-comparetable-ico-cal\" rel=\"nofollow\" href=\"/gouchejisuanqi/?carid=" + n.CarID + "\" target=\"_blank\"></a></td>");
                         //取最低报价
                         var minPrice = n.CarPriceRange;
@@ -1618,6 +1629,8 @@ function InitCarItem() {
                     // 对比浮动框 初始
                     initCompareButton();
                     //initCarListHover();
+                    //区域报价
+                    GetCarAreaPriceRangeForSelect(carIds);
                 }
             });
         }

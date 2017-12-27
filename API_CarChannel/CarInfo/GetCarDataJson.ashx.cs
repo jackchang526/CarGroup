@@ -278,14 +278,14 @@ namespace WirelessWeb.handlers
 		{
 			int masterId = ConvertHelper.GetInteger(request.QueryString["pid"]);
 
-			//string cacheKey = string.Format("Car_API_CarDataJson_Serial_{0}_{1}", dataType, masterId);
-			//var obj = CacheManager.GetCachedData(cacheKey);
-			//if (obj != null)
-			//{
-			//	RenderJsonP((string)obj);
-			//	return;
-			//}
-
+            //string cacheKey = string.Format("Car_API_CarDataJson_Serial_{0}_{1}", dataType, masterId);
+            //var obj = CacheManager.GetCachedData(cacheKey);
+            //if (obj != null)
+            //{
+            //	RenderJsonP((string)obj);
+            //	return;
+            //}
+            Car_SerialBll serialBll = new Car_SerialBll();
 			DataSet ds = new Car_BrandBll().GetCarSerialSortListByBSID(masterId, dataType);
 			Dictionary<int, List<string>> dict = new Dictionary<int, List<string>>();
 			Dictionary<int, string> brandList = new Dictionary<int, string>();
@@ -342,8 +342,9 @@ namespace WirelessWeb.handlers
 						// 停销
 						referPrice = "停售";
 					}
+                    string marketText = serialBll.GetNewSerialIntoMarketText(serialId, false);
 
-					string imgUrl = Car_SerialBll.GetSerialImageUrl(serialId).Replace("_2.", "_1.");
+                    string imgUrl = Car_SerialBll.GetSerialImageUrl(serialId).Replace("_2.", "_1.");
 					if (csSaleState.Trim() == "停销" && imgUrl.IndexOf("150-100.gif") > 0)
 					{
 						continue;
@@ -351,25 +352,27 @@ namespace WirelessWeb.handlers
 					if (!dict.ContainsKey(brandId))
 					{
 						var serailList = new List<string>();
-						serailList.Add(string.Format("{{\"SerialId\":{0},\"SerialName\":\"{1}\",\"Allspell\":\"{2}\",\"Price\":\"{3}\",\"ImageUrl\":\"{4}\",\"CsSaleState\":\"{5}\"}}"
+						serailList.Add(string.Format("{{\"SerialId\":{0},\"SerialName\":\"{1}\",\"Allspell\":\"{2}\",\"Price\":\"{3}\",\"ImageUrl\":\"{4}\",\"CsSaleState\":\"{5}\",\"Market\":\"{6}\"}}"
 							, serialId
 							, serialName
 							, serialAllspell
 							, referPrice//serialInfo.CsSaleState == "停销" ? noSaleLastReferPrice : serialEntity.ReferPrice
 							, imgUrl
-							, csSaleState.Trim()));
+							, csSaleState.Trim()
+                            , marketText));
 						dict.Add(brandId, serailList);
 						brandList.Add(brandId, string.Format("\"BrandId\":{0},\"BrandName\":\"{1}\",\"BrandAllspell\":\"{2}\"", brandId, brandName, brandAllspell));
 					}
 					else
 					{
-						dict[brandId].Add(string.Format("{{\"SerialId\":{0},\"SerialName\":\"{1}\",\"Allspell\":\"{2}\",\"Price\":\"{3}\",\"ImageUrl\":\"{4}\",\"CsSaleState\":\"{5}\"}}"
-							, serialId
+						dict[brandId].Add(string.Format("{{\"SerialId\":{0},\"SerialName\":\"{1}\",\"Allspell\":\"{2}\",\"Price\":\"{3}\",\"ImageUrl\":\"{4}\",\"CsSaleState\":\"{5}\",\"Market\":\"{6}\"}}"
+                            , serialId
 							, serialName
 							, serialAllspell
 							, referPrice
 							, imgUrl
-							, csSaleState.Trim()));
+							, csSaleState.Trim()
+                            , marketText));
 					}
 				}
 			}

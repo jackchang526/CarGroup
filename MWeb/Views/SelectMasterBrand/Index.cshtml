@@ -1,5 +1,6 @@
 ﻿@{
     Layout = null;
+    var WTmc_id = Request.QueryString["WT.mc_id"];
 }
 <!DOCTYPE html>
 <html>
@@ -15,17 +16,62 @@
     <!--#include file="/ushtml/0000/myiche2015_cube_brand_style-996.shtml"-->
 </head>
 <body>
-    @Html.Partial("~/html/TopDownloadLayer.cshtml")
+    @if (WTmc_id != "mxmllqic_qt")
+    {
+        @Html.Partial("~/html/TopDownloadLayer.cshtml")
+    }
     @Html.Partial("/html/WTParams.cshtml")
     <div class="mbt-page">
         <!-- header start -->
-        <div class="op-nav">
-            <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
-            <div class="tt-name">
-                <a href="http://m.yiche.com/" class="yiche-logo">汽车</a><h1>选车</h1>
+        @if (WTmc_id != "mxmllqic_qt")
+        {
+            <div class="op-nav">
+                <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
+                <div class="tt-name">
+                    <a href="http://m.yiche.com/" class="yiche-logo">汽车</a><h1>选车</h1>
+                </div>
+                <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
             </div>
-            <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
-        </div>
+        }
+        else
+        {
+            <script type="text/javascript" src="//image.bitautoimg.com/uimg/wap/js/jquery-1.8.0.min.js"></script>
+            <style type="text/css">
+                * {
+                    padding: 0;
+                    margin: 0;
+                }
+
+                .xm-header {
+                    width: 100%;
+                    height: 45px;
+                    background: #F2F2F2;
+                    float: left;
+                    font-family: "小米兰亭";
+                    position: relative;
+                }
+
+                    .xm-header::after {
+                        content: "";
+                        height: 1px;
+                        width: 100%;
+                        background: #000;
+                        opacity: 0.1;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                    }
+
+                    .xm-header h2 {
+                        font-size: 14px;
+                        line-height: 45px;
+                        font-weight: normal;
+                        margin: 0 0 0 20px;
+                        opacity: 0.8;
+                    }
+            </style>
+            <div class="xm-header"><h2>车型大全</h2></div>
+        }
         <script type="text/javascript">
             if (typeof (WtFrom) != "undefined" && WtFrom == "mcfw99") {
                 $(".op-nav").hide();
@@ -35,13 +81,16 @@
         <!-- header end -->
         <div class="brandfilter">
             <!-- 标签切换 start -->
-            <div class="first-tags">
-                <ul>
-                    <li class="current"><a href="/brandlist.html" data-channelid="27.150.1436"><span>按品牌</span></a></li>
-                    <li id="xc_condition"><a href="/" data-channelid="27.150.1435"><span>按条件</span></a></li>
-                    <li id="xc_scene" class="tags-new"><a href="/scenelist.html" data-channelid="27.150.1416"><span>按情景<b><i>NEW<i></i></i></b></span></a></li>
-                </ul>
-            </div>
+            @if (WTmc_id != "mxmllqic_qt")
+            {
+                <div class="first-tags">
+                    <ul>
+                        <li class="current"><a href="/brandlist.html" data-channelid="27.160.2196"><span>按品牌</span></a></li>
+                        <li id="xc_condition"><a href="/" data-channelid="27.160.2195"><span>按条件</span></a></li>
+                        <li id="xc_scene" class="tags-new"><a href="/scenelist.html" data-channelid="27.160.2194"><span>按情景<b><i>NEW<i></i></i></b></span></a></li>
+                    </ul>
+                </div>
+            }
             <!-- 标签切换 end -->
             <!-- 按品牌选车 start -->
             <div class="brand-list bybrand_list">
@@ -86,60 +135,7 @@
         <!-- bottom search end -->
     </div>
     <!--车型层 start-->
-    <div class="leftmask mark leftmask3" style="display: none;"></div>
-    <div class="leftPopup car-model car" data-back="leftmask3" style="display: none;" data-key="car">
-        <div class="swipeLeft swipeLeft-sub">
-            <div class="loading">
-                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" alt="" />
-                <p>正在加载...</p>
-            </div>
-        </div>
-    </div>
-    <!--车型层 end-->
-    <!--loading模板 start -->
-    <div class="template-loading" style="display: none;">
-        <div class="loading">
-            <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
-            <p>正在加载...</p>
-        </div>
-    </div>
-    <!--loading模板 end -->
-    <!--车型模板 start-->
-    <script type="text/template" id="carTemplate">
-        <div class="choose-car-name-close bybrand_list">
-            <div class="brand-logo-none-border"><img /></div>
-            <span class="brand-name"></span>
-            <!-- <a href="#" class="choose-car-btn-close">关闭</a> -->
-        </div>
-        <div class="clear"></div>
-        { for(var i = 0 ; i < list.length ; i++){ }
-        <!-- 车款列表 start -->
-        {if(list[i].Child.length > 0){ }
-        <div class="tt-small">
-            <span>{= list[i].BrandName }</span>
-        </div>
-        {}}
-        <!-- 图文混排横向 start -->
-        <div class="pic-txt-h pic-txt-9060">
-            <ul>
-                { for(var j = 0 ; j < list[i].Child.length ; j++){ }
-                <li>
-                    <a class="imgbox-2" href="/{=list[i].Child[j].Allspell}/" data-id="{= list[i].Child[j].SerialId}">
-                        <div class="img-box">
-                            <img src="{= list[i].Child[j].ImageUrl}" alt="" />
-                        </div>
-                        <div class="c-box">
-                            <h4>{= list[i].Child[j].SerialName }</h4>
-                            <p><strong>{=list[i].Child[j].Price}</strong></p>
-                        </div>
-                    </a>
-                </li>
-                {}}
-            </ul>
-        </div>
-        <!-- 图文混排横向 end -->
-        {}}
-    </script>
+    @Html.Partial("~/html/selectMasterBrandTemplate.cshtml")
     <!--车型模板 end-->
     <!--baidu ad star-->
     <!--
@@ -154,10 +150,11 @@
     </script>
     @*<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/v2/iscroll.js"></script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/WirelessJsv2/v2/underscore.js"></script>
+        <script src="/js/v2/swiper-3.3.1.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="/js/v2/model.js"></script>
         <script type="text/javascript" src="/js/v2/rightswipe.js"></script>
         <script type="text/javascript" src="/js/v2/note.js"></script>*@
-    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js?v=2017008011503"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/swiper-3.3.1.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js?v=201712111100"></script>
     <script type="text/javascript">
         var $body = $('body');
 
@@ -204,8 +201,11 @@
         </div>
         @Html.Partial("~/html/footerV3.cshtml")
     </div>
-    <div class="float-r-box">
-        <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
-    </div>
+    @if (WTmc_id != "mxmllqic_qt")
+    {
+        <div class="float-r-box">
+            <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
+        </div>
+    }
 </body>
 </html>

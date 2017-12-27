@@ -864,9 +864,11 @@ function DrawUlContent(json) {
             serialSpellArray = new Array();
         //divContentArray.push("<ul>");
         var currentLineCount = 0;
+        var csIdsArr = [];
         $(json.ResList).each(function (index) {
+            csIdsArr.push(json.ResList[index].SerialId);
             serialSpellArray[json.ResList[index].SerialId] = json.ResList[index].AllSpell;
-            divContentArray.push("<div class=\"col-xs-3\">");
+            divContentArray.push("<div class=\"col-xs-3\" data-id=\"" + json.ResList[index].SerialId + "\">");
             divContentArray.push("    <div class=\"img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120\">");
             divContentArray.push("        <div class=\"img\">");
             divContentArray.push("            <a href=\"/" + json.ResList[index].AllSpell + "/\" target=\"_blank\"><img src=\"" + json.ResList[index].ImageUrl.replace("_1.", "_3.") + "\" alt=\"" + json.ResList[index].ShowName + "报价_价格\"/></a>");
@@ -882,7 +884,7 @@ function DrawUlContent(json) {
 
         var divContent = divContentArray.join("");
         $("#divContent").html(divContent);
-
+        typeof GetNewCarText == "function" && GetNewCarText(csIdsArr.join(","));
         //call koubei start
         if (conditionObj.Sort > 4) {
             getKouBeiItem(serialSpellArray);
@@ -967,11 +969,12 @@ function callbackGetItem() {
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     //alert("textStatus: " + textStatus);
                 },
+                
                 success: function (data) {
                     if (data.CarList.length <= 0) { $("#carlist_loading").html("暂无车型数据"); return; }
                     var content = [], title = [];
                     title.push("<div class=\"list-table\" style=\"position: absolute; left: 0; top: 0; z-index: 1;\">");
-                    title.push("    <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\">");
+                    title.push("    <table id=\"compare_wait\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\">");
                     title.push("        <colgroup>");
                     title.push("            <col width=\"39%\">");
                     title.push("            <col width=\"11%\">");
@@ -987,11 +990,12 @@ function callbackGetItem() {
                     title.push("                <th>变速箱</th>");
                     title.push("                <th class=\"txt-right txt-right-padding\">指导价</th>");
                     title.push("                <th class=\"txt-right\">参考最低价</th>");
-                    title.push("                <th>");
-                    title.push("                    <div class=\"doubt\">");
-                    title.push("                        <div class=\"prompt-layer\" style=\"display:none;\">全国参考最低价</div>");
-                    title.push("                    </div>");
-                    title.push("                </th>");
+                    //title.push("                <th>");
+                    //title.push("                    <div class=\"doubt\">");
+                    //title.push("                        <div class=\"prompt-layer\" style=\"display:none;\">全国参考最低价</div>");
+                    //title.push("                    </div>");
+                    //title.push("                </th>");
+                    title.push("                <th></th>");
                     title.push("            </tr>");
                     title.push("         </tbody>");
                     title.push("    </table>");
@@ -1001,7 +1005,7 @@ function callbackGetItem() {
                     content.push(title.join(""));
                     content.push("<span class=\"close\"></span>");
                     content.push("<div class=\"list-table scroll-table\">");
-                    content.push("    <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\">");
+                    content.push("    <table id=\"compare_sale\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\">");
                     content.push("        <colgroup>");
                     content.push("            <col width=\"39%\">");
                     content.push("            <col width=\"11%\">");
@@ -1023,7 +1027,14 @@ function callbackGetItem() {
                         var yearType = n.CarYear.length > 0 ? n.CarYear + "款" : "未知年款";
                         var strState = n.ProduceState == "停产" ? " <span class=\"color-block3\">停产</span>" : "";
                         var percent = data.MaxPv > 0 ? (n.CarPV / data.MaxPv * 100.0) : 0;
-                        var gearNum = (n.UnderPan_ForwardGearNum != "" && n.UnderPan_ForwardGearNum != "待查" && n.UnderPan_ForwardGearNum != "无级") ? n.UnderPan_ForwardGearNum + "挡" : "";
+                        //var gearNum = (n.UnderPan_ForwardGearNum != "" && n.UnderPan_ForwardGearNum != "待查" && n.UnderPan_ForwardGearNum != "无级") ? n.UnderPan_ForwardGearNum + "挡" : "";
+                        var transmissionType = "";
+                        if (n.TransmissionType == "CVT无级变速" || n.TransmissionType == "E-CVT无级变速" || n.TransmissionType == "单速变速箱") {
+                            transmissionType = n.TransmissionType;
+                        }
+                        else if (n.TransmissionType != "" && n.UnderPan_ForwardGearNum != "") {
+                            transmissionType = n.UnderPan_ForwardGearNum + "挡 " + n.TransmissionType;
+                        }
                         var referPrice = n.ReferPrice.length > 0 ? n.ReferPrice + "万" : "暂无";
                         content.push("<tr id=\"car_filter_id_" + n.CarID + "\">");
                         content.push("    <td class=\"txt-left\">");
@@ -1034,7 +1045,7 @@ function callbackGetItem() {
                         content.push("        <div class=\"p\" style=\"width: " + percent + "%\"></div>");
                         content.push("    </div>");
                         content.push("    </td>");
-                        content.push("    <td>" + gearNum + n.TransmissionType + "</td>");
+                        content.push("    <td>" + transmissionType + "</td>");
                         content.push("    <td class=\"txt-right\"><span>" + referPrice + "</span><a title=\"购车费用计算\" class=\"car-comparetable-ico-cal\" rel=\"nofollow\" href=\"/gouchejisuanqi/?carid=" + n.CarID + "\" target=\"_blank\"></a>");
                         content.push("    </td>");
                         //取最低报价
@@ -1062,9 +1073,9 @@ function callbackGetItem() {
                         });
                         $(self).parent().addClass("active").append(content.join('')).hide().slideDown(200);
                     }
-
-                    initCarListEvent();
-                    typeof InitCompareEvent == "function" && InitCompareEvent();
+                    initCarListEvent();                  
+                    typeof InitCompareEvent == "function" && InitCompareEvent(); 
+                    GetCarAreaPriceRangeForSelect(carIds);
                 }
             });
         }

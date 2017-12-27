@@ -18,6 +18,11 @@ using BitAuto.Utils;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
+using BitAuto.CarChannel.Model.AppModel;
+using System.Web.Caching;
+using System.Configuration;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace BitAuto.CarChannel.BLL
 {
@@ -25,6 +30,24 @@ namespace BitAuto.CarChannel.BLL
     {
         private static readonly Car_BasicDal cbd = new Car_BasicDal();
         private static readonly CarInfoDal cid = new CarInfoDal();
+        static string parameterConfigPath = ConfigurationManager.AppSettings["ParameterConfigPath"];
+        /// <summary>
+        /// 获取车型参考价接口
+        /// </summary>
+        static string ReferPriceByCityCS_Api = ConfigurationManager.AppSettings["YiPai_ReferPriceByCityCS_API"];
+
+        static string ReferPriceByCityCar_Api = ConfigurationManager.AppSettings["YiPai_ReferPriceByCityCar_API"];
+
+        /// <summary>
+        /// 销售顾问Token
+        /// </summary>
+        static string VendorSalesToken = ConfigurationManager.AppSettings["VendorSalesToken"];
+
+        /// <summary>
+        /// 销售顾问MD5
+        /// </summary>
+        static string VendorSalesMD5 = ConfigurationManager.AppSettings["VendorSalesMD5"];
+
 
         public Car_BasicBll()
         { }
@@ -352,7 +375,10 @@ namespace BitAuto.CarChannel.BLL
                                         string imgUrl = xn.Attributes["ImageUrl"].Value;
                                         if (subfix != 2)
                                             imgUrl = imgUrl.Replace("_2.", string.Format("_{0}.", subfix));
-                                        dic.Add(carid, imgUrl);
+                                        if (!string.IsNullOrEmpty(imgUrl))
+                                        {
+                                            dic.Add(carid, imgUrl);
+                                        }
                                     }
                                 }
                             }
@@ -712,15 +738,15 @@ namespace BitAuto.CarChannel.BLL
             return ds;
         }
 
-		/// <summary>
-		/// 取车型全部参数项
-		/// </summary>
-		/// <param name="carID">车型ID</param>
-		/// <returns></returns>
-		public Dictionary<int, string> GetCarAllParamByCarID(int carID)
-		{
-			return new Car_BasicDal().GetCarAllParamByCarID(carID);
-		}
+        /// <summary>
+        /// 取车型全部参数项
+        /// </summary>
+        /// <param name="carID">车型ID</param>
+        /// <returns></returns>
+        public Dictionary<int, string> GetCarAllParamByCarID(int carID)
+        {
+            return new Car_BasicDal().GetCarAllParamByCarID(carID);
+        }
         /// <summary>
         /// 取车型全部选配参数项
         /// </summary>
@@ -737,38 +763,38 @@ namespace BitAuto.CarChannel.BLL
         /// <param name="paramId"></param>
         /// <returns></returns>
         public string GetCarParamValue(int carId, int paramId)
-		{
-			string result = string.Empty;
-			if (carId <= 0 || paramId <= 0) return result;
-			try
-			{
-				result = cbd.GetCarParamValue(carId, paramId);
-			}
-			catch (Exception ex)
-			{
-				CommonFunction.WriteLog(ex.ToString());
-			}
-			return result;
-		}
-		/// <summary>
-		/// 根据多个车款 参数值
-		/// </summary>
-		/// <param name="arrCarId">车款id数组</param>
-		/// <param name="paramId"></param>
-		/// <returns></returns>
-		public Dictionary<int, string> GetCarParamValueByCarIds(int[] arrCarId, int paramId)
-		{
-			Dictionary<int, string> dictResult = new Dictionary<int, string>();
-			if (arrCarId.Length <= 0 || paramId <= 0) return dictResult;
-			try
-			{
-				dictResult = cbd.GetCarParamValueByCarIds(arrCarId, paramId);
-			}
-			catch (Exception ex)
-			{
-				CommonFunction.WriteLog(ex.ToString());
-			}
-			return dictResult;
+        {
+            string result = string.Empty;
+            if (carId <= 0 || paramId <= 0) return result;
+            try
+            {
+                result = cbd.GetCarParamValue(carId, paramId);
+            }
+            catch (Exception ex)
+            {
+                CommonFunction.WriteLog(ex.ToString());
+            }
+            return result;
+        }
+        /// <summary>
+        /// 根据多个车款 参数值
+        /// </summary>
+        /// <param name="arrCarId">车款id数组</param>
+        /// <param name="paramId"></param>
+        /// <returns></returns>
+        public Dictionary<int, string> GetCarParamValueByCarIds(int[] arrCarId, int paramId)
+        {
+            Dictionary<int, string> dictResult = new Dictionary<int, string>();
+            if (arrCarId.Length <= 0 || paramId <= 0) return dictResult;
+            try
+            {
+                dictResult = cbd.GetCarParamValueByCarIds(arrCarId, paramId);
+            }
+            catch (Exception ex)
+            {
+                CommonFunction.WriteLog(ex.ToString());
+            }
+            return dictResult;
 
         }
         /// <summary>
@@ -1095,9 +1121,9 @@ namespace BitAuto.CarChannel.BLL
         /// </summary>
         /// <returns></returns>
         public DataSet GetAllParamAliasName()
-		{
-			return new Car_BasicDal().GetAllParamAliasName();
-		}
+        {
+            return new Car_BasicDal().GetAllParamAliasName();
+        }
 
         /// <summary>
         /// 取所有参数ID与英文名对于表
@@ -1189,7 +1215,7 @@ namespace BitAuto.CarChannel.BLL
                     {
                         // modified Jan.13.2012 by chengl 当没有memcache时取数据重建memcache 缓存时间1天
                         Dictionary<string, string> dicCar = new Dictionary<string, string>();
-                        GetCarInfoAndParamToDictionary(carid, ref dicCar,false);
+                        GetCarInfoAndParamToDictionary(carid, ref dicCar, false);
                         if (dicCar != null && dicCar.Count > 0)
                         {
                             //modified by sk mem 2小时
@@ -1240,7 +1266,7 @@ namespace BitAuto.CarChannel.BLL
                     {
                         // modified Jan.13.2012 by chengl 当没有memcache时取数据重建memcache 缓存时间1天
                         Dictionary<string, string> dicCar = new Dictionary<string, string>();
-                        GetCarInfoAndParamToDictionary(carid, ref dicCar,true);
+                        GetCarInfoAndParamToDictionary(carid, ref dicCar, true);
                         if (dicCar != null && dicCar.Count > 0)
                         {
                             //modified by sk mem 2小时
@@ -1322,157 +1348,157 @@ namespace BitAuto.CarChannel.BLL
             return sbForApi.ToString();
         }
 
-		///// <summary>
-		///// 取车型对比数据 字典
-		///// </summary>
-		///// <param name="carID"></param>
-		///// <param name="dic"></param>
-		//private void GetCarInfoAndParamToDictionary(int carID, ref Dictionary<string, string> dic)
-		//{
-		//	Dictionary<int, string> dicCarPhoto = GetCarDefaultPhotoDictionary(2);
-		//	PageBase page = new PageBase();
-		//	Dictionary<int, string> dicCsPhoto = page.GetAllSerialPicURL(false);
-		//	Dictionary<int, string> dicCarPrice = page.GetAllCarPriceRange();
-		//	// 车型行情价 add by chengl Aug.27.2012
-		//	Dictionary<int, string> dicCarHangQingPrice = new HangQingTree().GetAllCarHangQingPrice();
-		//	// 子品牌车身颜色RGB
-		//	Dictionary<int, Dictionary<string, string>> dicSerialColor = new Car_SerialBll().GetAllSerialColorNameRGB();
-		//	// 车型降价
-		//	Dictionary<int, string> dicJiangJia = new CarNewsBll().GetAllCarJiangJia();
+        ///// <summary>
+        ///// 取车型对比数据 字典
+        ///// </summary>
+        ///// <param name="carID"></param>
+        ///// <param name="dic"></param>
+        //private void GetCarInfoAndParamToDictionary(int carID, ref Dictionary<string, string> dic)
+        //{
+        //	Dictionary<int, string> dicCarPhoto = GetCarDefaultPhotoDictionary(2);
+        //	PageBase page = new PageBase();
+        //	Dictionary<int, string> dicCsPhoto = page.GetAllSerialPicURL(false);
+        //	Dictionary<int, string> dicCarPrice = page.GetAllCarPriceRange();
+        //	// 车型行情价 add by chengl Aug.27.2012
+        //	Dictionary<int, string> dicCarHangQingPrice = new HangQingTree().GetAllCarHangQingPrice();
+        //	// 子品牌车身颜色RGB
+        //	Dictionary<int, Dictionary<string, string>> dicSerialColor = new Car_SerialBll().GetAllSerialColorNameRGB();
+        //	// 车型降价
+        //	Dictionary<int, string> dicJiangJia = new CarNewsBll().GetAllCarJiangJia();
 
-		//	#region 车型基本参数
-		//	CarEntity ce = (CarEntity)DataManager.GetDataEntity(EntityType.Car, carID);
-		//	if (ce == null || ce.Id <= 0)
-		//	{ return; }
+        //	#region 车型基本参数
+        //	CarEntity ce = (CarEntity)DataManager.GetDataEntity(EntityType.Car, carID);
+        //	if (ce == null || ce.Id <= 0)
+        //	{ return; }
 
-		//	string carReferPrice = ce.ReferPrice <= 0 ? "无" : (decimal.Parse(ce.ReferPrice.ToString())).ToString("F2") + "万";
-		//	string carYearType = ce.CarYear <= 0 ? "" : ce.CarYear.ToString();
-		//	string bbsURL = new Car_SerialBll().GetForumUrlBySerialId(ce.SerialId);
-		//	// 车型网友油耗
-		//	string userFuel = new Car_BasicBll().GetCarNetfriendsFuel(carID);
-		//	userFuel = (userFuel == "无" ? "" : userFuel);
-		//	// 车型报价区间
-		//	string carPriceRange = dicCarPrice.ContainsKey(carID) ? dicCarPrice[carID] : "无";
-		//	// 车型图片 先检查车型是否有封面，再检查子品牌封面
-		//	string carPic = WebConfig.DefaultCarPic;
-		//	if (dicCarPhoto.ContainsKey(carID))
-		//	{ carPic = dicCarPhoto[carID]; }
-		//	else if (dicCsPhoto.ContainsKey(ce.SerialId))
-		//	{ carPic = dicCsPhoto[ce.SerialId]; }
-		//	else
-		//	{ carPic = WebConfig.DefaultCarPic; }
-		//	// 车型行情价
-		//	string carHangQingPrice = "";
-		//	if (dicCarHangQingPrice.ContainsKey(carID))
-		//	{ carHangQingPrice = dicCarHangQingPrice[carID]; }
-		//	// add by chengl Mar.25.2013
-		//	string carJiangJiaPrice = "";
-		//	if (dicJiangJia.ContainsKey(carID))
-		//	{ carJiangJiaPrice = dicJiangJia[carID]; }
+        //	string carReferPrice = ce.ReferPrice <= 0 ? "无" : (decimal.Parse(ce.ReferPrice.ToString())).ToString("F2") + "万";
+        //	string carYearType = ce.CarYear <= 0 ? "" : ce.CarYear.ToString();
+        //	string bbsURL = new Car_SerialBll().GetForumUrlBySerialId(ce.SerialId);
+        //	// 车型网友油耗
+        //	string userFuel = new Car_BasicBll().GetCarNetfriendsFuel(carID);
+        //	userFuel = (userFuel == "无" ? "" : userFuel);
+        //	// 车型报价区间
+        //	string carPriceRange = dicCarPrice.ContainsKey(carID) ? dicCarPrice[carID] : "无";
+        //	// 车型图片 先检查车型是否有封面，再检查子品牌封面
+        //	string carPic = WebConfig.DefaultCarPic;
+        //	if (dicCarPhoto.ContainsKey(carID))
+        //	{ carPic = dicCarPhoto[carID]; }
+        //	else if (dicCsPhoto.ContainsKey(ce.SerialId))
+        //	{ carPic = dicCsPhoto[ce.SerialId]; }
+        //	else
+        //	{ carPic = WebConfig.DefaultCarPic; }
+        //	// 车型行情价
+        //	string carHangQingPrice = "";
+        //	if (dicCarHangQingPrice.ContainsKey(carID))
+        //	{ carHangQingPrice = dicCarHangQingPrice[carID]; }
+        //	// add by chengl Mar.25.2013
+        //	string carJiangJiaPrice = "";
+        //	if (dicJiangJia.ContainsKey(carID))
+        //	{ carJiangJiaPrice = dicJiangJia[carID]; }
 
-		//	dic.Add("Car_ID", carID.ToString());
-		//	dic.Add("Car_Name", ce.Name);
-		//	dic.Add("CarImg", carPic);
-		//	dic.Add("Cs_ID", ce.SerialId.ToString());
-		//	dic.Add("Cs_Name", ce.Serial == null ? "" : ce.Serial.Name);
-		//	dic.Add("Cs_ShowName", ce.Serial == null ? "" : ce.Serial.ShowName);
-		//	dic.Add("Cs_AllSpell", ce.Serial == null ? "" : ce.Serial.AllSpell);
-		//	dic.Add("Car_YearType", ce.CarYear.ToString());
-		//	dic.Add("Car_ProduceState", ce.ProduceState);
-		//	dic.Add("Car_SaleState", ce.SaleState);
-		//	dic.Add("CarReferPrice", carReferPrice);
-		//	dic.Add("AveragePrice", carPriceRange);
-		//	dic.Add("Car_UserFuel", userFuel);
-		//	dic.Add("Cs_BBSUrl", bbsURL);
-		//	dic.Add("Cs_CarLevel", (ce.Serial == null || ce.Serial.Level == null) ? "" : ce.Serial.Level.Name);
-		//	// 车型行情价
-		//	dic.Add("Car_HangQingPrice", carHangQingPrice);
-		//	dic.Add("Car_JiangJiaPrice", carJiangJiaPrice);
-		//	#endregion
+        //	dic.Add("Car_ID", carID.ToString());
+        //	dic.Add("Car_Name", ce.Name);
+        //	dic.Add("CarImg", carPic);
+        //	dic.Add("Cs_ID", ce.SerialId.ToString());
+        //	dic.Add("Cs_Name", ce.Serial == null ? "" : ce.Serial.Name);
+        //	dic.Add("Cs_ShowName", ce.Serial == null ? "" : ce.Serial.ShowName);
+        //	dic.Add("Cs_AllSpell", ce.Serial == null ? "" : ce.Serial.AllSpell);
+        //	dic.Add("Car_YearType", ce.CarYear.ToString());
+        //	dic.Add("Car_ProduceState", ce.ProduceState);
+        //	dic.Add("Car_SaleState", ce.SaleState);
+        //	dic.Add("CarReferPrice", carReferPrice);
+        //	dic.Add("AveragePrice", carPriceRange);
+        //	dic.Add("Car_UserFuel", userFuel);
+        //	dic.Add("Cs_BBSUrl", bbsURL);
+        //	dic.Add("Cs_CarLevel", (ce.Serial == null || ce.Serial.Level == null) ? "" : ce.Serial.Level.Name);
+        //	// 车型行情价
+        //	dic.Add("Car_HangQingPrice", carHangQingPrice);
+        //	dic.Add("Car_JiangJiaPrice", carJiangJiaPrice);
+        //	#endregion
 
-		//	// 车型车身颜色中文名
-		//	string bodyColor = string.Empty;
+        //	// 车型车身颜色中文名
+        //	string bodyColor = string.Empty;
 
-		//	#region 车型扩展参数
-		//	// 参数ID 对于 名
-		//	Dictionary<int, string> dicParamIDToName = GetAllParamAliasNameDictionary();
+        //	#region 车型扩展参数
+        //	// 参数ID 对于 名
+        //	Dictionary<int, string> dicParamIDToName = GetAllParamAliasNameDictionary();
 
-		//	// 车型扩展参数
-		//	DataSet dsParam = new Car_BasicBll().GetCarParamForCompare(carID.ToString());
-		//	if (dsParam != null && dsParam.Tables.Count > 0 && dsParam.Tables[0].Rows.Count > 0)
-		//	{
-		//		foreach (DataRow dr in dsParam.Tables[0].Rows)
-		//		{
-		//			int carid = Convert.ToInt32(dr["CarId"]);
-		//			int pid = Convert.ToInt32(dr["Paramid"]);
-		//			string aliasName = string.Empty;
-		//			if (dicParamIDToName.ContainsKey(pid))
-		//			{ aliasName = dicParamIDToName[pid]; }
-		//			else { continue; }
-		//			string pvalue = dr["Pvalue"].ToString().Trim();
+        //	// 车型扩展参数
+        //	DataSet dsParam = new Car_BasicBll().GetCarParamForCompare(carID.ToString());
+        //	if (dsParam != null && dsParam.Tables.Count > 0 && dsParam.Tables[0].Rows.Count > 0)
+        //	{
+        //		foreach (DataRow dr in dsParam.Tables[0].Rows)
+        //		{
+        //			int carid = Convert.ToInt32(dr["CarId"]);
+        //			int pid = Convert.ToInt32(dr["Paramid"]);
+        //			string aliasName = string.Empty;
+        //			if (dicParamIDToName.ContainsKey(pid))
+        //			{ aliasName = dicParamIDToName[pid]; }
+        //			else { continue; }
+        //			string pvalue = dr["Pvalue"].ToString().Trim();
 
-		//			if (pvalue == "")
-		//			{ continue; }
+        //			if (pvalue == "")
+        //			{ continue; }
 
-		//			if (!dic.ContainsKey(aliasName))
-		//			{
-		//				dic.Add(aliasName, pvalue);
-		//			}
-		//			// 如果是车身颜色
-		//			if (aliasName == "OutStat_BodyColor")
-		//			{ bodyColor = pvalue; }
-		//		}
-		//	}
-  //          #endregion
+        //			if (!dic.ContainsKey(aliasName))
+        //			{
+        //				dic.Add(aliasName, pvalue);
+        //			}
+        //			// 如果是车身颜色
+        //			if (aliasName == "OutStat_BodyColor")
+        //			{ bodyColor = pvalue; }
+        //		}
+        //	}
+        //          #endregion
 
-  //          #region 车型车身颜色RGB值
+        //          #region 车型车身颜色RGB值
 
-  //          List<string> listBodyColorRGB = new List<string>();
-		//	if (!string.IsNullOrEmpty(bodyColor))
-		//	{
-		//		if (dicSerialColor.ContainsKey(ce.SerialId))
-		//		{
-		//			// 临时车型参数颜色名
-		//			List<string> listTemp = new List<string>();
-		//			string[] colorNameArray = bodyColor.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-		//			if (colorNameArray.Length > 0)
-		//			{
-		//				foreach (string name in colorNameArray)
-		//				{
-		//					string colorName = name.Trim();
-		//					if (colorName != "" && !listTemp.Contains(colorName))
-		//					{
-		//						listTemp.Add(colorName);
-		//					}
-		//				}
-		//			}
-		//			if (listTemp.Count > 0)
-		//			{
-		//				foreach (KeyValuePair<string, string> kvp in dicSerialColor[ce.SerialId])
-		//				{
-		//					if (listTemp.Contains(kvp.Key))
-		//					{
-		//						if (listBodyColorRGB.Count > 0)
-		//						{ listBodyColorRGB.Add("|"); }
-		//						listBodyColorRGB.Add(kvp.Key + "," + kvp.Value);
-		//					}
-		//				}
-		//			}
-		//		}
-		//	}
+        //          List<string> listBodyColorRGB = new List<string>();
+        //	if (!string.IsNullOrEmpty(bodyColor))
+        //	{
+        //		if (dicSerialColor.ContainsKey(ce.SerialId))
+        //		{
+        //			// 临时车型参数颜色名
+        //			List<string> listTemp = new List<string>();
+        //			string[] colorNameArray = bodyColor.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+        //			if (colorNameArray.Length > 0)
+        //			{
+        //				foreach (string name in colorNameArray)
+        //				{
+        //					string colorName = name.Trim();
+        //					if (colorName != "" && !listTemp.Contains(colorName))
+        //					{
+        //						listTemp.Add(colorName);
+        //					}
+        //				}
+        //			}
+        //			if (listTemp.Count > 0)
+        //			{
+        //				foreach (KeyValuePair<string, string> kvp in dicSerialColor[ce.SerialId])
+        //				{
+        //					if (listTemp.Contains(kvp.Key))
+        //					{
+        //						if (listBodyColorRGB.Count > 0)
+        //						{ listBodyColorRGB.Add("|"); }
+        //						listBodyColorRGB.Add(kvp.Key + "," + kvp.Value);
+        //					}
+        //				}
+        //			}
+        //		}
+        //	}
 
-		//	dic.Add("Car_OutStat_BodyColorRGB", string.Concat(listBodyColorRGB.ToArray()));
+        //	dic.Add("Car_OutStat_BodyColorRGB", string.Concat(listBodyColorRGB.ToArray()));
 
-		//	#endregion
-		//}
+        //	#endregion
+        //}
 
         /// <summary>
-		/// 取车型对比数据 字典
-		/// </summary>
-		/// <param name="carID"></param>
-		/// <param name="dic"></param>
+        /// 取车型对比数据 字典
+        /// </summary>
+        /// <param name="carID"></param>
+        /// <param name="dic"></param>
         /// <param name="isOptional">是否包含选装</param>
-		private void GetCarInfoAndParamToDictionary(int carID, ref Dictionary<string, string> dic,bool isOptional)
+        private void GetCarInfoAndParamToDictionary(int carID, ref Dictionary<string, string> dic, bool isOptional)
         {
             Dictionary<int, string> dicCarPhoto = GetCarDefaultPhotoDictionary(2);
             PageBase page = new PageBase();
@@ -1498,6 +1524,14 @@ namespace BitAuto.CarChannel.BLL
             userFuel = (userFuel == "无" ? "" : userFuel);
             // 车型报价区间
             string carPriceRange = dicCarPrice.ContainsKey(carID) ? dicCarPrice[carID] : "无";
+            if (!string.IsNullOrEmpty(carPriceRange) && carPriceRange != "")
+            {
+                string[] carPriceArray = carPriceRange.Split('-');
+                if(carPriceArray.Length > 1)
+                {
+                    carPriceRange = string.Concat(carPriceArray[0].Replace("万","") , "-" , carPriceArray[1]);
+                }
+            }
             // 车型图片 先检查车型是否有封面，再检查子品牌封面
             string carPic = WebConfig.DefaultCarPic;
             if (dicCarPhoto.ContainsKey(carID))
@@ -1598,7 +1632,7 @@ namespace BitAuto.CarChannel.BLL
                                 dic[aliasName] = string.Format("{0}|{1}", pvalue, price);
                             }
                             else
-                            { 
+                            {
                                 dic[aliasName] = string.Format("{0},{1}|{2}", dic[aliasName], pvalue, price);
                             }
                         }
@@ -1741,13 +1775,17 @@ namespace BitAuto.CarChannel.BLL
         /// 获取车款列表 根据子品牌Id
         /// </summary>
         /// <param name="serialId"></param>
+        /// <param name="nocache">是否从缓存出数据</param>
         /// <returns></returns>
-        public List<CarInfoForSerialSummaryEntity> GetCarInfoForSerialSummaryBySerialId(int serialId)
+        public List<CarInfoForSerialSummaryEntity> GetCarInfoForSerialSummaryBySerialId(int serialId, bool nocache = false)
         {
             string cacheKey = string.Format("Car_CarInfoForSerialSummary_{0}", serialId);
-            object allCarInfoForSerialSummary = CacheManager.GetCachedData(cacheKey);
-            if (allCarInfoForSerialSummary != null)
-                return (List<CarInfoForSerialSummaryEntity>)allCarInfoForSerialSummary;
+            if (!nocache)
+            {
+                object allCarInfoForSerialSummary = CacheManager.GetCachedData(cacheKey);
+                if (allCarInfoForSerialSummary != null)
+                    return (List<CarInfoForSerialSummaryEntity>)allCarInfoForSerialSummary;
+            }
             List<CarInfoForSerialSummaryEntity> carInfoList = new List<CarInfoForSerialSummaryEntity>();
             DataSet ds = cbd.GetAllCarInfoForSerialSummary(serialId);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -1828,30 +1866,30 @@ namespace BitAuto.CarChannel.BLL
                         //double tempYoukW;
                         //double.TryParse(dictParams[430], out tempYoukW);
 
-						//int diankW = dictParams.ContainsKey(870) ? ConvertHelper.GetInteger(tempDiankW) : 0;
-						//int youkW = dictParams.ContainsKey(430) ? ConvertHelper.GetInteger(tempYoukW) : 0;
-						//kw = youkW;
-						//electrickW = diankW;
-					}
-					else
-					{
-						if (dictParams.ContainsKey(430))
-						{
-							double tempkW;
-							double.TryParse(dictParams[430], out tempkW);
-							kw = (int)Math.Round(tempkW);
-						}
-					}
-					kw = kw == 0 ? 9999 : kw;
-					string exhaust = dr["Engine_Exhaust"].ToString();
-					if (string.IsNullOrEmpty(exhaust) || ConvertHelper.GetDouble(exhaust.Replace("L", "")) <= 0)
-					{
-						exhaust = "其他";
-						if (fuelType == "纯电")
-							exhaust = "电动车";
-					}
-					//是否是平行进口
-					int isImport = (dictParams.ContainsKey(382) && dictParams[382] == "平行进口") ? 1 : 0;
+                        //int diankW = dictParams.ContainsKey(870) ? ConvertHelper.GetInteger(tempDiankW) : 0;
+                        //int youkW = dictParams.ContainsKey(430) ? ConvertHelper.GetInteger(tempYoukW) : 0;
+                        //kw = youkW;
+                        //electrickW = diankW;
+                    }
+                    else
+                    {
+                        if (dictParams.ContainsKey(430))
+                        {
+                            double tempkW;
+                            double.TryParse(dictParams[430], out tempkW);
+                            kw = (int)Math.Round(tempkW);
+                        }
+                    }
+                    kw = kw == 0 ? 9999 : kw;
+                    string exhaust = dr["Engine_Exhaust"].ToString();
+                    if (string.IsNullOrEmpty(exhaust) || ConvertHelper.GetDouble(exhaust.Replace("L", "")) <= 0)
+                    {
+                        exhaust = "其他";
+                        if (fuelType == "纯电")
+                            exhaust = "电动车";
+                    }
+                    //是否是平行进口
+                    int isImport = (dictParams.ContainsKey(382) && dictParams[382] == "平行进口") ? 1 : 0;
 
                     carInfoList.Add(new CarInfoForSerialSummaryEntity()
                     {
@@ -1877,7 +1915,7 @@ namespace BitAuto.CarChannel.BLL
                     });
                 }
             }
-            CacheManager.InsertCache(cacheKey, carInfoList, 30);
+            CacheManager.InsertCache(cacheKey, carInfoList, 10);
             return carInfoList;
         }
 
@@ -2082,19 +2120,19 @@ namespace BitAuto.CarChannel.BLL
                 {
                     if (!dictCarTaxTag.ContainsKey(carId))
                     {
-                        dictCarTaxTag.Add(carId, "减税");
+                        dictCarTaxTag.Add(carId, "购置税75折");
                     }
                 }
             }
             return dictCarTaxTag;
         }
 
-        
+
         public int GetSerialCarRellyPicCount(int carId)
         {
             int count = 0;
             try
-            {                
+            {
                 var xmlFile =
                 string.Format(Path.Combine(PhotoImageConfig.SavePath, PhotoImageConfig.SerialCarReallyImagePath),
                     carId);
@@ -2107,13 +2145,616 @@ namespace BitAuto.CarChannel.BLL
                     XmlNode node = xmlDoc.SelectSingleNode("//Data//Total");
                     var countStr = node.InnerText;
                     int.TryParse(countStr, out count);
-                }               
+                }
             }
             catch (Exception ex)
             {
                 CommonFunction.WriteLog(ex.ToString());
-            }            
+            }
             return count;
         }
+        /// <summary>
+        /// 车型参数模板
+        /// </summary>
+        /// <returns></returns>
+        public List<ParameterGroupEntity> GetCarParameterJsonConfig(bool isVersion87)
+        {
+            List<ParameterGroupEntity> parameterGroup = new List<ParameterGroupEntity>();
+            try
+            {
+
+
+                string cacheKey = string.Format(DataCacheKeys.CarParameterJson, isVersion87);
+                object getCarParameterJsonConfig = CacheManager.GetCachedData(cacheKey);
+                if (getCarParameterJsonConfig != null)
+                {
+                    parameterGroup = getCarParameterJsonConfig as List<ParameterGroupEntity>;
+                }
+                else
+                {
+                    if (isVersion87)
+                    {
+                        string fileName = parameterConfigPath;
+                        if (File.Exists(fileName))
+                        {
+                            XmlDocument doc = new XmlDocument();
+                            doc.Load(fileName);
+                            if (doc != null && doc.HasChildNodes)
+                            {
+                                ParameterGroupEntity parameter;
+                                XmlNodeList xnl = doc.SelectNodes("/ParameterConfigurationList/Parameter/ParameterList");
+                                if (xnl != null && xnl.Count > 0)
+                                {
+                                    int i = 0;
+                                    foreach (XmlNode xnCate in xnl)
+                                    {
+
+                                        parameter = new ParameterGroupEntity();
+                                        parameter.GroupID = i;
+                                        parameter.Name = xnCate.Attributes["Name"].Value;
+
+
+                                        // 大分类
+                                        if (xnCate.ChildNodes.Count > 0)
+                                        {
+                                            parameter.Fields = new List<ParameterGroupFieldEntity>();
+                                            ParameterGroupFieldEntity field;
+                                            // 分类内项
+                                            foreach (XmlNode xn in xnCate.ChildNodes)
+                                            {
+                                                if (xn.NodeType == XmlNodeType.Element)
+                                                {
+                                                    field = new ParameterGroupFieldEntity();
+                                                    field.Key = xn.Attributes["Value"].Value;
+                                                    field.ParamID = TypeParse.StrToInt(xn.Attributes["ParamID"].Value, 0);
+                                                    field.Unit = xn.Attributes["Unit"].Value;
+                                                    field.Title = xn.Attributes["Name"].Value;
+                                                    parameter.Fields.Add(field);
+                                                }
+                                            }
+                                        }
+                                        i++;
+                                        parameterGroup.Add(parameter);
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        string fileName = System.Web.HttpContext.Current.Server.MapPath("~") + "\\config\\ParameterForJsonNewV2.xml";
+                        if (File.Exists(fileName))
+                        {
+                            XmlDocument doc = new XmlDocument();
+                            doc.Load(fileName);
+                            if (doc != null && doc.HasChildNodes)
+                            {
+                                ParameterGroupEntity parameter;
+                                XmlNodeList xnl = doc.SelectNodes("/Param/Group");
+                                if (xnl != null && xnl.Count > 0)
+                                {
+                                    int i = 0;
+                                    foreach (XmlNode xnCate in xnl)
+                                    {
+
+                                        parameter = new ParameterGroupEntity();
+                                        parameter.GroupID = i;
+                                        parameter.Name = xnCate.Attributes["Desc"].Value.ToString();
+
+
+                                        // 大分类
+                                        if (xnCate.ChildNodes.Count > 0)
+                                        {
+                                            parameter.Fields = new List<ParameterGroupFieldEntity>();
+                                            ParameterGroupFieldEntity field;
+                                            // 分类内项
+                                            foreach (XmlNode xn in xnCate.ChildNodes)
+                                            {
+                                                if (xn.NodeType == XmlNodeType.Element)
+                                                {
+                                                    field = new ParameterGroupFieldEntity();
+                                                    field.Key = xn.Attributes["Value"].Value.ToString();
+                                                    field.ParamID = TypeParse.StrToInt(xn.Attributes["ParamID"].Value, 0);
+                                                    field.Unit = xn.Attributes["Unit"].Value.ToString();
+                                                    field.Title = xn.Attributes["Desc"].Value.ToString();
+                                                    parameter.Fields.Add(field);
+                                                }
+                                            }
+                                        }
+                                        i++;
+                                        parameterGroup.Add(parameter);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    CacheManager.InsertCache(cacheKey, parameterGroup, 10);
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonFunction.WriteLog(string.Format("解析分组ParameterConfigurationNewV2.config错误,Message:{0},StackTrace:{1}", ex.Message, ex.StackTrace));
+            }
+            return parameterGroup;
+        }
+
+        /// <summary>
+        /// 生成参数模版字典
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string, ParameterGroupFieldEntity> GetParamDic(bool isVersion87)
+        {
+            Dictionary<string, ParameterGroupFieldEntity> result = new Dictionary<string, ParameterGroupFieldEntity>();
+            var parameterList = GetCarParameterJsonConfig(isVersion87);
+            foreach (var item in parameterList)
+            {
+                foreach (var field in item.Fields)
+                {
+                    if (!result.ContainsKey(field.Key))
+                    {
+                        result.Add(field.Key, field);
+                    }
+                }
+            }
+            return result;
+        }
+
+        public List<CarParameterListEntity> GetCarParamterListWithWebCacheByCarIds(List<int> carIds, bool isVersion87, int? cityid = 0)
+        {
+            //return GetCarParamterListByCarIds(carIds);
+            string carParamterKey = string.Format(DataCacheKeys.CarParameterListKey, isVersion87, string.Join("_", carIds), cityid.GetValueOrDefault(0));
+            var carParamterList = CacheManager.GetCachedData(carParamterKey);
+            if (carParamterList == null)
+            {
+                List<CarParameterListEntity> newCarParamterList = GetCarParamterListByCarIds(carIds, isVersion87, cityid);
+
+                if (newCarParamterList != null && newCarParamterList.Count > 0)
+                {
+                    CacheManager.InsertCache(carParamterKey, newCarParamterList, 5);
+                }
+                return newCarParamterList;
+            }
+
+            return (List<CarParameterListEntity>)carParamterList;
+        }
+
+        public List<CarParameterListEntity> GetCarParamterListByCarIds(List<int> carIds, bool isVersion87, int? cityid = 0)
+        {
+            /*
+            有  黑点
+            无  —
+            选配  空心圆
+            选配|1000   空心圆 选配  价格
+            文字       文字
+            文字,文字    
+            上下,上下，前后|1000,前后|1000  文字  价格
+             */
+
+
+            var carPriceDic = GetReferPriceDicByCarIds(cityid.GetValueOrDefault(0), carIds);
+
+            List<CarParameterListEntity> result = new List<CarParameterListEntity>();
+            Dictionary<int, Dictionary<string, string>> parameterDic = GetCarCompareDataWithOptionalByCarIDs(carIds);
+            var fieldDic = GetParamDic(isVersion87);
+            List<CarParameterEntity> carParameterList;
+            foreach (var group in parameterDic)
+            {
+                carParameterList = new List<CarParameterEntity>();
+                CarParameterEntity p;
+                ParameterGroupFieldEntity field;
+                foreach (var item in group.Value)
+                {
+                    if (fieldDic.ContainsKey(item.Key))
+                    {
+                        field = fieldDic[item.Key];
+                        p = new CarParameterEntity();
+                        p.ItemList = new List<ParamItemEntity>();
+                        p.ParamKey = item.Key;
+                        var itemValue = item.Value;
+                        bool isColor = false;
+                        try
+                        {
+                            if (item.Key == "AveragePrice"&& cityid.GetValueOrDefault(0)>0)
+                            {
+                                itemValue = (carPriceDic.ContainsKey(group.Key) && carPriceDic[group.Key] != null && carPriceDic[group.Key].MinReferPrice > 0 && carPriceDic[group.Key].MaxReferPrice > 0) ? carPriceDic[group.Key].MinReferPrice + "-" + carPriceDic[group.Key].MaxReferPrice + "万" : itemValue;
+
+                            }
+
+                            if (item.Key == "Car_OutStat_BodyColorRGB")
+                            {
+                                isColor = true;
+                                itemValue = itemValue.Replace(",", "$");
+                                itemValue = itemValue.Replace("|", ",");
+                                itemValue = itemValue.Replace("$", "|");
+                            }
+
+                            #region 单项处理
+                            switch (itemValue)
+                            {
+                                case "有":
+                                    p.ItemList.Add(new ParamItemEntity
+                                    {
+                                        Icon = "●"
+                                    });
+                                    break;
+                                case "无":
+                                    p.ItemList.Add(new ParamItemEntity
+                                    {
+                                        Icon = "-"
+                                    });
+                                    break;
+                                case "选配":
+                                    p.ItemList.Add(new ParamItemEntity
+                                    {
+                                        Icon = "○"
+                                    });
+                                    break;
+
+                                default:
+                                    if (itemValue.Contains("|") && itemValue.Contains(","))
+                                    {
+                                        string[] itemArr = itemValue.Split(new char[] { ',' });
+                                        string[] filedArr;
+                                        foreach (var itemStr in itemArr)
+                                        {
+                                            if (!string.IsNullOrWhiteSpace(itemStr))
+                                            {
+                                                if (itemStr.Contains("|"))
+                                                {
+                                                    filedArr = itemStr.Split(new char[] { '|' });
+                                                    if (filedArr.Length > 1)
+                                                    {
+                                                        p.ItemList.Add(new ParamItemEntity
+                                                        {
+                                                            Icon = "○",
+                                                            Title = filedArr[0],
+                                                            Des = filedArr[1] + (isColor ? "" : "元")
+                                                        });
+                                                    }
+                                                    else
+                                                    {
+                                                        if (itemStr != "无")
+                                                        {
+                                                            p.ItemList.Add(new ParamItemEntity
+                                                            {
+                                                                Icon = "●",
+                                                                Title = itemStr
+                                                            });
+                                                        }
+                                                    }
+
+
+                                                }
+                                                else
+                                                {
+                                                    if (itemStr != "无")
+                                                    {
+                                                        p.ItemList.Add(new ParamItemEntity
+                                                        {
+                                                            Icon = "●",
+                                                            Title = itemStr
+                                                        });
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                    }
+                                    else if (itemValue.Contains(","))
+                                    {
+                                        string[] itemArr = itemValue.Split(new char[] { ',' });
+                                        foreach (var itemStr in itemArr)
+                                        {
+                                            if (!string.IsNullOrWhiteSpace(itemStr))
+                                            {
+                                                if (itemStr != "无")
+                                                {
+                                                    p.ItemList.Add(new ParamItemEntity
+                                                    {
+                                                        Icon = "●",
+                                                        Title = itemStr
+                                                    });
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else if (itemValue.Contains("|"))
+                                    {
+                                        string[] itemArr = itemValue.Split(new char[] { '|' });
+
+                                        if (itemArr.Length > 1)
+                                        {
+                                            p.ItemList.Add(new ParamItemEntity
+                                            {
+                                                Icon = "○",
+                                                Title = itemArr[0],
+                                                Des = itemArr[1] + (isColor ? "" : "元")
+                                            });
+                                        }
+                                        else
+                                        {
+                                            if (itemValue != "无")
+                                            {
+                                                p.ItemList.Add(new ParamItemEntity
+                                                {
+                                                    Icon = "●",
+                                                    Title = itemValue
+                                                });
+                                            }
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        if (!string.IsNullOrWhiteSpace(itemValue))
+                                        {
+                                            p.ItemList.Add(new ParamItemEntity
+                                            {
+                                                Title = itemValue
+                                            });
+                                        }
+                                    }
+                                    break;
+                            }
+                            #endregion
+                            carParameterList.Add(p);
+                        }
+                        catch (Exception ex)
+                        {
+                            var message = string.Format("处理单项错误,carIds:{0},itemValue:{1}", string.Join(",", carIds), itemValue);
+                            CommonFunction.WriteLog(string.Format("[message]:{0},[StackTrace]:{1},[carMessage]:{2}", ex.Message, ex.StackTrace, message));
+                        }
+                    }
+
+                }
+
+                result.Add(new CarParameterListEntity { CarParameterList = carParameterList, CarId = group.Key });
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 获取车款变数箱显示字符串
+        /// 根据档位个数和变数箱类型判断
+        /// </summary>
+        /// <returns></returns>
+        public string GetCarTransmissionType(string forwardGearNum, string transmissionType)
+        {
+            if (string.IsNullOrWhiteSpace(transmissionType))
+                return string.Empty;
+            if (transmissionType == "CVT无级变速" || transmissionType == "E-CVT无级变速" || transmissionType == "单速变速箱")
+            {
+                return transmissionType;
+            }
+            if (!string.IsNullOrWhiteSpace(forwardGearNum))
+            {
+                return string.Format("{0}挡 {1}", forwardGearNum, transmissionType);
+            }
+            return string.Empty;
+        }
+        /// <summary>
+        /// 通用综述页车型列表  目前微信小程序综述页面使用
+        /// </summary>
+        /// <param name="serialId"></param>
+        /// <returns></returns>
+        public List<CarInfoForSerialSummaryEntity> GetCarListForSerialSummaryBySerialId(int serialId, bool includeStopSale)
+        {
+            List<CarInfoForSerialSummaryEntity> result = new List<CarInfoForSerialSummaryEntity>();
+            List<CarInfoForSerialSummaryEntity> carinfoList = GetCarInfoForSerialSummaryBySerialId(serialId);
+            List<CarInfoForSerialSummaryEntity> carList = new List<CarInfoForSerialSummaryEntity>();
+            if (includeStopSale == false)
+            {
+                carList = carinfoList.FindAll(p => p.SaleState != "停销");
+            }
+            else
+            {
+                carList = carinfoList;
+            }
+
+            carList.Sort(NodeCompare.CompareCarByExhaustAndPowerAndInhaleType);
+
+            var listGroupNew = new List<IGrouping<object, CarInfoForSerialSummaryEntity>>();
+            var listGroupOff = new List<IGrouping<object, CarInfoForSerialSummaryEntity>>();
+            var listGroupImport = new List<IGrouping<object, CarInfoForSerialSummaryEntity>>();
+            var importGroup = carList.GroupBy(p => new { p.IsImport }, p => p);
+            foreach (IGrouping<object, CarInfoForSerialSummaryEntity> info in importGroup)
+            {
+                var key = CommonFunction.Cast(info.Key, new { IsImport = 0 });
+                if (key.IsImport == 1)
+                {
+                    listGroupImport.Add(info);
+                }
+                else
+                {
+                    var querySale = info.ToList().GroupBy(p => new { p.Engine_Exhaust, p.Engine_InhaleType, p.Engine_AddPressType, p.Engine_MaxPower, p.Electric_Peakpower }, p => p);
+                    foreach (IGrouping<object, CarInfoForSerialSummaryEntity> subInfo in querySale)
+                    {
+                        var isStopState = subInfo.FirstOrDefault(p => p.ProduceState != "停产");
+                        if (isStopState != null)
+                            listGroupNew.Add(subInfo);
+                        else
+                            listGroupOff.Add(subInfo);
+                    }
+                }
+            }
+            listGroupNew.AddRange(listGroupOff);
+            listGroupNew.AddRange(listGroupImport);
+            foreach (IGrouping<object, CarInfoForSerialSummaryEntity> info in listGroupNew)
+            {
+                List<CarInfoForSerialSummaryEntity> carGroupList = info.ToList<CarInfoForSerialSummaryEntity>();//分组后的集合                
+                foreach (CarInfoForSerialSummaryEntity entity in carGroupList)
+                {
+                    result.Add(entity);
+                }
+            }
+            return result;
+        }
+        /// <summary>
+        /// 根据车型和城市回去车款列表
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <param name="serialId"></param>
+        /// <param name="includeStopSale"></param>
+        /// <returns></returns>
+        public List<CarGroupEntity> GetCarGroupBySerialIdAndCSID(int cityId, int serialId, bool includeStopSale)
+        {
+
+            var cacheKey = string.Format(DataCacheKeys.CarGroupListByserialIdAndCityId, serialId, cityId, includeStopSale);
+            List<CarGroupEntity> carGroupList = CacheManager.GetCachedData<List<CarGroupEntity>>(cacheKey);
+            if (carGroupList == null)
+            {
+                carGroupList = new List<CarGroupEntity>();
+                Dictionary<string, CarGroupEntity> carGroupDic = new Dictionary<string, CarGroupEntity>();
+                var carList = GetCarListForSerialSummaryBySerialId(serialId, includeStopSale);
+                List<int> carIds = new List<int>();
+                foreach (var item in carList)
+                {
+                    carIds.Add(item.CarID);
+                }
+                if (carIds.Count == 0)
+                    return null;
+                var serialBll = new Car_SerialBll();
+                var carPriceDic = GetReferPriceDicByCarIds(cityId, carIds);
+                foreach (var item in carList)
+                {
+                    string groupKey = item.Engine_Exhaust + "/" + item.Engine_MaxPower;
+                    if (!carGroupDic.ContainsKey(groupKey))
+                    {
+                        carGroupDic.Add(groupKey, new CarGroupEntity
+                        {
+                            Name = groupKey + "kw " + item.Engine_InhaleType,
+                            CarList = new List<CarInfoEntity>()
+                        });
+                    }
+
+                    var taxreief = GetTax(item.CarID, item.SaleState, item.Engine_Exhaust);
+                    var newStatus = serialBll.GetCarMarketText(item.CarID, item.SaleState, item.MarketDateTime, item.ReferPrice);
+                    carGroupDic[groupKey].CarList.Add(new CarInfoEntity
+                    {
+                        CarId = item.CarID,
+                        Name = item.CarName,
+                        Year = TypeParse.StrToInt(item.CarYear, 2000),
+                        IsSupport = item.IsImport == 1,
+                        MinPrice = carPriceDic.ContainsKey(item.CarID) && carPriceDic[item.CarID] != null && carPriceDic[item.CarID].MinReferPrice > 0 ? carPriceDic[item.CarID].MinReferPrice.ToString("N2") + "万" : item.CarPriceRange,
+                        ReferPrice = item.ReferPrice,
+                        Trans = item.TransmissionType,
+                        SaleState = item.SaleState,
+                        NewSaleStatus = string.IsNullOrWhiteSpace(newStatus) ? item.SaleState : newStatus,
+                        SupportType = 0,
+                        ImportType = item.IsImport == 1 ? "平行进口车" : "",
+                        CarPV = item.CarPV,
+                        IsTax = (!string.IsNullOrWhiteSpace(taxreief)),//
+                        TaxRelief = taxreief,//
+                        TimeToMarket = item.MarketDateTime.ToString(),
+                        IsHaveImage = false///
+                    });
+                }
+                foreach (var carGroup in carGroupDic.Values)
+                {
+                    carGroupList.Add(carGroup);
+                }
+                if (carGroupList != null)
+                {
+                    CacheManager.InsertCache(cacheKey, carGroupList, 5);
+                }
+            }
+            return carGroupList;
+        }
+
+        /// <summary>
+        /// 获取车款购置税
+        /// </summary>
+        /// <param name="carId"></param>
+        /// <param name="saleState"></param>
+        /// <param name="exhaust"></param>
+        /// <returns></returns>
+        public string GetTax(int carId, string saleState, string exhaust)
+        {
+            Dictionary<int, string> dictCarParams = GetCarAllParamByCarID(carId);
+
+            string strTravelTax = string.Empty;
+            var dex = TypeParse.StrToFloat(exhaust.ToUpper().Replace("L", ""), 0);
+
+            if (saleState == "在销")
+            {
+                if (dictCarParams.ContainsKey(987) && (dictCarParams[987] == "第1批" || dictCarParams[987] == "第2批" || dictCarParams[987] == "第3批" || dictCarParams[987] == "第4批" || dictCarParams[987] == "第5批" || dictCarParams[987] == "第6批") && dictCarParams.ContainsKey(986))
+                {
+                    if (dictCarParams[986].ToString() == "减半")
+                    {
+                        strTravelTax = "购置税减半";
+
+                    }
+                    else if (dictCarParams[986].ToString() == "免征")
+                    {
+                        strTravelTax = "免征购置税";
+
+                    }
+                }
+                else if (dex > 0 && dex <= 1.6)
+                {
+                    strTravelTax = "购置税75折";
+
+                }
+            }
+            return strTravelTax;
+        }
+        #region 报价
+        /// <summary>
+        /// 获取车款报价
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <param name="carIdList"></param>
+        /// <returns></returns>
+        public Dictionary<int, SalePriceInfoEntity> GetReferPriceDicByCarIds(int cityId, List<int> carIdList)
+        {
+            if (cityId == 0 || carIdList.Count == 0)
+                return new Dictionary<int, SalePriceInfoEntity>();
+            var param = JsonConvert.SerializeObject(new { CityId = cityId, CarIds = string.Join(",", carIdList) });
+            return GetReferPriceDic(ReferPriceByCityCar_Api, cityId, param);
+        }
+        /// <summary>
+        /// 获取车型报价
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <param name="serviceIdList"></param>
+        /// <returns></returns>
+        public Dictionary<int, SalePriceInfoEntity> GetReferPriceDicByServiceIds(int cityId, List<int> serviceIdList)
+        {
+            if (cityId == 0 || serviceIdList.Count == 0)
+                return new Dictionary<int, SalePriceInfoEntity>();
+            var param = JsonConvert.SerializeObject(new { CityId = cityId, CSIds = string.Join(",", serviceIdList) });
+            return GetReferPriceDic(ReferPriceByCityCS_Api, cityId, param);
+        }
+
+
+
+        private Dictionary<int, SalePriceInfoEntity> GetReferPriceDic(string apiUrl, int cityId, string param)
+        {
+            Dictionary<int, SalePriceInfoEntity> result = new Dictionary<int, SalePriceInfoEntity>();
+            try
+            {
+                WebApiData wabapi = new WebApiData();
+                var jsonResult = wabapi.GetRequestString(string.Format("{0}/{1}/{2}", apiUrl, VendorSalesToken, VendorSalesMD5), "POST", param, null, 1000, "application/json;charset=UTF-8");
+
+                var salePriceList = JsonConvert.DeserializeObject<List<SalePriceInfoEntity>>(jsonResult);
+                if (salePriceList != null)
+                {
+                    foreach (var salePrice in salePriceList)
+                    {
+                        salePrice.CityId = cityId;
+                        result.Add(salePrice.Id, salePrice);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonFunction.WriteLog(string.Format("获取车型价格超时，数据：{0},message:{1},StackTrace:{2}", param, ex.Message, ex.StackTrace));
+                //throw ex;
+            }
+            return result;
+        }
+
+        #endregion
     }
 }

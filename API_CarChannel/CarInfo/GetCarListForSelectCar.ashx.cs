@@ -35,7 +35,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 		{
 			OutputCachedPage page = new OutputCachedPage(new OutputCacheParameters
 			{
-				Duration = 60 * 10,
+				Duration = 30 * 10,
 				Location = OutputCacheLocation.Any,
 				VaryByParam = "*"
 			});

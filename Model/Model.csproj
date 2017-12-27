@@ -65,11 +65,28 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Mongodb.1.9.2\MongoDB.Driver.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppApi\CarBrandEntity.cs" />
+    <Compile Include="AppApi\CarMasterBrandEntity.cs" />
+    <Compile Include="AppApi\CarModelColorEntity.cs" />
+    <Compile Include="AppApi\CarSerialExtEntity.cs" />
+    <Compile Include="AppApi\CarStyleInfoEntity.cs" />
+    <Compile Include="AppApi\MasterBrandSaleState.cs" />
+    <Compile Include="AppApi\SerialListQueryEntity.cs" />
+    <Compile Include="AppApi\TopNewCarEntity.cs" />
+    <Compile Include="AppModel\CarGroupEntity.cs" />
+    <Compile Include="AppModel\CarParameterEntity.cs" />
+    <Compile Include="AppModel\DataCacheKeys.cs" />
+    <Compile Include="AppModel\ParameterGroupEntity.cs" />
+    <Compile Include="AppModel\SalePriceInfoEntity.cs" />
+    <Compile Include="AppModel\SerialCountryEntity.cs" />
     <Compile Include="Assessment\AssessmentEntity.cs" />
     <Compile Include="Assessment\BodyAndSpaceGroup.cs" />
     <Compile Include="Assessment\CommonImageVideoEntity.cs" />
@@ -88,6 +105,7 @@
     <Compile Include="CarInfoForSerialSummaryEntity.cs" />
     <Compile Include="CarInnerSpaceEntity.cs" />
     <Compile Include="CarJiangJiaNewsSummary.cs" />
+    <Compile Include="CarSerialPackageEntity.cs" />
     <Compile Include="CarSerialPhotoEntity.cs" />
     <Compile Include="Car_BasicEntity.cs" />
     <Compile Include="Car_BrandEntity.cs" />
@@ -102,6 +120,9 @@
     <Compile Include="CNCAPEntity.cs" />
     <Compile Include="DaoGouEntity.cs" />
     <Compile Include="EvaluationEntity.cs" />
+    <Compile Include="EvaluationRank.cs" />
+    <Compile Include="EvaluationTopRank.cs" />
+    <Compile Include="GroupScore.cs" />
     <Compile Include="LoanPackage.cs" />
     <Compile Include="DealerInfo.cs" />
     <Compile Include="Editer.cs" />
@@ -115,6 +136,7 @@
     <Compile Include="News.cs" />
     <Compile Include="NewsCategory.cs" />
     <Compile Include="NewsForSerialSummaryEntity.cs" />
+    <Compile Include="PingCeEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuesionInfo.cs" />
     <Compile Include="SelectCarParameters.cs" />

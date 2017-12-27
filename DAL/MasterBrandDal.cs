@@ -2,52 +2,226 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
-
+using System.Linq;
 using BitAuto.CarChannel.Common;
 using BitAuto.Utils;
 using BitAuto.Utils.Data;
 using BitAuto.CarChannel.Common.Cache;
 using System.Data.SqlClient;
+using BitAuto.CarChannel.Model.AppApi;
 
 namespace BitAuto.CarChannel.DAL
 {
-	public class MasterBrandDal
-	{
-		public static DataSet GetMasterBrands()
-		{
-			string catchkey = "GetAllMasterBrands";
+    public class MasterBrandDal
+    {
+        public static DataSet GetMasterBrands()
+        {
+            string catchkey = "GetAllMasterBrands";
 
-			if (CacheManager.GetCachedData(catchkey) == null)
-			{
-				string sqlStr = "SELECT bs_Id,bs_Name,spell,bs_introduction,urlspell FROM Car_MasterBrand WHERE IsState=1";
+            if (CacheManager.GetCachedData(catchkey) == null)
+            {
+                string sqlStr = "SELECT bs_Id,bs_Name,spell,bs_introduction,urlspell FROM Car_MasterBrand WHERE IsState=1";
 
-				DataSet ds = new DataSet();
-				ds = SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sqlStr);
-				CacheManager.InsertCache(catchkey, ds, 60);
-			}
+                DataSet ds = new DataSet();
+                ds = SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sqlStr);
+                CacheManager.InsertCache(catchkey, ds, 60);
+            }
 
-			return (CacheManager.GetCachedData(catchkey) as DataSet);
-		}
-		/// <summary>
-		/// 获取热门主品牌信息
-		/// </summary>
-		/// <param name="top">前几个热门主品牌</param>
-		/// <returns></returns>
-		public DataSet GetHotMasterBrand(int top)
-		{
-			string sql = @"SELECT {0}
+            return (CacheManager.GetCachedData(catchkey) as DataSet);
+        }
+        /// <summary>
+        /// 获取热门主品牌信息
+        /// </summary>
+        /// <param name="top">前几个热门主品牌</param>
+        /// <returns></returns>
+        public DataSet GetHotMasterBrand(int top)
+        {
+            string sql = @"SELECT {0}
 									cmb.bs_Id, cmb.bs_Name, cmb.urlspell, LEFT(cmb.spell, 1) AS spell,
 									mb30.UVCount
 							FROM    Car_MasterBrand cmb
 									LEFT JOIN Car_MasterBrand_30UV mb30 ON cmb.bs_id = mb30.bs_id
 							WHERE   cmb.isState = 1
 							ORDER BY UVCount DESC";
-			sql = string.Format(sql, top > 0 ? "TOP (@num)" : "");
-			SqlParameter[] _params = { 
-										 new SqlParameter("@num",DbType.Int32)
-										 };
-			_params[0].Value = top;
-			return SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, _params);
-		}
-	}
+            sql = string.Format(sql, top > 0 ? "TOP (@num)" : "");
+            SqlParameter[] _params = {
+                                         new SqlParameter("@num",DbType.Int32)
+                                         };
+            _params[0].Value = top;
+            return SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, _params);
+        }
+
+
+        /// <summary>
+        /// 获取品牌故事
+        /// </summary>
+        /// <param name="masterid"></param>
+        /// <returns></returns>
+        public DataSet GetMasterBrandStory(int masterid)
+        {
+            string sql = @"  	
+                            SELECT [bs_Id] as Id,[bs_Name] as Name,[bs_LogoInfo] as LogoMeaning,[bs_introduction] as Introduction
+	                        FROM car_masterbrand WITH(NOLOCK)
+	                        WHERE [bs_Id] = @masterid
+                        ";
+            SqlParameter[] _params = {
+                                         new SqlParameter("@masterid",DbType.Int32)
+                                         };
+            _params[0].Value = masterid;
+            return SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, _params);
+        }
+
+        /// <summary>
+        /// 根据车系编号和颜色类型获取车系颜色 
+        /// </summary>
+        /// <param name="modelId">车系编号</param>
+        /// <param name="type">颜色类型</param>
+        /// <returns></returns>
+        public List<CarModelColorEntity> GetCarModelColorByModelId(int modelId, int type)
+        {
+            string sql = @"  	
+                            SELECT colorName AS  Name ,colorRGB AS [Value] 
+                            FROM dbo.Car_SerialColor 
+                            WHERE cs_id=@modelId AND [type]=@type
+                            --ORDER BY autoID,cs_id,colorRGB  
+                        ";
+            var commandParameters = new SqlParameter[]
+            {
+                new SqlParameter("@modelId", SqlDbType.Int) {Value = modelId},
+                new SqlParameter("@type", SqlDbType.Int) {Value = type}
+            };
+            var ds = SqlHelper.ExecuteDataset(WebConfig.AutoStorageConnectionString, CommandType.Text, sql, commandParameters);
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                var res = new List<CarModelColorEntity>();
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    var val = (dr["Value"] == null ? "" : dr["Value"].ToString()).Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault();
+                    res.Add(new CarModelColorEntity()
+                    {
+                        Name = dr["Name"] == null ? "" : dr["Name"].ToString(),
+                        Value = val ?? ""
+                    });
+                }
+                return res;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 获取主品牌列表
+        /// </summary>
+        /// <returns></returns>
+        public List<CarMasterBrandEntity> GetCarMasterBrandList()
+        {
+            var sql = @"      
+  	                SELECT mb.bs_Id as Id,mb.bs_Name as Name,mb.Spell,mb.[Weight] 
+	                FROM car_masterbrand mb WITH(NOLOCK)
+	                WHERE mb.IsState=1 AND mb.IsLock=0
+	                ORDER BY  SUBSTRING(Spell,1,1)   ASC,mb.[Weight] desc ,Spell ASC
+                        ";
+
+            List<CarMasterBrandEntity> result = new List<CarMasterBrandEntity>();
+            var table =
+                SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql).Tables[0];
+            if (table != null)
+            {
+                CarMasterBrandEntity entity = null;
+                foreach (DataRow row in table.Rows)
+                {
+                    entity = new CarMasterBrandEntity();
+                    entity.MasterID = ConvertHelper.GetInteger(row["id"]);
+                    entity.Name = row["Name"].ToString();
+                    entity.Weight = ConvertHelper.GetInteger(row["Weight"]);
+                    entity.Initial = DBNull.Value.Equals(row["Spell"]) ? "" : row["Spell"].ToString()[0].ToString().ToUpper();
+                    entity.LogoUrl = string.Format("http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/100/m_{0}_100.png", entity.MasterID);
+                    result.Add(entity);
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 获取所有主品牌的销售状态
+        /// </summary>
+        /// <returns></returns>
+        public List<MasterBrandSaleState> GetAllMasterBrandSaleState()
+        {
+            var list = new List<MasterBrandSaleState>();
+            var sql = @"      
+                      SELECT [dbo].[Car_MasterBrand].bs_Id,CbSaleState
+	                      FROM [dbo].[Car_MasterBrand] WITH(NOLOCK)
+	                      LEFT JOIN [dbo].[Car_MasterBrand_Rel] WITH(NOLOCK) ON [Car_MasterBrand_Rel].bs_Id=[dbo].[Car_MasterBrand].bs_Id
+	                      LEFT JOIN [dbo].[Car_Brand] WITH(NOLOCK) ON [dbo].[Car_Brand].cb_Id= [dbo].[Car_MasterBrand_Rel].cb_Id
+	                      WHERE [dbo].[Car_MasterBrand].[IsState]=1  AND [dbo].[Car_Brand].IsState=1 
+                        ";
+            var table =
+                SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql).Tables[0];
+            if (table != null)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    list.Add(new MasterBrandSaleState
+                    {
+                        bs_Id = ConvertHelper.GetInteger(row["bs_Id"]),
+                        CbSaleState = ConvertHelper.GetString((row["CbSaleState"] + string.Empty).Trim())
+                    });
+                }
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// 根据车款编号和颜色类型获取车款颜色 
+        /// </summary>
+        /// <param name="carStyleId">车款编号</param>
+        /// <param name="type">颜色类型 0车身颜色 1内饰颜色</param>
+        /// <returns></returns>
+        public List<CarModelColorEntity> GetCarStyleColorById(int carStyleId, int type)
+        {
+            var sql = @"
+                        SELECT top 1 Pvalue as color
+                        FROM CarDataBase WITH(NOLOCK)
+                        WHERE ParamId = @ParamId and carid=@carstyleId ;
+
+                        SELECT colorName AS  Name ,colorRGB AS [Value] 
+                        FROM dbo.Car_SerialColor  WITH(NOLOCK)
+                        WHERE [type]=@type
+                        AND cs_id=
+                        (
+	                        SELECT Cs_Id	                        FROM Car_relation WITH(NOLOCK)	                        WHERE isstate=0	                        AND Car_Id=@carstyleId
+                        )  
+                        ";
+            var commandParameters = new SqlParameter[]
+            {
+                new SqlParameter("@carstyleId", SqlDbType.Int) {Value = carStyleId},
+                new SqlParameter("@type", SqlDbType.Int) {Value = type},
+                new SqlParameter("@ParamId", SqlDbType.Int) {Value = type.Equals(0)?598:801}
+            };
+            var ds = SqlHelper.ExecuteDataset(WebConfig.AutoStorageConnectionString, CommandType.Text, sql, commandParameters);
+            if (ds != null && ds.Tables.Count >= 2)
+            {
+                var color = ds.Tables[0].Rows.Count > 0 ? ds.Tables[0].Rows[0]["color"] == null ? "" : ds.Tables[0].Rows[0]["color"].ToString() : "";
+                if (string.IsNullOrWhiteSpace(color))
+                    return null;
+                var res = new List<CarModelColorEntity>();
+                var colorArr = color.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (DataRow dr in ds.Tables[1].Rows)
+                {
+                    var name = dr["Name"] == null ? "" : dr["Name"].ToString();
+                    var isEitsts = (from c in colorArr where c.Equals(name) select c).FirstOrDefault();
+                    if (!string.IsNullOrWhiteSpace(name) && isEitsts != null)
+                    {
+                        var val = (dr["Value"] == null ? "" : dr["Value"].ToString()).Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault();
+                        res.Add(new CarModelColorEntity() { Name = name, Value = val ?? "" });
+                    }
+                }
+                return res;
+
+            }
+            return null;
+        }
+
+    }
 }

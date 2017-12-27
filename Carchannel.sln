@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{95AD515E-935F-49C8-8721-8F89D0B8614D}"
 EndProject
@@ -29,6 +29,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessServiceAPI", "BusinessServiceAPI\BusinessServiceAPI.csproj", "{75EDBCAB-2069-4E4F-B08F-F9747909325B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MWeb", "MWeb\MWeb.csproj", "{9FD4C377-A1B8-4182-BB72-89E7DF070D37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppApi", "AppApi\AppApi.csproj", "{0C304A9C-1095-4AFE-97D1-E05538BDFBE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -130,6 +132,18 @@ Global
 		{9FD4C377-A1B8-4182-BB72-89E7DF070D37}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9FD4C377-A1B8-4182-BB72-89E7DF070D37}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{9FD4C377-A1B8-4182-BB72-89E7DF070D37}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0C304A9C-1095-4AFE-97D1-E05538BDFBE5}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{0C304A9C-1095-4AFE-97D1-E05538BDFBE5}.Debug|.NET.Build.0 = Debug|Any CPU
+		{0C304A9C-1095-4AFE-97D1-E05538BDFBE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C304A9C-1095-4AFE-97D1-E05538BDFBE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C304A9C-1095-4AFE-97D1-E05538BDFBE5}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0C304A9C-1095-4AFE-97D1-E05538BDFBE5}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0C304A9C-1095-4AFE-97D1-E05538BDFBE5}.Release|.NET.ActiveCfg = Release|Any CPU
+		{0C304A9C-1095-4AFE-97D1-E05538BDFBE5}.Release|.NET.Build.0 = Release|Any CPU
+		{0C304A9C-1095-4AFE-97D1-E05538BDFBE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C304A9C-1095-4AFE-97D1-E05538BDFBE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C304A9C-1095-4AFE-97D1-E05538BDFBE5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0C304A9C-1095-4AFE-97D1-E05538BDFBE5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

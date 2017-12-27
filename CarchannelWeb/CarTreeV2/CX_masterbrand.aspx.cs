@@ -37,13 +37,14 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 		// 默认全部
 		private EnumCollection.FlagsSerialLeve fsl = EnumCollection.FlagsSerialLeve.全部;
 		private Dictionary<string, List<DataRow>> dicCs = new Dictionary<string, List<DataRow>>();
+        Car_SerialBll carSerialBll = new Car_SerialBll();
 
 
-		protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
 		{
 			base.SetPageCache(10);
 			GetParam();
-			_SubsidiesList = new Car_SerialBll().GetSubsidiesSerialList();
+			_SubsidiesList = carSerialBll.GetSubsidiesSerialList();
 			InitData();
 			//NavbarHtml = base.GetTreeNavBarHtml("masterbrand", "chexing", _MasterBrandId);
 			//搜索地址
@@ -136,7 +137,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 			}
 
 			// 子品牌报价区间
-			Dictionary<int, string> dicCsPrice = base.GetAllCsPriceRange();
+			//Dictionary<int, string> dicCsPrice = base.GetAllCsPriceRange();
 			// 子品牌封面
 			Dictionary<int, string> dicCsPhoto = base.GetAllSerialPicURL(true);
 
@@ -265,12 +266,20 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 							string imgUrl = dicCsPhoto.ContainsKey(serialId) ? dicCsPhoto[serialId].Replace("_2.", "_3.") : WebConfig.DefaultCarPic;
 							// string csLevel = ConvertHelper.GetString(dr["cslevel"]);
 							string sellState = ConvertHelper.GetString(dr["CsSaleState"]);
-                            string priceRang = dicCsPrice.ContainsKey(serialId) ? dicCsPrice[serialId] : "暂无报价";
+                            //改为指导价
+                            string priceRang = base.GetSerialReferPriceByID(serialId);
 							string subsidiesString = "";
 							string bestCarStr = "";
+                            string newCarIntoMarcket = carSerialBll.GetNewSerialIntoMarketText(serialId, false);
+                            if (!string.IsNullOrWhiteSpace(newCarIntoMarcket))
+                            {
+                                newCarIntoMarcket = string.Format("<span class=\"spl-label type{1}\">{0}</span>"
+                                    ,newCarIntoMarcket
+                                    ,newCarIntoMarcket == "即将上市" ? "2":"1");
+                            }
 
-							// 新10佳车 add by chengl Dec.5.2013
-							if (listAllBestCar != null && listAllBestCar.Count > 0)
+                            // 新10佳车 add by chengl Dec.5.2013
+                            if (listAllBestCar != null && listAllBestCar.Count > 0)
 							{
 								foreach (BestTopCar btc in listAllBestCar)
 								{
@@ -308,7 +317,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
                             }
                             else if (priceRang.Trim().Length == 0 && sellState.Trim() == "在销")
                             {
-                                priceRang = "暂无报价";
+                                priceRang = "暂无指导价";
                             }
 							#endregion
 
@@ -320,26 +329,26 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 							{
 								_SerialCount++;
 							}
-                            if (sellState.Trim() == "停销" || sellState.Trim() == "待销"||priceRang == "暂无报价")
+                            if (sellState.Trim() == "停销" || sellState.Trim() == "待销"||priceRang == "暂无指导价")
                             {
                                 sbTempList.AppendLine("<div class=\"col-xs-3\"><div class=\"img-info-layout-vertical img-info-layout-vertical-180120 inverse icon-none no-reduce\">");
                                 sbTempList.AppendLine(string.Format(
-                                   "<div class=\"img\"><a href=\"/{0}/\" title=\"{3}\" target=\"_blank\" id=\"n{1}\"><img src=\"{2}\" alt=\"{3}\"></a></div>"
-                                   , csSpell, serialId, imgUrl, csShowName));
+                                   "<div class=\"img\"><a href=\"/{0}/\" title=\"{3}\" target=\"_blank\" id=\"n{1}\">{4}<img src=\"{2}\" alt=\"{3}\"></a></div>"
+                                   , csSpell, serialId, imgUrl, csShowName, newCarIntoMarcket));
                                 sbTempList.AppendLine(string.Format("<ul class=\"p-list\"><li class=\"name\"><a href=\"/{0}/\" title=\"{1}\" target=\"_blank\" id=\"m{2}\">{1}</a></li><li class=\"price\"><a href=\"/{0}/\" class=\"price-reduction\" title=\"{1}\" target=\"_blank\">{3}</a></li></ul>"
                                     , csSpell, csShowName, serialId, priceRang, subsidiesString, bestCarStr,
-                                   priceRang == "暂无报价" ? " huizi" : ""));
+                                   priceRang == "暂无指导价" ? " huizi" : ""));
                                 sbTempList.AppendLine("</div></div>");
                             }
                             else
                             {
                                 sbCsList.AppendLine("<div class=\"col-xs-3\"><div class=\"img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120\">");
                                 sbCsList.AppendLine(string.Format(
-                                    "<div class=\"img\"><a href=\"/{0}/\" title=\"{3}\" target=\"_blank\" id=\"n{1}\"><img src=\"{2}\" alt=\"{3}\"></a></div>"
-                                    , csSpell, serialId, imgUrl, csShowName));
+                                    "<div class=\"img\"><a href=\"/{0}/\" title=\"{3}\" target=\"_blank\" id=\"n{1}\">{4}<img src=\"{2}\" alt=\"{3}\"></a></div>"
+                                    , csSpell, serialId, imgUrl, csShowName, newCarIntoMarcket));
                                 sbCsList.AppendLine(string.Format("<ul class=\"p-list\"><li class=\"name\"><a href=\"/{0}/\" title=\"{1}\" target=\"_blank\" id=\"m{2}\">{1}</a><li><li class=\"price\"><a href=\"/{0}/\" title=\"{1}\" target=\"_blank\" id=\"m{2}\">{3}</a></li></ul>"
                                     , csSpell, csShowName, serialId, priceRang, subsidiesString, bestCarStr,
-                                   priceRang == "暂无报价" ? " huizi" : ""));
+                                   priceRang == "暂无指导价" ? " huizi" : ""));
                                 sbCsList.AppendLine("</li>");
                                 sbCsList.AppendLine("</div></div>");
                             }

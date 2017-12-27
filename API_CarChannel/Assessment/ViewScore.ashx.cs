@@ -27,8 +27,8 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
             string evaluationId = context.Request.QueryString["evaluationId"];
             int.TryParse(evaluationId, out EvaluationId);
 
-            IMongoQuery query = Query.EQ("EvaluationId", EvaluationId);            
-            EvaluationBll evaluationBll = new EvaluationBll();            
+            IMongoQuery query = Query.EQ("EvaluationId", EvaluationId);
+            EvaluationBll evaluationBll = new EvaluationBll();
             AssessmentEntity assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query);
 
             List<ViewScoreEntity> list = new List<ViewScoreEntity>();
@@ -40,14 +40,14 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                     {
                         ViewScoreEntity commonInfoGroup = new ViewScoreEntity();
                         List<ParaKeyValue> ItemList = new List<ParaKeyValue>();
-                        commonInfoGroup.GroupName = assessmentEntity.CommonInfoGroup.GroupName; 
+                        commonInfoGroup.GroupName = assessmentEntity.CommonInfoGroup.GroupName;
                         commonInfoGroup.Score = assessmentEntity.CommonInfoGroup.Score;
                         if (assessmentEntity.CommonInfoGroup.CommonInformationEntity != null)
                         {
                             //处理逻辑
                         }
                         commonInfoGroup.ItemList = ItemList;
-                        list.Add(commonInfoGroup);                        
+                        list.Add(commonInfoGroup);
                     }
                 }
 
@@ -61,12 +61,12 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         bodyAndSpaceGroup.Score = assessmentEntity.BodyAndSpaceGroup.Score;
                         if (assessmentEntity.BodyAndSpaceGroup.SpaceEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "车内空间测量值", Score = assessmentEntity.BodyAndSpaceGroup.SpaceEntity.ActualScore,Status="" });
+                            ItemList.Add(new ParaKeyValue() { Name = "车内空间测量值", Score = assessmentEntity.BodyAndSpaceGroup.SpaceEntity.ActualScore, Status = "" });
                             ItemList.Add(new ParaKeyValue() { Name = "车内空间印象", Score = assessmentEntity.BodyAndSpaceGroup.SpaceEntity.ImpressionScore, Status = "" });
                         }
                         if (assessmentEntity.BodyAndSpaceGroup.TrunkEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "行李厢容积", Score = assessmentEntity.BodyAndSpaceGroup.TrunkEntity.Cubage, Status = "" });            
+                            ItemList.Add(new ParaKeyValue() { Name = "行李厢容积", Score = assessmentEntity.BodyAndSpaceGroup.TrunkEntity.Cubage, Status = "" });
                         }
                         if (assessmentEntity.BodyAndSpaceGroup.StoragespaceEntity != null)
                         {
@@ -81,7 +81,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         if (assessmentEntity.BodyAndSpaceGroup.QualityEntity != null)
                         {
                             ItemList.Add(new ParaKeyValue() { Name = "制造质量", Score = assessmentEntity.BodyAndSpaceGroup.QualityEntity.Score, Status = "" });
-                        }                        
+                        }
                         bodyAndSpaceGroup.ItemList = ItemList;
                         list.Add(bodyAndSpaceGroup);
                     }
@@ -140,7 +140,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         dynamicPerformanceGroup.Score = assessmentEntity.DynamicPerformanceGroup.Score;
                         if (assessmentEntity.DynamicPerformanceGroup.AccelerateEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "加速", Score = assessmentEntity.DynamicPerformanceGroup.AccelerateEntity.AccelerateScroe, Status = "" });                            
+                            ItemList.Add(new ParaKeyValue() { Name = "加速", Score = assessmentEntity.DynamicPerformanceGroup.AccelerateEntity.AccelerateScroe, Status = "" });
                         }
                         if (assessmentEntity.DynamicPerformanceGroup.EngineEntity != null)
                         {
@@ -218,7 +218,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         }
                         if (assessmentEntity.SafetyGroup.VisualFieldEntity != null)
                         {
-                            ItemList.Add(new ParaKeyValue() { Name = "车内视野", Score = assessmentEntity.SafetyGroup.VisualFieldEntity.ViewScore, Status = "" });                            
+                            ItemList.Add(new ParaKeyValue() { Name = "车内视野", Score = assessmentEntity.SafetyGroup.VisualFieldEntity.ViewScore, Status = "" });
                         }
                         if (assessmentEntity.SafetyGroup.LightEntity != null)
                         {
@@ -258,7 +258,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         yhBaseGroup.ItemList = ItemList;
                         list.Add(yhBaseGroup);
                     }
-                }                
+                }
 
                 if (assessmentEntity.CostBaseGroup != null)
                 {
@@ -298,7 +298,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         ViewScoreEntity generalBaseGroup = new ViewScoreEntity();
                         List<ParaKeyValue> ItemList = new List<ParaKeyValue>();
                         generalBaseGroup.GroupName = assessmentEntity.GeneralBaseGroup.GroupName;
-                        generalBaseGroup.Score  = assessmentEntity.GeneralBaseGroup.Score;
+                        generalBaseGroup.Score = assessmentEntity.GeneralBaseGroup.Score;
                         //处理逻辑                     
                         generalBaseGroup.ItemList = ItemList;
                         list.Add(generalBaseGroup);

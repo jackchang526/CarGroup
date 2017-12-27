@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+
+  <Group>
+
+    <Item>
+      <GroupName>CommonInfoGroup</GroupName>
+      <Score>100</Score>
+      <ScoreDesc>
+        <Item  Range="0.85-1">优秀</Item>
+        <Item  Range="0.75-0.85">良好</Item>
+        <Item  Range="0.6-0.75">一般</Item>
+        <Item  Range="0-0.6">较差</Item>
+      </ScoreDesc>
+      <CommonDesc>
+        <Item  Range="优秀"></Item>
+        <Item  Range="良好"></Item>
+        <Item  Range="一般"></Item>
+        <Item  Range="较差"></Item>
+      </CommonDesc>
+    </Item>
+    
+    
+    <Item>
+      <GroupName>BodyAndSpaceGroup</GroupName>
+      <Score>100</Score>
+      <ScoreDesc>
+        <Item  Range="0.85-1">优秀</Item>
+        <Item  Range="0.75-0.85">良好</Item>
+        <Item  Range="0.6-0.75">一般</Item>
+        <Item  Range="0-0.6">较差</Item>
+      </ScoreDesc>
+      <CommonDesc>
+        <Item  Range="优秀">车身及空间不错</Item>
+        <Item  Range="良好">车身及空间良好</Item>
+        <Item  Range="一般">车身及空间一般</Item>
+        <Item  Range="较差">车身及空间不好</Item>
+      </CommonDesc>
+    </Item>
+    
+    <Item>
+      <GroupName>SafetyGroup</GroupName>
+      <Score>100</Score>
+      <ScoreDesc>
+        <Item  Range="0.85-1">优秀</Item>
+        <Item  Range="0.75-0.85">良好</Item>
+        <Item  Range="0.6-0.75">一般</Item>
+        <Item  Range="0-0.6">较差</Item>
+      </ScoreDesc>
+      <CommonDesc>
+        <Item  Range="优秀">安全性不错</Item>
+        <Item  Range="良好">安全性好</Item>
+        <Item  Range="一般">安全表现一般</Item>
+        <Item  Range="较差">安全性不好</Item>
+      </CommonDesc>
+    </Item>
+    
+    <Item>
+      <GroupName>RidingComfortGroup</GroupName>
+      <Score>100</Score>
+      <ScoreDesc>
+        <Item  Range="0.85-1">优秀</Item>
+        <Item  Range="0.75-0.85">良好</Item>
+        <Item  Range="0.6-0.75">一般</Item>
+        <Item  Range="0-0.6">较差</Item>
+      </ScoreDesc>
+      <CommonDesc>
+        <Item  Range="优秀">舒适性不错</Item>
+        <Item  Range="良好">舒适性好</Item>
+        <Item  Range="一般">舒适性一般</Item>
+        <Item  Range="较差">舒适性不好</Item>
+      </CommonDesc>
+    </Item>
+    
+    <Item>
+      <GroupName>DynamicPerformanceGroup</GroupName>
+      <Score>100</Score>
+      <ScoreDesc>
+        <Item  Range="0.85-1">优秀</Item>
+        <Item  Range="0.75-0.85">良好</Item>
+        <Item  Range="0.6-0.75">一般</Item>
+        <Item  Range="0-0.6">较差</Item>
+      </ScoreDesc>
+      <CommonDesc>
+        <Item  Range="优秀">动力表现优秀</Item>
+        <Item  Range="良好">动力表现良好</Item>
+        <Item  Range="一般">动力表现一般</Item>
+        <Item  Range="较差">动力表现不好</Item>
+      </CommonDesc>
+    </Item>
+    
+    <Item>
+      <GroupName>JsBaseGroup</GroupName>
+      <Score>100</Score>
+      <ScoreDesc>
+        <Item  Range="0.85-1">优秀</Item>
+        <Item  Range="0.75-0.85">良好</Item>
+        <Item  Range="0.6-0.75">一般</Item>
+        <Item  Range="0-0.6">较差</Item>
+      </ScoreDesc>
+      <CommonDesc>
+        <Item  Range="优秀">驾驶体验不错</Item>
+        <Item  Range="良好">驾驶体验好</Item>
+        <Item  Range="一般">驾驶体验一般</Item>
+        <Item  Range="较差">驾驶体验不好</Item>
+      </CommonDesc>
+    </Item>  
+    
+    <Item>
+      <GroupName>YhBaseGroup</GroupName>
+      <Score>50</Score>
+      <ScoreDesc>
+        <Item  Range="0.85-1">优秀</Item>
+        <Item  Range="0.75-0.85">良好</Item>
+        <Item  Range="0.6-0.75">一般</Item>
+        <Item  Range="0-0.6">较差</Item>
+      </ScoreDesc>
+      <CommonDesc>
+        <Item  Range="优秀">油耗及环保不错</Item>
+        <Item  Range="良好">油耗及环保良好</Item>
+        <Item  Range="一般">油耗及环保一般</Item>
+        <Item  Range="较差">油耗及环保不好</Item>
+      </CommonDesc>
+    </Item>
+
+    <Item>
+      <GroupName>CostBaseGroup</GroupName>
+      <Score>100</Score>
+      <ScoreDesc>
+        <Item  Range="0.85-1">优秀</Item>
+        <Item  Range="0.75-0.85">良好</Item>
+        <Item  Range="0.6-0.75">一般</Item>
+        <Item  Range="0-0.6">较差</Item>
+      </ScoreDesc>
+      <CommonDesc>
+        <Item  Range="优秀"></Item>
+        <Item  Range="良好"></Item>
+        <Item  Range="一般"></Item>
+        <Item  Range="较差"></Item>
+      </CommonDesc>
+    </Item>
+
+    <Item>
+      <GroupName>GeneralBaseGroup</GroupName>
+      <Score>100</Score>
+      <ScoreDesc>
+        <Item  Range="0.85-1">优秀</Item>
+        <Item  Range="0.75-0.85">良好</Item>
+        <Item  Range="0.6-0.75">一般</Item>
+        <Item  Range="0-0.6">较差</Item>
+      </ScoreDesc>
+      <CommonDesc>
+        <Item  Range="优秀"></Item>
+        <Item  Range="良好"></Item>
+        <Item  Range="一般"></Item>
+        <Item  Range="较差"></Item>
+      </CommonDesc>
+    </Item>
+  </Group>
+</Root>

@@ -48,6 +48,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
         private HttpResponse response;
         //BitAuto.CarChannel.BLL.Car_BasicBll basicBll = new BitAuto.CarChannel.BLL.Car_BasicBll();
         private string paramsIds = string.Empty;
+        private bool nocache = false;
         private Car_BasicBll carBll = new Car_BasicBll();
         private StringBuilder sb = new StringBuilder();
 
@@ -75,7 +76,8 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
             {
                 // 取全部参数
             }
-
+            //nocache = ConvertHelper.GetBoolean(request["nocache"]);
+            bool.TryParse(request["nocache"], out nocache);
             switch (type)
             {
                 case "master": RenderMasterData(); break;
@@ -97,7 +99,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                 case "getcarparamtopgroupbylevel": PageHelper.SetPageCache(60); RenderCarParamByParamidGroupbyLevel(); break;
                 case "getcarlistbycsid": PageHelper.SetPageCache(60); RenderCarListByCsID(); break;
                 case "getelectricbycarids": PageHelper.SetPageCache(60); RenderElectricByCarids(); break;
-                case "getgroupcarlistbyserialid": PageHelper.SetPageCache(30); RenderGroupCarListBySerialId(); break;
+                case "getgroupcarlistbyserialid": if (!nocache) { PageHelper.SetPageCache(30); } RenderGroupCarListBySerialId(); break;
                 case "getcarcomparelist": PageHelper.SetPageCache(60); RenderGetCarCompareList(); break;
                 case "getcarcalcinfo": PageHelper.SetPageCache(60); RenderGetCarCalcInfo(); break;
                 case "getcartaxinfo": PageHelper.SetPageCache(60); RenderGetCarParamInfo(); break;
@@ -318,7 +320,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                     case "onsale": predicate = (p) => (p.SaleState == "在销" || p.SaleState == "待销"); break;
                     default: break;
                 }
-                var carList = carBll.GetCarInfoForSerialSummaryBySerialId(serialId).FindAll(predicate);
+                var carList = carBll.GetCarInfoForSerialSummaryBySerialId(serialId, nocache).FindAll(predicate);
                 carList.Sort(NodeCompare.CompareCarByExhaustAndPowerAndInhaleType);
                 var querySale = carList.GroupBy(p => new { p.Engine_Exhaust, p.Engine_InhaleType, p.Engine_AddPressType, p.Engine_MaxPower }, p => p);
                 foreach (IGrouping<object, CarInfoForSerialSummaryEntity> info in querySale)

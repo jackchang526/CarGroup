@@ -76,6 +76,11 @@
                         <!-- 浮动Left -->
                         <div id="leftfixed" style="display: none;">
                         </div>
+                        <div class="td-tips">
+                            <div class="ts-box">
+                                以下数据仅供参考，不构成任何买卖协议，实际情况以店内销售车辆为准。如果发现信息有误，<a target="_blank" href="http://www.bitauto.com/feedback/">欢迎您及时指正！</a>
+                            </div>
+                        </div>
                         <div id="CarCompareContent">
                         </div>
                         <%if (!string.IsNullOrEmpty(carIDs))
@@ -90,11 +95,7 @@
                         </div>
                         <!-- 左侧浮动层 end -->
                         <%} %>
-                        <div class="td-tips">
-                            <div class="ts-box">
-                                以上参数配置信息仅供参考，实际请以店内销售车辆为准。如果发现信息有误，<a target="_blank" href="http://www.bitauto.com/feedback/">欢迎您及时指正！</a>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 <!-- 浮动Top -->
@@ -169,8 +170,10 @@
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/dropdownlistnew.min.js?v=20161201"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/CarChannelBaikeJson.js?v=20161201"></script>
     <!--#include file="/include/special/stat/00001/bglogpostlog_Manual.shtml"-->
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/carcomparelistv2.min.js?v=201710111751"></script>
-    <%--<script type="text/javascript" src="/jsnewv2/carcomparelistv2.js?v=20161201"></script>--%>
+       <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712110"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/carcomparelistv2.min.js?v=201712110"></script>
+    <%--<script type="text/javascript" src="/jsnewv2/getareaprice.js?v=2017120401"></script>
+    <script type="text/javascript" src="/jsnewv2/carcomparelistv2.js?v=20161201"></script>--%>
     <script type="text/javascript">
         initPageForCompare();
       

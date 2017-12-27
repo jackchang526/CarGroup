@@ -55,7 +55,7 @@ namespace MWeb.Controllers
             pageBase = new PageBase();
         }
 
-        [OutputCache(Duration = 1800, Location = OutputCacheLocation.Downstream)]
+        [OutputCache(Duration = 600, Location = OutputCacheLocation.Downstream)]
         public ActionResult Index(int id)
         {
             serialId = id;
@@ -76,8 +76,9 @@ namespace MWeb.Controllers
             InitNewsData();//新闻
             GetVideo();//视频
             MakeForumNewsHtml();//论坛
-            MakeSerialToSerialHtml();//看了还看
-            GetVrUrl();//获取vr地址
+            //MakeSerialToSerialHtml();//看了还看
+            GetSerialHotCompareCars();//找相似
+            //GetVrUrl();//获取vr地址
             GetBaoZhiLv();//保值率
             /*
             bool isTestCs = TestCsIds.Contains(serialId);
@@ -91,7 +92,8 @@ namespace MWeb.Controllers
 
             #region 综述页新车上市提示 20170920
 
-            GetTab();
+            //GetTab();
+            ViewData["showText"] = serialBLL.GetNewSerialIntoMarketText(serialId, true);
 
             #endregion
 
@@ -520,18 +522,20 @@ namespace MWeb.Controllers
                             string carPriceRange = carInfo.CarPriceRange.Trim();
                             if (carInfo.SaleState == "待销")//顾晓 确认的逻辑 （待销的车款没有价格，全部显示未上市） 2015-07-09
                             {
-                                carMinPrice = "未上市";
+                                carMinPrice = "<dt class=\"the-noprice\">未上市</dt>";
                             }
                             else if (carInfo.CarPriceRange.Trim().Length == 0)
                             {
-                                carMinPrice = "暂无报价";
+                                carMinPrice = "<dt class=\"the-noprice\">暂无报价</dt>";
                             }
                             else
                             {
-                                if (carPriceRange.IndexOf('-') != -1)
-                                    carMinPrice = carPriceRange.Substring(0, carPriceRange.IndexOf('-')); //+ "万"
-                                else
-                                    carMinPrice = carPriceRange;
+                                if (carPriceRange.IndexOf('-') != -1) { 
+                                    carMinPrice = "<dt>"+ carPriceRange.Substring(0, carPriceRange.IndexOf('-'))+ "</dt>"; //+ "万"
+                                }
+                                else { 
+                                    carMinPrice = "<dt class=\"the-noprice\">" + carPriceRange + "</dt>";
+                                }
                             }
 
                             Dictionary<int, string> dictCarParams = carBLL.GetCarAllParamByCarID(carInfo.CarID);
@@ -564,10 +568,10 @@ namespace MWeb.Controllers
 
 
                             // 档位个数
-                            string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" &&
-                                                     dictCarParams[724] != "待查")
-                                ? dictCarParams[724] + "挡"
-                                : "";
+                            ////string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" &&
+                            //                         dictCarParams[724] != "待查")
+                            //    ? dictCarParams[724] + "挡"
+                            //    : "";
 
                             //平行进口车标签
                             //string parallelImport = "";
@@ -575,6 +579,7 @@ namespace MWeb.Controllers
                             //{
                             //	parallelImport = "<em>平行进口</em>";
                             //}
+                            string transmissionType = carBLL.GetCarTransmissionType(dictCarParams.ContainsKey(724) ? dictCarParams[724] : string.Empty, carInfo.TransmissionType);
 
                             stringBuilder.Append("<li>");
 
@@ -583,9 +588,13 @@ namespace MWeb.Controllers
                                  "/" + serialEntity.AllSpell + "/m" + carInfo.CarID + "/");
 
                             //新车上市 即将上市 状态
-                            string marketflag = GetMarketFlag(carInfo);
+                            string marketflag = serialBLL.GetCarMarketText(carInfo.CarID, carInfo.SaleState, carInfo.MarketDateTime, carInfo.ReferPrice);//GetMarketFlag(carInfo);
+                            if (!string.IsNullOrEmpty(marketflag))
+                            {
+                                marketflag = string.Format("<em class=\"the-new\">{0}</em>", marketflag);
+                            }
                             stringBuilder.AppendFormat("<h2>{0}{1}</h2>", carFullName, marketflag);
-                            stringBuilder.AppendFormat("<dl><dt>{0}</dt></dl>", carMinPrice);
+                            stringBuilder.AppendFormat("<dl>{0}</dl>", carMinPrice);
 
                             stringBuilder.Append("<div class=\"car-info-bottom\">");//第二行开始
 
@@ -616,7 +625,7 @@ namespace MWeb.Controllers
                                     strTravelTax = "<em>减税</em>";
                                 }
                             }
-                            stringBuilder.AppendFormat("<span>{0}</span>", forwardGearNum + carInfo.TransmissionType);
+                            stringBuilder.AppendFormat("<span>{0}</span>", transmissionType);
                             stringBuilder.AppendFormat("<div class=\"gzd-box\" style=\"\"><div class=\"tit-box\">热度</div><span class=\"gz-sty\"><i data-pv=\"{0}\" style=\"width:{0}%\"></i></span></div>", percent);
                             stringBuilder.AppendFormat("{0}{1}", strTravelTax, stopPrd);
                             stringBuilder.AppendFormat("<b>指导价:{0}</b>", carInfo.ReferPrice.Trim().Length == 0 ? "暂无" : carInfo.ReferPrice.Trim() + "万");
@@ -633,10 +642,10 @@ namespace MWeb.Controllers
                             }
                             stringBuilder.Append("<ul class='" + ulStyle + "'>");
                             stringBuilder.AppendFormat(
-                                "<li><a id=\"car-compare-{0}\" href=\"#compare\" class=\"btnDuibi\" data-action=\"car\" data-id=\"{0}\" data-name=\"{1} {2}\" data-channelid=\"27.23.910\">加对比</a></li>",
+                                 "<li class='btn-duibi'><a id=\"car-compare-{0}\" href=\"#compare\"  data-action=\"car\" data-id=\"{0}\" data-name=\"{1} {2}\" data-channelid=\"27.23.910\"><span>对比</span></a></li>",
                                 carInfo.CarID, serialEntity.ShowName, carFullName);
                             stringBuilder.AppendFormat(
-                                "<li><a id = \"car_filter_id_{0}_{1}\" href='/gouchejisuanqi/?carID={0}' data-channelid=\"27.23.911\">计算器</a></li>",
+                                "<li class='btn-calculator'><a id = \"car_filter_id_{0}_{1}\" href='/gouchejisuanqi/?carID={0}' data-channelid=\"27.23.911\"><span>计算器</span></a></li>",
                                 carInfo.CarID, counter);
                             if (maiBtnFlag)
                             {
@@ -648,7 +657,7 @@ namespace MWeb.Controllers
                                 string wtQuery = new int[] { 4123, 4881, 2608, 1574, 2573, 3987, 2032, 1905, 4847, 1798 }.Contains(serialId) ? "&WT.mc_id=nbclx" : string.Empty;
 
                                 stringBuilder.AppendFormat(
-                                "<li class=\"btn-org\"><a id =\"car_filterzuidi_id_{0}_{1}\" href=\"http://price.m.yiche.com/zuidijia/nc{0}/?leads_source=m002008" + wtQuery + "\" data-channelid=\"27.23.912\">询底价</a></li>",
+                                "<li class=\"btn-xundijia btn-one-color\"><a id =\"car_filterzuidi_id_{0}_{1}\" href=\"http://price.m.yiche.com/zuidijia/nc{0}/?leads_source=m002008" + wtQuery + "\" data-channelid=\"27.23.912\">询底价</a></li>",
                                 carInfo.CarID, counter);
                             }
                             else
@@ -853,14 +862,37 @@ namespace MWeb.Controllers
             var focusImgId = new Dictionary<int, string>();
             List<string> focusImg = new List<string>();
             List<SerialFocusImage> imgList = serialBLL.GetSerialFocusImageList(serialEntity.Id);
+            //子品牌幻灯页
+            List<SerialFocusImage> imgSlideList = serialBLL.GetSerialSlideImageList(serialId);
+            List<SerialFocusImage> sourceList = new List<SerialFocusImage>();
             string xmlPicPath = Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, serialId));
             DataSet dsCsPic = pageBase.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialEntity.Id, xmlPicPath, 60);
             Dictionary<int, Dictionary<int, string>> dicPicNoneWhite = pageBase.GetAllSerialPicNoneWhiteBackground();
+            
+            #region 初始化数据源
+            foreach (SerialFocusImage img in imgList)
+            {
+                sourceList.Add(img);
+            }
+            //焦点图不足，补幻灯页
+            foreach (SerialFocusImage imgS in imgSlideList)
+            {
+                if (sourceList.Count > 3)
+                {
+                    break;
+                }
+                //焦点图片排重
+                SerialFocusImage focusImage = imgList.Find(p => p.ImageId == imgS.ImageId);
+                if (focusImage != null)
+                    continue;
+                sourceList.Add(imgS);
+            }
+            #endregion
 
-            if (imgList != null && imgList.Count > 0)
+            if (sourceList != null && sourceList.Count > 0)
             {
                 //大图默认显示焦点图第一张，如果没有焦点图，显示封面图
-                SerialFocusImage image = imgList[0];
+                SerialFocusImage image = sourceList[0];
                 string _serialImage =
                     string.Format(
                         "<a href=\"http://photo.m.yiche.com/picture/{0}/{1}/\" data-channelid=\"27.23.723\" class=\"left-area\"><img alt=\"{4}{5}\" src=\"{2}\">{3}</a>",
@@ -874,10 +906,10 @@ namespace MWeb.Controllers
                     focusImg.Add(_serialImage);
                 }
 
-                //第二张图取子品牌焦点图第3张（完整内饰）
-                if (imgList.Count >= 3)
+                //第二张图取子品牌焦点图第2张（完整内饰）
+                if (sourceList.Count >= 2)
                 {
-                    SerialFocusImage csImg = imgList[2];
+                    SerialFocusImage csImg = sourceList[1];
                     string smallImgUrl = csImg.ImageUrl;
                     if (csImg.ImageId > 0)
                     {
@@ -898,71 +930,63 @@ namespace MWeb.Controllers
                     }
                 }
             }
-            else
-            {
 
-                if (dicPicNoneWhite.ContainsKey(serialId))
-                {
-                    string _serialImage =
-                        string.Format(
-                            "<a href=\"http://photo.m.yiche.com/picture/{0}/{1}/\" data-channelid=\"27.23.723\" class=\"left-area\"><img alt=\"{3}外观\" src=\"{2}\"><em>外观</em></a>"
-                            , serialId
-                            , dicPicNoneWhite[serialId].FirstOrDefault().Key
-                            , dicPicNoneWhite[serialId].FirstOrDefault().Value
-                            , serialEntity.SeoName);
-                    if (!focusImgId.ContainsKey(dicPicNoneWhite[serialId].FirstOrDefault().Key))
-                    {
-                        focusImgId.Add(dicPicNoneWhite[serialId].FirstOrDefault().Key, _serialImage);
-                        focusImg.Add(_serialImage);
-                    }
-
-                }
-            }
 
             DataTable dtC = null;
-            //第三张图取空间分类第1张图
             if (dsCsPic != null && dsCsPic.Tables.Count > 0 && dsCsPic.Tables.Contains("C"))
             {
-                //if (dsCsPic.Tables.Contains("C") && dsCsPic.Tables["C"].Rows.Count > 0)
-                //{
                 dtC = dsCsPic.Tables["C"];
-                //取空间图片第一张图片,与前两张图片不重复
-
-                int speceImageCount = 0;
-                DataRow[] drP8 = dtC.Select("P='8'");
-                foreach (DataRow row in drP8) //空间
-                {
-                    int imgId = row["I"] == DBNull.Value ? 0 : Convert.ToInt32(row["I"]);
-                    string imgUrl = row["U"] == DBNull.Value ? "" : Convert.ToString(row["U"]);
-                    if (imgId == 0 || imgUrl.Length == 0 || focusImgId.ContainsKey(imgId))
-                    {
-                        continue;
-                    }
-                    speceImageCount++;
-                    imgUrl = CommonFunction.GetPublishHashImgUrl(4, imgUrl, imgId);
-                    string picName = Convert.ToString(row["D"]);
-                    string picUlr = "http://photo.m.yiche.com/picture/" + serialId + "/" + imgId + "/";
-                    string thirdImg =
-                        string.Format("<a href=\"{0}\" data-channelid=\"27.23.725\" class=\"img-box\"><img alt=\"{2}空间\" src=\"{1}\"><em>空间</em></a>"
-                        , picUlr
-                        , imgUrl
-                        , serialEntity.SeoName);
-                    if (!focusImgId.ContainsKey(imgId))
-                    {
-                        focusImgId.Add(imgId, thirdImg);
-                        focusImg.Add(thirdImg);
-                    }
-                    break;
-                }
-                //}
             }
-
             if (focusImg.Count < 3)
             {
-                //如果不够3张,则显示焦点图第2张
-                if (imgList.Count >= 2)
+                //第三张,取图解第一张
+                XmlNode firstTujieNode = GetFirstTujieImage(dtC);
+                if (firstTujieNode != null)
                 {
-                    SerialFocusImage csImg = imgList[1];
+                    string groupName = firstTujieNode.Attributes["GroupName"].Value;
+                    string backupImg = string.Empty;
+
+					if (focusImg.Count == 1)
+					{
+						backupImg = string.Format("<a href=\"{0}\" data-channelid=\"27.23.724\" class=\"img-box\"><img alt=\"{3}{4}\" src=\"{1}\">{2}</a>",
+							firstTujieNode.Attributes["Link"].Value,
+							firstTujieNode.Attributes["ImageUrl"].Value.Replace("_4.", "_4."),
+							string.IsNullOrEmpty(groupName) ? string.Empty : "<em>" + groupName + "</em>",
+							serialEntity.SeoName,
+							groupName);
+					}
+					else if (focusImg.Count == 0)
+                    {
+						backupImg = string.Format("<a href=\"{0}\" data-channelid=\"27.23.723\"  class=\"left-area\"><img alt=\"{3}{4}\" src=\"{1}\">{2}</a>",
+							firstTujieNode.Attributes["Link"].Value,
+							firstTujieNode.Attributes["ImageUrl"].Value.Replace("_4.", "_4."),
+							string.IsNullOrEmpty(groupName) ? string.Empty : "<em>" + groupName + "</em>",
+							serialEntity.SeoName,
+							groupName);
+					}
+                    else if (focusImg.Count == 2)
+                    {
+                        backupImg = string.Format("<a href=\"{0}\" data-channelid=\"27.23.725\" class=\"img-box\"><img alt=\"{3}{4}\" src=\"{1}\">{2}</a>",
+                            firstTujieNode.Attributes["Link"].Value,
+                            firstTujieNode.Attributes["ImageUrl"].Value.Replace("_4.", "_4."),
+                            string.IsNullOrEmpty(groupName) ? string.Empty : "<em>" + groupName + "</em>",
+                            serialEntity.SeoName,
+                            groupName);
+                    }
+                    if (!focusImgId.ContainsKey(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value)))
+                    {
+                        focusImgId.Add(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value), backupImg);
+                        focusImg.Add(backupImg);
+                    }
+                }
+                
+            }
+            if (focusImg.Count < 3)
+            {
+                //第三张图取子品牌焦点图以及幻灯页第3张
+                if (sourceList.Count >= 3)
+                {
+                    SerialFocusImage csImg = sourceList[2];
                     string smallImgUrl = csImg.ImageUrl;
                     if (csImg.ImageId > 0)
                     {
@@ -970,56 +994,20 @@ namespace MWeb.Controllers
                     }
                     string secondImg =
                         string.Format(
-                            "<a href=\"http://photo.m.yiche.com/picture/{0}/{3}/\" data-channelid=\"27.23.724\" class=\"img-box\"><img alt=\"{4}{5}\" src=\"{1}\">{2}</a>"
-                            , serialId
-                            , smallImgUrl
-                            , string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<em>" + csImg.GroupName + "</em>"
-                            , csImg.ImageId
-                            , serialEntity.SeoName
-                            , csImg.GroupName);
+                            "<a href=\"http://photo.m.yiche.com/picture/{0}/{3}/\" data-channelid=\"27.23.725\" class=\"img-box\"><img alt=\"{4}{5}\" src=\"{1}\">{2}</a>",
+                            serialId, smallImgUrl,
+                            string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<em>" + csImg.GroupName + "</em>",
+                            csImg.ImageId,
+                            serialEntity.SeoName,
+                            csImg.GroupName);
                     if (!focusImgId.ContainsKey(csImg.ImageId))
                     {
                         focusImgId.Add(csImg.ImageId, secondImg);
                         focusImg.Add(secondImg);
                     }
                 }
-                else
-                {
-                    //如果没有焦点图第2张,取图解第一张
-                    XmlNode firstTujieNode = GetFirstTujieImage(dtC);
-                    if (firstTujieNode != null)
-                    {
-                        string groupName = firstTujieNode.Attributes["GroupName"].Value;
-                        string backupImg = string.Empty;
-
-						if (focusImg.Count > 1)
-						{
-							backupImg = string.Format("<a href=\"{0}\" data-channelid=\"27.23.724\" class=\"img-box\"><img alt=\"{3}{4}\" src=\"{1}\">{2}</a>",
-								firstTujieNode.Attributes["Link"].Value,
-								firstTujieNode.Attributes["ImageUrl"].Value.Replace("_4.", "_4."),
-								string.IsNullOrEmpty(groupName) ? string.Empty : "<em>" + groupName + "</em>",
-								serialEntity.SeoName,
-								groupName);
-						}
-						else
-						{
-							backupImg = string.Format("<a href=\"{0}\" data-channelid=\"27.23.723\"  class=\"left-area\"><img alt=\"{3}{4}\" src=\"{1}\">{2}</a>",
-								firstTujieNode.Attributes["Link"].Value,
-								firstTujieNode.Attributes["ImageUrl"].Value.Replace("_4.", "_4."),
-								string.IsNullOrEmpty(groupName) ? string.Empty : "<em>" + groupName + "</em>",
-								serialEntity.SeoName,
-								groupName);
-						}
-                        
-                        if (!focusImgId.ContainsKey(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value)))
-                        {
-                            focusImgId.Add(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value), backupImg);
-                            focusImg.Add(backupImg);
-                        }
-                    }
-                }
             }
-            ViewData["FocusImgList"] = focusImg;
+                ViewData["FocusImgList"] = focusImg;
             #endregion
         }
 
@@ -1164,7 +1152,52 @@ namespace MWeb.Controllers
         }
 
         /// <summary>
-        ///     子品牌还关注
+        /// 综合对比
+        /// </summary>
+        /// <returns></returns>
+        private void GetSerialHotCompareCars()
+        {
+            StringBuilder sb = new StringBuilder();
+            //List<EnumCollection.SerialHotCompareData> lshcd = base.GetSerialHotCompareByCsID(serialId, 6);
+            Dictionary<string, List<Car_SerialBaseEntity>> carSerialBaseList = serialBLL.GetSerialCityCompareList(serialId, null);
+            if (carSerialBaseList != null && carSerialBaseList.ContainsKey("全国"))
+            {
+                var dicAllCsPic = pageBase.GetAllSerialPicURL(true);
+                List<Car_SerialBaseEntity> serialBaseEntityList = carSerialBaseList["全国"];
+
+                var htmlCode = new StringBuilder();
+                htmlCode.Append("<div class='tt-first' id='m-tabs-kankan'>");
+                htmlCode.Append("<h3>找相似</h3>");
+                htmlCode.Append("</div>");
+                htmlCode.Append("<div class='swiper-container-kankan swiper-container'><div class='swiper-wrapper'>");
+                htmlCode.Append("<div class='swiper-slide'>");
+                htmlCode.Append("<div class='car-list3' data-channelid=\"27.23.743\">");
+                htmlCode.Append("<ul>");
+                foreach (Car_SerialBaseEntity carSerial in serialBaseEntityList)
+                {
+                    string imgUrl = dicAllCsPic.ContainsKey(carSerial.SerialId) ? dicAllCsPic[carSerial.SerialId].Replace("_2.jpg", "_3.jpg") : WebConfig.DefaultCarPic;
+                    string referPrice = pageBase.GetSerialReferPriceByID(carSerial.SerialId);
+                    if (string.IsNullOrEmpty(referPrice))
+                    {
+                        referPrice = "暂无指导价";
+                    }
+                    htmlCode.Append("<li>");
+                    htmlCode.AppendFormat("<a href='/{0}/'>", carSerial.SerialNameSpell);
+                    htmlCode.AppendFormat("<img src='{0}'/>", imgUrl);
+                    htmlCode.AppendFormat("<strong>{0}</strong>", carSerial.SerialShowName);
+                    htmlCode.AppendFormat("<p>{0}</p>", referPrice);
+                    htmlCode.Append("</a>");
+                    htmlCode.Append("</li>");
+                }
+                htmlCode.Append("</ul>");
+                htmlCode.Append("</div></div>");
+                htmlCode.Append("</div></div>");
+                ViewData["CsHotCompareCars"] = htmlCode.ToString();// htmlCode.Insert(0, htmlTagCode).ToString();
+            }
+        }
+
+        /// <summary>
+        /// 子品牌还关注
         /// </summary>
         /// <returns></returns>
         private void MakeSerialToSerialHtml()
@@ -1191,7 +1224,7 @@ namespace MWeb.Controllers
                     htmlCode.AppendFormat("<img src='{0}' alt=\"{1}\" />", sts.ToCsPic.ToString(CultureInfo.InvariantCulture).Replace("_5.", "_3."), csName);
                     htmlCode.AppendFormat("<strong>{0}</strong>", csName);
                     htmlCode.AppendFormat("<p>{0}</p>",
-                        string.IsNullOrEmpty(sts.ToCsPriceRange) ? "暂无报价" : sts.ToCsPriceRange);
+                        string.IsNullOrEmpty(sts.ToCsPriceRange) ? "暂无指导价" : sts.ToCsPriceRange);
                     htmlCode.Append("</a>");
                     htmlCode.Append("</li>");
                 }
@@ -1321,19 +1354,19 @@ namespace MWeb.Controllers
             ViewData["SerialColorList"] = SerialColorList;
         }
 
-        /// <summary>
-        /// 获取vr url
-        /// </summary>
-        private void GetVrUrl()
-        {
-            Dictionary<int, string> vrDic = serialBLL.GetSerialVRUrl();
-            string VRUrl = string.Empty;
-            if (vrDic != null && vrDic.ContainsKey(serialId))
-            {
-                 VRUrl = vrDic[serialId];
-            }
-            ViewData["VRUrl"] = VRUrl;
-        }
+        ///// <summary>
+        ///// 获取vr url
+        ///// </summary>
+        //private void GetVrUrl()
+        //{
+        //    Dictionary<int, string> vrDic = serialBLL.GetSerialVRUrl();
+        //    string VRUrl = string.Empty;
+        //    if (vrDic != null && vrDic.ContainsKey(serialId))
+        //    {
+        //         VRUrl = vrDic[serialId];
+        //    }
+        //    ViewData["VRUrl"] = VRUrl;
+        //}
 
         /// <summary>
         /// 五年保值率
@@ -1381,6 +1414,8 @@ namespace MWeb.Controllers
             ViewData["keyWords"] = keyWords;
             ViewData["description"] = description;
         }
+
+        /*
 
         public void GetTab()
         {
@@ -1557,6 +1592,6 @@ namespace MWeb.Controllers
             return days;
         }
 
-
+    */
     }
 }

@@ -9,7 +9,10 @@ using MongoDB.Driver.Builders;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 
 namespace BitAuto.CarChannelAPI.Web.Assessment
@@ -25,16 +28,15 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
         /// <param name="context"></param>
         public void ProcessRequest(HttpContext context)
         {
-
             PageHelper.SetPageCache(60);
             context.Response.ContentType = "application/x-javascript";
             string callback = context.Request.QueryString["callback"];
-
             int EvaluationId = 0;
             string evaluationId = context.Request.QueryString["evaluationId"];
             int.TryParse(evaluationId, out EvaluationId);
-
             string groupname = context.Request.QueryString["groupname"];
+            string overview = context.Request.QueryString["overview"];
+            bool isExpiredTime = IsExpiredTime(overview);                           
             List<string> paraList = new List<string>();
             paraList.Add("CreateDateTime");
             paraList.Add("SerialId");
@@ -47,26 +49,46 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
             {
                 foreach (string item in groupname.Split(','))
                 {
-                    if (item != ""&& !paraList.Contains(item))
+                    if (item != "" && !paraList.Contains(item))
                     {
                         paraList.Add(item);
                     }
-                }                          
-            }
-            //IMongoQuery query = Query.EQ("EvaluationId", EvaluationId);
-            IMongoQuery query = Query.And(Query.EQ("EvaluationId", EvaluationId), Query.EQ("Status", 1));
+                }
+            }          
             Dictionary<string, int> sortdic = new Dictionary<string, int>();
             sortdic.Add("CreateDateTime", 0);
             EvaluationBll evaluationBll = new EvaluationBll();
             AssessmentEntity assessmentEntity = null;
-            try
+            IMongoQuery query = null;
+            if (!string.IsNullOrWhiteSpace(overview))//预览
             {
-                assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query, paraList.ToArray(), sortdic);
+                if (isExpiredTime)// 没有过期
+                {
+                    query = Query.EQ("EvaluationId", EvaluationId);
+                    try
+                    {
+                        assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query, paraList.ToArray(), sortdic);
+                    }
+                    catch (Exception e)
+                    {
+                        var message = e.Message;
+                    }
+                }                
             }
-            catch (Exception e)
+            else//非预览
             {
-                var message = e.Message;
+                query = Query.And(Query.EQ("EvaluationId", EvaluationId), Query.EQ("Status", 1));
+                try
+                {
+                    assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query, paraList.ToArray(), sortdic);
+                }
+                catch (Exception e)
+                {
+                    var message = e.Message;
+                }
             }
+
+           
             if (assessmentEntity != null)
             {
                 CarEntity cbe = (CarEntity)DataManager.GetDataEntity(EntityType.Car, assessmentEntity.CarId);
@@ -90,5 +112,27 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 return false;
             }
         }
+
+        private bool IsExpiredTime(string overview)
+        {
+            bool isOverView = false;
+            try
+            {
+                //string res = Decrypt(overview, "bitautocom");
+                string res = CarChannel.Common.DES.DecryptDES(overview, "bitautocom");
+                DateTime dt = Convert.ToDateTime(res);
+                if (DateTime.Compare(dt, DateTime.Now) >= 0)
+                {
+                    isOverView = true;
+                }
+            }
+            catch (Exception e)
+            {
+                var msg = e.Message;
+            }
+            return isOverView;
+        }
+
+       
     }
 }

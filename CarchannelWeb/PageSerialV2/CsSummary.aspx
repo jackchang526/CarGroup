@@ -255,8 +255,7 @@
                         <div class="ad-mb20">
                             <ins id="div_ff3f172d-bf5a-465b-a15b-32e5d3b81837" data-type="ad_play" data-adplay_ip='' data-adplay_areaname='' data-adplay_cityname='' data-adplay_brandid='' data-adplay_brandname='<%= serialId %>' data-adplay_brandtype='' data-adplay_blockcode="ff3f172d-bf5a-465b-a15b-32e5d3b81837"> </ins>
                         </div>
-                        <div class="ad-mb20">
-                            <img src="http://temp.im/300x120" alt="广告3">
+                        <div class="ad-mb20" id="cmtadDiv">
                         </div>
                     </div>
                     <%if (!string.IsNullOrEmpty(koubeiReportHtml))
@@ -327,16 +326,15 @@
             //        $(".top-col6-190").show();
             //    }
             //}
-           <%-- bitLoadScript("http://img1.bitauto.com/bt/cmtad/advV1.js?v=20170330", function () {
+           bitLoadScript("http://img1.bitauto.com/bt/cmtad/advV2.js?v=201712271032", function () {
                 try {
                     AdvObject.GetAdvByCityIdAndSerialId(<%= serialId %>, cityId);
                 } catch (e) { }
-            }, "utf-8");--%>
+            }, "utf-8");
         </script>
-
+        <script type="text/javascript" src="http://d2.yiche.com/js/senseNewFs.js"></script>
         <div class="row section-layout">
             <div class="col-xs-9">
-                <script type="text/javascript" src="http://d2.yiche.com/js/senseNewFs.js"></script>
                 <div class="section-main">
                     <div class="row col3-adv-1 layout-1" style="margin-top: -20px; margin-bottom: 30px;">
                         <div class="special-layout-3 ad-tag-box">

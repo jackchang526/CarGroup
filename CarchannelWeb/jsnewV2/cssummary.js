@@ -87,7 +87,7 @@ function FocusCar(obj) {
 
 $(function () {//右侧边栏在页面底部，等页面加载完成才能注册事件
     //降价切换城市
-    if (window.rightSideBar != "undefined" && window.rightSideBar.footerModules != "undefiend") {
+    if (typeof window.rightSideBar != "undefined" && typeof window.rightSideBar.footerModules != "undefined") {
         $("#mp-jiangjianews .ch-cur-city").click(function (ev) {
             ev.stopPropagation();
             var sideBar = window.rightSideBar;

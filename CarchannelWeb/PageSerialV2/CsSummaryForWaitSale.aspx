@@ -192,8 +192,7 @@
                         <div class="ad-mb20">
                             <ins id="div_ff3f172d-bf5a-465b-a15b-32e5d3b81837" data-type="ad_play" data-adplay_ip='' data-adplay_areaname='' data-adplay_cityname='' data-adplay_brandid='' data-adplay_brandname='<%= serialId %>' data-adplay_brandtype='' data-adplay_blockcode="ff3f172d-bf5a-465b-a15b-32e5d3b81837"> </ins>
                         </div>
-                        <div class="ad-mb20">
-                            <img src="http://temp.im/300x120" alt="广告3">
+                        <div class="ad-mb20" id="cmtadDiv">
                         </div>
                     </div>
                 </div>

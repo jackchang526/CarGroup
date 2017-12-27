@@ -19,7 +19,7 @@ mySwiper.on('tap', function (swiper, e) {
     swiperNewslist.slideTo(swiper.clickedIndex);
 
     //todo function
-    console.log(swiper.clickedIndex);
+    //console.log(swiper.clickedIndex);
     loadRanking(swiperNewslist.activeIndex);
 });
 
@@ -67,8 +67,7 @@ function RequestData(index) {
     if (!titles[index].hasNext) {
         return;
     }
-    if (titles[index].loading) {
-        console.log("正在加载-" + index);
+    if (titles[index].loading) { 
         return;
     }
     var saleRankingUrl = "http://api174.car.bitauto.com/CarInfo/GetSalesRankingForPage.ashx?level=" + titles[index].id + "&pageindex=" + (titles[index].index + 1) + "&pagesize=" + titles[index].size;
@@ -82,7 +81,7 @@ function RequestData(index) {
         dataType: 'jsonp',
         jsonp: "callback",
         jsonpCallback: cb,
-        timeout: 3000,
+        timeout: 6000,
         contentType: "application/json",
         success: function (data) {
             if (data && data.code == 1) {
@@ -92,8 +91,9 @@ function RequestData(index) {
                     var len = data.data.page.data.length;
                     for (var i = 0; i < len; i++) {
                         var dd = data.data.page.data[i];
-                         
-
+                        if (dd.AllSpell == "") {
+                            continue;
+                        }
                         html += ('<li><a class="imgbox-2" href="/' + dd.allSpell + '/" data-id="' + dd.csId +'"><div class="left">');
                         html += '    <div class="rank-number"><span>' + dd.rank + '</span></div>';
                         html += ('        <img class="car-img" src="' + dd.imgUrl + '"alt="">');
@@ -113,8 +113,7 @@ function RequestData(index) {
                         var monthStr = dateStr.substr(dateStr.indexOf("-") + 1);
                         $(".swiper-slide .phone-title span").text(monthStr + "月销量排行");
                     }
-
-
+                     
                     titles[index].index++;
                     titles[index].total = data.data.page.total;
                     if (data.data.page.data.length < data.data.page.size) {
@@ -128,15 +127,15 @@ function RequestData(index) {
             } else if (data && data.code == 0) {
                 titles[index].hasNext = false;
             }
-            console.log(data);
-            console.log(titles[index].hasNext);
+            //console.log(data);
+            //console.log(titles[index].hasNext);
             titles[index].loading = false;
             $("#level_rank_list_" + index + " .load-box").hide();
         },
         error: function (msg) {
             titles[index].loading = false;
             $("#level_rank_list_" + index + " .load-box").hide();
-            console.log(msg);
+            //console.log(msg);
         }
     });
 }

@@ -52,8 +52,9 @@ namespace BitAuto.CarChannel.BLL
                     else
                     {
                         entity.Level = "";
-                    }
-                    var serialInfo = car_SerialBll.Get_Car_SerialByCsID(item.CsId);
+                    } 
+                    var serialInfo = car_SerialBll.GetSerialInfoEntity(item.CsId);
+                    
                     entity.AllSpell = serialInfo.Cs_AllSpell;
                     entity.CsName = serialInfo.Cs_ShowName;
                     entity.RefPrice = car_SerialBll.GetSerialOfficePriceBySaleState(item.CsId, true);

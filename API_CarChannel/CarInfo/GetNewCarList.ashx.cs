@@ -30,20 +30,35 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 
         private void DealRequest(HttpContext context)
         {
-            NewCarIntoMarketBll bll = new NewCarIntoMarketBll();
-            string jsonList = "";
-            int allCount = 0;
-            var list = bll.GetNewCarIntoMarketList(type == 0 ? true : false);
-            allCount = list.Count;
-            jsonList = Newtonsoft.Json.JsonConvert.SerializeObject(list.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList());
-
-            if (string.IsNullOrEmpty(callback))
+            try
             {
-                context.Response.Write(ResultUtil.SuccessResult(ResultUtil.PageFormat(pageIndex, pageSize, allCount, jsonList)));
+                NewCarIntoMarketBll bll = new NewCarIntoMarketBll();
+                string jsonList = "";
+                int allCount = 0;
+                var list = bll.GetNewCarIntoMarketList(type == 0 ? true : false);
+                allCount = list.Count;
+                jsonList = Newtonsoft.Json.JsonConvert.SerializeObject(list.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList());
+                 
+                if (string.IsNullOrEmpty(callback))
+                {
+                    context.Response.Write(ResultUtil.SuccessResult(ResultUtil.PageFormat(pageIndex, pageSize, allCount, jsonList)));
+                }
+                else
+                {
+                    context.Response.Write(ResultUtil.CallBackResult(callback, ResultUtil.SuccessResult(ResultUtil.PageFormat(pageIndex, pageSize, allCount, jsonList))));
+                }
             }
-            else
+            catch (Exception ex)
             {
-                context.Response.Write(ResultUtil.CallBackResult(callback, ResultUtil.SuccessResult(ResultUtil.PageFormat(pageIndex, pageSize, allCount, jsonList))));
+                CommonFunction.WriteLog(ex.ToString());
+                if (string.IsNullOrEmpty(callback))
+                {
+                    context.Response.Write(ResultUtil.ErrorResult(-1, "ERROR", ""));
+                }
+                else
+                {
+                    context.Response.Write(ResultUtil.CallBackResult(callback, ResultUtil.ErrorResult(-1, "ERROR", "")));
+                }
             }
         }
 

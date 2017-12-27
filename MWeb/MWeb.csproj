@@ -418,6 +418,7 @@
     </Content>
     <Content Include="html\selectMasterBrandTemplate.cshtml" />
     <Content Include="html\DuibiLayerTemplate.cshtml" />
+    <Content Include="js\serial.newcarlist.js" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Calc\CalcAutoCash.cshtml" />
     <Content Include="Views\Calc\CalcAutoCashDetail.cshtml" />

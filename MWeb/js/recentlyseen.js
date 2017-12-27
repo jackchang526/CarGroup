@@ -1,13 +1,4 @@
-﻿// 如果已经使用顶通js，引入下面js
-//http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars
-//
-//如果没有使用顶通，引用下面js并加代码
-//http://js.inc.baa.bitautotech.com/c/c.js?s=Bitauto.Login.Base,ibt_userCars
-//
-//Bitauto.Login.init()
-//
- 
-//读取浏览过的车
+﻿//读取浏览过的车
 Bitauto.Login.onComplatedHandlers.push(function (loginRes) { 
     //拿到6个浏览的车cs id 数组
     Bitauto.UserCars.getViewedCars(6, function (cars) {
@@ -45,7 +36,7 @@ Bitauto.Login.onComplatedHandlers.push(function (loginRes) {
                 }
             },
             error: function (msg) { 
-                console.log(msg);
+                //console.log(msg);
                 $(".browse-car").hide();
             }
         });

@@ -67,7 +67,7 @@ function RequestData(index) {
     if (!titles[index].hasNext) {
         return;
     }
-    if (titles[index].loading) { 
+    if (titles[index].loading) {
         return;
     }
     var saleRankingUrl = "http://api174.car.bitauto.com/CarInfo/GetSalesRankingForPage.ashx?level=" + titles[index].id + "&pageindex=" + (titles[index].index + 1) + "&pagesize=" + titles[index].size;
@@ -81,7 +81,7 @@ function RequestData(index) {
         dataType: 'jsonp',
         jsonp: "callback",
         jsonpCallback: cb,
-        timeout: 6000,
+        timeout: 5000,
         contentType: "application/json",
         success: function (data) {
             if (data && data.code == 1) {
@@ -94,7 +94,7 @@ function RequestData(index) {
                         if (dd.AllSpell == "") {
                             continue;
                         }
-                        html += ('<li><a class="imgbox-2" href="/' + dd.allSpell + '/" data-id="' + dd.csId +'"><div class="left">');
+                        html += ('<li><a class="imgbox-2" href="/' + dd.allSpell + '/" data-id="' + dd.csId + '"><div class="left">');
                         html += '    <div class="rank-number"><span>' + dd.rank + '</span></div>';
                         html += ('        <img class="car-img" src="' + dd.imgUrl + '"alt="">');
                         html += '         <div class="info-box">';
@@ -113,7 +113,7 @@ function RequestData(index) {
                         var monthStr = dateStr.substr(dateStr.indexOf("-") + 1);
                         $(".swiper-slide .phone-title span").text(monthStr + "月销量排行");
                     }
-                     
+
                     titles[index].index++;
                     titles[index].total = data.data.page.total;
                     if (data.data.page.data.length < data.data.page.size) {

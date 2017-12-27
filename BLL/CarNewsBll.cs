@@ -571,7 +571,16 @@ namespace BitAuto.CarChannel.BLL
             if (top < 0)
                 top = 20;
 
-            return newsDll.GetLevelNewsWithComment(levelId, (int)carNewsType, top);
+            string cacheKey = string.Format("CarNewsBll_GetLevelNewsWithComment_{0}_{1}_{2}", levelId, (int)carNewsType, top);
+
+            object cacheObj = CacheManager.GetCachedData(cacheKey);
+            if (cacheObj != null)
+            {
+                return (cacheObj as DataSet);
+            }
+            DataSet ds = newsDll.GetLevelNewsWithComment(levelId, (int)carNewsType, top);
+            CacheManager.InsertCache(cacheKey, ds, 60);
+            return ds;
         }
         /// <summary>
         /// 获取级别新闻列表
@@ -585,7 +594,16 @@ namespace BitAuto.CarChannel.BLL
             if (top < 0)
                 top = 20;
 
-            return newsDll.GetLevelNewsWithComment(levelId, carNewsType, top);
+            string cacheKey = string.Format("CarNewsBll_GetLevelNewsWithComment_{0}_{1}_{2}", levelId, String.Join("_", carNewsType.ToArray()), top);
+
+            object cacheObj = CacheManager.GetCachedData(cacheKey);
+            if (cacheObj != null)
+            {
+                return (cacheObj as DataSet);
+            }
+            DataSet ds = newsDll.GetLevelNewsWithComment(levelId, carNewsType, top);
+            CacheManager.InsertCache(cacheKey, ds, 60);
+            return ds;
         }
         /// <summary>
         /// 得到城市行情新闻

@@ -24,6 +24,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,7 +49,7 @@
   <ItemGroup>
     <Reference Include="BitAuto.Utils, Version=2.0.7.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\P公用平台\Release\BitAuto.Utils.dll</HintPath>
+      <HintPath>..\..\..\packages\BitAuto.Utils.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -135,6 +136,7 @@
     <Content Include="Scripts\carcompare\model.v1.js" />
     <Content Include="Scripts\cssummary\userdatamodule.v7.js" />
     <Content Include="Scripts\cssummary\userroutersetting.v7.js" />
+    <Content Include="Scripts\getareaprice.js" />
     <Content Include="Scripts\h5_cssummary.js" />
     <Content Include="handlers\GetNewsListFilter.ashx" />
     <Content Include="Interface\carinformation\ImageAndVideoData.ashx" />

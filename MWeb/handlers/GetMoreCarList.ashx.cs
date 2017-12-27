@@ -389,18 +389,19 @@ namespace WirelessWeb.handlers
 						string carPriceRange = carInfo.CarPriceRange.Trim();
 						if (carInfo.SaleState == "待销")//顾晓 确认的逻辑 （待销的车款没有价格，全部显示未上市） 2015-07-09
 						{
-							carMinPrice = "未上市";
+							carMinPrice = "<dt class=\"the-noprice\">未上市</dt>";
 						}
 						else if (carInfo.CarPriceRange.Trim().Length == 0)
 						{
-							carMinPrice = "暂无报价";
-						}
-						else
+							carMinPrice = "<dt class=\"the-noprice\">暂无报价</dt>";
+                            //class="the-upcoming"
+                        }
+                        else
 						{
 							if (carPriceRange.IndexOf('-') != -1)
-								carMinPrice = carPriceRange.Substring(0, carPriceRange.IndexOf('-')); //+ "万"
+								carMinPrice = "<dt>"+ carPriceRange.Substring(0, carPriceRange.IndexOf('-'))+"</dt>"; //+ "万"
 							else
-								carMinPrice = carPriceRange;
+								carMinPrice = "<dt class=\"the-noprice\">" + carPriceRange + "</dt>";
 						}
 
 						Dictionary<int, string> dictCarParams = _carBLL.GetCarAllParamByCarID(carInfo.CarID);
@@ -458,7 +459,7 @@ namespace WirelessWeb.handlers
                         }
                         stringBuilder.AppendFormat("<h2>{0}{1}</h2>", carFullName, marketflag);
 						
-						stringBuilder.AppendFormat("<dl><dt>{0}</dt></dl>", carMinPrice);
+						stringBuilder.AppendFormat("<dl>{0}</dl>", carMinPrice);
 						stringBuilder.Append("<div class=\"car-info-bottom\">");//第二行开始
 						stringBuilder.AppendFormat("<span>{0}</span>", transmissionType);
 						//add date :2016-2-3  添加热度
@@ -508,11 +509,11 @@ namespace WirelessWeb.handlers
 						//	"<li><a href=\"http://car.m.yiche.com/chexingduibi/?carIDs={0}\">加入对比</a></li>",
 						//	carInfo.CarID);
 						stringBuilder.AppendFormat(
-							"<li><a id=\"car-compare-{0}\" href=\"javascript:;\" class=\"btnDuibi\" data-action=\"car\" data-id=\"{0}\" data-name=\"{1} {2}\" data-channelid=\"27.23.910\">加对比</a></li>",
-							carInfo.CarID, _serialShowName, carInfo.CarName);
+                             "<li class='btn-duibi'><a id=\"car-compare-{0}\" href=\"#compare\"  data-action=\"car\" data-id=\"{0}\" data-name=\"{1} {2}\" data-channelid=\"27.23.910\"><span>对比</span></a></li>",
+                            carInfo.CarID, _serialShowName, carInfo.CarName);
 						stringBuilder.AppendFormat(
-							"<li><a id = \"car_filter_id_{0}_{1}\" href='/gouchejisuanqi/?carID={0}' data-channelid=\"27.23.911\">计算器</a></li>",
-							carInfo.CarID, "");
+                            "<li class='btn-calculator'><a id = \"car_filter_id_{0}_{1}\" href='/gouchejisuanqi/?carID={0}' data-channelid=\"27.23.911\"><span>计算器</span></a></li>",
+                            carInfo.CarID, "");
 						if (year != "unlisted" && year != "nosalelist" && carInfo.SaleState != "待销" && carInfo.SaleState != "停销")
 						{
 							//stringBuilder.AppendFormat(
@@ -524,7 +525,7 @@ namespace WirelessWeb.handlers
 							//add by gux 20170425
 							string wtQuery = new int[] { 4123, 4881, 2608, 1574, 2573, 3987, 2032, 1905, 4847, 1798 }.Contains(_serialId) ? "&WT.mc_id=nbclx" : string.Empty;
 							stringBuilder.AppendFormat(
-							"<li class=\"btn-org\"><a id =\"car_filterzuidi_id_{0}_{1}\" href=\"http://price.m.yiche.com/zuidijia/nc{0}/?t=yichemobiletest2&leads_source=20018" + wtQuery + "\" data-channelid=\"27.23.912\">询底价</a></li>",
+                            "<li class=\"btn-xundijia btn-one-color\"><a id =\"car_filterzuidi_id_{0}_{1}\" href=\"http://price.m.yiche.com/zuidijia/nc{0}/?t=yichemobiletest2&leads_source=20018" + wtQuery + "\" data-channelid=\"27.23.912\">询底价</a></li>",
 							carInfo.CarID, "");
 						}
 						else

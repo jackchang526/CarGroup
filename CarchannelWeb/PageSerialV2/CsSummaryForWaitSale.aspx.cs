@@ -63,14 +63,14 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
         protected string focusImagesHtml = string.Empty; //焦点图
         protected string carListTableHtml = string.Empty;//车型列表
         protected string carListFilterData = string.Empty;//车型列表 筛选数据
-        protected string koubeiDianpingHtml = string.Empty;//网友点评
+        //protected string koubeiDianpingHtml = string.Empty;//网友点评
         protected string videosHtml = string.Empty;//视频
         //protected string competitiveKoubeiHtml = string.Empty;//竞争车型
         protected string bbsNewsHtml = string.Empty;//论坛
         protected bool isHaveBaa = true; //是否有论坛
         protected string serialSparkleHtml = string.Empty;//亮点配置
         protected string photoListHtml = string.Empty;//图片列表
-        protected string koubeiReportHtml = string.Empty;//口碑报告
+        //protected string koubeiReportHtml = string.Empty;//口碑报告
         protected string awardHtml = string.Empty;//奖项块
         protected string editorCommentHtml = string.Empty;//编辑点评
         protected string hexinReportHtml = string.Empty;//核心报告
@@ -134,9 +134,9 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             //if (dictSerialBlockHtml.ContainsKey(focus))
             //    focusNewsHtml = dictSerialBlockHtml[focus];
 
-            int koubeiRating = (int)CommonHtmlEnum.BlockIdEnum.KoubeiReportNew;//口碑报告
-            if (dictSerialBlockHtml.ContainsKey(koubeiRating))
-                koubeiReportHtml = dictSerialBlockHtml[koubeiRating];
+            //int koubeiRating = (int)CommonHtmlEnum.BlockIdEnum.KoubeiReportNew;//口碑报告
+            //if (dictSerialBlockHtml.ContainsKey(koubeiRating))
+            //    koubeiReportHtml = dictSerialBlockHtml[koubeiRating];
 
             int video = (int)CommonHtmlEnum.BlockIdEnum.Video;//视频
             if (dictSerialBlockHtml.ContainsKey(video))
@@ -154,9 +154,9 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             if (dictSerialBlockHtml.ContainsKey(editor))
                 editorCommentHtml = dictSerialBlockHtml[editor];
 
-            int koubei = (int)CommonHtmlEnum.BlockIdEnum.KoubeiReport; //网友点评
-            if (dictSerialBlockHtml.ContainsKey(koubei))
-                koubeiDianpingHtml = dictSerialBlockHtml[koubei];
+            //int koubei = (int)CommonHtmlEnum.BlockIdEnum.KoubeiReport; //网友点评
+            //if (dictSerialBlockHtml.ContainsKey(koubei))
+            //    koubeiDianpingHtml = dictSerialBlockHtml[koubei];
 
             //int competitive = (int)CommonHtmlEnum.BlockIdEnum.CompetitiveKoubei; //竞争车型
             //if (dictSerialBlockHtml.ContainsKey(competitive))
@@ -1252,7 +1252,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                             firstTujieNode.Attributes["Link"].Value,
                              firstTujieNode.Attributes["ImageUrl"].Value,
                             firstTujieNode.Attributes["ImageName"].Value,
-                            string.IsNullOrEmpty(groupName) ? string.Empty : "<i>" + groupName + "</i>",
+                            string.IsNullOrEmpty(groupName) ? string.Empty : "<i>" + groupName + ">></i>",
                             channelId);
                         hasTujie = true;
                         resultCount++;
@@ -1265,7 +1265,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                     string imgUrl = videoList[0].ImageLink;
                     imgUrl = imgUrl.Replace("/bitauto/", "/newsimg-150-w0-1-q50/bitauto/");
                     imgUrl = imgUrl.Replace("/Video/", "/newsimg-150-w0-1-q50/Video/");
-                    sb.AppendFormat("<div data-channelid=\"2.21.{3}\" class=\"img-link img-current col-auto\"><a href=\"{0}\" target=\"_blank\"><i>视频</i><em></em><img src=\"{1}\" title=\"{2}\" alt=\"{2}\" width=\"140\" height=\"93\" /></a></div>",
+                    sb.AppendFormat("<div data-channelid=\"2.21.{3}\" class=\"img-link img-current col-auto\"><a href=\"{0}\" target=\"_blank\"><i>视频>></i><em></em><img src=\"{1}\" title=\"{2}\" alt=\"{2}\" width=\"140\" height=\"93\" /></a></div>",
                         videoList[0].ShowPlayUrl, imgUrl, videoList[0].ShortTitle, channelId);
                     resultCount++;
                     continue;
@@ -1283,7 +1283,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                         csImg.TargetUrl,
                         smallImgUrl,
                         csImg.ImageName,
-                        string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<i>" + csImg.GroupName + "</i>",
+                        string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<i>" + csImg.GroupName + ">></i>",
                         channelId);
                     resultCount++;
                 }

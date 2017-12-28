@@ -1021,6 +1021,7 @@
     <Content Include="jsnewV2\cooikehelper.js" />
     <Content Include="jsnewV2\cssummary.js" />
     <Content Include="jsnewV2\cssummaryrest.js" />
+    <Content Include="jsnewV2\cssummaryv2.js" />
     <Content Include="jsnewV2\draggable.js" />
     <Content Include="jsnewV2\dropdownlistnew.js" />
     <Content Include="jsnewV2\excanvas.js" />
@@ -1357,6 +1358,7 @@
     <Content Include="ushtml\0000\2014_other_huojiangchexing150310-912.shtml" />
     <Content Include="ushtml\0000\yiche_2015_jusuanqi_style-994.shtml" />
     <Content Include="ushtml\0000\yiche_2016_navtool_right-1192.shtml" />
+    <Content Include="ushtml\0000\yiche_chexingzongshu_v2018_style-1513.shtml" />
     <Content Include="ushtml\0000\车型_车贷-647.shtml" />
     <Content Include="ushtml\0000\peizhi_style-72.shtml" />
     <Content Include="ushtml\0000\tree_anquan_style-217.shtml" />

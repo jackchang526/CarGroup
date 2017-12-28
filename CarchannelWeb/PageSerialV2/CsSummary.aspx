@@ -20,7 +20,7 @@
     <script src="http://img1.bitautoimg.com/uimg/2016/yiche/js/html5shiv.min.js"></script>
     <script src="http://img1.bitautoimg.com/uimg/2016/yiche/js/Respond.min.js"></script>
     <![endif]-->
-    <!--#include file="~/ushtml/0000/yiche_2016_cube_chexingzongshu_style-1264.shtml"-->
+    <!--#include file="~/ushtml/0000/yiche_chexingzongshu_v2018_style-1513.shtml"-->
 </head>
 <body>
     <!--公共头部开始-->
@@ -44,7 +44,7 @@
     </div>
     <div class="bt_ad" style="margin: 10px auto 10px; width: 1200px;">
         <!--综述页顶部通栏广告-->
-        <ins id="topADLeftFromCar" type="ad_play_fs" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype="" adplay_blockcode="80c10c31-34ab-4a36-bde5-549e292c5327"></ins>
+        <ins id="div_80c10c31-34ab-4a36-bde5-549e292c5327" type="ad_play_fs" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype="" adplay_blockcode="80c10c31-34ab-4a36-bde5-549e292c5327"></ins>
     </div>
     <!--header start-->
     <%= serialHeaderHtml%>
@@ -201,7 +201,7 @@
                                 <div class="city-box">
                                     <div class="btn icon-rp">降价</div>
                                     <div class="cur-city">呼和浩特</div>
-                                    <a class="center-block ch-cur-city">切换地区</a>
+                                    <a class="center-block ch-cur-city" href="javascript:;">切换地区</a>
                                 </div>
                                 <div class="cont">
                                     <div class="list-txt list-txt-s list-txt-style">
@@ -274,8 +274,9 @@
         <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
         <%--<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201712151353"></script>--%>
-        <script type="text/javascript" src="/jsnewv2/cssummary.js?v=20170171032"></script>
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712110"></script>
+        <script type="text/javascript" src="/jsnewv2/cssummaryv2.js?v=20170171032"></script>
+        <%--<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712110"></script>--%>
+        <script type="text/javascript" src="/jsnewV2/getareaprice.js?v=201712110"></script>
         <script type="text/javascript">
             var serialId = <%= serialId %> ,
                 priceRang = '<%=serialPrice%>',
@@ -326,7 +327,7 @@
             //        $(".top-col6-190").show();
             //    }
             //}
-           bitLoadScript("http://img1.bitauto.com/bt/cmtad/advV2.js?v=201712271032", function () {
+            bitLoadScript("http://img1.bitauto.com/bt/cmtad/advV2.js?v=201712271641", function () {
                 try {
                     AdvObject.GetAdvByCityIdAndSerialId(<%= serialId %>, cityId);
                 } catch (e) { }
@@ -752,10 +753,10 @@
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryrest.min.js?v=201711141901"></script>
     <%--<script type="text/javascript" src="/jsnewv2/cssummaryrest.js?v=20161230"></script>--%>
     <script type="text/javascript">
-                            var CarCommonBSID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.MasterBrandId %>"; //大数据组统计用
-                            var CarCommonCBID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.Id %>";
-                            var CarCommonCSID = "<%=serialId %>";
-                            var CarFilterData = <%=string.IsNullOrEmpty(carListFilterData)?"null":carListFilterData %>;
+        var CarCommonBSID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.MasterBrandId %>"; //大数据组统计用
+        var CarCommonCBID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.Id %>";
+        var CarCommonCSID = "<%=serialId %>";
+        var CarFilterData = <%=string.IsNullOrEmpty(carListFilterData)?"null":carListFilterData %>;
         (function () {
             GetPromotionNews();
             GetSerialWaiGuanNeiShi();

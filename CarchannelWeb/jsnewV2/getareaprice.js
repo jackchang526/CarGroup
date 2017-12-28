@@ -33,11 +33,11 @@ function GetSerialAreaPriceRange() {
                 }               
                 if (data[0].ReturnType == 1) {
                     $("#cs-area-price").html(result);
-                    $("#cs-area-name").html(GlobalSummaryConfig.CityName + "参考价");
+                    $("#cs-area-name").html(GlobalSummaryConfig.CityName + "参考价：");
                 }
                 else if (data[0].ReturnType == 2) {
                     $("#cs-area-price").html(result);
-                    $("#cs-area-name").html("全国参考价");
+                    $("#cs-area-name").html("全国参考价：");
                 }
                 SetDefaultDownPaymentHidden(minPrice);
             }

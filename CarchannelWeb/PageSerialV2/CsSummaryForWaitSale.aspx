@@ -19,7 +19,7 @@
     <script src="http://img1.bitautoimg.com/uimg/2016/yiche/js/html5shiv.min.js"></script>
     <script src="http://img1.bitautoimg.com/uimg/2016/yiche/js/Respond.min.js"></script>
     <![endif]-->
-    <!--#include file="~/ushtml/0000/yiche_2016_cube_chexingzongshu_style-1264.shtml"-->
+    <!--#include file="~/ushtml/0000/yiche_chexingzongshu_v2018_style-1513.shtml"-->
 </head>
 <body>
     <!--公共头部开始-->
@@ -43,7 +43,7 @@
     </div>
     <div class="bt_ad" style="margin: 10px auto 10px; width: 1200px;">
         <!--综述页顶部通栏广告-->
-        <ins id="topADLeftFromCar" type="ad_play_fs" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype="" adplay_blockcode="80c10c31-34ab-4a36-bde5-549e292c5327"></ins>
+        <ins id="div_80c10c31-34ab-4a36-bde5-549e292c5327" type="ad_play_fs" adplay_ip="" adplay_areaname="" adplay_cityname="" adplay_brandid="<%= serialId %>" adplay_brandname="" adplay_brandtype="" adplay_blockcode="80c10c31-34ab-4a36-bde5-549e292c5327"></ins>
     </div>
     <!--header start-->
     <%= serialHeaderHtml%>
@@ -97,6 +97,63 @@
                 </div>
                 <!--/焦点图、名片区-->
 
+
+            </div>
+            <div class="col-xs-3">
+                <div class="section-right">
+                    <div class="spl-23adv">
+                        <div class="ad-mb20">
+                            <ins id="div_e98982f8-2749-472e-819a-619722586516" data-type="ad_play" data-adplay_ip='' data-adplay_areaname='' data-adplay_cityname='' data-adplay_brandid='<%= serialId %>' data-adplay_brandname='' data-adplay_brandtype='' data-adplay_blockcode="e98982f8-2749-472e-819a-619722586516"></ins>
+                        </div>
+                        <div class="ad-mb20">
+                            <ins id="div_ff3f172d-bf5a-465b-a15b-32e5d3b81837" data-type="ad_play" data-adplay_ip='' data-adplay_areaname='' data-adplay_cityname='' data-adplay_brandid='' data-adplay_brandname='<%= serialId %>' data-adplay_brandtype='' data-adplay_blockcode="ff3f172d-bf5a-465b-a15b-32e5d3b81837"></ins>
+                        </div>
+                        <div class="ad-mb20" id="cmtadDiv">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
+        <!--#include file="/include/special/stat/00001/bglogpostlog_Manual.shtml"-->
+        <%--<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201711241325"></script>--%>
+        <script type="text/javascript" src="/jsnewv2/cssummaryv2.js?v=20161230"></script>
+        <script type="text/javascript">
+            var serialId = <%= serialId %>;
+            var priceRang = '<%=serialPrice%>';
+            var cityId = 201;
+            if (typeof (bit_locationInfo) != "undefined") {
+                cityId = bit_locationInfo.cityId;
+            }
+            var GlobalSummaryConfig = {
+                SerialId:<%= serialId %>,
+                CityId: cityId
+            };
+            if (document.getElementById('carYearList_all')) {
+                document.getElementById('carYearList_all').className = 'current';
+            }
+
+            if (typeof (bitLoadScript) == "undefined") {
+                bitLoadScript = function (url, callback, charset) {
+                    var s = document.createElement("script"); s.type = "text/javascript"; if (charset) s.charset = charset;
+                    if (s.readyState) { s.onreadystatechange = function () { if (s.readyState == "loaded" || s.readyState == "complete") { s.onreadystatechange = null; if (callback) callback(); } }; }
+                    else { s.onload = function () { if (callback) callback(); }; }
+                    s.src = url; document.getElementsByTagName("head")[0].appendChild(s);
+                };
+            }
+            bitLoadScript("http://img1.bitauto.com/bt/cmtad/advV2.js?v=201712271641", function () {
+                try {
+                    AdvObject.GetAdvByCityIdAndSerialId(<%= serialId %>, cityId);
+                } catch (e) { }
+            }, "utf-8");
+            GetVr();
+        </script>
+        <script type="text/javascript" src="http://d2.yiche.com/js/senseNewFs.js"></script>
+        <!--文章-->
+        <div class="row section-layout">
+            <div class="col-xs-9">
                 <div class="section-main">
                     <div class="row col3-adv-1 layout-1" style="margin-top: -20px; margin-bottom: 30px;">
                         <div class="special-layout-3 ad-tag-box">
@@ -164,13 +221,13 @@
                             var pageCarLevel ='<%=serialEntity.Level.Name%>';
                             function showNewsInsCode(dxc, xxc, mpv, suv) {
                                 var adBlockCode = xxc;
-                                if (pageCarLevel == '中大型车' || pageCarLevel == '中型车' || pageCarLevel == '跑车' || pageCarLevel == '豪华车') {
+                                if (pageCarLevel == '中大型车' || pageCarLevel == '中型车' || pageCarLevel == '豪华车') {
                                     adBlockCode = dxc;
                                 }
                                 else if (pageCarLevel == '微型车' || pageCarLevel == '小型车' || pageCarLevel == '紧凑型车') {
                                     adBlockCode = xxc;
                                 }
-                                else if (pageCarLevel == '概念车' || pageCarLevel == 'MPV' || pageCarLevel == '面包车' || pageCarLevel == '皮卡' || pageCarLevel == '客车' || pageCarLevel == '卡车' || pageCarLevel == '其它') {
+                                else if (pageCarLevel == '概念车' || pageCarLevel == 'MPV' || pageCarLevel == '面包车' || pageCarLevel == '皮卡' || pageCarLevel == '卡车' || pageCarLevel == '跑车' || pageCarLevel == '客车' || pageCarLevel == '其它') {
                                     adBlockCode = mpv;
                                 }
                                 else if (pageCarLevel == 'SUV') {
@@ -182,67 +239,6 @@
                         </script>
                     </div>
                 </div>
-            </div>
-            <div class="col-xs-3">
-                <div class="section-right">
-                    <div class="spl-23adv">
-                        <div class="ad-mb20">
-                            <ins id="div_e98982f8-2749-472e-819a-619722586516" data-type="ad_play" data-adplay_ip='' data-adplay_areaname='' data-adplay_cityname='' data-adplay_brandid='<%= serialId %>' data-adplay_brandname='' data-adplay_brandtype='' data-adplay_blockcode="e98982f8-2749-472e-819a-619722586516"> </ins>
-                        </div>
-                        <div class="ad-mb20">
-                            <ins id="div_ff3f172d-bf5a-465b-a15b-32e5d3b81837" data-type="ad_play" data-adplay_ip='' data-adplay_areaname='' data-adplay_cityname='' data-adplay_brandid='' data-adplay_brandname='<%= serialId %>' data-adplay_brandtype='' data-adplay_blockcode="ff3f172d-bf5a-465b-a15b-32e5d3b81837"> </ins>
-                        </div>
-                        <div class="ad-mb20" id="cmtadDiv">
-                        </div>
-                    </div>
-                </div>
-                <%if (!string.IsNullOrEmpty(koubeiReportHtml))
-                    { %>
-                <%=koubeiReportHtml %>
-                <%}
-                    else
-                    { %>
-                <div class="layout-1">
-                    <!--#include file="/include/pd/2014/koubei/00001/201703_PCzhan_chexingzongshuyezhanweitu_Manual.shtml"-->
-                </div>
-                <%} %>
-            </div>
-        </div>
-        <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-        <!--#include file="/include/special/stat/00001/bglogpostlog_Manual.shtml"-->
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummary.min.js?v=201711241325"></script>
-        <%--<script type="text/javascript" src="/jsnewv2/cssummary.js?v=20161230"></script>--%>
-        <script type="text/javascript">
-                            var serialId = <%= serialId %>;
-                            var priceRang = '<%=serialPrice%>';
-                            var cityId = 201;
-                            if (typeof (bit_locationInfo) != "undefined") {
-                                cityId = bit_locationInfo.cityId;
-                            }
-                            var GlobalSummaryConfig = {
-                                SerialId:<%= serialId %>,
-                CityId: cityId
-            };
-            if (document.getElementById('carYearList_all')) {
-                document.getElementById('carYearList_all').className = 'current';
-            }
-
-            if (typeof (bitLoadScript) == "undefined") {
-                bitLoadScript = function (url, callback, charset) {
-                    var s = document.createElement("script"); s.type = "text/javascript"; if (charset) s.charset = charset;
-                    if (s.readyState) { s.onreadystatechange = function () { if (s.readyState == "loaded" || s.readyState == "complete") { s.onreadystatechange = null; if (callback) callback(); } }; }
-                    else { s.onload = function () { if (callback) callback(); }; }
-                    s.src = url; document.getElementsByTagName("head")[0].appendChild(s);
-                };
-            }
-
-            GetVr();
-        </script>
-        <script type="text/javascript" src="http://d2.yiche.com/js/senseNewFs.js"></script>
-        <!--文章-->
-        <div class="row section-layout">
-            <div class="col-xs-9">
                 <div class="section-main">
                     <%= carListTableHtml %>
                     <div class="layout-1">
@@ -344,7 +340,7 @@
                     <% } %>
                     <div style="margin-top: -20px; margin-bottom: 30px;">
                         <script type="text/javascript">
-                            var pageCarLevel ='<%=serialEntity.Level.Name%>';
+                            <%--var pageCarLevel ='<%=serialEntity.Level.Name%>';
                             function showNewsInsCode(dxc, xxc, mpv, suv) {
                                 var adBlockCode = xxc;
                                 if (pageCarLevel == '中大型车' || pageCarLevel == '中型车' || pageCarLevel == '跑车' || pageCarLevel == '豪华车') {
@@ -358,13 +354,13 @@
                                 }
                                 else if (pageCarLevel == 'SUV') {
                                     adBlockCode = suv;
-                                }
-                                document.write('<ins id="div_' + adBlockCode + '" type="ad_play" adplay_blockcode="' + adBlockCode + '"></ins>');
+                                }--%>
+                            document.write('<ins id="div_' + adBlockCode + '" type="ad_play" adplay_blockcode="' + adBlockCode + '"></ins>');
                             }
                             showNewsInsCode('037c7090-9b1c-4082-97c9-a05055f703c3', '18193574-4afa-48ec-b772-6bad17372728', '8d7e187c-6482-4a9d-b881-6f449db6a816', 'a54bb640-16c5-43e6-9c9a-0e7c508a8b20');
                         </script>
                     </div>
-                    <%= koubeiDianpingHtml %>
+                    <%--<%= koubeiDianpingHtml %>--%>
                     <script src="http://img1.bitauto.com/bt/Price/CsReviewPrice/js/CsPriceReview.min.js?v=20171128"></script>
                     <script type="text/javascript">
                             //document.write("<ins id=\"ep_union_137\" partner=\"1\" version=\"\" isupdate=\"1\" type=\"1\" city_type=\"1\" city_id=\"" + cityId + "\" city_name=\"0\" car_type=\"2\" brandid=\"0\" serialid=\"" + serialId + "\" carid=\"0\" data-channelid=\"2.21.819\"></ins>");
@@ -467,8 +463,8 @@
     <script type="text/javascript">
                             var CarCommonBSID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.MasterBrandId %>"; //大数据组统计用
                             var CarCommonCBID = "<%= serialEntity.Brand == null ? 0 : serialEntity.Brand.Id %>";
-                            var CarCommonCSID = "<%=serialId %>";
-                            var CarFilterData = <%=string.IsNullOrEmpty(carListFilterData)?"null":carListFilterData %>;
+        var CarCommonCSID = "<%=serialId %>";
+        var CarFilterData = <%=string.IsNullOrEmpty(carListFilterData)?"null":carListFilterData %>;
         (function () {
             GetPromotionNews();
             GetVedioNum();
@@ -568,7 +564,7 @@
     <!--看了还看js-->
     <script type="text/javascript">
         <%= serialToSeeJson %>
-</script>
+    </script>
     <script type="text/javascript" src="http://d2.yiche.com/js/serialadposition.js?_=<%= DateTime.Now.ToString("yyyyMMddHHmm").Substring(0,11) + "0" %>"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/serialtoseead.min.js"></script>
     <%--<script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>--%>

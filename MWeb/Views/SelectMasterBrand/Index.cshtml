@@ -216,6 +216,10 @@
                 $("span.brand-logo>img").lazyload({ effect: "fadeIn", threshold: 50 });
             }, "utf-8");
         });
+        function reLocation() {
+            $body.trigger('note');
+        }
+
         function adCallback(objId) {
             var parentNode = document.getElementById(objId).parentNode;
             $(parentNode).imgSucceed({
@@ -234,7 +238,8 @@
         @Html.Partial("~/html/footerV3.cshtml")
     </div>
     <script src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars"></script>
-    <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/recentlyseen.min.js"></script>
+    <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/recentlyseen.min.js?v=201712281614"></script>
+    @*<script src="/js/recentlyseen.js"></script>*@
     @if (WTmc_id != "mxmllqic_qt")
     {
         <div class="float-r-box">

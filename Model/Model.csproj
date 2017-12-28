@@ -78,7 +78,6 @@
     <Compile Include="AppApi\CarModelColorEntity.cs" />
     <Compile Include="AppApi\CarSerialExtEntity.cs" />
     <Compile Include="AppApi\CarStyleInfoEntity.cs" />
-    <Compile Include="AppModel\CarGroupEntity.cs" />
     <Compile Include="AppApi\MasterBrandSaleState.cs" />
     <Compile Include="AppApi\SerialListQueryEntity.cs" />
     <Compile Include="AppApi\TopNewCarEntity.cs" />

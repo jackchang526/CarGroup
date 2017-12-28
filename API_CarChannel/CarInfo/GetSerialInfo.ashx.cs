@@ -110,8 +110,67 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                 case "getpingcebycsid": RenderCsPingceTagByCsID(); break;
                 case "getallcarspaceinfobycsid": RenderAllCarSpaceDataByCsId(); break;
                 case "getserialbaseinfobyidjson": RenderSerialBaseInfoByCsId(); break;
+                case "gethotcarinfobycsid": RenderHotCarInfoByCsID(); break;
+                case "getbrandotherserialbycsid": RenderBrandOtherSerialByCsId(); break;
                 default: CommonFunction.EchoXml(response, "<!-- 缺少参数 -->", ""); ; break;
             }
+        }
+
+        /// <summary>
+        /// 根据车型ID获取同品牌下其他车型数据
+        /// </summary>
+        private void RenderBrandOtherSerialByCsId()
+        {
+            response.ContentType = "application/x-javascript";
+            int serialId = ConvertHelper.GetInteger(request.QueryString["csid"]);
+            int isall = ConvertHelper.GetInteger(request.QueryString["isall"]);
+            string callback = request.QueryString["callback"];
+            string result = "{}";
+            if (serialId > 0)
+            {
+                SerialEntity csEntity = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, serialId);
+                if (csEntity != null)
+                {
+                    List<CarSerialPhotoEntity> carSerialPhotoList = new Car_BrandBll().GetCarSerialPhotoListByCBID(csEntity.BrandId, isall.Equals(1));
+                    var newList = carSerialPhotoList.FindAll(x => x.SerialId != serialId);
+                    result = JsonConvert.SerializeObject(newList);
+                }
+            }
+            response.Write(string.Format(!string.IsNullOrEmpty(callback) ? (callback + "({0})") : "{0}", result));
+        }
+
+        /// <summary>
+        /// 根据车型ID获取热销车款
+        /// </summary>
+        private void RenderHotCarInfoByCsID()
+        {
+            response.ContentType = "application/x-javascript";
+            int serialId = ConvertHelper.GetInteger(request.QueryString["csid"]);
+            string callback = request.QueryString["callback"];
+            string result = "{}";
+            if (serialId > 0)
+            {
+                DataSet ds = base.GetHotCarInfoByCsID(serialId);
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    List<object> list = new List<object>();
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        list.Add(new
+                        {
+                            SerialId = serialId,
+                            CarID = ds.Tables[0].Rows[i]["car_id"],
+                            CarName = ds.Tables[0].Rows[i]["car_name"],
+                            ReferPrice = ds.Tables[0].Rows[i]["car_ReferPrice"],
+                            YearType = ds.Tables[0].Rows[i]["Car_YearType"],
+                            SumPv = ds.Tables[0].Rows[i]["Pv_SumNum"]
+                        });
+                    }
+
+                    result = JsonConvert.SerializeObject(list);
+                }
+            }
+            response.Write(string.Format(!string.IsNullOrEmpty(callback) ? (callback + "({0})") : "{0}", result));
         }
 
         /// <summary>
@@ -1268,7 +1327,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                             switch (drCar["paramid"].ToString())
                             {
                                 case "430": GetMinOrMax(drCar["pvalue"].ToString().Trim(), ref minEM, ref maxEM); break;
-                                case "578":  if ((!listNE.Contains(drCar["pvalue"].ToString().Trim()))&& drCar["pvalue"].ToString().Trim().IndexOf("混合")>=0) { listNE.Add(drCar["pvalue"].ToString().Trim()); }; break;
+                                case "578": if ((!listNE.Contains(drCar["pvalue"].ToString().Trim())) && drCar["pvalue"].ToString().Trim().IndexOf("混合") >= 0) { listNE.Add(drCar["pvalue"].ToString().Trim()); }; break;
                                 case "782": GetMinOrMax(drCar["pvalue"].ToString().Trim(), ref minPZ, ref maxPZ); break;
                                 case "870": GetMinOrMax(drCar["pvalue"].ToString().Trim(), ref minEP, ref maxEP); break;
                                 default: break;
@@ -1746,7 +1805,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
             if (type == 2)
             {
                 List<EnumCollection.SerialSortForInterface> lssfi = base.GetAllSerialNewly30DayToList();// GetAllSerialNewly7DayToList();
-                // 增加面包车 add by chengl Aug.28.2014
+                                                                                                        // 增加面包车 add by chengl Aug.28.2014
                 List<EnumCollection.SerialSortForInterface>[] arrSSfi = new List<EnumCollection.SerialSortForInterface>[10];
                 for (int i = 0; i < 10; i++)
                 {
@@ -2311,8 +2370,8 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 
         private void RenderSerialWireless()
         {
-            EnumCollection.SerialInfoCard sic = new EnumCollection.SerialInfoCard();	//子品牌名片
-            Car_SerialEntity cse = new Car_SerialEntity();				//子品牌信息 
+            EnumCollection.SerialInfoCard sic = new EnumCollection.SerialInfoCard();    //子品牌名片
+            Car_SerialEntity cse = new Car_SerialEntity();              //子品牌信息 
             List<string> listcsEE = new List<string>();
             DataSet dsCar = new DataSet();
             int csID = 0;

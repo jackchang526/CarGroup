@@ -133,6 +133,8 @@
     <Compile Include="Model_Exhibtion.cs" />
     <Compile Include="Model_Pavilion.cs" />
     <Compile Include="NameObject.cs" />
+    <Compile Include="NewCarIntoMarketEntity.cs" />
+    <Compile Include="NewCarIntoMarketVMEntity.cs" />
     <Compile Include="News.cs" />
     <Compile Include="NewsCategory.cs" />
     <Compile Include="NewsForSerialSummaryEntity.cs" />

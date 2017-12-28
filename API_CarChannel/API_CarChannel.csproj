@@ -157,6 +157,10 @@
     <Compile Include="CarInfo\CarPriceListByCarIDAndCityID.aspx.designer.cs">
       <DependentUpon>CarPriceListByCarIDAndCityID.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CarInfo\GetNewCarList.ashx.cs">
+      <DependentUpon>GetNewCarList.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="CarInfo\GetAllCarInfo.ashx.cs">
       <DependentUpon>GetAllCarInfo.ashx</DependentUpon>
     </Compile>
@@ -221,6 +225,10 @@
     </Compile>
     <Compile Include="CarInfo\GetProducerInfo.ashx.cs">
       <DependentUpon>GetProducerInfo.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\GetSalesRankingForPage.ashx.cs">
+      <DependentUpon>GetSalesRankingForPage.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CarInfo\GetSerialInfo.ashx.cs">
@@ -643,6 +651,8 @@
     <Content Include="Assessment\GetEvaluationSimpleRank.ashx" />
     <Content Include="Assessment\GetEvaluationTopRank.ashx" />
     <Content Include="Assessment\GetExistReportEvaluationId.ashx" />
+    <Content Include="CarInfo\GetSalesRankingForPage.ashx" />
+    <Content Include="CarInfo\GetNewCarList.ashx" />
     <Content Include="Assessment\GetPingCeTopPc.ashx" />
     <Content Include="Assessment\GetPingCeTopM.ashx" />
     <Content Include="Assessment\GetPingCeList.ashx" />

@@ -7938,6 +7938,25 @@ namespace BitAuto.CarChannel.BLL
             return dic != null && dic.ContainsKey(level) ? dic[level] : null;
         }
 
+        public List<XmlElement> GetSerialSellRankForPage(string level, int startIndex, int pageSize, out int allCount)
+        {
+            List<XmlElement> dic = null;
+            Dictionary<int, XmlElement> items = GetSeialSellRank();
+            var l = items.Where(item => item.Value.Attributes["Level"].InnerText == level).ToList();
+            allCount = l.Count;
+            //int startIndex = (pageIndex - 1) * pageSize;
+            if (allCount > startIndex)
+            {
+                dic = new List<XmlElement>();
+            }
+            else
+            {
+                return null;
+            }
+            l.Skip(startIndex).Take(pageSize).ToList().ForEach(item => { dic.Add(item.Value); });
+            return dic;
+        }
+
         /// <summary>
 		/// 车系销量排行榜
 		/// </summary>
@@ -7978,6 +7997,38 @@ namespace BitAuto.CarChannel.BLL
             }
             return dic;
         }
+
+
+        /// <summary>
+        /// 车系销量排行榜
+        /// </summary>
+        /// <returns></returns>
+        public string GetSeialSellRankMonth()
+        {
+            string cacheKey = "Car_SerialBll_GetSeialSellRankMonth";
+            object obj = CacheManager.GetCachedData(cacheKey);
+            if (obj != null)
+            {
+                return (string)obj;
+            }
+            else
+            {
+                string filePath = Path.Combine(WebConfig.DataBlockPath, @"Data\SerialSet\SerialSaleRank.xml");
+                string month = "";
+                if (File.Exists(filePath))
+                {
+                    XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(filePath);
+                    XmlNode item = xmlDoc.SelectSingleNode("/Root");
+                    if (item != null)
+                    {
+                        month = item.Attributes["Month"].InnerText;
+                    }
+                    CacheManager.InsertCache(cacheKey, month, 60);
+                }
+                return month;
+            }
+        }
+
         /// <summary>
         ///  易湃的销量最高的suv车型接口数据
         /// </summary>
@@ -8535,7 +8586,7 @@ namespace BitAuto.CarChannel.BLL
                         , dr["cs_id"]
                         , dr["packagename"]
                         , ConvertHelper.GetString(dr["packageprice"]).Trim()
-                        , StringHelper.SqlFilter(ConvertHelper.GetString(dr["packagedescription"]).Trim().Replace("\r\n","").Replace("\"","＂"))
+                        , StringHelper.SqlFilter(ConvertHelper.GetString(dr["packagedescription"]).Trim().Replace("\r\n", "").Replace("\"", "＂"))
                         , carIds
                         , package.IndexOf(dr) == package.Count - 1 ? "" : ",");
                 }
@@ -9086,5 +9137,27 @@ namespace BitAuto.CarChannel.BLL
             }
             return result;
         }
+
+        /// <summary>
+        /// 获取车系级别，如果有二级级别取二级级别
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<int, string> GetAllSerialLevelsWithSecondLevel()
+        {
+            string cacheKey = "Car_SerialBll_GetAllSerialLevelsWithSecondLevel";
+            object obj = CacheManager.GetCachedData(cacheKey);
+            if (obj != null)
+            {
+                return (Dictionary<int, string>)obj;
+            }
+            else
+            {
+                Dictionary<int, string> levelDic = null;
+                levelDic = csd.GetAllSerialLevelsWithSecondLevel();
+                CacheManager.InsertCache(cacheKey, levelDic, WebConfig.CachedDuration);
+                return levelDic;
+            }
+        }
+
     }
 }

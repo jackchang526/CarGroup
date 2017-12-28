@@ -50,5 +50,21 @@ namespace BitAuto.CarChannelAPI.Web.AppCode
             }
         }
 
+        public static string PageFormat(int index,int size,int total,string data) { 
+            string s = "";
+            if (!string.IsNullOrEmpty(data))
+                s = data.Substring(0, 1);
+            else
+                s = data = "";
+            if (s == "{" || s == "[")
+            {
+                return string.Format("{{\"index\":{0},\"size\":{1},\"total\":{2},\"data\":{3}}}", index, size, total, data);
+            }
+            else
+            {
+                return string.Format("{{\"index\":{0},\"size\":{1},\"total\":{2},\"data\":\"{3}\"}}", index, size, total, data);
+            }
+        }
+
     }
 }

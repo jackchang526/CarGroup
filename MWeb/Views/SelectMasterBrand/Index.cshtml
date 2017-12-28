@@ -13,7 +13,7 @@
     <title>【汽车标志_汽车品牌大全_@DateTime.Now.ToString("yyyy") 年热门车型推荐】-手机易车网</title>
     <meta name="keywords" content="汽车大全,汽车标志,车型大全,@DateTime.Now.ToString(" yyyy") 年热门车型，易车网" />
     <meta name="description" content="手机易车网选车频道，为您提供各种汽车品牌型号及报价信息，主要涵盖：“汽车品牌、汽车标志、汽车报价、@DateTime.Now.ToString(" yyyy") 年热门车型推荐等,是您选车购车的第一网络平台." />
-    <!--#include file="/ushtml/0000/myiche2015_cube_brand_style-996.shtml"-->
+    <!--#include file="/ushtml/0000/myiche2015_cube_brand_style-996.shtml"--> 
 </head>
 <body>
     @if (WTmc_id != "mxmllqic_qt")
@@ -79,36 +79,100 @@
         </script>
         <div class="op-nav-mark" style="display: none;"></div>
         <!-- header end -->
-        <div class="brandfilter">
-            <!-- 标签切换 start -->
-            @if (WTmc_id != "mxmllqic_qt")
-            {
-                <div class="first-tags">
-                    <ul>
-                        <li class="current"><a href="/brandlist.html" data-channelid="27.160.2196"><span>按品牌</span></a></li>
-                        <li id="xc_condition"><a href="/" data-channelid="27.160.2195"><span>按条件</span></a></li>
-                        <li id="xc_scene" class="tags-new"><a href="/scenelist.html" data-channelid="27.160.2194"><span>按情景<b><i>NEW<i></i></i></b></span></a></li>
-                    </ul>
-                </div>
-            }
+
+        <!--新增顶部改版块-->
+        <div class="new-car-content">
+            <!--猜你喜欢-->
+            <div class="browse-car" style="display: none;">
+                <dl> 
+                </dl>
+            </div>
+            <!--猜你喜欢END-->
+            <!--糖豆菜单-->
+            <div class="buy-top">
+                <ul>
+                    <li data-channelid="27.160.2231" class="ico-ssxc">
+                        <a href="http://car174.m.yiche.com/newcarlisting.html">
+                            <i></i>
+                            <p>上市新车</p>
+                        </a>
+                    </li>
+                    <li data-channelid="27.160.2232" class="ico-xsph">
+                        <a href="http://car174.m.yiche.com/salesranking.html">
+                            <i></i>
+                            <p>销售排行</p>
+                        </a>
+                    </li>
+                    <li data-channelid="27.160.2195" class="ico-tjxc">
+                        <a href="http://car174.m.yiche.com/">
+                            <i></i>
+                            <p>条件选车</p>
+                        </a>
+                    </li>
+                    <li data-channelid="27.160.2196" class="ico-cjxc">
+                        <a href="http://car174.m.yiche.com/scenelist.html  ">
+                            <i></i>
+                            <p>场景选车</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--糖豆菜单END--> 
+            <!--热门推荐-->
+            <div class="tt-first">
+                <h3>热门推荐</h3>
+                <div class="opt-refresh"></div>
+            </div>
+            <div class="m-tag-car">
+                <ul>
+                    <li data-channelid="27.160.2233"><a href="http://car.m.yiche.com/xuanchegongju/?p=8-12&l=8">8-12万SUV</a></li>
+                    <li data-channelid="27.160.2234"><a href="http://car.m.yiche.com/xuanchegongju/?p=12-18&l=8 ">12-18万SUV</a></li>
+                    <li data-channelid="27.160.2235"><a href="http://car.m.yiche.com/xuanchegongju/?p=8-12&l=63">8-12万轿车</a></li>
+                </ul>
+            </div>
+            <div class="m-hot-brands">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <img src="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/55/m_8_55.png">
+                            <p>大众</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/55/m_8_55.png">
+                            <p>SWM斯威汽车</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/55/m_8_55.png">
+                            <p>大众</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/55/m_8_55.png">
+                            <p>大众</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/55/m_8_55.png">
+                            <p>大众</p>
+                        </a>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <!--热门推荐END-->
+        </div>
+        <!--新增顶部改版块END-->
+         
             <!-- 标签切换 end -->
             <!-- 按品牌选车 start -->
             <div class="brand-list bybrand_list">
-                <div class="tt-small phone-title" data-key="#">
-                    <span>推荐</span>
-                </div>
-                <div class="brand-hot">
-                    <ins id="div_60f12da8-7643-4414-a939-780a8e12ece0" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="60f12da8-7643-4414-a939-780a8e12ece0">
-                    </ins>
-                    @*@if (ViewBag.re == "true")
-                        {
-                            @Html.Partial("~/html/HomepageHotBrandSEO.cshtml")
-                        }
-                        else
-                        {
-                            @Html.Partial("~/html/HomepageHotBrand.cshtml")
-                        }*@
-                </div>
+                 
                 <div class="hot-car-list">
                     <ins id="div_8f582dc7-7250-453a-b8f7-fcc9bcc2df56" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="8f582dc7-7250-453a-b8f7-fcc9bcc2df56">
                     </ins>
@@ -201,6 +265,8 @@
         </div>
         @Html.Partial("~/html/footerV3.cshtml")
     </div>
+    <script src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars"></script>
+    <script src="~/js/recentlyseen.js"></script>
     @if (WTmc_id != "mxmllqic_qt")
     {
         <div class="float-r-box">

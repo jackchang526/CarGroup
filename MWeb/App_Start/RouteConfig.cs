@@ -27,6 +27,19 @@ namespace MWeb
 				defaults: new { controller = "SelectMasterBrand", action = "Index", id = UrlParameter.Optional }
 			);
 
+            //车系排行
+            routes.MapRoute(
+                            name: "salesranking",
+                            url: "salesranking.html",
+                            defaults: new { controller = "SalesRanking", action = "Index", id = UrlParameter.Optional }
+                        );
+
+            //新车上市
+            routes.MapRoute(
+                            name: "newcarlisting",
+                            url: "newcarlisting.html",
+                            defaults: new { controller = "NewCar", action = "Index", id = UrlParameter.Optional }
+                        );
             //情景选车
             routes.MapRoute(
                             name: "scenelist",

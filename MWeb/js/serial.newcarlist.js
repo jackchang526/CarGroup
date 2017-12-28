@@ -65,7 +65,7 @@ function RequestData(idx) {
     $.ajax({
         type: "get",
         url: newCarListUrl,
-        cache: false,
+        cache: true,
         dataType: 'jsonp',
         jsonp: "callback",
         jsonpCallback: cb,

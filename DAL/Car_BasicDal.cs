@@ -478,7 +478,7 @@ left join Car_Serial cs on car.Cs_Id=cs.cs_id where car.Car_Id=@carid";
         /// <returns></returns>
         public string GetCarParamValue(int carId, int paramId)
 		{ 
-			string sql = @"SELECT  TOP 1 pvalue
+			string sql = @"SELECT pvalue
 							FROM    dbo.CarDataBase
 							WHERE   carid = @CarId
 									AND ParamId = @ParamId";

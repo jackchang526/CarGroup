@@ -808,7 +808,7 @@ namespace BitAuto.CarChannel.DAL
                 return null;
             }
             DataSet ds = new DataSet();
-            string sqlStr = " select autoID,cs_id,colorName,colorRGB,[type] from dbo.Car_SerialColor WHERE cs_id=" + csId + " AND {0} order by cs_id,colorRGB";
+            string sqlStr = " select autoID,cs_id,colorName,colorRGB,[type] from dbo.Car_SerialColor WHERE cs_id=" + csId + " AND {0} ";
             if (type == 0)
             {
                 sqlStr = string.Format(sqlStr, " [type]=0 ");

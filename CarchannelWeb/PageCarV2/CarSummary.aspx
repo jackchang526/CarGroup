@@ -183,13 +183,13 @@
                         var pageCarLevel='<%=cfcs.CarLevel%>';
                         function showNewsInsCode(dxc, xxc, mpv, suv) {
                             var adBlockCode = xxc;
-                            if (pageCarLevel == '中大型车' || pageCarLevel == '中型车' || pageCarLevel == '跑车' || pageCarLevel == '豪华车') {
+                            if (pageCarLevel == '中大型车' || pageCarLevel == '中型车' || pageCarLevel == '豪华车') {
                                 adBlockCode = dxc;
                             }
                             else if (pageCarLevel == '微型车' || pageCarLevel == '小型车' || pageCarLevel == '紧凑型车') {
                                 adBlockCode = xxc;
                             }
-                            else if (pageCarLevel == '概念车' || pageCarLevel == 'MPV' || pageCarLevel == '面包车' || pageCarLevel == '皮卡'|| pageCarLevel == '客车' || pageCarLevel == '卡车'|| pageCarLevel == '其它') {
+                            else if (pageCarLevel == '概念车' || pageCarLevel == 'MPV' || pageCarLevel == '面包车' || pageCarLevel == '皮卡' || pageCarLevel == '卡车'|| pageCarLevel == '跑车' || pageCarLevel == '客车'|| pageCarLevel == '其它') {
                                 adBlockCode = mpv;
                             }
                             else if (pageCarLevel == 'SUV') {

@@ -1,0 +1,106 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>【汽车标志_汽车品牌大全_@DateTime.Now.ToString("yyyy") 年热门车型推荐】-手机易车网</title>
+    <meta name="keywords" content="汽车大全,汽车标志,车型大全,@DateTime.Now.ToString(" yyyy") 年热门车型，易车网" />
+    <meta name="description" content="手机易车网选车频道，为您提供各种汽车品牌型号及报价信息，主要涵盖：“汽车品牌、汽车标志、汽车报价、@DateTime.Now.ToString(" yyyy") 年热门车型推荐等,是您选车购车的第一网络平台." />
+    <!--#include file="/ushtml/0000/20171201_m_newCarSell-1485.shtml"-->
+</head>
+<body>
+    @Html.Partial("~/html/TopDownloadLayer.cshtml")
+    @Html.Partial("/html/WTParams.cshtml")
+    <div class="mbt-page">
+        <!-- header start -->
+        <div class="op-nav">
+            <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
+            <div class="tt-name">
+                <a href="http://m.yiche.com/" class="yiche-logo">汽车</a><h1>选车</h1>
+            </div>
+            <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
+        </div>
+        <script type="text/javascript">
+            if (typeof (WtFrom) != "undefined" && WtFrom == "mcfw99") {
+                $(".op-nav").hide();
+            }
+        </script>
+        <div class="op-nav-mark" style="display: none;"></div>
+        <!-- header end -->
+        <!--新增顶部改版块-->
+        <div class="new-car-content">
+
+            <div class="second-tags js-news-cartab">
+                <div class="pd15">
+                    <ul>
+                        <li tabindex="0" class="current"><a href="#"><span>全新上市</span></a></li>
+                        <li tabindex="1"><a href="#"><span>即将上市</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="swiper-container js-swiper-container-news-carlist">
+                <div class="swiper-wrapper">
+                    <!--全新上市-->
+                    <div class="swiper-slide">
+                        <!-- 列表 start -->
+                        <ul class="newscar-list" id="newscar_list_0">
+                             
+                            <div class="load-box"><i></i><span>正在载入...</span></div>
+                        </ul>
+                        <!-- 列表 end -->
+                        <!-- more start -->
+                        <!--<a href="#" class="btn-more btn-add-more"><i>加载更多</i></a>-->
+                        <!-- more end -->
+                    </div>
+                    <!--即将上市-->
+                    <div class="swiper-slide">
+                        <!-- 列表 start -->
+                        <ul class="newscar-list" id="newscar_list_1">
+                            
+                            <div class="load-box"><i></i><span>正在载入...</span></div>
+                        </ul>
+                        <!-- 列表 end -->
+                        <!-- more start -->
+                        <!--<a href="#" class="btn-more btn-add-more"><i>加载更多</i></a>-->
+                        <!-- more end -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--新增顶部改版块END-->
+    </div>
+    <script type="text/javascript">
+        var url = "http://m.yiche.com/";
+        $(function () {//没有电脑版，临时处理
+            var linktopc = $("#a_linkToPcPage");
+            $(linktopc).hide().next().hide();
+        });
+    </script>
+
+    <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/v2/swiper-3.3.1.min.js?v=201712281437" type="text/javascript"></script>
+    <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/serial.newcarlist.min.js?v=201712291028"></script>
+    <script type="text/javascript">
+       
+    </script>
+    <div class="footer15">
+        <!--搜索框-->
+        @Html.Partial("~/html/footersearch.cshtml")
+        <div class="breadcrumb">
+            <div class="breadcrumb-box">
+                <a href="http://m.yiche.com/">首页</a> &gt; <span>选车</span>
+            </div>
+        </div>
+        @Html.Partial("~/html/footerV3.cshtml")
+    </div>
+    <div class="float-r-box">
+        <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
+    </div>
+</body>
+</html>

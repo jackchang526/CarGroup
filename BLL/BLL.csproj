@@ -117,6 +117,7 @@
     <Compile Include="Data\SerialEntity.cs" />
     <Compile Include="EvaluationBll.cs" />
     <Compile Include="MVCRouteBll.cs" />
+    <Compile Include="NewCarIntoMarketBll.cs" />
     <Compile Include="SerialFourthStageBll.cs" />
     <Compile Include="HangQingTree.cs" />
     <Compile Include="IndexBll.cs" />

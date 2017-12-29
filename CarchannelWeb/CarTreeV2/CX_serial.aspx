@@ -187,6 +187,17 @@
 		                    }, 500);
 		                }
 	                );
+
+                    $("#pop_sale").click(function () {
+                        $("#data_tab_jq5_0").show();
+                        $("#data_tab_jq5_0_wait").hide();
+                        $(this).addClass("current").siblings("li").removeClass("current");
+                    });
+                    $("#pop_waitsale").click(function () {
+                        $("#data_tab_jq5_0_wait").show();
+                        $("#data_tab_jq5_0").hide();
+                        $(this).addClass("current").siblings("li").removeClass("current");
+                    });
 				});
 				(function () {
 					//如果是停售车系，关于商机按钮的处理

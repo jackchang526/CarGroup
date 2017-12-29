@@ -22,7 +22,7 @@
     <meta name="Keywords" content="@(ViewData["keyWords"])" />
     <meta name="Description" content="@(ViewData["description"])" />
     <link rel="canonical" href="http://car.bitauto.com/@(serialEntity.AllSpell)/" />
-    <!--#include file="/ushtml/0000/myiche2016_cube_summary-1154.shtml"-->
+    <!--#include file="/ushtml/0000/myiche2016_cube_summaryA-1514.shtml"-->
     <script type="text/javascript" charset="utf-8" src="http://ip.yiche.com/iplocation/setcookie.ashx"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery-1.9.1.min.js"></script>
     <script type="text/javascript">
@@ -87,43 +87,7 @@
             </div>
         }
 
-        @*@(Html.Raw(ViewData["HeadHtml"]))*@
-        <div class="op-nav-out-test">
-            <!--2017/12/6 17:36:04-->
-            <div class="car-nav-static-box">
-                <div class="car-nav-rel">
-                    <div class="car-nav-fixed">
-                        <ul>
-                            <li class="current"><a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/" data-channelid="27.23.713"><strong>综述<s></s></strong></a></li>
-                            <li><a href="http://price.m.yiche.com/nb@(serialEntity.Id)/" data-channelid="27.23.714"><strong>报价</strong></a></li>
-                            <li><a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/peizhi/" data-channelid="27.23.715"><strong>参数</strong></a></li>
-                            <li><a href="http://photo.m.yiche.com/serial/@(serialEntity.Id)/" data-channelid="27.23.716"><strong>图片</strong></a></li>
-                            <li><a href="http://dealer.m.yiche.com/0/@(serialEntity.Id)/2/" data-channelid="27.23.1936"><strong>经销商</strong></a></li>
-                            <li><a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/wenzhang/" data-channelid="27.23.717"><strong>文章</strong></a></li>
-                            <li><a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/koubei/" data-channelid="27.23.718"><strong>口碑</strong></a></li>
-                            <li><a href="http://v.m.yiche.com/pv/@(serialEntity.AllSpell).html" data-channelid="27.23.2185"><strong>视频</strong></a></li>
-                            <li><a href="@(ViewData["BaaUrl"])" data-channelid="27.23.720"><strong>社区</strong></a></li>
-                            <li><a href="http://m.taoche.com/@(serialEntity.AllSpell)/?ref=Hlht_esc" data-channelid="27.23.721"><strong>二手车</strong></a></li>
-                        </ul>
-                    </div>
-                    <div class="right-mask"></div>
-                </div>
-            </div>
-            <script type="text/javascript">
-                    if (typeof (bitLoadScript) == "undefined") {
-                        bitLoadScript = function (url, callback, charset) {
-                            var s = document.createElement("script"); s.type = "text/javascript"; if (charset) s.charset = charset;
-                            if (s.readyState) { s.onreadystatechange = function () { if (s.readyState == "loaded" || s.readyState == "complete") { s.onreadystatechange = null; if (callback) callback(); } }; }
-                            else { s.onload = function () { if (callback) callback(); }; }
-                            s.src = url; document.getElementsByTagName("head")[0].appendChild(s);
-                        };
-                    }
-                    bitLoadScript("http://image.bitautoimg.com/carchannel/WirelessJs/NavigationJs.js?v=20160126", function () {
-                        try { mainWirelessPVStatisticFunction(@(serialEntity.Id), 0, 0); }
-                        catch (err) { }
-                    }, "utf-8");
-            </script>
-        </div>
+        @(Html.Raw(ViewData["HeadHtml"]))
         <!--nav fixed start-->
         <div class="car-nav-fixed-box" id="carNavFixed" style="display: none">
             <div class="car-nav-rel">
@@ -348,11 +312,11 @@
             $("#btn-business a").first().attr("href", "http://dealer.m.yiche.com/" + GlobalSummaryConfig.CityId + "/" + GlobalSummaryConfig.SerialId +"/2/ ");
             function showNewsInsCode(dxc, xxc, mpv, suv) {
                 var adBlockCode = xxc;
-                if (carlevel == '中大型车' || carlevel == '中型车' || carlevel == '跑车' || carlevel == '豪华车') {
+                if (carlevel == '中大型车' || carlevel == '中型车' || carlevel == '豪华车') {
                     adBlockCode = dxc;
                 } else if (carlevel == '微型车' || carlevel == '小型车' || carlevel == '紧凑型车') {
                     adBlockCode = xxc;
-                } else if (carlevel == '概念车' || carlevel == 'MPV' || carlevel == '面包车' || carlevel == '皮卡' || carlevel == '其它') {
+                } else if (carlevel == '概念车' || carlevel == 'MPV' || carlevel == '面包车' || carlevel == '皮卡' || carlevel == '卡车' || carlevel == '跑车' || carlevel == '客车' || carlevel == '其它') {
                     adBlockCode = mpv;
                 } else if (carlevel == 'SUV') {
                     adBlockCode = suv;
@@ -1032,9 +996,10 @@
     <script type="text/javascript" src="/js/waitcompareV2.js"></script>
     <script type="text/javascript" src="/js/rightswipe-cityV2.js?v=20160202"></script>
     <script type="text/javascript" src="/js/csSummaryConditionV2.js"></script>*@
-    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/common/swiper-3.2.7.min.js,carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.min.js,carchannel/common/cityjsonv2.js,carchannel/wirelessjsv2/rightswipe-cityv2.js,carchannel/wirelessjsv2/cssummaryconditionV2.min.js?v=20171218150"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/common/swiper-3.2.7.min.js,carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js,carchannel/wirelessjsv2/v2/brand.js,carchannel/wirelessjsv2/waitcompareV2.min.js,carchannel/common/cityjsonv2.js,carchannel/wirelessjsv2/rightswipe-cityv2.js,carchannel/wirelessjsv2/cssummaryconditionV2.min.js?v=201712261456"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=audio/jplayer/jquery.jplayer.min.js,audio/jplayer/audioJPlayerMobile.js?v=20170105"></script>
     @*<script type="text/javascript" src="http://image.bitautoimg.com/autoalbum/360pano/vrImgForBitauto.js"></script>*@
+    <script src="http://img1.bitauto.com//bt/Price/priceMobile/20160315/swiperDealer.min.js"></script>
     <script type="text/javascript">
         //区域报价
         GetCarAreaPriceRange();

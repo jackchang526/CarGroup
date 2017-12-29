@@ -110,8 +110,68 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                 case "getpingcebycsid": RenderCsPingceTagByCsID(); break;
                 case "getallcarspaceinfobycsid": RenderAllCarSpaceDataByCsId(); break;
                 case "getserialbaseinfobyidjson": RenderSerialBaseInfoByCsId(); break;
+                case "gethotcarinfobycsid": RenderHotCarInfoByCsID(); break;
+                case "getbrandotherserialbycsid": RenderBrandOtherSerialByCsId(); break;
+                case "getserialcolorjson": RenderSerialColorJson(); break;
                 default: CommonFunction.EchoXml(response, "<!-- 缺少参数 -->", ""); ; break;
             }
+        }
+
+        /// <summary>
+        /// 根据车型ID获取同品牌下其他车型数据
+        /// </summary>
+        private void RenderBrandOtherSerialByCsId()
+        {
+            response.ContentType = "application/x-javascript";
+            int serialId = ConvertHelper.GetInteger(request.QueryString["csid"]);
+            int isall = ConvertHelper.GetInteger(request.QueryString["isall"]);
+            string callback = request.QueryString["callback"];
+            string result = "{}";
+            if (serialId > 0)
+            {
+                SerialEntity csEntity = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, serialId);
+                if (csEntity != null)
+                {
+                    List<CarSerialPhotoEntity> carSerialPhotoList = new Car_BrandBll().GetCarSerialPhotoListByCBID(csEntity.BrandId, isall.Equals(1));
+                    var newList = carSerialPhotoList.FindAll(x => x.SerialId != serialId);
+                    result = JsonConvert.SerializeObject(newList);
+                }
+            }
+            response.Write(string.Format(!string.IsNullOrEmpty(callback) ? (callback + "({0})") : "{0}", result));
+        }
+
+        /// <summary>
+        /// 根据车型ID获取热销车款
+        /// </summary>
+        private void RenderHotCarInfoByCsID()
+        {
+            response.ContentType = "application/x-javascript";
+            int serialId = ConvertHelper.GetInteger(request.QueryString["csid"]);
+            string callback = request.QueryString["callback"];
+            string result = "{}";
+            if (serialId > 0)
+            {
+                DataSet ds = base.GetHotCarInfoByCsID(serialId);
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    List<object> list = new List<object>();
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        list.Add(new
+                        {
+                            SerialId = serialId,
+                            CarID = ds.Tables[0].Rows[i]["car_id"],
+                            CarName = ds.Tables[0].Rows[i]["car_name"],
+                            ReferPrice = ds.Tables[0].Rows[i]["car_ReferPrice"],
+                            YearType = ds.Tables[0].Rows[i]["Car_YearType"],
+                            SumPv = ds.Tables[0].Rows[i]["Pv_SumNum"]
+                        });
+                    }
+
+                    result = JsonConvert.SerializeObject(list);
+                }
+            }
+            response.Write(string.Format(!string.IsNullOrEmpty(callback) ? (callback + "({0})") : "{0}", result));
         }
 
         /// <summary>
@@ -154,10 +214,18 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
             var dict = csb.GetSerialCityCompareList(serialId, HttpContext.Current);
             if (dict.ContainsKey(cityName))
             {
+                // 白底
+                Dictionary<int, string> dicPicWhite = base.GetAllSerialPicURLWhiteBackground();
+
                 List<object> list = new List<object>();
                 foreach (var item in dict[cityName])
                 {
-                    list.Add(new { SerialId = item.SerialId, ShowName = item.SerialShowName, AllSpell = item.SerialNameSpell });
+                    string img = WebConfig.DefaultCarPic;
+                    if (dicPicWhite.ContainsKey(item.SerialId))
+                    {
+                        img = dicPicWhite[item.SerialId];
+                    }
+                    list.Add(new { SerialId = item.SerialId, ShowName = item.SerialShowName, AllSpell = item.SerialNameSpell,ImgUrl = img });
                 }
                 var json = JsonConvert.SerializeObject(list);
                 response.Write(json);
@@ -1268,7 +1336,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                             switch (drCar["paramid"].ToString())
                             {
                                 case "430": GetMinOrMax(drCar["pvalue"].ToString().Trim(), ref minEM, ref maxEM); break;
-                                case "578":  if ((!listNE.Contains(drCar["pvalue"].ToString().Trim()))&& drCar["pvalue"].ToString().Trim().IndexOf("混合")>=0) { listNE.Add(drCar["pvalue"].ToString().Trim()); }; break;
+                                case "578": if ((!listNE.Contains(drCar["pvalue"].ToString().Trim())) && drCar["pvalue"].ToString().Trim().IndexOf("混合") >= 0) { listNE.Add(drCar["pvalue"].ToString().Trim()); }; break;
                                 case "782": GetMinOrMax(drCar["pvalue"].ToString().Trim(), ref minPZ, ref maxPZ); break;
                                 case "870": GetMinOrMax(drCar["pvalue"].ToString().Trim(), ref minEP, ref maxEP); break;
                                 default: break;
@@ -1746,7 +1814,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
             if (type == 2)
             {
                 List<EnumCollection.SerialSortForInterface> lssfi = base.GetAllSerialNewly30DayToList();// GetAllSerialNewly7DayToList();
-                // 增加面包车 add by chengl Aug.28.2014
+                                                                                                        // 增加面包车 add by chengl Aug.28.2014
                 List<EnumCollection.SerialSortForInterface>[] arrSSfi = new List<EnumCollection.SerialSortForInterface>[10];
                 for (int i = 0; i < 10; i++)
                 {
@@ -2311,8 +2379,8 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 
         private void RenderSerialWireless()
         {
-            EnumCollection.SerialInfoCard sic = new EnumCollection.SerialInfoCard();	//子品牌名片
-            Car_SerialEntity cse = new Car_SerialEntity();				//子品牌信息 
+            EnumCollection.SerialInfoCard sic = new EnumCollection.SerialInfoCard();    //子品牌名片
+            Car_SerialEntity cse = new Car_SerialEntity();              //子品牌信息 
             List<string> listcsEE = new List<string>();
             DataSet dsCar = new DataSet();
             int csID = 0;
@@ -3368,6 +3436,63 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
             return msg;
         }
         #endregion
+         
+        /// <summary>
+        /// 获取车系颜色
+        /// </summary>
+        private void RenderSerialColorJson()
+        {
+
+            int csId = 0;
+            // 颜色类型0:车身颜色 1:内饰颜色
+            int colorType = 0;
+            if (request.QueryString["csid"] != null && request.QueryString["csid"].ToString() != "")
+            {
+                string caridStr = request.QueryString["csid"].ToString();
+                if (int.TryParse(caridStr, out csId))
+                { }
+            }
+            if (request.QueryString["colorType"] != null && request.QueryString["colorType"].ToString() != "")
+            {
+                int tempColorType = 0;
+                if (int.TryParse(request.QueryString["colorType"].ToString(), out tempColorType))
+                {
+                    // 默认为车身颜色，当制定颜色类型时取特定类型颜色(0:车身颜色 1:内饰颜色)
+                    if (tempColorType > 0)
+                    { colorType = tempColorType; }
+                }
+            }
+            string callback = "";
+
+            if (request.QueryString["callback"] != null && request.QueryString["callback"].ToString() != "")
+            {
+                callback = request.QueryString["callback"].ToString();
+            }
+            string resultData = "";
+            var serialColors = csb.GetAllSerialColorRGB(csId, colorType == 0 ? 3 : 1);
+            StringBuilder sb = new StringBuilder();
+            if (serialColors != null && serialColors.Count > 0)
+            {
+                foreach (var item in serialColors)
+                {
+                    sb.AppendFormat("{{\"name\":\"{0}\",\"rgb\":\"{1}\",\"id\":{2}}},", item.Value.ColorName, item.Value.ColorRGB, item.Value.AutoID);
+                }
+                resultData = string.Format("{{\"csid\":{1},\"color\":[{0}]}}", sb.Length > 0 ? sb.Remove(sb.Length - 1, 1).ToString() : "", csId);
+                resultData = ResultUtil.SuccessResult(resultData);
+            }
+            else
+            {
+                resultData = ResultUtil.ErrorResult(0, "没有数据", "");
+            }
+            if (callback != "")
+            {
+                response.Write(ResultUtil.CallBackResult(callback, resultData));
+            }
+            else
+            {
+                response.Write(resultData);
+            }
+        }
         public bool IsReusable
         {
             get

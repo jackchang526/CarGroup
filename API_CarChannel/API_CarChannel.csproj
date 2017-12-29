@@ -119,6 +119,9 @@
     <Compile Include="Assessment\GetEvalInfoForAppNews.ashx.cs">
       <DependentUpon>GetEvalInfoForAppNews.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Assessment\GetEvalInfoForBg.ashx.cs">
+      <DependentUpon>GetEvalInfoForBg.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Assessment\GetEvaluationInfo.ashx.cs">
       <DependentUpon>GetEvaluationInfo.ashx</DependentUpon>
     </Compile>
@@ -647,6 +650,7 @@
     <Content Include="Assessment\GetPingCeTopM.ashx" />
     <Content Include="Assessment\GetPingCeList.ashx" />
     <Content Include="Assessment\GetEvalInfoForAppNews.ashx" />
+    <Content Include="Assessment\GetEvalInfoForBg.ashx" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

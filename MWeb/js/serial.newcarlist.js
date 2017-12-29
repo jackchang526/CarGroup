@@ -84,7 +84,7 @@ function RequestData(idx) {
                         }
                         html += ('<li><a href="/' + dd.AllSpell + '/" data-id="' + dd.CsId + '">');
                         html += '        <div class="left">';
-                        html += ('            <img class="car-img" src="' + dd.CoverImage + '" alt="">');
+                        html += ('            <img class="car-img" src="' + dd.CoverImage.replace("_2.","_6.") + '" alt="">');
                         html += '                <div class="info-box">';
                         html += '                    <div class="title">';
                         html += '                       <div class="text">' + dd.CsName + '</div>';

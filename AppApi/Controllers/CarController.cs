@@ -94,7 +94,7 @@ namespace AppApi.Controllers
                 message = "ok",
                 data = new
                 {
-                    result = result
+                     result
                 }
             });
         }
@@ -179,7 +179,7 @@ namespace AppApi.Controllers
                 message = "ok",
                 data = new
                 {
-                    CarGroupList = CarGroupList
+                     CarGroupList
                 }
             });
         }
@@ -259,7 +259,7 @@ namespace AppApi.Controllers
 
                                 if (min == 0 && max == 0)
                                 {
-                                    noSaleLastReferPrice = "暂无";
+                                    noSaleLastReferPrice = "暂无指导价";
                                 }
                                 else
                                 {
@@ -270,7 +270,7 @@ namespace AppApi.Controllers
                     }
                     else
                     {
-                        noSaleLastReferPrice = "暂无";
+                        noSaleLastReferPrice = "暂无指导价";
                     }
                 }
                 var serialCountry = CarSerialService.GetSerialCountryById(serialInfo.CsID);
@@ -282,7 +282,7 @@ namespace AppApi.Controllers
                     masterd = serialCountry == null ? 0 : serialCountry.MasterID,//大品牌logo
                     guidePriceRange = GetSerialReferPrice(serialPriceDic, serialInfo.CsID, serialInfo.CsPriceRange),//参考价区间 
                     referencePriceRange = noSaleLastReferPrice, //指导价区间
-                    coverImg = coverImg,// serialExt == null ? "" : serialExt.CoverImageUrl,
+                    coverImg,// serialExt == null ? "" : serialExt.CoverImageUrl,
                     imgCount = picCount,//图片数量
                     oil = serialInfo.CsSummaryFuelCost,// serialInfo.MinOil.ToString("F1") == "0.0" || serialInfo.MaxOil.ToString("F1") == "0.0" ? "暂无" : serialInfo.MinOil.ToString("F1") + "-" + serialInfo.MaxOil.ToString("F1") + "L",//参考油耗（在销车款的 综合工况油耗的最低和最高 ）
                     country = serialCountry == null ? "" : serialCountry.Country,// serialInfo.CountryName,//国别
@@ -333,7 +333,7 @@ namespace AppApi.Controllers
                             }
                             else
                             {
-                                saleState = "暂无报价";
+                                saleState = "暂无指导价";
                             }
                         }
                         else

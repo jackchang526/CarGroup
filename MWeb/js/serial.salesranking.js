@@ -96,7 +96,7 @@ function RequestData(index) {
                         }
                         html += ('<li><a class="imgbox-2" href="/' + dd.allSpell + '/" data-id="' + dd.csId + '"><div class="left">');
                         html += '    <div class="rank-number"><span>' + dd.rank + '</span></div>';
-                        html += ('        <img class="car-img" src="' + dd.imgUrl + '"alt="">');
+                        html += ('        <img class="car-img" src="' + dd.imgUrl.replace("_2.", "_6.") + '"alt="">');
                         html += '         <div class="info-box">';
                         html += ('             <div class="title"><div class="text">' + dd.showName + '</div></div>');
                         html += ('            <div class="price">' + dd.priceRange + '</div>');

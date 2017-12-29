@@ -60,23 +60,29 @@ function FocusCar(obj) {
     if (colorObj.length > 7) {
         var ulWidth = 210;
         $("#focus_color_l").click(function () {
+            if ($(this).hasClass("noclick")) return;
             leftV = leftV + ulWidth;
             if (leftV >= 0) {
                 leftV = 0;
-                $(this).removeClass("a_l_hover");
-                $("#focus_color_r").addClass("a_r_hover");
-            } else {
-                $("#focus_color_r").addClass("a_r_hover");
+                $(this).addClass("noclick");
+                $("#focus_color_r").removeClass("noclick");
+                //$("#focus_color_r").addClass("a_r_hover");
+            }
+            else {
+                $(this).removeClass("noclick");
             }
             $("#color-listbox").animate({ "left": leftV }, 300);
         });
         $("#focus_color_r").click(function () {
+            if ($(this).hasClass("noclick")) return;
             leftV = leftV - ulWidth;
-            $("#focus_color_l").addClass("a_l_hover");
+            $("#focus_color_l").removeClass("noclick");
             if (leftV - ulWidth < wh) {
-                $(this).removeClass("a_r_hover");
+                $(this).addClass("noclick");
             }
+            
             if (leftV < wh) {
+                $(this).addClass("noclick");
                 leftV = leftV + ulWidth;
                 return;
             }

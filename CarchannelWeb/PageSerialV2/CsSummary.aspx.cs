@@ -1262,8 +1262,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             sb.Append("<div class=\"focus-color-box\">");
             if (smallImages.Count > 8)
             {
-                sb.Append("    <div id=\"focus_color_l\" class=\"l-btn\"></div>");
-                sb.Append("    <div id=\"focus_color_r\" class=\"r-btn a_r_hover\"></div>");
+                sb.Append("    <div id=\"focus_color_l\" class=\"l-btn noclick\"></div>");
+                sb.Append("    <div id=\"focus_color_r\" class=\"r-btn\"></div>");
             }
             sb.Append("<div class=\"focus-color-warp\">");
             //if (smallImages.Count <= 8)

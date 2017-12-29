@@ -172,7 +172,7 @@
 	    OldPVStatistic.Type = 2;
 	    mainOldPVStatisticFunction();
 	</script>
-	<script type="text/javascript" src="http://dealer.bitauto.com/dealerinfo/Common/Control/TelControlTop.js"></script>
+	<%--<script type="text/javascript" src="http://dealer.bitauto.com/dealerinfo/Common/Control/TelControlTop.js"></script>--%>
 	<!-- 调用尾 -->
 	<script type="text/javascript">
 	    var CarCommonBSID = '<%= masterId.ToString() %>';

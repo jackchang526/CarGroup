@@ -522,18 +522,20 @@ namespace MWeb.Controllers
                             string carPriceRange = carInfo.CarPriceRange.Trim();
                             if (carInfo.SaleState == "待销")//顾晓 确认的逻辑 （待销的车款没有价格，全部显示未上市） 2015-07-09
                             {
-                                carMinPrice = "未上市";
+                                carMinPrice = "<dt class=\"the-noprice\">未上市</dt>";
                             }
                             else if (carInfo.CarPriceRange.Trim().Length == 0)
                             {
-                                carMinPrice = "暂无报价";
+                                carMinPrice = "<dt class=\"the-noprice\">暂无报价</dt>";
                             }
                             else
                             {
-                                if (carPriceRange.IndexOf('-') != -1)
-                                    carMinPrice = carPriceRange.Substring(0, carPriceRange.IndexOf('-')); //+ "万"
-                                else
-                                    carMinPrice = carPriceRange;
+                                if (carPriceRange.IndexOf('-') != -1) { 
+                                    carMinPrice = "<dt>"+ carPriceRange.Substring(0, carPriceRange.IndexOf('-'))+ "</dt>"; //+ "万"
+                                }
+                                else { 
+                                    carMinPrice = "<dt class=\"the-noprice\">" + carPriceRange + "</dt>";
+                                }
                             }
 
                             Dictionary<int, string> dictCarParams = carBLL.GetCarAllParamByCarID(carInfo.CarID);
@@ -592,7 +594,7 @@ namespace MWeb.Controllers
                                 marketflag = string.Format("<em class=\"the-new\">{0}</em>", marketflag);
                             }
                             stringBuilder.AppendFormat("<h2>{0}{1}</h2>", carFullName, marketflag);
-                            stringBuilder.AppendFormat("<dl><dt>{0}</dt></dl>", carMinPrice);
+                            stringBuilder.AppendFormat("<dl>{0}</dl>", carMinPrice);
 
                             stringBuilder.Append("<div class=\"car-info-bottom\">");//第二行开始
 

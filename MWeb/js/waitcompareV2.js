@@ -41,7 +41,9 @@ var WaitCompare = (function (module) {
             bind: function () {
                 //绑定事件
                 $(defaults.selector).off("click.addCompare").on("click.addCompare", function () {
-                    if ($(this).parent().hasClass("btn-gray")) { return false; }
+                    if ($(this).parent().hasClass("btn-gray")) {
+                        return false;
+                    }
                     var carId = $(this).data("id"), carName = $(this).data("name");
                     self.addCompareCar(carId, carName, $(this));
                 });
@@ -73,6 +75,7 @@ var WaitCompare = (function (module) {
                 }).parent().removeClass("btn-gray");
             },
             selectCarIdFunc: function (id, name) {
+               
                 //选择车款的事件
                 var $addElem = $(defaults.oneSelector + id);
                 self.updateHistoryCars(id);  //添加到历史记录缓存
@@ -101,6 +104,7 @@ var WaitCompare = (function (module) {
         };
     //添加对比
     module.addCompareCar = function (id, name, elem) {
+        
         var cookieCar = LocalStorageData.getData(defaults.duibiLocalName);// CookieHelper.getCookie(defaults.duibiCookieName),
             arrCarId = [];
         if (cookieCar) {
@@ -128,11 +132,11 @@ var WaitCompare = (function (module) {
         });
         drawDuibiBtnUI();
         self.updateCount(true);
-        //加对比效果
-        defaults.myParabola();
         if (defaults.selectedFunc && defaults.selectedFunc instanceof Function) {
             defaults.selectedFunc(id);
         }
+        //加对比效果
+        defaults.myParabola();
         CarCompareAd.initAd(compareData);
     };
     //清空对比

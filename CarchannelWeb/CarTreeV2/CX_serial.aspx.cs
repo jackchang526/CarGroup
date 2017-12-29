@@ -18,238 +18,238 @@ using BitAuto.CarChannel.CarchannelWeb.App_Code;
 
 namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 {
-	public partial class CX_serial : TreePageBase
-	{
-		private SerialGoodsBll _serialGoodsBLL;
-		private Car_SerialBll _serialBLL;
-		private Car_BasicBll _carBLL; 
+    public partial class CX_serial : TreePageBase
+    {
+        private SerialGoodsBll _serialGoodsBLL;
+        private Car_SerialBll _serialBLL;
+        private Car_BasicBll _carBLL;
 
-		private List<SerialGoodsCarEntity> serialGoodsCarList;//易车惠 商品 车型列表
-		private Dictionary<int, string> dictUCarPrice;//二手车价格
+        private List<SerialGoodsCarEntity> serialGoodsCarList;//易车惠 商品 车型列表
+        private Dictionary<int, string> dictUCarPrice;//二手车价格
 
-		protected int _SerialId;
-		protected string _SerialSpell = string.Empty;
-		protected string _SerialSeoName = string.Empty;
-		protected string _BrandName = string.Empty;
-		protected string _SerialName = string.Empty;
-		protected string _MetaKeyWordArea = string.Empty;
-		protected string _GuilderString = string.Empty;
-		protected string _EncodeName;
-		private string _MasterBrandTopUrl = string.Empty;
-		private string _BrandToUrl = string.Empty;
+        protected int _SerialId;
+        protected string _SerialSpell = string.Empty;
+        protected string _SerialSeoName = string.Empty;
+        protected string _BrandName = string.Empty;
+        protected string _SerialName = string.Empty;
+        protected string _MetaKeyWordArea = string.Empty;
+        protected string _GuilderString = string.Empty;
+        protected string _EncodeName;
+        private string _MasterBrandTopUrl = string.Empty;
+        private string _BrandToUrl = string.Empty;
         protected SerialEntity _serialEntity;
-		private int maxPv = 0;
-		private List<EnumCollection.CarInfoForSerialSummary> ls = new List<EnumCollection.CarInfoForSerialSummary>();
+        private int maxPv = 0;
+        private List<EnumCollection.CarInfoForSerialSummary> ls = new List<EnumCollection.CarInfoForSerialSummary>();
 
-		protected string serialExhaust;		//排量列表
-		protected string serialTransmission = string.Empty;	//变速箱列表
+        protected string serialExhaust;     //排量列表
+        protected string serialTransmission = string.Empty; //变速箱列表
 
-		protected string carListHtml;
-		protected string serialDescribeHtml;
+        protected string carListHtml;
+        protected string serialDescribeHtml;
 
-		protected string NavPathHtml = "";
+        protected string NavPathHtml = "";
 
-		//add by 2014.05.06
-		protected EnumCollection.SerialInfoCard sic;
-		//protected SerialEntity serialEntity;
-		protected string serialImageUrl = string.Empty;
-		protected string serialReferPrice = string.Empty;		//指导价
-		protected string baaUrl = string.Empty;
-		protected string serialUCarPrice = string.Empty;
-		protected bool isElectrombile = false;
+        //add by 2014.05.06
+        protected EnumCollection.SerialInfoCard sic;
+        //protected SerialEntity serialEntity;
+        protected string serialImageUrl = string.Empty;
+        protected string serialReferPrice = string.Empty;       //指导价
+        protected string baaUrl = string.Empty;
+        protected string serialUCarPrice = string.Empty;
+        protected bool isElectrombile = false;
 
-		protected string carListTableHtml = string.Empty;
+        protected string carListTableHtml = string.Empty;
         protected string serialSaleDisplacement = "暂无";//在销,停销
-		protected string serialSaleDisplacementalt = string.Empty; //在销,停销
-		protected string chargeTimeRange = string.Empty;
-		protected string fastChargeTimeRange = string.Empty;
-		protected string mileageRange = string.Empty;
-		//protected string shijiaOrHuimaiche = string.Empty;
+        protected string serialSaleDisplacementalt = string.Empty; //在销,停销
+        protected string chargeTimeRange = string.Empty;
+        protected string fastChargeTimeRange = string.Empty;
+        protected string mileageRange = string.Empty;
+        //protected string shijiaOrHuimaiche = string.Empty;
 
 
-		public CX_serial()
-		{
-			_serialBLL = new Car_SerialBll();
-			_carBLL = new Car_BasicBll();
-			_serialGoodsBLL = new SerialGoodsBll();
-		}
+        public CX_serial()
+        {
+            _serialBLL = new Car_SerialBll();
+            _carBLL = new Car_BasicBll();
+            _serialGoodsBLL = new SerialGoodsBll();
+        }
 
-		protected void Page_Load(object sender, EventArgs e)
-		{
-			base.SetPageCache(10);
-			GetParam();
-			InitData();
-			//NavbarHtml = base.GetTreeNavBarHtml("serial", "chexing", _SerialId);
-			//搜索地址
-			this._SearchUrl = InitSearchUrl("chexing");
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            base.SetPageCache(10);
+            GetParam();
+            InitData();
+            //NavbarHtml = base.GetTreeNavBarHtml("serial", "chexing", _SerialId);
+            //搜索地址
+            this._SearchUrl = InitSearchUrl("chexing");
 
-			MakeCarListHtmlNew();
-			//carListHtml = GetCarTypeList();
-			//serialDescribeHtml = GetSerialDescribe();
-			//生成条件Html
-			//this.MakeConditionsHtml("按条件选车", false, true);
-		}
-		/// <summary>
-		/// 得到参数页面
-		/// </summary>
-		private void GetParam()
-		{
-			_SerialId = string.IsNullOrEmpty(Request.QueryString["id"])
-				? 0 : ConvertHelper.GetInteger(Request.QueryString["id"].ToString());
-		}
-		/// <summary>
-		/// 初始化数据
-		/// </summary>
-		private void InitData()
-		{
-			//InitSourceUrl();
-			InitSerial();
-			GetNavbarHtml();
-			ls = base.GetAllCarInfoForSerialSummaryByCsID(_SerialId);
-			ls.Sort(NodeCompare.CompareCarByExhaust);
-			//易车惠 商品 车型列表
-			serialGoodsCarList = _serialGoodsBLL.GetGoodsCarList(_SerialId);
-			//GetPageGuilder();
-		}
-		//面包屑
-		private void GetNavbarHtml()
-		{
-			StringBuilder sbNavbar = new StringBuilder();
-			Car_BrandBll brand = new Car_BrandBll();
-			//string masterSpell = "";
-			//string masterName = "";
-			string brandHtml = string.Empty;
-			//int masterId = brand.GetMasterbrandByBrand(_serialEntity.BrandId, out masterSpell, out masterName);
-			MasterBrandEntity master = _serialEntity.Brand.MasterBrand;//(MasterBrandEntity)DataManager.GetDataEntity(EntityType.MasterBrand, masterId);
-			string brandName = (_serialEntity.Brand.Country != "中国" ? "进口" : "") + _serialEntity.Brand.Name;
+            MakeCarListHtmlNew();
+            //carListHtml = GetCarTypeList();
+            //serialDescribeHtml = GetSerialDescribe();
+            //生成条件Html
+            //this.MakeConditionsHtml("按条件选车", false, true);
+        }
+        /// <summary>
+        /// 得到参数页面
+        /// </summary>
+        private void GetParam()
+        {
+            _SerialId = string.IsNullOrEmpty(Request.QueryString["id"])
+                ? 0 : ConvertHelper.GetInteger(Request.QueryString["id"].ToString());
+        }
+        /// <summary>
+        /// 初始化数据
+        /// </summary>
+        private void InitData()
+        {
+            //InitSourceUrl();
+            InitSerial();
+            GetNavbarHtml();
+            ls = base.GetAllCarInfoForSerialSummaryByCsID(_SerialId);
+            ls.Sort(NodeCompare.CompareCarByExhaust);
+            //易车惠 商品 车型列表
+            serialGoodsCarList = _serialGoodsBLL.GetGoodsCarList(_SerialId);
+            //GetPageGuilder();
+        }
+        //面包屑
+        private void GetNavbarHtml()
+        {
+            StringBuilder sbNavbar = new StringBuilder();
+            Car_BrandBll brand = new Car_BrandBll();
+            //string masterSpell = "";
+            //string masterName = "";
+            string brandHtml = string.Empty;
+            //int masterId = brand.GetMasterbrandByBrand(_serialEntity.BrandId, out masterSpell, out masterName);
+            MasterBrandEntity master = _serialEntity.Brand.MasterBrand;//(MasterBrandEntity)DataManager.GetDataEntity(EntityType.MasterBrand, masterId);
+            string brandName = (_serialEntity.Brand.Country != "中国" ? "进口" : "") + _serialEntity.Brand.Name;
             sbNavbar.Append("<div class=\"crumbs h-line\">");
-			if (!string.Equals(master.Name, brandName.Replace("进口", "")) || master.BrandList.Length > 1)//主品牌只有一个品牌 并且 主品牌名称不等于品牌名称
-			{
-				brandHtml = string.Format(" &gt; <a href=\"/tree_chexing/b_{0}/\">{1}</a>", _serialEntity.BrandId, brandName);
-			}
-			sbNavbar.AppendFormat("<div class=\"crumbs-txt\"><span>当前位置：</span><a href=\"http://www.bitauto.com/\">易车</a> &gt; <a href=\"/\">车型</a> &gt; <a href=\"/tree_chexing/mb_{0}/\">{1}</a>{2} &gt; <strong>{3}</strong></div>"
-				, master.Id
-				, master.Name
-				, brandHtml
-				, _SerialName);
-			sbNavbar.Append("</div>");
-			NavPathHtml = sbNavbar.ToString();
-		}
-		/// <summary>
-		/// 初始化主品牌页面
-		/// </summary>
-		private void InitSerial()
-		{
-			_serialEntity = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, _SerialId);
-			if (_serialEntity == null || _serialEntity.Id == 0)
-			{
-				// Response.Redirect("/tree_chexing/error.html", true);
-				Response.Redirect("/404error.aspx");
-			}
-			// _SerialName = _serialEntity.Name;
-			// modified by chengl Mar.15.2013
-			_SerialName = _serialEntity.ShowName;
-			if (_SerialId == 1568)
-				_SerialName = "索纳塔八";
-			_SerialSeoName = _serialEntity.SeoName;
-			_SerialSpell = _serialEntity.AllSpell;
-			_EncodeName = Server.UrlEncode(_serialEntity.ShowName);
+            if (!string.Equals(master.Name, brandName.Replace("进口", "")) || master.BrandList.Length > 1)//主品牌只有一个品牌 并且 主品牌名称不等于品牌名称
+            {
+                brandHtml = string.Format(" &gt; <a href=\"/tree_chexing/b_{0}/\">{1}</a>", _serialEntity.BrandId, brandName);
+            }
+            sbNavbar.AppendFormat("<div class=\"crumbs-txt\"><span>当前位置：</span><a href=\"http://www.bitauto.com/\">易车</a> &gt; <a href=\"/\">车型</a> &gt; <a href=\"/tree_chexing/mb_{0}/\">{1}</a>{2} &gt; <strong>{3}</strong></div>"
+                , master.Id
+                , master.Name
+                , brandHtml
+                , _SerialName);
+            sbNavbar.Append("</div>");
+            NavPathHtml = sbNavbar.ToString();
+        }
+        /// <summary>
+        /// 初始化主品牌页面
+        /// </summary>
+        private void InitSerial()
+        {
+            _serialEntity = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, _SerialId);
+            if (_serialEntity == null || _serialEntity.Id == 0)
+            {
+                // Response.Redirect("/tree_chexing/error.html", true);
+                Response.Redirect("/404error.aspx");
+            }
+            // _SerialName = _serialEntity.Name;
+            // modified by chengl Mar.15.2013
+            _SerialName = _serialEntity.ShowName;
+            if (_SerialId == 1568)
+                _SerialName = "索纳塔八";
+            _SerialSeoName = _serialEntity.SeoName;
+            _SerialSpell = _serialEntity.AllSpell;
+            _EncodeName = Server.UrlEncode(_serialEntity.ShowName);
 
-			sic = new Car_SerialBll().GetSerialInfoCard(_SerialId);	//子品牌名片
-			//serialEntity = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, _SerialId);
-			serialImageUrl = Car_SerialBll.GetSerialImageUrl(_SerialId).Replace("_2.", "_6.");
+            sic = new Car_SerialBll().GetSerialInfoCard(_SerialId); //子品牌名片
+                                                                    //serialEntity = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, _SerialId);
+            serialImageUrl = Car_SerialBll.GetSerialImageUrl(_SerialId).Replace("_2.", "_6.");
 
-			//论坛url
-			baaUrl = _serialBLL.GetForumUrlBySerialId(_SerialId);
-			//二手车价格区间
-			dictUCarPrice = _serialBLL.GetUCarSerialPrice();
-			serialUCarPrice = dictUCarPrice.ContainsKey(_SerialId) ? dictUCarPrice[_SerialId] : "暂无";
-			//变速箱
-			var arrTrans = sic.CsTransmissionType.Split('、');
-			serialTransmission = arrTrans.Length > 0 ? string.Join(" ", arrTrans) : "暂无";
-			//惠买车 低价
-			//Dictionary<int, string> dicHuiMaiChe = _serialBLL.GetEPHuiMaiCheAllCsUrl();
-			//if (dicHuiMaiChe != null && dicHuiMaiChe.ContainsKey(_SerialId))
-			//{
-			//	shijiaOrHuimaiche = string.Format("<a class=\"btn\" href=\"{0}?tracker_u=77_cxsxcx&leads_source=p015002\" data-channelid=\"2.22.109\" target=\"_blank\">买新车</a>", dicHuiMaiChe[_SerialId]);
-			//}
-		}
-		/// <summary>
-		/// 得到子品牌描述
-		/// </summary>
-		/// <returns></returns>
-		protected string GetSerialDescribe()
-		{
+            //论坛url
+            baaUrl = _serialBLL.GetForumUrlBySerialId(_SerialId);
+            //二手车价格区间
+            dictUCarPrice = _serialBLL.GetUCarSerialPrice();
+            serialUCarPrice = dictUCarPrice.ContainsKey(_SerialId) ? dictUCarPrice[_SerialId] : "暂无";
+            //变速箱
+            var arrTrans = sic.CsTransmissionType.Split('、');
+            serialTransmission = arrTrans.Length > 0 ? string.Join(" ", arrTrans) : "暂无";
+            //惠买车 低价
+            //Dictionary<int, string> dicHuiMaiChe = _serialBLL.GetEPHuiMaiCheAllCsUrl();
+            //if (dicHuiMaiChe != null && dicHuiMaiChe.ContainsKey(_SerialId))
+            //{
+            //	shijiaOrHuimaiche = string.Format("<a class=\"btn\" href=\"{0}?tracker_u=77_cxsxcx&leads_source=p015002\" data-channelid=\"2.22.109\" target=\"_blank\">买新车</a>", dicHuiMaiChe[_SerialId]);
+            //}
+        }
+        /// <summary>
+        /// 得到子品牌描述
+        /// </summary>
+        /// <returns></returns>
+        protected string GetSerialDescribe()
+        {
 
-			List<string> overviewHtmlList = new List<string>();
-			/*
+            List<string> overviewHtmlList = new List<string>();
+            /*
 			 * 参数0:子品牌全拼
 			 * 参数1:品牌名,
 			 * 参数2:子品牌名
 			 * 参数3:子品牌ID
 			 */
-			overviewHtmlList.Add(string.Format(" <h3><span><a id=\"n{3}\" stattype=\"channel\" target=\"_blank\" href=\"/{0}/\">"
-												+ "{1}&nbsp;{2}</a></span></h3>"
-									, _SerialSpell
-									, _serialEntity.Brand.Name
-									, _SerialName
-									, _SerialId.ToString()));
-			overviewHtmlList.Add("<dl class=\"c0624_06\">");
+            overviewHtmlList.Add(string.Format(" <h3><span><a id=\"n{3}\" stattype=\"channel\" target=\"_blank\" href=\"/{0}/\">"
+                                                + "{1}&nbsp;{2}</a></span></h3>"
+                                    , _SerialSpell
+                                    , _serialEntity.Brand.Name
+                                    , _SerialName
+                                    , _SerialId.ToString()));
+            overviewHtmlList.Add("<dl class=\"c0624_06\">");
 
-			/*
+            /*
 			 * 参数0:子品牌全拼
 			 * 参数1:子品牌SEO名
 			 * 参数2:图片链接
 			 * 参数3:子品牌ID
 			 */
-			//子品牌图片
-			overviewHtmlList.Add(string.Format("<dt><a id=\"n{3}\" stattype=\"channel\" target=\"_blank\" href=\"/{0}/\">"
-									+ "<img alt=\"{1}\" src=\"{2}\" height=\"80\" width=\"120\"></a></dt>"
-									, _serialEntity.AllSpell
-									, _serialEntity.SeoName
-									, serialImageUrl
-									, _SerialId.ToString()));
-			//子品牌描述
-			overviewHtmlList.Add("<dd class=\"l\"><ul>");
-			overviewHtmlList.Add(string.Format("<li><label>参考成交价：</label><strong><a href=\"http://price.bitauto.com/brand.aspx?newbrandId=" + _SerialId + "\" target=\"_blank\">{0}</a></strong></li>"
-								  , string.IsNullOrEmpty(sic.CsPriceRange) ? "暂无报价" : sic.CsPriceRange));
-			overviewHtmlList.Add(string.Format("<li><label>厂家指导价：</label>{0}</li>", serialReferPrice));
-			overviewHtmlList.Add(string.Format("<li><label>排量：</label>{0}</li>", serialExhaust));
-			overviewHtmlList.Add(string.Format("<li><label>变速箱：</label>{0}</li>", serialTransmission));
+            //子品牌图片
+            overviewHtmlList.Add(string.Format("<dt><a id=\"n{3}\" stattype=\"channel\" target=\"_blank\" href=\"/{0}/\">"
+                                    + "<img alt=\"{1}\" src=\"{2}\" height=\"80\" width=\"120\"></a></dt>"
+                                    , _serialEntity.AllSpell
+                                    , _serialEntity.SeoName
+                                    , serialImageUrl
+                                    , _SerialId.ToString()));
+            //子品牌描述
+            overviewHtmlList.Add("<dd class=\"l\"><ul>");
+            overviewHtmlList.Add(string.Format("<li><label>参考成交价：</label><strong><a href=\"http://price.bitauto.com/brand.aspx?newbrandId=" + _SerialId + "\" target=\"_blank\">{0}</a></strong></li>"
+                                  , string.IsNullOrEmpty(sic.CsPriceRange) ? "暂无报价" : sic.CsPriceRange));
+            overviewHtmlList.Add(string.Format("<li><label>厂家指导价：</label>{0}</li>", serialReferPrice));
+            overviewHtmlList.Add(string.Format("<li><label>排量：</label>{0}</li>", serialExhaust));
+            overviewHtmlList.Add(string.Format("<li><label>变速箱：</label>{0}</li>", serialTransmission));
 
-			overviewHtmlList.Add("</ul></dd>");
+            overviewHtmlList.Add("</ul></dd>");
 
 
-			//子品牌外链
-			/*
+            //子品牌外链
+            /*
 			* 参数0:子品牌全拼
 			* 参数1:品牌名,
 			* 参数2:子品牌名
 			* 参数3:子品牌ID
 			*/
-			overviewHtmlList.Add(string.Format("<dd class=\"b\"><div class=\"go\"><em><a id=\"n{3}\" stattype=\"channel\" target=\"_blank\" href=\"/{0}/\">详情查看 <span>"
-								   + "<strong>{1}{2} </strong>频道</span> &gt;&gt;</a></em></div>"
-									, _SerialSpell
-									, ""
-									, _SerialName
-									, _SerialId.ToString()));
+            overviewHtmlList.Add(string.Format("<dd class=\"b\"><div class=\"go\"><em><a id=\"n{3}\" stattype=\"channel\" target=\"_blank\" href=\"/{0}/\">详情查看 <span>"
+                                   + "<strong>{1}{2} </strong>频道</span> &gt;&gt;</a></em></div>"
+                                    , _SerialSpell
+                                    , ""
+                                    , _SerialName
+                                    , _SerialId.ToString()));
 
-			// modified by chengl May.25.2012
-			overviewHtmlList.Add(string.Format("<div class=\"lnk\"><a class=\"more2new\"  target=\"_blank\" href=\"http://www.taoche.com/buycar/serial/{1}/\">买二手车</a>"
-				// + "<a id=\"n{0}\" stattype=\"carsale\" href=\"http://i.bitauto.com/baaadmin/car/goumai_{0}/\" target=\"_blank\">计划购买</a>"
-									+ "<a id=\"n{0}\" id=\"LinkForBaaAttention\" stattype=\"carsee\" href=\"http://i.bitauto.com/baaadmin/car/guanzhu_{0}/\" target=\"_blank\">加关注</a>"
-				//20130412 edit anh
-				//// modified by chengl Dec.13.2011
-				//// + "<a href=\"http://ask.bitauto.com/browse/{0}/\" target=\"_blank\">买前咨询</a></div>"
-									+ "<a href=\"http://dealer.bitauto.com/shijia/nb{0}/\" target=\"_blank\">预约试驾</a></div>"
-									, _SerialId.ToString(), _SerialSpell));
-			overviewHtmlList.Add("</dd>");
+            // modified by chengl May.25.2012
+            overviewHtmlList.Add(string.Format("<div class=\"lnk\"><a class=\"more2new\"  target=\"_blank\" href=\"http://www.taoche.com/buycar/serial/{1}/\">买二手车</a>"
+                                    // + "<a id=\"n{0}\" stattype=\"carsale\" href=\"http://i.bitauto.com/baaadmin/car/goumai_{0}/\" target=\"_blank\">计划购买</a>"
+                                    + "<a id=\"n{0}\" id=\"LinkForBaaAttention\" stattype=\"carsee\" href=\"http://i.bitauto.com/baaadmin/car/guanzhu_{0}/\" target=\"_blank\">加关注</a>"
+                                    //20130412 edit anh
+                                    //// modified by chengl Dec.13.2011
+                                    //// + "<a href=\"http://ask.bitauto.com/browse/{0}/\" target=\"_blank\">买前咨询</a></div>"
+                                    + "<a href=\"http://dealer.bitauto.com/shijia/nb{0}/\" target=\"_blank\">预约试驾</a></div>"
+                                    , _SerialId.ToString(), _SerialSpell));
+            overviewHtmlList.Add("</dd>");
 
-			overviewHtmlList.Add("</dl>");
+            overviewHtmlList.Add("</dl>");
 
-			return String.Concat(overviewHtmlList.ToArray());
-		}
-		/*
+            return String.Concat(overviewHtmlList.ToArray());
+        }
+        /*
 		/// <summary>
 		/// 得到车型列表
 		/// </summary>
@@ -483,68 +483,68 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 		}
 */
 
-		#region 新版 车型列表 add by sk 2013.08.05
-		/// <summary>
-		/// 子品牌 车款列表 html
-		/// </summary>
-		/// <param name="serialId">子品牌ID</param>
-		private void MakeCarListHtmlNew()
-		{
-			StringBuilder sb = new StringBuilder();
-			List<string> carSaleListHtml = new List<string>();
-			List<string> carNoSaleListHtml = new List<string>();
-			List<string> carWaitSaleListHtml = new List<string>();
+        #region 新版 车型列表 add by sk 2013.08.05
+        /// <summary>
+        /// 子品牌 车款列表 html
+        /// </summary>
+        /// <param name="serialId">子品牌ID</param>
+        private void MakeCarListHtmlNew()
+        {
+            StringBuilder sb = new StringBuilder();
+            List<string> carSaleListHtml = new List<string>();
+            List<string> carNoSaleListHtml = new List<string>();
+            List<string> carWaitSaleListHtml = new List<string>();
 
-			List<CarInfoForSerialSummaryEntity> carinfoList = _carBLL.GetCarInfoForSerialSummaryBySerialId(_SerialId);
-			int maxPv = 0;
-			List<string> saleYearList = new List<string>();
-			List<string> noSaleYearList = new List<string>();
-			foreach (CarInfoForSerialSummaryEntity carInfo in carinfoList)
-			{
-				if (carInfo.CarPV > maxPv)
-					maxPv = carInfo.CarPV;
-				if (carInfo.CarYear.Length > 0)
-				{
-					string yearType = carInfo.CarYear + "款";
+            List<CarInfoForSerialSummaryEntity> carinfoList = _carBLL.GetCarInfoForSerialSummaryBySerialId(_SerialId);
+            int maxPv = 0;
+            List<string> saleYearList = new List<string>();
+            List<string> noSaleYearList = new List<string>();
+            foreach (CarInfoForSerialSummaryEntity carInfo in carinfoList)
+            {
+                if (carInfo.CarPV > maxPv)
+                    maxPv = carInfo.CarPV;
+                if (carInfo.CarYear.Length > 0)
+                {
+                    string yearType = carInfo.CarYear + "款";
 
-					if (carInfo.SaleState == "停销")
-					{
-						if (!noSaleYearList.Contains(yearType))
-							noSaleYearList.Add(yearType);
-					}
-					else
-					{
-						if (!saleYearList.Contains(yearType))
-							saleYearList.Add(yearType);
-					}
-				}
-			}
-			//排除包含在售年款
-			foreach (string year in saleYearList)
-			{
-				if (noSaleYearList.Contains(year))
-				{
-					noSaleYearList.Remove(year);
-				}
-			}
-			List<CarInfoForSerialSummaryEntity> carinfoSaleList = carinfoList
-				.FindAll(p => p.SaleState == "在销");
-			List<CarInfoForSerialSummaryEntity> carinfoWaitSaleList = carinfoList
-				.FindAll(p => p.SaleState == "待销");
+                    if (carInfo.SaleState == "停销")
+                    {
+                        if (!noSaleYearList.Contains(yearType))
+                            noSaleYearList.Add(yearType);
+                    }
+                    else
+                    {
+                        if (!saleYearList.Contains(yearType))
+                            saleYearList.Add(yearType);
+                    }
+                }
+            }
+            //排除包含在售年款
+            foreach (string year in saleYearList)
+            {
+                if (noSaleYearList.Contains(year))
+                {
+                    noSaleYearList.Remove(year);
+                }
+            }
+            List<CarInfoForSerialSummaryEntity> carinfoSaleList = carinfoList
+                .FindAll(p => p.SaleState == "在销");
+            List<CarInfoForSerialSummaryEntity> carinfoWaitSaleList = carinfoList
+                .FindAll(p => p.SaleState == "待销");
             List<CarInfoForSerialSummaryEntity> carinfoNoSaleList = carinfoList
                 .FindAll(p => p.SaleState == "停销");
 
-
-			//add by 2014.05.04 在销车款 电动车
-			var fuelTypeList = carinfoSaleList.Where(p => p.Oil_FuelType != "")
-											  .GroupBy(p => p.Oil_FuelType)
-											  .Select(g => g.Key).ToList();
-			isElectrombile = fuelTypeList.Count == 1 && fuelTypeList[0] == "纯电" ? true : false;
-			//add by 2014.03.18 在销车款 排量输出
- 			var exhaustList = carinfoSaleList.Where(p => p.Engine_Exhaust.EndsWith("L"))
-				.Select(p => p.Engine_InhaleType.IndexOf("增压") >= 0 ? p.Engine_Exhaust.Replace("L", "T") : p.Engine_Exhaust)
-											.GroupBy(p => p)
-											.Select(group => group.Key).ToList();
+            #region
+            //add by 2014.05.04 在销车款 电动车
+            var fuelTypeList = carinfoSaleList.Where(p => p.Oil_FuelType != "")
+                                              .GroupBy(p => p.Oil_FuelType)
+                                              .Select(g => g.Key).ToList();
+            isElectrombile = fuelTypeList.Count == 1 && fuelTypeList[0] == "纯电" ? true : false;
+            //add by 2014.03.18 在销车款 排量输出
+            var exhaustList = carinfoSaleList.Where(p => p.Engine_Exhaust.EndsWith("L"))
+                .Select(p => p.Engine_InhaleType.IndexOf("增压") >= 0 ? p.Engine_Exhaust.Replace("L", "T") : p.Engine_Exhaust)
+                                            .GroupBy(p => p)
+                                            .Select(group => group.Key).ToList();
             //停销车款 排量输出
             var maxYear = carinfoNoSaleList.Max(s => s.CarYear);
             var tempList = carinfoNoSaleList.Where(s => s.CarYear == maxYear).ToList();
@@ -552,7 +552,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
             List<string> noSaleExhaustList = tempList.Where(p => p.Engine_Exhaust.EndsWith("L"))
                                                               .Select(
                                                                   p =>
-																  p.Engine_InhaleType.IndexOf("增压") >= 0
+                                                                  p.Engine_InhaleType.IndexOf("增压") >= 0
                                                                       ? p.Engine_Exhaust.Replace("L", "T")
                                                                       : p.Engine_Exhaust)
                                                               .GroupBy(p => p)
@@ -597,17 +597,28 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
                     serialSaleDisplacementalt = string.Join(" ", exhaustList.ToArray());
                 }
             }
-            if (carinfoSaleList.Count <= 0) return;
-			carinfoSaleList.Sort(NodeCompare.CompareCarByExhaustAndPowerAndInhaleType);
-			carinfoWaitSaleList.Sort(NodeCompare.CompareCarByExhaustAndPowerAndInhaleType);
+            #endregion
 
-			noSaleYearList.Sort(NodeCompare.CompareStringDesc);
+            if (carinfoSaleList.Count <= 0 && carinfoWaitSaleList.Count <= 0) return;
+            carinfoSaleList.Sort(NodeCompare.CompareCarByExhaustAndPowerAndInhaleType);
+            carinfoWaitSaleList.Sort(NodeCompare.CompareCarByExhaustAndPowerAndInhaleType);
 
-			sb.Append("<div class=\"onsale-car-box\">");
+            noSaleYearList.Sort(NodeCompare.CompareStringDesc);
+
+            sb.Append("<div class=\"onsale-car-box\">");
             sb.Append("<div class=\"section-header header2\">");
-			sb.Append("<div class=\"box\">");
+            sb.Append("<div class=\"box\">");
             sb.Append("<ul class=\"nav\">");
-			sb.AppendFormat("<li class=\"current\"><a href=\"javascript:;\">在售车款</a></li>");
+            if (carinfoSaleList.Count > 0)
+            {
+                sb.AppendFormat("<li id=\"pop_sale\" class=\"current\"><a href=\"javascript:;\">在售车款</a></li>");
+            }
+
+            if (carinfoWaitSaleList.Count > 0)
+            {
+                var classstr = carinfoSaleList.Count > 0 ? "" : "current";
+                sb.AppendFormat(string.Format("<li  id=\"pop_waitsale\" class=\"{0}\"><a href=\"javascript:;\">未上市车款</a></li>", classstr));
+            }
             if (noSaleYearList.Count > 0)
             {
                 sb.Append("<li id=\"pop_nosale\"><a href=\"javascript:;\" class=\"arrow-down\">停售车款</a>");
@@ -615,7 +626,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
                 for (int i = 0; i < noSaleYearList.Count; i++)
                 {
                     string url = string.Format("/{0}/{1}/#car_list", _SerialSpell, noSaleYearList[i].Replace("款", ""));
-                    sb.AppendFormat("<a href=\"{0}\">{1}</a>", url, noSaleYearList[i]);  
+                    sb.AppendFormat("<a href=\"{0}\">{1}</a>", url, noSaleYearList[i]);
                 }
                 sb.Append("</div>");
                 sb.Append("</li>");
@@ -623,29 +634,41 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
             sb.Append("</ul>");
             sb.Append("</div>");
             sb.Append("</div>");
-			if (carinfoSaleList.Count > 0)
-			{
-				sb.Append("    <div class=\"list-table\" id=\"data_tab_jq5_0\" style=\"display: block;\">");
-				sb.Append("        <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" id=\"compare_sale\">");
+            if (carinfoSaleList.Count > 0)
+            {
+                sb.Append("    <div class=\"list-table\" id=\"data_tab_jq5_0\" style=\"display: block;\">");
+                sb.Append("        <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" id=\"compare_sale\">");
                 sb.Append("            <colgroup><col width=\"39%\"><col width=\"11%\"><col width=\"11%\"><col width=\"10%\"><col width=\"11%\"><col width=\"18%\"></colgroup>");
-				sb.Append("            <tbody>");
-				sb.Append(GetCarListHtml(carinfoSaleList, maxPv));
-				sb.Append("            </tbody>");
-				sb.Append("        </table>");
-				sb.Append("    </div>");
-			}
-			sb.Append("</div>");
-			carListTableHtml = sb.ToString();
-		}
-		/// <summary>
-		/// 车型列表html
-		/// </summary>
-		/// <param name="carList">车款列表 list</param>
-		/// <param name="serialInfo">子品牌信息</param>
-		/// <param name="maxPv">最大pv</param>
-		/// <returns></returns>
-		private string GetCarListHtml(List<CarInfoForSerialSummaryEntity> carList, int maxPv)
-		{
+                sb.Append("            <tbody>");
+                sb.Append(GetCarListHtml(carinfoSaleList, maxPv));
+                sb.Append("            </tbody>");
+                sb.Append("        </table>");
+                sb.Append("    </div>");
+            }
+            if (carinfoWaitSaleList.Count > 0)
+            {
+                var classstr = carinfoSaleList.Count > 0 ? "" : "display: block;";
+                sb.Append(string.Format("    <div class=\"list-table\" id=\"data_tab_jq5_0_wait\" style=\"{0}\">", classstr));
+                sb.Append("        <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" id=\"compare_waitsale\">");
+                sb.Append("            <colgroup><col width=\"39%\"><col width=\"11%\"><col width=\"11%\"><col width=\"10%\"><col width=\"11%\"><col width=\"18%\"></colgroup>");
+                sb.Append("            <tbody>");
+                sb.Append(GetCarListHtml(carinfoWaitSaleList, maxPv));
+                sb.Append("            </tbody>");
+                sb.Append("        </table>");
+                sb.Append("    </div>");
+            }
+            sb.Append("</div>");
+            carListTableHtml = sb.ToString();
+        }
+        /// <summary>
+        /// 车型列表html
+        /// </summary>
+        /// <param name="carList">车款列表 list</param>
+        /// <param name="serialInfo">子品牌信息</param>
+        /// <param name="maxPv">最大pv</param>
+        /// <returns></returns>
+        private string GetCarListHtml(List<CarInfoForSerialSummaryEntity> carList, int maxPv)
+        {
             var listGroupNew = new List<IGrouping<object, CarInfoForSerialSummaryEntity>>();
             var listGroupOff = new List<IGrouping<object, CarInfoForSerialSummaryEntity>>();
             var listGroupImport = new List<IGrouping<object, CarInfoForSerialSummaryEntity>>();
@@ -675,19 +698,19 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
             listGroupNew.AddRange(listGroupImport);
 
             List<string> carListHtml = new List<string>();
-			//if (carList.Count == 0)
-			//    carListHtml.Add("<tr>暂无车款！</tr>");
-			//var querySale = carList.GroupBy(p => new { p.Engine_Exhaust, p.Engine_InhaleType, p.Engine_AddPressType, p.Engine_MaxPower, p.Electric_Peakpower }, p => p);
-			int groupIndex = 0;
+            //if (carList.Count == 0)
+            //    carListHtml.Add("<tr>暂无车款！</tr>");
+            //var querySale = carList.GroupBy(p => new { p.Engine_Exhaust, p.Engine_InhaleType, p.Engine_AddPressType, p.Engine_MaxPower, p.Electric_Peakpower }, p => p);
+            int groupIndex = 0;
 
-			int minChargeTime = 0;
-			int maxChargeTime = 0;
-			int minFastChargeTime = 0;
-			int maxFastChargeTime = 0;
-			int minMileage = 0;
-			int maxMileage = 0;
-			foreach (IGrouping<object, CarInfoForSerialSummaryEntity> info in listGroupNew)
-			{
+            int minChargeTime = 0;
+            int maxChargeTime = 0;
+            int minFastChargeTime = 0;
+            int maxFastChargeTime = 0;
+            int minMileage = 0;
+            int maxMileage = 0;
+            foreach (IGrouping<object, CarInfoForSerialSummaryEntity> info in listGroupNew)
+            {
                 string strMaxPowerAndInhaleType = string.Empty;
                 string maxPower = string.Empty;
                 string inhaleType = string.Empty;
@@ -717,101 +740,101 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
                     }
                 }
 
-				//if (groupIndex == 0)
-				//{
-				carListHtml.Add("<tr class=\"table-tit\">");
-				carListHtml.Add("    <th class=\"first-item\">");
+                //if (groupIndex == 0)
+                //{
+                carListHtml.Add("<tr class=\"table-tit\">");
+                carListHtml.Add("    <th class=\"first-item\">");
                 carListHtml.Add(string.Format("<strong>{0}</strong> {1}",
                     exhaust,
                     strMaxPowerAndInhaleType));
                 carListHtml.Add("    </th>");
-				carListHtml.Add("    <th>关注度</th>");
-				carListHtml.Add("    <th>变速箱</th>");
+                carListHtml.Add("    <th>关注度</th>");
+                carListHtml.Add("    <th>变速箱</th>");
                 carListHtml.Add("    <th class=\"txt-right txt-right-padding\">指导价</th>");
                 carListHtml.Add("    <th class=\"txt-right\">参考最低价</th>");
                 carListHtml.Add("    <th></th>");
                 //carListHtml.Add("    <th><div class=\"doubt\" onmouseover=\"javascript:$(this).children('.prompt-layer').show();return false;\" onmouseout=\"javascript:$(this).children('.prompt-layer').hide();return false;\">");
                 //carListHtml.Add("    <div class=\"prompt-layer\" style=\"display:none\">全国参考最低价</div></div></th>");
                 carListHtml.Add("</tr>");
-				//}
-				//else
-				//{
-				//    carListHtml.Add("<tr class=\"\">");
-				//    carListHtml.Add("    <th width=\"44%\" class=\"first-item\">");
-				//    carListHtml.Add(string.Format("        <div class=\"pdL10\"><strong>{0}</strong> {1}</div>",
-				//        key.Engine_Exhaust,
-				//        strMaxPowerAndInhaleType));
-				//    carListHtml.Add("    </th>");
-				//    carListHtml.Add("    <th width=\"8%\" class=\"pd-left-one\"></th>");
-				//    carListHtml.Add("    <th width=\"10%\" class=\"pd-left-one\"></th>");
-				//    carListHtml.Add("    <th width=\"10%\" class=\"pd-left-two\"></th>");
-				//    carListHtml.Add("    <th width=\"10%\" class=\"pd-left-three\"></th>");
-				//    carListHtml.Add("    <th width=\"18%\">&nbsp;</th>");
-				//    carListHtml.Add("</tr>");
-				//}
-				groupIndex++;
-				List<CarInfoForSerialSummaryEntity> carGroupList = info.ToList<CarInfoForSerialSummaryEntity>();//分组后的集合
+                //}
+                //else
+                //{
+                //    carListHtml.Add("<tr class=\"\">");
+                //    carListHtml.Add("    <th width=\"44%\" class=\"first-item\">");
+                //    carListHtml.Add(string.Format("        <div class=\"pdL10\"><strong>{0}</strong> {1}</div>",
+                //        key.Engine_Exhaust,
+                //        strMaxPowerAndInhaleType));
+                //    carListHtml.Add("    </th>");
+                //    carListHtml.Add("    <th width=\"8%\" class=\"pd-left-one\"></th>");
+                //    carListHtml.Add("    <th width=\"10%\" class=\"pd-left-one\"></th>");
+                //    carListHtml.Add("    <th width=\"10%\" class=\"pd-left-two\"></th>");
+                //    carListHtml.Add("    <th width=\"10%\" class=\"pd-left-three\"></th>");
+                //    carListHtml.Add("    <th width=\"18%\">&nbsp;</th>");
+                //    carListHtml.Add("</tr>");
+                //}
+                groupIndex++;
+                List<CarInfoForSerialSummaryEntity> carGroupList = info.ToList<CarInfoForSerialSummaryEntity>();//分组后的集合
 
-				foreach (CarInfoForSerialSummaryEntity entity in carGroupList)
-				{
-					string yearType = entity.CarYear.Trim();
-					if (yearType.Length > 0)
-						yearType += "款";
-					else
-						yearType = "未知年款";
-					string stopPrd = "";
-					if (entity.ProduceState == "停产")
+                foreach (CarInfoForSerialSummaryEntity entity in carGroupList)
+                {
+                    string yearType = entity.CarYear.Trim();
+                    if (yearType.Length > 0)
+                        yearType += "款";
+                    else
+                        yearType = "未知年款";
+                    string stopPrd = "";
+                    if (entity.ProduceState == "停产")
                         stopPrd = "<span class=\"color-block3\">停产</span>";
-					Dictionary<int, string> dictCarParams = _carBLL.GetCarAllParamByCarID(entity.CarID);
+                    Dictionary<int, string> dictCarParams = _carBLL.GetCarAllParamByCarID(entity.CarID);
                     string marketText = _serialBLL.GetCarMarketText(entity.CarID, entity.SaleState, entity.MarketDateTime, entity.ReferPrice);
                     if (!string.IsNullOrEmpty(marketText))
                     {
                         marketText = string.Format("<a target=\"_blank\" class=\"color-block\">{0}</a>", marketText);
                     }
-					//add by 2014.05.04 获取电动车参数
-					if (isElectrombile)
-					{
-						//普通充电时间
-						if (dictCarParams.ContainsKey(879))
-						{
-							var chargeTime = ConvertHelper.GetInteger(dictCarParams[879]);
-							if (minChargeTime == 0 && chargeTime > 0)
-								minChargeTime = chargeTime;
-							if (chargeTime < minChargeTime)
-								minChargeTime = chargeTime;
-							if (chargeTime > maxChargeTime)
-								maxChargeTime = chargeTime;
-						}
-						//快速充电时间
-						if (dictCarParams.ContainsKey(878))
-						{
-							var fastChargeTime = ConvertHelper.GetInteger(dictCarParams[878]);
-							if (minFastChargeTime == 0 && fastChargeTime > 0)
-								minFastChargeTime = fastChargeTime;
-							if (fastChargeTime < minFastChargeTime)
-								minFastChargeTime = fastChargeTime;
-							if (fastChargeTime > maxFastChargeTime)
-								maxFastChargeTime = fastChargeTime;
-						}
-						//纯电最高续航里程
-						if (dictCarParams.ContainsKey(883))
-						{
-							var mileage = ConvertHelper.GetInteger(dictCarParams[883]);
-							if (minMileage == 0 && mileage > 0)
-								minMileage = mileage;
-							if (mileage < minMileage)
-								minMileage = mileage;
-							if (mileage > maxMileage)
-								maxMileage = mileage;
-						}
-					}
-					// 节能补贴 Sep.2.2010
-					string hasEnergySubsidy = "";
-					//补贴功能临时去掉 modified by chengl Oct.24.2013
-					//if (dictCarParams.ContainsKey(853) && dictCarParams[853] == "3000元")
-					//{
-					//    hasEnergySubsidy = " <a href=\"http://news.bitauto.com/zcxwtt/20130924/1406235633.html\" class=\"butie\" title=\"可获得3000元节能补贴\" target=\"_blank\">补贴</a>";
-					//}
+                    //add by 2014.05.04 获取电动车参数
+                    if (isElectrombile)
+                    {
+                        //普通充电时间
+                        if (dictCarParams.ContainsKey(879))
+                        {
+                            var chargeTime = ConvertHelper.GetInteger(dictCarParams[879]);
+                            if (minChargeTime == 0 && chargeTime > 0)
+                                minChargeTime = chargeTime;
+                            if (chargeTime < minChargeTime)
+                                minChargeTime = chargeTime;
+                            if (chargeTime > maxChargeTime)
+                                maxChargeTime = chargeTime;
+                        }
+                        //快速充电时间
+                        if (dictCarParams.ContainsKey(878))
+                        {
+                            var fastChargeTime = ConvertHelper.GetInteger(dictCarParams[878]);
+                            if (minFastChargeTime == 0 && fastChargeTime > 0)
+                                minFastChargeTime = fastChargeTime;
+                            if (fastChargeTime < minFastChargeTime)
+                                minFastChargeTime = fastChargeTime;
+                            if (fastChargeTime > maxFastChargeTime)
+                                maxFastChargeTime = fastChargeTime;
+                        }
+                        //纯电最高续航里程
+                        if (dictCarParams.ContainsKey(883))
+                        {
+                            var mileage = ConvertHelper.GetInteger(dictCarParams[883]);
+                            if (minMileage == 0 && mileage > 0)
+                                minMileage = mileage;
+                            if (mileage < minMileage)
+                                minMileage = mileage;
+                            if (mileage > maxMileage)
+                                maxMileage = mileage;
+                        }
+                    }
+                    // 节能补贴 Sep.2.2010
+                    string hasEnergySubsidy = "";
+                    //补贴功能临时去掉 modified by chengl Oct.24.2013
+                    //if (dictCarParams.ContainsKey(853) && dictCarParams[853] == "3000元")
+                    //{
+                    //    hasEnergySubsidy = " <a href=\"http://news.bitauto.com/zcxwtt/20130924/1406235633.html\" class=\"butie\" title=\"可获得3000元节能补贴\" target=\"_blank\">补贴</a>";
+                    //}
 
                     //============2016-02-26 减税 购置税============================
                     string strTravelTax = "";
@@ -836,70 +859,70 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
                             strTravelTax = " <a target=\"_blank\" title=\"购置税75折\" href=\"http://news.bitauto.com/sum/20170105/1406774416.html\" class=\"color-block2\">减税</a>";
                         }
                     }
-					////易车惠
-					//string strYiCheHui = "";
-					//var carGoods = serialGoodsCarList.Find(p => p.CarId == entity.CarID);
-					//if (carGoods != null)
-					//{
-					//    var goodsUrl = carGoods.GoodsUrl.Replace("/detail", "/all/detail") + "?WT.mc_id=car2";
-					//    strYiCheHui = string.Format("<a target=\"_blank\" title=\"{0}\" href=\"{1}\" class=\"ad-yichehui-list\">易车惠特价&gt;&gt;</a>", "", goodsUrl);
-					//}
-					//string strBest = "<a href=\"#\" class=\"ico-tuijian\">推荐</a>";
+                    ////易车惠
+                    //string strYiCheHui = "";
+                    //var carGoods = serialGoodsCarList.Find(p => p.CarId == entity.CarID);
+                    //if (carGoods != null)
+                    //{
+                    //    var goodsUrl = carGoods.GoodsUrl.Replace("/detail", "/all/detail") + "?WT.mc_id=car2";
+                    //    strYiCheHui = string.Format("<a target=\"_blank\" title=\"{0}\" href=\"{1}\" class=\"ad-yichehui-list\">易车惠特价&gt;&gt;</a>", "", goodsUrl);
+                    //}
+                    //string strBest = "<a href=\"#\" class=\"ico-tuijian\">推荐</a>";
                     carListHtml.Add(string.Format("<tr id=\"car_filter_id_{0}\">", entity.CarID));
                     carListHtml.Add(string.Format("<td class=\"txt-left\" id=\"carlist_{1}\"><a href=\"/{0}/m{1}/\" target=\"_blank\">{2} {3}</a> {4}</td>",
-						_SerialSpell, entity.CarID, yearType, entity.CarName, strTravelTax + hasEnergySubsidy + stopPrd + marketText));
-					carListHtml.Add("<td>");
-					carListHtml.Add("<div class=\"w\">");
-					//计算百分比
-					int percent = (int)Math.Round((double)entity.CarPV / maxPv * 100.0, MidpointRounding.AwayFromZero);
-					carListHtml.Add(string.Format("<div class=\"p\" style=\"width: {0}%\"></div>", percent));
-					carListHtml.Add("    </div>");
-					carListHtml.Add("</td>");
+                        _SerialSpell, entity.CarID, yearType, entity.CarName, strTravelTax + hasEnergySubsidy + stopPrd + marketText));
+                    carListHtml.Add("<td>");
+                    carListHtml.Add("<div class=\"w\">");
+                    //计算百分比
+                    int percent = (int)Math.Round((double)entity.CarPV / maxPv * 100.0, MidpointRounding.AwayFromZero);
+                    carListHtml.Add(string.Format("<div class=\"p\" style=\"width: {0}%\"></div>", percent));
+                    carListHtml.Add("    </div>");
+                    carListHtml.Add("</td>");
                     // 档位个数
                     //string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" && dictCarParams[724] != "待查") ? dictCarParams[724] + "挡" : "";
                     string transmissionType = _carBLL.GetCarTransmissionType(dictCarParams.ContainsKey(724) ? dictCarParams[724] : string.Empty, entity.TransmissionType);
 
                     carListHtml.Add(string.Format("<td>{0}</td>", transmissionType));
-					carListHtml.Add(string.Format("<td class=\"txt-right\"><span>{0}</span><a title=\"购车费用计算\" class=\"car-comparetable-ico-cal\" rel=\"nofollow\" href=\"/gouchejisuanqi/?carid={1}\" target=\"_blank\"></a></td>", string.IsNullOrEmpty(entity.ReferPrice) ? "暂无" : entity.ReferPrice + "万", entity.CarID));
-					if (entity.CarPriceRange.Trim().Length == 0)
+                    carListHtml.Add(string.Format("<td class=\"txt-right\"><span>{0}</span><a title=\"购车费用计算\" class=\"car-comparetable-ico-cal\" rel=\"nofollow\" href=\"/gouchejisuanqi/?carid={1}\" target=\"_blank\"></a></td>", string.IsNullOrEmpty(entity.ReferPrice) ? "暂无" : entity.ReferPrice + "万", entity.CarID));
+                    if (entity.CarPriceRange.Trim().Length == 0)
                         carListHtml.Add(string.Format("<td class=\"txt-right\"><span>{0}</span></td>", "暂无报价"));
-					else
-					{
-						//取最低报价
-						string minPrice = entity.CarPriceRange;
-						if (entity.CarPriceRange.IndexOf("-") != -1)
-							minPrice = entity.CarPriceRange.Substring(0, entity.CarPriceRange.IndexOf('-'));
+                    else
+                    {
+                        //取最低报价
+                        string minPrice = entity.CarPriceRange;
+                        if (entity.CarPriceRange.IndexOf("-") != -1)
+                            minPrice = entity.CarPriceRange.Substring(0, entity.CarPriceRange.IndexOf('-'));
 
                         carListHtml.Add(string.Format("<td class=\"txt-right\"><span><a href=\"/{0}/m{1}/baojia/\" target=\"_blank\">{2}</a></span></td>", _SerialSpell, entity.CarID, minPrice));
-					}
+                    }
                     carListHtml.Add("<td class=\"txt-right\">");
                     carListHtml.Add(string.Format("<a class=\"btn btn-primary btn-xs\" href=\"http://dealer.bitauto.com/zuidijia/nb{0}/nc{1}/?T=2&leads_source=p015006\" target=\"_blank\">询底价</a>", _SerialId, entity.CarID));
                     carListHtml.Add(string.Format(" <a class=\"btn btn-secondary btn-xs\" target=\"_self\" href=\"javascript:;\"  data-use=\"compare\" data-id=\"{0}\">+对比</a>", entity.CarID));
-					carListHtml.Add("    </td>");
-					carListHtml.Add("</tr>");
-				}
-			}
-			//add by 2014.05.04 电动车 参数
-			if (maxChargeTime > 0)
-			{
-				chargeTimeRange = minChargeTime == maxChargeTime ? string.Format("{0}分钟", minChargeTime) : string.Format("{0}-{1}分钟", minChargeTime, maxChargeTime);
-			}
-			else
-				chargeTimeRange = "暂无";
-			if (maxFastChargeTime > 0)
-			{
-				fastChargeTimeRange = minFastChargeTime == maxFastChargeTime ? string.Format("{0}分钟", minFastChargeTime) : string.Format("{0}-{1}分钟", minFastChargeTime, maxFastChargeTime);
-			}
-			else
-				fastChargeTimeRange = "暂无";
-			if (maxMileage > 0)
-			{
-				mileageRange = minMileage == maxMileage ? string.Format("{0}公里", minMileage) : string.Format("{0}-{1}公里", minMileage, maxMileage);
-			}
-			else
-				mileageRange = "暂无";
-			return string.Concat(carListHtml.ToArray());
-		}
-		#endregion
-	}
+                    carListHtml.Add("    </td>");
+                    carListHtml.Add("</tr>");
+                }
+            }
+            //add by 2014.05.04 电动车 参数
+            if (maxChargeTime > 0)
+            {
+                chargeTimeRange = minChargeTime == maxChargeTime ? string.Format("{0}分钟", minChargeTime) : string.Format("{0}-{1}分钟", minChargeTime, maxChargeTime);
+            }
+            else
+                chargeTimeRange = "暂无";
+            if (maxFastChargeTime > 0)
+            {
+                fastChargeTimeRange = minFastChargeTime == maxFastChargeTime ? string.Format("{0}分钟", minFastChargeTime) : string.Format("{0}-{1}分钟", minFastChargeTime, maxFastChargeTime);
+            }
+            else
+                fastChargeTimeRange = "暂无";
+            if (maxMileage > 0)
+            {
+                mileageRange = minMileage == maxMileage ? string.Format("{0}公里", minMileage) : string.Format("{0}-{1}公里", minMileage, maxMileage);
+            }
+            else
+                mileageRange = "暂无";
+            return string.Concat(carListHtml.ToArray());
+        }
+        #endregion
+    }
 }

@@ -90,25 +90,25 @@
             <div class="buy-top">
                 <ul>
                     <li data-channelid="27.160.2231" class="ico-ssxc">
-                        <a href="http://car174.m.yiche.com/newcarlisting.html">
+                        <a href="http://car.m.yiche.com/newcarlisting">
                             <i></i>
                             <p>上市新车</p>
                         </a>
                     </li>
                     <li data-channelid="27.160.2232" class="ico-xsph">
-                        <a href="http://car174.m.yiche.com/salesranking.html">
+                        <a href="http://car.m.yiche.com/salesranking">
                             <i></i>
                             <p>销售排行</p>
                         </a>
                     </li>
                     <li data-channelid="27.160.2195" class="ico-tjxc">
-                        <a href="http://car174.m.yiche.com/">
+                        <a href="http://car.m.yiche.com/home/">
                             <i></i>
                             <p>条件选车</p>
                         </a>
                     </li>
                     <li data-channelid="27.160.2196" class="ico-cjxc">
-                        <a href="http://car174.m.yiche.com/scenelist.html  ">
+                        <a href="http://car.m.yiche.com/scenelist.html">
                             <i></i>
                             <p>场景选车</p>
                         </a>
@@ -216,6 +216,10 @@
                 $("span.brand-logo>img").lazyload({ effect: "fadeIn", threshold: 50 });
             }, "utf-8");
         });
+        function reLocation() {
+            $body.trigger('note');
+        }
+
         function adCallback(objId) {
             var parentNode = document.getElementById(objId).parentNode;
             $(parentNode).imgSucceed({
@@ -234,7 +238,8 @@
         @Html.Partial("~/html/footerV3.cshtml")
     </div>
     <script src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars"></script>
-    <script src="~/js/recentlyseen.js"></script>
+    <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/recentlyseen.min.js?v=201712281614"></script>
+    @*<script src="/js/recentlyseen.js"></script>*@
     @if (WTmc_id != "mxmllqic_qt")
     {
         <div class="float-r-box">

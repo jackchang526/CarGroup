@@ -70,10 +70,10 @@ function RequestData(index) {
     if (titles[index].loading) {
         return;
     }
-    var saleRankingUrl = "http://api174.car.bitauto.com/CarInfo/GetSalesRankingForPage.ashx?level=" + titles[index].id + "&pageindex=" + (titles[index].index + 1) + "&pagesize=" + titles[index].size;
+    var saleRankingUrl = "http://api.car.bitauto.com/CarInfo/GetSalesRankingForPage.ashx?level=" + titles[index].id + "&pageindex=" + (titles[index].index + 1) + "&pagesize=" + titles[index].size;
     titles[index].loading = true;
     $("#level_rank_list_" + index + " .load-box").show();
-    var cb = "SaleRankingCallBack" + index;
+    var cb = "SaleRankingCallBack1" + index;
     $.ajax({
         type: "get",
         url: saleRankingUrl,
@@ -91,7 +91,7 @@ function RequestData(index) {
                     var len = data.data.page.data.length;
                     for (var i = 0; i < len; i++) {
                         var dd = data.data.page.data[i];
-                        if (dd.AllSpell == "") {
+                        if (dd.allSpell == "") {
                             continue;
                         }
                         html += ('<li><a class="imgbox-2" href="/' + dd.allSpell + '/" data-id="' + dd.csId + '"><div class="left">');

@@ -28,6 +28,7 @@ Bitauto.Login.onComplatedHandlers.push(function (loginRes) {
                     if (html.length > 0) {
                         $(".browse-car dl").html("<dt>最近看过：</dt>" + html);
                         $(".browse-car").show();
+                        (typeof reLocation === "function") && reLocation();
                     } else {
                         $(".browse-car").hide();
                     }

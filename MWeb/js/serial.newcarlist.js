@@ -58,7 +58,7 @@ function RequestData(idx) {
         //console.log("正在加载-" + curindex);
         return;
     }
-    var newCarListUrl = "http://api174.car.bitauto.com/CarInfo/GetNewCarList.ashx?type=" + titles[curindex].id + "&pageindex=" + (titles[curindex].index + 1) + "&pagesize=" + titles[curindex].size;
+    var newCarListUrl = "http://api.car.bitauto.com/CarInfo/GetNewCarList.ashx?type=" + titles[curindex].id + "&pageindex=" + (titles[curindex].index + 1) + "&pagesize=" + titles[curindex].size;
     titles[curindex].loading = true;
     var cb = "newCarListCallBack" + curindex;
     $("#newscar_list_" + curindex + " .load-box").show();

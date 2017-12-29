@@ -214,10 +214,18 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
             var dict = csb.GetSerialCityCompareList(serialId, HttpContext.Current);
             if (dict.ContainsKey(cityName))
             {
+                // 白底
+                Dictionary<int, string> dicPicWhite = base.GetAllSerialPicURLWhiteBackground();
+
                 List<object> list = new List<object>();
                 foreach (var item in dict[cityName])
                 {
-                    list.Add(new { SerialId = item.SerialId, ShowName = item.SerialShowName, AllSpell = item.SerialNameSpell });
+                    string img = WebConfig.DefaultCarPic;
+                    if (dicPicWhite.ContainsKey(item.SerialId))
+                    {
+                        img = dicPicWhite[item.SerialId];
+                    }
+                    list.Add(new { SerialId = item.SerialId, ShowName = item.SerialShowName, AllSpell = item.SerialNameSpell,ImgUrl = img });
                 }
                 var json = JsonConvert.SerializeObject(list);
                 response.Write(json);

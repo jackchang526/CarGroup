@@ -100,7 +100,7 @@ function RequestData(index) {
                         html += '         <div class="info-box">';
                         html += ('             <div class="title"><div class="text">' + dd.showName + '</div></div>');
                         html += ('            <div class="price">' + dd.priceRange + '</div>');
-                        html += ('            <div class="type">全球销量：' + dd.sellNum + '辆</div>');
+                        html += ('            <div class="type">全国销量：' + dd.sellNum + '辆</div>');
                         html += '        </div>';
                         html += '</div></a></li>';
                     }

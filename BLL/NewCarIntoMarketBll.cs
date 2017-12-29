@@ -1,4 +1,5 @@
-﻿using BitAuto.CarChannel.Common;
+﻿using BitAuto.CarChannel.BLL.Data;
+using BitAuto.CarChannel.Common;
 using BitAuto.CarChannel.Common.Cache;
 using BitAuto.CarChannel.DAL;
 using BitAuto.CarChannel.Model;
@@ -52,12 +53,14 @@ namespace BitAuto.CarChannel.BLL
                     else
                     {
                         entity.Level = "";
-                    } 
-                    var serialInfo = car_SerialBll.GetSerialInfoEntity(item.CsId);
-                    
-                    entity.AllSpell = serialInfo.Cs_AllSpell;
-                    entity.CsName = serialInfo.Cs_ShowName;
-                    entity.RefPrice = car_SerialBll.GetSerialOfficePriceBySaleState(item.CsId, true);
+                    }
+                    var serialInfo = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, item.CsId);
+                    if (serialInfo == null) {
+                        continue;
+                    }
+                    entity.AllSpell = serialInfo.AllSpell;
+                    entity.CsName = serialInfo.ShowName;
+                    entity.RefPrice = serialInfo.ReferPrice;
                     entity.CoverImage = Car_SerialBll.GetSerialImageUrl(item.CsId);
                     vmList.Add(entity);
                 }

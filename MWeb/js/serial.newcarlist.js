@@ -95,7 +95,7 @@ function RequestData(idx) {
                         }
 
                         html += '                    </div>';
-                        var price = dd.RefPrice == '0' ? "暂无指导价" : (dd.RefPrice.indexOf('-') > 0 ? dd.RefPrice.replace("万", "") : dd.RefPrice);
+                        var price = dd.RefPrice == '0' ? "暂无指导价" : dd.RefPrice;
                         html += '                    <div class="price">' + price + '</div>';
                         html += '                    <div class="type">' + dd.Level + '</div>';
                         html += '                </div>';

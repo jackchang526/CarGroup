@@ -112,6 +112,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                 case "getserialbaseinfobyidjson": RenderSerialBaseInfoByCsId(); break;
                 case "gethotcarinfobycsid": RenderHotCarInfoByCsID(); break;
                 case "getbrandotherserialbycsid": RenderBrandOtherSerialByCsId(); break;
+                case "getserialcolorjson": RenderSerialColorJson(); break;
                 default: CommonFunction.EchoXml(response, "<!-- 缺少参数 -->", ""); ; break;
             }
         }
@@ -3427,6 +3428,63 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
             return msg;
         }
         #endregion
+         
+        /// <summary>
+        /// 获取车系颜色
+        /// </summary>
+        private void RenderSerialColorJson()
+        {
+
+            int csId = 0;
+            // 颜色类型0:车身颜色 1:内饰颜色
+            int colorType = 0;
+            if (request.QueryString["csid"] != null && request.QueryString["csid"].ToString() != "")
+            {
+                string caridStr = request.QueryString["csid"].ToString();
+                if (int.TryParse(caridStr, out csId))
+                { }
+            }
+            if (request.QueryString["colorType"] != null && request.QueryString["colorType"].ToString() != "")
+            {
+                int tempColorType = 0;
+                if (int.TryParse(request.QueryString["colorType"].ToString(), out tempColorType))
+                {
+                    // 默认为车身颜色，当制定颜色类型时取特定类型颜色(0:车身颜色 1:内饰颜色)
+                    if (tempColorType > 0)
+                    { colorType = tempColorType; }
+                }
+            }
+            string callback = "";
+
+            if (request.QueryString["callback"] != null && request.QueryString["callback"].ToString() != "")
+            {
+                callback = request.QueryString["callback"].ToString();
+            }
+            string resultData = "";
+            var serialColors = csb.GetAllSerialColorRGB(csId, colorType == 0 ? 3 : 1);
+            StringBuilder sb = new StringBuilder();
+            if (serialColors != null && serialColors.Count > 0)
+            {
+                foreach (var item in serialColors)
+                {
+                    sb.AppendFormat("{{\"name\":\"{0}\",\"rgb\":\"{1}\",\"id\":{2}}},", item.Value.ColorName, item.Value.ColorRGB, item.Value.AutoID);
+                }
+                resultData = string.Format("{{\"csid\":{1},\"color\":[{0}]}}", sb.Length > 0 ? sb.Remove(sb.Length - 1, 1).ToString() : "", csId);
+                resultData = ResultUtil.SuccessResult(resultData);
+            }
+            else
+            {
+                resultData = ResultUtil.ErrorResult(0, "没有数据", "");
+            }
+            if (callback != "")
+            {
+                response.Write(ResultUtil.CallBackResult(callback, resultData));
+            }
+            else
+            {
+                response.Write(resultData);
+            }
+        }
         public bool IsReusable
         {
             get

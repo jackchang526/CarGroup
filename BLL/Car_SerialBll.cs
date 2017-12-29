@@ -4753,6 +4753,49 @@ namespace BitAuto.CarChannel.BLL
             }
             return ds;
         }
+        /// <summary>
+        /// 取所有子品牌颜色RGB值
+        /// </summary>
+        /// <param name="csId">车系ID</param>
+        /// <param name="type">类型0:车身有色值，1：内饰，2 车身没有色值，3：车身有没有色值都取出来</param>
+        /// <returns></returns>
+        public Dictionary<string, SerialColorStruct> GetAllSerialColorRGB(int csId, int type)
+        {
+            string cacheKey = string.Format("GetAllSerialColorRGB_{0}_{1}", csId, type);
+            object obj = CacheManager.GetCachedData(cacheKey);
+            if (obj != null)
+            {
+                return (Dictionary<string, SerialColorStruct>)obj;
+            }
+            else
+            {
+                Dictionary<string, SerialColorStruct> dicCsColor = new Dictionary<string, SerialColorStruct>();
+
+                DataSet dsCsRGB = csd.GetAllSerialColorRGB(csId, type);
+                if (dsCsRGB != null && dsCsRGB.Tables.Count > 0 && dsCsRGB.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow dr in dsCsRGB.Tables[0].Rows)
+                    {
+                        int csid = int.Parse(dr["cs_id"].ToString());
+                        string colorName = dr["colorName"].ToString().Trim();
+                        SerialColorStruct scs = new SerialColorStruct();
+                        scs.AutoID = int.Parse(dr["autoID"].ToString());
+                        scs.CsID = csid;
+                        scs.ColorName = colorName;
+                        scs.ColorRGB = dr["colorRGB"].ToString().Trim();
+                        // 包含子品牌
+                        if (!dicCsColor.ContainsKey(colorName))
+                        {
+                            // 不包含颜色名
+                            dicCsColor.Add(colorName, scs);
+                        }
+                    }
+                }
+
+                CacheManager.InsertCache(cacheKey, dicCsColor, WebConfig.CachedDuration);
+                return dicCsColor;
+            }
+        }
 
         /// <summary>
         /// 取子品牌颜色图片
@@ -9158,6 +9201,7 @@ namespace BitAuto.CarChannel.BLL
                 return levelDic;
             }
         }
+
 
     }
 }

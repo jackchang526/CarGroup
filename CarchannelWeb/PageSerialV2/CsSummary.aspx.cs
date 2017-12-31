@@ -1115,6 +1115,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
         private void MakeFocusImages()
         {
             StringBuilder sb = new StringBuilder();
+            var focusImgId = new Dictionary<int, int>();
             #region 焦点图 大图 颜色
             //子品牌焦点图
             List<SerialFocusImage> imgList = _serialBLL.GetSerialFocusImageList(serialId);
@@ -1152,7 +1153,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             //焦点图不足，补幻灯页
             foreach (SerialFocusImage imgS in imgSlideList)
             {    
-                if(sourceList.Count > 4)
+                if(sourceList.Count >= 4)
                 {
                     break;
                 }
@@ -1189,6 +1190,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                                     "http://photo.bitauto.com/serial/" + serialId)
                                     : string.Empty));
                 resultCount++;
+                if (!focusImgId.ContainsKey(csImg.ImageId))
+                {
+                    focusImgId.Add(csImg.ImageId, 0);
+                }
             }
             else
             {
@@ -1204,6 +1209,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                                 : string.Empty));
                     showTujie = true;
                     resultCount++;
+                    if (!focusImgId.ContainsKey(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value)))
+                    {
+                        focusImgId.Add(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value), 0);
+                    }
                 }
                 else
                 {
@@ -1287,7 +1296,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 //第二张图 有图解显示图解
                 if (i == 2 && showTujie == false)
                 {                  
-                    if (firstTujieNode != null)
+                    if (firstTujieNode != null && !focusImgId.ContainsKey(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value)))
                     {
                         string groupName = firstTujieNode.Attributes["GroupName"].Value;
                         sb.AppendFormat("<div data-channelid=\"2.21.{4}\" class=\"img-link col-auto\"><a href=\"{0}\" target=\"_blank\">{3}<img src=\"{1}\" title=\"{2}\" alt=\"{2}\" width=\"140\" height=\"93\" /></a></div>",
@@ -1298,6 +1307,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                             channelId);
                         hasTujie = true;
                         resultCount++;
+                        if (!focusImgId.ContainsKey(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value)))
+                        {
+                            focusImgId.Add(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value), i);
+                        }
                         continue;
                     }
                 }
@@ -1328,6 +1341,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                         string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<i>" + csImg.GroupName + ">></i>",
                         channelId);
                     resultCount++;
+                    if (!focusImgId.ContainsKey(csImg.ImageId))
+                    {
+                        focusImgId.Add(csImg.ImageId, i);
+                    }
                 }
             }
             #endregion

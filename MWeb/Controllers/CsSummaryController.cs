@@ -941,7 +941,7 @@ namespace MWeb.Controllers
             {
                 //第三张,取图解第一张
                 XmlNode firstTujieNode = GetFirstTujieImage(dtC);
-                if (firstTujieNode != null)
+                if (firstTujieNode != null && !focusImgId.ContainsKey(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value)))
                 {
                     string groupName = firstTujieNode.Attributes["GroupName"].Value;
                     string backupImg = string.Empty;

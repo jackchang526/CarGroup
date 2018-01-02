@@ -112,7 +112,7 @@ function GetDealerData(serialSpell) {
         success: function (data) {
             if (typeof data != "undefined" && data.length > 0) {
                 if (data[0].DealerCount > 0) {
-                    $("#mp-dealer").html("（" + data[0].DealerCount + "家本地经销商）").attr("href", data[0].dealerurl);
+                    $("#mp-dealer").html("(" + data[0].DealerCount + "家本地经销商)").attr("href", data[0].dealerurl);
                 }
                 var favorablePrice = parseFloat(data[0].MaxFavorablePrice);
                 if (favorablePrice > 0) {

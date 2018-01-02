@@ -1,88 +1,88 @@
 ﻿//数组包含元素
 Array.prototype.contains = function (item) {
-	for (var i = 0; i < this.length; i++) {
-		if (this[i] == item) {
-			return true;
-		}
-	}
-	return false;
+    for (var i = 0; i < this.length; i++) {
+        if (this[i] == item) {
+            return true;
+        }
+    }
+    return false;
 }
 
 Array.prototype.remove = function (b) { var a = this.indexOf(b); if (a >= 0) { this.splice(a, 1); return true; } return false; };
 Array.prototype.indexOf = function (value) { for (var i = 0, l = this.length; i < l; i++) if (this[i] == value) return i; return -1; }
 Array.prototype.intersect = function (b) {
-	var i = 0, result = [];
-	while (i < this.length && i < b.length) {
-		if (this.length > b.length && this.indexOf(b[i]) != -1) { result.push(b[i]); }
-		else { if (b.indexOf(this[i]) != -1) { result.push(this[i]); } }
-		i++;
-	}
-	return result;
+    var i = 0, result = [];
+    while (i < this.length && i < b.length) {
+        if (this.length > b.length && this.indexOf(b[i]) != -1) { result.push(b[i]); }
+        else { if (b.indexOf(this[i]) != -1) { result.push(this[i]); } }
+        i++;
+    }
+    return result;
 }
 
 //添加 取消关注车型
 function FocusCar(obj) {
-	Bitauto.Login.afterLoginDo(function () {
-		obj.attr('class').indexOf("focused") == -1 ? Bitauto.UserCars.addConcernedCar(serialId, function () {
-			if (Bitauto.UserCars.concernedcar.message[0] == "已超过上限") {
-				$("#mangerCar_tc").attr("href", "http://i.yiche.com/u" + Bitauto.Login.result.userId + "/car/guanzhu/");
-				$("#FocusCarFull").show();
-			}
-			else {
-				$(obj).addClass("focused").html("已关注").attr("title", "取消关注");
-				Bitauto.UserCars.concernedcar.arrconcernedcar.unshift(serialId);
-			}
-		}) : Bitauto.UserCars.delConcernedCar(serialId, function () {
-			obj.attr("title", "点击关注").removeClass("focused").html("+ 关注");
-		});
-	});
+    Bitauto.Login.afterLoginDo(function () {
+        obj.attr('class').indexOf("focused") == -1 ? Bitauto.UserCars.addConcernedCar(serialId, function () {
+            if (Bitauto.UserCars.concernedcar.message[0] == "已超过上限") {
+                $("#mangerCar_tc").attr("href", "http://i.yiche.com/u" + Bitauto.Login.result.userId + "/car/guanzhu/");
+                $("#FocusCarFull").show();
+            }
+            else {
+                $(obj).addClass("focused").html("已关注").attr("title", "取消关注");
+                Bitauto.UserCars.concernedcar.arrconcernedcar.unshift(serialId);
+            }
+        }) : Bitauto.UserCars.delConcernedCar(serialId, function () {
+            obj.attr("title", "点击关注").removeClass("focused").html("+ 关注");
+        });
+    });
 };
 
 (function () {
-	var hoverSetTimeOut = null;
-	//焦点区 效果
-	$("#focus_color_box li").hover(function () {
-		clearTimeout(hoverSetTimeOut);
-		var index = $(this).index();
-		$(this).addClass("current").siblings().removeClass("current");
-		$("#focus_images > div[class!='ad_300_30'][id='focuscolor_" + (index + 1) + "']").show().siblings("div[class!='ad_300_30']").hide();
-	}, function () {
-		hoverSetTimeOut = setTimeout(function () {
-			$("#color-listbox li").removeClass("current");
-			$("#focus_images > div[class!='ad_300_30'][id='focus_image_first']").show().siblings("div[class!='ad_300_30']").hide();
-		}, 100);
-	});
+    var hoverSetTimeOut = null;
+    //焦点区 效果
+    $("#focus_color_box li").hover(function () {
+        clearTimeout(hoverSetTimeOut);
+        var index = $(this).index();
+        $(this).addClass("current").siblings().removeClass("current");
+        $("#focus_images > div[class!='ad_300_30'][id='focuscolor_" + (index + 1) + "']").show().siblings("div[class!='ad_300_30']").hide();
+    }, function () {
+        hoverSetTimeOut = setTimeout(function () {
+            $("#color-listbox li").removeClass("current");
+            $("#focus_images > div[class!='ad_300_30'][id='focus_image_first']").show().siblings("div[class!='ad_300_30']").hide();
+        }, 100);
+    });
 
-	//颜色块 滑动效果
-	var colorObj = $("#focus_color_box li");
-	var wh = -colorObj.length * 31;
-	var leftV = 0;
-	if (colorObj.length > 7) {
-		var ulWidth = 210;
-		$("#focus_color_l").click(function () {
-			leftV = leftV + ulWidth;
-			if (leftV >= 0) {
-				leftV = 0;
-				$(this).removeClass("a_l_hover");
-				$("#focus_color_r").addClass("a_r_hover");
-			} else {
-				$("#focus_color_r").addClass("a_r_hover");
-			}
-			$("#color-listbox").animate({ "left": leftV }, 300);
-		});
-		$("#focus_color_r").click(function () {
-			leftV = leftV - ulWidth;
-			$("#focus_color_l").addClass("a_l_hover");
-			if (leftV - ulWidth < wh) {
-				$(this).removeClass("a_r_hover");
-			}
-			if (leftV < wh) {
-				leftV = leftV + ulWidth;
-				return;
-			}
-			$("#color-listbox").animate({ "left": leftV }, 300);
-		});
-	}
+    //颜色块 滑动效果
+    var colorObj = $("#focus_color_box li");
+    var wh = -colorObj.length * 31;
+    var leftV = 0;
+    if (colorObj.length > 7) {
+        var ulWidth = 210;
+        $("#focus_color_l").click(function () {
+            leftV = leftV + ulWidth;
+            if (leftV >= 0) {
+                leftV = 0;
+                $(this).removeClass("a_l_hover");
+                $("#focus_color_r").addClass("a_r_hover");
+            } else {
+                $("#focus_color_r").addClass("a_r_hover");
+            }
+            $("#color-listbox").animate({ "left": leftV }, 300);
+        });
+        $("#focus_color_r").click(function () {
+            leftV = leftV - ulWidth;
+            $("#focus_color_l").addClass("a_l_hover");
+            if (leftV - ulWidth < wh) {
+                $(this).removeClass("a_r_hover");
+            }
+            if (leftV < wh) {
+                leftV = leftV + ulWidth;
+                return;
+            }
+            $("#color-listbox").animate({ "left": leftV }, 300);
+        });
+    }
 })();
 
 //名片区-经销商数量
@@ -110,58 +110,58 @@ function GetDealerData(serialSpell) {
 }
 //名片区-二手车
 function GetErShouCheMinPrice() {
-	//http://yicheapi.taoche.cn/CarSourceInterface/ForJson/CarSerialPriceRangeByCityId.ashx?csid=1648&cityid=201
-	$.ajax({
-		url: "http://yicheapi.taoche.cn/CarSourceInterface/ForJson/CarSerialPriceRangeByCityId.ashx?csid=" + serialId + "&cityId=" + cityId,
-		cache: true,
-		dataType: "jsonp",
-		jsonpCallback: "GetErShouCheMinPriceCallback",
-		success: function (data) {
-			if (typeof data != "undefined") {
-				if (isNaN(data.MinPrice)) {
-					$("#mp-ershouche-minprice").parent().addClass("grey-txt").html("暂无");
-				}
-				else {
-					$("#mp-ershouche-minprice").html(parseFloat(data.MinPrice) + "万起>>");
-					$("#mp-ershouche a").attr("href", data.CarListUrl + "?ref=pc_yc_zs_gs_esc&leads_source=p002020");
-				}
-			}
-			else {
-				$("#mp-ershouche-minprice").parent().addClass("grey-txt").html("暂无");
-			}
-		}
-	});
+    //http://yicheapi.taoche.cn/CarSourceInterface/ForJson/CarSerialPriceRangeByCityId.ashx?csid=1648&cityid=201
+    $.ajax({
+        url: "http://yicheapi.taoche.cn/CarSourceInterface/ForJson/CarSerialPriceRangeByCityId.ashx?csid=" + serialId + "&cityId=" + cityId,
+        cache: true,
+        dataType: "jsonp",
+        jsonpCallback: "GetErShouCheMinPriceCallback",
+        success: function (data) {
+            if (typeof data != "undefined") {
+                if (isNaN(data.MinPrice)) {
+                    $("#mp-ershouche-minprice").parent().addClass("grey-txt").html("暂无");
+                }
+                else {
+                    $("#mp-ershouche-minprice").html(parseFloat(data.MinPrice) + "万起>>");
+                    $("#mp-ershouche a").attr("href", data.CarListUrl + "?ref=pc_yc_zs_gs_esc&leads_source=p002020");
+                }
+            }
+            else {
+                $("#mp-ershouche-minprice").parent().addClass("grey-txt").html("暂无");
+            }
+        }
+    });
 }
 
 //限时特惠
 function getBuyYch(data) {
-	var h = [],
+    var h = [],
         lastIndex = data.PcUrl.lastIndexOf("/"),
         url = data.PcUrl +
             (data.PcUrl.substring(lastIndex).indexOf("?") > -1 ? "&" : "?") +
             "ref=car1&rfpa_tracker=1_7&leads_source=p002008";
-	h.push("<div class=\"col-auto left\">");
-	h.push("    <div class=\"caption\">");
-	h.push("        <em class=\"em\">限时特惠</em>");
-	h.push("    </div>");
-	h.push("</div>");
-	h.push("<div class=\"col-auto mid\">");
-	h.push("    <h5><a href=\"" + url + "\" target=\"_blank\">" + data.Headline + "</a></h5>");
-	h.push("    <div class=\"bottom\">");
-	h.push("        <a class=\"btn btn-secondary btn-sm\" href=\"" + url + "\" target=\"_blank\">立即下单</a>");
-	h.push("        <span class=\"info\">" + data.Description + "</span>");
-	h.push("    </div>");
-	h.push("</div>");
-	h.push("<div class=\"col-auto right\">");
-	h.push("    <a class=\"figure w90x60\" href=\"" + url + "\" target=\"_blank\">");
-	h.push("        <span class=\"img\">");
-	h.push("            <img src=\"" + data.Picture + "\" alt=\"\">");
-	h.push("        </span>");
-	h.push("        <h6>" + data.SmallDescription + "</h6>");
-	h.push("        <p>" + data.TimeLimit + "</p>");
-	h.push("    </a>");
-	h.push("</div>");
-	$("#gouche-ych").html(h.join('')).show();
+    h.push("<div class=\"col-auto left\">");
+    h.push("    <div class=\"caption\">");
+    h.push("        <em class=\"em\">限时特惠</em>");
+    h.push("    </div>");
+    h.push("</div>");
+    h.push("<div class=\"col-auto mid\">");
+    h.push("    <h5><a href=\"" + url + "\" target=\"_blank\">" + data.Headline + "</a></h5>");
+    h.push("    <div class=\"bottom\">");
+    h.push("        <a class=\"btn btn-secondary btn-sm\" href=\"" + url + "\" target=\"_blank\">立即下单</a>");
+    h.push("        <span class=\"info\">" + data.Description + "</span>");
+    h.push("    </div>");
+    h.push("</div>");
+    h.push("<div class=\"col-auto right\">");
+    h.push("    <a class=\"figure w90x60\" href=\"" + url + "\" target=\"_blank\">");
+    h.push("        <span class=\"img\">");
+    h.push("            <img src=\"" + data.Picture + "\" alt=\"\">");
+    h.push("        </span>");
+    h.push("        <h6>" + data.SmallDescription + "</h6>");
+    h.push("        <p>" + data.TimeLimit + "</p>");
+    h.push("    </a>");
+    h.push("</div>");
+    $("#gouche-ych").html(h.join('')).show();
 
 }
 //降价
@@ -169,53 +169,53 @@ function GetJiangjiaNews() {
     if (priceRang == "未上市") {
         return;
     }
-	$.ajax({
-		url: "http://m.h5.qiche4s.cn/jiangjiaapi/GetPromtionNews.ashx?op=carlist&count=4&csid=" + serialId + "&cid=" + cityId,
-		cache: true,
-		dataType: "jsonp",
-		jsonpCallback: "getJiangJiaCallback",
-		success: function (data) {
-		    var h = [];
-			count = data.data.length;
-			if (count > 0) {
-				for (var jiangjiaCount = 0; jiangjiaCount < count; jiangjiaCount++) {
-					var obj = data.data[jiangjiaCount];
+    $.ajax({
+        url: "http://m.h5.qiche4s.cn/jiangjiaapi/GetPromtionNews.ashx?op=carlist&count=4&csid=" + serialId + "&cid=" + cityId,
+        cache: true,
+        dataType: "jsonp",
+        jsonpCallback: "getJiangJiaCallback",
+        success: function (data) {
+            var h = [];
+            count = data.data.length;
+            if (count > 0) {
+                for (var jiangjiaCount = 0; jiangjiaCount < count; jiangjiaCount++) {
+                    var obj = data.data[jiangjiaCount];
 
-				    var youhuiStr = "",
-                        youhuiUrl= "",
-					    className = "";
-				    if (obj.IsJJ == 1) { //降价
-				        if (obj.showtype == 1) {
-				            youhuiStr = "直降" + obj.FavorablePrice + "万";
-				            className = "price-reduction";
-				            youhuiUrl = obj.zuidijiaUrl;
-				        }
-				        else { //送礼包
-				            youhuiStr = "送礼包";
-				            className = "price-reduction type1";
-				            youhuiUrl = obj.href;
-				        }
-					}
-					else{ //报价
-					    var vendorPrice = parseFloat(obj.vendorPrice).toFixed(2);
-					    youhuiStr = vendorPrice + "万";
-					    className = "price-reduction type2";
-					    youhuiUrl = obj.zuidijiaUrl;
-					}
-				    h.push(" <li class=\"col-xs-6\"><a href=\"" + obj.href + "?leads_source=p002005\" target=\"_blank\" class=\"txt\">" + obj.CarName + "</a><a target=\"_blank\" href=\"" + youhuiUrl + "\" class=\"" + className + "\">" + youhuiStr + "</a></li>");
-				}
-			}
-			var cityHtml = "<li class=\"current\"><a target=\"_blank\" href=\"http://car.bitauto.com/" + serialSpell + "/jiangjia/c" + cityId + "/?leads_source=p002005#\">" + cityName + "</a></li>";
-			if (count > 0) {
-				$("#mp-jiangjianews").html(h.join(""));
-				cityHtml += "<li><a href=\"http://car.bitauto.com/" + serialSpell + "/jiangjia/c" + cityId + "/?leads_source=p002005#\" target=\"_blank\">更多降价&gt;&gt;</a></li>";
-			}
-			else {
-				$("#mp-jiangjianews").html("<li class=\"col-xs-6\"><a class=\"txt\"  style=\"color: #333;\">本地暂无降价信息</a></li>");
-			}
-			$("#mp-jiangjiacity").html(cityHtml);
-		}
-	});
+                    var youhuiStr = "",
+                        youhuiUrl = "",
+                        className = "";
+                    if (obj.IsJJ == 1) { //降价
+                        if (obj.showtype == 1) {
+                            youhuiStr = "直降" + obj.FavorablePrice + "万";
+                            className = "price-reduction";
+                            youhuiUrl = obj.zuidijiaUrl;
+                        }
+                        else { //送礼包
+                            youhuiStr = "送礼包";
+                            className = "price-reduction type1";
+                            youhuiUrl = obj.href;
+                        }
+                    }
+                    else { //报价
+                        var vendorPrice = parseFloat(obj.vendorPrice).toFixed(2);
+                        youhuiStr = vendorPrice + "万";
+                        className = "price-reduction type2";
+                        youhuiUrl = obj.zuidijiaUrl;
+                    }
+                    h.push(" <li class=\"col-xs-6\"><a href=\"" + obj.href + "?leads_source=p002005\" target=\"_blank\" class=\"txt\">" + obj.CarName + "</a><a target=\"_blank\" href=\"" + youhuiUrl + "\" class=\"" + className + "\">" + youhuiStr + "</a></li>");
+                }
+            }
+            var cityHtml = "<li class=\"current\"><a target=\"_blank\" href=\"http://car.bitauto.com/" + serialSpell + "/jiangjia/c" + cityId + "/?leads_source=p002005#\">" + cityName + "</a></li>";
+            if (count > 0) {
+                $("#mp-jiangjianews").html(h.join(""));
+                cityHtml += "<li><a href=\"http://car.bitauto.com/" + serialSpell + "/jiangjia/c" + cityId + "/?leads_source=p002005#\" target=\"_blank\">更多降价&gt;&gt;</a></li>";
+            }
+            else {
+                $("#mp-jiangjianews").html("<li class=\"col-xs-6\"><a class=\"txt\"  style=\"color: #333;\">本地暂无降价信息</a></li>");
+            }
+            $("#mp-jiangjiacity").html(cityHtml);
+        }
+    });
 }
 //贷款首付
 function GetDownPayment() {
@@ -276,107 +276,107 @@ function SetDefaultDownPayment() {
 //}
 
 function InitTeHuiAndAdData() {
-	$.ajax({
-		url: "http://api.mai.yiche.com/api/ProductCar/GetProductPush?csid=" + serialId + "&cityId=" + cityId,
-		cache: true,
-		dataType: "jsonp",
-		jsonpCallback: "GetTeHuiAjaxCallback",
-		success: function (tehuidata) {
-			if (tehuidata && tehuidata.Success) {
-				var obj = tehuidata.Result,
+    $.ajax({
+        url: "http://api.mai.yiche.com/api/ProductCar/GetProductPush?csid=" + serialId + "&cityId=" + cityId,
+        cache: true,
+        dataType: "jsonp",
+        jsonpCallback: "GetTeHuiAjaxCallback",
+        success: function (tehuidata) {
+            if (tehuidata && tehuidata.Success) {
+                var obj = tehuidata.Result,
                     lastIndex = obj.PcUrl.lastIndexOf("/"),
                     url = obj.PcUrl + (obj.PcUrl.substring(lastIndex).indexOf("?") > -1 ? "&" : "?") + "ref=car1&rfpa_tracker=1_7&leads_source=p002008";
 
-				//名片区
-				if (typeof obj.Slogan != "undefined" && obj.Slogan != null && obj.Slogan != "") {
-					$("#mp-qianggou .note").append("<h5><a target=\"_blank\" data-channelid=\"2.21.1520\" href=\"" + url + "\">" + obj.Slogan + "</a></h5><a class=\"btn btn-default\" target=\"_blank\" data-channelid=\"2.21.99\" href=\"" + url + "\">立即抢购</a>");
-					$("#mp-qianggou").show();
-				}
-				var xianshitehui = setInterval(function () {
-					if ($("#gouche-ych").length > 0) {
-						clearInterval(xianshitehui);
-						getBuyYch(tehuidata.Result);
-					}
-				}, 100);
-			}
-		}
-	});
+                //名片区
+                if (typeof obj.Slogan != "undefined" && obj.Slogan != null && obj.Slogan != "") {
+                    $("#mp-qianggou .note").append("<h5><a target=\"_blank\" data-channelid=\"2.21.1520\" href=\"" + url + "\">" + obj.Slogan + "</a></h5><a class=\"btn btn-default\" target=\"_blank\" data-channelid=\"2.21.99\" href=\"" + url + "\">立即抢购</a>");
+                    $("#mp-qianggou").show();
+                }
+                var xianshitehui = setInterval(function () {
+                    if ($("#gouche-ych").length > 0) {
+                        clearInterval(xianshitehui);
+                        getBuyYch(tehuidata.Result);
+                    }
+                }, 100);
+            }
+        }
+    });
 }
 
 function GetHmcJiangJia() {
-	$.ajax({
-		url: "http://platform.api.huimaiche.com/hmc/yc/v1/GetSerialCounselor.ashx?csid=" + serialId + "&ccode=" + cityId,
-		cache: true,
-		dataType: "jsonp",
-		jsonpCallback: "getHmcCallback",
-		success: function (data) {
-			if (typeof data == "undefined") {
-				return;
-			}
-			//if (parseFloat(data.savemoney) > 0) {
-			//    $("#mp-dijia-savemoney") && $("#mp-dijia-savemoney").html("省" + data.savemoney + ">>");
-			//    $("#mp-dijia") && $("#mp-dijia").show()
-			//}
-			//var hmcjiangjia = setInterval(function () {
-			//	if ($("#gouche-hmc").length > 0) {
-			//		clearInterval(hmcjiangjia);
-			//		GetBuyHmc(data);
-			//	}
-			//}, 100);
-		}
-	});
+    $.ajax({
+        url: "http://platform.api.huimaiche.com/hmc/yc/v1/GetSerialCounselor.ashx?csid=" + serialId + "&ccode=" + cityId,
+        cache: true,
+        dataType: "jsonp",
+        jsonpCallback: "getHmcCallback",
+        success: function (data) {
+            if (typeof data == "undefined") {
+                return;
+            }
+            //if (parseFloat(data.savemoney) > 0) {
+            //    $("#mp-dijia-savemoney") && $("#mp-dijia-savemoney").html("省" + data.savemoney + ">>");
+            //    $("#mp-dijia") && $("#mp-dijia").show()
+            //}
+            //var hmcjiangjia = setInterval(function () {
+            //	if ($("#gouche-hmc").length > 0) {
+            //		clearInterval(hmcjiangjia);
+            //		GetBuyHmc(data);
+            //	}
+            //}, 100);
+        }
+    });
 }
 
 //购车服务
 function GetBuyHmc(data) {
-	if (typeof data == "undefined") {
-		return;
-	}
-	var h = [],
+    if (typeof data == "undefined") {
+        return;
+    }
+    var h = [],
         url = data.pclink +
             (data.pclink.indexOf("?") > -1 ? "&" : "?") +
             "tracker_u=123_yccxfwl&leads_source=p002006";
-	h.push("<div class=\"col-auto left\">");
-	h.push("<div class=\"caption\">");
-	h.push("<em class=\"em\">购车服务</em>");
-	h.push("</div>");
-	h.push("</div>");
-	h.push("<div class=\"col-auto mid\">");
-	h.push("<h5><a href=\"" + url + "\" target=\"_blank\">" + data.title + "</a></h5>");
-	h.push("<div class=\"bottom\">");
-	h.push("<a class=\"btn btn-secondary btn-sm\" href=\"" + url + "\" target=\"_blank\">马上买车</a>");
-	h.push("<span class=\"info\">" + data.desc + "</span>");
-	h.push("</div>");
-	h.push("</div>");
-	h.push("<div class=\"col-auto right type-1\">");
-	h.push("<a class=\"figure\" href=\"" + url + "\" target=\"_blank\">");
-	h.push("<span class=\"img\">");
-	h.push("<img src=\"" + data.counselorimg + "\" alt=\"\">");
-	h.push("</span>");
-	h.push("<h6>" + data.counselorname + "</h6>");
-	h.push("<p>" + data.counselordesc + "</p>");
-	h.push("</a>");
-	h.push("</div>");
+    h.push("<div class=\"col-auto left\">");
+    h.push("<div class=\"caption\">");
+    h.push("<em class=\"em\">购车服务</em>");
+    h.push("</div>");
+    h.push("</div>");
+    h.push("<div class=\"col-auto mid\">");
+    h.push("<h5><a href=\"" + url + "\" target=\"_blank\">" + data.title + "</a></h5>");
+    h.push("<div class=\"bottom\">");
+    h.push("<a class=\"btn btn-secondary btn-sm\" href=\"" + url + "\" target=\"_blank\">马上买车</a>");
+    h.push("<span class=\"info\">" + data.desc + "</span>");
+    h.push("</div>");
+    h.push("</div>");
+    h.push("<div class=\"col-auto right type-1\">");
+    h.push("<a class=\"figure\" href=\"" + url + "\" target=\"_blank\">");
+    h.push("<span class=\"img\">");
+    h.push("<img src=\"" + data.counselorimg + "\" alt=\"\">");
+    h.push("</span>");
+    h.push("<h6>" + data.counselorname + "</h6>");
+    h.push("<p>" + data.counselordesc + "</p>");
+    h.push("</a>");
+    h.push("</div>");
 
-	$("#gouche-hmc").html(h.join('')).show();
+    $("#gouche-hmc").html(h.join('')).show();
 
 }
 
 function changeTwoDecimal(x) {
-	var f_x = parseFloat(x);
-	if (isNaN(f_x))
-	{ return x; }
-	var f_x = Math.round(x * 100) / 100;
-	var s_x = f_x.toString();
-	var pos_decimal = s_x.indexOf('.');
-	if (pos_decimal < 0) {
-		pos_decimal = s_x.length;
-		s_x += '.';
-	}
-	while (s_x.length <= pos_decimal + 2) {
-		s_x += '0';
-	}
-	return s_x;
+    var f_x = parseFloat(x);
+    if (isNaN(f_x))
+    { return x; }
+    var f_x = Math.round(x * 100) / 100;
+    var s_x = f_x.toString();
+    var pos_decimal = s_x.indexOf('.');
+    if (pos_decimal < 0) {
+        pos_decimal = s_x.length;
+        s_x += '.';
+    }
+    while (s_x.length <= pos_decimal + 2) {
+        s_x += '0';
+    }
+    return s_x;
 }
 
 function FocusNews(totalCount, data) {

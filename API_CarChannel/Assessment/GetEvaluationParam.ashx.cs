@@ -1,5 +1,7 @@
 ﻿using BitAuto.CarChannel.Common;
+using BitAuto.CarChannel.Common.Cache;
 using BitAuto.CarChannelAPI.Web.AppCode;
+using BitAuto.CarUtils.Define;
 using BitAuto.Utils;
 using BitAuto.Utils.Data;
 using Newtonsoft.Json;
@@ -7,8 +9,10 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Xml.Linq;
 
 namespace BitAuto.CarChannelAPI.Web.Assessment
 {
@@ -219,11 +223,58 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                     DzhuYouZheBiJiaoDu = dr["258"],
                     BaoYangFeiYong6Nian = dr["255"],
                     KongTiaoChuFengKouShuLiang = dr["254"],
-                    ShiJiCeShiYouHao = dr["80"]
+                    ShiJiCeShiYouHao = dr["80"],
+                    LevelRankInfo=GetRankInfo(carId)
                 };
                 result = JsonConvert.SerializeObject(obj);
             }
             context.Response.Write(!string.IsNullOrEmpty(callback) ? string.Format("{0}({1})", callback, result) : result);
+        }
+
+        private object GetRankInfo(int carId)
+        {
+            List<int> propertyIds = GetPropertyIdList();
+            Dictionary<string, RankInfo> dic = new Dictionary<string, RankInfo>();
+            foreach (int propertyId in propertyIds)
+            {
+                string xmlFile = Path.Combine(WebConfig.DataBlockPath, string.Format(@"Data\EvaluationRank\Rank_{0}\{1}.xml", propertyId, carId));                
+                try
+                {                    
+                    if (File.Exists(xmlFile))
+                    {
+                        RankInfo rankInfo = new RankInfo();
+                        XDocument doc = XDocument.Load(xmlFile);
+                        var query = from p in doc.Element("Root").Element("EvaluationRankList").Elements("EvaluationRank") select p;
+                        XElement ele = query.ToList().First();
+                        rankInfo.LevelBestName = ele.Element("ModelName").Value;
+                        rankInfo.LevelBestValue = ele.Element("PropertyValue").Value;
+                        rankInfo.LevelBestUnit = ele.Element("Unit").Value;
+                        rankInfo.LevelTotal = ConvertHelper.GetInteger(doc.Element("Root").Element("LevelTotal").Value);
+                        rankInfo.LevelNum = ConvertHelper.GetInteger(doc.Element("Root").Element("LevelNum").Value);
+                        rankInfo.LevelName = doc.Element("Root").Element("LevelName").Value;
+                        rankInfo.Beat = ConvertHelper.GetDouble((rankInfo.LevelTotal - rankInfo.LevelNum) * 100 / rankInfo.LevelTotal);
+                        rankInfo.LevelAvg = doc.Element("Root").Element("LevelAvg").Value;
+                        dic.Add("p_" + propertyId, rankInfo);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    CommonFunction.WriteLog(ex.ToString());
+                }
+            }
+            return dic;
+        }
+
+        public class RankInfo
+        {
+            public int LevelTotal { get; set; }
+            public int LevelNum { get; set; }
+            public string LevelName { get; set; }
+            public string LevelAvg { get; set; }
+            public string LevelBestName { get; set; }
+            public string LevelBestValue { get; set; }
+            public string LevelBestUnit { get; set; }
+            public double Beat { get; set; }
         }
 
         public bool IsReusable
@@ -232,6 +283,47 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
             {
                 return false;
             }
+        }
+
+        public List<int> GetPropertyIdList()
+        {
+            string xmlFile = System.Web.HttpContext.Current.Server.MapPath(@"~/config/PropertyId.xml");
+
+            string key = "PropertyId_Xml";
+
+            List<int> list = new List<int>();
+
+            var obj = CacheManager.GetCachedData(key);
+
+            try
+            {
+                if (obj != null)
+                {
+                    list = (List<int>)obj;
+                }
+                else
+                {
+                    if (File.Exists(xmlFile))
+                    {
+                        XDocument doc = XDocument.Load(xmlFile);
+                        var query = from p in doc.Element("Root").Elements("Item") select p;
+                        query.ToList().ForEach(item =>
+                        {
+                            int propertyId = ConvertHelper.GetInteger(item.Element("PropertyId").Value);
+                            if (!list.Contains(propertyId))
+                            {
+                                list.Add(propertyId);
+                            }                            
+                        });
+                        CacheManager.InsertCache(key, list, WebConfig.CachedDuration);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonFunction.WriteLog(ex.ToString());
+            }
+            return list;
         }
     }
 }

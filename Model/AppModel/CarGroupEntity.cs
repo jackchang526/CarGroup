@@ -63,7 +63,7 @@ namespace BitAuto.CarChannel.Model.AppModel
         /// 平行进口车
         /// </summary>
         public string ImportType { get; set; }
-        
+
         public string CarLink { get; set; }
         /// <summary>
         /// 车款pv数
@@ -85,6 +85,6 @@ namespace BitAuto.CarChannel.Model.AppModel
         /// 是否有实拍图（true-有，false-没有）
         /// </summary>
         public bool IsHaveImage { get; set; }
-           
+
     }
 }

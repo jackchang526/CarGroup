@@ -53,11 +53,13 @@
             DownloadAladingApp.setCookie(DownloadAladingApp.cookieName, 1, DownloadAladingApp.getCookieExpire());
         },
         addEvent: function (obj, eventType, func) {
-            if (obj.addEventListener) {
-                obj.addEventListener(eventType, func, false);
-            } else if (obj.attachEvent) {
-                obj.attachEvent("on" + eventType, func);
-            }
+            try {
+                if (obj.addEventListener) {
+                    obj.addEventListener(eventType, func, false);
+                } else if (obj.attachEvent) {
+                    obj.attachEvent("on" + eventType, func);
+                }
+            } catch (err){ }
         },
         init: function (tipId, appDownload, closeBtn) {
             this.tipId = tipId;

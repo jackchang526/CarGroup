@@ -224,7 +224,15 @@
             var parentNode = document.getElementById(objId).parentNode;
             $(parentNode).imgSucceed({
                 end: function () {  $body.trigger('note'); }
-            });
+            }); 
+            if (parentNode.className = "m-hot-brands") {
+                $(parentNode).find('a').each(function (index, current) {
+                    $(current).attr('data-action', 'car');
+                    $(current).click(function () {
+                        $body.trigger('openRight', this);
+                    });
+                })
+            }
         }
     </script>
     <div class="footer15">

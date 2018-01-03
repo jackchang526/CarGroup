@@ -93,6 +93,7 @@ $body.on('rightswipe3', function (ev, paras) {
         back: options.back,
         snap: 'li,div',
         onBeforeScrollStart: options.onBeforeScrollStart,
+        $trigger: $body,
         fliterData: function (ds, paras) {
             var $swipeLeft = this;
             var config = getConfig.call($swipeLeft);
@@ -234,7 +235,7 @@ $body.on('models', function (ev, paras) {
         closeEnd: function () {
             paras.closeEnd && paras.closeEnd.call(this);
         }
-    });
+    }, false, paras.$trigger);
 })
 
 //车款一级弹出层
@@ -432,6 +433,7 @@ $body.on('publicswipe1', function (ev, paras) {
         $models: $car,
         onBeforeScrollStart: options.onBeforeScrollStart,
         clickCallBack: options.clickCallBack,
+        $trigger: options.$trigger,
         closeEnd: function () {
             var $swipeLeft = this;
             var $loading = $(options.loading);

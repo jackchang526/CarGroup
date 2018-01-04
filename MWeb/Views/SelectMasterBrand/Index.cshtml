@@ -127,16 +127,19 @@
                     <li data-channelid="27.160.2235"><a href="http://car.m.yiche.com/xuanchegongju/?p=8-12&l=63">8-12万轿车</a></li>
                 </ul>
             </div>
-            <div class="m-hot-brands">
-                <ins id="div_60f12da8-7643-4414-a939-780a8e12ece0" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="60f12da8-7643-4414-a939-780a8e12ece0">
-                </ins>
-                <div class="clear"></div>
-            </div>
-            <div class="m-hot-car">
-                <ins id="div_8f582dc7-7250-453a-b8f7-fcc9bcc2df56" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="8f582dc7-7250-453a-b8f7-fcc9bcc2df56">
-                </ins>
-                <div class="clear"></div>
-            </div>
+            @if (WTmc_id != "mxmllqic_qt")
+            {
+                <div class="m-hot-brands">
+                    <ins id="div_60f12da8-7643-4414-a939-780a8e12ece0" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="60f12da8-7643-4414-a939-780a8e12ece0">
+                    </ins>
+                    <div class="clear"></div>
+                </div>
+                <div class="m-hot-car">
+                    <ins id="div_8f582dc7-7250-453a-b8f7-fcc9bcc2df56" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="8f582dc7-7250-453a-b8f7-fcc9bcc2df56">
+                    </ins>
+                    <div class="clear"></div>
+                </div>
+            }
             <!--热门推荐END-->
         </div>
         <!--新增顶部改版块END-->
@@ -185,7 +188,7 @@
         <script type="text/javascript" src="/js/v2/model.js"></script>
         <script type="text/javascript" src="/js/v2/rightswipe.js"></script>
         <script type="text/javascript" src="/js/v2/note.js"></script>*@
-    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/swiper-3.3.1.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js?v=201801031705"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/swiper-3.3.1.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/note.min.js?v=201712111100"></script>
     <script type="text/javascript">
         var $body = $('body');
 
@@ -223,8 +226,8 @@
             var parentNode = document.getElementById(objId).parentNode;
             $(parentNode).imgSucceed({
                 end: function () {  $body.trigger('note'); }
-            }); 
-            if (parentNode.className == "m-hot-brands") {
+            });
+            if (parentNode.className = "m-hot-brands") {
                 $(parentNode).find('a').each(function (index, current) {
                     $(current).attr('data-action', 'car');
                     $(current).click(function () {

@@ -171,16 +171,6 @@ namespace BitAuto.CarChannel.BLL
         }
 
         /// <summary>
-        /// 取得当前主品牌的在销与待销子品牌车标信息
-        /// </summary>
-        /// <param name="nCBID"></param>
-        /// <returns></returns>
-        public DataSet GetCarSerialPhotoListByBSID(int nBSID)
-        {
-            return CarBrandDal.GetCarSerialPhotoListByBSID(nBSID, false);
-        }
-
-        /// <summary>
         /// 根据品牌ID 取旗下子品牌
         /// </summary>
         /// <param name="bcID">品牌ID</param>
@@ -219,7 +209,19 @@ namespace BitAuto.CarChannel.BLL
         /// <returns></returns>
         public DataSet GetCarSerialPhotoListByBSID(int nBSID, bool isAll)
         {
-            return CarBrandDal.GetCarSerialPhotoListByBSID(nBSID, isAll);
+            string cacheKey = "Car_SerialBLL_GetCarSerialPhotoListByBSID_" + nBSID + "_" + isAll.ToString();
+            object carBrandInfo = null;
+            CacheManager.GetCachedData(cacheKey, out carBrandInfo);
+            if (carBrandInfo != null)
+            {
+                var carBrandList = CarBrandDal.GetCarSerialPhotoListByBSID(nBSID, isAll);
+                CacheManager.InsertCache(cacheKey, carBrandList, WebConfig.CachedDuration);
+                return carBrandList;
+            }
+            else
+            {
+                return (DataSet)carBrandInfo;
+            }
         }
 
         /// <summary>

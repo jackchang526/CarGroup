@@ -129,13 +129,21 @@
                 </ul>
             </div>
             <div class="m-hot-brands">
-                <ins id="div_60f12da8-7643-4414-a939-780a8e12ece0" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="60f12da8-7643-4414-a939-780a8e12ece0">
-                </ins>
+                <ul>
+                    <ins id="div_19864" type="ad_play_id"></ins>
+                    <ins id="div_19863" type="ad_play_id"></ins>
+                    <ins id="div_19862" type="ad_play_id"></ins>
+                    <ins id="div_19861" type="ad_play_id"></ins>
+                    <ins id="div_19860" type="ad_play_id"></ins>
+                </ul>
                 <div class="clear"></div>
             </div>
             <div class="m-hot-car">
-                <ins id="div_8f582dc7-7250-453a-b8f7-fcc9bcc2df56" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="8f582dc7-7250-453a-b8f7-fcc9bcc2df56">
-                </ins>
+                <ul>
+                    <ins id="div_19867" type="ad_play_id"></ins>
+                    <ins id="div_19866" type="ad_play_id"></ins>
+                    <ins id="div_19865" type="ad_play_id"></ins>
+                </ul>
                 <div class="clear"></div>
             </div>
             <!--热门推荐END-->
@@ -224,9 +232,10 @@
             var parentNode = document.getElementById(objId).parentNode;
             $(parentNode).imgSucceed({
                 end: function () {  $body.trigger('note'); }
-            }); 
-            if (parentNode.className = "m-hot-brands") {
-                $(parentNode).find('a').each(function (index, current) {
+            });
+            var insNode = $("#" + objId);
+            if (insNode.parents(".m-hot-brands").length > 0) {
+                insNode.find('a').each(function (index, current) {
                     $(current).attr('data-action', 'car');
                     $(current).click(function () {
                         $body.trigger('openRight', this);

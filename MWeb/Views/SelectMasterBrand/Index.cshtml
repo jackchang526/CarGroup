@@ -227,7 +227,7 @@
             $(parentNode).imgSucceed({
                 end: function () {  $body.trigger('note'); }
             });
-            if (parentNode.className = "m-hot-brands") {
+            if (parentNode.className == "m-hot-brands") {
                 $(parentNode).find('a').each(function (index, current) {
                     $(current).attr('data-action', 'car');
                     $(current).click(function () {

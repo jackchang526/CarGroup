@@ -46,7 +46,6 @@
                     width: 100%;
                     height: 45px;
                     background: #F2F2F2;
-                    float: left;
                     font-family: "小米兰亭";
                     position: relative;
                 }
@@ -128,24 +127,27 @@
                     <li data-channelid="27.160.2235"><a href="http://car.m.yiche.com/xuanchegongju/?p=8-12&l=63">8-12万轿车</a></li>
                 </ul>
             </div>
-            <div class="m-hot-brands">
-                <ul>
-                    <ins id="div_19864" type="ad_play_id"></ins>
-                    <ins id="div_19863" type="ad_play_id"></ins>
-                    <ins id="div_19862" type="ad_play_id"></ins>
-                    <ins id="div_19861" type="ad_play_id"></ins>
-                    <ins id="div_19860" type="ad_play_id"></ins>
-                </ul>
-                <div class="clear"></div>
-            </div>
-            <div class="m-hot-car">
-                <ul>
-                    <ins id="div_19867" type="ad_play_id"></ins>
-                    <ins id="div_19866" type="ad_play_id"></ins>
-                    <ins id="div_19865" type="ad_play_id"></ins>
-                </ul>
-                <div class="clear"></div>
-            </div>
+            @if (WTmc_id != "mxmllqic_qt")
+            {
+                <div class="m-hot-brands">
+                    <ul>
+                        <ins id="div_19864" type="ad_play_id"></ins>
+                        <ins id="div_19863" type="ad_play_id"></ins>
+                        <ins id="div_19862" type="ad_play_id"></ins>
+                        <ins id="div_19861" type="ad_play_id"></ins>
+                        <ins id="div_19860" type="ad_play_id"></ins>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <div class="m-hot-car">
+                    <ul>
+                        <ins id="div_19867" type="ad_play_id"></ins>
+                        <ins id="div_19866" type="ad_play_id"></ins>
+                        <ins id="div_19865" type="ad_play_id"></ins>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+            }
             <!--热门推荐END-->
         </div>
         <!--新增顶部改版块END-->

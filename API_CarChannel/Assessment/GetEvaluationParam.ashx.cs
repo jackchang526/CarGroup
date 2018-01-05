@@ -1,5 +1,6 @@
 ﻿using BitAuto.CarChannel.Common;
 using BitAuto.CarChannel.Common.Cache;
+using BitAuto.CarChannel.Model;
 using BitAuto.CarChannelAPI.Web.AppCode;
 using BitAuto.CarUtils.Define;
 using BitAuto.Utils;
@@ -263,19 +264,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 }
             }
             return dic;
-        }
-
-        public class RankInfo
-        {
-            public int LevelTotal { get; set; }
-            public int LevelNum { get; set; }
-            public string LevelName { get; set; }
-            public string LevelAvg { get; set; }
-            public string LevelBestName { get; set; }
-            public string LevelBestValue { get; set; }
-            public string LevelBestUnit { get; set; }
-            public double Beat { get; set; }
-        }
+        }      
 
         public bool IsReusable
         {

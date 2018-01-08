@@ -119,6 +119,9 @@
     <Compile Include="Assessment\GetEvalInfoForAppNews.ashx.cs">
       <DependentUpon>GetEvalInfoForAppNews.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Assessment\GetEvalInfoForBg.ashx.cs">
+      <DependentUpon>GetEvalInfoForBg.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Assessment\GetEvaluationInfo.ashx.cs">
       <DependentUpon>GetEvaluationInfo.ashx</DependentUpon>
     </Compile>
@@ -156,6 +159,10 @@
     </Compile>
     <Compile Include="CarInfo\CarPriceListByCarIDAndCityID.aspx.designer.cs">
       <DependentUpon>CarPriceListByCarIDAndCityID.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\GetNewCarList.ashx.cs">
+      <DependentUpon>GetNewCarList.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CarInfo\GetAllCarInfo.ashx.cs">
       <DependentUpon>GetAllCarInfo.ashx</DependentUpon>
@@ -221,6 +228,10 @@
     </Compile>
     <Compile Include="CarInfo\GetProducerInfo.ashx.cs">
       <DependentUpon>GetProducerInfo.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\GetSalesRankingForPage.ashx.cs">
+      <DependentUpon>GetSalesRankingForPage.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CarInfo\GetSerialInfo.ashx.cs">
@@ -644,10 +655,13 @@
     <Content Include="Assessment\GetEvaluationSimpleRank.ashx" />
     <Content Include="Assessment\GetEvaluationTopRank.ashx" />
     <Content Include="Assessment\GetExistReportEvaluationId.ashx" />
+    <Content Include="CarInfo\GetSalesRankingForPage.ashx" />
+    <Content Include="CarInfo\GetNewCarList.ashx" />
     <Content Include="Assessment\GetPingCeTopPc.ashx" />
     <Content Include="Assessment\GetPingCeTopM.ashx" />
     <Content Include="Assessment\GetPingCeList.ashx" />
     <Content Include="Assessment\GetEvalInfoForAppNews.ashx" />
+    <Content Include="Assessment\GetEvalInfoForBg.ashx" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

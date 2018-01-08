@@ -1520,10 +1520,10 @@
                         <ul class="tj_list">
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_291" />CARPLAY</label></li>
+                                    <input type="checkbox" id="more_291" />Carplay</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_292" />ANDROID</label></li>
+                                    <input type="checkbox" id="more_292" />Android</label></li>
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_293" />手机无线充电</label></li>
@@ -1532,7 +1532,7 @@
                                     <input type="checkbox" id="more_294" />蓝牙</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" id="more_295" />WIFI</label></li>
+                                    <input type="checkbox" id="more_295" />Wifi</label></li>
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_296" />220V电源</label></li>

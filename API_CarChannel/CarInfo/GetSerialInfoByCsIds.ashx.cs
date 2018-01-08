@@ -37,7 +37,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
         {
             if (string.IsNullOrWhiteSpace(serialIds))
             {
-                context.Response.Write(string.IsNullOrWhiteSpace(callback) ? "{}" : string.Format("{0}({})", callback));
+                context.Response.Write(string.IsNullOrWhiteSpace(callback) ? "{}" : string.Format("{0}({{}})", callback));
             }
             else
             {

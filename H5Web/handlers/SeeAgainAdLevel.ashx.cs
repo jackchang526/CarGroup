@@ -131,7 +131,8 @@ namespace H5Web.handlers
                                     ? dicAllCsPic[otherId].Replace("_2.", "_3.")
                                     : WebConfig.DefaultCarPic));
                             sbBuilder.AppendFormat("					<span>{0}</span>", targetAdDic[position]["Title"]);
-                            sbBuilder.AppendFormat("					<p>{0}</p>",GetSerialPriceRangeByID(otherId));
+                            //改为指导价
+                            sbBuilder.AppendFormat("					<p>{0}</p>",GetSerialReferPriceByID(otherId));
                             sbBuilder.AppendFormat("				</a>");
                             sbBuilder.AppendFormat("            </li>");
                         }

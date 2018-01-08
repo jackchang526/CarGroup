@@ -430,7 +430,7 @@ namespace BitAuto.CarChannel.Common
                 sql += " where cs.isState=1 and cb.isState=1 and cmb.isState=1 and cs.CsSaleState<>'Í£Ïú' ";
                 sql += " order by cmb.spell,cmb.bs_id,cs.cs_showname ";
                 ds = BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql);
-                CacheManager.InsertCache(catchkey, ds, 60);
+                CacheManager.InsertCache(catchkey, ds, 30);
             }
             else
             {
@@ -447,15 +447,15 @@ namespace BitAuto.CarChannel.Common
             CacheManager.GetCachedData(catchkey, out allSErialInfo);
             if (allSErialInfo == null)
             {
-				string sql = " select  cs.cs_id,cs.cs_name,cs.cs_ShowName,cs.allSpell,cs.cs_Virtues,cs.cs_Defect,cs.CsSaleState,cs.cs_CarLevel,cs.CsBodyForm,cs.cs_Url,";
-				sql += " cs.CsPurpose,bat.bitautoTestURL,cb.cb_name,csi.Body_Doors,csi.Engine_Exhaust,csi.UnderPan_Num_Type,csi.Car_RepairPolicy CsRepairPolicy ";
+                string sql = " select  cs.cs_id,cs.cs_name,cs.cs_ShowName,cs.allSpell,cs.cs_Virtues,cs.cs_Defect,cs.CsSaleState,cs.cs_CarLevel,cs.CsBodyForm,cs.cs_Url,";
+                sql += " cs.CsPurpose,bat.bitautoTestURL,cb.cb_name,csi.Body_Doors,csi.Engine_Exhaust,csi.UnderPan_Num_Type,csi.Car_RepairPolicy CsRepairPolicy ";
                 sql += " from dbo.Car_Serial cs ";
                 sql += " left join dbo.Car_Serial_Item csi on cs.cs_id = csi.cs_id ";
                 sql += " left join dbo.Car_Brand cb on cs.cb_id = cb.cb_id ";
                 sql += " left join dbo.BitAutoTest bat on cs.cs_id = bat.cs_id";
                 sql += " where cs.isState=1 ";
                 ds = BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql);
-                CacheManager.InsertCache(catchkey, ds, 60);
+                CacheManager.InsertCache(catchkey, ds, 20);
             }
             else
             {
@@ -622,17 +622,17 @@ namespace BitAuto.CarChannel.Common
             if (hotCarInfoByCsID == null)
             {
                 string sql = @" SELECT car.car_id, car.car_name, car.car_ReferPrice,car.Car_YearType, ccp.PVSum AS Pv_SumNum
-								 FROM   dbo.Car_Basic car WITH ( NOLOCK )
-										LEFT JOIN Car_serial cs WITH ( NOLOCK ) ON car.cs_id = cs.cs_id
-										LEFT JOIN Car_Basic_PV ccp WITH ( NOLOCK ) ON car.Car_Id = ccp.CarId
-								 WHERE  car.isState = 1
-										AND cs.isState = 1
-										AND car.Car_SaleState <> 'Í£Ïú'
-										AND car.cs_id = @csID
-								 ORDER BY Pv_SumNum DESC ";
+            FROM   dbo.Car_Basic car WITH ( NOLOCK )
+            	LEFT JOIN Car_serial cs WITH ( NOLOCK ) ON car.cs_id = cs.cs_id
+            	LEFT JOIN Car_Basic_PV ccp WITH ( NOLOCK ) ON car.Car_Id = ccp.CarId
+            WHERE  car.isState = 1
+            	AND cs.isState = 1
+            	AND car.Car_SaleState <> 'Í£Ïú'
+            	AND car.cs_id = @csID
+            ORDER BY Pv_SumNum DESC ";
                 SqlParameter[] _param ={
-                                      new SqlParameter("@csID",SqlDbType.Int)
-                                  };
+                                         new SqlParameter("@csID",SqlDbType.Int)
+                                     };
                 _param[0].Value = csID;
                 ds = BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, _param);
                 CacheManager.InsertCache(catchkey, ds, 60);
@@ -641,7 +641,6 @@ namespace BitAuto.CarChannel.Common
             {
                 ds = (DataSet)hotCarInfoByCsID;
             }
-
             return ds;
         }
 
@@ -6247,7 +6246,7 @@ namespace BitAuto.CarChannel.Common
         /// </summary>
         /// <returns></returns>
         public DataSet GetAllSerialReferPrice()
-        {           
+        {
             string catchkey = "AllCsReferPriceRange";
             object allCsReferPriceRange = null;
             DataSet ds = new DataSet();
@@ -6264,7 +6263,7 @@ namespace BitAuto.CarChannel.Common
                     CacheManager.InsertCache(catchkey, ds, 60);
                 }
                 catch
-                { }               
+                { }
             }
             else
             {

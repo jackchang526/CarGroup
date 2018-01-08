@@ -86,34 +86,27 @@
         <!--大背景容器结束-->
     </div>
     {{else}}
-        {{if isAd===0}}
-            <div class="slide" data-anchor="slide8-1">
-                <div class="con_top_bg"></div>
-                <div class="message-failure">
-                    <img src="http://img1.bitautoimg.com/uimg/4th/img2/failure.png" />
-                    <h2>很遗憾！</h2>
-                    <p>数据抓紧完善中，敬请期待！</p>
-                </div>
+        <div class="slide" data-anchor="slide8-1">
+            <div class="con_top_bg"></div>
+            <div class="message-failure">
+                <img src="http://img1.bitautoimg.com/uimg/4th/img2/failure.png" />
+                <h2>很遗憾！</h2>
+                <p>数据抓紧完善中，敬请期待！</p>
             </div>
+        </div>
     {{/if}}
-    {{/if}}
-    {{if isAd!==0 }}
-    <div class="slide" data-anchor="slide8-2">
+     <%-- {{if isAd!==0 }}
+  <div class="slide" data-anchor="slide8-2">
         <div class="con_top_bg"></div>
-        <!--大背景容器开始-->
         <div class="big_bg">
             <div class="youhui-box">
                 <h2>更多优惠</h2>
                 <div id="youhuiadwrapper" class="youhui-ad">
                 </div>
-                <%--<a href="#" id="gouchelink">
-                    <img src="http://img1.bitauto.com/uimg/4th/img/yishu.png">
-                </a>--%>
             </div>
         </div>
-        <!--大背景容器结束-->
     </div>
-    {{/if}}
+    {{/if}}--%>
     <!--下箭头 固定-->
     <div class="arrow_down"></div>
 </script>

@@ -522,18 +522,20 @@ namespace MWeb.Controllers
                             string carPriceRange = carInfo.CarPriceRange.Trim();
                             if (carInfo.SaleState == "待销")//顾晓 确认的逻辑 （待销的车款没有价格，全部显示未上市） 2015-07-09
                             {
-                                carMinPrice = "未上市";
+                                carMinPrice = "<dt class=\"the-noprice\">未上市</dt>";
                             }
                             else if (carInfo.CarPriceRange.Trim().Length == 0)
                             {
-                                carMinPrice = "暂无报价";
+                                carMinPrice = "<dt class=\"the-noprice\">暂无报价</dt>";
                             }
                             else
                             {
-                                if (carPriceRange.IndexOf('-') != -1)
-                                    carMinPrice = carPriceRange.Substring(0, carPriceRange.IndexOf('-')); //+ "万"
-                                else
-                                    carMinPrice = carPriceRange;
+                                if (carPriceRange.IndexOf('-') != -1) { 
+                                    carMinPrice = "<dt>"+ carPriceRange.Substring(0, carPriceRange.IndexOf('-'))+ "</dt>"; //+ "万"
+                                }
+                                else { 
+                                    carMinPrice = "<dt class=\"the-noprice\">" + carPriceRange + "</dt>";
+                                }
                             }
 
                             Dictionary<int, string> dictCarParams = carBLL.GetCarAllParamByCarID(carInfo.CarID);
@@ -592,7 +594,7 @@ namespace MWeb.Controllers
                                 marketflag = string.Format("<em class=\"the-new\">{0}</em>", marketflag);
                             }
                             stringBuilder.AppendFormat("<h2>{0}{1}</h2>", carFullName, marketflag);
-                            stringBuilder.AppendFormat("<dl><dt>{0}</dt></dl>", carMinPrice);
+                            stringBuilder.AppendFormat("<dl>{0}</dl>", carMinPrice);
 
                             stringBuilder.Append("<div class=\"car-info-bottom\">");//第二行开始
 
@@ -640,10 +642,10 @@ namespace MWeb.Controllers
                             }
                             stringBuilder.Append("<ul class='" + ulStyle + "'>");
                             stringBuilder.AppendFormat(
-                                "<li><a id=\"car-compare-{0}\" href=\"#compare\" class=\"btnDuibi\" data-action=\"car\" data-id=\"{0}\" data-name=\"{1} {2}\" data-channelid=\"27.23.910\">加对比</a></li>",
+                                 "<li class='btn-duibi'><a id=\"car-compare-{0}\" href=\"#compare\"  data-action=\"car\" data-id=\"{0}\" data-name=\"{1} {2}\" data-channelid=\"27.23.910\"><span>对比</span></a></li>",
                                 carInfo.CarID, serialEntity.ShowName, carFullName);
                             stringBuilder.AppendFormat(
-                                "<li><a id = \"car_filter_id_{0}_{1}\" href='/gouchejisuanqi/?carID={0}' data-channelid=\"27.23.911\">计算器</a></li>",
+                                "<li class='btn-calculator'><a id = \"car_filter_id_{0}_{1}\" href='/gouchejisuanqi/?carID={0}' data-channelid=\"27.23.911\"><span>计算器</span></a></li>",
                                 carInfo.CarID, counter);
                             if (maiBtnFlag)
                             {
@@ -655,7 +657,7 @@ namespace MWeb.Controllers
                                 string wtQuery = new int[] { 4123, 4881, 2608, 1574, 2573, 3987, 2032, 1905, 4847, 1798 }.Contains(serialId) ? "&WT.mc_id=nbclx" : string.Empty;
 
                                 stringBuilder.AppendFormat(
-                                "<li class=\"btn-org\"><a id =\"car_filterzuidi_id_{0}_{1}\" href=\"http://price.m.yiche.com/zuidijia/nc{0}/?leads_source=m002008" + wtQuery + "\" data-channelid=\"27.23.912\">询底价</a></li>",
+                                "<li class=\"btn-xundijia btn-one-color\"><a id =\"car_filterzuidi_id_{0}_{1}\" href=\"http://price.m.yiche.com/zuidijia/nc{0}/?leads_source=m002008" + wtQuery + "\" data-channelid=\"27.23.912\">询底价</a></li>",
                                 carInfo.CarID, counter);
                             }
                             else
@@ -939,7 +941,7 @@ namespace MWeb.Controllers
             {
                 //第三张,取图解第一张
                 XmlNode firstTujieNode = GetFirstTujieImage(dtC);
-                if (firstTujieNode != null)
+                if (firstTujieNode != null && !focusImgId.ContainsKey(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value)))
                 {
                     string groupName = firstTujieNode.Attributes["GroupName"].Value;
                     string backupImg = string.Empty;

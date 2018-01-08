@@ -19,8 +19,9 @@ namespace BitAuto.CarChannel.Model
         /// <summary>
         /// 参配本地缓存
         /// carids,逗号分开
+        /// cityid
         /// </summary>
-        public static string CarParameterListKey = "car.appapi.carparameterlist_{0}_{1}";
+        public static string CarParameterListKey = "car.appapi.carparameterlist_{0}_{1}_{2}";
         /// <summary>
         /// 参配Memcached
         /// carids,逗号分开
@@ -38,5 +39,22 @@ namespace BitAuto.CarChannel.Model
         /// 2-是否保护停销
         /// </summary>
         public static string CarGroupListByserialIdAndCityId= "car.appapi.cargrouplist_{0}_{1}_{2}";
+
+        /// <summary>
+        /// 车型的国别和主品牌
+        /// </summary>
+        public static string SerialCountry = "car.appapi.serialcountry_{0}";
+
+        /// <summary>
+        /// 车型名片
+        /// 地方报价
+        /// </summary>
+        public static string SerialInfo= "car.appapi.serialinfo_{0}_{1}";
+
+        /// <summary>
+        ///浏览 车型推荐
+        /// </summary>
+        public static string SerialInfoForUser = "car.appapi.serialinfoforuser_{0}";
+      
     }
 }

@@ -1606,6 +1606,7 @@ function moveLeftForCarCompare(index) {
         for (var i = index - 1; i >= 0; i--) {
             if (!ComparePageObject.ArrCarInfo[i].IsDel) {
                 swapArray(ComparePageObject.ArrCarInfo, i, index);
+                swapArray(ComparePageObject.AllCarJson, i, index);
                 createPageForCompare(ComparePageObject.IsOperateTheSame);
                 break;
             }
@@ -1618,6 +1619,7 @@ function moveRightForCarCompare(index) {
         for (i = index * 1 + 1; i < ComparePageObject.ArrCarInfo.length; i++) {
             if (!ComparePageObject.ArrCarInfo[i].IsDel) {
                 swapArray(ComparePageObject.ArrCarInfo, i, index);
+                swapArray(ComparePageObject.AllCarJson, i, index);
                 createPageForCompare(ComparePageObject.IsOperateTheSame);
                 break;
             }

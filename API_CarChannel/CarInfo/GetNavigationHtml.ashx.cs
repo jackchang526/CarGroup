@@ -29,11 +29,12 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 		string html = " ";
 
 		public void ProcessRequest(HttpContext context)
-		{
-			context.Response.ContentType = "text/html";
+        {
+            PageHelper.SetPageCache(20);
+            context.Response.ContentType = "text/html";
 			response = context.Response;
 			request = context.Request;
-			if (!string.IsNullOrEmpty(request.QueryString["dept"]))
+            if (!string.IsNullOrEmpty(request.QueryString["dept"]))
 			{ dept = request.QueryString["dept"].ToString().Trim().ToLower(); }
 
 			switch (dept)
@@ -95,6 +96,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 					case "mcsyouhao": html = base.GetCommonNavigation("MCsYouHao", csID); break;
 					case "mcsdealer": html = base.GetCommonNavigation("MCsDealer", csID); break;
                     case "mcsvideo": html = base.GetCommonNavigation("MCsVideo", csID); break;
+                    case "csphoto": html = base.GetCommonNavigation("CsPhoto", csID); break;
                     default: ; break;
 				}
 			}
@@ -133,7 +135,8 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
 					case "carucar": html = base.GetCommonNavigation("CarUcar", carID); break;
 					case "carjiangjia": html = base.GetCommonNavigation("CarJiangJia", carID); break;
 					case "carchedai": html = base.GetCommonNavigation("CarCheDai", carID); break;
-					default: ; break;
+                    case "carphoto": html = base.GetCommonNavigation("CarPhoto", carID); break;
+                    default: ; break;
 				}
 			}
 		}

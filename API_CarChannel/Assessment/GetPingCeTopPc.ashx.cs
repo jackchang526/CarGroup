@@ -1,22 +1,16 @@
 ﻿using BitAuto.CarChannel.BLL;
 using BitAuto.CarChannel.Common;
-using BitAuto.CarChannel.Common.Cache;
 using BitAuto.CarChannel.Model;
 using BitAuto.CarChannel.Model.Assessment;
 using BitAuto.CarChannelAPI.Web.AppCode;
-using BitAuto.Utils;
-using BitAuto.Utils.Data;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.IO;
 using System.Linq;
 using System.Web;
-using System.Xml.Linq;
 
 namespace BitAuto.CarChannelAPI.Web.Assessment
 {
@@ -28,20 +22,30 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
         public void ProcessRequest(HttpContext context)
         {
             PageHelper.SetPageCache(60);
-
             context.Response.ContentType = "application/x-javascript";
             string callback = context.Request.QueryString["callback"];
-            int top = 6;//ConvertHelper.GetInteger(context.Request.QueryString["top"]);
-
             string result = "{}";
             string message = "成功";
             int status = 1;
+            try
+            {                
+                int top = 4;
+                string tempTop = context.Request.QueryString["top"];
+                int iTop = 0;
+                if (!string.IsNullOrWhiteSpace(tempTop))
+                {
+                    int.TryParse(tempTop, out iTop);
+                    if (iTop > 0)
+                    {
+                        top = iTop;
+                    }
+                }
 
-            List<object> list = new List<object>();
+                List<object> list = new List<object>();
 
-            EvaluationBll evaluationBll = new EvaluationBll();
-            IMongoQuery query = Query.EQ("Status", 1);
-            List<string> paraList = new List<string>
+                EvaluationBll evaluationBll = new EvaluationBll();
+                IMongoQuery query = Query.EQ("Status", 1);
+                List<string> paraList = new List<string>
             {
                 "CreateDateTime",
                 "CarId",
@@ -60,70 +64,77 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 "CostBaseGroup.Score",
                 "GeneralBaseGroupl.Score"
             };
-            Dictionary<string, int> sortdic = new Dictionary<string, int>
+                Dictionary<string, int> sortdic = new Dictionary<string, int>
             {
                 { "CreateDateTime", 0 }
             };
-            List<AssessmentEntity> pingCeAllList = evaluationBll.GetPingCeAllList<AssessmentEntity>(query, top, sortdic, paraList.ToArray());
-            List<int> evaluationIdList = (from item in pingCeAllList select item.EvaluationId).ToList();
-            Dictionary<int, PingCeEntity> dic = evaluationBll.GetEvaluationDate(evaluationIdList);
-            List<GroupScore> groupScoreList = evaluationBll.ReadXmlScore();//评分标准
-            foreach (AssessmentEntity item in pingCeAllList)
-            {
-                PingCeEntity entity = new PingCeEntity();
-                entity.Score = item.Score;
-                entity.EvaluationId = item.EvaluationId;
-                entity.CreateDateTime = item.CreateDateTime;
-                if (item.CommonInfoGroup != null && item.CommonInfoGroup.CommonInformationEntity != null)
+                List<AssessmentEntity> pingCeAllList = evaluationBll.GetPingCeAllList<AssessmentEntity>(query, top, sortdic, paraList.ToArray());
+                List<int> evaluationIdList = (from item in pingCeAllList select item.EvaluationId).ToList();
+                Dictionary<int, PingCeEntity> dic = evaluationBll.GetEvaluationDate(evaluationIdList);
+                List<GroupScore> groupScoreList = evaluationBll.ReadXmlScore();//评分标准
+                foreach (AssessmentEntity item in pingCeAllList)
                 {
-                    entity.ImageUrl = item.CommonInfoGroup.CommonInformationEntity.MainImageUrl;
-                    entity.Title = item.CommonInfoGroup.CommonInformationEntity.Title;
-                }
-                if (dic.ContainsKey(item.EvaluationId))
-                {
-                    PingCeEntity temp = dic[item.EvaluationId];
-                    entity.Acceleration = temp.Acceleration;
-                    entity.BrakingDistance = temp.BrakingDistance;
-                    entity.Fuel = temp.Fuel;
-                    entity.Year = temp.Year;
-                    entity.ModelDisplayName = temp.ModelDisplayName;
-                    entity.StyleName = temp.StyleName;
-                    entity.FuelType = temp.FuelType;
-                }
-                Dictionary<string, double> dicGroupScore = null;
-                entity.Finished = evaluationBll.GetFinishedStatusAndGroupScore(item, out dicGroupScore);
-                evaluationBll.SetGoodAndBad(dicGroupScore, entity, groupScoreList);
-
-                list.Add(
-                    new
+                    PingCeEntity entity = new PingCeEntity();
+                    entity.Score = item.Score;
+                    entity.EvaluationId = item.EvaluationId;
+                    entity.CreateDateTime = item.CreateDateTime;
+                    if (item.CommonInfoGroup != null && item.CommonInfoGroup.CommonInformationEntity != null)
                     {
-                        Score = entity.Score,
-                        EvaluationId = entity.EvaluationId,
-                        ImageUrl = entity.ImageUrl,
-                        Title = entity.Title,
-                        Acceleration = entity.Acceleration,
-                        BrakingDistance = entity.BrakingDistance,
-                        Fuel = entity.Fuel,
-                        Year = entity.Year,
-                        ModelDisplayName = entity.ModelDisplayName,
-                        StyleName = entity.StyleName,
-                        FuelType = entity.FuelType,
-                        GoodDiscription = entity.GoodDiscription,
-                        GoodGroup= entity.GoodGroup,
-                        BadDiscription = entity.BadDiscription,
-                        BadGroup=entity.BadGroup,
-                        Finished = entity.Finished
+                        entity.ImageUrl = item.CommonInfoGroup.CommonInformationEntity.MainImageUrl;
+                        entity.Title = item.CommonInfoGroup.CommonInformationEntity.Title;
                     }
-                    );
-            }
+                    if (dic.ContainsKey(item.EvaluationId))
+                    {
+                        PingCeEntity temp = dic[item.EvaluationId];
+                        entity.Acceleration = temp.Acceleration;
+                        entity.BrakingDistance = temp.BrakingDistance;
+                        entity.Fuel = temp.Fuel;
+                        entity.Year = temp.Year;
+                        entity.ModelDisplayName = temp.ModelDisplayName;
+                        entity.StyleName = temp.StyleName;
+                        entity.FuelType = temp.FuelType;
+                    }
+                    Dictionary<string, double> dicGroupScore = null;
+                    entity.Finished = evaluationBll.GetFinishedStatusAndGroupScore(item, out dicGroupScore);
+                    evaluationBll.SetGoodAndBad(dicGroupScore, entity, groupScoreList);
 
-            var obj = new
+                    list.Add(
+                        new
+                        {
+                            Score = entity.Score,
+                            EvaluationId = entity.EvaluationId,
+                            ImageUrl = entity.ImageUrl,
+                            Title = entity.Title,
+                            Acceleration = entity.Acceleration,
+                            BrakingDistance = entity.BrakingDistance,
+                            Fuel = entity.Fuel,
+                            Year = entity.Year,
+                            ModelDisplayName = entity.ModelDisplayName,
+                            StyleName = entity.StyleName,
+                            FuelType = entity.FuelType,
+                            GoodDiscription = entity.GoodDiscription,
+                            GoodGroup = entity.GoodGroup,
+                            BadDiscription = entity.BadDiscription,
+                            BadGroup = entity.BadGroup,
+                            Finished = entity.Finished
+                        }
+                        );
+                }
+
+                var obj = new
+                {
+                    status = status,
+                    message = message,
+                    data = list
+                };
+                result = JsonConvert.SerializeObject(obj);
+            }
+            catch (Exception ex)
             {
-                status = status,
-                message = message,
-                data = list
-            };
-            result = JsonConvert.SerializeObject(obj);
+                message = ex.Message;
+                status = 0;
+                CommonFunction.WriteLog(ex.ToString());
+            }
             context.Response.Write(!string.IsNullOrEmpty(callback) ? string.Format("{0}({1})", callback, result) : result);
         }
 

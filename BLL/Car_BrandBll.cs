@@ -66,14 +66,14 @@ namespace BitAuto.CarChannel.BLL
             return (DataSet)carBrandInfo;
         }
 
-		/// <summary>
-		/// 获取所有品牌信息
-		/// </summary>
-		/// <returns></returns>
-		public DataSet GetAllBrand()
-		{
-			return CarBrandDal.GetAllBrand();
-		}
+        /// <summary>
+        /// 获取所有品牌信息
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetAllBrand()
+        {
+            return CarBrandDal.GetAllBrand();
+        }
 
         /// <summary>
         /// 根据品牌ID获取主品牌的ID，Url全拼，名称
@@ -152,17 +152,22 @@ namespace BitAuto.CarChannel.BLL
         /// <returns></returns>
         public List<CarSerialPhotoEntity> GetCarSerialPhotoListByCBID(int nCBID, bool isAll)
         {
-            return CarBrandDal.GetCarSerialPhotoListByCBID(nCBID, isAll);
-        }
-
-        /// <summary>
-        /// 取得当前主品牌的在销与待销子品牌车标信息
-        /// </summary>
-        /// <param name="nCBID"></param>
-        /// <returns></returns>
-        public DataSet GetCarSerialPhotoListByBSID(int nBSID)
-        {
-            return CarBrandDal.GetCarSerialPhotoListByBSID(nBSID, false);
+            string cacheKey = "serial-carbrand-GetCarSerialPhotoListByCBID-" + nCBID.ToString() + "-" + isAll.ToString();
+            object carBrandInfo = null;
+            CacheManager.GetCachedData(cacheKey, out carBrandInfo);
+            if (null == carBrandInfo)
+            {
+                var carBrandList = CarBrandDal.GetCarSerialPhotoListByCBID(nCBID, isAll);
+                if (null != carBrandList && carBrandList.Count > 0)
+                {
+                    CacheManager.InsertCache(cacheKey, carBrandList, WebConfig.CachedDuration);
+                }
+                return carBrandList;
+            }
+            else
+            {
+                return (List<CarSerialPhotoEntity>)carBrandInfo;
+            }
         }
 
         /// <summary>
@@ -204,7 +209,19 @@ namespace BitAuto.CarChannel.BLL
         /// <returns></returns>
         public DataSet GetCarSerialPhotoListByBSID(int nBSID, bool isAll)
         {
-            return CarBrandDal.GetCarSerialPhotoListByBSID(nBSID, isAll);
+            string cacheKey = "Car_SerialBLL_GetCarSerialPhotoListByBSID_" + nBSID + "_" + isAll.ToString();
+            object carBrandInfo = null;
+            CacheManager.GetCachedData(cacheKey, out carBrandInfo);
+            if (carBrandInfo != null)
+            {
+                var carBrandList = CarBrandDal.GetCarSerialPhotoListByBSID(nBSID, isAll);
+                CacheManager.InsertCache(cacheKey, carBrandList, WebConfig.CachedDuration);
+                return carBrandList;
+            }
+            else
+            {
+                return (DataSet)carBrandInfo;
+            }
         }
 
         /// <summary>
@@ -256,55 +273,55 @@ namespace BitAuto.CarChannel.BLL
             return xmlDoc.SelectNodes("/NewDataSet/listNews");
         }
 
-		///// <summary>
-		///// 获取品牌的新闻
-		///// </summary>
-		///// <param name="pId"></param>
-		///// <returns></returns>
-		//public XmlNodeList GetBrandNews(int bId)
-		//{
-		//	//string xmlFile = Path.Combine(WebConfig.DataBlockPath, "Data\\BrandNews\\Brand_News_" + bId + ".xml");
-		//	string xmlFile = Path.Combine(WebConfig.DataBlockPath, string.Format(_BrandNewsPath, bId));
-		//	XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(xmlFile);
-		//	return xmlDoc.SelectNodes("/NewDataSet/listNews");
-		//}
+        ///// <summary>
+        ///// 获取品牌的新闻
+        ///// </summary>
+        ///// <param name="pId"></param>
+        ///// <returns></returns>
+        //public XmlNodeList GetBrandNews(int bId)
+        //{
+        //	//string xmlFile = Path.Combine(WebConfig.DataBlockPath, "Data\\BrandNews\\Brand_News_" + bId + ".xml");
+        //	string xmlFile = Path.Combine(WebConfig.DataBlockPath, string.Format(_BrandNewsPath, bId));
+        //	XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(xmlFile);
+        //	return xmlDoc.SelectNodes("/NewDataSet/listNews");
+        //}
 
-		///// <summary>
-		///// 获取品牌的新闻XML
-		///// </summary>
-		///// <param name="brandId"></param>
-		///// <returns></returns>
-		//public XmlDocument GetBrandNewsXml(int brandId)
-		//{
-		//	//string xmlFile = Path.Combine(WebConfig.DataBlockPath, "Data\\BrandNews\\Brand_News_" + brandId + ".xml");
-		//	string xmlFile = Path.Combine(WebConfig.DataBlockPath, string.Format(_BrandNewsPath, brandId));
-		//	XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(xmlFile);
-		//	return xmlDoc;
-		//}
+        ///// <summary>
+        ///// 获取品牌的新闻XML
+        ///// </summary>
+        ///// <param name="brandId"></param>
+        ///// <returns></returns>
+        //public XmlDocument GetBrandNewsXml(int brandId)
+        //{
+        //	//string xmlFile = Path.Combine(WebConfig.DataBlockPath, "Data\\BrandNews\\Brand_News_" + brandId + ".xml");
+        //	string xmlFile = Path.Combine(WebConfig.DataBlockPath, string.Format(_BrandNewsPath, brandId));
+        //	XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(xmlFile);
+        //	return xmlDoc;
+        //}
 
-		///// <summary>
-		///// 为主品牌页获取顶部的新闻
-		///// </summary>
-		///// <param name="masterId"></param>
-		///// <param name="topNum">顶部新闻数量</param>
-		///// <param name="count">取新闻总数</param>
-		///// <returns></returns>
-		//public List<XmlElement> GetBrandNews(int brandId, int topNum, int count)
-		//{
-		//	string xmlFile = Path.Combine(WebConfig.DataBlockPath, "Data\\BrandNews\\Brand_News_" + brandId + ".xml");
-		//	XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(xmlFile);
-		//	XmlNodeList newsList = xmlDoc.SelectNodes("/NewDataSet/listNews");
-		//	List<XmlElement> newsRet = new List<XmlElement>();
-		//	foreach (XmlElement newsNode in newsList)
-		//	{
-		//		if (newsRet.Count <= topNum)
-		//			new Car_SerialBll().AppendNewsInfo(newsNode);
-		//		newsRet.Add(newsNode);
-		//		if (newsRet.Count >= count)
-		//			break;
-		//	}
-		//	return newsRet;
-		//}
+        ///// <summary>
+        ///// 为主品牌页获取顶部的新闻
+        ///// </summary>
+        ///// <param name="masterId"></param>
+        ///// <param name="topNum">顶部新闻数量</param>
+        ///// <param name="count">取新闻总数</param>
+        ///// <returns></returns>
+        //public List<XmlElement> GetBrandNews(int brandId, int topNum, int count)
+        //{
+        //	string xmlFile = Path.Combine(WebConfig.DataBlockPath, "Data\\BrandNews\\Brand_News_" + brandId + ".xml");
+        //	XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(xmlFile);
+        //	XmlNodeList newsList = xmlDoc.SelectNodes("/NewDataSet/listNews");
+        //	List<XmlElement> newsRet = new List<XmlElement>();
+        //	foreach (XmlElement newsNode in newsList)
+        //	{
+        //		if (newsRet.Count <= topNum)
+        //			new Car_SerialBll().AppendNewsInfo(newsNode);
+        //		newsRet.Add(newsNode);
+        //		if (newsRet.Count >= count)
+        //			break;
+        //	}
+        //	return newsRet;
+        //}
 
         /// <summary>
         /// 取得当前汽车主品牌信息
@@ -641,7 +658,7 @@ namespace BitAuto.CarChannel.BLL
                                , brandSpell
                                , currentSelectType == "xinwen" ? "current" : "");
             }
-           
+
             if (currentSelectType.ToLower() == "daogou" || (newCount != null && newCount.ContainsKey(brandId) && newCount[brandId].ContainsKey("daogou") && newCount[brandId]["daogou"] > 0))
             {
                 liList.AppendFormat("<li class=\"{1}\"><a target=\"_self\" href=\"/{0}/daogou/\">导购</a></li>"
@@ -746,7 +763,7 @@ namespace BitAuto.CarChannel.BLL
             StringBuilder liList = new StringBuilder();
             liList.AppendFormat("<li class=\"{1}\"><a href=\"/{0}/wenzhang/\">全部</a><em>|</em></li>"
                                  , brandSpell
-                                , currentSelectType=="wenzhang" ? "current" : "");
+                                , currentSelectType == "wenzhang" ? "current" : "");
 
             if (currentSelectType.ToLower() == "xinwen" || (newCount != null && newCount.ContainsKey(brandId) && newCount[brandId].ContainsKey("xinwen") && newCount[brandId]["xinwen"] > 0))
             {
@@ -1029,7 +1046,7 @@ namespace BitAuto.CarChannel.BLL
             {
                 brandOtherSerial.Append("<div class=\"section-header header3\">");
                 brandOtherSerial.Append("    <div class=\"box\">");
-				brandOtherSerial.AppendFormat("<h2><a href=\"/{0}/\" target=\"_blank\">同品牌车型</a></h2>", brandEntity.Cb_AllSpell);
+                brandOtherSerial.AppendFormat("<h2><a href=\"/{0}/\" target=\"_blank\">同品牌车型</a></h2>", brandEntity.Cb_AllSpell);
                 brandOtherSerial.Append("    </div>");
                 brandOtherSerial.Append("</div>");
                 brandOtherSerial.Append("<div class=\"list-txt list-txt-s list-txt-default list-txt-style5\" data-channelid=\"2.21.834\">");

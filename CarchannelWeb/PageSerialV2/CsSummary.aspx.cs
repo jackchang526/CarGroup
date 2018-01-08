@@ -1115,6 +1115,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
         private void MakeFocusImages()
         {
             StringBuilder sb = new StringBuilder();
+            var focusImgId = new Dictionary<int, int>();
             #region 焦点图 大图 颜色
             //子品牌焦点图
             List<SerialFocusImage> imgList = _serialBLL.GetSerialFocusImageList(serialId);
@@ -1152,7 +1153,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             //焦点图不足，补幻灯页
             foreach (SerialFocusImage imgS in imgSlideList)
             {    
-                if(sourceList.Count > 4)
+                if(sourceList.Count >= 4)
                 {
                     break;
                 }
@@ -1189,6 +1190,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                                     "http://photo.bitauto.com/serial/" + serialId)
                                     : string.Empty));
                 resultCount++;
+                if (!focusImgId.ContainsKey(csImg.ImageId))
+                {
+                    focusImgId.Add(csImg.ImageId, 0);
+                }
             }
             else
             {
@@ -1204,6 +1209,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                                 : string.Empty));
                     showTujie = true;
                     resultCount++;
+                    if (!focusImgId.ContainsKey(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value)))
+                    {
+                        focusImgId.Add(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value), 0);
+                    }
                 }
                 else
                 {
@@ -1262,8 +1271,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             sb.Append("<div class=\"focus-color-box\">");
             if (smallImages.Count > 8)
             {
-                sb.Append("    <div id=\"focus_color_l\" class=\"l-btn\"></div>");
-                sb.Append("    <div id=\"focus_color_r\" class=\"r-btn a_r_hover\"></div>");
+                sb.Append("    <div id=\"focus_color_l\" class=\"l-btn noclick\"></div>");
+                sb.Append("    <div id=\"focus_color_r\" class=\"r-btn\"></div>");
             }
             sb.Append("<div class=\"focus-color-warp\">");
             //if (smallImages.Count <= 8)
@@ -1287,17 +1296,21 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 //第二张图 有图解显示图解
                 if (i == 2 && showTujie == false)
                 {                  
-                    if (firstTujieNode != null)
+                    if (firstTujieNode != null && !focusImgId.ContainsKey(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value)))
                     {
                         string groupName = firstTujieNode.Attributes["GroupName"].Value;
                         sb.AppendFormat("<div data-channelid=\"2.21.{4}\" class=\"img-link col-auto\"><a href=\"{0}\" target=\"_blank\">{3}<img src=\"{1}\" title=\"{2}\" alt=\"{2}\" width=\"140\" height=\"93\" /></a></div>",
                             firstTujieNode.Attributes["Link"].Value,
                              firstTujieNode.Attributes["ImageUrl"].Value,
                             firstTujieNode.Attributes["ImageName"].Value,
-                            string.IsNullOrEmpty(groupName) ? string.Empty : "<i>" + groupName + "</i>",
+                            string.IsNullOrEmpty(groupName) ? string.Empty : "<i>" + groupName + ">></i>",
                             channelId);
                         hasTujie = true;
                         resultCount++;
+                        if (!focusImgId.ContainsKey(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value)))
+                        {
+                            focusImgId.Add(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value), i);
+                        }
                         continue;
                     }
                 }
@@ -1307,7 +1320,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                     string imgUrl = videoList[0].ImageLink;
                     imgUrl = imgUrl.Replace("/bitauto/", "/newsimg-150-w0-1-q50/bitauto/");
                     imgUrl = imgUrl.Replace("/Video/", "/newsimg-150-w0-1-q50/Video/");
-                    sb.AppendFormat("<div data-channelid=\"2.21.{3}\" class=\"img-link img-current col-auto\"><a href=\"{0}\" target=\"_blank\"><i>视频</i><em></em><img src=\"{1}\" title=\"{2}\" alt=\"{2}\" width=\"140\" height=\"93\" /></a></div>",
+                    sb.AppendFormat("<div data-channelid=\"2.21.{3}\" class=\"img-link img-current col-auto\"><a href=\"{0}\" target=\"_blank\"><i>视频>></i><em></em><img src=\"{1}\" title=\"{2}\" alt=\"{2}\" width=\"140\" height=\"93\" /></a></div>",
                         videoList[0].ShowPlayUrl, imgUrl, videoList[0].ShortTitle,channelId);
                     resultCount++;
                     continue;
@@ -1325,9 +1338,13 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                         csImg.TargetUrl,
                         smallImgUrl,
                         csImg.ImageName,
-                        string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<i>" + csImg.GroupName + "</i>",
+                        string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<i>" + csImg.GroupName + ">></i>",
                         channelId);
                     resultCount++;
+                    if (!focusImgId.ContainsKey(csImg.ImageId))
+                    {
+                        focusImgId.Add(csImg.ImageId, i);
+                    }
                 }
             }
             #endregion

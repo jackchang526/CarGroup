@@ -43,7 +43,8 @@
     var BitautoCityForAd = bit_locationInfo.cityName;
     var carlevel = '@(Model.Serial != null && Model.Serial.Level != null ? Model.Serial.Level.Name : string.Empty)';
 </script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/carsum/funcInsCode.js"> </script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/carsum/funcInsCode.js?v=2017122711"> </script>
+    @*<script type="text/javascript" src="/js/carsum/funcInsCode.js"> </script>*@
 <!-- return block end -->
 <!-- 切换年款 start -->
 <a href="###" class="change-car-top" data-action="firstmodel" data-channelid="27.24.1325" data-id="@(Model.SerialId)">
@@ -205,7 +206,7 @@
     showNewsInsCode('05aa42cc-b6f2-49cf-af36-a781a77fc39f', '9dd45090-2a81-4f59-a362-c1648fc37c57', 'e2dec2ca-5515-4fe2-9538-78dc97d8f1c2', '8c72285e-5e1b-4cdf-bdac-a8f36346bd00');
 </script>
 <!--新加弹出层 start-->
-<div id="master_container" style="z-index: 888888;" class="brandlayer mthead">
+<div id="master_container" style="z-index: 888888;display:none;" class="brandlayer mthead">
     @Html.Partial("~/html/compareCarTemplate.cshtml")
 </div>
 <!--新加弹出层 end-->

@@ -483,10 +483,10 @@ namespace WirelessWeb.handlers
 									strTravelTax = "<em>减税</em>";
 								}
 							}
-							else if (dEx > 0 && dEx <= 1.6)
-							{
-								strTravelTax = "<em>减税</em>";
-							}
+							//else if (dEx > 0 && dEx <= 1.6)
+							//{
+							//	strTravelTax = "<em>减税</em>";
+							//}
 						}
 						stringBuilder.AppendFormat("<div class=\"gzd-box\"><div class=\"tit-box\">热度</div><span class=\"gz-sty\"><i data-pv=\"{0}\" style=\"width:{0}%\"></i></span></div>", percent);
 						stringBuilder.AppendFormat("{0}{1}", strTravelTax, stopPrd);

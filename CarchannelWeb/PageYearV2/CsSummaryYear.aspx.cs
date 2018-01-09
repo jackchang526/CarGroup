@@ -332,10 +332,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
                             taxContent= "免税";
                         }
                     }
-                    else if (dEx > 0 && dEx <= 1.6)
-                    {
-                        taxContent= "减税";
-                    }
+                    //else if (dEx > 0 && dEx <= 1.6)
+                    //{
+                    //    taxContent= "减税";
+                    //}
                 }
 			}
 			//排除包含在售年款

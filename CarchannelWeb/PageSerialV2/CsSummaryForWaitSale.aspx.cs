@@ -985,11 +985,11 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                                 // mpYouHuiDic["免税"] = true;
                             }
                         }
-                        else if (dEx > 0 && dEx <= 1.6)
-                        {
-                            strTravelTax = " <a id=\"carlist-tag-tax-" + entity.CarID + "\" target=\"_blank\" title=\"购置税75折\" href=\"http://news.bitauto.com/sum/20170105/1406774416.html\" class=\"color-block2\">减税</a>";
-                            // mpYouHuiDic["减税"] = true;
-                        }
+                        //else if (dEx > 0 && dEx <= 1.6)
+                        //{
+                        //    strTravelTax = " <a id=\"carlist-tag-tax-" + entity.CarID + "\" target=\"_blank\" title=\"购置税75折\" href=\"http://news.bitauto.com/sum/20170105/1406774416.html\" class=\"color-block2\">减税</a>";
+                        //    // mpYouHuiDic["减税"] = true;
+                        //}
                     }
 
                     //平行进口车标签
@@ -1017,9 +1017,9 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                     carListHtml.Add("    </div>");
                     carListHtml.Add("</td>");
                     // 档位个数
-                    string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" && dictCarParams[724] != "待查") ? dictCarParams[724] + "挡" : "";
-
-                    carListHtml.Add(string.Format("<td>{0}</td>", string.IsNullOrWhiteSpace(forwardGearNum + entity.TransmissionType) ? "暂无" : forwardGearNum + entity.TransmissionType));
+                    //string forwardGearNum = (dictCarParams.ContainsKey(724) && dictCarParams[724] != "无级" && dictCarParams[724] != "待查") ? dictCarParams[724] + "挡" : "";
+                    string transmissionType = _carBLL.GetCarTransmissionType(dictCarParams.ContainsKey(724) ? dictCarParams[724] : string.Empty, entity.TransmissionType);
+                    carListHtml.Add(string.Format("<td>{0}</td>", transmissionType));
                     carListHtml.Add(string.Format("<td class=\"txt-right overflow-visible\"><span>{0}</span><a data-channelid=\"2.21.852\" carid=\"{1}\" data-channelid=\"2.21.852\" class=\"car-comparetable-ico-cal\" rel=\"nofollow\" href=\"/gouchejisuanqi/?carid={1}\" target=\"_blank\"{2}></a></td>"
                         , string.IsNullOrEmpty(entity.ReferPrice) ? "暂无" : entity.ReferPrice + "万"
                         , entity.CarID

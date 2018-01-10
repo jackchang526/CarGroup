@@ -1851,7 +1851,7 @@ namespace BitAuto.CarChannel.BLL
                     // old ->非停销子品牌显示非停销车型颜色
                     // sic.ColorList = GetSerialColors(serialId, carYear, false);
                 }
-                CacheManager.InsertCache(catchKeyCard, sic, 60);
+                CacheManager.InsertCache(catchKeyCard, sic, 20);
             }
             else
             {

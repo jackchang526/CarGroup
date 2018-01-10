@@ -2129,13 +2129,13 @@ namespace BitAuto.CarChannel.BLL
                         }
                     }
                 }
-                else if (exhaust > 0 && exhaust <= 1.6)
-                {
-                    if (!dictCarTaxTag.ContainsKey(carId))
-                    {
-                        dictCarTaxTag.Add(carId, "¹ºÖÃË°75ÕÛ");
-                    }
-                }
+                //else if (exhaust > 0 && exhaust <= 1.6)
+                //{
+                //    if (!dictCarTaxTag.ContainsKey(carId))
+                //    {
+                //        dictCarTaxTag.Add(carId, "¹ºÖÃË°75ÕÛ");
+                //    }
+                //}
             }
             return dictCarTaxTag;
         }
@@ -2704,11 +2704,11 @@ namespace BitAuto.CarChannel.BLL
 
                     }
                 }
-                else if (dex > 0 && dex <= 1.6)
-                {
-                    strTravelTax = "¹ºÖÃË°75ÕÛ";
+                //else if (dex > 0 && dex <= 1.6)
+                //{
+                //    strTravelTax = "¹ºÖÃË°75ÕÛ";
 
-                }
+                //}
             }
             return strTravelTax;
         }

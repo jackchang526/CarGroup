@@ -854,10 +854,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
                                 strTravelTax = string.Format(strTravelTax, "免征购置税");
                             }
                         }
-                        else if (dEx > 0 && dEx <= 1.6)
-                        {
-                            strTravelTax = " <a target=\"_blank\" title=\"购置税75折\" href=\"http://news.bitauto.com/sum/20170105/1406774416.html\" class=\"color-block2\">减税</a>";
-                        }
+                        //else if (dEx > 0 && dEx <= 1.6)
+                        //{
+                        //    strTravelTax = " <a target=\"_blank\" title=\"购置税75折\" href=\"http://news.bitauto.com/sum/20170105/1406774416.html\" class=\"color-block2\">减税</a>";
+                        //}
                     }
                     ////易车惠
                     //string strYiCheHui = "";

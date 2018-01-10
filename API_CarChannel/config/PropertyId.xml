@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+  <Item>
+    <Name>冷刹车</Name>
+    <PropertyId>11</PropertyId>    
+  </Item>
+  <Item>
+    <Name>18米绕桩</Name>
+    <PropertyId>22</PropertyId>
+  </Item>
+  <Item>
+    <Name>110米变线</Name>
+    <PropertyId>27</PropertyId>
+  </Item>
+  <Item>
+    <Name>加速</Name>
+    <PropertyId>132</PropertyId>
+  </Item>
+  <Item>
+    <Name>转弯直径左</Name>
+    <PropertyId>213</PropertyId>
+  </Item>
+  <Item>
+    <Name>油耗</Name>
+    <PropertyId>80</PropertyId>
+  </Item>
+</Root>

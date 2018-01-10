@@ -756,6 +756,7 @@ namespace BitAuto.CarChannel.BLL
         {
             return new Car_BasicDal().GetCarAllParamOptionalByCarID(carID);
         }
+
         /// <summary>
         /// 获取车款参数值
         /// </summary>
@@ -764,17 +765,29 @@ namespace BitAuto.CarChannel.BLL
         /// <returns></returns>
         public string GetCarParamValue(int carId, int paramId)
         {
-            string result = string.Empty;
-            if (carId <= 0 || paramId <= 0) return result;
-            try
+            if (carId <= 0 || paramId <= 0)
+                return string.Empty;
+
+            string cacheKey = string.Format("Car_BasicBll_GetCarParamValue_{0}_{1}", carId, paramId);
+            object pvalue = CacheManager.GetCachedData(cacheKey);
+            if (pvalue != null)
             {
-                result = cbd.GetCarParamValue(carId, paramId);
+                return (string)pvalue;
             }
-            catch (Exception ex)
+            else
             {
-                CommonFunction.WriteLog(ex.ToString());
+                string result = string.Empty;
+                try
+                {
+                    result = cbd.GetCarParamValue(carId, paramId);
+                    CacheManager.InsertCache(cacheKey, result, WebConfig.CachedDuration);
+                }
+                catch (Exception ex)
+                {
+                    CommonFunction.WriteLog(ex.ToString());
+                }
+                return result;
             }
-            return result;
         }
         /// <summary>
         /// 根据多个车款 参数值
@@ -1527,9 +1540,9 @@ namespace BitAuto.CarChannel.BLL
             if (!string.IsNullOrEmpty(carPriceRange) && carPriceRange != "")
             {
                 string[] carPriceArray = carPriceRange.Split('-');
-                if(carPriceArray.Length > 1)
+                if (carPriceArray.Length > 1)
                 {
-                    carPriceRange = string.Concat(carPriceArray[0].Replace("万","") , "-" , carPriceArray[1]);
+                    carPriceRange = string.Concat(carPriceArray[0].Replace("万", ""), "-", carPriceArray[1]);
                 }
             }
             // 车型图片 先检查车型是否有封面，再检查子品牌封面
@@ -2116,13 +2129,13 @@ namespace BitAuto.CarChannel.BLL
                         }
                     }
                 }
-                else if (exhaust > 0 && exhaust <= 1.6)
-                {
-                    if (!dictCarTaxTag.ContainsKey(carId))
-                    {
-                        dictCarTaxTag.Add(carId, "购置税75折");
-                    }
-                }
+                //else if (exhaust > 0 && exhaust <= 1.6)
+                //{
+                //    if (!dictCarTaxTag.ContainsKey(carId))
+                //    {
+                //        dictCarTaxTag.Add(carId, "购置税75折");
+                //    }
+                //}
             }
             return dictCarTaxTag;
         }
@@ -2355,7 +2368,7 @@ namespace BitAuto.CarChannel.BLL
                         bool isColor = false;
                         try
                         {
-                            if (item.Key == "AveragePrice"&& cityid.GetValueOrDefault(0)>0)
+                            if (item.Key == "AveragePrice" && cityid.GetValueOrDefault(0) > 0)
                             {
                                 itemValue = (carPriceDic.ContainsKey(group.Key) && carPriceDic[group.Key] != null && carPriceDic[group.Key].MinReferPrice > 0 && carPriceDic[group.Key].MaxReferPrice > 0) ? carPriceDic[group.Key].MinReferPrice + "-" + carPriceDic[group.Key].MaxReferPrice + "万" : itemValue;
 
@@ -2691,11 +2704,11 @@ namespace BitAuto.CarChannel.BLL
 
                     }
                 }
-                else if (dex > 0 && dex <= 1.6)
-                {
-                    strTravelTax = "购置税75折";
+                //else if (dex > 0 && dex <= 1.6)
+                //{
+                //    strTravelTax = "购置税75折";
 
-                }
+                //}
             }
             return strTravelTax;
         }

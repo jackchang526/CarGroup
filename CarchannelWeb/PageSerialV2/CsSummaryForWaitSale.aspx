@@ -118,7 +118,7 @@
         <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
         <!--#include file="/include/special/stat/00001/bglogpostlog_Manual.shtml"-->
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryv2.min.js?v=201711241325"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryv2.min.js?v=201712312014"></script>
         <%--<script type="text/javascript" src="/jsnewv2/cssummaryv2.js?v=20161230"></script>--%>
         <script type="text/javascript">
             var serialId = <%= serialId %>;

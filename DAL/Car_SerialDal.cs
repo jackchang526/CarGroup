@@ -794,14 +794,37 @@ namespace BitAuto.CarChannel.DAL
         //    return dtTemp;
         //}
 
+
         /// <summary>
         /// 取所有子品牌颜色RGB值
         /// </summary>
+        /// <param name="csId">车系ID</param>
+        /// <param name="type">类型0:车身有色值，1：内饰，2 车身没有色值，3：车身有没有色值都取出来</param>
         /// <returns></returns>
-        public DataSet GetAllSerialColorRGB()
+        public DataSet GetAllSerialColorRGB(int csId, int type)
         {
+            if (type < 0 || type > 3)
+            {
+                return null;
+            }
             DataSet ds = new DataSet();
-            string sqlStr = " select cs_id,colorName,colorRGB from dbo.Car_SerialColor order by cs_id,colorRGB";
+            string sqlStr = " select autoID,cs_id,colorName,colorRGB,[type] from dbo.Car_SerialColor WHERE cs_id=" + csId + " AND {0} ";
+            if (type == 0)
+            {
+                sqlStr = string.Format(sqlStr, " [type]=0 ");
+            }
+            else if (type == 1)
+            {
+                sqlStr = string.Format(sqlStr, " [type]=1 ");
+            }
+            else if (type == 2)
+            {
+                sqlStr = string.Format(sqlStr, " [type]=2 ");
+            }
+            else
+            {
+                sqlStr = string.Format(sqlStr, " ([type]=2 OR [type]=0) ");
+            }
             ds = SqlHelper.ExecuteDataset(WebConfig.AutoStorageConnectionString, CommandType.Text, sqlStr);
             return ds;
         }

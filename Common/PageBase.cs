@@ -430,7 +430,7 @@ namespace BitAuto.CarChannel.Common
                 sql += " where cs.isState=1 and cb.isState=1 and cmb.isState=1 and cs.CsSaleState<>'Í£Ïú' ";
                 sql += " order by cmb.spell,cmb.bs_id,cs.cs_showname ";
                 ds = BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql);
-                CacheManager.InsertCache(catchkey, ds, 60);
+                CacheManager.InsertCache(catchkey, ds, 30);
             }
             else
             {
@@ -455,7 +455,7 @@ namespace BitAuto.CarChannel.Common
                 sql += " left join dbo.BitAutoTest bat on cs.cs_id = bat.cs_id";
                 sql += " where cs.isState=1 ";
                 ds = BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql);
-                CacheManager.InsertCache(catchkey, ds, 60);
+                CacheManager.InsertCache(catchkey, ds, 20);
             }
             else
             {

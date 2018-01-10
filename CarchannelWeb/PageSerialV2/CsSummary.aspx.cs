@@ -1024,11 +1024,11 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                                 mpYouHuiDic["免税"] = true;
                             }
                         }
-                        else if (dEx > 0 && dEx <= 1.6)
-                        {
-                            strTravelTax = " <a id=\"carlist-tag-tax-" + entity.CarID + "\" target=\"_blank\" title=\"购置税75折\" href=\"http://news.bitauto.com/sum/20170105/1406774416.html\" class=\"color-block2\">减税</a>";
-                            mpYouHuiDic["减税"] = true;
-                        }
+                        //else if (dEx > 0 && dEx <= 1.6)
+                        //{
+                        //    strTravelTax = " <a id=\"carlist-tag-tax-" + entity.CarID + "\" target=\"_blank\" title=\"购置税75折\" href=\"http://news.bitauto.com/sum/20170105/1406774416.html\" class=\"color-block2\">减税</a>";
+                        //    mpYouHuiDic["减税"] = true;
+                        //}
                     }
 
                     //平行进口车标签

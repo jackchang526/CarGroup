@@ -141,6 +141,7 @@
     <Compile Include="PingCeEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuesionInfo.cs" />
+    <Compile Include="RankInfo.cs" />
     <Compile Include="SelectCarParameters.cs" />
     <Compile Include="SerialColorEntity.cs" />
     <Compile Include="SerialColorForSummaryEntity.cs" />

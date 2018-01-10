@@ -620,10 +620,10 @@ namespace MWeb.Controllers
                                         strTravelTax = "<em>减税</em>";
                                     }
                                 }
-                                else if (dEx > 0 && dEx <= 1.6)
-                                {
-                                    strTravelTax = "<em>减税</em>";
-                                }
+                                //else if (dEx > 0 && dEx <= 1.6)
+                                //{
+                                //    strTravelTax = "<em>减税</em>";
+                                //}
                             }
                             stringBuilder.AppendFormat("<span>{0}</span>", transmissionType);
                             stringBuilder.AppendFormat("<div class=\"gzd-box\" style=\"\"><div class=\"tit-box\">热度</div><span class=\"gz-sty\"><i data-pv=\"{0}\" style=\"width:{0}%\"></i></span></div>", percent);

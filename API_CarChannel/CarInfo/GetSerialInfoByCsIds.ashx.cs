@@ -37,7 +37,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
         {
             if (string.IsNullOrWhiteSpace(serialIds))
             {
-                context.Response.Write(string.IsNullOrWhiteSpace(callback) ? "{}" : string.Format("{0}({})", callback));
+                context.Response.Write(string.IsNullOrWhiteSpace(callback) ? "{}" : string.Format("{0}({{}})", callback));
             }
             else
             {
@@ -54,20 +54,21 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                         continue;
                     }
                     string saleState = string.Empty;
-                    if (string.IsNullOrWhiteSpace(serialEntity.Price))
+                    if (string.IsNullOrWhiteSpace(serialEntity.ReferPrice))
                     {
-                        if (!string.IsNullOrEmpty(serialEntity.SaleState) && "待销" == serialEntity.SaleState)
-                        {
-                            saleState = "未上市";
-                        }
-                        else
-                        {
-                            saleState = "暂无报价";
-                        }
+                        saleState = "暂无指导价";
+                        //if (!string.IsNullOrEmpty(serialEntity.SaleState) && "待销" == serialEntity.SaleState)
+                        //{
+                        //    saleState = "未上市";
+                        //}
+                        //else
+                        //{
+                        //    saleState = "暂无报价";
+                        //}
                     }
                     else
                     {
-                        saleState = serialEntity.Price;//StringHelper.SubString(serialToSerial.ToCsPriceRange.ToString(), 14, false);
+                        saleState = serialEntity.ReferPrice;//StringHelper.SubString(serialToSerial.ToCsPriceRange.ToString(), 14, false);
                     }
 
                     sb.AppendFormat("\"{4}\":{{\"showName\":\"{0}\",\"price\":\"{1}\",\"allSpell\":\"{2}\",\"img\":\"{3}\"}},"

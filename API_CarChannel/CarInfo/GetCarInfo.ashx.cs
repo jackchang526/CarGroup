@@ -90,6 +90,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                 case "getcarlistbyyear": PageHelper.SetPageCache(60); RenderAllCarByYear(); break;
                 case "getcarinfobyid": PageHelper.SetPageCache(60); RenderCarInfoByID(); break;
                 case "carcolor": RenderCarColor(); break;
+                case "carcolorjson": RenderCarColorJson(); break;
                 case "carcolorbyyear": RenderCarColorByYear(); break;
                 case "getpingcecarparam": PageHelper.SetPageCache(60); RenderPingCeCarParam(); break;
                 case "getcarparam": RenderCarParamByID(true); break;
@@ -185,9 +186,9 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                     Car_RepairPolicy = dr["398"],
                     Perf_SeatNum = dr["665"],
                     InStat_AirCSystem = dr["470"],
-                    InStat_AirCType =dr["471"],
-                    Perf_MaxSpeed=dr["663"],
-                    InStat_ChildSeatFix= dr["495"]
+                    InStat_AirCType = dr["471"],
+                    Perf_MaxSpeed = dr["663"],
+                    InStat_ChildSeatFix = dr["495"]
                 };
 
                 result = JsonConvert.SerializeObject(obj);
@@ -979,6 +980,81 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
             CommonFunction.EchoXml(response, sb.ToString(), "CarColor");
         }
 
+        private void RenderCarColorJson()
+        {
+            int carIDInt = 0;
+            // 颜色类型0:车身颜色 1:内饰颜色
+            int colorType = 0;
+            if (request.QueryString["carid"] != null && request.QueryString["carid"].ToString() != "")
+            {
+                string caridStr = request.QueryString["carid"].ToString();
+                if (int.TryParse(caridStr, out carIDInt))
+                { }
+            }
+            if (request.QueryString["colorType"] != null && request.QueryString["colorType"].ToString() != "")
+            {
+                int tempColorType = 0;
+                if (int.TryParse(request.QueryString["colorType"].ToString(), out tempColorType))
+                {
+                    // 默认为车身颜色，当制定颜色类型时取特定类型颜色(0:车身颜色 1:内饰颜色)
+                    if (tempColorType > 0)
+                    { colorType = tempColorType; }
+                }
+            }
+            string callback = "";
+
+            if (request.QueryString["callback"] != null && request.QueryString["callback"].ToString() != "")
+            {
+                callback = request.QueryString["callback"].ToString();
+            }
+            string resultData = "";
+            string carColors = carBll.GetCarParamValue(carIDInt, colorType == 0 ? 598 : 801);
+            if (!string.IsNullOrEmpty(carColors))
+            {
+                CarEntity ce = (CarEntity)DataManager.GetDataEntity(EntityType.Car, carIDInt);
+                int csId = ce != null ? ce.SerialId : 0;
+                var serialColors = new Car_SerialBll().GetAllSerialColorRGB(csId, colorType == 0 ? 3 : 1);
+                StringBuilder sb = new StringBuilder();
+                string[] arrColor = carColors.Split(',');
+                if (arrColor.Length > 0)
+                {
+                    for (int i = 0; i < arrColor.Length; i++)
+                    {
+                        if (i != 0)
+                        {
+                            sb.Append(",");
+                        }
+                        string color = arrColor[i].Trim();
+                        if (color != "")
+                        {
+                            if (serialColors.ContainsKey(color))
+                            {
+                                sb.AppendFormat("{{\"name\":\"{0}\",\"rgb\":\"{1}\",\"id\":{2}}}", color, serialColors[color].ColorRGB, serialColors[color].AutoID);
+                            }
+                            else
+                            {
+                                sb.AppendFormat("{{\"name\":\"{0}\",\"rgb\":\"{1}\",\"id\":{2}}}", color, "", 0);
+                            }
+                        }
+                    }
+                    resultData = string.Format("{{\"carid\":{1},\"csid\":{2},\"color\":[{0}]}}", sb.ToString(), carIDInt, csId);
+                }
+                resultData = ResultUtil.SuccessResult(resultData);
+            }
+            else
+            {
+                resultData = ResultUtil.ErrorResult(0, "没有数据", "");
+            }
+            if (callback != "")
+            {
+                response.Write(ResultUtil.CallBackResult(callback, resultData));
+            }
+            else
+            {
+                response.Write(resultData);
+            }
+        }
+
         /// <summary>
         /// 根据年款获取车型颜色
         /// modified by wangzheng Dec.26.2014
@@ -1611,10 +1687,10 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                             TaxContent = "免征购置税";
                         }
                     }
-                    else if (dEx > 0 && dEx <= 1.6)
-                    {
-                        TaxContent = "购置税75折";
-                    }
+                    //else if (dEx > 0 && dEx <= 1.6)
+                    //{
+                    //    TaxContent = "购置税75折";
+                    //}
                     if (string.IsNullOrEmpty(TaxContent))
                     {
                         continue;

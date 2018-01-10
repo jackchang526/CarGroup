@@ -46,7 +46,6 @@
                     width: 100%;
                     height: 45px;
                     background: #F2F2F2;
-                    float: left;
                     font-family: "小米兰亭";
                     position: relative;
                 }
@@ -69,6 +68,9 @@
                         margin: 0 0 0 20px;
                         opacity: 0.8;
                     }
+                .new-car-content .m-tag-car {
+                    padding-bottom: 15px;
+                }
             </style>
             <div class="xm-header"><h2>车型大全</h2></div>
         }
@@ -128,16 +130,27 @@
                     <li data-channelid="27.160.2235"><a href="http://car.m.yiche.com/xuanchegongju/?p=8-12&l=63">8-12万轿车</a></li>
                 </ul>
             </div>
-            <div class="m-hot-brands">
-                <ins id="div_60f12da8-7643-4414-a939-780a8e12ece0" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="60f12da8-7643-4414-a939-780a8e12ece0">
-                </ins>
-                <div class="clear"></div>
-            </div>
-            <div class="m-hot-car">
-                <ins id="div_8f582dc7-7250-453a-b8f7-fcc9bcc2df56" data-type="ad_play" data-adplay_ip="" data-adplay_areaname="" data-adplay_cityname="" data-adplay_brandid="" data-adplay_brandname="" data-adplay_brandtype="" data-adplay_blockcode="8f582dc7-7250-453a-b8f7-fcc9bcc2df56">
-                </ins>
-                <div class="clear"></div>
-            </div>
+            @if (WTmc_id != "mxmllqic_qt")
+            {
+                <div class="m-hot-brands">
+                    <ul>
+                        <ins id="div_19864" type="ad_play_id"></ins>
+                        <ins id="div_19863" type="ad_play_id"></ins>
+                        <ins id="div_19862" type="ad_play_id"></ins>
+                        <ins id="div_19861" type="ad_play_id"></ins>
+                        <ins id="div_19860" type="ad_play_id"></ins>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <div class="m-hot-car">
+                    <ul>
+                        <ins id="div_19867" type="ad_play_id"></ins>
+                        <ins id="div_19866" type="ad_play_id"></ins>
+                        <ins id="div_19865" type="ad_play_id"></ins>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+            }
             <!--热门推荐END-->
         </div>
         <!--新增顶部改版块END-->
@@ -165,7 +178,6 @@
     <!--
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/WirelessJs/anchorv2.js?v=201209"></script> -->
     <!-- bottom search end -->
-    </div>
     <!--车型层 start-->
     @Html.Partial("~/html/selectMasterBrandTemplate.cshtml")
     <!--车型模板 end-->
@@ -225,6 +237,15 @@
             $(parentNode).imgSucceed({
                 end: function () {  $body.trigger('note'); }
             });
+            var insNode = $("#" + objId);
+            if (insNode.parents(".m-hot-brands").length > 0) {
+                insNode.find('a').each(function (index, current) {
+                    $(current).attr('data-action', 'car');
+                    $(current).click(function () {
+                        $body.trigger('openRight', this);
+                    });
+                })
+            }
         }
     </script>
     <div class="footer15">

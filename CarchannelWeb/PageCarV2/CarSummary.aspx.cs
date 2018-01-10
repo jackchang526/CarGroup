@@ -216,10 +216,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCarV2
                         TaxContent = "免征购置税";
                     }
                 }
-                else if (dEx > 0 && dEx <= 1.6)
-                {
-                    TaxContent = "购置税75折";
-                }
+                //else if (dEx > 0 && dEx <= 1.6)
+                //{
+                //    TaxContent = "购置税75折";
+                //}
                 //add by 2014.05.04 电动车参数
                 isElectrombile = dict.ContainsKey(578) && dict[578] == "纯电" ? true : false;
                 batteryCapacity = dict.ContainsKey(876) ? dict[876] : "";

@@ -332,10 +332,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
                             taxContent= "免税";
                         }
                     }
-                    else if (dEx > 0 && dEx <= 1.6)
-                    {
-                        taxContent= "减税";
-                    }
+                    //else if (dEx > 0 && dEx <= 1.6)
+                    //{
+                    //    taxContent= "减税";
+                    //}
                 }
 			}
 			//排除包含在售年款
@@ -592,10 +592,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
                                 strTravelTax = string.Format(strTravelTax, "免征购置税", "免税");
                             }
                         }
-                        else if (dEx > 0 && dEx <= 1.6)
-                        {
-                            strTravelTax = " <a target=\"_blank\" title=\"购置税75折\" href=\"http://news.bitauto.com/sum/20170105/1406774416.html\" class=\"color-block2\">减税</a>";
-                        }
+                        //else if (dEx > 0 && dEx <= 1.6)
+                        //{
+                        //    strTravelTax = " <a target=\"_blank\" title=\"购置税75折\" href=\"http://news.bitauto.com/sum/20170105/1406774416.html\" class=\"color-block2\">减税</a>";
+                        //}
                     }
                     //carListHtml.Add(string.Format("<tr id=\"car_filter_id_{0}\" class=\"{1}\">", entity.CarID, trFlag % 2 == 1 ? "" : "hover-bg-color"));
                     carListHtml.Add(string.Format("<tr id=\"car_filter_id_{0}\">", entity.CarID));

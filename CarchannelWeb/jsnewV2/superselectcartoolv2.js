@@ -444,17 +444,17 @@ var SuperSelectCarTool = {
                         SuperSelectCarTool.AddMoreCondition(conType, conStr);
                     }
                     //行李箱
-                    else if (conStr == 229 || conStr == 230) {
-                        if (conStr == 229) {
-                            SuperSelectCarTool.RemoveMoreCondition(conType, 230);
-                            SuperSelectCarTool.UpdateParameters(false, 'more_' + 230, conType);
-                        }
-                        else {
-                            SuperSelectCarTool.RemoveMoreCondition(conType, 229);
-                            SuperSelectCarTool.UpdateParameters(false, 'more_' + 229, conType);
-                        }
-                        SuperSelectCarTool.AddMoreCondition(conType, conStr);
-                    }
+                    //else if (conStr == 229 || conStr == 230) {
+                    //    if (conStr == 229) {
+                    //        SuperSelectCarTool.RemoveMoreCondition(conType, 230);
+                    //        SuperSelectCarTool.UpdateParameters(false, 'more_' + 230, conType);
+                    //    }
+                    //    else {
+                    //        SuperSelectCarTool.RemoveMoreCondition(conType, 229);
+                    //        SuperSelectCarTool.UpdateParameters(false, 'more_' + 229, conType);
+                    //    }
+                    //    SuperSelectCarTool.AddMoreCondition(conType, conStr);
+                    //}
                     else {
                         if (element.checked) {
                             SuperSelectCarTool.AddMoreCondition(conType, conStr);

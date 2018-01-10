@@ -1479,7 +1479,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             //图库接口本地化更改
             string xmlPicPath = System.IO.Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, serialId));
             // 此 Cache 将通用于图片页和车型综述页
-            dsCsPic = this.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialId.ToString(), xmlPicPath, 60);
+            dsCsPic = this.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialId.ToString(), xmlPicPath, 10);
 
             //论坛url
             baaUrl = _serialBLL.GetForumUrlBySerialId(serialId);

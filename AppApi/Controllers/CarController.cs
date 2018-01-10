@@ -206,7 +206,7 @@ namespace AppApi.Controllers
                 //图库接口本地化更改
                 string xmlPicPath = System.IO.Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, serialInfo.CsID));
                 // 此 Cache 将通用于图片页和车型综述页
-                DataSet dsCsPic = CarSerialService.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialInfo.CsID, xmlPicPath, 60);
+                DataSet dsCsPic = CarSerialService.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialInfo.CsID, xmlPicPath, 10);
                 int picCount = 0;
                 if (dsCsPic != null && dsCsPic.Tables.Count > 0 && dsCsPic.Tables.Contains("A"))
                 {

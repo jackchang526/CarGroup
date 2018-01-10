@@ -385,7 +385,7 @@ namespace BitAuto.CarChannel.BLL
                         }
                     }
                 }
-                CacheManager.InsertCache(cacheKey, dic, 60);
+                CacheManager.InsertCache(cacheKey, dic, WebConfig.CachedDuration);
             }
 
             return dic;
@@ -423,7 +423,7 @@ namespace BitAuto.CarChannel.BLL
                         }
                     }
                 }
-                CacheManager.InsertCache(cacheKey, dic, 60);
+                CacheManager.InsertCache(cacheKey, dic, WebConfig.CachedDuration);
             }
             return dic;
         }

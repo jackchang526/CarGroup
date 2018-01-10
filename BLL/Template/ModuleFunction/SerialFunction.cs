@@ -1180,7 +1180,7 @@ namespace BitAuto.CarChannel.BLL.Template.ModuleFunction
 			//图库接口本地化更改 by sk 2012.12.21
 			string xmlPicPath = System.IO.Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, se.Id));
 			// 此 Cache 将通用于图片页和车型综述页
-			DataSet dsCsPic = new PageBase().GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + se.Id, xmlPicPath, 60);
+			DataSet dsCsPic = new PageBase().GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + se.Id, xmlPicPath, 10);
 			if (dsCsPic != null && dsCsPic.Tables.Count > 0 && dsCsPic.Tables.Contains("A"))
 			{
 				// 外观 6、图解 12、官方图 11、到店实拍 0 更多link

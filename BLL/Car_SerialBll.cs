@@ -3797,7 +3797,7 @@ namespace BitAuto.CarChannel.BLL
                     string xmlUrl = System.IO.Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialStandardImagePath, csID));
                     doc.Load(xmlUrl);
                     //doc.Load(string.Format(WebConfig.SerialPhoto12ImageInterface, csID.ToString()));
-                    CacheManager.InsertCache(cacheKey, doc, 60);
+                    CacheManager.InsertCache(cacheKey, doc, WebConfig.CachedDuration);
                 }
                 catch (Exception ex)
                 { }
@@ -6066,7 +6066,7 @@ namespace BitAuto.CarChannel.BLL
                         }
                     }
                 }
-                CacheManager.InsertCache(cacheKey, dic, 60);
+                CacheManager.InsertCache(cacheKey, dic, WebConfig.CachedDuration);
             }
             return dic;
         }
@@ -8988,7 +8988,7 @@ namespace BitAuto.CarChannel.BLL
                 XmlDocument xmlDoc = new XmlDocument();
                 string photoDataPath = Path.Combine(PhotoImageConfig.SavePath, PhotoImageConfig.SerialCoverImageAndCountPath);
                 xmlDoc.Load(photoDataPath);
-                CacheManager.InsertCache(cacheKey, xmlDoc, 60);
+                CacheManager.InsertCache(cacheKey, xmlDoc, WebConfig.CachedDuration);
                 return xmlDoc;
             }
             else

@@ -159,7 +159,7 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
             {
                 var CsPhotoCount = 0;
                 string xmlPicUrl = System.IO.Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, csId));
-                DataSet dsCsPic = this.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + csId, xmlPicUrl, 60);
+                DataSet dsCsPic = this.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + csId, xmlPicUrl, 10);
                 // 子品牌分类
                 if (dsCsPic != null && dsCsPic.Tables.Count > 0 && dsCsPic.Tables.Contains("A") &&
                     dsCsPic.Tables["A"].Rows.Count > 0)

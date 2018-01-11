@@ -703,7 +703,7 @@ namespace MWeb.Controllers
 			List<string> focusImg = new List<string>();
 			List<SerialFocusImage> imgList = serialBLL.GetSerialFocusImageList(serialEntity.Id);
 			string xmlPicPath = Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, serialId));
-			DataSet dsCsPic = pageBase.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialEntity.Id, xmlPicPath, 60);
+			DataSet dsCsPic = pageBase.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialEntity.Id, xmlPicPath, 10);
 			Dictionary<int, Dictionary<int, string>> dicPicNoneWhite = pageBase.GetAllSerialPicNoneWhiteBackground(8);
 
 			if (imgList != null && imgList.Count > 0)
@@ -866,7 +866,7 @@ namespace MWeb.Controllers
             List<SerialFocusImage> imgSlideList = serialBLL.GetSerialSlideImageList(serialId);
             List<SerialFocusImage> sourceList = new List<SerialFocusImage>();
             string xmlPicPath = Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, serialId));
-            DataSet dsCsPic = pageBase.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialEntity.Id, xmlPicPath, 60);
+            DataSet dsCsPic = pageBase.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialEntity.Id, xmlPicPath, 10);
             Dictionary<int, Dictionary<int, string>> dicPicNoneWhite = pageBase.GetAllSerialPicNoneWhiteBackground();
             
             #region 初始化数据源

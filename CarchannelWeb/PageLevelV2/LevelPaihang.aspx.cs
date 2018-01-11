@@ -57,7 +57,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageLevelV2
         private void RenderLevel()
         {
             List<string> list = new List<string>();
-            string[] arr = { "微型车", "小型车", "紧凑型车", "中型车", "中大型车", "豪华车", "MPV", "SUV", "跑车", "面包车", "皮卡" };
+            string[] arr = { "微型车", "小型车", "紧凑型车", "中型车", "中大型车", "豪华车", "MPV", "SUV", "跑车", "面包车", "皮卡" , "客车" };
             for (var i = 0; i < arr.Length; i++)
             {
                 var spell = CarLevelDefine.GetLevelSpellByName(arr[i]);

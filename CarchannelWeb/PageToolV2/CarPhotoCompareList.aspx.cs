@@ -116,7 +116,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageToolV2
             foreach (int carId in carIdArray)
             {
                 //获取车款图片对比数据
-                DataSet ds = cs.GetCarPhotoDataForCompare(carId, 60);
+                DataSet ds = cs.GetCarPhotoDataForCompare(carId, 10);
                 //获取 车款 相关信息
                 this.GetPhotoCompareInfoNew(carId, ds);
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)

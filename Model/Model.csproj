@@ -143,6 +143,7 @@
     <Compile Include="QuesionInfo.cs" />
     <Compile Include="RankInfo.cs" />
     <Compile Include="SelectCarParameters.cs" />
+    <Compile Include="SelectCarResult.cs" />
     <Compile Include="SerialColorEntity.cs" />
     <Compile Include="SerialColorForSummaryEntity.cs" />
     <Compile Include="SerialCompareListEntity.cs" />

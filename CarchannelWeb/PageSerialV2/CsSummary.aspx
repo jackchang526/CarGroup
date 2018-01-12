@@ -275,7 +275,7 @@
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryv2.min.js?v=201712312358"></script>
         <%--<script type="text/javascript" src="/jsnewv2/cssummaryv2.js?v=20170171032"></script>--%>
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712281722"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201801120"></script>
         <%--<script type="text/javascript" src="/jsnewV2/getareaprice.js?v=201712110"></script>--%>
         <script type="text/javascript">
             var serialId = <%= serialId %> ,

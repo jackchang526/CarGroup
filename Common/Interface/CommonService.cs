@@ -1226,7 +1226,7 @@ namespace BitAuto.CarChannel.Common.Interface
 					if (!dict.ContainsKey(serialId))
 						dict.Add(serialId, carList);
 				}
-				CacheManager.InsertCache(cacheKey, dict, 60);
+				CacheManager.InsertCache(cacheKey, dict, WebConfig.CachedDuration);
 			}
 			catch (Exception ex)
 			{

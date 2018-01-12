@@ -1024,11 +1024,11 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                                 mpYouHuiDic["免税"] = true;
                             }
                         }
-                        else if (dEx > 0 && dEx <= 1.6)
-                        {
-                            strTravelTax = " <a id=\"carlist-tag-tax-" + entity.CarID + "\" target=\"_blank\" title=\"购置税75折\" href=\"http://news.bitauto.com/sum/20170105/1406774416.html\" class=\"color-block2\">减税</a>";
-                            mpYouHuiDic["减税"] = true;
-                        }
+                        //else if (dEx > 0 && dEx <= 1.6)
+                        //{
+                        //    strTravelTax = " <a id=\"carlist-tag-tax-" + entity.CarID + "\" target=\"_blank\" title=\"购置税75折\" href=\"http://news.bitauto.com/sum/20170105/1406774416.html\" class=\"color-block2\">减税</a>";
+                        //    mpYouHuiDic["减税"] = true;
+                        //}
                     }
 
                     //平行进口车标签
@@ -1479,7 +1479,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             //图库接口本地化更改
             string xmlPicPath = System.IO.Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, serialId));
             // 此 Cache 将通用于图片页和车型综述页
-            dsCsPic = this.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialId.ToString(), xmlPicPath, 60);
+            dsCsPic = this.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialId.ToString(), xmlPicPath, 10);
 
             //论坛url
             baaUrl = _serialBLL.GetForumUrlBySerialId(serialId);

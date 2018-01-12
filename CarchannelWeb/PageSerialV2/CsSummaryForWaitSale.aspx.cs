@@ -985,11 +985,11 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                                 // mpYouHuiDic["免税"] = true;
                             }
                         }
-                        else if (dEx > 0 && dEx <= 1.6)
-                        {
-                            strTravelTax = " <a id=\"carlist-tag-tax-" + entity.CarID + "\" target=\"_blank\" title=\"购置税75折\" href=\"http://news.bitauto.com/sum/20170105/1406774416.html\" class=\"color-block2\">减税</a>";
-                            // mpYouHuiDic["减税"] = true;
-                        }
+                        //else if (dEx > 0 && dEx <= 1.6)
+                        //{
+                        //    strTravelTax = " <a id=\"carlist-tag-tax-" + entity.CarID + "\" target=\"_blank\" title=\"购置税75折\" href=\"http://news.bitauto.com/sum/20170105/1406774416.html\" class=\"color-block2\">减税</a>";
+                        //    // mpYouHuiDic["减税"] = true;
+                        //}
                     }
 
                     //平行进口车标签
@@ -1073,6 +1073,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
         private void MakeFocusImages()
         {
             StringBuilder sb = new StringBuilder();
+            var focusImgId = new Dictionary<int, int>();
             #region 焦点图 大图 颜色
             //子品牌焦点图
             List<SerialFocusImage> imgList = _serialBLL.GetSerialFocusImageList(serialId);
@@ -1110,7 +1111,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             //焦点图不足，补幻灯页
             foreach (SerialFocusImage imgS in imgSlideList)
             {
-                if (sourceList.Count > 4)
+                if (sourceList.Count >= 4)
                 {
                     break;
                 }
@@ -1147,6 +1148,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                                     "http://photo.bitauto.com/serial/" + serialId)
                                     : string.Empty));
                 resultCount++;
+                if (!focusImgId.ContainsKey(csImg.ImageId))
+                {
+                    focusImgId.Add(csImg.ImageId, 0);
+                }
             }
             else
             {
@@ -1162,6 +1167,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                                 : string.Empty));
                     showTujie = true;
                     resultCount++;
+                    if (!focusImgId.ContainsKey(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value)))
+                    {
+                        focusImgId.Add(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value), 0);
+                    }
                 }
                 else
                 {
@@ -1245,7 +1254,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 //第二张图 有图解显示图解
                 if (i == 2 && showTujie == false)
                 {
-                    if (firstTujieNode != null)
+                    if (firstTujieNode != null && !focusImgId.ContainsKey(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value)))
                     {
                         string groupName = firstTujieNode.Attributes["GroupName"].Value;
                         sb.AppendFormat("<div data-channelid=\"2.21.{4}\" class=\"img-link col-auto\"><a href=\"{0}\" target=\"_blank\">{3}<img src=\"{1}\" title=\"{2}\" alt=\"{2}\" width=\"140\" height=\"93\" /></a></div>",
@@ -1256,6 +1265,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                             channelId);
                         hasTujie = true;
                         resultCount++;
+                        if (!focusImgId.ContainsKey(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value)))
+                        {
+                            focusImgId.Add(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value), i);
+                        }
                         continue;
                     }
                 }
@@ -1286,6 +1299,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                         string.IsNullOrEmpty(csImg.GroupName) ? string.Empty : "<i>" + csImg.GroupName + ">></i>",
                         channelId);
                     resultCount++;
+                    if (!focusImgId.ContainsKey(csImg.ImageId))
+                    {
+                        focusImgId.Add(csImg.ImageId, i);
+                    }
                 }
             }
             #endregion
@@ -1421,7 +1438,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             //图库接口本地化更改
             string xmlPicPath = System.IO.Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, serialId));
             // 此 Cache 将通用于图片页和车型综述页
-            dsCsPic = this.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialId.ToString(), xmlPicPath, 60);
+            dsCsPic = this.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialId.ToString(), xmlPicPath, 10);
 
 
             //论坛url

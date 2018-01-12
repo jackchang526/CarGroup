@@ -195,10 +195,10 @@ namespace MWeb.Controllers
 					TaxContent = "免征购置税";
 				}
 			}
-			else if (dEx > 0 && dEx <= 1.6)
-			{
-				TaxContent = "购置税75折";
-			}
+			//else if (dEx > 0 && dEx <= 1.6)
+			//{
+			//	TaxContent = "购置税75折";
+			//}
 
 			// 最大功率—功率值 气缸排列型式 汽缸数
 			string engineMaxPower = dict.ContainsKey(430) ? dict[430] + "kw " : "";

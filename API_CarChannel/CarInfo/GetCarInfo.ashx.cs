@@ -1687,10 +1687,10 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                             TaxContent = "免征购置税";
                         }
                     }
-                    else if (dEx > 0 && dEx <= 1.6)
-                    {
-                        TaxContent = "购置税75折";
-                    }
+                    //else if (dEx > 0 && dEx <= 1.6)
+                    //{
+                    //    TaxContent = "购置税75折";
+                    //}
                     if (string.IsNullOrEmpty(TaxContent))
                     {
                         continue;

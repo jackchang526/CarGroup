@@ -3727,7 +3727,7 @@ namespace BitAuto.CarChannel.Common
                 XmlDocument xmlDoc = new XmlDocument();
                 string photoDataPath = Path.Combine(PhotoImageConfig.SavePath, PhotoImageConfig.SerialCoverImageAndCountPath);
                 xmlDoc.Load(photoDataPath);
-                CacheManager.InsertCache(cacheKey, xmlDoc, 60);
+                CacheManager.InsertCache(cacheKey, xmlDoc, WebConfig.CachedDuration);
                 return xmlDoc;
             }
             else

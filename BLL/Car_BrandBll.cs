@@ -212,7 +212,7 @@ namespace BitAuto.CarChannel.BLL
             string cacheKey = "Car_SerialBLL_GetCarSerialPhotoListByBSID_" + nBSID + "_" + isAll.ToString();
             object carBrandInfo = null;
             CacheManager.GetCachedData(cacheKey, out carBrandInfo);
-            if (carBrandInfo != null)
+            if (carBrandInfo == null)
             {
                 var carBrandList = CarBrandDal.GetCarSerialPhotoListByBSID(nBSID, isAll);
                 CacheManager.InsertCache(cacheKey, carBrandList, WebConfig.CachedDuration);

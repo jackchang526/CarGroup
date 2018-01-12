@@ -7986,8 +7986,47 @@ namespace BitAuto.CarChannel.BLL
             List<XmlElement> dic = null;
             Dictionary<int, XmlElement> items = GetSeialSellRank();
             var l = items.Where(item => item.Value.Attributes["Level"].InnerText == level).ToList();
+            allCount = l.Count; 
+            if (allCount > startIndex)
+            {
+                dic = new List<XmlElement>();
+            }
+            else
+            {
+                return null;
+            }
+            l.Skip(startIndex).Take(pageSize).ToList().ForEach(item => { dic.Add(item.Value); });
+            return dic;
+        }
+        
+        /// <summary>
+        /// 新能源销量排行榜
+        /// </summary>
+        /// <param name="tab"></param>
+        /// <param name="startIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="allCount"></param>
+        /// <returns></returns>
+        public List<XmlElement> GetNewEnergySerialSellRankForPage(string tab, int startIndex, int pageSize, out int allCount)
+        {
+            List<XmlElement> dic = null;
+            Dictionary<int, XmlElement> items = GetSeialSellRank();
+            List<KeyValuePair<int, XmlElement>> l = null;
+            if (tab == "elec")
+            {
+                l = items.Where(item => item.Value.Attributes["IsElec"].InnerText != "0").ToList();
+            }
+            else if (tab == "hybrid")
+            {
+                l = items.Where(item => item.Value.Attributes["IsHybrid"].InnerText != "0").ToList();
+            }
+
+            if (l == null || l.Count <= 0)
+            {
+                allCount = 0;
+                return null;
+            }
             allCount = l.Count;
-            //int startIndex = (pageIndex - 1) * pageSize;
             if (allCount > startIndex)
             {
                 dic = new List<XmlElement>();

@@ -46,7 +46,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
         [72], [73], [74], [144], [124], [126], [128], [130], [132], [143],
         [39], [40], [41], [42], [43], [44], [45], [46], [47], [48], [49], [50],
         [51], [52], [53], [54], [55], [56], [22], [21], [23], [27], [28], [29],
-        [85], [213], [214], [215], [216], [217], [257],[258],[255],[254],[80]
+        [85], [213], [214], [215], [216], [217], [257],[258],[255],[254],[80],[283],[284] 
  FROM   ( SELECT    [PropertyId], [PropertyValue]
           FROM      [dbo].[StylePropertyValue]
           WHERE     EvaluationId = @evaluationId
@@ -62,7 +62,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                                                               [205], [206],[207], [208],[209], [210],[202], [203],[63], [64], [65],[66], [67], [68],[69], [70], [71],[72], [73], [74],
                                                               [144], [124],[126], [128],[130], [132],[143], [39],[40], [41], [42],[43], [44], [45],[46], [47], [48],[49], [50], [51],
                                                               [52], [53], [54],[55], [56], [22],[21], [23], [27],[28], [29], [85],[213], [214],[215], [216],
-                                                              [217], [257],[258],[255],[254],[80] ) ) AS T2";
+                                                              [217], [257],[258],[255],[254],[80],[283],[284] ) ) AS T2";
             SqlParameter[] _params = {
                                          new SqlParameter("@evaluationId",SqlDbType.Int),
                                          new SqlParameter("@carId",SqlDbType.Int)
@@ -225,7 +225,9 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                     BaoYangFeiYong6Nian = dr["255"],
                     KongTiaoChuFengKouShuLiang = dr["254"],
                     ShiJiCeShiYouHao = dr["80"],
-                    LevelRankInfo=GetRankInfo(carId)
+                    ShaChe70= dr["283"],
+                    ShaChe120 = dr["284"],
+                    LevelRankInfo =GetRankInfo(carId)
                 };
                 result = JsonConvert.SerializeObject(obj);
             }

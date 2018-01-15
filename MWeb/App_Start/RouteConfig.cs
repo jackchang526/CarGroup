@@ -34,6 +34,13 @@ namespace MWeb
                             defaults: new { controller = "SalesRanking", action = "Index", id = UrlParameter.Optional }
                         );
 
+            //车系排行
+            routes.MapRoute(
+                            name: "elecsalesranking",
+                            url: "elecsalesranking",
+                            defaults: new { controller = "SalesRanking", action = "Elec", id = UrlParameter.Optional }
+                        );
+
             //新车上市
             routes.MapRoute(
                             name: "newcarlisting",

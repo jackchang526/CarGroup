@@ -17,5 +17,9 @@ namespace MWeb.Controllers
             return View();
         }
 
+        //[OutputCache(Duration = 600, Location = OutputCacheLocation.Downstream)]
+        public ActionResult Elec() {
+            return View();
+        }
     }
 }

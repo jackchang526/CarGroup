@@ -65,9 +65,9 @@ namespace BitAuto.CarChannel.Model
         public string PriceRange { get; set; }
 
         /// <summary>
-        /// 快充时间
+        /// 普通充电时间
         /// </summary>
-        public string FastChargeTime { get; set; }
+        public string NormalChargeTime { get; set; }
 
         /// <summary>
         /// 续航里程

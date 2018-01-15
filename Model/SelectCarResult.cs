@@ -42,15 +42,15 @@ namespace BitAuto.CarChannel.Model
         /// <summary>
         /// 车系显示名称
         /// </summary>
-        public int ShowName { get; set; }
+        public string ShowName { get; set; }
         /// <summary>
         /// 全拼
         /// </summary>
-        public int AllSpell { get; set; }
+        public string AllSpell { get; set; }
         /// <summary>
         /// 符合条件的车款列表
         /// </summary>
-        public int CarIdList { get; set; }
+        public string CarIdList { get; set; }
         /// <summary>
         /// 符合条件的车款数量
         /// </summary>
@@ -58,10 +58,20 @@ namespace BitAuto.CarChannel.Model
         /// <summary>
         /// 白底图url
         /// </summary>
-        public int ImageUrl { get; set; }
+        public string ImageUrl { get; set; }
         /// <summary>
         /// 指导价区间
         /// </summary>
-        public int PriceRange { get; set; }
+        public string PriceRange { get; set; }
+
+        /// <summary>
+        /// 快充时间
+        /// </summary>
+        public string FastChargeTime { get; set; }
+
+        /// <summary>
+        /// 续航里程
+        /// </summary>
+        public string BatteryLife { get; set; }
     }
 }

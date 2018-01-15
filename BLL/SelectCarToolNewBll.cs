@@ -1,4 +1,5 @@
-﻿using BitAuto.CarChannel.Model;
+﻿using BitAuto.CarChannel.Common;
+using BitAuto.CarChannel.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace BitAuto.CarChannel.BLL
         public SelectCarResult GetSelectCarResult(Dictionary<string,string> param)
         {
             string paramStr = string.Empty;
+            SelectCarResult selectCarResult = null;
             if (param != null && param.Count > 0)
             {
                 foreach (KeyValuePair<string, string> kv in param)
@@ -26,8 +28,18 @@ namespace BitAuto.CarChannel.BLL
                     paramStr = string.Format("&{0}={1}");
                 }
             }
-
-            return null;
+            string url = WebConfig.SelectCarUrl;
+            if (string.IsNullOrEmpty(url))
+            {
+                return selectCarResult;
+            }
+            url = string.Concat(url, paramStr);
+            string content = CommonFunction.GetContentByUrl(url);
+            if (!string.IsNullOrEmpty(content))
+            {
+                selectCarResult = JsonHelper.Deserialize<SelectCarResult>(content);
+            }
+            return selectCarResult;
         }
     }
 }

@@ -142,6 +142,7 @@
     <Compile Include="Controllers\CarSummaryController.cs" />
     <Compile Include="Controllers\CsCompareController.cs" />
     <Compile Include="Controllers\CsSummaryController.cs" />
+    <Compile Include="Controllers\ElecController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
@@ -323,6 +324,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="js\elec\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -437,6 +439,13 @@
     <Content Include="Views\NewCar\Index.cshtml" />
     <Content Include="Views\SalesRanking\Elec.cshtml" />
     <Content Include="Views\Home\Elec.cshtml" />
+    <Content Include="Views\Elec\Index.cshtml" />
+    <Content Include="Views\Elec\SaleRank.cshtml" />
+    <Content Include="Views\Elec\PhotoList.cshtml" />
+    <Content Include="Views\Elec\Subsidy.cshtml" />
+    <Content Include="Views\Elec\ChargePile.cshtml" />
+    <Content Include="Views\Elec\SelectCar.cshtml" />
+    <Content Include="Views\Elec\SelectCarList.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

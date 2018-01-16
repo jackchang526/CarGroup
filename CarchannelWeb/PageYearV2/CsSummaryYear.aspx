@@ -238,7 +238,7 @@
 
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/serialexternalcommon.min.js?v=2016122815"></script>
-       <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712110"></script>
+       <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201801120"></script>
     <script language="javascript" type="text/javascript" defer="defer">
         GetSerialTreeAreaPriceRange(<%=serialId %>);
     	getDirectSell(<%=serialId %>,'<%=serialSpell %>',bit_locationInfo.cityId,'yc-cxzs-year-1');

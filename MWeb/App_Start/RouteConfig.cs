@@ -141,9 +141,56 @@ namespace MWeb
                url: "yagaoxuanche",
                defaults: new { controller = "YaGaoSelectCar", action = "Index", id = UrlParameter.Optional }
            );
+
+            #region 新能源频道
+            //首页
+            routes.MapRoute(
+               name: "elecindex",
+               url: "elec/",
+               defaults: new { controller = "elec", action = "Index", id = UrlParameter.Optional }
+            );
+            //销量排行
+            routes.MapRoute(
+               name: "elecsalerank",
+               url: "elec/salerank",
+               defaults: new { controller = "elec", action = "salerank", id = UrlParameter.Optional }
+            );
+            //无码大图
+            routes.MapRoute(
+               name: "elecphotolist",
+               url: "elec/photolist",
+               defaults: new { controller = "elec", action = "photolist", id = UrlParameter.Optional }
+            );
+            //补贴政策
+            routes.MapRoute(
+               name: "elecsubsidy",
+               url: "elec/subsidy",
+               defaults: new { controller = "elec", action = "subsidy", id = UrlParameter.Optional }
+            );
+            //充电桩
+            routes.MapRoute(
+               name: "elecchargepile",
+               url: "elec/chargepile",
+               defaults: new { controller = "elec", action = "chargepile", id = UrlParameter.Optional }
+            );
+            //条件选车
+            routes.MapRoute(
+               name: "elecselectcar",
+               url: "elec/selectcar",
+               defaults: new { controller = "elec", action = "selectcar", id = UrlParameter.Optional }
+            );
+            //条件选车结果页
+            routes.MapRoute(
+               name: "elecselectcarlist",
+               url: "elec/selectcarlist",
+               defaults: new { controller = "elec", action = "selectcarlist", id = UrlParameter.Optional }
+            );
+
+            #endregion
+
             //==URL rewrite 组件 
-			//品牌列表
-			routes.MapRoute(
+            //品牌列表
+            routes.MapRoute(
 			   name: "selectbrand",
 			   url: "brandlist/{allspell}",
 			   defaults: new { controller = "SelectBrand", action = "Index", id = UrlParameter.Optional },

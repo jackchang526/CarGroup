@@ -435,6 +435,8 @@
     <Content Include="Views\BaoZhiLv\Index.cshtml" />
     <Content Include="Views\SalesRanking\Index.cshtml" />
     <Content Include="Views\NewCar\Index.cshtml" />
+    <Content Include="Views\SalesRanking\Elec.cshtml" />
+    <Content Include="Views\Home\Elec.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

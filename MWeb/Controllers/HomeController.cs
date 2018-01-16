@@ -14,5 +14,15 @@ namespace MWeb.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// 新能源选车首页
+        /// </summary>
+        /// <returns></returns>
+        [OutputCache(Duration = 1800, Location = OutputCacheLocation.Downstream, VaryByParam = "*")]
+        public ActionResult Elec()
+        {
+            return View();
+        }
     }
 }

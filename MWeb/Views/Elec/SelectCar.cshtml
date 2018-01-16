@@ -1,5 +1,430 @@
 ﻿@{
-    ViewBag.Title = "SelectCar";
+    ViewBag.Title = "【汽车大全|汽车标志_汽车标志大全_热门车型大全】-手机易车网";
 }
 
-<h2>SelectCar</h2>
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>【汽车大全|汽车标志_汽车标志大全_热门车型大全】-手机易车网</title>
+    <meta name="keywords" content="汽车大全,汽车标志,车型大全,汽车标志大全" />
+    <meta name="description" content="汽车大全:手机易车网车型大全频道为您提供各种汽车品牌型号信息,包括汽车报价,汽车标志,汽车图片,汽车经销商,汽车油耗,汽车资讯,汽车点评,汽车问答,汽车论坛等等……" />
+    <!--#include file="/ushtml/0000/myiche2015_cube_xuanche_style-news-1004.shtml"-->
+    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/新能源频道/css/main.css" />
+</head>
+<body class="bg-fff">
+    @Html.Partial("~/html/TopDownloadLayer.cshtml")
+    @Html.Partial("/html/WTParams.cshtml")
+    <!-- header start -->
+    <div class="op-nav">
+        <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
+        <div class="tt-name">
+            <a href="http://m.yiche.com/" class="yiche-logo">汽车</a><h1>选车</h1>
+        </div>
+        <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
+    </div>
+    <script type="text/javascript">
+        if (typeof (WtFrom) != "undefined" && WtFrom == "mcfw99") {
+            $(".op-nav").hide();
+        }
+    </script>
+
+    <div class="op-nav-mark" style="display: none;"></div>
+    <!-- header end -->
+    <!-- 选车 start -->
+    <div class="xc-car-box">
+
+        <!--价格 start -->
+        <div class="tt-small">
+            <span>价格</span>
+        </div>
+        <div class="ruler">
+            <ul class="line" data-width="1">
+                <li></li>
+                <li><span>10</span></li>
+                <li><span>20</span></li>
+                <li><span>30</span></li>
+                <li><span>40</span></li>
+                <li><span>50</span></li>
+                <li><span>60</span></li>
+                <li><span>70</span></li>
+                <li><span>80</span></li>
+                <li><span>90</span></li>
+            </ul>
+            <div class="sliderbar" data-min="0" data-max="100">
+                <div class="line-float max-line current" data-index="100" data-bar="2">
+                    <div id="max-dot" class="dot max-dot"><span>不限</span></div>
+                </div>
+                <div class="line-float min-line current" data-index="0" data-bar="1">
+                    <div id="min-dot" class="dot min-dot"><span>0</span></div>
+                </div>
+                <div class="dot touch-dot" style="display: none;">0</div>
+            </div>
+        </div>
+        <!--价格  end-->
+        <!-- 动力类型 start  -->
+        <div class="tt-small">
+            <span>动力类型</span>
+        </div>
+        <div class="sort sort4">
+            <ul>
+                <li><a t="f_16" href="javasript:;" class="current">纯电动(EV)</a></li>
+                <li><a t="f_128" href="javasript:;">插电混合动力</a></li>
+
+            </ul>
+        </div>
+
+        <!-- 动力类型 end  -->
+        <!-- 续航里程 start  -->
+        <div class="tt-small">
+            <span>续航里程</span>
+        </div>
+        <div class="sort sort4">
+            <ul>
+                <li><a t="bl_0-100" href="javasript:;" class="current">100公里以下</a></li>
+                <li><a t="bl_100-150" href="javasript:;">100-150公里</a></li>
+                <li><a t="bl_150-200" href="javasript:;">150-200公里</a></li>
+                <li><a t="bl_200-250" href="javasript:;" class="current">200-250公里</a></li>
+                <li><a t="bl_250-300" href="javasript:;">250-300公里</a></li>
+                <li><a t="bl_300-350" href="javasript:;">300-350公里</a></li>
+                <li><a t="bl_350-400" href="javasript:;">350-400公里</a></li>
+                <li><a t="bl_400-450" href="javasript:;">400-450公里</a></li>
+                <li><a t="bl_450-500" href="javasript:;">450-500公里</a></li>
+
+            </ul>
+        </div>
+
+
+        <!-- 续航里程 end  -->
+        <!-- 充电时间 start  -->
+        <div class="tt-small">
+            <span>充电时间</span>
+        </div>
+        <div class="sort sort4">
+            <ul>
+                <li><a t="ct_0-6" href="javasript:;" class="current">0-6小时</a></li>
+                <li><a t="ct_6-8" href="javasript:;">6-8小时</a></li>
+                <li><a t="ct_8-10" href="javasript:;">8-10小时</a></li>
+                <li><a t="ct_10-12" href="javasript:;" class="current">10-12小时</a></li>
+                <li><a t="ct_12-14" href="javasript:;">12-14小时</a></li>
+                <li><a t="ct_14-16" href="javasript:;">14-16小时</a></li>
+                <li><a t="ct_16-18" href="javasript:;">16-18小时</a></li>
+                <li><a t="ct_18-20" href="javasript:;">18-20小时</a></li>
+                <li><a t="ct_20" href="javasript:;">20小时以上</a></li>
+
+            </ul>
+        </div>
+
+
+        <!-- 充电时间 end  -->
+        <!-- 国别 start  -->
+        <div class="tt-small">
+            <span>国别</span>
+        </div>
+        <div class="sort sort4">
+            <ul>
+                <li><a t="g_1" href="javasript:;" class="current">国产</a></li>
+                <li><a t="g_2" href="javasript:;">合资</a></li>
+                <li><a t="g_4" href="javasript:;">进口</a></li>
+            </ul>
+        </div>
+
+
+        <!-- 国别 end  -->
+        <!-- 车身形式 start  -->
+        <div class="tt-small">
+            <span>车身形式</span>
+        </div>
+        <div class="sort sort4">
+            <ul>
+                <li><a t="l_1,2,3,5,4,6" href="javasript:;" class="current">轿车</a></li>
+                <li><a t="l_8" href="javasript:;">SUV</a></li>
+                <li><a t="l_7" href="javasript:;">MPV</a></li>
+            </ul>
+        </div>
+
+        <br />
+        <!-- 车身形式 end  -->
+        <!-- 选车按钮 start  -->
+        <div class="btn-warp-box">
+            <a href="###" id="clearSelected" class="ljt-btn"></a>
+            <a href="###" id="selectResult" class="car-btn">有28款车型符合条件</a>
+        </div>
+        @*<div class="btn-warp-box">
+                <a href="###" class="ljt-btn ljt-current"></a>
+                <a href="###" class="car-btn">有28款车型符合条件</a>
+            </div>
+            <div class="btn-warp-box">
+                <a href="###" class="ljt-btn"></a>
+                <a href="###" class="car-btn car-current">有28款车型符合条件</a>
+            </div>*@
+
+
+        <!-- 选车按钮 end  -->
+
+    </div>
+
+    <!-- 选车 end  -->
+
+
+    <div class="footer15">
+        <!--搜索框-->
+        @Html.Partial("~/html/footersearch.cshtml")
+        <div class="breadcrumb">
+            <div class="breadcrumb-box">
+                <a href="http://m.yiche.com/">首页</a> &gt; <span>选车</span>
+            </div>
+        </div>
+        @Html.Partial("~/html/footerV3.cshtml")
+    </div>
+    <div class="float-r-box">
+        <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
+    </div>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/WirelessJsv2/CommonJs.js?v=20130606"> </script>
+    <script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars"> </script>
+    <script type="text/javascript">
+        var elecSelectCar = function () {
+            this.baseurl = "";
+            this.Search = function () {
+                // 选车
+            }
+            this.Clear = function () {
+                //
+            }
+        }
+    </script>
+
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/WirelessJsv2/model.js?v=20150907"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/WirelessJsv2/swiper.js?v=2015082816"> </script>
+    <script type="text/javascript">
+        //在“完成”事件中，需要配置一个全局变量供页面跳转
+        var _SearchUrl = "/xuanchegongju/";
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            // 应用下载  左右滑动效果
+            var mySwiperApp = new Swiper('#m-app-part-scroll', {
+                pagination: '.pagination-app',
+                loop: true,
+                grabCursor: true,
+                paginationClickable: true
+            });
+            $(document).ready(function () {
+                if ($("#m-app-part-scroll").find("li").length < 4) {
+                    $(".pagination-app").hide();
+                };
+            });
+
+            $('.footer-box').css('padding', 0);
+
+            //监听下拉收起事件
+            //var $allblock = $('.all-block');
+            //$('.more').on('click', function (ev) {
+            //    ev.preventDefault();
+            //    var $this = $(this);
+            //    if ($allblock[0].style.display == 'none') {
+            //        $allblock.slideDown(function () {
+            //            $this.html('收起<i></i>');
+            //            $this.addClass('article-pages-txt-hide').removeClass('article-pages-txt-show');
+            //        });
+
+            //    } else {
+            //        $allblock.slideUp(function () {
+            //            $this.html('更多选择条件<i></i>');
+            //            $this.addClass('article-pages-txt-show').removeClass('article-pages-txt-hide');
+            //        });
+            //    }
+            //});
+
+
+            var countSetting = 0;
+            //监听"选择配置"各a标签点击事件：  第1次点击选中，第2次点击取消选中
+            $("#xc_settings").on("click", "ul li a", function (e) {
+                var eve = e || window.event;
+                var $curSetting = $(eve.target);
+                if ($curSetting.attr("class") && $curSetting.attr("class") == "currnet") {
+                    $curSetting.removeClass("currnet");
+                    if (countSetting > 0) { countSetting -= 1; }
+                }
+                else {
+                    $curSetting.addClass("currnet");
+                    //计数加1
+                    countSetting += 1;
+                }
+                if (countSetting > 0) {
+                    $("#savesetting").removeClass("disable");
+                }
+                else {
+                    $("#savesetting").addClass("disable");
+                }
+                $(".confirm-box span em").html(countSetting);
+            });
+            //监听清空配置事件
+            $("#clearsetting").on("click", function () {
+                $("#xc_settings ul li a").each(function () {
+                    var $curA = $(this);
+                    if ($curA.attr("class") && $curA.attr("class") == "currnet") {
+                        $curA.removeClass("currnet");
+                    }
+                });
+                countSetting = 0;
+                $("#savesetting").addClass("disable");
+                $(".confirm-box span em").html(countSetting);
+            });
+
+            //监听 选择配置-“完成” 事件
+            $("#savesetting").on("click", function () {
+                var MoreCondition = [];
+                var allCheckedLi = $("#xc_settings").find("[id^='mcCheck']");
+                $(allCheckedLi).each(function (liIndex, liItem) {
+                    if ($(liItem).hasClass("currnet")) {
+                        var curCheckNo = $(liItem).attr("id").replace("mcCheck", "");
+                        MoreCondition.push(curCheckNo);
+                    }
+                });
+                var mc = MoreCondition.join('_');
+                if (mc.length > 0) {
+                    window.location.href = '/xuanchegongju/?more=' + mc;
+                }
+            });
+
+            //监听最下方搜索文本处清空文本事件
+            $(".m-btn-close").on('click', function () {
+                $("input[name='txtkeyword']").val('');
+            });
+
+            var selectElecCar = {
+                param: {
+                    p: "",  // 价格
+                    f: "",  // 动力类型
+                    bl: "",  // 续航里程
+                    ct: "",  // 充电时间
+                    g: "",  // 国别
+                    l: ""   // 车身形式
+                },
+                reqUrl:"http://select24.car.yiche.com/selectcartool/searchresult?page=1&pagesize=100&",
+                bindEvent: function () {
+                    var that = this;
+                    $(".sort ul li a ").bind("click", function () {
+
+                        if ($(this).attr("class") == "current") {
+                            $(this).attr("class", "");
+                        } else {
+                            $(this).attr("class", "current");
+                        }
+                        that.selectCar(that);
+                    })
+                },
+                BindclearSelectedCar: function () {
+                    $("#clearSelected").bind("click", function () {
+                        $(".sort ul li a ").each(function () {
+                            $(this).attr("class","");
+                        });
+                        selectElecCar.selectCar(selectElecCar);
+                    })
+                },
+                selectCar: function (that) {
+
+                    for (var p in that.param) {
+                        that.param[p] = "";
+                    }
+
+                    $(".sort ul li a ").each(function () {
+                        if ($(this).attr("class") == "current") {
+                            //
+                            var t = $(this).attr("t");
+                            var ts = t.split("_");
+                            if (ts.length > 1) {
+                                if (that.param[ts[0]].length == 0) {
+                                    that.param[ts[0]] = ts[1];
+                                } else {
+                                    that.param[ts[0]] += ("," + ts[1]);
+                                }
+                            }
+                        }
+                    });
+                    var pp = "";
+                    var idx = 0;
+                    if (that.param["f"] == "")
+                    {
+                        that.param["f"] = "16,128";
+                    }
+                    for (var p in that.param) {
+                        if (that.param[p] == "") {
+                            continue;
+                        }
+                        if (idx == 0) {
+                            pp = "";
+                            pp = p + "=" + that.param[p];
+                        } else {
+                            pp += ("&" + p + "=" + that.param[p]);
+                        }
+                        idx += 1;
+                    }
+                    if (pp == "") {
+                        $("#selectResult").text("请选择条件");
+                        $("#selectResult").addClass("car-current");
+                        $("#selectResult").attr("href", "javascript:;");
+                        return;
+                    }
+                    that.requestData(pp)
+                    console.log(pp);
+                },
+                requestData: function (reqparams) {
+                    $.ajax({
+                        url: this.reqUrl + reqparams,
+                        dataType: "jsonp",
+                        jsonpCallback: "selectElecCarJsonpCallback",
+                        cache: true,
+                        success: function (json) {
+                            console.log(json);
+                            var result = json;
+                            if (result.Count > 0) {
+                                $("#selectResult").text("共有" + result.Count + "款车型符合条件");
+                                $("#selectResult").removeClass("car-current");
+                                $("#selectResult").attr("href", "selectcarelec?" + reqparams);
+                            } else {
+                                $("#selectResult").text("共有0款车型符合条件");
+                                $("#selectResult").addClass("car-current");
+                                $("#selectResult").attr("href", "javascript:;");
+                            }
+                        },
+                        error: function (res) {
+                            $("#selectResult").text("共有0款车型符合条件");
+                            $("#selectResult").addClass("car-current");
+                            $("#selectResult").attr("href", "selectcarelec");
+                        }
+                    });
+                }
+            }
+
+
+            selectElecCar.bindEvent();
+            selectElecCar.BindclearSelectedCar();
+
+        });
+
+
+        if (typeof (bitLoadScript) == "undefined")
+            bitLoadScript = function (url, callback, charset) {
+                var s = document.createElement("script"); s.type = "text/javascript"; if (charset) s.charset = charset;
+                if (s.readyState) { s.onreadystatechange = function () { if (s.readyState == "loaded" || s.readyState == "complete") { s.onreadystatechange = null; if (callback) callback(); } }; }
+                else { s.onload = function () { if (callback) callback(); }; }
+                s.src = url; document.getElementsByTagName("head")[0].appendChild(s);
+            };
+
+        bitLoadScript('http://image.bitautoimg.com/stat/PageAreaStatistics.js', function () {
+            PageAreaStatistics.init("280,281,282,283,284,285,286,287,288,289,290,291,292");
+        }, 'utf-8');
+
+
+    </script>
+
+    <script type="text/javascript" src="http://192.168.0.10:8888/m/20160519移动站改版/新能源频道/js/scrollbarX.js"></script>
+    <script type="text/javascript" src="http://192.168.0.10:8888/m/20160519移动站改版/新能源频道/js/price.js"></script>
+</body>
+</html>

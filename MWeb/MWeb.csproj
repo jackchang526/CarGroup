@@ -255,6 +255,7 @@
     <Content Include="js\csSummaryConditionV2.js" />
     <Content Include="js\csSummaryV2.js" />
     <Content Include="js\csSummaryForFocus.js" />
+    <Content Include="js\elec\photolist.js" />
     <Content Include="js\getareaprice.js" />
     <Content Include="js\iscroll-infinite.js" />
     <Content Include="js\model.js" />
@@ -324,7 +325,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="js\elec\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

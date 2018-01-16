@@ -377,14 +377,14 @@ function calcAcquisitionTax() {
         result = 0;
         $("#gouZhiShuiDesc").text("免征购置税");
     } else {
-        if (parseFloat(exhaustforfloat) <= 1.6) {
-            var beginTime = new Date('2017/01/01 00:00:00').getTime();
-            var endTime = new Date('2017/12/31 23:59:59').getTime();
-            var currentDate = new Date().getTime();
-            if (currentDate > beginTime && currentDate < endTime) {
-                result = Math.round(acquisitionTax * 0.075);
-            }
-        }
+        //if (parseFloat(exhaustforfloat) <= 1.6) {
+        //    var beginTime = new Date('2017/01/01 00:00:00').getTime();
+        //    var endTime = new Date('2017/12/31 23:59:59').getTime();
+        //    var currentDate = new Date().getTime();
+        //    if (currentDate > beginTime && currentDate < endTime) {
+        //        result = Math.round(acquisitionTax * 0.075);
+        //    }
+        //}
         $("#gouZhiShuiDesc").text("");
     }
     SetSpanValueByBrowerType("lblAcquisitionTax", formatCurrency(result));

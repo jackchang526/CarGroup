@@ -332,16 +332,16 @@ namespace BitAuto.CarChannel.BLL
                 {
                     return ChineseRound(0);
                 }
-                else
-                {
-                    DateTime dtBegin = Convert.ToDateTime("2017-01-01 00:00:00");
-                    DateTime dtEnd = Convert.ToDateTime("2017-12-31 23:59:59");
-                    DateTime dtNow = DateTime.Now;
-                    if (DateTime.Compare(dtNow, dtBegin) > 0 && DateTime.Compare(dtNow, dtEnd) < 0)
-                    {
-                        return ChineseRound(tax*0.075);
-                    }    
-                }
+                //else
+                //{
+                //    DateTime dtBegin = Convert.ToDateTime("2017-01-01 00:00:00");
+                //    DateTime dtEnd = Convert.ToDateTime("2017-12-31 23:59:59");
+                //    DateTime dtNow = DateTime.Now;
+                //    if (DateTime.Compare(dtNow, dtBegin) > 0 && DateTime.Compare(dtNow, dtEnd) < 0)
+                //    {
+                //        return ChineseRound(tax*0.075);
+                //    }    
+                //}
             }
             return ChineseRound(tax*0.1);
         }

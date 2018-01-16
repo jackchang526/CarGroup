@@ -1597,7 +1597,7 @@
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/jquery.pagination.min.js?v=20161215"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/selectcarcommon.min.js?d=201711131107"></script>
     <%--<script type="text/javascript" src="/jsnewV2/selectcarcommon.js"></script>--%>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712110"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201801120"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/superselectcartoolv2.min.js?v=201801100926"></script>
   <%--  <script type="text/javascript" src="/jsnewV2/getareaprice.js?v=20170111243"></script>--%>
     <%--<script type="text/javascript" src="/jsnewV2/superselectcartoolv2.js"></script>--%>

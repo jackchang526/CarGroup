@@ -120,7 +120,7 @@
                                             <!--弹层 end-->
                                             <%}%>
                                             <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
-                                            <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=2017121116"></script>
+                                            <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201801120"></script>
                                             <%--<script type="text/javascript" src="/jsnewV2/getareaprice.js?v=2017121"></script>--%>
                                             <script type="text/javascript">                     
                                                 (function() {

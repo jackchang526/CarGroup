@@ -1,5 +1,212 @@
-﻿@{
-    ViewBag.Title = "PhotoList";
-}
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>@(ViewData["title"])</title>
+    <meta name="Keywords" content="@(ViewData["keyWords"])" />
+    <meta name="Description" content="@(ViewData["description"])" />
 
-<h2>PhotoList</h2>
+    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/公共控件.css" />
+    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/头部控件.css" />
+    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/底部控件.css" />
+    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/广告.css" />
+    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/焦点图.css" />
+    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/新闻列表.css" />
+    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/2015选车工具.css" />
+    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/2015车型对比.css" />
+    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/2015选车.css" />
+    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/新能源频道/css/main.css">
+    <script type="text/javascript" charset="utf-8" src="http://ip.yiche.com/iplocation/setcookie.ashx"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+    <!-- header start  -->
+    <div class="op-nav">
+        <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
+        <div class="tt-name">
+            <a href="http://m.yiche.com/" class="yiche-logo">汽车</a><h1>新能源车</h1>
+        </div>
+        <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
+    </div>
+    <!-- header end -->
+    <div class="xc-result-box">
+        <!-- 筛选 start  -->
+        <div class="sort sort4 sort-bg-white sort-pop y2015A ">
+            <ul>
+                <li class="current">
+                    <a href="###" data-action="grade-dltype">
+                        <span>动力类型</span>
+                        <i></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="###" data-action="grade-country">
+                        <span>国别</span>
+                        <i></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="###" data-action="grade-cartype">
+                        <span>车身形式</span>
+                        <i></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- 筛选 end  -->
+        <!-- 大图列表 start  -->
+        <div class="pic-car-list">
+
+        </div>
+        <!-- 大图列表 end  -->
+    </div>
+    <!--footer start-->
+    <div class="footer15">
+        <!--搜索框-->
+        @Html.Partial("~/html/footersearch.cshtml")
+        @Html.Partial("~/html/footerV3.cshtml")
+    </div>
+    <!--footer end-->
+    <!--弹出层 start-->
+    <div class="leftmask leftmask3" style="display: none;"></div>
+
+    <!--loading模板 start -->
+    <div class="template-loading" style="display: none;">
+        <div class="loading">
+            <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+            <p>正在加载...</p>
+        </div>
+    </div>
+    <!--loading模板 end -->
+    <!-- 动力类型 start  -->
+    <!-- 弹出层 start  -->
+    <div class="leftPopup grade-dltype" data-back="leftmask3" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+    <!--弹出层 end-->
+    <!--公共模板 start-->
+    <script type="text/template" id="gradeTemplate1">
+        <div class="ap">
+            <ul class="first-list rp jg-sx-sty">
+                <li class="current"><a href="GotoPage('f0')">不限</a></li>
+                <li><a href="GotoPage('f16')">纯电动</a></li>
+                <li><a href="GotoPage('f128')">插电混动</a></li>
+            </ul>
+        </div>
+    </script>
+    <!--公共模板 end-->
+    <!-- 动力类型 end  -->
+    <!-- 国别 start  -->
+    <!-- 弹出层 start  -->
+    <div class="leftPopup grade-country" data-back="leftmask3" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+    <!--弹出层 end-->
+    <!--公共模板 start-->
+    <script type="text/template" id="gradeTemplate4">
+        <div class="ap">
+            <ul class="first-list rp jg-sx-sty">
+                <li class="current"><a href="javascript:GotoPage('g0')">不限</a></li>
+                <li><a href="javascript:GotoPage('g1')">国产</a></li>
+                <li><a href="javascript:GotoPage('c2')">日系</a></li>
+                <li><a href="javascript:GotoPage('c8')">美系</a></li>
+                <li><a href="javascript:GotoPage('c484')">欧系</a></li>
+            </ul>
+        </div>
+    </script>
+    <!--公共模板 end-->
+    <!-- 国别 end  -->
+    <!-- 车身类型 start  -->
+    <!-- 弹出层 start  -->
+    <div class="leftPopup grade-cartype" data-back="leftmask3" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+    <!--弹出层 end-->
+    <!--公共模板 start-->
+    <script type="text/template" id="gradeTemplate5">
+        <div class="ap">
+            <ul class="first-list rp jg-sx-sty">
+                <li class="current"><a href="javascript:GotoPage('l0')">不限</a></li>
+                <li><a href="javascript:GotoPage('l63')">轿车</a></li>
+                <li><a href="javascript:GotoPage('l8')">SUV</a></li>
+                <li><a href="javascript:GotoPage('l7')">MPV</a></li>
+
+            </ul>
+        </div>
+    </script>
+    <!--公共模板 end-->
+    <!-- 车身类型 end  -->
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.js,carchannel/wirelessjsv2/v2/underscore.js,carchannel/wirelessjsv2/v2/model.js,carchannel/wirelessjsv2/v2/rightswipe.js?v=201712121500"></script>
+    <script type="text/javascript">
+        $(function () {
+            var $body = $('body');
+            var data = {
+            };
+            $body.trigger('publicswipe1', {
+                actionName: '[data-action=grade-dltype]',
+                ds: data,
+                templateid: '#gradeTemplate1',
+                fnEnd: function () {
+                    var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    $swipeLeft.find('a').click(function (ev) {
+                        ev.preventDefault();
+                        var $click = $(this);
+                        console.log($click.html());
+                        $back.trigger('close');
+                    })
+                }
+            });
+            //   国别
+            $body.trigger('publicswipe1', {
+                actionName: '[data-action=grade-country]',
+                ds: data,
+                templateid: '#gradeTemplate4',
+                fnEnd: function () {
+                    var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    $swipeLeft.find('a').click(function (ev) {
+                        ev.preventDefault();
+                        var $click = $(this);
+                        console.log($click.html());
+                        $back.trigger('close');
+                    })
+                }
+            });
+            //   车身类型
+            $body.trigger('publicswipe1', {
+                actionName: '[data-action=grade-cartype]',
+                ds: data,
+                templateid: '#gradeTemplate5',
+                fnEnd: function () {
+                    var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    $swipeLeft.find('a').click(function (ev) {
+                        ev.preventDefault();
+                        var $click = $(this);
+                        console.log($click.html());
+                        $back.trigger('close');
+                    })
+                }
+            });
+        })
+    </script>
+</body>
+</html>
+

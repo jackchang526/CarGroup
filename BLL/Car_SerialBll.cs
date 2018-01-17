@@ -7959,7 +7959,8 @@ namespace BitAuto.CarChannel.BLL
         public List<XmlElement> GetSeialSellRank(string level)
         {
             Dictionary<string, List<XmlElement>> dic = null;
-            Dictionary<int, XmlElement> items = GetSeialSellRank();
+            string rankMonth = string.Empty;
+            Dictionary<int, XmlElement> items = GetSeialSellRank(out rankMonth);
             if (items != null && items.Count > 0)
             {
                 dic = new Dictionary<string, List<XmlElement>>();
@@ -7984,7 +7985,8 @@ namespace BitAuto.CarChannel.BLL
         public List<XmlElement> GetSerialSellRankForPage(string level, int startIndex, int pageSize, out int allCount)
         {
             List<XmlElement> dic = null;
-            Dictionary<int, XmlElement> items = GetSeialSellRank();
+            string rankMonth = string.Empty;
+            Dictionary<int, XmlElement> items = GetSeialSellRank(out rankMonth);
             var l = items.Where(item => item.Value.Attributes["Level"].InnerText == level).ToList();
             allCount = l.Count; 
             if (allCount > startIndex)
@@ -8010,7 +8012,8 @@ namespace BitAuto.CarChannel.BLL
         public List<XmlElement> GetNewEnergySerialSellRankForPage(string tab, int startIndex, int pageSize, out int allCount)
         {
             List<XmlElement> dic = null;
-            Dictionary<int, XmlElement> items = GetSeialSellRank();
+            string rankMonth = string.Empty;
+            Dictionary<int, XmlElement> items = GetSeialSellRank(out rankMonth);
             List<KeyValuePair<int, XmlElement>> l = null;
             if (tab == "elec")
             {
@@ -8043,15 +8046,19 @@ namespace BitAuto.CarChannel.BLL
 		/// 车系销量排行榜
 		/// </summary>
 		/// <returns></returns>
-		public Dictionary<int, XmlElement> GetSeialSellRank()
+		public Dictionary<int, XmlElement> GetSeialSellRank(out string rankMonth)
         {
             string cacheKey = "Car_SerialBll_GetSeialSellRank";
+            string cacheKeyMonth = "Car_SerialBll_GetSeialSellRank_Month";
             object obj = CacheManager.GetCachedData(cacheKey);
+            object objMonth = CacheManager.GetCachedData(cacheKeyMonth);
             //List<XmlElement> list = null;
             Dictionary<int, XmlElement> dic = null;
+            rankMonth = string.Empty;
             if (obj != null)
             {
                 dic = (Dictionary<int, XmlElement>)obj;
+                rankMonth = objMonth.ToString();
             }
             else
             {
@@ -8061,7 +8068,17 @@ namespace BitAuto.CarChannel.BLL
                     //list = new List<XmlElement>();
                     dic = new Dictionary<int, XmlElement>();
                     XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(filePath);
-                    XmlNodeList items = xmlDoc.SelectNodes("/Root/Item");
+                    if (xmlDoc == null)
+                    {
+                        rankMonth = string.Empty;
+                        return null;
+                    }
+                    XmlNode root = xmlDoc.SelectSingleNode("/Root");
+                    if (root != null)
+                    {
+                        rankMonth = root.Attributes["Month"].Value;
+                    }
+                    XmlNodeList items = root.SelectNodes("/Item");
                     if (items != null && items.Count > 0)
                     {
                         foreach (XmlElement ele in items)
@@ -8075,6 +8092,7 @@ namespace BitAuto.CarChannel.BLL
                         }
                     }
                     CacheManager.InsertCache(cacheKey, dic, 60);
+                    CacheManager.InsertCache(cacheKeyMonth, rankMonth, 60);
                 }
             }
             return dic;

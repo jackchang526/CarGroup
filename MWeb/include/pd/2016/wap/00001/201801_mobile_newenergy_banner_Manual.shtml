@@ -1,0 +1,41 @@
+﻿<div class="m-focus">
+    <div class="m-focus-box">
+        <div class="swiper-container" id="m-focus-box">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide">
+                    <ins>
+                        <a href="#">
+                            <img src="http://image.bitautoimg.com/newsimg_375x185/bitauto/focuspic/2016/5/2016512115932865.jpg">
+                            <!-- <div class="mask"></div>
+                            <div class="mask-tt"><span>魂动家族的颜值担当当的颜值担当当</span></div> -->
+                        </a>
+                    </ins>
+                </li>
+                <li class="swiper-slide">
+                    <a href="#">
+                        <img src="http://image.bitautoimg.com/newsimg_375x185/bitauto/focuspic/2016/5/2016512115932865.jpg">
+                        <!-- <div class="mask"></div>
+                           <div class="mask-tt"><span>魂动家族的颜值担当当的颜值担当当</span></div> -->
+                    </a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="#">
+                        <img src="http://image.bitautoimg.com/newsimg_375x185/bitauto/focuspic/2016/5/2016512115932865.jpg">
+                        <!-- <div class="mask"></div>
+                           <div class="mask-tt"><span>魂动家族的颜值担当当的颜值担当当</span></div> -->
+                    </a>
+                </li>
+                <li class="swiper-slide">
+                    <a href="#">
+                        <img src="http://image.bitautoimg.com/newsimg_375x185/bitauto/focuspic/2016/5/2016512115932865.jpg">
+                        <!-- <div class="mask"></div>
+                           <div class="mask-tt"><span>魂动家族的颜值担当当的颜值担当当</span></div> -->
+                        <cite class="ad-tag"></cite>
+                    </a>
+                </li>
+            </ul>
+            <div class="pagination-num"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>

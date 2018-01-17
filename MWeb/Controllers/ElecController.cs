@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BitAuto.CarChannel.BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ namespace MWeb.Controllers
     /// </summary>
     public class ElecController : Controller
     {
+        Car_SerialBll carSerialBll = new Car_SerialBll();
         //
         // GET: /Elec/
 
@@ -20,6 +22,10 @@ namespace MWeb.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
+            string rankMonth = string.Empty;
+            carSerialBll.GetSeialSellRank(out rankMonth);
+            ViewData["SaleRankYear"] = string.IsNullOrEmpty(rankMonth) ? DateTime.Now.Year.ToString() : rankMonth.Substring(0,4);
+
             return View();
         }
 

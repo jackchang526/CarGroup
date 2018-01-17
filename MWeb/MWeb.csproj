@@ -257,6 +257,7 @@
     <Content Include="js\csSummaryV2.js" />
     <Content Include="js\csSummaryForFocus.js" />
     <Content Include="js\elec\Index.js" />
+    <Content Include="js\elec\photolist.js" />
     <Content Include="js\getareaprice.js" />
     <Content Include="js\iscroll-infinite.js" />
     <Content Include="js\model.js" />

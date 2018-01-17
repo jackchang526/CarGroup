@@ -102,6 +102,7 @@
     <Content Include="include\pd\2016\h5\00001\201611_thefour_discovery_activity_Manual.shtml" />
     <Content Include="include\pd\2016\h5\00001\201611_thefour_discovery_news_Manual.shtml" />
     <Content Include="include\pd\2016\h5\00001\201611_thefour_discovery_video_Manual.shtml" />
+    <Content Include="include\pd\2016\h5\00001\201712_disiji_shouye_remenpinpai_Manual.shtml" />
     <Content Include="include\pd\2016\h5\00001\201712_disiji_shouye_yedi_Manual.shtml" />
     <Content Include="include\special\stat\00001\bglogpostlog_Manual.shtml" />
     <Content Include="inc\compareCarTemplate.html" />

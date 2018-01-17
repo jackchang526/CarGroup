@@ -1,4 +1,5 @@
-﻿@{
+﻿@using BitAuto.CarChannel.Model;
+@{
     ViewBag.Title = "Index";
 }
 
@@ -106,7 +107,6 @@
                 <dd><a href="##">100-200</a></dd>
                 <dd><a href="##">200-300</a></dd>
                 <dd><a href="##">300-400</a></dd>
-
             </dl>
         </div>
         <div class="m-hot-brands">
@@ -144,65 +144,42 @@
             </ul>
             <div class="clear"></div>
         </div>
-
     </div>
 
     <!-- 快速找车 end  -->
     <!-- 热门新能源 start  -->
-    <div class="tit-h2">
-        <h2 class="rm-sty">热门新能源</h2>
-        <ul>
-            <li><a href="##" class="current">纯电动</a></li>
-            <li><a href="###">混动</a></li>
-        </ul>
-    </div>
-    <div class="xny-box">
-        <div class="cainixihuan">
+    @{
+        string elecResultHtml = ViewData["ElecResultHtml"].ToString();
+        string mixElecResultHtml = ViewData["MixElecResultHtml"].ToString();
+    }
+    @if (!string.IsNullOrEmpty(elecResultHtml) || !string.IsNullOrEmpty(mixElecResultHtml))
+    {
+        <div class="tit-h2" id="hotelectabs">
+            <h2 class="rm-sty">热门新能源</h2>
             <ul>
-                <li>
-                    <a href="#">
-                        <img src="../images/pic_180x120.jpg">
-                        <strong>宝骏730</strong>
-                        <em>6.78-12.33万</em>
-                        <span class="bt">补贴6.6万</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="../images/pic_180x120.jpg">
-                        <strong>宝骏730</strong>
-                        <em>6.78-12.33万</em>
-                        <span class="bt">补贴6.6万</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="../images/pic_180x120.jpg">
-                        <strong>宝骏730</strong>
-                        <em>6.78-12.33万</em>
-                        <span class="bt">补贴6.6万</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="../images/pic_180x120.jpg">
-                        <strong>宝骏730</strong>
-                        <em>6.78-12.33万</em>
-                        <span class="bt">补贴6.6万</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="../images/pic_180x120.jpg">
-                        <strong>宝骏730</strong>
-                        <em>6.78-12.33万</em>
-                        <span class="bt">补贴6.6万</span>
-                    </a>
-                </li>
+                @if (!string.IsNullOrEmpty(elecResultHtml))
+                {
+                    <li data-type="elec"><a href="javascript:;" class="current">纯电动</a></li>
+                }
+                @if (!string.IsNullOrEmpty(mixElecResultHtml))
+                {
+                    <li data-type="mixelec"><a href="javascript:;">混动</a></li>
+                }
             </ul>
         </div>
-
-    </div>
+        <div class="xny-box" id="hotelecboxes">
+            <div class="cainixihuan">
+                @if (!string.IsNullOrEmpty(elecResultHtml))
+                {
+                    <ul data-type="elec">@(Html.Raw(elecResultHtml))</ul>
+                }
+                @if (!string.IsNullOrEmpty(mixElecResultHtml))
+                {
+                    <ul data-type="mixelec" style="display:@(string.IsNullOrEmpty(elecResultHtml)?"":"none")">@(Html.Raw(mixElecResultHtml))</ul>
+                }
+            </div>
+        </div>
+    }
     <!-- 热门新能源 end  -->
     <!-- 新闻列表 start  -->
     <!-- 新闻导航 start  -->
@@ -210,14 +187,11 @@
         <div class="news-nav-box-float">
             <div class="second-tags-scroll-box mgt10">
                 <div class="pd15">
-                    <div class="second-tags-scroll" id="tabS-news">
-                        <ul id="data_tab2">
-                            <li class="current"><a href="#anchor"><span>推荐</span></a></li>
-                            <li><a href="#anchor"><span>新车</span></a></li>
-                            <li><a href="javascript:;"><span>测评</span></a></li>
-                            <li><a href="javascript:;"><span>导购</span></a></li>
-                            <li><a href="javascript:;"><span>视频</span></a></li>
-                            <li><a href="javascript:;"><span>热帖</span></a></li>
+                    <div class="second-tags-scroll" id="tabs-news">
+                        <ul>
+                            <li class="current" data-type="xinwen"><a href="javascript:;"><span>新闻</span></a></li>
+                            <li data-type="daogou"><a href="javascript:;"><span>导购</span></a></li>
+                            <li data-type="pingce"><a href="javascript:;"><span>测评</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -227,157 +201,10 @@
     </div>
 
     <!-- 新闻导航 end  -->
-    <div class="news-lists">
-        <ul>
-            <li class="news-nopic" id="delItem">
-                <a href="#">
-                    <div class="con-box">
-                        <h4>新款现代索纳塔图解新款现代索纳塔图解 “长腿欧巴”即视感</h4>
-                        <em>
-                            <span class="name">周航/李乾鑫</span>
-                            <span class="name">易车</span>
-                            <span>2017-06-16</span>
-                        </em>
-                    </div>
-                </a>
-                <i class="iconfont icon-close ico-news-close"></i>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="con-box">
-                        <h4>新款现代索纳塔图解新款现代索纳塔图解新款现代索纳</h4>
-                        <em>
-                            <span class="name">周航/李乾鑫</span>
-                            <span class="name">易车</span>
-                            <span>2017-06-16</span>
-                        </em>
-                    </div>
-                    <div class="img-box">
-                        <img src="http://image.bitautoimg.com/newsimg_180x120/bitauto/2017/04/13/4b84073b-a24f-4cfe-a0e2-80a5d9da2b29.jpg">
-                    </div>
-                </a>
-                <i class="iconfont icon-close ico-news-close"></i>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="con-box">
-                        <h4>新款现代索纳塔图解新款现代索纳塔图解新款现代索纳</h4>
-                        <em>
-                            <span class="name">周航/李乾鑫</span>
-                            <span class="name">易车</span>
-                            <span>2017-06-16</span>
-                        </em>
-                    </div>
-                    <div class="img-box">
-                        <img src="http://image.bitautoimg.com/newsimg_180x120/bitauto/2017/04/13/4b84073b-a24f-4cfe-a0e2-80a5d9da2b29.jpg">
-                    </div>
-                </a>
-                <i class="iconfont icon-close ico-news-close"></i>
-            </li>
-            <li class="news-img-list">
-                <a href="#">
-                    <h4 class="h25">凌渡GTS内饰谍照曝光 北京车展首发北京车展首发</h4>
-                    <ul>
-                        <li><span><img src="http://image.bitautoimg.com/newsimg_180x120/bitauto/2017/04/13/4b84073b-a24f-4cfe-a0e2-80a5d9da2b29.jpg"></span></li>
-                        <li><span><img src="http://image.bitautoimg.com/newsimg_180x120/bitauto/2017/04/13/4b84073b-a24f-4cfe-a0e2-80a5d9da2b29.jpg"></span></li>
-                        <li><span><img src="http://image.bitautoimg.com/newsimg_180x120/bitauto/2017/04/13/4b84073b-a24f-4cfe-a0e2-80a5d9da2b29.jpg"></span></li>
-                    </ul>
-                    <em><span class="name">焦龙</span><span class="name">易车</span><span class="name">9999条评论</span></em>
-                    <!-- <em><span class="ico-look">9999</span><span class="name">焦龙</span> <i class="ico-comment">999</i></em> -->
-                </a>
-                <i class="iconfont icon-close ico-news-close"></i>
-            </li>
-            <li class="news-img-list news-img-video">
-                <a href="#">
-                    <h4 class="h25">凌渡GTS内饰谍照曝光 北京车展首发北京车展首发</h4>
-                    <p>
-                        <img src="../images/pic_video_fengmian.png">
-                        <i></i>
-                        <sub>07:23</sub>
-                    </p>
-                    <em><span class="name">焦龙</span><span class="name">易车</span><span>2017-06-16</span></em>
-                </a>
-                <i class="iconfont icon-close ico-news-close"></i>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="con-box">
-                        <h4>新款现代索纳塔图解新款现代索纳塔图解新款现代索纳</h4>
-                        <em>
-                            <span class="cBlue">口碑</span>
-                            <span class="name">易车</span>
-                            <!-- <span>2017-06-16</span> -->
-                            <!-- <i class="ico-comment">9999</i> -->
-                        </em>
-                    </div>
-                    <div class="img-box">
-                        <img src="http://image.bitautoimg.com/newsimg_180x120/bitauto/2017/04/13/4b84073b-a24f-4cfe-a0e2-80a5d9da2b29.jpg">
-                    </div>
-                </a>
-                <i class="iconfont icon-close ico-news-close"></i>
-            </li>
-            <li class="news-img-list news-img-zhibo">
-                <a href="#">
-                    <h4 class="h25">凌渡GTS内饰谍照曝光 北京车展首发北京车展首发</h4>
-                    <p>
-                        <img src="../images/pic_video_fengmian.png">
-                        <i></i>
-                        <sub>● 直播中</sub>
-                        <em></em>
-                    </p>
-                    <em><span class="name">焦龙</span><span class="name">焦龙</span><span>2017-06-16</span></em>
-                </a>
-                <i class="iconfont icon-close ico-news-close"></i>
-            </li>
-            <li class="news-img-list news-img-zhibo">
-                <a href="#">
-                    <h4 class="h25">凌渡GTS内饰谍照曝光 北京车展首发北京车展首发</h4>
-                    <p>
-                        <img src="../images/pic_video_fengmian.png">
-                        <i></i>
-                        <sub class="blue">预告</sub>
-                        <em></em>
-                    </p>
-                    <em><span class="name">焦龙</span><span class="name">焦龙</span><span>2017-06-16</span></em>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="con-box">
-                        <h4>新款现代索纳塔图解新款现代索纳塔图解新款现代索纳</h4>
-                        <em>
-                            <span class="name">周航/李乾鑫</span>
-                            <span class="name">易车</span>
-                            <span>2017-06-16</span>
-                        </em>
-                    </div>
-                    <div class="img-box">
-                        <img src="http://image.bitautoimg.com/newsimg_180x120/bitauto/2017/04/13/4b84073b-a24f-4cfe-a0e2-80a5d9da2b29.jpg">
-                    </div>
-                </a>
-                <i class="iconfont icon-close ico-news-close"></i>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="con-box">
-                        <h4>新款现代索纳塔图解新款现代索纳塔图解新款现代索纳</h4>
-                        <em>
-                            <span class="name">周航/李乾鑫</span>
-                            <span class="name">易车</span>
-                            <span>2017-06-16</span>
-                        </em>
-                    </div>
-                    <div class="img-box">
-                        <img src="http://image.bitautoimg.com/newsimg_180x120/bitauto/2017/04/13/4b84073b-a24f-4cfe-a0e2-80a5d9da2b29.jpg">
-                    </div>
-                </a>
-                <i class="iconfont icon-close ico-news-close"></i>
-            </li>
-        </ul>
+    <div class="news-lists" id="news-lists">
     </div>
-    <a href="javascript:;" class="btn-more-ico btn-add-more-ico" id="moreBtn">加载更多<i class="iconfont icon-arrowdown"></i></a>
-    <a href="#" class="btn-more-ico">查看更多<i class="iconfont icon-arrowright"></i></a>
-    <div class="load-box">
+    <a href="javascript:;" class="btn-more-ico btn-add-more-ico" id="moreBtn" style="display:none;">加载更多<i class="iconfont icon-arrowdown"></i></a>
+    <div class="load-box" id="load-box">
         <i></i><span>正在载入...</span>
     </div>
     <!-- 新闻列表 end  -->
@@ -388,16 +215,12 @@
     <script type="text/javascript" src="/js/v2/model.js"></script>
     <script type="text/javascript" src="/js/v2/rightswipe.js"></script>
     <script type="text/javascript" src="/js/v2/underscore.js"></script>
-    <script>
-        $(function () {
-            // 焦点图切换
-            var mySwiperfocus = new Swiper('#m-focus-box', {
-                loop: true,
-                autoHeight: true,
-                autoplay: 5000,
-                pagination: '.pagination-num'
-            });
-        })
+
+    <script type="text/javascript" src="/js/elec/Index.js"></script>
+
+    <script type="text/javascript">
+        GetNewsList.Init();
+        InitEvent();
     </script>
 </body>
 </html>

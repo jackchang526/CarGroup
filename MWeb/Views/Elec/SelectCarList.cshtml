@@ -1,5 +1,486 @@
 ﻿@{
-    ViewBag.Title = "SelectCarList";
+    ViewBag.Title = "【汽车大全|汽车标志_汽车标志大全_热门车型大全】-手机易车网";
 }
 
-<h2>SelectCarList</h2>
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>【汽车大全|汽车标志_汽车标志大全_热门车型大全】-手机易车网</title>
+    <meta name="keywords" content="汽车大全,汽车标志,车型大全,汽车标志大全" />
+    <meta name="description" content="汽车大全:手机易车网车型大全频道为您提供各种汽车品牌型号信息,包括汽车报价,汽车标志,汽车图片,汽车经销商,汽车油耗,汽车资讯,汽车点评,汽车问答,汽车论坛等等……" />
+    <!--#include file="/ushtml/0000/myiche2015_cube_xuanche_style-news-1004.shtml"-->
+    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/新能源频道/css/main.css" />
+</head>
+<body class="bg-fff">
+    @Html.Partial("~/html/TopDownloadLayer.cshtml")
+    @Html.Partial("/html/WTParams.cshtml")
+    <!-- header start -->
+    <div class="op-nav">
+        <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
+        <div class="tt-name">
+            <a href="http://m.yiche.com/" class="yiche-logo">汽车</a><h1>选车</h1>
+        </div>
+        <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
+    </div>
+    <script type="text/javascript">
+        if (typeof (WtFrom) != "undefined" && WtFrom == "mcfw99") {
+            $(".op-nav").hide();
+        }
+    </script>
+
+    <div class="op-nav-mark" style="display: none;"></div>
+    <!-- header end -->
+    <!-- 选车 start -->
+    <div class="xc-result-box">
+        <!-- 筛选 start  -->
+        <div class="sort sort4 sort-bg-white sort-pop y2015A ">
+            <ul>
+                <li class="current">
+                    <a href="###" data-action="grade-price">
+                        <span>15-12万</span>
+                        <i></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="###" data-action="grade-dltype">
+                        <span>动力类型</span>
+                        <i></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="###" data-action="grade-range">
+                        <span>续航里程</span>
+                        <i></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="###" data-action="grade-time">
+                        <span>充电时间</span>
+                        <i></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="###" data-action="grade-country">
+                        <span>国别</span>
+                        <i></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="###" data-action="grade-cartype">
+                        <span>车身形式</span>
+                        <i></i>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sort-warp">
+            <div class="sort-clear">
+                <a href="#" class="btn-clear">清除条件</a>
+            </div>
+        </div>
+
+        <!-- 筛选 end  -->
+        <!-- 筛选列表 start  -->
+        <div class="xny-result-box">
+
+            <!-- 标题 start  -->
+            <div class="tt-first y2015">
+                <ul class="tags-sub tags-sub-left">
+                    <li class="current"><a href="###">按关注度</a></li>
+                    <li class="arrow jg-sty"><a href="###">价格</a></li>
+                    <li class="arrow"><a href="###">补贴最高</a></li>
+                </ul>
+                <span class="sub-tt-more">共191个车型</span>
+            </div>
+            <!-- 标题 end  -->
+            <!-- 列表 start  -->
+
+            <div class="buy-car new-car">
+                <ul>
+                    <li>
+                        <a href="#" class="car">
+                            <div class="img-box">
+                                <img src="../images/pic_300x200.jpg">
+                                <i class="sale"></i>
+                                <i class="ico-shangshi ico-shangshi-blue">即将上市</i>
+                            </div>
+                            <strong>上海大众迈腾</strong>
+                            <p><em>126-140万起</em></p>
+                            <span class="bt">补贴6.6万</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="car">
+                            <div class="img-box">
+                                <img src="../images/pic_300x200.jpg">
+                                <i class="ico-shangshi">新上车款</i>
+                            </div>
+                            <strong>上海大众迈腾</strong>
+                            <p><em>126-140万起</em></p>
+                            <span class="bt">补贴6.6万</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="car">
+                            <div class="img-box">
+                                <img src="../images/pic_300x200.jpg">
+                                <i class="sale"></i>
+                                <i class="ico-shangshi ico-shangshi-blue">即将上市</i>
+                            </div>
+                            <strong>上海大众迈腾</strong>
+                            <p><em>126-140万起</em></p>
+                            <span class="bt">补贴6.6万</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="car">
+                            <div class="img-box">
+                                <img src="../images/pic_300x200.jpg">
+                                <i class="ico-shangshi">新上车款</i>
+                            </div>
+                            <strong>上海大众迈腾</strong>
+                            <p><em>126-140万起</em></p>
+                            <span class="bt">补贴6.6万</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <!-- 列表 end  -->
+            <!-- 翻页 start  -->
+
+            <div class="m-pages b-shadow">
+                <a href="#" class="m-pages-pre m-pages-none">上一页</a>
+                <div class="m-pages-num">
+                    <div class="m-pages-num-con">999/999</div>
+                    <div class="m-pages-num-arrow"></div>
+                </div>
+                <select>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <a href="#" class="m-pages-next">下一页</a>
+            </div>
+
+            <!-- 翻页 end  -->
+        </div>
+        <!-- 筛选列表 end  -->
+
+    </div>
+
+    <!-- 选车 end  -->
+
+    <!-- footer start  --> 
+    <div class="footer15">
+        <!--搜索框-->
+        @Html.Partial("~/html/footersearch.cshtml")
+        <div class="breadcrumb">
+            <div class="breadcrumb-box">
+                <a href="http://m.yiche.com/">首页</a> &gt; <span>选车</span>
+            </div>
+        </div>
+        @Html.Partial("~/html/footerV3.cshtml")
+    </div>
+    <div class="float-r-box">
+        <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
+    </div>
+    <!-- footer end  -->
+
+
+    <!--弹出层 start-->
+    <div class="leftmask leftmask3" style="display: none;"></div>
+    <div class="leftPopup grade-price" data-back="leftmask3" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+    <!--弹出层 end-->
+    <!--loading模板 start -->
+    <div class="template-loading" style="display: none;">
+        <div class="loading">
+            <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+            <p>正在加载...</p>
+        </div>
+    </div>
+    <!--loading模板 end -->
+    <!--公共模板 start-->
+    <script type="text/template" id="gradeTemplate">
+        <div class="ap">
+            <ul class="first-list rp jg-sx-sty">
+                <li class="filter">
+                    <div>
+                        <input id="p_min" type="number" placeholder="最低"><b>-</b><input id="p_max" type="number" placeholder="最高"><b>万</b><input id="btnPriceSubmit" type="button" value="确定" class="btn-go">
+                    </div>
+
+                </li>
+                <li class="current"><a href="#">不限</a></li>
+                <li><a href="#">5万以下</a></li>
+                <li><a href="#">5-8万</a></li>
+                <li><a href="#">8-12万</a></li>
+                <li><a href="#">12-18万</a></li>
+                <li><a href="#">18-25万</a></li>
+                <li><a href="#">25-40万</a></li>
+                <li><a href="#">40-80万</a></li>
+                <li><a href="#">80万以上</a></li>
+            </ul>
+
+        </div>
+    </script>
+    <!-- 结果列表层 end -->
+    <!--公共模板 end-->
+    <!-- 动力类型 start  -->
+    <!-- 弹出层 start  -->
+    <div class="leftPopup grade-dltype" data-back="leftmask3" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+    <!--弹出层 end-->
+    <!--公共模板 start-->
+    <script type="text/template" id="gradeTemplate1">
+        <div class="ap">
+            <ul class="first-list rp jg-sx-sty">
+                <li class="current"><a href="#">纯电动</a></li>
+                <li><a href="#">插电混动</a></li>
+            </ul>
+
+        </div>
+    </script>
+    <!--公共模板 end-->
+    <!-- 动力类型 end  -->
+    <!-- 续航里程 start  -->
+    <!-- 弹出层 start  -->
+    <div class="leftPopup grade-range" data-back="leftmask3" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+    <!--弹出层 end-->
+    <!--公共模板 start-->
+    <script type="text/template" id="gradeTemplate2">
+        <div class="ap">
+            <ul class="first-list rp jg-sx-sty">
+                <li class="current"><a href="#">100公里以下</a></li>
+                <li><a href="#">100-150公里</a></li>
+                <li><a href="#">150-200公里</a></li>
+                <li><a href="#">200-300公里</a></li>
+                <li><a href="#">300-400公里</a></li>
+                <li><a href="#">400公里以上</a></li>
+            </ul>
+
+        </div>
+    </script>
+    <!--公共模板 end-->
+    <!-- 续航里程 end  -->
+    <!-- 充电时间 start  -->
+    <!-- 弹出层 start  -->
+    <div class="leftPopup grade-time" data-back="leftmask3" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+    <!--弹出层 end-->
+    <!--公共模板 start-->
+    <script type="text/template" id="gradeTemplate3">
+        <div class="ap">
+            <ul class="first-list rp jg-sx-sty">
+                <li class="current"><a href="#">0-6小时</a></li>
+                <li><a href="#">6-8小时</a></li>
+                <li><a href="#">8-10小时</a></li>
+                <li><a href="#">10-15小时</a></li>
+                <li><a href="#">15-20小时</a></li>
+                <li><a href="#">20小时以上</a></li>
+            </ul>
+
+        </div>
+    </script>
+    <!--公共模板 end-->
+    <!-- 充电时间 end  -->
+    <!-- 国别 start  -->
+    <!-- 弹出层 start  -->
+    <div class="leftPopup grade-country" data-back="leftmask3" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+    <!--弹出层 end-->
+    <!--公共模板 start-->
+    <script type="text/template" id="gradeTemplate4">
+        <div class="ap">
+            <ul class="first-list rp jg-sx-sty">
+                <li class="current"><a href="#">国产</a></li>
+                <li><a href="#">日系</a></li>
+                <li><a href="#">美系</a></li>
+                <li><a href="#">欧系</a></li>
+            </ul>
+
+        </div>
+    </script>
+    <!--公共模板 end-->
+    <!-- 国别 end  -->
+    <!-- 车身类型 start  -->
+    <!-- 弹出层 start  -->
+    <div class="leftPopup grade-cartype" data-back="leftmask3" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+    <!--弹出层 end-->
+    <!--公共模板 start-->
+    <script type="text/template" id="gradeTemplate5">
+        <div class="ap">
+            <ul class="first-list rp jg-sx-sty">
+                <li class="current"><a href="#">轿车</a></li>
+                <li><a href="#">SUV</a></li>
+                <li><a href="#">MPV</a></li>
+
+            </ul>
+
+        </div>
+    </script>
+    <!--公共模板 end-->
+    <!-- 车身类型 end  -->
+
+    <script src="http://image.bitautoimg.com/uimg/wap/js/jquery-1.8.0.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../js/iscroll.js"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script src="../js/model.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../js/rightswipe3.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var $body = $('body');
+            var data = {
+            };
+            $body.trigger('publicswipe1', {
+                actionName: '[data-action=grade-price]',
+                ds: data,
+                templateid: '#gradeTemplate',
+                fnEnd: function () {
+                    var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    $swipeLeft.find('a').click(function (ev) {
+                        ev.preventDefault();
+                        var $click = $(this);
+                        console.log($click.html());
+                        $back.trigger('close');
+                    })
+                }
+            });
+
+
+            $body.trigger('publicswipe1', {
+                actionName: '[data-action=grade-dltype]',
+                ds: data,
+                templateid: '#gradeTemplate1',
+                fnEnd: function () {
+                    var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    $swipeLeft.find('a').click(function (ev) {
+                        ev.preventDefault();
+                        var $click = $(this);
+                        console.log($click.html());
+                        $back.trigger('close');
+                    })
+                }
+            });
+
+
+            $body.trigger('publicswipe1', {
+                actionName: '[data-action=grade-range]',
+                ds: data,
+                templateid: '#gradeTemplate2',
+                fnEnd: function () {
+                    var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    $swipeLeft.find('a').click(function (ev) {
+                        ev.preventDefault();
+                        var $click = $(this);
+                        console.log($click.html());
+                        $back.trigger('close');
+                    })
+                }
+            });
+
+            //   充电时间
+
+            $body.trigger('publicswipe1', {
+                actionName: '[data-action=grade-time]',
+                ds: data,
+                templateid: '#gradeTemplate3',
+                fnEnd: function () {
+                    var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    $swipeLeft.find('a').click(function (ev) {
+                        ev.preventDefault();
+                        var $click = $(this);
+                        console.log($click.html());
+                        $back.trigger('close');
+                    })
+                }
+            });
+
+            //   国别
+
+            $body.trigger('publicswipe1', {
+                actionName: '[data-action=grade-country]',
+                ds: data,
+                templateid: '#gradeTemplate4',
+                fnEnd: function () {
+                    var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    $swipeLeft.find('a').click(function (ev) {
+                        ev.preventDefault();
+                        var $click = $(this);
+                        console.log($click.html());
+                        $back.trigger('close');
+                    })
+                }
+            });
+
+            //   车身类型
+
+            $body.trigger('publicswipe1', {
+                actionName: '[data-action=grade-cartype]',
+                ds: data,
+                templateid: '#gradeTemplate5',
+                fnEnd: function () {
+                    var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    $swipeLeft.find('a').click(function (ev) {
+                        ev.preventDefault();
+                        var $click = $(this);
+                        console.log($click.html());
+                        $back.trigger('close');
+                    })
+                }
+            });
+
+        })
+    </script>
+
+
+
+</body>
+</html>

@@ -72,7 +72,7 @@
         </div>
         <div class="sort sort4">
             <ul>
-                <li><a t="f_16" href="javasript:;" class="current">纯电动(EV)</a></li>
+                <li><a t="f_16" href="javasript:;" class="">纯电动(EV)</a></li>
                 <li><a t="f_128" href="javasript:;">插电混合动力</a></li>
 
             </ul>
@@ -85,10 +85,10 @@
         </div>
         <div class="sort sort4">
             <ul>
-                <li><a t="bl_0-100" href="javasript:;" class="current">100公里以下</a></li>
+                <li><a t="bl_0-100" href="javasript:;" class="">100公里以下</a></li>
                 <li><a t="bl_100-150" href="javasript:;">100-150公里</a></li>
                 <li><a t="bl_150-200" href="javasript:;">150-200公里</a></li>
-                <li><a t="bl_200-250" href="javasript:;" class="current">200-250公里</a></li>
+                <li><a t="bl_200-250" href="javasript:;" class="">200-250公里</a></li>
                 <li><a t="bl_250-300" href="javasript:;">250-300公里</a></li>
                 <li><a t="bl_300-350" href="javasript:;">300-350公里</a></li>
                 <li><a t="bl_350-400" href="javasript:;">350-400公里</a></li>
@@ -106,10 +106,10 @@
         </div>
         <div class="sort sort4">
             <ul>
-                <li><a t="ct_0-6" href="javasript:;" class="current">0-6小时</a></li>
+                <li><a t="ct_0-6" href="javasript:;" class="">0-6小时</a></li>
                 <li><a t="ct_6-8" href="javasript:;">6-8小时</a></li>
                 <li><a t="ct_8-10" href="javasript:;">8-10小时</a></li>
-                <li><a t="ct_10-12" href="javasript:;" class="current">10-12小时</a></li>
+                <li><a t="ct_10-12" href="javasript:;" class="">10-12小时</a></li>
                 <li><a t="ct_12-14" href="javasript:;">12-14小时</a></li>
                 <li><a t="ct_14-16" href="javasript:;">14-16小时</a></li>
                 <li><a t="ct_16-18" href="javasript:;">16-18小时</a></li>
@@ -127,7 +127,7 @@
         </div>
         <div class="sort sort4">
             <ul>
-                <li><a t="g_1" href="javasript:;" class="current">国产</a></li>
+                <li><a t="g_1" href="javasript:;" class="">国产</a></li>
                 <li><a t="g_2" href="javasript:;">合资</a></li>
                 <li><a t="g_4" href="javasript:;">进口</a></li>
             </ul>
@@ -141,7 +141,7 @@
         </div>
         <div class="sort sort4">
             <ul>
-                <li><a t="l_1,2,3,5,4,6" href="javasript:;" class="current">轿车</a></li>
+                <li><a t="l_1,2,3,5,4,6" href="javasript:;" class="">轿车</a></li>
                 <li><a t="l_8" href="javasript:;">SUV</a></li>
                 <li><a t="l_7" href="javasript:;">MPV</a></li>
             </ul>
@@ -151,8 +151,8 @@
         <!-- 车身形式 end  -->
         <!-- 选车按钮 start  -->
         <div class="btn-warp-box">
-            <a href="###" id="clearSelected" class="ljt-btn"></a>
-            <a href="###" id="selectResult" class="car-btn">有28款车型符合条件</a>
+            <a href="javasript:;" id="clearSelected" class="ljt-btn ljt-current"></a>
+            <a href="javasript:;" id="selectResult" class="car-btn car-current">有0款车型符合条件</a>
         </div>
         @*<div class="btn-warp-box">
                 <a href="###" class="ljt-btn ljt-current"></a>
@@ -296,118 +296,145 @@
             $(".m-btn-close").on('click', function () {
                 $("input[name='txtkeyword']").val('');
             });
-
-            var selectElecCar = {
-                param: {
-                    p: "",  // 价格
-                    f: "",  // 动力类型
-                    bl: "",  // 续航里程
-                    ct: "",  // 充电时间
-                    g: "",  // 国别
-                    l: ""   // 车身形式
-                },
-                reqUrl:"http://select24.car.yiche.com/selectcartool/searchresult?page=1&pagesize=100&",
-                bindEvent: function () {
-                    var that = this;
-                    $(".sort ul li a ").bind("click", function () {
-
-                        if ($(this).attr("class") == "current") {
-                            $(this).attr("class", "");
-                        } else {
-                            $(this).attr("class", "current");
-                        }
-                        that.selectCar(that);
-                    })
-                },
-                BindclearSelectedCar: function () {
-                    $("#clearSelected").bind("click", function () {
-                        $(".sort ul li a ").each(function () {
-                            $(this).attr("class","");
-                        });
-                        selectElecCar.selectCar(selectElecCar);
-                    })
-                },
-                selectCar: function (that) {
-
-                    for (var p in that.param) {
-                        that.param[p] = "";
-                    }
-
-                    $(".sort ul li a ").each(function () {
-                        if ($(this).attr("class") == "current") {
-                            //
-                            var t = $(this).attr("t");
-                            var ts = t.split("_");
-                            if (ts.length > 1) {
-                                if (that.param[ts[0]].length == 0) {
-                                    that.param[ts[0]] = ts[1];
-                                } else {
-                                    that.param[ts[0]] += ("," + ts[1]);
-                                }
-                            }
-                        }
-                    });
-                    var pp = "";
-                    var idx = 0;
-                    if (that.param["f"] == "")
-                    {
-                        that.param["f"] = "16,128";
-                    }
-                    for (var p in that.param) {
-                        if (that.param[p] == "") {
-                            continue;
-                        }
-                        if (idx == 0) {
-                            pp = "";
-                            pp = p + "=" + that.param[p];
-                        } else {
-                            pp += ("&" + p + "=" + that.param[p]);
-                        }
-                        idx += 1;
-                    }
-                    if (pp == "") {
-                        $("#selectResult").text("请选择条件");
-                        $("#selectResult").addClass("car-current");
-                        $("#selectResult").attr("href", "javascript:;");
-                        return;
-                    }
-                    that.requestData(pp)
-                    console.log(pp);
-                },
-                requestData: function (reqparams) {
-                    $.ajax({
-                        url: this.reqUrl + reqparams,
-                        dataType: "jsonp",
-                        jsonpCallback: "selectElecCarJsonpCallback",
-                        cache: true,
-                        success: function (json) {
-                            console.log(json);
-                            var result = json;
-                            if (result.Count > 0) {
-                                $("#selectResult").text("共有" + result.Count + "款车型符合条件");
-                                $("#selectResult").removeClass("car-current");
-                                $("#selectResult").attr("href", "selectcarelec?" + reqparams);
-                            } else {
-                                $("#selectResult").text("共有0款车型符合条件");
-                                $("#selectResult").addClass("car-current");
-                                $("#selectResult").attr("href", "javascript:;");
-                            }
-                        },
-                        error: function (res) {
-                            $("#selectResult").text("共有0款车型符合条件");
-                            $("#selectResult").addClass("car-current");
-                            $("#selectResult").attr("href", "selectcarelec");
-                        }
-                    });
-                }
-            }
-
-
+            
             selectElecCar.bindEvent();
             selectElecCar.BindclearSelectedCar();
 
         });
 
+        var selectElecCar = {
+            param: {
+                p: "",  // 价格
+                f: "",  // 动力类型
+                bl: "",  // 续航里程
+                ct: "",  // 充电时间
+                g: "",  // 国别
+                l: ""   // 车身形式
+            },
+            reqUrl: "http://select24.car.yiche.com/selectcartool/searchresult?page=1&pagesize=100&",
+            bindEvent: function () {
+                var that = this;
+                $(".sort ul li a ").bind("click", function () {
+                    var oldclass = $(this).attr("class");
+                    var id = $(this).attr("t");
+                    $("a[t^='" + id.split("_")[0] + "']").removeClass("current");
+                    if (oldclass == "current") {
+                        $(this).attr("class", "");
+                    } else {
+                        $(this).attr("class", "current");
+                    }
+
+                    //$("#selectResult").removeClass("car-current");
+                    $("#clearSelected").removeClass("ljt-current");
+                    that.selectCar(that);
+                })
+            },
+            BindclearSelectedCar: function () {
+                $("#clearSelected").bind("click", function () {
+                    $(".sort ul li a ").each(function () {
+                        $(this).attr("class", "");
+                    });
+
+                    $("#selectResult").text("共有0款车型符合条件");
+                    $("#selectResult").addClass("car-current");
+                    $("#selectResult").attr("href", "javascript:;");
+                    $("#clearSelected").addClass("ljt-current");
+                    
+                    //$("#min-dot span").text("0");
+                    //$("#max-dot span").text("不限");
+                    //$('.ruler .sliderbar').trigger('refresh');
+                    //$.scrollbarX.trigger('refresh');
+
+                    //$(window).resize($.scrollbarX.toWindow).trigger('resize');
+                    //scrollbarX
+                    //selectElecCar.selectCar(selectElecCar);
+                })
+            },
+            selectCar: function (that) {
+
+                for (var p in that.param) {
+                    that.param[p] = "";
+                }
+
+                $(".sort ul li a ").each(function () {
+                    if ($(this).attr("class") == "current") {
+                        //
+                        var t = $(this).attr("t");
+                        var ts = t.split("_");
+                        if (ts.length > 1) {
+                            if (that.param[ts[0]].length == 0) {
+                                that.param[ts[0]] = ts[1];
+                            } else {
+                                that.param[ts[0]] += ("," + ts[1]);
+                            }
+                        }
+                    }
+                });
+                var pp = "";
+                var idx = 0;
+                if (that.param["f"] == "") {
+                    that.param["f"] = "16,128";
+                }
+                for (var p in that.param) {
+                    if (that.param[p] == "") {
+                        continue;
+                    }
+                    if (idx == 0) {
+                        pp = "";
+                        pp = p + "=" + that.param[p];
+                    } else {
+                        pp += ("&" + p + "=" + that.param[p]);
+                    }
+                    idx += 1;
+                }
+                if (pp == "") {
+                    $("#selectResult").text("共有0款车型符合条件");
+                    $("#selectResult").addClass("car-current");
+                    $("#selectResult").attr("href", "javascript:;");
+                    return;
+                }
+
+                var pricemin = $("#min-dot span").text();
+                var pricemax = $("#max-dot span").text();
+
+                if (pricemax == "90+" || pricemax == "不限") {
+                    pp += ("&p=" + pricemin + "-9999");
+                } else {
+                    pp += ("&p=" + pricemin + "-" + pricemax);
+                }
+
+                that.requestData(pp)
+                console.log(pp);
+            },
+            requestData: function (reqparams) {
+                $.ajax({
+                    url: this.reqUrl + reqparams,
+                    dataType: "jsonp",
+                    jsonpCallback: "selectElecCarJsonpCallback",
+                    cache: true,
+                    success: function (json) {
+                        console.log(json);
+                        var result = json;
+                        if (result.Count > 0) {
+                            $("#selectResult").text("共有" + result.Count + "款车型符合条件");
+                            $("#selectResult").removeClass("car-current");
+                            $("#selectResult").attr("href", "selectcarelec?" + reqparams);
+                        } else {
+                            $("#selectResult").text("共有0款车型符合条件");
+                            $("#selectResult").addClass("car-current");
+                            $("#selectResult").attr("href", "javascript:;");
+                        }
+                    },
+                    error: function (res) {
+                        $("#selectResult").text("共有0款车型符合条件");
+                        $("#selectResult").addClass("car-current");
+                        $("#selectResult").attr("href", "selectcarelec");
+                    }
+                });
+            }
+        }
+
+         
 
         if (typeof (bitLoadScript) == "undefined")
             bitLoadScript = function (url, callback, charset) {

@@ -52,132 +52,21 @@
             <div class="swiper-wrapper">
                 <div id="test" class="swiper-slide">
                     <!-- 列表 start -->
-                    <div class="tt-small phone-title"><span>9月销量排行</span></div>
-                    <ul id="level_rank_list_0" class="newscar-list">
-                        <li>
-                            <a href="#">
-                                <div class="left">
-                                    <div class="rank-number">
-                                        <span>1</span>
-                                    </div>
-                                    <img class="car-img" src="http://img2.bitautoimg.com/autoalbum/files/20160920/938/0259219383_1.jpg"
-                                         alt="">
-                                    <div class="info-box">
-                                        <div class="title">
-                                            <div class="text">丰田酷炫丰田酷炫丰田酷炫丰田酷炫</div>
-                                        </div>
-                                        <div class="price">
-                                            7.57-14.31万
-                                        </div>
-                                        <div class="type">
-                                            全球销量：28888辆
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <div class="left">
-                                    <div class="rank-number">
-                                        <span>1</span>
-                                    </div>
-                                    <img class="car-img" src="http://via.placeholder.com/90x60" alt="">
-                                    <div class="info-box">
-                                        <div class="title">
-                                            <div class="text">丰田酷炫</div>
-                                        </div>
-                                        <div class="price">
-                                            7.57-14.31万
-                                        </div>
-                                        <div class="type">
-                                            全球销量：28888辆
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <div class="left">
-                                    <div class="rank-number">
-                                        <span>1</span>
-                                    </div>
-                                    <img class="car-img" src="http://via.placeholder.com/90x60" alt="">
-                                    <div class="info-box">
-                                        <div class="title">
-                                            <div class="text">丰田酷炫</div>
-                                        </div>
-                                        <div class="price">
-                                            7.57-14.31万
-                                        </div>
-                                        <div class="type">
-                                            全球销量：28888辆
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <!--<div class="load-box"><i></i><span>正在载入...</span></div>-->
-                    </ul>
+                    <div class="tt-small phone-title"><span>销量排行</span></div>
+                    <ul id="rank_list_0" class="newscar-list"></ul>
                     <!-- 列表 end -->
                     <!-- more start -->
-                    <div class="load-box"><i></i><span>正在载入...</span></div>
+                    <div id="newscar_list_0" class="load-box"><i></i><span>正在载入...</span></div>
                     <!--<a href="#" class="btn-more btn-add-more"><i>加载更多</i></a>-->
                     <!-- more end -->
                 </div>
                 <div class="swiper-slide">
                     <!-- 列表 start -->
-                    <div class="tt-small phone-title"><span>9月销量排行</span></div>
-                    <ul id="level_rank_list_1" class="newscar-list">
-                        <li>
-                            <a href="#">
-                                <div class="left">
-                                    <div class="rank-number">
-                                        <span>1</span>
-                                    </div>
-                                    <img class="car-img" src="http://img2.bitautoimg.com/autoalbum/files/20160920/938/0259219383_1.jpg"
-                                         alt="">
-                                    <div class="info-box">
-                                        <div class="title">
-                                            <div class="text">丰田酷炫丰田酷炫丰田酷炫丰田酷炫</div>
-                                        </div>
-                                        <div class="price">
-                                            7.57-14.31万
-                                        </div>
-                                        <div class="type">
-                                            全球销量：28888辆
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <div class="left">
-                                    <div class="rank-number">
-                                        <span>1</span>
-                                    </div>
-                                    <img class="car-img" src="http://via.placeholder.com/90x60" alt="">
-                                    <div class="info-box">
-                                        <div class="title">
-                                            <div class="text">丰田酷炫</div>
-                                        </div>
-                                        <div class="price">
-                                            7.57-14.31万
-                                        </div>
-                                        <div class="type">
-                                            全球销量：28888辆
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <!--<div class="load-box"><i></i><span>正在载入...</span></div>-->
-                    </ul>
+                    <div class="tt-small phone-title"><span>销量排行</span></div>
+                    <ul id="rank_list_1" class="newscar-list"></ul>
                     <!-- 列表 end -->
                     <!-- more start -->
-                    <div class="load-box"><i></i><span>正在载入...</span></div>
+                    <div id="newscar_list_1" class="load-box"><i></i><span>正在载入...</span></div>
                     <!--<a href="#" class="btn-more btn-add-more"><i>加载更多</i></a>-->
                     <!-- more end -->
                 </div>
@@ -234,9 +123,8 @@
             $(".js-type-top-nav .swiper-slide").eq(swiper.clickedIndex).addClass('active');
             //同步点击标签切换到对应tab页面
             swiperNewslist.slideTo(swiper.clickedIndex);
-            loadNewCarList($(this).index());
+            loadNewCarList(swiper.clickedIndex);
         });
-
 
         //tab swiper组件初始化
         var swiperNewslist = new Swiper('.js-type-tab-page', {
@@ -250,7 +138,6 @@
 
             }
         });
-
 
         //计算navSwiper移动点击标签滑动距离
         //mySwiper: swiperTopNav对象
@@ -272,51 +159,21 @@
             }
         }
 
-
-        ////模拟动态数据slider组件高度刷新
-        //setInterval(function () {
-        //    $('#test').find('.newscar-list').append('<li><a href="#">' +
-        //        '<div class="left">' +
-        //        ' <div class="rank-number">' +
-        //        ' <span>999</span>' +
-        //        '   </div>' +
-        //        '   <img class="car-img" src="http://img2.bitautoimg.com/autoalbum/files/20160920/938/0259219383_1.jpg" alt="">' +
-        //        ' <div class="info-box">' +
-        //        ' <div class="title">' +
-        //        '     <div class="text">丰田酷炫丰田酷炫丰田酷炫丰田酷炫</div>' +
-        //        '  </div>' +
-        //        '   <div class="price">' +
-        //        '    7.57-14.31万' +
-        //        '</div>' +
-        //        '<div class="type">' +
-        //        ' 全球销量：28888辆' +
-        //        '</div>' +
-        //        '</div>' +
-        //        '</div>' +
-        //        '</a></li>')
-
-        //    swiperNewslist.update()
-        //}, 2000)
-
-
-
-
         window.addEventListener('scroll', function () {
             if ($(window).scrollTop() + $(window).height() + 340 >= $(document).height()) {
-                var index = $(".js-news-cartab .current").attr("tabindex");
+                var index = $(".swiper-wrapper .active").attr("tabindex");
                 //console.log("scroll:"+index);
                 RequestData(index);
             }
         }, false);
 
-
         var titles = [
-            { id: 0, total: 0, index: 0, size: 10, hasNext: true, loading: false },
-            { id: 1, total: 0, index: 0, size: 10, hasNext: true, loading: false }
+            { id: 'elec', total: 0, index: 0, size: 10, hasNext: true, loading: false },
+            { id: 'hybrid', total: 0, index: 0, size: 10, hasNext: true, loading: false }
         ];
 
         function loadNewCarList(index) {
-            if ($("#newscar_list_" + index + " li").length > 0) {
+            if ($("#rank_list_" + index + " li").length > 0) {
                 return;
             }
             if (titles[index].index > 0) {
@@ -341,10 +198,10 @@
                 //console.log("正在加载-" + curindex);
                 return;
             }
-            var newCarListUrl = "http://api.car.bitauto.com/CarInfo/GetNewCarList.ashx?type=" + titles[curindex].id + "&pageindex=" + (titles[curindex].index + 1) + "&pagesize=" + titles[curindex].size;
+            var newCarListUrl = "http://api174.car.bitauto.com/CarInfo/GetSalesRankingForPage.ashx?type=newenergy&tab=" + titles[curindex].id + "&pageindex=" + (titles[curindex].index + 1) + "&pagesize=" + titles[curindex].size;
             titles[curindex].loading = true;
             var cb = "newCarListCallBack" + curindex;
-            $("#newscar_list_" + curindex + " .load-box").show();
+            $("#newscar_list_" + curindex).show();
             $.ajax({
                 type: "get",
                 url: newCarListUrl,
@@ -357,74 +214,169 @@
                 success: function (data) {
                     if (data && data.code == 1) {
                         //
-                        if (data.data.data.length > 0) {
+                        if (data.data.page.data.length > 0) {
                             var html = "";
-                            var len = data.data.data.length;
+                            var len = data.data.page.data.length;
                             for (var i = 0; i < len; i++) {
-                                var dd = data.data.data[i];
-                                if (dd.AllSpell == "") {
+                                var dd = data.data.page.data[i];
+                                if (dd.allSpell == "") {
                                     continue;
                                 }
-                                html += ('<li><a href="/' + dd.AllSpell + '/" data-id="' + dd.CsId + '">');
-                                html += '        <div class="left">';
-                                html += ('            <img class="car-img" src="' + dd.CoverImage.replace("_2.", "_6.") + '" alt="">');
-                                html += '                <div class="info-box">';
-                                html += '                    <div class="title">';
-                                html += '                       <div class="text">' + dd.CsName + '</div>';
-                                if (curindex == 0 && dd.Type == 2) {
-                                    html += '                       <div class="tag">' + dd.YearType + '款</div>';
-                                } else if (curindex == 0 && dd.Type == 1) {
-                                    html += '                       <div class="tag">全新车型</div>';
-                                }
-
-                                html += '                    </div>';
-                                var price = dd.RefPrice == '0' ? "暂无指导价" : dd.RefPrice;
-                                html += '                    <div class="price">' + price + '</div>';
-                                html += '                    <div class="type">' + dd.Level + '</div>';
-                                html += '                </div>';
-                                html += '        </div>';
-                                if (curindex == 1 && dd.MarketDay != "") {
-                                    var marketDay = new Date(dd.MarketDay);
-                                    html += '            <div class="right"><div class="time">' + (marketDay.getMonth() + 1) + '月' + marketDay.getDate() + '日上市</div></div>';
-                                }
-
-                                html += '</a></li>';
-
+                                html += ('<li><a href="/' + dd.allSpell + '/"><div class="left"><div class="rank-number"><span>' + dd.rank + '</span></div>');
+                                html += ('    <img class="car-img" src="' + dd.imgUrl.replace("_2.", "_6.") + '" alt="">');
+                                html += ('        <div class="info-box">');
+                                html += ('            <div class="title"><div class="text">' + dd.showName + '</div></div>');
+                                html += ('            <div class="price">' + dd.priceRange + '</div>');
+                                html += ('            <div class="type">全国销量：' + dd.sellNum + '辆</div>');
+                                html += ('        </div></div></a></li></ul>');
                             }
-                            $("#newscar_list_" + curindex + " .load-box").before(html);
+                            $("#rank_list_" + curindex).append(html);
                             swiperNewslist.update();
+                            var dateStr = data.data.month;
+                            if (dateStr == "") {
+                                $(".swiper-slide .phone-title span").text("销量排行");
+                            } else {
+                                var monthStr = dateStr.substr(dateStr.indexOf("-") + 1);
+                                $(".swiper-slide .phone-title span").text(monthStr + "月销量排行");
+                            }
 
                             titles[curindex].index++;
-                            titles[curindex].total = data.data.total;
-                            if (data.data.data.length < data.data.size) {
+                            titles[curindex].total = data.data.page.total;
+                            if (data.data.page.data.length < data.data.page.size) {
                                 titles[curindex].hasNext = false;
+                                $("#newscar_list_" + curindex + " span").text("全部加载完成");
+                                $("#newscar_list_" + curindex + " i").hide();
                             } else {
                                 titles[curindex].hasNext = true;
+                                //$("#newscar_list_" + curindex + " span").text("正在加载");
+                                $("#newscar_list_" + curindex + " span").text("正在加载");
+                                $("#newscar_list_" + curindex + " i").show();
                             }
                         } else {
                             titles[curindex].hasNext = false;
-                            //$("#newscar_list_" + curindex + " .load-box li").hide();
-                            //$("#newscar_list_" + curindex + " .load-box span").text("全部加载完成");
+                            //$("#newscar_list_" + curindex).hide();
+                            $("#newscar_list_" + curindex + " span").text("全部加载完成");
+                            $("#newscar_list_" + curindex + " i").hide();
                         }
                     } else if (data && data.code == 0) {
                         titles[curindex].hasNext = false;
-                        //$("#newscar_list_" + curindex + " .load-box li").hide();
-                        //$("#newscar_list_" + curindex + " .load-box span").text("全部加载完成");
+                        //$("#newscar_list_" + curindex).hide();
+                        $("#newscar_list_" + curindex + " span").text("全部加载完成");
+                        $("#newscar_list_" + curindex + " i").hide();
                     }
                     titles[curindex].loading = false;
-                    $("#newscar_list_" + curindex + " .load-box").hide();
+                    //$("#newscar_list_" + curindex).hide();
                 },
                 error: function (msg) {
                     titles[curindex].loading = false;
-                    $("#newscar_list_" + curindex + " .load-box").hide();
+                    //$("#newscar_list_" + curindex).hide();
                     //console.log(msg);
                 }
             });
         }
-        RequestData(0)
+        RequestData(0);
+
+
+        function tabload(tagid, tagnum, types, requrl) {
+            this.tagid = tagid;
+            this.requrl = requrl;
+            var title = { id: 0, type: "", total: 0, index: 0, size: 10, hasNext: true, loading: false };
+
+            this.titles = new Array(tagnum);
+            for (var i = 0; i < tagnum; i++) {
+                //this.titles[i] = Object.extend(this.titles[i],  title);
+                this.titles[i] = $.extend(this.titles[i], title);
+                this.titles[i].type = (types[i] == undefined || types[i] == null) ? "" : types[i];
+                this.titles[i].id = i;
+            }
+
+            this.getTitles = function () {
+                for (var i = 0; i < this.titles.length; i++) {
+                    console.log(this.titles[i].type);
+                    console.log(this.titles[i].id);
+                    console.log("-------------------------");
+                }
+            }
+            this.loadData = function (idx) {
+                var title = this.titles[idx];
+
+                if (!title.hasNext) {
+                    return;
+                }
+                if (title.loading) {
+                    //console.log("正在加载-" + curindex);
+                    return;
+                }
+
+                var cb = "newElecCarListCallBack" + curindex;
+                var requrl = this.requrl.replace("-type-", title.type)
+                    .replace("-type-", title.type)
+                    .replace("-index-", title.index)
+                    .replace("-size-", title.size)
+                    .replace("-cb-", cb);
+                title.loading = true;
+                $("#newscar_list_" + curindex + " .load-box").show();
+                $.ajax({
+                    type: "get",
+                    url: newCarListUrl,
+                    cache: true,
+                    dataType: 'jsonp',
+                    jsonp: "callback",
+                    jsonpCallback: cb,
+                    timeout: 5000,
+                    contentType: "application/json",
+                    success: function (data) {
+                        if (data && data.code == 1) {
+                            //
+                            if (data.data.data.length > 0) {
+                                var html = "";
+                                var len = data.data.data.length;
+                                for (var i = 0; i < len; i++) {
+                                    var dd = data.data.data[i];
+                                    if (dd.AllSpell == "") {
+                                        continue;
+                                    }
+                                }
+                                $("#newscar_list_" + curindex + " .load-box").before(html);
+                                swiperNewslist.update();
+
+                                titles[curindex].index++;
+                                titles[curindex].total = data.data.total;
+                                if (data.data.data.length < data.data.size) {
+                                    titles[curindex].hasNext = false;
+                                } else {
+                                    titles[curindex].hasNext = true;
+                                }
+                            } else {
+                                titles[curindex].hasNext = false;
+                                //$("#newscar_list_" + curindex + " .load-box li").hide();
+                                //$("#newscar_list_" + curindex + " .load-box span").text("全部加载完成");
+                            }
+                        } else if (data && data.code == 0) {
+                            titles[curindex].hasNext = false;
+                            //$("#newscar_list_" + curindex + " .load-box li").hide();
+                            //$("#newscar_list_" + curindex + " .load-box span").text("全部加载完成");
+                        }
+                        titles[curindex].loading = false;
+                        $("#newscar_list_" + curindex + " .load-box").hide();
+                    },
+                    error: function (msg) {
+                        titles[curindex].loading = false;
+                        $("#newscar_list_" + curindex + " .load-box").hide();
+                        //console.log(msg);
+                    }
+                });
+
+            }
+        };
+        var tagobj = new tabload("", 2, ["elec", "hybrid"], "http://api174.car.bitauto.com/CarInfo/GetSalesRankingForPage.ashx?type=newenergy&tab=-type-&pageindex=-index-&pagesize=-size-&callback=-cb-")
+        tagobj.getTitles();
 
     </script>
 
 
 </body>
 </html>
+
+
+

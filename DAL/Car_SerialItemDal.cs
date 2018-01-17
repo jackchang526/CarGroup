@@ -28,6 +28,8 @@ namespace BitAuto.CarChannel.DAL
                 Obj.PricesRange = row["PricesRange"].ToString().Trim();
                 Obj.ReferPriceRange = row["ReferPriceRange"].ToString().Trim();
                 Obj.UnderPan_Num_Type = row["UnderPan_Num_Type"].ToString().Trim();
+                Obj.NormalChargeTime = row.Table.Columns.Contains("NormalChargeTime") && row["NormalChargeTime"] != DBNull.Value ?  row["NormalChargeTime"].ToString() : string.Empty;
+                Obj.BatteryLife = row.Table.Columns.Contains("BatteryLife") && row["BatteryLife"] != DBNull.Value ? row["BatteryLife"].ToString() : string.Empty;
             }
             else
             {
@@ -36,6 +38,7 @@ namespace BitAuto.CarChannel.DAL
             return Obj;
         }
 
+        /*
         public Car_SerialItemEntity Populate_Car_SerialItemEntity_FromDr(IDataReader dr)
         {
             Car_SerialItemEntity Obj = new Car_SerialItemEntity();
@@ -50,7 +53,7 @@ namespace BitAuto.CarChannel.DAL
             Obj.UnderPan_Num_Type = dr["UnderPan_Num_Type"].ToString().Trim();
             return Obj;
         }
-
+        */
         /// <summary>
         /// 取所有子品牌扩展信息
         /// </summary>
@@ -59,7 +62,7 @@ namespace BitAuto.CarChannel.DAL
         {
             IList<Car_SerialItemEntity> Obj = new List<Car_SerialItemEntity>();
             string sqlStr = " select cs_Id,Body_Doors,Engine_Exhaust,Car_RepairPolicy, ";
-            sqlStr += " Prices,Car_MarketDate,PricesRange,ReferPriceRange ";
+            sqlStr += " Prices,Car_MarketDate,PricesRange,ReferPriceRange,UnderPan_Num_Type,NormalChargeTime,BatteryLife ";
             sqlStr += " from dbo.Car_Serial_Item ";
             try
             {
@@ -78,7 +81,7 @@ namespace BitAuto.CarChannel.DAL
             }
             return Obj;
         }
-
+        /*
         /// <summary>
         /// 根据子品牌ID取子品牌扩展信息
         /// </summary>
@@ -108,7 +111,7 @@ namespace BitAuto.CarChannel.DAL
             }
             return Obj;
         }
-
+        */
         /// <summary>
         /// 获取子品牌关注对应的子品牌
         /// </summary>

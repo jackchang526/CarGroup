@@ -3,7 +3,6 @@ using BitAuto.CarChannel.BLL.Data;
 using BitAuto.CarChannel.Common;
 using BitAuto.CarChannel.Model;
 using BitAuto.CarChannel.Model.Assessment;
-using BitAuto.CarChannelAPI.Web.AppCode;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using Newtonsoft.Json;
@@ -46,6 +45,9 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                     break;
                 case "ass"://assessment 获取Assessment对象信息
                     GetAssessmentInfo();
+                    break;
+                case "menu"://导航
+                    GetMenuInfo();
                     break;
                 default:
                     //GetAssessmentInfo();
@@ -148,7 +150,10 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
             writeResult.Message = message;
             PingCeWrite(writeResult);
         }
-
+        
+        /// <summary>
+        /// 获取评测报告信息
+        /// </summary>
         private void GetAssessmentInfo()
         {
             int status = 0;
@@ -218,6 +223,136 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
             {
                 var carName = GetCarName(assessmentEntity.CarId);                
                 assessmentEntity.CarName = carName;
+                writeResult.Data = assessmentEntity;
+            }
+
+            writeResult.Status = status;
+            writeResult.Message = message;
+            PingCeWrite(writeResult);
+        }
+        
+        /// <summary>
+        /// M站菜单接口
+        /// </summary>
+        private void GetMenuInfo()
+        {
+            AssessmentEntity assessmentEntity = null;
+
+            int status = 0;
+            string message = "success";
+            List<string> paraList = new List<string>
+            {
+                "CreateDateTime",
+                "UpdateDateTime",
+                "SerialId",
+                "CarId",
+                "Status",
+                "EvaluationId",
+                "Score",
+
+                "BodyAndSpaceGroup.SpaceEntity.ImpressionScore",
+                "BodyAndSpaceGroup.SpaceEntity.ActualScore",
+                "BodyAndSpaceGroup.TrunkEntity.Cubage",
+                "BodyAndSpaceGroup.StoragespaceEntity.Score",
+                "BodyAndSpaceGroup.ConvenienceEntity.Equipment",
+                "BodyAndSpaceGroup.ConvenienceEntity.Multimedia",
+                "BodyAndSpaceGroup.QualityEntity.Score",
+
+                "RidingComfortGroup.ChairEntity.FrontChair",
+                "RidingComfortGroup.ChairEntity.BehindChair",
+                "RidingComfortGroup.AirConditionerEntity.AirConditionerFeel",
+                "RidingComfortGroup.AirConditionerEntity.Refrigeration",
+                "RidingComfortGroup.NoiseEntity.NoiseScore",
+                "RidingComfortGroup.NoiseFeelEntity.IdlingNoise",
+                "RidingComfortGroup.NoiseFeelEntity.RunNoise",
+                "RidingComfortGroup.NoiseFeelEntity.NoiseFeel",
+                "RidingComfortGroup.HangComfortEntity.SuspensionComfort",
+
+                "DynamicPerformanceGroup.AccelerateEntity.AccelerateScroe",
+                "DynamicPerformanceGroup.EngineEntity.Torque",
+                "DynamicPerformanceGroup.EngineEntity.TractiveForce",
+                "DynamicPerformanceGroup.EngineEntity.Power",
+                "DynamicPerformanceGroup.MotilityEntity.Score",
+                "DynamicPerformanceGroup.EngineSmoothnessEntity.Score",
+                "DynamicPerformanceGroup.GearboxEntity.Score",
+
+                "JsBaseGroup.JdaEntity.GripScore",
+                "JsBaseGroup.JdaEntity.ControllabilityScore",
+                "JsBaseGroup.JdaEntity.DriverSenseScore",
+                "JsBaseGroup.JtsEntity.TurnDiameterScore",
+                "JsBaseGroup.JtsEntity.SteeringWheelScore",
+                //"JsBaseGroup.JtsEntity.StraightPerferScore",
+                "JsBaseGroup.JdfEntity.DriveFunScore",
+
+                "SafetyGroup.BrakeEntity.EmptyScore",
+                "SafetyGroup.BrakeEntity.FullScore",
+                "SafetyGroup.BrakeEntity.BrakeFeel",
+
+                "SafetyGroup.ActiveSafetyEntity.DriveSafety",
+                "SafetyGroup.ActiveSafetyEntity.SafetyDevice",
+                "SafetyGroup.VisualFieldEntity.ViewScore",
+                "SafetyGroup.LightEntity.LightScore",
+
+
+                "YhBaseGroup.YgEntity.LowSpeedYhScore",
+                "YhBaseGroup.YgEntity.HighSpeedYhScore",
+                "YhBaseGroup.YgEntity.MiitYhScore",
+
+                "YhBaseGroup.YaEntity.AirQualityGeneralCmt",
+                "YhBaseGroup.YaEntity.AirQualityScore",
+
+                "CostBaseGroup.CpEntity.ProducerPriceScore",
+                "CostBaseGroup.CsyEntity.OilPayScore",
+                "CostBaseGroup.CsyEntity.InsuranceExpenseScore",
+                "CostBaseGroup.CsyEntity.MaintenanceCostScore",
+                "CostBaseGroup.CgpEntity.GuaranPeriodScore",
+
+                "CostBaseGroup.CgqEntity.GuaranQualityScore"
+                
+
+            };
+
+            Dictionary<string, int> sortdic = new Dictionary<string, int>
+            {
+                { "CreateDateTime", 0 }
+            };
+            EvaluationBll evaluationBll = new EvaluationBll();
+            IMongoQuery query = null;
+            if (!string.IsNullOrWhiteSpace(overview))//预览
+            {
+                if (isExpiredTime)// 没有过期
+                {
+                    query = Query.EQ("EvaluationId", EvaluationId);
+                    try
+                    {
+                        assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query, paraList.ToArray(), sortdic);
+                    }
+                    catch (Exception e)
+                    {
+                        status = 1;
+                        message = e.Message;
+                    }
+                }
+            }
+            else//非预览
+            {
+                query = Query.And(Query.EQ("EvaluationId", EvaluationId), Query.EQ("Status", 1));
+                try
+                {
+                    assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query, paraList.ToArray(), sortdic);
+                }
+                catch (Exception e)
+                {
+                    status = 1;
+                    message = e.Message;
+                }
+
+            }
+
+            WriteResult<AssessmentEntity> writeResult = new WriteResult<AssessmentEntity>();
+
+            if (assessmentEntity != null)
+            {
                 writeResult.Data = assessmentEntity;
             }
 

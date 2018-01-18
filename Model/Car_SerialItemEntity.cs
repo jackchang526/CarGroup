@@ -41,7 +41,17 @@ namespace BitAuto.CarChannel.Model
         /// 子品牌厂商指导价区间
         ///</summary>
         private string _referPriceRange = String.Empty;
-       
+
+        /// <summary>
+        /// 充电时间区间（慢充）
+        /// </summary>
+        private string _normalChargeTime = String.Empty;
+
+        /// <summary>
+        /// 续航里程区间
+        /// </summary>
+        private string _batteryLife = String.Empty;
+
         #endregion
 
         #region 构造函数
@@ -158,6 +168,24 @@ namespace BitAuto.CarChannel.Model
         {
             get { return _referPriceRange; }
             set { _referPriceRange = value; }
+        }
+
+        /// <summary>
+        /// 充电时间区间（慢充）
+        /// </summary>
+        public string NormalChargeTime
+        {
+            get { return _normalChargeTime; }
+            set { _normalChargeTime = value; }
+        }
+
+        /// <summary>
+        /// 续航里程区间
+        /// </summary>
+        public string BatteryLife
+        {
+            get { return _batteryLife; }
+            set { _batteryLife = value; }
         }
 
         #endregion

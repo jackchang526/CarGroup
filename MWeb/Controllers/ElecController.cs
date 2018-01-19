@@ -27,7 +27,7 @@ namespace MWeb.Controllers
         {
             string rankMonth = string.Empty;
             carSerialBll.GetSeialSellRank(out rankMonth);
-            ViewData["SaleRankYear"] = string.IsNullOrEmpty(rankMonth) ? DateTime.Now.Year.ToString() : rankMonth.Substring(0,4);
+            ViewData["SaleRankYear"] = string.IsNullOrEmpty(rankMonth) ? DateTime.Now.Year.ToString() : rankMonth.Substring(0, 4);
 
             Dictionary<string, string> param = new Dictionary<string, string>();
             param.Add("f", "16");
@@ -53,7 +53,7 @@ namespace MWeb.Controllers
             foreach (SelectCarDetailInfo detail in result.ResList)
             {
                 sb.Append("<li>");
-                sb.AppendFormat("<a href=\"/{0}/\">",detail.AllSpell);
+                sb.AppendFormat("<a href=\"/{0}/\">", detail.AllSpell);
                 sb.AppendFormat("<img src=\"{0}\">", detail.ImageUrl);
                 sb.AppendFormat("<strong>{0}</strong>", detail.ShowName);
                 sb.AppendFormat("<em>{0}</em>", detail.PriceRange);
@@ -122,6 +122,54 @@ namespace MWeb.Controllers
         /// <returns></returns>
         public ActionResult SelectCarList()
         {
+            var query = HttpContext.Request.Url.PathAndQuery;
+            Dictionary<string, string> param = new Dictionary<string, string>();
+            var pp = query.Split('&');
+
+            foreach (var item in pp)
+            {
+                if (item.Contains("="))
+                {
+                    var kv = item.Split('=');
+                    if (kv.Length > 1)
+                    {
+                        param.Add(kv[0], kv[1]);
+                    }
+                }
+            }
+            if (!param.ContainsKey("f"))
+            {
+                param.Add("f", "16,128");
+            }
+            SelectCarToolNewBll selectCarToolNewBll = new SelectCarToolNewBll();
+            var result = selectCarToolNewBll.GetSelectCarResultWithElecInfo(param);
+
+            StringBuilder carList = new StringBuilder();
+            foreach (var item in result.ResList)
+            {
+
+                carList.AppendLine("<li>");
+                carList.AppendLine(string.Format("    <a href=\"\\{0}\\\" class=\"car\" >", item.AllSpell));
+                carList.AppendLine("        <div class=\"img-box\" >");
+                carList.AppendLine(string.Format(" <img src=\"{0}\" >", item.ImageUrl));
+                //carList.AppendLine("            <i class=\"ico-shangshi\">新上车款</i>");
+                carList.AppendLine("        </div>");
+                carList.AppendLine(string.Format(" <strong>{0}</strong>", item.ShowName));
+                carList.AppendLine(string.Format(" <p><em>{0}起</em></p>", item.PriceRange));
+                if (!string.IsNullOrEmpty(item.NormalChargeTime))
+                {
+                    carList.AppendLine(string.Format("        <span class=\"bt\">充电时间{0}小时</span>", item.NormalChargeTime));
+                }
+                else {
+                    //carList.AppendLine("        <span class=\"bt\"></span>");
+                }
+                carList.AppendLine("    </a>");
+                carList.AppendLine("</li>");
+            }
+
+            ViewData["carList"] = carList.ToString();
+            ViewData["CarNumber"] = result.CarNumber;
+            ViewData["Count"] = result.Count;
             return View();
         }
     }

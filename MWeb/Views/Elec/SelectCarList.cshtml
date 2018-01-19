@@ -40,37 +40,37 @@
         <!-- 筛选 start  -->
         <div class="sort sort4 sort-bg-white sort-pop y2015A ">
             <ul>
-                <li class="current">
+                <li id="t_p">
                     <a href="###" data-action="grade-price">
-                        <span>15-12万</span>
+                        <span>价格</span>
                         <i></i>
                     </a>
                 </li>
-                <li>
+                <li id="t_f">
                     <a href="###" data-action="grade-dltype">
                         <span>动力类型</span>
                         <i></i>
                     </a>
                 </li>
-                <li>
+                <li id="t_bl">
                     <a href="###" data-action="grade-range">
                         <span>续航里程</span>
                         <i></i>
                     </a>
                 </li>
-                <li>
+                <li id="t_ct">
                     <a href="###" data-action="grade-time">
                         <span>充电时间</span>
                         <i></i>
                     </a>
                 </li>
-                <li>
+                <li id="t_g">
                     <a href="###" data-action="grade-country">
                         <span>国别</span>
                         <i></i>
                     </a>
                 </li>
-                <li>
+                <li id="t_b">
                     <a href="###" data-action="grade-cartype">
                         <span>车身形式</span>
                         <i></i>
@@ -81,7 +81,7 @@
         </div>
         <div class="sort-warp">
             <div class="sort-clear">
-                <a href="#" class="btn-clear">清除条件</a>
+                <a href="../selectcarlist" class="btn-clear">清除条件</a>
             </div>
         </div>
 
@@ -92,64 +92,17 @@
             <!-- 标题 start  -->
             <div class="tt-first y2015">
                 <ul class="tags-sub tags-sub-left">
-                    <li class="current"><a href="###">按关注度</a></li>
-                    <li class="arrow jg-sty"><a href="###">价格</a></li>
-                    <li class="arrow"><a href="###">补贴最高</a></li>
+                    <li id="order_attend" class="current"><a href="javascript:;" onclick="setOrder('attend')">按关注度</a></li>
+                    <li id="order_price" class="arrow jg-sty"><a href="javascript:;" onclick="setOrder('price')">价格</a></li>
                 </ul>
-                <span class="sub-tt-more">共191个车型</span>
+                <span class="sub-tt-more">共 @Html.Raw(ViewData["CarNumber"].ToString())个车型</span>
             </div>
             <!-- 标题 end  -->
             <!-- 列表 start  -->
 
             <div class="buy-car new-car">
                 <ul>
-                    <li>
-                        <a href="#" class="car">
-                            <div class="img-box">
-                                <img src="../images/pic_300x200.jpg">
-                                <i class="sale"></i>
-                                <i class="ico-shangshi ico-shangshi-blue">即将上市</i>
-                            </div>
-                            <strong>上海大众迈腾</strong>
-                            <p><em>126-140万起</em></p>
-                            <span class="bt">补贴6.6万</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="car">
-                            <div class="img-box">
-                                <img src="../images/pic_300x200.jpg">
-                                <i class="ico-shangshi">新上车款</i>
-                            </div>
-                            <strong>上海大众迈腾</strong>
-                            <p><em>126-140万起</em></p>
-                            <span class="bt">补贴6.6万</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="car">
-                            <div class="img-box">
-                                <img src="../images/pic_300x200.jpg">
-                                <i class="sale"></i>
-                                <i class="ico-shangshi ico-shangshi-blue">即将上市</i>
-                            </div>
-                            <strong>上海大众迈腾</strong>
-                            <p><em>126-140万起</em></p>
-                            <span class="bt">补贴6.6万</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="car">
-                            <div class="img-box">
-                                <img src="../images/pic_300x200.jpg">
-                                <i class="ico-shangshi">新上车款</i>
-                            </div>
-                            <strong>上海大众迈腾</strong>
-                            <p><em>126-140万起</em></p>
-                            <span class="bt">补贴6.6万</span>
-                        </a>
-                    </li>
-
+                    @Html.Raw(ViewData["carList"].ToString())
                 </ul>
             </div>
 
@@ -157,19 +110,15 @@
             <!-- 翻页 start  -->
 
             <div class="m-pages b-shadow">
-                <a href="#" class="m-pages-pre m-pages-none">上一页</a>
+                <a href="javascript:;" id="page_prev" class="m-pages-pre m-pages-none">上一页</a>
                 <div class="m-pages-num">
-                    <div class="m-pages-num-con">999/999</div>
+                    <div class="m-pages-num-con" id="page_current">0/0</div>
                     <div class="m-pages-num-arrow"></div>
                 </div>
-                <select>
+                <select id="page_list">
                     <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
                 </select>
-                <a href="#" class="m-pages-next">下一页</a>
+                <a href="javascript:;" id="page_next" class="m-pages-next">下一页</a>
             </div>
 
             <!-- 翻页 end  -->
@@ -180,7 +129,15 @@
 
     <!-- 选车 end  -->
 
-    <!-- footer start  --> 
+    <script type="text/javascript">
+        var url = "http://m.yiche.com/";
+        $(function () {//没有电脑版，临时处理
+            var linktopc = $("#a_linkToPcPage");
+            $(linktopc).hide().next().hide();
+        });
+    </script>
+
+    <!-- footer start  -->
     <div class="footer15">
         <!--搜索框-->
         @Html.Partial("~/html/footersearch.cshtml")
@@ -195,8 +152,6 @@
         <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
     </div>
     <!-- footer end  -->
-
-
     <!--弹出层 start-->
     <div class="leftmask leftmask3" style="display: none;"></div>
     <div class="leftPopup grade-price" data-back="leftmask3" style="display: none;">
@@ -226,15 +181,15 @@
                     </div>
 
                 </li>
-                <li class="current"><a href="#">不限</a></li>
-                <li><a href="#">5万以下</a></li>
-                <li><a href="#">5-8万</a></li>
-                <li><a href="#">8-12万</a></li>
-                <li><a href="#">12-18万</a></li>
-                <li><a href="#">18-25万</a></li>
-                <li><a href="#">25-40万</a></li>
-                <li><a href="#">40-80万</a></li>
-                <li><a href="#">80万以上</a></li>
+                <li class="current"><a href="javascript:GotoPage('p')" ">不限</a></li>
+                <li><a t="p_0-5" href="javascript:GotoPage('p_0-5')">5万以下</a></li>
+                <li><a t="p_5-8" href="javascript:GotoPage('p_5-8')">5-8万</a></li>
+                <li><a t="p_8-12" href="javascript:GotoPage('p_8-12')">8-12万</a></li>
+                <li><a t="p_12-18" href="javascript:GotoPage('p_12-18')">12-18万</a></li>
+                <li><a t="p_18-25" href="javascript:GotoPage('p_18-25')">18-25万</a></li>
+                <li><a t="p_25-40" href="javascript:GotoPage('p_25-40')">25-40万</a></li>
+                <li><a t="p_40-80" href="javascript:GotoPage('p_40-80')">40-80万</a></li>
+                <li><a t="p_80" href="javascript:GotoPage('p_80-9999')">80万以上</a></li>
             </ul>
 
         </div>
@@ -256,10 +211,10 @@
     <script type="text/template" id="gradeTemplate1">
         <div class="ap">
             <ul class="first-list rp jg-sx-sty">
-                <li class="current"><a href="#">纯电动</a></li>
-                <li><a href="#">插电混动</a></li>
+                <li class="current"><a href="javascript:GotoPage('f')">不限</a></li>
+                <li><a t="f_16" href="javascript:GotoPage('f_16')">纯电</a></li>
+                <li><a t="f_128" href="javascript:GotoPage('f_128')">插电混动</a></li>
             </ul>
-
         </div>
     </script>
     <!--公共模板 end-->
@@ -279,12 +234,13 @@
     <script type="text/template" id="gradeTemplate2">
         <div class="ap">
             <ul class="first-list rp jg-sx-sty">
-                <li class="current"><a href="#">100公里以下</a></li>
-                <li><a href="#">100-150公里</a></li>
-                <li><a href="#">150-200公里</a></li>
-                <li><a href="#">200-300公里</a></li>
-                <li><a href="#">300-400公里</a></li>
-                <li><a href="#">400公里以上</a></li>
+                <li class="current"><a href="javascript:GotoPage('bl')">不限</a></li>
+                <li><a t="bl_0-100" href="javascript:GotoPage('bl_0-100')">100公里以下</a></li>
+                <li><a t="bl_100-200" href="javascript:GotoPage('bl_100-200')">100-200公里</a></li>
+                <li><a t="bl_200-300" href="javascript:GotoPage('bl_200-300')">200-300公里</a></li>
+                <li><a t="bl_300-400" href="javascript:GotoPage('bl_300-400')">300-400公里</a></li>
+                <li><a t="bl_400-500" href="javascript:GotoPage('bl_400-500')">400-500公里</a></li>
+                <li><a t="bl_500" href="javascript:GotoPage('bl_500_1000')">500公里以上</a></li>
             </ul>
 
         </div>
@@ -306,12 +262,11 @@
     <script type="text/template" id="gradeTemplate3">
         <div class="ap">
             <ul class="first-list rp jg-sx-sty">
-                <li class="current"><a href="#">0-6小时</a></li>
-                <li><a href="#">6-8小时</a></li>
-                <li><a href="#">8-10小时</a></li>
-                <li><a href="#">10-15小时</a></li>
-                <li><a href="#">15-20小时</a></li>
-                <li><a href="#">20小时以上</a></li>
+                <li class="current"><a href="javascript:GotoPage('ct')">不限</a></li>
+                <li><a t="ct_0-6" href="javascript:GotoPage('ct_0-6')">6小时以内</a></li>
+                <li><a t="ct_6-8" href="javascript:GotoPage('ct_6-8')">6-8小时</a></li>
+                <li><a t="ct_8-12" href="javascript:GotoPage('ct_8-12')">8-12小时</a></li>
+                <li><a t="ct_12" href="javascript:GotoPage('ct_12-24')">12小时以上</a></li>
             </ul>
 
         </div>
@@ -333,10 +288,10 @@
     <script type="text/template" id="gradeTemplate4">
         <div class="ap">
             <ul class="first-list rp jg-sx-sty">
-                <li class="current"><a href="#">国产</a></li>
-                <li><a href="#">日系</a></li>
-                <li><a href="#">美系</a></li>
-                <li><a href="#">欧系</a></li>
+                <li class="current"><a href="javascript:GotoPage('g')">不限</a></li>
+                <li><a t="g_1" href="javascript:GotoPage('g_1')">国产</a></li>
+                <li><a t="g_2" href="javascript:GotoPage('g_2')">合资</a></li>
+                <li><a t="g_4" href="javascript:GotoPage('g_4')">进口</a></li>
             </ul>
 
         </div>
@@ -358,22 +313,21 @@
     <script type="text/template" id="gradeTemplate5">
         <div class="ap">
             <ul class="first-list rp jg-sx-sty">
-                <li class="current"><a href="#">轿车</a></li>
-                <li><a href="#">SUV</a></li>
-                <li><a href="#">MPV</a></li>
-
+                <li class="current"><a href="javascript:GotoPage('b')">不限</a></li>
+                <li><a t="b_1" href="javascript:GotoPage('b_1')">两厢</a></li>
+                <li><a t="b_2" href="javascript:GotoPage('b_2')">三厢</a></li>
+                <li><a t="b_64" href="javascript:GotoPage('b_64')">SUV</a></li>
             </ul>
-
         </div>
     </script>
     <!--公共模板 end-->
     <!-- 车身类型 end  -->
 
     <script src="http://image.bitautoimg.com/uimg/wap/js/jquery-1.8.0.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="../js/iscroll.js"></script>
-    <script type="text/javascript" src="../js/underscore.js"></script>
-    <script src="../js/model.js" type="text/javascript"></script>
-    <script type="text/javascript" src="../js/rightswipe3.js"></script>
+    <script type="text/javascript" src="http://192.168.0.10:8888/m/20160519移动站改版/js/iscroll.js"></script>
+    <script type="text/javascript" src="http://192.168.0.10:8888/m/20160519移动站改版/js/underscore.js"></script>
+    <script src="http://192.168.0.10:8888/m/20160519移动站改版/js/model.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://192.168.0.10:8888/m/20160519移动站改版/js/rightswipe3.js"></script>
     <script type="text/javascript">
         $(function () {
             var $body = $('body');
@@ -384,100 +338,313 @@
                 ds: data,
                 templateid: '#gradeTemplate',
                 fnEnd: function () {
-                    var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
-                    $swipeLeft.find('a').click(function (ev) {
-                        ev.preventDefault();
-                        var $click = $(this);
-                        console.log($click.html());
-                        $back.trigger('close');
-                    })
+                    //var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    //$swipeLeft.find('a').click(function (ev) {
+                    //    ev.preventDefault();
+                    //    var $click = $(this);
+                    //    console.log($click.html());
+                    //    $back.trigger('close');
+                    //})
+                    bindSwiperStyle('p');
                 }
             });
-
 
             $body.trigger('publicswipe1', {
                 actionName: '[data-action=grade-dltype]',
                 ds: data,
                 templateid: '#gradeTemplate1',
                 fnEnd: function () {
-                    var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
-                    $swipeLeft.find('a').click(function (ev) {
-                        ev.preventDefault();
-                        var $click = $(this);
-                        console.log($click.html());
-                        $back.trigger('close');
-                    })
+                    //var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    //$swipeLeft.find('a').click(function (ev) {
+                    //    ev.preventDefault();
+                    //    var $click = $(this);
+                    //    console.log($click.html());
+                    //    $back.trigger('close');
+                    //})
+                    bindSwiperStyle('f');
                 }
             });
-
 
             $body.trigger('publicswipe1', {
                 actionName: '[data-action=grade-range]',
                 ds: data,
                 templateid: '#gradeTemplate2',
                 fnEnd: function () {
-                    var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
-                    $swipeLeft.find('a').click(function (ev) {
-                        ev.preventDefault();
-                        var $click = $(this);
-                        console.log($click.html());
-                        $back.trigger('close');
-                    })
+                    //var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    //$swipeLeft.find('a').click(function (ev) {
+                    //    ev.preventDefault();
+                    //    var $click = $(this);
+                    //    console.log($click.html());
+                    //    $back.trigger('close');
+                    //})
+                    bindSwiperStyle('bl');
                 }
             });
 
             //   充电时间
-
             $body.trigger('publicswipe1', {
                 actionName: '[data-action=grade-time]',
                 ds: data,
                 templateid: '#gradeTemplate3',
                 fnEnd: function () {
-                    var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
-                    $swipeLeft.find('a').click(function (ev) {
-                        ev.preventDefault();
-                        var $click = $(this);
-                        console.log($click.html());
-                        $back.trigger('close');
-                    })
+                    //var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    //$swipeLeft.find('a').click(function (ev) {
+                    //    ev.preventDefault();
+                    //    var $click = $(this);
+                    //    console.log($click.html());
+                    //    $back.trigger('close');
+                    //})
+                    bindSwiperStyle('ct');
                 }
             });
 
             //   国别
-
             $body.trigger('publicswipe1', {
                 actionName: '[data-action=grade-country]',
                 ds: data,
                 templateid: '#gradeTemplate4',
                 fnEnd: function () {
-                    var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
-                    $swipeLeft.find('a').click(function (ev) {
-                        ev.preventDefault();
-                        var $click = $(this);
-                        console.log($click.html());
-                        $back.trigger('close');
-                    })
+                    //var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    //$swipeLeft.find('a').click(function (ev) {
+                    //    ev.preventDefault();
+                    //    var $click = $(this);
+                    //    console.log($click.html());
+                    //    $back.trigger('close');
+                    //})
+                    bindSwiperStyle('g');
                 }
             });
 
             //   车身类型
-
             $body.trigger('publicswipe1', {
                 actionName: '[data-action=grade-cartype]',
                 ds: data,
                 templateid: '#gradeTemplate5',
                 fnEnd: function () {
-                    var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
-                    $swipeLeft.find('a').click(function (ev) {
-                        ev.preventDefault();
-                        var $click = $(this);
-                        console.log($click.html());
-                        $back.trigger('close');
-                    })
+                    //var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    //$swipeLeft.find('a').click(function (ev) {
+                    //    ev.preventDefault();
+                    //    var $click = $(this);
+                    //    console.log($click.html());
+                    //    $back.trigger('close');
+                    //})
+                    bindSwiperStyle('b');
                 }
             });
 
-        })
+        });
+        var curUrlParam = "";
+        var baseUrl = "";
+        var CarParam = {
+            p: "",  // 价格
+            f: "",  // 动力类型
+            bl: "",  // 续航里程
+            ct: "",  // 充电时间
+            g: "",  // 国别
+            b: "",   // 车身形式
+            s: 4,  //排序方式
+            page: 1,  //当前第几页
+            pagesize:50 // 每页数量
+        }
+        var CarParamText = {
+            "p_0-5": "5万以下",  // 价格
+            "p_5-8": "5-8万",  // 价格
+            "p_8-12": "8-12万",  // 价格
+            "p_12-18": "12-18万",  // 价格
+            "p_18-25": "18-25万",  // 价格
+            "p_25-40": "25-40万",  // 价格
+            "p_40-80": "40-80万",  // 价格
+            "p_80-9999": "80万以上",  // 价格
+            "f_16": "纯电",  // 动力类型
+            "f_128": "插件混动",  // 动力类型
+            "bl_0-100": "100公里以下",
+            "bl_100-200": "100-200公里",
+            "bl_200-300": "200-300公里",
+            "bl_300-400": "300-400公里",
+            "bl_400-500": "400-500公里",
+            "bl_500": "500公里以上",
+            "ct_0-6": "6小时以内",
+            "ct_6-8": "6-8小时",
+            "ct_8-12": "8-12小时",
+            "ct_12": "12小时以上",
+            "g_1": "国产",
+            "g_2": "合资",
+            "g_4": "进口",
+            "b_1": "两厢",
+            "b_2": "三厢",
+            "b_64": "SUV"
+        }
+
+        var CarParamEnum = {
+            p: "价格",  //
+            f: "动力类型",  //
+            bl: "续航里程",  //
+            ct: "充电时间",  //
+            g: "国别",  //
+            b: "车身形式"
+        }
+
+        var CarNumber = @ViewData["Count"].ToString();
+
+        function bindPager() {
+            var pages = (CarNumber % CarParam.pagesize) > 0 ? parseInt(CarNumber / CarParam.pagesize) + 1 : parseInt(CarNumber / CarParam.pagesize);
+            var select = "";
+            for (var i = 1; i <= pages; i++)
+            {
+                if (CarParam.page == i) {
+                    select += ("<option selected value='" + i + "'>" + i + "</option>");
+                } else {
+                    select += ("<option value='" + i + "'>" + i + "</option>");}
+            }
+            //page_prev
+            $("#page_list").unbind();
+            $("#page_list").html(select);
+            $("#page_list").bind("change", function () {
+                CarParam.page = $(this).val();
+                Jump();
+            });
+
+            $("#page_current").text(CarParam.page + "/" + pages);
+            if (CarParam.page == 1) {
+                $("#page_prev").addClass("m-pages-none");
+                $("#page_prev").unbind();
+                //$("#page_prev").attr("")
+                //$("#page_list").addClass();
+            } else {
+                $("#page_prev").removeClass("m-pages-none");
+                $("#page_prev").bind("click", function () {
+                    CarParam.page = CarParam.page-1;
+                    Jump();
+                })
+            }
+            if (CarParam.page == pages) {
+                $("#page_next").addClass("m-pages-none");
+                $("#page_next").unbind();
+                //$("#page_prev").attr("")
+                //$("#page_list").addClass();
+            } else {
+                $("#page_next").removeClass("m-pages-none");
+                $("#page_next").bind("click", function () {
+                    CarParam.page = CarParam.page + 1;
+                    Jump();
+                })
+            }
+        }
+
+        function setOrder(type) {
+            if (type == "price") {
+                if (CarParam.s == 2) {
+                    CarParam.s = 3;
+                } else {
+                    CarParam.s = 2;
+                }
+            } else {
+                CarParam.s = 4;
+            }
+            Jump();
+        }
+
+        function LoadUrlParam() {
+            var pp = GetRequest();
+            CarParam = $.extend(CarParam, pp);
+
+            // todo: 绑定样式
+            bindSelectedStyle();
+            bindPager();
+        }
+
+        function bindSelectedStyle() {
+            for (k in CarParam)
+            {
+                if (k == "idx") {
+                    continue;
+                }
+                if (k == "s")
+                {
+                    if (CarParam[k] == 4) {
+                        $("#order_attend").addClass("current");
+                        $("#order_price").removeClass("jx-current");
+                        $("#order_price").removeClass("sx-current");
+                    } else if (CarParam[k] == 2) {
+                        $("#order_price").addClass("sx-current");
+                        $("#order_price").removeClass("jx-current");
+                        $("#order_attend").removeClass("current");
+
+                    } else if (CarParam[k] == 3) {
+                        $("#order_price").addClass("jx-current");
+                        $("#order_price").removeClass("sx-current");
+                        $("#order_attend").removeClass("current");
+                    }
+                }else if (CarParam[k] == "") {
+                    var n = $("#t_" + k + " a span");//.text(CarParamEnum[k]).parent.removeClass("current");
+                    n.text(CarParamEnum[k]);
+                    $("#t_" + k).removeClass("current");
+                } else {
+                    var n = $("#t_" + k + " a span");//.text(CarParamEnum[k]).parent.removeClass("current");
+                    n.text(CarParamText[k+"_"+CarParam[k]]);
+                    $("#t_" + k).addClass("current");
+                }
+            }
+        }
+
+        function bindSwiperStyle(k) {
+
+            var curk = $("a[t^='" + k + "']");
+            if (curk.length > 0) {
+                for (var i = 0; i < curk.length; i++) {
+                    var t = $(curk[i]).attr("t");
+                    if (CarParam[k] != "" && t.indexOf(CarParam[k]) > 0) {
+                        $(curk[i].parentNode).addClass("current");
+                        //$("#t_" + k + " a span").text(CarParam[k]);
+                    } else {
+                        $(curk[i].parentNode).removeClass("current");
+                    }
+                }
+            }
+        }
+
+        function GetRequest() {
+            //url例子：XXX.aspx?ID=" + ID + "&Name=" + Name；
+            var url = location.search; //获取url中"?"符以及其后的字串
+            var theRequest = new Object();
+            if (url.indexOf("?") != -1)//url中存在问号，也就说有参数。
+            {
+                var str = url.substr(1);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    if (strs[i].split("=")[0] != "") {
+                        theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                    }
+                }
+            }
+            console.log(theRequest);
+            return theRequest;
+        }
+
+        function GotoPage(param) {
+            var params = param.split('_');
+            if (param.indexOf('_') > 0) {
+                //var v = CarParam[params[0]];
+                CarParam[params[0]] = params[1];
+            } else {
+                //
+                CarParam[params[0]] = "";
+            }
+            Jump();
+        }
+
+        function Jump() {
+            var turnUrl = "";
+            for (p in CarParam) {
+                if (CarParam[p] == "") {
+                } else {
+                    turnUrl += ("&" + p + "=" + CarParam[p]);
+                }
+            }
+            var path = window.location.hostname + window.location.pathname + "?" + turnUrl;
+            window.location = "?" + turnUrl;
+        }
+        LoadUrlParam();
     </script>
 
 

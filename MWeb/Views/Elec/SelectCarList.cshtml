@@ -15,6 +15,7 @@
     <meta name="description" content="汽车大全:手机易车网车型大全频道为您提供各种汽车品牌型号信息,包括汽车报价,汽车标志,汽车图片,汽车经销商,汽车油耗,汽车资讯,汽车点评,汽车问答,汽车论坛等等……" />
     <!--#include file="/ushtml/0000/myiche2015_cube_xuanche_style-news-1004.shtml"-->
     <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/新能源频道/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/提示.css" />
 </head>
 <body class="bg-fff">
     @Html.Partial("~/html/TopDownloadLayer.cshtml")
@@ -101,9 +102,18 @@
             <!-- 列表 start  -->
 
             <div class="buy-car new-car">
-                <ul>
+                @if (ViewData["carList"].ToString() != "")
+                {
                     @Html.Raw(ViewData["carList"].ToString())
-                </ul>
+                }
+                else
+                {
+                    <div class="tishi-box">
+                        <div class="tishi-tu tishi-zanwu"></div>
+                        <div class="tishi-small">未找到合适的车型<br />请调整一下选车条件</div>
+                    </div>
+                }
+
             </div>
 
             <!-- 列表 end  -->

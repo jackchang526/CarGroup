@@ -149,11 +149,11 @@ namespace MWeb.Controllers
             var result = selectCarToolNewBll.GetSelectCarResultWithElecInfo(param);
 
             StringBuilder carList = new StringBuilder();
-            if (result != null)
+            if (result != null && result.ResList != null && result.ResList.Count > 0)
             {
+                carList.AppendLine("<ul>");
                 foreach (var item in result.ResList)
                 {
-
                     carList.AppendLine(string.Format(" <li id=\"s_{0}\">", item.SerialId));
                     carList.AppendLine(string.Format("    <a href=\"\\{0}\\\" class=\"car\" >", item.AllSpell));
                     carList.AppendLine("        <div class=\"img-box\" >");
@@ -173,6 +173,7 @@ namespace MWeb.Controllers
                     carList.AppendLine("    </a>");
                     carList.AppendLine("</li>");
                 }
+                carList.AppendLine("</ul>");
                 ViewData["carList"] = carList.ToString();
                 ViewData["CarNumber"] = result.CarNumber;
                 ViewData["Count"] = result.Count;

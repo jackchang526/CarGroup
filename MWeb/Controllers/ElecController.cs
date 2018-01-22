@@ -137,6 +137,10 @@ namespace MWeb.Controllers
                     }
                 }
             }
+            if (param.ContainsKey("pagesize"))
+            {
+                param["pagesize"] = "50";
+            }
             if (!param.ContainsKey("f"))
             {
                 param.Add("f", "16,128");
@@ -145,31 +149,41 @@ namespace MWeb.Controllers
             var result = selectCarToolNewBll.GetSelectCarResultWithElecInfo(param);
 
             StringBuilder carList = new StringBuilder();
-            foreach (var item in result.ResList)
+            if (result != null)
             {
-
-                carList.AppendLine("<li>");
-                carList.AppendLine(string.Format("    <a href=\"\\{0}\\\" class=\"car\" >", item.AllSpell));
-                carList.AppendLine("        <div class=\"img-box\" >");
-                carList.AppendLine(string.Format(" <img src=\"{0}\" >", item.ImageUrl));
-                //carList.AppendLine("            <i class=\"ico-shangshi\">新上车款</i>");
-                carList.AppendLine("        </div>");
-                carList.AppendLine(string.Format(" <strong>{0}</strong>", item.ShowName));
-                carList.AppendLine(string.Format(" <p><em>{0}起</em></p>", item.PriceRange));
-                if (!string.IsNullOrEmpty(item.NormalChargeTime))
+                foreach (var item in result.ResList)
                 {
-                    carList.AppendLine(string.Format("        <span class=\"bt\">充电时间{0}小时</span>", item.NormalChargeTime));
+
+                    carList.AppendLine("<li>");
+                    carList.AppendLine(string.Format("    <a href=\"\\{0}\\\" class=\"car\" >", item.AllSpell));
+                    carList.AppendLine("        <div class=\"img-box\" >");
+                    carList.AppendLine(string.Format(" <img src=\"{0}\" >", item.ImageUrl));
+                    //carList.AppendLine("            <i class=\"ico-shangshi\">新上车款</i>");
+                    carList.AppendLine("        </div>");
+                    carList.AppendLine(string.Format(" <strong>{0}</strong>", item.ShowName));
+                    carList.AppendLine(string.Format(" <p><em>{0}起</em></p>", item.PriceRange));
+                    if (!string.IsNullOrEmpty(item.NormalChargeTime))
+                    {
+                        carList.AppendLine(string.Format("        <span class=\"bt\">充电时间{0}小时</span>", item.NormalChargeTime));
+                    }
+                    else
+                    {
+                        //carList.AppendLine("        <span class=\"bt\"></span>");
+                    }
+                    carList.AppendLine("    </a>");
+                    carList.AppendLine("</li>");
                 }
-                else {
-                    //carList.AppendLine("        <span class=\"bt\"></span>");
-                }
-                carList.AppendLine("    </a>");
-                carList.AppendLine("</li>");
+                ViewData["carList"] = carList.ToString();
+                ViewData["CarNumber"] = result.CarNumber;
+                ViewData["Count"] = result.Count;
+            }
+            else
+            {
+                ViewData["carList"] = "";
+                ViewData["CarNumber"] = 0;
+                ViewData["Count"] = 0;
             }
 
-            ViewData["carList"] = carList.ToString();
-            ViewData["CarNumber"] = result.CarNumber;
-            ViewData["Count"] = result.Count;
             return View();
         }
     }

@@ -162,7 +162,7 @@ namespace MWeb.Controllers
                     carList.AppendLine("        </div>");
                     carList.AppendLine(string.Format(" <strong>{0}</strong>", item.ShowName));
                     carList.AppendLine(string.Format(" <p><em>{0}起</em></p>", item.PriceRange));
-                    if (!string.IsNullOrEmpty(item.NormalChargeTime))
+                    if (!string.IsNullOrEmpty(item.BatteryLife))
                     {
                         carList.AppendLine(string.Format("        <span class=\"bt\">续航{0}km</span>", item.BatteryLife));
                     }

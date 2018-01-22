@@ -119,7 +119,7 @@
             <!-- 列表 end  -->
             <!-- 翻页 start  -->
 
-            <div class="m-pages b-shadow">
+            <div class="m-pages b-shadow" style="display:none;">
                 <a href="javascript:;" id="page_prev" class="m-pages-pre m-pages-none">上一页</a>
                 <div class="m-pages-num">
                     <div class="m-pages-num-con" id="page_current">0/0</div>
@@ -509,6 +509,11 @@
         // 分页功能
         function bindPager() {
             var pages = (CarNumber % CarParam.pagesize) > 0 ? parseInt(CarNumber / CarParam.pagesize) + 1 : parseInt(CarNumber / CarParam.pagesize);
+            if (pages <= 0)
+            {
+                $(".m-pages").hide();
+                return;
+            }
             var select = "";
             for (var i = 1; i <= pages; i++)
             {
@@ -550,6 +555,7 @@
                     Jump();
                 })
             }
+            $(".m-pages").show();
         }
 
         // 按照指定条件排序
@@ -697,11 +703,14 @@
             window.location = "?" + turnUrl;
         }
 
+        // 绑定上市新车标签
         function BindNewCarIntoMarketTime() {
             //var requrl = "http://api.car.bitauto.com/carinfo/GetCarIntoMarketText.ashx?callback=GetNewCarTextCallback&csids=1649,4675&isshowdate=0&type=serial"
             var ids = "";
 
             var lis = $(".buy-car ul li");
+            if (lis.length <= 0)
+            { return;}
             for (var idx = 0; idx < lis.length;idx++)
             {
                 ids += $(lis[idx]).attr("id").replace("s_","")+",";

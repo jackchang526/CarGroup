@@ -154,21 +154,21 @@ namespace MWeb.Controllers
                 foreach (var item in result.ResList)
                 {
 
-                    carList.AppendLine("<li>");
+                    carList.AppendLine(string.Format(" <li id=\"s_{0}\">", item.SerialId));
                     carList.AppendLine(string.Format("    <a href=\"\\{0}\\\" class=\"car\" >", item.AllSpell));
                     carList.AppendLine("        <div class=\"img-box\" >");
                     carList.AppendLine(string.Format(" <img src=\"{0}\" >", item.ImageUrl));
-                    //carList.AppendLine("            <i class=\"ico-shangshi\">新上车款</i>");
+                    carList.AppendLine("            <i style=\"display:none;\" class=\"ico-shangshi\"></i>");
                     carList.AppendLine("        </div>");
                     carList.AppendLine(string.Format(" <strong>{0}</strong>", item.ShowName));
                     carList.AppendLine(string.Format(" <p><em>{0}起</em></p>", item.PriceRange));
                     if (!string.IsNullOrEmpty(item.NormalChargeTime))
                     {
-                        carList.AppendLine(string.Format("        <span class=\"bt\">充电时间{0}小时</span>", item.NormalChargeTime));
+                        carList.AppendLine(string.Format("        <span class=\"bt\">续航{0}km</span>", item.BatteryLife));
                     }
                     else
                     {
-                        //carList.AppendLine("        <span class=\"bt\"></span>");
+                        carList.AppendLine("        <span class=\"bt\"></span>");
                     }
                     carList.AppendLine("    </a>");
                     carList.AppendLine("</li>");

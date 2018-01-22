@@ -346,6 +346,16 @@
                     //    $back.trigger('close');
                     //})
                     bindSwiperStyle('p');
+                    $("#btnPriceSubmit").bind("click", function () {
+                        var p_min = $("#p_min").val();
+                        var p_max = $("#p_max").val();
+                        if (p_min != "" && !isNaN(p_min)) {
+                            if (p_min != "" && !isNaN(p_min)) {
+                                CarParam["p"] = "p_" + p_min + "-" + p_max;
+                                Jump();
+                            }
+                        }
+                    })
                 }
             });
 
@@ -486,6 +496,7 @@
 
         var CarNumber = @ViewData["Count"].ToString();
 
+        // 分页功能
         function bindPager() {
             var pages = (CarNumber % CarParam.pagesize) > 0 ? parseInt(CarNumber / CarParam.pagesize) + 1 : parseInt(CarNumber / CarParam.pagesize);
             var select = "";
@@ -531,6 +542,7 @@
             }
         }
 
+        // 按照指定条件排序
         function setOrder(type) {
             if (type == "price") {
                 if (CarParam.s == 2) {
@@ -542,6 +554,18 @@
                 CarParam.s = 4;
             }
             Jump();
+        }
+
+        function setPrice() {
+            var p_min = $("#p_min").val();
+            var p_max = $("#p_max").val();
+            if (p_min == "" || isNaN(p_min)) {
+                if (p_min == "" || isNaN(p_min))
+                {
+                    CarParam["p"] = "p_" + p_min + "-" + p_max;
+                    Jump();
+                }
+            }
         }
 
         function LoadUrlParam() {
@@ -575,6 +599,24 @@
                         $("#order_price").removeClass("sx-current");
                         $("#order_attend").removeClass("current");
                     }
+                } else if (k == "p") {
+
+                    if (CarParam[k] == "") {
+                        var n = $("#t_" + k + " a span");//.text(CarParamEnum[k]).parent.removeClass("current");
+                        n.text(CarParamEnum[k]);
+                        $("#t_" + k).removeClass("current");
+                    } else {
+                        if (CarParamText[CarParam[k]] == undefined) {
+                            var n = $("#t_" + k + " a span");//.text(CarParamEnum[k]).parent.removeClass("current");
+                            n.text(CarParam[k].replace("p_","")+"万");
+                            $("#t_" + k).addClass("current");
+                        } else {
+                            var n = $("#t_" + k + " a span");//.text(CarParamEnum[k]).parent.removeClass("current");
+                            n.text(CarParamText[k + "_" + CarParam[k]]);
+                            $("#t_" + k).addClass("current");
+                        }
+                    }
+
                 }else if (CarParam[k] == "") {
                     var n = $("#t_" + k + " a span");//.text(CarParamEnum[k]).parent.removeClass("current");
                     n.text(CarParamEnum[k]);
@@ -644,7 +686,56 @@
             var path = window.location.hostname + window.location.pathname + "?" + turnUrl;
             window.location = "?" + turnUrl;
         }
+
+        function BindNewCarIntoMarketTime() {
+            //var requrl = "http://api.car.bitauto.com/carinfo/GetCarIntoMarketText.ashx?callback=GetNewCarTextCallback&csids=1649,4675&isshowdate=0&type=serial"
+            var ids = "";
+
+            var lis = $(".buy-car ul li");
+            for (var idx = 0; idx < lis.length;idx++)
+            {
+                ids += $(lis[idx]).attr("id").replace("s_","")+",";
+            }
+            console.log(ids);
+            ids = ids.substr(0, ids.length -1);
+            console.log(ids);
+            var requrl = "http://api.car.bitauto.com/carinfo/GetCarIntoMarketText.ashx?csids=" + ids + "&isshowdate=0&type=serial";
+
+            $.ajax({
+                url: requrl,
+                dataType: "jsonp",
+                jsonpCallback: "NewCarIntoMarketTimeJsonpCallback",
+                cache: true,
+                success: function (json) {
+                    console.log(json);
+                    var result = json;
+                    if (result != null && result.length > 0) {
+                        for (var i = 0; i < result.length;i++)
+                        {
+                            var tt = $("#s_" + result[i].csid + " .ico-shangshi");
+                            tt.text(result[i].text);
+                            if (result[i].text == "即将上市") {
+                                tt.addClass("ico-shangshi-blue");
+                            } else {
+                                //var tt = $("s_" + result[i].csid + " .ico-shangshi");
+                                //tt.text(result[i].text);
+                                tt.removeClass("ico-shangshi-blue");
+                                //tt.show();
+                            }
+                            tt.show();
+                        }
+                    } 
+                },
+                error: function (res) { 
+                    //
+                }
+            });
+
+
+        }
+
         LoadUrlParam();
+        BindNewCarIntoMarketTime();
     </script>
 
 

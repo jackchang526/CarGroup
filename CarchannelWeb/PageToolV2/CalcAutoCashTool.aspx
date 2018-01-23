@@ -15,7 +15,8 @@ Inherits="BitAuto.CarChannel.CarchannelWeb.PageToolV2.CalcAutoCashTool" %>
 <!--#include file="~/ushtml/0000/yiche_2016_cube_jisuanqi_style-1268.shtml"-->
 <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
 <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/dropdownlistnew.min.js?v=20161130"></script>
-<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/CarCalculator.min.js?v=20170324"></script>
+<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/CarCalculator.min.js?v=20180123"></script>
+<%--<script type="text/javascript" src="/jsnewV2/CarCalculator.js?v=20170324"></script>--%>
 <%--浮动JS--%>
 <script type="text/javascript">
     function addEvent(obj, type, fn) {
@@ -207,7 +208,7 @@ Inherits="BitAuto.CarChannel.CarchannelWeb.PageToolV2.CalcAutoCashTool" %>
                 if ($txtChePai.val() == "" || $txtChePai.val() == "0") {
                     $txtChePai.val(500);
                 }
-                if ($txtVehicleTax.val() == "" || $txtVehicleTax.val() == "0") {
+                if (($txtVehicleTax.val() == "" || $txtVehicleTax.val() == "0") && !(fuelType == "纯电" || fuelType == "插电混合") ) {
                     var cheChuanValue2 = $("#vehicleTax").children("span").attr("id");
                     switch (cheChuanValue2) {
                     case "1":

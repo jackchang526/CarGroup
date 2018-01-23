@@ -32,7 +32,7 @@
             $(".op-nav").hide();
             $("div[id^='app_download_']").hide();
             $("#app_yc_dwonload").hide();
-        } else if(typeof(WtParam) != "undefined" && WtParam == "mxmacg_qt") {
+        } else if (typeof (WtParam) != "undefined" && WtParam == "mxmacg_qt") {
             // add in 20171123 for 小米合作
             // 1. 顶部悬浮
             $("div[id^='app_download_']").hide();
@@ -481,37 +481,37 @@
             @Html.Partial("~/html/footerV3.cshtml")
         </div>
         <script type="text/javascript">
-                if (typeof(WtParam) != "undefined" && WtParam == "mbdkgxj") {
-                    $(".footer15").hide();
-                    $("div[id^='app_download_']").hide();
-                    $("#app_yc_dwonload").hide();
-                }else if(typeof(WtParam) != "undefined" && WtParam == "mxmacg_qt") {
-                    // add by hepw 20171123 for 小米合作
-                    // 1. 顶部悬浮
-                    $("div[id^='app_download_']").hide();
-                    $("#app_yc_dwonload").hide();
-                    // 2. 公共头
-                    $(".op-nav").hide();
-                    // 3. 公共底
-                    $(".footer15").hide();
-                    // 4.  贷款计算通栏
-                    $("#daikuanGo").hide();
-                    // 5. 贷款计算贷款推荐
-                    $("#m-loan-title").hide();
-                    $("#m-loan-con").hide();
-                }
+            if (typeof (WtParam) != "undefined" && WtParam == "mbdkgxj") {
+                $(".footer15").hide();
+                $("div[id^='app_download_']").hide();
+                $("#app_yc_dwonload").hide();
+            } else if (typeof (WtParam) != "undefined" && WtParam == "mxmacg_qt") {
+                // add by hepw 20171123 for 小米合作
+                // 1. 顶部悬浮
+                $("div[id^='app_download_']").hide();
+                $("#app_yc_dwonload").hide();
+                // 2. 公共头
+                $(".op-nav").hide();
+                // 3. 公共底
+                $(".footer15").hide();
+                // 4.  贷款计算通栏
+                $("#daikuanGo").hide();
+                // 5. 贷款计算贷款推荐
+                $("#m-loan-title").hide();
+                $("#m-loan-con").hide();
+            }
         </script>
         <div class="float-r-box">
             <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
         </div>
         <script type="text/javascript">
-                if (typeof (WtParam) != "undefined" && WtParam == "mxmacg_qt") {
-                    // add by hepw 20171123 for 小米合作
-                    // 有奖调研
-                    $(".float-r-box").hide();
-                    $("#ycfd").hide();
-                }
-        </script> 
+            if (typeof (WtParam) != "undefined" && WtParam == "mxmacg_qt") {
+                // add by hepw 20171123 for 小米合作
+                // 有奖调研
+                $(".float-r-box").hide();
+                $("#ycfd").hide();
+            }
+        </script>
         <!--footer end-->
     </div>
     <div id="master_container" data-url="/html/selectCarTemplate.htm?v=20151207" class="brandlayer">
@@ -519,7 +519,8 @@
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/jquery.lazyload.min.js"></script>
     <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/iscroll-infinite.js?v=201508031842"></script>
     <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/popup.js?v=201508031842"></script>
-    <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/CarCalculator.js?v=20170111"></script>
+    <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/CarCalculator.js?v=20180123"></script>
+    @*<script src="/js/CarCalculator.js?v=20170111"></script>*@
     <!--车船弹出层-->
     <div id="backCheChuan" class="leftmask leftmaskCheChuan" style="display: none;"></div>
     <div id="cheChuanLayer" class="leftPopup popup-chechuan" data-back="leftmaskCheChuan" style="display: none; z-index: 10">
@@ -564,42 +565,42 @@
         </div>
     </div>
     <script type="text/javascript">
-                $(function () {
-                    //右侧侧附加选择层
-                    (function () {
-                        var iscroll = false;
-                        $('[data-action=popup-chechuan]').rightSwipe({
-                            clickEnd: function (b) {
-                                var $leftPopup = this;
-                                if (b) {
-                                    var $back = $('.' + $leftPopup.attr('data-back'));
-                                    $back.touches({ touchstart: function (ev) { ev.preventDefault(); }, touchmove: function (ev) { ev.preventDefault(); } });
-                                    var $swipeLeft = $leftPopup.find('.swipeLeft');
+        $(function () {
+            //右侧侧附加选择层
+            (function () {
+                var iscroll = false;
+                $('[data-action=popup-chechuan]').rightSwipe({
+                    clickEnd: function (b) {
+                        var $leftPopup = this;
+                        if (b) {
+                            var $back = $('.' + $leftPopup.attr('data-back'));
+                            $back.touches({ touchstart: function (ev) { ev.preventDefault(); }, touchmove: function (ev) { ev.preventDefault(); } });
+                            var $swipeLeft = $leftPopup.find('.swipeLeft');
 
-                                    if (!iscroll) {
-                                        iscroll = true;
-                                        $leftPopup.myScroll = new IScroll($swipeLeft[0], {
-                                            probeType: 1,
-                                            snap: 'dd',
-                                            momentum: true,
-                                            click: true
-                                        });
-                                    }
-                                } else {
-                                    $leftPopup.myScroll.scrollTo(0, 0, 0, false);
-                                }
+                            if (!iscroll) {
+                                iscroll = true;
+                                $leftPopup.myScroll = new IScroll($swipeLeft[0], {
+                                    probeType: 1,
+                                    snap: 'dd',
+                                    momentum: true,
+                                    click: true
+                                });
                             }
-                        });
-                    })();
-
-                    $("#cheChuanDl a").on("click", function () {
-                        $("#cheChuanDl dd").attr("class", "");
-                        $(this).parent().attr("class", "current");
-                        calcLoanValue();
-                        calcAutoLoanAll();
-                        $("#backCheChuan").trigger("close");
-                    });
+                        } else {
+                            $leftPopup.myScroll.scrollTo(0, 0, 0, false);
+                        }
+                    }
                 });
+            })();
+
+            $("#cheChuanDl a").on("click", function () {
+                $("#cheChuanDl dd").attr("class", "");
+                $(this).parent().attr("class", "current");
+                calcLoanValue();
+                calcAutoLoanAll();
+                $("#backCheChuan").trigger("close");
+            });
+        });
     </script>
 
     <!--座位数弹出层-->
@@ -621,42 +622,42 @@
         </div>
     </div>
     <script type="text/javascript">
-                $(function () {
-                    //右侧侧附加选择层
-                    (function () {
-                        var iscroll = false;
-                        $('[data-action=popup-ZuoWeiS]').rightSwipe({
-                            clickEnd: function (b) {
-                                var $leftPopup = this;
-                                if (b) {
-                                    var $back = $('.' + $leftPopup.attr('data-back'));
-                                    $back.touches({ touchstart: function (ev) { ev.preventDefault(); }, touchmove: function (ev) { ev.preventDefault(); } });
-                                    var $swipeLeft = $leftPopup.find('.swipeLeft');
+        $(function () {
+            //右侧侧附加选择层
+            (function () {
+                var iscroll = false;
+                $('[data-action=popup-ZuoWeiS]').rightSwipe({
+                    clickEnd: function (b) {
+                        var $leftPopup = this;
+                        if (b) {
+                            var $back = $('.' + $leftPopup.attr('data-back'));
+                            $back.touches({ touchstart: function (ev) { ev.preventDefault(); }, touchmove: function (ev) { ev.preventDefault(); } });
+                            var $swipeLeft = $leftPopup.find('.swipeLeft');
 
-                                    if (!iscroll) {
-                                        iscroll = true;
-                                        $leftPopup.myScroll = new IScroll($swipeLeft[0], {
-                                            probeType: 1,
-                                            snap: 'dd',
-                                            momentum: true,
-                                            click: true
-                                        });
-                                    }
-                                } else {
-                                    $leftPopup.myScroll.scrollTo(0, 0, 0, false);
-                                }
+                            if (!iscroll) {
+                                iscroll = true;
+                                $leftPopup.myScroll = new IScroll($swipeLeft[0], {
+                                    probeType: 1,
+                                    snap: 'dd',
+                                    momentum: true,
+                                    click: true
+                                });
                             }
-                        });
-                    })();
-
-                    $("#zuoWeiSDl a").on("click", function () {
-                        $("#zuoWeiSDl dd").attr("class", "");
-                        $(this).parent().attr("class", "current");
-                        calcLoanValue();
-                        calcAutoLoanAll();
-                        $("#backZuoWei").trigger("close");
-                    });
+                        } else {
+                            $leftPopup.myScroll.scrollTo(0, 0, 0, false);
+                        }
+                    }
                 });
+            })();
+
+            $("#zuoWeiSDl a").on("click", function () {
+                $("#zuoWeiSDl dd").attr("class", "");
+                $(this).parent().attr("class", "current");
+                calcLoanValue();
+                calcAutoLoanAll();
+                $("#backZuoWei").trigger("close");
+            });
+        });
     </script>
 
     <!--第三者责任险弹出层-->
@@ -693,49 +694,49 @@
         </div>
     </div>
     <script type="text/javascript">
-                $(function () {
-                    //右侧侧附加选择层
-                    (function () {
-                        var iscroll = false;
-                        $('[data-action=popup-DiSanZheX]').rightSwipe({
-                            isclick: function () {
-                                if ($("#chkDiSanZheX").attr("class") == checkedClass) {
-                                    return true;
-                                } else {
-                                    return false;
-                                }
-                            },
-                            clickEnd: function (b) {
-                                var $leftPopup = this;
-                                if (b) {
-                                    var $back = $('.' + $leftPopup.attr('data-back'));
-                                    $back.touches({ touchstart: function (ev) { ev.preventDefault(); }, touchmove: function (ev) { ev.preventDefault(); } });
-                                    var $swipeLeft = $leftPopup.find('.swipeLeft');
+        $(function () {
+            //右侧侧附加选择层
+            (function () {
+                var iscroll = false;
+                $('[data-action=popup-DiSanZheX]').rightSwipe({
+                    isclick: function () {
+                        if ($("#chkDiSanZheX").attr("class") == checkedClass) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    },
+                    clickEnd: function (b) {
+                        var $leftPopup = this;
+                        if (b) {
+                            var $back = $('.' + $leftPopup.attr('data-back'));
+                            $back.touches({ touchstart: function (ev) { ev.preventDefault(); }, touchmove: function (ev) { ev.preventDefault(); } });
+                            var $swipeLeft = $leftPopup.find('.swipeLeft');
 
-                                    if (!iscroll) {
-                                        iscroll = true;
-                                        $leftPopup.myScroll = new IScroll($swipeLeft[0], {
-                                            probeType: 1,
-                                            snap: 'dd',
-                                            momentum: true,
-                                            click: true
-                                        });
-                                    }
-                                } else {
-                                    $leftPopup.myScroll.scrollTo(0, 0, 0, false);
-                                }
+                            if (!iscroll) {
+                                iscroll = true;
+                                $leftPopup.myScroll = new IScroll($swipeLeft[0], {
+                                    probeType: 1,
+                                    snap: 'dd',
+                                    momentum: true,
+                                    click: true
+                                });
                             }
-                        });
-                    })();
-
-                    $("#diSanZheXDl a").on("click", function () {
-                        $("#diSanZheXDl dd").attr("class", "");
-                        $(this).parent().attr("class", "current");
-                        calcLoanValue();
-                        calcAutoLoanAll();
-                        $("#backDiSanZhe").trigger("close");
-                    });
+                        } else {
+                            $leftPopup.myScroll.scrollTo(0, 0, 0, false);
+                        }
+                    }
                 });
+            })();
+
+            $("#diSanZheXDl a").on("click", function () {
+                $("#diSanZheXDl dd").attr("class", "");
+                $(this).parent().attr("class", "current");
+                calcLoanValue();
+                calcAutoLoanAll();
+                $("#backDiSanZhe").trigger("close");
+            });
+        });
     </script>
 
     <!--玻璃单独破碎险弹出层-->
@@ -757,49 +758,49 @@
         </div>
     </div>
     <script type="text/javascript">
-                $(function () {
-                    //右侧侧附加选择层
-                    (function () {
-                        var iscroll = false;
-                        $('[data-action=popup-BoLiX]').rightSwipe({
-                            isclick: function () {
-                                if ($("#chkBoLiX").attr("class") == checkedClass) {
-                                    return true;
-                                } else {
-                                    return false;
-                                }
-                            },
-                            clickEnd: function (b) {
-                                var $leftPopup = this;
-                                if (b) {
-                                    var $back = $('.' + $leftPopup.attr('data-back'));
-                                    $back.touches({ touchstart: function (ev) { ev.preventDefault(); }, touchmove: function (ev) { ev.preventDefault(); } });
-                                    var $swipeLeft = $leftPopup.find('.swipeLeft');
+        $(function () {
+            //右侧侧附加选择层
+            (function () {
+                var iscroll = false;
+                $('[data-action=popup-BoLiX]').rightSwipe({
+                    isclick: function () {
+                        if ($("#chkBoLiX").attr("class") == checkedClass) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    },
+                    clickEnd: function (b) {
+                        var $leftPopup = this;
+                        if (b) {
+                            var $back = $('.' + $leftPopup.attr('data-back'));
+                            $back.touches({ touchstart: function (ev) { ev.preventDefault(); }, touchmove: function (ev) { ev.preventDefault(); } });
+                            var $swipeLeft = $leftPopup.find('.swipeLeft');
 
-                                    if (!iscroll) {
-                                        iscroll = true;
-                                        $leftPopup.myScroll = new IScroll($swipeLeft[0], {
-                                            probeType: 1,
-                                            snap: 'dd',
-                                            momentum: true,
-                                            click: true
-                                        });
-                                    }
-                                } else {
-                                    $leftPopup.myScroll.scrollTo(0, 0, 0, false);
-                                }
+                            if (!iscroll) {
+                                iscroll = true;
+                                $leftPopup.myScroll = new IScroll($swipeLeft[0], {
+                                    probeType: 1,
+                                    snap: 'dd',
+                                    momentum: true,
+                                    click: true
+                                });
                             }
-                        });
-                    })();
-
-                    $("#boLiXDl a").on("click", function () {
-                        $("#boLiXDl dd").attr("class", "");
-                        $(this).parent().attr("class", "current");
-                        calcLoanValue();
-                        calcAutoLoanAll();
-                        $("#backBoLi").trigger("close");
-                    });
+                        } else {
+                            $leftPopup.myScroll.scrollTo(0, 0, 0, false);
+                        }
+                    }
                 });
+            })();
+
+            $("#boLiXDl a").on("click", function () {
+                $("#boLiXDl dd").attr("class", "");
+                $(this).parent().attr("class", "current");
+                calcLoanValue();
+                calcAutoLoanAll();
+                $("#backBoLi").trigger("close");
+            });
+        });
     </script>
 
     <!--车身划痕险弹出层-->
@@ -831,49 +832,49 @@
         </div>
     </div>
     <script type="text/javascript">
-                $(function () {
-                    //右侧侧附加选择层
-                    (function () {
-                        var iscroll = false;
-                        $('[data-action=popup-CheShenX]').rightSwipe({
-                            isclick: function () {
-                                if ($("#chkCheShenX").attr("class") == checkedClass) {
-                                    return true;
-                                } else {
-                                    return false;
-                                }
-                            },
-                            clickEnd: function (b) {
-                                var $leftPopup = this;
-                                if (b) {
-                                    var $back = $('.' + $leftPopup.attr('data-back'));
-                                    $back.touches({ touchstart: function (ev) { ev.preventDefault(); }, touchmove: function (ev) { ev.preventDefault(); } });
-                                    var $swipeLeft = $leftPopup.find('.swipeLeft');
+        $(function () {
+            //右侧侧附加选择层
+            (function () {
+                var iscroll = false;
+                $('[data-action=popup-CheShenX]').rightSwipe({
+                    isclick: function () {
+                        if ($("#chkCheShenX").attr("class") == checkedClass) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    },
+                    clickEnd: function (b) {
+                        var $leftPopup = this;
+                        if (b) {
+                            var $back = $('.' + $leftPopup.attr('data-back'));
+                            $back.touches({ touchstart: function (ev) { ev.preventDefault(); }, touchmove: function (ev) { ev.preventDefault(); } });
+                            var $swipeLeft = $leftPopup.find('.swipeLeft');
 
-                                    if (!iscroll) {
-                                        iscroll = true;
-                                        $leftPopup.myScroll = new IScroll($swipeLeft[0], {
-                                            probeType: 1,
-                                            snap: 'dd',
-                                            momentum: true,
-                                            click: true
-                                        });
-                                    }
-                                } else {
-                                    $leftPopup.myScroll.scrollTo(0, 0, 0, false);
-                                }
+                            if (!iscroll) {
+                                iscroll = true;
+                                $leftPopup.myScroll = new IScroll($swipeLeft[0], {
+                                    probeType: 1,
+                                    snap: 'dd',
+                                    momentum: true,
+                                    click: true
+                                });
                             }
-                        });
-                    })();
-
-                    $("#cheShenXDl a").on("click", function () {
-                        $("#cheShenXDl dd").attr("class", "");
-                        $(this).parent().attr("class", "current");
-                        calcLoanValue();
-                        calcAutoLoanAll();
-                        $("#backCheShen").trigger("close");
-                    });
+                        } else {
+                            $leftPopup.myScroll.scrollTo(0, 0, 0, false);
+                        }
+                    }
                 });
+            })();
+
+            $("#cheShenXDl a").on("click", function () {
+                $("#cheShenXDl dd").attr("class", "");
+                $(this).parent().attr("class", "current");
+                calcLoanValue();
+                calcAutoLoanAll();
+                $("#backCheShen").trigger("close");
+            });
+        });
     </script>
 
     <!--司机座位责任险弹出层-->
@@ -910,49 +911,49 @@
         </div>
     </div>
     <script type="text/javascript">
-                $(function () {
-                    //右侧侧附加选择层
-                    (function () {
-                        var iscroll = false;
-                        $('[data-action=popup-SiJiX]').rightSwipe({
-                            isclick: function () {
-                                if ($("#chkSiJiX").attr("class") == checkedClass) {
-                                    return true;
-                                } else {
-                                    return false;
-                                }
-                            },
-                            clickEnd: function (b) {
-                                var $leftPopup = this;
-                                if (b) {
-                                    var $back = $('.' + $leftPopup.attr('data-back'));
-                                    $back.touches({ touchstart: function (ev) { ev.preventDefault(); }, touchmove: function (ev) { ev.preventDefault(); } });
-                                    var $swipeLeft = $leftPopup.find('.swipeLeft');
+        $(function () {
+            //右侧侧附加选择层
+            (function () {
+                var iscroll = false;
+                $('[data-action=popup-SiJiX]').rightSwipe({
+                    isclick: function () {
+                        if ($("#chkSiJiX").attr("class") == checkedClass) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    },
+                    clickEnd: function (b) {
+                        var $leftPopup = this;
+                        if (b) {
+                            var $back = $('.' + $leftPopup.attr('data-back'));
+                            $back.touches({ touchstart: function (ev) { ev.preventDefault(); }, touchmove: function (ev) { ev.preventDefault(); } });
+                            var $swipeLeft = $leftPopup.find('.swipeLeft');
 
-                                    if (!iscroll) {
-                                        iscroll = true;
-                                        $leftPopup.myScroll = new IScroll($swipeLeft[0], {
-                                            probeType: 1,
-                                            snap: 'dd',
-                                            momentum: true,
-                                            click: true
-                                        });
-                                    }
-                                } else {
-                                    $leftPopup.myScroll.scrollTo(0, 0, 0, false);
-                                }
+                            if (!iscroll) {
+                                iscroll = true;
+                                $leftPopup.myScroll = new IScroll($swipeLeft[0], {
+                                    probeType: 1,
+                                    snap: 'dd',
+                                    momentum: true,
+                                    click: true
+                                });
                             }
-                        });
-                    })();
-
-                    $("#siJiXDl a").on("click", function () {
-                        $("#siJiXDl dd").attr("class", "");
-                        $(this).parent().attr("class", "current");
-                        calcLoanValue();
-                        calcAutoLoanAll();
-                        $("#backSiJi").trigger("close");
-                    });
+                        } else {
+                            $leftPopup.myScroll.scrollTo(0, 0, 0, false);
+                        }
+                    }
                 });
+            })();
+
+            $("#siJiXDl a").on("click", function () {
+                $("#siJiXDl dd").attr("class", "");
+                $(this).parent().attr("class", "current");
+                calcLoanValue();
+                calcAutoLoanAll();
+                $("#backSiJi").trigger("close");
+            });
+        });
     </script>
 
     <!--乘客座位责任险弹出层-->
@@ -989,49 +990,49 @@
         </div>
     </div>
     <script type="text/javascript">
-                $(function () {
-                    //右侧侧附加选择层
-                    (function () {
-                        var iscroll = false;
-                        $('[data-action=popup-ChengKeX]').rightSwipe({
-                            isclick: function () {
-                                if ($("#chkChengKeX").attr("class") == checkedClass) {
-                                    return true;
-                                } else {
-                                    return false;
-                                }
-                            },
-                            clickEnd: function (b) {
-                                var $leftPopup = this;
-                                if (b) {
-                                    var $back = $('.' + $leftPopup.attr('data-back'));
-                                    $back.touches({ touchstart: function (ev) { ev.preventDefault(); }, touchmove: function (ev) { ev.preventDefault(); } });
-                                    var $swipeLeft = $leftPopup.find('.swipeLeft');
+        $(function () {
+            //右侧侧附加选择层
+            (function () {
+                var iscroll = false;
+                $('[data-action=popup-ChengKeX]').rightSwipe({
+                    isclick: function () {
+                        if ($("#chkChengKeX").attr("class") == checkedClass) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    },
+                    clickEnd: function (b) {
+                        var $leftPopup = this;
+                        if (b) {
+                            var $back = $('.' + $leftPopup.attr('data-back'));
+                            $back.touches({ touchstart: function (ev) { ev.preventDefault(); }, touchmove: function (ev) { ev.preventDefault(); } });
+                            var $swipeLeft = $leftPopup.find('.swipeLeft');
 
-                                    if (!iscroll) {
-                                        iscroll = true;
-                                        $leftPopup.myScroll = new IScroll($swipeLeft[0], {
-                                            probeType: 1,
-                                            snap: 'dd',
-                                            momentum: true,
-                                            click: true
-                                        });
-                                    }
-                                } else {
-                                    $leftPopup.myScroll.scrollTo(0, 0, 0, false);
-                                }
+                            if (!iscroll) {
+                                iscroll = true;
+                                $leftPopup.myScroll = new IScroll($swipeLeft[0], {
+                                    probeType: 1,
+                                    snap: 'dd',
+                                    momentum: true,
+                                    click: true
+                                });
                             }
-                        });
-                    })();
-
-                    $("#chengKeXDl a").on("click", function () {
-                        $("#chengKeXDl dd").attr("class", "");
-                        $(this).parent().attr("class", "current");
-                        calcLoanValue();
-                        calcAutoLoanAll();
-                        $("#backChengKe").trigger("close");
-                    });
+                        } else {
+                            $leftPopup.myScroll.scrollTo(0, 0, 0, false);
+                        }
+                    }
                 });
+            })();
+
+            $("#chengKeXDl a").on("click", function () {
+                $("#chengKeXDl dd").attr("class", "");
+                $(this).parent().attr("class", "current");
+                calcLoanValue();
+                calcAutoLoanAll();
+                $("#backChengKe").trigger("close");
+            });
+        });
     </script>
 
     <script type="text/javascript">

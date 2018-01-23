@@ -1,0 +1,10 @@
+﻿<div class="auto-fix-Nav">
+    <div class="swiper-container js-type-top-nav bt-nav-sty swiper-container-horizontal swiper-container-free-mode">
+        <ul class="swiper-wrapper" style="transition-duration: 300ms; transform: translate3d(0px, 0px, 0px);">
+            <li class="swiper-slide active swiper-slide-active"><span>全国</span></li>
+            <li class="swiper-slide swiper-slide-next"><span>北京</span></li>
+            <li class="swiper-slide"><span>上海</span></li>
+            <li class="swiper-slide"><span>重庆</span></li>
+        </ul>
+    </div>
+</div>

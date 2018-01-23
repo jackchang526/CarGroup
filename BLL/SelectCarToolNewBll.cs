@@ -85,7 +85,7 @@ namespace BitAuto.CarChannel.BLL
                     }
                     if (dicPicNoneWhite.Count > 0 && dicPicNoneWhite.ContainsKey(item.SerialId))
                     {
-                        item.NoneWhiteImageUrl = dicPicNoneWhite[item.SerialId];
+                        item.NoneWhiteImageUrl = dicPicNoneWhite[item.SerialId].Replace("_2.", "_3.");
                     }
                     else
                     {

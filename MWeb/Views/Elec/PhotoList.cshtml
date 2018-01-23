@@ -7,8 +7,8 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style" />
     <meta content="telephone=no" name="format-detection" />
     <title>@(ViewData["title"])</title>
-    <meta name="Keywords" content="@(ViewData["keyWords"])" />
-    <meta name="Description" content="@(ViewData["description"])" />
+    <meta name="Keywords" content="@(ViewData[" keyWords"])" />
+    <meta name="Description" content="@(ViewData[" description"])" />
 
     <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/公共控件.css" />
     <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/头部控件.css" />
@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/2015车型对比.css" />
     <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/2015选车.css" />
     <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/新能源频道/css/main.css">
+    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/提示.css" />
     <script type="text/javascript" charset="utf-8" src="http://ip.yiche.com/iplocation/setcookie.ashx"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery-1.9.1.min.js"></script>
 </head>
@@ -37,7 +38,7 @@
         <!-- 筛选 start  -->
         <div class="sort sort4 sort-bg-white sort-pop y2015A ">
             <ul>
-                <li class="current">
+                <li>
                     <a href="###" data-action="grade-dltype" id="btnFuelType">
                         <span>动力类型</span>
                         <i></i>
@@ -59,14 +60,23 @@
         </div>
         <!-- 筛选 end  -->
         <!-- 大图列表 start  -->
-        <div class="pic-car-list">         
-            <ul>
-                @if (!string.IsNullOrEmpty(ViewData["PhotoListResultHtml"].ToString()))
-                {
+        @if (!string.IsNullOrEmpty(ViewData["PhotoListResultHtml"].ToString()))
+          {
+            <div class="pic-car-list">
+                <ul>
                     @(Html.Raw(ViewData["PhotoListResultHtml"]))
-                }
-            </ul>
-        </div>
+                </ul>
+            </div>
+         }
+        else
+        {
+            <div class="buy-car new-car">
+                <div class="tishi-box">
+                    <div class="tishi-tu tishi-zanwu"></div>
+                    <div class="tishi-small">未找到合适的车型<br />请调整一下选车条件</div>
+                </div>
+            </div>
+        }
         <!-- 分页start -->
         <div class="m-pages b-shadow" style="display: none">
             <a href="javascript:void(0)" class="m-pages-pre m-pages-none">上一页</a>
@@ -182,6 +192,7 @@
                 templateid: '#gradeTemplate1',
                 fnEnd: function () {
                     var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    SelectPhotoTool.initSingleFilter("f");
                     $swipeLeft.find('a').click(function (ev) {
                         ev.preventDefault();
                         var $click = $(this);
@@ -197,6 +208,7 @@
                 templateid: '#gradeTemplate4',
                 fnEnd: function () {
                     var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    SelectPhotoTool.initSingleFilter("g");
                     $swipeLeft.find('a').click(function (ev) {
                         ev.preventDefault();
                         var $click = $(this);
@@ -212,6 +224,7 @@
                 templateid: '#gradeTemplate5',
                 fnEnd: function () {
                     var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    SelectPhotoTool.initSingleFilter("b");
                     $swipeLeft.find('a').click(function (ev) {
                         ev.preventDefault();
                         var $click = $(this);
@@ -225,7 +238,8 @@
     </script>
     <script type="text/javascript" src="/js/elec/PhotoList.js"></script>
     <script type="text/javascript">
-        SelectPhotoTool.Parameters = @Html.Raw(ViewData["GenerateSearchInitScript"]);  
+        SelectPhotoTool.Parameters = @Html.Raw(ViewData["GenerateSearchInitScript"]);
+        SelectPhotoTool.CSCount = @Html.Raw(ViewData["CSCount"]);
         SelectPhotoTool.initPageCondition();
     </script>
 </body>

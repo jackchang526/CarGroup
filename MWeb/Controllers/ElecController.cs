@@ -90,10 +90,11 @@ namespace MWeb.Controllers
             ViewData["PhotoListResultHtml"] = GetPhotoListHtml(elecResult);
             var searchscript = GenerateSearchInitScript();
             ViewData["GenerateSearchInitScript"] = searchscript;
+            ViewData["CSCount"] = elecResult.Count;
             return View();
         }
         /// <summary>
-        /// 高清大图获取脚本参数
+        /// 无码大图 获取脚本参数
         /// </summary>
         /// <returns></returns>
         private string GenerateSearchInitScript()
@@ -113,7 +114,7 @@ namespace MWeb.Controllers
             return resultString;
 		}
         /// <summary>
-        /// 高清大图 调取选车接口参数
+        /// 无码大图 调取选车接口参数
         /// </summary>
         /// <returns></returns>
         private Dictionary<string, string> GenerateSearchQuery()
@@ -128,6 +129,14 @@ namespace MWeb.Controllers
                 {
                     param.Add(queKey, nvcQuery[queKey]);
                 }
+            }
+            if (!param.ContainsKey("pagesize"))
+            {
+                param.Add("pagesize", "10");
+            }
+            if (!param.ContainsKey("f"))
+            {
+                param.Add("f", "16,128");
             }
             return param;
         }

@@ -63,10 +63,21 @@
             <ul>
                 @if (!string.IsNullOrEmpty(ViewData["PhotoListResultHtml"].ToString()))
                 {
-                    <ul>@(Html.Raw(ViewData["PhotoListResultHtml"]))</ul>
+                    @(Html.Raw(ViewData["PhotoListResultHtml"]))
                 }
             </ul>
         </div>
+        <!-- 分页start -->
+        <div class="m-pages b-shadow" style="display: none">
+            <a href="javascript:void(0)" class="m-pages-pre m-pages-none">上一页</a>
+            <div class="m-pages-num">
+                <div class="m-pages-num-con"><span id="curPageIndex">1</span>/<span id="totalPage">1</span></div>
+                <div class="m-pages-num-arrow"></div>
+            </div>
+            <select class="m-pages-select"></select>
+            <a href="javascript:void(0)" class="m-pages-next">下一页</a>
+        </div>
+        <!-- 分页 end -->
         <!-- 大图列表 end  -->
     </div>
     <!--footer start-->

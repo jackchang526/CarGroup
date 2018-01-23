@@ -131,6 +131,11 @@ namespace MWeb.Controllers
             }
             return param;
         }
+        /// <summary>
+        /// 无码大图 选车结果
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns></returns>
         private string GetPhotoListHtml(SelectCarResult result)
         {
             if (result == null || result.ResList.Count == 0) return string.Empty;
@@ -139,7 +144,7 @@ namespace MWeb.Controllers
             {
                 sb.Append("<li>");
                 sb.AppendFormat("<a href=\"/{0}/\">", detail.AllSpell);
-                sb.AppendFormat("<span class=\"pic-wrap\"><img src=\"{0}\"></span >", detail.ImageUrl);
+                sb.AppendFormat("<span class=\"pic-wrap\"><img src=\"{0}\"></span >", detail.NoneWhiteImageUrl);
                 sb.AppendFormat("<span class=\"pic-txt\">{0}</span>", detail.ShowName);
                 sb.Append("</a>");
                 sb.Append("</li>");

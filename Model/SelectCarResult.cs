@@ -60,6 +60,10 @@ namespace BitAuto.CarChannel.Model
         /// </summary>
         public string ImageUrl { get; set; }
         /// <summary>
+        /// 实拍图url
+        /// </summary>
+        public string NoneWhiteImageUrl { get; set; }
+        /// <summary>
         /// 指导价区间
         /// </summary>
         public string PriceRange { get; set; }

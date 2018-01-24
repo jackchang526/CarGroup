@@ -170,7 +170,7 @@ function bindPager() {
     } else {
         $("#page_next").removeClass("m-pages-none");
         $("#page_next").bind("click", function () {
-            CarParam.page = CarParam.page + 1;
+            CarParam.page = CarParam.page + 1; 
             Jump();
         })
     }
@@ -275,7 +275,7 @@ function bindSwiperStyle(k) {
         }
     }
 }
-
+//CarParam.page = 1;
 function GetRequest() {
     //url例子：XXX.aspx?ID=" + ID + "&Name=" + Name；
     var url = location.search; //获取url中"?"符以及其后的字串
@@ -303,6 +303,7 @@ function GotoPage(param) {
         //
         CarParam[params[0]] = "";
     }
+    CarParam.page = 1;
     Jump();
 }
 

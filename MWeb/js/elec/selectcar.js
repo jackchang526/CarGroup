@@ -14,7 +14,7 @@ var selectElecCar = {
         $(".sort ul li a ").bind("click", function () {
             var oldclass = $(this).attr("class");
             var id = $(this).attr("t");
-            $("a[t^='" + id.split("_")[0] + "']").removeClass("current");
+            $("a[t^='" + id.split("_")[0] + "_']").removeClass("current");
             if (oldclass == "current") {
                 $(this).attr("class", "");
             } else {
@@ -60,6 +60,7 @@ var selectElecCar = {
         });
         var pp = "";
         var idx = 0;
+        selectElecCar.setPrice();
 
         for (var p in that.param) {
             if (that.param[p] == "") {
@@ -83,17 +84,17 @@ var selectElecCar = {
         if (that.param["f"] == "") {
             pp += "&f=16,128"
         }
-        var pricemin = $("#min-dot span").text();
-        var pricemax = $("#max-dot span").text();
+        //var pricemin = $("#min-dot span").text();
+        //var pricemax = $("#max-dot span").text();
 
-        if (pricemax == "90+" || pricemax == "不限") {
-            pp += ("&p=" + pricemin + "-9999");
-        } else {
-            pp += ("&p=" + pricemin + "-" + pricemax);
-        }
+        //if (pricemax == "90+" || pricemax == "不限") {
+        //    pp += ("&p=" + pricemin + "-9999");
+        //} else {
+        //    pp += ("&p=" + pricemin + "-" + pricemax);
+        //}
 
         that.requestData(pp)
-        console.log(pp);
+        //console.log(pp);
     },
     requestData: function (reqparams) {
         $.ajax({
@@ -102,12 +103,13 @@ var selectElecCar = {
             jsonpCallback: "selectElecCarJsonpCallback",
             cache: true,
             success: function (json) {
-                console.log(json);
+                //console.log(json);
                 var result = json;
-                if (result.Count > 0) {
+
+                if (result.Count > 0) { 
                     $("#selectResult").text("共有" + result.Count + "款车型符合条件");
-                    $("#selectResult").removeClass("car-current");
-                    $("#selectResult").attr("href", "../selectcarlist?" + reqparams);
+                    $("#selectResult").removeClass("car-current"); 
+                    $("#selectResult").attr("href", "../selectcarlist?" + selectElecCar.getJumpParam());
                 } else {
                     $("#selectResult").text("共有0款车型符合条件");
                     $("#selectResult").addClass("car-current");
@@ -120,5 +122,33 @@ var selectElecCar = {
                 $("#selectResult").attr("href", "../selectcarlist");
             }
         });
+    },
+    getRequestParam: function () {
+    },
+    getJumpParam: function () {
+        var pp = "";
+        var idx = 0;
+        for (var p in selectElecCar.param) {
+            if (selectElecCar.param[p] == "") {
+                continue;
+            }
+            if (idx == 0) {
+                pp = "";
+                pp = p + "=" + selectElecCar.param[p];
+            } else {
+                pp += ("&" + p + "=" + selectElecCar.param[p]);
+            }
+            idx += 1;
+        }
+        return pp;
+    }, 
+    setPrice: function () {
+        var pricemin = $("#min-dot span").text();
+        var pricemax = $("#max-dot span").text();
+        if (pricemax == "90+" || pricemax == "不限") {
+            selectElecCar.param["p"] = (pricemin + "-9999");
+        } else {
+            selectElecCar.param["p"] = (pricemin + "-" + pricemax);
+        }
     }
 } 

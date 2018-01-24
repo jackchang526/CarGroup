@@ -6,9 +6,9 @@
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <meta content="black" name="apple-mobile-web-app-status-bar-style" />
     <meta content="telephone=no" name="format-detection" />
-    <title>@(ViewData["title"])</title>
-    <meta name="Keywords" content="@(ViewData["keyWords"])" />
-    <meta name="Description" content="@(ViewData["description"])" />
+    <title>【电动汽车_电动车导购_电动汽车价格_电动汽车排名】-易车网</title>
+    <meta name="Keywords" content="电动汽车,电动汽车导购,易车网" />
+    <meta name="Description" content="电动汽车:易车网电动汽车频道为您提供全国电动汽车市场的电动汽车经销商最新报价,电动汽车品牌大全,电动车价格,电动车排名,评测内容等,更多电动车信息尽在易车网。" />
 
     <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/公共控件.css" />
     <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/头部控件.css" />
@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/2015车型对比.css" />
     <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/2015选车.css" />
     <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/新能源频道/css/main.css">
+    <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/提示.css" />
     <script type="text/javascript" charset="utf-8" src="http://ip.yiche.com/iplocation/setcookie.ashx"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery-1.9.1.min.js"></script>
 </head>
@@ -37,20 +38,20 @@
         <!-- 筛选 start  -->
         <div class="sort sort4 sort-bg-white sort-pop y2015A ">
             <ul>
-                <li class="current">
-                    <a href="###" data-action="grade-dltype">
+                <li>
+                    <a href="###" data-action="grade-dltype" id="btnFuelType">
                         <span>动力类型</span>
                         <i></i>
                     </a>
                 </li>
                 <li>
-                    <a href="###" data-action="grade-country">
+                    <a href="###" data-action="grade-country" id="btnBrandType">
                         <span>国别</span>
                         <i></i>
                     </a>
                 </li>
                 <li>
-                    <a href="###" data-action="grade-cartype">
+                    <a href="###" data-action="grade-cartype" id="btnBodyform">
                         <span>车身形式</span>
                         <i></i>
                     </a>
@@ -59,9 +60,34 @@
         </div>
         <!-- 筛选 end  -->
         <!-- 大图列表 start  -->
-        <div class="pic-car-list">
-
+        @if (!string.IsNullOrEmpty(ViewData["PhotoListResultHtml"].ToString()))
+          {
+            <div class="pic-car-list">
+                <ul>
+                    @(Html.Raw(ViewData["PhotoListResultHtml"]))
+                </ul>
+            </div>
+         }
+        else
+        {
+            <div class="buy-car new-car">
+                <div class="tishi-box">
+                    <div class="tishi-tu tishi-zanwu"></div>
+                    <div class="tishi-small">未找到合适的车型<br />请调整一下选车条件</div>
+                </div>
+            </div>
+        }
+        <!-- 分页start -->
+        <div class="m-pages b-shadow" style="display: none">
+            <a href="javascript:void(0)" class="m-pages-pre m-pages-none">上一页</a>
+            <div class="m-pages-num">
+                <div class="m-pages-num-con"><span id="curPageIndex">1</span>/<span id="totalPage">1</span></div>
+                <div class="m-pages-num-arrow"></div>
+            </div>
+            <select class="m-pages-select"></select>
+            <a href="javascript:void(0)" class="m-pages-next">下一页</a>
         </div>
+        <!-- 分页 end -->
         <!-- 大图列表 end  -->
     </div>
     <!--footer start-->
@@ -97,9 +123,9 @@
     <script type="text/template" id="gradeTemplate1">
         <div class="ap">
             <ul class="first-list rp jg-sx-sty">
-                <li class="current"><a href="GotoPage('f0')">不限</a></li>
-                <li><a href="GotoPage('f16')">纯电动</a></li>
-                <li><a href="GotoPage('f128')">插电混动</a></li>
+                <li class="current"><a id="f_0">不限</a></li>
+                <li><a id="f_16">纯电动</a></li>
+                <li><a id="f_128">插电混动</a></li>
             </ul>
         </div>
     </script>
@@ -120,11 +146,10 @@
     <script type="text/template" id="gradeTemplate4">
         <div class="ap">
             <ul class="first-list rp jg-sx-sty">
-                <li class="current"><a href="javascript:GotoPage('g0')">不限</a></li>
-                <li><a href="javascript:GotoPage('g1')">国产</a></li>
-                <li><a href="javascript:GotoPage('c2')">日系</a></li>
-                <li><a href="javascript:GotoPage('c8')">美系</a></li>
-                <li><a href="javascript:GotoPage('c484')">欧系</a></li>
+                <li class="current"><a href="javascript:GotoPage('g0')" id="g_0">不限</a></li>
+                <li><a id="g_1">自主</a></li>
+                <li><a id="g_2">合资</a></li>
+                <li><a id="g_4">进口</a></li>
             </ul>
         </div>
     </script>
@@ -145,10 +170,10 @@
     <script type="text/template" id="gradeTemplate5">
         <div class="ap">
             <ul class="first-list rp jg-sx-sty">
-                <li class="current"><a href="javascript:GotoPage('l0')">不限</a></li>
-                <li><a href="javascript:GotoPage('l63')">轿车</a></li>
-                <li><a href="javascript:GotoPage('l8')">SUV</a></li>
-                <li><a href="javascript:GotoPage('l7')">MPV</a></li>
+                <li class="current"><a href="javascript:GotoPage('b0')" id="b_0">不限</a></li>
+                <li><a id="b_64">SUV</a></li>
+                <li><a id="b_1">俩厢</a></li>
+                <li><a id="b_2">三厢</a></li>
 
             </ul>
         </div>
@@ -167,10 +192,11 @@
                 templateid: '#gradeTemplate1',
                 fnEnd: function () {
                     var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    SelectPhotoTool.initSingleFilter("f");
                     $swipeLeft.find('a').click(function (ev) {
                         ev.preventDefault();
                         var $click = $(this);
-                        console.log($click.html());
+                        GotoPage($click.attr("id"));
                         $back.trigger('close');
                     })
                 }
@@ -182,10 +208,11 @@
                 templateid: '#gradeTemplate4',
                 fnEnd: function () {
                     var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    SelectPhotoTool.initSingleFilter("g");
                     $swipeLeft.find('a').click(function (ev) {
                         ev.preventDefault();
                         var $click = $(this);
-                        console.log($click.html());
+                        GotoPage($click.attr("id"));
                         $back.trigger('close');
                     })
                 }
@@ -197,15 +224,23 @@
                 templateid: '#gradeTemplate5',
                 fnEnd: function () {
                     var $swipeLeft = this, $back = $('.' + $swipeLeft.parent().attr('data-back'));
+                    SelectPhotoTool.initSingleFilter("b");
                     $swipeLeft.find('a').click(function (ev) {
                         ev.preventDefault();
                         var $click = $(this);
-                        console.log($click.html());
+                        GotoPage($click.attr("id"));
                         $back.trigger('close');
                     })
                 }
             });
         })
+
+    </script>
+    <script type="text/javascript" src="/js/elec/PhotoList.js"></script>
+    <script type="text/javascript">
+        SelectPhotoTool.Parameters = @Html.Raw(ViewData["GenerateSearchInitScript"]);
+        SelectPhotoTool.CSCount = @Html.Raw(ViewData["CSCount"]);
+        SelectPhotoTool.initPageCondition();
     </script>
 </body>
 </html>

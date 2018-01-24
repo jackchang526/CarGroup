@@ -1,10 +1,10 @@
 ﻿using BitAuto.CarChannel.BLL;
 using BitAuto.CarChannel.Model;
+using BitAuto.Utils;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Collections.Specialized;
 using System.Text;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MWeb.Controllers
@@ -16,7 +16,6 @@ namespace MWeb.Controllers
     {
         Car_SerialBll carSerialBll = new Car_SerialBll();
         SelectCarToolNewBll selectCarToolNewBll = new SelectCarToolNewBll();
-        //
         // GET: /Elec/
 
         /// <summary>
@@ -86,9 +85,81 @@ namespace MWeb.Controllers
         /// <returns></returns>
         public ActionResult PhotoList()
         {
+            Dictionary<string, string> param = GenerateSearchQuery();
+            SelectCarResult elecResult = selectCarToolNewBll.GetSelectCarResultWithElecInfo(param);
+            ViewData["PhotoListResultHtml"] = GetPhotoListHtml(elecResult);
+            var searchscript = GenerateSearchInitScript();
+            ViewData["GenerateSearchInitScript"] = searchscript;
+            ViewData["CSCount"] = elecResult.Count;
             return View();
         }
-
+        /// <summary>
+        /// 无码大图 获取脚本参数
+        /// </summary>
+        /// <returns></returns>
+        private string GenerateSearchInitScript()
+		{
+            string resultString = "[";
+            NameValueCollection nvcQuery = Request.QueryString;
+            foreach (var queKey in nvcQuery.AllKeys)
+            {
+                if (string.IsNullOrEmpty(queKey)) continue;
+                int id = ConvertHelper.GetInteger(nvcQuery[queKey]);
+                if (id > 0)
+                {
+                    resultString += "'" + queKey + "=" + nvcQuery[queKey] + "',";
+                }
+            }
+            resultString = resultString.TrimEnd(',') + "]";
+            return resultString;
+		}
+        /// <summary>
+        /// 无码大图 调取选车接口参数
+        /// </summary>
+        /// <returns></returns>
+        private Dictionary<string, string> GenerateSearchQuery()
+        {
+            NameValueCollection nvcQuery = Request.QueryString;
+            Dictionary<string, string> param = new Dictionary<string, string>();
+            foreach (var queKey in nvcQuery.AllKeys)
+            {
+                if (string.IsNullOrEmpty(queKey)) continue;
+                int id = ConvertHelper.GetInteger(nvcQuery[queKey]);
+                if (id > 0)
+                {
+                    param.Add(queKey, nvcQuery[queKey]);
+                }
+            }
+            if (!param.ContainsKey("pagesize"))
+            {
+                param.Add("pagesize", "10");
+            }
+            if (!param.ContainsKey("f"))
+            {
+                param.Add("f", "16,128");
+            }
+            return param;
+        }
+        /// <summary>
+        /// 无码大图 选车结果
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        private string GetPhotoListHtml(SelectCarResult result)
+        {
+            if (result == null || result.ResList.Count == 0) return string.Empty;
+            StringBuilder sb = new StringBuilder();
+            foreach (SelectCarDetailInfo detail in result.ResList)
+            {
+                sb.Append("<li>");
+                sb.AppendFormat("<a href=\"/{0}/\">", detail.AllSpell);
+                sb.AppendFormat("<span class=\"pic-wrap\"><img src=\"{0}\"></span >", detail.NoneWhiteImageUrl);
+                sb.AppendFormat("<span class=\"pic-txt\">{0}</span>", detail.ShowName);
+                sb.Append("</a>");
+                sb.Append("</li>");
+            }
+            return sb.ToString();
+        }
         /// <summary>
         /// 新能源补贴政策
         /// </summary>

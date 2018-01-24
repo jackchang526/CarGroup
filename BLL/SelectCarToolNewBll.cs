@@ -71,16 +71,25 @@ namespace BitAuto.CarChannel.BLL
             if (selectCarResult != null && selectCarResult.ResList.Count > 0)
             {
                 Dictionary<int, Car_SerialItemEntity> extendDic = new Car_SerialItemBll().GetSerialItemAll();
-                if (extendDic == null || extendDic.Count == 0) return selectCarResult;
+                // 非白底
+                Dictionary<int, string> dicPicNoneWhite = new PageBase().GetAllSerialPicURLNoneWhiteBackground();               
 
                 for (int i = 0; i < selectCarResult.ResList.Count; i++)
                 {
                     SelectCarDetailInfo item = selectCarResult.ResList[i];
-                    if (extendDic.ContainsKey(item.SerialId))
+                    if (extendDic != null && extendDic.Count > 0 && extendDic.ContainsKey(item.SerialId))
                     {
                         Car_SerialItemEntity extendItem = extendDic[item.SerialId];
                         item.NormalChargeTime = extendItem.NormalChargeTime;
                         item.BatteryLife = extendItem.BatteryLife;
+                    }
+                    if (dicPicNoneWhite.Count > 0 && dicPicNoneWhite.ContainsKey(item.SerialId))
+                    {
+                        item.NoneWhiteImageUrl = dicPicNoneWhite[item.SerialId].Replace("_2.", "_3.");
+                    }
+                    else
+                    {
+                        item.NoneWhiteImageUrl = WebConfig.DefaultCarPic;
                     }
                 }
             }

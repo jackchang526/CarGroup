@@ -235,6 +235,8 @@
     <Content Include="include\pd\2016\wap\00001\201703_wap_cxjg_suv_Manual.shtml" />
     <Content Include="include\pd\2016\wap\00001\201708_wap_common_top_downloadLayer_Manual.shtml" />
     <Content Include="include\pd\2016\wap\00001\201801_mobile_newenergy_banner_Manual.shtml" />
+    <Content Include="include\pd\2016\wap\00001\201801_mobile_newenergy_subsidypolicyNavigation_Manual.shtml" />
+    <Content Include="include\pd\2016\wap\00001\201801_mobile_newenergy_subsidypolicy_Manual.shtml" />
     <Content Include="include\pd\2016\yipaicms\00001\201701_Mobile_Summary_SCInfoBtn_Manual.shtml" />
     <Content Include="include\special\testprice\00001\2017_car_stat_test_Manual.shtml" />
     <Content Include="include\special\stat\00001\bglogpostlog_Manual.shtml" />

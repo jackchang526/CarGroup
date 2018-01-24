@@ -91,6 +91,16 @@
             }
             //todo function
         });
+        if (typeof (bit_locationInfo) != "undefined" && typeof (bit_locationInfo.cityId) != "undefined") {
+            var cityName = bit_locationInfo.cityName;
+            $(".js-type-top-nav .swiper-slide").each(function (index, item) {
+                if ($(this).find("span").html() == cityName) {
+                    $(".js-type-top-nav .active").removeClass('active');
+                    $(".js-type-top-nav .swiper-slide").eq(index).addClass('active');
+                    swiperNewslist.slideTo(index);
+                }
+            });
+        }
     </script>
 </body>
 </html>

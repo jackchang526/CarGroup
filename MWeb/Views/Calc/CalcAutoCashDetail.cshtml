@@ -32,7 +32,7 @@
             $(".op-nav").hide();
             $("div[id^='app_download_']").hide();
             $("#app_yc_dwonload").hide();
-        } else if(typeof(WtParam) != "undefined" && WtParam == "mxmacg_qt") {
+        } else if (typeof (WtParam) != "undefined" && WtParam == "mxmacg_qt") {
             // add in 20171123 for 小米合作
             // 1. 顶部悬浮
             $("div[id^='app_download_']").hide();
@@ -326,7 +326,7 @@
                 $(".footer15").hide();
                 $("div[id^='app_download_']").hide();
                 $("#app_yc_dwonload").hide();
-            } else if(typeof(WtParam) != "undefined" && WtParam == "mxmacg_qt") {
+            } else if (typeof (WtParam) != "undefined" && WtParam == "mxmacg_qt") {
                 // add by hepw 20171123 for 小米合作
                 // 1. 顶部悬浮
                 $("div[id^='app_download_']").hide();
@@ -348,14 +348,15 @@
                 $(".float-r-box").hide();
                 $("#ycfd").hide();
             }
-        </script> 
+        </script>
         <!--footer end-->
     </div>
     <div id="master_container" data-url="/html/selectCarTemplate.htm?v=20151207" class="brandlayer mthead"></div>
 
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/iscroll-infinite.js?v=201508031842"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/popup.js?v=201508031842"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/CarCalculator.js?v=20170111"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/CarCalculator.js?v=20180123"></script>
+    @*<script type="text/javascript" src="/js/CarCalculator.js?v=20170111"></script>*@
 
     <!--车船弹出层-->
     <div id="backCheChuan" class="leftmask leftmaskCheChuan" style="display: none;"></div>
@@ -865,91 +866,91 @@
     </script>
 
     <script type="text/javascript">
-            //选择车款
-            //function selectCarId(carId) {
-            //    location.href = "/gouchejisuanqi/?carid=" + carId;
-            //}
-            //function calcAutoCashAll() {
-            //    if ($('#hidCarPrice').val() != "0") {
-            //        shangPai = 500;
-            //        $("#shangPai").html("500");
-            //    } else {
-            //        shangPai = 0;
-            //        $("#shangPai").html("0");
-            //    }
-            //    //购置税
-            //    calcAcquisitionTax();
-            //    //车船使用税
-            //    CalculateVehicleAndVesselTax();
-            //    //交强险
-            //    calcCompulsory();
-            //    //第三责任险
-            //    calcTPL();
-            //    //车辆损失险
-            //    calcCarDamage();
-            //    //不计免赔特约险
-            //    calcAbatement();
-            //    //全车盗抢险
-            //    calcCarTheft();
-            //    //玻璃单独破碎险
-            //    calcBreakageOfGlass();
-            //    //自燃损失险
-            //    calcSelfignite();
-            //    //涉水险/发动机特别损失险
-            //    calcCarEngineDamage();
-            //    //车身划痕险
-            //    calcCarDamageDW();
-            //    //司机座位责任险
-            //    calcLimitofDriver();
-            //    //乘客座位责任险
-            //    calcLimitofPassenger();
-            //    //必要花费小计
-            //    calcEssentialCost();
-            //    //商业保险小计
-            //    calcCommonTotal();
-            //    //计算总价
-            //    calcTotal();
-            //}
+        //选择车款
+        //function selectCarId(carId) {
+        //    location.href = "/gouchejisuanqi/?carid=" + carId;
+        //}
+        //function calcAutoCashAll() {
+        //    if ($('#hidCarPrice').val() != "0") {
+        //        shangPai = 500;
+        //        $("#shangPai").html("500");
+        //    } else {
+        //        shangPai = 0;
+        //        $("#shangPai").html("0");
+        //    }
+        //    //购置税
+        //    calcAcquisitionTax();
+        //    //车船使用税
+        //    CalculateVehicleAndVesselTax();
+        //    //交强险
+        //    calcCompulsory();
+        //    //第三责任险
+        //    calcTPL();
+        //    //车辆损失险
+        //    calcCarDamage();
+        //    //不计免赔特约险
+        //    calcAbatement();
+        //    //全车盗抢险
+        //    calcCarTheft();
+        //    //玻璃单独破碎险
+        //    calcBreakageOfGlass();
+        //    //自燃损失险
+        //    calcSelfignite();
+        //    //涉水险/发动机特别损失险
+        //    calcCarEngineDamage();
+        //    //车身划痕险
+        //    calcCarDamageDW();
+        //    //司机座位责任险
+        //    calcLimitofDriver();
+        //    //乘客座位责任险
+        //    calcLimitofPassenger();
+        //    //必要花费小计
+        //    calcEssentialCost();
+        //    //商业保险小计
+        //    calcCommonTotal();
+        //    //计算总价
+        //    calcTotal();
+        //}
 
-            $("#diSanZheXDl dd").attr("class", "");
-            $("#diSanZheXDl dd").eq(2).attr("class", "current");
+        $("#diSanZheXDl dd").attr("class", "");
+        $("#diSanZheXDl dd").eq(2).attr("class", "current");
 
-            $("#cheShenXDl dd").attr("class", "");
-            $("#cheShenXDl dd").eq(1).attr("class", "current");
+        $("#cheShenXDl dd").attr("class", "");
+        $("#cheShenXDl dd").eq(1).attr("class", "current");
 
-            $("#siJiXDl dd").attr("class", "");
-            $("#siJiXDl dd").eq(1).attr("class", "current");
+        $("#siJiXDl dd").attr("class", "");
+        $("#siJiXDl dd").eq(1).attr("class", "current");
 
-            $("#chengKeXDl dd").attr("class", "");
-            $("#chengKeXDl dd").eq(1).attr("class", "current");
+        $("#chengKeXDl dd").attr("class", "");
+        $("#chengKeXDl dd").eq(1).attr("class", "current");
 
-            var carid = getQueryString("carid");
-            var carPrice = getQueryString("carprice");
-            if (carid) {
-                if (carPrice) {
-                    $("#hidCarPrice").val(carPrice);
-                    $("#luochePrice1").html(formatCurrency(carPrice));
-                    $("#luochePrice2").attr("value", carPrice);
-                    setCalcToolUrl("caridAndPrice", $("#hidCarID").val());
-                } else {
-                    $("#luochePrice1").html(formatCurrency($("#hidCarPrice").val()));
-                    $("#luochePrice2").attr("value", $("#hidCarPrice").val());
-                    setCalcToolUrl("carid", $("#hidCarID").val());
-                }
-                GetCarInfo(carid);
-            } else {
+        var carid = getQueryString("carid");
+        var carPrice = getQueryString("carprice");
+        if (carid) {
+            if (carPrice) {
                 $("#hidCarPrice").val(carPrice);
                 $("#luochePrice1").html(formatCurrency(carPrice));
                 $("#luochePrice2").attr("value", carPrice);
-                $("#zuoWeiSDl dd").attr("class", "");
-                $("#zuoWeiSDl dd").eq(0).attr("class", "current");
-                $("#boLiXDl dd").attr("class", "");
-                $("#boLiXDl dd").eq(0).attr("class", "current");
-                $("#cheChuanDl dd").attr("class", "");
-                $("#cheChuanDl dd").eq(1).attr("class", "current");
-                setCalcToolUrl("carPrice", carPrice);
+                setCalcToolUrl("caridAndPrice", $("#hidCarID").val());
+            } else {
+                $("#luochePrice1").html(formatCurrency($("#hidCarPrice").val()));
+                $("#luochePrice2").attr("value", $("#hidCarPrice").val());
+                setCalcToolUrl("carid", $("#hidCarID").val());
             }
-            calcAutoCashAll();
+            GetCarInfo(carid);
+        } else {
+            $("#hidCarPrice").val(carPrice);
+            $("#luochePrice1").html(formatCurrency(carPrice));
+            $("#luochePrice2").attr("value", carPrice);
+            $("#zuoWeiSDl dd").attr("class", "");
+            $("#zuoWeiSDl dd").eq(0).attr("class", "current");
+            $("#boLiXDl dd").attr("class", "");
+            $("#boLiXDl dd").eq(0).attr("class", "current");
+            $("#cheChuanDl dd").attr("class", "");
+            $("#cheChuanDl dd").eq(1).attr("class", "current");
+            setCalcToolUrl("carPrice", carPrice);
+        }
+        calcAutoCashAll();
     </script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/jquery.lazyload.min.js"></script>
     @*<script src="/js/v2/iscroll.js?v=2015112415"></script>

@@ -15,7 +15,8 @@
 <!--#include file="~/ushtml/0000/yiche_2016_cube_jisuanqi_style-1268.shtml"-->
 <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
 <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/dropdownlistnew.min.js?v=20161130"></script>
-<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/CarCalculator.min.js?v=20170324"></script>
+<script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/CarCalculator.min.js?v=20180123"></script>
+<%--<script type="text/javascript" src="/jsnewV2/CarCalculator.js?v=20170324"></script>--%>
 <%--浮动JS--%>
 <script type="text/javascript">
     function addEvent(obj, type, fn) {
@@ -459,7 +460,7 @@
                 if ($txtChePai.val() == "" || $txtChePai.val() == "0") {
                     $txtChePai.val(500);
                 }
-                if ($txtVehicleTax.val() == "" || $txtVehicleTax.val() == "0") {
+                if (($txtVehicleTax.val() == "" || $txtVehicleTax.val() == "0") && !(fuelType == "纯电" || fuelType == "插电混合")) {
                     var cheChuanValue2 = $("#vehicleTax option:selected").val();
                     switch (cheChuanValue2) {
                     case "1":
@@ -891,7 +892,7 @@
                                                 frameborder="0" src="about:blank"></iframe>
                             <em class="jt"></em><h6>购置税</h6>
                             <p>
-                                车辆购置税是对在我国境内购置规定车辆的单位和个人征收的一种税，它由车辆购置附加费演变而来。现行车辆购置税法的基本规范，是从2001年1月1日起实施的《中华人民共和国车辆购置税暂行条例》。车辆购置税的纳税人为购置（包括购买、进口、自产、受赠、获奖或以其他方式取得并自用）应税车辆的单位和个人，征税范围为汽车、摩托车、电车、挂车、农用运输车，税率为10%，应纳税额的计算公式为：应纳税额=计税价格×税率。（2009年1月20日至12月31日，对1.6升及以下排量乘用车减按5%征收车辆购置税。自2010年1月1日至12月31日，对1.6升及以下排量乘用车减按7.5%征收车辆购置税。从2015年10月1日到2016年12月31日，对购买1.6升及以下排量乘用车实施减半征收车辆购置税的优惠政策，从2017年1月1日到2017年12月31日，对购买1.6升及以下排量乘用车实施7.5%的税率征收车辆购置税）
+                                车辆购置税是对在我国境内购置规定车辆的单位和个人征收的一种税，它由车辆购置附加费演变而来。现行车辆购置税法的基本规范，是从2001年1月1日起实施的《中华人民共和国车辆购置税暂行条例》。车辆购置税的纳税人为购置（包括购买、进口、自产、受赠、获奖或以其他方式取得并自用）应税车辆的单位和个人，征税范围为汽车、摩托车、电车、挂车、农用运输车，税率为10%，应纳税额的计算公式为：应纳税额=计税价格×税率。（2009年1月20日至12月31日，对1.6升及以下排量乘用车减按5%征收车辆购置税。自2010年1月1日至12月31日，对1.6升及以下排量乘用车减按7.5%征收车辆购置税。从2015年10月1日到2016年12月31日，对购买1.6升及以下排量乘用车实施减半征收车辆购置税的优惠政策，从2017年1月1日到2017年12月31日，对购买1.6升及以下排量乘用车实施7.5%的税率征收车辆购置税，从2018年1月1日起，对购买1.6升及以下排量的乘用车购置税将恢复10%的税率）
                             </p>
                         </div>
                     </a>

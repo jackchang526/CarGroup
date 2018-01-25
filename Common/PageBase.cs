@@ -1514,7 +1514,7 @@ namespace BitAuto.CarChannel.Common
                     + " order by t1.uvCount desc";
 
                 ds = BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql);
-                CacheManager.InsertCache(catchkey, ds, 60);
+                CacheManager.InsertCache(catchkey, ds, 10);
             }
             else
             {

@@ -77,6 +77,7 @@ namespace BitAuto.CarChannel.BLL
                 for (int i = 0; i < selectCarResult.ResList.Count; i++)
                 {
                     SelectCarDetailInfo item = selectCarResult.ResList[i];
+                    item.ImageUrl = item.ImageUrl.Replace("_1.", "_6.");
                     if (extendDic != null && extendDic.Count > 0 && extendDic.ContainsKey(item.SerialId))
                     {
                         Car_SerialItemEntity extendItem = extendDic[item.SerialId];

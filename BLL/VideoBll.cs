@@ -66,13 +66,13 @@ namespace BitAuto.CarChannel.BLL
 		/// <param name="categoryIdList">分类ID List</param>
 		/// <param name="top"></param>
 		/// <returns></returns>
-		public static List<VideoEntity> GetVideoBySerialIdAndCategoryId(int serialId, List<int> categoryIdList, int top)
+		public static List<VideoEntity> GetVideoBySerialIdAndCategoryId(int serialId, List<int> tagList, int top)
 		{
 			List<VideoEntity> list = new List<VideoEntity>();
 			try
 			{
-				if (categoryIdList.Count <= 0) return list;
-				var ds = VideoDal.GetVideoBySerialIdAndCategoryId(serialId, categoryIdList, top);
+				if (tagList.Count <= 0) return list;
+				var ds = VideoDal.GetVideoBySerialIdAndCategoryId(serialId, tagList, top);
 				foreach (DataRow dr in ds.Tables[0].Rows)
 				{
                     list.Add(new VideoEntity()

@@ -18,6 +18,7 @@ namespace BitAuto.CarChannel.BLL
         private int m_carPrice;
         private int m_carTotalPrice;
         private string m_Traveltaxrelief;
+        private string m_fuelType;
 
         #region 属性 edit by wangzd Aug.25.2015
 
@@ -43,6 +44,17 @@ namespace BitAuto.CarChannel.BLL
         public string Traveltaxrelief
         {
             get { return m_Traveltaxrelief; }
+        }
+
+        /// <summary>
+        /// 燃料类型
+        /// </summary>
+        public string FuelType
+        {
+            get
+            {
+                return m_fuelType;
+            }
         }
 
         public EnumCollection.CarInfoForCarSummary CarEntity
@@ -86,6 +98,8 @@ namespace BitAuto.CarChannel.BLL
                 pBase.GetCarCountryEngineAndSeatNumByCarID(carId, out m_isGuochan, out carExhaust, out m_seatNum, out refP);
                 // 车船税减免 add by chengl Mar.15
                 m_Traveltaxrelief = new Car_BasicBll().GetCarParamEx(m_carInfo.CarID, 895);
+                // 燃料类型 add by sk 2018-01-23
+                m_fuelType = new Car_BasicBll().GetCarParamEx(m_carInfo.CarID, 578);
             }
         }
 
@@ -301,11 +315,11 @@ namespace BitAuto.CarChannel.BLL
                 double monthPercent = 0;
                 switch (m_LoanPaymentYear)
                 {
-                    case 1: monthPercent = 0.0631/12; break;
+                    case 1: monthPercent = 0.0631 / 12; break;
                     case 2:
-                    case 3: monthPercent = 0.064/12; break;
+                    case 3: monthPercent = 0.064 / 12; break;
                     case 4:
-                    case 5: monthPercent = 0.065/12; break;
+                    case 5: monthPercent = 0.065 / 12; break;
                     default: break;
                 }
                 if (monthPercent > 0)
@@ -326,7 +340,7 @@ namespace BitAuto.CarChannel.BLL
         private int ComputeAcquisitionTax()
         {
             double tax = m_carPrice / (1 + 0.17);
-            if (m_carExhaust<= 1.6)
+            if (m_carExhaust <= 1.6)
             {
                 if (m_carExhaust < 0.0001)
                 {
@@ -343,7 +357,7 @@ namespace BitAuto.CarChannel.BLL
                 //    }    
                 //}
             }
-            return ChineseRound(tax*0.1);
+            return ChineseRound(tax * 0.1);
         }
 
         /// <summary>
@@ -369,6 +383,11 @@ namespace BitAuto.CarChannel.BLL
             if (m_Traveltaxrelief == "减半")
             {
                 tax /= 2;
+            }
+            //add by sk 2018-01-23
+            if (FuelType == "纯电" || FuelType == "插电混合")
+            {
+                return 0;
             }
             return Convert.ToInt32(Math.Ceiling(tax));
         }
@@ -476,15 +495,17 @@ namespace BitAuto.CarChannel.BLL
             {
                 return ChineseRound(285 + (m_carPrice * 0.0095));
             }
-            if (m_seatNum >= 6 && m_seatNum < 10) {
+            if (m_seatNum >= 6 && m_seatNum < 10)
+            {
                 return ChineseRound(342 + (m_carPrice * 0.009));
             }
-            if (m_seatNum >= 10 && m_seatNum < 20) {
+            if (m_seatNum >= 10 && m_seatNum < 20)
+            {
                 return ChineseRound(342 + (m_carPrice * 0.0095));
-            } 
+            }
             if (m_seatNum >= 20)
             {
-                return ChineseRound(357 + (m_carPrice*0.0095));
+                return ChineseRound(357 + (m_carPrice * 0.0095));
             }
             return ChineseRound(285 + (m_carPrice * 0.0095));
         }
@@ -510,7 +531,7 @@ namespace BitAuto.CarChannel.BLL
         {
             if (m_isGuochan)
             {
-                return ChineseRound(m_carPrice*0.0019);
+                return ChineseRound(m_carPrice * 0.0019);
             }
             else
             {
@@ -551,7 +572,7 @@ namespace BitAuto.CarChannel.BLL
             return ChineseRound(cost * 0.2);
         }
 
-        
+
 
         /// <summary>
         /// 司机座位责任险

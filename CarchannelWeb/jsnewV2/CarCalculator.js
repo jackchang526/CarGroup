@@ -13,7 +13,7 @@ function formatCurrency(num) {
     sign = (num == (num = Math.abs(num)));
     num = Math.floor(num * 100 + 0.50000000001);
     num = Math.floor(num / 100).toString();
-    for (var i = 0; i < Math.floor((num.length - (1 + i)) / 3) ; i++)
+    for (var i = 0; i < Math.floor((num.length - (1 + i)) / 3); i++)
         num = num.substring(0, num.length - (4 * i + 3)) + ',' + num.substring(num.length - (4 * i + 3));
     return (((sign) ? '' : '-') + num);
 }
@@ -62,6 +62,8 @@ function closex(t) {
 var vehicleAndVesselTaxRelief;
 //排量
 var exhaustforfloat;
+//燃料类型 add by 2018-01-23
+var fuelType;
 //车船使用税信息
 var vehicleAndVesselTaxInfos = {
     1: {
@@ -212,6 +214,8 @@ function resetPrice(carId, webSiteBaseUrl) {
                 }
                 //车船使用税减免信息
                 vehicleAndVesselTaxRelief = myData[0].traveltax;
+                //燃料类型
+                fuelType = myData[0].fuelType;
                 //计算车船使用税
                 CalculateVehAndVesselTax();
                 //setCalcToolUrl(carId);
@@ -251,7 +255,7 @@ function resetPriceInsurance(carId, webSiteBaseUrl) {
                     var nRS = parseInt(myData[0].seatNum);
                     document.getElementById("hidSeatNum").value = nRS;
                     if (nRS < 6) {
-                        $(selCompulsory).children("span").text("家用6座以下").attr("id",950);
+                        $(selCompulsory).children("span").text("家用6座以下").attr("id", 950);
                     } else {
                         $(selCompulsory).children("span").text("家用6座及以上").attr("id", 1100);
                     }
@@ -333,6 +337,10 @@ function CalculateVehAndVesselTax() {
     }
     else if (vehicleAndVesselTaxRelief == "减半") {
         vehicleAndVesselTaxValue = vehicleAndVesselTaxValue / 2;
+    }
+    //add by 2018-01-23
+    if (fuelType == "纯电" || fuelType == "插电混合") {
+        vehicleAndVesselTaxValue = 0;
     }
     $('#txtVehicleTax').val(Math.ceil(vehicleAndVesselTaxValue));
 }

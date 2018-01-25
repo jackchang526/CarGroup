@@ -372,6 +372,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
             }
             return carName;
         }
+
         private void BsonWrite(BsonElement status, BsonElement message, BsonElement data)
         {
             BsonDocument bsonDocument = new BsonDocument();
@@ -382,6 +383,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
             string callback = request.QueryString["callback"];
             response.Write(!string.IsNullOrEmpty(callback) ? string.Format("{0}({1})", callback, json) : json);
         }
+
         private void PingCeWrite<T>(WriteResult<T> result)
         {
             string callback = request.QueryString["callback"];

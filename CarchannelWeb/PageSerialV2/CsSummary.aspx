@@ -125,10 +125,9 @@
                                                 <span class="data<%=string.IsNullOrWhiteSpace(serialSaleDisplacementalt)?" grey-txt":"" %>" title="<%= serialSaleDisplacementalt %>"><%= string.IsNullOrWhiteSpace(serialSaleDisplacement)?"暂无":serialSaleDisplacement %></span>
                                                 <% } %>
                                             </li>
-                                            <li>
+                                            <%--<li>
                                                 <span class="note">变速箱: </span><span class="data<%=string.IsNullOrWhiteSpace(serialTransmission)?" grey-txt":"" %>"><%=string.IsNullOrWhiteSpace(serialTransmission) ? "暂无":serialTransmission%></span>
-                                            </li>
-                                            <%--<%= baoZhiLv %>--%>
+                                            </li>--%>
                                             <li>
                                                 <span class="note">油耗: </span>
                                                 <% if (string.IsNullOrWhiteSpace(serialInfo.CsSummaryFuelCost))
@@ -140,6 +139,7 @@
                                                 <a class="data" data-channelid="2.21.855" target="_blank" href="http://car.bitauto.com/<%= serialSpell %>/youhao/"><%=serialInfo.CsSummaryFuelCost%> &gt;</a>
                                                 <%} %>
                                             </li>
+                                            <%= baoZhiLv %>
                                             <%} %>
                                         </ul>
                                     </div>

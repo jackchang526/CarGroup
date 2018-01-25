@@ -139,15 +139,15 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
                 {
                     string levelSpell = BitAuto.CarUtils.Define.CarLevelDefine.GetLevelSpellByName(serialEntity.Level.Name);
                     string ratio = Math.Round(ConvertHelper.GetDouble(ele.Attributes["ResidualRatio5"].InnerText) * 100, 1).ToString();
-                    baoZhiLv = string.Format("<li><span class=\"note\">五年保值率: </span><span class=\"data\"><a class=\"lnk-bzl\" href=\"/{0}/baozhilv/\" target=\"_blank\" data-channelid=\"2.21.2032\">{1}% &gt;</a></span></li>"
+                    baoZhiLv = string.Format("<li><span class=\"note\">保值率: </span><span class=\"data\"><a class=\"lnk-bzl\" href=\"/{0}/baozhilv/\" target=\"_blank\" data-channelid=\"2.21.2032\">{1}% &gt;</a></span></li>"
                             , levelSpell
                             , ratio);
                 }
             }
-            if (string.IsNullOrEmpty(baoZhiLv))
-            {
-                baoZhiLv = "<li><span class=\"note\">五年保值率: </span><span class=\"data grey-txt\">暂无</span></li>";
-            }
+            //if (string.IsNullOrEmpty(baoZhiLv))
+            //{
+            //    baoZhiLv = "<li><span class=\"note\">保值率: </span><span class=\"data grey-txt\">暂无</span></li>";
+            //}
         }
 
         protected void MakeBlockHtml()

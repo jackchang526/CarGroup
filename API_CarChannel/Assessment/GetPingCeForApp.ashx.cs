@@ -30,11 +30,9 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
 
             switch (action)
             {
-                case "intr":
-                    
+                case "intr":                    
                     break;                
-                default:
-                    
+                default:                    
                     break;
             }
             writeResult.Status = status;

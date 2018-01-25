@@ -3,6 +3,7 @@ using BitAuto.CarChannel.BLL.Data;
 using BitAuto.CarChannel.Common;
 using BitAuto.CarChannel.Model;
 using BitAuto.CarChannel.Model.Assessment;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using Newtonsoft.Json;
@@ -236,19 +237,20 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
         /// </summary>
         private void GetMenuInfo()
         {
-            AssessmentEntity assessmentEntity = null;
+            //AssessmentEntity assessmentEntity = null;
+            BsonDocument bson = null;
 
             int status = 0;
             string message = "success";
             List<string> paraList = new List<string>
             {
-                "CreateDateTime",
-                "UpdateDateTime",
-                "SerialId",
-                "CarId",
-                "Status",
-                "EvaluationId",
-                "Score",
+                //"CreateDateTime",
+                //"UpdateDateTime",
+                //"SerialId",
+                //"CarId",
+                //"Status",
+                //"EvaluationId",
+                //"Score",
 
                 "BodyAndSpaceGroup.SpaceEntity.ImpressionScore",
                 "BodyAndSpaceGroup.SpaceEntity.ActualScore",
@@ -325,7 +327,8 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                     query = Query.EQ("EvaluationId", EvaluationId);
                     try
                     {
-                        assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query, paraList.ToArray(), sortdic);
+                        //assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query, paraList.ToArray(), sortdic);
+                        bson = evaluationBll.GetOne<BsonDocument>(query, paraList.ToArray(), sortdic);
                     }
                     catch (Exception e)
                     {
@@ -339,27 +342,25 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 query = Query.And(Query.EQ("EvaluationId", EvaluationId), Query.EQ("Status", 1));
                 try
                 {
-                    assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query, paraList.ToArray(), sortdic);
+                    //assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query, paraList.ToArray(), sortdic);
+                    bson = evaluationBll.GetOne<BsonDocument>(query, paraList.ToArray(), sortdic);
                 }
                 catch (Exception e)
                 {
                     status = 1;
                     message = e.Message;
                 }
-
             }
-
-            WriteResult<AssessmentEntity> writeResult = new WriteResult<AssessmentEntity>();
-
-            if (assessmentEntity != null)
+            
+            if (bson != null)
             {
-                writeResult.Data = assessmentEntity;
+                bson.RemoveAt(0);
             }
-
-            writeResult.Status = status;
-            writeResult.Message = message;
-            PingCeWrite(writeResult);
-        }
+            BsonElement bs_data = new BsonElement("Data", bson);
+            BsonElement bs_status = new BsonElement("Status", status);
+            BsonElement bs_message = new BsonElement("Message", message);
+            BsonWrite(bs_status, bs_message,bs_data);
+        }       
 
         private string GetCarName(int carId)
         {
@@ -371,7 +372,16 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
             }
             return carName;
         }
-
+        private void BsonWrite(BsonElement status, BsonElement message, BsonElement data)
+        {
+            BsonDocument bsonDocument = new BsonDocument();
+            bsonDocument.InsertAt(0, status);
+            bsonDocument.InsertAt(1, message);
+            bsonDocument.InsertAt(2, data);
+            var json = bsonDocument.ToJson();
+            string callback = request.QueryString["callback"];
+            response.Write(!string.IsNullOrEmpty(callback) ? string.Format("{0}({1})", callback, json) : json);
+        }
         private void PingCeWrite<T>(WriteResult<T> result)
         {
             string callback = request.QueryString["callback"];

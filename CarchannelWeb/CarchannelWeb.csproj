@@ -242,6 +242,10 @@
     <Content Include="css\复件 common.css" />
     <Content Include="css\对比.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Elec\ChargeKard.aspx" />
+    <Content Include="Elec\ChargePile.aspx" />
+    <Content Include="Elec\Default.aspx" />
+    <Content Include="Elec\Subsidy.aspx" />
     <Content Include="Exhibition\2010beijing_MasterBrand.aspx" />
     <Content Include="Exhibition\2010beijing_Serial.aspx" />
     <Content Include="Exhibition\2010guangzhou-chezhan_MasterBrand.aspx" />
@@ -1697,6 +1701,34 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Elec\ChargeKard.aspx.cs">
+      <DependentUpon>ChargeKard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Elec\ChargeKard.aspx.designer.cs">
+      <DependentUpon>ChargeKard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Elec\ChargePile.aspx.cs">
+      <DependentUpon>ChargePile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Elec\ChargePile.aspx.designer.cs">
+      <DependentUpon>ChargePile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Elec\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Elec\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Elec\Subsidy.aspx.cs">
+      <DependentUpon>Subsidy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Elec\Subsidy.aspx.designer.cs">
+      <DependentUpon>Subsidy.aspx</DependentUpon>
     </Compile>
     <Compile Include="Exhibition\2010beijing_MasterBrand.aspx.cs">
       <DependentUpon>2010beijing_MasterBrand.aspx</DependentUpon>
@@ -3257,7 +3289,9 @@
     <Content Include="interfaceforbitauto\TreeXml.ashx" />
     <None Include="Properties\PublishProfiles\car.bitauto.com.pubxml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="jsnewV2\elec\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

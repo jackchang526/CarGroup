@@ -36,7 +36,7 @@ var selectElecCar = {
             //$("#selectResult").text("共有0款车型符合条件");
             //$("#selectResult").addClass("car-current");
             //$("#selectResult").attr("href", "javascript:;");
-            //$("#clearSelected").addClass("ljt-current");
+            $("#clearSelected").addClass("ljt-current");
 
         })
     },

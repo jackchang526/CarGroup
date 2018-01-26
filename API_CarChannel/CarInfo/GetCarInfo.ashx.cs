@@ -88,7 +88,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                 case "getallcarinfobycsid": RenderCarInfoByCsID(); break;
                 case "getallcaroil": PageHelper.SetPageCache(60); RenderAllCarOil(); break;
                 case "getcarlistbyyear": PageHelper.SetPageCache(60); RenderAllCarByYear(); break;
-                case "getcarinfobyid": PageHelper.SetPageCache(60); RenderCarInfoByID(); break;
+                case "getcarinfobyid": PageHelper.SetPageCache(60); RenderCarBaseInfoByID(); break;
                 case "carcolor": RenderCarColor(); break;
                 case "carcolorjson": RenderCarColorJson(); break;
                 case "carcolorbyyear": RenderCarColorByYear(); break;
@@ -105,8 +105,33 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                 case "getcarcalcinfo": PageHelper.SetPageCache(60); RenderGetCarCalcInfo(); break;
                 case "getcartaxinfo": PageHelper.SetPageCache(60); RenderGetCarParamInfo(); break;
                 case "getcarparamforpc": PageHelper.SetPageCache(60); RenderGetCarParamInfoForEValuation(); break;
+                case "getcarbaseinfo": PageHelper.SetPageCache(20); RenderCarBaseInfoById(); break;
                 default: CommonFunction.EchoXml(response, "<!-- 缺少参数 -->", ""); break;
             }
+        }
+
+        private void RenderCarBaseInfoById()
+        {
+            int carId = ConvertHelper.GetInteger(request.QueryString["id"]);
+            DataSet ds = carBll.GetCarBaseDataById(carId);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                DataRow dr = ds.Tables[0].Rows[0];
+                //new
+                //{
+                //    CsId = dr["Cs_Id"],
+                //    CarId = dr["Car_Id"],
+                //    CarName = dr["Car_Name"],
+                //    CarYearType = dr["Car_YearType"],
+                //    carReferPrice = dr["car_ReferPrice"],
+                //    EngineExhaust = dr["Engine_Exhaust"],
+                //    UnderPanTransmissionType = dr["UnderPan_TransmissionType"],
+                //    CarSaleState = dr["Car_SaleState"],
+                //    CarProduceState = dr["Car_ProduceState"]
+                //};
+            }
+
+            //response.Write(JsonConvert.SerializeObject());
         }
 
         private void RenderGetCarParamInfoForEValuation()
@@ -1207,7 +1232,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
         /// <summary>
         /// 根据车型ID取车型基本信息
         /// </summary>
-        private void RenderCarInfoByID()
+        private void RenderCarBaseInfoByID()
         {
             int carid = ConvertHelper.GetInteger(request.QueryString["id"]);
             DataTable dt = TCarDAL.GetPartCarInfoById(carid).Tables[0];

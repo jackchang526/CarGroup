@@ -53,6 +53,28 @@ namespace BitAuto.CarChannel.BLL
         { }
 
         /// <summary>
+        /// 根据车款id获取车款基本信息
+        /// </summary>
+        /// <param name="carId"></param>
+        /// <returns></returns>
+        public DataSet GetCarBaseDataById(int carId)
+        {
+            if (carId <= 0)
+            {
+                return null;
+            }
+            string cacheKey = "GetCarBaseDataById_" + carId;
+            object cacheObj = CacheManager.GetCachedData(cacheKey);
+            if (cacheObj != null)
+            {
+                return (DataSet)cacheObj;
+            } 
+            DataSet ds = cbd.GetCarBaseDataById(carId);
+            CacheManager.InsertCache(cacheKey, ds, WebConfig.CachedDuration);
+            return ds;
+        }
+
+        /// <summary>
         /// 取所有有效车型
         /// </summary>
         /// <returns></returns>

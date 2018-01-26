@@ -113,25 +113,32 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
         private void RenderCarBaseInfoById()
         {
             int carId = ConvertHelper.GetInteger(request.QueryString["id"]);
+            WriteResult<object> sr = new WriteResult<object>();
             DataSet ds = carBll.GetCarBaseDataById(carId);
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 DataRow dr = ds.Tables[0].Rows[0];
-                //new
-                //{
-                //    CsId = dr["Cs_Id"],
-                //    CarId = dr["Car_Id"],
-                //    CarName = dr["Car_Name"],
-                //    CarYearType = dr["Car_YearType"],
-                //    carReferPrice = dr["car_ReferPrice"],
-                //    EngineExhaust = dr["Engine_Exhaust"],
-                //    UnderPanTransmissionType = dr["UnderPan_TransmissionType"],
-                //    CarSaleState = dr["Car_SaleState"],
-                //    CarProduceState = dr["Car_ProduceState"]
-                //};
+                sr.Status = 1;
+                sr.Message = "ok";
+                sr.Data = new
+                {
+                    CsId = dr["Cs_Id"],
+                    CarId = dr["Car_Id"],
+                    CarName = dr["Car_Name"],
+                    CarYearType = dr["Car_YearType"],
+                    carReferPrice = dr["car_ReferPrice"],
+                    EngineExhaust = dr["Engine_Exhaust"],
+                    UnderPanTransmissionType = dr["UnderPan_TransmissionType"],
+                    CarSaleState = dr["Car_SaleState"],
+                    CarProduceState = dr["Car_ProduceState"]
+                };
             }
-
-            //response.Write(JsonConvert.SerializeObject());
+            else
+            {
+                sr.Status = 0;
+                sr.Message = "no";
+            }
+            response.Write(JsonConvert.SerializeObject(sr));
         }
 
         private void RenderGetCarParamInfoForEValuation()

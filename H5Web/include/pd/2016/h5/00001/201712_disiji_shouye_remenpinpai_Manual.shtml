@@ -1,0 +1,76 @@
+﻿<div class="brand-hot">
+            <ul>
+                <li>
+                    <a href="javascript:void(0);" data-action="car" data-id="8">
+                        <img src="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/55/m_8_55.png">
+                        <p data-key="name">大众</p>
+                        <input type="hidden" class="brand-logo m_8_b">
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-action="car" data-id="13">
+                        <img src="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/55/m_13_55.png">
+                        <p data-key="name">现代</p>
+                        <input type="hidden" class="brand-logo m_13_b">
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-action="car" data-id="17">
+                        <img src="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/55/m_17_55.png">
+                        <p data-key="name">福特</p>
+                        <input type="hidden" class="brand-logo m_17_b">
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-action="car" data-id="28">
+                        <img src="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/55/m_28_55.png">
+                        <p data-key="name">起亚</p>
+                        <input type="hidden" class="brand-logo m_28_b">
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-action="car" data-id="127">
+                        <img src="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/55/m_127_55.png">
+                        <p data-key="name">别克</p>
+                        <input type="hidden" class="brand-logo m_127_b">
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="javascript:void(0);" data-action="car" data-id="21">
+                        <img src="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/55/m_21_55.png">
+                        <p data-key="name">长城</p>
+                        <input type="hidden" class="brand-logo m_21_b">
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-action="car" data-id="196">
+                        <img src="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/55/m_196_55.png">
+                        <p data-key="name">哈弗</p>
+                        <input type="hidden" class="brand-logo m_196_b">
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-action="car" data-id="136">
+                        <img src="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/55/m_136_55.png">
+                        <p data-key="name">长安</p>
+                        <input type="hidden" class="brand-logo m_136_b">
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-action="car" data-id="15">
+                        <img src="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/55/m_15_55.png">
+                        <p data-key="name">比亚迪</p>
+                        <input type="hidden" class="brand-logo m_15_b">
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" data-action="car" data-id="49">
+                        <img src="http://image.bitautoimg.com/bt/car/default/images/logo/masterbrand/png/55/m_49_55.png">
+                        <p data-key="name">雪佛兰</p>
+                        <input type="hidden" class="brand-logo m_49_b">
+                    </a>
+                </li>
+            </ul>
+</div>

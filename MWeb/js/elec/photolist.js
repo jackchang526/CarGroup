@@ -1,7 +1,7 @@
 ﻿var page = 1, pageSize =10;
 var SelectPhotoTool = {
     Parameters: new Array()
-    , FuelTypeName: { 16: "纯电动", 128: "插电混合" }
+    , FuelTypeName: { 16: "纯电动", 128: "插电混动" }
     , BrandName: { 0: "不限", 1: "自主", 2: "合资", 4: "进口" }
     , BodyFormName: { 1: "两厢", 2: "三厢", 64: "SUV" }
     , CSCount: 0
@@ -11,8 +11,9 @@ var SelectPhotoTool = {
             SelectPhotoTool.Parameters.push("page=" + page);
         }
         var pageCount = Math.ceil(this.CSCount / pageSize);
+        $("#curPageIndex").text(page);       
         this.bindPageEvent(pageCount);
-        $("#curPageIndex").text(page);
+        $(".m-pages-select").val(page);       
     }
     //初始化查询条件
     , initFilterCondition: function () {
@@ -89,6 +90,9 @@ var SelectPhotoTool = {
             var $prevBtn = $(".m-pages-pre");
             var $nextBtn = $(".m-pages-next");
             var $selectOption = $(".m-pages-select");
+            if (Number($("#curPageIndex").text()) < 2) { $prevBtn.addClass("m-pages-none"); }
+            if (Number($("#curPageIndex").text()) == pageCount) { $nextBtn.addClass("m-pages-none"); }
+
             if (pageCount > 1) {
                 //下拉页列表
                 var option = '';
@@ -175,7 +179,7 @@ var SelectPhotoTool = {
 function getElementById(i) { return document.getElementById(i); }
 Array.prototype.remove = function (b) { var a = this.indexOf(b); if (a >= 0) { this.splice(a, 1); return true; } return false; };
 Array.prototype.indexOf = function (value) { for (var i = 0, l = this.length; i < l; i++) if (this[i] == value) return i; return -1; }
-
+function $$(id) { return document.getElementById(id); }
 function GotoPage(conditionStr) {
     UpdatePara(conditionStr);
     UpdatePara("page_1");

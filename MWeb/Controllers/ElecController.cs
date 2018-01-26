@@ -58,7 +58,7 @@ namespace MWeb.Controllers
                 sb.AppendFormat("<em>{0}</em>", detail.PriceRange);
                 if (!string.IsNullOrEmpty(detail.BatteryLife))
                 {
-                    sb.AppendFormat("<span class=\"bt\">{0}公里</span>", detail.BatteryLife);
+                    sb.AppendFormat("<span class=\"bt\">续航{0}公里</span>", detail.BatteryLife);
                 }
                 else
                 {

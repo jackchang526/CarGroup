@@ -30,14 +30,14 @@ function calcAcquisitionTax() {
         taxPriceList.acquisitionTax = 0;
         $("#gouZhiShuiDesc").text("免征购置税");
     } else {
-        if (parseFloat(exhaustforfloat) <= 1.6) {
-            var beginTime = new Date('2017/01/01 00:00:00').getTime();
-            var endTime = new Date('2017/12/31 23:59:59').getTime();
-            var currentDate = new Date().getTime();
-            if (currentDate > beginTime && currentDate < endTime) {
-                taxPriceList.acquisitionTax = Math.round(acquisitionTax * 0.075);
-            }
-        }
+        //if (parseFloat(exhaustforfloat) <= 1.6) {
+        //    var beginTime = new Date('2017/01/01 00:00:00').getTime();
+        //    var endTime = new Date('2017/12/31 23:59:59').getTime();
+        //    var currentDate = new Date().getTime();
+        //    if (currentDate > beginTime && currentDate < endTime) {
+        //        taxPriceList.acquisitionTax = Math.round(acquisitionTax * 0.075);
+        //    }
+        //}
         $("#gouZhiShuiDesc").text("");
     }
     acquisitionTax = formatCurrency(taxPriceList.acquisitionTax);
@@ -133,6 +133,8 @@ function GetVehicleAndVesselTaxInfo(dispplacement) {
 var vehicleAndVesselTaxRelief;
 //排量
 var exhaustforfloat;
+//燃料类型 add by 2018-01-23
+var fuelType;
 //车船使用税
 function CalculateVehicleAndVesselTax() {
     if ($("#hidCarPrice").val() == "0") {
@@ -150,6 +152,10 @@ function CalculateVehicleAndVesselTax() {
         }
         else if (vehicleAndVesselTaxRelief == "减半") {
             vehicleAndVesselTaxValue = vehicleAndVesselTaxValue / 2;
+        }
+        //add by 2018-01-23
+        if (fuelType == "纯电" || fuelType == "插电混合") {
+            vehicleAndVesselTaxValue = 0;
         }
         taxPriceList.cheChuanTax = Math.ceil(vehicleAndVesselTaxValue);
         vehicleAndVesselTaxValue = formatCurrency(taxPriceList.cheChuanTax);
@@ -855,6 +861,10 @@ function GetCarInfo(carId) {
             }
             //车船使用税减免信息
             vehicleAndVesselTaxRelief = json.traveltax;
+            //燃料类型
+            fuelType = json.fuelType;
+            //计算车船使用税
+            //CalculateVehAndVesselTax();
         }
     });
 }
@@ -920,7 +930,7 @@ function formatCurrency(num) {
     sign = (num == (num = Math.abs(num)));
     num = Math.floor(num * 100 + 0.50000000001);
     num = Math.floor(num / 100).toString();
-    for (var i = 0; i < Math.floor((num.length - (1 + i)) / 3) ; i++)
+    for (var i = 0; i < Math.floor((num.length - (1 + i)) / 3); i++)
         num = num.substring(0, num.length - (4 * i + 3)) + ',' + num.substring(num.length - (4 * i + 3));
     return (((sign) ? '' : '-') + num);
 }

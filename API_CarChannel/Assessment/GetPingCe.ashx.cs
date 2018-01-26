@@ -1,6 +1,7 @@
 ﻿using BitAuto.CarChannel.BLL;
 using BitAuto.CarChannel.BLL.Data;
 using BitAuto.CarChannel.Common;
+using BitAuto.CarChannel.Common.Cache;
 using BitAuto.CarChannel.Model;
 using BitAuto.CarChannel.Model.Assessment;
 using MongoDB.Bson;
@@ -237,12 +238,21 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
         /// </summary>
         private void GetMenuInfo()
         {
-            //AssessmentEntity assessmentEntity = null;
-            BsonDocument bson = null;
+            string key = string.Format("GetMenuInfo_{0}", evaluationId);
+            var obj = CacheManager.GetCachedData(key);
 
-            int status = 0;
-            string message = "success";
-            List<string> paraList = new List<string>
+            BsonDocument bsonDocument = new BsonDocument();
+            if (obj != null&& string.IsNullOrWhiteSpace(overview))
+            {
+                bsonDocument = (BsonDocument)obj;
+            }
+            else
+            {
+                //AssessmentEntity assessmentEntity = null;
+                BsonDocument bson = null;
+                int status = 0;
+                string message = "success";
+                List<string> paraList = new List<string>
             {
                 //"CreateDateTime",
                 //"UpdateDateTime",
@@ -310,24 +320,38 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 "CostBaseGroup.CgpEntity.GuaranPeriodScore",
 
                 "CostBaseGroup.CgqEntity.GuaranQualityScore"
-                
+
 
             };
 
-            Dictionary<string, int> sortdic = new Dictionary<string, int>
+                Dictionary<string, int> sortdic = new Dictionary<string, int>
             {
                 { "CreateDateTime", 0 }
             };
-            EvaluationBll evaluationBll = new EvaluationBll();
-            IMongoQuery query = null;
-            if (!string.IsNullOrWhiteSpace(overview))//预览
-            {
-                if (isExpiredTime)// 没有过期
+                EvaluationBll evaluationBll = new EvaluationBll();
+                IMongoQuery query = null;
+                if (!string.IsNullOrWhiteSpace(overview))//预览
                 {
-                    query = Query.EQ("EvaluationId", EvaluationId);
+                    if (isExpiredTime)// 没有过期
+                    {
+                        query = Query.EQ("EvaluationId", EvaluationId);
+                        try
+                        {
+                            //assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query, paraList.ToArray(), sortdic);
+                            bson = evaluationBll.GetOne<BsonDocument>(query, paraList.ToArray(), sortdic);
+                        }
+                        catch (Exception e)
+                        {
+                            status = 1;
+                            message = e.Message;
+                        }
+                    }
+                }
+                else//非预览
+                {
+                    query = Query.And(Query.EQ("EvaluationId", EvaluationId), Query.EQ("Status", 1));
                     try
                     {
-                        //assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query, paraList.ToArray(), sortdic);
                         bson = evaluationBll.GetOne<BsonDocument>(query, paraList.ToArray(), sortdic);
                     }
                     catch (Exception e)
@@ -336,33 +360,28 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         message = e.Message;
                     }
                 }
-            }
-            else//非预览
-            {
-                query = Query.And(Query.EQ("EvaluationId", EvaluationId), Query.EQ("Status", 1));
-                try
+                BsonElement bs_data = null;
+                if (bson != null)
                 {
-                    bson = evaluationBll.GetOne<BsonDocument>(query, paraList.ToArray(), sortdic);
+                    bs_data = new BsonElement("Data", bson);
                 }
-                catch (Exception e)
+                else
                 {
-                    status = 1;
-                    message = e.Message;
+                    bs_data = new BsonElement("Data", "");
                 }
-            }
-            BsonElement bs_data = null;
-            if (bson != null)
-            {
-                bs_data = new BsonElement("Data", bson);                
-            }
-            else
-            {
-                bs_data = new BsonElement("Data", "");
-            }
 
-            BsonElement bs_status = new BsonElement("Status", status);
-            BsonElement bs_message = new BsonElement("Message", message);
-            PingCeWrite(bs_status, bs_message, bs_data);
+                BsonElement bs_status = new BsonElement("Status", status);
+                BsonElement bs_message = new BsonElement("Message", message);
+
+                bsonDocument.InsertAt(0, bs_status);
+                bsonDocument.InsertAt(1, bs_message);
+                bsonDocument.InsertAt(2, bs_data);
+                if (string.IsNullOrWhiteSpace(overview))
+                {
+                    CacheManager.InsertCache(key, bsonDocument, WebConfig.CachedDuration);
+                }                    
+            }
+            PingCeWrite(bsonDocument);
         }       
 
         private string GetCarName(int carId)
@@ -376,12 +395,8 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
             return carName;
         }
 
-        private void PingCeWrite(BsonElement status, BsonElement message, BsonElement data)
-        {
-            BsonDocument bsonDocument = new BsonDocument();
-            bsonDocument.InsertAt(0, status);
-            bsonDocument.InsertAt(1, message);
-            bsonDocument.InsertAt(2, data);
+        private void PingCeWrite(BsonDocument bsonDocument)
+        {            
             var json = bsonDocument.ToJson();
             string callback = request.QueryString["callback"];
             response.Write(!string.IsNullOrEmpty(callback) ? string.Format("{0}({1})", callback, json) : json);

@@ -15,6 +15,7 @@ using BitAuto.CarChannel.CarchannelWeb.App_Code;
 using BitAuto.CarUtils.Define;
 using System.Data;
 using System;
+using BitAuto.CarChannel.BLL.Data;
 
 namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 {
@@ -191,9 +192,35 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 			StringBuilder hotCarType = new StringBuilder();
 			try
 			{
-				//hotCarType.Append("<ul id=\"data_box3_0\">");
-				hotCarType.AppendLine(serialBll.GetHomepageHotSerialV2(8));
-				//hotCarType.Append("</ul>");
+                List<SerialEntity> hotList = serialBll.GetHotSerialByNum(8);
+                List<SerialListADEntity> listSerialAD = serialBll.GetSerialAD("indexcarhot"); //子品牌广告
+                if (listSerialAD != null && listSerialAD.Count > 0)
+                {
+                    foreach (SerialListADEntity ad in listSerialAD)
+                    {
+                        SerialEntity adEntity = hotList.FirstOrDefault(x => x.Id == ad.SerialId);
+                        if (adEntity != null)
+                        {
+                            hotList.Remove(adEntity);
+                        }
+                    }
+                    foreach (SerialListADEntity ad in listSerialAD)
+                    {
+                        int index = ad.Pos - 1;
+                        if (index < 0)
+                            index = 0;
+                        SerialEntity serialAd = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, ad.SerialId);
+                        if (serialAd != null)
+                        {
+                            hotList.Insert(index, serialAd);
+                        }
+                    }
+                }
+                if (hotList.Count > 8)
+                {
+                    hotList = hotList.Take(8).ToList();
+                }
+                hotCarType.AppendLine(GetHomepageHotSerialV2(hotList));
 			}
 			catch (Exception ex)
 			{
@@ -202,11 +229,55 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
 			return hotCarType.ToString();
 		}
 
-		/// <summary>
-		/// 首页新车10个
-		/// </summary>
-		/// <returns></returns>
-		protected string GetNewCarTypeNew()
+        /// <summary>
+        /// 获取热门车型的代码
+        /// </summary>
+        /// <param name="serialList"></param>
+        /// <returns></returns>
+        private string GetHomepageHotSerialV2(List<SerialEntity> serialList)
+        {
+            //生成代码
+            List<string> htmlList = new List<string>();
+            foreach (SerialEntity serialNode in serialList)
+            {
+                int serialId = serialNode.Id;
+                string imgUrl = Car_SerialBll.GetSerialImageUrl(serialId).Replace("_2.", "_3.");
+                string serialName = serialNode.ShowName;
+                //string serialLevel = serialNode.GetAttribute("CsLevel");
+                string serialSpell = serialNode.AllSpell;
+                string serialUrl = "/" + serialSpell + "/";
+                //string levelUrl = string.Format("/{0}/", CarLevelDefine.GetLevelSpellByName(serialLevel));
+                //修改报价为指导价
+                string priceRange = new PageBase().GetSerialReferPriceByID(Convert.ToInt32(serialId));
+
+                htmlList.Add("<div class=\"col-xs-3\">");
+                htmlList.Add("<div class=\"img-info-layout-vertical img-info-layout-vertical-center img-info-layout-vertical-180120\">");
+                htmlList.Add("<div class=\"img\">");
+                htmlList.Add("<a href=\"" + serialUrl + "\"  target=\"_blank\"><img src=\"" + imgUrl + "\" alt=\"" + serialName + "\"></a>");
+                htmlList.Add("</div>");
+                htmlList.Add("<ul class=\"p-list\">");
+                htmlList.Add("<li class=\"name\"><a href=\"" + serialUrl + "\" target=\"_blank\">" + serialName + "</a></li>");
+                if (priceRange.Trim().Length == 0)
+                {
+                    htmlList.Add("<li class=\"price\"><a href=\"" + serialUrl + "\" target=\"_blank\">暂无指导价</a></li>");
+                }
+                else
+                {
+                    htmlList.Add("<li class=\"price\"><a href=\"" + serialUrl + "\" target=\"_blank\">" + priceRange + "</a></li>");
+                }
+                htmlList.Add("</ul>");
+                htmlList.Add("</div>");
+                htmlList.Add("</div>");
+            }
+            return String.Concat(htmlList.ToArray());
+        }
+
+
+        /// <summary>
+        /// 首页新车10个
+        /// </summary>
+        /// <returns></returns>
+        protected string GetNewCarTypeNew()
 		{
 			StringBuilder newCarType = new StringBuilder();
 			try

@@ -1065,7 +1065,7 @@ function GetVrV2() {
 //限时抢ad
 function LoadXianShiQiang() {
     $.ajax({
-        url: "http://frontapi.easypass.cn/activityapi/TimeLimitRobbing/JsonpTimeLimitRobbingUrl?CityId=" + GlobalSummaryConfig.CityId + "&CsId=" + GlobalSummaryConfig.SerialId,
+        url: "http://frontapi.easypass.cn/activityapi/TimeLimitRobbing/JsonpTimeLimitRobbingUrl?eplb_source=ebit&CityId=" + GlobalSummaryConfig.CityId + "&CsId=" + GlobalSummaryConfig.SerialId,
         cache: true,
         dataType: "jsonp",//text
         jsonpCallback: "LoadXianShiQiangCallback",

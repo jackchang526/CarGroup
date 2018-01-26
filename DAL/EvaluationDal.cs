@@ -258,5 +258,56 @@ namespace BitAuto.CarChannel.DAL
             }
             return dic;
         }
+
+        /// <summary>
+        /// 从评测数据库中获取车系下最新年款的车款ID
+        /// </summary>
+        /// <param name="serialId"></param>
+        /// <returns></returns>
+        public DataSet GetCarIdOrderYear(int serialId)
+        {
+            string sql = @"SELECT 
+                            se.StyleId                   
+                            ,se.Id AS EvaluationId
+                            ,sjb.StyleName
+                            ,sjb.MasterBrandName
+                            ,sjb.ModelName
+                            ,sjb.ModelDisplayName
+                            ,sjb.ModelLevel
+                            ,sjb.Year                 
+                            ,sjb.ModelAllSpell
+                            ,sjb.ModelId
+                            FROM [dbo].[StyleEvaluation] AS se
+                            LEFT JOIN [dbo].[StyleJoinBrand] AS sjb 
+                            ON sjb.StyleId=se.StyleId  
+                            WHERE se.[Status]=2 and sjb.ModelId=@serialId
+                            order by sjb.Year DESC";
+            SqlParameter[] param = {
+                                new SqlParameter("@serialId",SqlDbType.Int)
+                                   };
+            param[0].Value = serialId;
+            DataSet ds = SqlHelper.ExecuteDataset(WebConfig.CarsEvaluationDataConnectionString, CommandType.Text, sql, param);
+            if (ds != null && ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    //PingCeEntity item = new PingCeEntity();
+                    //item.Acceleration = dr["Acceleration"] != null ? ConvertHelper.GetDouble(dr["Acceleration"]) : 0;
+                    //item.Fuel = dr["Fuel"] != null ? ConvertHelper.GetDouble(dr["Fuel"]) : 0;
+                    //item.BrakingDistance = dr["BrakingDistance"] != null ? ConvertHelper.GetDouble(dr["BrakingDistance"]) : 0;
+                    //item.EvaluationId = ConvertHelper.GetInteger(dr["Id"]);
+                    //item.Year = ConvertHelper.GetInteger(dr["Year"]);
+                    //item.ModelDisplayName = dr["ModelDisplayName"].ToString();
+                    //item.StyleName = dr["StyleName"].ToString();
+                    //item.FuelType = dr["FuelType"].ToString();
+                    //dic.Add(item.EvaluationId, item);
+                    //CacheManager.InsertCache(key, item, WebConfig.CachedDuration);
+                    //break;
+                }
+            }
+
+
+            return ds;
+        }
     }
 }

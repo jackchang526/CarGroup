@@ -29,7 +29,7 @@
     <div class="op-nav">
         <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
         <div class="tt-name">
-            <a href="http://m.yiche.com/" class="yiche-logo">汽车</a><h1>新能源车</h1>
+            <a href="http://m.yiche.com/" class="yiche-logo">汽车</a><h1>图片</h1>
         </div>
         <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
     </div>
@@ -241,6 +241,11 @@
         SelectPhotoTool.Parameters = @Html.Raw(ViewData["GenerateSearchInitScript"]);
         SelectPhotoTool.CSCount = @Html.Raw(ViewData["CSCount"]);
         SelectPhotoTool.initPageCondition();
+
+        $(function () {//没有电脑版，临时处理
+            var linktopc = $("#a_linkToPcPage");
+            $(linktopc).hide().next().hide();
+        });
     </script>
 </body>
 </html>

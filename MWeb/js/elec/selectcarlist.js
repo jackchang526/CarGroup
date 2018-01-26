@@ -84,12 +84,10 @@ var CarParam = {
     b: "",   // 车身形式
     s: 4,  //排序方式
     page: 1,  //当前第几页
-    pagesize: 50 // 每页数量
+    pagesize: 20 // 每页数量
 }
 var CarParamText = {
-    "p_0-5": "5万以下",  // 价格
-    "p_5-8": "5-8万",  // 价格
-    "p_8-12": "8-12万",  // 价格
+    "p_0-12": "12万以下",  // 价格 
     "p_12-18": "12-18万",  // 价格
     "p_18-25": "18-25万",  // 价格
     "p_25-40": "25-40万",  // 价格
@@ -97,12 +95,12 @@ var CarParamText = {
     "p_80-9999": "80万以上",  // 价格
     "f_16": "纯电",  // 动力类型
     "f_128": "插电混动",  // 动力类型
-    "bl_0-100": "100公里以下",
-    "bl_100-200": "100-200公里",
-    "bl_200-300": "200-300公里",
-    "bl_300-400": "300-400公里",
-    "bl_400-500": "400-500公里",
-    "bl_500-9999": "500公里以上",
+    "bl_0-100": "100km以下",
+    "bl_100-200": "100-200km",
+    "bl_200-300": "200-300km",
+    "bl_300-400": "300-400km",
+    "bl_400-500": "400-500km",
+    "bl_500-9999": "500km以上",
     "ct_0-6": "6小时以内",
     "ct_6-8": "6-8小时",
     "ct_8-12": "8-12小时",
@@ -195,7 +193,7 @@ function setPrice() {
     var p_min = $("#p_min").val();
     var p_max = $("#p_max").val();
     if (p_min == "" || isNaN(p_min)) {
-        if (p_min == "" || isNaN(p_min)) {
+        if (p_max == "" || isNaN(p_max)) {
             CarParam["p"] = "p_" + p_min + "-" + p_max;
             Jump();
         }
@@ -233,15 +231,21 @@ function bindSelectedStyle() {
             }
         } else if (k == "p") {
 
-            if (CarParam[k] == "") {
+            if (CarParam[k] == "" || CarParam[k] == "0-9999") {
                 var n = $("#t_" + k + " a span");//.text(CarParamEnum[k]).parent.removeClass("current");
                 n.text(CarParamEnum[k]);
                 $("#t_" + k).removeClass("current");
             } else {
-                if (CarParamText[CarParam[k]] == undefined) {
-                    var n = $("#t_" + k + " a span");//.text(CarParamEnum[k]).parent.removeClass("current");
-                    n.text(CarParam[k].replace("p_", "") + "万");
-                    $("#t_" + k).addClass("current");
+                if (CarParamText["p_"+CarParam[k]] == undefined) {
+                    if (CarParam[k].indexOf("-9999")>0) {
+                        var n = $("#t_" + k + " a span");//.text(CarParamEnum[k]).parent.removeClass("current");
+                        n.text(CarParam[k].replace("-9999", "") + "万以上");
+                        $("#t_" + k).addClass("current");
+                    } else {
+                        var n = $("#t_" + k + " a span");//.text(CarParamEnum[k]).parent.removeClass("current");
+                        n.text(CarParam[k].replace("p_", "") + "万");
+                        $("#t_" + k).addClass("current");
+                    }
                 } else {
                     var n = $("#t_" + k + " a span");//.text(CarParamEnum[k]).parent.removeClass("current");
                     n.text(CarParamText[k + "_" + CarParam[k]]);
@@ -261,17 +265,38 @@ function bindSelectedStyle() {
     }
 }
 
-function bindSwiperStyle(k) { 
+function bindSwiperStyle(k) {
     var curk = $("a[t^='" + k + "']");
     if (curk.length > 0) {
+        var has = false;
         for (var i = 0; i < curk.length; i++) {
             var t = $(curk[i]).attr("t");
-            if (CarParam[k] != "" && t.indexOf(CarParam[k]) > 0) {
+            if (CarParam[k] != "" && t.indexOf("_"+CarParam[k]) > 0) {
                 $(curk[i].parentNode).addClass("current");
+                has = true;
                 //$("#t_" + k + " a span").text(CarParam[k]);
             } else {
                 $(curk[i].parentNode).removeClass("current");
             }
+        }
+        if (!has)
+        {
+            if (k == "p" && CarParam[k]!="0-9999") {
+                 
+                if (CarParam[k].indexOf("-") > 0)
+                {
+                    var prs = CarParam[k].split("-");
+                    if (prs[0] != "" & !isNaN(prs[0]))
+                    {
+                        if (prs[1] != "" & !isNaN(prs[1])) { 
+                            $("#p_min").val(prs[0]);
+                            $("#p_max").val(prs[1]);
+                            return;
+                        }
+                    }
+                }
+            }
+            $(curk[0].parentNode).addClass("current");
         }
     }
 }

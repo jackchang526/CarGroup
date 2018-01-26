@@ -32,9 +32,10 @@ var selectElecCar = {
                 $(this).attr("class", "");
             });
 
-            $("#selectResult").text("共有0款车型符合条件");
-            $("#selectResult").addClass("car-current");
-            $("#selectResult").attr("href", "javascript:;");
+            selectElecCar.selectCar(selectElecCar);
+            //$("#selectResult").text("共有0款车型符合条件");
+            //$("#selectResult").addClass("car-current");
+            //$("#selectResult").attr("href", "javascript:;");
             $("#clearSelected").addClass("ljt-current");
 
         })

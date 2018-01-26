@@ -58,7 +58,7 @@ namespace MWeb.Controllers
                 sb.AppendFormat("<em>{0}</em>", detail.PriceRange);
                 if (!string.IsNullOrEmpty(detail.BatteryLife))
                 {
-                    sb.AppendFormat("<span class=\"bt\">续航{0}公里</span>", detail.BatteryLife);
+                    sb.AppendFormat("<span class=\"bt\">续航{0}km</span>", detail.BatteryLife);
                 }
                 else
                 {
@@ -98,7 +98,7 @@ namespace MWeb.Controllers
         /// </summary>
         /// <returns></returns>
         private string GenerateSearchInitScript()
-		{
+        {
             string resultString = "[";
             NameValueCollection nvcQuery = Request.QueryString;
             foreach (var queKey in nvcQuery.AllKeys)
@@ -112,7 +112,7 @@ namespace MWeb.Controllers
             }
             resultString = resultString.TrimEnd(',') + "]";
             return resultString;
-		}
+        }
         /// <summary>
         /// 无码大图 调取选车接口参数
         /// </summary>
@@ -193,24 +193,17 @@ namespace MWeb.Controllers
         /// <returns></returns>
         public ActionResult SelectCarList()
         {
-            var query = HttpContext.Request.Url.PathAndQuery;
+            NameValueCollection nvcQuery = Request.QueryString;
             Dictionary<string, string> param = new Dictionary<string, string>();
-            var pp = query.Split('&');
-
-            foreach (var item in pp)
+            foreach (var queKey in nvcQuery.AllKeys)
             {
-                if (item.Contains("="))
-                {
-                    var kv = item.Split('=');
-                    if (kv.Length > 1)
-                    {
-                        param.Add(kv[0], kv[1]);
-                    }
-                }
+                if (string.IsNullOrEmpty(queKey) || string.IsNullOrEmpty(nvcQuery[queKey]))
+                { continue; }
+                param.Add(queKey, nvcQuery[queKey]);
             }
-            if (param.ContainsKey("pagesize"))
+            if (!param.ContainsKey("pagesize"))
             {
-                param["pagesize"] = "50";
+                param["pagesize"] = "20";
             }
             if (!param.ContainsKey("f"))
             {
@@ -232,14 +225,14 @@ namespace MWeb.Controllers
                     carList.AppendLine("            <i style=\"display:none;\" class=\"ico-shangshi\"></i>");
                     carList.AppendLine("        </div>");
                     carList.AppendLine(string.Format(" <strong>{0}</strong>", item.ShowName));
-                    carList.AppendLine(string.Format(" <p><em>{0}起</em></p>", item.PriceRange));
+                    carList.AppendLine(string.Format(" <p><em>{0}{1}</em></p>", item.PriceRange, item.PriceRange == "暂无指导价" ? "" : "起"));
                     if (!string.IsNullOrEmpty(item.BatteryLife))
                     {
                         carList.AppendLine(string.Format("        <span class=\"bt\">续航{0}km</span>", item.BatteryLife));
                     }
                     else
                     {
-                        carList.AppendLine("        <span class=\"bt\"></span>");
+                        carList.AppendLine("        <span class=\"bt\">暂无数据</span>");
                     }
                     carList.AppendLine("    </a>");
                     carList.AppendLine("</li>");

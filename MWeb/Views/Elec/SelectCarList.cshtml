@@ -17,9 +17,7 @@
     <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/新能源频道/css/main.css" />
     <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/提示.css" />
 </head>
-<body class="bg-fff">
-    @Html.Partial("~/html/TopDownloadLayer.cshtml")
-    @Html.Partial("/html/WTParams.cshtml")
+<body class="bg-fff"> 
     <!-- header start -->
     <div class="op-nav">
         <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
@@ -27,12 +25,7 @@
             <a href="http://m.yiche.com/" class="yiche-logo">汽车</a><h1>选车</h1>
         </div>
         <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
-    </div>
-    <script type="text/javascript">
-        if (typeof (WtFrom) != "undefined" && WtFrom == "mcfw99") {
-            $(".op-nav").hide();
-        }
-    </script>
+    </div> 
 
     <div class="op-nav-mark" style="display: none;"></div>
     <!-- header end -->
@@ -82,7 +75,7 @@
         </div>
         <div class="sort-warp">
             <div class="sort-clear">
-                <a href="../selectcarlist" class="btn-clear">清除条件</a>
+                <a href="../elec/selectcarlist" class="btn-clear">清除条件</a>
             </div>
         </div>
 
@@ -93,10 +86,10 @@
             <!-- 标题 start  -->
             <div class="tt-first y2015">
                 <ul class="tags-sub tags-sub-left">
-                    <li id="order_attend" class="current"><a href="javascript:;" onclick="setOrder('attend')">按关注度</a></li>
+                    <li id="order_attend" class=""><a href="javascript:;" onclick="setOrder('attend')">按关注度</a></li>
                     <li id="order_price" class="arrow jg-sty"><a href="javascript:;" onclick="setOrder('price')">价格</a></li>
                 </ul>
-                <span class="sub-tt-more">共 @Html.Raw(ViewData["CarNumber"].ToString())个车型</span>
+                <span class="sub-tt-more">共 @Html.Raw(ViewData["Count"].ToString())个车型</span>
             </div>
             <!-- 标题 end  -->
             <!-- 列表 start  -->
@@ -188,18 +181,15 @@
                 <li class="filter">
                     <div>
                         <input id="p_min" type="number" placeholder="最低"><b>-</b><input id="p_max" type="number" placeholder="最高"><b>万</b><input id="btnPriceSubmit" type="button" value="确定" class="btn-go">
-                    </div>
-
+                    </div> 
                 </li>
-                <li class="current"><a href="javascript:GotoPage('p')" ">不限</a></li>
-                <li><a t="p_0-5" href="javascript:GotoPage('p_0-5')">5万以下</a></li>
-                <li><a t="p_5-8" href="javascript:GotoPage('p_5-8')">5-8万</a></li>
-                <li><a t="p_8-12" href="javascript:GotoPage('p_8-12')">8-12万</a></li>
+                <li class="current"><a t="p_" href="javascript:GotoPage('p')">不限</a></li>
+                <li><a t="p_0-12" href="javascript:GotoPage('p_0-12')">12万以下</a></li> 
                 <li><a t="p_12-18" href="javascript:GotoPage('p_12-18')">12-18万</a></li>
                 <li><a t="p_18-25" href="javascript:GotoPage('p_18-25')">18-25万</a></li>
                 <li><a t="p_25-40" href="javascript:GotoPage('p_25-40')">25-40万</a></li>
                 <li><a t="p_40-80" href="javascript:GotoPage('p_40-80')">40-80万</a></li>
-                <li><a t="p_80" href="javascript:GotoPage('p_80-9999')">80万以上</a></li>
+                <li><a t="p_80-9999" href="javascript:GotoPage('p_80-9999')">80万以上</a></li>
             </ul>
 
         </div>
@@ -221,7 +211,7 @@
     <script type="text/template" id="gradeTemplate1">
         <div class="ap">
             <ul class="first-list rp jg-sx-sty">
-                <li class="current"><a href="javascript:GotoPage('f')">不限</a></li>
+                <li class="current"><a t="f_" href="javascript:GotoPage('f')">不限</a></li>
                 <li><a t="f_16" href="javascript:GotoPage('f_16')">纯电</a></li>
                 <li><a t="f_128" href="javascript:GotoPage('f_128')">插电混动</a></li>
             </ul>
@@ -244,13 +234,13 @@
     <script type="text/template" id="gradeTemplate2">
         <div class="ap">
             <ul class="first-list rp jg-sx-sty">
-                <li class="current"><a href="javascript:GotoPage('bl')">不限</a></li>
-                <li><a t="bl_0-100" href="javascript:GotoPage('bl_0-100')">100公里以下</a></li>
-                <li><a t="bl_100-200" href="javascript:GotoPage('bl_100-200')">100-200公里</a></li>
-                <li><a t="bl_200-300" href="javascript:GotoPage('bl_200-300')">200-300公里</a></li>
-                <li><a t="bl_300-400" href="javascript:GotoPage('bl_300-400')">300-400公里</a></li>
-                <li><a t="bl_400-500" href="javascript:GotoPage('bl_400-500')">400-500公里</a></li>
-                <li><a t="bl_500" href="javascript:GotoPage('bl_500_1000')">500公里以上</a></li>
+                <li class="current"><a t="bl_" href="javascript:GotoPage('bl')">不限</a></li>
+                <li><a t="bl_0-100" href="javascript:GotoPage('bl_0-100')">100km以下</a></li>
+                <li><a t="bl_100-200" href="javascript:GotoPage('bl_100-200')">100-200km</a></li>
+                <li><a t="bl_200-300" href="javascript:GotoPage('bl_200-300')">200-300km</a></li>
+                <li><a t="bl_300-400" href="javascript:GotoPage('bl_300-400')">300-400km</a></li>
+                <li><a t="bl_400-500" href="javascript:GotoPage('bl_400-500')">400-500km</a></li>
+                <li><a t="bl_500-9999" href="javascript:GotoPage('bl_500-9999')">500km以上</a></li>
             </ul>
 
         </div>
@@ -272,11 +262,11 @@
     <script type="text/template" id="gradeTemplate3">
         <div class="ap">
             <ul class="first-list rp jg-sx-sty">
-                <li class="current"><a href="javascript:GotoPage('ct')">不限</a></li>
+                <li class="current"><a t="ct_" href="javascript:GotoPage('ct')">不限</a></li>
                 <li><a t="ct_0-6" href="javascript:GotoPage('ct_0-6')">6小时以内</a></li>
                 <li><a t="ct_6-8" href="javascript:GotoPage('ct_6-8')">6-8小时</a></li>
                 <li><a t="ct_8-12" href="javascript:GotoPage('ct_8-12')">8-12小时</a></li>
-                <li><a t="ct_12" href="javascript:GotoPage('ct_12-24')">12小时以上</a></li>
+                <li><a t="ct_12-999" href="javascript:GotoPage('ct_12-999')">12小时以上</a></li>
             </ul>
 
         </div>
@@ -298,8 +288,8 @@
     <script type="text/template" id="gradeTemplate4">
         <div class="ap">
             <ul class="first-list rp jg-sx-sty">
-                <li class="current"><a href="javascript:GotoPage('g')">不限</a></li>
-                <li><a t="g_1" href="javascript:GotoPage('g_1')">国产</a></li>
+                <li class="current"><a t="g_" href="javascript:GotoPage('g')">不限</a></li>
+                <li><a t="g_1" href="javascript:GotoPage('g_1')">自主</a></li>
                 <li><a t="g_2" href="javascript:GotoPage('g_2')">合资</a></li>
                 <li><a t="g_4" href="javascript:GotoPage('g_4')">进口</a></li>
             </ul>
@@ -323,7 +313,7 @@
     <script type="text/template" id="gradeTemplate5">
         <div class="ap">
             <ul class="first-list rp jg-sx-sty">
-                <li class="current"><a href="javascript:GotoPage('b')">不限</a></li>
+                <li class="current"><a t="b_" href="javascript:GotoPage('b')">不限</a></li>
                 <li><a t="b_1" href="javascript:GotoPage('b_1')">两厢</a></li>
                 <li><a t="b_2" href="javascript:GotoPage('b_2')">三厢</a></li>
                 <li><a t="b_64" href="javascript:GotoPage('b_64')">SUV</a></li>

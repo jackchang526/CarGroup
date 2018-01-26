@@ -16,9 +16,7 @@
     <!--#include file="/ushtml/0000/myiche2015_cube_xuanche_style-news-1004.shtml"-->
     <link rel="stylesheet" type="text/css" href="http://192.168.0.10:8888/m/20160519移动站改版/新能源频道/css/main.css" />
 </head>
-<body class="bg-fff">
-    @Html.Partial("~/html/TopDownloadLayer.cshtml")
-    @Html.Partial("/html/WTParams.cshtml")
+<body class="bg-fff"> 
     <!-- header start -->
     <div class="op-nav">
         <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
@@ -26,12 +24,7 @@
             <a href="http://m.yiche.com/" class="yiche-logo">汽车</a><h1>选车</h1>
         </div>
         <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
-    </div>
-    <script type="text/javascript">
-        if (typeof (WtFrom) != "undefined" && WtFrom == "mcfw99") {
-            $(".op-nav").hide();
-        }
-    </script>
+    </div> 
 
     <div class="op-nav-mark" style="display: none;"></div>
     <!-- header end -->
@@ -72,8 +65,8 @@
         </div>
         <div class="sort sort4">
             <ul>
-                <li><a t="f_16" href="javasript:;" class="">纯电动(EV)</a></li>
-                <li><a t="f_128" href="javasript:;">插电混合动力</a></li>
+                <li><a t="f_16"  class="">纯电</a></li>
+                <li><a t="f_128" >插电混动</a></li>
 
             </ul>
         </div>
@@ -85,12 +78,12 @@
         </div>
         <div class="sort sort4">
             <ul>
-                <li><a t="bl_0-100"  href="javasript:;">100公里以下</a></li>
-                <li><a t="bl_100-200" href="javasript:;">100-200公里</a></li>
-                <li><a t="bl_200-300" href="javasript:;" >200-300公里</a></li> 
-                <li><a t="bl_300-400" href="javasript:;">300-400公里</a></li> 
-                <li><a t="bl_400-500" href="javasript:;">400-500公里</a></li>
-                <li><a t="bl_500"    href="javasript:;">500公里以上</a></li>
+                <li><a t="bl_0-100"  >100km以下</a></li>
+                <li><a t="bl_100-200" >100-200km</a></li>
+                <li><a t="bl_200-300"  >200-300km</a></li> 
+                <li><a t="bl_300-400" >300-400km</a></li> 
+                <li><a t="bl_400-500" >400-500km</a></li>
+                <li><a t="bl_500-9999" >500km以上</a></li>
 
             </ul>
         </div>
@@ -103,10 +96,10 @@
         </div>
         <div class="sort sort4">
             <ul>
-                <li><a t="ct_0-6" href="javasript:;" class="">6小时以内</a></li>
-                <li><a t="ct_6-8" href="javasript:;">6-8小时</a></li>
-                <li><a t="ct_8-12" href="javasript:;">8-12小时</a></li> 
-                <li><a t="ct_12"  href="javasript:;">12小时以上</a></li>
+                <li><a t="ct_0-6"  class="">6小时以内</a></li>
+                <li><a t="ct_6-8" >6-8小时</a></li>
+                <li><a t="ct_8-12" >8-12小时</a></li> 
+                <li><a t="ct_12-999"  >12小时以上</a></li>
 
             </ul>
         </div>
@@ -119,9 +112,9 @@
         </div>
         <div class="sort sort4">
             <ul>
-                <li><a t="g_1" href="javasript:;" class="">国产</a></li>
-                <li><a t="g_2" href="javasript:;">合资</a></li>
-                <li><a t="g_4" href="javasript:;">进口</a></li>
+                <li><a t="g_1"  class="">自主</a></li>
+                <li><a t="g_2" >合资</a></li>
+                <li><a t="g_4" >进口</a></li>
             </ul>
         </div>
 
@@ -133,9 +126,9 @@
         </div>
         <div class="sort sort4">
             <ul>
-                <li><a t="b_1" href="javasript:;" class="">两厢</a></li>
-                <li><a t="b_2" href="javasript:;">三厢</a></li>
-                <li><a t="b_64" href="javasript:;">SUV</a></li>
+                <li><a t="b_1"  class="">两厢</a></li>
+                <li><a t="b_2" >三厢</a></li>
+                <li><a t="b_64" >SUV</a></li>
             </ul>
         </div>
 
@@ -143,8 +136,8 @@
         <!-- 车身形式 end  -->
         <!-- 选车按钮 start  -->
         <div class="btn-warp-box">
-            <a href="javasript:;" id="clearSelected" class="ljt-btn ljt-current"></a>
-            <a href="javasript:;" id="selectResult" class="car-btn car-current">有0款车型符合条件</a>
+            <a  id="clearSelected" class="ljt-btn ljt-current"></a>
+            <a  id="selectResult" class="car-btn car-current">有0款车型符合条件</a>
         </div>
         @*<div class="btn-warp-box">
                 <a href="###" class="ljt-btn ljt-current"></a>
@@ -186,17 +179,6 @@
     </div>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/WirelessJsv2/CommonJs.js?v=20130606"> </script>
     <script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars"> </script>
-    <script type="text/javascript">
-        var elecSelectCar = function () {
-            this.baseurl = "";
-            this.Search = function () {
-                // 选车
-            }
-            this.Clear = function () {
-                //
-            }
-        }
-    </script>
 
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/WirelessJsv2/model.js?v=20150907"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/WirelessJsv2/swiper.js?v=2015082816"> </script>
@@ -205,7 +187,8 @@
     <script type="text/javascript">
         $(function () { 
             selectElecCar.bindEvent();
-            selectElecCar.BindclearSelectedCar();
+            selectElecCar.BindclearSelectedCar(); 
+            selectElecCar.selectCar(selectElecCar);
         });
     </script>
     <script type="text/javascript" src="http://192.168.0.10:8888/m/20160519移动站改版/新能源频道/js/scrollbarX.js"></script>

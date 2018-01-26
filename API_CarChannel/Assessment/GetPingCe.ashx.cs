@@ -342,7 +342,6 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 query = Query.And(Query.EQ("EvaluationId", EvaluationId), Query.EQ("Status", 1));
                 try
                 {
-                    //assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query, paraList.ToArray(), sortdic);
                     bson = evaluationBll.GetOne<BsonDocument>(query, paraList.ToArray(), sortdic);
                 }
                 catch (Exception e)
@@ -351,15 +350,19 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                     message = e.Message;
                 }
             }
-            
+            BsonElement bs_data = null;
             if (bson != null)
             {
-                bson.RemoveAt(0);
+                bs_data = new BsonElement("Data", bson);                
             }
-            BsonElement bs_data = new BsonElement("Data", bson);
+            else
+            {
+                bs_data = new BsonElement("Data", "");
+            }
+
             BsonElement bs_status = new BsonElement("Status", status);
             BsonElement bs_message = new BsonElement("Message", message);
-            BsonWrite(bs_status, bs_message,bs_data);
+            PingCeWrite(bs_status, bs_message, bs_data);
         }       
 
         private string GetCarName(int carId)
@@ -373,7 +376,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
             return carName;
         }
 
-        private void BsonWrite(BsonElement status, BsonElement message, BsonElement data)
+        private void PingCeWrite(BsonElement status, BsonElement message, BsonElement data)
         {
             BsonDocument bsonDocument = new BsonDocument();
             bsonDocument.InsertAt(0, status);

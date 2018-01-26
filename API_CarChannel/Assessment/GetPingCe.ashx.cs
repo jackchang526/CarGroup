@@ -63,9 +63,18 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
         /// </summary>
         private void Introduction()
         {
-            int status = 0;
-            string message = "success";
-            List<string> paraList = new List<string>
+            WriteResult<object> writeResult = new WriteResult<object>();
+            string key = string.Format("Introduction_{0}", evaluationId);
+            var obj = CacheManager.GetCachedData(key);
+            if (obj != null && string.IsNullOrWhiteSpace(overview))
+            {
+                writeResult = (WriteResult<object>)obj;
+            }
+            else
+            {
+                int status = 0;
+                string message = "success";
+                List<string> paraList = new List<string>
             {
                 "CreateDateTime",
                 "UpdateDateTime",
@@ -86,18 +95,32 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                 "GeneralBaseGroupl.Score"
             };
 
-            Dictionary<string, int> sortdic = new Dictionary<string, int>
+                Dictionary<string, int> sortdic = new Dictionary<string, int>
             {
                 { "CreateDateTime", 0 }
             };
-            EvaluationBll evaluationBll = new EvaluationBll();
-            AssessmentEntity assessmentEntity = null;
-            IMongoQuery query = null;
-            if (!string.IsNullOrWhiteSpace(overview))//预览
-            {
-                if (isExpiredTime)// 没有过期
+                EvaluationBll evaluationBll = new EvaluationBll();
+                AssessmentEntity assessmentEntity = null;
+                IMongoQuery query = null;
+                if (!string.IsNullOrWhiteSpace(overview))//预览
                 {
-                    query = Query.EQ("EvaluationId", EvaluationId);
+                    if (isExpiredTime)// 没有过期
+                    {
+                        query = Query.EQ("EvaluationId", EvaluationId);
+                        try
+                        {
+                            assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query, paraList.ToArray(), sortdic);
+                        }
+                        catch (Exception e)
+                        {
+                            status = 1;
+                            message = e.Message;
+                        }
+                    }
+                }
+                else//非预览
+                {
+                    query = Query.And(Query.EQ("EvaluationId", EvaluationId), Query.EQ("Status", 1));
                     try
                     {
                         assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query, paraList.ToArray(), sortdic);
@@ -107,49 +130,39 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
                         status = 1;
                         message = e.Message;
                     }
+
                 }
-            }
-            else//非预览
-            {
-                query = Query.And(Query.EQ("EvaluationId", EvaluationId), Query.EQ("Status", 1));
-                try
+
+                Dictionary<string, double> dicGroupScore = null;
+
+                bool finished = true;
+
+                if (assessmentEntity != null)
                 {
-                    assessmentEntity = evaluationBll.GetOne<AssessmentEntity>(query, paraList.ToArray(), sortdic);
+                    var carName = GetCarName(assessmentEntity.CarId);
+
+                    finished = evaluationBll.GetFinishedStatusAndGroupScore(assessmentEntity, out dicGroupScore);
+
+                    writeResult.Data = new
+                    {
+                        ImageUrl = assessmentEntity.CommonInfoGroup.CommonInformationEntity.ImageUrl,
+                        MainImageUrl = assessmentEntity.CommonInfoGroup.CommonInformationEntity.MainImageUrl,
+                        VideoUrl = assessmentEntity.CommonInfoGroup.CommonInformationEntity.VideoUrl,
+                        Preface = assessmentEntity.CommonInfoGroup.CommonInformationEntity.Preface,
+                        Score = assessmentEntity.Score,
+                        Finished = finished,
+                        CarName = carName,
+                        GroupScore = dicGroupScore
+                    };
                 }
-                catch (Exception e)
+                writeResult.Status = status;
+                writeResult.Message = message;
+                if (string.IsNullOrWhiteSpace(overview))
                 {
-                    status = 1;
-                    message = e.Message;
+                    CacheManager.InsertCache(key, writeResult, WebConfig.CachedDuration);
                 }
-
             }
-
-            Dictionary<string, double> dicGroupScore = null;
-
-            bool finished = true;
-
-            WriteResult<object> writeResult = new WriteResult<object>();
-
-            if (assessmentEntity != null)
-            {
-                var carName=GetCarName(assessmentEntity.CarId);
-
-                finished = evaluationBll.GetFinishedStatusAndGroupScore(assessmentEntity, out dicGroupScore);
-
-                writeResult.Data = new {
-                    ImageUrl = assessmentEntity.CommonInfoGroup.CommonInformationEntity.ImageUrl,
-                    MainImageUrl = assessmentEntity.CommonInfoGroup.CommonInformationEntity.MainImageUrl,
-                    VideoUrl = assessmentEntity.CommonInfoGroup.CommonInformationEntity.VideoUrl,
-                    Preface = assessmentEntity.CommonInfoGroup.CommonInformationEntity.Preface,
-                    Score =assessmentEntity.Score,
-                    Finished = finished,
-                    CarName = carName,
-                    GroupScore = dicGroupScore
-                };
-            }
-
-            writeResult.Status = status;
-            writeResult.Message = message;
+            
             PingCeWrite(writeResult);
         }
         

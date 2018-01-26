@@ -125,10 +125,9 @@
                                                 <span class="data<%=string.IsNullOrWhiteSpace(serialSaleDisplacementalt)?" grey-txt":"" %>" title="<%= serialSaleDisplacementalt %>"><%= string.IsNullOrWhiteSpace(serialSaleDisplacement)?"暂无":serialSaleDisplacement %></span>
                                                 <% } %>
                                             </li>
-                                            <li>
+                                            <%--<li>
                                                 <span class="note">变速箱: </span><span class="data<%=string.IsNullOrWhiteSpace(serialTransmission)?" grey-txt":"" %>"><%=string.IsNullOrWhiteSpace(serialTransmission) ? "暂无":serialTransmission%></span>
-                                            </li>
-                                            <%--<%= baoZhiLv %>--%>
+                                            </li>--%>
                                             <li>
                                                 <span class="note">油耗: </span>
                                                 <% if (string.IsNullOrWhiteSpace(serialInfo.CsSummaryFuelCost))
@@ -140,6 +139,7 @@
                                                 <a class="data" data-channelid="2.21.855" target="_blank" href="http://car.bitauto.com/<%= serialSpell %>/youhao/"><%=serialInfo.CsSummaryFuelCost%> &gt;</a>
                                                 <%} %>
                                             </li>
+                                            <%= baoZhiLv %>
                                             <%} %>
                                         </ul>
                                     </div>
@@ -273,9 +273,9 @@
         </div>
         <script type="text/javascript" charset="utf-8" src="http://ip.bitauto.com/iplocation/setcookie.ashx"></script>
         <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jscommon/juqery/jquery.min.js"></script>
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryv2.min.js?v=201712312358"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/cssummaryv2.min.js?v=201801261117"></script>
         <%--<script type="text/javascript" src="/jsnewv2/cssummaryv2.js?v=20170171032"></script>--%>
-        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712281722"></script>
+        <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201801120"></script>
         <%--<script type="text/javascript" src="/jsnewV2/getareaprice.js?v=201712110"></script>--%>
         <script type="text/javascript">
             var serialId = <%= serialId %> ,
@@ -321,6 +321,7 @@
             //GetHmcJiangJia();
             //Get1111Entrance();
             GetVr();
+            LoadXianShiQiang();
             //通栏广告 显示
             //function showTopLineAd(id, isAd) {
             //    if (isAd === true) {

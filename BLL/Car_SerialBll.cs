@@ -2633,6 +2633,50 @@ namespace BitAuto.CarChannel.BLL
 
         /// <summary>
         /// 获取主页的热门车型代码
+        /// 在销和待销
+        /// </summary>
+        /// <returns></returns>
+        public List<SerialEntity> GetHotSerialByNum(int num)
+        {
+            string cacheKey = "homepage_hotserialv3 + top" + num;
+            object cacheObj = CacheManager.GetCachedData(cacheKey);
+            List<SerialEntity> list = null;
+            if (cacheObj != null)
+            {
+                list = (List<SerialEntity>)cacheObj;
+            }
+            if (list == null)
+            {
+                DataSet ds = new PageBase().GetAllSerialNewly30Day();
+                if (ds == null || ds.Tables.Count == 0 || ds.Tables[0].Rows.Count == 0)
+                    return list;
+                list = new List<SerialEntity>();
+
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    //t1.cs_ID as cs_ID,t1.uvCount as Pv_SumNum ,cs.cs_CarLevel,cs.allspell,cs.cs_name,cs.cs_showname,cs.cssaleState,cs.cs_seoname
+                    string saleState = dr["cssaleState"].ToString();
+                    if (saleState != "在销" && saleState != "待销") continue;
+                    SerialEntity serialEntity = new SerialEntity();
+                    serialEntity.Id = ConvertHelper.GetInteger(dr["cs_ID"]);
+                    serialEntity.PvNum = ConvertHelper.GetInteger(dr["Pv_SumNum"]);
+                    serialEntity.AllSpell = dr["allspell"].ToString();
+                    serialEntity.ShowName = dr["cs_showname"].ToString();
+                    //serialEntity.SaleState = saleState;
+                    list.Add(serialEntity);
+                    if(list.Count == num)
+                    {
+                        break;
+                    }
+                }
+                CacheManager.InsertCache(cacheKey,list,WebConfig.CachedDuration);
+            }
+            return list;
+        }
+
+        /*
+        /// <summary>
+        /// 获取主页的热门车型代码
         /// </summary>
         /// <returns></returns>
         public string GetHomepageHotSerialV2(int num)
@@ -2689,7 +2733,7 @@ namespace BitAuto.CarChannel.BLL
             }
             return htmlStr;
         }
-
+        */
         #region 获取子品牌广告
         /// <summary>
         /// 获取页面子品牌广告位
@@ -3015,7 +3059,7 @@ namespace BitAuto.CarChannel.BLL
             }
             return String.Concat(htmlList.ToArray());
         }
-
+        /*
         /// <summary>
         /// 获取热门车型的代码
         /// </summary>
@@ -3059,7 +3103,7 @@ namespace BitAuto.CarChannel.BLL
             }
             return String.Concat(htmlList.ToArray());
         }
-
+        */
 
         /// <summary>
         /// 获取分段报价页的热门新车
@@ -7986,8 +8030,47 @@ namespace BitAuto.CarChannel.BLL
             List<XmlElement> dic = null;
             Dictionary<int, XmlElement> items = GetSeialSellRank();
             var l = items.Where(item => item.Value.Attributes["Level"].InnerText == level).ToList();
+            allCount = l.Count; 
+            if (allCount > startIndex)
+            {
+                dic = new List<XmlElement>();
+            }
+            else
+            {
+                return null;
+            }
+            l.Skip(startIndex).Take(pageSize).ToList().ForEach(item => { dic.Add(item.Value); });
+            return dic;
+        }
+        
+        /// <summary>
+        /// 新能源销量排行榜
+        /// </summary>
+        /// <param name="tab"></param>
+        /// <param name="startIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="allCount"></param>
+        /// <returns></returns>
+        public List<XmlElement> GetNewEnergySerialSellRankForPage(string tab, int startIndex, int pageSize, out int allCount)
+        {
+            List<XmlElement> dic = null;
+            Dictionary<int, XmlElement> items = GetSeialSellRank();
+            List<KeyValuePair<int, XmlElement>> l = null;
+            if (tab == "elec")
+            {
+                l = items.Where(item => item.Value.Attributes["IsElec"].InnerText != "0").ToList();
+            }
+            else if (tab == "hybrid")
+            {
+                l = items.Where(item => item.Value.Attributes["IsHybrid"].InnerText != "0").ToList();
+            }
+
+            if (l == null || l.Count <= 0)
+            {
+                allCount = 0;
+                return null;
+            }
             allCount = l.Count;
-            //int startIndex = (pageIndex - 1) * pageSize;
             if (allCount > startIndex)
             {
                 dic = new List<XmlElement>();

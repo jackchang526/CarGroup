@@ -1065,12 +1065,12 @@ function GetVrV2() {
 //限时抢ad
 function LoadXianShiQiang() {
     $.ajax({
-        url: "http://idata.easypass.cn/activityapi/TimeLimitRobbing/JsonpTimeLimitRobbingUrl?CityId=" + GlobalSummaryConfig.CityId + "&CsId=" + GlobalSummaryConfig.SerialId,
+        url: "http://frontapi.easypass.cn/activityapi/TimeLimitRobbing/JsonpTimeLimitRobbingUrl?eplb_source=ebit&CityId=" + GlobalSummaryConfig.CityId + "&CsId=" + GlobalSummaryConfig.SerialId,
         cache: true,
         dataType: "jsonp",//text
-        jsonpCallback: "la",
+        jsonpCallback: "LoadXianShiQiangCallback",
         success: function (data) {
-            if (data.ActivityUrl.length>0) {
+            if (typeof data != "undefined" && data.IsTimeLimitRobbing == 1) {
                 $("#a_xianshiqiang_ad").attr("class", "xianshiqiang-box").attr("href", data.ActivityUrl)
                     .html("<span class='xsq-pic-left' ></span> <span class='xsq-pic-right'></span> <span class='btn-bm'>报名</span> <span class='xsq-con'>" + data.ActivityTitle.substr(0, 18) + "</span>").show();
             }

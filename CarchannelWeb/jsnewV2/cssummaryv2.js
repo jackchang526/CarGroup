@@ -308,7 +308,14 @@ function InitTeHuiAndAdData() {
 
                 //名片区
                 if (typeof obj.Slogan != "undefined" && obj.Slogan != null && obj.Slogan != "") {
-                    $("#factory-price").append("<a target=\"_blank\" data-channelid=\"2.21.1520\" href=\"" + url + "\" class=\"youhui\">" + obj.Slogan + "</a></h5>");
+                    var html = "<a target=\"_blank\" data-channelid=\"2.21.1520\" href=\"" + url + "\" class=\"youhui\">" + obj.Slogan + "</a></h5>";
+                    var youhuitag = $("#factory-price").find(".youhui");
+                    if ($(youhuitag).length > 0) {
+                        $(youhuitag).before(html);
+                    }
+                    else {
+                        $("#factory-price").append(html);
+                    }
                     //$("#mp-qianggou .note").append("<h5><a target=\"_blank\" data-channelid=\"2.21.1520\" href=\"" + url + "\">" + obj.Slogan + "</a></h5><a class=\"btn btn-default\" target=\"_blank\" data-channelid=\"2.21.99\" href=\"" + url + "\">立即抢购</a>");
                     //$("#mp-qianggou").show();
                 }
@@ -508,6 +515,20 @@ function GetVr() {
                 return;
             }
             $("#focus_images").parent().prepend("<a href=\"" + data.Data.DataList[0].Url + "\"  data-channelid=\"2.21.2213\" target=\"_blank\" class=\"zs-vr\">VR看全景</a>");
+        }
+    });
+}
+//限时抢ad
+function LoadXianShiQiang() {
+    $.ajax({
+        url: "http://frontapi.easypass.cn/activityapi/TimeLimitRobbing/JsonpTimeLimitRobbingUrl?eplb_source=ebit&CityId=" + GlobalSummaryConfig.CityId + "&CsId=" + GlobalSummaryConfig.SerialId,
+        cache: true,
+        dataType: "jsonp",//text
+        jsonpCallback: "LoadXianShiQiangCallback",
+        success: function (data) {
+            if (typeof data != "undefined" && data.IsTimeLimitRobbing == 1) {
+                $("#factory-price").append("<a class=\"youhui type1\" target=\"_blank\" href=\"" + data.PcActivityUrl + "\">限时抢</a>");
+            }
         }
     });
 }

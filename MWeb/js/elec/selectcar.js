@@ -8,7 +8,7 @@ var selectElecCar = {
         g: "",  // 国别
         b: ""   // 车身形式
     },
-    reqUrl: "http://select24.car.yiche.com/selectcartool/searchresult?page=1&pagesize=100&",
+    reqUrl: "http://select.car.yiche.com/selectcartool/searchresult?page=1&pagesize=100&",
     bindEvent: function () {
         var that = this;
         $(".sort ul li a ").bind("click", function () {
@@ -170,3 +170,5 @@ var selectElecCar = {
 
     }
 } 
+
+function selectElecCarJsonpCallback() { }

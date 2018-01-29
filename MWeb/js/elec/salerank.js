@@ -85,7 +85,7 @@ function RequestData(idx) {
     if (titles[curindex].loading) {
         return;
     }
-    var newCarListUrl = "http://api174.car.bitauto.com/CarInfo/GetSalesRankingForPage.ashx?type=newenergy&tab=" + titles[curindex].id + "&pageindex=" + (titles[curindex].index + 1) + "&pagesize=" + titles[curindex].size;
+    var newCarListUrl = "http://api.car.bitauto.com/CarInfo/GetSalesRankingForPage.ashx?type=newenergy&tab=" + titles[curindex].id + "&pageindex=" + (titles[curindex].index + 1) + "&pagesize=" + titles[curindex].size;
     titles[curindex].loading = true;
     var cb = "newCarListCallBack" + curindex;
     $("#newscar_list_" + curindex).show();

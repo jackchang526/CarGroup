@@ -31,16 +31,16 @@ var selectElecCar = {
             $(".sort ul li a ").each(function () {
                 $(this).attr("class", "");
             });
-
+            initScroll();
             selectElecCar.selectCar(selectElecCar);
             //$("#selectResult").text("共有0款车型符合条件");
             //$("#selectResult").addClass("car-current");
             //$("#selectResult").attr("href", "javascript:;");
             $("#clearSelected").addClass("ljt-current");
-
         })
     },
     selectCar: function (that) {
+        // 选车
         for (var p in that.param) {
             that.param[p] = "";
         }
@@ -78,26 +78,17 @@ var selectElecCar = {
         if (pp == "") {
             $("#selectResult").text("共有0款车型符合条件");
             $("#selectResult").addClass("car-current");
-            $("#selectResult").attr("href", "javascript:;");
+            $("#selectResult").attr("href", "");
             $("#clearSelected").addClass("ljt-current");
             return;
         }
         if (that.param["f"] == "") {
             pp += "&f=16,128"
-        }
-        //var pricemin = $("#min-dot span").text();
-        //var pricemax = $("#max-dot span").text();
-
-        //if (pricemax == "90+" || pricemax == "不限") {
-        //    pp += ("&p=" + pricemin + "-9999");
-        //} else {
-        //    pp += ("&p=" + pricemin + "-" + pricemax);
-        //}
-
-        that.requestData(pp)
-        //console.log(pp);
+        }  
+        that.requestData(pp) 
     },
     requestData: function (reqparams) {
+        //请求选车接口
         $.ajax({
             url: this.reqUrl + reqparams,
             dataType: "jsonp",
@@ -114,7 +105,7 @@ var selectElecCar = {
                 } else {
                     $("#selectResult").text("共有0款车型符合条件");
                     $("#selectResult").addClass("car-current");
-                    $("#selectResult").attr("href", "javascript:;");
+                    $("#selectResult").attr("href", "");
                 }
             },
             error: function (res) {
@@ -127,6 +118,7 @@ var selectElecCar = {
     getRequestParam: function () {
     },
     getJumpParam: function () {
+        // 获取页面跳转url参数
         var pp = "";
         var idx = 0;
         for (var p in selectElecCar.param) {
@@ -144,6 +136,7 @@ var selectElecCar = {
         return pp;
     }, 
     setPrice: function () {
+        // 设置价格的数值
         var pricemin = $("#min-dot span").text();
         var pricemax = $("#max-dot span").text();
         if (pricemax == "90+" || pricemax == "不限") {
@@ -151,5 +144,29 @@ var selectElecCar = {
         } else {
             selectElecCar.param["p"] = (pricemin + "-" + pricemax);
         }
+    },
+    checkPrice: function () {
+        // 每次拖动完成之后检查删除选中按钮的状态
+        var has = false;
+        this.setPrice();
+        for (var p in this.param) {
+            if (p != "p") {
+                if (this.param[p] != "") {
+                    has = true;
+                    break;
+                }
+            } else {
+                if (this.param[p] != "0-9999") {
+                    has = true;
+                    break;
+                }
+            }
+        }
+        if (has) {
+            $("#clearSelected").removeClass("ljt-current");
+        } else {
+            $("#clearSelected").addClass("ljt-current");
+        }
+
     }
 } 

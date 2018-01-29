@@ -156,7 +156,7 @@ function bindPager() {
     } else {
         $("#page_prev").removeClass("m-pages-none");
         $("#page_prev").bind("click", function () {
-            CarParam.page = CarParam.page - 1;
+            CarParam.page = parseInt(CarParam.page) - 1;
             Jump();
         })
     }
@@ -168,7 +168,7 @@ function bindPager() {
     } else {
         $("#page_next").removeClass("m-pages-none");
         $("#page_next").bind("click", function () {
-            CarParam.page = CarParam.page + 1; 
+            CarParam.page = parseInt(CarParam.page) + 1; 
             Jump();
         })
     }

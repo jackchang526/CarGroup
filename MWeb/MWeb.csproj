@@ -260,7 +260,9 @@
     <Content Include="js\csSummaryForFocus.js" />
     <Content Include="js\elec\Index.js" />
     <Content Include="js\elec\photolist.js" />
+    <Content Include="js\elec\price.js" />
     <Content Include="js\elec\salerank.js" />
+    <Content Include="js\elec\scrollbarX.js" />
     <Content Include="js\elec\selectcar.js" />
     <Content Include="js\elec\selectcarlist.js" />
     <Content Include="js\getareaprice.js" />

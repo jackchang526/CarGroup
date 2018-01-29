@@ -13,7 +13,7 @@
                 var p_max = $("#p_max").val();
                 if (p_min != "" && !isNaN(p_min)) {
                     if (p_min != "" && !isNaN(p_min)) {
-                        CarParam["p"] = "p_" + p_min + "-" + p_max;
+                        CarParam["p"] = p_min + "-" + p_max;
                         Jump();
                     }
                 }
@@ -189,17 +189,7 @@ function setOrder(type) {
     Jump();
 }
 
-function setPrice() {
-    var p_min = $("#p_min").val();
-    var p_max = $("#p_max").val();
-    if (p_min == "" || isNaN(p_min)) {
-        if (p_max == "" || isNaN(p_max)) {
-            CarParam["p"] = "p_" + p_min + "-" + p_max;
-            Jump();
-        }
-    }
-}
-
+//加载url参数
 function LoadUrlParam() {
     var pp = GetRequest();
     CarParam = $.extend(CarParam, pp);

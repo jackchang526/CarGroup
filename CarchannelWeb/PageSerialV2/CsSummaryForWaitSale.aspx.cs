@@ -1123,8 +1123,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageSerialV2
             }
             //取图解第一张
             XmlNode firstTujieNode = this.GetFirstTujieImage(dsCsPic);
-            List<int> categoryIdList = new List<int>() { 30, 100, 101 };
-            List<VideoEntity> videoList = VideoBll.GetVideoBySerialIdAndCategoryId(serialId, categoryIdList, 1);
+            List<int> tagList = new List<int>() { 8180, 43997 };
+            List<VideoEntity> videoList = VideoBll.GetVideoBySerialIdAndCategoryId(serialId, tagList, 1);
             #endregion
             //大图 默认第一张 焦点图第一张 没有焦点图 幻灯图
             bool showTujie = false;

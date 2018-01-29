@@ -93,16 +93,12 @@ function FocusCar(obj) {
 
 $(function () {//右侧边栏在页面底部，等页面加载完成才能注册事件
     //降价切换城市
-        $("#mp-jiangjianews .ch-cur-city").click(function (ev) {
-            var City_Select_ChangeCityList = ["NavCity", "NavCity2"];
-            City_Select.InitOtherCity(City_Select_ChangeCityList);
-        // 回调方法 function citySelectSuccess(city)
+    var City_Select_ChangeCityList = ["mpjiangjiacity"];
+    City_Select.InitOtherCity(City_Select_ChangeCityList);
+    // 回调方法 function citySelectSuccess(city)
         //   {
         //       document.getElementById("NavCity").innerText = city.name;
         //}
-
-        });
-    
 });
 
 //名片区-经销商数量

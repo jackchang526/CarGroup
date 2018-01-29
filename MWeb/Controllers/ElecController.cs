@@ -239,13 +239,13 @@ namespace MWeb.Controllers
                 }
                 carList.AppendLine("</ul>");
                 ViewData["carList"] = carList.ToString();
-                ViewData["CarNumber"] = result.CarNumber;
+                //ViewData["CarNumber"] = result.CarNumber;
                 ViewData["Count"] = result.Count;
             }
             else
             {
                 ViewData["carList"] = "";
-                ViewData["CarNumber"] = 0;
+                //ViewData["CarNumber"] = 0;
                 ViewData["Count"] = 0;
             }
 

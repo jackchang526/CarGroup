@@ -23,7 +23,7 @@ namespace MWeb.Controllers
         /// 新能源首页
         /// </summary>
         /// <returns></returns>
-		[OutputCache(Duration = 3200, Location = OutputCacheLocation.Downstream)]
+		[OutputCache(Duration = 3600, Location = OutputCacheLocation.Downstream)]
         public ActionResult Index()
         {
             string rankMonth = string.Empty;
@@ -76,7 +76,7 @@ namespace MWeb.Controllers
         /// 新能源销量排行
         /// </summary>
         /// <returns></returns>
-		[OutputCache(Duration = 3200, Location = OutputCacheLocation.Downstream)]
+		[OutputCache(Duration = 3600, Location = OutputCacheLocation.Downstream)]
         public ActionResult SaleRank()
         {
             return View();
@@ -86,7 +86,7 @@ namespace MWeb.Controllers
         /// 新能源无码大图
         /// </summary>
         /// <returns></returns>
-		[OutputCache(Duration = 3200, Location = OutputCacheLocation.Downstream)]
+		[OutputCache(Duration = 3600, Location = OutputCacheLocation.Downstream)]
         public ActionResult PhotoList()
         {
             Dictionary<string, string> param = GenerateSearchQuery();
@@ -168,7 +168,7 @@ namespace MWeb.Controllers
         /// 新能源补贴政策
         /// </summary>
         /// <returns></returns>
-		[OutputCache(Duration = 3200, Location = OutputCacheLocation.Downstream)]
+		[OutputCache(Duration = 3600, Location = OutputCacheLocation.Downstream)]
         public ActionResult Subsidy()
         {
             return View();
@@ -178,7 +178,7 @@ namespace MWeb.Controllers
         /// 新能源充电桩
         /// </summary>
         /// <returns></returns>
-		[OutputCache(Duration = 3200, Location = OutputCacheLocation.Downstream)]
+		[OutputCache(Duration = 3600, Location = OutputCacheLocation.Downstream)]
         public ActionResult ChargePile()
         {
             return View();
@@ -188,7 +188,7 @@ namespace MWeb.Controllers
         /// 新能源选车工具
         /// </summary>
         /// <returns></returns>
-		[OutputCache(Duration = 3200, Location = OutputCacheLocation.Downstream)]
+		[OutputCache(Duration = 3600, Location = OutputCacheLocation.Downstream)]
         public ActionResult SelectCar()
         {
             return View();
@@ -198,7 +198,7 @@ namespace MWeb.Controllers
         /// 新能源选车工具
         /// </summary>
         /// <returns></returns>
-		[OutputCache(Duration = 3200, Location = OutputCacheLocation.Downstream)]
+		[OutputCache(Duration = 3600, Location = OutputCacheLocation.Downstream)]
         public ActionResult SelectCarList()
         {
             NameValueCollection nvcQuery = Request.QueryString;

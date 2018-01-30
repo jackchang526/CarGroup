@@ -1,0 +1,72 @@
+﻿<li class="">
+
+    <div class="slide-list-box clearfix">
+
+        <div class="figure-box w480-h320">
+            <a href="#" class="figure">
+                <img src="http://placehold.it/480x320" alt="">
+            </a>
+            <div class="title-box">
+                <h4 class="title"><a href="#">试驾长安CS15尊贵版 咱玩的就是时尚个性</a></h4>
+            </div>
+        </div>
+
+        <div class="col3-row2-238x159">
+
+            <div class="list-box clearfix">
+                <div class="figure-box w238-h159">
+                    <a href="#" class="figure ad-tag-box">
+                        <img src="http://placehold.it/238x159" alt="">
+                        <cite class="ad-tag"></cite>
+                    </a>
+                    <div class="title-box">
+                        <h6 class="title"><a href="#">聊聊特斯拉未来新方向</a></h6>
+                    </div>
+                </div>
+                <div class="figure-box w238-h159">
+                    <a href="#" class="figure">
+                        <img src="http://placehold.it/238x159" alt="">
+                    </a>
+                    <div class="title-box">
+                        <h6 class="title"><a href="#">聊聊特斯拉未来新方向</a></h6>
+                    </div>
+                </div>
+                <div class="figure-box w238-h159">
+                    <a href="#" class="figure">
+                        <img src="http://placehold.it/238x159" alt="">
+                    </a>
+                    <div class="title-box">
+                        <h6 class="title"><a href="#">聊聊特斯拉未来新方向</a></h6>
+                    </div>
+                </div>
+                <div class="figure-box w238-h159">
+                    <a href="#" class="figure">
+                        <img src="http://placehold.it/238x159" alt="">
+                    </a>
+                    <div class="title-box">
+                        <h6 class="title"><a href="#">聊聊特斯拉未来新方向</a></h6>
+                    </div>
+                </div>
+                <div class="figure-box w238-h159">
+                    <a href="#" class="figure">
+                        <img src="http://placehold.it/238x159" alt="">
+                    </a>
+                    <div class="title-box">
+                        <h6 class="title"><a href="#">聊聊特斯拉未来新方向</a></h6>
+                    </div>
+                </div>
+                <div class="figure-box w238-h159">
+                    <a href="#" class="figure">
+                        <img src="http://placehold.it/238x159" alt="">
+                    </a>
+                    <div class="title-box">
+                        <h6 class="title"><a href="#">聊聊特斯拉未来新方向</a></h6>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</li>

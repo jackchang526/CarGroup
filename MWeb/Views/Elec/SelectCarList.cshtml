@@ -1,8 +1,4 @@
-﻿@{
-    ViewBag.Title = "【汽车大全|汽车标志_汽车标志大全_热门车型大全】-手机易车网";
-}
-
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -178,7 +174,7 @@
             <ul class="first-list rp jg-sx-sty">
                 <li class="filter">
                     <div>
-                        <input id="p_min" type="number" placeholder="最低"><b>-</b><input id="p_max" type="number" placeholder="最高"><b>万</b><input id="btnPriceSubmit" type="button" value="确定" class="btn-go">
+                        <input id="p_min" type="number" onkeypress="checkint()" oninput="if(value.length>5) value=value.slice(0,5)" onkeyup="value=replaceStr(value)" placeholder="最低"><b>-</b><input id="p_max" type="number" onkeypress="checkint()" oninput="if(value.length>5) value=value.slice(0,5)" onkeyup="value=replaceStr(value)" placeholder="最高"><b>万</b><input id="btnPriceSubmit" type="button" value="确定" class="btn-go">
                     </div> 
                 </li>
                 <li class="current"><a t="p_" href="javascript:GotoPage('p')">不限</a></li>
@@ -325,12 +321,11 @@
 
     <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js?v=201711100907"></script>
      
-    <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/elec/selectcarlist.min.js?201801291726" type="text/javascript"></script>
+    <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/elec/selectcarlist.min.js?201801301630" type="text/javascript"></script> 
     <script type="text/javascript">
        var CarNumber = @ViewData["Count"].ToString();
         LoadUrlParam();
         BindNewCarIntoMarketTime();
-    </script>
-     
+    </script>  
 </body>
 </html>

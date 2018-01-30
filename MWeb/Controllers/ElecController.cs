@@ -156,7 +156,7 @@ namespace MWeb.Controllers
             foreach (SelectCarDetailInfo detail in result.ResList)
             {
                 sb.Append("<li>");
-                sb.AppendFormat("<a href=\"/{0}/\">", detail.AllSpell);
+                sb.AppendFormat("<a href=\"http://photo.m.yiche.com/serial/{0}/\">", detail.SerialId);
                 sb.AppendFormat("<span class=\"pic-wrap\"><img src=\"{0}\"></span >", detail.NoneWhiteImageUrl);
                 sb.AppendFormat("<span class=\"pic-txt\">{0}</span>", detail.ShowName);
                 sb.Append("</a>");

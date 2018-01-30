@@ -72,7 +72,7 @@ namespace BitAuto.CarChannel.BLL
             {
                 Dictionary<int, Car_SerialItemEntity> extendDic = new Car_SerialItemBll().GetSerialItemAll();
                 // 非白底
-                Dictionary<int, string> dicPicNoneWhite = new PageBase().GetAllSerialPicURLNoneWhiteBackground();               
+                Dictionary<int, string> dicPicNoneWhite = new PageBase().GetAllSerialCoverPicURL();               
 
                 for (int i = 0; i < selectCarResult.ResList.Count; i++)
                 {

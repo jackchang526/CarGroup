@@ -10,11 +10,35 @@
             bindSwiperStyle('p');
             $("#btnPriceSubmit").bind("click", function () {
                 var p_min = $("#p_min").val();
-                var p_max = $("#p_max").val();
+                var p_max = $("#p_max").val(); 
                 if (p_min != "" && !isNaN(p_min)) {
-                    if (p_min != "" && !isNaN(p_min)) {
+                    p_min = parseInt(p_min);
+                    if (p_min < 0)
+                        p_min = -p_min;
+                    if (p_max != "" && !isNaN(p_max)) {
+                        p_max = parseInt(p_max);
+                        if (p_max < 0)
+                            p_max = -p_max;
+                        if (p_min> p_max)
+                        {
+                            pp = p_min;
+                            p_min = p_max;
+                            p_max = pp;
+                        }
                         CarParam["p"] = p_min + "-" + p_max;
                         Jump();
+                    } else {
+                        CarParam["p"] = p_min + "-9999";
+                        Jump();
+                    }
+                } else {
+                    if (p_max != "" && !isNaN(p_max)) {
+                        p_max = parseInt(p_max);
+                        if (p_max < 0)
+                            p_max = -p_max;
+                        CarParam["p"] = "0-" + p_max;
+                        Jump();
+                    } else { 
                     }
                 }
             })
@@ -71,7 +95,19 @@
 
 });
 
+function checkint() { 
+    var v = window.event.keyCode;
+    console.log(v)
+    if (!(v >= 48 && v <= 57)) {
+        window.event.keyCode = 0;
+        window.event.returnValue = false;
+    }
+}
 
+function replaceStr(val) {
+    console.log(val)
+    return val.replace(/\D/g, '');
+}
 
 var curUrlParam = "";
 var baseUrl = "";

@@ -3410,6 +3410,64 @@ namespace BitAuto.CarChannel.Common
         }
 
         /// <summary>
+        /// 获取封面图（默认实拍图优先，没有实拍的话,出白底图）
+        /// </summary>
+        /// <param name="whiteFirst">是否优先出白底图</param>
+        /// <returns></returns>
+        public Dictionary<int, string> GetAllSerialCoverPicURL(bool whiteFirst = false)
+        {
+            Dictionary<int, string> dic = new Dictionary<int, string>();
+            string catchkey = "PageBase_GetAllSerialCoverPicURL";
+            object getAllSerialPicURL = null;
+            CacheManager.GetCachedData(catchkey, out getAllSerialPicURL);
+            if (getAllSerialPicURL == null)
+            {
+                XmlDocument xmlDoc = this.GetAllSerialConverImgAndCount();
+                if (xmlDoc != null)
+                {
+                    XmlNodeList serialNodeList = xmlDoc.SelectNodes("/SerialList/Serial");
+                    if (serialNodeList != null && serialNodeList.Count > 0)
+                    {
+                        foreach (XmlNode serialNode in serialNodeList)
+                        {
+                            int csid = ConvertHelper.GetInteger(serialNode.Attributes["SerialId"].Value);
+                            string csNewPic = ConvertHelper.GetString(serialNode.Attributes["ImageUrl2"].Value);
+                            string csOldPic = ConvertHelper.GetString(serialNode.Attributes["ImageUrl"].Value);
+                            csNewPic = string.IsNullOrEmpty(csNewPic) ? string.Empty : string.Format(csNewPic, 2);
+                            csOldPic = string.IsNullOrEmpty(csOldPic) ? string.Empty : string.Format(csOldPic, 2);
+                            if (whiteFirst)
+                            {
+                                // 新图的
+                                if (!string.IsNullOrEmpty(csNewPic) && !dic.ContainsKey(csid))
+                                { dic.Add(csid, csNewPic); }
+                                else if (!string.IsNullOrEmpty(csOldPic) && !dic.ContainsKey(csid))
+                                { dic.Add(csid, csOldPic); }
+                                else if (!dic.ContainsKey(csid))
+                                { dic.Add(csid, WebConfig.DefaultCarPic); }
+                            }
+                            else
+                            {
+                                // 新图的
+                                if (!string.IsNullOrEmpty(csOldPic) && !dic.ContainsKey(csid))
+                                { dic.Add(csid, csOldPic); }
+                                else if (!string.IsNullOrEmpty(csNewPic) && !dic.ContainsKey(csid))
+                                { dic.Add(csid, csNewPic); }
+                                else if (!dic.ContainsKey(csid))
+                                { dic.Add(csid, WebConfig.DefaultCarPic); }
+                            } 
+                        }
+                    }
+                }
+                CacheManager.InsertCache(catchkey, dic, WebConfig.CachedDuration);
+            }
+            else
+            {
+                dic = (Dictionary<int, string>)getAllSerialPicURL;
+            }
+            return dic;
+        }
+
+        /// <summary>
         /// 取子品牌默认图及图片总数
         /// </summary>
         /// <param name="csID">车系id</param>

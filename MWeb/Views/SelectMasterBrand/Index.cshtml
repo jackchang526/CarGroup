@@ -68,6 +68,7 @@
                         margin: 0 0 0 20px;
                         opacity: 0.8;
                     }
+
                 .new-car-content .m-tag-car {
                     padding-bottom: 15px;
                 }
@@ -100,7 +101,7 @@
                     <li data-channelid="27.160.2232" class="ico-xsph">
                         <a href="http://car.m.yiche.com/salesranking">
                             <i></i>
-                            <p>销售排行</p>
+                            <p>销量排行</p>
                         </a>
                     </li>
                     <li data-channelid="27.160.2195" class="ico-tjxc">
@@ -220,7 +221,15 @@
 
             var reTemp = "@ViewBag.re";
             if (reTemp.toString() != "true") {  //右侧子品牌效果
-                $body.trigger('rightswipe3', { model_hide: true });
+                $body.trigger('rightswipe3', {
+                    model_hide: true,
+                    fnEnd1: function () {
+                        var $swipeLeft = this; //第一层对象
+                        var $lnkbrand = $swipeLeft.find('.brand-link');
+                        if ($swipeLeft.find('.brand-name').html().indexOf('宝马') != -1) {
+                            $lnkbrand.show();
+                        }
+                    }});
             }
 
             //图片加载

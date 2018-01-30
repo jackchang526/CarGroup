@@ -163,6 +163,7 @@
     <Compile Include="TreeTagConfigEntity.cs" />
     <Compile Include="UCarInfoEntity.cs" />
     <Compile Include="VideoEntity.cs" />
+    <Compile Include="WriteResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

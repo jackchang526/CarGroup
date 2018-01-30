@@ -118,8 +118,8 @@ namespace MWeb.Controllers
 				// 无图片的
 				if (sellState.Trim() == "停销" && imgUrl.IndexOf("150-100.gif") > 0)
 				{ continue; }
-				#endregion
-
+                #endregion
+                imgUrl = imgUrl.Replace("_1.", "_3.");
 				int serialId = ConvertHelper.GetInteger(row["cs_id"]);
 				string csShowName = ConvertHelper.GetString(row["cs_ShowName"]);
 				if (serialId == 1568)

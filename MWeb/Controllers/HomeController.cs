@@ -13,6 +13,6 @@ namespace MWeb.Controllers
         public ActionResult Index()
         {
             return View();
-        }
+        } 
     }
 }

@@ -1,0 +1,331 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>【电动汽车_电动车导购_电动汽车价格_电动汽车排名】-易车网</title>
+    <meta name="keywords" content="电动汽车,电动汽车导购,易车网">
+    <meta name="description" content="电动汽车:易车网电动汽车频道为您提供全国电动汽车市场的电动汽车经销商最新报价,电动汽车品牌大全,电动车价格,电动车排名,评测内容等,更多电动车信息尽在易车网。">    
+    <!--#include file="/ushtml/0000/2017m_yidongzhan_xinnengyuanpindao-1531.shtml"-->
+</head>
+<body> 
+    <!-- header start -->
+    <div class="op-nav">
+        <a id="gobackElm" href="javascript:;" class="btn-return">返回</a>
+        <div class="tt-name">
+            <a href="http://m.yiche.com/" class="yiche-logo">汽车</a><h1>选车</h1>
+        </div>
+        <!--#include file="/include/pd/2016/wap/00001/201607_wap_common_ejdht_Manual.shtml"-->
+    </div> 
+
+    <div class="op-nav-mark" style="display: none;"></div>
+    <!-- header end -->
+    <!-- 选车 start -->
+    <div class="xc-result-box">
+        <!-- 筛选 start  -->
+        <div class="sort sort4 sort-bg-white sort-pop y2015A ">
+            <ul>
+                <li id="t_p">
+                    <a data-action="grade-price">
+                        <span>价格</span>
+                        <i></i>
+                    </a>
+                </li>
+                <li id="t_f">
+                    <a data-action="grade-dltype">
+                        <span>动力类型</span>
+                        <i></i>
+                    </a>
+                </li>
+                <li id="t_bl">
+                    <a data-action="grade-range">
+                        <span>续航里程</span>
+                        <i></i>
+                    </a>
+                </li>
+                <li id="t_ct">
+                    <a data-action="grade-time">
+                        <span>充电时间</span>
+                        <i></i>
+                    </a>
+                </li>
+                <li id="t_g">
+                    <a data-action="grade-country">
+                        <span>国别</span>
+                        <i></i>
+                    </a>
+                </li>
+                <li id="t_b">
+                    <a data-action="grade-cartype">
+                        <span>车身形式</span>
+                        <i></i>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="sort-warp">
+            <div class="sort-clear">
+                <a href="/elec/selectcarlist" class="btn-clear">清除条件</a>
+            </div>
+        </div>
+
+        <!-- 筛选 end  -->
+        <!-- 筛选列表 start  -->
+        <div class="xny-result-box">
+
+            <!-- 标题 start  -->
+            <div class="tt-first y2015">
+                <ul class="tags-sub tags-sub-left">
+                    <li id="order_attend" class=""><a href="javascript:;" onclick="setOrder('attend')">按关注度</a></li>
+                    <li id="order_price" class="arrow jg-sty"><a href="javascript:;" onclick="setOrder('price')">价格</a></li>
+                </ul>
+                <span class="sub-tt-more">共 @Html.Raw(ViewData["Count"].ToString())个车型</span>
+            </div>
+            <!-- 标题 end  -->
+            <!-- 列表 start  -->
+
+            <div class="buy-car new-car">
+                @if (ViewData["carList"].ToString() != "")
+                {
+                    @Html.Raw(ViewData["carList"].ToString())
+                }
+                else
+                {
+                    <div class="tishi-box">
+                        <div class="tishi-tu tishi-zanwu"></div>
+                        <div class="tishi-small">未找到合适的车型<br />请调整一下选车条件</div>
+                    </div>
+                }
+
+            </div>
+
+            <!-- 列表 end  -->
+            <!-- 翻页 start  -->
+
+            <div class="m-pages b-shadow" style="display:none;">
+                <a href="javascript:;" id="page_prev" class="m-pages-pre m-pages-none">上一页</a>
+                <div class="m-pages-num">
+                    <div class="m-pages-num-con" id="page_current">0/0</div>
+                    <div class="m-pages-num-arrow"></div>
+                </div>
+                <select id="page_list">
+                    <option>1</option>
+                </select>
+                <a href="javascript:;" id="page_next" class="m-pages-next">下一页</a>
+            </div>
+
+            <!-- 翻页 end  -->
+        </div>
+        <!-- 筛选列表 end  -->
+
+    </div>
+
+    <!-- 选车 end  -->
+
+    <script type="text/javascript">
+        var url = "http://m.yiche.com/";
+        $(function () {//没有电脑版，临时处理
+            var linktopc = $("#a_linkToPcPage");
+            $(linktopc).hide().next().hide();
+        });
+    </script>
+
+    <!-- footer start  -->
+    <div class="footer15">
+        <!--搜索框-->
+        @Html.Partial("~/html/footersearch.cshtml")
+        <div class="breadcrumb">
+            <div class="breadcrumb-box">
+                <a href="http://m.yiche.com/">首页</a> &gt; <span>选车</span>
+            </div>
+        </div>
+        @Html.Partial("~/html/footerV3.cshtml")
+    </div>
+    <div class="float-r-box">
+        <!--#include file="/include/pd/2014/wapCommon/00001/201511_wap_common_ycfd_Manual.shtml"-->
+    </div>
+    <!-- footer end  -->
+    <!--弹出层 start-->
+    <div class="leftmask leftmask3" style="display: none;"></div>
+    <div class="leftPopup grade-price" data-back="leftmask3" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+    <!--弹出层 end-->
+    <!--loading模板 start -->
+    <div class="template-loading" style="display: none;">
+        <div class="loading">
+            <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+            <p>正在加载...</p>
+        </div>
+    </div>
+    <!--loading模板 end -->
+    <!--公共模板 start-->
+    <script type="text/template" id="gradeTemplate">
+        <div class="ap">
+            <ul class="first-list rp jg-sx-sty">
+                <li class="filter">
+                    <div>
+                        <input id="p_min" type="number" onkeypress="checkint()" oninput="if(value.length>5) value=value.slice(0,5)" onkeyup="value=replaceStr(value)" placeholder="最低"><b>-</b><input id="p_max" type="number" onkeypress="checkint()" oninput="if(value.length>5) value=value.slice(0,5)" onkeyup="value=replaceStr(value)" placeholder="最高"><b>万</b><input id="btnPriceSubmit" type="button" value="确定" class="btn-go">
+                    </div> 
+                </li>
+                <li class="current"><a t="p_" href="javascript:GotoPage('p')">不限</a></li>
+                <li><a t="p_0-12" href="javascript:GotoPage('p_0-12')">12万以下</a></li> 
+                <li><a t="p_12-18" href="javascript:GotoPage('p_12-18')">12-18万</a></li>
+                <li><a t="p_18-25" href="javascript:GotoPage('p_18-25')">18-25万</a></li>
+                <li><a t="p_25-40" href="javascript:GotoPage('p_25-40')">25-40万</a></li>
+                <li><a t="p_40-80" href="javascript:GotoPage('p_40-80')">40-80万</a></li>
+                <li><a t="p_80-9999" href="javascript:GotoPage('p_80-9999')">80万以上</a></li>
+            </ul>
+
+        </div>
+    </script>
+    <!-- 结果列表层 end -->
+    <!--公共模板 end-->
+    <!-- 动力类型 start  -->
+    <!-- 弹出层 start  -->
+    <div class="leftPopup grade-dltype" data-back="leftmask3" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+    <!--弹出层 end-->
+    <!--公共模板 start-->
+    <script type="text/template" id="gradeTemplate1">
+        <div class="ap">
+            <ul class="first-list rp jg-sx-sty">
+                <li class="current"><a t="f_" href="javascript:GotoPage('f')">不限</a></li>
+                <li><a t="f_16" href="javascript:GotoPage('f_16')">纯电</a></li>
+                <li><a t="f_128" href="javascript:GotoPage('f_128')">插电混动</a></li>
+            </ul>
+        </div>
+    </script>
+    <!--公共模板 end-->
+    <!-- 动力类型 end  -->
+    <!-- 续航里程 start  -->
+    <!-- 弹出层 start  -->
+    <div class="leftPopup grade-range" data-back="leftmask3" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+    <!--弹出层 end-->
+    <!--公共模板 start-->
+    <script type="text/template" id="gradeTemplate2">
+        <div class="ap">
+            <ul class="first-list rp jg-sx-sty">
+                <li class="current"><a t="bl_" href="javascript:GotoPage('bl')">不限</a></li>
+                <li><a t="bl_0-100" href="javascript:GotoPage('bl_0-100')">100km以下</a></li>
+                <li><a t="bl_100-200" href="javascript:GotoPage('bl_100-200')">100-200km</a></li>
+                <li><a t="bl_200-300" href="javascript:GotoPage('bl_200-300')">200-300km</a></li>
+                <li><a t="bl_300-400" href="javascript:GotoPage('bl_300-400')">300-400km</a></li>
+                <li><a t="bl_400-500" href="javascript:GotoPage('bl_400-500')">400-500km</a></li>
+                <li><a t="bl_500-9999" href="javascript:GotoPage('bl_500-9999')">500km以上</a></li>
+            </ul>
+
+        </div>
+    </script>
+    <!--公共模板 end-->
+    <!-- 续航里程 end  -->
+    <!-- 充电时间 start  -->
+    <!-- 弹出层 start  -->
+    <div class="leftPopup grade-time" data-back="leftmask3" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+    <!--弹出层 end-->
+    <!--公共模板 start-->
+    <script type="text/template" id="gradeTemplate3">
+        <div class="ap">
+            <ul class="first-list rp jg-sx-sty">
+                <li class="current"><a t="ct_" href="javascript:GotoPage('ct')">不限</a></li>
+                <li><a t="ct_0-6" href="javascript:GotoPage('ct_0-6')">6小时以内</a></li>
+                <li><a t="ct_6-8" href="javascript:GotoPage('ct_6-8')">6-8小时</a></li>
+                <li><a t="ct_8-12" href="javascript:GotoPage('ct_8-12')">8-12小时</a></li>
+                <li><a t="ct_12-999" href="javascript:GotoPage('ct_12-999')">12小时以上</a></li>
+            </ul>
+
+        </div>
+    </script>
+    <!--公共模板 end-->
+    <!-- 充电时间 end  -->
+    <!-- 国别 start  -->
+    <!-- 弹出层 start  -->
+    <div class="leftPopup grade-country" data-back="leftmask3" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+    <!--弹出层 end-->
+    <!--公共模板 start-->
+    <script type="text/template" id="gradeTemplate4">
+        <div class="ap">
+            <ul class="first-list rp jg-sx-sty">
+                <li class="current"><a t="g_" href="javascript:GotoPage('g')">不限</a></li>
+                <li><a t="g_1" href="javascript:GotoPage('g_1')">自主</a></li>
+                <li><a t="g_2" href="javascript:GotoPage('g_2')">合资</a></li>
+                <li><a t="g_4" href="javascript:GotoPage('g_4')">进口</a></li>
+            </ul>
+
+        </div>
+    </script>
+    <!--公共模板 end-->
+    <!-- 国别 end  -->
+    <!-- 车身类型 start  -->
+    <!-- 弹出层 start  -->
+    <div class="leftPopup grade-cartype" data-back="leftmask3" style="display: none;">
+        <div class="swipeLeft">
+            <div class="loading">
+                <img src="http://image.bitautoimg.com/uimg/mbt2015/images/loading.gif" />
+                <p>正在加载...</p>
+            </div>
+        </div>
+    </div>
+    <!--弹出层 end-->
+    <!--公共模板 start-->
+    <script type="text/template" id="gradeTemplate5">
+        <div class="ap">
+            <ul class="first-list rp jg-sx-sty">
+                <li class="current"><a t="b_" href="javascript:GotoPage('b')">不限</a></li>
+                <li><a t="b_1" href="javascript:GotoPage('b_1')">两厢</a></li>
+                <li><a t="b_2" href="javascript:GotoPage('b_2')">三厢</a></li>
+                <li><a t="b_64" href="javascript:GotoPage('b_64')">SUV</a></li>
+            </ul>
+        </div>
+    </script>
+    <!--公共模板 end-->
+    <!-- 车身类型 end  -->
+
+    <script src="http://image.bitautoimg.com/uimg/wap/js/jquery-1.8.0.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js?v=201711100907"></script>
+     
+    <script src="http://image.bitautoimg.com/carchannel/wirelessjsv2/elec/selectcarlist.min.js?201801301630" type="text/javascript"></script> 
+    <script type="text/javascript">
+       var CarNumber = @ViewData["Count"].ToString();
+        LoadUrlParam();
+        BindNewCarIntoMarketTime();
+    </script>  
+</body>
+</html>

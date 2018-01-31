@@ -1,0 +1,202 @@
+﻿<div class="swiper-container js-type-tab-page swiper-container-horizontal swiper-container-autoheight">
+    <div class="swiper-wrapper" style="height: 821px; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
+        <!-- 容器 1 start  -->
+        <div id="test" class="swiper-slide swiper-slide-active" style="width: 467px;">
+            <div class="zc-bt-box">
+                <h2>全国2018补贴标准</h2>
+                <div class="content-box">
+                    <h3>纯电动补贴</h3>
+                    <ul>
+                        <li>
+                            <p class="p-1">续航里程：100-150km</p>
+                            <p class="p-2">国家补贴：2.0万元</p>
+                            <p class="p-2">地方补贴：1.0万元</p>
+                            <div class="price">
+                                总计：<em>3.0万元</em>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="p-1">续航里程：150-250km</p>
+                            <p class="p-2">国家补贴：3.6万元</p>
+                            <p class="p-2">地方补贴：1.8万元</p>
+                            <div class="price">
+                                总计：<em>5.4万元</em>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="p-1">续航里程：250km以上</p>
+                            <p class="p-2">国家补贴：4.4万元</p>
+                            <p class="p-2">地方补贴：2.2万元</p>
+                            <div class="price">
+                                总计：<em>6.6万元</em>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-box">
+                    <h3>插电混动补贴</h3>
+                    <ul>
+                        <li>
+                            <p class="p-1">纯电续航里程：50km以上</p>
+                            <p class="p-2">国家补贴：2.4/万元</p>
+                            <p class="p-2">地方补贴：1.2万元</p>
+                            <div class="price">
+                                总计：<em>3.6万元</em>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 容器 1 end  -->
+        <!-- 容器 2 start  -->
+        <div id="test" class="swiper-slide swiper-slide-active" style="width: 467px;">
+            <div class="zc-bt-box">
+                <h2>北京2018补贴标准</h2>
+                <div class="content-box">
+                    <h3>纯电动补贴</h3>
+                    <ul>
+                        <li>
+                            <p class="p-1">续航里程：100-150km</p>
+                            <p class="p-2">国家补贴：2.0万元</p>
+                            <p class="p-2">地方补贴：1.0万元</p>
+                            <div class="price">
+                                总计：<em>3.0万元</em>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="p-1">续航里程：150-250km</p>
+                            <p class="p-2">国家补贴：3.6万元</p>
+                            <p class="p-2">地方补贴：1.8万元</p>
+                            <div class="price">
+                                总计：<em>5.4万元</em>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="p-1">续航里程：250km以上</p>
+                            <p class="p-2">国家补贴：4.4万元</p>
+                            <p class="p-2">地方补贴：2.2万元</p>
+                            <div class="price">
+                                总计：<em>6.6万元</em>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-box">
+                    <h3>插电混动补贴</h3>
+                    <ul>
+                        <li>
+                            <p class="p-1">纯电续航里程：50km以上</p>
+                            <p class="p-2">国家补贴：0万元</p>
+                            <p class="p-2">地方补贴：0万元</p>
+                            <div class="price">
+                                总计：<em>0万元</em>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 容器 2 end  -->
+        <!-- 容器 3 start  -->
+        <div id="test" class="swiper-slide swiper-slide-active" style="width: 467px;">
+            <div class="zc-bt-box">
+                <h2>上海2018补贴标准</h2>
+                <div class="content-box">
+                    <h3>纯电动补贴</h3>
+                    <ul>
+                        <li>
+                            <p class="p-1">续航里程：100-150km</p>
+                            <p class="p-2">国家补贴：2.0万元</p>
+                            <p class="p-2">地方补贴：1.0万元</p>
+                            <div class="price">
+                                总计：<em>3.0万元</em>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="p-1">续航里程：150-250km</p>
+                            <p class="p-2">国家补贴：3.6万元</p>
+                            <p class="p-2">地方补贴：1.8万元</p>
+                            <div class="price">
+                                总计：<em>5.4万元</em>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="p-1">续航里程：250km以上</p>
+                            <p class="p-2">国家补贴：4.4万元</p>
+                            <p class="p-2">地方补贴：2.2万元</p>
+                            <div class="price">
+                                总计：<em>6.6万元</em>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-box">
+                    <h3>插电混动补贴</h3>
+                    <ul>
+                        <li>
+                            <p class="p-1">纯电续航里程：50km以上</p>
+                            <p class="p-2">国家补贴：2.4/万元</p>
+                            <p class="p-2">地方补贴：1.0/2.4万元</p>
+                            <div class="price">
+                                总计：<em>3.4/4.8万元</em>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-box">
+                    <h3>额外补贴</h3>
+                    <ul>
+                        <li>
+                            <p class="p-1">如果满足</p>
+                            <p class="p-2">纯电续航里程：50km以上</p>
+                            <p class="p-2">发动机排量：小于1.6L</p>
+                            <p class="p-2">综合工况油耗：小于5.9L</p>
+                            <p class="p-2">油箱容量：小于40L</p>
+                            <div class="price">
+                                每车每年：<em>1.4万元</em>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 容器 3 end  -->
+        <!-- 容器 4start  -->
+        <div id="test" class="swiper-slide swiper-slide-active" style="width: 467px;">
+            <div class="zc-bt-box">
+                <h2>重庆2018补贴标准</h2>
+                <div class="content-box">
+                    <h3>纯电动补贴</h3>
+                    <ul>
+                        <li>
+                            <p class="p-1">续航里程：100-150km</p>
+                            <p class="p-2">国家补贴：2.0万元</p>
+                            <p class="p-2">地方补贴：1.0万元</p>
+                            <div class="price">
+                                总计：<em>3.0万元</em>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="p-1">续航里程：150-250km</p>
+                            <p class="p-2">国家补贴：3.6万元</p>
+                            <p class="p-2">地方补贴：1.8万元</p>
+                            <div class="price">
+                                总计：<em>5.4万元</em>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="p-1">续航里程：250km以上</p>
+                            <p class="p-2">国家补贴：4.4万元</p>
+                            <p class="p-2">地方补贴：2.2万元</p>
+                            <div class="price">
+                                总计：<em>6.6万元</em>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 容器 4 end  -->
+    </div>
+</div>

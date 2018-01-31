@@ -87,7 +87,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                     , ele.GetAttribute("ShowName")
                     , ele.GetAttribute("PriceRange")
                     , ele.GetAttribute("SellNum")
-                    , ele.GetAttribute("ImgUrl")
+                    , string.IsNullOrEmpty(ele.GetAttribute("ImgUrl")) ? WebConfig.DefaultCarPic : ele.GetAttribute("ImgUrl")
                     , index
                     , index == endIndex ? "" : ","
                     , ele.GetAttribute("AllSpell"));
@@ -135,7 +135,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
                     , ele.GetAttribute("ShowName")
                     , ele.GetAttribute("PriceRange")
                     , ele.GetAttribute("SellNum")
-                    , ele.GetAttribute("ImgUrl")
+                    , string.IsNullOrEmpty(ele.GetAttribute("ImgUrl")) ? WebConfig.DefaultCarPic : ele.GetAttribute("ImgUrl")
                     , index
                     , index == endIndex ? "" : ","
                     , ele.GetAttribute("AllSpell"));
@@ -147,7 +147,7 @@ namespace BitAuto.CarChannelAPI.Web.CarInfo
             else
             {
                 context.Response.Write(ResultUtil.CallBackResult(callback, ResultUtil.SuccessResult(ResultDateFormat(month, ResultUtil.PageFormat(pageIndex, pageSize, allCcount, string.Format("[{0}]", sb.ToString()))))));
-            } 
+            }
         }
 
         public static string ResultDateFormat(string month, string page)

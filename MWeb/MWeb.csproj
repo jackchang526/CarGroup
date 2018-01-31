@@ -142,6 +142,7 @@
     <Compile Include="Controllers\CarSummaryController.cs" />
     <Compile Include="Controllers\CsCompareController.cs" />
     <Compile Include="Controllers\CsSummaryController.cs" />
+    <Compile Include="Controllers\ElecController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
@@ -233,6 +234,9 @@
     <Content Include="include\pd\2016\wap\00001\201703_wap_cxjg_mpv_Manual.shtml" />
     <Content Include="include\pd\2016\wap\00001\201703_wap_cxjg_suv_Manual.shtml" />
     <Content Include="include\pd\2016\wap\00001\201708_wap_common_top_downloadLayer_Manual.shtml" />
+    <Content Include="include\pd\2016\wap\00001\201801_mobile_newenergy_banner_Manual.shtml" />
+    <Content Include="include\pd\2016\wap\00001\201801_mobile_newenergy_subsidypolicyNavigation_Manual.shtml" />
+    <Content Include="include\pd\2016\wap\00001\201801_mobile_newenergy_subsidypolicy_Manual.shtml" />
     <Content Include="include\pd\2016\yipaicms\00001\201701_Mobile_Summary_SCInfoBtn_Manual.shtml" />
     <Content Include="include\special\testprice\00001\2017_car_stat_test_Manual.shtml" />
     <Content Include="include\special\stat\00001\bglogpostlog_Manual.shtml" />
@@ -254,6 +258,13 @@
     <Content Include="js\csSummaryConditionV2.js" />
     <Content Include="js\csSummaryV2.js" />
     <Content Include="js\csSummaryForFocus.js" />
+    <Content Include="js\elec\Index.js" />
+    <Content Include="js\elec\photolist.js" />
+    <Content Include="js\elec\price.js" />
+    <Content Include="js\elec\salerank.js" />
+    <Content Include="js\elec\scrollbarX.js" />
+    <Content Include="js\elec\selectcar.js" />
+    <Content Include="js\elec\selectcarlist.js" />
     <Content Include="js\getareaprice.js" />
     <Content Include="js\iscroll-infinite.js" />
     <Content Include="js\model.js" />
@@ -285,6 +296,7 @@
     <Content Include="ushtml\0000\2016-xiaobaixuanche-life_style-1149.shtml" />
     <Content Include="ushtml\0000\20171201_m_newCarSell-1485.shtml" />
     <Content Include="ushtml\0000\20171201_m_salesRanking-1484.shtml" />
+    <Content Include="ushtml\0000\2017m_yidongzhan_xinnengyuanpindao-1531.shtml" />
     <Content Include="ushtml\0000\myiche2014_cube_xuanchepage-759.shtml" />
     <Content Include="ushtml\0000\myiche2015_cube_brand_style-996.shtml" />
     <Content Include="ushtml\0000\myiche2015_cube_chekuan-1019.shtml" />
@@ -435,6 +447,13 @@
     <Content Include="Views\BaoZhiLv\Index.cshtml" />
     <Content Include="Views\SalesRanking\Index.cshtml" />
     <Content Include="Views\NewCar\Index.cshtml" />
+    <Content Include="Views\Elec\Index.cshtml" />
+    <Content Include="Views\Elec\SaleRank.cshtml" />
+    <Content Include="Views\Elec\PhotoList.cshtml" />
+    <Content Include="Views\Elec\Subsidy.cshtml" />
+    <Content Include="Views\Elec\ChargePile.cshtml" />
+    <Content Include="Views\Elec\SelectCar.cshtml" />
+    <Content Include="Views\Elec\SelectCarList.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -527,45 +527,38 @@ namespace AppApi.Controllers
                 return JsonNet(new { success = false, status = 0, message = "未找到数据", data = "" }, JsonRequestBehavior.AllowGet);
             }
 
-            var taxPer = carProperty.GetValueOrDefault("traveltax");
+            var fuelType = carProperty.GetValueOrDefault("fuelType");
             var travePerTax = 1.0;
             var tax = "无";
-            switch (taxPer)
+            double purchasetax = 0.0854700854700855;
+            switch (fuelType)
             {
-                case "免征":
+                case "2":
+                case "2,":
+                case "4":
+                case "4,":
+                case "5":
+                case "5,":
                     tax = "免征";
                     travePerTax = 0;
+                    purchasetax = 0;
                     break;
-                case "减半":
-                    tax = "75折";
-                    travePerTax = 0.75;
-                    break;
-                case "待查":
-                    tax = "待查";
-                    travePerTax = 1.0;
-                    break;
-                default:
-                    tax = "无";
-                    travePerTax = 1.0;
-                    break;
+                    //case "1":
+                    //case "1,":
+                    //    tax = "75折";
+                    //    travePerTax = 0.75;
+                    //    break;
+                    //case "-1,":
+                    //case "-1":
+                    //    tax = "待查";
+                    //    travePerTax = 1.0;
+                    //    break;
+                    //default:
+                    //    tax = "无";
+                    //    travePerTax = 1.0;
+                    //    break;
             }
-            int taxrelief = TypeParse.StrToInt(carProperty.GetValueOrDefault("taxrelief"), 0);
             string strExhaust = carProperty.GetValueOrDefault("exhaustforfloat");
-            float floatExhaust = 0;
-            double purchasetax = 0.0854700854700855;
-            if (float.TryParse(strExhaust, out floatExhaust))
-            {
-                if (floatExhaust > 0 && floatExhaust <= (float)1.6)
-                {
-                    purchasetax = 0.064102564102564125;
-                }
-            }
-
-            if (taxrelief == 2)
-            {
-                purchasetax = 0;
-            }
-
             var result = new
             {
                 carID = id,
@@ -575,7 +568,7 @@ namespace AppApi.Controllers
                 traveltax = tax,
                 seatNum = carProperty.GetValueOrDefault("seatNum"),
                 purchasetax = purchasetax,
-                fuelType = TransferFuelType(carProperty.GetValueOrDefault("fuelType")),
+                fuelType = carProperty.GetValueOrDefault("fuelType"),
                 travePerTax = travePerTax
             };
             return JsonNet(new { success = true, status = 1, message = "成功", data = result }, JsonRequestBehavior.AllowGet);

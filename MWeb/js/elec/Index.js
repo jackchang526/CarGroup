@@ -99,6 +99,7 @@
                         $("#moreBtn").hide();
                     }
                     self.InitNewsEvent(type);
+                    Bglog_InitPostLog();
                 }
             }
         });

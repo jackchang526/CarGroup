@@ -34,7 +34,7 @@
     <div class="tuwen-box">
         <ul>
             <li>
-                <a href="/elec/salerank/">
+                <a href="/elec/salerank/" data-channelid="27.228.2321">
                     <div class="txt-box">
                         <span class="p-name">销量排行</span>
                         <span class="p-txt">@(ViewData["SaleRankYear"])热销TOP榜</span>
@@ -43,7 +43,7 @@
                 </a>
             </li>
             <li>
-                <a href="/elec/photolist/">
+                <a href="/elec/photolist/" data-channelid="27.228.2323">
                     <div class="txt-box">
                         <span class="p-name">无码大图</span>
                         <span class="p-txt">10万+高清车图</span>
@@ -52,7 +52,7 @@
                 </a>
             </li>
             <li>
-                <a href="/elec/subsidy/">
+                <a href="/elec/subsidy/" data-channelid="27.228.2322">
                     <div class="txt-box">
                         <span class="p-name">补贴政策</span>
                         <span class="p-txt">全国最新补贴标准</span>
@@ -61,7 +61,7 @@
                 </a>
             </li>
             <li>
-                <a href="/elec/chargepile/">
+                <a href="/elec/chargepile/" data-channelid="27.228.2324">
                     <div class="txt-box">
                         <span class="p-name">附近电桩</span>
                         <span class="p-txt">周边充电桩大全</span>
@@ -77,33 +77,33 @@
     <div class="tit-h2">
         <h2 class="ss-sty">快速找车</h2>
         <div class="more">
-            <a href="/elec/selectcar/">更多条件</a>
+            <a href="/elec/selectcar/" data-channelid="27.228.2328">更多条件</a>
         </div>
     </div>
     <div class="search-car">
         <div class="tj-box">
             <dl>
                 <dt>国别</dt>
-                <dd><a href="/elec/selectcarlist?g=1">自主</a></dd>
-                <dd><a href="/elec/selectcarlist?g=2">合资</a></dd>
-                <dd><a href="/elec/selectcarlist?g=4">进口</a></dd>
+                <dd><a href="/elec/selectcarlist?g=1" data-channelid="27.228.2329">自主</a></dd>
+                <dd><a href="/elec/selectcarlist?g=2" data-channelid="27.228.2331">合资</a></dd>
+                <dd><a href="/elec/selectcarlist?g=4" data-channelid="27.228.2330">进口</a></dd>
             </dl>
             <dl>
                 <dt>价格</dt>
-                <dd><a href="/elec/selectcarlist?p=0-12">12万以下</a></dd>
-                <dd><a href="/elec/selectcarlist?p=12-18">12-18万</a></dd>
-                <dd><a href="/elec/selectcarlist?p=18-25">18-25万</a></dd>
-                <dd><a href="/elec/selectcarlist?p=25-9999">25万以上</a></dd>
+                <dd><a href="/elec/selectcarlist?p=0-12" data-channelid="27.228.2332">12万以下</a></dd>
+                <dd><a href="/elec/selectcarlist?p=12-18" data-channelid="27.228.2333">12-18万</a></dd>
+                <dd><a href="/elec/selectcarlist?p=18-25" data-channelid="27.228.2334">18-25万</a></dd>
+                <dd><a href="/elec/selectcarlist?p=25-9999" data-channelid="27.228.2335">25万以上</a></dd>
             </dl>
             <dl>
                 <dt>续航(km)</dt>
-                <dd><a href="/elec/selectcarlist?bl=0-100">100以下</a></dd>
-                <dd><a href="/elec/selectcarlist?bl=100-200">100-200</a></dd>
-                <dd><a href="/elec/selectcarlist?bl=200-300">200-300</a></dd>
-                <dd><a href="/elec/selectcarlist?bl=300-400">300-400</a></dd>
+                <dd><a href="/elec/selectcarlist?bl=100-200" data-channelid="27.228.2336">100-200</a></dd>
+                <dd><a href="/elec/selectcarlist?bl=200-300" data-channelid="27.228.2338">200-300</a></dd>
+                <dd><a href="/elec/selectcarlist?bl=300-400" data-channelid="27.228.2337">300-400</a></dd>
+                <dd><a href="/elec/selectcarlist?bl=400-500" data-channelid="27.228.2339">400-500</a></dd>
             </dl>
         </div>
-        <div class="m-hot-brands">
+        <div class="m-hot-brands" data-channelid="27.228.2327">
             <ul>
                 <li>
                     <a href="/brandlist/weilaiqiche/">
@@ -162,7 +162,7 @@
             </ul>
         </div>
         <div class="xny-box" id="hotelecboxes">
-            <div class="cainixihuan">
+            <div class="cainixihuan" data-channelid="27.228.2326">
                 @if (!string.IsNullOrEmpty(elecResultHtml))
                 {
                     <ul data-type="elec">@(Html.Raw(elecResultHtml))</ul>
@@ -195,7 +195,7 @@
     </div>
 
     <!-- 新闻导航 end  -->
-    <div class="news-lists" id="news-lists">
+    <div class="news-lists" id="news-lists" data-channelid="27.228.2325">
     </div>
     <a href="javascript:;" class="btn-more-ico btn-add-more-ico" id="moreBtn" style="display:none;">加载更多<i class="iconfont icon-arrowdown"></i></a>
     <div class="load-box" id="load-box">
@@ -205,7 +205,7 @@
      
     <script type="text/javascript" src="//image.bitautoimg.com/uimg/wap/js/jquery-1.8.0.min.js"></script>  
     <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/v2/iscroll.min.js,carchannel/wirelessjsv2/v2/underscore.min.js,carchannel/wirelessjsv2/v2/model.min.js,carchannel/wirelessjsv2/v2/rightswipe.min.js,carchannel/wirelessjsv2/v2/swiper-3.3.1.min.js?v=201711100907"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/elec/Index.min.js"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/elec/Index.min.js?v=201802020918"></script>
 
     <script type="text/javascript">
         GetNewsList.Init();

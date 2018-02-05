@@ -15,6 +15,7 @@ using BitAuto.CarChannel.Common.Cache;
 using BitAuto.CarChannel.Model;
 using System.Data;
 using Newtonsoft.Json;
+using System.Collections.Specialized;
 
 namespace BitAuto.CarChannelAPI.Web.Cooperation
 {
@@ -140,11 +141,41 @@ namespace BitAuto.CarChannelAPI.Web.Cooperation
                     case "serial": HaoDaiGetSerialByID(); break;
                     case "brand": HaoDaiGetBrandByID(); break;
                     case "master": HaoDaiGetMasterByID(); break;
+                    case "selectcar": RenderSelectCar(); break;
                     default: break;
                 }
             }
 
             context.Response.End();
+        }
+
+        /// <summary>
+        /// 车轮合作 选车工具功能
+        /// </summary>
+        private void RenderSelectCar()
+        {
+            string[] paramArr = { "mid", "isall", "p", "l", "d", "g", "c", "t", "dt", "f", "b", "lv", "fc", "ct", "bl", "more", "s", "page", "pagesize" };
+
+            NameValueCollection collection = request.QueryString;
+            List<String> list = new List<string>();
+
+            Array.ForEach(paramArr, p =>
+            {
+                if (collection.AllKeys.Contains(p))
+                {
+                    list.Add(string.Format("{0}={1}", p, collection[p]));
+                }
+            });
+            string url = "http://select.car.yiche.com/selectcartool/searchresult?";
+            try
+            {
+                string json = CommonFunction.GetContentByUrl(url + String.Join("&", list), 5000);
+                response.Write(json);
+            }
+            catch (Exception e)
+            {
+                response.Write(JsonConvert.SerializeObject(new WriteResult<object>() { Status = 0, Message = "no" }));
+            } 
         }
 
         #region 百度

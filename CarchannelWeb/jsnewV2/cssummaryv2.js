@@ -522,13 +522,14 @@ function GetVr() {
 //限时抢ad
 function LoadXianShiQiang() {
     $.ajax({
-        url: "http://frontapi.easypass.cn/activityapi/TimeLimitRobbing/JsonpTimeLimitRobbingUrl?eplb_source=ebit&CityId=" + GlobalSummaryConfig.CityId + "&CsId=" + GlobalSummaryConfig.SerialId,
+        url: "http://frontapi.easypass.cn/activityapi/TimeLimitRobbing/JsonpTimeLimitRobbingUrl?CityId=" + GlobalSummaryConfig.CityId + "&CsId=" + GlobalSummaryConfig.SerialId,
         cache: true,
         dataType: "jsonp",//text
         jsonpCallback: "LoadXianShiQiangCallback",
         success: function (data) {
             if (typeof data != "undefined" && data.IsTimeLimitRobbing == 1) {
-                $("#factory-price").append("<a class=\"youhui type1\" target=\"_blank\" href=\"" + data.PcActivityUrl + "\">限时抢</a>");
+                var url = data.PcActivityUrl.indexOf("?") < 0 ? (data.PcActivityUrl + "?eplb_source=ebit") : (data.PcActivityUrl + "&eplb_source=ebit"); 
+                $("#factory-price").append("<a class=\"youhui type1\" target=\"_blank\" href=\"" + url + "\">限时抢</a>");
             }
         }
     });

@@ -80,7 +80,7 @@
             }
         })(window);
 </script>
-<script type="text/javascript" src="http://image.bitautoimg.com/index/js/CitySelectModule.js?v=1"></script>
+<script type="text/javascript" src="http://image.bitautoimg.com/index/js/CitySelectModule.v2.js?v=1.2"></script>
 <script type="text/javascript" src="http://ip.bitauto.com/service/locate.ashx"></script>
 <script type="text/javascript">
     (function(){

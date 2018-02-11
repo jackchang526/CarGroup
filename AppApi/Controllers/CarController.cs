@@ -275,6 +275,8 @@ namespace AppApi.Controllers
                 }
                 var serialCountry = CarSerialService.GetSerialCountryById(serialInfo.CsID);
                 var serialPriceDic = CarBasicService.GetReferPriceDicByServiceIds(cityId.GetValueOrDefault(0), new List<int> { serialInfo.CsID });
+                string statusText = CarSerialService.GetNewSerialIntoMarketText(serialInfo.CsID, true);
+                string statusStr = CarSerialService.GetNewSerialIntoMarketText(serialInfo.CsID, false);
                 result = new
                 {
                     csID = serialInfo.CsID,
@@ -282,6 +284,7 @@ namespace AppApi.Controllers
                     masterd = serialCountry == null ? 0 : serialCountry.MasterID,//大品牌logo
                     guidePriceRange = GetSerialReferPrice(serialPriceDic, serialInfo.CsID, serialInfo.CsPriceRange),//参考价区间 
                     referencePriceRange = noSaleLastReferPrice, //指导价区间
+                    whiteCoverImg = CarSerialService.GetImageUrlBySid(serialInfo.CsID),
                     coverImg,// serialExt == null ? "" : serialExt.CoverImageUrl,
                     imgCount = picCount,//图片数量
                     oil = serialInfo.CsSummaryFuelCost,// serialInfo.MinOil.ToString("F1") == "0.0" || serialInfo.MaxOil.ToString("F1") == "0.0" ? "暂无" : serialInfo.MinOil.ToString("F1") + "-" + serialInfo.MaxOil.ToString("F1") + "L",//参考油耗（在销车款的 综合工况油耗的最低和最高 ）
@@ -289,8 +292,9 @@ namespace AppApi.Controllers
                     carType = serialInfo.CsLevel,//车型
                     shareUrl = string.Format("http://car.h5.yiche.com/{0}/?WT.mc_id=nbycapp", serialInfo.CsAllSpell),//分享地址 子品牌全拼
                     serialLink = string.Format("http://m.yichemall.com/car/detail/index?modelId={0}&source=ycapp-tmall-1", serialInfo.CsID),
-                    saleStatus = serialInfo.CsSaleState,
-                    newSaleStatus = CarSerialService.GetNewSerialIntoMarketText(serialInfo.CsID, true)
+                    saleStatus = CarSerialService.SwitchNewSaleStatus(serialInfo.CsSaleState),
+                    newSaleStatusText = string.IsNullOrWhiteSpace(statusText) ?serialInfo.CsSaleState: statusText,
+                    newSaleStatus= CarSerialService.SwitchNewSaleStatus(string.IsNullOrWhiteSpace(statusStr) ? serialInfo.CsSaleState : statusStr)
                 };
                 CacheManager.InsertCache(cacheKey, result, 6);
             }

@@ -8876,7 +8876,7 @@ namespace BitAuto.CarChannel.BLL
             return stateInt;
         }
 
-        private int SwitchNewSaleStatus(string CsSaleState)
+        public int SwitchNewSaleStatus(string CsSaleState)
         {
             var stateInt = 2;
             switch (CsSaleState)
@@ -8914,7 +8914,7 @@ namespace BitAuto.CarChannel.BLL
         /// </summary>
         /// <param name="serialId">³µÐÍID</param>
         /// <returns></returns>
-        private string GetImageUrlBySid(int serialId)
+        public string GetImageUrlBySid(int serialId)
         {
             Dictionary<int, XmlElement> urlDic = CarSerialImgUrlService.GetImageUrlDicNew();
             string imgUrl = "";

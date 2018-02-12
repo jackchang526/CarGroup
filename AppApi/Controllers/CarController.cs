@@ -238,6 +238,12 @@ namespace AppApi.Controllers
                         }
                     }
                 }
+                else {
+                    if (imgList[0] != null && imgList[0].ImageUrl != null)
+                    {
+                        coverImg = imgList[0].ImageUrl.Replace("_4.", "_3.");
+                    }
+                }
                 var serialEntity = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, serialInfo.CsID);
                 var tempCarList = serialEntity.CarList;//车型列表
                 string noSaleLastReferPrice = string.Empty;

@@ -19,6 +19,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
     public class GetEvalInfoForBg : IHttpHandler
     {
         /// <summary>
+        /// warning:因对接方需求未定，暂时不对外调用（20171229）
         /// 为大数据 提供的评测库（包含评测报告mongo）数据接口,参数evaluationId ,status
         /// </summary>
         /// <param name="context"></param>

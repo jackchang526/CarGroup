@@ -20,6 +20,7 @@ namespace BitAuto.CarChannelAPI.Web.Assessment
     {
 
         /// <summary>
+        /// warning:因对接方需求未定，暂时不对外调用（20171229）
         /// 为易车app新闻要闻提供的评测库（包含评测报告mongo）数据接口,参数evaluationId ,status
         /// </summary>
         /// <param name="context"></param>

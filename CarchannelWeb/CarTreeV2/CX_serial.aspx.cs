@@ -715,6 +715,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
                 string maxPower = string.Empty;
                 string inhaleType = string.Empty;
                 string exhaust = string.Empty;
+                string saleStatus = info.ToList()[0].SaleState;
                 if (groupIndex == listGroupNew.Count - 1 && listGroupImport.Any())
                 {
                     exhaust = "平行进口车";
@@ -750,7 +751,14 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
                 carListHtml.Add("    </th>");
                 carListHtml.Add("    <th>关注度</th>");
                 carListHtml.Add("    <th>变速箱</th>");
-                carListHtml.Add("    <th class=\"txt-right txt-right-padding\">指导价</th>");
+                if (saleStatus == "待销")
+                {
+                    carListHtml.Add("    <th class=\"txt-right txt-right-padding\">预售价</th>");
+                }
+                else
+                {
+                    carListHtml.Add("    <th class=\"txt-right txt-right-padding\">指导价</th>");
+                }
                 carListHtml.Add("    <th class=\"txt-right\">参考最低价</th>");
                 carListHtml.Add("    <th></th>");
                 //carListHtml.Add("    <th><div class=\"doubt\" onmouseover=\"javascript:$(this).children('.prompt-layer').show();return false;\" onmouseout=\"javascript:$(this).children('.prompt-layer').hide();return false;\">");
@@ -854,10 +862,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.CarTreeV2
                                 strTravelTax = string.Format(strTravelTax, "免征购置税");
                             }
                         }
-                        else if (dEx > 0 && dEx <= 1.6)
-                        {
-                            strTravelTax = " <a target=\"_blank\" title=\"购置税75折\" href=\"http://news.bitauto.com/sum/20170105/1406774416.html\" class=\"color-block2\">减税</a>";
-                        }
+                        //else if (dEx > 0 && dEx <= 1.6)
+                        //{
+                        //    strTravelTax = " <a target=\"_blank\" title=\"购置税75折\" href=\"http://news.bitauto.com/sum/20170105/1406774416.html\" class=\"color-block2\">减税</a>";
+                        //}
                     }
                     ////易车惠
                     //string strYiCheHui = "";

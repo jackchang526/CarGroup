@@ -31,7 +31,7 @@ namespace AppApi
             //接口404的情况直接返回404页面
             if (httpException != null && httpException.GetHttpCode() == 404)
             {
-               CommonFunction.WriteLog(string.Format("info:{0},message:{1},error:{2}", HttpHelper.GetHttpLogMessage(Context, false), lasteException.Message, lasteException.StackTrace));
+               CommonFunction.WriteLog(string.Format("info:{0},message:{1},error:{2}", HttpHelper.GetHttpLogMessage(Context, false), httpException.Message, httpException.StackTrace));
                Response.Clear();
                 RouteData routeData = new RouteData();
                 routeData.Values.Add("controller", "Error");

@@ -332,10 +332,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
                             taxContent= "免税";
                         }
                     }
-                    else if (dEx > 0 && dEx <= 1.6)
-                    {
-                        taxContent= "减税";
-                    }
+                    //else if (dEx > 0 && dEx <= 1.6)
+                    //{
+                    //    taxContent= "减税";
+                    //}
                 }
 			}
 			//排除包含在售年款
@@ -592,10 +592,10 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
                                 strTravelTax = string.Format(strTravelTax, "免征购置税", "免税");
                             }
                         }
-                        else if (dEx > 0 && dEx <= 1.6)
-                        {
-                            strTravelTax = " <a target=\"_blank\" title=\"购置税75折\" href=\"http://news.bitauto.com/sum/20170105/1406774416.html\" class=\"color-block2\">减税</a>";
-                        }
+                        //else if (dEx > 0 && dEx <= 1.6)
+                        //{
+                        //    strTravelTax = " <a target=\"_blank\" title=\"购置税75折\" href=\"http://news.bitauto.com/sum/20170105/1406774416.html\" class=\"color-block2\">减税</a>";
+                        //}
                     }
                     //carListHtml.Add(string.Format("<tr id=\"car_filter_id_{0}\" class=\"{1}\">", entity.CarID, trFlag % 2 == 1 ? "" : "hover-bg-color"));
                     carListHtml.Add(string.Format("<tr id=\"car_filter_id_{0}\">", entity.CarID));
@@ -846,7 +846,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageYearV2
 				string xmlPicPath = System.IO.Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, serialId));
 				//string xmlPicPath = string.Format(WebConfig.PhotoService, serialId.ToString());
 				// 此 Cache 将通用于图片页和车型综述页
-				DataSet dsCsPic = this.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialId.ToString(), xmlPicPath, 60);
+				DataSet dsCsPic = this.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialId.ToString(), xmlPicPath, 10);
 				if (dsCsPic != null && dsCsPic.Tables.Count > 0 && dsCsPic.Tables.Contains("A"))
 				{
 					// 外观 6、图解 12、官方图 11、到店实拍 0 更多link

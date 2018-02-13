@@ -133,13 +133,17 @@
     <Compile Include="Model_Exhibtion.cs" />
     <Compile Include="Model_Pavilion.cs" />
     <Compile Include="NameObject.cs" />
+    <Compile Include="NewCarIntoMarketEntity.cs" />
+    <Compile Include="NewCarIntoMarketVMEntity.cs" />
     <Compile Include="News.cs" />
     <Compile Include="NewsCategory.cs" />
     <Compile Include="NewsForSerialSummaryEntity.cs" />
     <Compile Include="PingCeEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuesionInfo.cs" />
+    <Compile Include="RankInfo.cs" />
     <Compile Include="SelectCarParameters.cs" />
+    <Compile Include="SelectCarResult.cs" />
     <Compile Include="SerialColorEntity.cs" />
     <Compile Include="SerialColorForSummaryEntity.cs" />
     <Compile Include="SerialCompareListEntity.cs" />
@@ -159,6 +163,7 @@
     <Compile Include="TreeTagConfigEntity.cs" />
     <Compile Include="UCarInfoEntity.cs" />
     <Compile Include="VideoEntity.cs" />
+    <Compile Include="WriteResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

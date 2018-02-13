@@ -794,14 +794,37 @@ namespace BitAuto.CarChannel.DAL
         //    return dtTemp;
         //}
 
+
         /// <summary>
         /// 取所有子品牌颜色RGB值
         /// </summary>
+        /// <param name="csId">车系ID</param>
+        /// <param name="type">类型0:车身有色值，1：内饰，2 车身没有色值，3：车身有没有色值都取出来</param>
         /// <returns></returns>
-        public DataSet GetAllSerialColorRGB()
+        public DataSet GetAllSerialColorRGB(int csId, int type)
         {
+            if (type < 0 || type > 3)
+            {
+                return null;
+            }
             DataSet ds = new DataSet();
-            string sqlStr = " select cs_id,colorName,colorRGB from dbo.Car_SerialColor order by cs_id,colorRGB";
+            string sqlStr = " select autoID,cs_id,colorName,colorRGB,[type] from dbo.Car_SerialColor WHERE cs_id=" + csId + " AND {0} ";
+            if (type == 0)
+            {
+                sqlStr = string.Format(sqlStr, " [type]=0 ");
+            }
+            else if (type == 1)
+            {
+                sqlStr = string.Format(sqlStr, " [type]=1 ");
+            }
+            else if (type == 2)
+            {
+                sqlStr = string.Format(sqlStr, " [type]=2 ");
+            }
+            else
+            {
+                sqlStr = string.Format(sqlStr, " ([type]=2 OR [type]=0) ");
+            }
             ds = SqlHelper.ExecuteDataset(WebConfig.AutoStorageConnectionString, CommandType.Text, sqlStr);
             return ds;
         }
@@ -1687,6 +1710,41 @@ FROM    dbo.Car_Serial_30UV uv
                 result.Add("isGuoChan", TypeParse.StrToInt(dtc.Rows[0]["CountryId"], 0) == 90 ? "True" : "False");
             }
 
+            return result;
+        }
+
+        /// <summary>
+        /// 获取车系级别，如果有二级级别取二级级别
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<int, string> GetAllSerialLevelsWithSecondLevel()
+        { 
+            var sql = @"SELECT cs.cs_Id,cs.cs_Name,CASE WHEN cs.cs_CarLevel = 'SUV' THEN CASE cs.ModelLevelSecond
+                                                                        WHEN 1 THEN '小型SUV'
+                                                                        WHEN 2 THEN '紧凑型SUV'
+                                                                        WHEN 3 THEN '中型SUV'
+                                                                        WHEN 4 THEN '中大型SUV'
+                                                                        WHEN 5 THEN '大型SUV'
+                                                                        ELSE 'SUV'
+                                                                      END
+                                     ELSE cs.cs_CarLevel
+                                END carlevel
+                          from Car_Serial cs
+                          where  isstate=1";
+            var ds = SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql);
+            Dictionary<int, string> result = new Dictionary<int, string>();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0] != null)
+            {
+                var dtp = ds.Tables[0];
+                foreach (DataRow item in dtp.Rows)
+                {
+                    int csId = TypeParse.StrToInt(item["cs_Id"], 0);
+                    if (csId != 0 && !result.ContainsKey(csId))
+                    {
+                        result.Add(csId, item["carlevel"] == DBNull.Value ? "" : item["carlevel"].ToString());
+                    }
+                }
+            }
             return result;
         }
         /// <summary>

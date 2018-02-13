@@ -59,6 +59,7 @@ namespace BitAuto.CarChannel.Common.MongoDB
                 {
                     fd.Add(f, 1);
                 }
+                fd.Add("_id",0);//排除自动生成的id
             }
             MongoClient client = new MongoClient(connectionString_Default);
             MongoServer server = client.GetServer();

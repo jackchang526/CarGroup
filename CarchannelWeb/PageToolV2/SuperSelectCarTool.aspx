@@ -411,20 +411,20 @@
                         <ul class="tj_list">
                             <li>
                                 <label>
-                                    <input type="checkbox" name="body" id="b_0" />不限</label></li>
+                                    <input type="radio" name="body" id="b_0" />不限</label></li>
                             <li>
                                 <label>
-                                    <input type="checkbox" name="body" id="b_1" />两厢
+                                    <input type="radio" name="body" id="b_1" />两厢
                                 </label>
                             </li>
                             <li>
                                 <label>
-                                    <input type="checkbox" name="body" id="b_2" />三厢
+                                    <input type="radio" name="body" id="b_2" />三厢
                                 </label>
                             </li>
                             <li>
                                 <label>
-                                    <input type="checkbox" name="body" id="b_8" />旅行版
+                                    <input type="radio" name="body" id="b_8" />旅行版
                                 </label>
                             </li>
                         </ul>
@@ -659,6 +659,34 @@
                             <li>
                                 <label>
                                     <input type="checkbox" id="more_134" />柴油</label></li>
+                        </ul>
+                    </dd>
+                </dl>
+                 <dl>
+                    <dt>续航里程</dt>
+                    <dd>
+                        <ul class="tj_list">
+                            <li>
+                                <label>
+                                    <input type="radio" name="batterylife" id="bl_0" />不限</label></li>
+                            <li>
+                                <label>
+                                    <input type="radio" name="batterylife" id="bl_1" />0-150km</label></li>
+                            <li>
+                                <label>
+                                    <input type="radio" name="batterylife" id="bl_2" />150-200km</label></li>
+                            <li>
+                                <label>
+                                    <input type="radio" name="batterylife" id="bl_3" />200-250km</label></li>
+                            <li>
+                                <label>
+                                    <input type="radio" name="batterylife" id="bl_4" />250-300km</label></li>
+                            <li>
+                                <label>
+                                    <input type="radio" name="batterylife" id="bl_5" />300-400km</label></li>
+                            <li>
+                                <label>
+                                    <input type="radio" name="batterylife" id="bl_6" />400km以上</label></li>
                         </ul>
                     </dd>
                 </dl>
@@ -1597,10 +1625,10 @@
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/jquery.pagination.min.js?v=20161215"></script>
     <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewv2/selectcarcommon.min.js?d=201711131107"></script>
     <%--<script type="text/javascript" src="/jsnewV2/selectcarcommon.js"></script>--%>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201712110"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/superselectcartoolv2.min.js?v=201712110"></script>
-  <%--  <script type="text/javascript" src="/jsnewV2/getareaprice.js?v=20170111243"></script>
-    <script type="text/javascript" src="/jsnewV2/superselectcartoolv2.js"></script>--%>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/getareaprice.min.js?v=201801120"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/jsnewV2/superselectcartoolv2.min.js?v=201801301114"></script>
+  <%--  <script type="text/javascript" src="/jsnewV2/getareaprice.js?v=20170111243"></script>--%>
+    <%--<script type="text/javascript" src="/jsnewV2/superselectcartoolv2.js"></script>--%>
     <script type="text/javascript">
         SuperSelectCarTool.Parameters = <%=configParaHtml%>;
         SuperSelectCarTool.initPageCondition();

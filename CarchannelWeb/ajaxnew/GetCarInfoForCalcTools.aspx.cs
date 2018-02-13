@@ -70,11 +70,13 @@ namespace BitAuto.CarChannel.CarchannelWeb.AjaxNew
 				// string traveltax=dict.ContainsKey(895) ? HttpUtility.UrlEncodeUnicode(dict[895]) : "";
 				// modified by chengl Mar.14.2012 
 				string traveltax = dict.ContainsKey(895) ? dict[895] : "";
-				//自动匹配排量 如果库中的数据为空则使用默认设置。
-				//座位数量，玻璃单独破碎险的进口或国产。
-				//购置税中排量对应车型库中的排量
-				//车船使用税和交强险中使用的座位数对应基本性能中的成员人数（含司机）
-				if (type == "json")
+                //add by 2018-01-23
+                string fuelType = dict.ContainsKey(578) ? dict[578] : "";
+                //自动匹配排量 如果库中的数据为空则使用默认设置。
+                //座位数量，玻璃单独破碎险的进口或国产。
+                //购置税中排量对应车型库中的排量
+                //车船使用税和交强险中使用的座位数对应基本性能中的成员人数（含司机）
+                if (type == "json")
 				{
 					sb.Append("[");
 					sb.Append("{");
@@ -83,7 +85,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.AjaxNew
 					sb.Append("\"engine\":" + engine + ",");
 					sb.AppendFormat("\"exhaustforfloat\":\"{0}\",", exhaustforfloat);
 					sb.AppendFormat("\"traveltax\":\"{0}\",", traveltax);
-					sb.Append("\"seatNum\":\"" + seatNum + "\"");
+					sb.AppendFormat("\"fuelType\":\"{0}\",", fuelType);
+                    sb.Append("\"seatNum\":\"" + seatNum + "\"");
 					sb.Append("}");
 					sb.Append("]");
 				}
@@ -95,7 +98,8 @@ namespace BitAuto.CarChannel.CarchannelWeb.AjaxNew
 					sb.Append("\"engine\":" + engine + ",");
 					sb.AppendFormat("\"exhaustforfloat\":\"{0}\",", exhaustforfloat);
 					sb.AppendFormat("\"traveltax\":\"{0}\",", traveltax);
-					sb.Append("\"seatNum\":\"" + seatNum + "\",");
+                    sb.AppendFormat("\"fuelType\":\"{0}\",", fuelType);
+                    sb.Append("\"seatNum\":\"" + seatNum + "\",");
 					sb.Append("\"referPrice\":" + referPrice);
 					sb.Append("};");
 				}

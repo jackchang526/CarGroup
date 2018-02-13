@@ -752,7 +752,7 @@ var eventNames = ['webkit', 'moz', 'o'];
     };
 
     //右侧附加选择层插件
-    $.fn.rightSwipe = function (options, $click) {
+    $.fn.rightSwipe = function (options, $click, $trigger) {
         var $temp = null;
         var setting = {
             isclick: null,
@@ -831,7 +831,11 @@ var eventNames = ['webkit', 'moz', 'o'];
                 }
             });
         }
-
+        if ($trigger) {
+            $trigger.on('openRight', function (ev, click) {
+                options.clickCallBack.call($(click), clickEnd);
+            })
+        }
         options = Object.extend(options, setting);
         if (this.length == 0) { return; }
         if (!$click) {
@@ -1428,6 +1432,30 @@ var eventNames = ['webkit', 'moz', 'o'];
                 $o.animate({ scrollLeft: $current[0].offsetLeft - $current[0].offsetWidth }, 30);
             })($(current));
         })
+    }
+     
+    //图片加载成功状态
+    $.fn.imgSucceed = function (options) {
+        var setting = {
+            end: null
+        }
+        options = Object.extend(options, setting);
+        var $this = this, index = 1;
+        var imgs = $this.find('img');
+        var len = imgs.length;
+        if (len > 0) {
+            imgs.each(function (index, curr) {
+                var $img = $(curr);
+                $img.onload(function () {
+                    if (index == (len - 1)) {
+                        options.end && options.end.call($this);
+                    }
+                    index++;
+                })
+            });
+        } else {
+            options.end && options.end.call($this);
+        }
     }
 })(jQuery);
 

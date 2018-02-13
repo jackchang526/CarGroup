@@ -94,7 +94,7 @@ namespace AppApi.Controllers
                 message = "ok",
                 data = new
                 {
-                    result = result
+                     result
                 }
             });
         }
@@ -179,7 +179,7 @@ namespace AppApi.Controllers
                 message = "ok",
                 data = new
                 {
-                    CarGroupList = CarGroupList
+                     CarGroupList
                 }
             });
         }
@@ -206,7 +206,7 @@ namespace AppApi.Controllers
                 //图库接口本地化更改
                 string xmlPicPath = System.IO.Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, serialInfo.CsID));
                 // 此 Cache 将通用于图片页和车型综述页
-                DataSet dsCsPic = CarSerialService.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialInfo.CsID, xmlPicPath, 60);
+                DataSet dsCsPic = CarSerialService.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialInfo.CsID, xmlPicPath, 10);
                 int picCount = 0;
                 if (dsCsPic != null && dsCsPic.Tables.Count > 0 && dsCsPic.Tables.Contains("A"))
                 {
@@ -238,6 +238,12 @@ namespace AppApi.Controllers
                         }
                     }
                 }
+                else {
+                    if (imgList[0] != null && imgList[0].ImageUrl != null)
+                    {
+                        coverImg = imgList[0].ImageUrl.Replace("_4.", "_3.");
+                    }
+                }
                 var serialEntity = (SerialEntity)DataManager.GetDataEntity(EntityType.Serial, serialInfo.CsID);
                 var tempCarList = serialEntity.CarList;//车型列表
                 string noSaleLastReferPrice = string.Empty;
@@ -259,7 +265,7 @@ namespace AppApi.Controllers
 
                                 if (min == 0 && max == 0)
                                 {
-                                    noSaleLastReferPrice = "暂无";
+                                    noSaleLastReferPrice = "暂无指导价";
                                 }
                                 else
                                 {
@@ -270,11 +276,13 @@ namespace AppApi.Controllers
                     }
                     else
                     {
-                        noSaleLastReferPrice = "暂无";
+                        noSaleLastReferPrice = "暂无指导价";
                     }
                 }
                 var serialCountry = CarSerialService.GetSerialCountryById(serialInfo.CsID);
                 var serialPriceDic = CarBasicService.GetReferPriceDicByServiceIds(cityId.GetValueOrDefault(0), new List<int> { serialInfo.CsID });
+                string statusText = CarSerialService.GetNewSerialIntoMarketText(serialInfo.CsID, true);
+                string statusStr = CarSerialService.GetNewSerialIntoMarketText(serialInfo.CsID, false);
                 result = new
                 {
                     csID = serialInfo.CsID,
@@ -282,15 +290,17 @@ namespace AppApi.Controllers
                     masterd = serialCountry == null ? 0 : serialCountry.MasterID,//大品牌logo
                     guidePriceRange = GetSerialReferPrice(serialPriceDic, serialInfo.CsID, serialInfo.CsPriceRange),//参考价区间 
                     referencePriceRange = noSaleLastReferPrice, //指导价区间
-                    coverImg = coverImg,// serialExt == null ? "" : serialExt.CoverImageUrl,
+                    whiteCoverImg = CarSerialService.GetImageUrlBySid(serialInfo.CsID),
+                    coverImg,// serialExt == null ? "" : serialExt.CoverImageUrl,
                     imgCount = picCount,//图片数量
                     oil = serialInfo.CsSummaryFuelCost,// serialInfo.MinOil.ToString("F1") == "0.0" || serialInfo.MaxOil.ToString("F1") == "0.0" ? "暂无" : serialInfo.MinOil.ToString("F1") + "-" + serialInfo.MaxOil.ToString("F1") + "L",//参考油耗（在销车款的 综合工况油耗的最低和最高 ）
                     country = serialCountry == null ? "" : serialCountry.Country,// serialInfo.CountryName,//国别
                     carType = serialInfo.CsLevel,//车型
                     shareUrl = string.Format("http://car.h5.yiche.com/{0}/?WT.mc_id=nbycapp", serialInfo.CsAllSpell),//分享地址 子品牌全拼
                     serialLink = string.Format("http://m.yichemall.com/car/detail/index?modelId={0}&source=ycapp-tmall-1", serialInfo.CsID),
-                    saleStatus = serialInfo.CsSaleState,
-                    newSaleStatus = CarSerialService.GetNewSerialIntoMarketText(serialInfo.CsID, true)
+                    saleStatus = CarSerialService.SwitchNewSaleStatus(serialInfo.CsSaleState),
+                    newSaleStatusText = string.IsNullOrWhiteSpace(statusText) ?serialInfo.CsSaleState: statusText,
+                    newSaleStatus= CarSerialService.SwitchNewSaleStatus(string.IsNullOrWhiteSpace(statusStr) ? serialInfo.CsSaleState : statusStr)
                 };
                 CacheManager.InsertCache(cacheKey, result, 6);
             }
@@ -333,7 +343,7 @@ namespace AppApi.Controllers
                             }
                             else
                             {
-                                saleState = "暂无报价";
+                                saleState = "暂无指导价";
                             }
                         }
                         else
@@ -527,45 +537,38 @@ namespace AppApi.Controllers
                 return JsonNet(new { success = false, status = 0, message = "未找到数据", data = "" }, JsonRequestBehavior.AllowGet);
             }
 
-            var taxPer = carProperty.GetValueOrDefault("traveltax");
+            var fuelType = carProperty.GetValueOrDefault("fuelType");
             var travePerTax = 1.0;
             var tax = "无";
-            switch (taxPer)
+            double purchasetax = 0.0854700854700855;
+            switch (fuelType)
             {
-                case "免征":
+                case "2":
+                case "2,":
+                case "4":
+                case "4,":
+                case "5":
+                case "5,":
                     tax = "免征";
                     travePerTax = 0;
+                    purchasetax = 0;
                     break;
-                case "减半":
-                    tax = "75折";
-                    travePerTax = 0.75;
-                    break;
-                case "待查":
-                    tax = "待查";
-                    travePerTax = 1.0;
-                    break;
-                default:
-                    tax = "无";
-                    travePerTax = 1.0;
-                    break;
+                    //case "1":
+                    //case "1,":
+                    //    tax = "75折";
+                    //    travePerTax = 0.75;
+                    //    break;
+                    //case "-1,":
+                    //case "-1":
+                    //    tax = "待查";
+                    //    travePerTax = 1.0;
+                    //    break;
+                    //default:
+                    //    tax = "无";
+                    //    travePerTax = 1.0;
+                    //    break;
             }
-            int taxrelief = TypeParse.StrToInt(carProperty.GetValueOrDefault("taxrelief"), 0);
             string strExhaust = carProperty.GetValueOrDefault("exhaustforfloat");
-            float floatExhaust = 0;
-            double purchasetax = 0.0854700854700855;
-            if (float.TryParse(strExhaust, out floatExhaust))
-            {
-                if (floatExhaust > 0 && floatExhaust <= (float)1.6)
-                {
-                    purchasetax = 0.064102564102564125;
-                }
-            }
-
-            if (taxrelief == 2)
-            {
-                purchasetax = 0;
-            }
-
             var result = new
             {
                 carID = id,
@@ -575,7 +578,7 @@ namespace AppApi.Controllers
                 traveltax = tax,
                 seatNum = carProperty.GetValueOrDefault("seatNum"),
                 purchasetax = purchasetax,
-                fuelType = TransferFuelType(carProperty.GetValueOrDefault("fuelType")),
+                fuelType = carProperty.GetValueOrDefault("fuelType"),
                 travePerTax = travePerTax
             };
             return JsonNet(new { success = true, status = 1, message = "成功", data = result }, JsonRequestBehavior.AllowGet);

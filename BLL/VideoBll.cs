@@ -59,22 +59,22 @@ namespace BitAuto.CarChannel.BLL
 			return list;
 		}
         */
-		/// <summary>
-		/// 获取多个分类视频
-		/// </summary>
-		/// <param name="serialId"></param>
-		/// <param name="categoryIdList">分类ID List</param>
-		/// <param name="top"></param>
-		/// <returns></returns>
-		public static List<VideoEntity> GetVideoBySerialIdAndCategoryId(int serialId, List<int> categoryIdList, int top)
-		{
-			List<VideoEntity> list = new List<VideoEntity>();
-			try
-			{
-				if (categoryIdList.Count <= 0) return list;
-				var ds = VideoDal.GetVideoBySerialIdAndCategoryId(serialId, categoryIdList, top);
-				foreach (DataRow dr in ds.Tables[0].Rows)
-				{
+        /// <summary>
+        /// 获取多个分类视频
+        /// </summary>
+        /// <param name="serialId"></param>
+        /// <param name="categoryIdList">分类ID List</param>
+        /// <param name="top"></param>
+        /// <returns></returns>
+        public static List<VideoEntity> GetVideoBySerialIdAndCategoryId(int serialId, List<int> tagList, int top)
+        {
+            List<VideoEntity> list = new List<VideoEntity>();
+            try
+            {
+                if (tagList.Count <= 0) return list;
+                var ds = VideoDal.GetVideoBySerialIdAndCategoryId(serialId, tagList, top);
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
                     list.Add(new VideoEntity()
                     {
                         VideoId = ConvertHelper.GetInteger(dr["VideoId"]),
@@ -82,22 +82,22 @@ namespace BitAuto.CarChannel.BLL
                         ImageLink = dr["ImageLink"].ToString(),
                         ShowPlayUrl = dr["ShowPlayUrl"].ToString(),
                         Source = ConvertHelper.GetInteger(dr["Source"])
-					});
-				}
-			}
-			catch (Exception ex)
-			{
-				CommonFunction.WriteLog(ex.ToString());
-			}
-			return list;
-		}
-		/// <summary>
-		/// 获取子品牌关联视频
-		/// </summary>
-		/// <param name="serialId"></param>
-		/// <param name="top"></param>
-		/// <returns></returns>
-		public static List<VideoEntity> GetVideoBySerialId(int serialId, int top = 5)
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonFunction.WriteLog(ex.ToString());
+            }
+            return list;
+        }
+        /// <summary>
+        /// 获取子品牌关联视频
+        /// </summary>
+        /// <param name="serialId"></param>
+        /// <param name="top"></param>
+        /// <returns></returns>
+        public static List<VideoEntity> GetVideoBySerialId(int serialId, int top = 5)
 		{
 			List<VideoEntity> list = new List<VideoEntity>();
 			try

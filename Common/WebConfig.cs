@@ -87,6 +87,7 @@ namespace BitAuto.CarChannel.Common
         public static string MongoDBConnectionString;
         public static string MongoDBDefaultDataBase;
         public static string MongoDBDefaultDataTable;
+        public static string SelectCarUrl;
 
 
         /// <summary>
@@ -227,6 +228,8 @@ namespace BitAuto.CarChannel.Common
             MongoDBConnectionString = ConfigurationManager.AppSettings["MongoDBConnectionString"];
             MongoDBDefaultDataBase = ConfigurationManager.AppSettings["MongoDBDefaultDataBase"];
             MongoDBDefaultDataTable = ConfigurationManager.AppSettings["MongoDBDefaultDataTable"];
+
+            SelectCarUrl = ConfigurationManager.AppSettings["SelectCarUrl"];
         }
 
 	}

@@ -9,8 +9,8 @@ using BitAuto.Utils;
 
 namespace BitAuto.CarChannel.DAL
 {
-	public class VideoDal
-	{
+    public class VideoDal
+    {
         /*
 		/// <summary>
 		/// 获取子品牌视频数据量
@@ -51,61 +51,72 @@ namespace BitAuto.CarChannel.DAL
 			return BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text, sql, _params);
 		}
         */
-		/// <summary>
-		/// 获取多个分类视频
-		/// </summary>
-		/// <param name="serialId"></param>
-		/// <param name="CategoryIdList">分类ID List</param>
-		/// <param name="top"></param>
-		/// <returns></returns>
-		public static DataSet GetVideoBySerialIdAndCategoryId(int serialId, List<int> CategoryIdList, int top)
-		{
-			string sql = string.Format(@"SELECT {0}
-												v.VideoId,ShortTitle,v.ImageLink,v.ShowPlayUrl,v.Source
-										FROM    dbo.Car_VideoToSerialV2 vs
-												LEFT JOIN dbo.Car_VideosV2 v ON vs.Id = v.Id
-										WHERE   v.CategoryId IN ({1}) AND vs.SerialId=@SerialId
-										ORDER BY v.Publishtime DESC",
-																					 top > 0 ? "TOP(@top)" : "",
-																					 string.Join(",", CategoryIdList.ToArray()));
-			SqlParameter[] _params ={
-			                          new SqlParameter("@SerialId",SqlDbType.Int),
-									   new SqlParameter("@top",SqlDbType.Int)
-			                      };
-			_params[0].Value = serialId;
-			_params[1].Value = top;
-			return BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text, sql, _params);
-		}
+        /// <summary>
+        /// 获取多个分类视频
+        /// </summary>
+        /// <param name="serialId"></param>
+        /// <param name="CategoryIdList">分类ID List</param>
+        /// <param name="top"></param>
+        /// <returns></returns>
+        public static DataSet GetVideoBySerialIdAndCategoryId(int serialId, List<int> tagList, int top)
+        {
+            //  //string sql = string.Format(@"SELECT {0}
+            //		v.VideoId,ShortTitle,v.ImageLink,v.ShowPlayUrl,v.Source
+            //FROM    dbo.Car_VideoToSerialV2 vs
+            //		INNER JOIN dbo.Car_VideosV2 v ON vs.Id = v.Id
+            //                                      INNER JOIN dbo.Car_VideoTags tag on v.id=tag.id
+            //WHERE   tag.tagid IN ({1}) AND vs.SerialId=@SerialId
+            //ORDER BY v.Publishtime DESC",
 
-		public static DataSet GetVideoBySerialId(int serialId, int top = 5)
-		{
-			string sql = string.Format(@"SELECT {0} v.VideoId,ShortTitle,v.ImageLink,v.ShowPlayUrl,v.Duration,v.Source
+            string sql = string.Format(@"SELECT {0}
+		                                        v.VideoId,ShortTitle,v.ImageLink,v.ShowPlayUrl,v.Source
+                                        FROM    Car_VideosV2 v
+                                        WHERE   Id IN (SELECT distinct vs.Id
+					                                   FROM  Car_VideoToSerialV2 vs
+					                                   INNER JOIN [dbo].[Car_VideoTags] tag ON vs.id=tag.id
+					                                    WHERE   serialId = @SerialId and tag.tagid in ({1}))
+                                    ORDER BY v.PublishTime DESC",
+                                    top > 0 ? "TOP(@top)" : "",
+                                    string.Join(",", tagList.ToArray()));
+            SqlParameter[] _params ={
+                                      new SqlParameter("@SerialId",SqlDbType.Int),
+                                       new SqlParameter("@top",SqlDbType.Int)
+                                  };
+            _params[0].Value = serialId;
+            _params[1].Value = top;
+            return BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text, sql, _params);
+        }
+
+        public static DataSet GetVideoBySerialId(int serialId, int top = 5)
+        {
+            string sql = string.Format(@"SELECT {0} v.VideoId,ShortTitle,v.ImageLink,v.ShowPlayUrl,v.Duration,v.Source
 											FROM    [dbo].[Car_VideoToSerialV2] vs
-													LEFT JOIN dbo.Car_VideosV2 v ON vs.Id = v.Id
+													INNER JOIN dbo.Car_VideosV2 v ON vs.Id = v.Id
 											WHERE   vs.SerialId = @SerialId
 											ORDER BY v.Publishtime DESC ", top > 0 ? "TOP(@top)" : "");
-			SqlParameter[] _params ={
-			                          new SqlParameter("@SerialId",SqlDbType.Int),
-									   new SqlParameter("@top",SqlDbType.Int)
-			                      };
-			_params[0].Value = serialId;
-			_params[1].Value = top;
-			return BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text, sql, _params);
-		}
-		/// <summary>
-		/// 根据视频编号获取视频
-		/// </summary>
-		/// <param name="videoId"></param>
-		/// <returns></returns>
-		public static DataSet GetVideoById(int videoId) {
-			string sql = @"SELECT [Title], [ShortTitle], [ImageLink], [ShowPlayUrl], [Duration], [Source]
+            SqlParameter[] _params ={
+                                      new SqlParameter("@SerialId",SqlDbType.Int),
+                                       new SqlParameter("@top",SqlDbType.Int)
+                                  };
+            _params[0].Value = serialId;
+            _params[1].Value = top;
+            return BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text, sql, _params);
+        }
+        /// <summary>
+        /// 根据视频编号获取视频
+        /// </summary>
+        /// <param name="videoId"></param>
+        /// <returns></returns>
+        public static DataSet GetVideoById(int videoId)
+        {
+            string sql = @"SELECT [Title], [ShortTitle], [ImageLink], [ShowPlayUrl], [Duration], [Source]
 				FROM    [dbo].[Car_VideosV2]
 				WHERE   VideoId = @VideoId";
-			SqlParameter[] _params ={
-			                          new SqlParameter("@VideoId",SqlDbType.Int)
-			                      };
-			_params[0].Value = videoId;
-			return BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text, sql, _params);
-		}
-	}
+            SqlParameter[] _params ={
+                                      new SqlParameter("@VideoId",SqlDbType.Int)
+                                  };
+            _params[0].Value = videoId;
+            return BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.CarDataUpdateConnectionString, CommandType.Text, sql, _params);
+        }
+    }
 }

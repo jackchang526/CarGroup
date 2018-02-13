@@ -396,6 +396,23 @@ var SuperSelectCarTool = {
                         }
                     }
                     break;
+                case "bl":
+                    if (SuperSelectCarTool.Parameters.toString().indexOf('bl=') > -1) {
+                        for (var i = 0, l = SuperSelectCarTool.Parameters.length; i < l; i++) {
+                            var key = "|" + SuperSelectCarTool.Parameters[i];
+                            if (key.indexOf("|bl=") > -1) {
+                                var delId = SuperSelectCarTool.Parameters[i].split('=')[1]
+                                SuperSelectCarTool.Parameters.splice(i, 1);
+                                SuperSelectCarTool.UpdateParameters(false, 'bl_' + delId, conType);
+                                break;
+                            }
+                        }
+                    }
+                    if (conStr != 0) {
+                        SuperSelectCarTool.Parameters.push(conType + "=" + conStr);
+                        SuperSelectCarTool.UpdateParameters(true, id, conType);
+                    }
+                    break;
                 case "more":
                     //进气形式
                     if ((conStr > 99 && conStr < 104) || conStr == 0) {
@@ -444,17 +461,17 @@ var SuperSelectCarTool = {
                         SuperSelectCarTool.AddMoreCondition(conType, conStr);
                     }
                     //行李箱
-                    else if (conStr == 229 || conStr == 230) {
-                        if (conStr == 229) {
-                            SuperSelectCarTool.RemoveMoreCondition(conType, 230);
-                            SuperSelectCarTool.UpdateParameters(false, 'more_' + 230, conType);
-                        }
-                        else {
-                            SuperSelectCarTool.RemoveMoreCondition(conType, 229);
-                            SuperSelectCarTool.UpdateParameters(false, 'more_' + 229, conType);
-                        }
-                        SuperSelectCarTool.AddMoreCondition(conType, conStr);
-                    }
+                    //else if (conStr == 229 || conStr == 230) {
+                    //    if (conStr == 229) {
+                    //        SuperSelectCarTool.RemoveMoreCondition(conType, 230);
+                    //        SuperSelectCarTool.UpdateParameters(false, 'more_' + 230, conType);
+                    //    }
+                    //    else {
+                    //        SuperSelectCarTool.RemoveMoreCondition(conType, 229);
+                    //        SuperSelectCarTool.UpdateParameters(false, 'more_' + 229, conType);
+                    //    }
+                    //    SuperSelectCarTool.AddMoreCondition(conType, conStr);
+                    //}
                     else {
                         if (element.checked) {
                             SuperSelectCarTool.AddMoreCondition(conType, conStr);
@@ -573,6 +590,9 @@ var SuperSelectCarTool = {
                     idTemp = SuperSelectCarTool.InitFuelConsumption(idTemp);
                     SuperSelectCarTool.Parameters[i] = typeTemp + "=" + idTemp
                     break;
+                case "bl":
+                    idTemp = SuperSelectCarTool.InitBatteryLife(idTemp);
+                    SuperSelectCarTool.Parameters[i] = typeTemp + "=" + idTemp
                 default:
                     break;
 
@@ -684,6 +704,31 @@ var SuperSelectCarTool = {
                 break;
         }
         return priceId
+    }
+    //续航里程
+    , InitBatteryLife: function (blStr) {
+        var blId = "";
+        switch (blStr) {
+            case "0-150":
+                blId = "1";
+                break;
+            case "150-200":
+                blId = "2";
+                break;
+            case "200-250":
+                blId = "3";
+                break;
+            case "250-300":
+                blId = "4";
+                break;
+            case "300-400":
+                blId = "5";
+                break;
+            case "400-9999":
+                blId = "6";
+                break;
+        }
+        return blId;
     }
     //初始化排量
     , InitDisplacement: function (disStr) {
@@ -812,6 +857,9 @@ var SuperSelectCarTool = {
                         return;
                     }
                 }
+            }
+            else if (type == "bl") {
+
             }
             var parameterList = getElementById("parameters");
             if (parameterList) {
@@ -1101,6 +1149,26 @@ var SuperSelectCarTool = {
                 }
                 else if (idStr == 6) {
                     valueStr = "15-9999";
+                }
+                break;
+            case "bl":
+                if (idStr == 1) {
+                    valueStr = "0-150";
+                }
+                else if (idStr == 2) {
+                    valueStr = "150-200";
+                }
+                else if (idStr == 3) {
+                    valueStr = "200-250";
+                }
+                else if (idStr == 4) {
+                    valueStr = "250-300";
+                }
+                else if (idStr == 5) {
+                    valueStr = "300-400";
+                }
+                else if (idStr == 6) {
+                    valueStr = "400-9999";
                 }
                 break;
             default:

@@ -441,7 +441,7 @@ namespace BitAuto.CarChannel.CarchannelWeb.PageCar
 			StringBuilder sbCarList = new StringBuilder();
 			//图库接口本地化更改 by sk 2012.12.21
 			string xmlPicUrl = System.IO.Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, cbe.Cs_Id));
-			DataSet dsCsPic = this.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + cbe.Cs_Id.ToString(), xmlPicUrl, 60);
+			DataSet dsCsPic = this.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + cbe.Cs_Id.ToString(), xmlPicUrl, 10);
 			//DataSet dsCsPic = this.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + cbe.Cs_Id.ToString(), string.Format(WebConfig.PhotoService, cbe.Cs_Id.ToString()), 60);
 			// 子品牌分类
 			if (dsCsPic != null && dsCsPic.Tables.Count > 0 && dsCsPic.Tables.Contains("A") && dsCsPic.Tables["A"].Rows.Count > 0)

@@ -41,7 +41,7 @@
         <nav class="header-main-nav">
             <div class="container">
                 <div class="col-auto left secondary">
-                    <ul class="list">
+                    <ul class="list list-justified">
                         <%=LevelHtml %>
                     </ul>
                 </div>

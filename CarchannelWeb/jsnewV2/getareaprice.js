@@ -33,11 +33,11 @@ function GetSerialAreaPriceRange() {
                 }               
                 if (data[0].ReturnType == 1) {
                     $("#cs-area-price").html(result);
-                    $("#cs-area-name").html(GlobalSummaryConfig.CityName + "参考价");
+                    $("#cs-area-name").html(GlobalSummaryConfig.CityName + "参考价：");
                 }
                 else if (data[0].ReturnType == 2) {
                     $("#cs-area-price").html(result);
-                    $("#cs-area-name").html("全国参考价");
+                    $("#cs-area-name").html("全国参考价：");
                 }
                 SetDefaultDownPaymentHidden(minPrice);
             }
@@ -64,6 +64,7 @@ function GetCarAreaPriceList(ids) {
         url: "http://frontapi.easypass.cn/ReferPriceAPI/GetReferPriceByCityCarFront/" + cityId + "/" + ids + "",
         cache: true,
         dataType: "jsonp",
+        jsonpCallback: "GetCarAreaPriceListCallback",
         success: function (data) {
             if (data != null && typeof data != "undefined" && data.length > 0) {
                 var isLocal = false;
@@ -272,10 +273,10 @@ function GetCarAreaPriceCallBack(carIds) {
     var result = GroupIds(carIds, 30);
     for (var i = 0; i < result.length; i++) {
         var ids = result[i].join(',');
-        GetCarAreaPriceListCallBack(ids);
+        GetCarAreaPriceListForCSCompare(ids);
     }
 }
-function GetCarAreaPriceListCallBack(ids) {
+function GetCarAreaPriceListForCSCompare(ids) {
     var cityId, cityName;
     if (typeof (bit_locationInfo) != "undefined") {
         cityId = bit_locationInfo.cityId;
@@ -291,6 +292,7 @@ function GetCarAreaPriceListCallBack(ids) {
         url: "http://frontapi.easypass.cn/ReferPriceAPI/GetReferPriceByCityCarFront/" + cityId + "/" + ids + "",
         cache: true,
         dataType: "jsonp",
+        jsonpCallback: "GetCarAreaPriceListForCSCompareCallback",
         success: function (data) {
             if (data != null && typeof data != "undefined" && data.length > 0) {
                 var isLocal = false;

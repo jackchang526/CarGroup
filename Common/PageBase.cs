@@ -430,7 +430,7 @@ namespace BitAuto.CarChannel.Common
                 sql += " where cs.isState=1 and cb.isState=1 and cmb.isState=1 and cs.CsSaleState<>'停销' ";
                 sql += " order by cmb.spell,cmb.bs_id,cs.cs_showname ";
                 ds = BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql);
-                CacheManager.InsertCache(catchkey, ds, 60);
+                CacheManager.InsertCache(catchkey, ds, 30);
             }
             else
             {
@@ -447,15 +447,15 @@ namespace BitAuto.CarChannel.Common
             CacheManager.GetCachedData(catchkey, out allSErialInfo);
             if (allSErialInfo == null)
             {
-				string sql = " select  cs.cs_id,cs.cs_name,cs.cs_ShowName,cs.allSpell,cs.cs_Virtues,cs.cs_Defect,cs.CsSaleState,cs.cs_CarLevel,cs.CsBodyForm,cs.cs_Url,";
-				sql += " cs.CsPurpose,bat.bitautoTestURL,cb.cb_name,csi.Body_Doors,csi.Engine_Exhaust,csi.UnderPan_Num_Type,csi.Car_RepairPolicy CsRepairPolicy ";
+                string sql = " select  cs.cs_id,cs.cs_name,cs.cs_ShowName,cs.allSpell,cs.cs_Virtues,cs.cs_Defect,cs.CsSaleState,cs.cs_CarLevel,cs.CsBodyForm,cs.cs_Url,";
+                sql += " cs.CsPurpose,bat.bitautoTestURL,cb.cb_name,csi.Body_Doors,csi.Engine_Exhaust,csi.UnderPan_Num_Type,csi.Car_RepairPolicy CsRepairPolicy ";
                 sql += " from dbo.Car_Serial cs ";
                 sql += " left join dbo.Car_Serial_Item csi on cs.cs_id = csi.cs_id ";
                 sql += " left join dbo.Car_Brand cb on cs.cb_id = cb.cb_id ";
                 sql += " left join dbo.BitAutoTest bat on cs.cs_id = bat.cs_id";
                 sql += " where cs.isState=1 ";
                 ds = BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql);
-                CacheManager.InsertCache(catchkey, ds, 60);
+                CacheManager.InsertCache(catchkey, ds, 20);
             }
             else
             {
@@ -622,17 +622,17 @@ namespace BitAuto.CarChannel.Common
             if (hotCarInfoByCsID == null)
             {
                 string sql = @" SELECT car.car_id, car.car_name, car.car_ReferPrice,car.Car_YearType, ccp.PVSum AS Pv_SumNum
-								 FROM   dbo.Car_Basic car WITH ( NOLOCK )
-										LEFT JOIN Car_serial cs WITH ( NOLOCK ) ON car.cs_id = cs.cs_id
-										LEFT JOIN Car_Basic_PV ccp WITH ( NOLOCK ) ON car.Car_Id = ccp.CarId
-								 WHERE  car.isState = 1
-										AND cs.isState = 1
-										AND car.Car_SaleState <> '停销'
-										AND car.cs_id = @csID
-								 ORDER BY Pv_SumNum DESC ";
+            FROM   dbo.Car_Basic car WITH ( NOLOCK )
+            	LEFT JOIN Car_serial cs WITH ( NOLOCK ) ON car.cs_id = cs.cs_id
+            	LEFT JOIN Car_Basic_PV ccp WITH ( NOLOCK ) ON car.Car_Id = ccp.CarId
+            WHERE  car.isState = 1
+            	AND cs.isState = 1
+            	AND car.Car_SaleState <> '停销'
+            	AND car.cs_id = @csID
+            ORDER BY Pv_SumNum DESC ";
                 SqlParameter[] _param ={
-                                      new SqlParameter("@csID",SqlDbType.Int)
-                                  };
+                                         new SqlParameter("@csID",SqlDbType.Int)
+                                     };
                 _param[0].Value = csID;
                 ds = BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, _param);
                 CacheManager.InsertCache(catchkey, ds, 60);
@@ -641,7 +641,6 @@ namespace BitAuto.CarChannel.Common
             {
                 ds = (DataSet)hotCarInfoByCsID;
             }
-
             return ds;
         }
 
@@ -1515,7 +1514,7 @@ namespace BitAuto.CarChannel.Common
                     + " order by t1.uvCount desc";
 
                 ds = BitAuto.Utils.Data.SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql);
-                CacheManager.InsertCache(catchkey, ds, 60);
+                CacheManager.InsertCache(catchkey, ds, 10);
             }
             else
             {
@@ -3411,6 +3410,64 @@ namespace BitAuto.CarChannel.Common
         }
 
         /// <summary>
+        /// 获取封面图（默认实拍图优先，没有实拍的话,出白底图）
+        /// </summary>
+        /// <param name="whiteFirst">是否优先出白底图</param>
+        /// <returns></returns>
+        public Dictionary<int, string> GetAllSerialCoverPicURL(bool whiteFirst = false)
+        {
+            Dictionary<int, string> dic = new Dictionary<int, string>();
+            string catchkey = "PageBase_GetAllSerialCoverPicURL";
+            object getAllSerialPicURL = null;
+            CacheManager.GetCachedData(catchkey, out getAllSerialPicURL);
+            if (getAllSerialPicURL == null)
+            {
+                XmlDocument xmlDoc = this.GetAllSerialConverImgAndCount();
+                if (xmlDoc != null)
+                {
+                    XmlNodeList serialNodeList = xmlDoc.SelectNodes("/SerialList/Serial");
+                    if (serialNodeList != null && serialNodeList.Count > 0)
+                    {
+                        foreach (XmlNode serialNode in serialNodeList)
+                        {
+                            int csid = ConvertHelper.GetInteger(serialNode.Attributes["SerialId"].Value);
+                            string csNewPic = ConvertHelper.GetString(serialNode.Attributes["ImageUrl2"].Value);
+                            string csOldPic = ConvertHelper.GetString(serialNode.Attributes["ImageUrl"].Value);
+                            csNewPic = string.IsNullOrEmpty(csNewPic) ? string.Empty : string.Format(csNewPic, 2);
+                            csOldPic = string.IsNullOrEmpty(csOldPic) ? string.Empty : string.Format(csOldPic, 2);
+                            if (whiteFirst)
+                            {
+                                // 新图的
+                                if (!string.IsNullOrEmpty(csNewPic) && !dic.ContainsKey(csid))
+                                { dic.Add(csid, csNewPic); }
+                                else if (!string.IsNullOrEmpty(csOldPic) && !dic.ContainsKey(csid))
+                                { dic.Add(csid, csOldPic); }
+                                else if (!dic.ContainsKey(csid))
+                                { dic.Add(csid, WebConfig.DefaultCarPic); }
+                            }
+                            else
+                            {
+                                // 新图的
+                                if (!string.IsNullOrEmpty(csOldPic) && !dic.ContainsKey(csid))
+                                { dic.Add(csid, csOldPic); }
+                                else if (!string.IsNullOrEmpty(csNewPic) && !dic.ContainsKey(csid))
+                                { dic.Add(csid, csNewPic); }
+                                else if (!dic.ContainsKey(csid))
+                                { dic.Add(csid, WebConfig.DefaultCarPic); }
+                            } 
+                        }
+                    }
+                }
+                CacheManager.InsertCache(catchkey, dic, WebConfig.CachedDuration);
+            }
+            else
+            {
+                dic = (Dictionary<int, string>)getAllSerialPicURL;
+            }
+            return dic;
+        }
+
+        /// <summary>
         /// 取子品牌默认图及图片总数
         /// </summary>
         /// <param name="csID">车系id</param>
@@ -3728,7 +3785,7 @@ namespace BitAuto.CarChannel.Common
                 XmlDocument xmlDoc = new XmlDocument();
                 string photoDataPath = Path.Combine(PhotoImageConfig.SavePath, PhotoImageConfig.SerialCoverImageAndCountPath);
                 xmlDoc.Load(photoDataPath);
-                CacheManager.InsertCache(cacheKey, xmlDoc, 60);
+                CacheManager.InsertCache(cacheKey, xmlDoc, WebConfig.CachedDuration);
                 return xmlDoc;
             }
             else
@@ -6247,7 +6304,7 @@ namespace BitAuto.CarChannel.Common
         /// </summary>
         /// <returns></returns>
         public DataSet GetAllSerialReferPrice()
-        {           
+        {
             string catchkey = "AllCsReferPriceRange";
             object allCsReferPriceRange = null;
             DataSet ds = new DataSet();
@@ -6264,7 +6321,7 @@ namespace BitAuto.CarChannel.Common
                     CacheManager.InsertCache(catchkey, ds, 60);
                 }
                 catch
-                { }               
+                { }
             }
             else
             {

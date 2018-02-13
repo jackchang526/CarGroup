@@ -106,13 +106,13 @@ namespace H5Web.handlers
                             }
                         }
                     }
-                    else if (dEx > 0 && dEx <= 1.6)
-                    {
-                        if (!dictCarTaxTag.ContainsKey(item.CarID))
-                        {
-                            dictCarTaxTag.Add(item.CarID, "减税");
-                        }
-                    }
+                    //else if (dEx > 0 && dEx <= 1.6)
+                    //{
+                    //    if (!dictCarTaxTag.ContainsKey(item.CarID))
+                    //    {
+                    //        dictCarTaxTag.Add(item.CarID, "减税");
+                    //    }
+                    //}
                 }
 
                 var serializeObject = JsonConvert.SerializeObject(new

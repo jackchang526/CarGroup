@@ -100,8 +100,9 @@
                             <li><a href="http://photo.m.yiche.com/serial/@(serialEntity.Id)/" data-channelid="27.23.716"><strong>图片</strong></a></li>
                             <li><a href="http://dealer.m.yiche.com/0/@(serialEntity.Id)/2/" data-channelid="27.23.1936"><strong>经销商</strong></a></li>
                             <li><a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/wenzhang/" data-channelid="27.23.717"><strong>文章</strong></a></li>
-                            <li><a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/koubei/" data-channelid="27.23.718"><strong>口碑</strong></a></li>
                             <li><a href="http://v.m.yiche.com/pv/@(serialEntity.AllSpell).html" data-channelid="27.23.2185"><strong>视频</strong></a></li>
+                            <li><a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/koubei/" data-channelid="27.23.718"><strong>口碑</strong></a></li>
+                            <li><a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/youhao/" data-channelid="27.23.719"><strong>油耗</strong></a></li>
                             <li><a href="@(ViewData["BaaUrl"])" data-channelid="27.23.720"><strong>社区</strong></a></li>
                             <li><a href="http://m.taoche.com/@(serialEntity.AllSpell)/?ref=Hlht_esc" data-channelid="27.23.721"><strong>二手车</strong></a></li>
                         </ul>
@@ -150,6 +151,7 @@
                         <li>
                             <a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/wenzhang/" data-channelid="27.23.1371"><strong>文章</strong></a>
                         </li>
+                        <li><a href="http://v.m.yiche.com/pv/@(serialEntity.AllSpell).html" data-channelid="27.23.2277"><strong>视频</strong></a></li>
                         <li>
                             <a href="http://car.m.yiche.com/@(serialEntity.AllSpell)/koubei/" data-channelid="27.23.1372"><strong>口碑</strong></a>
                         </li>
@@ -962,7 +964,7 @@
 
 
     <script type="text/javascript" src="http://image.bitautoimg.com/mergejs,s=carchannel/wirelessjsv2/commonjs.js,carchannel/wirelessjsv2/city348IDMapName.js"></script>
-    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/cssummaryv2.min.js?v=201712111430"></script>
+    <script type="text/javascript" src="http://image.bitautoimg.com/carchannel/wirelessjsv2/cssummaryv2.min.js?v=201802050920"></script>
     @*<script type="text/javascript" src="/js/cssummaryv2.js?v=20170303"></script>*@
     <script type="text/javascript" src="http://js.inc.baa.bitautotech.com/c/c.js?s=ibt_userCars"></script>
     <script src="http://image.bitautoimg.com/uimg/wap/js/idangerous.swiper-2.0.min.js"></script>
@@ -1215,7 +1217,7 @@
             // 首次获取贷款数据
             getLoanData();
             //限时抢购ad
-            // LoadXianShiQiang();
+            LoadXianShiQiang();
             });
 
     </script>

@@ -1851,7 +1851,7 @@ namespace BitAuto.CarChannel.BLL
                     // old ->非停销子品牌显示非停销车型颜色
                     // sic.ColorList = GetSerialColors(serialId, carYear, false);
                 }
-                CacheManager.InsertCache(catchKeyCard, sic, 60);
+                CacheManager.InsertCache(catchKeyCard, sic, 20);
             }
             else
             {
@@ -2633,6 +2633,50 @@ namespace BitAuto.CarChannel.BLL
 
         /// <summary>
         /// 获取主页的热门车型代码
+        /// 在销和待销
+        /// </summary>
+        /// <returns></returns>
+        public List<SerialEntity> GetHotSerialByNum(int num)
+        {
+            string cacheKey = "homepage_hotserialv3 + top" + num;
+            object cacheObj = CacheManager.GetCachedData(cacheKey);
+            List<SerialEntity> list = null;
+            if (cacheObj != null)
+            {
+                list = (List<SerialEntity>)cacheObj;
+            }
+            if (list == null)
+            {
+                DataSet ds = new PageBase().GetAllSerialNewly30Day();
+                if (ds == null || ds.Tables.Count == 0 || ds.Tables[0].Rows.Count == 0)
+                    return list;
+                list = new List<SerialEntity>();
+
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    //t1.cs_ID as cs_ID,t1.uvCount as Pv_SumNum ,cs.cs_CarLevel,cs.allspell,cs.cs_name,cs.cs_showname,cs.cssaleState,cs.cs_seoname
+                    string saleState = dr["cssaleState"].ToString();
+                    if (saleState != "在销" && saleState != "待销") continue;
+                    SerialEntity serialEntity = new SerialEntity();
+                    serialEntity.Id = ConvertHelper.GetInteger(dr["cs_ID"]);
+                    serialEntity.PvNum = ConvertHelper.GetInteger(dr["Pv_SumNum"]);
+                    serialEntity.AllSpell = dr["allspell"].ToString();
+                    serialEntity.ShowName = dr["cs_showname"].ToString();
+                    //serialEntity.SaleState = saleState;
+                    list.Add(serialEntity);
+                    if(list.Count == num)
+                    {
+                        break;
+                    }
+                }
+                CacheManager.InsertCache(cacheKey,list,WebConfig.CachedDuration);
+            }
+            return list;
+        }
+
+        /*
+        /// <summary>
+        /// 获取主页的热门车型代码
         /// </summary>
         /// <returns></returns>
         public string GetHomepageHotSerialV2(int num)
@@ -2689,7 +2733,7 @@ namespace BitAuto.CarChannel.BLL
             }
             return htmlStr;
         }
-
+        */
         #region 获取子品牌广告
         /// <summary>
         /// 获取页面子品牌广告位
@@ -3015,7 +3059,7 @@ namespace BitAuto.CarChannel.BLL
             }
             return String.Concat(htmlList.ToArray());
         }
-
+        /*
         /// <summary>
         /// 获取热门车型的代码
         /// </summary>
@@ -3059,7 +3103,7 @@ namespace BitAuto.CarChannel.BLL
             }
             return String.Concat(htmlList.ToArray());
         }
-
+        */
 
         /// <summary>
         /// 获取分段报价页的热门新车
@@ -3797,7 +3841,7 @@ namespace BitAuto.CarChannel.BLL
                     string xmlUrl = System.IO.Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialStandardImagePath, csID));
                     doc.Load(xmlUrl);
                     //doc.Load(string.Format(WebConfig.SerialPhoto12ImageInterface, csID.ToString()));
-                    CacheManager.InsertCache(cacheKey, doc, 60);
+                    CacheManager.InsertCache(cacheKey, doc, WebConfig.CachedDuration);
                 }
                 catch (Exception ex)
                 { }
@@ -4752,6 +4796,49 @@ namespace BitAuto.CarChannel.BLL
                 CacheManager.InsertCache(cacheKey, ds, 60);
             }
             return ds;
+        }
+        /// <summary>
+        /// 取所有子品牌颜色RGB值
+        /// </summary>
+        /// <param name="csId">车系ID</param>
+        /// <param name="type">类型0:车身有色值，1：内饰，2 车身没有色值，3：车身有没有色值都取出来</param>
+        /// <returns></returns>
+        public Dictionary<string, SerialColorStruct> GetAllSerialColorRGB(int csId, int type)
+        {
+            string cacheKey = string.Format("GetAllSerialColorRGB_{0}_{1}", csId, type);
+            object obj = CacheManager.GetCachedData(cacheKey);
+            if (obj != null)
+            {
+                return (Dictionary<string, SerialColorStruct>)obj;
+            }
+            else
+            {
+                Dictionary<string, SerialColorStruct> dicCsColor = new Dictionary<string, SerialColorStruct>();
+
+                DataSet dsCsRGB = csd.GetAllSerialColorRGB(csId, type);
+                if (dsCsRGB != null && dsCsRGB.Tables.Count > 0 && dsCsRGB.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow dr in dsCsRGB.Tables[0].Rows)
+                    {
+                        int csid = int.Parse(dr["cs_id"].ToString());
+                        string colorName = dr["colorName"].ToString().Trim();
+                        SerialColorStruct scs = new SerialColorStruct();
+                        scs.AutoID = int.Parse(dr["autoID"].ToString());
+                        scs.CsID = csid;
+                        scs.ColorName = colorName;
+                        scs.ColorRGB = dr["colorRGB"].ToString().Trim();
+                        // 包含子品牌
+                        if (!dicCsColor.ContainsKey(colorName))
+                        {
+                            // 不包含颜色名
+                            dicCsColor.Add(colorName, scs);
+                        }
+                    }
+                }
+
+                CacheManager.InsertCache(cacheKey, dicCsColor, WebConfig.CachedDuration);
+                return dicCsColor;
+            }
         }
 
         /// <summary>
@@ -6066,7 +6153,7 @@ namespace BitAuto.CarChannel.BLL
                         }
                     }
                 }
-                CacheManager.InsertCache(cacheKey, dic, 60);
+                CacheManager.InsertCache(cacheKey, dic, WebConfig.CachedDuration);
             }
             return dic;
         }
@@ -7916,7 +8003,8 @@ namespace BitAuto.CarChannel.BLL
         public List<XmlElement> GetSeialSellRank(string level)
         {
             Dictionary<string, List<XmlElement>> dic = null;
-            Dictionary<int, XmlElement> items = GetSeialSellRank();
+            string rankMonth = string.Empty;
+            Dictionary<int, XmlElement> items = GetSeialSellRank(out rankMonth);
             if (items != null && items.Count > 0)
             {
                 dic = new Dictionary<string, List<XmlElement>>();
@@ -7938,19 +8026,83 @@ namespace BitAuto.CarChannel.BLL
             return dic != null && dic.ContainsKey(level) ? dic[level] : null;
         }
 
+        public List<XmlElement> GetSerialSellRankForPage(string level, int startIndex, int pageSize, out int allCount)
+        {
+            List<XmlElement> dic = null;
+            string rankMonth = string.Empty;
+            Dictionary<int, XmlElement> items = GetSeialSellRank(out rankMonth);
+            var l = items.Where(item => item.Value.Attributes["Level"].InnerText == level).ToList();
+            allCount = l.Count; 
+            if (allCount > startIndex)
+            {
+                dic = new List<XmlElement>();
+            }
+            else
+            {
+                return null;
+            }
+            l.Skip(startIndex).Take(pageSize).ToList().ForEach(item => { dic.Add(item.Value); });
+            return dic;
+        }
+        
+        /// <summary>
+        /// 新能源销量排行榜
+        /// </summary>
+        /// <param name="tab"></param>
+        /// <param name="startIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="allCount"></param>
+        /// <returns></returns>
+        public List<XmlElement> GetNewEnergySerialSellRankForPage(string tab, int startIndex, int pageSize, out int allCount)
+        {
+            List<XmlElement> dic = null;
+            string rankMonth = string.Empty;
+            Dictionary<int, XmlElement> items = GetSeialSellRank(out rankMonth);
+            List<KeyValuePair<int, XmlElement>> l = null;
+            if (tab == "elec")
+            {
+                l = items.Where(item => item.Value.Attributes["IsElec"].InnerText != "0").ToList();
+            }
+            else if (tab == "hybrid")
+            {
+                l = items.Where(item => item.Value.Attributes["IsHybrid"].InnerText != "0").ToList();
+            }
+
+            if (l == null || l.Count <= 0)
+            {
+                allCount = 0;
+                return null;
+            }
+            allCount = l.Count;
+            if (allCount > startIndex)
+            {
+                dic = new List<XmlElement>();
+            }
+            else
+            {
+                return null;
+            }
+            l.Skip(startIndex).Take(pageSize).ToList().ForEach(item => { dic.Add(item.Value); });
+            return dic;
+        }
+
         /// <summary>
 		/// 车系销量排行榜
 		/// </summary>
 		/// <returns></returns>
-		public Dictionary<int, XmlElement> GetSeialSellRank()
+		public Dictionary<int, XmlElement> GetSeialSellRank(out string rankMonth)
         {
             string cacheKey = "Car_SerialBll_GetSeialSellRank";
+            string cacheKeyMonth = "Car_SerialBll_GetSeialSellRank_Month";
             object obj = CacheManager.GetCachedData(cacheKey);
+            object objMonth = CacheManager.GetCachedData(cacheKeyMonth);
             //List<XmlElement> list = null;
             Dictionary<int, XmlElement> dic = null;
+            rankMonth = string.Empty;
             if (obj != null)
             {
                 dic = (Dictionary<int, XmlElement>)obj;
+                rankMonth = objMonth.ToString();
             }
             else
             {
@@ -7960,7 +8112,17 @@ namespace BitAuto.CarChannel.BLL
                     //list = new List<XmlElement>();
                     dic = new Dictionary<int, XmlElement>();
                     XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(filePath);
-                    XmlNodeList items = xmlDoc.SelectNodes("/Root/Item");
+                    if (xmlDoc == null)
+                    {
+                        rankMonth = string.Empty;
+                        return null;
+                    }
+                    XmlNode root = xmlDoc.SelectSingleNode("/Root");
+                    if (root != null)
+                    {
+                        rankMonth = root.Attributes["Month"].Value;
+                    }
+                    XmlNodeList items = root.SelectNodes("/Item");
                     if (items != null && items.Count > 0)
                     {
                         foreach (XmlElement ele in items)
@@ -7974,10 +8136,43 @@ namespace BitAuto.CarChannel.BLL
                         }
                     }
                     CacheManager.InsertCache(cacheKey, dic, 60);
+                    CacheManager.InsertCache(cacheKeyMonth, rankMonth, 60);
                 }
             }
             return dic;
         }
+
+
+        /// <summary>
+        /// 车系销量排行榜
+        /// </summary>
+        /// <returns></returns>
+        public string GetSeialSellRankMonth()
+        {
+            string cacheKey = "Car_SerialBll_GetSeialSellRankMonth";
+            object obj = CacheManager.GetCachedData(cacheKey);
+            if (obj != null)
+            {
+                return (string)obj;
+            }
+            else
+            {
+                string filePath = Path.Combine(WebConfig.DataBlockPath, @"Data\SerialSet\SerialSaleRank.xml");
+                string month = "";
+                if (File.Exists(filePath))
+                {
+                    XmlDocument xmlDoc = CommonFunction.ReadXmlFromFile(filePath);
+                    XmlNode item = xmlDoc.SelectSingleNode("/Root");
+                    if (item != null)
+                    {
+                        month = item.Attributes["Month"].InnerText;
+                    }
+                    CacheManager.InsertCache(cacheKey, month, 60);
+                }
+                return month;
+            }
+        }
+
         /// <summary>
         ///  易湃的销量最高的suv车型接口数据
         /// </summary>
@@ -8535,7 +8730,7 @@ namespace BitAuto.CarChannel.BLL
                         , dr["cs_id"]
                         , dr["packagename"]
                         , ConvertHelper.GetString(dr["packageprice"]).Trim()
-                        , StringHelper.SqlFilter(ConvertHelper.GetString(dr["packagedescription"]).Trim().Replace("\r\n","").Replace("\"","＂"))
+                        , StringHelper.SqlFilter(ConvertHelper.GetString(dr["packagedescription"]).Trim().Replace("\r\n", "").Replace("\"", "＂"))
                         , carIds
                         , package.IndexOf(dr) == package.Count - 1 ? "" : ",");
                 }
@@ -8681,7 +8876,7 @@ namespace BitAuto.CarChannel.BLL
             return stateInt;
         }
 
-        private int SwitchNewSaleStatus(string CsSaleState)
+        public int SwitchNewSaleStatus(string CsSaleState)
         {
             var stateInt = 2;
             switch (CsSaleState)
@@ -8719,7 +8914,7 @@ namespace BitAuto.CarChannel.BLL
         /// </summary>
         /// <param name="serialId">车型ID</param>
         /// <returns></returns>
-        private string GetImageUrlBySid(int serialId)
+        public string GetImageUrlBySid(int serialId)
         {
             Dictionary<int, XmlElement> urlDic = CarSerialImgUrlService.GetImageUrlDicNew();
             string imgUrl = "";
@@ -8937,7 +9132,7 @@ namespace BitAuto.CarChannel.BLL
                 XmlDocument xmlDoc = new XmlDocument();
                 string photoDataPath = Path.Combine(PhotoImageConfig.SavePath, PhotoImageConfig.SerialCoverImageAndCountPath);
                 xmlDoc.Load(photoDataPath);
-                CacheManager.InsertCache(cacheKey, xmlDoc, 60);
+                CacheManager.InsertCache(cacheKey, xmlDoc, WebConfig.CachedDuration);
                 return xmlDoc;
             }
             else
@@ -8971,7 +9166,11 @@ namespace BitAuto.CarChannel.BLL
                 if (string.Equals(imgUrl, WebConfig.DefaultCarPic))
                 { continue; }
                 if (i >= showNewCarNum) break;
-                string priceRange = new PageBase().GetSerialPriceRangeByID(Convert.ToInt32(serialId));
+                
+                // edit by hepw 20180105
+                //string priceRange = new PageBase().GetSerialPriceRangeByID(Convert.ToInt32(serialId));
+                string priceRange = new PageBase().GetSerialReferPriceByID(Convert.ToInt32(serialId));
+                
                 Car_SerialEntity cs = Get_Car_SerialByCsID(serialId);
                 if (cs == null || cs.Cs_Id <= 0)
                 { continue; }
@@ -9086,5 +9285,28 @@ namespace BitAuto.CarChannel.BLL
             }
             return result;
         }
+
+        /// <summary>
+        /// 获取车系级别，如果有二级级别取二级级别
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<int, string> GetAllSerialLevelsWithSecondLevel()
+        {
+            string cacheKey = "Car_SerialBll_GetAllSerialLevelsWithSecondLevel";
+            object obj = CacheManager.GetCachedData(cacheKey);
+            if (obj != null)
+            {
+                return (Dictionary<int, string>)obj;
+            }
+            else
+            {
+                Dictionary<int, string> levelDic = null;
+                levelDic = csd.GetAllSerialLevelsWithSecondLevel();
+                CacheManager.InsertCache(cacheKey, levelDic, WebConfig.CachedDuration);
+                return levelDic;
+            }
+        }
+
+
     }
 }

@@ -620,10 +620,10 @@ namespace MWeb.Controllers
                                         strTravelTax = "<em>减税</em>";
                                     }
                                 }
-                                else if (dEx > 0 && dEx <= 1.6)
-                                {
-                                    strTravelTax = "<em>减税</em>";
-                                }
+                                //else if (dEx > 0 && dEx <= 1.6)
+                                //{
+                                //    strTravelTax = "<em>减税</em>";
+                                //}
                             }
                             stringBuilder.AppendFormat("<span>{0}</span>", transmissionType);
                             stringBuilder.AppendFormat("<div class=\"gzd-box\" style=\"\"><div class=\"tit-box\">热度</div><span class=\"gz-sty\"><i data-pv=\"{0}\" style=\"width:{0}%\"></i></span></div>", percent);
@@ -703,7 +703,7 @@ namespace MWeb.Controllers
 			List<string> focusImg = new List<string>();
 			List<SerialFocusImage> imgList = serialBLL.GetSerialFocusImageList(serialEntity.Id);
 			string xmlPicPath = Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, serialId));
-			DataSet dsCsPic = pageBase.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialEntity.Id, xmlPicPath, 60);
+			DataSet dsCsPic = pageBase.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialEntity.Id, xmlPicPath, 10);
 			Dictionary<int, Dictionary<int, string>> dicPicNoneWhite = pageBase.GetAllSerialPicNoneWhiteBackground(8);
 
 			if (imgList != null && imgList.Count > 0)
@@ -866,7 +866,7 @@ namespace MWeb.Controllers
             List<SerialFocusImage> imgSlideList = serialBLL.GetSerialSlideImageList(serialId);
             List<SerialFocusImage> sourceList = new List<SerialFocusImage>();
             string xmlPicPath = Path.Combine(PhotoImageConfig.SavePath, string.Format(PhotoImageConfig.SerialPhotoListPath, serialId));
-            DataSet dsCsPic = pageBase.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialEntity.Id, xmlPicPath, 60);
+            DataSet dsCsPic = pageBase.GetXMLDocToDataSetByURLForCache("CarChannel_SerialAllPic_" + serialEntity.Id, xmlPicPath, 10);
             Dictionary<int, Dictionary<int, string>> dicPicNoneWhite = pageBase.GetAllSerialPicNoneWhiteBackground();
             
             #region 初始化数据源
@@ -941,7 +941,7 @@ namespace MWeb.Controllers
             {
                 //第三张,取图解第一张
                 XmlNode firstTujieNode = GetFirstTujieImage(dtC);
-                if (firstTujieNode != null)
+                if (firstTujieNode != null && !focusImgId.ContainsKey(Convert.ToInt32(firstTujieNode.Attributes["ImageId"].Value)))
                 {
                     string groupName = firstTujieNode.Attributes["GroupName"].Value;
                     string backupImg = string.Empty;

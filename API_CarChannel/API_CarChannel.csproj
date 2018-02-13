@@ -110,6 +110,9 @@
     <Compile Include="Assessment\GetBaoZhiLv.ashx.cs">
       <DependentUpon>GetBaoZhiLv.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Assessment\GetData.ashx.cs">
+      <DependentUpon>GetData.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Assessment\GetEditorInfo.ashx.cs">
       <DependentUpon>GetEditorInfo.ashx</DependentUpon>
     </Compile>
@@ -137,6 +140,12 @@
     <Compile Include="Assessment\GetExistReportEvaluationId.ashx.cs">
       <DependentUpon>GetExistReportEvaluationId.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Assessment\GetPingCe.ashx.cs">
+      <DependentUpon>GetPingCe.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\GetPingCeForApp.ashx.cs">
+      <DependentUpon>GetPingCeForApp.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Assessment\GetPingCeList.ashx.cs">
       <DependentUpon>GetPingCeList.ashx</DependentUpon>
     </Compile>
@@ -159,6 +168,10 @@
     </Compile>
     <Compile Include="CarInfo\CarPriceListByCarIDAndCityID.aspx.designer.cs">
       <DependentUpon>CarPriceListByCarIDAndCityID.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarInfo\GetNewCarList.ashx.cs">
+      <DependentUpon>GetNewCarList.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CarInfo\GetAllCarInfo.ashx.cs">
       <DependentUpon>GetAllCarInfo.ashx</DependentUpon>
@@ -224,6 +237,10 @@
     </Compile>
     <Compile Include="CarInfo\GetProducerInfo.ashx.cs">
       <DependentUpon>GetProducerInfo.ashx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarInfo\GetSalesRankingForPage.ashx.cs">
+      <DependentUpon>GetSalesRankingForPage.ashx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CarInfo\GetSerialInfo.ashx.cs">
@@ -565,6 +582,7 @@
     <Content Include="config\ParameterForJsonNew.xml" />
     <Content Include="App_Data\css\GetCarhtml\main.css" />
     <Content Include="config\ParameterForJsonNewV2.xml" />
+    <Content Include="config\PropertyId.xml" />
     <Content Include="Cooperation\GetCarData.aspx" />
     <Content Include="Cooperation\script\GetCarhtml\main.js" />
     <Content Include="Cooperation\script\GetCarhtml\renderMobileSerialListForBaidu.js" />
@@ -646,11 +664,16 @@
     <Content Include="Assessment\GetEvaluationSimpleRank.ashx" />
     <Content Include="Assessment\GetEvaluationTopRank.ashx" />
     <Content Include="Assessment\GetExistReportEvaluationId.ashx" />
+    <Content Include="CarInfo\GetSalesRankingForPage.ashx" />
+    <Content Include="CarInfo\GetNewCarList.ashx" />
     <Content Include="Assessment\GetPingCeTopPc.ashx" />
     <Content Include="Assessment\GetPingCeTopM.ashx" />
     <Content Include="Assessment\GetPingCeList.ashx" />
     <Content Include="Assessment\GetEvalInfoForAppNews.ashx" />
     <Content Include="Assessment\GetEvalInfoForBg.ashx" />
+    <Content Include="Assessment\GetData.ashx" />
+    <Content Include="Assessment\GetPingCe.ashx" />
+    <Content Include="Assessment\GetPingCeForApp.ashx" />
     <None Include="Properties\PublishProfiles\api.car.bitauto.com.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

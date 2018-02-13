@@ -477,9 +477,8 @@ left join Car_Serial cs on car.Cs_Id=cs.cs_id where car.Car_Id=@carid";
         /// <param name="paramId"></param>
         /// <returns></returns>
         public string GetCarParamValue(int carId, int paramId)
-		{
-			Dictionary<int, string> dic = new Dictionary<int, string>();
-			string sql = @"SELECT  carid, paramid, pvalue
+		{ 
+			string sql = @"SELECT pvalue
 							FROM    dbo.CarDataBase
 							WHERE   carid = @CarId
 									AND ParamId = @ParamId";
@@ -873,5 +872,27 @@ WHERE   car.isState = 1 {0} AND car.Cs_Id=@serialId";
 			_params[0].Value = serialId;
 			return SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, _params);
 		}
-	}
+
+        /// <summary>
+        /// 根据车款Id获取车款基本信息
+        /// </summary>
+        /// <param name="carId"></param>
+        /// <returns></returns>
+        public DataSet GetCarBaseDataById(int carId)
+        {
+            string sql = @" SELECT car.Cs_Id, car.Car_Id, car.Car_Name, car.Car_YearType,
+                            car.car_ReferPrice, cei.Engine_Exhaust, cei.UnderPan_TransmissionType,
+                            car.Car_SaleState, car.Car_ProduceState
+                     FROM   car_basic car
+                            LEFT JOIN dbo.Car_Extend_Item cei ON car.car_id = cei.car_id
+                     WHERE  car.isState = 1
+                            AND car.Car_Id = @CarId";
+            
+            SqlParameter[] _params = {
+                                          new SqlParameter("@CarId", SqlDbType.Int)
+                                     };
+            _params[0].Value = carId;
+            return SqlHelper.ExecuteDataset(WebConfig.DefaultConnectionString, CommandType.Text, sql, _params);
+        }
+    }
 }
